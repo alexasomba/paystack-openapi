@@ -1863,6 +1863,7 @@ paths:
       tags:
         - Transfer Recipient
       summary: Update Transfer recipient
+      operationId: transferrecipient_update
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -1884,6 +1885,7 @@ paths:
       tags:
         - Transfer Recipient
       summary: Delete Transfer Recipient
+      operationId: transferrecipient_delete
       responses:
         '200':
           $ref: '#/components/responses/Ok'
@@ -2393,25 +2395,11 @@ paths:
       operationId: bulkCharge_initiate
       requestBody:
         content:
-          application/x-www-form-urlencoded:
-            schema:
-              type: array
-              items:
-                properties:
-                  charges:
-                    type: object
-                    items:
-                      $ref: '#/components/schemas/BulkChargeInitiate'
           application/json:
             schema:
               type: array
               items:
-                properties:
-                  charges:
-                    title: charges
-                    type: object
-                    items:
-                      $ref: '#/components/schemas/BulkChargeInitiate'
+                $ref: '#/components/schemas/BulkChargeInitiate'
       responses:
         '200':
           $ref: '#/components/responses/Created'
@@ -3545,7 +3533,6 @@ components:
       required:
         - code
         - token
-        - authorization
       properties:
         code:
           description: Subscription code
@@ -3843,8 +3830,6 @@ components:
             $ref: '#/components/schemas/TransferRecipientCreate'
     TransferRecipientUpdate:
       type: object
-      required:
-        - batch
       properties:
         name:
           description: Recipient's name
@@ -3895,7 +3880,8 @@ components:
     TransferBulk:
       type: object
       required:
-        - batch
+        - source
+        - transfers
       properties:
         source:
           description: Where should we transfer from? Only balance is allowed for now

@@ -18,9 +18,18 @@
     "dev": "pnpm bundle && pnpm start",
     "lint": "pnpm lint:main && pnpm lint:sdk",
     "lint:main": "spectral lint dist/paystack.yaml",
-    "lint:sdk": "spectral lint ./sdk/paystack.yaml",
+    "lint:sdk": "spectral lint ./src/assets/sdk/paystack.yaml",
     "split": "redocly split ./src/assets/base/paystack.yaml --outDir=./src/assets/openapi",
-    "start": "nodemon src/index.js"
+    "start": "nodemon src/index.js",
+    "sdk:node:build": "pnpm -C sdks/node build",
+    "sdk:node:generate": "pnpm -C sdks/node generate:types",
+    "sdk:build": "pnpm -r --filter \"./sdks/*\" build",
+    "sdk:clean": "pnpm -r --filter \"./sdks/*\" clean",
+    "sdk:publish": "pnpm -r --filter \"./sdks/*\" publish:public",
+    "sdk:python:generate": "docker run --rm -u $(id -u):$(id -g) -v \"$PWD:/local\" openapitools/openapi-generator-cli:latest generate -g python -i /local/src/assets/sdk/paystack.yaml -o /local/sdks/python -c /local/sdks/python/openapi-generator-config.yaml --skip-validate-spec --global-property apis,models,supportingFiles,modelDocs=false,apiDocs=false,apiTests=false,modelTests=false",
+    "sdk:php:generate": "docker run --rm -u $(id -u):$(id -g) -v \"$PWD:/local\" openapitools/openapi-generator-cli:latest generate -g php -i /local/src/assets/sdk/paystack.yaml -o /local/sdks/php -c /local/sdks/php/openapi-generator-config.yaml --skip-validate-spec --global-property apis,models,supportingFiles,modelDocs=false,apiDocs=false,apiTests=false,modelTests=false",
+    "sdk:go:generate": "docker run --rm -u $(id -u):$(id -g) -v \"$PWD:/local\" openapitools/openapi-generator-cli:latest generate -g go -i /local/src/assets/sdk/paystack.yaml -o /local/sdks/go -c /local/sdks/go/openapi-generator-config.yaml --skip-validate-spec --global-property apis,models,supportingFiles,modelDocs=false,apiDocs=false,apiTests=false,modelTests=false",
+    "sdk:others:generate": "pnpm sdk:python:generate && pnpm sdk:php:generate && pnpm sdk:go:generate"
   },
   "repository": {
     "type": "git",

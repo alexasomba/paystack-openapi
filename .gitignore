@@ -30,7 +30,6 @@ coverage/
 .env.*.local
 
 # Build output
-dist/
 build/
 out/
 
@@ -38,3 +37,4 @@ out/
 .cache/
 tmp/
 temp/
+documentations/

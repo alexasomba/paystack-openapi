@@ -24,7 +24,7 @@ You can download the specification and make use of it on:
   pnpm dev
   ```
   > [!NOTE]
-  > At the moment, the `paystack.yaml` file is the only spec that is automatically opened in your browser. If the spec doesn't open automatically in your browser, you can manually open http://localhost:3031 in your browser.
+  > At the moment, the `paystack.yaml` file is the only spec that is automatically opened in your browser. If the spec doesn't open automatically in your browser, you can manually open http://localhost:7070 in your browser.
 
 ## Components
 There are two top-level folders of interest in this repo:
@@ -35,6 +35,81 @@ There are two top-level folders of interest in this repo:
     - `sdk`: This is a single file specification being used for client library generation. It contains just enough parameters for our client libraries (might be removed later).
     - `use_cases`: This is a collection of specifications containing APIs for common use cases of the Paystack API. For example, the `wallet.yaml` contains the APIs needed to build a wallet feature into your application. The specifications in this directory are used to create the collections in our [Postman Workspace](https://www.postman.com/paystack-developers?tab=collections).
 - `dist`: Not all OpenAPI readers can read from different file sources, so we built a single file from all the components in the `main` directory.
+
+## SDKs
+This repo also contains TypeScript SDKs generated from the OpenAPI spec in `src/assets/sdk/paystack.yaml`.
+
+### Node (server)
+- Package: `@alexasomba/paystack-node`
+
+```ts
+import { createPaystack } from '@alexasomba/paystack-node';
+
+const paystack = createPaystack({
+  secretKey: process.env.PAYSTACK_SECRET_KEY!,
+});
+
+const { data, error } = await paystack.transaction_initialize({
+  body: { email: 'customer@example.com', amount: 5000 },
+});
+
+if (error) throw error;
+```
+
+### Axios (server)
+- Package: `@alexasomba/paystack-axios`
+
+```ts
+import { createPaystack } from '@alexasomba/paystack-axios';
+
+const paystack = createPaystack({
+  secretKey: process.env.PAYSTACK_SECRET_KEY!,
+});
+
+const { data, error } = await paystack.transaction_initialize({
+  body: { email: 'customer@example.com', amount: 5000 },
+});
+
+if (error) throw error;
+```
+
+### Browser
+- Package: `@alexasomba/paystack-browser`
+
+```ts
+import { createPaystackClient } from '@alexasomba/paystack-browser';
+
+const paystack = createPaystackClient({
+  apiKey: 'YOUR_API_KEY',
+});
+
+const { data, error } = await paystack.POST('/transaction/initialize', {
+  body: { email: 'customer@example.com', amount: 5000 },
+});
+
+if (error) throw error;
+```
+
+### Build locally
+
+```sh
+pnpm sdk:build
+```
+
+### Other languages (generated)
+The following SDKs are generated via OpenAPI Generator and live in the `sdks/` directory:
+
+- Python: `sdks/python` (includes `pyproject.toml` / `setup.py`)
+- PHP: `sdks/php` (includes `composer.json`)
+- Go: `sdks/go` (includes `go.mod`)
+
+Regenerate them with:
+
+```sh
+pnpm sdk:others:generate
+```
+
+Each folder contains its own README with language-specific usage and install instructions.
 
 ## Contributing
 Here are some of the ways to contribute to this repository:
