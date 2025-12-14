@@ -1,0 +1,6604 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: techsupport@paystack.com
+    name: Paystack Integration
+    url: https://paystack.com/docs
+  description: The OpenAPI specification of the Paystack API that merchants and developers
+    can harness to build financial solutions in Africa.
+  title: Paystack
+  version: 1.0.0
+servers:
+- description: Base API endpoint
+  url: https://api.paystack.co
+security:
+- bearerAuth: []
+tags:
+- name: Transaction
+- name: Split
+- name: Customer
+- name: Dedicated Virtual Account
+- name: Subaccount
+- name: Plan
+- name: Subscription
+- name: Product
+- name: Page
+- name: Payment Request
+- name: Settlement
+- name: Transfer Recipient
+- name: Transfer
+- name: Balance
+- name: Charge
+- name: Bulk Charge
+- name: Integration
+- name: Refund
+- name: Dispute
+- name: Verification
+paths:
+  /transaction/initialize:
+    post:
+      description: Create a new transaction
+      operationId: transaction_initialize
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/TransactionInitialize"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransactionInitialize"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Initialize Transaction
+      tags:
+      - Transaction
+  /transaction/verify/{reference}:
+    get:
+      description: Verify a previously initiated transaction using it's reference
+      operationId: transaction_verify
+      parameters:
+      - description: The transaction reference to verify
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Verify Transaction
+      tags:
+      - Transaction
+  /transaction:
+    get:
+      description: List transactions that has occurred on your integration
+      operationId: transaction_list
+      parameters:
+      - description: Number of records to fetch per page
+        explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The section to retrieve
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The start date
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: The end date
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: List Transactions
+      tags:
+      - Transaction
+  /transaction/{id}:
+    get:
+      description: Fetch a transaction to get its details
+      operationId: transaction_fetch
+      parameters:
+      - description: The ID of the transaction to fetch
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Transaction
+      tags:
+      - Transaction
+  /transaction/timeline/{id_or_reference}:
+    get:
+      description: Get the details about the lifecycle of a transaction from initiation
+        to completion
+      operationId: transaction_timeline
+      parameters:
+      - explode: false
+        in: path
+        name: id_or_reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Transaction Timeline
+      tags:
+      - Transaction
+  /transaction/totals:
+    get:
+      description: Get the total amount of all transactions
+      operationId: transaction_totals
+      parameters:
+      - description: Number of records to fetch per page
+        explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The section to retrieve
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The start date
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: The end date
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Transaction Totals
+      tags:
+      - Transaction
+  /transaction/export:
+    get:
+      operationId: transaction_download
+      parameters:
+      - description: Number of records to fetch per page
+        explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The section to retrieve
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The start date
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: The end date
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Export Transactions
+      tags:
+      - Transaction
+  /transaction/charge_authorization:
+    post:
+      operationId: transaction_chargeAuthorization
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/TransactionChargeAuthorization"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransactionChargeAuthorization"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Charge Authorization
+      tags:
+      - Transaction
+  /transaction/check_authorization:
+    post:
+      operationId: transaction_checkAuthorization
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/TransactionCheckAuthorization"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransactionCheckAuthorization"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Check Authorization
+      tags:
+      - Transaction
+  /transaction/partial_debit:
+    post:
+      operationId: transaction_partialDebit
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/TransactionPartialDebit"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransactionPartialDebit"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Partial Debit
+      tags:
+      - Transaction
+  /transaction/{id}/event:
+    get:
+      operationId: transaction_event
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Get Transaction Event
+      tags:
+      - Transaction
+  /transaction/{id}/session:
+    get:
+      operationId: transaction_session
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Get Transaction Session
+      tags:
+      - Transaction
+  /split:
+    get:
+      operationId: split_list
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: active
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: sort_by
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: List/Search Splits
+      tags:
+      - Split
+    post:
+      operationId: split_create
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/SplitCreate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SplitCreate"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Create Split
+      tags:
+      - Split
+  /split/{id}:
+    get:
+      operationId: split_fetch
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Split
+      tags:
+      - Split
+    put:
+      operationId: split_update
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/SplitUpdate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SplitUpdate"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Update Split
+      tags:
+      - Split
+  /split/{id}/subaccount/add:
+    post:
+      operationId: split_addSubaccount
+      parameters:
+      - example: application/json
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/SplitSubaccounts"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SplitSubaccounts"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Add Subaccount to Split
+      tags:
+      - Split
+  /split/{id}/subaccount/remove:
+    post:
+      operationId: split_removeSubaccount
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/SplitSubaccounts"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SplitSubaccounts"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Remove Subaccount from split
+      tags:
+      - Split
+  /customer:
+    get:
+      description: List customers on your integration
+      operationId: customer_list
+      parameters:
+      - explode: true
+        in: query
+        name: use_cursor
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: next
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: previous
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: List Customers
+      tags:
+      - Customer
+    post:
+      operationId: customer_create
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/CustomerCreate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomerCreate"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Create Customer
+      tags:
+      - Customer
+  /customer/{code}:
+    get:
+      operationId: customer_fetch
+      parameters:
+      - explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Customer
+      tags:
+      - Customer
+    put:
+      operationId: customer_update
+      parameters:
+      - explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/CustomerUpdate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomerUpdate"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Update Customer
+      tags:
+      - Customer
+  /customer/set_risk_action:
+    post:
+      description: Set customer's risk action by whitelisting or blacklisting the
+        customer
+      operationId: customer_riskAction
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/CustomerRiskAction"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomerRiskAction"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: White/blacklist Customer
+      tags:
+      - Customer
+  /customer/deactivate_authorization:
+    post:
+      description: Deactivate a customer's card
+      operationId: customer_deactivateAuthorization
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/CustomerDeactivateAuthorization"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomerDeactivateAuthorization"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Deactivate Authorization
+      tags:
+      - Customer
+  /customer/{code}/identification:
+    post:
+      description: Validate a customer's identity
+      operationId: customer_validate
+      parameters:
+      - explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/CustomerValidation"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomerValidation"
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Accepted"
+          description: Request accepted for processing
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Validate Customer
+      tags:
+      - Customer
+  /dedicated_account:
+    get:
+      operationId: dedicatedAccount_list
+      parameters:
+      - explode: true
+        in: query
+        name: account_number
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: customer
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: active
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: currency
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: provider_slug
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: bank_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: List Dedicated Accounts
+      tags:
+      - Dedicated Virtual Account
+    post:
+      operationId: dedicatedAccount_create
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/DedicatedVirtualAccountCreate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DedicatedVirtualAccountCreate"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Create Dedicated Account
+      tags:
+      - Dedicated Virtual Account
+  /dedicated_account/{account_id}:
+    delete:
+      operationId: dedicatedAccount_deactivate
+      parameters:
+      - explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Deactivate Dedicated Account
+      tags:
+      - Dedicated Virtual Account
+    get:
+      operationId: dedicatedAccount_fetch
+      parameters:
+      - explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Dedicated Account
+      tags:
+      - Dedicated Virtual Account
+  /dedicated_account/available_providers:
+    get:
+      operationId: dedicatedAccount_availableProviders
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Bank Providers
+      tags:
+      - Dedicated Virtual Account
+  /dedicated_account/split:
+    delete:
+      operationId: dedicatedAccount_removeSplit
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/DedicatedVirtualAccountSplit"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DedicatedVirtualAccountSplit"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Remove Split from Dedicated Account
+      tags:
+      - Dedicated Virtual Account
+    post:
+      operationId: dedicatedAccount_addSplit
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/DedicatedVirtualAccountSplit"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DedicatedVirtualAccountSplit"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Split Dedicated Account Transaction
+      tags:
+      - Dedicated Virtual Account
+  /subaccount:
+    get:
+      operationId: subaccount_list
+      parameters:
+      - description: Number of records to fetch per page
+        explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The section to retrieve
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The start date
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: The end date
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: List Subaccounts
+      tags:
+      - Subaccount
+    post:
+      operationId: subaccount_create
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/SubaccountCreate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SubaccountCreate"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Create Subaccount
+      tags:
+      - Subaccount
+  /subaccount/{code}:
+    get:
+      operationId: subaccount_fetch
+      parameters:
+      - explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Subaccount
+      tags:
+      - Subaccount
+    put:
+      operationId: subaccount_update
+      parameters:
+      - explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/SubaccountUpdate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SubaccountUpdate"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Update Subaccount
+      tags:
+      - Subaccount
+  /plan:
+    get:
+      operationId: plan_list
+      parameters:
+      - description: Number of records to fetch per page
+        explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The section to retrieve
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Specify interval of the plan
+        explode: true
+        in: query
+        name: interval
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The amount on the plans to retrieve
+        explode: true
+        in: query
+        name: amount
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The start date
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: The end date
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: List Plans
+      tags:
+      - Plan
+    post:
+      operationId: plan_create
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/PlanCreate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PlanCreate"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Create Plan
+      tags:
+      - Plan
+  /plan/{code}:
+    get:
+      operationId: plan_fetch
+      parameters:
+      - explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Plan
+      tags:
+      - Plan
+    put:
+      operationId: plan_update
+      parameters:
+      - explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/PlanUpdate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PlanUpdate"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Update Plan
+      tags:
+      - Plan
+  /subscription:
+    get:
+      operationId: subscription_list
+      parameters:
+      - description: Number of records to fetch per page
+        explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The section to retrieve
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Plan ID
+        explode: true
+        in: query
+        name: plan
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Customer ID
+        explode: true
+        in: query
+        name: customer
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The start date
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: The end date
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: List Subscriptions
+      tags:
+      - Subscription
+    post:
+      operationId: subscription_create
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/SubscriptionCreate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SubscriptionCreate"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Create Subscription
+      tags:
+      - Subscription
+  /subscription/{code}:
+    get:
+      operationId: subscription_fetch
+      parameters:
+      - explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Subscription
+      tags:
+      - Subscription
+  /subscription/disable:
+    post:
+      operationId: subscription_disable
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/SubscriptionToggle"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SubscriptionToggle"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Disable Subscription
+      tags:
+      - Subscription
+  /subscription/enable:
+    post:
+      operationId: subscription_enable
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/SubscriptionToggle"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SubscriptionToggle"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Enable Subscription
+      tags:
+      - Subscription
+  /subscription/{code}/manage/link:
+    get:
+      operationId: subscription_manageLink
+      parameters:
+      - explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Generate Update Subscription Link
+      tags:
+      - Subscription
+  /subscription/{code}/manage/email:
+    post:
+      operationId: subscription_manageEmail
+      parameters:
+      - explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Send Update Subscription Link
+      tags:
+      - Subscription
+  /product:
+    get:
+      operationId: product_list
+      parameters:
+      - explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: active
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: The start date
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: The end date
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: List Products
+      tags:
+      - Product
+    post:
+      operationId: product_create
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/ProductCreate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductCreate"
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Resource created
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Create Product
+      tags:
+      - Product
+  /product/{id}:
+    delete:
+      operationId: product_delete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Delete Product
+      tags:
+      - Product
+    get:
+      operationId: product_fetch
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Product
+      tags:
+      - Product
+    put:
+      operationId: product_update
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/ProductUpdate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductUpdate"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Update product
+      tags:
+      - Product
+  /page:
+    get:
+      operationId: page_list
+      parameters:
+      - description: Number of records to fetch per page
+        explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The section to retrieve
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The start date
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: The end date
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: List Pages
+      tags:
+      - Page
+    post:
+      operationId: page_create
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/PageCreate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PageCreate"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Create Page
+      tags:
+      - Page
+  /page/{id}:
+    get:
+      operationId: page_fetch
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Page
+      tags:
+      - Page
+    put:
+      operationId: page_update
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/PageUpdate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PageUpdate"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Update Page
+      tags:
+      - Page
+  /page/check_slug_availability/{slug}:
+    get:
+      operationId: page_checkSlugAvailability
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Check Slug Availability
+      tags:
+      - Page
+  /page/{id}/product:
+    post:
+      operationId: page_addProducts
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/PageProduct"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PageProduct"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Add Products
+      tags:
+      - Page
+  /paymentrequest:
+    get:
+      operationId: paymentRequest_list
+      parameters:
+      - description: Number of records to fetch per page
+        explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The section to retrieve
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Customer ID
+        explode: true
+        in: query
+        name: customer
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Invoice status to filter
+        explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "If your integration supports more than one currency, choose\
+          \ the one to filter"
+        explode: true
+        in: query
+        name: currency
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The start date
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: The end date
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: List Payment Request
+      tags:
+      - Payment Request
+    post:
+      operationId: paymentRequest_create
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/PaymentRequestCreate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PaymentRequestCreate"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Create Payment Request
+      tags:
+      - Payment Request
+  /paymentrequest/{id}:
+    get:
+      operationId: paymentRequest_fetch
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Payment Request
+      tags:
+      - Payment Request
+    put:
+      operationId: paymentRequest_update
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/PaymentRequestUpdate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PaymentRequestUpdate"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Update Payment Request
+      tags:
+      - Payment Request
+  /paymentrequest/verify/{id}:
+    get:
+      operationId: paymentRequest_verify
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Verify Payment Request
+      tags:
+      - Payment Request
+  /paymentrequest/notify/{id}:
+    post:
+      operationId: paymentRequest_notify
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Send Notification
+      tags:
+      - Payment Request
+  /paymentrequest/totals:
+    get:
+      operationId: paymentRequest_totals
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Payment Request Total
+      tags:
+      - Payment Request
+  /paymentrequest/finalize/{id}:
+    post:
+      operationId: paymentRequest_finalize
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Finalize Payment Request
+      tags:
+      - Payment Request
+  /paymentrequest/archive/{id}:
+    post:
+      operationId: paymentRequest_archive
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Archive Payment Request
+      tags:
+      - Payment Request
+  /settlement:
+    get:
+      operationId: settlements_fetch
+      parameters:
+      - example: 50
+        explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: integer
+        style: form
+      - example: 2
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Settlements
+      tags:
+      - Settlement
+  /settlement/{id}/transaction:
+    get:
+      operationId: settlements_transaction
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Settlement Transactions
+      tags:
+      - Settlement
+  /transferrecipient:
+    get:
+      operationId: transferrecipient_list
+      parameters:
+      - description: Number of records to fetch per page
+        explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The section to retrieve
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The start date
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: The end date
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: List Transfer Recipients
+      tags:
+      - Transfer Recipient
+    post:
+      operationId: transferrecipient_create
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/TransferRecipientCreate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransferRecipientCreate"
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Resource created
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Create Transfer Recipient
+      tags:
+      - Transfer Recipient
+  /transferrecipient/bulk:
+    post:
+      operationId: transferrecipient_bulk
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/TransferRecipientBulk"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransferRecipientBulk"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Bulk Create Transfer Recipient
+      tags:
+      - Transfer Recipient
+  /transferrecipient/{code}:
+    delete:
+      operationId: transferrecipient_delete
+      parameters:
+      - description: Transfer recipient code
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Delete Transfer Recipient
+      tags:
+      - Transfer Recipient
+    get:
+      operationId: transferrecipient_fetch
+      parameters:
+      - description: Transfer recipient code
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Transfer recipient
+      tags:
+      - Transfer Recipient
+    put:
+      operationId: transferrecipient_update
+      parameters:
+      - description: Transfer recipient code
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/TransferRecipientUpdate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransferRecipientUpdate"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Update Transfer recipient
+      tags:
+      - Transfer Recipient
+  /transfer:
+    get:
+      operationId: transfer_list
+      parameters:
+      - description: Number of records to fetch per page
+        explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The section to retrieve
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The start date
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: The end date
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: List Transfers
+      tags:
+      - Transfer
+    post:
+      operationId: transfer_initiate
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/TransferInitiate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransferInitiate"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Initiate Transfer
+      tags:
+      - Transfer
+  /transfer/finalize_transfer:
+    post:
+      operationId: transfer_finalize
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/TransferFinalize"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransferFinalize"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Finalize Transfer
+      tags:
+      - Transfer
+  /transfer/bulk:
+    post:
+      operationId: transfer_bulk
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/TransferBulk"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransferBulk"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Initiate Bulk Transfer
+      tags:
+      - Transfer
+  /transfer/{code}:
+    get:
+      operationId: transfer_fetch
+      parameters:
+      - description: Transfer code
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Transfer
+      tags:
+      - Transfer
+  /transfer/verify/{reference}:
+    get:
+      operationId: transfer_verify
+      parameters:
+      - explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Verify Transfer
+      tags:
+      - Transfer
+  /transfer/export:
+    get:
+      operationId: transfer_download
+      parameters:
+      - description: Number of records to fetch per page
+        explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The section to retrieve
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The start date
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: The end date
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Export Transfers
+      tags:
+      - Transfer
+  /transfer/resend_otp:
+    post:
+      operationId: transfer_resendOtp
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/TransferResendOTP"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransferResendOTP"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Resend OTP for Transfer
+      tags:
+      - Transfer
+  /transfer/disable_otp:
+    post:
+      operationId: transfer_disableOtp
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Disable OTP requirement for Transfers
+      tags:
+      - Transfer
+  /transfer/disable_otp_finalize:
+    post:
+      operationId: transfer_disableOtpFinalize
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/TransferFinalizeDisableOTP"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransferFinalizeDisableOTP"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Finalize Disabling of OTP requirement for Transfers
+      tags:
+      - Transfer
+  /transfer/enable_otp:
+    post:
+      operationId: transfer_enableOtp
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Enable OTP requirement for Transfers
+      tags:
+      - Transfer
+  /balance:
+    get:
+      description: You can only transfer from what you have
+      operationId: balance_fetch
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Balance
+      tags:
+      - Balance
+  /balance/ledger:
+    get:
+      operationId: balance_ledger
+      parameters:
+      - description: Number of records to fetch per page
+        explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The section to retrieve
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The start date
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: The end date
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Balance Ledger
+      tags:
+      - Balance
+  /charge:
+    post:
+      operationId: charge_create
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/charge_create_request"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/charge_create_request"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Create Charge
+      tags:
+      - Charge
+  /charge/submit_pin:
+    post:
+      operationId: charge_submitPin
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/ChargeSubmitPin"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChargeSubmitPin"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Submit PIN
+      tags:
+      - Charge
+  /charge/submit_otp:
+    post:
+      operationId: charge_submitOtp
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/ChargeSubmitOTP"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChargeSubmitOTP"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Submit OTP
+      tags:
+      - Charge
+  /charge/submit_phone:
+    post:
+      operationId: charge_submitPhone
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/ChargeSubmitPhone"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChargeSubmitPhone"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Submit Phone
+      tags:
+      - Charge
+  /charge/submit_birthday:
+    post:
+      operationId: charge_submitBirthday
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/ChargeSubmitBirthday"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChargeSubmitBirthday"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Submit Birthday
+      tags:
+      - Charge
+  /charge/submit_address:
+    post:
+      operationId: charge_submitAddress
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/ChargeSubmitAddress"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChargeSubmitAddress"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Submit Address
+      tags:
+      - Charge
+  /charge/{reference}:
+    get:
+      operationId: charge_check
+      parameters:
+      - explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Check pending charge
+      tags:
+      - Charge
+  /bulkcharge:
+    get:
+      operationId: bulkCharge_list
+      parameters:
+      - description: Number of records to fetch per page
+        explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The section to retrieve
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The start date
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: The end date
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: List Bulk Charge Batches
+      tags:
+      - Bulk Charge
+    post:
+      operationId: bulkCharge_initiate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: "#/components/schemas/BulkChargeInitiate"
+              type: array
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Resource created
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Initiate Bulk Charge
+      tags:
+      - Bulk Charge
+  /bulkcharge/{code}:
+    get:
+      operationId: bulkCharge_fetch
+      parameters:
+      - description: Batch code
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Bulk Charge Batch
+      tags:
+      - Bulk Charge
+  /bulkcharge/{code}/charges:
+    get:
+      operationId: bulkCharge_charges
+      parameters:
+      - description: Batch code
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Charges in a Batch
+      tags:
+      - Bulk Charge
+  /bulkcharge/pause/{code}:
+    get:
+      operationId: bulkCharge_pause
+      parameters:
+      - description: Batch code
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Pause Bulk Charge Batch
+      tags:
+      - Bulk Charge
+  /bulkcharge/resume/{code}:
+    get:
+      operationId: bulkCharge_resume
+      parameters:
+      - description: Batch code
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Resume Bulk Charge Batch
+      tags:
+      - Bulk Charge
+  /integration/payment_session_timeout:
+    get:
+      operationId: integration_fetchPaymentSessionTimeout
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Payment Session Timeout
+      tags:
+      - Integration
+    put:
+      operationId: integration_updatePaymentSessionTimeout
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                timeout: 30
+              type: object
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Update Payment Session Timeout
+      tags:
+      - Integration
+  /refund:
+    get:
+      operationId: refund_list
+      parameters:
+      - description: Number of records to fetch per page
+        explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The section to retrieve
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The start date
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: The end date
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: List Refunds
+      tags:
+      - Refund
+    post:
+      operationId: refund_create
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/RefundCreate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RefundCreate"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Create Refund
+      tags:
+      - Refund
+  /refund/{id}:
+    get:
+      operationId: refund_fetch
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Refund
+      tags:
+      - Refund
+  /dispute:
+    get:
+      operationId: dispute_list
+      parameters:
+      - description: Number of records to fetch per page
+        explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The section to retrieve
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: "Dispute Status. Acceptable values are awaiting-merchant-feedback,\
+          \ awaiting-bank-feedback, pending, resolved"
+        explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Transaction ID
+        explode: true
+        in: query
+        name: transaction
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The start date
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: The end date
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: List Disputes
+      tags:
+      - Dispute
+  /dispute/{id}:
+    get:
+      operationId: dispute_fetch
+      parameters:
+      - description: Dispute ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Dispute
+      tags:
+      - Dispute
+    put:
+      operationId: dispute_update
+      parameters:
+      - description: Dispute ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/DisputeUpdate"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DisputeUpdate"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Update Dispute
+      tags:
+      - Dispute
+  /dispute/{id}/upload_url:
+    get:
+      operationId: dispute_uploadUrl
+      parameters:
+      - description: Dispute ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Get Upload URL
+      tags:
+      - Dispute
+  /dispute/export:
+    get:
+      operationId: dispute_download
+      parameters:
+      - description: Number of records to fetch per page
+        explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The section to retrieve
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The start date
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: The end date
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Export Disputes
+      tags:
+      - Dispute
+  /dispute/transaction/{id}:
+    get:
+      operationId: dispute_transaction
+      parameters:
+      - description: Transaction ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: List Transaction Disputes
+      tags:
+      - Dispute
+  /dispute/{id}/resolve:
+    put:
+      operationId: dispute_resolve
+      parameters:
+      - description: Dispute ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/DisputeResolve"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DisputeResolve"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Resolve a Dispute
+      tags:
+      - Dispute
+  /dispute/{id}/evidence:
+    post:
+      operationId: dispute_evidence
+      parameters:
+      - description: Dispute ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/DisputeEvidence"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DisputeEvidence"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        default:
+          description: Server error
+      summary: Add Evidence
+      tags:
+      - Dispute
+  /bank/resolve:
+    get:
+      operationId: verification_resolveAccountNumber
+      parameters:
+      - example: "0022728151"
+        explode: true
+        in: query
+        name: account_number
+        required: false
+        schema:
+          type: integer
+        style: form
+      - example: 51
+        explode: true
+        in: query
+        name: bank_code
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Resolve Account Number
+      tags:
+      - Verification
+  /decision/bin/{bin}:
+    get:
+      operationId: verification_resolveCardBin
+      parameters:
+      - explode: false
+        in: path
+        name: bin
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Resolve Card BIN
+      tags:
+      - Verification
+  /country:
+    get:
+      operationId: verification_listCountries
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: List Countries
+      tags:
+      - Verification
+  /bank:
+    get:
+      operationId: verification_fetchBanks
+      parameters:
+      - explode: true
+        in: query
+        name: country
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: pay_with_bank_transfer
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: use_cursor
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: next
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: previous
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: gateway
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: Fetch Banks
+      tags:
+      - Verification
+  /address_verification/states:
+    get:
+      operationId: verification_avs
+      parameters:
+      - explode: true
+        in: query
+        name: type
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: country
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: currency
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+          description: Request successful
+        "401":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Invalid key
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized operation
+        "404":
+          content:
+            application/json:
+              example:
+                status: false
+                message: Entity not found
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Entity not found
+        default:
+          description: Server error
+      summary: List States (AVS)
+      tags:
+      - Verification
+components:
+  responses:
+    Ok:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Response"
+      description: Request successful
+    Accepted:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Accepted"
+      description: Request accepted for processing
+    Created:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Response"
+      description: Resource created
+    NotFound:
+      content:
+        application/json:
+          example:
+            status: false
+            message: Entity not found
+          schema:
+            $ref: "#/components/schemas/Error"
+      description: Entity not found
+    Unauthorized:
+      content:
+        application/json:
+          example:
+            status: false
+            message: Invalid key
+          schema:
+            $ref: "#/components/schemas/Error"
+      description: Unauthorized operation
+    GeneralError:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+      description: General Error
+  schemas:
+    TransactionInitialize:
+      properties:
+        email:
+          description: Customer's email address
+          type: string
+        amount:
+          description: "Amount should be in kobo if currency is NGN, pesewas, if currency\
+            \ is GHS, and cents, if currency is ZAR"
+          type: integer
+        currency:
+          description: The transaction currency
+          type: string
+        reference:
+          description: "Unique transaction reference. Only -, ., = and alphanumeric\
+            \ characters allowed."
+          type: string
+        callback_url:
+          description: "Fully qualified url, e.g. https://example.com/ . Use this\
+            \ to override the callback url provided on the dashboard for this transaction"
+          type: string
+        plan:
+          description: "If transaction is to create a subscription to a predefined\
+            \ plan, provide plan code here. \nThis would invalidate the value provided\
+            \ in amount"
+          type: string
+        invoice_limit:
+          description: Number of times to charge customer during subscription to plan
+          type: integer
+        metadata:
+          description: Stringified JSON object of custom data
+          type: string
+        channels:
+          description: An array of payment channels to control what channels you want
+            to make available to the user to make a payment with
+          items:
+            type: string
+          type: array
+        split_code:
+          description: The split code of the transaction split
+          type: string
+        subaccount:
+          description: The code for the subaccount that owns the payment
+          type: string
+        transaction_charge:
+          description: "A flat fee to charge the subaccount for a transaction. \n\
+            This overrides the split percentage set when the subaccount was created"
+          type: string
+        bearer:
+          description: The beare of the transaction charge
+          type: string
+      required:
+      - amount
+      - email
+      type: object
+    TransactionChargeAuthorization:
+      properties:
+        email:
+          description: Customer's email address
+          type: string
+        amount:
+          description: "Amount should be in kobo if currency is NGN, pesewas, if currency\
+            \ is GHS, and cents, if currency is ZAR"
+          type: integer
+        authorization_code:
+          description: Valid authorization code to charge
+          type: string
+        reference:
+          description: "Unique transaction reference. Only -, ., = and alphanumeric\
+            \ characters allowed."
+          type: string
+        currency:
+          description: The transaction currency
+          type: string
+        metadata:
+          description: Stringified JSON object of custom data
+          type: string
+        split_code:
+          description: The split code of the transaction split
+          type: string
+        subaccount:
+          description: The code for the subaccount that owns the payment
+          type: string
+        transaction_charge:
+          description: "A flat fee to charge the subaccount for a transaction. \n\
+            This overrides the split percentage set when the subaccount was created"
+          type: string
+        bearer:
+          description: The beare of the transaction charge
+          type: string
+        queue:
+          description: "If you are making a scheduled charge call, it is a good idea\
+            \ to queue them so the processing system does not get overloaded causing\
+            \ transaction processing errors."
+          type: boolean
+      required:
+      - amount
+      - authorization_code
+      - email
+      type: object
+    TransactionCheckAuthorization:
+      properties:
+        email:
+          description: Customer's email address
+          type: string
+        amount:
+          description: "Amount should be in kobo if currency is NGN, pesewas, if currency\
+            \ is GHS, and cents, if currency is ZAR"
+          type: integer
+        authorization_code:
+          description: Valid authorization code to charge
+          type: string
+        currency:
+          description: The transaction currency
+          type: string
+      required:
+      - amount
+      - email
+      type: object
+    TransactionPartialDebit:
+      properties:
+        email:
+          description: Customer's email address
+          type: string
+        amount:
+          description: "Amount should be in kobo if currency is NGN, pesewas, if currency\
+            \ is GHS, and cents, if currency is ZAR"
+          type: integer
+        authorization_code:
+          description: Valid authorization code to charge
+          type: string
+        currency:
+          description: The transaction currency
+          type: string
+        reference:
+          description: "Unique transaction reference. Only -, ., = and alphanumeric\
+            \ characters allowed."
+          type: string
+        at_least:
+          description: Minimum amount to charge
+          type: string
+      required:
+      - amount
+      - authorization_code
+      - currency
+      - email
+      type: object
+    SplitCreate:
+      properties:
+        name:
+          description: Name of the transaction split
+          type: string
+        type:
+          description: The type of transaction split you want to create.
+          type: string
+        subaccounts:
+          description: A list of object containing subaccount code and number of shares
+          items:
+            $ref: "#/components/schemas/SplitSubaccounts"
+          type: array
+        currency:
+          description: The transaction currency
+          type: string
+        bearer_type:
+          description: This allows you specify how the transaction charge should be
+            processed
+          type: string
+        bearer_subaccount:
+          description: This is the subaccount code of the customer or partner that
+            would bear the transaction charge if you specified subaccount as the bearer
+            type
+          type: string
+      required:
+      - currency
+      - name
+      - subaccounts
+      - type
+      type: object
+    SplitSubaccounts:
+      properties:
+        subaccount:
+          description: Subaccount code of the customer or partner
+          type: string
+        share:
+          description: The percentage or flat quota of the customer or partner
+          type: string
+      type: object
+    SplitUpdate:
+      properties:
+        name:
+          description: Name of the transaction split
+          type: string
+        active:
+          description: "Toggle status of split. When true, the split is active, else\
+            \ it's inactive"
+          type: boolean
+        bearer_type:
+          description: This allows you specify how the transaction charge should be
+            processed
+          type: string
+        bearer_subaccount:
+          description: This is the subaccount code of the customer or partner that
+            would bear the transaction charge if you specified subaccount as the bearer
+            type
+          type: string
+      type: object
+    CustomerCreate:
+      properties:
+        email:
+          description: Customer's email address
+          type: string
+        first_name:
+          description: Customer's first name
+          type: string
+        last_name:
+          description: Customer's last name
+          type: string
+        phone:
+          description: Customer's phone number
+          type: string
+        metadata:
+          description: Stringified JSON object of custom data
+          type: string
+      required:
+      - email
+      type: object
+    CustomerUpdate:
+      properties:
+        first_name:
+          description: Customer's first name
+          type: string
+        last_name:
+          description: Customer's last name
+          type: string
+        phone:
+          description: Customer's phone number
+          type: string
+        metadata:
+          description: Stringified JSON object of custom data
+          type: string
+      type: object
+    CustomerValidate:
+      properties:
+        first_name:
+          description: Customer's first name
+          type: string
+        last_name:
+          description: Customer's last name
+          type: string
+        type:
+          description: Predefined types of identification. e.g. (BVN)
+          type: string
+        value:
+          description: Customer's identification number
+          type: string
+        country:
+          description: 2 letter country code of identification issuer
+          type: string
+      required:
+      - country
+      - first_name
+      - last_name
+      - type
+      - value
+      type: object
+    CustomerRiskAction:
+      properties:
+        customer:
+          description: "Customer's code, or email address"
+          type: string
+        risk_action:
+          description: "One of the possible risk actions [ default, allow, deny ].\
+            \ allow to whitelist. \ndeny to blacklist. Customers start with a default\
+            \ risk action.\n"
+          type: string
+      required:
+      - customer
+      type: object
+    CustomerDeactivateAuthorization:
+      properties:
+        authorization_code:
+          description: Authorization code to be deactivated
+          type: string
+      required:
+      - authorization_code
+      type: object
+    CustomerValidation:
+      properties:
+        first_name:
+          description: Customer's first name
+          type: string
+        last_name:
+          description: Customer's last name
+          type: string
+        type:
+          description: Predefined types of identification.
+          type: string
+        country:
+          description: Two-letter country code of identification issuer
+          type: string
+        bvn:
+          description: Customer's Bank Verification Number
+          type: string
+        bank_code:
+          description: You can get the list of bank codes by calling the List Banks
+            endpoint (https://api.paystack.co/bank).
+          type: string
+        account_number:
+          description: Customer's bank account number.
+          type: string
+        value:
+          description: Customer's identification number. Required if type is bvn
+          type: string
+      required:
+      - account_number
+      - bank_code
+      - bvn
+      - country
+      - first_name
+      - last_name
+      - type
+      type: object
+    DedicatedVirtualAccountCreate:
+      properties:
+        customer:
+          description: Customer ID or code
+          type: string
+        preferred_bank:
+          description: "The bank slug for preferred bank. To get a list of available\
+            \ banks, use the List Providers endpoint"
+          type: string
+        subaccount:
+          description: Subaccount code of the account you want to split the transaction
+            with
+          type: string
+        split_code:
+          description: Split code consisting of the lists of accounts you want to
+            split the transaction with
+          type: string
+      required:
+      - customer
+      type: object
+    DedicatedVirtualAccountSplit:
+      properties:
+        account_number:
+          description: Valid Dedicated virtual account
+          type: string
+        subaccount:
+          description: Subaccount code of the account you want to split the transaction
+            with
+          type: string
+        split_code:
+          description: Split code consisting of the lists of accounts you want to
+            split the transaction with
+          type: string
+      required:
+      - account_number
+      type: object
+    SubaccountCreate:
+      properties:
+        business_name:
+          description: Name of business for subaccount
+          type: string
+        settlement_bank:
+          description: Bank code for the bank. You can get the list of Bank Codes
+            by calling the List Banks endpoint.
+          type: string
+        account_number:
+          description: Bank account number
+          type: string
+        percentage_charge:
+          description: Customer's phone number
+          format: float
+          type: number
+        description:
+          description: A description for this subaccount
+          type: string
+        primary_contact_email:
+          description: A contact email for the subaccount
+          type: string
+        primary_contact_name:
+          description: The name of the contact person for this subaccount
+          type: string
+        primary_contact_phone:
+          description: A phone number to call for this subaccount
+          type: string
+        metadata:
+          description: Stringified JSON object of custom data
+          type: string
+      required:
+      - account_number
+      - business_name
+      - percentage_charge
+      - settlement_bank
+      type: object
+    SubaccountUpdate:
+      properties:
+        business_name:
+          description: Name of business for subaccount
+          type: string
+        settlement_bank:
+          description: Bank code for the bank. You can get the list of Bank Codes
+            by calling the List Banks endpoint.
+          type: string
+        account_number:
+          description: Bank account number
+          type: string
+        active:
+          description: Activate or deactivate a subaccount
+          type: boolean
+        percentage_charge:
+          description: Customer's phone number
+          format: float
+          type: number
+        description:
+          description: A description for this subaccount
+          type: string
+        primary_contact_email:
+          description: A contact email for the subaccount
+          type: string
+        primary_contact_name:
+          description: The name of the contact person for this subaccount
+          type: string
+        primary_contact_phone:
+          description: A phone number to call for this subaccount
+          type: string
+        metadata:
+          description: Stringified JSON object of custom data
+          type: string
+      type: object
+    PlanCreate:
+      properties:
+        name:
+          description: Name of plan
+          type: string
+        amount:
+          description: "Amount should be in kobo if currency is NGN, pesewas, if currency\
+            \ is GHS, and cents, if currency is ZAR"
+          type: integer
+        interval:
+          description: "Interval in words. Valid intervals are daily, weekly, monthly,biannually,\
+            \ annually"
+          type: string
+        description:
+          description: A description for this plan
+          type: string
+        send_invoices:
+          description: Set to false if you don't want invoices to be sent to your
+            customers
+          type: boolean
+        send_sms:
+          description: Set to false if you don't want text messages to be sent to
+            your customers
+          type: boolean
+        currency:
+          description: "Currency in which amount is set. Allowed values are NGN, GHS,\
+            \ ZAR or USD"
+          type: string
+        invoice_limit:
+          description: "Number of invoices to raise during subscription to this plan.\
+            \ \nCan be overridden by specifying an invoice_limit while subscribing."
+          type: integer
+      required:
+      - amount
+      - interval
+      - name
+      type: object
+    PlanUpdate:
+      properties:
+        name:
+          description: Name of plan
+          type: string
+        amount:
+          description: "Amount should be in kobo if currency is NGN, pesewas, if currency\
+            \ is GHS, and cents, if currency is ZAR"
+          type: integer
+        interval:
+          description: "Interval in words. Valid intervals are daily, weekly, monthly,biannually,\
+            \ annually"
+          type: string
+        description:
+          description: A description for this plan
+          type: boolean
+        send_invoices:
+          description: Set to false if you don't want invoices to be sent to your
+            customers
+          type: boolean
+        send_sms:
+          description: Set to false if you don't want text messages to be sent to
+            your customers
+          type: boolean
+        currency:
+          description: "Currency in which amount is set. Allowed values are NGN, GHS,\
+            \ ZAR or USD"
+          type: string
+        invoice_limit:
+          description: "Number of invoices to raise during subscription to this plan.\
+            \ \nCan be overridden by specifying an invoice_limit while subscribing."
+          type: integer
+      type: object
+    SubscriptionCreate:
+      properties:
+        customer:
+          description: Customer's email address or customer code
+          type: string
+        plan:
+          description: Plan code
+          type: string
+        authorization:
+          description: "If customer has multiple authorizations, you can set the desired\
+            \ authorization you wish to use for this subscription here. \nIf this\
+            \ is not supplied, the customer's most recent authorization would be used"
+          type: string
+        start_date:
+          description: Set the date for the first debit. (ISO 8601 format) e.g. 2017-05-16T00:30:13+01:00
+          format: date-time
+          type: string
+      required:
+      - customer
+      - plan
+      type: object
+    SubscriptionToggle:
+      properties:
+        code:
+          description: Subscription code
+          type: string
+        token:
+          description: Email token
+          type: string
+      required:
+      - code
+      - token
+      type: object
+    ProductCreate:
+      properties:
+        name:
+          description: Name of product
+          type: string
+        description:
+          description: The description of the product
+          type: string
+        price:
+          description: "Price should be in kobo if currency is NGN, pesewas, if currency\
+            \ is GHS, and cents, if currency is ZAR"
+          type: integer
+        currency:
+          description: "Currency in which price is set. Allowed values are: NGN, GHS,\
+            \ ZAR or USD"
+          type: string
+        limited:
+          description: Set to true if the product has limited stock. Leave as false
+            if the product has unlimited stock
+          type: boolean
+        quantity:
+          description: Number of products in stock. Use if limited is true
+          type: integer
+      required:
+      - currency
+      - description
+      - name
+      - price
+      type: object
+    ProductUpdate:
+      properties:
+        name:
+          description: Name of product
+          type: string
+        description:
+          description: The description of the product
+          type: string
+        price:
+          description: "Price should be in kobo if currency is NGN, pesewas, if currency\
+            \ is GHS, and cents, if currency is ZAR"
+          type: integer
+        currency:
+          description: "Currency in which price is set. Allowed values are: NGN, GHS,\
+            \ ZAR or USD"
+          type: string
+        limited:
+          description: Set to true if the product has limited stock. Leave as false
+            if the product has unlimited stock
+          type: boolean
+        quantity:
+          description: Number of products in stock. Use if limited is true
+          type: integer
+      type: object
+    PageCreate:
+      properties:
+        name:
+          description: Name of page
+          type: string
+        description:
+          description: The description of the page
+          type: string
+        amount:
+          description: "Amount should be in kobo if currency is NGN, pesewas, if currency\
+            \ is GHS, and cents, if currency is ZAR"
+          type: integer
+        slug:
+          description: "URL slug you would like to be associated with this page. Page\
+            \ will be accessible at https://paystack.com/pay/[slug]"
+          type: string
+        metadata:
+          description: Stringified JSON object of custom data
+          type: string
+        redirect_url:
+          description: "If you would like Paystack to redirect to a URL upon successful\
+            \ payment, specify the URL here."
+          type: string
+        custom_fields:
+          description: "If you would like to accept custom fields, specify them here."
+          items:
+            type: object
+          type: array
+      required:
+      - name
+      type: object
+    PageUpdate:
+      properties:
+        name:
+          description: Name of page
+          type: string
+        description:
+          description: The description of the page
+          type: string
+        amount:
+          description: "Amount should be in kobo if currency is NGN, pesewas, if currency\
+            \ is GHS, and cents, if currency is ZAR"
+          type: integer
+        active:
+          description: Set to false to deactivate page url
+          type: boolean
+      type: object
+    PageProduct:
+      properties:
+        product:
+          description: IDs of all products to add to a page
+          items:
+            type: string
+          type: array
+      required:
+      - product
+      type: object
+    PaymentRequestCreate:
+      properties:
+        customer:
+          description: Customer id or code
+          type: string
+        amount:
+          description: "Payment request amount. Only useful if line items and tax\
+            \ values are ignored. \nThe endpoint will throw a friendly warning if\
+            \ neither is available."
+          type: integer
+        currency:
+          description: "Specify the currency of the invoice. Allowed values are NGN,\
+            \ GHS, ZAR and USD. Defaults to NGN"
+          type: string
+        due_date:
+          description: ISO 8601 representation of request due date
+          format: date-time
+          type: string
+        description:
+          description: A short description of the payment request
+          type: string
+        line_items:
+          description: Array of line items
+          items:
+            type: object
+          type: array
+        tax:
+          description: Array of taxes
+          items:
+            type: object
+          type: array
+        send_notification:
+          description: Indicates whether Paystack sends an email notification to customer.
+            Defaults to true
+          items:
+            type: object
+          type: array
+        draft:
+          description: Indicate if request should be saved as draft. Defaults to false
+            and overrides send_notification
+          items:
+            type: object
+          type: array
+        has_invoice:
+          description: "Set to true to create a draft invoice (adds an auto incrementing\
+            \ invoice number if none is provided) \neven if there are no line_items\
+            \ or tax passed"
+          items:
+            type: object
+          type: array
+        invoice_number:
+          description: "Numeric value of invoice. Invoice will start from 1 and auto\
+            \ increment from there. This field is to help \noverride whatever value\
+            \ Paystack decides. Auto increment for subsequent invoices continue from\
+            \ this point."
+          type: integer
+        split_code:
+          description: The split code of the transaction split.
+          type: string
+      required:
+      - customer
+      type: object
+    PaymentRequestUpdate:
+      properties:
+        customer:
+          description: Customer id or code
+          type: string
+        amount:
+          description: "Payment request amount. Only useful if line items and tax\
+            \ values are ignored. \nThe endpoint will throw a friendly warning if\
+            \ neither is available."
+          type: integer
+        currency:
+          description: "Specify the currency of the invoice. Allowed values are NGN,\
+            \ GHS, ZAR and USD. Defaults to NGN"
+          type: string
+        due_date:
+          description: ISO 8601 representation of request due date
+          format: date-time
+          type: string
+        description:
+          description: A short description of the payment request
+          type: string
+        line_items:
+          description: Array of line items
+          items:
+            type: object
+          type: array
+        tax:
+          description: Array of taxes
+          items:
+            type: object
+          type: array
+        send_notification:
+          description: Indicates whether Paystack sends an email notification to customer.
+            Defaults to true
+          items:
+            type: object
+          type: array
+        draft:
+          description: Indicate if request should be saved as draft. Defaults to false
+            and overrides send_notification
+          items:
+            type: object
+          type: array
+        has_invoice:
+          description: "Set to true to create a draft invoice (adds an auto incrementing\
+            \ invoice number if none is provided) \neven if there are no line_items\
+            \ or tax passed"
+          items:
+            type: object
+          type: array
+        invoice_number:
+          description: "Numeric value of invoice. Invoice will start from 1 and auto\
+            \ increment from there. This field is to help \noverride whatever value\
+            \ Paystack decides. Auto increment for subsequent invoices continue from\
+            \ this point."
+          type: integer
+        split_code:
+          description: The split code of the transaction split.
+          type: string
+      type: object
+    TransferRecipientCreate:
+      properties:
+        type:
+          description: Recipient Type (Only nuban at this time)
+          type: string
+        name:
+          description: Recipient's name
+          type: string
+        account_number:
+          description: Recipient's bank account number
+          type: string
+        bank_code:
+          description: Recipient's bank code. You can get the list of Bank Codes by
+            calling the List Banks endpoint
+          type: string
+        description:
+          description: A description for this recipient
+          type: string
+        currency:
+          description: Currency for the account receiving the transfer
+          type: string
+        authorization_code:
+          description: An authorization code from a previous transaction
+          type: string
+        metadata:
+          description: Stringified JSON object of custom data
+          type: string
+      required:
+      - account_number
+      - bank_code
+      - name
+      - type
+      type: object
+    TransferRecipientBulk:
+      properties:
+        batch:
+          description: "A list of transfer recipient object. Each object should contain\
+            \ type, name, and bank_code. \nAny Create Transfer Recipient param can\
+            \ also be passed."
+          items:
+            $ref: "#/components/schemas/TransferRecipientCreate"
+          type: array
+      required:
+      - batch
+      type: object
+    TransferRecipientUpdate:
+      properties:
+        name:
+          description: Recipient's name
+          type: string
+        email:
+          description: Recipient's email address
+          type: string
+      type: object
+    TransferInitiate:
+      properties:
+        source:
+          description: Where should we transfer from? Only balance is allowed for
+            now
+          type: string
+        amount:
+          description: Amount to transfer in kobo if currency is NGN and pesewas if
+            currency is GHS.
+          type: string
+        recipient:
+          description: The transfer recipient's code
+          type: string
+        reason:
+          description: The reason or narration for the transfer.
+          type: string
+        currency:
+          description: Specify the currency of the transfer. Defaults to NGN.
+          type: string
+        reference:
+          description: "If specified, the field should be a unique identifier (in\
+            \ lowercase) for the object. \nOnly -,_ and alphanumeric characters are\
+            \ allowed."
+          type: string
+      required:
+      - amount
+      - recipient
+      - source
+      type: object
+    TransferFinalize:
+      properties:
+        transfer_code:
+          description: The transfer code you want to finalize
+          type: string
+        otp:
+          description: OTP sent to business phone to verify transfer
+          type: string
+      required:
+      - otp
+      - transfer_code
+      type: object
+    TransferBulk:
+      properties:
+        source:
+          description: Where should we transfer from? Only balance is allowed for
+            now
+          type: string
+        transfers:
+          description: "A list of transfer object. Each object should contain amount,\
+            \ recipient, and reference"
+          items:
+            $ref: "#/components/schemas/TransferInitiate"
+          type: array
+      required:
+      - source
+      - transfers
+      type: object
+    TransferResendOTP:
+      properties:
+        transfer_code:
+          description: The transfer code that requires an OTP validation
+          type: string
+        reason:
+          description: Either resend_otp or transfer
+          type: string
+      required:
+      - reason
+      - transfer_code
+      type: object
+    TransferFinalizeDisableOTP:
+      properties:
+        otp:
+          description: OTP sent to business phone to verify disabling OTP requirement
+          type: string
+      required:
+      - otp
+      type: object
+    ChargeCreate:
+      properties:
+        email:
+          description: Customer's email address
+          type: string
+        amount:
+          description: "Amount should be in kobo if currency is NGN, pesewas, if currency\
+            \ is GHS, and cents, if currency is ZAR"
+          type: string
+        authorization_code:
+          description: An authorization code to charge.
+          type: string
+        pin:
+          description: 4-digit PIN (send with a non-reusable authorization code)
+          type: string
+        reference:
+          description: "Unique transaction reference. Only -, .`, = and alphanumeric\
+            \ characters allowed."
+          type: string
+        birthday:
+          description: The customer's birthday in the format YYYY-MM-DD e.g 2017-05-16
+          format: date-time
+          type: string
+        device_id:
+          description: "This is the unique identifier of the device a user uses in\
+            \ making payment. \nOnly -, .`, = and alphanumeric characters are allowed."
+          type: string
+        metadata:
+          description: Stringified JSON object of custom data
+          type: string
+      required:
+      - amount
+      - email
+      type: object
+    ChargeSubmitPin:
+      properties:
+        pin:
+          description: Customer's PIN
+          type: string
+        reference:
+          description: Transaction reference that requires the PIN
+          type: string
+      required:
+      - pin
+      - reference
+      type: object
+    ChargeSubmitOTP:
+      properties:
+        otp:
+          description: Customer's OTP
+          type: string
+        reference:
+          description: The reference of the ongoing transaction
+          type: string
+      required:
+      - otp
+      - reference
+      type: object
+    ChargeSubmitPhone:
+      properties:
+        phone:
+          description: Customer's mobile number
+          type: string
+        reference:
+          description: The reference of the ongoing transaction
+          type: string
+      required:
+      - phone
+      - reference
+      type: object
+    ChargeSubmitBirthday:
+      properties:
+        birthday:
+          description: Customer's birthday in the format YYYY-MM-DD e.g 2016-09-21
+          type: string
+        reference:
+          description: The reference of the ongoing transaction
+          type: string
+      required:
+      - birthday
+      - reference
+      type: object
+    ChargeSubmitAddress:
+      properties:
+        address:
+          description: Customer's address
+          type: string
+        city:
+          description: Customer's city
+          type: string
+        state:
+          description: Customer's state
+          type: string
+        zipcode:
+          description: Customer's zipcode
+          type: string
+        reference:
+          description: The reference of the ongoing transaction
+          type: string
+      required:
+      - address
+      - city
+      - reference
+      - state
+      - zipcode
+      type: object
+    BulkChargeInitiate:
+      example:
+        authorization: authorization
+        amount: amount
+      properties:
+        authorization:
+          description: Customer's card authorization code
+          type: string
+        amount:
+          description: Amount to charge on the authorization
+          type: string
+      required:
+      - amount
+      - authorization
+      type: object
+    RefundCreate:
+      properties:
+        transaction:
+          description: Transaction reference or id
+          type: string
+        amount:
+          description: "Amount ( in kobo if currency is NGN, pesewas, if currency\
+            \ is GHS, and cents, if currency is ZAR ) to be refunded to the customer.\
+            \ \nAmount cannot be more than the original transaction amount"
+          type: integer
+        currency:
+          description: "Three-letter ISO currency. Allowed values are NGN, GHS, ZAR\
+            \ or USD"
+          type: string
+        customer_note:
+          description: Customer reason
+          type: string
+        merchant_note:
+          description: Merchant reason
+          type: string
+      required:
+      - transaction
+      type: object
+    DisputeEvidence:
+      properties:
+        customer_email:
+          description: Customer email
+          type: string
+        customer_name:
+          description: Customer name
+          type: string
+        customer_phone:
+          description: Customer mobile number
+          type: string
+        service_details:
+          description: Details of service offered
+          type: string
+        delivery_address:
+          description: Delivery address
+          type: string
+        delivery_date:
+          description: ISO 8601 representation of delivery date (YYYY-MM-DD)
+          format: date-time
+          type: string
+      required:
+      - customer_email
+      - customer_name
+      - customer_phone
+      - service_details
+      type: object
+    DisputeUpdate:
+      properties:
+        refund_amount:
+          description: "The amount to refund, in kobo if currency is NGN, pesewas,\
+            \ if currency is GHS, and cents, if currency is ZAR"
+          type: string
+        uploaded_filename:
+          description: Filename of attachment returned via response from the Dispute
+            upload URL
+          type: string
+      required:
+      - refund_amount
+      type: object
+    DisputeResolve:
+      properties:
+        resolution:
+          description: "Dispute resolution. Accepted values, merchant-accepted, declined"
+          type: string
+        message:
+          description: Reason for resolving
+          type: string
+        refund_amount:
+          description: "The amount to refund, in kobo if currency is NGN, pesewas,\
+            \ if currency is GHS, and cents, if currency is ZAR"
+          type: string
+        uploaded_filename:
+          description: Filename of attachment returned via response from the Dispute
+            upload URL
+          type: string
+        evidence:
+          description: Evidence Id for fraud claims
+          type: integer
+      required:
+      - message
+      - refund_amount
+      - resolution
+      - uploaded_filename
+      type: object
+    VerificationBVNMatch:
+      properties:
+        account_number:
+          description: Bank Account Number
+          type: string
+        bank_code:
+          description: You can get the list of banks codes by calling the List Bank
+            endpoint
+          type: integer
+        bvn:
+          description: 11 digits Bank Verification Number
+          type: string
+        first_name:
+          description: Customer's first name
+          type: string
+        middle_name:
+          description: Customer's middle name
+          type: string
+        last_name:
+          description: Customer's last name
+          type: string
+      required:
+      - account_number
+      - bank_code
+      - bvn
+      type: object
+    Bank:
+      properties:
+        code:
+          description: Customer's bank code
+          type: string
+        account_number:
+          description: Customer's account number
+          type: string
+      type: object
+    USSD:
+      properties:
+        type:
+          description: "The three-digit USSD code. One of, 737, 919, 822, 966"
+          type: string
+      type: object
+    MobileMoney:
+      properties:
+        phone:
+          description: Customer's phone number
+          type: string
+        provider:
+          description: The telco provider of customer's phone number. This can be
+            fetched from the List Bank endpoint
+          type: string
+      type: object
+    EFT:
+      properties:
+        provider:
+          description: The EFT provider
+          type: string
+      type: object
+    Error:
+      example:
+        message: message
+        status: true
+      properties:
+        status:
+          type: boolean
+        message:
+          type: string
+      type: object
+    Response:
+      example:
+        data: "{}"
+        message: message
+        status: true
+      properties:
+        status:
+          type: boolean
+        message:
+          type: string
+        data:
+          type: object
+      type: object
+    Accepted:
+      example:
+        message: message
+        status: true
+      properties:
+        status:
+          type: boolean
+        message:
+          type: string
+      type: object
+    charge_create_request:
+      allOf:
+      - $ref: "#/components/schemas/ChargeCreate"
+      - properties:
+          bank:
+            $ref: "#/components/schemas/Bank"
+        type: object
+      - properties:
+          mobile_money:
+            $ref: "#/components/schemas/MobileMoney"
+        type: object
+      - properties:
+          ussd:
+            $ref: "#/components/schemas/USSD"
+        type: object
+      - properties:
+          eft:
+            $ref: "#/components/schemas/EFT"
+        type: object
+  securitySchemes:
+    bearerAuth:
+      scheme: bearer
+      type: http

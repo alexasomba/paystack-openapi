@@ -1,0 +1,8 @@
+# OpenAPI Generator config (python)
+# Generated output goes to: sdks/python
+packageName: alexasomba_paystack
+projectName: alexasomba-paystack
+packageVersion: 0.1.0
+# Keep it small and broadly compatible
+library: urllib3
+hideGenerationTimestamp: true

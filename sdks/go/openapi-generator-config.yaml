@@ -1,0 +1,6 @@
+# OpenAPI Generator config (go)
+# Generated output goes to: sdks/go
+packageName: paystack
+moduleName: github.com/alexasomba/paystack-openapi/sdks/go
+packageVersion: 0.1.0
+hideGenerationTimestamp: true

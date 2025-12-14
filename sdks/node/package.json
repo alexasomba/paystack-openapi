@@ -1,0 +1,58 @@
+{
+    "name": "@alexasomba/paystack-node",
+    "version": "0.1.0",
+    "description": "Paystack API client for Node.js (TypeScript)",
+    "license": "MIT",
+    "author": "alexasomba",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/alexasomba/paystack-openapi.git",
+        "directory": "sdks/node"
+    },
+    "bugs": {
+        "url": "https://github.com/alexasomba/paystack-openapi/issues"
+    },
+    "homepage": "https://github.com/alexasomba/paystack-openapi#readme",
+    "keywords": [
+        "paystack",
+        "openapi",
+        "sdk",
+        "typescript",
+        "node"
+    ],
+    "type": "module",
+    "sideEffects": false,
+    "publishConfig": {
+        "access": "public"
+    },
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist",
+        "src"
+    ],
+    "engines": {
+        "node": ">=18"
+    },
+    "scripts": {
+        "generate:types": "openapi-typescript ../../src/assets/sdk/paystack.yaml -o src/openapi-types.ts",
+        "generate:operations": "node ./scripts/generate-operations.mjs",
+        "build": "pnpm generate:types && pnpm generate:operations && tsc -p tsconfig.json",
+        "clean": "rm -rf dist",
+        "prepack": "pnpm build",
+        "publish:public": "npm publish --access public"
+    },
+    "dependencies": {
+        "openapi-fetch": "^0.15.0"
+    },
+    "devDependencies": {
+        "@types/node": "^22.10.2",
+        "openapi-typescript": "^7.9.1",
+        "typescript": "^5.8.2",
+        "yaml": "^2.8.2"
+    }
+}

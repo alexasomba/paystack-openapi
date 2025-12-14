@@ -1,0 +1,25 @@
+import createClient, { type Client } from 'openapi-fetch';
+import type { paths } from './openapi-types.js';
+
+export type PaystackPaths = paths;
+export type PaystackClient = Client<PaystackPaths>;
+
+export type PaystackBrowserClientOptions = {
+  apiKey: string;
+  baseUrl?: string;
+  fetch?: typeof fetch;
+  headers?: Record<string, string>;
+};
+
+export function createPaystackClient(options: PaystackBrowserClientOptions): PaystackClient {
+  const baseUrl = options.baseUrl ?? 'https://api.paystack.co';
+
+  return createClient<PaystackPaths>({
+    baseUrl,
+    fetch: options.fetch,
+    headers: {
+      Authorization: `Bearer ${options.apiKey}`,
+      ...options.headers,
+    },
+  });
+}
