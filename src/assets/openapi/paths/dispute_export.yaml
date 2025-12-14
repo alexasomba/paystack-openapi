@@ -1,0 +1,48 @@
+get:
+  tags:
+    - Dispute
+  summary: Export Disputes
+  description: Export the disputes available on your integration
+  operationId: dispute_download
+  parameters:
+    - in: query
+      name: perPage
+      schema:
+        type: integer
+      description: Number of records to fetch per page
+    - in: query
+      name: page
+      schema:
+        type: integer
+      description: The section to retrieve
+    - in: query
+      name: status
+      schema:
+        type: string
+        enum: 
+          - awaiting-merchant-feedback
+          - awaiting-bank-feedback
+          - pending
+          - resolved
+      example: awaiting-merchant-feedback
+    - in: query
+      name: from
+      schema:
+        type: string
+        format: date-time
+      description: The start date
+    - in: query
+      name: to
+      schema:
+        type: string
+        format: date-time
+      description: The end date
+  responses:
+    '200':
+      $ref: ../components/responses/DisputeExportSuccess.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    default:
+      description: Server error

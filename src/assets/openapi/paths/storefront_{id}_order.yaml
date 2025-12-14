@@ -1,0 +1,21 @@
+get:
+  tags:
+    - Storefront
+  summary: Fetch Storefront Orders
+  description: Fetch all orders in your Storefront
+  operationId: storefront_fetchOrders
+  parameters:
+    - name: id
+      description: The unique identifier of the Storefront
+      in: path
+      required: true
+      schema:
+        type: integer
+      example: 1559046
+  responses:
+    '200':
+      $ref: ../components/responses/Ok.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    default:
+      description: Server error

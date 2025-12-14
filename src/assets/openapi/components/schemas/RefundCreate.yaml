@@ -1,0 +1,28 @@
+type: object
+required:
+  - transaction
+properties:
+  transaction:
+    description: The reference of a previosuly completed transaction
+    type: string
+  amount:
+    description: >-
+      Amount to be refunded to the customer. It cannot be more than the original transaction amount
+    type: integer
+  currency:
+    description: Three-letter ISO currency
+    type: string
+    enum:
+      - GHS
+      - KES
+      - NGN
+      - USD
+      - ZAR
+  customer_note:
+    description: Customer reason
+    type: string
+  merchant_note:
+    description: Merchant reason
+    type: string
+example:
+  transaction: mpkr39h74k

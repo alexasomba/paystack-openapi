@@ -1,0 +1,23 @@
+parameters:
+  - name: id
+    description: The unique identifier of the order
+    in: path
+    required: true
+    schema:
+      type: integer
+    example: 1559046
+get:
+  tags:
+    - Order
+  summary: Fetch Order
+  description: Fetch the details of a previously created order
+  operationId: order_fetch
+  responses:
+    '200':
+      $ref: ../components/responses/OrderFetchSuccess.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    default:
+      description: Server error

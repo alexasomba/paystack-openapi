@@ -1,0 +1,14 @@
+type: object
+required:
+  - transfer_code
+  - otp
+properties:
+  transfer_code:
+    description: The transfer code you want to finalize
+    type: string
+  otp:
+    description: OTP sent to business phone to verify transfer
+    type: string
+example: 
+  transfer_code: TRF_vsyqdmlzble3uii
+  otp: "928783"

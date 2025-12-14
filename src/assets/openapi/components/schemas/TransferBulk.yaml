@@ -1,0 +1,29 @@
+type: object
+required:
+  - source
+  - transfers
+properties:
+  source:
+    description: The source of funds for the transfer.
+    type: string
+    default: balance
+  currency:
+    description: Specify the currency of the transfer.
+    type: string
+    default: NGN
+    enum:
+      - NGN
+      - ZAR
+      - KES
+      - GHS
+  transfers:
+    description: A list of transfer object
+    type: array
+    items:
+      $ref: ./TransferBase.yaml
+example:
+  source: balance
+  transfers:
+    - amount: 120000
+      recipient: RCP_gd9vgag7n5lr5ix
+      reference: acv_9ee55786-2323-4760-98e2-6380c9cb3f68

@@ -1,0 +1,17 @@
+type: object
+properties:
+  name:
+    description: Name of page
+    type: string
+  description:
+    description: The description of the page
+    type: string
+  amount:
+    description: >-
+      Amount should be in the subunit of the currency
+    type: integer
+  active:
+    description: Set to false to deactivate page url
+    type: boolean
+example:
+  name: "Backyard Sale"

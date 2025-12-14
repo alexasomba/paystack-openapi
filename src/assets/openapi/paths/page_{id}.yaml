@@ -1,0 +1,46 @@
+parameters:
+  - name: id
+    in: path
+    description: The unique identifier of a payment page
+    required: true
+    schema:
+      type: integer
+    example: 1891222
+get:
+  tags:
+    - Page
+  summary: Fetch Page
+  description: Get a previously created payment page
+  operationId: page_fetch
+  responses:
+    '200':
+      $ref: ../components/responses/PageFetchSuccess.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    default:
+      description: Server error
+put:
+  tags:
+    - Page
+  summary: Update Page
+  description: Update a previously created payment page
+  operationId: page_update
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/PageUpdate.yaml
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: ../components/schemas/PageUpdate.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/PageUpdateSuccess.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    default:
+      description: Server error

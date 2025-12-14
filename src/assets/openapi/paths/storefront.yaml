@@ -1,0 +1,57 @@
+post:
+  tags:
+    - Storefront
+  summary: Create Storefront
+  description: Create a digital shop to manage and display your products
+  operationId: storefront_create
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/StorefrontCreate.yaml
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: ../components/schemas/StorefrontCreate.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/StorefrontCreateSuccess.yaml
+    '400':
+      $ref: ../components/responses/Unauthorized.yaml
+    default:
+      description: Server error
+get:
+  tags:
+    - Storefront
+  summary: List Storefronts
+  description: List the storefronts you previously created
+  operationId: storefront_list
+  parameters:
+    - in: query
+      name: perPage
+      description: Number of records to fetch per request
+      schema:
+        type: integer
+        default: 50
+    - in: query
+      name: page
+      description: The offset to retrieve data from
+      schema:
+        type: integer
+        default: 1
+    - name: status
+      in: query
+      schema:
+        type: string
+        enum:
+          - active
+          - inactive
+      example: active
+  responses:
+    '200':
+      $ref: ../components/responses/StorefrontListSuccess.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    default:
+      description: Server error

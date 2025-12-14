@@ -1,0 +1,13 @@
+type: object
+required:
+  - products
+properties:
+  products:
+    description: A list of IDs of products to add to a page. 
+    type: array
+    items:
+      type: integer
+example:
+  products:
+    - 2196244
+    - 2179824

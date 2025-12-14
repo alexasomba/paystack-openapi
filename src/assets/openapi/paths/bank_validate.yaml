@@ -1,0 +1,21 @@
+post:
+  tags:
+    - Bank
+  summary: Validate Bank Account
+  description: Confirm the authenticity of a customer's account number before sending money
+  operationId: bank_validateAccountNumber
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/BankValidateRequest.yaml
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: ../components/schemas/BankValidateRequest.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/VerificationValidateAccountSuccess.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    default:
+      description: Server error

@@ -1,0 +1,27 @@
+parameters:
+  - name: code
+    description: Transfer code
+    in: path
+    required: true
+    schema:
+      type: string
+    example: TRF_1ptvuv321ahaa7q
+get:
+  tags:
+    - Transfer
+  summary: Fetch Transfer
+  description: Get details of a transfer on your integration
+  operationId: transfer_fetch
+  responses:
+    '200':
+      description: 'Succesful operation'
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/TransferFetchResponse.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    default:
+      description: Server error
