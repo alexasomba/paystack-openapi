@@ -34,6 +34,7 @@ paths:
         - Plan
       summary: Create Plan
       operationId: plan_create
+      description: Create a plan for recurring payments
       requestBody:
         content:
           application/json:
@@ -54,22 +55,29 @@ paths:
         - Plan
       summary: List Plans
       operationId: plan_list
+      description: List all recurring payment plans
       parameters:
         - in: query
           name: perPage
+          description: Number of records to fetch per page
           schema:
             type: integer
-          description: Number of records to fetch per page
         - in: query
           name: page
+          description: The section to retrieve
           schema:
             type: integer
-          description: The section to retrieve
         - in: query
           name: interval
+          description: Specify interval of the plan
           schema:
             type: string
-          description: Specify interval of the plan
+            enum:
+              - daily
+              - weekly
+              - monthly
+              - biannually
+              - annually
         - in: query
           name: amount
           schema:
@@ -101,6 +109,7 @@ paths:
       tags:
         - Subscription
       summary: Create Subscription
+      description: Create a subscription a customer
       operationId: subscription_create
       requestBody:
         content:
@@ -121,6 +130,7 @@ paths:
       tags:
         - Subscription
       summary: List Subscriptions
+      description: List all subscriptions available on your integration
       operationId: subscription_list
       parameters:
         - in: query
@@ -135,9 +145,10 @@ paths:
           description: The section to retrieve
         - in: query
           name: plan
-          schema:
-            type: string
           description: Plan ID
+          schema:
+            type: integer
+          example: 2697466
         - in: query
           name: customer
           schema:
@@ -198,6 +209,7 @@ paths:
         - Transaction
       summary: Charge Authorization
       operationId: transaction_chargeAuthorization
+      description: Charge all authorizations marked as reusable with this endpoint whenever you need to receive payments
       requestBody:
         content:
           application/json:
@@ -385,8 +397,14 @@ components:
           description: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
           type: integer
         interval:
-          description: Interval in words. Valid intervals are daily, weekly, monthly,biannually, annually
+          description: Payment interval
           type: string
+          enum:
+            - daily
+            - weekly
+            - monthly
+            - biannually
+            - annually
         description:
           description: A description for this plan
           type: string
@@ -404,6 +422,10 @@ components:
             Number of invoices to raise during subscription to this plan. 
             Can be overridden by specifying an invoice_limit while subscribing.
           type: integer
+      example:
+        name: Basic
+        amount: 150000
+        interval: monthly
     PlanCreateResponse:
       type: object
       properties:
@@ -709,6 +731,9 @@ components:
           description: Set the date for the first debit. (ISO 8601 format) e.g. 2017-05-16T00:30:13+01:00
           type: string
           format: date-time
+      example:
+        customer: CUS_xnxdt6s1zg1f4nx
+        plan: PLN_gx2wn530m0i3w3m
     SubscriptionCreateResponse:
       type: object
       properties:
@@ -811,11 +836,19 @@ components:
           type: string
         share:
           description: The percentage or flat quota of the customer or partner
-          type: string
+          type: integer
+      example:
+        subaccount: ACCT_6uujpqtzmnufzkw
+        share: 50
     SplitCreate:
       type: object
       description: |
         Split configuration for transactions
+      required:
+        - name
+        - type
+        - subaccounts
+        - currency
       properties:
         name:
           description: Name of the transaction split
@@ -850,11 +883,13 @@ components:
         bearer_subaccount:
           description: This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type
           type: string
-      required:
-        - name
-        - type
-        - subaccounts
-        - currency
+      example:
+        name: Halfsies
+        type: percentage
+        currency: NGN
+        subaccounts:
+          - subaccount: ACCT_6uujpqtzmnufzkw
+            share: 50
     TransactionInitialize:
       description: Initialize a transaction
       type: object
@@ -867,7 +902,7 @@ components:
           type: string
         amount:
           description: |
-            Amount should be in smallest denomination of the currency. For example if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
+            Amount should be in smallest denomination of the currency.
           type: integer
         currency:
           $ref: '#/components/schemas/Currency'

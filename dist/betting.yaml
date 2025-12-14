@@ -57,6 +57,7 @@ paths:
         - Transaction
       summary: Charge Authorization
       operationId: transaction_chargeAuthorization
+      description: Charge all authorizations marked as reusable with this endpoint whenever you need to receive payments
       requestBody:
         content:
           application/json:
@@ -90,6 +91,7 @@ paths:
           required: true
           schema:
             type: string
+          example: re4lyvq3s3
       responses:
         '200':
           description: ''
@@ -108,14 +110,17 @@ paths:
       tags:
         - Bank
       summary: Resolve Account Number
+      description: Resolve an account number to confirm the name associated with it
       operationId: bank_resolveAccountNumber
       parameters:
         - name: account_number
+          description: The account number of interest
           in: query
           schema:
             type: integer
           example: 22728151
         - name: bank_code
+          description: The bank code associated with the account number
           in: query
           schema:
             type: integer
@@ -134,6 +139,7 @@ paths:
       tags:
         - Transfer Recipient
       summary: Create Transfer Recipient
+      description: Creates a new recipient. A duplicate account number will lead to the retrieval of the existing record.
       operationId: transferrecipient_create
       requestBody:
         content:
@@ -158,6 +164,7 @@ paths:
       tags:
         - Transfer Recipient
       summary: List Transfer Recipients
+      description: List transfer recipients available on your integration
       operationId: transferrecipient_list
       parameters:
         - in: query
@@ -205,6 +212,10 @@ paths:
       tags:
         - Transfer
       summary: Initiate Bulk Transfer
+      description: |
+        Batch multiple transfers in a single request.
+
+        You need to disable the Transfers OTP requirement to use this endpoint.
       operationId: transfer_bulk
       requestBody:
         content:
@@ -250,11 +261,19 @@ components:
           type: string
         share:
           description: The percentage or flat quota of the customer or partner
-          type: string
+          type: integer
+      example:
+        subaccount: ACCT_6uujpqtzmnufzkw
+        share: 50
     SplitCreate:
       type: object
       description: |
         Split configuration for transactions
+      required:
+        - name
+        - type
+        - subaccounts
+        - currency
       properties:
         name:
           description: Name of the transaction split
@@ -289,11 +308,13 @@ components:
         bearer_subaccount:
           description: This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type
           type: string
-      required:
-        - name
-        - type
-        - subaccounts
-        - currency
+      example:
+        name: Halfsies
+        type: percentage
+        currency: NGN
+        subaccounts:
+          - subaccount: ACCT_6uujpqtzmnufzkw
+            share: 50
     TransactionInitialize:
       description: Initialize a transaction
       type: object
@@ -306,7 +327,7 @@ components:
           type: string
         amount:
           description: |
-            Amount should be in smallest denomination of the currency. For example if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
+            Amount should be in smallest denomination of the currency.
           type: integer
         currency:
           $ref: '#/components/schemas/Currency'
@@ -1098,10 +1119,15 @@ components:
       properties:
         type:
           description: Recipient Type
-          default: nuban
           type: string
+          enum:
+            - nuban
+            - ghipss
+            - mobile_money
+            - basa
+            - authorization
         name:
-          description: Recipient's name
+          description: The recipient's name according to their account registration.
           type: string
         account_number:
           description: Recipient's bank account number
@@ -1121,6 +1147,11 @@ components:
         metadata:
           description: JSON object of custom data
           type: object
+      example:
+        type: nuban
+        name: Smith Taplo
+        account_number: '01000000010'
+        bank_code: '058'
     TransferRecipientCreateResponse:
       type: object
       properties:
@@ -1225,6 +1256,10 @@ components:
         reason:
           description: The reason or narration for the transfer.
           type: string
+      example:
+        amount: 120000
+        recipient: RCP_gd9vgag7n5lr5ix
+        reference: acv_9ee55786-2323-4760-98e2-6380c9cb3f68
     TransferBulk:
       type: object
       required:
@@ -1232,8 +1267,9 @@ components:
         - transfers
       properties:
         source:
-          description: Where should we transfer from? Only balance is allowed for now
+          description: The source of funds for the transfer.
           type: string
+          default: balance
         currency:
           description: Specify the currency of the transfer.
           type: string
@@ -1248,6 +1284,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TransferBase'
+      example:
+        source: balance
+        transfers:
+          - amount: 120000
+            recipient: RCP_gd9vgag7n5lr5ix
+            reference: acv_9ee55786-2323-4760-98e2-6380c9cb3f68
     TransferBulkResponseArray:
       type: object
       properties:

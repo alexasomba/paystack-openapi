@@ -65,6 +65,7 @@ paths:
         - Transaction
       summary: Charge Authorization
       operationId: transaction_chargeAuthorization
+      description: Charge all authorizations marked as reusable with this endpoint whenever you need to receive payments
       requestBody:
         content:
           application/json:
@@ -90,6 +91,7 @@ paths:
         - Customer
       summary: Create Customer
       operationId: customer_create
+      description: Create a customer on your integration
       requestBody:
         content:
           application/json:
@@ -173,8 +175,10 @@ paths:
       - name: code
         in: path
         required: true
+        description: The code for the customer gotten from the response of the customer creation
         schema:
           type: string
+        example: CUS_c6wqvwmvwopw4ms
     post:
       tags:
         - Customer
@@ -206,6 +210,7 @@ paths:
         - Dedicated Virtual Account
       summary: Create Dedicated Account
       operationId: dedicatedAccount_create
+      description: Create a dedicated virtual account for an existing customer
       requestBody:
         content:
           application/json:
@@ -230,39 +235,52 @@ paths:
         - Dedicated Virtual Account
       summary: List Dedicated Accounts
       operationId: dedicatedAccount_list
+      description: List dedicated virtual accounts available on your integration.
       parameters:
-        - name: account_number
-          in: query
-          schema:
-            type: string
-        - name: customer
-          in: query
-          schema:
-            type: string
         - name: active
           in: query
+          description: Status of the dedicated virtual account
           schema:
             type: boolean
+          example: true
+        - name: customer
+          in: query
+          description: The customer's ID
+          schema:
+            type: integer
+          example: 297346561
         - name: currency
           in: query
+          description: The currency of the dedicated virtual account
           schema:
             type: string
+            enum:
+              - NGN
+              - GHS
         - name: provider_slug
           in: query
+          description: The bank's slug in lowercase, without spaces
           schema:
             type: string
+          example: titan-paystack
         - name: bank_id
           in: query
+          description: The bank's ID
           schema:
             type: string
+          example: '035'
         - name: perPage
           in: query
+          description: The number of records to fetch per request
           schema:
-            type: string
+            type: integer
+            default: 50
         - name: page
           in: query
+          description: The offset to retrieve data from
           schema:
-            type: string
+            type: integer
+            default: 1
       responses:
         '200':
           description: ''
@@ -281,6 +299,7 @@ paths:
       tags:
         - Transfer Recipient
       summary: Create Transfer Recipient
+      description: Creates a new recipient. A duplicate account number will lead to the retrieval of the existing record.
       operationId: transferrecipient_create
       requestBody:
         content:
@@ -305,6 +324,7 @@ paths:
       tags:
         - Transfer Recipient
       summary: List Transfer Recipients
+      description: List transfer recipients available on your integration
       operationId: transferrecipient_list
       parameters:
         - in: query
@@ -352,6 +372,7 @@ paths:
       tags:
         - Transfer
       summary: Initiate Transfer
+      description: Send money to your customers
       operationId: transfer_initiate
       requestBody:
         content:
@@ -363,7 +384,7 @@ paths:
               $ref: '#/components/schemas/TransferInitiate'
       responses:
         '200':
-          description: ''
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -376,6 +397,7 @@ paths:
       tags:
         - Transfer
       summary: List Transfers
+      description: List the transfers made on your integration
       operationId: transfer_list
       parameters:
         - in: query
@@ -383,6 +405,7 @@ paths:
           description: A flag to indicate if cursor based pagination should be used
           schema:
             type: boolean
+          example: true
         - in: query
           name: next
           description: |
@@ -475,11 +498,19 @@ components:
           type: string
         share:
           description: The percentage or flat quota of the customer or partner
-          type: string
+          type: integer
+      example:
+        subaccount: ACCT_6uujpqtzmnufzkw
+        share: 50
     SplitCreate:
       type: object
       description: |
         Split configuration for transactions
+      required:
+        - name
+        - type
+        - subaccounts
+        - currency
       properties:
         name:
           description: Name of the transaction split
@@ -514,11 +545,13 @@ components:
         bearer_subaccount:
           description: This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type
           type: string
-      required:
-        - name
-        - type
-        - subaccounts
-        - currency
+      example:
+        name: Halfsies
+        type: percentage
+        currency: NGN
+        subaccounts:
+          - subaccount: ACCT_6uujpqtzmnufzkw
+            share: 50
     TransactionInitialize:
       description: Initialize a transaction
       type: object
@@ -531,7 +564,7 @@ components:
           type: string
         amount:
           description: |
-            Amount should be in smallest denomination of the currency. For example if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
+            Amount should be in smallest denomination of the currency.
           type: integer
         currency:
           $ref: '#/components/schemas/Currency'
@@ -1020,6 +1053,10 @@ components:
         metadata:
           description: Stringified JSON object of custom data
           type: string
+      example:
+        email: rock@sandy.com
+        first_name: Rock
+        last_name: Sandy
     CustomerCreateResponse:
       type: object
       properties:
@@ -1131,6 +1168,14 @@ components:
         account_number:
           description: Customer's bank account number.
           type: string
+      example:
+        first_name: Jabal
+        last_name: Cedar
+        country: NG
+        type: bank_account
+        account_number: '0123456789'
+        bank_code: '007'
+        bvn: '20012345677'
     CustomerValidateResponse:
       type: object
       properties:
@@ -1255,7 +1300,7 @@ components:
         - customer
       properties:
         customer:
-          description: Customer ID or code
+          description: The code for the previously created customer
           type: string
         preferred_bank:
           description: The bank slug for preferred bank. To get a list of available banks, use the List Providers endpoint
@@ -1266,6 +1311,9 @@ components:
         split_code:
           description: Split code consisting of the lists of accounts you want to split the transaction with
           type: string
+      example:
+        customer: CUS_bo732eugpb2qrg6
+        preferred_bank: titan-paystack
     DedicatedNubanCreateResponse:
       type: object
       properties:
@@ -1500,10 +1548,15 @@ components:
       properties:
         type:
           description: Recipient Type
-          default: nuban
           type: string
+          enum:
+            - nuban
+            - ghipss
+            - mobile_money
+            - basa
+            - authorization
         name:
-          description: Recipient's name
+          description: The recipient's name according to their account registration.
           type: string
         account_number:
           description: Recipient's bank account number
@@ -1523,6 +1576,11 @@ components:
         metadata:
           description: JSON object of custom data
           type: object
+      example:
+        type: nuban
+        name: Smith Taplo
+        account_number: '01000000010'
+        bank_code: '058'
     TransferRecipientCreateResponse:
       type: object
       properties:
@@ -1807,6 +1865,10 @@ components:
         reason:
           description: The reason or narration for the transfer.
           type: string
+      example:
+        amount: 120000
+        recipient: RCP_gd9vgag7n5lr5ix
+        reference: acv_9ee55786-2323-4760-98e2-6380c9cb3f68
     TransferInitiate:
       description: Transfer initiation model
       allOf:
@@ -1814,12 +1876,9 @@ components:
         - type: object
           required:
             - source
-            - amount
-            - recipient
-            - reference
           properties:
             source:
-              description: The origin of the funds to send from
+              description: The source of funds to send from
               type: string
               default: balance
             currency:
@@ -1831,6 +1890,8 @@ components:
                 - ZAR
                 - KES
                 - GHS
+          example:
+            source: balance
     TransferCreateResponse:
       type: object
       properties:
