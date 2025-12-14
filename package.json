@@ -36,12 +36,12 @@
   },
   "homepage": "https://github.com/PaystackOSS/openapi#readme",
   "devDependencies": {
-    "@quobix/vacuum": "^0.10.1",
-    "@redocly/cli": "^2.0.5",
+    "@quobix/vacuum": "^0.20.5",
+    "@redocly/cli": "^2.12.6",
     "@stoplight/spectral-cli": "^6.15.0",
-    "express": "^5.1.0",
-    "nodemon": "^3.1.10",
-    "open": "^10.2.0",
-    "yaml": "^2.8.1"
+    "express": "^5.2.1",
+    "nodemon": "^3.1.11",
+    "open": "^11.0.0",
+    "yaml": "^2.8.2"
   }
 }
