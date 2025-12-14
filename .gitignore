@@ -38,3 +38,5 @@ out/
 tmp/
 temp/
 documentations/
+.github/copilot-instructions.md
+.github/instructions
