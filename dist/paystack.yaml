@@ -204,6 +204,28 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         default:
           description: Server error
+  /transaction/check_authorization:
+    post:
+      tags:
+        - Transaction
+      summary: Check Authorization
+      operationId: transaction_checkAuthorization
+      description: Check if an authorization code can be used for a charge.
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TransactionCheckAuthorization'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionCheckAuthorization'
+      responses:
+        '200':
+          $ref: '#/components/responses/Ok'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        default:
+          description: Server error
   /transaction/verify/{reference}:
     get:
       tags:
@@ -385,6 +407,54 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionFetchResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        default:
+          description: Server error
+  /transaction/{id}/event:
+    get:
+      tags:
+        - Transaction
+      summary: Get Transaction Event
+      operationId: transaction_event
+      description: Fetch the event for a specific transaction.
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the transaction
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          $ref: '#/components/responses/Ok'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        default:
+          description: Server error
+  /transaction/{id}/session:
+    get:
+      tags:
+        - Transaction
+      summary: Get Transaction Session
+      operationId: transaction_session
+      description: Fetch the session for a specific transaction.
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the transaction
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          $ref: '#/components/responses/Ok'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
@@ -5658,6 +5728,34 @@ components:
         - status
         - message
         - data
+    TransactionCheckAuthorization:
+      type: object
+      required:
+        - email
+        - amount
+      properties:
+        email:
+          type: string
+          description: Customer's email address
+        amount:
+          type: integer
+          format: int32
+          description: Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR
+        authorization_code:
+          type: string
+          description: Valid authorization code to charge
+        currency:
+          type: string
+          description: The transaction currency
+    Response:
+      type: object
+      properties:
+        status:
+          type: boolean
+        message:
+          type: string
+        data:
+          type: object
     VerifyResponse:
       type: object
       properties:
@@ -5892,8 +5990,6 @@ components:
             - amount
             - message
             - gateway_response
-            - paid_at
-            - created_at
             - channel
             - currency
             - ip_address
@@ -6096,10 +6192,6 @@ components:
           type: object
         order_id:
           nullable: true
-        paidAt:
-          type: string
-        createdAt:
-          type: string
         requested_amount:
           type: integer
         source:
@@ -6147,8 +6239,6 @@ components:
         - split
         - subaccount
         - order_id
-        - paidAt
-        - createdAt
         - requested_amount
         - source
         - connect
@@ -6390,10 +6480,6 @@ components:
               type: object
             order_id:
               nullable: true
-            paidAt:
-              type: string
-            createdAt:
-              type: string
             requested_amount:
               type: integer
             pos_transaction_data:
@@ -6440,8 +6526,6 @@ components:
             - subaccount
             - split
             - order_id
-            - paidAt
-            - createdAt
             - requested_amount
             - pos_transaction_data
             - source
@@ -6795,10 +6879,6 @@ components:
               type: object
             order_id:
               nullable: true
-            paidAt:
-              type: string
-            createdAt:
-              type: string
             requested_amount:
               type: integer
             pos_transaction_data:
@@ -6838,8 +6918,6 @@ components:
             - plan
             - split
             - order_id
-            - paidAt
-            - createdAt
             - requested_amount
             - pos_transaction_data
             - source
@@ -7333,15 +7411,6 @@ components:
         state: PA
         zip_code: '18360'
         reference: 5bwib5v6anhe9xa
-    Response:
-      type: object
-      properties:
-        status:
-          type: boolean
-        message:
-          type: string
-        data:
-          type: object
     ChargeCheckPendingResponse:
       type: object
       properties:
@@ -9630,8 +9699,6 @@ components:
             - integration
             - createdAt
             - updatedAt
-            - created_at
-            - updated_at
             - total_transactions
             - total_transaction_value
             - dedicated_account
@@ -11699,8 +11766,6 @@ components:
           type: string
         is_deleted:
           type: boolean
-        isDeleted:
-          type: boolean
         details:
           type: object
           properties:
@@ -11737,7 +11802,6 @@ components:
         - type
         - updatedAt
         - is_deleted
-        - isDeleted
         - details
     TransferRecipientListResponse:
       type: object
@@ -11857,8 +11921,6 @@ components:
               type: string
             is_deleted:
               type: boolean
-            isDeleted:
-              type: boolean
             details:
               type: object
               properties:
@@ -11895,7 +11957,6 @@ components:
             - type
             - updatedAt
             - is_deleted
-            - isDeleted
             - details
       required:
         - status
@@ -12152,8 +12213,6 @@ components:
               type: string
             is_deleted:
               type: boolean
-            isDeleted:
-              type: boolean
             details:
               type: object
               properties:
@@ -12188,7 +12247,6 @@ components:
             - type
             - updatedAt
             - is_deleted
-            - isDeleted
             - details
         session:
           type: object
@@ -12280,7 +12338,7 @@ components:
           description: |
             To ensure idempotency, you need to provide e a unique identifier for the request.  The identifier should be a lowercase alphanumeric string with only -,_  symbols allowed.
           type: string
-          minimum: 16
+          minLength: 16
         reason:
           description: The reason or narration for the transfer.
           type: string
@@ -12559,8 +12617,6 @@ components:
                   type: string
                 is_deleted:
                   type: boolean
-                isDeleted:
-                  type: boolean
                 details:
                   type: object
                   properties:
@@ -12595,7 +12651,6 @@ components:
                 - type
                 - updatedAt
                 - is_deleted
-                - isDeleted
                 - details
             session:
               type: object
@@ -16552,8 +16607,6 @@ components:
                   type: object
                 order_id:
                   nullable: true
-                paidAt:
-                  type: string
                 pos_transaction_data:
                   nullable: true
                 source:
@@ -16574,7 +16627,6 @@ components:
                 - subaccount
                 - split
                 - order_id
-                - paidAt
                 - pos_transaction_data
                 - source
                 - fees_breakdown
@@ -16928,6 +16980,7 @@ components:
               type: string
             paid_at:
               type: string
+              nullable: true
             created_at:
               type: string
             channel:
@@ -17005,10 +17058,6 @@ components:
               type: object
             order_id:
               nullable: true
-            paidAt:
-              type: string
-            createdAt:
-              type: string
             pos_transaction_data:
               nullable: true
             source:
@@ -17025,8 +17074,6 @@ components:
             - amount
             - message
             - gateway_response
-            - paid_at
-            - created_at
             - channel
             - currency
             - ip_address
@@ -17040,8 +17087,6 @@ components:
             - subaccount
             - split
             - order_id
-            - paidAt
-            - createdAt
             - pos_transaction_data
             - source
             - fees_breakdown
@@ -17300,10 +17345,6 @@ components:
                   type: object
                 order_id:
                   nullable: true
-                paidAt:
-                  type: string
-                createdAt:
-                  type: string
                 requested_amount:
                   type: integer
                 pos_transaction_data:
@@ -17337,8 +17378,6 @@ components:
                 - subaccount
                 - split
                 - order_id
-                - paidAt
-                - createdAt
                 - requested_amount
                 - pos_transaction_data
                 - source
@@ -17578,10 +17617,6 @@ components:
                   type: object
                 order_id:
                   nullable: true
-                paidAt:
-                  type: string
-                createdAt:
-                  type: string
                 requested_amount:
                   type: integer
                 pos_transaction_data:
@@ -17615,8 +17650,6 @@ components:
                 - subaccount
                 - split
                 - order_id
-                - paidAt
-                - createdAt
                 - requested_amount
                 - pos_transaction_data
                 - source
@@ -17819,6 +17852,7 @@ components:
                   type: string
                 paid_at:
                   type: string
+                  nullable: true
                 created_at:
                   type: string
                 channel:
@@ -17909,10 +17943,6 @@ components:
                   type: object
                 order_id:
                   nullable: true
-                paidAt:
-                  type: string
-                createdAt:
-                  type: string
                 requested_amount:
                   type: integer
                 pos_transaction_data:
@@ -17932,8 +17962,6 @@ components:
                 - amount
                 - message
                 - gateway_response
-                - paid_at
-                - created_at
                 - channel
                 - currency
                 - ip_address
@@ -17947,8 +17975,6 @@ components:
                 - subaccount
                 - split
                 - order_id
-                - paidAt
-                - createdAt
                 - requested_amount
                 - pos_transaction_data
                 - source
@@ -18664,6 +18690,12 @@ components:
           example:
             status: false
             message: Invalid key
+    Ok:
+      description: Request successful
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Response'
     NotFound:
       description: Entity not found
       content:
@@ -18673,12 +18705,6 @@ components:
           example:
             status: false
             message: Entity not found
-    Ok:
-      description: Request successful
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Response'
     TerminalGetStatusSuccess:
       description: Terminal Get Status response
       content:

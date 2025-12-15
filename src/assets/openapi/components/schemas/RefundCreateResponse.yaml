@@ -58,8 +58,6 @@ properties:
             type: object
           order_id:
             nullable: true
-          paidAt:
-            type: string
           pos_transaction_data:
             nullable: true
           source:
@@ -80,7 +78,6 @@ properties:
           - subaccount
           - split
           - order_id
-          - paidAt
           - pos_transaction_data
           - source
           - fees_breakdown

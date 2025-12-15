@@ -1,11 +1,15 @@
 {
   "name": "paystack-openapi",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "The OpenAPI specification for the Paystack API",
   "author": "Damilola Odujoko",
   "main": "src/index.js",
   "type": "module",
   "scripts": {
+    "sdk:sync-spec": "node scripts/sync-sdk-spec.mjs",
+    "sdk:readmes:postprocess": "node scripts/postprocess-generated-readmes.mjs",
+    "sdk:php:postprocess": "node scripts/postprocess-php-sdk.mjs",
+    "sdk:python:postprocess": "node scripts/postprocess-python-sdk.mjs",
     "bundle": "pnpm bundle:main && pnpm bundle:usecases",
     "bundle:betting": "redocly bundle ./src/assets/use_cases/betting.yaml --output dist/betting.yaml",
     "bundle:lending": "redocly bundle ./src/assets/use_cases/lending.yaml --output dist/lending.yaml",
@@ -18,9 +22,18 @@
     "dev": "pnpm bundle && pnpm start",
     "lint": "pnpm lint:main && pnpm lint:sdk",
     "lint:main": "spectral lint dist/paystack.yaml",
-    "lint:sdk": "spectral lint ./sdk/paystack.yaml",
+    "lint:sdk": "spectral lint ./src/assets/sdk/paystack.yaml",
     "split": "redocly split ./src/assets/base/paystack.yaml --outDir=./src/assets/openapi",
-    "start": "nodemon src/index.js"
+    "start": "nodemon src/index.js",
+    "sdk:node:build": "pnpm -C sdks/node build",
+    "sdk:node:generate": "pnpm -C sdks/node generate:types",
+    "sdk:build": "pnpm sdk:sync-spec && pnpm -r --filter \"./sdks/*\" build",
+    "sdk:clean": "pnpm -r --filter \"./sdks/*\" clean",
+    "sdk:publish": "pnpm -r --filter \"./sdks/*\" --if-present publish:public",
+    "sdk:python:generate": "pnpm sdk:sync-spec && docker run --rm -u $(id -u):$(id -g) -v \"$PWD:/local\" openapitools/openapi-generator-cli:latest generate -g python -i /local/src/assets/sdk/paystack.yaml -o /local/sdks/python -c /local/sdks/python/openapi-generator-config.yaml --skip-validate-spec --global-property apis,models,supportingFiles,modelDocs=false,apiDocs=false,apiTests=false,modelTests=false && pnpm sdk:python:postprocess && pnpm sdk:readmes:postprocess",
+    "sdk:php:generate": "pnpm sdk:sync-spec && docker run --rm -u $(id -u):$(id -g) -v \"$PWD:/local\" openapitools/openapi-generator-cli:latest generate -g php -i /local/src/assets/sdk/paystack.yaml -o /local/sdks/php -c /local/sdks/php/openapi-generator-config.yaml --skip-validate-spec --global-property apis,models,supportingFiles,modelDocs=false,apiDocs=false,apiTests=false,modelTests=false && pnpm sdk:php:postprocess && pnpm sdk:readmes:postprocess",
+    "sdk:go:generate": "pnpm sdk:sync-spec && node scripts/clean-go-sdk-output.mjs && docker run --rm -u $(id -u):$(id -g) -v \"$PWD:/local\" openapitools/openapi-generator-cli:latest generate -g go -i /local/src/assets/sdk/paystack.yaml -o /local/sdks/go -c /local/sdks/go/openapi-generator-config.yaml --skip-validate-spec --global-property apis,models,supportingFiles,modelDocs=false,apiDocs=false,apiTests=false,modelTests=false && pnpm sdk:readmes:postprocess",
+    "sdk:others:generate": "pnpm sdk:python:generate && pnpm sdk:php:generate && pnpm sdk:go:generate"
   },
   "repository": {
     "type": "git",
@@ -36,12 +49,12 @@
   },
   "homepage": "https://github.com/PaystackOSS/openapi#readme",
   "devDependencies": {
-    "@quobix/vacuum": "^0.10.1",
-    "@redocly/cli": "^2.0.5",
+    "@quobix/vacuum": "^0.20.5",
+    "@redocly/cli": "^2.12.6",
     "@stoplight/spectral-cli": "^6.15.0",
-    "express": "^5.1.0",
-    "nodemon": "^3.1.10",
-    "open": "^10.2.0",
-    "yaml": "^2.8.1"
+    "express": "^5.2.1",
+    "nodemon": "^3.1.11",
+    "open": "^11.0.0",
+    "yaml": "^2.8.2"
   }
 }

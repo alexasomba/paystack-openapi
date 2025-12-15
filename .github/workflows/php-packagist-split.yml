@@ -4,12 +4,6 @@ on:
   push:
     tags:
       - "v*"
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: "Tag name to mirror to the split repo (defaults to current ref_name)"
-        required: false
-        type: string
 
 permissions:
   contents: read
@@ -22,19 +16,11 @@ jobs:
         uses: actions/checkout@v4.1.0
         with:
           fetch-depth: 0
-          persist-credentials: false
 
       - name: Configure git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Checkout tag (if `tag` input provided)
-        if: ${{ inputs.tag != '' }}
-        run: |
-          echo "Checking out tag ${{ inputs.tag }}"
-          git fetch origin "refs/tags/${{ inputs.tag }}:refs/tags/${{ inputs.tag }}"
-          git checkout "refs/tags/${{ inputs.tag }}"
 
       - name: Split subtree (sdks/php)
         run: |
@@ -52,82 +38,11 @@ jobs:
           fi
 
           php_sha=$(git rev-parse php-split)
-
-          echo "Target split repo: $PHP_SPLIT_REPO"
-          echo "Tag name: $TAG_NAME"
-
-          api_code=$(curl -s -o /dev/null -w "%{http_code}" \
-            -H "Authorization: Bearer $PHP_SPLIT_PUSH_TOKEN" \
-            "https://api.github.com/repos/$PHP_SPLIT_REPO")
-          echo "GitHub API access check status: $api_code"
-          if [ "$api_code" != "200" ]; then
-            echo "Token cannot access $PHP_SPLIT_REPO via API. Recreate token and ensure repo access includes the target repo." >&2
-            exit 1
-          fi
-
           git remote add php "https://x-access-token:${PHP_SPLIT_PUSH_TOKEN}@github.com/${PHP_SPLIT_REPO}.git"
 
-          echo "Checking git authentication to split repo..."
-          git ls-remote "https://x-access-token:${PHP_SPLIT_PUSH_TOKEN}@github.com/${PHP_SPLIT_REPO}.git" HEAD >/dev/null
-
-          # Push branch (try git push, fallback to API if it fails)
-          if git push php "$php_sha":refs/heads/main --force; then
-            echo "Pushed branch via git"
-          else
-            echo "git push failed; attempting API fallback to create branch"
-            api_branch_create=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
-              -H "Authorization: Bearer $PHP_SPLIT_PUSH_TOKEN" \
-              -H "Content-Type: application/json" \
-              -d "{\"ref\": \"refs/heads/main\", \"sha\": \"$php_sha\"}" \
-              "https://api.github.com/repos/$PHP_SPLIT_REPO/git/refs")
-            echo "api_branch_create: $api_branch_create"
-            if [ "$api_branch_create" != "201" ] && [ "$api_branch_create" != "422" ] && [ "$api_branch_create" != "409" ]; then
-              echo "Failed to create branch via API (status $api_branch_create)" >&2
-              exit 1
-            fi
-
-            # If API returned 409, repo may be empty and we need to create initial commit via Git Data API
-            if [ "$api_branch_create" = "409" ]; then
-              echo "API returned 409; checking if repo is empty"
-              repo_msg=$(curl -s -H "Authorization: Bearer $PHP_SPLIT_PUSH_TOKEN" "https://api.github.com/repos/$PHP_SPLIT_REPO" | jq -r '.message // empty') || repo_msg=""
-              if echo "$repo_msg" | grep -qi "Git Repository is empty"; then
-                echo "Repo is empty — creating initial commit via Git Data API"
-                tmpdir=$(mktemp -d)
-                git archive php-split | tar -x -C "$tmpdir"
-                items=()
-                for f in $(cd "$tmpdir" && find . -type f | sed 's|^./||' | sort); do
-                  sha=$(base64 -w0 "$tmpdir/$f" | jq -Rs .)
-                  blob=$(curl -s -X POST -H "Authorization: Bearer $PHP_SPLIT_PUSH_TOKEN" -H "Content-Type: application/json" -d "{\"content\": $sha, \"encoding\": \"base64\"}" "https://api.github.com/repos/$PHP_SPLIT_REPO/git/blobs")
-                  blob_sha=$(echo "$blob" | jq -r .sha)
-                  items+=("{\"path\": \"$f\", \"mode\": \"100644\", \"type\": \"blob\", \"sha\": \"$blob_sha\"}")
-                done
-                tree_json=$(printf '%s
-' "${items[@]}" | jq -cs '{tree: map(fromjson)}')
-                tree_sha=$(curl -s -X POST -H "Authorization: Bearer $PHP_SPLIT_PUSH_TOKEN" -H "Content-Type: application/json" -d "$tree_json" "https://api.github.com/repos/$PHP_SPLIT_REPO/git/trees" | jq -r .sha)
-                commit_sha=$(curl -s -X POST -H "Authorization: Bearer $PHP_SPLIT_PUSH_TOKEN" -H "Content-Type: application/json" -d "{\"message\": \"Init from paystack-openapi php subtree\", \"tree\": \"$tree_sha\"}" "https://api.github.com/repos/$PHP_SPLIT_REPO/git/commits" | jq -r .sha)
-                echo "Created commit $commit_sha in $PHP_SPLIT_REPO"
-                curl -s -X POST -H "Authorization: Bearer $PHP_SPLIT_PUSH_TOKEN" -H "Content-Type: application/json" -d "{\"ref\": \"refs/heads/main\", \"sha\": \"$commit_sha\"}" "https://api.github.com/repos/$PHP_SPLIT_REPO/git/refs"
-                curl -s -X POST -H "Authorization: Bearer $PHP_SPLIT_PUSH_TOKEN" -H "Content-Type: application/json" -d "{\"ref\": \"refs/tags/$TAG_NAME\", \"sha\": \"$commit_sha\"}" "https://api.github.com/repos/$PHP_SPLIT_REPO/git/refs"
-              else
-                echo "Repo not empty or unexpected message: $repo_msg"
-              fi
-            fi
-          fi
+          # Push branch
+          git push php "$php_sha":refs/heads/main --force
 
           # Re-tag the split commit with the same tag name (Packagist uses tags)
           git tag -f "$TAG_NAME" "$php_sha"
-          if git push php "refs/tags/$TAG_NAME" --force; then
-            echo "Pushed tag via git"
-          else
-            echo "git push tag failed; attempting API fallback to create tag"
-            api_tag_create=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
-              -H "Authorization: Bearer $PHP_SPLIT_PUSH_TOKEN" \
-              -H "Content-Type: application/json" \
-              -d "{\"ref\": \"refs/tags/$TAG_NAME\", \"sha\": \"$php_sha\"}" \
-              "https://api.github.com/repos/$PHP_SPLIT_REPO/git/refs")
-            echo "api_tag_create: $api_tag_create"
-            if [ "$api_tag_create" != "201" ] && [ "$api_tag_create" != "422" ] && [ "$api_tag_create" != "409" ]; then
-              echo "Failed to create tag via API (status $api_tag_create)" >&2
-              exit 1
-            fi
-          fi
+          git push php "refs/tags/$TAG_NAME" --force

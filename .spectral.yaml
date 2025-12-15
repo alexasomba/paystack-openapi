@@ -1,1 +1,4 @@
-extends: spectral:oas
+# Spectral ruleset for this repo.
+# Vacuum uses `ruleset-recommended.yaml` via `vacuum.conf.yaml`; Spectral uses its own ruleset format.
+extends:
+  - spectral:oas

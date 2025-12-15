@@ -18,7 +18,7 @@ properties:
       request.  The identifier should be a lowercase alphanumeric string with
       only -,_  symbols allowed.
     type: string
-    minimum: 16
+    minLength: 16
   reason:
     description: The reason or narration for the transfer.
     type: string

@@ -78,8 +78,6 @@ properties:
       - integration
       - createdAt
       - updatedAt
-      - created_at
-      - updated_at
       - total_transactions
       - total_transaction_value
       - dedicated_account

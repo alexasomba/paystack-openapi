@@ -1,0 +1,18 @@
+type: object
+required:
+  - email
+  - amount
+properties:
+  email:
+    type: string
+    description: Customer's email address
+  amount:
+    type: integer
+    format: int32
+    description: Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR
+  authorization_code:
+    type: string
+    description: Valid authorization code to charge
+  currency:
+    type: string
+    description: The transaction currency

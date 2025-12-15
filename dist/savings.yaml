@@ -57,6 +57,7 @@ paths:
         - Transaction
       summary: Charge Authorization
       operationId: transaction_chargeAuthorization
+      description: Charge all authorizations marked as reusable with this endpoint whenever you need to receive payments
       requestBody:
         content:
           application/json:
@@ -81,14 +82,17 @@ paths:
       tags:
         - Bank
       summary: Resolve Account Number
+      description: Resolve an account number to confirm the name associated with it
       operationId: bank_resolveAccountNumber
       parameters:
         - name: account_number
+          description: The account number of interest
           in: query
           schema:
             type: integer
           example: 22728151
         - name: bank_code
+          description: The bank code associated with the account number
           in: query
           schema:
             type: integer
@@ -107,6 +111,7 @@ paths:
       tags:
         - Transfer Recipient
       summary: Create Transfer Recipient
+      description: Creates a new recipient. A duplicate account number will lead to the retrieval of the existing record.
       operationId: transferrecipient_create
       requestBody:
         content:
@@ -131,6 +136,7 @@ paths:
       tags:
         - Transfer Recipient
       summary: List Transfer Recipients
+      description: List transfer recipients available on your integration
       operationId: transferrecipient_list
       parameters:
         - in: query
@@ -178,6 +184,7 @@ paths:
       tags:
         - Transfer
       summary: Initiate Transfer
+      description: Send money to your customers
       operationId: transfer_initiate
       requestBody:
         content:
@@ -189,7 +196,7 @@ paths:
               $ref: '#/components/schemas/TransferInitiate'
       responses:
         '200':
-          description: ''
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -202,6 +209,7 @@ paths:
       tags:
         - Transfer
       summary: List Transfers
+      description: List the transfers made on your integration
       operationId: transfer_list
       parameters:
         - in: query
@@ -209,6 +217,7 @@ paths:
           description: A flag to indicate if cursor based pagination should be used
           schema:
             type: boolean
+          example: true
         - in: query
           name: next
           description: |
@@ -301,11 +310,19 @@ components:
           type: string
         share:
           description: The percentage or flat quota of the customer or partner
-          type: string
+          type: integer
+      example:
+        subaccount: ACCT_6uujpqtzmnufzkw
+        share: 50
     SplitCreate:
       type: object
       description: |
         Split configuration for transactions
+      required:
+        - name
+        - type
+        - subaccounts
+        - currency
       properties:
         name:
           description: Name of the transaction split
@@ -340,11 +357,13 @@ components:
         bearer_subaccount:
           description: This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type
           type: string
-      required:
-        - name
-        - type
-        - subaccounts
-        - currency
+      example:
+        name: Halfsies
+        type: percentage
+        currency: NGN
+        subaccounts:
+          - subaccount: ACCT_6uujpqtzmnufzkw
+            share: 50
     TransactionInitialize:
       description: Initialize a transaction
       type: object
@@ -357,7 +376,7 @@ components:
           type: string
         amount:
           description: |
-            Amount should be in smallest denomination of the currency. For example if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
+            Amount should be in smallest denomination of the currency.
           type: integer
         currency:
           $ref: '#/components/schemas/Currency'
@@ -801,8 +820,6 @@ components:
           type: string
         is_deleted:
           type: boolean
-        isDeleted:
-          type: boolean
         details:
           type: object
           properties:
@@ -839,7 +856,6 @@ components:
         - type
         - updatedAt
         - is_deleted
-        - isDeleted
         - details
     TransferRecipientListResponse:
       type: object
@@ -887,10 +903,15 @@ components:
       properties:
         type:
           description: Recipient Type
-          default: nuban
           type: string
+          enum:
+            - nuban
+            - ghipss
+            - mobile_money
+            - basa
+            - authorization
         name:
-          description: Recipient's name
+          description: The recipient's name according to their account registration.
           type: string
         account_number:
           description: Recipient's bank account number
@@ -910,6 +931,11 @@ components:
         metadata:
           description: JSON object of custom data
           type: object
+      example:
+        type: nuban
+        name: Smith Taplo
+        account_number: '01000000010'
+        bank_code: '058'
     TransferRecipientCreateResponse:
       type: object
       properties:
@@ -949,8 +975,6 @@ components:
               type: string
             is_deleted:
               type: boolean
-            isDeleted:
-              type: boolean
             details:
               type: object
               properties:
@@ -987,7 +1011,6 @@ components:
             - type
             - updatedAt
             - is_deleted
-            - isDeleted
             - details
       required:
         - status
@@ -1062,8 +1085,6 @@ components:
               type: string
             is_deleted:
               type: boolean
-            isDeleted:
-              type: boolean
             details:
               type: object
               properties:
@@ -1098,7 +1119,6 @@ components:
             - type
             - updatedAt
             - is_deleted
-            - isDeleted
             - details
         session:
           type: object
@@ -1190,10 +1210,14 @@ components:
           description: |
             To ensure idempotency, you need to provide e a unique identifier for the request.  The identifier should be a lowercase alphanumeric string with only -,_  symbols allowed.
           type: string
-          minimum: 16
+          minLength: 16
         reason:
           description: The reason or narration for the transfer.
           type: string
+      example:
+        amount: 120000
+        recipient: RCP_gd9vgag7n5lr5ix
+        reference: acv_9ee55786-2323-4760-98e2-6380c9cb3f68
     TransferInitiate:
       description: Transfer initiation model
       allOf:
@@ -1201,12 +1225,9 @@ components:
         - type: object
           required:
             - source
-            - amount
-            - recipient
-            - reference
           properties:
             source:
-              description: The origin of the funds to send from
+              description: The source of funds to send from
               type: string
               default: balance
             currency:
@@ -1218,6 +1239,8 @@ components:
                 - ZAR
                 - KES
                 - GHS
+          example:
+            source: balance
     TransferCreateResponse:
       type: object
       properties:

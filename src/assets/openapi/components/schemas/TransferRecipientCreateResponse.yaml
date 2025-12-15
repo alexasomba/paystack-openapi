@@ -36,8 +36,6 @@ properties:
         type: string
       is_deleted:
         type: boolean
-      isDeleted:
-        type: boolean
       details:
         type: object
         properties:
@@ -74,7 +72,6 @@ properties:
       - type
       - updatedAt
       - is_deleted
-      - isDeleted
       - details
 required:
   - status

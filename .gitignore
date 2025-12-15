@@ -1,2 +1,42 @@
-node_modules
+# Dependencies
+node_modules/
+npm-debug.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+.nyc_output/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build output
+build/
+out/
+
+# Misc
+.cache/
+tmp/
+temp/
+documentations/
+.github/copilot-instructions.md
+.github/instructions

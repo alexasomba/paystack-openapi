@@ -144,12 +144,18 @@ paths:
     $ref: paths/transaction_charge_authorization.yaml
   /transaction/partial_debit:
     $ref: paths/transaction_partial_debit.yaml
+  /transaction/check_authorization:
+    $ref: paths/transaction_check_authorization.yaml
   /transaction/verify/{reference}:
     $ref: paths/transaction_verify_{reference}.yaml
   /transaction:
     $ref: paths/transaction.yaml
   /transaction/{id}:
     $ref: paths/transaction_{id}.yaml
+  /transaction/{id}/event:
+    $ref: paths/transaction_{id}_event.yaml
+  /transaction/{id}/session:
+    $ref: paths/transaction_{id}_session.yaml
   /transaction/timeline/{id}:
     $ref: paths/transaction_timeline_{id}.yaml
   /transaction/totals:

@@ -31,6 +31,7 @@ paths:
         - Subaccount
       summary: Create Subaccount
       operationId: subaccount_create
+      description: Create a subacount for a partner
       requestBody:
         content:
           application/json:
@@ -55,22 +56,25 @@ paths:
         - Subaccount
       summary: List Subaccounts
       operationId: subaccount_list
+      description: List subaccounts available on your integration
       parameters:
         - in: query
           name: perPage
+          description: Number of records to fetch per request
           schema:
             type: integer
-          description: Number of records to fetch per request
+            default: 50
         - in: query
           name: page
+          description: The offset to retrieve data from
           schema:
             type: integer
-          description: The offset to retrieve data from
+            default: 1
         - in: query
           name: active
+          description: Filter by the state of the subaccounts
           schema:
             type: boolean
-          description: Filter by active or inactive subaccounts
       responses:
         '200':
           description: ''
@@ -90,6 +94,7 @@ paths:
         - Split
       summary: Create Split
       operationId: split_create
+      description: Create a split configuration for transactions
       requestBody:
         content:
           application/json:
@@ -114,7 +119,14 @@ paths:
         - Split
       summary: List Splits
       operationId: split_list
+      description: List the transaction splits available on your integration
       parameters:
+        - in: query
+          name: subaccount_code
+          description: Filter by subaccount code
+          schema:
+            type: string
+          example: ACCT_dskvlw3y3dMukmt
         - name: name
           description: The name of the split
           in: query
@@ -147,12 +159,6 @@ paths:
           schema:
             type: string
             format: date-time
-        - in: query
-          name: subaccount_code
-          description: Filter by subaccount code
-          schema:
-            type: string
-          example: ACCT_dskvlw3y3dMukmt
       responses:
         '200':
           description: ''
@@ -199,6 +205,7 @@ paths:
       tags:
         - Refund
       summary: Create Refund
+      description: Initiate a refund for a previously completed transaction
       operationId: refund_create
       requestBody:
         content:
@@ -219,13 +226,16 @@ paths:
       tags:
         - Refund
       summary: List Refunds
+      description: List previously created refunds
       operationId: refund_list
       parameters:
         - in: query
           name: perPage
           schema:
             type: integer
+            default: 50
           description: Number of records to fetch per page
+          example: 10
         - in: query
           name: page
           schema:
@@ -410,6 +420,11 @@ components:
         metadata:
           description: Stringified JSON object of custom data
           type: string
+      example:
+        business_name: Oasis
+        account_number: '0123456047'
+        settlement_bank: '058'
+        percentage_charge: 30
     SubaccountCreateResponse:
       type: object
       properties:
@@ -638,11 +653,19 @@ components:
           type: string
         share:
           description: The percentage or flat quota of the customer or partner
-          type: string
+          type: integer
+      example:
+        subaccount: ACCT_6uujpqtzmnufzkw
+        share: 50
     SplitCreate:
       type: object
       description: |
         Split configuration for transactions
+      required:
+        - name
+        - type
+        - subaccounts
+        - currency
       properties:
         name:
           description: Name of the transaction split
@@ -677,11 +700,13 @@ components:
         bearer_subaccount:
           description: This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type
           type: string
-      required:
-        - name
-        - type
-        - subaccounts
-        - currency
+      example:
+        name: Halfsies
+        type: percentage
+        currency: NGN
+        subaccounts:
+          - subaccount: ACCT_6uujpqtzmnufzkw
+            share: 50
     SplitCreateResponse:
       type: object
       properties:
@@ -765,7 +790,7 @@ components:
           type: string
         amount:
           description: |
-            Amount should be in smallest denomination of the currency. For example if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
+            Amount should be in smallest denomination of the currency.
           type: integer
         currency:
           $ref: '#/components/schemas/Currency'
@@ -1040,22 +1065,28 @@ components:
         - transaction
       properties:
         transaction:
-          description: Transaction reference or id
+          description: The reference of a previosuly completed transaction
           type: string
         amount:
-          description: |-
-            Amount ( in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR ) to be refunded to the customer. 
-            Amount cannot be more than the original transaction amount
+          description: Amount to be refunded to the customer. It cannot be more than the original transaction amount
           type: integer
         currency:
-          description: Three-letter ISO currency. Allowed values are NGN, GHS, ZAR or USD
+          description: Three-letter ISO currency
           type: string
+          enum:
+            - GHS
+            - KES
+            - NGN
+            - USD
+            - ZAR
         customer_note:
           description: Customer reason
           type: string
         merchant_note:
           description: Merchant reason
           type: string
+      example:
+        transaction: mpkr39h74k
     RefundCreateResponse:
       type: object
       properties:
@@ -1117,8 +1148,6 @@ components:
                   type: object
                 order_id:
                   nullable: true
-                paidAt:
-                  type: string
                 pos_transaction_data:
                   nullable: true
                 source:
@@ -1139,7 +1168,6 @@ components:
                 - subaccount
                 - split
                 - order_id
-                - paidAt
                 - pos_transaction_data
                 - source
                 - fees_breakdown

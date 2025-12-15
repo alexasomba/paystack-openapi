@@ -150,10 +150,6 @@ properties:
         type: object
       order_id:
         nullable: true
-      paidAt:
-        nullable: true
-      createdAt:
-        type: string
       requested_amount:
         type: integer
       pos_transaction_data:
@@ -277,8 +273,6 @@ properties:
       - plan
       - split
       - order_id
-      - paidAt
-      - createdAt
       - requested_amount
       - pos_transaction_data
       - source

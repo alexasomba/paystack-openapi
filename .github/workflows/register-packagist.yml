@@ -3,11 +3,7 @@ name: Register package on Packagist
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:
-    inputs:
-      packagist_username:
-        description: 'Packagist username (optional; alternative to setting PACKAGIST_USERNAME secret)'
-        required: false
+  workflow_dispatch: {}
 
 jobs:
   register:
@@ -19,48 +15,14 @@ jobs:
       - name: Register package on Packagist
         env:
           PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
-          PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
-          PACKAGIST_USERNAME_INPUT: ${{ github.event.inputs.packagist_username }}
         run: |
           set -euo pipefail
           REPO_URL="https://github.com/alexasomba/paystack-php.git"
           echo "Registering $REPO_URL on Packagist..."
-          # Build Authorization header. Packagist expects 'Bearer username:token' or
-          # a token already in the form 'username:token'. Allow either style.
-          # Prefer explicit secret, fall back to workflow input
-          if [ -n "${PACKAGIST_USERNAME:-}" ]; then
-            USERNAME="$PACKAGIST_USERNAME"
-          elif [ -n "${PACKAGIST_USERNAME_INPUT:-}" ]; then
-            USERNAME="$PACKAGIST_USERNAME_INPUT"
-          else
-            USERNAME=""
-          fi
-
-          if [ -n "$USERNAME" ] && [ -n "${PACKAGIST_TOKEN:-}" ]; then
-            AUTH="$USERNAME:$PACKAGIST_TOKEN"
-          elif [[ "${PACKAGIST_TOKEN:-}" == *":"* ]]; then
-            AUTH="$PACKAGIST_TOKEN"
-          else
-            echo "Please set PACKAGIST_USERNAME secret (or provide it when dispatching), or set PACKAGIST_TOKEN as 'username:token' in Secrets"
-            exit 1
-          fi
-
-          BODY=$(jq -nc --arg r "$REPO_URL" '{repository: $r}')
-          http_status=$(curl -sS -o /tmp/resp -w "%{http_code}" -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $AUTH" -d "$BODY" https://packagist.org/api/create-package || true)
+          http_status=$(curl -sS -o /tmp/resp -w "%{http_code}" -X POST -d "repository[url]=$REPO_URL" -H "Authorization: Bearer $PACKAGIST_TOKEN" https://packagist.org/api/create || true)
           echo "Response body:"; cat /tmp/resp || true
           echo "HTTP status: $http_status"
-          if [ "$http_status" -eq 200 ] || [ "$http_status" -eq 201 ]; then
-            echo "Package created successfully"
-          elif [ "$http_status" -eq 406 ]; then
-            echo "Package already exists; calling update-package to refresh repository URL"
-            update_status=$(curl -sS -o /tmp/resp2 -w "%{http_code}" -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $AUTH" -d "$BODY" https://packagist.org/api/update-package || true)
-            echo "Update response:"; cat /tmp/resp2 || true
-            echo "Update HTTP status: $update_status"
-            if [ "$update_status" -ne 200 ] && [ "$update_status" -ne 201 ] && [ "$update_status" -ne 202 ]; then
-              echo "Packagist update-package returned non-success status $update_status"
-              exit 1
-            fi
-          else
+          if [ "$http_status" -ne 200 ] && [ "$http_status" -ne 201 ]; then
             echo "Packagist API returned non-success status $http_status"
             exit 1
           fi

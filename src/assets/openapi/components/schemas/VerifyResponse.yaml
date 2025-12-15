@@ -231,8 +231,6 @@ properties:
       - amount
       - message
       - gateway_response
-      - paid_at
-      - created_at
       - channel
       - currency
       - ip_address

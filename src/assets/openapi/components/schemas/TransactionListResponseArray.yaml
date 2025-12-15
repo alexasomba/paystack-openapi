@@ -173,10 +173,6 @@ properties:
     type: object
   order_id:
     nullable: true
-  paidAt:
-    type: string
-  createdAt:
-    type: string
   requested_amount:
     type: integer
   source:
@@ -224,8 +220,6 @@ required:
   - split
   - subaccount
   - order_id
-  - paidAt
-  - createdAt
   - requested_amount
   - source
   - connect

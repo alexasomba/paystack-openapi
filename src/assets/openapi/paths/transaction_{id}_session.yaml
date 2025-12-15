@@ -1,0 +1,23 @@
+get:
+  tags:
+    - Transaction
+  summary: Get Transaction Session
+  operationId: transaction_session
+  description: Fetch the session for a specific transaction.
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the transaction
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      $ref: ../components/responses/Ok.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    default:
+      description: Server error
