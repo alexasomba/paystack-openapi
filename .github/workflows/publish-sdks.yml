@@ -6,8 +6,8 @@ on:
       - "v*"
 
 jobs:
-  publish:
-    name: Publish SDKs on tag
+  publish-npm:
+    name: Publish npm packages
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -31,8 +31,19 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
         run: |
           echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
-          # Exclude Python workspace from pnpm publish because it requires Python build tools
           pnpm -r --filter "./sdks/*" --filter '!./sdks/python' --if-present publish:public
+
+  publish-python:
+    name: Publish Python package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
       - name: Publish Python package
         env:
