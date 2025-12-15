@@ -3,7 +3,11 @@ name: Register package on Packagist
 on:
   push:
     branches: [ main ]
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Optional tag name to wait for (e.g. v1.1.1)'
+        required: false
 
 jobs:
   register:
@@ -19,10 +23,52 @@ jobs:
           set -euo pipefail
           REPO_URL="https://github.com/alexasomba/paystack-php.git"
           echo "Registering $REPO_URL on Packagist..."
+
+          if [ -z "${PACKAGIST_TOKEN:-}" ]; then
+            echo "Missing PACKAGIST_TOKEN secret" >&2
+            exit 1
+          fi
+
+          # Try to create the package; if it already exists, call update-package.
           http_status=$(curl -sS -o /tmp/resp -w "%{http_code}" -X POST -d "repository[url]=$REPO_URL" -H "Authorization: Bearer $PACKAGIST_TOKEN" https://packagist.org/api/create || true)
           echo "Response body:"; cat /tmp/resp || true
           echo "HTTP status: $http_status"
-          if [ "$http_status" -ne 200 ] && [ "$http_status" -ne 201 ]; then
+
+          if [ "$http_status" -eq 200 ] || [ "$http_status" -eq 201 ]; then
+            echo "Package created successfully"
+          elif [ "$http_status" -eq 406 ]; then
+            echo "Package already exists; calling update-package to refresh repository URL"
+            update_status=$(curl -sS -o /tmp/resp2 -w "%{http_code}" -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $PACKAGIST_TOKEN" -d "{\"repository\": \"$REPO_URL\"}" https://packagist.org/api/update-package || true)
+            echo "Update response:"; cat /tmp/resp2 || true
+            echo "Update HTTP status: $update_status"
+            if [ "$update_status" -ne 200 ] && [ "$update_status" -ne 201 ] && [ "$update_status" -ne 202 ]; then
+              echo "Packagist update-package returned non-success status $update_status"
+              exit 1
+            fi
+
+              # Determine the tag we expect to see on Packagist
+              EXPECTED_TAG="${{ github.event.inputs.tag }}"
+              if [ -z "$EXPECTED_TAG" ]; then
+                EXPECTED_TAG="${GITHUB_REF#refs/tags/}"
+              fi
+              if [ -z "$EXPECTED_TAG" ]; then
+                echo "No tag provided and no tag ref available to wait for; skipping polling."
+              else
+                echo "Polling Packagist for version $EXPECTED_TAG to appear..."
+                for i in $(seq 1 12); do
+                  sleep 10
+                  echo "Attempt $i: checking versions on Packagist..."
+                  if curl -sS https://packagist.org/packages/alexasomba/paystack.json | jq -e ".package.versions[\"${EXPECTED_TAG#v}\"]" > /dev/null; then
+                    echo "Version ${EXPECTED_TAG#v} found on Packagist"
+                    break
+                  fi
+                  if [ "$i" -eq 12 ]; then
+                    echo "Timed out waiting for Packagist to index the new tag"
+                    exit 1
+                  fi
+                done
+              fi
+          else
             echo "Packagist API returned non-success status $http_status"
             exit 1
           fi

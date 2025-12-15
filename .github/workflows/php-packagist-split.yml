@@ -26,6 +26,25 @@ jobs:
         run: |
           git subtree split --prefix=sdks/php -b php-split
 
+      - name: Verify split target auth
+        env:
+          PHP_SPLIT_PUSH_TOKEN: ${{ secrets.PHP_SPLIT_PUSH_TOKEN }}
+          PHP_SPLIT_REPO: ${{ secrets.PHP_SPLIT_REPO }}
+        run: |
+          set -euo pipefail
+          if [ -z "$PHP_SPLIT_PUSH_TOKEN" ] || [ -z "$PHP_SPLIT_REPO" ]; then
+            echo "Missing secrets. Set PHP_SPLIT_PUSH_TOKEN and PHP_SPLIT_REPO." >&2
+            exit 1
+          fi
+
+          # quick API probe to validate the token has repo access
+          resp=$(curl -sS -o /tmp/repo_probe -w "%{http_code}" -H "Authorization: token ${PHP_SPLIT_PUSH_TOKEN}" "https://api.github.com/repos/${PHP_SPLIT_REPO}" || true)
+          if [ "$resp" -ne 200 ]; then
+            echo "Token probe failed (HTTP $resp). Ensure PHP_SPLIT_PUSH_TOKEN is a Personal Access Token with 'repo' scope and PHP_SPLIT_REPO is correct: ${PHP_SPLIT_REPO}" >&2
+            echo "Response body:"; cat /tmp/repo_probe || true
+            exit 1
+          fi
+
       - name: Push split repo branch + tag
         env:
           PHP_SPLIT_PUSH_TOKEN: ${{ secrets.PHP_SPLIT_PUSH_TOKEN }}
