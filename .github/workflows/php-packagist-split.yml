@@ -80,7 +80,7 @@ jobs:
               -d "{\"ref\": \"refs/heads/main\", \"sha\": \"$php_sha\"}" \
               "https://api.github.com/repos/$PHP_SPLIT_REPO/git/refs")
             echo "api_branch_create: $api_branch_create"
-            if [ "$api_branch_create" != "201" ] && [ "$api_branch_create" != "422" ]; then
+            if [ "$api_branch_create" != "201" ] && [ "$api_branch_create" != "422" ] && [ "$api_branch_create" != "409" ]; then
               echo "Failed to create branch via API (status $api_branch_create)" >&2
               exit 1
             fi
@@ -98,7 +98,7 @@ jobs:
               -d "{\"ref\": \"refs/tags/$TAG_NAME\", \"sha\": \"$php_sha\"}" \
               "https://api.github.com/repos/$PHP_SPLIT_REPO/git/refs")
             echo "api_tag_create: $api_tag_create"
-            if [ "$api_tag_create" != "201" ] && [ "$api_tag_create" != "422" ]; then
+            if [ "$api_tag_create" != "201" ] && [ "$api_tag_create" != "422" ] && [ "$api_tag_create" != "409" ]; then
               echo "Failed to create tag via API (status $api_tag_create)" >&2
               exit 1
             fi
