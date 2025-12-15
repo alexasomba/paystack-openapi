@@ -42,13 +42,23 @@ jobs:
           echo "Attempting workspace publish"
           pnpm -r --filter "./sdks/*" --filter '!./sdks/python' --if-present publish:public || {
             echo "Workspace publish failed; attempting per-package publishes to continue."
+            rc=0
             for pkg in sdks/*; do
               if [ -f "$pkg/package.json" ] && [ "$pkg" != "sdks/python" ]; then
+                name=$(node -e "console.log(require('./$pkg/package.json').name)")
+                version=$(node -e "console.log(require('./$pkg/package.json').version)")
+                if npm view "${name}@${version}" >/dev/null 2>&1; then
+                  echo "${name}@${version} already published, skipping"
+                  continue
+                fi
                 echo "Publishing $pkg..."
-                (cd "$pkg" && pnpm publish:public) || echo "Publish failed for $pkg; continuing"
+                (cd "$pkg" && pnpm publish:public) || { echo "Publish failed for $pkg"; rc=1; }
               fi
             done
-            exit 1
+            if [ $rc -ne 0 ]; then
+              echo "Some packages failed to publish"
+              exit 1
+            fi
           }
 
   publish-python:
