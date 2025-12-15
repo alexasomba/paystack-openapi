@@ -15,11 +15,24 @@ jobs:
       - name: Register package on Packagist
         env:
           PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
+          PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
         run: |
           set -euo pipefail
           REPO_URL="https://github.com/alexasomba/paystack-php.git"
           echo "Registering $REPO_URL on Packagist..."
-          http_status=$(curl -sS -o /tmp/resp -w "%{http_code}" -X POST -d "repository[url]=$REPO_URL" -H "Authorization: Bearer $PACKAGIST_TOKEN" https://packagist.org/api/create || true)
+          # Build Authorization header. Packagist expects 'Bearer username:token' or
+          # a token already in the form 'username:token'. Allow either style.
+          if [ -n "${PACKAGIST_USERNAME:-}" ] && [ -n "${PACKAGIST_TOKEN:-}" ]; then
+            AUTH="$PACKAGIST_USERNAME:$PACKAGIST_TOKEN"
+          elif [[ "${PACKAGIST_TOKEN:-}" == *":"* ]]; then
+            AUTH="$PACKAGIST_TOKEN"
+          else
+            echo "Please set PACKAGIST_USERNAME and PACKAGIST_TOKEN, or set PACKAGIST_TOKEN as 'username:token' in Secrets"
+            exit 1
+          fi
+
+          BODY=$(jq -nc --arg r "$REPO_URL" '{repository: $r}')
+          http_status=$(curl -sS -o /tmp/resp -w "%{http_code}" -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $AUTH" -d "$BODY" https://packagist.org/api/create-package || true)
           echo "Response body:"; cat /tmp/resp || true
           echo "HTTP status: $http_status"
           if [ "$http_status" -ne 200 ] && [ "$http_status" -ne 201 ]; then
