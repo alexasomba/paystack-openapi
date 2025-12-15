@@ -31,7 +31,8 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
         run: |
           echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
-          pnpm sdk:publish
+          # Exclude Python workspace from pnpm publish because it requires Python build tools
+          pnpm -r --filter "./sdks/*" --filter '!./sdks/python' --if-present publish:public
 
       - name: Publish Python package
         env:
