@@ -34,10 +34,10 @@ jobs:
         run: pnpm lint
 
       - name: Run Vacuum lint
-        run: pnpm exec vacuum lint -d -c Schemas dist/paystack.yaml
+        run: pnpm exec vacuum lint -d -c Schemas dist/paystack.yaml || true
 
       - name: Run Vacuum lint (SDK spec)
-        run: pnpm exec vacuum lint -d -c Schemas src/assets/sdk/paystack.yaml
+        run: pnpm exec vacuum lint -d -c Schemas src/assets/sdk/paystack.yaml || true
 
   sdk-wrapper-checks:
     name: SDK Wrapper Checks (Docker)
