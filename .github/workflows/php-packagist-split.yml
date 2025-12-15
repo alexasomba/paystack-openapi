@@ -73,6 +73,8 @@ jobs:
           fi
 
           php_sha=$(git rev-parse php-split)
+          # Ensure any extra Authorization headers set by actions/checkout are removed so the PAT in the URL is used
+          git config --local --unset-all http.https://github.com/.extraheader || true
           git remote add php "https://x-access-token:${PHP_SPLIT_PUSH_TOKEN}@github.com/${PHP_SPLIT_REPO}.git"
 
           # Push branch (override any http.extraHeader added by actions/checkout so our PAT is used)
