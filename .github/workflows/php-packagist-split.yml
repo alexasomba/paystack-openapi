@@ -69,9 +69,37 @@ jobs:
           echo "Checking git authentication to split repo..."
           git ls-remote "https://x-access-token:${PHP_SPLIT_PUSH_TOKEN}@github.com/${PHP_SPLIT_REPO}.git" HEAD >/dev/null
 
-          # Push branch
-          git push php "$php_sha":refs/heads/main --force
+          # Push branch (try git push, fallback to API if it fails)
+          if git push php "$php_sha":refs/heads/main --force; then
+            echo "Pushed branch via git"
+          else
+            echo "git push failed; attempting API fallback to create branch"
+            api_branch_create=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+              -H "Authorization: Bearer $PHP_SPLIT_PUSH_TOKEN" \
+              -H "Content-Type: application/json" \
+              -d "{\"ref\": \"refs/heads/main\", \"sha\": \"$php_sha\"}" \
+              "https://api.github.com/repos/$PHP_SPLIT_REPO/git/refs")
+            echo "api_branch_create: $api_branch_create"
+            if [ "$api_branch_create" != "201" ] && [ "$api_branch_create" != "422" ]; then
+              echo "Failed to create branch via API (status $api_branch_create)" >&2
+              exit 1
+            fi
+          fi
 
           # Re-tag the split commit with the same tag name (Packagist uses tags)
           git tag -f "$TAG_NAME" "$php_sha"
-          git push php "refs/tags/$TAG_NAME" --force
+          if git push php "refs/tags/$TAG_NAME" --force; then
+            echo "Pushed tag via git"
+          else
+            echo "git push tag failed; attempting API fallback to create tag"
+            api_tag_create=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+              -H "Authorization: Bearer $PHP_SPLIT_PUSH_TOKEN" \
+              -H "Content-Type: application/json" \
+              -d "{\"ref\": \"refs/tags/$TAG_NAME\", \"sha\": \"$php_sha\"}" \
+              "https://api.github.com/repos/$PHP_SPLIT_REPO/git/refs")
+            echo "api_tag_create: $api_tag_create"
+            if [ "$api_tag_create" != "201" ] && [ "$api_tag_create" != "422" ]; then
+              echo "Failed to create tag via API (status $api_tag_create)" >&2
+              exit 1
+            fi
+          fi
