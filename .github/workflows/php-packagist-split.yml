@@ -4,6 +4,12 @@ on:
   push:
     tags:
       - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag name to mirror to the split repo (defaults to current ref_name)"
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -38,7 +44,23 @@ jobs:
           fi
 
           php_sha=$(git rev-parse php-split)
+
+          echo "Target split repo: $PHP_SPLIT_REPO"
+          echo "Tag name: $TAG_NAME"
+
+          api_code=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "Authorization: Bearer $PHP_SPLIT_PUSH_TOKEN" \
+            "https://api.github.com/repos/$PHP_SPLIT_REPO")
+          echo "GitHub API access check status: $api_code"
+          if [ "$api_code" != "200" ]; then
+            echo "Token cannot access $PHP_SPLIT_REPO via API. Recreate token and ensure repo access includes the target repo." >&2
+            exit 1
+          fi
+
           git remote add php "https://x-access-token:${PHP_SPLIT_PUSH_TOKEN}@github.com/${PHP_SPLIT_REPO}.git"
+
+          echo "Checking git authentication to split repo..."
+          git ls-remote "https://x-access-token:${PHP_SPLIT_PUSH_TOKEN}@github.com/${PHP_SPLIT_REPO}.git" HEAD >/dev/null
 
           # Push branch
           git push php "$php_sha":refs/heads/main --force
