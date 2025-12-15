@@ -80,4 +80,42 @@ jobs:
           python -m pip install --upgrade build twine
           cd sdks/python
           python -m build
-          python -m twine upload --non-interactive -u __token__ -p ${PYPI_API_TOKEN} dist/*
+          echo "Checking distributions against PyPI and uploading only new ones"
+          python - <<'PY'
+import re, sys, json, urllib.request, os
+pkg_dir = 'dist'
+if not os.path.isdir(pkg_dir):
+    print('No distributions found')
+    sys.exit(0)
+files = sorted(os.listdir(pkg_dir))
+to_upload = []
+for fn in files:
+    path = os.path.join(pkg_dir, fn)
+    m = re.match(r'^(.+?)-(?P<version>\d+\.\d+\.\d+[^-]*)', fn)
+    if not m:
+        print('WARN: could not parse filename', fn, '— will include it for upload')
+        to_upload.append(path)
+        continue
+    name = m.group(1)
+    version = m.group('version')
+    url = f'https://pypi.org/pypi/{name}/json'
+    exists = False
+    try:
+        resp = urllib.request.urlopen(url, timeout=10)
+        j = json.loads(resp.read().decode())
+        exists = version in j.get('releases', {})
+    except Exception:
+        # if PyPI is unreachable or package not found, we assume upload is needed
+        exists = False
+    if exists:
+        print('SKIP', fn)
+    else:
+        print('UPLOAD', fn)
+        to_upload.append(path)
+if not to_upload:
+    print('No new distributions to upload; skipping twine upload')
+    sys.exit(0)
+print('Uploading files:', to_upload)
+# Replace current process with twine upload so exit code propagates
+os.execv(sys.executable, [sys.executable, '-m', 'twine', 'upload', '--non-interactive', '-u', '__token__', '-p', os.environ.get('PYPI_API_TOKEN','')] + to_upload)
+PY
