@@ -28,6 +28,13 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+      - name: Checkout tag (if `tag` input provided)
+        if: ${{ inputs.tag != '' }}
+        run: |
+          echo "Checking out tag ${{ inputs.tag }}"
+          git fetch origin "refs/tags/${{ inputs.tag }}:refs/tags/${{ inputs.tag }}"
+          git checkout "refs/tags/${{ inputs.tag }}"
+
       - name: Split subtree (sdks/php)
         run: |
           git subtree split --prefix=sdks/php -b php-split
