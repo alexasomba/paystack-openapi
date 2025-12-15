@@ -1,0 +1,9 @@
+{
+  "name": "@alexasomba/paystack-python",
+  "version": "1.1.6",
+  "private": false,
+  "scripts": {
+    "build": "python -m build",
+    "publish:public": "python -m build && python -m twine upload --non-interactive -u __token__ -p $PYPI_API_TOKEN dist/*"
+  }
+}
