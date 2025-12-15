@@ -1,0 +1,31 @@
+# PaymentRequestVerifyResponseDataIntegration
+
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**key** | **str** |  | 
+**name** | **str** |  | 
+**logo** | **str** |  | 
+**allowed_currencies** | **List[str]** |  | 
+
+## Example
+
+```python
+from alexasomba_paystack.models.payment_request_verify_response_data_integration import PaymentRequestVerifyResponseDataIntegration
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of PaymentRequestVerifyResponseDataIntegration from a JSON string
+payment_request_verify_response_data_integration_instance = PaymentRequestVerifyResponseDataIntegration.from_json(json)
+# print the JSON string representation of the object
+print PaymentRequestVerifyResponseDataIntegration.to_json()
+
+# convert the object into a dict
+payment_request_verify_response_data_integration_dict = payment_request_verify_response_data_integration_instance.to_dict()
+# create an instance of PaymentRequestVerifyResponseDataIntegration from a dict
+payment_request_verify_response_data_integration_form_dict = payment_request_verify_response_data_integration.from_dict(payment_request_verify_response_data_integration_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

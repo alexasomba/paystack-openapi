@@ -356,22 +356,22 @@ func (a *PlanAPIService) PlanListExecute(r ApiPlanListRequest) (*PlanListRespons
 	localVarFormParams := url.Values{}
 
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.interval != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "interval", r.interval, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "interval", r.interval, "")
 	}
 	if r.amount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "amount", r.amount, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "amount", r.amount, "")
 	}
 	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "")
 	}
 	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -453,11 +453,11 @@ type ApiPlanUpdateRequest struct {
 	ctx context.Context
 	ApiService *PlanAPIService
 	code string
-	planUpdate *PlanUpdate
+	body *PlanCode
 }
 
-func (r ApiPlanUpdateRequest) PlanUpdate(planUpdate PlanUpdate) ApiPlanUpdateRequest {
-	r.planUpdate = &planUpdate
+func (r ApiPlanUpdateRequest) Body(body PlanCode) ApiPlanUpdateRequest {
+	r.body = &body
 	return r
 }
 
@@ -522,7 +522,7 @@ func (a *PlanAPIService) PlanUpdateExecute(r ApiPlanUpdateRequest) (*PlanUpdateR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.planUpdate
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the DisputeFetchResponseDataTransaction type satisfies the MappedNullable interface at compile time
@@ -28,14 +26,14 @@ type DisputeFetchResponseDataTransaction struct {
 	Reference string `json:"reference"`
 	ReceiptNumber NullableInt32 `json:"receipt_number,omitempty"`
 	Amount int32 `json:"amount"`
-	Message interface{} `json:"message"`
+	Message map[string]interface{} `json:"message"`
 	GatewayResponse string `json:"gateway_response"`
 	PaidAt string `json:"paid_at"`
 	CreatedAt string `json:"created_at"`
 	Channel string `json:"channel"`
 	Currency string `json:"currency"`
 	IpAddress string `json:"ip_address"`
-	Metadata TransactionFetchResponseDataMetadata `json:"metadata"`
+	Metadata ChargeCreateResponseDataMetadata `json:"metadata"`
 	Log NullableChargeAuthorizationResponseDataLog `json:"log"`
 	Fees int32 `json:"fees"`
 	FeesSplit NullableInt32 `json:"fees_split"`
@@ -44,21 +42,19 @@ type DisputeFetchResponseDataTransaction struct {
 	Plan map[string]interface{} `json:"plan"`
 	Subaccount map[string]interface{} `json:"subaccount"`
 	Split map[string]interface{} `json:"split"`
-	OrderId interface{} `json:"order_id"`
+	OrderId map[string]interface{} `json:"order_id"`
 	RequestedAmount int32 `json:"requested_amount"`
-	PosTransactionData interface{} `json:"pos_transaction_data"`
-	Source interface{} `json:"source"`
-	FeesBreakdown interface{} `json:"fees_breakdown"`
-	Connect interface{} `json:"connect"`
+	PosTransactionData map[string]interface{} `json:"pos_transaction_data"`
+	Source map[string]interface{} `json:"source"`
+	FeesBreakdown map[string]interface{} `json:"fees_breakdown"`
+	Connect map[string]interface{} `json:"connect"`
 }
-
-type _DisputeFetchResponseDataTransaction DisputeFetchResponseDataTransaction
 
 // NewDisputeFetchResponseDataTransaction instantiates a new DisputeFetchResponseDataTransaction object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDisputeFetchResponseDataTransaction(id int32, domain string, status string, reference string, amount int32, message interface{}, gatewayResponse string, paidAt string, createdAt string, channel string, currency string, ipAddress string, metadata TransactionFetchResponseDataMetadata, log NullableChargeAuthorizationResponseDataLog, fees int32, feesSplit NullableInt32, authorization DisputeFetchResponseDataTransactionAuthorization, customer DisputeFetchResponseDataTransactionCustomer, plan map[string]interface{}, subaccount map[string]interface{}, split map[string]interface{}, orderId interface{}, requestedAmount int32, posTransactionData interface{}, source interface{}, feesBreakdown interface{}, connect interface{}) *DisputeFetchResponseDataTransaction {
+func NewDisputeFetchResponseDataTransaction(id int32, domain string, status string, reference string, amount int32, message map[string]interface{}, gatewayResponse string, paidAt string, createdAt string, channel string, currency string, ipAddress string, metadata ChargeCreateResponseDataMetadata, log NullableChargeAuthorizationResponseDataLog, fees int32, feesSplit NullableInt32, authorization DisputeFetchResponseDataTransactionAuthorization, customer DisputeFetchResponseDataTransactionCustomer, plan map[string]interface{}, subaccount map[string]interface{}, split map[string]interface{}, orderId map[string]interface{}, requestedAmount int32, posTransactionData map[string]interface{}, source map[string]interface{}, feesBreakdown map[string]interface{}, connect map[string]interface{}) *DisputeFetchResponseDataTransaction {
 	this := DisputeFetchResponseDataTransaction{}
 	this.Id = id
 	this.Domain = domain
@@ -261,10 +257,10 @@ func (o *DisputeFetchResponseDataTransaction) SetAmount(v int32) {
 }
 
 // GetMessage returns the Message field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *DisputeFetchResponseDataTransaction) GetMessage() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *DisputeFetchResponseDataTransaction) GetMessage() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -274,15 +270,15 @@ func (o *DisputeFetchResponseDataTransaction) GetMessage() interface{} {
 // GetMessageOk returns a tuple with the Message field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeFetchResponseDataTransaction) GetMessageOk() (*interface{}, bool) {
+func (o *DisputeFetchResponseDataTransaction) GetMessageOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Message) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Message, true
+	return o.Message, true
 }
 
 // SetMessage sets field value
-func (o *DisputeFetchResponseDataTransaction) SetMessage(v interface{}) {
+func (o *DisputeFetchResponseDataTransaction) SetMessage(v map[string]interface{}) {
 	o.Message = v
 }
 
@@ -431,9 +427,9 @@ func (o *DisputeFetchResponseDataTransaction) SetIpAddress(v string) {
 }
 
 // GetMetadata returns the Metadata field value
-func (o *DisputeFetchResponseDataTransaction) GetMetadata() TransactionFetchResponseDataMetadata {
+func (o *DisputeFetchResponseDataTransaction) GetMetadata() ChargeCreateResponseDataMetadata {
 	if o == nil {
-		var ret TransactionFetchResponseDataMetadata
+		var ret ChargeCreateResponseDataMetadata
 		return ret
 	}
 
@@ -442,7 +438,7 @@ func (o *DisputeFetchResponseDataTransaction) GetMetadata() TransactionFetchResp
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
-func (o *DisputeFetchResponseDataTransaction) GetMetadataOk() (*TransactionFetchResponseDataMetadata, bool) {
+func (o *DisputeFetchResponseDataTransaction) GetMetadataOk() (*ChargeCreateResponseDataMetadata, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -450,7 +446,7 @@ func (o *DisputeFetchResponseDataTransaction) GetMetadataOk() (*TransactionFetch
 }
 
 // SetMetadata sets field value
-func (o *DisputeFetchResponseDataTransaction) SetMetadata(v TransactionFetchResponseDataMetadata) {
+func (o *DisputeFetchResponseDataTransaction) SetMetadata(v ChargeCreateResponseDataMetadata) {
 	o.Metadata = v
 }
 
@@ -651,10 +647,10 @@ func (o *DisputeFetchResponseDataTransaction) SetSplit(v map[string]interface{})
 }
 
 // GetOrderId returns the OrderId field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *DisputeFetchResponseDataTransaction) GetOrderId() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *DisputeFetchResponseDataTransaction) GetOrderId() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -664,15 +660,15 @@ func (o *DisputeFetchResponseDataTransaction) GetOrderId() interface{} {
 // GetOrderIdOk returns a tuple with the OrderId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeFetchResponseDataTransaction) GetOrderIdOk() (*interface{}, bool) {
+func (o *DisputeFetchResponseDataTransaction) GetOrderIdOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.OrderId) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.OrderId, true
+	return o.OrderId, true
 }
 
 // SetOrderId sets field value
-func (o *DisputeFetchResponseDataTransaction) SetOrderId(v interface{}) {
+func (o *DisputeFetchResponseDataTransaction) SetOrderId(v map[string]interface{}) {
 	o.OrderId = v
 }
 
@@ -701,10 +697,10 @@ func (o *DisputeFetchResponseDataTransaction) SetRequestedAmount(v int32) {
 }
 
 // GetPosTransactionData returns the PosTransactionData field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *DisputeFetchResponseDataTransaction) GetPosTransactionData() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *DisputeFetchResponseDataTransaction) GetPosTransactionData() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -714,23 +710,23 @@ func (o *DisputeFetchResponseDataTransaction) GetPosTransactionData() interface{
 // GetPosTransactionDataOk returns a tuple with the PosTransactionData field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeFetchResponseDataTransaction) GetPosTransactionDataOk() (*interface{}, bool) {
+func (o *DisputeFetchResponseDataTransaction) GetPosTransactionDataOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.PosTransactionData) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.PosTransactionData, true
+	return o.PosTransactionData, true
 }
 
 // SetPosTransactionData sets field value
-func (o *DisputeFetchResponseDataTransaction) SetPosTransactionData(v interface{}) {
+func (o *DisputeFetchResponseDataTransaction) SetPosTransactionData(v map[string]interface{}) {
 	o.PosTransactionData = v
 }
 
 // GetSource returns the Source field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *DisputeFetchResponseDataTransaction) GetSource() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *DisputeFetchResponseDataTransaction) GetSource() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -740,23 +736,23 @@ func (o *DisputeFetchResponseDataTransaction) GetSource() interface{} {
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeFetchResponseDataTransaction) GetSourceOk() (*interface{}, bool) {
+func (o *DisputeFetchResponseDataTransaction) GetSourceOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Source) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Source, true
+	return o.Source, true
 }
 
 // SetSource sets field value
-func (o *DisputeFetchResponseDataTransaction) SetSource(v interface{}) {
+func (o *DisputeFetchResponseDataTransaction) SetSource(v map[string]interface{}) {
 	o.Source = v
 }
 
 // GetFeesBreakdown returns the FeesBreakdown field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *DisputeFetchResponseDataTransaction) GetFeesBreakdown() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *DisputeFetchResponseDataTransaction) GetFeesBreakdown() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -766,23 +762,23 @@ func (o *DisputeFetchResponseDataTransaction) GetFeesBreakdown() interface{} {
 // GetFeesBreakdownOk returns a tuple with the FeesBreakdown field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeFetchResponseDataTransaction) GetFeesBreakdownOk() (*interface{}, bool) {
+func (o *DisputeFetchResponseDataTransaction) GetFeesBreakdownOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.FeesBreakdown) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.FeesBreakdown, true
+	return o.FeesBreakdown, true
 }
 
 // SetFeesBreakdown sets field value
-func (o *DisputeFetchResponseDataTransaction) SetFeesBreakdown(v interface{}) {
+func (o *DisputeFetchResponseDataTransaction) SetFeesBreakdown(v map[string]interface{}) {
 	o.FeesBreakdown = v
 }
 
 // GetConnect returns the Connect field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *DisputeFetchResponseDataTransaction) GetConnect() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *DisputeFetchResponseDataTransaction) GetConnect() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -792,15 +788,15 @@ func (o *DisputeFetchResponseDataTransaction) GetConnect() interface{} {
 // GetConnectOk returns a tuple with the Connect field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeFetchResponseDataTransaction) GetConnectOk() (*interface{}, bool) {
+func (o *DisputeFetchResponseDataTransaction) GetConnectOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Connect) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Connect, true
+	return o.Connect, true
 }
 
 // SetConnect sets field value
-func (o *DisputeFetchResponseDataTransaction) SetConnect(v interface{}) {
+func (o *DisputeFetchResponseDataTransaction) SetConnect(v map[string]interface{}) {
 	o.Connect = v
 }
 
@@ -857,69 +853,6 @@ func (o DisputeFetchResponseDataTransaction) ToMap() (map[string]interface{}, er
 		toSerialize["connect"] = o.Connect
 	}
 	return toSerialize, nil
-}
-
-func (o *DisputeFetchResponseDataTransaction) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"domain",
-		"status",
-		"reference",
-		"amount",
-		"message",
-		"gateway_response",
-		"paid_at",
-		"created_at",
-		"channel",
-		"currency",
-		"ip_address",
-		"metadata",
-		"log",
-		"fees",
-		"fees_split",
-		"authorization",
-		"customer",
-		"plan",
-		"subaccount",
-		"split",
-		"order_id",
-		"requested_amount",
-		"pos_transaction_data",
-		"source",
-		"fees_breakdown",
-		"connect",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDisputeFetchResponseDataTransaction := _DisputeFetchResponseDataTransaction{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDisputeFetchResponseDataTransaction)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DisputeFetchResponseDataTransaction(varDisputeFetchResponseDataTransaction)
-
-	return err
 }
 
 type NullableDisputeFetchResponseDataTransaction struct {

@@ -562,20 +562,16 @@ func (a *TransferAPIService) TransferExportTransferExecute(r ApiTransferExportTr
 	localVarFormParams := url.Values{}
 
 	if r.recipient != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "recipient", r.recipient, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "recipient", r.recipient, "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
-	} else {
-        var defaultValue string = "pending"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "status", defaultValue, "form", "")
-        r.status = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "")
 	}
 	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "")
 	}
 	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -659,7 +655,7 @@ type ApiTransferFetchRequest struct {
 	code string
 }
 
-func (r ApiTransferFetchRequest) Execute() (*TransferFetchResponse, *http.Response, error) {
+func (r ApiTransferFetchRequest) Execute() (*TransferCode, *http.Response, error) {
 	return r.ApiService.TransferFetchExecute(r)
 }
 
@@ -681,13 +677,13 @@ func (a *TransferAPIService) TransferFetch(ctx context.Context, code string) Api
 }
 
 // Execute executes the request
-//  @return TransferFetchResponse
-func (a *TransferAPIService) TransferFetchExecute(r ApiTransferFetchRequest) (*TransferFetchResponse, *http.Response, error) {
+//  @return TransferCode
+func (a *TransferAPIService) TransferFetchExecute(r ApiTransferFetchRequest) (*TransferCode, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *TransferFetchResponse
+		localVarReturnValue  *TransferCode
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferAPIService.TransferFetch")
@@ -1123,35 +1119,31 @@ func (a *TransferAPIService) TransferListExecute(r ApiTransferListRequest) (*Tra
 	localVarFormParams := url.Values{}
 
 	if r.useCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "use_cursor", r.useCursor, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "use_cursor", r.useCursor, "")
 	}
 	if r.next != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "")
 	}
 	if r.previous != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "")
 	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "")
 	}
 	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "")
 	}
 	if r.recipient != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "recipient", r.recipient, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "recipient", r.recipient, "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
-	} else {
-        var defaultValue string = "pending"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "status", defaultValue, "form", "")
-        r.status = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1353,7 +1345,7 @@ type ApiTransferVerifyRequest struct {
 	reference string
 }
 
-func (r ApiTransferVerifyRequest) Execute() (*TransferVerifyResponse, *http.Response, error) {
+func (r ApiTransferVerifyRequest) Execute() (*TransferVerifyReference, *http.Response, error) {
 	return r.ApiService.TransferVerifyExecute(r)
 }
 
@@ -1375,13 +1367,13 @@ func (a *TransferAPIService) TransferVerify(ctx context.Context, reference strin
 }
 
 // Execute executes the request
-//  @return TransferVerifyResponse
-func (a *TransferAPIService) TransferVerifyExecute(r ApiTransferVerifyRequest) (*TransferVerifyResponse, *http.Response, error) {
+//  @return TransferVerifyReference
+func (a *TransferAPIService) TransferVerifyExecute(r ApiTransferVerifyRequest) (*TransferVerifyReference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *TransferVerifyResponse
+		localVarReturnValue  *TransferVerifyReference
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferAPIService.TransferVerify")

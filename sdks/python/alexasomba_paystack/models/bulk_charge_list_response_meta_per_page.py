@@ -18,11 +18,11 @@ from inspect import getfullargspec
 import json
 import pprint
 import re  # noqa: F401
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, ValidationError, field_validator
+
 from typing import Optional
-from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
-from typing_extensions import Literal, Self
-from pydantic import Field
+from pydantic import BaseModel, Field, StrictInt, StrictStr, ValidationError, validator
+from typing import Union, Any, List, TYPE_CHECKING
+from pydantic import StrictStr, Field
 
 BULKCHARGELISTRESPONSEMETAPERPAGE_ANY_OF_SCHEMAS = ["int", "str"]
 
@@ -36,17 +36,15 @@ class BulkChargeListResponseMetaPerPage(BaseModel):
     # data type: str
     anyof_schema_2_validator: Optional[StrictStr] = None
     if TYPE_CHECKING:
-        actual_instance: Optional[Union[int, str]] = None
+        actual_instance: Union[int, str]
     else:
-        actual_instance: Any = None
-    any_of_schemas: Set[str] = { "int", "str" }
+        actual_instance: Any
+    any_of_schemas: List[str] = Field(BULKCHARGELISTRESPONSEMETAPERPAGE_ANY_OF_SCHEMAS, const=True)
 
-    model_config = {
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    class Config:
+        validate_assignment = True
 
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, *args, **kwargs):
         if args:
             if len(args) > 1:
                 raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
@@ -56,9 +54,9 @@ class BulkChargeListResponseMetaPerPage(BaseModel):
         else:
             super().__init__(**kwargs)
 
-    @field_validator('actual_instance')
+    @validator('actual_instance')
     def actual_instance_must_validate_anyof(cls, v):
-        instance = BulkChargeListResponseMetaPerPage.model_construct()
+        instance = BulkChargeListResponseMetaPerPage.construct()
         error_messages = []
         # validate data type: int
         try:
@@ -79,13 +77,13 @@ class BulkChargeListResponseMetaPerPage(BaseModel):
             return v
 
     @classmethod
-    def from_dict(cls, obj: Dict[str, Any]) -> Self:
+    def from_dict(cls, obj: dict) -> BulkChargeListResponseMetaPerPage:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> BulkChargeListResponseMetaPerPage:
         """Returns the object represented by the json string"""
-        instance = cls.model_construct()
+        instance = BulkChargeListResponseMetaPerPage.construct()
         error_messages = []
         # deserialize data into int
         try:
@@ -117,23 +115,25 @@ class BulkChargeListResponseMetaPerPage(BaseModel):
         if self.actual_instance is None:
             return "null"
 
-        if hasattr(self.actual_instance, "to_json") and callable(self.actual_instance.to_json):
+        to_json = getattr(self.actual_instance, "to_json", None)
+        if callable(to_json):
             return self.actual_instance.to_json()
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], int, str]]:
+    def to_dict(self) -> dict:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
-            return None
+            return "null"
 
-        if hasattr(self.actual_instance, "to_dict") and callable(self.actual_instance.to_dict):
+        to_json = getattr(self.actual_instance, "to_json", None)
+        if callable(to_json):
             return self.actual_instance.to_dict()
         else:
-            return self.actual_instance
+            return json.dumps(self.actual_instance)
 
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
-        return pprint.pformat(self.model_dump())
+        return pprint.pformat(self.dict())
 
 

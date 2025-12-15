@@ -18,80 +18,64 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+
+from typing import List, Optional
+from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist, validator
 from alexasomba_paystack.models.order_items import OrderItems
 from alexasomba_paystack.models.order_shipping import OrderShipping
-from typing import Optional, Set
-from typing_extensions import Self
 
 class OrderCreate(BaseModel):
     """
     OrderCreate
-    """ # noqa: E501
-    email: StrictStr = Field(description="The email of the customer placing the order")
-    first_name: StrictStr = Field(description="The customer's first name")
-    last_name: StrictStr = Field(description="The customer's last name")
-    phone: StrictStr = Field(description="The customer's mobile number")
-    currency: StrictStr = Field(description="Currency in which amount is set")
-    items: List[OrderItems]
-    shipping: OrderShipping
-    is_gift: Optional[StrictBool] = Field(default=None, description="A flag to indicate if the order is for someone else")
-    pay_for_me: Optional[StrictBool] = Field(default=None, description="A flag to indicate if the someone else should pay for the order")
-    __properties: ClassVar[List[str]] = ["email", "first_name", "last_name", "phone", "currency", "items", "shipping", "is_gift", "pay_for_me"]
+    """
+    email: StrictStr = Field(..., description="The email of the customer placing the order")
+    first_name: StrictStr = Field(..., description="The customer's first name")
+    last_name: StrictStr = Field(..., description="The customer's last name")
+    phone: StrictStr = Field(..., description="The customer's mobile number")
+    currency: StrictStr = Field(..., description="Currency in which amount is set")
+    items: conlist(OrderItems) = Field(...)
+    shipping: OrderShipping = Field(...)
+    is_gift: Optional[StrictBool] = Field(None, description="A flag to indicate if the order is for someone else")
+    pay_for_me: Optional[StrictBool] = Field(None, description="A flag to indicate if the someone else should pay for the order")
+    __properties = ["email", "first_name", "last_name", "phone", "currency", "items", "shipping", "is_gift", "pay_for_me"]
 
-    @field_validator('currency')
+    @validator('currency')
     def currency_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['GHS', 'KES', 'NGN', 'USD', 'ZAR']):
+        if value not in ('GHS', 'KES', 'NGN', 'USD', 'ZAR'):
             raise ValueError("must be one of enum values ('GHS', 'KES', 'NGN', 'USD', 'ZAR')")
         return value
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> OrderCreate:
         """Create an instance of OrderCreate from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in items (list)
         _items = []
         if self.items:
-            for _item_items in self.items:
-                if _item_items:
-                    _items.append(_item_items.to_dict())
+            for _item in self.items:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict['items'] = _items
         # override the default output from pydantic by calling `to_dict()` of shipping
         if self.shipping:
@@ -99,22 +83,22 @@ class OrderCreate(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> OrderCreate:
         """Create an instance of OrderCreate from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return OrderCreate.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = OrderCreate.parse_obj({
             "email": obj.get("email"),
             "first_name": obj.get("first_name"),
             "last_name": obj.get("last_name"),
             "phone": obj.get("phone"),
             "currency": obj.get("currency"),
-            "items": [OrderItems.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None,
-            "shipping": OrderShipping.from_dict(obj["shipping"]) if obj.get("shipping") is not None else None,
+            "items": [OrderItems.from_dict(_item) for _item in obj.get("items")] if obj.get("items") is not None else None,
+            "shipping": OrderShipping.from_dict(obj.get("shipping")) if obj.get("shipping") is not None else None,
             "is_gift": obj.get("is_gift"),
             "pay_for_me": obj.get("pay_for_me")
         })

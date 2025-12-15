@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the VirtualTerminalAddSplitCodeResponseData type satisfies the MappedNullable interface at compile time
@@ -31,7 +29,7 @@ type VirtualTerminalAddSplitCodeResponseData struct {
 	SplitCode string `json:"split_code"`
 	Active bool `json:"active"`
 	BearerType string `json:"bearer_type"`
-	BearerSubaccount interface{} `json:"bearer_subaccount"`
+	BearerSubaccount map[string]interface{} `json:"bearer_subaccount"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
 	IsDynamic bool `json:"is_dynamic"`
@@ -39,13 +37,11 @@ type VirtualTerminalAddSplitCodeResponseData struct {
 	TotalSubaccounts int32 `json:"total_subaccounts"`
 }
 
-type _VirtualTerminalAddSplitCodeResponseData VirtualTerminalAddSplitCodeResponseData
-
 // NewVirtualTerminalAddSplitCodeResponseData instantiates a new VirtualTerminalAddSplitCodeResponseData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVirtualTerminalAddSplitCodeResponseData(id int32, name string, type_ string, currency string, integration int32, domain string, splitCode string, active bool, bearerType string, bearerSubaccount interface{}, createdAt string, updatedAt string, isDynamic bool, subaccounts []SplitSubaccountsArray, totalSubaccounts int32) *VirtualTerminalAddSplitCodeResponseData {
+func NewVirtualTerminalAddSplitCodeResponseData(id int32, name string, type_ string, currency string, integration int32, domain string, splitCode string, active bool, bearerType string, bearerSubaccount map[string]interface{}, createdAt string, updatedAt string, isDynamic bool, subaccounts []SplitSubaccountsArray, totalSubaccounts int32) *VirtualTerminalAddSplitCodeResponseData {
 	this := VirtualTerminalAddSplitCodeResponseData{}
 	this.Id = id
 	this.Name = name
@@ -290,10 +286,10 @@ func (o *VirtualTerminalAddSplitCodeResponseData) SetBearerType(v string) {
 }
 
 // GetBearerSubaccount returns the BearerSubaccount field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *VirtualTerminalAddSplitCodeResponseData) GetBearerSubaccount() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *VirtualTerminalAddSplitCodeResponseData) GetBearerSubaccount() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -303,15 +299,15 @@ func (o *VirtualTerminalAddSplitCodeResponseData) GetBearerSubaccount() interfac
 // GetBearerSubaccountOk returns a tuple with the BearerSubaccount field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VirtualTerminalAddSplitCodeResponseData) GetBearerSubaccountOk() (*interface{}, bool) {
+func (o *VirtualTerminalAddSplitCodeResponseData) GetBearerSubaccountOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.BearerSubaccount) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.BearerSubaccount, true
+	return o.BearerSubaccount, true
 }
 
 // SetBearerSubaccount sets field value
-func (o *VirtualTerminalAddSplitCodeResponseData) SetBearerSubaccount(v interface{}) {
+func (o *VirtualTerminalAddSplitCodeResponseData) SetBearerSubaccount(v map[string]interface{}) {
 	o.BearerSubaccount = v
 }
 
@@ -463,57 +459,6 @@ func (o VirtualTerminalAddSplitCodeResponseData) ToMap() (map[string]interface{}
 	toSerialize["subaccounts"] = o.Subaccounts
 	toSerialize["total_subaccounts"] = o.TotalSubaccounts
 	return toSerialize, nil
-}
-
-func (o *VirtualTerminalAddSplitCodeResponseData) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"name",
-		"type",
-		"currency",
-		"integration",
-		"domain",
-		"split_code",
-		"active",
-		"bearer_type",
-		"bearer_subaccount",
-		"createdAt",
-		"updatedAt",
-		"is_dynamic",
-		"subaccounts",
-		"total_subaccounts",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varVirtualTerminalAddSplitCodeResponseData := _VirtualTerminalAddSplitCodeResponseData{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVirtualTerminalAddSplitCodeResponseData)
-
-	if err != nil {
-		return err
-	}
-
-	*o = VirtualTerminalAddSplitCodeResponseData(varVirtualTerminalAddSplitCodeResponseData)
-
-	return err
 }
 
 type NullableVirtualTerminalAddSplitCodeResponseData struct {

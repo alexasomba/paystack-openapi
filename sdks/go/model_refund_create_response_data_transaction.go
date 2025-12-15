@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the RefundCreateResponseDataTransaction type satisfies the MappedNullable interface at compile time
@@ -34,19 +32,17 @@ type RefundCreateResponseDataTransaction struct {
 	Plan map[string]interface{} `json:"plan"`
 	Subaccount RefundCreateResponseDataTransactionSubaccount `json:"subaccount"`
 	Split map[string]interface{} `json:"split"`
-	OrderId interface{} `json:"order_id"`
-	PosTransactionData interface{} `json:"pos_transaction_data"`
-	Source interface{} `json:"source"`
-	FeesBreakdown interface{} `json:"fees_breakdown"`
+	OrderId map[string]interface{} `json:"order_id"`
+	PosTransactionData map[string]interface{} `json:"pos_transaction_data"`
+	Source map[string]interface{} `json:"source"`
+	FeesBreakdown map[string]interface{} `json:"fees_breakdown"`
 }
-
-type _RefundCreateResponseDataTransaction RefundCreateResponseDataTransaction
 
 // NewRefundCreateResponseDataTransaction instantiates a new RefundCreateResponseDataTransaction object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRefundCreateResponseDataTransaction(id int32, domain string, reference string, amount int32, paidAt string, channel string, currency string, authorization RefundCreateResponseDataTransactionAuthorization, customer RefundCreateResponseDataTransactionCustomer, plan map[string]interface{}, subaccount RefundCreateResponseDataTransactionSubaccount, split map[string]interface{}, orderId interface{}, posTransactionData interface{}, source interface{}, feesBreakdown interface{}) *RefundCreateResponseDataTransaction {
+func NewRefundCreateResponseDataTransaction(id int32, domain string, reference string, amount int32, paidAt string, channel string, currency string, authorization RefundCreateResponseDataTransactionAuthorization, customer RefundCreateResponseDataTransactionCustomer, plan map[string]interface{}, subaccount RefundCreateResponseDataTransactionSubaccount, split map[string]interface{}, orderId map[string]interface{}, posTransactionData map[string]interface{}, source map[string]interface{}, feesBreakdown map[string]interface{}) *RefundCreateResponseDataTransaction {
 	this := RefundCreateResponseDataTransaction{}
 	this.Id = id
 	this.Domain = domain
@@ -364,10 +360,10 @@ func (o *RefundCreateResponseDataTransaction) SetSplit(v map[string]interface{})
 }
 
 // GetOrderId returns the OrderId field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *RefundCreateResponseDataTransaction) GetOrderId() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *RefundCreateResponseDataTransaction) GetOrderId() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -377,23 +373,23 @@ func (o *RefundCreateResponseDataTransaction) GetOrderId() interface{} {
 // GetOrderIdOk returns a tuple with the OrderId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundCreateResponseDataTransaction) GetOrderIdOk() (*interface{}, bool) {
+func (o *RefundCreateResponseDataTransaction) GetOrderIdOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.OrderId) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.OrderId, true
+	return o.OrderId, true
 }
 
 // SetOrderId sets field value
-func (o *RefundCreateResponseDataTransaction) SetOrderId(v interface{}) {
+func (o *RefundCreateResponseDataTransaction) SetOrderId(v map[string]interface{}) {
 	o.OrderId = v
 }
 
 // GetPosTransactionData returns the PosTransactionData field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *RefundCreateResponseDataTransaction) GetPosTransactionData() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *RefundCreateResponseDataTransaction) GetPosTransactionData() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -403,23 +399,23 @@ func (o *RefundCreateResponseDataTransaction) GetPosTransactionData() interface{
 // GetPosTransactionDataOk returns a tuple with the PosTransactionData field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundCreateResponseDataTransaction) GetPosTransactionDataOk() (*interface{}, bool) {
+func (o *RefundCreateResponseDataTransaction) GetPosTransactionDataOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.PosTransactionData) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.PosTransactionData, true
+	return o.PosTransactionData, true
 }
 
 // SetPosTransactionData sets field value
-func (o *RefundCreateResponseDataTransaction) SetPosTransactionData(v interface{}) {
+func (o *RefundCreateResponseDataTransaction) SetPosTransactionData(v map[string]interface{}) {
 	o.PosTransactionData = v
 }
 
 // GetSource returns the Source field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *RefundCreateResponseDataTransaction) GetSource() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *RefundCreateResponseDataTransaction) GetSource() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -429,23 +425,23 @@ func (o *RefundCreateResponseDataTransaction) GetSource() interface{} {
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundCreateResponseDataTransaction) GetSourceOk() (*interface{}, bool) {
+func (o *RefundCreateResponseDataTransaction) GetSourceOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Source) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Source, true
+	return o.Source, true
 }
 
 // SetSource sets field value
-func (o *RefundCreateResponseDataTransaction) SetSource(v interface{}) {
+func (o *RefundCreateResponseDataTransaction) SetSource(v map[string]interface{}) {
 	o.Source = v
 }
 
 // GetFeesBreakdown returns the FeesBreakdown field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *RefundCreateResponseDataTransaction) GetFeesBreakdown() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *RefundCreateResponseDataTransaction) GetFeesBreakdown() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -455,15 +451,15 @@ func (o *RefundCreateResponseDataTransaction) GetFeesBreakdown() interface{} {
 // GetFeesBreakdownOk returns a tuple with the FeesBreakdown field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundCreateResponseDataTransaction) GetFeesBreakdownOk() (*interface{}, bool) {
+func (o *RefundCreateResponseDataTransaction) GetFeesBreakdownOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.FeesBreakdown) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.FeesBreakdown, true
+	return o.FeesBreakdown, true
 }
 
 // SetFeesBreakdown sets field value
-func (o *RefundCreateResponseDataTransaction) SetFeesBreakdown(v interface{}) {
+func (o *RefundCreateResponseDataTransaction) SetFeesBreakdown(v map[string]interface{}) {
 	o.FeesBreakdown = v
 }
 
@@ -502,58 +498,6 @@ func (o RefundCreateResponseDataTransaction) ToMap() (map[string]interface{}, er
 		toSerialize["fees_breakdown"] = o.FeesBreakdown
 	}
 	return toSerialize, nil
-}
-
-func (o *RefundCreateResponseDataTransaction) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"domain",
-		"reference",
-		"amount",
-		"paid_at",
-		"channel",
-		"currency",
-		"authorization",
-		"customer",
-		"plan",
-		"subaccount",
-		"split",
-		"order_id",
-		"pos_transaction_data",
-		"source",
-		"fees_breakdown",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varRefundCreateResponseDataTransaction := _RefundCreateResponseDataTransaction{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRefundCreateResponseDataTransaction)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RefundCreateResponseDataTransaction(varRefundCreateResponseDataTransaction)
-
-	return err
 }
 
 type NullableRefundCreateResponseDataTransaction struct {

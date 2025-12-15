@@ -342,20 +342,16 @@ func (a *RefundAPIService) RefundListExecute(r ApiRefundListRequest) (*RefundLis
 	localVarFormParams := url.Values{}
 
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
-	} else {
-        var defaultValue int32 = 50
-        parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", defaultValue, "form", "")
-        r.perPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "")
 	}
 	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -437,11 +433,11 @@ type ApiRefundRetryRequest struct {
 	ctx context.Context
 	ApiService *RefundAPIService
 	id int32
-	refundRetry *RefundRetry
+	body *RefundRetryWithCustomerDetailsId
 }
 
-func (r ApiRefundRetryRequest) RefundRetry(refundRetry RefundRetry) ApiRefundRetryRequest {
-	r.refundRetry = &refundRetry
+func (r ApiRefundRetryRequest) Body(body RefundRetryWithCustomerDetailsId) ApiRefundRetryRequest {
+	r.body = &body
 	return r
 }
 
@@ -506,7 +502,7 @@ func (a *RefundAPIService) RefundRetryExecute(r ApiRefundRetryRequest) (*RefundR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.refundRetry
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

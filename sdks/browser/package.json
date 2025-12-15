@@ -1,6 +1,6 @@
 {
     "name": "@alexasomba/paystack-browser",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Paystack API client for browsers (TypeScript)",
     "license": "MIT",
     "author": "alexasomba",

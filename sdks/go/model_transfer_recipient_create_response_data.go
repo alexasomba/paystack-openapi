@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the TransferRecipientCreateResponseData type satisfies the MappedNullable interface at compile time
@@ -36,16 +34,14 @@ type TransferRecipientCreateResponseData struct {
 	Type string `json:"type"`
 	UpdatedAt string `json:"updatedAt"`
 	IsDeleted bool `json:"is_deleted"`
-	Details TransferRecipientListResponseArrayDetails `json:"details"`
+	Details TransferRecipientCreateResponseDataDetails `json:"details"`
 }
-
-type _TransferRecipientCreateResponseData TransferRecipientCreateResponseData
 
 // NewTransferRecipientCreateResponseData instantiates a new TransferRecipientCreateResponseData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferRecipientCreateResponseData(active bool, createdAt string, currency string, description string, domain string, email string, id int32, integration int32, name string, recipientCode string, type_ string, updatedAt string, isDeleted bool, details TransferRecipientListResponseArrayDetails) *TransferRecipientCreateResponseData {
+func NewTransferRecipientCreateResponseData(active bool, createdAt string, currency string, description string, domain string, email string, id int32, integration int32, name string, recipientCode string, type_ string, updatedAt string, isDeleted bool, details TransferRecipientCreateResponseDataDetails) *TransferRecipientCreateResponseData {
 	this := TransferRecipientCreateResponseData{}
 	this.Active = active
 	this.CreatedAt = createdAt
@@ -285,7 +281,7 @@ func (o *TransferRecipientCreateResponseData) GetMetadataOk() (map[string]interf
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *TransferRecipientCreateResponseData) HasMetadata() bool {
-	if o != nil && !IsNil(o.Metadata) {
+	if o != nil && IsNil(o.Metadata) {
 		return true
 	}
 
@@ -418,9 +414,9 @@ func (o *TransferRecipientCreateResponseData) SetIsDeleted(v bool) {
 }
 
 // GetDetails returns the Details field value
-func (o *TransferRecipientCreateResponseData) GetDetails() TransferRecipientListResponseArrayDetails {
+func (o *TransferRecipientCreateResponseData) GetDetails() TransferRecipientCreateResponseDataDetails {
 	if o == nil {
-		var ret TransferRecipientListResponseArrayDetails
+		var ret TransferRecipientCreateResponseDataDetails
 		return ret
 	}
 
@@ -429,7 +425,7 @@ func (o *TransferRecipientCreateResponseData) GetDetails() TransferRecipientList
 
 // GetDetailsOk returns a tuple with the Details field value
 // and a boolean to check if the value has been set.
-func (o *TransferRecipientCreateResponseData) GetDetailsOk() (*TransferRecipientListResponseArrayDetails, bool) {
+func (o *TransferRecipientCreateResponseData) GetDetailsOk() (*TransferRecipientCreateResponseDataDetails, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -437,7 +433,7 @@ func (o *TransferRecipientCreateResponseData) GetDetailsOk() (*TransferRecipient
 }
 
 // SetDetails sets field value
-func (o *TransferRecipientCreateResponseData) SetDetails(v TransferRecipientListResponseArrayDetails) {
+func (o *TransferRecipientCreateResponseData) SetDetails(v TransferRecipientCreateResponseDataDetails) {
 	o.Details = v
 }
 
@@ -469,56 +465,6 @@ func (o TransferRecipientCreateResponseData) ToMap() (map[string]interface{}, er
 	toSerialize["is_deleted"] = o.IsDeleted
 	toSerialize["details"] = o.Details
 	return toSerialize, nil
-}
-
-func (o *TransferRecipientCreateResponseData) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"active",
-		"createdAt",
-		"currency",
-		"description",
-		"domain",
-		"email",
-		"id",
-		"integration",
-		"name",
-		"recipient_code",
-		"type",
-		"updatedAt",
-		"is_deleted",
-		"details",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varTransferRecipientCreateResponseData := _TransferRecipientCreateResponseData{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransferRecipientCreateResponseData)
-
-	if err != nil {
-		return err
-	}
-
-	*o = TransferRecipientCreateResponseData(varTransferRecipientCreateResponseData)
-
-	return err
 }
 
 type NullableTransferRecipientCreateResponseData struct {

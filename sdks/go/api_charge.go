@@ -30,7 +30,7 @@ type ApiChargeCheckRequest struct {
 	reference string
 }
 
-func (r ApiChargeCheckRequest) Execute() (*ChargeCheckPendingResponse, *http.Response, error) {
+func (r ApiChargeCheckRequest) Execute() (*ChargeReference, *http.Response, error) {
 	return r.ApiService.ChargeCheckExecute(r)
 }
 
@@ -53,13 +53,13 @@ func (a *ChargeAPIService) ChargeCheck(ctx context.Context, reference string) Ap
 }
 
 // Execute executes the request
-//  @return ChargeCheckPendingResponse
-func (a *ChargeAPIService) ChargeCheckExecute(r ApiChargeCheckRequest) (*ChargeCheckPendingResponse, *http.Response, error) {
+//  @return ChargeReference
+func (a *ChargeAPIService) ChargeCheckExecute(r ApiChargeCheckRequest) (*ChargeReference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ChargeCheckPendingResponse
+		localVarReturnValue  *ChargeReference
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ChargeAPIService.ChargeCheck")

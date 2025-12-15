@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the OrderItemsArray type satisfies the MappedNullable interface at compile time
@@ -35,23 +33,21 @@ type OrderItemsArray struct {
 	Name string `json:"name"`
 	ProductLevelType string `json:"product_level_type"`
 	ProductId int32 `json:"product_id"`
-	ProductSuccessMessage interface{} `json:"product_success_message"`
-	ProductRedirectUrl interface{} `json:"product_redirect_url"`
-	IFNULLP1ExpiresInP2ExpiresIn interface{} `json:"IFNULL(p1.expires_in, p2.expires_in)"`
+	ProductSuccessMessage map[string]interface{} `json:"product_success_message"`
+	ProductRedirectUrl map[string]interface{} `json:"product_redirect_url"`
+	IFNULLP1ExpiresInP2ExpiresIn map[string]interface{} `json:"IFNULL(p1.expires_in, p2.expires_in)"`
 	ProductQuantitySold int32 `json:"product_quantity_sold"`
-	ProductNotificationEmails interface{} `json:"product_notification_emails"`
+	ProductNotificationEmails map[string]interface{} `json:"product_notification_emails"`
 	IFNULLP1MetadataP2Metadata string `json:"IFNULL(p1.metadata, p2.metadata)"`
-	StorefrontRedirectUrl interface{} `json:"storefront_redirect_url"`
-	StorefrontSuccessMessage interface{} `json:"storefront_success_message"`
+	StorefrontRedirectUrl map[string]interface{} `json:"storefront_redirect_url"`
+	StorefrontSuccessMessage map[string]interface{} `json:"storefront_success_message"`
 }
-
-type _OrderItemsArray OrderItemsArray
 
 // NewOrderItemsArray instantiates a new OrderItemsArray object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrderItemsArray(orderItemId int32, orderId int32, type_ string, item int32, currentTotalItemsPrice int32, files string, order int32, amount int32, quantity int32, createdAt string, name string, productLevelType string, productId int32, productSuccessMessage interface{}, productRedirectUrl interface{}, iFNULLP1ExpiresInP2ExpiresIn interface{}, productQuantitySold int32, productNotificationEmails interface{}, iFNULLP1MetadataP2Metadata string, storefrontRedirectUrl interface{}, storefrontSuccessMessage interface{}) *OrderItemsArray {
+func NewOrderItemsArray(orderItemId int32, orderId int32, type_ string, item int32, currentTotalItemsPrice int32, files string, order int32, amount int32, quantity int32, createdAt string, name string, productLevelType string, productId int32, productSuccessMessage map[string]interface{}, productRedirectUrl map[string]interface{}, iFNULLP1ExpiresInP2ExpiresIn map[string]interface{}, productQuantitySold int32, productNotificationEmails map[string]interface{}, iFNULLP1MetadataP2Metadata string, storefrontRedirectUrl map[string]interface{}, storefrontSuccessMessage map[string]interface{}) *OrderItemsArray {
 	this := OrderItemsArray{}
 	this.OrderItemId = orderItemId
 	this.OrderId = orderId
@@ -398,10 +394,10 @@ func (o *OrderItemsArray) SetProductId(v int32) {
 }
 
 // GetProductSuccessMessage returns the ProductSuccessMessage field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderItemsArray) GetProductSuccessMessage() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *OrderItemsArray) GetProductSuccessMessage() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -411,23 +407,23 @@ func (o *OrderItemsArray) GetProductSuccessMessage() interface{} {
 // GetProductSuccessMessageOk returns a tuple with the ProductSuccessMessage field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderItemsArray) GetProductSuccessMessageOk() (*interface{}, bool) {
+func (o *OrderItemsArray) GetProductSuccessMessageOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.ProductSuccessMessage) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.ProductSuccessMessage, true
+	return o.ProductSuccessMessage, true
 }
 
 // SetProductSuccessMessage sets field value
-func (o *OrderItemsArray) SetProductSuccessMessage(v interface{}) {
+func (o *OrderItemsArray) SetProductSuccessMessage(v map[string]interface{}) {
 	o.ProductSuccessMessage = v
 }
 
 // GetProductRedirectUrl returns the ProductRedirectUrl field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderItemsArray) GetProductRedirectUrl() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *OrderItemsArray) GetProductRedirectUrl() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -437,23 +433,23 @@ func (o *OrderItemsArray) GetProductRedirectUrl() interface{} {
 // GetProductRedirectUrlOk returns a tuple with the ProductRedirectUrl field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderItemsArray) GetProductRedirectUrlOk() (*interface{}, bool) {
+func (o *OrderItemsArray) GetProductRedirectUrlOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.ProductRedirectUrl) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.ProductRedirectUrl, true
+	return o.ProductRedirectUrl, true
 }
 
 // SetProductRedirectUrl sets field value
-func (o *OrderItemsArray) SetProductRedirectUrl(v interface{}) {
+func (o *OrderItemsArray) SetProductRedirectUrl(v map[string]interface{}) {
 	o.ProductRedirectUrl = v
 }
 
 // GetIFNULLP1ExpiresInP2ExpiresIn returns the IFNULLP1ExpiresInP2ExpiresIn field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderItemsArray) GetIFNULLP1ExpiresInP2ExpiresIn() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *OrderItemsArray) GetIFNULLP1ExpiresInP2ExpiresIn() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -463,15 +459,15 @@ func (o *OrderItemsArray) GetIFNULLP1ExpiresInP2ExpiresIn() interface{} {
 // GetIFNULLP1ExpiresInP2ExpiresInOk returns a tuple with the IFNULLP1ExpiresInP2ExpiresIn field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderItemsArray) GetIFNULLP1ExpiresInP2ExpiresInOk() (*interface{}, bool) {
+func (o *OrderItemsArray) GetIFNULLP1ExpiresInP2ExpiresInOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.IFNULLP1ExpiresInP2ExpiresIn) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.IFNULLP1ExpiresInP2ExpiresIn, true
+	return o.IFNULLP1ExpiresInP2ExpiresIn, true
 }
 
 // SetIFNULLP1ExpiresInP2ExpiresIn sets field value
-func (o *OrderItemsArray) SetIFNULLP1ExpiresInP2ExpiresIn(v interface{}) {
+func (o *OrderItemsArray) SetIFNULLP1ExpiresInP2ExpiresIn(v map[string]interface{}) {
 	o.IFNULLP1ExpiresInP2ExpiresIn = v
 }
 
@@ -500,10 +496,10 @@ func (o *OrderItemsArray) SetProductQuantitySold(v int32) {
 }
 
 // GetProductNotificationEmails returns the ProductNotificationEmails field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderItemsArray) GetProductNotificationEmails() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *OrderItemsArray) GetProductNotificationEmails() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -513,15 +509,15 @@ func (o *OrderItemsArray) GetProductNotificationEmails() interface{} {
 // GetProductNotificationEmailsOk returns a tuple with the ProductNotificationEmails field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderItemsArray) GetProductNotificationEmailsOk() (*interface{}, bool) {
+func (o *OrderItemsArray) GetProductNotificationEmailsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.ProductNotificationEmails) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.ProductNotificationEmails, true
+	return o.ProductNotificationEmails, true
 }
 
 // SetProductNotificationEmails sets field value
-func (o *OrderItemsArray) SetProductNotificationEmails(v interface{}) {
+func (o *OrderItemsArray) SetProductNotificationEmails(v map[string]interface{}) {
 	o.ProductNotificationEmails = v
 }
 
@@ -550,10 +546,10 @@ func (o *OrderItemsArray) SetIFNULLP1MetadataP2Metadata(v string) {
 }
 
 // GetStorefrontRedirectUrl returns the StorefrontRedirectUrl field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderItemsArray) GetStorefrontRedirectUrl() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *OrderItemsArray) GetStorefrontRedirectUrl() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -563,23 +559,23 @@ func (o *OrderItemsArray) GetStorefrontRedirectUrl() interface{} {
 // GetStorefrontRedirectUrlOk returns a tuple with the StorefrontRedirectUrl field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderItemsArray) GetStorefrontRedirectUrlOk() (*interface{}, bool) {
+func (o *OrderItemsArray) GetStorefrontRedirectUrlOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.StorefrontRedirectUrl) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.StorefrontRedirectUrl, true
+	return o.StorefrontRedirectUrl, true
 }
 
 // SetStorefrontRedirectUrl sets field value
-func (o *OrderItemsArray) SetStorefrontRedirectUrl(v interface{}) {
+func (o *OrderItemsArray) SetStorefrontRedirectUrl(v map[string]interface{}) {
 	o.StorefrontRedirectUrl = v
 }
 
 // GetStorefrontSuccessMessage returns the StorefrontSuccessMessage field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderItemsArray) GetStorefrontSuccessMessage() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *OrderItemsArray) GetStorefrontSuccessMessage() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -589,15 +585,15 @@ func (o *OrderItemsArray) GetStorefrontSuccessMessage() interface{} {
 // GetStorefrontSuccessMessageOk returns a tuple with the StorefrontSuccessMessage field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderItemsArray) GetStorefrontSuccessMessageOk() (*interface{}, bool) {
+func (o *OrderItemsArray) GetStorefrontSuccessMessageOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.StorefrontSuccessMessage) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.StorefrontSuccessMessage, true
+	return o.StorefrontSuccessMessage, true
 }
 
 // SetStorefrontSuccessMessage sets field value
-func (o *OrderItemsArray) SetStorefrontSuccessMessage(v interface{}) {
+func (o *OrderItemsArray) SetStorefrontSuccessMessage(v map[string]interface{}) {
 	o.StorefrontSuccessMessage = v
 }
 
@@ -645,63 +641,6 @@ func (o OrderItemsArray) ToMap() (map[string]interface{}, error) {
 		toSerialize["storefront_success_message"] = o.StorefrontSuccessMessage
 	}
 	return toSerialize, nil
-}
-
-func (o *OrderItemsArray) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"order_item_id",
-		"orderId",
-		"type",
-		"item",
-		"current_total_items_price",
-		"files",
-		"order",
-		"amount",
-		"quantity",
-		"createdAt",
-		"name",
-		"product_level_type",
-		"product_id",
-		"product_success_message",
-		"product_redirect_url",
-		"IFNULL(p1.expires_in, p2.expires_in)",
-		"product_quantity_sold",
-		"product_notification_emails",
-		"IFNULL(p1.metadata, p2.metadata)",
-		"storefront_redirect_url",
-		"storefront_success_message",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varOrderItemsArray := _OrderItemsArray{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrderItemsArray)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OrderItemsArray(varOrderItemsArray)
-
-	return err
 }
 
 type NullableOrderItemsArray struct {

@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the RefundCreateResponse type satisfies the MappedNullable interface at compile time
@@ -26,8 +24,6 @@ type RefundCreateResponse struct {
 	Message string `json:"message"`
 	Data RefundCreateResponseData `json:"data"`
 }
-
-type _RefundCreateResponse RefundCreateResponse
 
 // NewRefundCreateResponse instantiates a new RefundCreateResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -135,45 +131,6 @@ func (o RefundCreateResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["message"] = o.Message
 	toSerialize["data"] = o.Data
 	return toSerialize, nil
-}
-
-func (o *RefundCreateResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"status",
-		"message",
-		"data",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varRefundCreateResponse := _RefundCreateResponse{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRefundCreateResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RefundCreateResponse(varRefundCreateResponse)
-
-	return err
 }
 
 type NullableRefundCreateResponse struct {

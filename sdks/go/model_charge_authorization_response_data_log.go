@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ChargeAuthorizationResponseDataLog type satisfies the MappedNullable interface at compile time
@@ -28,17 +26,15 @@ type ChargeAuthorizationResponseDataLog struct {
 	Errors int32 `json:"errors"`
 	Success bool `json:"success"`
 	Mobile bool `json:"mobile"`
-	Input []interface{} `json:"input"`
+	Input []map[string]interface{} `json:"input"`
 	History []ChargeAuthorizationResponseDataLogHistoryInner `json:"history"`
 }
-
-type _ChargeAuthorizationResponseDataLog ChargeAuthorizationResponseDataLog
 
 // NewChargeAuthorizationResponseDataLog instantiates a new ChargeAuthorizationResponseDataLog object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChargeAuthorizationResponseDataLog(startTime int32, timeSpent int32, attempts int32, errors int32, success bool, mobile bool, input []interface{}, history []ChargeAuthorizationResponseDataLogHistoryInner) *ChargeAuthorizationResponseDataLog {
+func NewChargeAuthorizationResponseDataLog(startTime int32, timeSpent int32, attempts int32, errors int32, success bool, mobile bool, input []map[string]interface{}, history []ChargeAuthorizationResponseDataLogHistoryInner) *ChargeAuthorizationResponseDataLog {
 	this := ChargeAuthorizationResponseDataLog{}
 	this.StartTime = startTime
 	this.TimeSpent = timeSpent
@@ -204,9 +200,9 @@ func (o *ChargeAuthorizationResponseDataLog) SetMobile(v bool) {
 }
 
 // GetInput returns the Input field value
-func (o *ChargeAuthorizationResponseDataLog) GetInput() []interface{} {
+func (o *ChargeAuthorizationResponseDataLog) GetInput() []map[string]interface{} {
 	if o == nil {
-		var ret []interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -215,7 +211,7 @@ func (o *ChargeAuthorizationResponseDataLog) GetInput() []interface{} {
 
 // GetInputOk returns a tuple with the Input field value
 // and a boolean to check if the value has been set.
-func (o *ChargeAuthorizationResponseDataLog) GetInputOk() ([]interface{}, bool) {
+func (o *ChargeAuthorizationResponseDataLog) GetInputOk() ([]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -223,7 +219,7 @@ func (o *ChargeAuthorizationResponseDataLog) GetInputOk() ([]interface{}, bool) 
 }
 
 // SetInput sets field value
-func (o *ChargeAuthorizationResponseDataLog) SetInput(v []interface{}) {
+func (o *ChargeAuthorizationResponseDataLog) SetInput(v []map[string]interface{}) {
 	o.Input = v
 }
 
@@ -270,50 +266,6 @@ func (o ChargeAuthorizationResponseDataLog) ToMap() (map[string]interface{}, err
 	toSerialize["input"] = o.Input
 	toSerialize["history"] = o.History
 	return toSerialize, nil
-}
-
-func (o *ChargeAuthorizationResponseDataLog) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"start_time",
-		"time_spent",
-		"attempts",
-		"errors",
-		"success",
-		"mobile",
-		"input",
-		"history",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varChargeAuthorizationResponseDataLog := _ChargeAuthorizationResponseDataLog{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varChargeAuthorizationResponseDataLog)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ChargeAuthorizationResponseDataLog(varChargeAuthorizationResponseDataLog)
-
-	return err
 }
 
 type NullableChargeAuthorizationResponseDataLog struct {

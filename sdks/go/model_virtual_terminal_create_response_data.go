@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the VirtualTerminalCreateResponseData type satisfies the MappedNullable interface at compile time
@@ -27,20 +25,18 @@ type VirtualTerminalCreateResponseData struct {
 	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
 	Code string `json:"code"`
-	PaymentMethods []interface{} `json:"paymentMethods"`
+	PaymentMethods []map[string]interface{} `json:"paymentMethods"`
 	Active bool `json:"active"`
-	Metadata interface{} `json:"metadata"`
+	Metadata map[string]interface{} `json:"metadata"`
 	Destinations []VirtualTerminalCreateResponseDataDestinationsInner `json:"destinations"`
 	Currency string `json:"currency"`
 }
-
-type _VirtualTerminalCreateResponseData VirtualTerminalCreateResponseData
 
 // NewVirtualTerminalCreateResponseData instantiates a new VirtualTerminalCreateResponseData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVirtualTerminalCreateResponseData(id int32, name string, integration int32, domain string, code string, paymentMethods []interface{}, active bool, metadata interface{}, destinations []VirtualTerminalCreateResponseDataDestinationsInner, currency string) *VirtualTerminalCreateResponseData {
+func NewVirtualTerminalCreateResponseData(id int32, name string, integration int32, domain string, code string, paymentMethods []map[string]interface{}, active bool, metadata map[string]interface{}, destinations []VirtualTerminalCreateResponseDataDestinationsInner, currency string) *VirtualTerminalCreateResponseData {
 	this := VirtualTerminalCreateResponseData{}
 	this.Id = id
 	this.Name = name
@@ -184,9 +180,9 @@ func (o *VirtualTerminalCreateResponseData) SetCode(v string) {
 }
 
 // GetPaymentMethods returns the PaymentMethods field value
-func (o *VirtualTerminalCreateResponseData) GetPaymentMethods() []interface{} {
+func (o *VirtualTerminalCreateResponseData) GetPaymentMethods() []map[string]interface{} {
 	if o == nil {
-		var ret []interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -195,7 +191,7 @@ func (o *VirtualTerminalCreateResponseData) GetPaymentMethods() []interface{} {
 
 // GetPaymentMethodsOk returns a tuple with the PaymentMethods field value
 // and a boolean to check if the value has been set.
-func (o *VirtualTerminalCreateResponseData) GetPaymentMethodsOk() ([]interface{}, bool) {
+func (o *VirtualTerminalCreateResponseData) GetPaymentMethodsOk() ([]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -203,7 +199,7 @@ func (o *VirtualTerminalCreateResponseData) GetPaymentMethodsOk() ([]interface{}
 }
 
 // SetPaymentMethods sets field value
-func (o *VirtualTerminalCreateResponseData) SetPaymentMethods(v []interface{}) {
+func (o *VirtualTerminalCreateResponseData) SetPaymentMethods(v []map[string]interface{}) {
 	o.PaymentMethods = v
 }
 
@@ -232,10 +228,10 @@ func (o *VirtualTerminalCreateResponseData) SetActive(v bool) {
 }
 
 // GetMetadata returns the Metadata field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *VirtualTerminalCreateResponseData) GetMetadata() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *VirtualTerminalCreateResponseData) GetMetadata() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -245,15 +241,15 @@ func (o *VirtualTerminalCreateResponseData) GetMetadata() interface{} {
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VirtualTerminalCreateResponseData) GetMetadataOk() (*interface{}, bool) {
+func (o *VirtualTerminalCreateResponseData) GetMetadataOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Metadata) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Metadata, true
+	return o.Metadata, true
 }
 
 // SetMetadata sets field value
-func (o *VirtualTerminalCreateResponseData) SetMetadata(v interface{}) {
+func (o *VirtualTerminalCreateResponseData) SetMetadata(v map[string]interface{}) {
 	o.Metadata = v
 }
 
@@ -328,52 +324,6 @@ func (o VirtualTerminalCreateResponseData) ToMap() (map[string]interface{}, erro
 	toSerialize["destinations"] = o.Destinations
 	toSerialize["currency"] = o.Currency
 	return toSerialize, nil
-}
-
-func (o *VirtualTerminalCreateResponseData) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"name",
-		"integration",
-		"domain",
-		"code",
-		"paymentMethods",
-		"active",
-		"metadata",
-		"destinations",
-		"currency",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varVirtualTerminalCreateResponseData := _VirtualTerminalCreateResponseData{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVirtualTerminalCreateResponseData)
-
-	if err != nil {
-		return err
-	}
-
-	*o = VirtualTerminalCreateResponseData(varVirtualTerminalCreateResponseData)
-
-	return err
 }
 
 type NullableVirtualTerminalCreateResponseData struct {

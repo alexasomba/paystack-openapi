@@ -18,82 +18,66 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+
+from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
+from alexasomba_paystack.models.charge_create_response_data_customer import ChargeCreateResponseDataCustomer
 from alexasomba_paystack.models.order_validate_response_data_integration import OrderValidateResponseDataIntegration
-from alexasomba_paystack.models.transaction_fetch_response_data_customer import TransactionFetchResponseDataCustomer
-from typing import Optional, Set
-from typing_extensions import Self
 
 class OrderValidateResponseData(BaseModel):
     """
     OrderValidateResponseData
-    """ # noqa: E501
-    order_code: StrictStr
-    domain: StrictStr
-    currency: StrictStr
-    amount: StrictInt
-    email: StrictStr
-    status: StrictStr
-    refunded: StrictBool
-    paid_at: Optional[Any]
-    shipping_address: Optional[Any]
-    metadata: Optional[Any]
-    shipping_fees: StrictInt
-    shipping_method: Optional[Any]
-    is_viewed: StrictBool
-    expiration_date: StrictStr
-    pay_for_me: StrictBool
-    id: StrictInt
-    integration: OrderValidateResponseDataIntegration
-    transaction: Optional[Any]
-    page: Optional[Any]
-    customer: TransactionFetchResponseDataCustomer
-    shipping: Optional[Any]
-    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
-    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    payer: Optional[Any]
-    __properties: ClassVar[List[str]] = ["order_code", "domain", "currency", "amount", "email", "status", "refunded", "paid_at", "shipping_address", "metadata", "shipping_fees", "shipping_method", "is_viewed", "expiration_date", "pay_for_me", "id", "integration", "transaction", "page", "customer", "shipping", "createdAt", "updatedAt", "payer"]
+    """
+    order_code: StrictStr = Field(...)
+    domain: StrictStr = Field(...)
+    currency: StrictStr = Field(...)
+    amount: StrictInt = Field(...)
+    email: StrictStr = Field(...)
+    status: StrictStr = Field(...)
+    refunded: StrictBool = Field(...)
+    paid_at: Optional[Dict[str, Any]] = Field(...)
+    shipping_address: Optional[Dict[str, Any]] = Field(...)
+    metadata: Optional[Dict[str, Any]] = Field(...)
+    shipping_fees: StrictInt = Field(...)
+    shipping_method: Optional[Dict[str, Any]] = Field(...)
+    is_viewed: StrictBool = Field(...)
+    expiration_date: StrictStr = Field(...)
+    pay_for_me: StrictBool = Field(...)
+    id: StrictInt = Field(...)
+    integration: OrderValidateResponseDataIntegration = Field(...)
+    transaction: Optional[Dict[str, Any]] = Field(...)
+    page: Optional[Dict[str, Any]] = Field(...)
+    customer: ChargeCreateResponseDataCustomer = Field(...)
+    shipping: Optional[Dict[str, Any]] = Field(...)
+    created_at: StrictStr = Field(..., alias="createdAt")
+    updated_at: StrictStr = Field(..., alias="updatedAt")
+    payer: Optional[Dict[str, Any]] = Field(...)
+    __properties = ["order_code", "domain", "currency", "amount", "email", "status", "refunded", "paid_at", "shipping_address", "metadata", "shipping_fees", "shipping_method", "is_viewed", "expiration_date", "pay_for_me", "id", "integration", "transaction", "page", "customer", "shipping", "createdAt", "updatedAt", "payer"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> OrderValidateResponseData:
         """Create an instance of OrderValidateResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of integration
         if self.integration:
             _dict['integration'] = self.integration.to_dict()
@@ -101,57 +85,57 @@ class OrderValidateResponseData(BaseModel):
         if self.customer:
             _dict['customer'] = self.customer.to_dict()
         # set to None if paid_at (nullable) is None
-        # and model_fields_set contains the field
-        if self.paid_at is None and "paid_at" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.paid_at is None and "paid_at" in self.__fields_set__:
             _dict['paid_at'] = None
 
         # set to None if shipping_address (nullable) is None
-        # and model_fields_set contains the field
-        if self.shipping_address is None and "shipping_address" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.shipping_address is None and "shipping_address" in self.__fields_set__:
             _dict['shipping_address'] = None
 
         # set to None if metadata (nullable) is None
-        # and model_fields_set contains the field
-        if self.metadata is None and "metadata" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.metadata is None and "metadata" in self.__fields_set__:
             _dict['metadata'] = None
 
         # set to None if shipping_method (nullable) is None
-        # and model_fields_set contains the field
-        if self.shipping_method is None and "shipping_method" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.shipping_method is None and "shipping_method" in self.__fields_set__:
             _dict['shipping_method'] = None
 
         # set to None if transaction (nullable) is None
-        # and model_fields_set contains the field
-        if self.transaction is None and "transaction" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.transaction is None and "transaction" in self.__fields_set__:
             _dict['transaction'] = None
 
         # set to None if page (nullable) is None
-        # and model_fields_set contains the field
-        if self.page is None and "page" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.page is None and "page" in self.__fields_set__:
             _dict['page'] = None
 
         # set to None if shipping (nullable) is None
-        # and model_fields_set contains the field
-        if self.shipping is None and "shipping" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.shipping is None and "shipping" in self.__fields_set__:
             _dict['shipping'] = None
 
         # set to None if payer (nullable) is None
-        # and model_fields_set contains the field
-        if self.payer is None and "payer" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.payer is None and "payer" in self.__fields_set__:
             _dict['payer'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> OrderValidateResponseData:
         """Create an instance of OrderValidateResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return OrderValidateResponseData.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = OrderValidateResponseData.parse_obj({
             "order_code": obj.get("order_code"),
             "domain": obj.get("domain"),
             "currency": obj.get("currency"),
@@ -168,13 +152,13 @@ class OrderValidateResponseData(BaseModel):
             "expiration_date": obj.get("expiration_date"),
             "pay_for_me": obj.get("pay_for_me"),
             "id": obj.get("id"),
-            "integration": OrderValidateResponseDataIntegration.from_dict(obj["integration"]) if obj.get("integration") is not None else None,
+            "integration": OrderValidateResponseDataIntegration.from_dict(obj.get("integration")) if obj.get("integration") is not None else None,
             "transaction": obj.get("transaction"),
             "page": obj.get("page"),
-            "customer": TransactionFetchResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
+            "customer": ChargeCreateResponseDataCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
             "shipping": obj.get("shipping"),
-            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
-            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
+            "created_at": obj.get("createdAt"),
+            "updated_at": obj.get("updatedAt"),
             "payer": obj.get("payer")
         })
         return _obj

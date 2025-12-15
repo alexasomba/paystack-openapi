@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the BulkChargeInitiate type satisfies the MappedNullable interface at compile time
@@ -35,8 +33,6 @@ type BulkChargeInitiate struct {
 	// JSON object of custom data
 	Metadata map[string]interface{} `json:"metadata,omitempty"`
 }
-
-type _BulkChargeInitiate BulkChargeInitiate
 
 // NewBulkChargeInitiate instantiates a new BulkChargeInitiate object
 // This constructor will assign default values to properties that have it defined,
@@ -258,44 +254,6 @@ func (o BulkChargeInitiate) ToMap() (map[string]interface{}, error) {
 		toSerialize["metadata"] = o.Metadata
 	}
 	return toSerialize, nil
-}
-
-func (o *BulkChargeInitiate) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"authorization",
-		"amount",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varBulkChargeInitiate := _BulkChargeInitiate{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBulkChargeInitiate)
-
-	if err != nil {
-		return err
-	}
-
-	*o = BulkChargeInitiate(varBulkChargeInitiate)
-
-	return err
 }
 
 type NullableBulkChargeInitiate struct {

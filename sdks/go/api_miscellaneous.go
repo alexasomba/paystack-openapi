@@ -77,7 +77,7 @@ func (a *MiscellaneousAPIService) MiscellaneousAvsExecute(r ApiMiscellaneousAvsR
 	localVarFormParams := url.Values{}
 
 	if r.country != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "country", r.country, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "country", r.country, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

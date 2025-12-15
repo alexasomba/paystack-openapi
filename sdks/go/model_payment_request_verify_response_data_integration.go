@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the PaymentRequestVerifyResponseDataIntegration type satisfies the MappedNullable interface at compile time
@@ -27,8 +25,6 @@ type PaymentRequestVerifyResponseDataIntegration struct {
 	Logo string `json:"logo"`
 	AllowedCurrencies []string `json:"allowed_currencies"`
 }
-
-type _PaymentRequestVerifyResponseDataIntegration PaymentRequestVerifyResponseDataIntegration
 
 // NewPaymentRequestVerifyResponseDataIntegration instantiates a new PaymentRequestVerifyResponseDataIntegration object
 // This constructor will assign default values to properties that have it defined,
@@ -162,46 +158,6 @@ func (o PaymentRequestVerifyResponseDataIntegration) ToMap() (map[string]interfa
 	toSerialize["logo"] = o.Logo
 	toSerialize["allowed_currencies"] = o.AllowedCurrencies
 	return toSerialize, nil
-}
-
-func (o *PaymentRequestVerifyResponseDataIntegration) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"key",
-		"name",
-		"logo",
-		"allowed_currencies",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPaymentRequestVerifyResponseDataIntegration := _PaymentRequestVerifyResponseDataIntegration{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaymentRequestVerifyResponseDataIntegration)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PaymentRequestVerifyResponseDataIntegration(varPaymentRequestVerifyResponseDataIntegration)
-
-	return err
 }
 
 type NullablePaymentRequestVerifyResponseDataIntegration struct {

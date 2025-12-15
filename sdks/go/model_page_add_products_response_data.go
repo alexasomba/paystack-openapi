@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the PageAddProductsResponseData type satisfies the MappedNullable interface at compile time
@@ -23,37 +21,35 @@ var _ MappedNullable = &PageAddProductsResponseData{}
 // PageAddProductsResponseData struct for PageAddProductsResponseData
 type PageAddProductsResponseData struct {
 	Integration int32 `json:"integration"`
-	Plan interface{} `json:"plan"`
+	Plan map[string]interface{} `json:"plan"`
 	Domain string `json:"domain"`
 	Name string `json:"name"`
-	Description interface{} `json:"description"`
-	Amount interface{} `json:"amount"`
+	Description map[string]interface{} `json:"description"`
+	Amount map[string]interface{} `json:"amount"`
 	Currency string `json:"currency"`
 	Slug string `json:"slug"`
-	CustomFields interface{} `json:"custom_fields"`
+	CustomFields map[string]interface{} `json:"custom_fields"`
 	Type string `json:"type"`
-	RedirectUrl interface{} `json:"redirect_url"`
-	SuccessMessage interface{} `json:"success_message"`
+	RedirectUrl map[string]interface{} `json:"redirect_url"`
+	SuccessMessage map[string]interface{} `json:"success_message"`
 	CollectPhone bool `json:"collect_phone"`
 	Active bool `json:"active"`
 	Published bool `json:"published"`
 	Migrate bool `json:"migrate"`
-	NotificationEmail interface{} `json:"notification_email"`
-	Metadata interface{} `json:"metadata"`
-	SplitCode interface{} `json:"split_code"`
+	NotificationEmail map[string]interface{} `json:"notification_email"`
+	Metadata map[string]interface{} `json:"metadata"`
+	SplitCode map[string]interface{} `json:"split_code"`
 	Id int32 `json:"id"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
 	Products []PageProductsArray `json:"products"`
 }
 
-type _PageAddProductsResponseData PageAddProductsResponseData
-
 // NewPageAddProductsResponseData instantiates a new PageAddProductsResponseData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPageAddProductsResponseData(integration int32, plan interface{}, domain string, name string, description interface{}, amount interface{}, currency string, slug string, customFields interface{}, type_ string, redirectUrl interface{}, successMessage interface{}, collectPhone bool, active bool, published bool, migrate bool, notificationEmail interface{}, metadata interface{}, splitCode interface{}, id int32, createdAt string, updatedAt string, products []PageProductsArray) *PageAddProductsResponseData {
+func NewPageAddProductsResponseData(integration int32, plan map[string]interface{}, domain string, name string, description map[string]interface{}, amount map[string]interface{}, currency string, slug string, customFields map[string]interface{}, type_ string, redirectUrl map[string]interface{}, successMessage map[string]interface{}, collectPhone bool, active bool, published bool, migrate bool, notificationEmail map[string]interface{}, metadata map[string]interface{}, splitCode map[string]interface{}, id int32, createdAt string, updatedAt string, products []PageProductsArray) *PageAddProductsResponseData {
 	this := PageAddProductsResponseData{}
 	this.Integration = integration
 	this.Plan = plan
@@ -114,10 +110,10 @@ func (o *PageAddProductsResponseData) SetIntegration(v int32) {
 }
 
 // GetPlan returns the Plan field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PageAddProductsResponseData) GetPlan() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *PageAddProductsResponseData) GetPlan() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -127,15 +123,15 @@ func (o *PageAddProductsResponseData) GetPlan() interface{} {
 // GetPlanOk returns a tuple with the Plan field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PageAddProductsResponseData) GetPlanOk() (*interface{}, bool) {
+func (o *PageAddProductsResponseData) GetPlanOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Plan) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Plan, true
+	return o.Plan, true
 }
 
 // SetPlan sets field value
-func (o *PageAddProductsResponseData) SetPlan(v interface{}) {
+func (o *PageAddProductsResponseData) SetPlan(v map[string]interface{}) {
 	o.Plan = v
 }
 
@@ -188,10 +184,10 @@ func (o *PageAddProductsResponseData) SetName(v string) {
 }
 
 // GetDescription returns the Description field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PageAddProductsResponseData) GetDescription() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *PageAddProductsResponseData) GetDescription() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -201,23 +197,23 @@ func (o *PageAddProductsResponseData) GetDescription() interface{} {
 // GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PageAddProductsResponseData) GetDescriptionOk() (*interface{}, bool) {
+func (o *PageAddProductsResponseData) GetDescriptionOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Description) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Description, true
+	return o.Description, true
 }
 
 // SetDescription sets field value
-func (o *PageAddProductsResponseData) SetDescription(v interface{}) {
+func (o *PageAddProductsResponseData) SetDescription(v map[string]interface{}) {
 	o.Description = v
 }
 
 // GetAmount returns the Amount field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PageAddProductsResponseData) GetAmount() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *PageAddProductsResponseData) GetAmount() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -227,15 +223,15 @@ func (o *PageAddProductsResponseData) GetAmount() interface{} {
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PageAddProductsResponseData) GetAmountOk() (*interface{}, bool) {
+func (o *PageAddProductsResponseData) GetAmountOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Amount) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Amount, true
+	return o.Amount, true
 }
 
 // SetAmount sets field value
-func (o *PageAddProductsResponseData) SetAmount(v interface{}) {
+func (o *PageAddProductsResponseData) SetAmount(v map[string]interface{}) {
 	o.Amount = v
 }
 
@@ -288,10 +284,10 @@ func (o *PageAddProductsResponseData) SetSlug(v string) {
 }
 
 // GetCustomFields returns the CustomFields field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PageAddProductsResponseData) GetCustomFields() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *PageAddProductsResponseData) GetCustomFields() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -301,15 +297,15 @@ func (o *PageAddProductsResponseData) GetCustomFields() interface{} {
 // GetCustomFieldsOk returns a tuple with the CustomFields field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PageAddProductsResponseData) GetCustomFieldsOk() (*interface{}, bool) {
+func (o *PageAddProductsResponseData) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.CustomFields, true
+	return o.CustomFields, true
 }
 
 // SetCustomFields sets field value
-func (o *PageAddProductsResponseData) SetCustomFields(v interface{}) {
+func (o *PageAddProductsResponseData) SetCustomFields(v map[string]interface{}) {
 	o.CustomFields = v
 }
 
@@ -338,10 +334,10 @@ func (o *PageAddProductsResponseData) SetType(v string) {
 }
 
 // GetRedirectUrl returns the RedirectUrl field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PageAddProductsResponseData) GetRedirectUrl() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *PageAddProductsResponseData) GetRedirectUrl() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -351,23 +347,23 @@ func (o *PageAddProductsResponseData) GetRedirectUrl() interface{} {
 // GetRedirectUrlOk returns a tuple with the RedirectUrl field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PageAddProductsResponseData) GetRedirectUrlOk() (*interface{}, bool) {
+func (o *PageAddProductsResponseData) GetRedirectUrlOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.RedirectUrl) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.RedirectUrl, true
+	return o.RedirectUrl, true
 }
 
 // SetRedirectUrl sets field value
-func (o *PageAddProductsResponseData) SetRedirectUrl(v interface{}) {
+func (o *PageAddProductsResponseData) SetRedirectUrl(v map[string]interface{}) {
 	o.RedirectUrl = v
 }
 
 // GetSuccessMessage returns the SuccessMessage field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PageAddProductsResponseData) GetSuccessMessage() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *PageAddProductsResponseData) GetSuccessMessage() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -377,15 +373,15 @@ func (o *PageAddProductsResponseData) GetSuccessMessage() interface{} {
 // GetSuccessMessageOk returns a tuple with the SuccessMessage field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PageAddProductsResponseData) GetSuccessMessageOk() (*interface{}, bool) {
+func (o *PageAddProductsResponseData) GetSuccessMessageOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.SuccessMessage) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.SuccessMessage, true
+	return o.SuccessMessage, true
 }
 
 // SetSuccessMessage sets field value
-func (o *PageAddProductsResponseData) SetSuccessMessage(v interface{}) {
+func (o *PageAddProductsResponseData) SetSuccessMessage(v map[string]interface{}) {
 	o.SuccessMessage = v
 }
 
@@ -486,10 +482,10 @@ func (o *PageAddProductsResponseData) SetMigrate(v bool) {
 }
 
 // GetNotificationEmail returns the NotificationEmail field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PageAddProductsResponseData) GetNotificationEmail() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *PageAddProductsResponseData) GetNotificationEmail() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -499,23 +495,23 @@ func (o *PageAddProductsResponseData) GetNotificationEmail() interface{} {
 // GetNotificationEmailOk returns a tuple with the NotificationEmail field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PageAddProductsResponseData) GetNotificationEmailOk() (*interface{}, bool) {
+func (o *PageAddProductsResponseData) GetNotificationEmailOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.NotificationEmail) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.NotificationEmail, true
+	return o.NotificationEmail, true
 }
 
 // SetNotificationEmail sets field value
-func (o *PageAddProductsResponseData) SetNotificationEmail(v interface{}) {
+func (o *PageAddProductsResponseData) SetNotificationEmail(v map[string]interface{}) {
 	o.NotificationEmail = v
 }
 
 // GetMetadata returns the Metadata field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PageAddProductsResponseData) GetMetadata() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *PageAddProductsResponseData) GetMetadata() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -525,23 +521,23 @@ func (o *PageAddProductsResponseData) GetMetadata() interface{} {
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PageAddProductsResponseData) GetMetadataOk() (*interface{}, bool) {
+func (o *PageAddProductsResponseData) GetMetadataOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Metadata) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Metadata, true
+	return o.Metadata, true
 }
 
 // SetMetadata sets field value
-func (o *PageAddProductsResponseData) SetMetadata(v interface{}) {
+func (o *PageAddProductsResponseData) SetMetadata(v map[string]interface{}) {
 	o.Metadata = v
 }
 
 // GetSplitCode returns the SplitCode field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PageAddProductsResponseData) GetSplitCode() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *PageAddProductsResponseData) GetSplitCode() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -551,15 +547,15 @@ func (o *PageAddProductsResponseData) GetSplitCode() interface{} {
 // GetSplitCodeOk returns a tuple with the SplitCode field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PageAddProductsResponseData) GetSplitCodeOk() (*interface{}, bool) {
+func (o *PageAddProductsResponseData) GetSplitCodeOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.SplitCode) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.SplitCode, true
+	return o.SplitCode, true
 }
 
 // SetSplitCode sets field value
-func (o *PageAddProductsResponseData) SetSplitCode(v interface{}) {
+func (o *PageAddProductsResponseData) SetSplitCode(v map[string]interface{}) {
 	o.SplitCode = v
 }
 
@@ -711,65 +707,6 @@ func (o PageAddProductsResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["updatedAt"] = o.UpdatedAt
 	toSerialize["products"] = o.Products
 	return toSerialize, nil
-}
-
-func (o *PageAddProductsResponseData) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"integration",
-		"plan",
-		"domain",
-		"name",
-		"description",
-		"amount",
-		"currency",
-		"slug",
-		"custom_fields",
-		"type",
-		"redirect_url",
-		"success_message",
-		"collect_phone",
-		"active",
-		"published",
-		"migrate",
-		"notification_email",
-		"metadata",
-		"split_code",
-		"id",
-		"createdAt",
-		"updatedAt",
-		"products",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPageAddProductsResponseData := _PageAddProductsResponseData{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPageAddProductsResponseData)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PageAddProductsResponseData(varPageAddProductsResponseData)
-
-	return err
 }
 
 type NullablePageAddProductsResponseData struct {

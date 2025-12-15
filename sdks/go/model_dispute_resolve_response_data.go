@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the DisputeResolveResponseData type satisfies the MappedNullable interface at compile time
@@ -25,14 +23,14 @@ type DisputeResolveResponseData struct {
 	Currency string `json:"currency"`
 	Last4 string `json:"last4"`
 	Bin string `json:"bin"`
-	TransactionReference interface{} `json:"transaction_reference"`
+	TransactionReference map[string]interface{} `json:"transaction_reference"`
 	MerchantTransactionReference string `json:"merchant_transaction_reference"`
 	RefundAmount int32 `json:"refund_amount"`
 	Status string `json:"status"`
 	Domain string `json:"domain"`
 	Resolution string `json:"resolution"`
 	Category string `json:"category"`
-	Note interface{} `json:"note"`
+	Note map[string]interface{} `json:"note"`
 	Attachments string `json:"attachments"`
 	Id int32 `json:"id"`
 	Integration int32 `json:"integration"`
@@ -42,17 +40,15 @@ type DisputeResolveResponseData struct {
 	ResolvedAt string `json:"resolvedAt"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
-	DueAt interface{} `json:"dueAt"`
+	DueAt map[string]interface{} `json:"dueAt"`
 	Message DisputeResolveResponseDataMessage `json:"message"`
 }
-
-type _DisputeResolveResponseData DisputeResolveResponseData
 
 // NewDisputeResolveResponseData instantiates a new DisputeResolveResponseData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDisputeResolveResponseData(currency string, last4 string, bin string, transactionReference interface{}, merchantTransactionReference string, refundAmount int32, status string, domain string, resolution string, category string, note interface{}, attachments string, id int32, integration int32, transaction int32, createdBy int32, evidence int32, resolvedAt string, createdAt string, updatedAt string, dueAt interface{}, message DisputeResolveResponseDataMessage) *DisputeResolveResponseData {
+func NewDisputeResolveResponseData(currency string, last4 string, bin string, transactionReference map[string]interface{}, merchantTransactionReference string, refundAmount int32, status string, domain string, resolution string, category string, note map[string]interface{}, attachments string, id int32, integration int32, transaction int32, createdBy int32, evidence int32, resolvedAt string, createdAt string, updatedAt string, dueAt map[string]interface{}, message DisputeResolveResponseDataMessage) *DisputeResolveResponseData {
 	this := DisputeResolveResponseData{}
 	this.Currency = currency
 	this.Last4 = last4
@@ -160,10 +156,10 @@ func (o *DisputeResolveResponseData) SetBin(v string) {
 }
 
 // GetTransactionReference returns the TransactionReference field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *DisputeResolveResponseData) GetTransactionReference() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *DisputeResolveResponseData) GetTransactionReference() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -173,15 +169,15 @@ func (o *DisputeResolveResponseData) GetTransactionReference() interface{} {
 // GetTransactionReferenceOk returns a tuple with the TransactionReference field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeResolveResponseData) GetTransactionReferenceOk() (*interface{}, bool) {
+func (o *DisputeResolveResponseData) GetTransactionReferenceOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.TransactionReference) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.TransactionReference, true
+	return o.TransactionReference, true
 }
 
 // SetTransactionReference sets field value
-func (o *DisputeResolveResponseData) SetTransactionReference(v interface{}) {
+func (o *DisputeResolveResponseData) SetTransactionReference(v map[string]interface{}) {
 	o.TransactionReference = v
 }
 
@@ -330,10 +326,10 @@ func (o *DisputeResolveResponseData) SetCategory(v string) {
 }
 
 // GetNote returns the Note field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *DisputeResolveResponseData) GetNote() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *DisputeResolveResponseData) GetNote() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -343,15 +339,15 @@ func (o *DisputeResolveResponseData) GetNote() interface{} {
 // GetNoteOk returns a tuple with the Note field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeResolveResponseData) GetNoteOk() (*interface{}, bool) {
+func (o *DisputeResolveResponseData) GetNoteOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Note) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Note, true
+	return o.Note, true
 }
 
 // SetNote sets field value
-func (o *DisputeResolveResponseData) SetNote(v interface{}) {
+func (o *DisputeResolveResponseData) SetNote(v map[string]interface{}) {
 	o.Note = v
 }
 
@@ -572,10 +568,10 @@ func (o *DisputeResolveResponseData) SetUpdatedAt(v string) {
 }
 
 // GetDueAt returns the DueAt field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *DisputeResolveResponseData) GetDueAt() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *DisputeResolveResponseData) GetDueAt() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -585,15 +581,15 @@ func (o *DisputeResolveResponseData) GetDueAt() interface{} {
 // GetDueAtOk returns a tuple with the DueAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeResolveResponseData) GetDueAtOk() (*interface{}, bool) {
+func (o *DisputeResolveResponseData) GetDueAtOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.DueAt) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.DueAt, true
+	return o.DueAt, true
 }
 
 // SetDueAt sets field value
-func (o *DisputeResolveResponseData) SetDueAt(v interface{}) {
+func (o *DisputeResolveResponseData) SetDueAt(v map[string]interface{}) {
 	o.DueAt = v
 }
 
@@ -660,64 +656,6 @@ func (o DisputeResolveResponseData) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["message"] = o.Message
 	return toSerialize, nil
-}
-
-func (o *DisputeResolveResponseData) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"currency",
-		"last4",
-		"bin",
-		"transaction_reference",
-		"merchant_transaction_reference",
-		"refund_amount",
-		"status",
-		"domain",
-		"resolution",
-		"category",
-		"note",
-		"attachments",
-		"id",
-		"integration",
-		"transaction",
-		"created_by",
-		"evidence",
-		"resolvedAt",
-		"createdAt",
-		"updatedAt",
-		"dueAt",
-		"message",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDisputeResolveResponseData := _DisputeResolveResponseData{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDisputeResolveResponseData)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DisputeResolveResponseData(varDisputeResolveResponseData)
-
-	return err
 }
 
 type NullableDisputeResolveResponseData struct {

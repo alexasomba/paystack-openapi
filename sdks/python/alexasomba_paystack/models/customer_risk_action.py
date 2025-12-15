@@ -18,80 +18,64 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
-from typing import Optional, Set
-from typing_extensions import Self
+
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr, validator
 
 class CustomerRiskAction(BaseModel):
     """
     CustomerRiskAction
-    """ # noqa: E501
-    customer: StrictStr = Field(description="The customer code from the response of the customer creation")
-    risk_action: Optional[StrictStr] = Field(default='default', description="This determines the fraud rules that should be applied to the customer")
-    __properties: ClassVar[List[str]] = ["customer", "risk_action"]
+    """
+    customer: StrictStr = Field(..., description="The customer code from the response of the customer creation")
+    risk_action: Optional[StrictStr] = Field('default', description="This determines the fraud rules that should be applied to the customer")
+    __properties = ["customer", "risk_action"]
 
-    @field_validator('risk_action')
+    @validator('risk_action')
     def risk_action_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in set(['allow', 'deny', 'default']):
+        if value not in ('allow', 'deny', 'default'):
             raise ValueError("must be one of enum values ('allow', 'deny', 'default')")
         return value
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> CustomerRiskAction:
         """Create an instance of CustomerRiskAction from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> CustomerRiskAction:
         """Create an instance of CustomerRiskAction from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return CustomerRiskAction.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = CustomerRiskAction.parse_obj({
             "customer": obj.get("customer"),
             "risk_action": obj.get("risk_action") if obj.get("risk_action") is not None else 'default'
         })

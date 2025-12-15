@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the SubscriptionListResponseArrayCustomer type satisfies the MappedNullable interface at compile time
@@ -32,8 +30,6 @@ type SubscriptionListResponseArrayCustomer struct {
 	RiskAction string `json:"risk_action"`
 	InternationalFormatPhone string `json:"international_format_phone"`
 }
-
-type _SubscriptionListResponseArrayCustomer SubscriptionListResponseArrayCustomer
 
 // NewSubscriptionListResponseArrayCustomer instantiates a new SubscriptionListResponseArrayCustomer object
 // This constructor will assign default values to properties that have it defined,
@@ -299,51 +295,6 @@ func (o SubscriptionListResponseArrayCustomer) ToMap() (map[string]interface{}, 
 	toSerialize["risk_action"] = o.RiskAction
 	toSerialize["international_format_phone"] = o.InternationalFormatPhone
 	return toSerialize, nil
-}
-
-func (o *SubscriptionListResponseArrayCustomer) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"first_name",
-		"last_name",
-		"email",
-		"customer_code",
-		"phone",
-		"metadata",
-		"risk_action",
-		"international_format_phone",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSubscriptionListResponseArrayCustomer := _SubscriptionListResponseArrayCustomer{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSubscriptionListResponseArrayCustomer)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SubscriptionListResponseArrayCustomer(varSubscriptionListResponseArrayCustomer)
-
-	return err
 }
 
 type NullableSubscriptionListResponseArrayCustomer struct {

@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank type satisfies the MappedNullable interface at compile time
@@ -30,17 +28,15 @@ type MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurren
 	AccountVerificationRequired bool `json:"account_verification_required"`
 	AccountNumberLabel string `json:"account_number_label"`
 	AccountNumberPattern MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern `json:"account_number_pattern"`
-	Documents []interface{} `json:"documents"`
+	Documents []map[string]interface{} `json:"documents"`
 	Notices []string `json:"notices"`
 }
-
-type _MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank
 
 // NewMiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank instantiates a new MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank(bankType string, requiredFields []string, branchCode bool, branchCodeType string, accountName bool, accountVerificationRequired bool, accountNumberLabel string, accountNumberPattern MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern, documents []interface{}, notices []string) *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank {
+func NewMiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank(bankType string, requiredFields []string, branchCode bool, branchCodeType string, accountName bool, accountVerificationRequired bool, accountNumberLabel string, accountNumberPattern MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern, documents []map[string]interface{}, notices []string) *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank {
 	this := MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank{}
 	this.BankType = bankType
 	this.RequiredFields = requiredFields
@@ -256,9 +252,9 @@ func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCu
 }
 
 // GetDocuments returns the Documents field value
-func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) GetDocuments() []interface{} {
+func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) GetDocuments() []map[string]interface{} {
 	if o == nil {
-		var ret []interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -267,7 +263,7 @@ func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCu
 
 // GetDocumentsOk returns a tuple with the Documents field value
 // and a boolean to check if the value has been set.
-func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) GetDocumentsOk() ([]interface{}, bool) {
+func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) GetDocumentsOk() ([]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -275,7 +271,7 @@ func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCu
 }
 
 // SetDocuments sets field value
-func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) SetDocuments(v []interface{}) {
+func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) SetDocuments(v []map[string]interface{}) {
 	o.Documents = v
 }
 
@@ -324,52 +320,6 @@ func (o MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCur
 	toSerialize["documents"] = o.Documents
 	toSerialize["notices"] = o.Notices
 	return toSerialize, nil
-}
-
-func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"bank_type",
-		"required_fields",
-		"branch_code",
-		"branch_code_type",
-		"account_name",
-		"account_verification_required",
-		"account_number_label",
-		"account_number_pattern",
-		"documents",
-		"notices",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varMiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank := _MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varMiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank)
-
-	if err != nil {
-		return err
-	}
-
-	*o = MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank(varMiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank)
-
-	return err
 }
 
 type NullableMiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank struct {

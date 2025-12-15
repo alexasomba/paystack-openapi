@@ -593,25 +593,25 @@ func (a *PaymentRequestAPIService) PaymentRequestListExecute(r ApiPaymentRequest
 	localVarFormParams := url.Values{}
 
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.customer != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "customer", r.customer, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "customer", r.customer, "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "")
 	}
 	if r.currency != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "currency", r.currency, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "currency", r.currency, "")
 	}
 	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "")
 	}
 	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -928,11 +928,11 @@ type ApiPaymentRequestUpdateRequest struct {
 	ctx context.Context
 	ApiService *PaymentRequestAPIService
 	id int32
-	paymentRequestUpdate *PaymentRequestUpdate
+	body *PaymentrequestId
 }
 
-func (r ApiPaymentRequestUpdateRequest) PaymentRequestUpdate(paymentRequestUpdate PaymentRequestUpdate) ApiPaymentRequestUpdateRequest {
-	r.paymentRequestUpdate = &paymentRequestUpdate
+func (r ApiPaymentRequestUpdateRequest) Body(body PaymentrequestId) ApiPaymentRequestUpdateRequest {
+	r.body = &body
 	return r
 }
 
@@ -997,7 +997,7 @@ func (a *PaymentRequestAPIService) PaymentRequestUpdateExecute(r ApiPaymentReque
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.paymentRequestUpdate
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

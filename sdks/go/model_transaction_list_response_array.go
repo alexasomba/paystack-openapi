@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the TransactionListResponseArray type satisfies the MappedNullable interface at compile time
@@ -27,7 +25,7 @@ type TransactionListResponseArray struct {
 	Status string `json:"status"`
 	Reference string `json:"reference"`
 	Amount int32 `json:"amount"`
-	Message interface{} `json:"message"`
+	Message map[string]interface{} `json:"message"`
 	GatewayResponse string `json:"gateway_response"`
 	PaidAt NullableString `json:"paid_at"`
 	CreatedAt string `json:"created_at"`
@@ -43,20 +41,18 @@ type TransactionListResponseArray struct {
 	Plan map[string]interface{} `json:"plan"`
 	Split map[string]interface{} `json:"split"`
 	Subaccount map[string]interface{} `json:"subaccount"`
-	OrderId interface{} `json:"order_id"`
+	OrderId map[string]interface{} `json:"order_id"`
 	RequestedAmount int32 `json:"requested_amount"`
 	Source NullableTransactionListResponseArraySource `json:"source"`
 	Connect map[string]interface{} `json:"connect"`
-	PosTransactionData interface{} `json:"pos_transaction_data"`
+	PosTransactionData map[string]interface{} `json:"pos_transaction_data"`
 }
-
-type _TransactionListResponseArray TransactionListResponseArray
 
 // NewTransactionListResponseArray instantiates a new TransactionListResponseArray object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransactionListResponseArray(id int32, domain string, status string, reference string, amount int32, message interface{}, gatewayResponse string, paidAt NullableString, createdAt string, channel string, currency string, ipAddress NullableString, metadata map[string]interface{}, log NullableChargeAuthorizationResponseDataLog, fees NullableInt32, feesSplit NullableInt32, customer TransactionListResponseArrayCustomer, authorization TransactionListResponseArrayAuthorization, plan map[string]interface{}, split map[string]interface{}, subaccount map[string]interface{}, orderId interface{}, requestedAmount int32, source NullableTransactionListResponseArraySource, connect map[string]interface{}, posTransactionData interface{}) *TransactionListResponseArray {
+func NewTransactionListResponseArray(id int32, domain string, status string, reference string, amount int32, message map[string]interface{}, gatewayResponse string, paidAt NullableString, createdAt string, channel string, currency string, ipAddress NullableString, metadata map[string]interface{}, log NullableChargeAuthorizationResponseDataLog, fees NullableInt32, feesSplit NullableInt32, customer TransactionListResponseArrayCustomer, authorization TransactionListResponseArrayAuthorization, plan map[string]interface{}, split map[string]interface{}, subaccount map[string]interface{}, orderId map[string]interface{}, requestedAmount int32, source NullableTransactionListResponseArraySource, connect map[string]interface{}, posTransactionData map[string]interface{}) *TransactionListResponseArray {
 	this := TransactionListResponseArray{}
 	this.Id = id
 	this.Domain = domain
@@ -216,10 +212,10 @@ func (o *TransactionListResponseArray) SetAmount(v int32) {
 }
 
 // GetMessage returns the Message field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransactionListResponseArray) GetMessage() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *TransactionListResponseArray) GetMessage() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -229,15 +225,15 @@ func (o *TransactionListResponseArray) GetMessage() interface{} {
 // GetMessageOk returns a tuple with the Message field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransactionListResponseArray) GetMessageOk() (*interface{}, bool) {
+func (o *TransactionListResponseArray) GetMessageOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Message) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Message, true
+	return o.Message, true
 }
 
 // SetMessage sets field value
-func (o *TransactionListResponseArray) SetMessage(v interface{}) {
+func (o *TransactionListResponseArray) SetMessage(v map[string]interface{}) {
 	o.Message = v
 }
 
@@ -614,10 +610,10 @@ func (o *TransactionListResponseArray) SetSubaccount(v map[string]interface{}) {
 }
 
 // GetOrderId returns the OrderId field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransactionListResponseArray) GetOrderId() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *TransactionListResponseArray) GetOrderId() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -627,15 +623,15 @@ func (o *TransactionListResponseArray) GetOrderId() interface{} {
 // GetOrderIdOk returns a tuple with the OrderId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransactionListResponseArray) GetOrderIdOk() (*interface{}, bool) {
+func (o *TransactionListResponseArray) GetOrderIdOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.OrderId) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.OrderId, true
+	return o.OrderId, true
 }
 
 // SetOrderId sets field value
-func (o *TransactionListResponseArray) SetOrderId(v interface{}) {
+func (o *TransactionListResponseArray) SetOrderId(v map[string]interface{}) {
 	o.OrderId = v
 }
 
@@ -716,10 +712,10 @@ func (o *TransactionListResponseArray) SetConnect(v map[string]interface{}) {
 }
 
 // GetPosTransactionData returns the PosTransactionData field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransactionListResponseArray) GetPosTransactionData() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *TransactionListResponseArray) GetPosTransactionData() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -729,15 +725,15 @@ func (o *TransactionListResponseArray) GetPosTransactionData() interface{} {
 // GetPosTransactionDataOk returns a tuple with the PosTransactionData field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransactionListResponseArray) GetPosTransactionDataOk() (*interface{}, bool) {
+func (o *TransactionListResponseArray) GetPosTransactionDataOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.PosTransactionData) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.PosTransactionData, true
+	return o.PosTransactionData, true
 }
 
 // SetPosTransactionData sets field value
-func (o *TransactionListResponseArray) SetPosTransactionData(v interface{}) {
+func (o *TransactionListResponseArray) SetPosTransactionData(v map[string]interface{}) {
 	o.PosTransactionData = v
 }
 
@@ -788,68 +784,6 @@ func (o TransactionListResponseArray) ToMap() (map[string]interface{}, error) {
 		toSerialize["pos_transaction_data"] = o.PosTransactionData
 	}
 	return toSerialize, nil
-}
-
-func (o *TransactionListResponseArray) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"domain",
-		"status",
-		"reference",
-		"amount",
-		"message",
-		"gateway_response",
-		"paid_at",
-		"created_at",
-		"channel",
-		"currency",
-		"ip_address",
-		"metadata",
-		"log",
-		"fees",
-		"fees_split",
-		"customer",
-		"authorization",
-		"plan",
-		"split",
-		"subaccount",
-		"order_id",
-		"requested_amount",
-		"source",
-		"connect",
-		"pos_transaction_data",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varTransactionListResponseArray := _TransactionListResponseArray{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransactionListResponseArray)
-
-	if err != nil {
-		return err
-	}
-
-	*o = TransactionListResponseArray(varTransactionListResponseArray)
-
-	return err
 }
 
 type NullableTransactionListResponseArray struct {

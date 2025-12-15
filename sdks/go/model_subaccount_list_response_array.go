@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the SubaccountListResponseArray type satisfies the MappedNullable interface at compile time
@@ -38,8 +36,6 @@ type SubaccountListResponseArray struct {
 	Active int32 `json:"active"`
 	IsVerified bool `json:"is_verified"`
 }
-
-type _SubaccountListResponseArray SubaccountListResponseArray
 
 // NewSubaccountListResponseArray instantiates a new SubaccountListResponseArray object
 // This constructor will assign default values to properties that have it defined,
@@ -459,57 +455,6 @@ func (o SubaccountListResponseArray) ToMap() (map[string]interface{}, error) {
 	toSerialize["active"] = o.Active
 	toSerialize["is_verified"] = o.IsVerified
 	return toSerialize, nil
-}
-
-func (o *SubaccountListResponseArray) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"subaccount_code",
-		"business_name",
-		"description",
-		"primary_contact_name",
-		"primary_contact_email",
-		"primary_contact_phone",
-		"metadata",
-		"percentage_charge",
-		"settlement_bank",
-		"bank_id",
-		"account_number",
-		"currency",
-		"active",
-		"is_verified",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSubaccountListResponseArray := _SubaccountListResponseArray{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSubaccountListResponseArray)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SubaccountListResponseArray(varSubaccountListResponseArray)
-
-	return err
 }
 
 type NullableSubaccountListResponseArray struct {

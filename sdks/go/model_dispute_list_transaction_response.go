@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the DisputeListTransactionResponse type satisfies the MappedNullable interface at compile time
@@ -26,8 +24,6 @@ type DisputeListTransactionResponse struct {
 	Message string `json:"message"`
 	Data DisputeListTransactionResponseData `json:"data"`
 }
-
-type _DisputeListTransactionResponse DisputeListTransactionResponse
 
 // NewDisputeListTransactionResponse instantiates a new DisputeListTransactionResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -135,45 +131,6 @@ func (o DisputeListTransactionResponse) ToMap() (map[string]interface{}, error) 
 	toSerialize["message"] = o.Message
 	toSerialize["data"] = o.Data
 	return toSerialize, nil
-}
-
-func (o *DisputeListTransactionResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"status",
-		"message",
-		"data",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDisputeListTransactionResponse := _DisputeListTransactionResponse{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDisputeListTransactionResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DisputeListTransactionResponse(varDisputeListTransactionResponse)
-
-	return err
 }
 
 type NullableDisputeListTransactionResponse struct {

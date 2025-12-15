@@ -19,76 +19,59 @@ import re  # noqa: F401
 import json
 
 from datetime import date
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from typing import Optional, Set
-from typing_extensions import Self
+from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field, StrictInt, StrictStr
 
 class ChargeCreate(BaseModel):
     """
     ChargeCreate
-    """ # noqa: E501
-    email: StrictStr = Field(description="Customer's email address")
-    amount: StrictInt = Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")
-    authorization_code: Optional[StrictStr] = Field(default=None, description="An authorization code to charge.")
-    pin: Optional[StrictStr] = Field(default=None, description="4-digit PIN (send with a non-reusable authorization code)")
-    reference: Optional[StrictStr] = Field(default=None, description="Unique transaction reference. Only -, .`, = and alphanumeric characters allowed.")
-    birthday: Optional[date] = Field(default=None, description="The customer's birthday in the format YYYY-MM-DD e.g 2017-05-16")
-    device_id: Optional[StrictStr] = Field(default=None, description="This is the unique identifier of the device a user uses in making payment.  Only -, .`, = and alphanumeric characters are allowed.")
-    metadata: Optional[Dict[str, Any]] = Field(default=None, description="JSON object of custom data")
-    __properties: ClassVar[List[str]] = ["email", "amount", "authorization_code", "pin", "reference", "birthday", "device_id", "metadata"]
+    """
+    email: StrictStr = Field(..., description="Customer's email address")
+    amount: StrictInt = Field(..., description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")
+    authorization_code: Optional[StrictStr] = Field(None, description="An authorization code to charge.")
+    pin: Optional[StrictStr] = Field(None, description="4-digit PIN (send with a non-reusable authorization code)")
+    reference: Optional[StrictStr] = Field(None, description="Unique transaction reference. Only -, .`, = and alphanumeric characters allowed.")
+    birthday: Optional[date] = Field(None, description="The customer's birthday in the format YYYY-MM-DD e.g 2017-05-16")
+    device_id: Optional[StrictStr] = Field(None, description="This is the unique identifier of the device a user uses in making payment.  Only -, .`, = and alphanumeric characters are allowed.")
+    metadata: Optional[Dict[str, Any]] = Field(None, description="JSON object of custom data")
+    __properties = ["email", "amount", "authorization_code", "pin", "reference", "birthday", "device_id", "metadata"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> ChargeCreate:
         """Create an instance of ChargeCreate from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> ChargeCreate:
         """Create an instance of ChargeCreate from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return ChargeCreate.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = ChargeCreate.parse_obj({
             "email": obj.get("email"),
             "amount": obj.get("amount"),
             "authorization_code": obj.get("authorization_code"),

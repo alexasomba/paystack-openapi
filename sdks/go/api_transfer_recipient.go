@@ -267,7 +267,7 @@ type ApiTransferrecipientDeleteRequest struct {
 	code string
 }
 
-func (r ApiTransferrecipientDeleteRequest) Execute() (*TransferRecipientDeleteResponse, *http.Response, error) {
+func (r ApiTransferrecipientDeleteRequest) Execute() (*TransferrecipientCode, *http.Response, error) {
 	return r.ApiService.TransferrecipientDeleteExecute(r)
 }
 
@@ -289,13 +289,13 @@ func (a *TransferRecipientAPIService) TransferrecipientDelete(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return TransferRecipientDeleteResponse
-func (a *TransferRecipientAPIService) TransferrecipientDeleteExecute(r ApiTransferrecipientDeleteRequest) (*TransferRecipientDeleteResponse, *http.Response, error) {
+//  @return TransferrecipientCode
+func (a *TransferRecipientAPIService) TransferrecipientDeleteExecute(r ApiTransferrecipientDeleteRequest) (*TransferrecipientCode, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *TransferRecipientDeleteResponse
+		localVarReturnValue  *TransferrecipientCode
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.TransferrecipientDelete")
@@ -392,7 +392,7 @@ type ApiTransferrecipientFetchRequest struct {
 	code string
 }
 
-func (r ApiTransferrecipientFetchRequest) Execute() (*TransferRecipientFetchResponse, *http.Response, error) {
+func (r ApiTransferrecipientFetchRequest) Execute() (*TransferrecipientCode, *http.Response, error) {
 	return r.ApiService.TransferrecipientFetchExecute(r)
 }
 
@@ -414,13 +414,13 @@ func (a *TransferRecipientAPIService) TransferrecipientFetch(ctx context.Context
 }
 
 // Execute executes the request
-//  @return TransferRecipientFetchResponse
-func (a *TransferRecipientAPIService) TransferrecipientFetchExecute(r ApiTransferrecipientFetchRequest) (*TransferRecipientFetchResponse, *http.Response, error) {
+//  @return TransferrecipientCode
+func (a *TransferRecipientAPIService) TransferrecipientFetchExecute(r ApiTransferrecipientFetchRequest) (*TransferrecipientCode, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *TransferRecipientFetchResponse
+		localVarReturnValue  *TransferrecipientCode
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.TransferrecipientFetch")
@@ -592,19 +592,19 @@ func (a *TransferRecipientAPIService) TransferrecipientListExecute(r ApiTransfer
 	localVarFormParams := url.Values{}
 
 	if r.useCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "use_cursor", r.useCursor, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "use_cursor", r.useCursor, "")
 	}
 	if r.next != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "")
 	}
 	if r.previous != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "")
 	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -686,15 +686,15 @@ type ApiTransferrecipientUpdateRequest struct {
 	ctx context.Context
 	ApiService *TransferRecipientAPIService
 	code string
-	transferRecipientUpdate *TransferRecipientUpdate
+	body *TransferrecipientCode
 }
 
-func (r ApiTransferrecipientUpdateRequest) TransferRecipientUpdate(transferRecipientUpdate TransferRecipientUpdate) ApiTransferrecipientUpdateRequest {
-	r.transferRecipientUpdate = &transferRecipientUpdate
+func (r ApiTransferrecipientUpdateRequest) Body(body TransferrecipientCode) ApiTransferrecipientUpdateRequest {
+	r.body = &body
 	return r
 }
 
-func (r ApiTransferrecipientUpdateRequest) Execute() (*TransferRecipientUpdateResponse, *http.Response, error) {
+func (r ApiTransferrecipientUpdateRequest) Execute() (*TransferrecipientCode, *http.Response, error) {
 	return r.ApiService.TransferrecipientUpdateExecute(r)
 }
 
@@ -716,13 +716,13 @@ func (a *TransferRecipientAPIService) TransferrecipientUpdate(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return TransferRecipientUpdateResponse
-func (a *TransferRecipientAPIService) TransferrecipientUpdateExecute(r ApiTransferrecipientUpdateRequest) (*TransferRecipientUpdateResponse, *http.Response, error) {
+//  @return TransferrecipientCode
+func (a *TransferRecipientAPIService) TransferrecipientUpdateExecute(r ApiTransferrecipientUpdateRequest) (*TransferrecipientCode, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *TransferRecipientUpdateResponse
+		localVarReturnValue  *TransferrecipientCode
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.TransferrecipientUpdate")
@@ -755,7 +755,7 @@ func (a *TransferRecipientAPIService) TransferrecipientUpdateExecute(r ApiTransf
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.transferRecipientUpdate
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

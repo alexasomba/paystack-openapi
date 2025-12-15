@@ -29,15 +29,15 @@ type ApiSplitAddSubaccountRequest struct {
 	ctx context.Context
 	ApiService *SplitAPIService
 	id int32
-	splitSubaccounts *SplitSubaccounts
+	body *SplitIdSubaccountAdd
 }
 
-func (r ApiSplitAddSubaccountRequest) SplitSubaccounts(splitSubaccounts SplitSubaccounts) ApiSplitAddSubaccountRequest {
-	r.splitSubaccounts = &splitSubaccounts
+func (r ApiSplitAddSubaccountRequest) Body(body SplitIdSubaccountAdd) ApiSplitAddSubaccountRequest {
+	r.body = &body
 	return r
 }
 
-func (r ApiSplitAddSubaccountRequest) Execute() (*SplitAddUpdateSubaccountResponse, *http.Response, error) {
+func (r ApiSplitAddSubaccountRequest) Execute() (*SplitIdSubaccountAdd, *http.Response, error) {
 	return r.ApiService.SplitAddSubaccountExecute(r)
 }
 
@@ -59,13 +59,13 @@ func (a *SplitAPIService) SplitAddSubaccount(ctx context.Context, id int32) ApiS
 }
 
 // Execute executes the request
-//  @return SplitAddUpdateSubaccountResponse
-func (a *SplitAPIService) SplitAddSubaccountExecute(r ApiSplitAddSubaccountRequest) (*SplitAddUpdateSubaccountResponse, *http.Response, error) {
+//  @return SplitIdSubaccountAdd
+func (a *SplitAPIService) SplitAddSubaccountExecute(r ApiSplitAddSubaccountRequest) (*SplitIdSubaccountAdd, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SplitAddUpdateSubaccountResponse
+		localVarReturnValue  *SplitIdSubaccountAdd
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SplitAPIService.SplitAddSubaccount")
@@ -98,7 +98,7 @@ func (a *SplitAPIService) SplitAddSubaccountExecute(r ApiSplitAddSubaccountReque
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.splitSubaccounts
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -271,7 +271,7 @@ type ApiSplitFetchRequest struct {
 	id int32
 }
 
-func (r ApiSplitFetchRequest) Execute() (*SplitFetchResponse, *http.Response, error) {
+func (r ApiSplitFetchRequest) Execute() (*SplitId, *http.Response, error) {
 	return r.ApiService.SplitFetchExecute(r)
 }
 
@@ -293,13 +293,13 @@ func (a *SplitAPIService) SplitFetch(ctx context.Context, id int32) ApiSplitFetc
 }
 
 // Execute executes the request
-//  @return SplitFetchResponse
-func (a *SplitAPIService) SplitFetchExecute(r ApiSplitFetchRequest) (*SplitFetchResponse, *http.Response, error) {
+//  @return SplitId
+func (a *SplitAPIService) SplitFetchExecute(r ApiSplitFetchRequest) (*SplitId, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SplitFetchResponse
+		localVarReturnValue  *SplitId
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SplitAPIService.SplitFetch")
@@ -485,25 +485,25 @@ func (a *SplitAPIService) SplitListExecute(r ApiSplitListRequest) (*SplitListRes
 	localVarFormParams := url.Values{}
 
 	if r.subaccountCode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "subaccount_code", r.subaccountCode, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "subaccount_code", r.subaccountCode, "")
 	}
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.active != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "")
 	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "")
 	}
 	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -585,15 +585,15 @@ type ApiSplitRemoveSubaccountRequest struct {
 	ctx context.Context
 	ApiService *SplitAPIService
 	id int32
-	splitSubaccounts *SplitSubaccounts
+	body *SplitIdSubaccountRemove
 }
 
-func (r ApiSplitRemoveSubaccountRequest) SplitSubaccounts(splitSubaccounts SplitSubaccounts) ApiSplitRemoveSubaccountRequest {
-	r.splitSubaccounts = &splitSubaccounts
+func (r ApiSplitRemoveSubaccountRequest) Body(body SplitIdSubaccountRemove) ApiSplitRemoveSubaccountRequest {
+	r.body = &body
 	return r
 }
 
-func (r ApiSplitRemoveSubaccountRequest) Execute() (*SplitRemoveSubaccountResponse, *http.Response, error) {
+func (r ApiSplitRemoveSubaccountRequest) Execute() (*SplitIdSubaccountRemove, *http.Response, error) {
 	return r.ApiService.SplitRemoveSubaccountExecute(r)
 }
 
@@ -615,13 +615,13 @@ func (a *SplitAPIService) SplitRemoveSubaccount(ctx context.Context, id int32) A
 }
 
 // Execute executes the request
-//  @return SplitRemoveSubaccountResponse
-func (a *SplitAPIService) SplitRemoveSubaccountExecute(r ApiSplitRemoveSubaccountRequest) (*SplitRemoveSubaccountResponse, *http.Response, error) {
+//  @return SplitIdSubaccountRemove
+func (a *SplitAPIService) SplitRemoveSubaccountExecute(r ApiSplitRemoveSubaccountRequest) (*SplitIdSubaccountRemove, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SplitRemoveSubaccountResponse
+		localVarReturnValue  *SplitIdSubaccountRemove
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SplitAPIService.SplitRemoveSubaccount")
@@ -654,7 +654,7 @@ func (a *SplitAPIService) SplitRemoveSubaccountExecute(r ApiSplitRemoveSubaccoun
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.splitSubaccounts
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -707,15 +707,15 @@ type ApiSplitUpdateRequest struct {
 	ctx context.Context
 	ApiService *SplitAPIService
 	id string
-	splitUpdate *SplitUpdate
+	body *SplitId
 }
 
-func (r ApiSplitUpdateRequest) SplitUpdate(splitUpdate SplitUpdate) ApiSplitUpdateRequest {
-	r.splitUpdate = &splitUpdate
+func (r ApiSplitUpdateRequest) Body(body SplitId) ApiSplitUpdateRequest {
+	r.body = &body
 	return r
 }
 
-func (r ApiSplitUpdateRequest) Execute() (*SplitUpdateResponse, *http.Response, error) {
+func (r ApiSplitUpdateRequest) Execute() (*SplitId, *http.Response, error) {
 	return r.ApiService.SplitUpdateExecute(r)
 }
 
@@ -737,13 +737,13 @@ func (a *SplitAPIService) SplitUpdate(ctx context.Context, id string) ApiSplitUp
 }
 
 // Execute executes the request
-//  @return SplitUpdateResponse
-func (a *SplitAPIService) SplitUpdateExecute(r ApiSplitUpdateRequest) (*SplitUpdateResponse, *http.Response, error) {
+//  @return SplitId
+func (a *SplitAPIService) SplitUpdateExecute(r ApiSplitUpdateRequest) (*SplitId, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SplitUpdateResponse
+		localVarReturnValue  *SplitId
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SplitAPIService.SplitUpdate")
@@ -776,7 +776,7 @@ func (a *SplitAPIService) SplitUpdateExecute(r ApiSplitUpdateRequest) (*SplitUpd
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.splitUpdate
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

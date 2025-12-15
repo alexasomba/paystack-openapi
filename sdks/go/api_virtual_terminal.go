@@ -28,11 +28,11 @@ type ApiVirtualTerminalAddSplitCodeRequest struct {
 	ctx context.Context
 	ApiService *VirtualTerminalAPIService
 	code string
-	virtualTerminalAddSplitCode *VirtualTerminalAddSplitCode
+	body *VirtualTerminalCodeSplitCode
 }
 
-func (r ApiVirtualTerminalAddSplitCodeRequest) VirtualTerminalAddSplitCode(virtualTerminalAddSplitCode VirtualTerminalAddSplitCode) ApiVirtualTerminalAddSplitCodeRequest {
-	r.virtualTerminalAddSplitCode = &virtualTerminalAddSplitCode
+func (r ApiVirtualTerminalAddSplitCodeRequest) Body(body VirtualTerminalCodeSplitCode) ApiVirtualTerminalAddSplitCodeRequest {
+	r.body = &body
 	return r
 }
 
@@ -97,7 +97,7 @@ func (a *VirtualTerminalAPIService) VirtualTerminalAddSplitCodeExecute(r ApiVirt
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.virtualTerminalAddSplitCode
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -382,11 +382,11 @@ type ApiVirtualTerminalDeleteSplitCodeRequest struct {
 	ctx context.Context
 	ApiService *VirtualTerminalAPIService
 	code string
-	virtualTerminalDeleteSplitCode *VirtualTerminalDeleteSplitCode
+	body *VirtualTerminalCodeSplitCode
 }
 
-func (r ApiVirtualTerminalDeleteSplitCodeRequest) VirtualTerminalDeleteSplitCode(virtualTerminalDeleteSplitCode VirtualTerminalDeleteSplitCode) ApiVirtualTerminalDeleteSplitCodeRequest {
-	r.virtualTerminalDeleteSplitCode = &virtualTerminalDeleteSplitCode
+func (r ApiVirtualTerminalDeleteSplitCodeRequest) Body(body VirtualTerminalCodeSplitCode) ApiVirtualTerminalDeleteSplitCodeRequest {
+	r.body = &body
 	return r
 }
 
@@ -451,7 +451,7 @@ func (a *VirtualTerminalAPIService) VirtualTerminalDeleteSplitCodeExecute(r ApiV
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.virtualTerminalDeleteSplitCode
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -504,11 +504,11 @@ type ApiVirtualTerminalDestinationAssignRequest struct {
 	ctx context.Context
 	ApiService *VirtualTerminalAPIService
 	code string
-	virtualTerminalDestinationAssign *VirtualTerminalDestinationAssign
+	body *VirtualTerminalCodeDestinationAssign
 }
 
-func (r ApiVirtualTerminalDestinationAssignRequest) VirtualTerminalDestinationAssign(virtualTerminalDestinationAssign VirtualTerminalDestinationAssign) ApiVirtualTerminalDestinationAssignRequest {
-	r.virtualTerminalDestinationAssign = &virtualTerminalDestinationAssign
+func (r ApiVirtualTerminalDestinationAssignRequest) Body(body VirtualTerminalCodeDestinationAssign) ApiVirtualTerminalDestinationAssignRequest {
+	r.body = &body
 	return r
 }
 
@@ -573,7 +573,7 @@ func (a *VirtualTerminalAPIService) VirtualTerminalDestinationAssignExecute(r Ap
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.virtualTerminalDestinationAssign
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -626,11 +626,11 @@ type ApiVirtualTerminalDestinationUnassignRequest struct {
 	ctx context.Context
 	ApiService *VirtualTerminalAPIService
 	code string
-	virtualTerminalDestinationUnassign *VirtualTerminalDestinationUnassign
+	body *VirtualTerminalCodeDestinationUnassign
 }
 
-func (r ApiVirtualTerminalDestinationUnassignRequest) VirtualTerminalDestinationUnassign(virtualTerminalDestinationUnassign VirtualTerminalDestinationUnassign) ApiVirtualTerminalDestinationUnassignRequest {
-	r.virtualTerminalDestinationUnassign = &virtualTerminalDestinationUnassign
+func (r ApiVirtualTerminalDestinationUnassignRequest) Body(body VirtualTerminalCodeDestinationUnassign) ApiVirtualTerminalDestinationUnassignRequest {
+	r.body = &body
 	return r
 }
 
@@ -695,7 +695,7 @@ func (a *VirtualTerminalAPIService) VirtualTerminalDestinationUnassignExecute(r 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.virtualTerminalDestinationUnassign
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -918,10 +918,10 @@ func (a *VirtualTerminalAPIService) VirtualTerminalListExecute(r ApiVirtualTermi
 	localVarFormParams := url.Values{}
 
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -992,11 +992,11 @@ type ApiVirtualTerminalUpdateRequest struct {
 	ctx context.Context
 	ApiService *VirtualTerminalAPIService
 	code string
-	virtualTerminalUpdate *VirtualTerminalUpdate
+	body *VirtualTerminalCode
 }
 
-func (r ApiVirtualTerminalUpdateRequest) VirtualTerminalUpdate(virtualTerminalUpdate VirtualTerminalUpdate) ApiVirtualTerminalUpdateRequest {
-	r.virtualTerminalUpdate = &virtualTerminalUpdate
+func (r ApiVirtualTerminalUpdateRequest) Body(body VirtualTerminalCode) ApiVirtualTerminalUpdateRequest {
+	r.body = &body
 	return r
 }
 
@@ -1061,7 +1061,7 @@ func (a *VirtualTerminalAPIService) VirtualTerminalUpdateExecute(r ApiVirtualTer
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.virtualTerminalUpdate
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

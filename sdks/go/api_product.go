@@ -474,19 +474,19 @@ func (a *ProductAPIService) ProductListExecute(r ApiProductListRequest) (*Produc
 	localVarFormParams := url.Values{}
 
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.active != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "")
 	}
 	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "")
 	}
 	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -568,11 +568,11 @@ type ApiProductUpdateRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
 	id int32
-	productUpdate *ProductUpdate
+	body *ProductId
 }
 
-func (r ApiProductUpdateRequest) ProductUpdate(productUpdate ProductUpdate) ApiProductUpdateRequest {
-	r.productUpdate = &productUpdate
+func (r ApiProductUpdateRequest) Body(body ProductId) ApiProductUpdateRequest {
+	r.body = &body
 	return r
 }
 
@@ -637,7 +637,7 @@ func (a *ProductAPIService) ProductUpdateExecute(r ApiProductUpdateRequest) (*Pr
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.productUpdate
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the RefundCreateResponseDataTransactionSubaccount type satisfies the MappedNullable interface at compile time
@@ -22,16 +20,14 @@ var _ MappedNullable = &RefundCreateResponseDataTransactionSubaccount{}
 
 // RefundCreateResponseDataTransactionSubaccount struct for RefundCreateResponseDataTransactionSubaccount
 type RefundCreateResponseDataTransactionSubaccount struct {
-	Currency interface{} `json:"currency"`
+	Currency map[string]interface{} `json:"currency"`
 }
-
-type _RefundCreateResponseDataTransactionSubaccount RefundCreateResponseDataTransactionSubaccount
 
 // NewRefundCreateResponseDataTransactionSubaccount instantiates a new RefundCreateResponseDataTransactionSubaccount object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRefundCreateResponseDataTransactionSubaccount(currency interface{}) *RefundCreateResponseDataTransactionSubaccount {
+func NewRefundCreateResponseDataTransactionSubaccount(currency map[string]interface{}) *RefundCreateResponseDataTransactionSubaccount {
 	this := RefundCreateResponseDataTransactionSubaccount{}
 	this.Currency = currency
 	return &this
@@ -46,10 +42,10 @@ func NewRefundCreateResponseDataTransactionSubaccountWithDefaults() *RefundCreat
 }
 
 // GetCurrency returns the Currency field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *RefundCreateResponseDataTransactionSubaccount) GetCurrency() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *RefundCreateResponseDataTransactionSubaccount) GetCurrency() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -59,15 +55,15 @@ func (o *RefundCreateResponseDataTransactionSubaccount) GetCurrency() interface{
 // GetCurrencyOk returns a tuple with the Currency field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundCreateResponseDataTransactionSubaccount) GetCurrencyOk() (*interface{}, bool) {
+func (o *RefundCreateResponseDataTransactionSubaccount) GetCurrencyOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Currency) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Currency, true
+	return o.Currency, true
 }
 
 // SetCurrency sets field value
-func (o *RefundCreateResponseDataTransactionSubaccount) SetCurrency(v interface{}) {
+func (o *RefundCreateResponseDataTransactionSubaccount) SetCurrency(v map[string]interface{}) {
 	o.Currency = v
 }
 
@@ -85,43 +81,6 @@ func (o RefundCreateResponseDataTransactionSubaccount) ToMap() (map[string]inter
 		toSerialize["currency"] = o.Currency
 	}
 	return toSerialize, nil
-}
-
-func (o *RefundCreateResponseDataTransactionSubaccount) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"currency",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varRefundCreateResponseDataTransactionSubaccount := _RefundCreateResponseDataTransactionSubaccount{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRefundCreateResponseDataTransactionSubaccount)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RefundCreateResponseDataTransactionSubaccount(varRefundCreateResponseDataTransactionSubaccount)
-
-	return err
 }
 
 type NullableRefundCreateResponseDataTransactionSubaccount struct {

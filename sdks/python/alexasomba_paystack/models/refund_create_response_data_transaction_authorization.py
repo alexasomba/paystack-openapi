@@ -18,86 +18,70 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
-from typing import Any, ClassVar, Dict, List, Optional
-from typing import Optional, Set
-from typing_extensions import Self
+
+from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field
 
 class RefundCreateResponseDataTransactionAuthorization(BaseModel):
     """
     RefundCreateResponseDataTransactionAuthorization
-    """ # noqa: E501
-    exp_month: Optional[Any]
-    exp_year: Optional[Any]
-    account_name: Optional[Any]
-    __properties: ClassVar[List[str]] = ["exp_month", "exp_year", "account_name"]
+    """
+    exp_month: Optional[Dict[str, Any]] = Field(...)
+    exp_year: Optional[Dict[str, Any]] = Field(...)
+    account_name: Optional[Dict[str, Any]] = Field(...)
+    __properties = ["exp_month", "exp_year", "account_name"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> RefundCreateResponseDataTransactionAuthorization:
         """Create an instance of RefundCreateResponseDataTransactionAuthorization from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if exp_month (nullable) is None
-        # and model_fields_set contains the field
-        if self.exp_month is None and "exp_month" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.exp_month is None and "exp_month" in self.__fields_set__:
             _dict['exp_month'] = None
 
         # set to None if exp_year (nullable) is None
-        # and model_fields_set contains the field
-        if self.exp_year is None and "exp_year" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.exp_year is None and "exp_year" in self.__fields_set__:
             _dict['exp_year'] = None
 
         # set to None if account_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.account_name is None and "account_name" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.account_name is None and "account_name" in self.__fields_set__:
             _dict['account_name'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> RefundCreateResponseDataTransactionAuthorization:
         """Create an instance of RefundCreateResponseDataTransactionAuthorization from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return RefundCreateResponseDataTransactionAuthorization.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = RefundCreateResponseDataTransactionAuthorization.parse_obj({
             "exp_month": obj.get("exp_month"),
             "exp_year": obj.get("exp_year"),
             "account_name": obj.get("account_name")

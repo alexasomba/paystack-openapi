@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the PlanListResponseArray type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,20 @@ var _ MappedNullable = &PlanListResponseArray{}
 
 // PlanListResponseArray struct for PlanListResponseArray
 type PlanListResponseArray struct {
-	Subscriptions []interface{} `json:"subscriptions"`
-	Pages []interface{} `json:"pages"`
+	Subscriptions []map[string]interface{} `json:"subscriptions"`
+	Pages []map[string]interface{} `json:"pages"`
 	Domain string `json:"domain"`
 	Name string `json:"name"`
 	PlanCode string `json:"plan_code"`
-	Description interface{} `json:"description"`
+	Description map[string]interface{} `json:"description"`
 	Amount int32 `json:"amount"`
 	Interval string `json:"interval"`
 	InvoiceLimit int32 `json:"invoice_limit"`
 	SendInvoices bool `json:"send_invoices"`
 	SendSms bool `json:"send_sms"`
 	HostedPage bool `json:"hosted_page"`
-	HostedPageUrl interface{} `json:"hosted_page_url"`
-	HostedPageSummary interface{} `json:"hosted_page_summary"`
+	HostedPageUrl map[string]interface{} `json:"hosted_page_url"`
+	HostedPageSummary map[string]interface{} `json:"hosted_page_summary"`
 	Currency string `json:"currency"`
 	Migrate bool `json:"migrate"`
 	IsDeleted bool `json:"is_deleted"`
@@ -49,13 +47,11 @@ type PlanListResponseArray struct {
 	TotalSubscriptionsRevenue int32 `json:"total_subscriptions_revenue"`
 }
 
-type _PlanListResponseArray PlanListResponseArray
-
 // NewPlanListResponseArray instantiates a new PlanListResponseArray object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlanListResponseArray(subscriptions []interface{}, pages []interface{}, domain string, name string, planCode string, description interface{}, amount int32, interval string, invoiceLimit int32, sendInvoices bool, sendSms bool, hostedPage bool, hostedPageUrl interface{}, hostedPageSummary interface{}, currency string, migrate bool, isDeleted bool, isArchived bool, id int32, integration int32, createdAt string, updatedAt string, totalSubscriptions int32, activeSubscriptions int32, totalSubscriptionsRevenue int32) *PlanListResponseArray {
+func NewPlanListResponseArray(subscriptions []map[string]interface{}, pages []map[string]interface{}, domain string, name string, planCode string, description map[string]interface{}, amount int32, interval string, invoiceLimit int32, sendInvoices bool, sendSms bool, hostedPage bool, hostedPageUrl map[string]interface{}, hostedPageSummary map[string]interface{}, currency string, migrate bool, isDeleted bool, isArchived bool, id int32, integration int32, createdAt string, updatedAt string, totalSubscriptions int32, activeSubscriptions int32, totalSubscriptionsRevenue int32) *PlanListResponseArray {
 	this := PlanListResponseArray{}
 	this.Subscriptions = subscriptions
 	this.Pages = pages
@@ -94,9 +90,9 @@ func NewPlanListResponseArrayWithDefaults() *PlanListResponseArray {
 }
 
 // GetSubscriptions returns the Subscriptions field value
-func (o *PlanListResponseArray) GetSubscriptions() []interface{} {
+func (o *PlanListResponseArray) GetSubscriptions() []map[string]interface{} {
 	if o == nil {
-		var ret []interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -105,7 +101,7 @@ func (o *PlanListResponseArray) GetSubscriptions() []interface{} {
 
 // GetSubscriptionsOk returns a tuple with the Subscriptions field value
 // and a boolean to check if the value has been set.
-func (o *PlanListResponseArray) GetSubscriptionsOk() ([]interface{}, bool) {
+func (o *PlanListResponseArray) GetSubscriptionsOk() ([]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -113,14 +109,14 @@ func (o *PlanListResponseArray) GetSubscriptionsOk() ([]interface{}, bool) {
 }
 
 // SetSubscriptions sets field value
-func (o *PlanListResponseArray) SetSubscriptions(v []interface{}) {
+func (o *PlanListResponseArray) SetSubscriptions(v []map[string]interface{}) {
 	o.Subscriptions = v
 }
 
 // GetPages returns the Pages field value
-func (o *PlanListResponseArray) GetPages() []interface{} {
+func (o *PlanListResponseArray) GetPages() []map[string]interface{} {
 	if o == nil {
-		var ret []interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -129,7 +125,7 @@ func (o *PlanListResponseArray) GetPages() []interface{} {
 
 // GetPagesOk returns a tuple with the Pages field value
 // and a boolean to check if the value has been set.
-func (o *PlanListResponseArray) GetPagesOk() ([]interface{}, bool) {
+func (o *PlanListResponseArray) GetPagesOk() ([]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -137,7 +133,7 @@ func (o *PlanListResponseArray) GetPagesOk() ([]interface{}, bool) {
 }
 
 // SetPages sets field value
-func (o *PlanListResponseArray) SetPages(v []interface{}) {
+func (o *PlanListResponseArray) SetPages(v []map[string]interface{}) {
 	o.Pages = v
 }
 
@@ -214,10 +210,10 @@ func (o *PlanListResponseArray) SetPlanCode(v string) {
 }
 
 // GetDescription returns the Description field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PlanListResponseArray) GetDescription() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *PlanListResponseArray) GetDescription() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -227,15 +223,15 @@ func (o *PlanListResponseArray) GetDescription() interface{} {
 // GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PlanListResponseArray) GetDescriptionOk() (*interface{}, bool) {
+func (o *PlanListResponseArray) GetDescriptionOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Description) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Description, true
+	return o.Description, true
 }
 
 // SetDescription sets field value
-func (o *PlanListResponseArray) SetDescription(v interface{}) {
+func (o *PlanListResponseArray) SetDescription(v map[string]interface{}) {
 	o.Description = v
 }
 
@@ -384,10 +380,10 @@ func (o *PlanListResponseArray) SetHostedPage(v bool) {
 }
 
 // GetHostedPageUrl returns the HostedPageUrl field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PlanListResponseArray) GetHostedPageUrl() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *PlanListResponseArray) GetHostedPageUrl() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -397,23 +393,23 @@ func (o *PlanListResponseArray) GetHostedPageUrl() interface{} {
 // GetHostedPageUrlOk returns a tuple with the HostedPageUrl field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PlanListResponseArray) GetHostedPageUrlOk() (*interface{}, bool) {
+func (o *PlanListResponseArray) GetHostedPageUrlOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.HostedPageUrl) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.HostedPageUrl, true
+	return o.HostedPageUrl, true
 }
 
 // SetHostedPageUrl sets field value
-func (o *PlanListResponseArray) SetHostedPageUrl(v interface{}) {
+func (o *PlanListResponseArray) SetHostedPageUrl(v map[string]interface{}) {
 	o.HostedPageUrl = v
 }
 
 // GetHostedPageSummary returns the HostedPageSummary field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PlanListResponseArray) GetHostedPageSummary() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *PlanListResponseArray) GetHostedPageSummary() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -423,15 +419,15 @@ func (o *PlanListResponseArray) GetHostedPageSummary() interface{} {
 // GetHostedPageSummaryOk returns a tuple with the HostedPageSummary field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PlanListResponseArray) GetHostedPageSummaryOk() (*interface{}, bool) {
+func (o *PlanListResponseArray) GetHostedPageSummaryOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.HostedPageSummary) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.HostedPageSummary, true
+	return o.HostedPageSummary, true
 }
 
 // SetHostedPageSummary sets field value
-func (o *PlanListResponseArray) SetHostedPageSummary(v interface{}) {
+func (o *PlanListResponseArray) SetHostedPageSummary(v map[string]interface{}) {
 	o.HostedPageSummary = v
 }
 
@@ -741,67 +737,6 @@ func (o PlanListResponseArray) ToMap() (map[string]interface{}, error) {
 	toSerialize["active_subscriptions"] = o.ActiveSubscriptions
 	toSerialize["total_subscriptions_revenue"] = o.TotalSubscriptionsRevenue
 	return toSerialize, nil
-}
-
-func (o *PlanListResponseArray) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"subscriptions",
-		"pages",
-		"domain",
-		"name",
-		"plan_code",
-		"description",
-		"amount",
-		"interval",
-		"invoice_limit",
-		"send_invoices",
-		"send_sms",
-		"hosted_page",
-		"hosted_page_url",
-		"hosted_page_summary",
-		"currency",
-		"migrate",
-		"is_deleted",
-		"is_archived",
-		"id",
-		"integration",
-		"createdAt",
-		"updatedAt",
-		"total_subscriptions",
-		"active_subscriptions",
-		"total_subscriptions_revenue",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPlanListResponseArray := _PlanListResponseArray{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPlanListResponseArray)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PlanListResponseArray(varPlanListResponseArray)
-
-	return err
 }
 
 type NullablePlanListResponseArray struct {

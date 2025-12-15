@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ChargeAuthorizationResponseDataAuthorization type satisfies the MappedNullable interface at compile time
@@ -34,16 +32,14 @@ type ChargeAuthorizationResponseDataAuthorization struct {
 	Brand string `json:"brand"`
 	Reusable bool `json:"reusable"`
 	Signature string `json:"signature"`
-	AccountName interface{} `json:"account_name"`
+	AccountName map[string]interface{} `json:"account_name"`
 }
-
-type _ChargeAuthorizationResponseDataAuthorization ChargeAuthorizationResponseDataAuthorization
 
 // NewChargeAuthorizationResponseDataAuthorization instantiates a new ChargeAuthorizationResponseDataAuthorization object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChargeAuthorizationResponseDataAuthorization(authorizationCode string, bin NullableString, last4 string, expMonth string, expYear string, channel string, cardType string, bank string, countryCode string, brand string, reusable bool, signature string, accountName interface{}) *ChargeAuthorizationResponseDataAuthorization {
+func NewChargeAuthorizationResponseDataAuthorization(authorizationCode string, bin NullableString, last4 string, expMonth string, expYear string, channel string, cardType string, bank string, countryCode string, brand string, reusable bool, signature string, accountName map[string]interface{}) *ChargeAuthorizationResponseDataAuthorization {
 	this := ChargeAuthorizationResponseDataAuthorization{}
 	this.AuthorizationCode = authorizationCode
 	this.Bin = bin
@@ -360,10 +356,10 @@ func (o *ChargeAuthorizationResponseDataAuthorization) SetSignature(v string) {
 }
 
 // GetAccountName returns the AccountName field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ChargeAuthorizationResponseDataAuthorization) GetAccountName() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *ChargeAuthorizationResponseDataAuthorization) GetAccountName() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -373,15 +369,15 @@ func (o *ChargeAuthorizationResponseDataAuthorization) GetAccountName() interfac
 // GetAccountNameOk returns a tuple with the AccountName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ChargeAuthorizationResponseDataAuthorization) GetAccountNameOk() (*interface{}, bool) {
+func (o *ChargeAuthorizationResponseDataAuthorization) GetAccountNameOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AccountName) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.AccountName, true
+	return o.AccountName, true
 }
 
 // SetAccountName sets field value
-func (o *ChargeAuthorizationResponseDataAuthorization) SetAccountName(v interface{}) {
+func (o *ChargeAuthorizationResponseDataAuthorization) SetAccountName(v map[string]interface{}) {
 	o.AccountName = v
 }
 
@@ -411,55 +407,6 @@ func (o ChargeAuthorizationResponseDataAuthorization) ToMap() (map[string]interf
 		toSerialize["account_name"] = o.AccountName
 	}
 	return toSerialize, nil
-}
-
-func (o *ChargeAuthorizationResponseDataAuthorization) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"authorization_code",
-		"bin",
-		"last4",
-		"exp_month",
-		"exp_year",
-		"channel",
-		"card_type",
-		"bank",
-		"country_code",
-		"brand",
-		"reusable",
-		"signature",
-		"account_name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varChargeAuthorizationResponseDataAuthorization := _ChargeAuthorizationResponseDataAuthorization{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varChargeAuthorizationResponseDataAuthorization)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ChargeAuthorizationResponseDataAuthorization(varChargeAuthorizationResponseDataAuthorization)
-
-	return err
 }
 
 type NullableChargeAuthorizationResponseDataAuthorization struct {

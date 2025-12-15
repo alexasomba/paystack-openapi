@@ -18,82 +18,66 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+
+from typing import Any, Dict, List, Optional
+from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
 from alexasomba_paystack.models.order_create_response_data_shipping import OrderCreateResponseDataShipping
 from alexasomba_paystack.models.order_create_response_data_shipping_method import OrderCreateResponseDataShippingMethod
-from typing import Optional, Set
-from typing_extensions import Self
 
 class OrderCreateResponseData(BaseModel):
     """
     OrderCreateResponseData
-    """ # noqa: E501
-    discounts: List[Any]
-    currency: StrictStr
-    shipping_address: Optional[Any]
-    integration: StrictInt
-    domain: StrictStr
-    email: StrictStr
-    customer: StrictInt
-    amount: StrictInt
-    pay_for_me: StrictBool
-    shipping: Optional[OrderCreateResponseDataShipping]
-    shipping_fees: StrictInt
+    """
+    discounts: conlist(Dict[str, Any]) = Field(...)
+    currency: StrictStr = Field(...)
+    shipping_address: Optional[Dict[str, Any]] = Field(...)
+    integration: StrictInt = Field(...)
+    domain: StrictStr = Field(...)
+    email: StrictStr = Field(...)
+    customer: StrictInt = Field(...)
+    amount: StrictInt = Field(...)
+    pay_for_me: StrictBool = Field(...)
+    shipping: Optional[OrderCreateResponseDataShipping] = Field(...)
+    shipping_fees: StrictInt = Field(...)
     shipping_method: Optional[OrderCreateResponseDataShippingMethod] = None
-    metadata: Dict[str, Any]
-    order_code: StrictStr
-    status: StrictStr
-    refunded: StrictBool
-    is_viewed: StrictBool
-    expiration_date: Optional[Any]
-    id: StrictInt
-    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
-    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    items: List[Any]
-    pay_for_me_code: StrictStr
-    discount_amount: StrictInt
-    __properties: ClassVar[List[str]] = ["discounts", "currency", "shipping_address", "integration", "domain", "email", "customer", "amount", "pay_for_me", "shipping", "shipping_fees", "shipping_method", "metadata", "order_code", "status", "refunded", "is_viewed", "expiration_date", "id", "createdAt", "updatedAt", "items", "pay_for_me_code", "discount_amount"]
+    metadata: Dict[str, Any] = Field(...)
+    order_code: StrictStr = Field(...)
+    status: StrictStr = Field(...)
+    refunded: StrictBool = Field(...)
+    is_viewed: StrictBool = Field(...)
+    expiration_date: Optional[Dict[str, Any]] = Field(...)
+    id: StrictInt = Field(...)
+    created_at: StrictStr = Field(..., alias="createdAt")
+    updated_at: StrictStr = Field(..., alias="updatedAt")
+    items: conlist(Dict[str, Any]) = Field(...)
+    pay_for_me_code: StrictStr = Field(...)
+    discount_amount: StrictInt = Field(...)
+    __properties = ["discounts", "currency", "shipping_address", "integration", "domain", "email", "customer", "amount", "pay_for_me", "shipping", "shipping_fees", "shipping_method", "metadata", "order_code", "status", "refunded", "is_viewed", "expiration_date", "id", "createdAt", "updatedAt", "items", "pay_for_me_code", "discount_amount"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> OrderCreateResponseData:
         """Create an instance of OrderCreateResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of shipping
         if self.shipping:
             _dict['shipping'] = self.shipping.to_dict()
@@ -101,32 +85,32 @@ class OrderCreateResponseData(BaseModel):
         if self.shipping_method:
             _dict['shipping_method'] = self.shipping_method.to_dict()
         # set to None if shipping_address (nullable) is None
-        # and model_fields_set contains the field
-        if self.shipping_address is None and "shipping_address" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.shipping_address is None and "shipping_address" in self.__fields_set__:
             _dict['shipping_address'] = None
 
         # set to None if shipping (nullable) is None
-        # and model_fields_set contains the field
-        if self.shipping is None and "shipping" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.shipping is None and "shipping" in self.__fields_set__:
             _dict['shipping'] = None
 
         # set to None if expiration_date (nullable) is None
-        # and model_fields_set contains the field
-        if self.expiration_date is None and "expiration_date" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.expiration_date is None and "expiration_date" in self.__fields_set__:
             _dict['expiration_date'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> OrderCreateResponseData:
         """Create an instance of OrderCreateResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return OrderCreateResponseData.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = OrderCreateResponseData.parse_obj({
             "discounts": obj.get("discounts"),
             "currency": obj.get("currency"),
             "shipping_address": obj.get("shipping_address"),
@@ -136,9 +120,9 @@ class OrderCreateResponseData(BaseModel):
             "customer": obj.get("customer"),
             "amount": obj.get("amount"),
             "pay_for_me": obj.get("pay_for_me"),
-            "shipping": OrderCreateResponseDataShipping.from_dict(obj["shipping"]) if obj.get("shipping") is not None else None,
+            "shipping": OrderCreateResponseDataShipping.from_dict(obj.get("shipping")) if obj.get("shipping") is not None else None,
             "shipping_fees": obj.get("shipping_fees"),
-            "shipping_method": OrderCreateResponseDataShippingMethod.from_dict(obj["shipping_method"]) if obj.get("shipping_method") is not None else None,
+            "shipping_method": OrderCreateResponseDataShippingMethod.from_dict(obj.get("shipping_method")) if obj.get("shipping_method") is not None else None,
             "metadata": obj.get("metadata"),
             "order_code": obj.get("order_code"),
             "status": obj.get("status"),
@@ -146,8 +130,8 @@ class OrderCreateResponseData(BaseModel):
             "is_viewed": obj.get("is_viewed"),
             "expiration_date": obj.get("expiration_date"),
             "id": obj.get("id"),
-            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
-            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
+            "created_at": obj.get("createdAt"),
+            "updated_at": obj.get("updatedAt"),
             "items": obj.get("items"),
             "pay_for_me_code": obj.get("pay_for_me_code"),
             "discount_amount": obj.get("discount_amount")

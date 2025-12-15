@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the OrderValidateResponseDataIntegration type satisfies the MappedNullable interface at compile time
@@ -25,16 +23,14 @@ type OrderValidateResponseDataIntegration struct {
 	Key string `json:"key"`
 	Name string `json:"name"`
 	Logo string `json:"logo"`
-	AllowedCurrencies []interface{} `json:"allowed_currencies"`
+	AllowedCurrencies []map[string]interface{} `json:"allowed_currencies"`
 }
-
-type _OrderValidateResponseDataIntegration OrderValidateResponseDataIntegration
 
 // NewOrderValidateResponseDataIntegration instantiates a new OrderValidateResponseDataIntegration object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrderValidateResponseDataIntegration(key string, name string, logo string, allowedCurrencies []interface{}) *OrderValidateResponseDataIntegration {
+func NewOrderValidateResponseDataIntegration(key string, name string, logo string, allowedCurrencies []map[string]interface{}) *OrderValidateResponseDataIntegration {
 	this := OrderValidateResponseDataIntegration{}
 	this.Key = key
 	this.Name = name
@@ -124,9 +120,9 @@ func (o *OrderValidateResponseDataIntegration) SetLogo(v string) {
 }
 
 // GetAllowedCurrencies returns the AllowedCurrencies field value
-func (o *OrderValidateResponseDataIntegration) GetAllowedCurrencies() []interface{} {
+func (o *OrderValidateResponseDataIntegration) GetAllowedCurrencies() []map[string]interface{} {
 	if o == nil {
-		var ret []interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -135,7 +131,7 @@ func (o *OrderValidateResponseDataIntegration) GetAllowedCurrencies() []interfac
 
 // GetAllowedCurrenciesOk returns a tuple with the AllowedCurrencies field value
 // and a boolean to check if the value has been set.
-func (o *OrderValidateResponseDataIntegration) GetAllowedCurrenciesOk() ([]interface{}, bool) {
+func (o *OrderValidateResponseDataIntegration) GetAllowedCurrenciesOk() ([]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -143,7 +139,7 @@ func (o *OrderValidateResponseDataIntegration) GetAllowedCurrenciesOk() ([]inter
 }
 
 // SetAllowedCurrencies sets field value
-func (o *OrderValidateResponseDataIntegration) SetAllowedCurrencies(v []interface{}) {
+func (o *OrderValidateResponseDataIntegration) SetAllowedCurrencies(v []map[string]interface{}) {
 	o.AllowedCurrencies = v
 }
 
@@ -162,46 +158,6 @@ func (o OrderValidateResponseDataIntegration) ToMap() (map[string]interface{}, e
 	toSerialize["logo"] = o.Logo
 	toSerialize["allowed_currencies"] = o.AllowedCurrencies
 	return toSerialize, nil
-}
-
-func (o *OrderValidateResponseDataIntegration) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"key",
-		"name",
-		"logo",
-		"allowed_currencies",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varOrderValidateResponseDataIntegration := _OrderValidateResponseDataIntegration{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrderValidateResponseDataIntegration)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OrderValidateResponseDataIntegration(varOrderValidateResponseDataIntegration)
-
-	return err
 }
 
 type NullableOrderValidateResponseDataIntegration struct {

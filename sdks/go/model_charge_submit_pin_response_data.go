@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ChargeSubmitPinResponseData type satisfies the MappedNullable interface at compile time
@@ -37,8 +35,6 @@ type ChargeSubmitPinResponseData struct {
 	Authorization ChargeSubmitPinResponseDataAuthorization `json:"authorization"`
 	Customer ChargeSubmitPinResponseDataCustomer `json:"customer"`
 }
-
-type _ChargeSubmitPinResponseData ChargeSubmitPinResponseData
 
 // NewChargeSubmitPinResponseData instantiates a new ChargeSubmitPinResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -438,56 +434,6 @@ func (o ChargeSubmitPinResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["authorization"] = o.Authorization
 	toSerialize["customer"] = o.Customer
 	return toSerialize, nil
-}
-
-func (o *ChargeSubmitPinResponseData) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"status",
-		"amount",
-		"currency",
-		"transaction_date",
-		"reference",
-		"domain",
-		"redirect_url",
-		"metadata",
-		"gateway_response",
-		"message",
-		"channel",
-		"fees",
-		"authorization",
-		"customer",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varChargeSubmitPinResponseData := _ChargeSubmitPinResponseData{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varChargeSubmitPinResponseData)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ChargeSubmitPinResponseData(varChargeSubmitPinResponseData)
-
-	return err
 }
 
 type NullableChargeSubmitPinResponseData struct {

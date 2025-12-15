@@ -1,0 +1,55 @@
+# PlanFetchResponseData
+
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**subscriptions** | **List[object]** |  | 
+**pages** | **List[object]** |  | 
+**domain** | **str** |  | 
+**name** | **str** |  | 
+**plan_code** | **str** |  | 
+**description** | **object** |  | 
+**amount** | **int** |  | 
+**interval** | **str** |  | 
+**invoice_limit** | **int** |  | 
+**send_invoices** | **bool** |  | 
+**send_sms** | **bool** |  | 
+**hosted_page** | **bool** |  | 
+**hosted_page_url** | **object** |  | 
+**hosted_page_summary** | **object** |  | 
+**currency** | **str** |  | 
+**migrate** | **bool** |  | 
+**is_deleted** | **bool** |  | 
+**is_archived** | **bool** |  | 
+**id** | **int** |  | 
+**integration** | **int** |  | 
+**created_at** | **str** |  | 
+**updated_at** | **str** |  | 
+**pages_count** | **int** |  | 
+**subscribers_count** | **int** |  | 
+**subscriptions_count** | **int** |  | 
+**active_subscriptions_count** | **int** |  | 
+**total_revenue** | **int** |  | 
+**subscribers** | **List[object]** |  | 
+
+## Example
+
+```python
+from alexasomba_paystack.models.plan_fetch_response_data import PlanFetchResponseData
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of PlanFetchResponseData from a JSON string
+plan_fetch_response_data_instance = PlanFetchResponseData.from_json(json)
+# print the JSON string representation of the object
+print PlanFetchResponseData.to_json()
+
+# convert the object into a dict
+plan_fetch_response_data_dict = plan_fetch_response_data_instance.to_dict()
+# create an instance of PlanFetchResponseData from a dict
+plan_fetch_response_data_form_dict = plan_fetch_response_data.from_dict(plan_fetch_response_data_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

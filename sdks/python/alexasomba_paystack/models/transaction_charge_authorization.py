@@ -18,102 +18,86 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+
+from typing import Optional
+from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, validator
 from alexasomba_paystack.models.currency import Currency
 from alexasomba_paystack.models.split_create import SplitCreate
-from typing import Optional, Set
-from typing_extensions import Self
 
 class TransactionChargeAuthorization(BaseModel):
     """
     TransactionChargeAuthorization
-    """ # noqa: E501
-    email: StrictStr = Field(description="Customer's email address")
-    amount: StrictInt = Field(description="Amount in the lower denomination of your currency")
-    authorization_code: StrictStr = Field(description="Valid authorization code to charge")
-    reference: Optional[StrictStr] = Field(default=None, description="Unique transaction reference. Only -, ., = and alphanumeric characters allowed.")
+    """
+    email: StrictStr = Field(..., description="Customer's email address")
+    amount: StrictInt = Field(..., description="Amount in the lower denomination of your currency")
+    authorization_code: StrictStr = Field(..., description="Valid authorization code to charge")
+    reference: Optional[StrictStr] = Field(None, description="Unique transaction reference. Only -, ., = and alphanumeric characters allowed.")
     currency: Optional[Currency] = None
-    split_code: Optional[StrictStr] = Field(default=None, description="The split code of the transaction split")
+    split_code: Optional[StrictStr] = Field(None, description="The split code of the transaction split")
     split: Optional[SplitCreate] = None
-    subaccount: Optional[StrictStr] = Field(default=None, description="The code for the subaccount that owns the payment")
-    transaction_charge: Optional[StrictStr] = Field(default=None, description="A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created")
-    bearer: Optional[StrictStr] = Field(default=None, description="The bearer of the transaction charge")
-    metadata: Optional[StrictStr] = Field(default=None, description="Stringified JSON object of custom data")
-    queue: Optional[StrictBool] = Field(default=None, description="If you are making a scheduled charge call, it is a good idea to queue them so the processing system does not get overloaded causing transaction processing errors.")
-    __properties: ClassVar[List[str]] = ["email", "amount", "authorization_code", "reference", "currency", "split_code", "split", "subaccount", "transaction_charge", "bearer", "metadata", "queue"]
+    subaccount: Optional[StrictStr] = Field(None, description="The code for the subaccount that owns the payment")
+    transaction_charge: Optional[StrictStr] = Field(None, description="A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created")
+    bearer: Optional[StrictStr] = Field(None, description="The bearer of the transaction charge")
+    metadata: Optional[StrictStr] = Field(None, description="Stringified JSON object of custom data")
+    queue: Optional[StrictBool] = Field(None, description="If you are making a scheduled charge call, it is a good idea to queue them so the processing system does not get overloaded causing transaction processing errors.")
+    __properties = ["email", "amount", "authorization_code", "reference", "currency", "split_code", "split", "subaccount", "transaction_charge", "bearer", "metadata", "queue"]
 
-    @field_validator('bearer')
+    @validator('bearer')
     def bearer_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in set(['account', 'subaccount']):
+        if value not in ('account', 'subaccount'):
             raise ValueError("must be one of enum values ('account', 'subaccount')")
         return value
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> TransactionChargeAuthorization:
         """Create an instance of TransactionChargeAuthorization from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of split
         if self.split:
             _dict['split'] = self.split.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> TransactionChargeAuthorization:
         """Create an instance of TransactionChargeAuthorization from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return TransactionChargeAuthorization.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = TransactionChargeAuthorization.parse_obj({
             "email": obj.get("email"),
             "amount": obj.get("amount"),
             "authorization_code": obj.get("authorization_code"),
             "reference": obj.get("reference"),
             "currency": obj.get("currency"),
             "split_code": obj.get("split_code"),
-            "split": SplitCreate.from_dict(obj["split"]) if obj.get("split") is not None else None,
+            "split": SplitCreate.from_dict(obj.get("split")) if obj.get("split") is not None else None,
             "subaccount": obj.get("subaccount"),
             "transaction_charge": obj.get("transaction_charge"),
             "bearer": obj.get("bearer"),

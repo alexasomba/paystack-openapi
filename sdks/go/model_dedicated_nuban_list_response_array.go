@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the DedicatedNubanListResponseArray type satisfies the MappedNullable interface at compile time
@@ -23,7 +21,7 @@ var _ MappedNullable = &DedicatedNubanListResponseArray{}
 // DedicatedNubanListResponseArray struct for DedicatedNubanListResponseArray
 type DedicatedNubanListResponseArray struct {
 	Customer DedicatedNubanListResponseArrayCustomer `json:"customer"`
-	Bank DedicatedNubanListResponseArrayBank `json:"bank"`
+	Bank DedicatedNubanCreateResponseDataBank `json:"bank"`
 	Id int32 `json:"id"`
 	AccountName string `json:"account_name"`
 	AccountNumber string `json:"account_number"`
@@ -35,13 +33,11 @@ type DedicatedNubanListResponseArray struct {
 	Assigned bool `json:"assigned"`
 }
 
-type _DedicatedNubanListResponseArray DedicatedNubanListResponseArray
-
 // NewDedicatedNubanListResponseArray instantiates a new DedicatedNubanListResponseArray object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDedicatedNubanListResponseArray(customer DedicatedNubanListResponseArrayCustomer, bank DedicatedNubanListResponseArrayBank, id int32, accountName string, accountNumber string, createdAt string, updatedAt string, currency string, splitConfig NullableDedicatedNubanListResponseArraySplitConfig, active bool, assigned bool) *DedicatedNubanListResponseArray {
+func NewDedicatedNubanListResponseArray(customer DedicatedNubanListResponseArrayCustomer, bank DedicatedNubanCreateResponseDataBank, id int32, accountName string, accountNumber string, createdAt string, updatedAt string, currency string, splitConfig NullableDedicatedNubanListResponseArraySplitConfig, active bool, assigned bool) *DedicatedNubanListResponseArray {
 	this := DedicatedNubanListResponseArray{}
 	this.Customer = customer
 	this.Bank = bank
@@ -90,9 +86,9 @@ func (o *DedicatedNubanListResponseArray) SetCustomer(v DedicatedNubanListRespon
 }
 
 // GetBank returns the Bank field value
-func (o *DedicatedNubanListResponseArray) GetBank() DedicatedNubanListResponseArrayBank {
+func (o *DedicatedNubanListResponseArray) GetBank() DedicatedNubanCreateResponseDataBank {
 	if o == nil {
-		var ret DedicatedNubanListResponseArrayBank
+		var ret DedicatedNubanCreateResponseDataBank
 		return ret
 	}
 
@@ -101,7 +97,7 @@ func (o *DedicatedNubanListResponseArray) GetBank() DedicatedNubanListResponseAr
 
 // GetBankOk returns a tuple with the Bank field value
 // and a boolean to check if the value has been set.
-func (o *DedicatedNubanListResponseArray) GetBankOk() (*DedicatedNubanListResponseArrayBank, bool) {
+func (o *DedicatedNubanListResponseArray) GetBankOk() (*DedicatedNubanCreateResponseDataBank, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -109,7 +105,7 @@ func (o *DedicatedNubanListResponseArray) GetBankOk() (*DedicatedNubanListRespon
 }
 
 // SetBank sets field value
-func (o *DedicatedNubanListResponseArray) SetBank(v DedicatedNubanListResponseArrayBank) {
+func (o *DedicatedNubanListResponseArray) SetBank(v DedicatedNubanCreateResponseDataBank) {
 	o.Bank = v
 }
 
@@ -353,53 +349,6 @@ func (o DedicatedNubanListResponseArray) ToMap() (map[string]interface{}, error)
 	toSerialize["active"] = o.Active
 	toSerialize["assigned"] = o.Assigned
 	return toSerialize, nil
-}
-
-func (o *DedicatedNubanListResponseArray) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"customer",
-		"bank",
-		"id",
-		"account_name",
-		"account_number",
-		"created_at",
-		"updated_at",
-		"currency",
-		"split_config",
-		"active",
-		"assigned",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDedicatedNubanListResponseArray := _DedicatedNubanListResponseArray{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDedicatedNubanListResponseArray)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DedicatedNubanListResponseArray(varDedicatedNubanListResponseArray)
-
-	return err
 }
 
 type NullableDedicatedNubanListResponseArray struct {

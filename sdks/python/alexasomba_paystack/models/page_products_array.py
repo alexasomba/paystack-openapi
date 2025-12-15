@@ -18,88 +18,72 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from typing import Optional, Set
-from typing_extensions import Self
+
+from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field, StrictInt, StrictStr
 
 class PageProductsArray(BaseModel):
     """
     PageProductsArray
-    """ # noqa: E501
-    product_id: StrictInt
-    name: StrictStr
-    description: StrictStr
-    product_code: StrictStr
-    page: StrictInt
-    price: StrictInt
-    currency: StrictStr
-    quantity: StrictInt
-    type: StrictStr
-    features: Optional[Any]
-    is_shippable: StrictInt
-    domain: StrictStr
-    integration: StrictInt
-    active: StrictInt
-    in_stock: StrictInt
-    __properties: ClassVar[List[str]] = ["product_id", "name", "description", "product_code", "page", "price", "currency", "quantity", "type", "features", "is_shippable", "domain", "integration", "active", "in_stock"]
+    """
+    product_id: StrictInt = Field(...)
+    name: StrictStr = Field(...)
+    description: StrictStr = Field(...)
+    product_code: StrictStr = Field(...)
+    page: StrictInt = Field(...)
+    price: StrictInt = Field(...)
+    currency: StrictStr = Field(...)
+    quantity: StrictInt = Field(...)
+    type: StrictStr = Field(...)
+    features: Optional[Dict[str, Any]] = Field(...)
+    is_shippable: StrictInt = Field(...)
+    domain: StrictStr = Field(...)
+    integration: StrictInt = Field(...)
+    active: StrictInt = Field(...)
+    in_stock: StrictInt = Field(...)
+    __properties = ["product_id", "name", "description", "product_code", "page", "price", "currency", "quantity", "type", "features", "is_shippable", "domain", "integration", "active", "in_stock"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> PageProductsArray:
         """Create an instance of PageProductsArray from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if features (nullable) is None
-        # and model_fields_set contains the field
-        if self.features is None and "features" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.features is None and "features" in self.__fields_set__:
             _dict['features'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> PageProductsArray:
         """Create an instance of PageProductsArray from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return PageProductsArray.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = PageProductsArray.parse_obj({
             "product_id": obj.get("product_id"),
             "name": obj.get("name"),
             "description": obj.get("description"),

@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the PageListResponseArray type satisfies the MappedNullable interface at compile time
@@ -23,14 +21,14 @@ var _ MappedNullable = &PageListResponseArray{}
 // PageListResponseArray struct for PageListResponseArray
 type PageListResponseArray struct {
 	Integration int32 `json:"integration"`
-	Plan interface{} `json:"plan"`
+	Plan map[string]interface{} `json:"plan"`
 	Domain string `json:"domain"`
 	Name string `json:"name"`
 	Description NullableString `json:"description"`
 	Amount NullableInt32 `json:"amount"`
 	Currency string `json:"currency"`
 	Slug string `json:"slug"`
-	CustomFields []interface{} `json:"custom_fields"`
+	CustomFields []map[string]interface{} `json:"custom_fields"`
 	Type string `json:"type"`
 	RedirectUrl NullableString `json:"redirect_url"`
 	SuccessMessage NullableString `json:"success_message"`
@@ -38,21 +36,19 @@ type PageListResponseArray struct {
 	Active bool `json:"active"`
 	Published bool `json:"published"`
 	Migrate bool `json:"migrate"`
-	NotificationEmail interface{} `json:"notification_email"`
+	NotificationEmail map[string]interface{} `json:"notification_email"`
 	Metadata map[string]interface{} `json:"metadata"`
-	SplitCode interface{} `json:"split_code"`
+	SplitCode map[string]interface{} `json:"split_code"`
 	Id int32 `json:"id"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
 }
 
-type _PageListResponseArray PageListResponseArray
-
 // NewPageListResponseArray instantiates a new PageListResponseArray object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPageListResponseArray(integration int32, plan interface{}, domain string, name string, description NullableString, amount NullableInt32, currency string, slug string, customFields []interface{}, type_ string, redirectUrl NullableString, successMessage NullableString, collectPhone bool, active bool, published bool, migrate bool, notificationEmail interface{}, metadata map[string]interface{}, splitCode interface{}, id int32, createdAt string, updatedAt string) *PageListResponseArray {
+func NewPageListResponseArray(integration int32, plan map[string]interface{}, domain string, name string, description NullableString, amount NullableInt32, currency string, slug string, customFields []map[string]interface{}, type_ string, redirectUrl NullableString, successMessage NullableString, collectPhone bool, active bool, published bool, migrate bool, notificationEmail map[string]interface{}, metadata map[string]interface{}, splitCode map[string]interface{}, id int32, createdAt string, updatedAt string) *PageListResponseArray {
 	this := PageListResponseArray{}
 	this.Integration = integration
 	this.Plan = plan
@@ -112,10 +108,10 @@ func (o *PageListResponseArray) SetIntegration(v int32) {
 }
 
 // GetPlan returns the Plan field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PageListResponseArray) GetPlan() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *PageListResponseArray) GetPlan() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -125,15 +121,15 @@ func (o *PageListResponseArray) GetPlan() interface{} {
 // GetPlanOk returns a tuple with the Plan field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PageListResponseArray) GetPlanOk() (*interface{}, bool) {
+func (o *PageListResponseArray) GetPlanOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Plan) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Plan, true
+	return o.Plan, true
 }
 
 // SetPlan sets field value
-func (o *PageListResponseArray) SetPlan(v interface{}) {
+func (o *PageListResponseArray) SetPlan(v map[string]interface{}) {
 	o.Plan = v
 }
 
@@ -286,10 +282,10 @@ func (o *PageListResponseArray) SetSlug(v string) {
 }
 
 // GetCustomFields returns the CustomFields field value
-// If the value is explicit nil, the zero value for []interface{} will be returned
-func (o *PageListResponseArray) GetCustomFields() []interface{} {
+// If the value is explicit nil, the zero value for []map[string]interface{} will be returned
+func (o *PageListResponseArray) GetCustomFields() []map[string]interface{} {
 	if o == nil {
-		var ret []interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -299,7 +295,7 @@ func (o *PageListResponseArray) GetCustomFields() []interface{} {
 // GetCustomFieldsOk returns a tuple with the CustomFields field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PageListResponseArray) GetCustomFieldsOk() ([]interface{}, bool) {
+func (o *PageListResponseArray) GetCustomFieldsOk() ([]map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return nil, false
 	}
@@ -307,7 +303,7 @@ func (o *PageListResponseArray) GetCustomFieldsOk() ([]interface{}, bool) {
 }
 
 // SetCustomFields sets field value
-func (o *PageListResponseArray) SetCustomFields(v []interface{}) {
+func (o *PageListResponseArray) SetCustomFields(v []map[string]interface{}) {
 	o.CustomFields = v
 }
 
@@ -484,10 +480,10 @@ func (o *PageListResponseArray) SetMigrate(v bool) {
 }
 
 // GetNotificationEmail returns the NotificationEmail field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PageListResponseArray) GetNotificationEmail() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *PageListResponseArray) GetNotificationEmail() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -497,15 +493,15 @@ func (o *PageListResponseArray) GetNotificationEmail() interface{} {
 // GetNotificationEmailOk returns a tuple with the NotificationEmail field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PageListResponseArray) GetNotificationEmailOk() (*interface{}, bool) {
+func (o *PageListResponseArray) GetNotificationEmailOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.NotificationEmail) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.NotificationEmail, true
+	return o.NotificationEmail, true
 }
 
 // SetNotificationEmail sets field value
-func (o *PageListResponseArray) SetNotificationEmail(v interface{}) {
+func (o *PageListResponseArray) SetNotificationEmail(v map[string]interface{}) {
 	o.NotificationEmail = v
 }
 
@@ -536,10 +532,10 @@ func (o *PageListResponseArray) SetMetadata(v map[string]interface{}) {
 }
 
 // GetSplitCode returns the SplitCode field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PageListResponseArray) GetSplitCode() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *PageListResponseArray) GetSplitCode() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -549,15 +545,15 @@ func (o *PageListResponseArray) GetSplitCode() interface{} {
 // GetSplitCodeOk returns a tuple with the SplitCode field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PageListResponseArray) GetSplitCodeOk() (*interface{}, bool) {
+func (o *PageListResponseArray) GetSplitCodeOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.SplitCode) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.SplitCode, true
+	return o.SplitCode, true
 }
 
 // SetSplitCode sets field value
-func (o *PageListResponseArray) SetSplitCode(v interface{}) {
+func (o *PageListResponseArray) SetSplitCode(v map[string]interface{}) {
 	o.SplitCode = v
 }
 
@@ -676,64 +672,6 @@ func (o PageListResponseArray) ToMap() (map[string]interface{}, error) {
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["updatedAt"] = o.UpdatedAt
 	return toSerialize, nil
-}
-
-func (o *PageListResponseArray) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"integration",
-		"plan",
-		"domain",
-		"name",
-		"description",
-		"amount",
-		"currency",
-		"slug",
-		"custom_fields",
-		"type",
-		"redirect_url",
-		"success_message",
-		"collect_phone",
-		"active",
-		"published",
-		"migrate",
-		"notification_email",
-		"metadata",
-		"split_code",
-		"id",
-		"createdAt",
-		"updatedAt",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPageListResponseArray := _PageListResponseArray{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPageListResponseArray)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PageListResponseArray(varPageListResponseArray)
-
-	return err
 }
 
 type NullablePageListResponseArray struct {

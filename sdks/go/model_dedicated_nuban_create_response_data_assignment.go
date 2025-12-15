@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the DedicatedNubanCreateResponseDataAssignment type satisfies the MappedNullable interface at compile time
@@ -28,16 +26,14 @@ type DedicatedNubanCreateResponseDataAssignment struct {
 	Expired bool `json:"expired"`
 	AccountType string `json:"account_type"`
 	AssignedAt string `json:"assigned_at"`
-	ExpiredAt interface{} `json:"expired_at"`
+	ExpiredAt map[string]interface{} `json:"expired_at"`
 }
-
-type _DedicatedNubanCreateResponseDataAssignment DedicatedNubanCreateResponseDataAssignment
 
 // NewDedicatedNubanCreateResponseDataAssignment instantiates a new DedicatedNubanCreateResponseDataAssignment object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDedicatedNubanCreateResponseDataAssignment(integration int32, assigneeId int32, assigneeType string, expired bool, accountType string, assignedAt string, expiredAt interface{}) *DedicatedNubanCreateResponseDataAssignment {
+func NewDedicatedNubanCreateResponseDataAssignment(integration int32, assigneeId int32, assigneeType string, expired bool, accountType string, assignedAt string, expiredAt map[string]interface{}) *DedicatedNubanCreateResponseDataAssignment {
 	this := DedicatedNubanCreateResponseDataAssignment{}
 	this.Integration = integration
 	this.AssigneeId = assigneeId
@@ -202,10 +198,10 @@ func (o *DedicatedNubanCreateResponseDataAssignment) SetAssignedAt(v string) {
 }
 
 // GetExpiredAt returns the ExpiredAt field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *DedicatedNubanCreateResponseDataAssignment) GetExpiredAt() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *DedicatedNubanCreateResponseDataAssignment) GetExpiredAt() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -215,15 +211,15 @@ func (o *DedicatedNubanCreateResponseDataAssignment) GetExpiredAt() interface{} 
 // GetExpiredAtOk returns a tuple with the ExpiredAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DedicatedNubanCreateResponseDataAssignment) GetExpiredAtOk() (*interface{}, bool) {
+func (o *DedicatedNubanCreateResponseDataAssignment) GetExpiredAtOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.ExpiredAt) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.ExpiredAt, true
+	return o.ExpiredAt, true
 }
 
 // SetExpiredAt sets field value
-func (o *DedicatedNubanCreateResponseDataAssignment) SetExpiredAt(v interface{}) {
+func (o *DedicatedNubanCreateResponseDataAssignment) SetExpiredAt(v map[string]interface{}) {
 	o.ExpiredAt = v
 }
 
@@ -247,49 +243,6 @@ func (o DedicatedNubanCreateResponseDataAssignment) ToMap() (map[string]interfac
 		toSerialize["expired_at"] = o.ExpiredAt
 	}
 	return toSerialize, nil
-}
-
-func (o *DedicatedNubanCreateResponseDataAssignment) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"integration",
-		"assignee_id",
-		"assignee_type",
-		"expired",
-		"account_type",
-		"assigned_at",
-		"expired_at",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDedicatedNubanCreateResponseDataAssignment := _DedicatedNubanCreateResponseDataAssignment{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDedicatedNubanCreateResponseDataAssignment)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DedicatedNubanCreateResponseDataAssignment(varDedicatedNubanCreateResponseDataAssignment)
-
-	return err
 }
 
 type NullableDedicatedNubanCreateResponseDataAssignment struct {

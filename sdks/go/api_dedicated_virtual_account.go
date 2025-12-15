@@ -506,7 +506,7 @@ type ApiDedicatedAccountDeactivateRequest struct {
 	id string
 }
 
-func (r ApiDedicatedAccountDeactivateRequest) Execute() (*DedicatedNubanDeactivateResponse, *http.Response, error) {
+func (r ApiDedicatedAccountDeactivateRequest) Execute() (*DedicatedAccountId, *http.Response, error) {
 	return r.ApiService.DedicatedAccountDeactivateExecute(r)
 }
 
@@ -528,13 +528,13 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountDeactivate(ctx conte
 }
 
 // Execute executes the request
-//  @return DedicatedNubanDeactivateResponse
-func (a *DedicatedVirtualAccountAPIService) DedicatedAccountDeactivateExecute(r ApiDedicatedAccountDeactivateRequest) (*DedicatedNubanDeactivateResponse, *http.Response, error) {
+//  @return DedicatedAccountId
+func (a *DedicatedVirtualAccountAPIService) DedicatedAccountDeactivateExecute(r ApiDedicatedAccountDeactivateRequest) (*DedicatedAccountId, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *DedicatedNubanDeactivateResponse
+		localVarReturnValue  *DedicatedAccountId
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedVirtualAccountAPIService.DedicatedAccountDeactivate")
@@ -631,7 +631,7 @@ type ApiDedicatedAccountFetchRequest struct {
 	id string
 }
 
-func (r ApiDedicatedAccountFetchRequest) Execute() (*DedicatedNubanFetchResponse, *http.Response, error) {
+func (r ApiDedicatedAccountFetchRequest) Execute() (*DedicatedAccountId, *http.Response, error) {
 	return r.ApiService.DedicatedAccountFetchExecute(r)
 }
 
@@ -653,13 +653,13 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountFetch(ctx context.Co
 }
 
 // Execute executes the request
-//  @return DedicatedNubanFetchResponse
-func (a *DedicatedVirtualAccountAPIService) DedicatedAccountFetchExecute(r ApiDedicatedAccountFetchRequest) (*DedicatedNubanFetchResponse, *http.Response, error) {
+//  @return DedicatedAccountId
+func (a *DedicatedVirtualAccountAPIService) DedicatedAccountFetchExecute(r ApiDedicatedAccountFetchRequest) (*DedicatedAccountId, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *DedicatedNubanFetchResponse
+		localVarReturnValue  *DedicatedAccountId
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedVirtualAccountAPIService.DedicatedAccountFetch")
@@ -845,33 +845,25 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountListExecute(r ApiDed
 	localVarFormParams := url.Values{}
 
 	if r.active != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "")
 	}
 	if r.customer != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "customer", r.customer, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "customer", r.customer, "")
 	}
 	if r.currency != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "currency", r.currency, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "currency", r.currency, "")
 	}
 	if r.providerSlug != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "provider_slug", r.providerSlug, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "provider_slug", r.providerSlug, "")
 	}
 	if r.bankId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bank_id", r.bankId, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bank_id", r.bankId, "")
 	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
-	} else {
-        var defaultValue int32 = 50
-        parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", defaultValue, "form", "")
-        r.perPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
-	} else {
-        var defaultValue int32 = 1
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
-        r.page = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1145,13 +1137,13 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountRequeryExecute(r Api
 	localVarFormParams := url.Values{}
 
 	if r.accountNumber != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "account_number", r.accountNumber, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "account_number", r.accountNumber, "")
 	}
 	if r.providerSlug != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "provider_slug", r.providerSlug, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "provider_slug", r.providerSlug, "")
 	}
 	if r.date != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "date", r.date, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "date", r.date, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

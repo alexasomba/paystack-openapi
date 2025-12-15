@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the CustomerAuthorizationInitializeAccount type satisfies the MappedNullable interface at compile time
@@ -27,8 +25,6 @@ type CustomerAuthorizationInitializeAccount struct {
 	// The code representing the customer's bank
 	BankCode string `json:"bank_code"`
 }
-
-type _CustomerAuthorizationInitializeAccount CustomerAuthorizationInitializeAccount
 
 // NewCustomerAuthorizationInitializeAccount instantiates a new CustomerAuthorizationInitializeAccount object
 // This constructor will assign default values to properties that have it defined,
@@ -110,44 +106,6 @@ func (o CustomerAuthorizationInitializeAccount) ToMap() (map[string]interface{},
 	toSerialize["number"] = o.Number
 	toSerialize["bank_code"] = o.BankCode
 	return toSerialize, nil
-}
-
-func (o *CustomerAuthorizationInitializeAccount) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"number",
-		"bank_code",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCustomerAuthorizationInitializeAccount := _CustomerAuthorizationInitializeAccount{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCustomerAuthorizationInitializeAccount)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CustomerAuthorizationInitializeAccount(varCustomerAuthorizationInitializeAccount)
-
-	return err
 }
 
 type NullableCustomerAuthorizationInitializeAccount struct {

@@ -18,111 +18,95 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
-from typing import Optional, Set
-from typing_extensions import Self
+
+from typing import Any, Dict, Optional, Union
+from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr
 
 class RefundRetryResponseData(BaseModel):
     """
     RefundRetryResponseData
-    """ # noqa: E501
-    integration: Union[StrictFloat, StrictInt]
-    transaction: Union[StrictFloat, StrictInt]
-    dispute: Dict[str, Any]
-    settlement: Dict[str, Any]
-    id: Union[StrictFloat, StrictInt]
-    domain: StrictStr
-    currency: StrictStr
-    amount: Union[StrictFloat, StrictInt]
-    status: StrictStr
-    refunded_at: Optional[StrictStr]
-    expected_at: StrictStr
-    channel: StrictStr
-    refunded_by: StrictStr
-    customer_note: StrictStr
-    merchant_note: StrictStr
-    deducted_amount: Union[StrictFloat, StrictInt]
-    fully_deducted: StrictBool
-    bank_reference: Optional[StrictStr]
-    reason: StrictStr
-    customer: Dict[str, Any]
-    initiated_by: StrictStr
-    reversed_at: Optional[StrictStr]
-    session_id: Optional[StrictStr]
-    __properties: ClassVar[List[str]] = ["integration", "transaction", "dispute", "settlement", "id", "domain", "currency", "amount", "status", "refunded_at", "expected_at", "channel", "refunded_by", "customer_note", "merchant_note", "deducted_amount", "fully_deducted", "bank_reference", "reason", "customer", "initiated_by", "reversed_at", "session_id"]
+    """
+    integration: Union[StrictFloat, StrictInt] = Field(...)
+    transaction: Union[StrictFloat, StrictInt] = Field(...)
+    dispute: Dict[str, Any] = Field(...)
+    settlement: Dict[str, Any] = Field(...)
+    id: Union[StrictFloat, StrictInt] = Field(...)
+    domain: StrictStr = Field(...)
+    currency: StrictStr = Field(...)
+    amount: Union[StrictFloat, StrictInt] = Field(...)
+    status: StrictStr = Field(...)
+    refunded_at: Optional[StrictStr] = Field(...)
+    expected_at: StrictStr = Field(...)
+    channel: StrictStr = Field(...)
+    refunded_by: StrictStr = Field(...)
+    customer_note: StrictStr = Field(...)
+    merchant_note: StrictStr = Field(...)
+    deducted_amount: Union[StrictFloat, StrictInt] = Field(...)
+    fully_deducted: StrictBool = Field(...)
+    bank_reference: Optional[StrictStr] = Field(...)
+    reason: StrictStr = Field(...)
+    customer: Dict[str, Any] = Field(...)
+    initiated_by: StrictStr = Field(...)
+    reversed_at: Optional[StrictStr] = Field(...)
+    session_id: Optional[StrictStr] = Field(...)
+    __properties = ["integration", "transaction", "dispute", "settlement", "id", "domain", "currency", "amount", "status", "refunded_at", "expected_at", "channel", "refunded_by", "customer_note", "merchant_note", "deducted_amount", "fully_deducted", "bank_reference", "reason", "customer", "initiated_by", "reversed_at", "session_id"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> RefundRetryResponseData:
         """Create an instance of RefundRetryResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if refunded_at (nullable) is None
-        # and model_fields_set contains the field
-        if self.refunded_at is None and "refunded_at" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.refunded_at is None and "refunded_at" in self.__fields_set__:
             _dict['refunded_at'] = None
 
         # set to None if bank_reference (nullable) is None
-        # and model_fields_set contains the field
-        if self.bank_reference is None and "bank_reference" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.bank_reference is None and "bank_reference" in self.__fields_set__:
             _dict['bank_reference'] = None
 
         # set to None if reversed_at (nullable) is None
-        # and model_fields_set contains the field
-        if self.reversed_at is None and "reversed_at" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.reversed_at is None and "reversed_at" in self.__fields_set__:
             _dict['reversed_at'] = None
 
         # set to None if session_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.session_id is None and "session_id" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.session_id is None and "session_id" in self.__fields_set__:
             _dict['session_id'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> RefundRetryResponseData:
         """Create an instance of RefundRetryResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return RefundRetryResponseData.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = RefundRetryResponseData.parse_obj({
             "integration": obj.get("integration"),
             "transaction": obj.get("transaction"),
             "dispute": obj.get("dispute"),

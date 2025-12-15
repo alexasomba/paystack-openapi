@@ -18,143 +18,127 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_customer import BulkChargeFetchBulkBatchChargesResponseArrayCustomer
+
+from typing import Any, Dict, List, Optional
+from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
 from alexasomba_paystack.models.payment_request_notifications_array import PaymentRequestNotificationsArray
-from typing import Optional, Set
-from typing_extensions import Self
+from alexasomba_paystack.models.payment_request_update_response_data_customer import PaymentRequestUpdateResponseDataCustomer
 
 class PaymentRequestUpdateResponseData(BaseModel):
     """
     PaymentRequestUpdateResponseData
-    """ # noqa: E501
-    id: StrictInt
-    integration: StrictInt
-    domain: StrictStr
-    amount: StrictInt
-    currency: StrictStr
-    due_date: Optional[StrictStr]
-    has_invoice: StrictBool
-    invoice_number: Optional[StrictInt]
-    description: Optional[Any]
-    pdf_url: Optional[StrictStr]
-    line_items: List[Any]
-    tax: List[Any]
-    request_code: StrictStr
-    status: StrictStr
-    paid: StrictBool
-    paid_at: Optional[Any]
-    metadata: Optional[Any]
-    notifications: List[PaymentRequestNotificationsArray]
-    offline_reference: StrictStr
-    customer: BulkChargeFetchBulkBatchChargesResponseArrayCustomer
-    created_at: StrictStr
-    discount: Optional[Any]
-    split_code: Optional[Any]
-    __properties: ClassVar[List[str]] = ["id", "integration", "domain", "amount", "currency", "due_date", "has_invoice", "invoice_number", "description", "pdf_url", "line_items", "tax", "request_code", "status", "paid", "paid_at", "metadata", "notifications", "offline_reference", "customer", "created_at", "discount", "split_code"]
+    """
+    id: StrictInt = Field(...)
+    integration: StrictInt = Field(...)
+    domain: StrictStr = Field(...)
+    amount: StrictInt = Field(...)
+    currency: StrictStr = Field(...)
+    due_date: Optional[StrictStr] = Field(...)
+    has_invoice: StrictBool = Field(...)
+    invoice_number: Optional[StrictInt] = Field(...)
+    description: Optional[Dict[str, Any]] = Field(...)
+    pdf_url: Optional[StrictStr] = Field(...)
+    line_items: conlist(Dict[str, Any]) = Field(...)
+    tax: conlist(Dict[str, Any]) = Field(...)
+    request_code: StrictStr = Field(...)
+    status: StrictStr = Field(...)
+    paid: StrictBool = Field(...)
+    paid_at: Optional[Dict[str, Any]] = Field(...)
+    metadata: Optional[Dict[str, Any]] = Field(...)
+    notifications: conlist(PaymentRequestNotificationsArray) = Field(...)
+    offline_reference: StrictStr = Field(...)
+    customer: PaymentRequestUpdateResponseDataCustomer = Field(...)
+    created_at: StrictStr = Field(...)
+    discount: Optional[Dict[str, Any]] = Field(...)
+    split_code: Optional[Dict[str, Any]] = Field(...)
+    __properties = ["id", "integration", "domain", "amount", "currency", "due_date", "has_invoice", "invoice_number", "description", "pdf_url", "line_items", "tax", "request_code", "status", "paid", "paid_at", "metadata", "notifications", "offline_reference", "customer", "created_at", "discount", "split_code"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> PaymentRequestUpdateResponseData:
         """Create an instance of PaymentRequestUpdateResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in notifications (list)
         _items = []
         if self.notifications:
-            for _item_notifications in self.notifications:
-                if _item_notifications:
-                    _items.append(_item_notifications.to_dict())
+            for _item in self.notifications:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict['notifications'] = _items
         # override the default output from pydantic by calling `to_dict()` of customer
         if self.customer:
             _dict['customer'] = self.customer.to_dict()
         # set to None if due_date (nullable) is None
-        # and model_fields_set contains the field
-        if self.due_date is None and "due_date" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.due_date is None and "due_date" in self.__fields_set__:
             _dict['due_date'] = None
 
         # set to None if invoice_number (nullable) is None
-        # and model_fields_set contains the field
-        if self.invoice_number is None and "invoice_number" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.invoice_number is None and "invoice_number" in self.__fields_set__:
             _dict['invoice_number'] = None
 
         # set to None if description (nullable) is None
-        # and model_fields_set contains the field
-        if self.description is None and "description" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.description is None and "description" in self.__fields_set__:
             _dict['description'] = None
 
         # set to None if pdf_url (nullable) is None
-        # and model_fields_set contains the field
-        if self.pdf_url is None and "pdf_url" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.pdf_url is None and "pdf_url" in self.__fields_set__:
             _dict['pdf_url'] = None
 
         # set to None if paid_at (nullable) is None
-        # and model_fields_set contains the field
-        if self.paid_at is None and "paid_at" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.paid_at is None and "paid_at" in self.__fields_set__:
             _dict['paid_at'] = None
 
         # set to None if metadata (nullable) is None
-        # and model_fields_set contains the field
-        if self.metadata is None and "metadata" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.metadata is None and "metadata" in self.__fields_set__:
             _dict['metadata'] = None
 
         # set to None if discount (nullable) is None
-        # and model_fields_set contains the field
-        if self.discount is None and "discount" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.discount is None and "discount" in self.__fields_set__:
             _dict['discount'] = None
 
         # set to None if split_code (nullable) is None
-        # and model_fields_set contains the field
-        if self.split_code is None and "split_code" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.split_code is None and "split_code" in self.__fields_set__:
             _dict['split_code'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> PaymentRequestUpdateResponseData:
         """Create an instance of PaymentRequestUpdateResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return PaymentRequestUpdateResponseData.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = PaymentRequestUpdateResponseData.parse_obj({
             "id": obj.get("id"),
             "integration": obj.get("integration"),
             "domain": obj.get("domain"),
@@ -172,9 +156,9 @@ class PaymentRequestUpdateResponseData(BaseModel):
             "paid": obj.get("paid"),
             "paid_at": obj.get("paid_at"),
             "metadata": obj.get("metadata"),
-            "notifications": [PaymentRequestNotificationsArray.from_dict(_item) for _item in obj["notifications"]] if obj.get("notifications") is not None else None,
+            "notifications": [PaymentRequestNotificationsArray.from_dict(_item) for _item in obj.get("notifications")] if obj.get("notifications") is not None else None,
             "offline_reference": obj.get("offline_reference"),
-            "customer": BulkChargeFetchBulkBatchChargesResponseArrayCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
+            "customer": PaymentRequestUpdateResponseDataCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
             "created_at": obj.get("created_at"),
             "discount": obj.get("discount"),
             "split_code": obj.get("split_code")

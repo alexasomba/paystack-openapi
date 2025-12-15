@@ -18,130 +18,114 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+
+from typing import Any, Dict, List, Optional
+from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
 from alexasomba_paystack.models.storefront_contacts_array import StorefrontContactsArray
-from typing import Optional, Set
-from typing_extensions import Self
 
 class StorefrontCreateResponseData(BaseModel):
     """
     StorefrontCreateResponseData
-    """ # noqa: E501
-    social_media: List[Any]
-    contacts: List[StorefrontContactsArray]
-    name: StrictStr
-    slug: StrictStr
-    currency: StrictStr
-    welcome_message: Optional[Any]
-    success_message: Optional[Any]
-    redirect_url: Optional[Any]
-    description: Optional[Any]
-    delivery_note: StrictStr
-    background_color: StrictStr
-    status: StrictStr
-    shippable: StrictBool
-    integration: StrictInt
-    domain: StrictStr
-    digital_product_expiry: Optional[Any]
+    """
+    social_media: conlist(Dict[str, Any]) = Field(...)
+    contacts: conlist(StorefrontContactsArray) = Field(...)
+    name: StrictStr = Field(...)
+    slug: StrictStr = Field(...)
+    currency: StrictStr = Field(...)
+    welcome_message: Optional[Dict[str, Any]] = Field(...)
+    success_message: Optional[Dict[str, Any]] = Field(...)
+    redirect_url: Optional[Dict[str, Any]] = Field(...)
+    description: Optional[Dict[str, Any]] = Field(...)
+    delivery_note: StrictStr = Field(...)
+    background_color: StrictStr = Field(...)
+    status: StrictStr = Field(...)
+    shippable: StrictBool = Field(...)
+    integration: StrictInt = Field(...)
+    domain: StrictStr = Field(...)
+    digital_product_expiry: Optional[Dict[str, Any]] = Field(...)
     metadata: Optional[Dict[str, Any]] = None
-    id: StrictInt
-    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
-    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    products: List[Any]
-    shipping_fees: List[Any]
-    __properties: ClassVar[List[str]] = ["social_media", "contacts", "name", "slug", "currency", "welcome_message", "success_message", "redirect_url", "description", "delivery_note", "background_color", "status", "shippable", "integration", "domain", "digital_product_expiry", "metadata", "id", "createdAt", "updatedAt", "products", "shipping_fees"]
+    id: StrictInt = Field(...)
+    created_at: StrictStr = Field(..., alias="createdAt")
+    updated_at: StrictStr = Field(..., alias="updatedAt")
+    products: conlist(Dict[str, Any]) = Field(...)
+    shipping_fees: conlist(Dict[str, Any]) = Field(...)
+    __properties = ["social_media", "contacts", "name", "slug", "currency", "welcome_message", "success_message", "redirect_url", "description", "delivery_note", "background_color", "status", "shippable", "integration", "domain", "digital_product_expiry", "metadata", "id", "createdAt", "updatedAt", "products", "shipping_fees"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> StorefrontCreateResponseData:
         """Create an instance of StorefrontCreateResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in contacts (list)
         _items = []
         if self.contacts:
-            for _item_contacts in self.contacts:
-                if _item_contacts:
-                    _items.append(_item_contacts.to_dict())
+            for _item in self.contacts:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict['contacts'] = _items
         # set to None if welcome_message (nullable) is None
-        # and model_fields_set contains the field
-        if self.welcome_message is None and "welcome_message" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.welcome_message is None and "welcome_message" in self.__fields_set__:
             _dict['welcome_message'] = None
 
         # set to None if success_message (nullable) is None
-        # and model_fields_set contains the field
-        if self.success_message is None and "success_message" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.success_message is None and "success_message" in self.__fields_set__:
             _dict['success_message'] = None
 
         # set to None if redirect_url (nullable) is None
-        # and model_fields_set contains the field
-        if self.redirect_url is None and "redirect_url" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.redirect_url is None and "redirect_url" in self.__fields_set__:
             _dict['redirect_url'] = None
 
         # set to None if description (nullable) is None
-        # and model_fields_set contains the field
-        if self.description is None and "description" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.description is None and "description" in self.__fields_set__:
             _dict['description'] = None
 
         # set to None if digital_product_expiry (nullable) is None
-        # and model_fields_set contains the field
-        if self.digital_product_expiry is None and "digital_product_expiry" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.digital_product_expiry is None and "digital_product_expiry" in self.__fields_set__:
             _dict['digital_product_expiry'] = None
 
         # set to None if metadata (nullable) is None
-        # and model_fields_set contains the field
-        if self.metadata is None and "metadata" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.metadata is None and "metadata" in self.__fields_set__:
             _dict['metadata'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> StorefrontCreateResponseData:
         """Create an instance of StorefrontCreateResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return StorefrontCreateResponseData.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = StorefrontCreateResponseData.parse_obj({
             "social_media": obj.get("social_media"),
-            "contacts": [StorefrontContactsArray.from_dict(_item) for _item in obj["contacts"]] if obj.get("contacts") is not None else None,
+            "contacts": [StorefrontContactsArray.from_dict(_item) for _item in obj.get("contacts")] if obj.get("contacts") is not None else None,
             "name": obj.get("name"),
             "slug": obj.get("slug"),
             "currency": obj.get("currency"),
@@ -158,8 +142,8 @@ class StorefrontCreateResponseData(BaseModel):
             "digital_product_expiry": obj.get("digital_product_expiry"),
             "metadata": obj.get("metadata"),
             "id": obj.get("id"),
-            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
-            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
+            "created_at": obj.get("createdAt"),
+            "updated_at": obj.get("updatedAt"),
             "products": obj.get("products"),
             "shipping_fees": obj.get("shipping_fees")
         })

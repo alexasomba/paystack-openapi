@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the DedicatedNubanCreateResponseData type satisfies the MappedNullable interface at compile time
@@ -22,12 +20,12 @@ var _ MappedNullable = &DedicatedNubanCreateResponseData{}
 
 // DedicatedNubanCreateResponseData struct for DedicatedNubanCreateResponseData
 type DedicatedNubanCreateResponseData struct {
-	Bank DedicatedNubanListResponseArrayBank `json:"bank"`
+	Bank DedicatedNubanCreateResponseDataBank `json:"bank"`
 	AccountName string `json:"account_name"`
 	AccountNumber string `json:"account_number"`
 	Assigned bool `json:"assigned"`
 	Currency string `json:"currency"`
-	Metadata interface{} `json:"metadata"`
+	Metadata map[string]interface{} `json:"metadata"`
 	Active bool `json:"active"`
 	Id int32 `json:"id"`
 	CreatedAt string `json:"created_at"`
@@ -36,13 +34,11 @@ type DedicatedNubanCreateResponseData struct {
 	Customer DedicatedNubanCreateResponseDataCustomer `json:"customer"`
 }
 
-type _DedicatedNubanCreateResponseData DedicatedNubanCreateResponseData
-
 // NewDedicatedNubanCreateResponseData instantiates a new DedicatedNubanCreateResponseData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDedicatedNubanCreateResponseData(bank DedicatedNubanListResponseArrayBank, accountName string, accountNumber string, assigned bool, currency string, metadata interface{}, active bool, id int32, createdAt string, updatedAt string, assignment DedicatedNubanCreateResponseDataAssignment, customer DedicatedNubanCreateResponseDataCustomer) *DedicatedNubanCreateResponseData {
+func NewDedicatedNubanCreateResponseData(bank DedicatedNubanCreateResponseDataBank, accountName string, accountNumber string, assigned bool, currency string, metadata map[string]interface{}, active bool, id int32, createdAt string, updatedAt string, assignment DedicatedNubanCreateResponseDataAssignment, customer DedicatedNubanCreateResponseDataCustomer) *DedicatedNubanCreateResponseData {
 	this := DedicatedNubanCreateResponseData{}
 	this.Bank = bank
 	this.AccountName = accountName
@@ -68,9 +64,9 @@ func NewDedicatedNubanCreateResponseDataWithDefaults() *DedicatedNubanCreateResp
 }
 
 // GetBank returns the Bank field value
-func (o *DedicatedNubanCreateResponseData) GetBank() DedicatedNubanListResponseArrayBank {
+func (o *DedicatedNubanCreateResponseData) GetBank() DedicatedNubanCreateResponseDataBank {
 	if o == nil {
-		var ret DedicatedNubanListResponseArrayBank
+		var ret DedicatedNubanCreateResponseDataBank
 		return ret
 	}
 
@@ -79,7 +75,7 @@ func (o *DedicatedNubanCreateResponseData) GetBank() DedicatedNubanListResponseA
 
 // GetBankOk returns a tuple with the Bank field value
 // and a boolean to check if the value has been set.
-func (o *DedicatedNubanCreateResponseData) GetBankOk() (*DedicatedNubanListResponseArrayBank, bool) {
+func (o *DedicatedNubanCreateResponseData) GetBankOk() (*DedicatedNubanCreateResponseDataBank, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -87,7 +83,7 @@ func (o *DedicatedNubanCreateResponseData) GetBankOk() (*DedicatedNubanListRespo
 }
 
 // SetBank sets field value
-func (o *DedicatedNubanCreateResponseData) SetBank(v DedicatedNubanListResponseArrayBank) {
+func (o *DedicatedNubanCreateResponseData) SetBank(v DedicatedNubanCreateResponseDataBank) {
 	o.Bank = v
 }
 
@@ -188,10 +184,10 @@ func (o *DedicatedNubanCreateResponseData) SetCurrency(v string) {
 }
 
 // GetMetadata returns the Metadata field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *DedicatedNubanCreateResponseData) GetMetadata() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *DedicatedNubanCreateResponseData) GetMetadata() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -201,15 +197,15 @@ func (o *DedicatedNubanCreateResponseData) GetMetadata() interface{} {
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DedicatedNubanCreateResponseData) GetMetadataOk() (*interface{}, bool) {
+func (o *DedicatedNubanCreateResponseData) GetMetadataOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Metadata) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Metadata, true
+	return o.Metadata, true
 }
 
 // SetMetadata sets field value
-func (o *DedicatedNubanCreateResponseData) SetMetadata(v interface{}) {
+func (o *DedicatedNubanCreateResponseData) SetMetadata(v map[string]interface{}) {
 	o.Metadata = v
 }
 
@@ -382,54 +378,6 @@ func (o DedicatedNubanCreateResponseData) ToMap() (map[string]interface{}, error
 	toSerialize["assignment"] = o.Assignment
 	toSerialize["customer"] = o.Customer
 	return toSerialize, nil
-}
-
-func (o *DedicatedNubanCreateResponseData) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"bank",
-		"account_name",
-		"account_number",
-		"assigned",
-		"currency",
-		"metadata",
-		"active",
-		"id",
-		"created_at",
-		"updated_at",
-		"assignment",
-		"customer",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDedicatedNubanCreateResponseData := _DedicatedNubanCreateResponseData{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDedicatedNubanCreateResponseData)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DedicatedNubanCreateResponseData(varDedicatedNubanCreateResponseData)
-
-	return err
 }
 
 type NullableDedicatedNubanCreateResponseData struct {

@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the StorefrontContactsArray type satisfies the MappedNullable interface at compile time
@@ -24,17 +22,15 @@ var _ MappedNullable = &StorefrontContactsArray{}
 type StorefrontContactsArray struct {
 	Value string `json:"value"`
 	Id int32 `json:"id"`
-	TypeName interface{} `json:"type_name"`
+	TypeName map[string]interface{} `json:"type_name"`
 	Type int32 `json:"type"`
 }
-
-type _StorefrontContactsArray StorefrontContactsArray
 
 // NewStorefrontContactsArray instantiates a new StorefrontContactsArray object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStorefrontContactsArray(value string, id int32, typeName interface{}, type_ int32) *StorefrontContactsArray {
+func NewStorefrontContactsArray(value string, id int32, typeName map[string]interface{}, type_ int32) *StorefrontContactsArray {
 	this := StorefrontContactsArray{}
 	this.Value = value
 	this.Id = id
@@ -100,10 +96,10 @@ func (o *StorefrontContactsArray) SetId(v int32) {
 }
 
 // GetTypeName returns the TypeName field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *StorefrontContactsArray) GetTypeName() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *StorefrontContactsArray) GetTypeName() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -113,15 +109,15 @@ func (o *StorefrontContactsArray) GetTypeName() interface{} {
 // GetTypeNameOk returns a tuple with the TypeName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StorefrontContactsArray) GetTypeNameOk() (*interface{}, bool) {
+func (o *StorefrontContactsArray) GetTypeNameOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.TypeName) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.TypeName, true
+	return o.TypeName, true
 }
 
 // SetTypeName sets field value
-func (o *StorefrontContactsArray) SetTypeName(v interface{}) {
+func (o *StorefrontContactsArray) SetTypeName(v map[string]interface{}) {
 	o.TypeName = v
 }
 
@@ -166,46 +162,6 @@ func (o StorefrontContactsArray) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["type"] = o.Type
 	return toSerialize, nil
-}
-
-func (o *StorefrontContactsArray) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"value",
-		"id",
-		"type_name",
-		"type",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varStorefrontContactsArray := _StorefrontContactsArray{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStorefrontContactsArray)
-
-	if err != nil {
-		return err
-	}
-
-	*o = StorefrontContactsArray(varStorefrontContactsArray)
-
-	return err
 }
 
 type NullableStorefrontContactsArray struct {

@@ -18,108 +18,92 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from typing import Optional, Set
-from typing_extensions import Self
+
+from typing import Any, Dict, List, Optional
+from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
 
 class TransferCreateResponseData(BaseModel):
     """
     TransferCreateResponseData
-    """ # noqa: E501
-    transfersessionid: List[Any]
-    transfertrials: List[Any]
-    domain: StrictStr
-    amount: StrictInt
-    currency: StrictStr
-    reference: StrictStr
-    source: StrictStr
-    source_details: Optional[Any]
-    reason: StrictStr
-    status: StrictStr
-    failures: Optional[Any]
-    transfer_code: StrictStr
-    titan_code: Optional[Any]
-    transferred_at: Optional[Any]
-    id: StrictInt
-    integration: StrictInt
-    request: StrictInt
-    recipient: StrictInt
-    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
-    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    __properties: ClassVar[List[str]] = ["transfersessionid", "transfertrials", "domain", "amount", "currency", "reference", "source", "source_details", "reason", "status", "failures", "transfer_code", "titan_code", "transferred_at", "id", "integration", "request", "recipient", "createdAt", "updatedAt"]
+    """
+    transfersessionid: conlist(Dict[str, Any]) = Field(...)
+    transfertrials: conlist(Dict[str, Any]) = Field(...)
+    domain: StrictStr = Field(...)
+    amount: StrictInt = Field(...)
+    currency: StrictStr = Field(...)
+    reference: StrictStr = Field(...)
+    source: StrictStr = Field(...)
+    source_details: Optional[Dict[str, Any]] = Field(...)
+    reason: StrictStr = Field(...)
+    status: StrictStr = Field(...)
+    failures: Optional[Dict[str, Any]] = Field(...)
+    transfer_code: StrictStr = Field(...)
+    titan_code: Optional[Dict[str, Any]] = Field(...)
+    transferred_at: Optional[Dict[str, Any]] = Field(...)
+    id: StrictInt = Field(...)
+    integration: StrictInt = Field(...)
+    request: StrictInt = Field(...)
+    recipient: StrictInt = Field(...)
+    created_at: StrictStr = Field(..., alias="createdAt")
+    updated_at: StrictStr = Field(..., alias="updatedAt")
+    __properties = ["transfersessionid", "transfertrials", "domain", "amount", "currency", "reference", "source", "source_details", "reason", "status", "failures", "transfer_code", "titan_code", "transferred_at", "id", "integration", "request", "recipient", "createdAt", "updatedAt"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> TransferCreateResponseData:
         """Create an instance of TransferCreateResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if source_details (nullable) is None
-        # and model_fields_set contains the field
-        if self.source_details is None and "source_details" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.source_details is None and "source_details" in self.__fields_set__:
             _dict['source_details'] = None
 
         # set to None if failures (nullable) is None
-        # and model_fields_set contains the field
-        if self.failures is None and "failures" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.failures is None and "failures" in self.__fields_set__:
             _dict['failures'] = None
 
         # set to None if titan_code (nullable) is None
-        # and model_fields_set contains the field
-        if self.titan_code is None and "titan_code" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.titan_code is None and "titan_code" in self.__fields_set__:
             _dict['titan_code'] = None
 
         # set to None if transferred_at (nullable) is None
-        # and model_fields_set contains the field
-        if self.transferred_at is None and "transferred_at" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.transferred_at is None and "transferred_at" in self.__fields_set__:
             _dict['transferred_at'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> TransferCreateResponseData:
         """Create an instance of TransferCreateResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return TransferCreateResponseData.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = TransferCreateResponseData.parse_obj({
             "transfersessionid": obj.get("transfersessionid"),
             "transfertrials": obj.get("transfertrials"),
             "domain": obj.get("domain"),
@@ -138,8 +122,8 @@ class TransferCreateResponseData(BaseModel):
             "integration": obj.get("integration"),
             "request": obj.get("request"),
             "recipient": obj.get("recipient"),
-            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
-            "updatedAt": obj.get("updatedAt")
+            "created_at": obj.get("createdAt"),
+            "updated_at": obj.get("updatedAt")
         })
         return _obj
 

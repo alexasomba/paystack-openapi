@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ProductListsResponseArray type satisfies the MappedNullable interface at compile time
@@ -36,31 +34,29 @@ type ProductListsResponseArray struct {
 	Type string `json:"type"`
 	InStock bool `json:"in_stock"`
 	Unlimited bool `json:"unlimited"`
-	Metadata ProductListsResponseArrayMetadata `json:"metadata"`
-	Files []interface{} `json:"files"`
-	SuccessMessage interface{} `json:"success_message"`
-	RedirectUrl interface{} `json:"redirect_url"`
-	SplitCode interface{} `json:"split_code"`
-	NotificationEmails interface{} `json:"notification_emails"`
+	Metadata ProductCreateResponseDataMetadata `json:"metadata"`
+	Files []map[string]interface{} `json:"files"`
+	SuccessMessage map[string]interface{} `json:"success_message"`
+	RedirectUrl map[string]interface{} `json:"redirect_url"`
+	SplitCode map[string]interface{} `json:"split_code"`
+	NotificationEmails map[string]interface{} `json:"notification_emails"`
 	MinimumOrderable int32 `json:"minimum_orderable"`
-	MaximumOrderable interface{} `json:"maximum_orderable"`
+	MaximumOrderable map[string]interface{} `json:"maximum_orderable"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
-	DigitalAssets []interface{} `json:"digital_assets"`
-	VariantOptions []interface{} `json:"variant_options"`
+	DigitalAssets []map[string]interface{} `json:"digital_assets"`
+	VariantOptions []map[string]interface{} `json:"variant_options"`
 	IsShippable bool `json:"is_shippable"`
-	ShippingFields ProductListsResponseArrayShippingFields `json:"shipping_fields"`
+	ShippingFields ProductCreateResponseDataShippingFields `json:"shipping_fields"`
 	Integration int32 `json:"integration"`
 	LowStockAlert int32 `json:"low_stock_alert"`
 }
-
-type _ProductListsResponseArray ProductListsResponseArray
 
 // NewProductListsResponseArray instantiates a new ProductListsResponseArray object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProductListsResponseArray(id int32, name string, description string, productCode string, slug string, currency string, price int32, quantity int32, quantitySold int32, active bool, domain string, type_ string, inStock bool, unlimited bool, metadata ProductListsResponseArrayMetadata, files []interface{}, successMessage interface{}, redirectUrl interface{}, splitCode interface{}, notificationEmails interface{}, minimumOrderable int32, maximumOrderable interface{}, createdAt string, updatedAt string, digitalAssets []interface{}, variantOptions []interface{}, isShippable bool, shippingFields ProductListsResponseArrayShippingFields, integration int32, lowStockAlert int32) *ProductListsResponseArray {
+func NewProductListsResponseArray(id int32, name string, description string, productCode string, slug string, currency string, price int32, quantity int32, quantitySold int32, active bool, domain string, type_ string, inStock bool, unlimited bool, metadata ProductCreateResponseDataMetadata, files []map[string]interface{}, successMessage map[string]interface{}, redirectUrl map[string]interface{}, splitCode map[string]interface{}, notificationEmails map[string]interface{}, minimumOrderable int32, maximumOrderable map[string]interface{}, createdAt string, updatedAt string, digitalAssets []map[string]interface{}, variantOptions []map[string]interface{}, isShippable bool, shippingFields ProductCreateResponseDataShippingFields, integration int32, lowStockAlert int32) *ProductListsResponseArray {
 	this := ProductListsResponseArray{}
 	this.Id = id
 	this.Name = name
@@ -440,9 +436,9 @@ func (o *ProductListsResponseArray) SetUnlimited(v bool) {
 }
 
 // GetMetadata returns the Metadata field value
-func (o *ProductListsResponseArray) GetMetadata() ProductListsResponseArrayMetadata {
+func (o *ProductListsResponseArray) GetMetadata() ProductCreateResponseDataMetadata {
 	if o == nil {
-		var ret ProductListsResponseArrayMetadata
+		var ret ProductCreateResponseDataMetadata
 		return ret
 	}
 
@@ -451,7 +447,7 @@ func (o *ProductListsResponseArray) GetMetadata() ProductListsResponseArrayMetad
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
-func (o *ProductListsResponseArray) GetMetadataOk() (*ProductListsResponseArrayMetadata, bool) {
+func (o *ProductListsResponseArray) GetMetadataOk() (*ProductCreateResponseDataMetadata, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -459,14 +455,14 @@ func (o *ProductListsResponseArray) GetMetadataOk() (*ProductListsResponseArrayM
 }
 
 // SetMetadata sets field value
-func (o *ProductListsResponseArray) SetMetadata(v ProductListsResponseArrayMetadata) {
+func (o *ProductListsResponseArray) SetMetadata(v ProductCreateResponseDataMetadata) {
 	o.Metadata = v
 }
 
 // GetFiles returns the Files field value
-func (o *ProductListsResponseArray) GetFiles() []interface{} {
+func (o *ProductListsResponseArray) GetFiles() []map[string]interface{} {
 	if o == nil {
-		var ret []interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -475,7 +471,7 @@ func (o *ProductListsResponseArray) GetFiles() []interface{} {
 
 // GetFilesOk returns a tuple with the Files field value
 // and a boolean to check if the value has been set.
-func (o *ProductListsResponseArray) GetFilesOk() ([]interface{}, bool) {
+func (o *ProductListsResponseArray) GetFilesOk() ([]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -483,15 +479,15 @@ func (o *ProductListsResponseArray) GetFilesOk() ([]interface{}, bool) {
 }
 
 // SetFiles sets field value
-func (o *ProductListsResponseArray) SetFiles(v []interface{}) {
+func (o *ProductListsResponseArray) SetFiles(v []map[string]interface{}) {
 	o.Files = v
 }
 
 // GetSuccessMessage returns the SuccessMessage field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ProductListsResponseArray) GetSuccessMessage() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *ProductListsResponseArray) GetSuccessMessage() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -501,23 +497,23 @@ func (o *ProductListsResponseArray) GetSuccessMessage() interface{} {
 // GetSuccessMessageOk returns a tuple with the SuccessMessage field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductListsResponseArray) GetSuccessMessageOk() (*interface{}, bool) {
+func (o *ProductListsResponseArray) GetSuccessMessageOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.SuccessMessage) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.SuccessMessage, true
+	return o.SuccessMessage, true
 }
 
 // SetSuccessMessage sets field value
-func (o *ProductListsResponseArray) SetSuccessMessage(v interface{}) {
+func (o *ProductListsResponseArray) SetSuccessMessage(v map[string]interface{}) {
 	o.SuccessMessage = v
 }
 
 // GetRedirectUrl returns the RedirectUrl field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ProductListsResponseArray) GetRedirectUrl() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *ProductListsResponseArray) GetRedirectUrl() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -527,23 +523,23 @@ func (o *ProductListsResponseArray) GetRedirectUrl() interface{} {
 // GetRedirectUrlOk returns a tuple with the RedirectUrl field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductListsResponseArray) GetRedirectUrlOk() (*interface{}, bool) {
+func (o *ProductListsResponseArray) GetRedirectUrlOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.RedirectUrl) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.RedirectUrl, true
+	return o.RedirectUrl, true
 }
 
 // SetRedirectUrl sets field value
-func (o *ProductListsResponseArray) SetRedirectUrl(v interface{}) {
+func (o *ProductListsResponseArray) SetRedirectUrl(v map[string]interface{}) {
 	o.RedirectUrl = v
 }
 
 // GetSplitCode returns the SplitCode field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ProductListsResponseArray) GetSplitCode() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *ProductListsResponseArray) GetSplitCode() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -553,23 +549,23 @@ func (o *ProductListsResponseArray) GetSplitCode() interface{} {
 // GetSplitCodeOk returns a tuple with the SplitCode field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductListsResponseArray) GetSplitCodeOk() (*interface{}, bool) {
+func (o *ProductListsResponseArray) GetSplitCodeOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.SplitCode) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.SplitCode, true
+	return o.SplitCode, true
 }
 
 // SetSplitCode sets field value
-func (o *ProductListsResponseArray) SetSplitCode(v interface{}) {
+func (o *ProductListsResponseArray) SetSplitCode(v map[string]interface{}) {
 	o.SplitCode = v
 }
 
 // GetNotificationEmails returns the NotificationEmails field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ProductListsResponseArray) GetNotificationEmails() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *ProductListsResponseArray) GetNotificationEmails() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -579,15 +575,15 @@ func (o *ProductListsResponseArray) GetNotificationEmails() interface{} {
 // GetNotificationEmailsOk returns a tuple with the NotificationEmails field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductListsResponseArray) GetNotificationEmailsOk() (*interface{}, bool) {
+func (o *ProductListsResponseArray) GetNotificationEmailsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.NotificationEmails) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.NotificationEmails, true
+	return o.NotificationEmails, true
 }
 
 // SetNotificationEmails sets field value
-func (o *ProductListsResponseArray) SetNotificationEmails(v interface{}) {
+func (o *ProductListsResponseArray) SetNotificationEmails(v map[string]interface{}) {
 	o.NotificationEmails = v
 }
 
@@ -616,10 +612,10 @@ func (o *ProductListsResponseArray) SetMinimumOrderable(v int32) {
 }
 
 // GetMaximumOrderable returns the MaximumOrderable field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ProductListsResponseArray) GetMaximumOrderable() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *ProductListsResponseArray) GetMaximumOrderable() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -629,15 +625,15 @@ func (o *ProductListsResponseArray) GetMaximumOrderable() interface{} {
 // GetMaximumOrderableOk returns a tuple with the MaximumOrderable field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductListsResponseArray) GetMaximumOrderableOk() (*interface{}, bool) {
+func (o *ProductListsResponseArray) GetMaximumOrderableOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.MaximumOrderable) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.MaximumOrderable, true
+	return o.MaximumOrderable, true
 }
 
 // SetMaximumOrderable sets field value
-func (o *ProductListsResponseArray) SetMaximumOrderable(v interface{}) {
+func (o *ProductListsResponseArray) SetMaximumOrderable(v map[string]interface{}) {
 	o.MaximumOrderable = v
 }
 
@@ -690,9 +686,9 @@ func (o *ProductListsResponseArray) SetUpdatedAt(v string) {
 }
 
 // GetDigitalAssets returns the DigitalAssets field value
-func (o *ProductListsResponseArray) GetDigitalAssets() []interface{} {
+func (o *ProductListsResponseArray) GetDigitalAssets() []map[string]interface{} {
 	if o == nil {
-		var ret []interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -701,7 +697,7 @@ func (o *ProductListsResponseArray) GetDigitalAssets() []interface{} {
 
 // GetDigitalAssetsOk returns a tuple with the DigitalAssets field value
 // and a boolean to check if the value has been set.
-func (o *ProductListsResponseArray) GetDigitalAssetsOk() ([]interface{}, bool) {
+func (o *ProductListsResponseArray) GetDigitalAssetsOk() ([]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -709,14 +705,14 @@ func (o *ProductListsResponseArray) GetDigitalAssetsOk() ([]interface{}, bool) {
 }
 
 // SetDigitalAssets sets field value
-func (o *ProductListsResponseArray) SetDigitalAssets(v []interface{}) {
+func (o *ProductListsResponseArray) SetDigitalAssets(v []map[string]interface{}) {
 	o.DigitalAssets = v
 }
 
 // GetVariantOptions returns the VariantOptions field value
-func (o *ProductListsResponseArray) GetVariantOptions() []interface{} {
+func (o *ProductListsResponseArray) GetVariantOptions() []map[string]interface{} {
 	if o == nil {
-		var ret []interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -725,7 +721,7 @@ func (o *ProductListsResponseArray) GetVariantOptions() []interface{} {
 
 // GetVariantOptionsOk returns a tuple with the VariantOptions field value
 // and a boolean to check if the value has been set.
-func (o *ProductListsResponseArray) GetVariantOptionsOk() ([]interface{}, bool) {
+func (o *ProductListsResponseArray) GetVariantOptionsOk() ([]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -733,7 +729,7 @@ func (o *ProductListsResponseArray) GetVariantOptionsOk() ([]interface{}, bool) 
 }
 
 // SetVariantOptions sets field value
-func (o *ProductListsResponseArray) SetVariantOptions(v []interface{}) {
+func (o *ProductListsResponseArray) SetVariantOptions(v []map[string]interface{}) {
 	o.VariantOptions = v
 }
 
@@ -762,9 +758,9 @@ func (o *ProductListsResponseArray) SetIsShippable(v bool) {
 }
 
 // GetShippingFields returns the ShippingFields field value
-func (o *ProductListsResponseArray) GetShippingFields() ProductListsResponseArrayShippingFields {
+func (o *ProductListsResponseArray) GetShippingFields() ProductCreateResponseDataShippingFields {
 	if o == nil {
-		var ret ProductListsResponseArrayShippingFields
+		var ret ProductCreateResponseDataShippingFields
 		return ret
 	}
 
@@ -773,7 +769,7 @@ func (o *ProductListsResponseArray) GetShippingFields() ProductListsResponseArra
 
 // GetShippingFieldsOk returns a tuple with the ShippingFields field value
 // and a boolean to check if the value has been set.
-func (o *ProductListsResponseArray) GetShippingFieldsOk() (*ProductListsResponseArrayShippingFields, bool) {
+func (o *ProductListsResponseArray) GetShippingFieldsOk() (*ProductCreateResponseDataShippingFields, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -781,7 +777,7 @@ func (o *ProductListsResponseArray) GetShippingFieldsOk() (*ProductListsResponse
 }
 
 // SetShippingFields sets field value
-func (o *ProductListsResponseArray) SetShippingFields(v ProductListsResponseArrayShippingFields) {
+func (o *ProductListsResponseArray) SetShippingFields(v ProductCreateResponseDataShippingFields) {
 	o.ShippingFields = v
 }
 
@@ -884,72 +880,6 @@ func (o ProductListsResponseArray) ToMap() (map[string]interface{}, error) {
 	toSerialize["integration"] = o.Integration
 	toSerialize["low_stock_alert"] = o.LowStockAlert
 	return toSerialize, nil
-}
-
-func (o *ProductListsResponseArray) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"name",
-		"description",
-		"product_code",
-		"slug",
-		"currency",
-		"price",
-		"quantity",
-		"quantity_sold",
-		"active",
-		"domain",
-		"type",
-		"in_stock",
-		"unlimited",
-		"metadata",
-		"files",
-		"success_message",
-		"redirect_url",
-		"split_code",
-		"notification_emails",
-		"minimum_orderable",
-		"maximum_orderable",
-		"createdAt",
-		"updatedAt",
-		"digital_assets",
-		"variant_options",
-		"is_shippable",
-		"shipping_fields",
-		"integration",
-		"low_stock_alert",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varProductListsResponseArray := _ProductListsResponseArray{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProductListsResponseArray)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ProductListsResponseArray(varProductListsResponseArray)
-
-	return err
 }
 
 type NullableProductListsResponseArray struct {

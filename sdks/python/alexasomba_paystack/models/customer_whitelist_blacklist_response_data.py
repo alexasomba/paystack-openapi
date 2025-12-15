@@ -18,90 +18,74 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from typing import Optional, Set
-from typing_extensions import Self
+
+from typing import Any, Dict, List, Optional
+from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
 
 class CustomerWhitelistBlacklistResponseData(BaseModel):
     """
     CustomerWhitelistBlacklistResponseData
-    """ # noqa: E501
-    transactions: List[Any]
-    subscriptions: List[Any]
-    authorizations: List[Any]
-    first_name: StrictStr
-    last_name: StrictStr
-    email: StrictStr
-    phone: StrictStr
-    metadata: Dict[str, Any]
-    domain: StrictStr
-    customer_code: StrictStr
-    risk_action: StrictStr
-    id: StrictInt
-    integration: StrictInt
-    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
-    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    identified: StrictBool
-    identifications: Optional[Any]
-    __properties: ClassVar[List[str]] = ["transactions", "subscriptions", "authorizations", "first_name", "last_name", "email", "phone", "metadata", "domain", "customer_code", "risk_action", "id", "integration", "createdAt", "updatedAt", "identified", "identifications"]
+    """
+    transactions: conlist(Dict[str, Any]) = Field(...)
+    subscriptions: conlist(Dict[str, Any]) = Field(...)
+    authorizations: conlist(Dict[str, Any]) = Field(...)
+    first_name: StrictStr = Field(...)
+    last_name: StrictStr = Field(...)
+    email: StrictStr = Field(...)
+    phone: StrictStr = Field(...)
+    metadata: Dict[str, Any] = Field(...)
+    domain: StrictStr = Field(...)
+    customer_code: StrictStr = Field(...)
+    risk_action: StrictStr = Field(...)
+    id: StrictInt = Field(...)
+    integration: StrictInt = Field(...)
+    created_at: StrictStr = Field(..., alias="createdAt")
+    updated_at: StrictStr = Field(..., alias="updatedAt")
+    identified: StrictBool = Field(...)
+    identifications: Optional[Dict[str, Any]] = Field(...)
+    __properties = ["transactions", "subscriptions", "authorizations", "first_name", "last_name", "email", "phone", "metadata", "domain", "customer_code", "risk_action", "id", "integration", "createdAt", "updatedAt", "identified", "identifications"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> CustomerWhitelistBlacklistResponseData:
         """Create an instance of CustomerWhitelistBlacklistResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if identifications (nullable) is None
-        # and model_fields_set contains the field
-        if self.identifications is None and "identifications" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.identifications is None and "identifications" in self.__fields_set__:
             _dict['identifications'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> CustomerWhitelistBlacklistResponseData:
         """Create an instance of CustomerWhitelistBlacklistResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return CustomerWhitelistBlacklistResponseData.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = CustomerWhitelistBlacklistResponseData.parse_obj({
             "transactions": obj.get("transactions"),
             "subscriptions": obj.get("subscriptions"),
             "authorizations": obj.get("authorizations"),
@@ -115,8 +99,8 @@ class CustomerWhitelistBlacklistResponseData(BaseModel):
             "risk_action": obj.get("risk_action"),
             "id": obj.get("id"),
             "integration": obj.get("integration"),
-            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
-            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
+            "created_at": obj.get("createdAt"),
+            "updated_at": obj.get("updatedAt"),
             "identified": obj.get("identified"),
             "identifications": obj.get("identifications")
         })

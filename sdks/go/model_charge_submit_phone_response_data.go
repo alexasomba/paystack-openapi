@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ChargeSubmitPhoneResponseData type satisfies the MappedNullable interface at compile time
@@ -38,8 +36,6 @@ type ChargeSubmitPhoneResponseData struct {
 	Customer ChargeSubmitPinResponseDataCustomer `json:"customer"`
 	DisplayText string `json:"display_text"`
 }
-
-type _ChargeSubmitPhoneResponseData ChargeSubmitPhoneResponseData
 
 // NewChargeSubmitPhoneResponseData instantiates a new ChargeSubmitPhoneResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -465,57 +461,6 @@ func (o ChargeSubmitPhoneResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["customer"] = o.Customer
 	toSerialize["display_text"] = o.DisplayText
 	return toSerialize, nil
-}
-
-func (o *ChargeSubmitPhoneResponseData) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"status",
-		"amount",
-		"currency",
-		"transaction_date",
-		"reference",
-		"domain",
-		"redirect_url",
-		"metadata",
-		"gateway_response",
-		"message",
-		"channel",
-		"fees",
-		"authorization",
-		"customer",
-		"display_text",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varChargeSubmitPhoneResponseData := _ChargeSubmitPhoneResponseData{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varChargeSubmitPhoneResponseData)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ChargeSubmitPhoneResponseData(varChargeSubmitPhoneResponseData)
-
-	return err
 }
 
 type NullableChargeSubmitPhoneResponseData struct {

@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the VirtualTerminalListResponseArray type satisfies the MappedNullable interface at compile time
@@ -27,19 +25,17 @@ type VirtualTerminalListResponseArray struct {
 	Name string `json:"name"`
 	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
-	PaymentMethods []interface{} `json:"paymentMethods"`
+	PaymentMethods []map[string]interface{} `json:"paymentMethods"`
 	Active bool `json:"active"`
 	CreatedAt string `json:"created_at"`
 	Currency string `json:"currency"`
 }
 
-type _VirtualTerminalListResponseArray VirtualTerminalListResponseArray
-
 // NewVirtualTerminalListResponseArray instantiates a new VirtualTerminalListResponseArray object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVirtualTerminalListResponseArray(id int32, code string, name string, integration int32, domain string, paymentMethods []interface{}, active bool, createdAt string, currency string) *VirtualTerminalListResponseArray {
+func NewVirtualTerminalListResponseArray(id int32, code string, name string, integration int32, domain string, paymentMethods []map[string]interface{}, active bool, createdAt string, currency string) *VirtualTerminalListResponseArray {
 	this := VirtualTerminalListResponseArray{}
 	this.Id = id
 	this.Code = code
@@ -182,9 +178,9 @@ func (o *VirtualTerminalListResponseArray) SetDomain(v string) {
 }
 
 // GetPaymentMethods returns the PaymentMethods field value
-func (o *VirtualTerminalListResponseArray) GetPaymentMethods() []interface{} {
+func (o *VirtualTerminalListResponseArray) GetPaymentMethods() []map[string]interface{} {
 	if o == nil {
-		var ret []interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -193,7 +189,7 @@ func (o *VirtualTerminalListResponseArray) GetPaymentMethods() []interface{} {
 
 // GetPaymentMethodsOk returns a tuple with the PaymentMethods field value
 // and a boolean to check if the value has been set.
-func (o *VirtualTerminalListResponseArray) GetPaymentMethodsOk() ([]interface{}, bool) {
+func (o *VirtualTerminalListResponseArray) GetPaymentMethodsOk() ([]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -201,7 +197,7 @@ func (o *VirtualTerminalListResponseArray) GetPaymentMethodsOk() ([]interface{},
 }
 
 // SetPaymentMethods sets field value
-func (o *VirtualTerminalListResponseArray) SetPaymentMethods(v []interface{}) {
+func (o *VirtualTerminalListResponseArray) SetPaymentMethods(v []map[string]interface{}) {
 	o.PaymentMethods = v
 }
 
@@ -297,51 +293,6 @@ func (o VirtualTerminalListResponseArray) ToMap() (map[string]interface{}, error
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["currency"] = o.Currency
 	return toSerialize, nil
-}
-
-func (o *VirtualTerminalListResponseArray) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"code",
-		"name",
-		"integration",
-		"domain",
-		"paymentMethods",
-		"active",
-		"created_at",
-		"currency",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varVirtualTerminalListResponseArray := _VirtualTerminalListResponseArray{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVirtualTerminalListResponseArray)
-
-	if err != nil {
-		return err
-	}
-
-	*o = VirtualTerminalListResponseArray(varVirtualTerminalListResponseArray)
-
-	return err
 }
 
 type NullableVirtualTerminalListResponseArray struct {

@@ -148,7 +148,7 @@ type ApiSubaccountFetchRequest struct {
 	code string
 }
 
-func (r ApiSubaccountFetchRequest) Execute() (*SubaccountFetchResponse, *http.Response, error) {
+func (r ApiSubaccountFetchRequest) Execute() (*SubaccountCode, *http.Response, error) {
 	return r.ApiService.SubaccountFetchExecute(r)
 }
 
@@ -170,13 +170,13 @@ func (a *SubaccountAPIService) SubaccountFetch(ctx context.Context, code string)
 }
 
 // Execute executes the request
-//  @return SubaccountFetchResponse
-func (a *SubaccountAPIService) SubaccountFetchExecute(r ApiSubaccountFetchRequest) (*SubaccountFetchResponse, *http.Response, error) {
+//  @return SubaccountCode
+func (a *SubaccountAPIService) SubaccountFetchExecute(r ApiSubaccountFetchRequest) (*SubaccountCode, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SubaccountFetchResponse
+		localVarReturnValue  *SubaccountCode
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubaccountAPIService.SubaccountFetch")
@@ -334,21 +334,13 @@ func (a *SubaccountAPIService) SubaccountListExecute(r ApiSubaccountListRequest)
 	localVarFormParams := url.Values{}
 
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
-	} else {
-        var defaultValue int32 = 50
-        parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", defaultValue, "form", "")
-        r.perPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
-	} else {
-        var defaultValue int32 = 1
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
-        r.page = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.active != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -430,15 +422,15 @@ type ApiSubaccountUpdateRequest struct {
 	ctx context.Context
 	ApiService *SubaccountAPIService
 	code string
-	subaccountUpdate *SubaccountUpdate
+	body *SubaccountCode
 }
 
-func (r ApiSubaccountUpdateRequest) SubaccountUpdate(subaccountUpdate SubaccountUpdate) ApiSubaccountUpdateRequest {
-	r.subaccountUpdate = &subaccountUpdate
+func (r ApiSubaccountUpdateRequest) Body(body SubaccountCode) ApiSubaccountUpdateRequest {
+	r.body = &body
 	return r
 }
 
-func (r ApiSubaccountUpdateRequest) Execute() (*SubaccountUpdateResponse, *http.Response, error) {
+func (r ApiSubaccountUpdateRequest) Execute() (*SubaccountCode, *http.Response, error) {
 	return r.ApiService.SubaccountUpdateExecute(r)
 }
 
@@ -460,13 +452,13 @@ func (a *SubaccountAPIService) SubaccountUpdate(ctx context.Context, code string
 }
 
 // Execute executes the request
-//  @return SubaccountUpdateResponse
-func (a *SubaccountAPIService) SubaccountUpdateExecute(r ApiSubaccountUpdateRequest) (*SubaccountUpdateResponse, *http.Response, error) {
+//  @return SubaccountCode
+func (a *SubaccountAPIService) SubaccountUpdateExecute(r ApiSubaccountUpdateRequest) (*SubaccountCode, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SubaccountUpdateResponse
+		localVarReturnValue  *SubaccountCode
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubaccountAPIService.SubaccountUpdate")
@@ -499,7 +491,7 @@ func (a *SubaccountAPIService) SubaccountUpdateExecute(r ApiSubaccountUpdateRequ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.subaccountUpdate
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

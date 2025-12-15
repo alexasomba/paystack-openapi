@@ -18,92 +18,76 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from typing import Optional, Set
-from typing_extensions import Self
+
+from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
 
 class OrderCreateResponseDataShipping(BaseModel):
     """
     OrderCreateResponseDataShipping
-    """ # noqa: E501
-    customer: StrictInt
-    integration: StrictInt
-    domain: StrictStr
-    fees: StrictInt
-    delivery_note: Optional[Any]
-    street_line: StrictStr
-    city: StrictStr
-    state: StrictStr
-    country: StrictStr
-    is_shipped: StrictBool
-    delivery_tracking_link: Optional[Any]
-    id: StrictInt
-    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
-    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    __properties: ClassVar[List[str]] = ["customer", "integration", "domain", "fees", "delivery_note", "street_line", "city", "state", "country", "is_shipped", "delivery_tracking_link", "id", "createdAt", "updatedAt"]
+    """
+    customer: StrictInt = Field(...)
+    integration: StrictInt = Field(...)
+    domain: StrictStr = Field(...)
+    fees: StrictInt = Field(...)
+    delivery_note: Optional[Dict[str, Any]] = Field(...)
+    street_line: StrictStr = Field(...)
+    city: StrictStr = Field(...)
+    state: StrictStr = Field(...)
+    country: StrictStr = Field(...)
+    is_shipped: StrictBool = Field(...)
+    delivery_tracking_link: Optional[Dict[str, Any]] = Field(...)
+    id: StrictInt = Field(...)
+    created_at: StrictStr = Field(..., alias="createdAt")
+    updated_at: StrictStr = Field(..., alias="updatedAt")
+    __properties = ["customer", "integration", "domain", "fees", "delivery_note", "street_line", "city", "state", "country", "is_shipped", "delivery_tracking_link", "id", "createdAt", "updatedAt"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> OrderCreateResponseDataShipping:
         """Create an instance of OrderCreateResponseDataShipping from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if delivery_note (nullable) is None
-        # and model_fields_set contains the field
-        if self.delivery_note is None and "delivery_note" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.delivery_note is None and "delivery_note" in self.__fields_set__:
             _dict['delivery_note'] = None
 
         # set to None if delivery_tracking_link (nullable) is None
-        # and model_fields_set contains the field
-        if self.delivery_tracking_link is None and "delivery_tracking_link" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.delivery_tracking_link is None and "delivery_tracking_link" in self.__fields_set__:
             _dict['delivery_tracking_link'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> OrderCreateResponseDataShipping:
         """Create an instance of OrderCreateResponseDataShipping from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return OrderCreateResponseDataShipping.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = OrderCreateResponseDataShipping.parse_obj({
             "customer": obj.get("customer"),
             "integration": obj.get("integration"),
             "domain": obj.get("domain"),
@@ -116,8 +100,8 @@ class OrderCreateResponseDataShipping(BaseModel):
             "is_shipped": obj.get("is_shipped"),
             "delivery_tracking_link": obj.get("delivery_tracking_link"),
             "id": obj.get("id"),
-            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
-            "updatedAt": obj.get("updatedAt")
+            "created_at": obj.get("createdAt"),
+            "updated_at": obj.get("updatedAt")
         })
         return _obj
 

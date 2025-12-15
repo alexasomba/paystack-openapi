@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the DirectDebitActivationChargeRequest type satisfies the MappedNullable interface at compile time
@@ -25,8 +23,6 @@ type DirectDebitActivationChargeRequest struct {
 	// Array of customer IDs to trigger activation charge for
 	CustomerIds []int32 `json:"customer_ids"`
 }
-
-type _DirectDebitActivationChargeRequest DirectDebitActivationChargeRequest
 
 // NewDirectDebitActivationChargeRequest instantiates a new DirectDebitActivationChargeRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -82,43 +78,6 @@ func (o DirectDebitActivationChargeRequest) ToMap() (map[string]interface{}, err
 	toSerialize := map[string]interface{}{}
 	toSerialize["customer_ids"] = o.CustomerIds
 	return toSerialize, nil
-}
-
-func (o *DirectDebitActivationChargeRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"customer_ids",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDirectDebitActivationChargeRequest := _DirectDebitActivationChargeRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDirectDebitActivationChargeRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DirectDebitActivationChargeRequest(varDirectDebitActivationChargeRequest)
-
-	return err
 }
 
 type NullableDirectDebitActivationChargeRequest struct {

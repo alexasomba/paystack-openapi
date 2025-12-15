@@ -18,103 +18,87 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
-from typing import Optional, Set
-from typing_extensions import Self
+
+from typing import Any, Dict, List, Optional
+from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist, validator
 
 class PageCreate(BaseModel):
     """
     PageCreate
-    """ # noqa: E501
-    name: StrictStr = Field(description="Name of page")
-    description: Optional[StrictStr] = Field(default=None, description="The description of the page")
-    amount: Optional[StrictInt] = Field(default=None, description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")
-    currency: Optional[StrictStr] = Field(default=None, description="The transaction currency. Defaults to your integration currency.")
-    slug: Optional[StrictStr] = Field(default=None, description="URL slug you would like to be associated with this page. Page will be accessible at `https://paystack.com/pay/[slug]`")
-    type: Optional[StrictStr] = Field(default=None, description="The type of payment page to create. Defaults to `payment` if no type is specified. ")
-    plan: Optional[StrictStr] = Field(default=None, description="The ID of the plan to subscribe customers on this payment page to when `type` is set to `subscription`.")
-    fixed_amount: Optional[StrictBool] = Field(default=None, description="Specifies whether to collect a fixed amount on the payment page. If true, `amount` must be passed.")
-    split_code: Optional[StrictStr] = Field(default=None, description="The split code of the transaction split. e.g. `SPL_98WF13Eb3w`")
-    metadata: Optional[Dict[str, Any]] = Field(default=None, description="JSON object of custom data")
-    redirect_url: Optional[StrictStr] = Field(default=None, description="If you would like Paystack to redirect to a URL upon successful payment, specify the URL here. ")
-    success_message: Optional[StrictStr] = Field(default=None, description="A success message to display to the customer after a successful transaction ")
-    notification_email: Optional[StrictStr] = Field(default=None, description="An email address that will receive transaction notifications for this payment page ")
-    collect_phone: Optional[StrictBool] = Field(default=None, description="Specify whether to collect phone numbers on the payment page ")
-    custom_fields: Optional[List[Dict[str, Any]]] = Field(default=None, description="If you would like to accept custom fields, specify them here.")
-    __properties: ClassVar[List[str]] = ["name", "description", "amount", "currency", "slug", "type", "plan", "fixed_amount", "split_code", "metadata", "redirect_url", "success_message", "notification_email", "collect_phone", "custom_fields"]
+    """
+    name: StrictStr = Field(..., description="Name of page")
+    description: Optional[StrictStr] = Field(None, description="The description of the page")
+    amount: Optional[StrictInt] = Field(None, description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")
+    currency: Optional[StrictStr] = Field(None, description="The transaction currency. Defaults to your integration currency.")
+    slug: Optional[StrictStr] = Field(None, description="URL slug you would like to be associated with this page. Page will be accessible at `https://paystack.com/pay/[slug]`")
+    type: Optional[StrictStr] = Field(None, description="The type of payment page to create. Defaults to `payment` if no type is specified. ")
+    plan: Optional[StrictStr] = Field(None, description="The ID of the plan to subscribe customers on this payment page to when `type` is set to `subscription`.")
+    fixed_amount: Optional[StrictBool] = Field(None, description="Specifies whether to collect a fixed amount on the payment page. If true, `amount` must be passed.")
+    split_code: Optional[StrictStr] = Field(None, description="The split code of the transaction split. e.g. `SPL_98WF13Eb3w`")
+    metadata: Optional[Dict[str, Any]] = Field(None, description="JSON object of custom data")
+    redirect_url: Optional[StrictStr] = Field(None, description="If you would like Paystack to redirect to a URL upon successful payment, specify the URL here. ")
+    success_message: Optional[StrictStr] = Field(None, description="A success message to display to the customer after a successful transaction ")
+    notification_email: Optional[StrictStr] = Field(None, description="An email address that will receive transaction notifications for this payment page ")
+    collect_phone: Optional[StrictBool] = Field(None, description="Specify whether to collect phone numbers on the payment page ")
+    custom_fields: Optional[conlist(Dict[str, Any])] = Field(None, description="If you would like to accept custom fields, specify them here.")
+    __properties = ["name", "description", "amount", "currency", "slug", "type", "plan", "fixed_amount", "split_code", "metadata", "redirect_url", "success_message", "notification_email", "collect_phone", "custom_fields"]
 
-    @field_validator('currency')
+    @validator('currency')
     def currency_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in set(['NGN', 'GHS', 'ZAR', 'KES', 'USD']):
+        if value not in ('NGN', 'GHS', 'ZAR', 'KES', 'USD'):
             raise ValueError("must be one of enum values ('NGN', 'GHS', 'ZAR', 'KES', 'USD')")
         return value
 
-    @field_validator('type')
+    @validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in set(['payment', 'subscription', 'product', 'plan']):
+        if value not in ('payment', 'subscription', 'product', 'plan'):
             raise ValueError("must be one of enum values ('payment', 'subscription', 'product', 'plan')")
         return value
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> PageCreate:
         """Create an instance of PageCreate from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> PageCreate:
         """Create an instance of PageCreate from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return PageCreate.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = PageCreate.parse_obj({
             "name": obj.get("name"),
             "description": obj.get("description"),
             "amount": obj.get("amount"),

@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the OrderCreateResponseData type satisfies the MappedNullable interface at compile time
@@ -22,9 +20,9 @@ var _ MappedNullable = &OrderCreateResponseData{}
 
 // OrderCreateResponseData struct for OrderCreateResponseData
 type OrderCreateResponseData struct {
-	Discounts []interface{} `json:"discounts"`
+	Discounts []map[string]interface{} `json:"discounts"`
 	Currency string `json:"currency"`
-	ShippingAddress interface{} `json:"shipping_address"`
+	ShippingAddress map[string]interface{} `json:"shipping_address"`
 	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
 	Email string `json:"email"`
@@ -39,22 +37,20 @@ type OrderCreateResponseData struct {
 	Status string `json:"status"`
 	Refunded bool `json:"refunded"`
 	IsViewed bool `json:"is_viewed"`
-	ExpirationDate interface{} `json:"expiration_date"`
+	ExpirationDate map[string]interface{} `json:"expiration_date"`
 	Id int32 `json:"id"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
-	Items []interface{} `json:"items"`
+	Items []map[string]interface{} `json:"items"`
 	PayForMeCode string `json:"pay_for_me_code"`
 	DiscountAmount int32 `json:"discount_amount"`
 }
-
-type _OrderCreateResponseData OrderCreateResponseData
 
 // NewOrderCreateResponseData instantiates a new OrderCreateResponseData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrderCreateResponseData(discounts []interface{}, currency string, shippingAddress interface{}, integration int32, domain string, email string, customer int32, amount int32, payForMe bool, shipping NullableOrderCreateResponseDataShipping, shippingFees int32, metadata map[string]interface{}, orderCode string, status string, refunded bool, isViewed bool, expirationDate interface{}, id int32, createdAt string, updatedAt string, items []interface{}, payForMeCode string, discountAmount int32) *OrderCreateResponseData {
+func NewOrderCreateResponseData(discounts []map[string]interface{}, currency string, shippingAddress map[string]interface{}, integration int32, domain string, email string, customer int32, amount int32, payForMe bool, shipping NullableOrderCreateResponseDataShipping, shippingFees int32, metadata map[string]interface{}, orderCode string, status string, refunded bool, isViewed bool, expirationDate map[string]interface{}, id int32, createdAt string, updatedAt string, items []map[string]interface{}, payForMeCode string, discountAmount int32) *OrderCreateResponseData {
 	this := OrderCreateResponseData{}
 	this.Discounts = discounts
 	this.Currency = currency
@@ -91,9 +87,9 @@ func NewOrderCreateResponseDataWithDefaults() *OrderCreateResponseData {
 }
 
 // GetDiscounts returns the Discounts field value
-func (o *OrderCreateResponseData) GetDiscounts() []interface{} {
+func (o *OrderCreateResponseData) GetDiscounts() []map[string]interface{} {
 	if o == nil {
-		var ret []interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -102,7 +98,7 @@ func (o *OrderCreateResponseData) GetDiscounts() []interface{} {
 
 // GetDiscountsOk returns a tuple with the Discounts field value
 // and a boolean to check if the value has been set.
-func (o *OrderCreateResponseData) GetDiscountsOk() ([]interface{}, bool) {
+func (o *OrderCreateResponseData) GetDiscountsOk() ([]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -110,7 +106,7 @@ func (o *OrderCreateResponseData) GetDiscountsOk() ([]interface{}, bool) {
 }
 
 // SetDiscounts sets field value
-func (o *OrderCreateResponseData) SetDiscounts(v []interface{}) {
+func (o *OrderCreateResponseData) SetDiscounts(v []map[string]interface{}) {
 	o.Discounts = v
 }
 
@@ -139,10 +135,10 @@ func (o *OrderCreateResponseData) SetCurrency(v string) {
 }
 
 // GetShippingAddress returns the ShippingAddress field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderCreateResponseData) GetShippingAddress() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *OrderCreateResponseData) GetShippingAddress() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -152,15 +148,15 @@ func (o *OrderCreateResponseData) GetShippingAddress() interface{} {
 // GetShippingAddressOk returns a tuple with the ShippingAddress field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderCreateResponseData) GetShippingAddressOk() (*interface{}, bool) {
+func (o *OrderCreateResponseData) GetShippingAddressOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.ShippingAddress) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.ShippingAddress, true
+	return o.ShippingAddress, true
 }
 
 // SetShippingAddress sets field value
-func (o *OrderCreateResponseData) SetShippingAddress(v interface{}) {
+func (o *OrderCreateResponseData) SetShippingAddress(v map[string]interface{}) {
 	o.ShippingAddress = v
 }
 
@@ -511,10 +507,10 @@ func (o *OrderCreateResponseData) SetIsViewed(v bool) {
 }
 
 // GetExpirationDate returns the ExpirationDate field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderCreateResponseData) GetExpirationDate() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *OrderCreateResponseData) GetExpirationDate() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -524,15 +520,15 @@ func (o *OrderCreateResponseData) GetExpirationDate() interface{} {
 // GetExpirationDateOk returns a tuple with the ExpirationDate field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderCreateResponseData) GetExpirationDateOk() (*interface{}, bool) {
+func (o *OrderCreateResponseData) GetExpirationDateOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.ExpirationDate) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.ExpirationDate, true
+	return o.ExpirationDate, true
 }
 
 // SetExpirationDate sets field value
-func (o *OrderCreateResponseData) SetExpirationDate(v interface{}) {
+func (o *OrderCreateResponseData) SetExpirationDate(v map[string]interface{}) {
 	o.ExpirationDate = v
 }
 
@@ -609,9 +605,9 @@ func (o *OrderCreateResponseData) SetUpdatedAt(v string) {
 }
 
 // GetItems returns the Items field value
-func (o *OrderCreateResponseData) GetItems() []interface{} {
+func (o *OrderCreateResponseData) GetItems() []map[string]interface{} {
 	if o == nil {
-		var ret []interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -620,7 +616,7 @@ func (o *OrderCreateResponseData) GetItems() []interface{} {
 
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
-func (o *OrderCreateResponseData) GetItemsOk() ([]interface{}, bool) {
+func (o *OrderCreateResponseData) GetItemsOk() ([]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -628,7 +624,7 @@ func (o *OrderCreateResponseData) GetItemsOk() ([]interface{}, bool) {
 }
 
 // SetItems sets field value
-func (o *OrderCreateResponseData) SetItems(v []interface{}) {
+func (o *OrderCreateResponseData) SetItems(v []map[string]interface{}) {
 	o.Items = v
 }
 
@@ -721,65 +717,6 @@ func (o OrderCreateResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["pay_for_me_code"] = o.PayForMeCode
 	toSerialize["discount_amount"] = o.DiscountAmount
 	return toSerialize, nil
-}
-
-func (o *OrderCreateResponseData) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"discounts",
-		"currency",
-		"shipping_address",
-		"integration",
-		"domain",
-		"email",
-		"customer",
-		"amount",
-		"pay_for_me",
-		"shipping",
-		"shipping_fees",
-		"metadata",
-		"order_code",
-		"status",
-		"refunded",
-		"is_viewed",
-		"expiration_date",
-		"id",
-		"createdAt",
-		"updatedAt",
-		"items",
-		"pay_for_me_code",
-		"discount_amount",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varOrderCreateResponseData := _OrderCreateResponseData{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrderCreateResponseData)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OrderCreateResponseData(varOrderCreateResponseData)
-
-	return err
 }
 
 type NullableOrderCreateResponseData struct {

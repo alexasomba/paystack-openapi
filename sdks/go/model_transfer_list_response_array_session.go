@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the TransferListResponseArraySession type satisfies the MappedNullable interface at compile time
@@ -22,17 +20,15 @@ var _ MappedNullable = &TransferListResponseArraySession{}
 
 // TransferListResponseArraySession struct for TransferListResponseArraySession
 type TransferListResponseArraySession struct {
-	Provider interface{} `json:"provider"`
-	Id interface{} `json:"id"`
+	Provider map[string]interface{} `json:"provider"`
+	Id map[string]interface{} `json:"id"`
 }
-
-type _TransferListResponseArraySession TransferListResponseArraySession
 
 // NewTransferListResponseArraySession instantiates a new TransferListResponseArraySession object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferListResponseArraySession(provider interface{}, id interface{}) *TransferListResponseArraySession {
+func NewTransferListResponseArraySession(provider map[string]interface{}, id map[string]interface{}) *TransferListResponseArraySession {
 	this := TransferListResponseArraySession{}
 	this.Provider = provider
 	this.Id = id
@@ -48,10 +44,10 @@ func NewTransferListResponseArraySessionWithDefaults() *TransferListResponseArra
 }
 
 // GetProvider returns the Provider field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransferListResponseArraySession) GetProvider() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *TransferListResponseArraySession) GetProvider() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -61,23 +57,23 @@ func (o *TransferListResponseArraySession) GetProvider() interface{} {
 // GetProviderOk returns a tuple with the Provider field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransferListResponseArraySession) GetProviderOk() (*interface{}, bool) {
+func (o *TransferListResponseArraySession) GetProviderOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Provider) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Provider, true
+	return o.Provider, true
 }
 
 // SetProvider sets field value
-func (o *TransferListResponseArraySession) SetProvider(v interface{}) {
+func (o *TransferListResponseArraySession) SetProvider(v map[string]interface{}) {
 	o.Provider = v
 }
 
 // GetId returns the Id field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransferListResponseArraySession) GetId() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *TransferListResponseArraySession) GetId() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -87,15 +83,15 @@ func (o *TransferListResponseArraySession) GetId() interface{} {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransferListResponseArraySession) GetIdOk() (*interface{}, bool) {
+func (o *TransferListResponseArraySession) GetIdOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Id) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Id, true
+	return o.Id, true
 }
 
 // SetId sets field value
-func (o *TransferListResponseArraySession) SetId(v interface{}) {
+func (o *TransferListResponseArraySession) SetId(v map[string]interface{}) {
 	o.Id = v
 }
 
@@ -116,44 +112,6 @@ func (o TransferListResponseArraySession) ToMap() (map[string]interface{}, error
 		toSerialize["id"] = o.Id
 	}
 	return toSerialize, nil
-}
-
-func (o *TransferListResponseArraySession) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"provider",
-		"id",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varTransferListResponseArraySession := _TransferListResponseArraySession{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransferListResponseArraySession)
-
-	if err != nil {
-		return err
-	}
-
-	*o = TransferListResponseArraySession(varTransferListResponseArraySession)
-
-	return err
 }
 
 type NullableTransferListResponseArraySession struct {

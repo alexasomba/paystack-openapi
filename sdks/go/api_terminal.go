@@ -706,17 +706,13 @@ func (a *TerminalAPIService) TerminalListExecute(r ApiTerminalListRequest) (*Ter
 	localVarFormParams := url.Values{}
 
 	if r.next != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "")
 	}
 	if r.previous != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "")
 	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
-	} else {
-        var defaultValue int32 = 50
-        parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", defaultValue, "form", "")
-        r.perPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -798,11 +794,11 @@ type ApiTerminalSendEventRequest struct {
 	ctx context.Context
 	ApiService *TerminalAPIService
 	id string
-	terminalSendEvent *TerminalSendEvent
+	body *TerminalIdEvent
 }
 
-func (r ApiTerminalSendEventRequest) TerminalSendEvent(terminalSendEvent TerminalSendEvent) ApiTerminalSendEventRequest {
-	r.terminalSendEvent = &terminalSendEvent
+func (r ApiTerminalSendEventRequest) Body(body TerminalIdEvent) ApiTerminalSendEventRequest {
+	r.body = &body
 	return r
 }
 
@@ -867,7 +863,7 @@ func (a *TerminalAPIService) TerminalSendEventExecute(r ApiTerminalSendEventRequ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.terminalSendEvent
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -920,11 +916,11 @@ type ApiTerminalUpdateRequest struct {
 	ctx context.Context
 	ApiService *TerminalAPIService
 	terminalId string
-	terminalUpate *TerminalUpate
+	body *TerminalTerminalId
 }
 
-func (r ApiTerminalUpdateRequest) TerminalUpate(terminalUpate TerminalUpate) ApiTerminalUpdateRequest {
-	r.terminalUpate = &terminalUpate
+func (r ApiTerminalUpdateRequest) Body(body TerminalTerminalId) ApiTerminalUpdateRequest {
+	r.body = &body
 	return r
 }
 
@@ -989,7 +985,7 @@ func (a *TerminalAPIService) TerminalUpdateExecute(r ApiTerminalUpdateRequest) (
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.terminalUpate
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the RefundRetryResponseData type satisfies the MappedNullable interface at compile time
@@ -46,8 +44,6 @@ type RefundRetryResponseData struct {
 	ReversedAt NullableString `json:"reversed_at"`
 	SessionId NullableString `json:"session_id"`
 }
-
-type _RefundRetryResponseData RefundRetryResponseData
 
 // NewRefundRetryResponseData instantiates a new RefundRetryResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -683,65 +679,6 @@ func (o RefundRetryResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["reversed_at"] = o.ReversedAt.Get()
 	toSerialize["session_id"] = o.SessionId.Get()
 	return toSerialize, nil
-}
-
-func (o *RefundRetryResponseData) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"integration",
-		"transaction",
-		"dispute",
-		"settlement",
-		"id",
-		"domain",
-		"currency",
-		"amount",
-		"status",
-		"refunded_at",
-		"expected_at",
-		"channel",
-		"refunded_by",
-		"customer_note",
-		"merchant_note",
-		"deducted_amount",
-		"fully_deducted",
-		"bank_reference",
-		"reason",
-		"customer",
-		"initiated_by",
-		"reversed_at",
-		"session_id",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varRefundRetryResponseData := _RefundRetryResponseData{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRefundRetryResponseData)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RefundRetryResponseData(varRefundRetryResponseData)
-
-	return err
 }
 
 type NullableRefundRetryResponseData struct {

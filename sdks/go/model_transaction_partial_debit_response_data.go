@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the TransactionPartialDebitResponseData type satisfies the MappedNullable interface at compile time
@@ -30,9 +28,9 @@ type TransactionPartialDebitResponseData struct {
 	Domain string `json:"domain"`
 	Metadata string `json:"metadata"`
 	GatewayResponse string `json:"gateway_response"`
-	Message interface{} `json:"message"`
+	Message map[string]interface{} `json:"message"`
 	Channel string `json:"channel"`
-	IpAddress interface{} `json:"ip_address"`
+	IpAddress map[string]interface{} `json:"ip_address"`
 	Log NullableChargeAuthorizationResponseDataLog `json:"log"`
 	Fees int32 `json:"fees"`
 	Authorization TransactionPartialDebitResponseDataAuthorization `json:"authorization"`
@@ -42,13 +40,11 @@ type TransactionPartialDebitResponseData struct {
 	Id int32 `json:"id"`
 }
 
-type _TransactionPartialDebitResponseData TransactionPartialDebitResponseData
-
 // NewTransactionPartialDebitResponseData instantiates a new TransactionPartialDebitResponseData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransactionPartialDebitResponseData(amount int32, currency string, transactionDate string, status string, reference string, domain string, metadata string, gatewayResponse string, message interface{}, channel string, ipAddress interface{}, log NullableChargeAuthorizationResponseDataLog, fees int32, authorization TransactionPartialDebitResponseDataAuthorization, customer TransactionPartialDebitResponseDataCustomer, plan int32, requestedAmount int32, id int32) *TransactionPartialDebitResponseData {
+func NewTransactionPartialDebitResponseData(amount int32, currency string, transactionDate string, status string, reference string, domain string, metadata string, gatewayResponse string, message map[string]interface{}, channel string, ipAddress map[string]interface{}, log NullableChargeAuthorizationResponseDataLog, fees int32, authorization TransactionPartialDebitResponseDataAuthorization, customer TransactionPartialDebitResponseDataCustomer, plan int32, requestedAmount int32, id int32) *TransactionPartialDebitResponseData {
 	this := TransactionPartialDebitResponseData{}
 	this.Amount = amount
 	this.Currency = currency
@@ -272,10 +268,10 @@ func (o *TransactionPartialDebitResponseData) SetGatewayResponse(v string) {
 }
 
 // GetMessage returns the Message field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransactionPartialDebitResponseData) GetMessage() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *TransactionPartialDebitResponseData) GetMessage() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -285,15 +281,15 @@ func (o *TransactionPartialDebitResponseData) GetMessage() interface{} {
 // GetMessageOk returns a tuple with the Message field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransactionPartialDebitResponseData) GetMessageOk() (*interface{}, bool) {
+func (o *TransactionPartialDebitResponseData) GetMessageOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Message) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Message, true
+	return o.Message, true
 }
 
 // SetMessage sets field value
-func (o *TransactionPartialDebitResponseData) SetMessage(v interface{}) {
+func (o *TransactionPartialDebitResponseData) SetMessage(v map[string]interface{}) {
 	o.Message = v
 }
 
@@ -322,10 +318,10 @@ func (o *TransactionPartialDebitResponseData) SetChannel(v string) {
 }
 
 // GetIpAddress returns the IpAddress field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransactionPartialDebitResponseData) GetIpAddress() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *TransactionPartialDebitResponseData) GetIpAddress() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -335,15 +331,15 @@ func (o *TransactionPartialDebitResponseData) GetIpAddress() interface{} {
 // GetIpAddressOk returns a tuple with the IpAddress field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransactionPartialDebitResponseData) GetIpAddressOk() (*interface{}, bool) {
+func (o *TransactionPartialDebitResponseData) GetIpAddressOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.IpAddress) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.IpAddress, true
+	return o.IpAddress, true
 }
 
 // SetIpAddress sets field value
-func (o *TransactionPartialDebitResponseData) SetIpAddress(v interface{}) {
+func (o *TransactionPartialDebitResponseData) SetIpAddress(v map[string]interface{}) {
 	o.IpAddress = v
 }
 
@@ -550,60 +546,6 @@ func (o TransactionPartialDebitResponseData) ToMap() (map[string]interface{}, er
 	toSerialize["requested_amount"] = o.RequestedAmount
 	toSerialize["id"] = o.Id
 	return toSerialize, nil
-}
-
-func (o *TransactionPartialDebitResponseData) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"amount",
-		"currency",
-		"transaction_date",
-		"status",
-		"reference",
-		"domain",
-		"metadata",
-		"gateway_response",
-		"message",
-		"channel",
-		"ip_address",
-		"log",
-		"fees",
-		"authorization",
-		"customer",
-		"plan",
-		"requested_amount",
-		"id",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varTransactionPartialDebitResponseData := _TransactionPartialDebitResponseData{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransactionPartialDebitResponseData)
-
-	if err != nil {
-		return err
-	}
-
-	*o = TransactionPartialDebitResponseData(varTransactionPartialDebitResponseData)
-
-	return err
 }
 
 type NullableTransactionPartialDebitResponseData struct {

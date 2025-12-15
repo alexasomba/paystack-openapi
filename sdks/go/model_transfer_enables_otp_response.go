@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the TransferEnablesOtpResponse type satisfies the MappedNullable interface at compile time
@@ -25,8 +23,6 @@ type TransferEnablesOtpResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
 }
-
-type _TransferEnablesOtpResponse TransferEnablesOtpResponse
 
 // NewTransferEnablesOtpResponse instantiates a new TransferEnablesOtpResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -108,44 +104,6 @@ func (o TransferEnablesOtpResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["status"] = o.Status
 	toSerialize["message"] = o.Message
 	return toSerialize, nil
-}
-
-func (o *TransferEnablesOtpResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"status",
-		"message",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varTransferEnablesOtpResponse := _TransferEnablesOtpResponse{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransferEnablesOtpResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = TransferEnablesOtpResponse(varTransferEnablesOtpResponse)
-
-	return err
 }
 
 type NullableTransferEnablesOtpResponse struct {

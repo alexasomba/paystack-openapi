@@ -105,19 +105,19 @@ func (a *DisputeAPIService) DisputeDownloadExecute(r ApiDisputeDownloadRequest) 
 	localVarFormParams := url.Values{}
 
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "")
 	}
 	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "")
 	}
 	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -199,11 +199,11 @@ type ApiDisputeEvidenceRequest struct {
 	ctx context.Context
 	ApiService *DisputeAPIService
 	id int32
-	disputeEvidence *DisputeEvidence
+	body *DisputeIdEvidence
 }
 
-func (r ApiDisputeEvidenceRequest) DisputeEvidence(disputeEvidence DisputeEvidence) ApiDisputeEvidenceRequest {
-	r.disputeEvidence = &disputeEvidence
+func (r ApiDisputeEvidenceRequest) Body(body DisputeIdEvidence) ApiDisputeEvidenceRequest {
+	r.body = &body
 	return r
 }
 
@@ -268,7 +268,7 @@ func (a *DisputeAPIService) DisputeEvidenceExecute(r ApiDisputeEvidenceRequest) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.disputeEvidence
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -530,22 +530,22 @@ func (a *DisputeAPIService) DisputeListExecute(r ApiDisputeListRequest) (*Disput
 	localVarFormParams := url.Values{}
 
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "")
 	}
 	if r.transaction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "transaction", r.transaction, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "transaction", r.transaction, "")
 	}
 	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "")
 	}
 	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -627,11 +627,11 @@ type ApiDisputeResolveRequest struct {
 	ctx context.Context
 	ApiService *DisputeAPIService
 	id int32
-	disputeResolve *DisputeResolve
+	body *DisputeIdResolve
 }
 
-func (r ApiDisputeResolveRequest) DisputeResolve(disputeResolve DisputeResolve) ApiDisputeResolveRequest {
-	r.disputeResolve = &disputeResolve
+func (r ApiDisputeResolveRequest) Body(body DisputeIdResolve) ApiDisputeResolveRequest {
+	r.body = &body
 	return r
 }
 
@@ -696,7 +696,7 @@ func (a *DisputeAPIService) DisputeResolveExecute(r ApiDisputeResolveRequest) (*
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.disputeResolve
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -885,11 +885,11 @@ type ApiDisputeUpdateRequest struct {
 	ctx context.Context
 	ApiService *DisputeAPIService
 	id int32
-	disputeUpdate *DisputeUpdate
+	body *DisputeId
 }
 
-func (r ApiDisputeUpdateRequest) DisputeUpdate(disputeUpdate DisputeUpdate) ApiDisputeUpdateRequest {
-	r.disputeUpdate = &disputeUpdate
+func (r ApiDisputeUpdateRequest) Body(body DisputeId) ApiDisputeUpdateRequest {
+	r.body = &body
 	return r
 }
 
@@ -954,7 +954,7 @@ func (a *DisputeAPIService) DisputeUpdateExecute(r ApiDisputeUpdateRequest) (*Di
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.disputeUpdate
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

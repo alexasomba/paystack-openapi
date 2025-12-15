@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the OrderCreateResponseDataShipping type satisfies the MappedNullable interface at compile time
@@ -26,25 +24,23 @@ type OrderCreateResponseDataShipping struct {
 	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
 	Fees int32 `json:"fees"`
-	DeliveryNote interface{} `json:"delivery_note"`
+	DeliveryNote map[string]interface{} `json:"delivery_note"`
 	StreetLine string `json:"street_line"`
 	City string `json:"city"`
 	State string `json:"state"`
 	Country string `json:"country"`
 	IsShipped bool `json:"is_shipped"`
-	DeliveryTrackingLink interface{} `json:"delivery_tracking_link"`
+	DeliveryTrackingLink map[string]interface{} `json:"delivery_tracking_link"`
 	Id int32 `json:"id"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
 }
 
-type _OrderCreateResponseDataShipping OrderCreateResponseDataShipping
-
 // NewOrderCreateResponseDataShipping instantiates a new OrderCreateResponseDataShipping object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrderCreateResponseDataShipping(customer int32, integration int32, domain string, fees int32, deliveryNote interface{}, streetLine string, city string, state string, country string, isShipped bool, deliveryTrackingLink interface{}, id int32, createdAt string, updatedAt string) *OrderCreateResponseDataShipping {
+func NewOrderCreateResponseDataShipping(customer int32, integration int32, domain string, fees int32, deliveryNote map[string]interface{}, streetLine string, city string, state string, country string, isShipped bool, deliveryTrackingLink map[string]interface{}, id int32, createdAt string, updatedAt string) *OrderCreateResponseDataShipping {
 	this := OrderCreateResponseDataShipping{}
 	this.Customer = customer
 	this.Integration = integration
@@ -168,10 +164,10 @@ func (o *OrderCreateResponseDataShipping) SetFees(v int32) {
 }
 
 // GetDeliveryNote returns the DeliveryNote field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderCreateResponseDataShipping) GetDeliveryNote() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *OrderCreateResponseDataShipping) GetDeliveryNote() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -181,15 +177,15 @@ func (o *OrderCreateResponseDataShipping) GetDeliveryNote() interface{} {
 // GetDeliveryNoteOk returns a tuple with the DeliveryNote field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderCreateResponseDataShipping) GetDeliveryNoteOk() (*interface{}, bool) {
+func (o *OrderCreateResponseDataShipping) GetDeliveryNoteOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.DeliveryNote) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.DeliveryNote, true
+	return o.DeliveryNote, true
 }
 
 // SetDeliveryNote sets field value
-func (o *OrderCreateResponseDataShipping) SetDeliveryNote(v interface{}) {
+func (o *OrderCreateResponseDataShipping) SetDeliveryNote(v map[string]interface{}) {
 	o.DeliveryNote = v
 }
 
@@ -314,10 +310,10 @@ func (o *OrderCreateResponseDataShipping) SetIsShipped(v bool) {
 }
 
 // GetDeliveryTrackingLink returns the DeliveryTrackingLink field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderCreateResponseDataShipping) GetDeliveryTrackingLink() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *OrderCreateResponseDataShipping) GetDeliveryTrackingLink() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -327,15 +323,15 @@ func (o *OrderCreateResponseDataShipping) GetDeliveryTrackingLink() interface{} 
 // GetDeliveryTrackingLinkOk returns a tuple with the DeliveryTrackingLink field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderCreateResponseDataShipping) GetDeliveryTrackingLinkOk() (*interface{}, bool) {
+func (o *OrderCreateResponseDataShipping) GetDeliveryTrackingLinkOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.DeliveryTrackingLink) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.DeliveryTrackingLink, true
+	return o.DeliveryTrackingLink, true
 }
 
 // SetDeliveryTrackingLink sets field value
-func (o *OrderCreateResponseDataShipping) SetDeliveryTrackingLink(v interface{}) {
+func (o *OrderCreateResponseDataShipping) SetDeliveryTrackingLink(v map[string]interface{}) {
 	o.DeliveryTrackingLink = v
 }
 
@@ -440,56 +436,6 @@ func (o OrderCreateResponseDataShipping) ToMap() (map[string]interface{}, error)
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["updatedAt"] = o.UpdatedAt
 	return toSerialize, nil
-}
-
-func (o *OrderCreateResponseDataShipping) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"customer",
-		"integration",
-		"domain",
-		"fees",
-		"delivery_note",
-		"street_line",
-		"city",
-		"state",
-		"country",
-		"is_shipped",
-		"delivery_tracking_link",
-		"id",
-		"createdAt",
-		"updatedAt",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varOrderCreateResponseDataShipping := _OrderCreateResponseDataShipping{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrderCreateResponseDataShipping)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OrderCreateResponseDataShipping(varOrderCreateResponseDataShipping)
-
-	return err
 }
 
 type NullableOrderCreateResponseDataShipping struct {

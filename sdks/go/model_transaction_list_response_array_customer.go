@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the TransactionListResponseArrayCustomer type satisfies the MappedNullable interface at compile time
@@ -31,8 +29,6 @@ type TransactionListResponseArrayCustomer struct {
 	CustomerCode string `json:"customer_code"`
 	RiskAction string `json:"risk_action"`
 }
-
-type _TransactionListResponseArrayCustomer TransactionListResponseArrayCustomer
 
 // NewTransactionListResponseArrayCustomer instantiates a new TransactionListResponseArrayCustomer object
 // This constructor will assign default values to properties that have it defined,
@@ -280,50 +276,6 @@ func (o TransactionListResponseArrayCustomer) ToMap() (map[string]interface{}, e
 	toSerialize["customer_code"] = o.CustomerCode
 	toSerialize["risk_action"] = o.RiskAction
 	return toSerialize, nil
-}
-
-func (o *TransactionListResponseArrayCustomer) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"first_name",
-		"last_name",
-		"email",
-		"phone",
-		"metadata",
-		"customer_code",
-		"risk_action",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varTransactionListResponseArrayCustomer := _TransactionListResponseArrayCustomer{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransactionListResponseArrayCustomer)
-
-	if err != nil {
-		return err
-	}
-
-	*o = TransactionListResponseArrayCustomer(varTransactionListResponseArrayCustomer)
-
-	return err
 }
 
 type NullableTransactionListResponseArrayCustomer struct {

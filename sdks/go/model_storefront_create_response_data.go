@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the StorefrontCreateResponseData type satisfies the MappedNullable interface at compile time
@@ -22,37 +20,35 @@ var _ MappedNullable = &StorefrontCreateResponseData{}
 
 // StorefrontCreateResponseData struct for StorefrontCreateResponseData
 type StorefrontCreateResponseData struct {
-	SocialMedia []interface{} `json:"social_media"`
+	SocialMedia []map[string]interface{} `json:"social_media"`
 	Contacts []StorefrontContactsArray `json:"contacts"`
 	Name string `json:"name"`
 	Slug string `json:"slug"`
 	Currency string `json:"currency"`
-	WelcomeMessage interface{} `json:"welcome_message"`
-	SuccessMessage interface{} `json:"success_message"`
-	RedirectUrl interface{} `json:"redirect_url"`
-	Description interface{} `json:"description"`
+	WelcomeMessage map[string]interface{} `json:"welcome_message"`
+	SuccessMessage map[string]interface{} `json:"success_message"`
+	RedirectUrl map[string]interface{} `json:"redirect_url"`
+	Description map[string]interface{} `json:"description"`
 	DeliveryNote string `json:"delivery_note"`
 	BackgroundColor string `json:"background_color"`
 	Status string `json:"status"`
 	Shippable bool `json:"shippable"`
 	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
-	DigitalProductExpiry interface{} `json:"digital_product_expiry"`
+	DigitalProductExpiry map[string]interface{} `json:"digital_product_expiry"`
 	Metadata map[string]interface{} `json:"metadata,omitempty"`
 	Id int32 `json:"id"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
-	Products []interface{} `json:"products"`
-	ShippingFees []interface{} `json:"shipping_fees"`
+	Products []map[string]interface{} `json:"products"`
+	ShippingFees []map[string]interface{} `json:"shipping_fees"`
 }
-
-type _StorefrontCreateResponseData StorefrontCreateResponseData
 
 // NewStorefrontCreateResponseData instantiates a new StorefrontCreateResponseData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStorefrontCreateResponseData(socialMedia []interface{}, contacts []StorefrontContactsArray, name string, slug string, currency string, welcomeMessage interface{}, successMessage interface{}, redirectUrl interface{}, description interface{}, deliveryNote string, backgroundColor string, status string, shippable bool, integration int32, domain string, digitalProductExpiry interface{}, id int32, createdAt string, updatedAt string, products []interface{}, shippingFees []interface{}) *StorefrontCreateResponseData {
+func NewStorefrontCreateResponseData(socialMedia []map[string]interface{}, contacts []StorefrontContactsArray, name string, slug string, currency string, welcomeMessage map[string]interface{}, successMessage map[string]interface{}, redirectUrl map[string]interface{}, description map[string]interface{}, deliveryNote string, backgroundColor string, status string, shippable bool, integration int32, domain string, digitalProductExpiry map[string]interface{}, id int32, createdAt string, updatedAt string, products []map[string]interface{}, shippingFees []map[string]interface{}) *StorefrontCreateResponseData {
 	this := StorefrontCreateResponseData{}
 	this.SocialMedia = socialMedia
 	this.Contacts = contacts
@@ -87,9 +83,9 @@ func NewStorefrontCreateResponseDataWithDefaults() *StorefrontCreateResponseData
 }
 
 // GetSocialMedia returns the SocialMedia field value
-func (o *StorefrontCreateResponseData) GetSocialMedia() []interface{} {
+func (o *StorefrontCreateResponseData) GetSocialMedia() []map[string]interface{} {
 	if o == nil {
-		var ret []interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -98,7 +94,7 @@ func (o *StorefrontCreateResponseData) GetSocialMedia() []interface{} {
 
 // GetSocialMediaOk returns a tuple with the SocialMedia field value
 // and a boolean to check if the value has been set.
-func (o *StorefrontCreateResponseData) GetSocialMediaOk() ([]interface{}, bool) {
+func (o *StorefrontCreateResponseData) GetSocialMediaOk() ([]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -106,7 +102,7 @@ func (o *StorefrontCreateResponseData) GetSocialMediaOk() ([]interface{}, bool) 
 }
 
 // SetSocialMedia sets field value
-func (o *StorefrontCreateResponseData) SetSocialMedia(v []interface{}) {
+func (o *StorefrontCreateResponseData) SetSocialMedia(v []map[string]interface{}) {
 	o.SocialMedia = v
 }
 
@@ -207,10 +203,10 @@ func (o *StorefrontCreateResponseData) SetCurrency(v string) {
 }
 
 // GetWelcomeMessage returns the WelcomeMessage field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *StorefrontCreateResponseData) GetWelcomeMessage() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *StorefrontCreateResponseData) GetWelcomeMessage() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -220,23 +216,23 @@ func (o *StorefrontCreateResponseData) GetWelcomeMessage() interface{} {
 // GetWelcomeMessageOk returns a tuple with the WelcomeMessage field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StorefrontCreateResponseData) GetWelcomeMessageOk() (*interface{}, bool) {
+func (o *StorefrontCreateResponseData) GetWelcomeMessageOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.WelcomeMessage) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.WelcomeMessage, true
+	return o.WelcomeMessage, true
 }
 
 // SetWelcomeMessage sets field value
-func (o *StorefrontCreateResponseData) SetWelcomeMessage(v interface{}) {
+func (o *StorefrontCreateResponseData) SetWelcomeMessage(v map[string]interface{}) {
 	o.WelcomeMessage = v
 }
 
 // GetSuccessMessage returns the SuccessMessage field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *StorefrontCreateResponseData) GetSuccessMessage() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *StorefrontCreateResponseData) GetSuccessMessage() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -246,23 +242,23 @@ func (o *StorefrontCreateResponseData) GetSuccessMessage() interface{} {
 // GetSuccessMessageOk returns a tuple with the SuccessMessage field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StorefrontCreateResponseData) GetSuccessMessageOk() (*interface{}, bool) {
+func (o *StorefrontCreateResponseData) GetSuccessMessageOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.SuccessMessage) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.SuccessMessage, true
+	return o.SuccessMessage, true
 }
 
 // SetSuccessMessage sets field value
-func (o *StorefrontCreateResponseData) SetSuccessMessage(v interface{}) {
+func (o *StorefrontCreateResponseData) SetSuccessMessage(v map[string]interface{}) {
 	o.SuccessMessage = v
 }
 
 // GetRedirectUrl returns the RedirectUrl field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *StorefrontCreateResponseData) GetRedirectUrl() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *StorefrontCreateResponseData) GetRedirectUrl() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -272,23 +268,23 @@ func (o *StorefrontCreateResponseData) GetRedirectUrl() interface{} {
 // GetRedirectUrlOk returns a tuple with the RedirectUrl field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StorefrontCreateResponseData) GetRedirectUrlOk() (*interface{}, bool) {
+func (o *StorefrontCreateResponseData) GetRedirectUrlOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.RedirectUrl) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.RedirectUrl, true
+	return o.RedirectUrl, true
 }
 
 // SetRedirectUrl sets field value
-func (o *StorefrontCreateResponseData) SetRedirectUrl(v interface{}) {
+func (o *StorefrontCreateResponseData) SetRedirectUrl(v map[string]interface{}) {
 	o.RedirectUrl = v
 }
 
 // GetDescription returns the Description field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *StorefrontCreateResponseData) GetDescription() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *StorefrontCreateResponseData) GetDescription() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -298,15 +294,15 @@ func (o *StorefrontCreateResponseData) GetDescription() interface{} {
 // GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StorefrontCreateResponseData) GetDescriptionOk() (*interface{}, bool) {
+func (o *StorefrontCreateResponseData) GetDescriptionOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Description) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Description, true
+	return o.Description, true
 }
 
 // SetDescription sets field value
-func (o *StorefrontCreateResponseData) SetDescription(v interface{}) {
+func (o *StorefrontCreateResponseData) SetDescription(v map[string]interface{}) {
 	o.Description = v
 }
 
@@ -455,10 +451,10 @@ func (o *StorefrontCreateResponseData) SetDomain(v string) {
 }
 
 // GetDigitalProductExpiry returns the DigitalProductExpiry field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *StorefrontCreateResponseData) GetDigitalProductExpiry() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *StorefrontCreateResponseData) GetDigitalProductExpiry() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -468,15 +464,15 @@ func (o *StorefrontCreateResponseData) GetDigitalProductExpiry() interface{} {
 // GetDigitalProductExpiryOk returns a tuple with the DigitalProductExpiry field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StorefrontCreateResponseData) GetDigitalProductExpiryOk() (*interface{}, bool) {
+func (o *StorefrontCreateResponseData) GetDigitalProductExpiryOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.DigitalProductExpiry) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.DigitalProductExpiry, true
+	return o.DigitalProductExpiry, true
 }
 
 // SetDigitalProductExpiry sets field value
-func (o *StorefrontCreateResponseData) SetDigitalProductExpiry(v interface{}) {
+func (o *StorefrontCreateResponseData) SetDigitalProductExpiry(v map[string]interface{}) {
 	o.DigitalProductExpiry = v
 }
 
@@ -501,7 +497,7 @@ func (o *StorefrontCreateResponseData) GetMetadataOk() (map[string]interface{}, 
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *StorefrontCreateResponseData) HasMetadata() bool {
-	if o != nil && !IsNil(o.Metadata) {
+	if o != nil && IsNil(o.Metadata) {
 		return true
 	}
 
@@ -586,9 +582,9 @@ func (o *StorefrontCreateResponseData) SetUpdatedAt(v string) {
 }
 
 // GetProducts returns the Products field value
-func (o *StorefrontCreateResponseData) GetProducts() []interface{} {
+func (o *StorefrontCreateResponseData) GetProducts() []map[string]interface{} {
 	if o == nil {
-		var ret []interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -597,7 +593,7 @@ func (o *StorefrontCreateResponseData) GetProducts() []interface{} {
 
 // GetProductsOk returns a tuple with the Products field value
 // and a boolean to check if the value has been set.
-func (o *StorefrontCreateResponseData) GetProductsOk() ([]interface{}, bool) {
+func (o *StorefrontCreateResponseData) GetProductsOk() ([]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -605,14 +601,14 @@ func (o *StorefrontCreateResponseData) GetProductsOk() ([]interface{}, bool) {
 }
 
 // SetProducts sets field value
-func (o *StorefrontCreateResponseData) SetProducts(v []interface{}) {
+func (o *StorefrontCreateResponseData) SetProducts(v []map[string]interface{}) {
 	o.Products = v
 }
 
 // GetShippingFees returns the ShippingFees field value
-func (o *StorefrontCreateResponseData) GetShippingFees() []interface{} {
+func (o *StorefrontCreateResponseData) GetShippingFees() []map[string]interface{} {
 	if o == nil {
-		var ret []interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -621,7 +617,7 @@ func (o *StorefrontCreateResponseData) GetShippingFees() []interface{} {
 
 // GetShippingFeesOk returns a tuple with the ShippingFees field value
 // and a boolean to check if the value has been set.
-func (o *StorefrontCreateResponseData) GetShippingFeesOk() ([]interface{}, bool) {
+func (o *StorefrontCreateResponseData) GetShippingFeesOk() ([]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -629,7 +625,7 @@ func (o *StorefrontCreateResponseData) GetShippingFeesOk() ([]interface{}, bool)
 }
 
 // SetShippingFees sets field value
-func (o *StorefrontCreateResponseData) SetShippingFees(v []interface{}) {
+func (o *StorefrontCreateResponseData) SetShippingFees(v []map[string]interface{}) {
 	o.ShippingFees = v
 }
 
@@ -678,63 +674,6 @@ func (o StorefrontCreateResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["products"] = o.Products
 	toSerialize["shipping_fees"] = o.ShippingFees
 	return toSerialize, nil
-}
-
-func (o *StorefrontCreateResponseData) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"social_media",
-		"contacts",
-		"name",
-		"slug",
-		"currency",
-		"welcome_message",
-		"success_message",
-		"redirect_url",
-		"description",
-		"delivery_note",
-		"background_color",
-		"status",
-		"shippable",
-		"integration",
-		"domain",
-		"digital_product_expiry",
-		"id",
-		"createdAt",
-		"updatedAt",
-		"products",
-		"shipping_fees",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varStorefrontCreateResponseData := _StorefrontCreateResponseData{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStorefrontCreateResponseData)
-
-	if err != nil {
-		return err
-	}
-
-	*o = StorefrontCreateResponseData(varStorefrontCreateResponseData)
-
-	return err
 }
 
 type NullableStorefrontCreateResponseData struct {

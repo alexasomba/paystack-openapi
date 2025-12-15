@@ -18,148 +18,132 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+
+from typing import Any, Dict, List, Optional
+from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
 from alexasomba_paystack.models.dispute_history_array import DisputeHistoryArray
 from alexasomba_paystack.models.dispute_list_transaction_response_data_transaction import DisputeListTransactionResponseDataTransaction
 from alexasomba_paystack.models.dispute_messages_array import DisputeMessagesArray
-from typing import Optional, Set
-from typing_extensions import Self
 
 class DisputeListTransactionResponseData(BaseModel):
     """
     DisputeListTransactionResponseData
-    """ # noqa: E501
-    history: List[DisputeHistoryArray]
-    messages: List[DisputeMessagesArray]
-    currency: StrictStr
-    last4: StrictStr
-    bin: StrictStr
-    transaction_reference: Optional[Any]
-    merchant_transaction_reference: StrictStr
-    refund_amount: StrictInt
-    status: StrictStr
-    domain: StrictStr
-    resolution: Optional[Any]
-    category: StrictStr
-    note: Optional[Any]
-    attachments: Optional[Any]
-    id: StrictInt
-    integration: StrictInt
-    transaction: DisputeListTransactionResponseDataTransaction
-    created_by: StrictInt
-    evidence: Optional[Any]
-    resolved_at: Optional[Any] = Field(alias="resolvedAt")
-    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
-    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    due_at: Optional[Any] = Field(alias="dueAt")
-    __properties: ClassVar[List[str]] = ["history", "messages", "currency", "last4", "bin", "transaction_reference", "merchant_transaction_reference", "refund_amount", "status", "domain", "resolution", "category", "note", "attachments", "id", "integration", "transaction", "created_by", "evidence", "resolvedAt", "createdAt", "updatedAt", "dueAt"]
+    """
+    history: conlist(DisputeHistoryArray) = Field(...)
+    messages: conlist(DisputeMessagesArray) = Field(...)
+    currency: StrictStr = Field(...)
+    last4: StrictStr = Field(...)
+    bin: StrictStr = Field(...)
+    transaction_reference: Optional[Dict[str, Any]] = Field(...)
+    merchant_transaction_reference: StrictStr = Field(...)
+    refund_amount: StrictInt = Field(...)
+    status: StrictStr = Field(...)
+    domain: StrictStr = Field(...)
+    resolution: Optional[Dict[str, Any]] = Field(...)
+    category: StrictStr = Field(...)
+    note: Optional[Dict[str, Any]] = Field(...)
+    attachments: Optional[Dict[str, Any]] = Field(...)
+    id: StrictInt = Field(...)
+    integration: StrictInt = Field(...)
+    transaction: DisputeListTransactionResponseDataTransaction = Field(...)
+    created_by: StrictInt = Field(...)
+    evidence: Optional[Dict[str, Any]] = Field(...)
+    resolved_at: Optional[Dict[str, Any]] = Field(..., alias="resolvedAt")
+    created_at: StrictStr = Field(..., alias="createdAt")
+    updated_at: StrictStr = Field(..., alias="updatedAt")
+    due_at: Optional[Dict[str, Any]] = Field(..., alias="dueAt")
+    __properties = ["history", "messages", "currency", "last4", "bin", "transaction_reference", "merchant_transaction_reference", "refund_amount", "status", "domain", "resolution", "category", "note", "attachments", "id", "integration", "transaction", "created_by", "evidence", "resolvedAt", "createdAt", "updatedAt", "dueAt"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> DisputeListTransactionResponseData:
         """Create an instance of DisputeListTransactionResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in history (list)
         _items = []
         if self.history:
-            for _item_history in self.history:
-                if _item_history:
-                    _items.append(_item_history.to_dict())
+            for _item in self.history:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict['history'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
         _items = []
         if self.messages:
-            for _item_messages in self.messages:
-                if _item_messages:
-                    _items.append(_item_messages.to_dict())
+            for _item in self.messages:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict['messages'] = _items
         # override the default output from pydantic by calling `to_dict()` of transaction
         if self.transaction:
             _dict['transaction'] = self.transaction.to_dict()
         # set to None if transaction_reference (nullable) is None
-        # and model_fields_set contains the field
-        if self.transaction_reference is None and "transaction_reference" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.transaction_reference is None and "transaction_reference" in self.__fields_set__:
             _dict['transaction_reference'] = None
 
         # set to None if resolution (nullable) is None
-        # and model_fields_set contains the field
-        if self.resolution is None and "resolution" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.resolution is None and "resolution" in self.__fields_set__:
             _dict['resolution'] = None
 
         # set to None if note (nullable) is None
-        # and model_fields_set contains the field
-        if self.note is None and "note" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.note is None and "note" in self.__fields_set__:
             _dict['note'] = None
 
         # set to None if attachments (nullable) is None
-        # and model_fields_set contains the field
-        if self.attachments is None and "attachments" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.attachments is None and "attachments" in self.__fields_set__:
             _dict['attachments'] = None
 
         # set to None if evidence (nullable) is None
-        # and model_fields_set contains the field
-        if self.evidence is None and "evidence" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.evidence is None and "evidence" in self.__fields_set__:
             _dict['evidence'] = None
 
         # set to None if resolved_at (nullable) is None
-        # and model_fields_set contains the field
-        if self.resolved_at is None and "resolved_at" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.resolved_at is None and "resolved_at" in self.__fields_set__:
             _dict['resolvedAt'] = None
 
         # set to None if due_at (nullable) is None
-        # and model_fields_set contains the field
-        if self.due_at is None and "due_at" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.due_at is None and "due_at" in self.__fields_set__:
             _dict['dueAt'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> DisputeListTransactionResponseData:
         """Create an instance of DisputeListTransactionResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return DisputeListTransactionResponseData.parse_obj(obj)
 
-        _obj = cls.model_validate({
-            "history": [DisputeHistoryArray.from_dict(_item) for _item in obj["history"]] if obj.get("history") is not None else None,
-            "messages": [DisputeMessagesArray.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
+        _obj = DisputeListTransactionResponseData.parse_obj({
+            "history": [DisputeHistoryArray.from_dict(_item) for _item in obj.get("history")] if obj.get("history") is not None else None,
+            "messages": [DisputeMessagesArray.from_dict(_item) for _item in obj.get("messages")] if obj.get("messages") is not None else None,
             "currency": obj.get("currency"),
             "last4": obj.get("last4"),
             "bin": obj.get("bin"),
@@ -174,13 +158,13 @@ class DisputeListTransactionResponseData(BaseModel):
             "attachments": obj.get("attachments"),
             "id": obj.get("id"),
             "integration": obj.get("integration"),
-            "transaction": DisputeListTransactionResponseDataTransaction.from_dict(obj["transaction"]) if obj.get("transaction") is not None else None,
+            "transaction": DisputeListTransactionResponseDataTransaction.from_dict(obj.get("transaction")) if obj.get("transaction") is not None else None,
             "created_by": obj.get("created_by"),
             "evidence": obj.get("evidence"),
-            "resolvedAt": obj.get("resolvedAt"),
-            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
-            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
-            "dueAt": obj.get("dueAt")
+            "resolved_at": obj.get("resolvedAt"),
+            "created_at": obj.get("createdAt"),
+            "updated_at": obj.get("updatedAt"),
+            "due_at": obj.get("dueAt")
         })
         return _obj
 

@@ -18,101 +18,85 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from typing import Optional, Set
-from typing_extensions import Self
+
+from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field, StrictInt, StrictStr
 
 class SubscriptionListResponseArrayAuthorization(BaseModel):
     """
     SubscriptionListResponseArrayAuthorization
-    """ # noqa: E501
-    authorization_code: StrictStr
-    bin: Optional[StrictStr]
-    last4: StrictStr
-    exp_month: StrictStr
-    exp_year: StrictStr
-    channel: StrictStr
-    card_type: Optional[StrictStr]
-    bank: StrictStr
-    country_code: StrictStr
-    brand: StrictStr
-    reusable: StrictInt
-    signature: Optional[StrictStr]
-    account_name: Optional[Any]
-    __properties: ClassVar[List[str]] = ["authorization_code", "bin", "last4", "exp_month", "exp_year", "channel", "card_type", "bank", "country_code", "brand", "reusable", "signature", "account_name"]
+    """
+    authorization_code: StrictStr = Field(...)
+    bin: Optional[StrictStr] = Field(...)
+    last4: StrictStr = Field(...)
+    exp_month: StrictStr = Field(...)
+    exp_year: StrictStr = Field(...)
+    channel: StrictStr = Field(...)
+    card_type: Optional[StrictStr] = Field(...)
+    bank: StrictStr = Field(...)
+    country_code: StrictStr = Field(...)
+    brand: StrictStr = Field(...)
+    reusable: StrictInt = Field(...)
+    signature: Optional[StrictStr] = Field(...)
+    account_name: Optional[Dict[str, Any]] = Field(...)
+    __properties = ["authorization_code", "bin", "last4", "exp_month", "exp_year", "channel", "card_type", "bank", "country_code", "brand", "reusable", "signature", "account_name"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> SubscriptionListResponseArrayAuthorization:
         """Create an instance of SubscriptionListResponseArrayAuthorization from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if bin (nullable) is None
-        # and model_fields_set contains the field
-        if self.bin is None and "bin" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.bin is None and "bin" in self.__fields_set__:
             _dict['bin'] = None
 
         # set to None if card_type (nullable) is None
-        # and model_fields_set contains the field
-        if self.card_type is None and "card_type" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.card_type is None and "card_type" in self.__fields_set__:
             _dict['card_type'] = None
 
         # set to None if signature (nullable) is None
-        # and model_fields_set contains the field
-        if self.signature is None and "signature" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.signature is None and "signature" in self.__fields_set__:
             _dict['signature'] = None
 
         # set to None if account_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.account_name is None and "account_name" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.account_name is None and "account_name" in self.__fields_set__:
             _dict['account_name'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> SubscriptionListResponseArrayAuthorization:
         """Create an instance of SubscriptionListResponseArrayAuthorization from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return SubscriptionListResponseArrayAuthorization.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = SubscriptionListResponseArrayAuthorization.parse_obj({
             "authorization_code": obj.get("authorization_code"),
             "bin": obj.get("bin"),
             "last4": obj.get("last4"),

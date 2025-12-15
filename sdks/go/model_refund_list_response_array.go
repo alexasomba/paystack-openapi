@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the RefundListResponseArray type satisfies the MappedNullable interface at compile time
@@ -24,21 +22,21 @@ var _ MappedNullable = &RefundListResponseArray{}
 type RefundListResponseArray struct {
 	Integration int32 `json:"integration"`
 	Transaction int32 `json:"transaction"`
-	Dispute interface{} `json:"dispute"`
-	Settlement interface{} `json:"settlement"`
+	Dispute map[string]interface{} `json:"dispute"`
+	Settlement map[string]interface{} `json:"settlement"`
 	Id int32 `json:"id"`
 	Domain string `json:"domain"`
 	Currency string `json:"currency"`
 	Amount int32 `json:"amount"`
 	Status string `json:"status"`
-	RefundedAt interface{} `json:"refunded_at"`
+	RefundedAt map[string]interface{} `json:"refunded_at"`
 	RefundedBy string `json:"refunded_by"`
 	CustomerNote string `json:"customer_note"`
 	MerchantNote string `json:"merchant_note"`
 	DeductedAmount int32 `json:"deducted_amount"`
 	FullyDeducted int32 `json:"fully_deducted"`
 	CreatedAt string `json:"createdAt"`
-	BankReference interface{} `json:"bank_reference"`
+	BankReference map[string]interface{} `json:"bank_reference"`
 	TransactionReference string `json:"transaction_reference"`
 	Reason string `json:"reason"`
 	Customer SubscriptionListResponseArrayCustomer `json:"customer"`
@@ -46,17 +44,15 @@ type RefundListResponseArray struct {
 	TransactionAmount int32 `json:"transaction_amount"`
 	InitiatedBy string `json:"initiated_by"`
 	RefundChannel string `json:"refund_channel"`
-	SessionId interface{} `json:"session_id"`
+	SessionId map[string]interface{} `json:"session_id"`
 	CollectAccountNumber bool `json:"collect_account_number"`
 }
-
-type _RefundListResponseArray RefundListResponseArray
 
 // NewRefundListResponseArray instantiates a new RefundListResponseArray object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRefundListResponseArray(integration int32, transaction int32, dispute interface{}, settlement interface{}, id int32, domain string, currency string, amount int32, status string, refundedAt interface{}, refundedBy string, customerNote string, merchantNote string, deductedAmount int32, fullyDeducted int32, createdAt string, bankReference interface{}, transactionReference string, reason string, customer SubscriptionListResponseArrayCustomer, refundType string, transactionAmount int32, initiatedBy string, refundChannel string, sessionId interface{}, collectAccountNumber bool) *RefundListResponseArray {
+func NewRefundListResponseArray(integration int32, transaction int32, dispute map[string]interface{}, settlement map[string]interface{}, id int32, domain string, currency string, amount int32, status string, refundedAt map[string]interface{}, refundedBy string, customerNote string, merchantNote string, deductedAmount int32, fullyDeducted int32, createdAt string, bankReference map[string]interface{}, transactionReference string, reason string, customer SubscriptionListResponseArrayCustomer, refundType string, transactionAmount int32, initiatedBy string, refundChannel string, sessionId map[string]interface{}, collectAccountNumber bool) *RefundListResponseArray {
 	this := RefundListResponseArray{}
 	this.Integration = integration
 	this.Transaction = transaction
@@ -144,10 +140,10 @@ func (o *RefundListResponseArray) SetTransaction(v int32) {
 }
 
 // GetDispute returns the Dispute field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *RefundListResponseArray) GetDispute() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *RefundListResponseArray) GetDispute() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -157,23 +153,23 @@ func (o *RefundListResponseArray) GetDispute() interface{} {
 // GetDisputeOk returns a tuple with the Dispute field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundListResponseArray) GetDisputeOk() (*interface{}, bool) {
+func (o *RefundListResponseArray) GetDisputeOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Dispute) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Dispute, true
+	return o.Dispute, true
 }
 
 // SetDispute sets field value
-func (o *RefundListResponseArray) SetDispute(v interface{}) {
+func (o *RefundListResponseArray) SetDispute(v map[string]interface{}) {
 	o.Dispute = v
 }
 
 // GetSettlement returns the Settlement field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *RefundListResponseArray) GetSettlement() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *RefundListResponseArray) GetSettlement() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -183,15 +179,15 @@ func (o *RefundListResponseArray) GetSettlement() interface{} {
 // GetSettlementOk returns a tuple with the Settlement field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundListResponseArray) GetSettlementOk() (*interface{}, bool) {
+func (o *RefundListResponseArray) GetSettlementOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Settlement) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Settlement, true
+	return o.Settlement, true
 }
 
 // SetSettlement sets field value
-func (o *RefundListResponseArray) SetSettlement(v interface{}) {
+func (o *RefundListResponseArray) SetSettlement(v map[string]interface{}) {
 	o.Settlement = v
 }
 
@@ -316,10 +312,10 @@ func (o *RefundListResponseArray) SetStatus(v string) {
 }
 
 // GetRefundedAt returns the RefundedAt field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *RefundListResponseArray) GetRefundedAt() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *RefundListResponseArray) GetRefundedAt() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -329,15 +325,15 @@ func (o *RefundListResponseArray) GetRefundedAt() interface{} {
 // GetRefundedAtOk returns a tuple with the RefundedAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundListResponseArray) GetRefundedAtOk() (*interface{}, bool) {
+func (o *RefundListResponseArray) GetRefundedAtOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.RefundedAt) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.RefundedAt, true
+	return o.RefundedAt, true
 }
 
 // SetRefundedAt sets field value
-func (o *RefundListResponseArray) SetRefundedAt(v interface{}) {
+func (o *RefundListResponseArray) SetRefundedAt(v map[string]interface{}) {
 	o.RefundedAt = v
 }
 
@@ -486,10 +482,10 @@ func (o *RefundListResponseArray) SetCreatedAt(v string) {
 }
 
 // GetBankReference returns the BankReference field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *RefundListResponseArray) GetBankReference() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *RefundListResponseArray) GetBankReference() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -499,15 +495,15 @@ func (o *RefundListResponseArray) GetBankReference() interface{} {
 // GetBankReferenceOk returns a tuple with the BankReference field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundListResponseArray) GetBankReferenceOk() (*interface{}, bool) {
+func (o *RefundListResponseArray) GetBankReferenceOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.BankReference) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.BankReference, true
+	return o.BankReference, true
 }
 
 // SetBankReference sets field value
-func (o *RefundListResponseArray) SetBankReference(v interface{}) {
+func (o *RefundListResponseArray) SetBankReference(v map[string]interface{}) {
 	o.BankReference = v
 }
 
@@ -680,10 +676,10 @@ func (o *RefundListResponseArray) SetRefundChannel(v string) {
 }
 
 // GetSessionId returns the SessionId field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *RefundListResponseArray) GetSessionId() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *RefundListResponseArray) GetSessionId() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -693,15 +689,15 @@ func (o *RefundListResponseArray) GetSessionId() interface{} {
 // GetSessionIdOk returns a tuple with the SessionId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundListResponseArray) GetSessionIdOk() (*interface{}, bool) {
+func (o *RefundListResponseArray) GetSessionIdOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.SessionId) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.SessionId, true
+	return o.SessionId, true
 }
 
 // SetSessionId sets field value
-func (o *RefundListResponseArray) SetSessionId(v interface{}) {
+func (o *RefundListResponseArray) SetSessionId(v map[string]interface{}) {
 	o.SessionId = v
 }
 
@@ -776,68 +772,6 @@ func (o RefundListResponseArray) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["collect_account_number"] = o.CollectAccountNumber
 	return toSerialize, nil
-}
-
-func (o *RefundListResponseArray) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"integration",
-		"transaction",
-		"dispute",
-		"settlement",
-		"id",
-		"domain",
-		"currency",
-		"amount",
-		"status",
-		"refunded_at",
-		"refunded_by",
-		"customer_note",
-		"merchant_note",
-		"deducted_amount",
-		"fully_deducted",
-		"createdAt",
-		"bank_reference",
-		"transaction_reference",
-		"reason",
-		"customer",
-		"refund_type",
-		"transaction_amount",
-		"initiated_by",
-		"refund_channel",
-		"session_id",
-		"collect_account_number",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varRefundListResponseArray := _RefundListResponseArray{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRefundListResponseArray)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RefundListResponseArray(varRefundListResponseArray)
-
-	return err
 }
 
 type NullableRefundListResponseArray struct {

@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the TransactionListResponseArraySource type satisfies the MappedNullable interface at compile time
@@ -24,17 +22,15 @@ var _ MappedNullable = &TransactionListResponseArraySource{}
 type TransactionListResponseArraySource struct {
 	Source string `json:"source"`
 	Type string `json:"type"`
-	Identifier interface{} `json:"identifier"`
+	Identifier map[string]interface{} `json:"identifier"`
 	EntryPoint string `json:"entry_point"`
 }
-
-type _TransactionListResponseArraySource TransactionListResponseArraySource
 
 // NewTransactionListResponseArraySource instantiates a new TransactionListResponseArraySource object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransactionListResponseArraySource(source string, type_ string, identifier interface{}, entryPoint string) *TransactionListResponseArraySource {
+func NewTransactionListResponseArraySource(source string, type_ string, identifier map[string]interface{}, entryPoint string) *TransactionListResponseArraySource {
 	this := TransactionListResponseArraySource{}
 	this.Source = source
 	this.Type = type_
@@ -100,10 +96,10 @@ func (o *TransactionListResponseArraySource) SetType(v string) {
 }
 
 // GetIdentifier returns the Identifier field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransactionListResponseArraySource) GetIdentifier() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *TransactionListResponseArraySource) GetIdentifier() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -113,15 +109,15 @@ func (o *TransactionListResponseArraySource) GetIdentifier() interface{} {
 // GetIdentifierOk returns a tuple with the Identifier field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransactionListResponseArraySource) GetIdentifierOk() (*interface{}, bool) {
+func (o *TransactionListResponseArraySource) GetIdentifierOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Identifier) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Identifier, true
+	return o.Identifier, true
 }
 
 // SetIdentifier sets field value
-func (o *TransactionListResponseArraySource) SetIdentifier(v interface{}) {
+func (o *TransactionListResponseArraySource) SetIdentifier(v map[string]interface{}) {
 	o.Identifier = v
 }
 
@@ -166,46 +162,6 @@ func (o TransactionListResponseArraySource) ToMap() (map[string]interface{}, err
 	}
 	toSerialize["entry_point"] = o.EntryPoint
 	return toSerialize, nil
-}
-
-func (o *TransactionListResponseArraySource) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"source",
-		"type",
-		"identifier",
-		"entry_point",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varTransactionListResponseArraySource := _TransactionListResponseArraySource{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransactionListResponseArraySource)
-
-	if err != nil {
-		return err
-	}
-
-	*o = TransactionListResponseArraySource(varTransactionListResponseArraySource)
-
-	return err
 }
 
 type NullableTransactionListResponseArraySource struct {

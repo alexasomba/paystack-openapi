@@ -127,7 +127,7 @@ Each folder contains its own README with language-specific usage and install ins
 Packagist (public) expects a VCS repository where the package's `composer.json` is at the repository root. Since this repo is a monorepo and the PHP SDK lives in `sdks/php`, publishing to Packagist is handled by splitting `sdks/php` into its own repository.
 
 - Create a dedicated repo for the PHP SDK (`alexasomba/paystack-php`) and add it on Packagist.
-- This repo includes a GitHub Action which, on tags like `v1.1.0`, subtree-splits `sdks/php` and pushes it to the dedicated repo (including the same tag).
+- This repo includes a GitHub Action which, on tags like `v1.1.1`, subtree-splits `sdks/php` and pushes it to the dedicated repo (including the same tag).
 - Configure these GitHub repo secrets:
   - `PHP_SPLIT_REPO`: `alexasomba/paystack-php`
   - `PHP_SPLIT_PUSH_TOKEN`: a GitHub token with `contents:write` access to that repo

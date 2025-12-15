@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the SubscriptionListResponseArray type satisfies the MappedNullable interface at compile time
@@ -32,26 +30,24 @@ type SubscriptionListResponseArray struct {
 	Amount int32 `json:"amount"`
 	CronExpression NullableString `json:"cron_expression"`
 	NextPaymentDate NullableString `json:"next_payment_date"`
-	OpenInvoice interface{} `json:"open_invoice"`
+	OpenInvoice map[string]interface{} `json:"open_invoice"`
 	CreatedAt string `json:"createdAt"`
 	Integration int32 `json:"integration"`
 	Plan SubscriptionListResponseArrayPlan `json:"plan"`
 	Authorization SubscriptionListResponseArrayAuthorization `json:"authorization"`
 	Customer SubscriptionListResponseArrayCustomer `json:"customer"`
 	InvoiceLimit int32 `json:"invoice_limit"`
-	SplitCode interface{} `json:"split_code"`
+	SplitCode map[string]interface{} `json:"split_code"`
 	PaymentsCount int32 `json:"payments_count"`
-	MostRecentInvoice interface{} `json:"most_recent_invoice"`
+	MostRecentInvoice map[string]interface{} `json:"most_recent_invoice"`
 	Metadata map[string]interface{} `json:"metadata"`
 }
-
-type _SubscriptionListResponseArray SubscriptionListResponseArray
 
 // NewSubscriptionListResponseArray instantiates a new SubscriptionListResponseArray object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSubscriptionListResponseArray(id int32, domain string, status string, start int32, quantity int32, subscriptionCode string, emailToken string, amount int32, cronExpression NullableString, nextPaymentDate NullableString, openInvoice interface{}, createdAt string, integration int32, plan SubscriptionListResponseArrayPlan, authorization SubscriptionListResponseArrayAuthorization, customer SubscriptionListResponseArrayCustomer, invoiceLimit int32, splitCode interface{}, paymentsCount int32, mostRecentInvoice interface{}, metadata map[string]interface{}) *SubscriptionListResponseArray {
+func NewSubscriptionListResponseArray(id int32, domain string, status string, start int32, quantity int32, subscriptionCode string, emailToken string, amount int32, cronExpression NullableString, nextPaymentDate NullableString, openInvoice map[string]interface{}, createdAt string, integration int32, plan SubscriptionListResponseArrayPlan, authorization SubscriptionListResponseArrayAuthorization, customer SubscriptionListResponseArrayCustomer, invoiceLimit int32, splitCode map[string]interface{}, paymentsCount int32, mostRecentInvoice map[string]interface{}, metadata map[string]interface{}) *SubscriptionListResponseArray {
 	this := SubscriptionListResponseArray{}
 	this.Id = id
 	this.Domain = domain
@@ -330,10 +326,10 @@ func (o *SubscriptionListResponseArray) SetNextPaymentDate(v string) {
 }
 
 // GetOpenInvoice returns the OpenInvoice field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *SubscriptionListResponseArray) GetOpenInvoice() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *SubscriptionListResponseArray) GetOpenInvoice() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -343,15 +339,15 @@ func (o *SubscriptionListResponseArray) GetOpenInvoice() interface{} {
 // GetOpenInvoiceOk returns a tuple with the OpenInvoice field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubscriptionListResponseArray) GetOpenInvoiceOk() (*interface{}, bool) {
+func (o *SubscriptionListResponseArray) GetOpenInvoiceOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.OpenInvoice) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.OpenInvoice, true
+	return o.OpenInvoice, true
 }
 
 // SetOpenInvoice sets field value
-func (o *SubscriptionListResponseArray) SetOpenInvoice(v interface{}) {
+func (o *SubscriptionListResponseArray) SetOpenInvoice(v map[string]interface{}) {
 	o.OpenInvoice = v
 }
 
@@ -500,10 +496,10 @@ func (o *SubscriptionListResponseArray) SetInvoiceLimit(v int32) {
 }
 
 // GetSplitCode returns the SplitCode field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *SubscriptionListResponseArray) GetSplitCode() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *SubscriptionListResponseArray) GetSplitCode() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -513,15 +509,15 @@ func (o *SubscriptionListResponseArray) GetSplitCode() interface{} {
 // GetSplitCodeOk returns a tuple with the SplitCode field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubscriptionListResponseArray) GetSplitCodeOk() (*interface{}, bool) {
+func (o *SubscriptionListResponseArray) GetSplitCodeOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.SplitCode) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.SplitCode, true
+	return o.SplitCode, true
 }
 
 // SetSplitCode sets field value
-func (o *SubscriptionListResponseArray) SetSplitCode(v interface{}) {
+func (o *SubscriptionListResponseArray) SetSplitCode(v map[string]interface{}) {
 	o.SplitCode = v
 }
 
@@ -550,10 +546,10 @@ func (o *SubscriptionListResponseArray) SetPaymentsCount(v int32) {
 }
 
 // GetMostRecentInvoice returns the MostRecentInvoice field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *SubscriptionListResponseArray) GetMostRecentInvoice() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *SubscriptionListResponseArray) GetMostRecentInvoice() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -563,15 +559,15 @@ func (o *SubscriptionListResponseArray) GetMostRecentInvoice() interface{} {
 // GetMostRecentInvoiceOk returns a tuple with the MostRecentInvoice field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubscriptionListResponseArray) GetMostRecentInvoiceOk() (*interface{}, bool) {
+func (o *SubscriptionListResponseArray) GetMostRecentInvoiceOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.MostRecentInvoice) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.MostRecentInvoice, true
+	return o.MostRecentInvoice, true
 }
 
 // SetMostRecentInvoice sets field value
-func (o *SubscriptionListResponseArray) SetMostRecentInvoice(v interface{}) {
+func (o *SubscriptionListResponseArray) SetMostRecentInvoice(v map[string]interface{}) {
 	o.MostRecentInvoice = v
 }
 
@@ -641,63 +637,6 @@ func (o SubscriptionListResponseArray) ToMap() (map[string]interface{}, error) {
 		toSerialize["metadata"] = o.Metadata
 	}
 	return toSerialize, nil
-}
-
-func (o *SubscriptionListResponseArray) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"domain",
-		"status",
-		"start",
-		"quantity",
-		"subscription_code",
-		"email_token",
-		"amount",
-		"cron_expression",
-		"next_payment_date",
-		"open_invoice",
-		"createdAt",
-		"integration",
-		"plan",
-		"authorization",
-		"customer",
-		"invoice_limit",
-		"split_code",
-		"payments_count",
-		"most_recent_invoice",
-		"metadata",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSubscriptionListResponseArray := _SubscriptionListResponseArray{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSubscriptionListResponseArray)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SubscriptionListResponseArray(varSubscriptionListResponseArray)
-
-	return err
 }
 
 type NullableSubscriptionListResponseArray struct {

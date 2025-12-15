@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the VirtualTerminalFetchResponseData type satisfies the MappedNullable interface at compile time
@@ -27,21 +25,19 @@ type VirtualTerminalFetchResponseData struct {
 	Name string `json:"name"`
 	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
-	PaymentMethods []interface{} `json:"paymentMethods"`
+	PaymentMethods []map[string]interface{} `json:"paymentMethods"`
 	Active bool `json:"active"`
 	CreatedAt string `json:"created_at"`
-	ConnectAccountId interface{} `json:"connect_account_id"`
+	ConnectAccountId map[string]interface{} `json:"connect_account_id"`
 	Destinations []VirtualTerminalFetchResponseDataDestinationsInner `json:"destinations"`
 	Currency string `json:"currency"`
 }
-
-type _VirtualTerminalFetchResponseData VirtualTerminalFetchResponseData
 
 // NewVirtualTerminalFetchResponseData instantiates a new VirtualTerminalFetchResponseData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVirtualTerminalFetchResponseData(id int32, code string, name string, integration int32, domain string, paymentMethods []interface{}, active bool, createdAt string, connectAccountId interface{}, destinations []VirtualTerminalFetchResponseDataDestinationsInner, currency string) *VirtualTerminalFetchResponseData {
+func NewVirtualTerminalFetchResponseData(id int32, code string, name string, integration int32, domain string, paymentMethods []map[string]interface{}, active bool, createdAt string, connectAccountId map[string]interface{}, destinations []VirtualTerminalFetchResponseDataDestinationsInner, currency string) *VirtualTerminalFetchResponseData {
 	this := VirtualTerminalFetchResponseData{}
 	this.Id = id
 	this.Code = code
@@ -186,9 +182,9 @@ func (o *VirtualTerminalFetchResponseData) SetDomain(v string) {
 }
 
 // GetPaymentMethods returns the PaymentMethods field value
-func (o *VirtualTerminalFetchResponseData) GetPaymentMethods() []interface{} {
+func (o *VirtualTerminalFetchResponseData) GetPaymentMethods() []map[string]interface{} {
 	if o == nil {
-		var ret []interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -197,7 +193,7 @@ func (o *VirtualTerminalFetchResponseData) GetPaymentMethods() []interface{} {
 
 // GetPaymentMethodsOk returns a tuple with the PaymentMethods field value
 // and a boolean to check if the value has been set.
-func (o *VirtualTerminalFetchResponseData) GetPaymentMethodsOk() ([]interface{}, bool) {
+func (o *VirtualTerminalFetchResponseData) GetPaymentMethodsOk() ([]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -205,7 +201,7 @@ func (o *VirtualTerminalFetchResponseData) GetPaymentMethodsOk() ([]interface{},
 }
 
 // SetPaymentMethods sets field value
-func (o *VirtualTerminalFetchResponseData) SetPaymentMethods(v []interface{}) {
+func (o *VirtualTerminalFetchResponseData) SetPaymentMethods(v []map[string]interface{}) {
 	o.PaymentMethods = v
 }
 
@@ -258,10 +254,10 @@ func (o *VirtualTerminalFetchResponseData) SetCreatedAt(v string) {
 }
 
 // GetConnectAccountId returns the ConnectAccountId field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *VirtualTerminalFetchResponseData) GetConnectAccountId() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *VirtualTerminalFetchResponseData) GetConnectAccountId() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -271,15 +267,15 @@ func (o *VirtualTerminalFetchResponseData) GetConnectAccountId() interface{} {
 // GetConnectAccountIdOk returns a tuple with the ConnectAccountId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VirtualTerminalFetchResponseData) GetConnectAccountIdOk() (*interface{}, bool) {
+func (o *VirtualTerminalFetchResponseData) GetConnectAccountIdOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.ConnectAccountId) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.ConnectAccountId, true
+	return o.ConnectAccountId, true
 }
 
 // SetConnectAccountId sets field value
-func (o *VirtualTerminalFetchResponseData) SetConnectAccountId(v interface{}) {
+func (o *VirtualTerminalFetchResponseData) SetConnectAccountId(v map[string]interface{}) {
 	o.ConnectAccountId = v
 }
 
@@ -355,53 +351,6 @@ func (o VirtualTerminalFetchResponseData) ToMap() (map[string]interface{}, error
 	toSerialize["destinations"] = o.Destinations
 	toSerialize["currency"] = o.Currency
 	return toSerialize, nil
-}
-
-func (o *VirtualTerminalFetchResponseData) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"code",
-		"name",
-		"integration",
-		"domain",
-		"paymentMethods",
-		"active",
-		"created_at",
-		"connect_account_id",
-		"destinations",
-		"currency",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varVirtualTerminalFetchResponseData := _VirtualTerminalFetchResponseData{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVirtualTerminalFetchResponseData)
-
-	if err != nil {
-		return err
-	}
-
-	*o = VirtualTerminalFetchResponseData(varVirtualTerminalFetchResponseData)
-
-	return err
 }
 
 type NullableVirtualTerminalFetchResponseData struct {

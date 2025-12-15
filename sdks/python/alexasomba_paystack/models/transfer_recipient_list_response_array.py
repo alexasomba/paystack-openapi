@@ -18,99 +18,83 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from alexasomba_paystack.models.transfer_recipient_list_response_array_details import TransferRecipientListResponseArrayDetails
-from typing import Optional, Set
-from typing_extensions import Self
+
+from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
+from alexasomba_paystack.models.transfer_recipient_create_response_data_details import TransferRecipientCreateResponseDataDetails
 
 class TransferRecipientListResponseArray(BaseModel):
     """
     TransferRecipientListResponseArray
-    """ # noqa: E501
-    active: StrictBool
-    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
-    currency: StrictStr
-    description: StrictStr
-    domain: StrictStr
-    email: Optional[StrictStr]
-    id: StrictInt
-    integration: StrictInt
+    """
+    active: StrictBool = Field(...)
+    created_at: StrictStr = Field(..., alias="createdAt")
+    currency: StrictStr = Field(...)
+    description: StrictStr = Field(...)
+    domain: StrictStr = Field(...)
+    email: Optional[StrictStr] = Field(...)
+    id: StrictInt = Field(...)
+    integration: StrictInt = Field(...)
     metadata: Optional[Dict[str, Any]] = None
-    name: StrictStr
-    recipient_code: StrictStr
-    type: StrictStr
-    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    is_deleted: StrictBool
-    details: TransferRecipientListResponseArrayDetails
-    __properties: ClassVar[List[str]] = ["active", "createdAt", "currency", "description", "domain", "email", "id", "integration", "metadata", "name", "recipient_code", "type", "updatedAt", "is_deleted", "details"]
+    name: StrictStr = Field(...)
+    recipient_code: StrictStr = Field(...)
+    type: StrictStr = Field(...)
+    updated_at: StrictStr = Field(..., alias="updatedAt")
+    is_deleted: StrictBool = Field(...)
+    details: TransferRecipientCreateResponseDataDetails = Field(...)
+    __properties = ["active", "createdAt", "currency", "description", "domain", "email", "id", "integration", "metadata", "name", "recipient_code", "type", "updatedAt", "is_deleted", "details"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> TransferRecipientListResponseArray:
         """Create an instance of TransferRecipientListResponseArray from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of details
         if self.details:
             _dict['details'] = self.details.to_dict()
         # set to None if email (nullable) is None
-        # and model_fields_set contains the field
-        if self.email is None and "email" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.email is None and "email" in self.__fields_set__:
             _dict['email'] = None
 
         # set to None if metadata (nullable) is None
-        # and model_fields_set contains the field
-        if self.metadata is None and "metadata" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.metadata is None and "metadata" in self.__fields_set__:
             _dict['metadata'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> TransferRecipientListResponseArray:
         """Create an instance of TransferRecipientListResponseArray from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return TransferRecipientListResponseArray.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = TransferRecipientListResponseArray.parse_obj({
             "active": obj.get("active"),
-            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "created_at": obj.get("createdAt"),
             "currency": obj.get("currency"),
             "description": obj.get("description"),
             "domain": obj.get("domain"),
@@ -121,9 +105,9 @@ class TransferRecipientListResponseArray(BaseModel):
             "name": obj.get("name"),
             "recipient_code": obj.get("recipient_code"),
             "type": obj.get("type"),
-            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
+            "updated_at": obj.get("updatedAt"),
             "is_deleted": obj.get("is_deleted"),
-            "details": TransferRecipientListResponseArrayDetails.from_dict(obj["details"]) if obj.get("details") is not None else None
+            "details": TransferRecipientCreateResponseDataDetails.from_dict(obj.get("details")) if obj.get("details") is not None else None
         })
         return _obj
 

@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the MiscellaneousListBanksResponseArray type satisfies the MappedNullable interface at compile time
@@ -39,8 +37,6 @@ type MiscellaneousListBanksResponseArray struct {
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
 }
-
-type _MiscellaneousListBanksResponseArray MiscellaneousListBanksResponseArray
 
 // NewMiscellaneousListBanksResponseArray instantiates a new MiscellaneousListBanksResponseArray object
 // This constructor will assign default values to properties that have it defined,
@@ -490,58 +486,6 @@ func (o MiscellaneousListBanksResponseArray) ToMap() (map[string]interface{}, er
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["updatedAt"] = o.UpdatedAt
 	return toSerialize, nil
-}
-
-func (o *MiscellaneousListBanksResponseArray) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"slug",
-		"code",
-		"longcode",
-		"gateway",
-		"pay_with_bank",
-		"supports_transfer",
-		"available_for_direct_debit",
-		"active",
-		"is_deleted",
-		"country",
-		"currency",
-		"type",
-		"id",
-		"createdAt",
-		"updatedAt",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varMiscellaneousListBanksResponseArray := _MiscellaneousListBanksResponseArray{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varMiscellaneousListBanksResponseArray)
-
-	if err != nil {
-		return err
-	}
-
-	*o = MiscellaneousListBanksResponseArray(varMiscellaneousListBanksResponseArray)
-
-	return err
 }
 
 type NullableMiscellaneousListBanksResponseArray struct {

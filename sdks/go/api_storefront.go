@@ -28,11 +28,11 @@ type ApiStorefrontAddProductsRequest struct {
 	ctx context.Context
 	ApiService *StorefrontAPIService
 	id int32
-	storefrontAddProducts *StorefrontAddProducts
+	body *StorefrontIdProduct
 }
 
-func (r ApiStorefrontAddProductsRequest) StorefrontAddProducts(storefrontAddProducts StorefrontAddProducts) ApiStorefrontAddProductsRequest {
-	r.storefrontAddProducts = &storefrontAddProducts
+func (r ApiStorefrontAddProductsRequest) Body(body StorefrontIdProduct) ApiStorefrontAddProductsRequest {
+	r.body = &body
 	return r
 }
 
@@ -97,7 +97,7 @@ func (a *StorefrontAPIService) StorefrontAddProductsExecute(r ApiStorefrontAddPr
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.storefrontAddProducts
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -830,21 +830,13 @@ func (a *StorefrontAPIService) StorefrontListExecute(r ApiStorefrontListRequest)
 	localVarFormParams := url.Values{}
 
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
-	} else {
-        var defaultValue int32 = 50
-        parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", defaultValue, "form", "")
-        r.perPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
-	} else {
-        var defaultValue int32 = 1
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
-        r.page = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1176,11 +1168,11 @@ type ApiStorefrontUpdateRequest struct {
 	ctx context.Context
 	ApiService *StorefrontAPIService
 	id int32
-	storefrontUpdate *StorefrontUpdate
+	body *StorefrontId
 }
 
-func (r ApiStorefrontUpdateRequest) StorefrontUpdate(storefrontUpdate StorefrontUpdate) ApiStorefrontUpdateRequest {
-	r.storefrontUpdate = &storefrontUpdate
+func (r ApiStorefrontUpdateRequest) Body(body StorefrontId) ApiStorefrontUpdateRequest {
+	r.body = &body
 	return r
 }
 
@@ -1245,7 +1237,7 @@ func (a *StorefrontAPIService) StorefrontUpdateExecute(r ApiStorefrontUpdateRequ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.storefrontUpdate
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

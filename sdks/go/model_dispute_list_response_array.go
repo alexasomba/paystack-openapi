@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the DisputeListResponseArray type satisfies the MappedNullable interface at compile time
@@ -26,32 +24,30 @@ type DisputeListResponseArray struct {
 	RefundAmount int32 `json:"refund_amount"`
 	Currency string `json:"currency"`
 	Status string `json:"status"`
-	Resolution interface{} `json:"resolution"`
+	Resolution map[string]interface{} `json:"resolution"`
 	Domain string `json:"domain"`
 	Transaction DisputeListResponseArrayTransaction `json:"transaction"`
-	TransactionReference interface{} `json:"transaction_reference"`
+	TransactionReference map[string]interface{} `json:"transaction_reference"`
 	Category string `json:"category"`
 	Customer SubscriptionListResponseArrayCustomer `json:"customer"`
 	Bin string `json:"bin"`
 	Last4 string `json:"last4"`
-	DueAt interface{} `json:"dueAt"`
-	ResolvedAt interface{} `json:"resolvedAt"`
-	Evidence interface{} `json:"evidence"`
-	Attachments interface{} `json:"attachments"`
-	Note interface{} `json:"note"`
+	DueAt map[string]interface{} `json:"dueAt"`
+	ResolvedAt map[string]interface{} `json:"resolvedAt"`
+	Evidence map[string]interface{} `json:"evidence"`
+	Attachments map[string]interface{} `json:"attachments"`
+	Note map[string]interface{} `json:"note"`
 	History []DisputeHistoryArray `json:"history"`
 	Messages []DisputeMessagesArray `json:"messages"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
 }
 
-type _DisputeListResponseArray DisputeListResponseArray
-
 // NewDisputeListResponseArray instantiates a new DisputeListResponseArray object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDisputeListResponseArray(id int32, refundAmount int32, currency string, status string, resolution interface{}, domain string, transaction DisputeListResponseArrayTransaction, transactionReference interface{}, category string, customer SubscriptionListResponseArrayCustomer, bin string, last4 string, dueAt interface{}, resolvedAt interface{}, evidence interface{}, attachments interface{}, note interface{}, history []DisputeHistoryArray, messages []DisputeMessagesArray, createdAt string, updatedAt string) *DisputeListResponseArray {
+func NewDisputeListResponseArray(id int32, refundAmount int32, currency string, status string, resolution map[string]interface{}, domain string, transaction DisputeListResponseArrayTransaction, transactionReference map[string]interface{}, category string, customer SubscriptionListResponseArrayCustomer, bin string, last4 string, dueAt map[string]interface{}, resolvedAt map[string]interface{}, evidence map[string]interface{}, attachments map[string]interface{}, note map[string]interface{}, history []DisputeHistoryArray, messages []DisputeMessagesArray, createdAt string, updatedAt string) *DisputeListResponseArray {
 	this := DisputeListResponseArray{}
 	this.Id = id
 	this.RefundAmount = refundAmount
@@ -182,10 +178,10 @@ func (o *DisputeListResponseArray) SetStatus(v string) {
 }
 
 // GetResolution returns the Resolution field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *DisputeListResponseArray) GetResolution() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *DisputeListResponseArray) GetResolution() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -195,15 +191,15 @@ func (o *DisputeListResponseArray) GetResolution() interface{} {
 // GetResolutionOk returns a tuple with the Resolution field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeListResponseArray) GetResolutionOk() (*interface{}, bool) {
+func (o *DisputeListResponseArray) GetResolutionOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Resolution) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Resolution, true
+	return o.Resolution, true
 }
 
 // SetResolution sets field value
-func (o *DisputeListResponseArray) SetResolution(v interface{}) {
+func (o *DisputeListResponseArray) SetResolution(v map[string]interface{}) {
 	o.Resolution = v
 }
 
@@ -256,10 +252,10 @@ func (o *DisputeListResponseArray) SetTransaction(v DisputeListResponseArrayTran
 }
 
 // GetTransactionReference returns the TransactionReference field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *DisputeListResponseArray) GetTransactionReference() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *DisputeListResponseArray) GetTransactionReference() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -269,15 +265,15 @@ func (o *DisputeListResponseArray) GetTransactionReference() interface{} {
 // GetTransactionReferenceOk returns a tuple with the TransactionReference field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeListResponseArray) GetTransactionReferenceOk() (*interface{}, bool) {
+func (o *DisputeListResponseArray) GetTransactionReferenceOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.TransactionReference) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.TransactionReference, true
+	return o.TransactionReference, true
 }
 
 // SetTransactionReference sets field value
-func (o *DisputeListResponseArray) SetTransactionReference(v interface{}) {
+func (o *DisputeListResponseArray) SetTransactionReference(v map[string]interface{}) {
 	o.TransactionReference = v
 }
 
@@ -378,10 +374,10 @@ func (o *DisputeListResponseArray) SetLast4(v string) {
 }
 
 // GetDueAt returns the DueAt field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *DisputeListResponseArray) GetDueAt() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *DisputeListResponseArray) GetDueAt() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -391,23 +387,23 @@ func (o *DisputeListResponseArray) GetDueAt() interface{} {
 // GetDueAtOk returns a tuple with the DueAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeListResponseArray) GetDueAtOk() (*interface{}, bool) {
+func (o *DisputeListResponseArray) GetDueAtOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.DueAt) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.DueAt, true
+	return o.DueAt, true
 }
 
 // SetDueAt sets field value
-func (o *DisputeListResponseArray) SetDueAt(v interface{}) {
+func (o *DisputeListResponseArray) SetDueAt(v map[string]interface{}) {
 	o.DueAt = v
 }
 
 // GetResolvedAt returns the ResolvedAt field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *DisputeListResponseArray) GetResolvedAt() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *DisputeListResponseArray) GetResolvedAt() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -417,23 +413,23 @@ func (o *DisputeListResponseArray) GetResolvedAt() interface{} {
 // GetResolvedAtOk returns a tuple with the ResolvedAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeListResponseArray) GetResolvedAtOk() (*interface{}, bool) {
+func (o *DisputeListResponseArray) GetResolvedAtOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.ResolvedAt) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.ResolvedAt, true
+	return o.ResolvedAt, true
 }
 
 // SetResolvedAt sets field value
-func (o *DisputeListResponseArray) SetResolvedAt(v interface{}) {
+func (o *DisputeListResponseArray) SetResolvedAt(v map[string]interface{}) {
 	o.ResolvedAt = v
 }
 
 // GetEvidence returns the Evidence field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *DisputeListResponseArray) GetEvidence() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *DisputeListResponseArray) GetEvidence() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -443,23 +439,23 @@ func (o *DisputeListResponseArray) GetEvidence() interface{} {
 // GetEvidenceOk returns a tuple with the Evidence field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeListResponseArray) GetEvidenceOk() (*interface{}, bool) {
+func (o *DisputeListResponseArray) GetEvidenceOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Evidence) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Evidence, true
+	return o.Evidence, true
 }
 
 // SetEvidence sets field value
-func (o *DisputeListResponseArray) SetEvidence(v interface{}) {
+func (o *DisputeListResponseArray) SetEvidence(v map[string]interface{}) {
 	o.Evidence = v
 }
 
 // GetAttachments returns the Attachments field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *DisputeListResponseArray) GetAttachments() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *DisputeListResponseArray) GetAttachments() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -469,23 +465,23 @@ func (o *DisputeListResponseArray) GetAttachments() interface{} {
 // GetAttachmentsOk returns a tuple with the Attachments field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeListResponseArray) GetAttachmentsOk() (*interface{}, bool) {
+func (o *DisputeListResponseArray) GetAttachmentsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Attachments) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Attachments, true
+	return o.Attachments, true
 }
 
 // SetAttachments sets field value
-func (o *DisputeListResponseArray) SetAttachments(v interface{}) {
+func (o *DisputeListResponseArray) SetAttachments(v map[string]interface{}) {
 	o.Attachments = v
 }
 
 // GetNote returns the Note field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *DisputeListResponseArray) GetNote() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *DisputeListResponseArray) GetNote() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -495,15 +491,15 @@ func (o *DisputeListResponseArray) GetNote() interface{} {
 // GetNoteOk returns a tuple with the Note field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeListResponseArray) GetNoteOk() (*interface{}, bool) {
+func (o *DisputeListResponseArray) GetNoteOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Note) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Note, true
+	return o.Note, true
 }
 
 // SetNote sets field value
-func (o *DisputeListResponseArray) SetNote(v interface{}) {
+func (o *DisputeListResponseArray) SetNote(v map[string]interface{}) {
 	o.Note = v
 }
 
@@ -649,63 +645,6 @@ func (o DisputeListResponseArray) ToMap() (map[string]interface{}, error) {
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["updatedAt"] = o.UpdatedAt
 	return toSerialize, nil
-}
-
-func (o *DisputeListResponseArray) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"refund_amount",
-		"currency",
-		"status",
-		"resolution",
-		"domain",
-		"transaction",
-		"transaction_reference",
-		"category",
-		"customer",
-		"bin",
-		"last4",
-		"dueAt",
-		"resolvedAt",
-		"evidence",
-		"attachments",
-		"note",
-		"history",
-		"messages",
-		"createdAt",
-		"updatedAt",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDisputeListResponseArray := _DisputeListResponseArray{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDisputeListResponseArray)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DisputeListResponseArray(varDisputeListResponseArray)
-
-	return err
 }
 
 type NullableDisputeListResponseArray struct {

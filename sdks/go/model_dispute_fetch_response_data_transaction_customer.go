@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the DisputeFetchResponseDataTransactionCustomer type satisfies the MappedNullable interface at compile time
@@ -22,16 +20,14 @@ var _ MappedNullable = &DisputeFetchResponseDataTransactionCustomer{}
 
 // DisputeFetchResponseDataTransactionCustomer struct for DisputeFetchResponseDataTransactionCustomer
 type DisputeFetchResponseDataTransactionCustomer struct {
-	InternationalFormatPhone interface{} `json:"international_format_phone"`
+	InternationalFormatPhone map[string]interface{} `json:"international_format_phone"`
 }
-
-type _DisputeFetchResponseDataTransactionCustomer DisputeFetchResponseDataTransactionCustomer
 
 // NewDisputeFetchResponseDataTransactionCustomer instantiates a new DisputeFetchResponseDataTransactionCustomer object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDisputeFetchResponseDataTransactionCustomer(internationalFormatPhone interface{}) *DisputeFetchResponseDataTransactionCustomer {
+func NewDisputeFetchResponseDataTransactionCustomer(internationalFormatPhone map[string]interface{}) *DisputeFetchResponseDataTransactionCustomer {
 	this := DisputeFetchResponseDataTransactionCustomer{}
 	this.InternationalFormatPhone = internationalFormatPhone
 	return &this
@@ -46,10 +42,10 @@ func NewDisputeFetchResponseDataTransactionCustomerWithDefaults() *DisputeFetchR
 }
 
 // GetInternationalFormatPhone returns the InternationalFormatPhone field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *DisputeFetchResponseDataTransactionCustomer) GetInternationalFormatPhone() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *DisputeFetchResponseDataTransactionCustomer) GetInternationalFormatPhone() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -59,15 +55,15 @@ func (o *DisputeFetchResponseDataTransactionCustomer) GetInternationalFormatPhon
 // GetInternationalFormatPhoneOk returns a tuple with the InternationalFormatPhone field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeFetchResponseDataTransactionCustomer) GetInternationalFormatPhoneOk() (*interface{}, bool) {
+func (o *DisputeFetchResponseDataTransactionCustomer) GetInternationalFormatPhoneOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.InternationalFormatPhone) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.InternationalFormatPhone, true
+	return o.InternationalFormatPhone, true
 }
 
 // SetInternationalFormatPhone sets field value
-func (o *DisputeFetchResponseDataTransactionCustomer) SetInternationalFormatPhone(v interface{}) {
+func (o *DisputeFetchResponseDataTransactionCustomer) SetInternationalFormatPhone(v map[string]interface{}) {
 	o.InternationalFormatPhone = v
 }
 
@@ -85,43 +81,6 @@ func (o DisputeFetchResponseDataTransactionCustomer) ToMap() (map[string]interfa
 		toSerialize["international_format_phone"] = o.InternationalFormatPhone
 	}
 	return toSerialize, nil
-}
-
-func (o *DisputeFetchResponseDataTransactionCustomer) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"international_format_phone",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDisputeFetchResponseDataTransactionCustomer := _DisputeFetchResponseDataTransactionCustomer{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDisputeFetchResponseDataTransactionCustomer)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DisputeFetchResponseDataTransactionCustomer(varDisputeFetchResponseDataTransactionCustomer)
-
-	return err
 }
 
 type NullableDisputeFetchResponseDataTransactionCustomer struct {

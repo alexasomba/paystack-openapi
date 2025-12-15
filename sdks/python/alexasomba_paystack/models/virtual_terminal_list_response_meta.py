@@ -18,82 +18,66 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
-from typing import Any, ClassVar, Dict, List, Optional
+
+from typing import Optional
+from pydantic import BaseModel, Field, StrictInt
 from alexasomba_paystack.models.transaction_list_response_meta_per_page import TransactionListResponseMetaPerPage
-from typing import Optional, Set
-from typing_extensions import Self
 
 class VirtualTerminalListResponseMeta(BaseModel):
     """
     VirtualTerminalListResponseMeta
-    """ # noqa: E501
+    """
     total: Optional[StrictInt] = None
     skipped: Optional[StrictInt] = None
-    per_page: Optional[TransactionListResponseMetaPerPage] = Field(default=None, alias="perPage")
+    per_page: Optional[TransactionListResponseMetaPerPage] = Field(None, alias="perPage")
     page: Optional[StrictInt] = None
-    page_count: Optional[StrictInt] = Field(default=None, alias="pageCount")
-    __properties: ClassVar[List[str]] = ["total", "skipped", "perPage", "page", "pageCount"]
+    page_count: Optional[StrictInt] = Field(None, alias="pageCount")
+    __properties = ["total", "skipped", "perPage", "page", "pageCount"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> VirtualTerminalListResponseMeta:
         """Create an instance of VirtualTerminalListResponseMeta from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of per_page
         if self.per_page:
             _dict['perPage'] = self.per_page.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> VirtualTerminalListResponseMeta:
         """Create an instance of VirtualTerminalListResponseMeta from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return VirtualTerminalListResponseMeta.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = VirtualTerminalListResponseMeta.parse_obj({
             "total": obj.get("total"),
             "skipped": obj.get("skipped"),
-            "perPage": TransactionListResponseMetaPerPage.from_dict(obj["perPage"]) if obj.get("perPage") is not None else None,
+            "per_page": TransactionListResponseMetaPerPage.from_dict(obj.get("perPage")) if obj.get("perPage") is not None else None,
             "page": obj.get("page"),
-            "pageCount": obj.get("pageCount")
+            "page_count": obj.get("pageCount")
         })
         return _obj
 

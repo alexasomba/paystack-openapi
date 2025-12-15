@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the PlanCreate type satisfies the MappedNullable interface at compile time
@@ -39,8 +37,6 @@ type PlanCreate struct {
 	// Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing.
 	InvoiceLimit *int32 `json:"invoice_limit,omitempty"`
 }
-
-type _PlanCreate PlanCreate
 
 // NewPlanCreate instantiates a new PlanCreate object
 // This constructor will assign default values to properties that have it defined,
@@ -323,45 +319,6 @@ func (o PlanCreate) ToMap() (map[string]interface{}, error) {
 		toSerialize["invoice_limit"] = o.InvoiceLimit
 	}
 	return toSerialize, nil
-}
-
-func (o *PlanCreate) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"amount",
-		"interval",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPlanCreate := _PlanCreate{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPlanCreate)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PlanCreate(varPlanCreate)
-
-	return err
 }
 
 type NullablePlanCreate struct {

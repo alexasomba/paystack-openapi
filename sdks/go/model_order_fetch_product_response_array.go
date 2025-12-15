@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the OrderFetchProductResponseArray type satisfies the MappedNullable interface at compile time
@@ -38,32 +36,30 @@ type OrderFetchProductResponseArray struct {
 	QuantitySold int32 `json:"quantity_sold"`
 	Currency string `json:"currency"`
 	Quantity int32 `json:"quantity"`
-	VariantId interface{} `json:"variant_id"`
-	VariantPrice interface{} `json:"variant_price"`
-	VariantCode interface{} `json:"variant_code"`
+	VariantId map[string]interface{} `json:"variant_id"`
+	VariantPrice map[string]interface{} `json:"variant_price"`
+	VariantCode map[string]interface{} `json:"variant_code"`
 	Amount int32 `json:"amount"`
-	ShippingMethod interface{} `json:"shipping_method"`
+	ShippingMethod map[string]interface{} `json:"shipping_method"`
 	Status string `json:"status"`
-	ShippingAddress interface{} `json:"shipping_address"`
+	ShippingAddress map[string]interface{} `json:"shipping_address"`
 	Refunded bool `json:"refunded"`
-	Shipping interface{} `json:"shipping"`
+	Shipping map[string]interface{} `json:"shipping"`
 	PaidAt string `json:"paid_at"`
 	CreatedAt string `json:"created_at"`
 	IsShipped bool `json:"is_shipped"`
 	IsViewed int32 `json:"is_viewed"`
-	DeliveryNote interface{} `json:"delivery_note"`
-	ShippingFee interface{} `json:"shipping_fee"`
+	DeliveryNote map[string]interface{} `json:"delivery_note"`
+	ShippingFee map[string]interface{} `json:"shipping_fee"`
 	AmountPaid int32 `json:"amount_paid"`
 	StorefrontSlug string `json:"storefront_slug"`
 }
-
-type _OrderFetchProductResponseArray OrderFetchProductResponseArray
 
 // NewOrderFetchProductResponseArray instantiates a new OrderFetchProductResponseArray object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrderFetchProductResponseArray(orderId int32, transaction int32, orderCode string, customer int32, firstName string, lastName string, customerName string, phone string, email string, productCode string, productId int32, productName string, price int32, quantitySold int32, currency string, quantity int32, variantId interface{}, variantPrice interface{}, variantCode interface{}, amount int32, shippingMethod interface{}, status string, shippingAddress interface{}, refunded bool, shipping interface{}, paidAt string, createdAt string, isShipped bool, isViewed int32, deliveryNote interface{}, shippingFee interface{}, amountPaid int32, storefrontSlug string) *OrderFetchProductResponseArray {
+func NewOrderFetchProductResponseArray(orderId int32, transaction int32, orderCode string, customer int32, firstName string, lastName string, customerName string, phone string, email string, productCode string, productId int32, productName string, price int32, quantitySold int32, currency string, quantity int32, variantId map[string]interface{}, variantPrice map[string]interface{}, variantCode map[string]interface{}, amount int32, shippingMethod map[string]interface{}, status string, shippingAddress map[string]interface{}, refunded bool, shipping map[string]interface{}, paidAt string, createdAt string, isShipped bool, isViewed int32, deliveryNote map[string]interface{}, shippingFee map[string]interface{}, amountPaid int32, storefrontSlug string) *OrderFetchProductResponseArray {
 	this := OrderFetchProductResponseArray{}
 	this.OrderId = orderId
 	this.Transaction = transaction
@@ -494,10 +490,10 @@ func (o *OrderFetchProductResponseArray) SetQuantity(v int32) {
 }
 
 // GetVariantId returns the VariantId field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderFetchProductResponseArray) GetVariantId() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *OrderFetchProductResponseArray) GetVariantId() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -507,23 +503,23 @@ func (o *OrderFetchProductResponseArray) GetVariantId() interface{} {
 // GetVariantIdOk returns a tuple with the VariantId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderFetchProductResponseArray) GetVariantIdOk() (*interface{}, bool) {
+func (o *OrderFetchProductResponseArray) GetVariantIdOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.VariantId) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.VariantId, true
+	return o.VariantId, true
 }
 
 // SetVariantId sets field value
-func (o *OrderFetchProductResponseArray) SetVariantId(v interface{}) {
+func (o *OrderFetchProductResponseArray) SetVariantId(v map[string]interface{}) {
 	o.VariantId = v
 }
 
 // GetVariantPrice returns the VariantPrice field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderFetchProductResponseArray) GetVariantPrice() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *OrderFetchProductResponseArray) GetVariantPrice() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -533,23 +529,23 @@ func (o *OrderFetchProductResponseArray) GetVariantPrice() interface{} {
 // GetVariantPriceOk returns a tuple with the VariantPrice field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderFetchProductResponseArray) GetVariantPriceOk() (*interface{}, bool) {
+func (o *OrderFetchProductResponseArray) GetVariantPriceOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.VariantPrice) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.VariantPrice, true
+	return o.VariantPrice, true
 }
 
 // SetVariantPrice sets field value
-func (o *OrderFetchProductResponseArray) SetVariantPrice(v interface{}) {
+func (o *OrderFetchProductResponseArray) SetVariantPrice(v map[string]interface{}) {
 	o.VariantPrice = v
 }
 
 // GetVariantCode returns the VariantCode field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderFetchProductResponseArray) GetVariantCode() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *OrderFetchProductResponseArray) GetVariantCode() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -559,15 +555,15 @@ func (o *OrderFetchProductResponseArray) GetVariantCode() interface{} {
 // GetVariantCodeOk returns a tuple with the VariantCode field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderFetchProductResponseArray) GetVariantCodeOk() (*interface{}, bool) {
+func (o *OrderFetchProductResponseArray) GetVariantCodeOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.VariantCode) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.VariantCode, true
+	return o.VariantCode, true
 }
 
 // SetVariantCode sets field value
-func (o *OrderFetchProductResponseArray) SetVariantCode(v interface{}) {
+func (o *OrderFetchProductResponseArray) SetVariantCode(v map[string]interface{}) {
 	o.VariantCode = v
 }
 
@@ -596,10 +592,10 @@ func (o *OrderFetchProductResponseArray) SetAmount(v int32) {
 }
 
 // GetShippingMethod returns the ShippingMethod field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderFetchProductResponseArray) GetShippingMethod() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *OrderFetchProductResponseArray) GetShippingMethod() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -609,15 +605,15 @@ func (o *OrderFetchProductResponseArray) GetShippingMethod() interface{} {
 // GetShippingMethodOk returns a tuple with the ShippingMethod field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderFetchProductResponseArray) GetShippingMethodOk() (*interface{}, bool) {
+func (o *OrderFetchProductResponseArray) GetShippingMethodOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.ShippingMethod) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.ShippingMethod, true
+	return o.ShippingMethod, true
 }
 
 // SetShippingMethod sets field value
-func (o *OrderFetchProductResponseArray) SetShippingMethod(v interface{}) {
+func (o *OrderFetchProductResponseArray) SetShippingMethod(v map[string]interface{}) {
 	o.ShippingMethod = v
 }
 
@@ -646,10 +642,10 @@ func (o *OrderFetchProductResponseArray) SetStatus(v string) {
 }
 
 // GetShippingAddress returns the ShippingAddress field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderFetchProductResponseArray) GetShippingAddress() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *OrderFetchProductResponseArray) GetShippingAddress() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -659,15 +655,15 @@ func (o *OrderFetchProductResponseArray) GetShippingAddress() interface{} {
 // GetShippingAddressOk returns a tuple with the ShippingAddress field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderFetchProductResponseArray) GetShippingAddressOk() (*interface{}, bool) {
+func (o *OrderFetchProductResponseArray) GetShippingAddressOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.ShippingAddress) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.ShippingAddress, true
+	return o.ShippingAddress, true
 }
 
 // SetShippingAddress sets field value
-func (o *OrderFetchProductResponseArray) SetShippingAddress(v interface{}) {
+func (o *OrderFetchProductResponseArray) SetShippingAddress(v map[string]interface{}) {
 	o.ShippingAddress = v
 }
 
@@ -696,10 +692,10 @@ func (o *OrderFetchProductResponseArray) SetRefunded(v bool) {
 }
 
 // GetShipping returns the Shipping field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderFetchProductResponseArray) GetShipping() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *OrderFetchProductResponseArray) GetShipping() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -709,15 +705,15 @@ func (o *OrderFetchProductResponseArray) GetShipping() interface{} {
 // GetShippingOk returns a tuple with the Shipping field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderFetchProductResponseArray) GetShippingOk() (*interface{}, bool) {
+func (o *OrderFetchProductResponseArray) GetShippingOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Shipping) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Shipping, true
+	return o.Shipping, true
 }
 
 // SetShipping sets field value
-func (o *OrderFetchProductResponseArray) SetShipping(v interface{}) {
+func (o *OrderFetchProductResponseArray) SetShipping(v map[string]interface{}) {
 	o.Shipping = v
 }
 
@@ -818,10 +814,10 @@ func (o *OrderFetchProductResponseArray) SetIsViewed(v int32) {
 }
 
 // GetDeliveryNote returns the DeliveryNote field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderFetchProductResponseArray) GetDeliveryNote() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *OrderFetchProductResponseArray) GetDeliveryNote() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -831,23 +827,23 @@ func (o *OrderFetchProductResponseArray) GetDeliveryNote() interface{} {
 // GetDeliveryNoteOk returns a tuple with the DeliveryNote field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderFetchProductResponseArray) GetDeliveryNoteOk() (*interface{}, bool) {
+func (o *OrderFetchProductResponseArray) GetDeliveryNoteOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.DeliveryNote) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.DeliveryNote, true
+	return o.DeliveryNote, true
 }
 
 // SetDeliveryNote sets field value
-func (o *OrderFetchProductResponseArray) SetDeliveryNote(v interface{}) {
+func (o *OrderFetchProductResponseArray) SetDeliveryNote(v map[string]interface{}) {
 	o.DeliveryNote = v
 }
 
 // GetShippingFee returns the ShippingFee field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderFetchProductResponseArray) GetShippingFee() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *OrderFetchProductResponseArray) GetShippingFee() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -857,15 +853,15 @@ func (o *OrderFetchProductResponseArray) GetShippingFee() interface{} {
 // GetShippingFeeOk returns a tuple with the ShippingFee field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderFetchProductResponseArray) GetShippingFeeOk() (*interface{}, bool) {
+func (o *OrderFetchProductResponseArray) GetShippingFeeOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.ShippingFee) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.ShippingFee, true
+	return o.ShippingFee, true
 }
 
 // SetShippingFee sets field value
-func (o *OrderFetchProductResponseArray) SetShippingFee(v interface{}) {
+func (o *OrderFetchProductResponseArray) SetShippingFee(v map[string]interface{}) {
 	o.ShippingFee = v
 }
 
@@ -977,75 +973,6 @@ func (o OrderFetchProductResponseArray) ToMap() (map[string]interface{}, error) 
 	toSerialize["amount_paid"] = o.AmountPaid
 	toSerialize["storefront_slug"] = o.StorefrontSlug
 	return toSerialize, nil
-}
-
-func (o *OrderFetchProductResponseArray) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"order_id",
-		"transaction",
-		"order_code",
-		"customer",
-		"first_name",
-		"last_name",
-		"customer_name",
-		"phone",
-		"email",
-		"product_code",
-		"product_id",
-		"product_name",
-		"price",
-		"quantity_sold",
-		"currency",
-		"quantity",
-		"variant_id",
-		"variant_price",
-		"variant_code",
-		"amount",
-		"shipping_method",
-		"status",
-		"shipping_address",
-		"refunded",
-		"shipping",
-		"paid_at",
-		"created_at",
-		"is_shipped",
-		"is_viewed",
-		"delivery_note",
-		"shipping_fee",
-		"amount_paid",
-		"storefront_slug",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varOrderFetchProductResponseArray := _OrderFetchProductResponseArray{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrderFetchProductResponseArray)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OrderFetchProductResponseArray(varOrderFetchProductResponseArray)
-
-	return err
 }
 
 type NullableOrderFetchProductResponseArray struct {

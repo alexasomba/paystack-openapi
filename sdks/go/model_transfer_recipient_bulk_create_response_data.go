@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the TransferRecipientBulkCreateResponseData type satisfies the MappedNullable interface at compile time
@@ -22,17 +20,15 @@ var _ MappedNullable = &TransferRecipientBulkCreateResponseData{}
 
 // TransferRecipientBulkCreateResponseData struct for TransferRecipientBulkCreateResponseData
 type TransferRecipientBulkCreateResponseData struct {
-	Success []interface{} `json:"success"`
+	Success []map[string]interface{} `json:"success"`
 	Errors []TransferRecipientErrorsArray `json:"errors"`
 }
-
-type _TransferRecipientBulkCreateResponseData TransferRecipientBulkCreateResponseData
 
 // NewTransferRecipientBulkCreateResponseData instantiates a new TransferRecipientBulkCreateResponseData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferRecipientBulkCreateResponseData(success []interface{}, errors []TransferRecipientErrorsArray) *TransferRecipientBulkCreateResponseData {
+func NewTransferRecipientBulkCreateResponseData(success []map[string]interface{}, errors []TransferRecipientErrorsArray) *TransferRecipientBulkCreateResponseData {
 	this := TransferRecipientBulkCreateResponseData{}
 	this.Success = success
 	this.Errors = errors
@@ -48,9 +44,9 @@ func NewTransferRecipientBulkCreateResponseDataWithDefaults() *TransferRecipient
 }
 
 // GetSuccess returns the Success field value
-func (o *TransferRecipientBulkCreateResponseData) GetSuccess() []interface{} {
+func (o *TransferRecipientBulkCreateResponseData) GetSuccess() []map[string]interface{} {
 	if o == nil {
-		var ret []interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -59,7 +55,7 @@ func (o *TransferRecipientBulkCreateResponseData) GetSuccess() []interface{} {
 
 // GetSuccessOk returns a tuple with the Success field value
 // and a boolean to check if the value has been set.
-func (o *TransferRecipientBulkCreateResponseData) GetSuccessOk() ([]interface{}, bool) {
+func (o *TransferRecipientBulkCreateResponseData) GetSuccessOk() ([]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -67,7 +63,7 @@ func (o *TransferRecipientBulkCreateResponseData) GetSuccessOk() ([]interface{},
 }
 
 // SetSuccess sets field value
-func (o *TransferRecipientBulkCreateResponseData) SetSuccess(v []interface{}) {
+func (o *TransferRecipientBulkCreateResponseData) SetSuccess(v []map[string]interface{}) {
 	o.Success = v
 }
 
@@ -108,44 +104,6 @@ func (o TransferRecipientBulkCreateResponseData) ToMap() (map[string]interface{}
 	toSerialize["success"] = o.Success
 	toSerialize["errors"] = o.Errors
 	return toSerialize, nil
-}
-
-func (o *TransferRecipientBulkCreateResponseData) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"success",
-		"errors",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varTransferRecipientBulkCreateResponseData := _TransferRecipientBulkCreateResponseData{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransferRecipientBulkCreateResponseData)
-
-	if err != nil {
-		return err
-	}
-
-	*o = TransferRecipientBulkCreateResponseData(varTransferRecipientBulkCreateResponseData)
-
-	return err
 }
 
 type NullableTransferRecipientBulkCreateResponseData struct {
