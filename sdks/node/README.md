@@ -21,26 +21,26 @@ This package provides:
 - [x] Products
 - [x] Subscriptions
 - [x] Transactions
+- [x] Verify Payments (Transaction verification)
 - [x] Transfers
 - [x] Dedicated Virtual Accounts
 - [x] Apple Pay
 - [x] Subaccounts
 - [x] Transaction Splits
 - [x] Settlements
-- [x] Invoices (Payment Requests)
+- [x] Transfers Control (OTP settings; under Transfers)
 - [x] Transfer Recipients
-- [ ] Transfers Control
 - [x] Bulk Charges
 - [x] Refunds
-- [x] Verification (Payments + Account/BIN)
+- [x] Verification (Resolve Account / Validate Account / Resolve Card BIN)
 - [x] Miscellaneous
 - [x] Disputes
-- [ ] Control Panel
+- [x] Control Panel (Payment session timeout)
 - [x] Terminal
 - [x] Virtual Terminal
 - [x] Direct Debit
 - [x] Payment Pages
-- [x] Payment Requests
+- [x] Payment Requests (Invoices)
 - [x] Integration
 - [x] Balance
 - [x] Banks

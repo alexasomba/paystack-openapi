@@ -19,6 +19,7 @@ client, ctx := paystack.NewAPIClientWithReliability(os.Getenv("PAYSTACK_SECRET_K
 ## Modules
 
 - Transactions
+- Verify Payments (Transaction verification)
 - Charges
 - Bulk Charges
 - Subaccounts
@@ -33,14 +34,17 @@ client, ctx := paystack.NewAPIClientWithReliability(os.Getenv("PAYSTACK_SECRET_K
 - Subscriptions
 - Transfer Recipients
 - Transfers
+- Transfers Control (OTP settings; under Transfers)
 - Balance
-- Payment Requests
+- Payment Requests (Invoices)
+- Verification (Resolve Account / Validate Account / Resolve Card BIN)
 - Products
 - Storefronts
 - Orders
 - Payment Pages
 - Settlements
 - Integration
+- Control Panel (Payment session timeout; under Integration)
 - Refunds
 - Disputes
 - Banks

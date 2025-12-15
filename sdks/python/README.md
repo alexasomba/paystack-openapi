@@ -17,6 +17,7 @@ client = create_paystack_client("YOUR_SECRET_KEY", timeout_seconds=30, idempoten
 ## Modules
 
 - Transactions
+- Verify Payments (Transaction verification)
 - Charges
 - Bulk Charges
 - Subaccounts
@@ -31,14 +32,17 @@ client = create_paystack_client("YOUR_SECRET_KEY", timeout_seconds=30, idempoten
 - Subscriptions
 - Transfer Recipients
 - Transfers
+- Transfers Control (OTP settings; under Transfers)
 - Balance
-- Payment Requests
+- Payment Requests (Invoices)
+- Verification (Resolve Account / Validate Account / Resolve Card BIN)
 - Products
 - Storefronts
 - Orders
 - Payment Pages
 - Settlements
 - Integration
+- Control Panel (Payment session timeout; under Integration)
 - Refunds
 - Disputes
 - Banks
