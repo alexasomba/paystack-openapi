@@ -91,7 +91,7 @@ files = sorted(os.listdir(pkg_dir))
 to_upload = []
 for fn in files:
     path = os.path.join(pkg_dir, fn)
-    m = re.match(r'^(.+?)-(?P<version>\d+\.\d+\.\d+[^-]*)', fn)
+    m = re.match(r'^(.+?)-(?P<version>\d+\.\d+\.\d+)', fn)
     if not m:
         print('WARN: could not parse filename', fn, '— will include it for upload')
         to_upload.append(path)
