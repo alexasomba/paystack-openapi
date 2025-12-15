@@ -31,7 +31,25 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
         run: |
           echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
-          pnpm -r --filter "./sdks/*" --filter '!./sdks/python' --if-present publish:public
+          echo "npm auth check:"
+          if npm whoami; then
+            echo "npm auth OK"
+          else
+            echo "npm auth failed; showing npm config"
+            npm config get //registry.npmjs.org/:_authToken
+            exit 1
+          fi
+          echo "Attempting workspace publish"
+          pnpm -r --filter "./sdks/*" --filter '!./sdks/python' --if-present publish:public || {
+            echo "Workspace publish failed; attempting per-package publishes to continue."
+            for pkg in sdks/*; do
+              if [ -f "$pkg/package.json" ] && [ "$pkg" != "sdks/python" ]; then
+                echo "Publishing $pkg..."
+                (cd "$pkg" && pnpm publish:public) || echo "Publish failed for $pkg; continuing"
+              fi
+            done
+            exit 1
+          }
 
   publish-python:
     name: Publish Python package
