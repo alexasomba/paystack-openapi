@@ -45,6 +45,22 @@ jobs:
             exit 1
           fi
 
+          # validate what user the token authenticates as and that it has push permission
+          user=$(curl -sS -H "Authorization: token ${PHP_SPLIT_PUSH_TOKEN}" https://api.github.com/user | jq -r .login || true)
+          if [ -z "$user" ] || [ "$user" = "null" ]; then
+            echo "Unable to determine user from token; token is likely invalid." >&2
+            exit 1
+          fi
+
+          perm_json=$(curl -sS -H "Authorization: token ${PHP_SPLIT_PUSH_TOKEN}" "https://api.github.com/repos/${PHP_SPLIT_REPO}/collaborators/${user}/permission" || true)
+          perm=$(echo "$perm_json" | jq -r .permission || true)
+          echo "Token authenticates as '$user' with collaborator permission: '$perm'"
+          if [ "$perm" != "admin" ] && [ "$perm" != "write" ]; then
+            echo "The token user '$user' does not have write access to ${PHP_SPLIT_REPO}. Give the token owner write or admin access or use a token with appropriate permissions." >&2
+            echo "Permission response:"; echo "$perm_json" || true
+            exit 1
+          fi
+
       - name: Push split repo branch + tag
         env:
           PHP_SPLIT_PUSH_TOKEN: ${{ secrets.PHP_SPLIT_PUSH_TOKEN }}
