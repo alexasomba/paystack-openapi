@@ -43,8 +43,12 @@ setup(
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     long_description_content_type='text/markdown',
-    long_description="""\
-    The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
-    """,  # noqa: E501
+    # Prefer README.md for the long description so PyPI shows the full project
+    # README on the package page rather than a short generated summary.
+    long_description=(
+        open("README.md", "r", encoding="utf-8").read()
+        if __import__("os").path.exists("README.md")
+        else "The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa."
+    ),  # noqa: E501
     package_data={"alexasomba_paystack": ["py.typed"]},
 )
