@@ -49,7 +49,18 @@ jobs:
           http_status=$(curl -sS -o /tmp/resp -w "%{http_code}" -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $AUTH" -d "$BODY" https://packagist.org/api/create-package || true)
           echo "Response body:"; cat /tmp/resp || true
           echo "HTTP status: $http_status"
-          if [ "$http_status" -ne 200 ] && [ "$http_status" -ne 201 ]; then
+          if [ "$http_status" -eq 200 ] || [ "$http_status" -eq 201 ]; then
+            echo "Package created successfully"
+          elif [ "$http_status" -eq 406 ]; then
+            echo "Package already exists; calling update-package to refresh repository URL"
+            update_status=$(curl -sS -o /tmp/resp2 -w "%{http_code}" -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $AUTH" -d "$BODY" https://packagist.org/api/update-package || true)
+            echo "Update response:"; cat /tmp/resp2 || true
+            echo "Update HTTP status: $update_status"
+            if [ "$update_status" -ne 200 ] && [ "$update_status" -ne 201 ]; then
+              echo "Packagist update-package returned non-success status $update_status"
+              exit 1
+            fi
+          else
             echo "Packagist API returned non-success status $http_status"
             exit 1
           fi
