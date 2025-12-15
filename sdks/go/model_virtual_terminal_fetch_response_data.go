@@ -25,10 +25,10 @@ type VirtualTerminalFetchResponseData struct {
 	Name string `json:"name"`
 	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
-	PaymentMethods []map[string]interface{} `json:"paymentMethods"`
+	PaymentMethods []interface{} `json:"paymentMethods"`
 	Active bool `json:"active"`
 	CreatedAt string `json:"created_at"`
-	ConnectAccountId map[string]interface{} `json:"connect_account_id"`
+	ConnectAccountId interface{} `json:"connect_account_id"`
 	Destinations []VirtualTerminalFetchResponseDataDestinationsInner `json:"destinations"`
 	Currency string `json:"currency"`
 }
@@ -37,7 +37,7 @@ type VirtualTerminalFetchResponseData struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVirtualTerminalFetchResponseData(id int32, code string, name string, integration int32, domain string, paymentMethods []map[string]interface{}, active bool, createdAt string, connectAccountId map[string]interface{}, destinations []VirtualTerminalFetchResponseDataDestinationsInner, currency string) *VirtualTerminalFetchResponseData {
+func NewVirtualTerminalFetchResponseData(id int32, code string, name string, integration int32, domain string, paymentMethods []interface{}, active bool, createdAt string, connectAccountId interface{}, destinations []VirtualTerminalFetchResponseDataDestinationsInner, currency string) *VirtualTerminalFetchResponseData {
 	this := VirtualTerminalFetchResponseData{}
 	this.Id = id
 	this.Code = code
@@ -182,9 +182,9 @@ func (o *VirtualTerminalFetchResponseData) SetDomain(v string) {
 }
 
 // GetPaymentMethods returns the PaymentMethods field value
-func (o *VirtualTerminalFetchResponseData) GetPaymentMethods() []map[string]interface{} {
+func (o *VirtualTerminalFetchResponseData) GetPaymentMethods() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -193,7 +193,7 @@ func (o *VirtualTerminalFetchResponseData) GetPaymentMethods() []map[string]inte
 
 // GetPaymentMethodsOk returns a tuple with the PaymentMethods field value
 // and a boolean to check if the value has been set.
-func (o *VirtualTerminalFetchResponseData) GetPaymentMethodsOk() ([]map[string]interface{}, bool) {
+func (o *VirtualTerminalFetchResponseData) GetPaymentMethodsOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -201,7 +201,7 @@ func (o *VirtualTerminalFetchResponseData) GetPaymentMethodsOk() ([]map[string]i
 }
 
 // SetPaymentMethods sets field value
-func (o *VirtualTerminalFetchResponseData) SetPaymentMethods(v []map[string]interface{}) {
+func (o *VirtualTerminalFetchResponseData) SetPaymentMethods(v []interface{}) {
 	o.PaymentMethods = v
 }
 
@@ -254,10 +254,10 @@ func (o *VirtualTerminalFetchResponseData) SetCreatedAt(v string) {
 }
 
 // GetConnectAccountId returns the ConnectAccountId field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *VirtualTerminalFetchResponseData) GetConnectAccountId() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *VirtualTerminalFetchResponseData) GetConnectAccountId() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -267,15 +267,15 @@ func (o *VirtualTerminalFetchResponseData) GetConnectAccountId() map[string]inte
 // GetConnectAccountIdOk returns a tuple with the ConnectAccountId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VirtualTerminalFetchResponseData) GetConnectAccountIdOk() (map[string]interface{}, bool) {
+func (o *VirtualTerminalFetchResponseData) GetConnectAccountIdOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.ConnectAccountId) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.ConnectAccountId, true
+	return &o.ConnectAccountId, true
 }
 
 // SetConnectAccountId sets field value
-func (o *VirtualTerminalFetchResponseData) SetConnectAccountId(v map[string]interface{}) {
+func (o *VirtualTerminalFetchResponseData) SetConnectAccountId(v interface{}) {
 	o.ConnectAccountId = v
 }
 

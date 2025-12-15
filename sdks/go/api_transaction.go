@@ -607,7 +607,7 @@ type ApiTransactionFetchRequest struct {
 	id int64
 }
 
-func (r ApiTransactionFetchRequest) Execute() (*TransactionId, *http.Response, error) {
+func (r ApiTransactionFetchRequest) Execute() (*TransactionFetchResponse, *http.Response, error) {
 	return r.ApiService.TransactionFetchExecute(r)
 }
 
@@ -629,13 +629,13 @@ func (a *TransactionAPIService) TransactionFetch(ctx context.Context, id int64) 
 }
 
 // Execute executes the request
-//  @return TransactionId
-func (a *TransactionAPIService) TransactionFetchExecute(r ApiTransactionFetchRequest) (*TransactionId, *http.Response, error) {
+//  @return TransactionFetchResponse
+func (a *TransactionAPIService) TransactionFetchExecute(r ApiTransactionFetchRequest) (*TransactionFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *TransactionId
+		localVarReturnValue  *TransactionFetchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransactionAPIService.TransactionFetch")
@@ -1395,7 +1395,7 @@ type ApiTransactionTimelineRequest struct {
 	id int64
 }
 
-func (r ApiTransactionTimelineRequest) Execute() (*TransactionTimelineId, *http.Response, error) {
+func (r ApiTransactionTimelineRequest) Execute() (*TransactionTimelineResponse, *http.Response, error) {
 	return r.ApiService.TransactionTimelineExecute(r)
 }
 
@@ -1417,13 +1417,13 @@ func (a *TransactionAPIService) TransactionTimeline(ctx context.Context, id int6
 }
 
 // Execute executes the request
-//  @return TransactionTimelineId
-func (a *TransactionAPIService) TransactionTimelineExecute(r ApiTransactionTimelineRequest) (*TransactionTimelineId, *http.Response, error) {
+//  @return TransactionTimelineResponse
+func (a *TransactionAPIService) TransactionTimelineExecute(r ApiTransactionTimelineRequest) (*TransactionTimelineResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *TransactionTimelineId
+		localVarReturnValue  *TransactionTimelineResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransactionAPIService.TransactionTimeline")
@@ -1661,7 +1661,7 @@ type ApiTransactionVerifyRequest struct {
 	reference string
 }
 
-func (r ApiTransactionVerifyRequest) Execute() (*TransactionVerifyReference, *http.Response, error) {
+func (r ApiTransactionVerifyRequest) Execute() (*VerifyResponse, *http.Response, error) {
 	return r.ApiService.TransactionVerifyExecute(r)
 }
 
@@ -1683,13 +1683,13 @@ func (a *TransactionAPIService) TransactionVerify(ctx context.Context, reference
 }
 
 // Execute executes the request
-//  @return TransactionVerifyReference
-func (a *TransactionAPIService) TransactionVerifyExecute(r ApiTransactionVerifyRequest) (*TransactionVerifyReference, *http.Response, error) {
+//  @return VerifyResponse
+func (a *TransactionAPIService) TransactionVerifyExecute(r ApiTransactionVerifyRequest) (*VerifyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *TransactionVerifyReference
+		localVarReturnValue  *VerifyResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransactionAPIService.TransactionVerify")

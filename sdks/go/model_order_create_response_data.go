@@ -20,9 +20,9 @@ var _ MappedNullable = &OrderCreateResponseData{}
 
 // OrderCreateResponseData struct for OrderCreateResponseData
 type OrderCreateResponseData struct {
-	Discounts []map[string]interface{} `json:"discounts"`
+	Discounts []interface{} `json:"discounts"`
 	Currency string `json:"currency"`
-	ShippingAddress map[string]interface{} `json:"shipping_address"`
+	ShippingAddress interface{} `json:"shipping_address"`
 	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
 	Email string `json:"email"`
@@ -37,11 +37,11 @@ type OrderCreateResponseData struct {
 	Status string `json:"status"`
 	Refunded bool `json:"refunded"`
 	IsViewed bool `json:"is_viewed"`
-	ExpirationDate map[string]interface{} `json:"expiration_date"`
+	ExpirationDate interface{} `json:"expiration_date"`
 	Id int32 `json:"id"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
-	Items []map[string]interface{} `json:"items"`
+	Items []interface{} `json:"items"`
 	PayForMeCode string `json:"pay_for_me_code"`
 	DiscountAmount int32 `json:"discount_amount"`
 }
@@ -50,7 +50,7 @@ type OrderCreateResponseData struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrderCreateResponseData(discounts []map[string]interface{}, currency string, shippingAddress map[string]interface{}, integration int32, domain string, email string, customer int32, amount int32, payForMe bool, shipping NullableOrderCreateResponseDataShipping, shippingFees int32, metadata map[string]interface{}, orderCode string, status string, refunded bool, isViewed bool, expirationDate map[string]interface{}, id int32, createdAt string, updatedAt string, items []map[string]interface{}, payForMeCode string, discountAmount int32) *OrderCreateResponseData {
+func NewOrderCreateResponseData(discounts []interface{}, currency string, shippingAddress interface{}, integration int32, domain string, email string, customer int32, amount int32, payForMe bool, shipping NullableOrderCreateResponseDataShipping, shippingFees int32, metadata map[string]interface{}, orderCode string, status string, refunded bool, isViewed bool, expirationDate interface{}, id int32, createdAt string, updatedAt string, items []interface{}, payForMeCode string, discountAmount int32) *OrderCreateResponseData {
 	this := OrderCreateResponseData{}
 	this.Discounts = discounts
 	this.Currency = currency
@@ -87,9 +87,9 @@ func NewOrderCreateResponseDataWithDefaults() *OrderCreateResponseData {
 }
 
 // GetDiscounts returns the Discounts field value
-func (o *OrderCreateResponseData) GetDiscounts() []map[string]interface{} {
+func (o *OrderCreateResponseData) GetDiscounts() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -98,7 +98,7 @@ func (o *OrderCreateResponseData) GetDiscounts() []map[string]interface{} {
 
 // GetDiscountsOk returns a tuple with the Discounts field value
 // and a boolean to check if the value has been set.
-func (o *OrderCreateResponseData) GetDiscountsOk() ([]map[string]interface{}, bool) {
+func (o *OrderCreateResponseData) GetDiscountsOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -106,7 +106,7 @@ func (o *OrderCreateResponseData) GetDiscountsOk() ([]map[string]interface{}, bo
 }
 
 // SetDiscounts sets field value
-func (o *OrderCreateResponseData) SetDiscounts(v []map[string]interface{}) {
+func (o *OrderCreateResponseData) SetDiscounts(v []interface{}) {
 	o.Discounts = v
 }
 
@@ -135,10 +135,10 @@ func (o *OrderCreateResponseData) SetCurrency(v string) {
 }
 
 // GetShippingAddress returns the ShippingAddress field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *OrderCreateResponseData) GetShippingAddress() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *OrderCreateResponseData) GetShippingAddress() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -148,15 +148,15 @@ func (o *OrderCreateResponseData) GetShippingAddress() map[string]interface{} {
 // GetShippingAddressOk returns a tuple with the ShippingAddress field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderCreateResponseData) GetShippingAddressOk() (map[string]interface{}, bool) {
+func (o *OrderCreateResponseData) GetShippingAddressOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.ShippingAddress) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.ShippingAddress, true
+	return &o.ShippingAddress, true
 }
 
 // SetShippingAddress sets field value
-func (o *OrderCreateResponseData) SetShippingAddress(v map[string]interface{}) {
+func (o *OrderCreateResponseData) SetShippingAddress(v interface{}) {
 	o.ShippingAddress = v
 }
 
@@ -507,10 +507,10 @@ func (o *OrderCreateResponseData) SetIsViewed(v bool) {
 }
 
 // GetExpirationDate returns the ExpirationDate field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *OrderCreateResponseData) GetExpirationDate() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *OrderCreateResponseData) GetExpirationDate() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -520,15 +520,15 @@ func (o *OrderCreateResponseData) GetExpirationDate() map[string]interface{} {
 // GetExpirationDateOk returns a tuple with the ExpirationDate field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderCreateResponseData) GetExpirationDateOk() (map[string]interface{}, bool) {
+func (o *OrderCreateResponseData) GetExpirationDateOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.ExpirationDate) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.ExpirationDate, true
+	return &o.ExpirationDate, true
 }
 
 // SetExpirationDate sets field value
-func (o *OrderCreateResponseData) SetExpirationDate(v map[string]interface{}) {
+func (o *OrderCreateResponseData) SetExpirationDate(v interface{}) {
 	o.ExpirationDate = v
 }
 
@@ -605,9 +605,9 @@ func (o *OrderCreateResponseData) SetUpdatedAt(v string) {
 }
 
 // GetItems returns the Items field value
-func (o *OrderCreateResponseData) GetItems() []map[string]interface{} {
+func (o *OrderCreateResponseData) GetItems() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -616,7 +616,7 @@ func (o *OrderCreateResponseData) GetItems() []map[string]interface{} {
 
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
-func (o *OrderCreateResponseData) GetItemsOk() ([]map[string]interface{}, bool) {
+func (o *OrderCreateResponseData) GetItemsOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -624,7 +624,7 @@ func (o *OrderCreateResponseData) GetItemsOk() ([]map[string]interface{}, bool) 
 }
 
 // SetItems sets field value
-func (o *OrderCreateResponseData) SetItems(v []map[string]interface{}) {
+func (o *OrderCreateResponseData) SetItems(v []interface{}) {
 	o.Items = v
 }
 

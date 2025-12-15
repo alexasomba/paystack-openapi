@@ -11,23 +11,23 @@ Name | Type | Description | Notes
 **Currency** | **string** |  | 
 **Amount** | **int32** |  | 
 **Transaction** | **int32** |  | 
-**Page** | **map[string]interface{}** |  | 
+**Page** | **interface{}** |  | 
 **Customer** | **int32** |  | 
 **CustomerName** | **string** |  | 
 **Status** | **string** |  | 
-**ShippingAddress** | **map[string]interface{}** |  | 
+**ShippingAddress** | **interface{}** |  | 
 **Metadata** | **string** |  | 
 **CreatedAt** | **string** |  | 
 **UpdatedAt** | **string** |  | 
 **Email** | **string** |  | 
 **PaidAt** | **string** |  | 
-**Shipping** | **map[string]interface{}** |  | 
+**Shipping** | **interface{}** |  | 
 **ShippingFees** | **int32** |  | 
 **Refunded** | **bool** |  | 
 **IsViewed** | **bool** |  | 
-**RefundedAmount** | **map[string]interface{}** |  | 
-**DiscountAmount** | **map[string]interface{}** |  | 
-**Discounts** | **map[string]interface{}** |  | 
+**RefundedAmount** | **interface{}** |  | 
+**DiscountAmount** | **interface{}** |  | 
+**Discounts** | **interface{}** |  | 
 **Items** | [**[]OrderItemsArray**](OrderItemsArray.md) |  | 
 **FullyRefunded** | **bool** |  | 
 
@@ -35,7 +35,7 @@ Name | Type | Description | Notes
 
 ### NewOrderListResponseArray
 
-`func NewOrderListResponseArray(id int32, orderCode string, integration int32, domain string, currency string, amount int32, transaction int32, page map[string]interface{}, customer int32, customerName string, status string, shippingAddress map[string]interface{}, metadata string, createdAt string, updatedAt string, email string, paidAt string, shipping map[string]interface{}, shippingFees int32, refunded bool, isViewed bool, refundedAmount map[string]interface{}, discountAmount map[string]interface{}, discounts map[string]interface{}, items []OrderItemsArray, fullyRefunded bool, ) *OrderListResponseArray`
+`func NewOrderListResponseArray(id int32, orderCode string, integration int32, domain string, currency string, amount int32, transaction int32, page interface{}, customer int32, customerName string, status string, shippingAddress interface{}, metadata string, createdAt string, updatedAt string, email string, paidAt string, shipping interface{}, shippingFees int32, refunded bool, isViewed bool, refundedAmount interface{}, discountAmount interface{}, discounts interface{}, items []OrderItemsArray, fullyRefunded bool, ) *OrderListResponseArray`
 
 NewOrderListResponseArray instantiates a new OrderListResponseArray object
 This constructor will assign default values to properties that have it defined,
@@ -192,20 +192,20 @@ SetTransaction sets Transaction field to given value.
 
 ### GetPage
 
-`func (o *OrderListResponseArray) GetPage() map[string]interface{}`
+`func (o *OrderListResponseArray) GetPage() interface{}`
 
 GetPage returns the Page field if non-nil, zero value otherwise.
 
 ### GetPageOk
 
-`func (o *OrderListResponseArray) GetPageOk() (*map[string]interface{}, bool)`
+`func (o *OrderListResponseArray) GetPageOk() (*interface{}, bool)`
 
 GetPageOk returns a tuple with the Page field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPage
 
-`func (o *OrderListResponseArray) SetPage(v map[string]interface{})`
+`func (o *OrderListResponseArray) SetPage(v interface{})`
 
 SetPage sets Page field to given value.
 
@@ -282,20 +282,20 @@ SetStatus sets Status field to given value.
 
 ### GetShippingAddress
 
-`func (o *OrderListResponseArray) GetShippingAddress() map[string]interface{}`
+`func (o *OrderListResponseArray) GetShippingAddress() interface{}`
 
 GetShippingAddress returns the ShippingAddress field if non-nil, zero value otherwise.
 
 ### GetShippingAddressOk
 
-`func (o *OrderListResponseArray) GetShippingAddressOk() (*map[string]interface{}, bool)`
+`func (o *OrderListResponseArray) GetShippingAddressOk() (*interface{}, bool)`
 
 GetShippingAddressOk returns a tuple with the ShippingAddress field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShippingAddress
 
-`func (o *OrderListResponseArray) SetShippingAddress(v map[string]interface{})`
+`func (o *OrderListResponseArray) SetShippingAddress(v interface{})`
 
 SetShippingAddress sets ShippingAddress field to given value.
 
@@ -412,20 +412,20 @@ SetPaidAt sets PaidAt field to given value.
 
 ### GetShipping
 
-`func (o *OrderListResponseArray) GetShipping() map[string]interface{}`
+`func (o *OrderListResponseArray) GetShipping() interface{}`
 
 GetShipping returns the Shipping field if non-nil, zero value otherwise.
 
 ### GetShippingOk
 
-`func (o *OrderListResponseArray) GetShippingOk() (*map[string]interface{}, bool)`
+`func (o *OrderListResponseArray) GetShippingOk() (*interface{}, bool)`
 
 GetShippingOk returns a tuple with the Shipping field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShipping
 
-`func (o *OrderListResponseArray) SetShipping(v map[string]interface{})`
+`func (o *OrderListResponseArray) SetShipping(v interface{})`
 
 SetShipping sets Shipping field to given value.
 
@@ -502,20 +502,20 @@ SetIsViewed sets IsViewed field to given value.
 
 ### GetRefundedAmount
 
-`func (o *OrderListResponseArray) GetRefundedAmount() map[string]interface{}`
+`func (o *OrderListResponseArray) GetRefundedAmount() interface{}`
 
 GetRefundedAmount returns the RefundedAmount field if non-nil, zero value otherwise.
 
 ### GetRefundedAmountOk
 
-`func (o *OrderListResponseArray) GetRefundedAmountOk() (*map[string]interface{}, bool)`
+`func (o *OrderListResponseArray) GetRefundedAmountOk() (*interface{}, bool)`
 
 GetRefundedAmountOk returns a tuple with the RefundedAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRefundedAmount
 
-`func (o *OrderListResponseArray) SetRefundedAmount(v map[string]interface{})`
+`func (o *OrderListResponseArray) SetRefundedAmount(v interface{})`
 
 SetRefundedAmount sets RefundedAmount field to given value.
 
@@ -532,20 +532,20 @@ SetRefundedAmount sets RefundedAmount field to given value.
 UnsetRefundedAmount ensures that no value is present for RefundedAmount, not even an explicit nil
 ### GetDiscountAmount
 
-`func (o *OrderListResponseArray) GetDiscountAmount() map[string]interface{}`
+`func (o *OrderListResponseArray) GetDiscountAmount() interface{}`
 
 GetDiscountAmount returns the DiscountAmount field if non-nil, zero value otherwise.
 
 ### GetDiscountAmountOk
 
-`func (o *OrderListResponseArray) GetDiscountAmountOk() (*map[string]interface{}, bool)`
+`func (o *OrderListResponseArray) GetDiscountAmountOk() (*interface{}, bool)`
 
 GetDiscountAmountOk returns a tuple with the DiscountAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDiscountAmount
 
-`func (o *OrderListResponseArray) SetDiscountAmount(v map[string]interface{})`
+`func (o *OrderListResponseArray) SetDiscountAmount(v interface{})`
 
 SetDiscountAmount sets DiscountAmount field to given value.
 
@@ -562,20 +562,20 @@ SetDiscountAmount sets DiscountAmount field to given value.
 UnsetDiscountAmount ensures that no value is present for DiscountAmount, not even an explicit nil
 ### GetDiscounts
 
-`func (o *OrderListResponseArray) GetDiscounts() map[string]interface{}`
+`func (o *OrderListResponseArray) GetDiscounts() interface{}`
 
 GetDiscounts returns the Discounts field if non-nil, zero value otherwise.
 
 ### GetDiscountsOk
 
-`func (o *OrderListResponseArray) GetDiscountsOk() (*map[string]interface{}, bool)`
+`func (o *OrderListResponseArray) GetDiscountsOk() (*interface{}, bool)`
 
 GetDiscountsOk returns a tuple with the Discounts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDiscounts
 
-`func (o *OrderListResponseArray) SetDiscounts(v map[string]interface{})`
+`func (o *OrderListResponseArray) SetDiscounts(v interface{})`
 
 SetDiscounts sets Discounts field to given value.
 

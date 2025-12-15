@@ -29,7 +29,7 @@ type VirtualTerminalAddSplitCodeResponseData struct {
 	SplitCode string `json:"split_code"`
 	Active bool `json:"active"`
 	BearerType string `json:"bearer_type"`
-	BearerSubaccount map[string]interface{} `json:"bearer_subaccount"`
+	BearerSubaccount interface{} `json:"bearer_subaccount"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
 	IsDynamic bool `json:"is_dynamic"`
@@ -41,7 +41,7 @@ type VirtualTerminalAddSplitCodeResponseData struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVirtualTerminalAddSplitCodeResponseData(id int32, name string, type_ string, currency string, integration int32, domain string, splitCode string, active bool, bearerType string, bearerSubaccount map[string]interface{}, createdAt string, updatedAt string, isDynamic bool, subaccounts []SplitSubaccountsArray, totalSubaccounts int32) *VirtualTerminalAddSplitCodeResponseData {
+func NewVirtualTerminalAddSplitCodeResponseData(id int32, name string, type_ string, currency string, integration int32, domain string, splitCode string, active bool, bearerType string, bearerSubaccount interface{}, createdAt string, updatedAt string, isDynamic bool, subaccounts []SplitSubaccountsArray, totalSubaccounts int32) *VirtualTerminalAddSplitCodeResponseData {
 	this := VirtualTerminalAddSplitCodeResponseData{}
 	this.Id = id
 	this.Name = name
@@ -286,10 +286,10 @@ func (o *VirtualTerminalAddSplitCodeResponseData) SetBearerType(v string) {
 }
 
 // GetBearerSubaccount returns the BearerSubaccount field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *VirtualTerminalAddSplitCodeResponseData) GetBearerSubaccount() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *VirtualTerminalAddSplitCodeResponseData) GetBearerSubaccount() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -299,15 +299,15 @@ func (o *VirtualTerminalAddSplitCodeResponseData) GetBearerSubaccount() map[stri
 // GetBearerSubaccountOk returns a tuple with the BearerSubaccount field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VirtualTerminalAddSplitCodeResponseData) GetBearerSubaccountOk() (map[string]interface{}, bool) {
+func (o *VirtualTerminalAddSplitCodeResponseData) GetBearerSubaccountOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.BearerSubaccount) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.BearerSubaccount, true
+	return &o.BearerSubaccount, true
 }
 
 // SetBearerSubaccount sets field value
-func (o *VirtualTerminalAddSplitCodeResponseData) SetBearerSubaccount(v map[string]interface{}) {
+func (o *VirtualTerminalAddSplitCodeResponseData) SetBearerSubaccount(v interface{}) {
 	o.BearerSubaccount = v
 }
 

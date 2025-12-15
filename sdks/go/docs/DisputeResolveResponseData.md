@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **Currency** | **string** |  | 
 **Last4** | **string** |  | 
 **Bin** | **string** |  | 
-**TransactionReference** | **map[string]interface{}** |  | 
+**TransactionReference** | **interface{}** |  | 
 **MerchantTransactionReference** | **string** |  | 
 **RefundAmount** | **int32** |  | 
 **Status** | **string** |  | 
 **Domain** | **string** |  | 
 **Resolution** | **string** |  | 
 **Category** | **string** |  | 
-**Note** | **map[string]interface{}** |  | 
+**Note** | **interface{}** |  | 
 **Attachments** | **string** |  | 
 **Id** | **int32** |  | 
 **Integration** | **int32** |  | 
@@ -24,14 +24,14 @@ Name | Type | Description | Notes
 **ResolvedAt** | **string** |  | 
 **CreatedAt** | **string** |  | 
 **UpdatedAt** | **string** |  | 
-**DueAt** | **map[string]interface{}** |  | 
+**DueAt** | **interface{}** |  | 
 **Message** | [**DisputeResolveResponseDataMessage**](DisputeResolveResponseDataMessage.md) |  | 
 
 ## Methods
 
 ### NewDisputeResolveResponseData
 
-`func NewDisputeResolveResponseData(currency string, last4 string, bin string, transactionReference map[string]interface{}, merchantTransactionReference string, refundAmount int32, status string, domain string, resolution string, category string, note map[string]interface{}, attachments string, id int32, integration int32, transaction int32, createdBy int32, evidence int32, resolvedAt string, createdAt string, updatedAt string, dueAt map[string]interface{}, message DisputeResolveResponseDataMessage, ) *DisputeResolveResponseData`
+`func NewDisputeResolveResponseData(currency string, last4 string, bin string, transactionReference interface{}, merchantTransactionReference string, refundAmount int32, status string, domain string, resolution string, category string, note interface{}, attachments string, id int32, integration int32, transaction int32, createdBy int32, evidence int32, resolvedAt string, createdAt string, updatedAt string, dueAt interface{}, message DisputeResolveResponseDataMessage, ) *DisputeResolveResponseData`
 
 NewDisputeResolveResponseData instantiates a new DisputeResolveResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -108,20 +108,20 @@ SetBin sets Bin field to given value.
 
 ### GetTransactionReference
 
-`func (o *DisputeResolveResponseData) GetTransactionReference() map[string]interface{}`
+`func (o *DisputeResolveResponseData) GetTransactionReference() interface{}`
 
 GetTransactionReference returns the TransactionReference field if non-nil, zero value otherwise.
 
 ### GetTransactionReferenceOk
 
-`func (o *DisputeResolveResponseData) GetTransactionReferenceOk() (*map[string]interface{}, bool)`
+`func (o *DisputeResolveResponseData) GetTransactionReferenceOk() (*interface{}, bool)`
 
 GetTransactionReferenceOk returns a tuple with the TransactionReference field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTransactionReference
 
-`func (o *DisputeResolveResponseData) SetTransactionReference(v map[string]interface{})`
+`func (o *DisputeResolveResponseData) SetTransactionReference(v interface{})`
 
 SetTransactionReference sets TransactionReference field to given value.
 
@@ -258,20 +258,20 @@ SetCategory sets Category field to given value.
 
 ### GetNote
 
-`func (o *DisputeResolveResponseData) GetNote() map[string]interface{}`
+`func (o *DisputeResolveResponseData) GetNote() interface{}`
 
 GetNote returns the Note field if non-nil, zero value otherwise.
 
 ### GetNoteOk
 
-`func (o *DisputeResolveResponseData) GetNoteOk() (*map[string]interface{}, bool)`
+`func (o *DisputeResolveResponseData) GetNoteOk() (*interface{}, bool)`
 
 GetNoteOk returns a tuple with the Note field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNote
 
-`func (o *DisputeResolveResponseData) SetNote(v map[string]interface{})`
+`func (o *DisputeResolveResponseData) SetNote(v interface{})`
 
 SetNote sets Note field to given value.
 
@@ -468,20 +468,20 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 ### GetDueAt
 
-`func (o *DisputeResolveResponseData) GetDueAt() map[string]interface{}`
+`func (o *DisputeResolveResponseData) GetDueAt() interface{}`
 
 GetDueAt returns the DueAt field if non-nil, zero value otherwise.
 
 ### GetDueAtOk
 
-`func (o *DisputeResolveResponseData) GetDueAtOk() (*map[string]interface{}, bool)`
+`func (o *DisputeResolveResponseData) GetDueAtOk() (*interface{}, bool)`
 
 GetDueAtOk returns a tuple with the DueAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDueAt
 
-`func (o *DisputeResolveResponseData) SetDueAt(v map[string]interface{})`
+`func (o *DisputeResolveResponseData) SetDueAt(v interface{})`
 
 SetDueAt sets DueAt field to given value.
 

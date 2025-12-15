@@ -24,7 +24,7 @@ type SubscriptionListResponseArrayPlan struct {
 	Domain string `json:"domain"`
 	Name string `json:"name"`
 	PlanCode string `json:"plan_code"`
-	Description map[string]interface{} `json:"description"`
+	Description interface{} `json:"description"`
 	Amount int32 `json:"amount"`
 	Interval string `json:"interval"`
 	SendInvoices bool `json:"send_invoices"`
@@ -39,7 +39,7 @@ type SubscriptionListResponseArrayPlan struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSubscriptionListResponseArrayPlan(id int32, domain string, name string, planCode string, description map[string]interface{}, amount int32, interval string, sendInvoices bool, sendSms bool, currency string, integration int32, createdAt string, updatedAt string) *SubscriptionListResponseArrayPlan {
+func NewSubscriptionListResponseArrayPlan(id int32, domain string, name string, planCode string, description interface{}, amount int32, interval string, sendInvoices bool, sendSms bool, currency string, integration int32, createdAt string, updatedAt string) *SubscriptionListResponseArrayPlan {
 	this := SubscriptionListResponseArrayPlan{}
 	this.Id = id
 	this.Domain = domain
@@ -162,10 +162,10 @@ func (o *SubscriptionListResponseArrayPlan) SetPlanCode(v string) {
 }
 
 // GetDescription returns the Description field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *SubscriptionListResponseArrayPlan) GetDescription() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *SubscriptionListResponseArrayPlan) GetDescription() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -175,15 +175,15 @@ func (o *SubscriptionListResponseArrayPlan) GetDescription() map[string]interfac
 // GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubscriptionListResponseArrayPlan) GetDescriptionOk() (map[string]interface{}, bool) {
+func (o *SubscriptionListResponseArrayPlan) GetDescriptionOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Description) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Description, true
+	return &o.Description, true
 }
 
 // SetDescription sets field value
-func (o *SubscriptionListResponseArrayPlan) SetDescription(v map[string]interface{}) {
+func (o *SubscriptionListResponseArrayPlan) SetDescription(v interface{}) {
 	o.Description = v
 }
 

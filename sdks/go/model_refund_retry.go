@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the RefundRetry type satisfies the MappedNullable interface at compile time
@@ -24,8 +22,6 @@ var _ MappedNullable = &RefundRetry{}
 type RefundRetry struct {
 	RefundAccountDetails RefundRetryAccountDetails `json:"refund_account_details"`
 }
-
-type _RefundRetry RefundRetry
 
 // NewRefundRetry instantiates a new RefundRetry object
 // This constructor will assign default values to properties that have it defined,
@@ -81,43 +77,6 @@ func (o RefundRetry) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["refund_account_details"] = o.RefundAccountDetails
 	return toSerialize, nil
-}
-
-func (o *RefundRetry) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"refund_account_details",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varRefundRetry := _RefundRetry{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRefundRetry)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RefundRetry(varRefundRetry)
-
-	return err
 }
 
 type NullableRefundRetry struct {

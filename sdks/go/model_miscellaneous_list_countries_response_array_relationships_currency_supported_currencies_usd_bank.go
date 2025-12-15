@@ -28,7 +28,7 @@ type MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurren
 	AccountVerificationRequired bool `json:"account_verification_required"`
 	AccountNumberLabel string `json:"account_number_label"`
 	AccountNumberPattern MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern `json:"account_number_pattern"`
-	Documents []map[string]interface{} `json:"documents"`
+	Documents []interface{} `json:"documents"`
 	Notices []string `json:"notices"`
 }
 
@@ -36,7 +36,7 @@ type MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurren
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank(bankType string, requiredFields []string, branchCode bool, branchCodeType string, accountName bool, accountVerificationRequired bool, accountNumberLabel string, accountNumberPattern MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern, documents []map[string]interface{}, notices []string) *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank {
+func NewMiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank(bankType string, requiredFields []string, branchCode bool, branchCodeType string, accountName bool, accountVerificationRequired bool, accountNumberLabel string, accountNumberPattern MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern, documents []interface{}, notices []string) *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank {
 	this := MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank{}
 	this.BankType = bankType
 	this.RequiredFields = requiredFields
@@ -252,9 +252,9 @@ func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCu
 }
 
 // GetDocuments returns the Documents field value
-func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) GetDocuments() []map[string]interface{} {
+func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) GetDocuments() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -263,7 +263,7 @@ func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCu
 
 // GetDocumentsOk returns a tuple with the Documents field value
 // and a boolean to check if the value has been set.
-func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) GetDocumentsOk() ([]map[string]interface{}, bool) {
+func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) GetDocumentsOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -271,7 +271,7 @@ func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCu
 }
 
 // SetDocuments sets field value
-func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) SetDocuments(v []map[string]interface{}) {
+func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) SetDocuments(v []interface{}) {
 	o.Documents = v
 }
 

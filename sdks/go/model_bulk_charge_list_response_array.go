@@ -24,7 +24,7 @@ type BulkChargeListResponseArray struct {
 	Domain string `json:"domain"`
 	BatchCode string `json:"batch_code"`
 	Status string `json:"status"`
-	EasyCronId map[string]interface{} `json:"easy_cron_id"`
+	EasyCronId interface{} `json:"easy_cron_id"`
 	Reference string `json:"reference"`
 	Id int32 `json:"id"`
 	CreatedAt string `json:"createdAt"`
@@ -35,7 +35,7 @@ type BulkChargeListResponseArray struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBulkChargeListResponseArray(integration int32, domain string, batchCode string, status string, easyCronId map[string]interface{}, reference string, id int32, createdAt string, updatedAt string) *BulkChargeListResponseArray {
+func NewBulkChargeListResponseArray(integration int32, domain string, batchCode string, status string, easyCronId interface{}, reference string, id int32, createdAt string, updatedAt string) *BulkChargeListResponseArray {
 	this := BulkChargeListResponseArray{}
 	this.Integration = integration
 	this.Domain = domain
@@ -154,10 +154,10 @@ func (o *BulkChargeListResponseArray) SetStatus(v string) {
 }
 
 // GetEasyCronId returns the EasyCronId field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *BulkChargeListResponseArray) GetEasyCronId() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *BulkChargeListResponseArray) GetEasyCronId() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -167,15 +167,15 @@ func (o *BulkChargeListResponseArray) GetEasyCronId() map[string]interface{} {
 // GetEasyCronIdOk returns a tuple with the EasyCronId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *BulkChargeListResponseArray) GetEasyCronIdOk() (map[string]interface{}, bool) {
+func (o *BulkChargeListResponseArray) GetEasyCronIdOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.EasyCronId) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.EasyCronId, true
+	return &o.EasyCronId, true
 }
 
 // SetEasyCronId sets field value
-func (o *BulkChargeListResponseArray) SetEasyCronId(v map[string]interface{}) {
+func (o *BulkChargeListResponseArray) SetEasyCronId(v interface{}) {
 	o.EasyCronId = v
 }
 

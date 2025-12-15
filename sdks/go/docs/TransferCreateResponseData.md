@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Transfersessionid** | **[]map[string]interface{}** |  | 
-**Transfertrials** | **[]map[string]interface{}** |  | 
+**Transfersessionid** | **[]interface{}** |  | 
+**Transfertrials** | **[]interface{}** |  | 
 **Domain** | **string** |  | 
 **Amount** | **int32** |  | 
 **Currency** | **string** |  | 
 **Reference** | **string** |  | 
 **Source** | **string** |  | 
-**SourceDetails** | **map[string]interface{}** |  | 
+**SourceDetails** | **interface{}** |  | 
 **Reason** | **string** |  | 
 **Status** | **string** |  | 
-**Failures** | **map[string]interface{}** |  | 
+**Failures** | **interface{}** |  | 
 **TransferCode** | **string** |  | 
-**TitanCode** | **map[string]interface{}** |  | 
-**TransferredAt** | **map[string]interface{}** |  | 
+**TitanCode** | **interface{}** |  | 
+**TransferredAt** | **interface{}** |  | 
 **Id** | **int32** |  | 
 **Integration** | **int32** |  | 
 **Request** | **int32** |  | 
@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewTransferCreateResponseData
 
-`func NewTransferCreateResponseData(transfersessionid []map[string]interface{}, transfertrials []map[string]interface{}, domain string, amount int32, currency string, reference string, source string, sourceDetails map[string]interface{}, reason string, status string, failures map[string]interface{}, transferCode string, titanCode map[string]interface{}, transferredAt map[string]interface{}, id int32, integration int32, request int32, recipient int32, createdAt string, updatedAt string, ) *TransferCreateResponseData`
+`func NewTransferCreateResponseData(transfersessionid []interface{}, transfertrials []interface{}, domain string, amount int32, currency string, reference string, source string, sourceDetails interface{}, reason string, status string, failures interface{}, transferCode string, titanCode interface{}, transferredAt interface{}, id int32, integration int32, request int32, recipient int32, createdAt string, updatedAt string, ) *TransferCreateResponseData`
 
 NewTransferCreateResponseData instantiates a new TransferCreateResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -46,40 +46,40 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetTransfersessionid
 
-`func (o *TransferCreateResponseData) GetTransfersessionid() []map[string]interface{}`
+`func (o *TransferCreateResponseData) GetTransfersessionid() []interface{}`
 
 GetTransfersessionid returns the Transfersessionid field if non-nil, zero value otherwise.
 
 ### GetTransfersessionidOk
 
-`func (o *TransferCreateResponseData) GetTransfersessionidOk() (*[]map[string]interface{}, bool)`
+`func (o *TransferCreateResponseData) GetTransfersessionidOk() (*[]interface{}, bool)`
 
 GetTransfersessionidOk returns a tuple with the Transfersessionid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTransfersessionid
 
-`func (o *TransferCreateResponseData) SetTransfersessionid(v []map[string]interface{})`
+`func (o *TransferCreateResponseData) SetTransfersessionid(v []interface{})`
 
 SetTransfersessionid sets Transfersessionid field to given value.
 
 
 ### GetTransfertrials
 
-`func (o *TransferCreateResponseData) GetTransfertrials() []map[string]interface{}`
+`func (o *TransferCreateResponseData) GetTransfertrials() []interface{}`
 
 GetTransfertrials returns the Transfertrials field if non-nil, zero value otherwise.
 
 ### GetTransfertrialsOk
 
-`func (o *TransferCreateResponseData) GetTransfertrialsOk() (*[]map[string]interface{}, bool)`
+`func (o *TransferCreateResponseData) GetTransfertrialsOk() (*[]interface{}, bool)`
 
 GetTransfertrialsOk returns a tuple with the Transfertrials field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTransfertrials
 
-`func (o *TransferCreateResponseData) SetTransfertrials(v []map[string]interface{})`
+`func (o *TransferCreateResponseData) SetTransfertrials(v []interface{})`
 
 SetTransfertrials sets Transfertrials field to given value.
 
@@ -186,20 +186,20 @@ SetSource sets Source field to given value.
 
 ### GetSourceDetails
 
-`func (o *TransferCreateResponseData) GetSourceDetails() map[string]interface{}`
+`func (o *TransferCreateResponseData) GetSourceDetails() interface{}`
 
 GetSourceDetails returns the SourceDetails field if non-nil, zero value otherwise.
 
 ### GetSourceDetailsOk
 
-`func (o *TransferCreateResponseData) GetSourceDetailsOk() (*map[string]interface{}, bool)`
+`func (o *TransferCreateResponseData) GetSourceDetailsOk() (*interface{}, bool)`
 
 GetSourceDetailsOk returns a tuple with the SourceDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSourceDetails
 
-`func (o *TransferCreateResponseData) SetSourceDetails(v map[string]interface{})`
+`func (o *TransferCreateResponseData) SetSourceDetails(v interface{})`
 
 SetSourceDetails sets SourceDetails field to given value.
 
@@ -256,20 +256,20 @@ SetStatus sets Status field to given value.
 
 ### GetFailures
 
-`func (o *TransferCreateResponseData) GetFailures() map[string]interface{}`
+`func (o *TransferCreateResponseData) GetFailures() interface{}`
 
 GetFailures returns the Failures field if non-nil, zero value otherwise.
 
 ### GetFailuresOk
 
-`func (o *TransferCreateResponseData) GetFailuresOk() (*map[string]interface{}, bool)`
+`func (o *TransferCreateResponseData) GetFailuresOk() (*interface{}, bool)`
 
 GetFailuresOk returns a tuple with the Failures field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFailures
 
-`func (o *TransferCreateResponseData) SetFailures(v map[string]interface{})`
+`func (o *TransferCreateResponseData) SetFailures(v interface{})`
 
 SetFailures sets Failures field to given value.
 
@@ -306,20 +306,20 @@ SetTransferCode sets TransferCode field to given value.
 
 ### GetTitanCode
 
-`func (o *TransferCreateResponseData) GetTitanCode() map[string]interface{}`
+`func (o *TransferCreateResponseData) GetTitanCode() interface{}`
 
 GetTitanCode returns the TitanCode field if non-nil, zero value otherwise.
 
 ### GetTitanCodeOk
 
-`func (o *TransferCreateResponseData) GetTitanCodeOk() (*map[string]interface{}, bool)`
+`func (o *TransferCreateResponseData) GetTitanCodeOk() (*interface{}, bool)`
 
 GetTitanCodeOk returns a tuple with the TitanCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTitanCode
 
-`func (o *TransferCreateResponseData) SetTitanCode(v map[string]interface{})`
+`func (o *TransferCreateResponseData) SetTitanCode(v interface{})`
 
 SetTitanCode sets TitanCode field to given value.
 
@@ -336,20 +336,20 @@ SetTitanCode sets TitanCode field to given value.
 UnsetTitanCode ensures that no value is present for TitanCode, not even an explicit nil
 ### GetTransferredAt
 
-`func (o *TransferCreateResponseData) GetTransferredAt() map[string]interface{}`
+`func (o *TransferCreateResponseData) GetTransferredAt() interface{}`
 
 GetTransferredAt returns the TransferredAt field if non-nil, zero value otherwise.
 
 ### GetTransferredAtOk
 
-`func (o *TransferCreateResponseData) GetTransferredAtOk() (*map[string]interface{}, bool)`
+`func (o *TransferCreateResponseData) GetTransferredAtOk() (*interface{}, bool)`
 
 GetTransferredAtOk returns a tuple with the TransferredAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTransferredAt
 
-`func (o *TransferCreateResponseData) SetTransferredAt(v map[string]interface{})`
+`func (o *TransferCreateResponseData) SetTransferredAt(v interface{})`
 
 SetTransferredAt sets TransferredAt field to given value.
 

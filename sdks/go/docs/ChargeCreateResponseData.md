@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Domain** | **string** |  | 
 **Status** | **string** |  | 
 **Reference** | **string** |  | 
-**ReceiptNumber** | **map[string]interface{}** |  | 
+**ReceiptNumber** | **interface{}** |  | 
 **Amount** | **int32** |  | 
 **Message** | **NullableString** |  | 
 **GatewayResponse** | **string** |  | 
@@ -17,20 +17,20 @@ Name | Type | Description | Notes
 **Channel** | **string** |  | 
 **Currency** | **string** |  | 
 **IpAddress** | **string** |  | 
-**Metadata** | [**ChargeCreateResponseDataMetadata**](ChargeCreateResponseDataMetadata.md) |  | 
+**Metadata** | [**TransactionFetchResponseDataMetadata**](TransactionFetchResponseDataMetadata.md) |  | 
 **Log** | [**NullableChargeAuthorizationResponseDataLog**](ChargeAuthorizationResponseDataLog.md) |  | 
 **Fees** | **int32** |  | 
 **FeesSplit** | **NullableInt32** |  | 
-**Authorization** | [**ChargeCreateResponseDataAuthorization**](ChargeCreateResponseDataAuthorization.md) |  | 
-**Customer** | [**ChargeCreateResponseDataCustomer**](ChargeCreateResponseDataCustomer.md) |  | 
-**Plan** | **map[string]interface{}** |  | 
+**Authorization** | [**TransactionFetchResponseDataAuthorization**](TransactionFetchResponseDataAuthorization.md) |  | 
+**Customer** | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |  | 
+**Plan** | **interface{}** |  | 
 **Split** | **map[string]interface{}** |  | 
-**OrderId** | **map[string]interface{}** |  | 
+**OrderId** | **interface{}** |  | 
 **RequestedAmount** | **int32** |  | 
-**PosTransactionData** | **map[string]interface{}** |  | 
-**Source** | **map[string]interface{}** |  | 
-**FeesBreakdown** | **map[string]interface{}** |  | 
-**Connect** | **map[string]interface{}** |  | 
+**PosTransactionData** | **interface{}** |  | 
+**Source** | **interface{}** |  | 
+**FeesBreakdown** | **interface{}** |  | 
+**Connect** | **interface{}** |  | 
 **TransactionDate** | **string** |  | 
 **PlanObject** | **map[string]interface{}** |  | 
 **Subaccount** | **map[string]interface{}** |  | 
@@ -39,7 +39,7 @@ Name | Type | Description | Notes
 
 ### NewChargeCreateResponseData
 
-`func NewChargeCreateResponseData(id int32, domain string, status string, reference string, receiptNumber map[string]interface{}, amount int32, message NullableString, gatewayResponse string, paidAt string, createdAt string, channel string, currency string, ipAddress string, metadata ChargeCreateResponseDataMetadata, log NullableChargeAuthorizationResponseDataLog, fees int32, feesSplit NullableInt32, authorization ChargeCreateResponseDataAuthorization, customer ChargeCreateResponseDataCustomer, plan map[string]interface{}, split map[string]interface{}, orderId map[string]interface{}, requestedAmount int32, posTransactionData map[string]interface{}, source map[string]interface{}, feesBreakdown map[string]interface{}, connect map[string]interface{}, transactionDate string, planObject map[string]interface{}, subaccount map[string]interface{}, ) *ChargeCreateResponseData`
+`func NewChargeCreateResponseData(id int32, domain string, status string, reference string, receiptNumber interface{}, amount int32, message NullableString, gatewayResponse string, paidAt string, createdAt string, channel string, currency string, ipAddress string, metadata TransactionFetchResponseDataMetadata, log NullableChargeAuthorizationResponseDataLog, fees int32, feesSplit NullableInt32, authorization TransactionFetchResponseDataAuthorization, customer TransactionFetchResponseDataCustomer, plan interface{}, split map[string]interface{}, orderId interface{}, requestedAmount int32, posTransactionData interface{}, source interface{}, feesBreakdown interface{}, connect interface{}, transactionDate string, planObject map[string]interface{}, subaccount map[string]interface{}, ) *ChargeCreateResponseData`
 
 NewChargeCreateResponseData instantiates a new ChargeCreateResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -136,20 +136,20 @@ SetReference sets Reference field to given value.
 
 ### GetReceiptNumber
 
-`func (o *ChargeCreateResponseData) GetReceiptNumber() map[string]interface{}`
+`func (o *ChargeCreateResponseData) GetReceiptNumber() interface{}`
 
 GetReceiptNumber returns the ReceiptNumber field if non-nil, zero value otherwise.
 
 ### GetReceiptNumberOk
 
-`func (o *ChargeCreateResponseData) GetReceiptNumberOk() (*map[string]interface{}, bool)`
+`func (o *ChargeCreateResponseData) GetReceiptNumberOk() (*interface{}, bool)`
 
 GetReceiptNumberOk returns a tuple with the ReceiptNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReceiptNumber
 
-`func (o *ChargeCreateResponseData) SetReceiptNumber(v map[string]interface{})`
+`func (o *ChargeCreateResponseData) SetReceiptNumber(v interface{})`
 
 SetReceiptNumber sets ReceiptNumber field to given value.
 
@@ -336,20 +336,20 @@ SetIpAddress sets IpAddress field to given value.
 
 ### GetMetadata
 
-`func (o *ChargeCreateResponseData) GetMetadata() ChargeCreateResponseDataMetadata`
+`func (o *ChargeCreateResponseData) GetMetadata() TransactionFetchResponseDataMetadata`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *ChargeCreateResponseData) GetMetadataOk() (*ChargeCreateResponseDataMetadata, bool)`
+`func (o *ChargeCreateResponseData) GetMetadataOk() (*TransactionFetchResponseDataMetadata, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *ChargeCreateResponseData) SetMetadata(v ChargeCreateResponseDataMetadata)`
+`func (o *ChargeCreateResponseData) SetMetadata(v TransactionFetchResponseDataMetadata)`
 
 SetMetadata sets Metadata field to given value.
 
@@ -436,60 +436,60 @@ SetFeesSplit sets FeesSplit field to given value.
 UnsetFeesSplit ensures that no value is present for FeesSplit, not even an explicit nil
 ### GetAuthorization
 
-`func (o *ChargeCreateResponseData) GetAuthorization() ChargeCreateResponseDataAuthorization`
+`func (o *ChargeCreateResponseData) GetAuthorization() TransactionFetchResponseDataAuthorization`
 
 GetAuthorization returns the Authorization field if non-nil, zero value otherwise.
 
 ### GetAuthorizationOk
 
-`func (o *ChargeCreateResponseData) GetAuthorizationOk() (*ChargeCreateResponseDataAuthorization, bool)`
+`func (o *ChargeCreateResponseData) GetAuthorizationOk() (*TransactionFetchResponseDataAuthorization, bool)`
 
 GetAuthorizationOk returns a tuple with the Authorization field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorization
 
-`func (o *ChargeCreateResponseData) SetAuthorization(v ChargeCreateResponseDataAuthorization)`
+`func (o *ChargeCreateResponseData) SetAuthorization(v TransactionFetchResponseDataAuthorization)`
 
 SetAuthorization sets Authorization field to given value.
 
 
 ### GetCustomer
 
-`func (o *ChargeCreateResponseData) GetCustomer() ChargeCreateResponseDataCustomer`
+`func (o *ChargeCreateResponseData) GetCustomer() TransactionFetchResponseDataCustomer`
 
 GetCustomer returns the Customer field if non-nil, zero value otherwise.
 
 ### GetCustomerOk
 
-`func (o *ChargeCreateResponseData) GetCustomerOk() (*ChargeCreateResponseDataCustomer, bool)`
+`func (o *ChargeCreateResponseData) GetCustomerOk() (*TransactionFetchResponseDataCustomer, bool)`
 
 GetCustomerOk returns a tuple with the Customer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCustomer
 
-`func (o *ChargeCreateResponseData) SetCustomer(v ChargeCreateResponseDataCustomer)`
+`func (o *ChargeCreateResponseData) SetCustomer(v TransactionFetchResponseDataCustomer)`
 
 SetCustomer sets Customer field to given value.
 
 
 ### GetPlan
 
-`func (o *ChargeCreateResponseData) GetPlan() map[string]interface{}`
+`func (o *ChargeCreateResponseData) GetPlan() interface{}`
 
 GetPlan returns the Plan field if non-nil, zero value otherwise.
 
 ### GetPlanOk
 
-`func (o *ChargeCreateResponseData) GetPlanOk() (*map[string]interface{}, bool)`
+`func (o *ChargeCreateResponseData) GetPlanOk() (*interface{}, bool)`
 
 GetPlanOk returns a tuple with the Plan field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPlan
 
-`func (o *ChargeCreateResponseData) SetPlan(v map[string]interface{})`
+`func (o *ChargeCreateResponseData) SetPlan(v interface{})`
 
 SetPlan sets Plan field to given value.
 
@@ -526,20 +526,20 @@ SetSplit sets Split field to given value.
 
 ### GetOrderId
 
-`func (o *ChargeCreateResponseData) GetOrderId() map[string]interface{}`
+`func (o *ChargeCreateResponseData) GetOrderId() interface{}`
 
 GetOrderId returns the OrderId field if non-nil, zero value otherwise.
 
 ### GetOrderIdOk
 
-`func (o *ChargeCreateResponseData) GetOrderIdOk() (*map[string]interface{}, bool)`
+`func (o *ChargeCreateResponseData) GetOrderIdOk() (*interface{}, bool)`
 
 GetOrderIdOk returns a tuple with the OrderId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOrderId
 
-`func (o *ChargeCreateResponseData) SetOrderId(v map[string]interface{})`
+`func (o *ChargeCreateResponseData) SetOrderId(v interface{})`
 
 SetOrderId sets OrderId field to given value.
 
@@ -576,20 +576,20 @@ SetRequestedAmount sets RequestedAmount field to given value.
 
 ### GetPosTransactionData
 
-`func (o *ChargeCreateResponseData) GetPosTransactionData() map[string]interface{}`
+`func (o *ChargeCreateResponseData) GetPosTransactionData() interface{}`
 
 GetPosTransactionData returns the PosTransactionData field if non-nil, zero value otherwise.
 
 ### GetPosTransactionDataOk
 
-`func (o *ChargeCreateResponseData) GetPosTransactionDataOk() (*map[string]interface{}, bool)`
+`func (o *ChargeCreateResponseData) GetPosTransactionDataOk() (*interface{}, bool)`
 
 GetPosTransactionDataOk returns a tuple with the PosTransactionData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPosTransactionData
 
-`func (o *ChargeCreateResponseData) SetPosTransactionData(v map[string]interface{})`
+`func (o *ChargeCreateResponseData) SetPosTransactionData(v interface{})`
 
 SetPosTransactionData sets PosTransactionData field to given value.
 
@@ -606,20 +606,20 @@ SetPosTransactionData sets PosTransactionData field to given value.
 UnsetPosTransactionData ensures that no value is present for PosTransactionData, not even an explicit nil
 ### GetSource
 
-`func (o *ChargeCreateResponseData) GetSource() map[string]interface{}`
+`func (o *ChargeCreateResponseData) GetSource() interface{}`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *ChargeCreateResponseData) GetSourceOk() (*map[string]interface{}, bool)`
+`func (o *ChargeCreateResponseData) GetSourceOk() (*interface{}, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *ChargeCreateResponseData) SetSource(v map[string]interface{})`
+`func (o *ChargeCreateResponseData) SetSource(v interface{})`
 
 SetSource sets Source field to given value.
 
@@ -636,20 +636,20 @@ SetSource sets Source field to given value.
 UnsetSource ensures that no value is present for Source, not even an explicit nil
 ### GetFeesBreakdown
 
-`func (o *ChargeCreateResponseData) GetFeesBreakdown() map[string]interface{}`
+`func (o *ChargeCreateResponseData) GetFeesBreakdown() interface{}`
 
 GetFeesBreakdown returns the FeesBreakdown field if non-nil, zero value otherwise.
 
 ### GetFeesBreakdownOk
 
-`func (o *ChargeCreateResponseData) GetFeesBreakdownOk() (*map[string]interface{}, bool)`
+`func (o *ChargeCreateResponseData) GetFeesBreakdownOk() (*interface{}, bool)`
 
 GetFeesBreakdownOk returns a tuple with the FeesBreakdown field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFeesBreakdown
 
-`func (o *ChargeCreateResponseData) SetFeesBreakdown(v map[string]interface{})`
+`func (o *ChargeCreateResponseData) SetFeesBreakdown(v interface{})`
 
 SetFeesBreakdown sets FeesBreakdown field to given value.
 
@@ -666,20 +666,20 @@ SetFeesBreakdown sets FeesBreakdown field to given value.
 UnsetFeesBreakdown ensures that no value is present for FeesBreakdown, not even an explicit nil
 ### GetConnect
 
-`func (o *ChargeCreateResponseData) GetConnect() map[string]interface{}`
+`func (o *ChargeCreateResponseData) GetConnect() interface{}`
 
 GetConnect returns the Connect field if non-nil, zero value otherwise.
 
 ### GetConnectOk
 
-`func (o *ChargeCreateResponseData) GetConnectOk() (*map[string]interface{}, bool)`
+`func (o *ChargeCreateResponseData) GetConnectOk() (*interface{}, bool)`
 
 GetConnectOk returns a tuple with the Connect field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConnect
 
-`func (o *ChargeCreateResponseData) SetConnect(v map[string]interface{})`
+`func (o *ChargeCreateResponseData) SetConnect(v interface{})`
 
 SetConnect sets Connect field to given value.
 

@@ -9,10 +9,10 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Integration** | **int32** |  | 
 **Domain** | **string** |  | 
-**PaymentMethods** | **[]map[string]interface{}** |  | 
+**PaymentMethods** | **[]interface{}** |  | 
 **Active** | **bool** |  | 
 **CreatedAt** | **string** |  | 
-**ConnectAccountId** | **map[string]interface{}** |  | 
+**ConnectAccountId** | **interface{}** |  | 
 **Destinations** | [**[]VirtualTerminalFetchResponseDataDestinationsInner**](VirtualTerminalFetchResponseDataDestinationsInner.md) |  | 
 **Currency** | **string** |  | 
 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewVirtualTerminalFetchResponseData
 
-`func NewVirtualTerminalFetchResponseData(id int32, code string, name string, integration int32, domain string, paymentMethods []map[string]interface{}, active bool, createdAt string, connectAccountId map[string]interface{}, destinations []VirtualTerminalFetchResponseDataDestinationsInner, currency string, ) *VirtualTerminalFetchResponseData`
+`func NewVirtualTerminalFetchResponseData(id int32, code string, name string, integration int32, domain string, paymentMethods []interface{}, active bool, createdAt string, connectAccountId interface{}, destinations []VirtualTerminalFetchResponseDataDestinationsInner, currency string, ) *VirtualTerminalFetchResponseData`
 
 NewVirtualTerminalFetchResponseData instantiates a new VirtualTerminalFetchResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -137,20 +137,20 @@ SetDomain sets Domain field to given value.
 
 ### GetPaymentMethods
 
-`func (o *VirtualTerminalFetchResponseData) GetPaymentMethods() []map[string]interface{}`
+`func (o *VirtualTerminalFetchResponseData) GetPaymentMethods() []interface{}`
 
 GetPaymentMethods returns the PaymentMethods field if non-nil, zero value otherwise.
 
 ### GetPaymentMethodsOk
 
-`func (o *VirtualTerminalFetchResponseData) GetPaymentMethodsOk() (*[]map[string]interface{}, bool)`
+`func (o *VirtualTerminalFetchResponseData) GetPaymentMethodsOk() (*[]interface{}, bool)`
 
 GetPaymentMethodsOk returns a tuple with the PaymentMethods field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPaymentMethods
 
-`func (o *VirtualTerminalFetchResponseData) SetPaymentMethods(v []map[string]interface{})`
+`func (o *VirtualTerminalFetchResponseData) SetPaymentMethods(v []interface{})`
 
 SetPaymentMethods sets PaymentMethods field to given value.
 
@@ -197,20 +197,20 @@ SetCreatedAt sets CreatedAt field to given value.
 
 ### GetConnectAccountId
 
-`func (o *VirtualTerminalFetchResponseData) GetConnectAccountId() map[string]interface{}`
+`func (o *VirtualTerminalFetchResponseData) GetConnectAccountId() interface{}`
 
 GetConnectAccountId returns the ConnectAccountId field if non-nil, zero value otherwise.
 
 ### GetConnectAccountIdOk
 
-`func (o *VirtualTerminalFetchResponseData) GetConnectAccountIdOk() (*map[string]interface{}, bool)`
+`func (o *VirtualTerminalFetchResponseData) GetConnectAccountIdOk() (*interface{}, bool)`
 
 GetConnectAccountIdOk returns a tuple with the ConnectAccountId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConnectAccountId
 
-`func (o *VirtualTerminalFetchResponseData) SetConnectAccountId(v map[string]interface{})`
+`func (o *VirtualTerminalFetchResponseData) SetConnectAccountId(v interface{})`
 
 SetConnectAccountId sets ConnectAccountId field to given value.
 

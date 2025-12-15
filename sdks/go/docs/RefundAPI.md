@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ## RefundRetry
 
-> RefundRetryResponse RefundRetry(ctx, id).Body(body).Execute()
+> RefundRetryResponse RefundRetry(ctx, id).RefundRetry(refundRetry).Execute()
 
 Retry Refund
 
@@ -242,11 +242,11 @@ import (
 
 func main() {
     id := int32(15581137) // int32 | The identifier of the refund
-    body := RefundRetryWithCustomerDetailsId(987) // RefundRetryWithCustomerDetailsId |  (optional)
+    refundRetry := *openapiclient.NewRefundRetry(*openapiclient.NewRefundRetryAccountDetails("Currency_example", "AccountNumber_example", "BankId_example")) // RefundRetry |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RefundAPI.RefundRetry(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.RefundAPI.RefundRetry(context.Background(), id).RefundRetry(refundRetry).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RefundAPI.RefundRetry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -272,7 +272,7 @@ Other parameters are passed through a pointer to a apiRefundRetryRequest struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **RefundRetryWithCustomerDetailsId** |  | 
+ **refundRetry** | [**RefundRetry**](RefundRetry.md) |  | 
 
 ### Return type
 

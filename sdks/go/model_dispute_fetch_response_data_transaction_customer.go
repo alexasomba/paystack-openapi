@@ -20,14 +20,14 @@ var _ MappedNullable = &DisputeFetchResponseDataTransactionCustomer{}
 
 // DisputeFetchResponseDataTransactionCustomer struct for DisputeFetchResponseDataTransactionCustomer
 type DisputeFetchResponseDataTransactionCustomer struct {
-	InternationalFormatPhone map[string]interface{} `json:"international_format_phone"`
+	InternationalFormatPhone interface{} `json:"international_format_phone"`
 }
 
 // NewDisputeFetchResponseDataTransactionCustomer instantiates a new DisputeFetchResponseDataTransactionCustomer object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDisputeFetchResponseDataTransactionCustomer(internationalFormatPhone map[string]interface{}) *DisputeFetchResponseDataTransactionCustomer {
+func NewDisputeFetchResponseDataTransactionCustomer(internationalFormatPhone interface{}) *DisputeFetchResponseDataTransactionCustomer {
 	this := DisputeFetchResponseDataTransactionCustomer{}
 	this.InternationalFormatPhone = internationalFormatPhone
 	return &this
@@ -42,10 +42,10 @@ func NewDisputeFetchResponseDataTransactionCustomerWithDefaults() *DisputeFetchR
 }
 
 // GetInternationalFormatPhone returns the InternationalFormatPhone field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *DisputeFetchResponseDataTransactionCustomer) GetInternationalFormatPhone() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *DisputeFetchResponseDataTransactionCustomer) GetInternationalFormatPhone() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -55,15 +55,15 @@ func (o *DisputeFetchResponseDataTransactionCustomer) GetInternationalFormatPhon
 // GetInternationalFormatPhoneOk returns a tuple with the InternationalFormatPhone field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeFetchResponseDataTransactionCustomer) GetInternationalFormatPhoneOk() (map[string]interface{}, bool) {
+func (o *DisputeFetchResponseDataTransactionCustomer) GetInternationalFormatPhoneOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.InternationalFormatPhone) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.InternationalFormatPhone, true
+	return &o.InternationalFormatPhone, true
 }
 
 // SetInternationalFormatPhone sets field value
-func (o *DisputeFetchResponseDataTransactionCustomer) SetInternationalFormatPhone(v map[string]interface{}) {
+func (o *DisputeFetchResponseDataTransactionCustomer) SetInternationalFormatPhone(v interface{}) {
 	o.InternationalFormatPhone = v
 }
 

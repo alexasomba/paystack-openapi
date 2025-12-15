@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Customer** | [**DedicatedNubanListResponseArrayCustomer**](DedicatedNubanListResponseArrayCustomer.md) |  | 
-**Bank** | [**DedicatedNubanCreateResponseDataBank**](DedicatedNubanCreateResponseDataBank.md) |  | 
+**Bank** | [**DedicatedNubanListResponseArrayBank**](DedicatedNubanListResponseArrayBank.md) |  | 
 **Id** | **int32** |  | 
 **AccountName** | **string** |  | 
 **AccountNumber** | **string** |  | 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewDedicatedNubanListResponseArray
 
-`func NewDedicatedNubanListResponseArray(customer DedicatedNubanListResponseArrayCustomer, bank DedicatedNubanCreateResponseDataBank, id int32, accountName string, accountNumber string, createdAt string, updatedAt string, currency string, splitConfig NullableDedicatedNubanListResponseArraySplitConfig, active bool, assigned bool, ) *DedicatedNubanListResponseArray`
+`func NewDedicatedNubanListResponseArray(customer DedicatedNubanListResponseArrayCustomer, bank DedicatedNubanListResponseArrayBank, id int32, accountName string, accountNumber string, createdAt string, updatedAt string, currency string, splitConfig NullableDedicatedNubanListResponseArraySplitConfig, active bool, assigned bool, ) *DedicatedNubanListResponseArray`
 
 NewDedicatedNubanListResponseArray instantiates a new DedicatedNubanListResponseArray object
 This constructor will assign default values to properties that have it defined,
@@ -57,20 +57,20 @@ SetCustomer sets Customer field to given value.
 
 ### GetBank
 
-`func (o *DedicatedNubanListResponseArray) GetBank() DedicatedNubanCreateResponseDataBank`
+`func (o *DedicatedNubanListResponseArray) GetBank() DedicatedNubanListResponseArrayBank`
 
 GetBank returns the Bank field if non-nil, zero value otherwise.
 
 ### GetBankOk
 
-`func (o *DedicatedNubanListResponseArray) GetBankOk() (*DedicatedNubanCreateResponseDataBank, bool)`
+`func (o *DedicatedNubanListResponseArray) GetBankOk() (*DedicatedNubanListResponseArrayBank, bool)`
 
 GetBankOk returns a tuple with the Bank field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBank
 
-`func (o *DedicatedNubanListResponseArray) SetBank(v DedicatedNubanCreateResponseDataBank)`
+`func (o *DedicatedNubanListResponseArray) SetBank(v DedicatedNubanListResponseArrayBank)`
 
 SetBank sets Bank field to given value.
 

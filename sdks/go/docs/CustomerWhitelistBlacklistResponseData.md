@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Transactions** | **[]map[string]interface{}** |  | 
-**Subscriptions** | **[]map[string]interface{}** |  | 
-**Authorizations** | **[]map[string]interface{}** |  | 
+**Transactions** | **[]interface{}** |  | 
+**Subscriptions** | **[]interface{}** |  | 
+**Authorizations** | **[]interface{}** |  | 
 **FirstName** | **string** |  | 
 **LastName** | **string** |  | 
 **Email** | **string** |  | 
@@ -20,13 +20,13 @@ Name | Type | Description | Notes
 **CreatedAt** | **string** |  | 
 **UpdatedAt** | **string** |  | 
 **Identified** | **bool** |  | 
-**Identifications** | **map[string]interface{}** |  | 
+**Identifications** | **interface{}** |  | 
 
 ## Methods
 
 ### NewCustomerWhitelistBlacklistResponseData
 
-`func NewCustomerWhitelistBlacklistResponseData(transactions []map[string]interface{}, subscriptions []map[string]interface{}, authorizations []map[string]interface{}, firstName string, lastName string, email string, phone string, metadata map[string]interface{}, domain string, customerCode string, riskAction string, id int32, integration int32, createdAt string, updatedAt string, identified bool, identifications map[string]interface{}, ) *CustomerWhitelistBlacklistResponseData`
+`func NewCustomerWhitelistBlacklistResponseData(transactions []interface{}, subscriptions []interface{}, authorizations []interface{}, firstName string, lastName string, email string, phone string, metadata map[string]interface{}, domain string, customerCode string, riskAction string, id int32, integration int32, createdAt string, updatedAt string, identified bool, identifications interface{}, ) *CustomerWhitelistBlacklistResponseData`
 
 NewCustomerWhitelistBlacklistResponseData instantiates a new CustomerWhitelistBlacklistResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -43,60 +43,60 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetTransactions
 
-`func (o *CustomerWhitelistBlacklistResponseData) GetTransactions() []map[string]interface{}`
+`func (o *CustomerWhitelistBlacklistResponseData) GetTransactions() []interface{}`
 
 GetTransactions returns the Transactions field if non-nil, zero value otherwise.
 
 ### GetTransactionsOk
 
-`func (o *CustomerWhitelistBlacklistResponseData) GetTransactionsOk() (*[]map[string]interface{}, bool)`
+`func (o *CustomerWhitelistBlacklistResponseData) GetTransactionsOk() (*[]interface{}, bool)`
 
 GetTransactionsOk returns a tuple with the Transactions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTransactions
 
-`func (o *CustomerWhitelistBlacklistResponseData) SetTransactions(v []map[string]interface{})`
+`func (o *CustomerWhitelistBlacklistResponseData) SetTransactions(v []interface{})`
 
 SetTransactions sets Transactions field to given value.
 
 
 ### GetSubscriptions
 
-`func (o *CustomerWhitelistBlacklistResponseData) GetSubscriptions() []map[string]interface{}`
+`func (o *CustomerWhitelistBlacklistResponseData) GetSubscriptions() []interface{}`
 
 GetSubscriptions returns the Subscriptions field if non-nil, zero value otherwise.
 
 ### GetSubscriptionsOk
 
-`func (o *CustomerWhitelistBlacklistResponseData) GetSubscriptionsOk() (*[]map[string]interface{}, bool)`
+`func (o *CustomerWhitelistBlacklistResponseData) GetSubscriptionsOk() (*[]interface{}, bool)`
 
 GetSubscriptionsOk returns a tuple with the Subscriptions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSubscriptions
 
-`func (o *CustomerWhitelistBlacklistResponseData) SetSubscriptions(v []map[string]interface{})`
+`func (o *CustomerWhitelistBlacklistResponseData) SetSubscriptions(v []interface{})`
 
 SetSubscriptions sets Subscriptions field to given value.
 
 
 ### GetAuthorizations
 
-`func (o *CustomerWhitelistBlacklistResponseData) GetAuthorizations() []map[string]interface{}`
+`func (o *CustomerWhitelistBlacklistResponseData) GetAuthorizations() []interface{}`
 
 GetAuthorizations returns the Authorizations field if non-nil, zero value otherwise.
 
 ### GetAuthorizationsOk
 
-`func (o *CustomerWhitelistBlacklistResponseData) GetAuthorizationsOk() (*[]map[string]interface{}, bool)`
+`func (o *CustomerWhitelistBlacklistResponseData) GetAuthorizationsOk() (*[]interface{}, bool)`
 
 GetAuthorizationsOk returns a tuple with the Authorizations field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizations
 
-`func (o *CustomerWhitelistBlacklistResponseData) SetAuthorizations(v []map[string]interface{})`
+`func (o *CustomerWhitelistBlacklistResponseData) SetAuthorizations(v []interface{})`
 
 SetAuthorizations sets Authorizations field to given value.
 
@@ -363,20 +363,20 @@ SetIdentified sets Identified field to given value.
 
 ### GetIdentifications
 
-`func (o *CustomerWhitelistBlacklistResponseData) GetIdentifications() map[string]interface{}`
+`func (o *CustomerWhitelistBlacklistResponseData) GetIdentifications() interface{}`
 
 GetIdentifications returns the Identifications field if non-nil, zero value otherwise.
 
 ### GetIdentificationsOk
 
-`func (o *CustomerWhitelistBlacklistResponseData) GetIdentificationsOk() (*map[string]interface{}, bool)`
+`func (o *CustomerWhitelistBlacklistResponseData) GetIdentificationsOk() (*interface{}, bool)`
 
 GetIdentificationsOk returns a tuple with the Identifications field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdentifications
 
-`func (o *CustomerWhitelistBlacklistResponseData) SetIdentifications(v map[string]interface{})`
+`func (o *CustomerWhitelistBlacklistResponseData) SetIdentifications(v interface{})`
 
 SetIdentifications sets Identifications field to given value.
 

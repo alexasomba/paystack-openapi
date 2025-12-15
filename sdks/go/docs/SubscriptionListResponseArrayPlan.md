@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Domain** | **string** |  | 
 **Name** | **string** |  | 
 **PlanCode** | **string** |  | 
-**Description** | **map[string]interface{}** |  | 
+**Description** | **interface{}** |  | 
 **Amount** | **int32** |  | 
 **Interval** | **string** |  | 
 **SendInvoices** | **bool** |  | 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewSubscriptionListResponseArrayPlan
 
-`func NewSubscriptionListResponseArrayPlan(id int32, domain string, name string, planCode string, description map[string]interface{}, amount int32, interval string, sendInvoices bool, sendSms bool, currency string, integration int32, createdAt string, updatedAt string, ) *SubscriptionListResponseArrayPlan`
+`func NewSubscriptionListResponseArrayPlan(id int32, domain string, name string, planCode string, description interface{}, amount int32, interval string, sendInvoices bool, sendSms bool, currency string, integration int32, createdAt string, updatedAt string, ) *SubscriptionListResponseArrayPlan`
 
 NewSubscriptionListResponseArrayPlan instantiates a new SubscriptionListResponseArrayPlan object
 This constructor will assign default values to properties that have it defined,
@@ -119,20 +119,20 @@ SetPlanCode sets PlanCode field to given value.
 
 ### GetDescription
 
-`func (o *SubscriptionListResponseArrayPlan) GetDescription() map[string]interface{}`
+`func (o *SubscriptionListResponseArrayPlan) GetDescription() interface{}`
 
 GetDescription returns the Description field if non-nil, zero value otherwise.
 
 ### GetDescriptionOk
 
-`func (o *SubscriptionListResponseArrayPlan) GetDescriptionOk() (*map[string]interface{}, bool)`
+`func (o *SubscriptionListResponseArrayPlan) GetDescriptionOk() (*interface{}, bool)`
 
 GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDescription
 
-`func (o *SubscriptionListResponseArrayPlan) SetDescription(v map[string]interface{})`
+`func (o *SubscriptionListResponseArrayPlan) SetDescription(v interface{})`
 
 SetDescription sets Description field to given value.
 

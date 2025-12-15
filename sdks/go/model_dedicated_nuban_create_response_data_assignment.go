@@ -26,14 +26,14 @@ type DedicatedNubanCreateResponseDataAssignment struct {
 	Expired bool `json:"expired"`
 	AccountType string `json:"account_type"`
 	AssignedAt string `json:"assigned_at"`
-	ExpiredAt map[string]interface{} `json:"expired_at"`
+	ExpiredAt interface{} `json:"expired_at"`
 }
 
 // NewDedicatedNubanCreateResponseDataAssignment instantiates a new DedicatedNubanCreateResponseDataAssignment object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDedicatedNubanCreateResponseDataAssignment(integration int32, assigneeId int32, assigneeType string, expired bool, accountType string, assignedAt string, expiredAt map[string]interface{}) *DedicatedNubanCreateResponseDataAssignment {
+func NewDedicatedNubanCreateResponseDataAssignment(integration int32, assigneeId int32, assigneeType string, expired bool, accountType string, assignedAt string, expiredAt interface{}) *DedicatedNubanCreateResponseDataAssignment {
 	this := DedicatedNubanCreateResponseDataAssignment{}
 	this.Integration = integration
 	this.AssigneeId = assigneeId
@@ -198,10 +198,10 @@ func (o *DedicatedNubanCreateResponseDataAssignment) SetAssignedAt(v string) {
 }
 
 // GetExpiredAt returns the ExpiredAt field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *DedicatedNubanCreateResponseDataAssignment) GetExpiredAt() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *DedicatedNubanCreateResponseDataAssignment) GetExpiredAt() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -211,15 +211,15 @@ func (o *DedicatedNubanCreateResponseDataAssignment) GetExpiredAt() map[string]i
 // GetExpiredAtOk returns a tuple with the ExpiredAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DedicatedNubanCreateResponseDataAssignment) GetExpiredAtOk() (map[string]interface{}, bool) {
+func (o *DedicatedNubanCreateResponseDataAssignment) GetExpiredAtOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.ExpiredAt) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.ExpiredAt, true
+	return &o.ExpiredAt, true
 }
 
 // SetExpiredAt sets field value
-func (o *DedicatedNubanCreateResponseDataAssignment) SetExpiredAt(v map[string]interface{}) {
+func (o *DedicatedNubanCreateResponseDataAssignment) SetExpiredAt(v interface{}) {
 	o.ExpiredAt = v
 }
 

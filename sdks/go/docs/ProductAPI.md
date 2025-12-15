@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ## ProductUpdate
 
-> ProductUpdateResponse ProductUpdate(ctx, id).Body(body).Execute()
+> ProductUpdateResponse ProductUpdate(ctx, id).ProductUpdate(productUpdate).Execute()
 
 Update product
 
@@ -315,11 +315,11 @@ import (
 
 func main() {
     id := int32(2196244) // int32 | The unique identifier of the product
-    body := ProductId(987) // ProductId |  (optional)
+    productUpdate := *openapiclient.NewProductUpdate() // ProductUpdate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProductAPI.ProductUpdate(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.ProductAPI.ProductUpdate(context.Background(), id).ProductUpdate(productUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -345,7 +345,7 @@ Other parameters are passed through a pointer to a apiProductUpdateRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **ProductId** |  | 
+ **productUpdate** | [**ProductUpdate**](ProductUpdate.md) |  | 
 
 ### Return type
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Status** | **string** |  | 
 **Reference** | **string** |  | 
 **Amount** | **int32** |  | 
-**Message** | **map[string]interface{}** |  | 
+**Message** | **interface{}** |  | 
 **GatewayResponse** | **string** |  | 
 **PaidAt** | **NullableString** |  | 
 **CreatedAt** | **string** |  | 
@@ -25,17 +25,17 @@ Name | Type | Description | Notes
 **Plan** | **map[string]interface{}** |  | 
 **Split** | **map[string]interface{}** |  | 
 **Subaccount** | **map[string]interface{}** |  | 
-**OrderId** | **map[string]interface{}** |  | 
+**OrderId** | **interface{}** |  | 
 **RequestedAmount** | **int32** |  | 
 **Source** | [**NullableTransactionListResponseArraySource**](TransactionListResponseArraySource.md) |  | 
 **Connect** | **map[string]interface{}** |  | 
-**PosTransactionData** | **map[string]interface{}** |  | 
+**PosTransactionData** | **interface{}** |  | 
 
 ## Methods
 
 ### NewTransactionListResponseArray
 
-`func NewTransactionListResponseArray(id int32, domain string, status string, reference string, amount int32, message map[string]interface{}, gatewayResponse string, paidAt NullableString, createdAt string, channel string, currency string, ipAddress NullableString, metadata map[string]interface{}, log NullableChargeAuthorizationResponseDataLog, fees NullableInt32, feesSplit NullableInt32, customer TransactionListResponseArrayCustomer, authorization TransactionListResponseArrayAuthorization, plan map[string]interface{}, split map[string]interface{}, subaccount map[string]interface{}, orderId map[string]interface{}, requestedAmount int32, source NullableTransactionListResponseArraySource, connect map[string]interface{}, posTransactionData map[string]interface{}, ) *TransactionListResponseArray`
+`func NewTransactionListResponseArray(id int32, domain string, status string, reference string, amount int32, message interface{}, gatewayResponse string, paidAt NullableString, createdAt string, channel string, currency string, ipAddress NullableString, metadata map[string]interface{}, log NullableChargeAuthorizationResponseDataLog, fees NullableInt32, feesSplit NullableInt32, customer TransactionListResponseArrayCustomer, authorization TransactionListResponseArrayAuthorization, plan map[string]interface{}, split map[string]interface{}, subaccount map[string]interface{}, orderId interface{}, requestedAmount int32, source NullableTransactionListResponseArraySource, connect map[string]interface{}, posTransactionData interface{}, ) *TransactionListResponseArray`
 
 NewTransactionListResponseArray instantiates a new TransactionListResponseArray object
 This constructor will assign default values to properties that have it defined,
@@ -152,20 +152,20 @@ SetAmount sets Amount field to given value.
 
 ### GetMessage
 
-`func (o *TransactionListResponseArray) GetMessage() map[string]interface{}`
+`func (o *TransactionListResponseArray) GetMessage() interface{}`
 
 GetMessage returns the Message field if non-nil, zero value otherwise.
 
 ### GetMessageOk
 
-`func (o *TransactionListResponseArray) GetMessageOk() (*map[string]interface{}, bool)`
+`func (o *TransactionListResponseArray) GetMessageOk() (*interface{}, bool)`
 
 GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessage
 
-`func (o *TransactionListResponseArray) SetMessage(v map[string]interface{})`
+`func (o *TransactionListResponseArray) SetMessage(v interface{})`
 
 SetMessage sets Message field to given value.
 
@@ -542,20 +542,20 @@ SetSubaccount sets Subaccount field to given value.
 
 ### GetOrderId
 
-`func (o *TransactionListResponseArray) GetOrderId() map[string]interface{}`
+`func (o *TransactionListResponseArray) GetOrderId() interface{}`
 
 GetOrderId returns the OrderId field if non-nil, zero value otherwise.
 
 ### GetOrderIdOk
 
-`func (o *TransactionListResponseArray) GetOrderIdOk() (*map[string]interface{}, bool)`
+`func (o *TransactionListResponseArray) GetOrderIdOk() (*interface{}, bool)`
 
 GetOrderIdOk returns a tuple with the OrderId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOrderId
 
-`func (o *TransactionListResponseArray) SetOrderId(v map[string]interface{})`
+`func (o *TransactionListResponseArray) SetOrderId(v interface{})`
 
 SetOrderId sets OrderId field to given value.
 
@@ -652,20 +652,20 @@ SetConnect sets Connect field to given value.
 UnsetConnect ensures that no value is present for Connect, not even an explicit nil
 ### GetPosTransactionData
 
-`func (o *TransactionListResponseArray) GetPosTransactionData() map[string]interface{}`
+`func (o *TransactionListResponseArray) GetPosTransactionData() interface{}`
 
 GetPosTransactionData returns the PosTransactionData field if non-nil, zero value otherwise.
 
 ### GetPosTransactionDataOk
 
-`func (o *TransactionListResponseArray) GetPosTransactionDataOk() (*map[string]interface{}, bool)`
+`func (o *TransactionListResponseArray) GetPosTransactionDataOk() (*interface{}, bool)`
 
 GetPosTransactionDataOk returns a tuple with the PosTransactionData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPosTransactionData
 
-`func (o *TransactionListResponseArray) SetPosTransactionData(v map[string]interface{})`
+`func (o *TransactionListResponseArray) SetPosTransactionData(v interface{})`
 
 SetPosTransactionData sets PosTransactionData field to given value.
 

@@ -29,7 +29,7 @@ type PageProductsArray struct {
 	Currency string `json:"currency"`
 	Quantity int32 `json:"quantity"`
 	Type string `json:"type"`
-	Features map[string]interface{} `json:"features"`
+	Features interface{} `json:"features"`
 	IsShippable int32 `json:"is_shippable"`
 	Domain string `json:"domain"`
 	Integration int32 `json:"integration"`
@@ -41,7 +41,7 @@ type PageProductsArray struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPageProductsArray(productId int32, name string, description string, productCode string, page int32, price int32, currency string, quantity int32, type_ string, features map[string]interface{}, isShippable int32, domain string, integration int32, active int32, inStock int32) *PageProductsArray {
+func NewPageProductsArray(productId int32, name string, description string, productCode string, page int32, price int32, currency string, quantity int32, type_ string, features interface{}, isShippable int32, domain string, integration int32, active int32, inStock int32) *PageProductsArray {
 	this := PageProductsArray{}
 	this.ProductId = productId
 	this.Name = name
@@ -286,10 +286,10 @@ func (o *PageProductsArray) SetType(v string) {
 }
 
 // GetFeatures returns the Features field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *PageProductsArray) GetFeatures() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *PageProductsArray) GetFeatures() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -299,15 +299,15 @@ func (o *PageProductsArray) GetFeatures() map[string]interface{} {
 // GetFeaturesOk returns a tuple with the Features field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PageProductsArray) GetFeaturesOk() (map[string]interface{}, bool) {
+func (o *PageProductsArray) GetFeaturesOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Features) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Features, true
+	return &o.Features, true
 }
 
 // SetFeatures sets field value
-func (o *PageProductsArray) SetFeatures(v map[string]interface{}) {
+func (o *PageProductsArray) SetFeatures(v interface{}) {
 	o.Features = v
 }
 

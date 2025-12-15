@@ -928,11 +928,11 @@ type ApiPaymentRequestUpdateRequest struct {
 	ctx context.Context
 	ApiService *PaymentRequestAPIService
 	id int32
-	body *PaymentrequestId
+	paymentRequestUpdate *PaymentRequestUpdate
 }
 
-func (r ApiPaymentRequestUpdateRequest) Body(body PaymentrequestId) ApiPaymentRequestUpdateRequest {
-	r.body = &body
+func (r ApiPaymentRequestUpdateRequest) PaymentRequestUpdate(paymentRequestUpdate PaymentRequestUpdate) ApiPaymentRequestUpdateRequest {
+	r.paymentRequestUpdate = &paymentRequestUpdate
 	return r
 }
 
@@ -997,7 +997,7 @@ func (a *PaymentRequestAPIService) PaymentRequestUpdateExecute(r ApiPaymentReque
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.paymentRequestUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

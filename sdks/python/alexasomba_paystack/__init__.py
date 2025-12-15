@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.1.0"
+__version__ = "1.1.1"
 
 # import apis into sdk package
 from alexasomba_paystack.api.apple_pay_api import ApplePayApi

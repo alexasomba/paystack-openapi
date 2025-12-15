@@ -20,14 +20,14 @@ var _ MappedNullable = &RefundCreateResponseDataTransactionSubaccount{}
 
 // RefundCreateResponseDataTransactionSubaccount struct for RefundCreateResponseDataTransactionSubaccount
 type RefundCreateResponseDataTransactionSubaccount struct {
-	Currency map[string]interface{} `json:"currency"`
+	Currency interface{} `json:"currency"`
 }
 
 // NewRefundCreateResponseDataTransactionSubaccount instantiates a new RefundCreateResponseDataTransactionSubaccount object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRefundCreateResponseDataTransactionSubaccount(currency map[string]interface{}) *RefundCreateResponseDataTransactionSubaccount {
+func NewRefundCreateResponseDataTransactionSubaccount(currency interface{}) *RefundCreateResponseDataTransactionSubaccount {
 	this := RefundCreateResponseDataTransactionSubaccount{}
 	this.Currency = currency
 	return &this
@@ -42,10 +42,10 @@ func NewRefundCreateResponseDataTransactionSubaccountWithDefaults() *RefundCreat
 }
 
 // GetCurrency returns the Currency field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *RefundCreateResponseDataTransactionSubaccount) GetCurrency() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *RefundCreateResponseDataTransactionSubaccount) GetCurrency() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -55,15 +55,15 @@ func (o *RefundCreateResponseDataTransactionSubaccount) GetCurrency() map[string
 // GetCurrencyOk returns a tuple with the Currency field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundCreateResponseDataTransactionSubaccount) GetCurrencyOk() (map[string]interface{}, bool) {
+func (o *RefundCreateResponseDataTransactionSubaccount) GetCurrencyOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Currency) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Currency, true
+	return &o.Currency, true
 }
 
 // SetCurrency sets field value
-func (o *RefundCreateResponseDataTransactionSubaccount) SetCurrency(v map[string]interface{}) {
+func (o *RefundCreateResponseDataTransactionSubaccount) SetCurrency(v interface{}) {
 	o.Currency = v
 }
 

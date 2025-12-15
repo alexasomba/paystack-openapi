@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Key** | **string** |  | 
 **Name** | **string** |  | 
 **Logo** | **string** |  | 
-**AllowedCurrencies** | **[]map[string]interface{}** |  | 
+**AllowedCurrencies** | **[]interface{}** |  | 
 
 ## Methods
 
 ### NewOrderValidateResponseDataIntegration
 
-`func NewOrderValidateResponseDataIntegration(key string, name string, logo string, allowedCurrencies []map[string]interface{}, ) *OrderValidateResponseDataIntegration`
+`func NewOrderValidateResponseDataIntegration(key string, name string, logo string, allowedCurrencies []interface{}, ) *OrderValidateResponseDataIntegration`
 
 NewOrderValidateResponseDataIntegration instantiates a new OrderValidateResponseDataIntegration object
 This constructor will assign default values to properties that have it defined,
@@ -90,20 +90,20 @@ SetLogo sets Logo field to given value.
 
 ### GetAllowedCurrencies
 
-`func (o *OrderValidateResponseDataIntegration) GetAllowedCurrencies() []map[string]interface{}`
+`func (o *OrderValidateResponseDataIntegration) GetAllowedCurrencies() []interface{}`
 
 GetAllowedCurrencies returns the AllowedCurrencies field if non-nil, zero value otherwise.
 
 ### GetAllowedCurrenciesOk
 
-`func (o *OrderValidateResponseDataIntegration) GetAllowedCurrenciesOk() (*[]map[string]interface{}, bool)`
+`func (o *OrderValidateResponseDataIntegration) GetAllowedCurrenciesOk() (*[]interface{}, bool)`
 
 GetAllowedCurrenciesOk returns a tuple with the AllowedCurrencies field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAllowedCurrencies
 
-`func (o *OrderValidateResponseDataIntegration) SetAllowedCurrencies(v []map[string]interface{})`
+`func (o *OrderValidateResponseDataIntegration) SetAllowedCurrencies(v []interface{})`
 
 SetAllowedCurrencies sets AllowedCurrencies field to given value.
 

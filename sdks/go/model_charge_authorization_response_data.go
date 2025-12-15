@@ -30,12 +30,12 @@ type ChargeAuthorizationResponseData struct {
 	GatewayResponse string `json:"gateway_response"`
 	Message NullableString `json:"message"`
 	Channel string `json:"channel"`
-	IpAddress map[string]interface{} `json:"ip_address"`
+	IpAddress interface{} `json:"ip_address"`
 	Log NullableChargeAuthorizationResponseDataLog `json:"log"`
 	Fees NullableInt32 `json:"fees"`
 	Authorization ChargeAuthorizationResponseDataAuthorization `json:"authorization"`
 	Customer ChargeAuthorizationResponseDataCustomer `json:"customer"`
-	Plan map[string]interface{} `json:"plan"`
+	Plan interface{} `json:"plan"`
 	Id int32 `json:"id"`
 }
 
@@ -43,7 +43,7 @@ type ChargeAuthorizationResponseData struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChargeAuthorizationResponseData(amount int32, currency string, transactionDate string, status string, reference string, domain string, metadata string, gatewayResponse string, message NullableString, channel string, ipAddress map[string]interface{}, log NullableChargeAuthorizationResponseDataLog, fees NullableInt32, authorization ChargeAuthorizationResponseDataAuthorization, customer ChargeAuthorizationResponseDataCustomer, plan map[string]interface{}, id int32) *ChargeAuthorizationResponseData {
+func NewChargeAuthorizationResponseData(amount int32, currency string, transactionDate string, status string, reference string, domain string, metadata string, gatewayResponse string, message NullableString, channel string, ipAddress interface{}, log NullableChargeAuthorizationResponseDataLog, fees NullableInt32, authorization ChargeAuthorizationResponseDataAuthorization, customer ChargeAuthorizationResponseDataCustomer, plan interface{}, id int32) *ChargeAuthorizationResponseData {
 	this := ChargeAuthorizationResponseData{}
 	this.Amount = amount
 	this.Currency = currency
@@ -316,10 +316,10 @@ func (o *ChargeAuthorizationResponseData) SetChannel(v string) {
 }
 
 // GetIpAddress returns the IpAddress field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *ChargeAuthorizationResponseData) GetIpAddress() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ChargeAuthorizationResponseData) GetIpAddress() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -329,15 +329,15 @@ func (o *ChargeAuthorizationResponseData) GetIpAddress() map[string]interface{} 
 // GetIpAddressOk returns a tuple with the IpAddress field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ChargeAuthorizationResponseData) GetIpAddressOk() (map[string]interface{}, bool) {
+func (o *ChargeAuthorizationResponseData) GetIpAddressOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.IpAddress) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.IpAddress, true
+	return &o.IpAddress, true
 }
 
 // SetIpAddress sets field value
-func (o *ChargeAuthorizationResponseData) SetIpAddress(v map[string]interface{}) {
+func (o *ChargeAuthorizationResponseData) SetIpAddress(v interface{}) {
 	o.IpAddress = v
 }
 
@@ -442,10 +442,10 @@ func (o *ChargeAuthorizationResponseData) SetCustomer(v ChargeAuthorizationRespo
 }
 
 // GetPlan returns the Plan field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *ChargeAuthorizationResponseData) GetPlan() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ChargeAuthorizationResponseData) GetPlan() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -455,15 +455,15 @@ func (o *ChargeAuthorizationResponseData) GetPlan() map[string]interface{} {
 // GetPlanOk returns a tuple with the Plan field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ChargeAuthorizationResponseData) GetPlanOk() (map[string]interface{}, bool) {
+func (o *ChargeAuthorizationResponseData) GetPlanOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Plan) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Plan, true
+	return &o.Plan, true
 }
 
 // SetPlan sets field value
-func (o *ChargeAuthorizationResponseData) SetPlan(v map[string]interface{}) {
+func (o *ChargeAuthorizationResponseData) SetPlan(v interface{}) {
 	o.Plan = v
 }
 

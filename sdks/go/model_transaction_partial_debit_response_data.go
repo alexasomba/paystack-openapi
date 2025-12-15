@@ -28,9 +28,9 @@ type TransactionPartialDebitResponseData struct {
 	Domain string `json:"domain"`
 	Metadata string `json:"metadata"`
 	GatewayResponse string `json:"gateway_response"`
-	Message map[string]interface{} `json:"message"`
+	Message interface{} `json:"message"`
 	Channel string `json:"channel"`
-	IpAddress map[string]interface{} `json:"ip_address"`
+	IpAddress interface{} `json:"ip_address"`
 	Log NullableChargeAuthorizationResponseDataLog `json:"log"`
 	Fees int32 `json:"fees"`
 	Authorization TransactionPartialDebitResponseDataAuthorization `json:"authorization"`
@@ -44,7 +44,7 @@ type TransactionPartialDebitResponseData struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransactionPartialDebitResponseData(amount int32, currency string, transactionDate string, status string, reference string, domain string, metadata string, gatewayResponse string, message map[string]interface{}, channel string, ipAddress map[string]interface{}, log NullableChargeAuthorizationResponseDataLog, fees int32, authorization TransactionPartialDebitResponseDataAuthorization, customer TransactionPartialDebitResponseDataCustomer, plan int32, requestedAmount int32, id int32) *TransactionPartialDebitResponseData {
+func NewTransactionPartialDebitResponseData(amount int32, currency string, transactionDate string, status string, reference string, domain string, metadata string, gatewayResponse string, message interface{}, channel string, ipAddress interface{}, log NullableChargeAuthorizationResponseDataLog, fees int32, authorization TransactionPartialDebitResponseDataAuthorization, customer TransactionPartialDebitResponseDataCustomer, plan int32, requestedAmount int32, id int32) *TransactionPartialDebitResponseData {
 	this := TransactionPartialDebitResponseData{}
 	this.Amount = amount
 	this.Currency = currency
@@ -268,10 +268,10 @@ func (o *TransactionPartialDebitResponseData) SetGatewayResponse(v string) {
 }
 
 // GetMessage returns the Message field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *TransactionPartialDebitResponseData) GetMessage() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *TransactionPartialDebitResponseData) GetMessage() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -281,15 +281,15 @@ func (o *TransactionPartialDebitResponseData) GetMessage() map[string]interface{
 // GetMessageOk returns a tuple with the Message field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransactionPartialDebitResponseData) GetMessageOk() (map[string]interface{}, bool) {
+func (o *TransactionPartialDebitResponseData) GetMessageOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Message) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Message, true
+	return &o.Message, true
 }
 
 // SetMessage sets field value
-func (o *TransactionPartialDebitResponseData) SetMessage(v map[string]interface{}) {
+func (o *TransactionPartialDebitResponseData) SetMessage(v interface{}) {
 	o.Message = v
 }
 
@@ -318,10 +318,10 @@ func (o *TransactionPartialDebitResponseData) SetChannel(v string) {
 }
 
 // GetIpAddress returns the IpAddress field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *TransactionPartialDebitResponseData) GetIpAddress() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *TransactionPartialDebitResponseData) GetIpAddress() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -331,15 +331,15 @@ func (o *TransactionPartialDebitResponseData) GetIpAddress() map[string]interfac
 // GetIpAddressOk returns a tuple with the IpAddress field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransactionPartialDebitResponseData) GetIpAddressOk() (map[string]interface{}, bool) {
+func (o *TransactionPartialDebitResponseData) GetIpAddressOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.IpAddress) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.IpAddress, true
+	return &o.IpAddress, true
 }
 
 // SetIpAddress sets field value
-func (o *TransactionPartialDebitResponseData) SetIpAddress(v map[string]interface{}) {
+func (o *TransactionPartialDebitResponseData) SetIpAddress(v interface{}) {
 	o.IpAddress = v
 }
 

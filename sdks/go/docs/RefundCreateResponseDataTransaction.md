@@ -16,16 +16,16 @@ Name | Type | Description | Notes
 **Plan** | **map[string]interface{}** |  | 
 **Subaccount** | [**RefundCreateResponseDataTransactionSubaccount**](RefundCreateResponseDataTransactionSubaccount.md) |  | 
 **Split** | **map[string]interface{}** |  | 
-**OrderId** | **map[string]interface{}** |  | 
-**PosTransactionData** | **map[string]interface{}** |  | 
-**Source** | **map[string]interface{}** |  | 
-**FeesBreakdown** | **map[string]interface{}** |  | 
+**OrderId** | **interface{}** |  | 
+**PosTransactionData** | **interface{}** |  | 
+**Source** | **interface{}** |  | 
+**FeesBreakdown** | **interface{}** |  | 
 
 ## Methods
 
 ### NewRefundCreateResponseDataTransaction
 
-`func NewRefundCreateResponseDataTransaction(id int32, domain string, reference string, amount int32, paidAt string, channel string, currency string, authorization RefundCreateResponseDataTransactionAuthorization, customer RefundCreateResponseDataTransactionCustomer, plan map[string]interface{}, subaccount RefundCreateResponseDataTransactionSubaccount, split map[string]interface{}, orderId map[string]interface{}, posTransactionData map[string]interface{}, source map[string]interface{}, feesBreakdown map[string]interface{}, ) *RefundCreateResponseDataTransaction`
+`func NewRefundCreateResponseDataTransaction(id int32, domain string, reference string, amount int32, paidAt string, channel string, currency string, authorization RefundCreateResponseDataTransactionAuthorization, customer RefundCreateResponseDataTransactionCustomer, plan map[string]interface{}, subaccount RefundCreateResponseDataTransactionSubaccount, split map[string]interface{}, orderId interface{}, posTransactionData interface{}, source interface{}, feesBreakdown interface{}, ) *RefundCreateResponseDataTransaction`
 
 NewRefundCreateResponseDataTransaction instantiates a new RefundCreateResponseDataTransaction object
 This constructor will assign default values to properties that have it defined,
@@ -282,20 +282,20 @@ SetSplit sets Split field to given value.
 
 ### GetOrderId
 
-`func (o *RefundCreateResponseDataTransaction) GetOrderId() map[string]interface{}`
+`func (o *RefundCreateResponseDataTransaction) GetOrderId() interface{}`
 
 GetOrderId returns the OrderId field if non-nil, zero value otherwise.
 
 ### GetOrderIdOk
 
-`func (o *RefundCreateResponseDataTransaction) GetOrderIdOk() (*map[string]interface{}, bool)`
+`func (o *RefundCreateResponseDataTransaction) GetOrderIdOk() (*interface{}, bool)`
 
 GetOrderIdOk returns a tuple with the OrderId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOrderId
 
-`func (o *RefundCreateResponseDataTransaction) SetOrderId(v map[string]interface{})`
+`func (o *RefundCreateResponseDataTransaction) SetOrderId(v interface{})`
 
 SetOrderId sets OrderId field to given value.
 
@@ -312,20 +312,20 @@ SetOrderId sets OrderId field to given value.
 UnsetOrderId ensures that no value is present for OrderId, not even an explicit nil
 ### GetPosTransactionData
 
-`func (o *RefundCreateResponseDataTransaction) GetPosTransactionData() map[string]interface{}`
+`func (o *RefundCreateResponseDataTransaction) GetPosTransactionData() interface{}`
 
 GetPosTransactionData returns the PosTransactionData field if non-nil, zero value otherwise.
 
 ### GetPosTransactionDataOk
 
-`func (o *RefundCreateResponseDataTransaction) GetPosTransactionDataOk() (*map[string]interface{}, bool)`
+`func (o *RefundCreateResponseDataTransaction) GetPosTransactionDataOk() (*interface{}, bool)`
 
 GetPosTransactionDataOk returns a tuple with the PosTransactionData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPosTransactionData
 
-`func (o *RefundCreateResponseDataTransaction) SetPosTransactionData(v map[string]interface{})`
+`func (o *RefundCreateResponseDataTransaction) SetPosTransactionData(v interface{})`
 
 SetPosTransactionData sets PosTransactionData field to given value.
 
@@ -342,20 +342,20 @@ SetPosTransactionData sets PosTransactionData field to given value.
 UnsetPosTransactionData ensures that no value is present for PosTransactionData, not even an explicit nil
 ### GetSource
 
-`func (o *RefundCreateResponseDataTransaction) GetSource() map[string]interface{}`
+`func (o *RefundCreateResponseDataTransaction) GetSource() interface{}`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *RefundCreateResponseDataTransaction) GetSourceOk() (*map[string]interface{}, bool)`
+`func (o *RefundCreateResponseDataTransaction) GetSourceOk() (*interface{}, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *RefundCreateResponseDataTransaction) SetSource(v map[string]interface{})`
+`func (o *RefundCreateResponseDataTransaction) SetSource(v interface{})`
 
 SetSource sets Source field to given value.
 
@@ -372,20 +372,20 @@ SetSource sets Source field to given value.
 UnsetSource ensures that no value is present for Source, not even an explicit nil
 ### GetFeesBreakdown
 
-`func (o *RefundCreateResponseDataTransaction) GetFeesBreakdown() map[string]interface{}`
+`func (o *RefundCreateResponseDataTransaction) GetFeesBreakdown() interface{}`
 
 GetFeesBreakdown returns the FeesBreakdown field if non-nil, zero value otherwise.
 
 ### GetFeesBreakdownOk
 
-`func (o *RefundCreateResponseDataTransaction) GetFeesBreakdownOk() (*map[string]interface{}, bool)`
+`func (o *RefundCreateResponseDataTransaction) GetFeesBreakdownOk() (*interface{}, bool)`
 
 GetFeesBreakdownOk returns a tuple with the FeesBreakdown field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFeesBreakdown
 
-`func (o *RefundCreateResponseDataTransaction) SetFeesBreakdown(v map[string]interface{})`
+`func (o *RefundCreateResponseDataTransaction) SetFeesBreakdown(v interface{})`
 
 SetFeesBreakdown sets FeesBreakdown field to given value.
 

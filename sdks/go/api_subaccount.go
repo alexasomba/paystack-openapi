@@ -148,7 +148,7 @@ type ApiSubaccountFetchRequest struct {
 	code string
 }
 
-func (r ApiSubaccountFetchRequest) Execute() (*SubaccountCode, *http.Response, error) {
+func (r ApiSubaccountFetchRequest) Execute() (*SubaccountFetchResponse, *http.Response, error) {
 	return r.ApiService.SubaccountFetchExecute(r)
 }
 
@@ -170,13 +170,13 @@ func (a *SubaccountAPIService) SubaccountFetch(ctx context.Context, code string)
 }
 
 // Execute executes the request
-//  @return SubaccountCode
-func (a *SubaccountAPIService) SubaccountFetchExecute(r ApiSubaccountFetchRequest) (*SubaccountCode, *http.Response, error) {
+//  @return SubaccountFetchResponse
+func (a *SubaccountAPIService) SubaccountFetchExecute(r ApiSubaccountFetchRequest) (*SubaccountFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SubaccountCode
+		localVarReturnValue  *SubaccountFetchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubaccountAPIService.SubaccountFetch")
@@ -422,15 +422,15 @@ type ApiSubaccountUpdateRequest struct {
 	ctx context.Context
 	ApiService *SubaccountAPIService
 	code string
-	body *SubaccountCode
+	subaccountUpdate *SubaccountUpdate
 }
 
-func (r ApiSubaccountUpdateRequest) Body(body SubaccountCode) ApiSubaccountUpdateRequest {
-	r.body = &body
+func (r ApiSubaccountUpdateRequest) SubaccountUpdate(subaccountUpdate SubaccountUpdate) ApiSubaccountUpdateRequest {
+	r.subaccountUpdate = &subaccountUpdate
 	return r
 }
 
-func (r ApiSubaccountUpdateRequest) Execute() (*SubaccountCode, *http.Response, error) {
+func (r ApiSubaccountUpdateRequest) Execute() (*SubaccountUpdateResponse, *http.Response, error) {
 	return r.ApiService.SubaccountUpdateExecute(r)
 }
 
@@ -452,13 +452,13 @@ func (a *SubaccountAPIService) SubaccountUpdate(ctx context.Context, code string
 }
 
 // Execute executes the request
-//  @return SubaccountCode
-func (a *SubaccountAPIService) SubaccountUpdateExecute(r ApiSubaccountUpdateRequest) (*SubaccountCode, *http.Response, error) {
+//  @return SubaccountUpdateResponse
+func (a *SubaccountAPIService) SubaccountUpdateExecute(r ApiSubaccountUpdateRequest) (*SubaccountUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SubaccountCode
+		localVarReturnValue  *SubaccountUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubaccountAPIService.SubaccountUpdate")
@@ -491,7 +491,7 @@ func (a *SubaccountAPIService) SubaccountUpdateExecute(r ApiSubaccountUpdateRequ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.subaccountUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

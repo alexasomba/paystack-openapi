@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Currency** | **string** |  | 
 **Quantity** | **int32** |  | 
 **Type** | **string** |  | 
-**Features** | **map[string]interface{}** |  | 
+**Features** | **interface{}** |  | 
 **IsShippable** | **int32** |  | 
 **Domain** | **string** |  | 
 **Integration** | **int32** |  | 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewPageProductsArray
 
-`func NewPageProductsArray(productId int32, name string, description string, productCode string, page int32, price int32, currency string, quantity int32, type_ string, features map[string]interface{}, isShippable int32, domain string, integration int32, active int32, inStock int32, ) *PageProductsArray`
+`func NewPageProductsArray(productId int32, name string, description string, productCode string, page int32, price int32, currency string, quantity int32, type_ string, features interface{}, isShippable int32, domain string, integration int32, active int32, inStock int32, ) *PageProductsArray`
 
 NewPageProductsArray instantiates a new PageProductsArray object
 This constructor will assign default values to properties that have it defined,
@@ -221,20 +221,20 @@ SetType sets Type field to given value.
 
 ### GetFeatures
 
-`func (o *PageProductsArray) GetFeatures() map[string]interface{}`
+`func (o *PageProductsArray) GetFeatures() interface{}`
 
 GetFeatures returns the Features field if non-nil, zero value otherwise.
 
 ### GetFeaturesOk
 
-`func (o *PageProductsArray) GetFeaturesOk() (*map[string]interface{}, bool)`
+`func (o *PageProductsArray) GetFeaturesOk() (*interface{}, bool)`
 
 GetFeaturesOk returns a tuple with the Features field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFeatures
 
-`func (o *PageProductsArray) SetFeatures(v map[string]interface{})`
+`func (o *PageProductsArray) SetFeatures(v interface{})`
 
 SetFeatures sets Features field to given value.
 

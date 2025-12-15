@@ -28,11 +28,11 @@ type ApiStorefrontAddProductsRequest struct {
 	ctx context.Context
 	ApiService *StorefrontAPIService
 	id int32
-	body *StorefrontIdProduct
+	storefrontAddProducts *StorefrontAddProducts
 }
 
-func (r ApiStorefrontAddProductsRequest) Body(body StorefrontIdProduct) ApiStorefrontAddProductsRequest {
-	r.body = &body
+func (r ApiStorefrontAddProductsRequest) StorefrontAddProducts(storefrontAddProducts StorefrontAddProducts) ApiStorefrontAddProductsRequest {
+	r.storefrontAddProducts = &storefrontAddProducts
 	return r
 }
 
@@ -97,7 +97,7 @@ func (a *StorefrontAPIService) StorefrontAddProductsExecute(r ApiStorefrontAddPr
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.storefrontAddProducts
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1168,11 +1168,11 @@ type ApiStorefrontUpdateRequest struct {
 	ctx context.Context
 	ApiService *StorefrontAPIService
 	id int32
-	body *StorefrontId
+	storefrontUpdate *StorefrontUpdate
 }
 
-func (r ApiStorefrontUpdateRequest) Body(body StorefrontId) ApiStorefrontUpdateRequest {
-	r.body = &body
+func (r ApiStorefrontUpdateRequest) StorefrontUpdate(storefrontUpdate StorefrontUpdate) ApiStorefrontUpdateRequest {
+	r.storefrontUpdate = &storefrontUpdate
 	return r
 }
 
@@ -1237,7 +1237,7 @@ func (a *StorefrontAPIService) StorefrontUpdateExecute(r ApiStorefrontUpdateRequ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.storefrontUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

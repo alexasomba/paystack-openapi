@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReceiverBankAccountNumber** | **map[string]interface{}** |  | 
-**ReceiverBank** | **map[string]interface{}** |  | 
+**ReceiverBankAccountNumber** | **interface{}** |  | 
+**ReceiverBank** | **interface{}** |  | 
 
 ## Methods
 
 ### NewDisputeFetchResponseDataTransactionAuthorization
 
-`func NewDisputeFetchResponseDataTransactionAuthorization(receiverBankAccountNumber map[string]interface{}, receiverBank map[string]interface{}, ) *DisputeFetchResponseDataTransactionAuthorization`
+`func NewDisputeFetchResponseDataTransactionAuthorization(receiverBankAccountNumber interface{}, receiverBank interface{}, ) *DisputeFetchResponseDataTransactionAuthorization`
 
 NewDisputeFetchResponseDataTransactionAuthorization instantiates a new DisputeFetchResponseDataTransactionAuthorization object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetReceiverBankAccountNumber
 
-`func (o *DisputeFetchResponseDataTransactionAuthorization) GetReceiverBankAccountNumber() map[string]interface{}`
+`func (o *DisputeFetchResponseDataTransactionAuthorization) GetReceiverBankAccountNumber() interface{}`
 
 GetReceiverBankAccountNumber returns the ReceiverBankAccountNumber field if non-nil, zero value otherwise.
 
 ### GetReceiverBankAccountNumberOk
 
-`func (o *DisputeFetchResponseDataTransactionAuthorization) GetReceiverBankAccountNumberOk() (*map[string]interface{}, bool)`
+`func (o *DisputeFetchResponseDataTransactionAuthorization) GetReceiverBankAccountNumberOk() (*interface{}, bool)`
 
 GetReceiverBankAccountNumberOk returns a tuple with the ReceiverBankAccountNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReceiverBankAccountNumber
 
-`func (o *DisputeFetchResponseDataTransactionAuthorization) SetReceiverBankAccountNumber(v map[string]interface{})`
+`func (o *DisputeFetchResponseDataTransactionAuthorization) SetReceiverBankAccountNumber(v interface{})`
 
 SetReceiverBankAccountNumber sets ReceiverBankAccountNumber field to given value.
 
@@ -58,20 +58,20 @@ SetReceiverBankAccountNumber sets ReceiverBankAccountNumber field to given value
 UnsetReceiverBankAccountNumber ensures that no value is present for ReceiverBankAccountNumber, not even an explicit nil
 ### GetReceiverBank
 
-`func (o *DisputeFetchResponseDataTransactionAuthorization) GetReceiverBank() map[string]interface{}`
+`func (o *DisputeFetchResponseDataTransactionAuthorization) GetReceiverBank() interface{}`
 
 GetReceiverBank returns the ReceiverBank field if non-nil, zero value otherwise.
 
 ### GetReceiverBankOk
 
-`func (o *DisputeFetchResponseDataTransactionAuthorization) GetReceiverBankOk() (*map[string]interface{}, bool)`
+`func (o *DisputeFetchResponseDataTransactionAuthorization) GetReceiverBankOk() (*interface{}, bool)`
 
 GetReceiverBankOk returns a tuple with the ReceiverBank field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReceiverBank
 
-`func (o *DisputeFetchResponseDataTransactionAuthorization) SetReceiverBank(v map[string]interface{})`
+`func (o *DisputeFetchResponseDataTransactionAuthorization) SetReceiverBank(v interface{})`
 
 SetReceiverBank sets ReceiverBank field to given value.
 

@@ -19,20 +19,20 @@ Name | Type | Description | Notes
 **RequestCode** | **string** |  | 
 **Status** | **string** |  | 
 **Paid** | **bool** |  | 
-**PaidAt** | **map[string]interface{}** |  | 
-**Metadata** | **map[string]interface{}** |  | 
-**Notifications** | **[]map[string]interface{}** |  | 
+**PaidAt** | **interface{}** |  | 
+**Metadata** | **interface{}** |  | 
+**Notifications** | **[]interface{}** |  | 
 **OfflineReference** | **string** |  | 
-**Customer** | [**ChargeCreateResponseDataCustomer**](ChargeCreateResponseDataCustomer.md) |  | 
+**Customer** | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |  | 
 **CreatedAt** | **string** |  | 
-**Discount** | **map[string]interface{}** |  | 
+**Discount** | **interface{}** |  | 
 **SplitCode** | **NullableString** |  | 
 
 ## Methods
 
 ### NewPaymentRequestListResponseArray
 
-`func NewPaymentRequestListResponseArray(id int32, integration int32, domain string, amount int32, currency string, dueDate NullableString, hasInvoice bool, invoiceNumber NullableInt32, description NullableString, pdfUrl NullableString, lineItems []PaymentRequestLineItemsArray, tax []PaymentRequestTaxArray, requestCode string, status string, paid bool, paidAt map[string]interface{}, metadata map[string]interface{}, notifications []map[string]interface{}, offlineReference string, customer ChargeCreateResponseDataCustomer, createdAt string, discount map[string]interface{}, splitCode NullableString, ) *PaymentRequestListResponseArray`
+`func NewPaymentRequestListResponseArray(id int32, integration int32, domain string, amount int32, currency string, dueDate NullableString, hasInvoice bool, invoiceNumber NullableInt32, description NullableString, pdfUrl NullableString, lineItems []PaymentRequestLineItemsArray, tax []PaymentRequestTaxArray, requestCode string, status string, paid bool, paidAt interface{}, metadata interface{}, notifications []interface{}, offlineReference string, customer TransactionFetchResponseDataCustomer, createdAt string, discount interface{}, splitCode NullableString, ) *PaymentRequestListResponseArray`
 
 NewPaymentRequestListResponseArray instantiates a new PaymentRequestListResponseArray object
 This constructor will assign default values to properties that have it defined,
@@ -389,20 +389,20 @@ SetPaid sets Paid field to given value.
 
 ### GetPaidAt
 
-`func (o *PaymentRequestListResponseArray) GetPaidAt() map[string]interface{}`
+`func (o *PaymentRequestListResponseArray) GetPaidAt() interface{}`
 
 GetPaidAt returns the PaidAt field if non-nil, zero value otherwise.
 
 ### GetPaidAtOk
 
-`func (o *PaymentRequestListResponseArray) GetPaidAtOk() (*map[string]interface{}, bool)`
+`func (o *PaymentRequestListResponseArray) GetPaidAtOk() (*interface{}, bool)`
 
 GetPaidAtOk returns a tuple with the PaidAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPaidAt
 
-`func (o *PaymentRequestListResponseArray) SetPaidAt(v map[string]interface{})`
+`func (o *PaymentRequestListResponseArray) SetPaidAt(v interface{})`
 
 SetPaidAt sets PaidAt field to given value.
 
@@ -419,20 +419,20 @@ SetPaidAt sets PaidAt field to given value.
 UnsetPaidAt ensures that no value is present for PaidAt, not even an explicit nil
 ### GetMetadata
 
-`func (o *PaymentRequestListResponseArray) GetMetadata() map[string]interface{}`
+`func (o *PaymentRequestListResponseArray) GetMetadata() interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *PaymentRequestListResponseArray) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *PaymentRequestListResponseArray) GetMetadataOk() (*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *PaymentRequestListResponseArray) SetMetadata(v map[string]interface{})`
+`func (o *PaymentRequestListResponseArray) SetMetadata(v interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -449,20 +449,20 @@ SetMetadata sets Metadata field to given value.
 UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
 ### GetNotifications
 
-`func (o *PaymentRequestListResponseArray) GetNotifications() []map[string]interface{}`
+`func (o *PaymentRequestListResponseArray) GetNotifications() []interface{}`
 
 GetNotifications returns the Notifications field if non-nil, zero value otherwise.
 
 ### GetNotificationsOk
 
-`func (o *PaymentRequestListResponseArray) GetNotificationsOk() (*[]map[string]interface{}, bool)`
+`func (o *PaymentRequestListResponseArray) GetNotificationsOk() (*[]interface{}, bool)`
 
 GetNotificationsOk returns a tuple with the Notifications field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNotifications
 
-`func (o *PaymentRequestListResponseArray) SetNotifications(v []map[string]interface{})`
+`func (o *PaymentRequestListResponseArray) SetNotifications(v []interface{})`
 
 SetNotifications sets Notifications field to given value.
 
@@ -489,20 +489,20 @@ SetOfflineReference sets OfflineReference field to given value.
 
 ### GetCustomer
 
-`func (o *PaymentRequestListResponseArray) GetCustomer() ChargeCreateResponseDataCustomer`
+`func (o *PaymentRequestListResponseArray) GetCustomer() TransactionFetchResponseDataCustomer`
 
 GetCustomer returns the Customer field if non-nil, zero value otherwise.
 
 ### GetCustomerOk
 
-`func (o *PaymentRequestListResponseArray) GetCustomerOk() (*ChargeCreateResponseDataCustomer, bool)`
+`func (o *PaymentRequestListResponseArray) GetCustomerOk() (*TransactionFetchResponseDataCustomer, bool)`
 
 GetCustomerOk returns a tuple with the Customer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCustomer
 
-`func (o *PaymentRequestListResponseArray) SetCustomer(v ChargeCreateResponseDataCustomer)`
+`func (o *PaymentRequestListResponseArray) SetCustomer(v TransactionFetchResponseDataCustomer)`
 
 SetCustomer sets Customer field to given value.
 
@@ -529,20 +529,20 @@ SetCreatedAt sets CreatedAt field to given value.
 
 ### GetDiscount
 
-`func (o *PaymentRequestListResponseArray) GetDiscount() map[string]interface{}`
+`func (o *PaymentRequestListResponseArray) GetDiscount() interface{}`
 
 GetDiscount returns the Discount field if non-nil, zero value otherwise.
 
 ### GetDiscountOk
 
-`func (o *PaymentRequestListResponseArray) GetDiscountOk() (*map[string]interface{}, bool)`
+`func (o *PaymentRequestListResponseArray) GetDiscountOk() (*interface{}, bool)`
 
 GetDiscountOk returns a tuple with the Discount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDiscount
 
-`func (o *PaymentRequestListResponseArray) SetDiscount(v map[string]interface{})`
+`func (o *PaymentRequestListResponseArray) SetDiscount(v interface{})`
 
 SetDiscount sets Discount field to given value.
 

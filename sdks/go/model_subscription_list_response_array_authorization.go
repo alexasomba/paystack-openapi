@@ -32,14 +32,14 @@ type SubscriptionListResponseArrayAuthorization struct {
 	Brand string `json:"brand"`
 	Reusable int32 `json:"reusable"`
 	Signature NullableString `json:"signature"`
-	AccountName map[string]interface{} `json:"account_name"`
+	AccountName interface{} `json:"account_name"`
 }
 
 // NewSubscriptionListResponseArrayAuthorization instantiates a new SubscriptionListResponseArrayAuthorization object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSubscriptionListResponseArrayAuthorization(authorizationCode string, bin NullableString, last4 string, expMonth string, expYear string, channel string, cardType NullableString, bank string, countryCode string, brand string, reusable int32, signature NullableString, accountName map[string]interface{}) *SubscriptionListResponseArrayAuthorization {
+func NewSubscriptionListResponseArrayAuthorization(authorizationCode string, bin NullableString, last4 string, expMonth string, expYear string, channel string, cardType NullableString, bank string, countryCode string, brand string, reusable int32, signature NullableString, accountName interface{}) *SubscriptionListResponseArrayAuthorization {
 	this := SubscriptionListResponseArrayAuthorization{}
 	this.AuthorizationCode = authorizationCode
 	this.Bin = bin
@@ -360,10 +360,10 @@ func (o *SubscriptionListResponseArrayAuthorization) SetSignature(v string) {
 }
 
 // GetAccountName returns the AccountName field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *SubscriptionListResponseArrayAuthorization) GetAccountName() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *SubscriptionListResponseArrayAuthorization) GetAccountName() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -373,15 +373,15 @@ func (o *SubscriptionListResponseArrayAuthorization) GetAccountName() map[string
 // GetAccountNameOk returns a tuple with the AccountName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubscriptionListResponseArrayAuthorization) GetAccountNameOk() (map[string]interface{}, bool) {
+func (o *SubscriptionListResponseArrayAuthorization) GetAccountNameOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.AccountName) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.AccountName, true
+	return &o.AccountName, true
 }
 
 // SetAccountName sets field value
-func (o *SubscriptionListResponseArrayAuthorization) SetAccountName(v map[string]interface{}) {
+func (o *SubscriptionListResponseArrayAuthorization) SetAccountName(v interface{}) {
 	o.AccountName = v
 }
 

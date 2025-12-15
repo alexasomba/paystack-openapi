@@ -265,11 +265,11 @@ type ApiCustomerDirectDebitActivationChargeRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	id int32
-	body *CustomerIdDirectdebitActivationCharge
+	customerDirectDebitActivationChargeRequest *CustomerDirectDebitActivationChargeRequest
 }
 
-func (r ApiCustomerDirectDebitActivationChargeRequest) Body(body CustomerIdDirectdebitActivationCharge) ApiCustomerDirectDebitActivationChargeRequest {
-	r.body = &body
+func (r ApiCustomerDirectDebitActivationChargeRequest) CustomerDirectDebitActivationChargeRequest(customerDirectDebitActivationChargeRequest CustomerDirectDebitActivationChargeRequest) ApiCustomerDirectDebitActivationChargeRequest {
+	r.customerDirectDebitActivationChargeRequest = &customerDirectDebitActivationChargeRequest
 	return r
 }
 
@@ -334,7 +334,7 @@ func (a *CustomerAPIService) CustomerDirectDebitActivationChargeExecute(r ApiCus
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.customerDirectDebitActivationChargeRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -389,7 +389,7 @@ type ApiCustomerFetchRequest struct {
 	code string
 }
 
-func (r ApiCustomerFetchRequest) Execute() (*CustomerCode, *http.Response, error) {
+func (r ApiCustomerFetchRequest) Execute() (*CustomerFetchResponse, *http.Response, error) {
 	return r.ApiService.CustomerFetchExecute(r)
 }
 
@@ -411,13 +411,13 @@ func (a *CustomerAPIService) CustomerFetch(ctx context.Context, code string) Api
 }
 
 // Execute executes the request
-//  @return CustomerCode
-func (a *CustomerAPIService) CustomerFetchExecute(r ApiCustomerFetchRequest) (*CustomerCode, *http.Response, error) {
+//  @return CustomerFetchResponse
+func (a *CustomerAPIService) CustomerFetchExecute(r ApiCustomerFetchRequest) (*CustomerFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CustomerCode
+		localVarReturnValue  *CustomerFetchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFetch")
@@ -747,11 +747,11 @@ type ApiCustomerInitializeDirectDebitRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	id int32
-	body *CustomerIdInitializeDirectDebit
+	customerInitializeDirectDebitRequest *CustomerInitializeDirectDebitRequest
 }
 
-func (r ApiCustomerInitializeDirectDebitRequest) Body(body CustomerIdInitializeDirectDebit) ApiCustomerInitializeDirectDebitRequest {
-	r.body = &body
+func (r ApiCustomerInitializeDirectDebitRequest) CustomerInitializeDirectDebitRequest(customerInitializeDirectDebitRequest CustomerInitializeDirectDebitRequest) ApiCustomerInitializeDirectDebitRequest {
+	r.customerInitializeDirectDebitRequest = &customerInitializeDirectDebitRequest
 	return r
 }
 
@@ -816,7 +816,7 @@ func (a *CustomerAPIService) CustomerInitializeDirectDebitExecute(r ApiCustomerI
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.customerInitializeDirectDebitRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1178,15 +1178,15 @@ type ApiCustomerUpdateRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	code string
-	body *CustomerCode
+	customerUpdate *CustomerUpdate
 }
 
-func (r ApiCustomerUpdateRequest) Body(body CustomerCode) ApiCustomerUpdateRequest {
-	r.body = &body
+func (r ApiCustomerUpdateRequest) CustomerUpdate(customerUpdate CustomerUpdate) ApiCustomerUpdateRequest {
+	r.customerUpdate = &customerUpdate
 	return r
 }
 
-func (r ApiCustomerUpdateRequest) Execute() (*CustomerCode, *http.Response, error) {
+func (r ApiCustomerUpdateRequest) Execute() (*CustomerUpdateResponse, *http.Response, error) {
 	return r.ApiService.CustomerUpdateExecute(r)
 }
 
@@ -1208,13 +1208,13 @@ func (a *CustomerAPIService) CustomerUpdate(ctx context.Context, code string) Ap
 }
 
 // Execute executes the request
-//  @return CustomerCode
-func (a *CustomerAPIService) CustomerUpdateExecute(r ApiCustomerUpdateRequest) (*CustomerCode, *http.Response, error) {
+//  @return CustomerUpdateResponse
+func (a *CustomerAPIService) CustomerUpdateExecute(r ApiCustomerUpdateRequest) (*CustomerUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CustomerCode
+		localVarReturnValue  *CustomerUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUpdate")
@@ -1247,7 +1247,7 @@ func (a *CustomerAPIService) CustomerUpdateExecute(r ApiCustomerUpdateRequest) (
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.customerUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1311,15 +1311,15 @@ type ApiCustomerValidateRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	code string
-	body *CustomerCodeIdentification
+	customerValidate *CustomerValidate
 }
 
-func (r ApiCustomerValidateRequest) Body(body CustomerCodeIdentification) ApiCustomerValidateRequest {
-	r.body = &body
+func (r ApiCustomerValidateRequest) CustomerValidate(customerValidate CustomerValidate) ApiCustomerValidateRequest {
+	r.customerValidate = &customerValidate
 	return r
 }
 
-func (r ApiCustomerValidateRequest) Execute() (*CustomerCodeIdentification, *http.Response, error) {
+func (r ApiCustomerValidateRequest) Execute() (*CustomerValidateResponse, *http.Response, error) {
 	return r.ApiService.CustomerValidateExecute(r)
 }
 
@@ -1341,13 +1341,13 @@ func (a *CustomerAPIService) CustomerValidate(ctx context.Context, code string) 
 }
 
 // Execute executes the request
-//  @return CustomerCodeIdentification
-func (a *CustomerAPIService) CustomerValidateExecute(r ApiCustomerValidateRequest) (*CustomerCodeIdentification, *http.Response, error) {
+//  @return CustomerValidateResponse
+func (a *CustomerAPIService) CustomerValidateExecute(r ApiCustomerValidateRequest) (*CustomerValidateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CustomerCodeIdentification
+		localVarReturnValue  *CustomerValidateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerValidate")
@@ -1380,7 +1380,7 @@ func (a *CustomerAPIService) CustomerValidateExecute(r ApiCustomerValidateReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.customerValidate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -23,14 +23,14 @@ type OrderValidateResponseDataIntegration struct {
 	Key string `json:"key"`
 	Name string `json:"name"`
 	Logo string `json:"logo"`
-	AllowedCurrencies []map[string]interface{} `json:"allowed_currencies"`
+	AllowedCurrencies []interface{} `json:"allowed_currencies"`
 }
 
 // NewOrderValidateResponseDataIntegration instantiates a new OrderValidateResponseDataIntegration object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrderValidateResponseDataIntegration(key string, name string, logo string, allowedCurrencies []map[string]interface{}) *OrderValidateResponseDataIntegration {
+func NewOrderValidateResponseDataIntegration(key string, name string, logo string, allowedCurrencies []interface{}) *OrderValidateResponseDataIntegration {
 	this := OrderValidateResponseDataIntegration{}
 	this.Key = key
 	this.Name = name
@@ -120,9 +120,9 @@ func (o *OrderValidateResponseDataIntegration) SetLogo(v string) {
 }
 
 // GetAllowedCurrencies returns the AllowedCurrencies field value
-func (o *OrderValidateResponseDataIntegration) GetAllowedCurrencies() []map[string]interface{} {
+func (o *OrderValidateResponseDataIntegration) GetAllowedCurrencies() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -131,7 +131,7 @@ func (o *OrderValidateResponseDataIntegration) GetAllowedCurrencies() []map[stri
 
 // GetAllowedCurrenciesOk returns a tuple with the AllowedCurrencies field value
 // and a boolean to check if the value has been set.
-func (o *OrderValidateResponseDataIntegration) GetAllowedCurrenciesOk() ([]map[string]interface{}, bool) {
+func (o *OrderValidateResponseDataIntegration) GetAllowedCurrenciesOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -139,7 +139,7 @@ func (o *OrderValidateResponseDataIntegration) GetAllowedCurrenciesOk() ([]map[s
 }
 
 // SetAllowedCurrencies sets field value
-func (o *OrderValidateResponseDataIntegration) SetAllowedCurrencies(v []map[string]interface{}) {
+func (o *OrderValidateResponseDataIntegration) SetAllowedCurrencies(v []interface{}) {
 	o.AllowedCurrencies = v
 }
 

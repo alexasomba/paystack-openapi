@@ -20,30 +20,30 @@ var _ MappedNullable = &CustomerCreateResponseData{}
 
 // CustomerCreateResponseData struct for CustomerCreateResponseData
 type CustomerCreateResponseData struct {
-	Transactions []map[string]interface{} `json:"transactions"`
-	Subscriptions []map[string]interface{} `json:"subscriptions"`
-	Authorizations []map[string]interface{} `json:"authorizations"`
+	Transactions []interface{} `json:"transactions"`
+	Subscriptions []interface{} `json:"subscriptions"`
+	Authorizations []interface{} `json:"authorizations"`
 	Email string `json:"email"`
 	FirstName string `json:"first_name"`
 	LastName string `json:"last_name"`
 	Phone string `json:"phone"`
 	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
-	Metadata CustomerCreateResponseDataMetadata `json:"metadata"`
+	Metadata BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata `json:"metadata"`
 	CustomerCode string `json:"customer_code"`
 	RiskAction string `json:"risk_action"`
 	Id int32 `json:"id"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
 	Identified bool `json:"identified"`
-	Identifications map[string]interface{} `json:"identifications"`
+	Identifications interface{} `json:"identifications"`
 }
 
 // NewCustomerCreateResponseData instantiates a new CustomerCreateResponseData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomerCreateResponseData(transactions []map[string]interface{}, subscriptions []map[string]interface{}, authorizations []map[string]interface{}, email string, firstName string, lastName string, phone string, integration int32, domain string, metadata CustomerCreateResponseDataMetadata, customerCode string, riskAction string, id int32, createdAt string, updatedAt string, identified bool, identifications map[string]interface{}) *CustomerCreateResponseData {
+func NewCustomerCreateResponseData(transactions []interface{}, subscriptions []interface{}, authorizations []interface{}, email string, firstName string, lastName string, phone string, integration int32, domain string, metadata BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata, customerCode string, riskAction string, id int32, createdAt string, updatedAt string, identified bool, identifications interface{}) *CustomerCreateResponseData {
 	this := CustomerCreateResponseData{}
 	this.Transactions = transactions
 	this.Subscriptions = subscriptions
@@ -74,9 +74,9 @@ func NewCustomerCreateResponseDataWithDefaults() *CustomerCreateResponseData {
 }
 
 // GetTransactions returns the Transactions field value
-func (o *CustomerCreateResponseData) GetTransactions() []map[string]interface{} {
+func (o *CustomerCreateResponseData) GetTransactions() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -85,7 +85,7 @@ func (o *CustomerCreateResponseData) GetTransactions() []map[string]interface{} 
 
 // GetTransactionsOk returns a tuple with the Transactions field value
 // and a boolean to check if the value has been set.
-func (o *CustomerCreateResponseData) GetTransactionsOk() ([]map[string]interface{}, bool) {
+func (o *CustomerCreateResponseData) GetTransactionsOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,14 +93,14 @@ func (o *CustomerCreateResponseData) GetTransactionsOk() ([]map[string]interface
 }
 
 // SetTransactions sets field value
-func (o *CustomerCreateResponseData) SetTransactions(v []map[string]interface{}) {
+func (o *CustomerCreateResponseData) SetTransactions(v []interface{}) {
 	o.Transactions = v
 }
 
 // GetSubscriptions returns the Subscriptions field value
-func (o *CustomerCreateResponseData) GetSubscriptions() []map[string]interface{} {
+func (o *CustomerCreateResponseData) GetSubscriptions() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -109,7 +109,7 @@ func (o *CustomerCreateResponseData) GetSubscriptions() []map[string]interface{}
 
 // GetSubscriptionsOk returns a tuple with the Subscriptions field value
 // and a boolean to check if the value has been set.
-func (o *CustomerCreateResponseData) GetSubscriptionsOk() ([]map[string]interface{}, bool) {
+func (o *CustomerCreateResponseData) GetSubscriptionsOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -117,14 +117,14 @@ func (o *CustomerCreateResponseData) GetSubscriptionsOk() ([]map[string]interfac
 }
 
 // SetSubscriptions sets field value
-func (o *CustomerCreateResponseData) SetSubscriptions(v []map[string]interface{}) {
+func (o *CustomerCreateResponseData) SetSubscriptions(v []interface{}) {
 	o.Subscriptions = v
 }
 
 // GetAuthorizations returns the Authorizations field value
-func (o *CustomerCreateResponseData) GetAuthorizations() []map[string]interface{} {
+func (o *CustomerCreateResponseData) GetAuthorizations() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -133,7 +133,7 @@ func (o *CustomerCreateResponseData) GetAuthorizations() []map[string]interface{
 
 // GetAuthorizationsOk returns a tuple with the Authorizations field value
 // and a boolean to check if the value has been set.
-func (o *CustomerCreateResponseData) GetAuthorizationsOk() ([]map[string]interface{}, bool) {
+func (o *CustomerCreateResponseData) GetAuthorizationsOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -141,7 +141,7 @@ func (o *CustomerCreateResponseData) GetAuthorizationsOk() ([]map[string]interfa
 }
 
 // SetAuthorizations sets field value
-func (o *CustomerCreateResponseData) SetAuthorizations(v []map[string]interface{}) {
+func (o *CustomerCreateResponseData) SetAuthorizations(v []interface{}) {
 	o.Authorizations = v
 }
 
@@ -290,9 +290,9 @@ func (o *CustomerCreateResponseData) SetDomain(v string) {
 }
 
 // GetMetadata returns the Metadata field value
-func (o *CustomerCreateResponseData) GetMetadata() CustomerCreateResponseDataMetadata {
+func (o *CustomerCreateResponseData) GetMetadata() BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata {
 	if o == nil {
-		var ret CustomerCreateResponseDataMetadata
+		var ret BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata
 		return ret
 	}
 
@@ -301,7 +301,7 @@ func (o *CustomerCreateResponseData) GetMetadata() CustomerCreateResponseDataMet
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
-func (o *CustomerCreateResponseData) GetMetadataOk() (*CustomerCreateResponseDataMetadata, bool) {
+func (o *CustomerCreateResponseData) GetMetadataOk() (*BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -309,7 +309,7 @@ func (o *CustomerCreateResponseData) GetMetadataOk() (*CustomerCreateResponseDat
 }
 
 // SetMetadata sets field value
-func (o *CustomerCreateResponseData) SetMetadata(v CustomerCreateResponseDataMetadata) {
+func (o *CustomerCreateResponseData) SetMetadata(v BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata) {
 	o.Metadata = v
 }
 
@@ -458,10 +458,10 @@ func (o *CustomerCreateResponseData) SetIdentified(v bool) {
 }
 
 // GetIdentifications returns the Identifications field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *CustomerCreateResponseData) GetIdentifications() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *CustomerCreateResponseData) GetIdentifications() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -471,15 +471,15 @@ func (o *CustomerCreateResponseData) GetIdentifications() map[string]interface{}
 // GetIdentificationsOk returns a tuple with the Identifications field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CustomerCreateResponseData) GetIdentificationsOk() (map[string]interface{}, bool) {
+func (o *CustomerCreateResponseData) GetIdentificationsOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Identifications) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Identifications, true
+	return &o.Identifications, true
 }
 
 // SetIdentifications sets field value
-func (o *CustomerCreateResponseData) SetIdentifications(v map[string]interface{}) {
+func (o *CustomerCreateResponseData) SetIdentifications(v interface{}) {
 	o.Identifications = v
 }
 

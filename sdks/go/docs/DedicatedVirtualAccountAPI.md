@@ -277,7 +277,7 @@ Name | Type | Description  | Notes
 
 ## DedicatedAccountDeactivate
 
-> DedicatedAccountId DedicatedAccountDeactivate(ctx, id).Execute()
+> DedicatedNubanDeactivateResponse DedicatedAccountDeactivate(ctx, id).Execute()
 
 Deactivate Dedicated Account
 
@@ -305,7 +305,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DedicatedVirtualAccountAPI.DedicatedAccountDeactivate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DedicatedAccountDeactivate`: DedicatedAccountId
+    // response from `DedicatedAccountDeactivate`: DedicatedNubanDeactivateResponse
     fmt.Fprintf(os.Stdout, "Response from `DedicatedVirtualAccountAPI.DedicatedAccountDeactivate`: %v\n", resp)
 }
 ```
@@ -329,7 +329,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DedicatedAccountId**](DedicatedAccountId.md)
+[**DedicatedNubanDeactivateResponse**](DedicatedNubanDeactivateResponse.md)
 
 ### Authorization
 
@@ -347,7 +347,7 @@ Name | Type | Description  | Notes
 
 ## DedicatedAccountFetch
 
-> DedicatedAccountId DedicatedAccountFetch(ctx, id).Execute()
+> DedicatedNubanFetchResponse DedicatedAccountFetch(ctx, id).Execute()
 
 Fetch Dedicated Account
 
@@ -375,7 +375,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DedicatedVirtualAccountAPI.DedicatedAccountFetch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DedicatedAccountFetch`: DedicatedAccountId
+    // response from `DedicatedAccountFetch`: DedicatedNubanFetchResponse
     fmt.Fprintf(os.Stdout, "Response from `DedicatedVirtualAccountAPI.DedicatedAccountFetch`: %v\n", resp)
 }
 ```
@@ -399,7 +399,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DedicatedAccountId**](DedicatedAccountId.md)
+[**DedicatedNubanFetchResponse**](DedicatedNubanFetchResponse.md)
 
 ### Authorization
 

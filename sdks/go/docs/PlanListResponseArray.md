@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Subscriptions** | **[]map[string]interface{}** |  | 
-**Pages** | **[]map[string]interface{}** |  | 
+**Subscriptions** | **[]interface{}** |  | 
+**Pages** | **[]interface{}** |  | 
 **Domain** | **string** |  | 
 **Name** | **string** |  | 
 **PlanCode** | **string** |  | 
-**Description** | **map[string]interface{}** |  | 
+**Description** | **interface{}** |  | 
 **Amount** | **int32** |  | 
 **Interval** | **string** |  | 
 **InvoiceLimit** | **int32** |  | 
 **SendInvoices** | **bool** |  | 
 **SendSms** | **bool** |  | 
 **HostedPage** | **bool** |  | 
-**HostedPageUrl** | **map[string]interface{}** |  | 
-**HostedPageSummary** | **map[string]interface{}** |  | 
+**HostedPageUrl** | **interface{}** |  | 
+**HostedPageSummary** | **interface{}** |  | 
 **Currency** | **string** |  | 
 **Migrate** | **bool** |  | 
 **IsDeleted** | **bool** |  | 
@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 
 ### NewPlanListResponseArray
 
-`func NewPlanListResponseArray(subscriptions []map[string]interface{}, pages []map[string]interface{}, domain string, name string, planCode string, description map[string]interface{}, amount int32, interval string, invoiceLimit int32, sendInvoices bool, sendSms bool, hostedPage bool, hostedPageUrl map[string]interface{}, hostedPageSummary map[string]interface{}, currency string, migrate bool, isDeleted bool, isArchived bool, id int32, integration int32, createdAt string, updatedAt string, totalSubscriptions int32, activeSubscriptions int32, totalSubscriptionsRevenue int32, ) *PlanListResponseArray`
+`func NewPlanListResponseArray(subscriptions []interface{}, pages []interface{}, domain string, name string, planCode string, description interface{}, amount int32, interval string, invoiceLimit int32, sendInvoices bool, sendSms bool, hostedPage bool, hostedPageUrl interface{}, hostedPageSummary interface{}, currency string, migrate bool, isDeleted bool, isArchived bool, id int32, integration int32, createdAt string, updatedAt string, totalSubscriptions int32, activeSubscriptions int32, totalSubscriptionsRevenue int32, ) *PlanListResponseArray`
 
 NewPlanListResponseArray instantiates a new PlanListResponseArray object
 This constructor will assign default values to properties that have it defined,
@@ -51,40 +51,40 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSubscriptions
 
-`func (o *PlanListResponseArray) GetSubscriptions() []map[string]interface{}`
+`func (o *PlanListResponseArray) GetSubscriptions() []interface{}`
 
 GetSubscriptions returns the Subscriptions field if non-nil, zero value otherwise.
 
 ### GetSubscriptionsOk
 
-`func (o *PlanListResponseArray) GetSubscriptionsOk() (*[]map[string]interface{}, bool)`
+`func (o *PlanListResponseArray) GetSubscriptionsOk() (*[]interface{}, bool)`
 
 GetSubscriptionsOk returns a tuple with the Subscriptions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSubscriptions
 
-`func (o *PlanListResponseArray) SetSubscriptions(v []map[string]interface{})`
+`func (o *PlanListResponseArray) SetSubscriptions(v []interface{})`
 
 SetSubscriptions sets Subscriptions field to given value.
 
 
 ### GetPages
 
-`func (o *PlanListResponseArray) GetPages() []map[string]interface{}`
+`func (o *PlanListResponseArray) GetPages() []interface{}`
 
 GetPages returns the Pages field if non-nil, zero value otherwise.
 
 ### GetPagesOk
 
-`func (o *PlanListResponseArray) GetPagesOk() (*[]map[string]interface{}, bool)`
+`func (o *PlanListResponseArray) GetPagesOk() (*[]interface{}, bool)`
 
 GetPagesOk returns a tuple with the Pages field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPages
 
-`func (o *PlanListResponseArray) SetPages(v []map[string]interface{})`
+`func (o *PlanListResponseArray) SetPages(v []interface{})`
 
 SetPages sets Pages field to given value.
 
@@ -151,20 +151,20 @@ SetPlanCode sets PlanCode field to given value.
 
 ### GetDescription
 
-`func (o *PlanListResponseArray) GetDescription() map[string]interface{}`
+`func (o *PlanListResponseArray) GetDescription() interface{}`
 
 GetDescription returns the Description field if non-nil, zero value otherwise.
 
 ### GetDescriptionOk
 
-`func (o *PlanListResponseArray) GetDescriptionOk() (*map[string]interface{}, bool)`
+`func (o *PlanListResponseArray) GetDescriptionOk() (*interface{}, bool)`
 
 GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDescription
 
-`func (o *PlanListResponseArray) SetDescription(v map[string]interface{})`
+`func (o *PlanListResponseArray) SetDescription(v interface{})`
 
 SetDescription sets Description field to given value.
 
@@ -301,20 +301,20 @@ SetHostedPage sets HostedPage field to given value.
 
 ### GetHostedPageUrl
 
-`func (o *PlanListResponseArray) GetHostedPageUrl() map[string]interface{}`
+`func (o *PlanListResponseArray) GetHostedPageUrl() interface{}`
 
 GetHostedPageUrl returns the HostedPageUrl field if non-nil, zero value otherwise.
 
 ### GetHostedPageUrlOk
 
-`func (o *PlanListResponseArray) GetHostedPageUrlOk() (*map[string]interface{}, bool)`
+`func (o *PlanListResponseArray) GetHostedPageUrlOk() (*interface{}, bool)`
 
 GetHostedPageUrlOk returns a tuple with the HostedPageUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHostedPageUrl
 
-`func (o *PlanListResponseArray) SetHostedPageUrl(v map[string]interface{})`
+`func (o *PlanListResponseArray) SetHostedPageUrl(v interface{})`
 
 SetHostedPageUrl sets HostedPageUrl field to given value.
 
@@ -331,20 +331,20 @@ SetHostedPageUrl sets HostedPageUrl field to given value.
 UnsetHostedPageUrl ensures that no value is present for HostedPageUrl, not even an explicit nil
 ### GetHostedPageSummary
 
-`func (o *PlanListResponseArray) GetHostedPageSummary() map[string]interface{}`
+`func (o *PlanListResponseArray) GetHostedPageSummary() interface{}`
 
 GetHostedPageSummary returns the HostedPageSummary field if non-nil, zero value otherwise.
 
 ### GetHostedPageSummaryOk
 
-`func (o *PlanListResponseArray) GetHostedPageSummaryOk() (*map[string]interface{}, bool)`
+`func (o *PlanListResponseArray) GetHostedPageSummaryOk() (*interface{}, bool)`
 
 GetHostedPageSummaryOk returns a tuple with the HostedPageSummary field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHostedPageSummary
 
-`func (o *PlanListResponseArray) SetHostedPageSummary(v map[string]interface{})`
+`func (o *PlanListResponseArray) SetHostedPageSummary(v interface{})`
 
 SetHostedPageSummary sets HostedPageSummary field to given value.
 

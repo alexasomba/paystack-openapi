@@ -6,24 +6,24 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Domain** | **string** |  | 
 **Name** | **string** |  | 
-**Description** | **map[string]interface{}** |  | 
-**Amount** | **map[string]interface{}** |  | 
+**Description** | **interface{}** |  | 
+**Amount** | **interface{}** |  | 
 **Currency** | **string** |  | 
 **Slug** | **string** |  | 
-**CustomFields** | **map[string]interface{}** |  | 
+**CustomFields** | **interface{}** |  | 
 **Type** | **string** |  | 
-**RedirectUrl** | **map[string]interface{}** |  | 
-**SuccessMessage** | **map[string]interface{}** |  | 
+**RedirectUrl** | **interface{}** |  | 
+**SuccessMessage** | **interface{}** |  | 
 **CollectPhone** | **bool** |  | 
 **Active** | **bool** |  | 
 **Published** | **bool** |  | 
 **Migrate** | **bool** |  | 
-**NotificationEmail** | **map[string]interface{}** |  | 
-**Metadata** | **map[string]interface{}** |  | 
-**SplitCode** | **map[string]interface{}** |  | 
+**NotificationEmail** | **interface{}** |  | 
+**Metadata** | **interface{}** |  | 
+**SplitCode** | **interface{}** |  | 
 **Id** | **int32** |  | 
 **Integration** | **int32** |  | 
-**Plan** | **map[string]interface{}** |  | 
+**Plan** | **interface{}** |  | 
 **CreatedAt** | **string** |  | 
 **UpdatedAt** | **string** |  | 
 
@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 
 ### NewPageUpdateResponseData
 
-`func NewPageUpdateResponseData(domain string, name string, description map[string]interface{}, amount map[string]interface{}, currency string, slug string, customFields map[string]interface{}, type_ string, redirectUrl map[string]interface{}, successMessage map[string]interface{}, collectPhone bool, active bool, published bool, migrate bool, notificationEmail map[string]interface{}, metadata map[string]interface{}, splitCode map[string]interface{}, id int32, integration int32, plan map[string]interface{}, createdAt string, updatedAt string, ) *PageUpdateResponseData`
+`func NewPageUpdateResponseData(domain string, name string, description interface{}, amount interface{}, currency string, slug string, customFields interface{}, type_ string, redirectUrl interface{}, successMessage interface{}, collectPhone bool, active bool, published bool, migrate bool, notificationEmail interface{}, metadata interface{}, splitCode interface{}, id int32, integration int32, plan interface{}, createdAt string, updatedAt string, ) *PageUpdateResponseData`
 
 NewPageUpdateResponseData instantiates a new PageUpdateResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -88,20 +88,20 @@ SetName sets Name field to given value.
 
 ### GetDescription
 
-`func (o *PageUpdateResponseData) GetDescription() map[string]interface{}`
+`func (o *PageUpdateResponseData) GetDescription() interface{}`
 
 GetDescription returns the Description field if non-nil, zero value otherwise.
 
 ### GetDescriptionOk
 
-`func (o *PageUpdateResponseData) GetDescriptionOk() (*map[string]interface{}, bool)`
+`func (o *PageUpdateResponseData) GetDescriptionOk() (*interface{}, bool)`
 
 GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDescription
 
-`func (o *PageUpdateResponseData) SetDescription(v map[string]interface{})`
+`func (o *PageUpdateResponseData) SetDescription(v interface{})`
 
 SetDescription sets Description field to given value.
 
@@ -118,20 +118,20 @@ SetDescription sets Description field to given value.
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetAmount
 
-`func (o *PageUpdateResponseData) GetAmount() map[string]interface{}`
+`func (o *PageUpdateResponseData) GetAmount() interface{}`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *PageUpdateResponseData) GetAmountOk() (*map[string]interface{}, bool)`
+`func (o *PageUpdateResponseData) GetAmountOk() (*interface{}, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *PageUpdateResponseData) SetAmount(v map[string]interface{})`
+`func (o *PageUpdateResponseData) SetAmount(v interface{})`
 
 SetAmount sets Amount field to given value.
 
@@ -188,20 +188,20 @@ SetSlug sets Slug field to given value.
 
 ### GetCustomFields
 
-`func (o *PageUpdateResponseData) GetCustomFields() map[string]interface{}`
+`func (o *PageUpdateResponseData) GetCustomFields() interface{}`
 
 GetCustomFields returns the CustomFields field if non-nil, zero value otherwise.
 
 ### GetCustomFieldsOk
 
-`func (o *PageUpdateResponseData) GetCustomFieldsOk() (*map[string]interface{}, bool)`
+`func (o *PageUpdateResponseData) GetCustomFieldsOk() (*interface{}, bool)`
 
 GetCustomFieldsOk returns a tuple with the CustomFields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCustomFields
 
-`func (o *PageUpdateResponseData) SetCustomFields(v map[string]interface{})`
+`func (o *PageUpdateResponseData) SetCustomFields(v interface{})`
 
 SetCustomFields sets CustomFields field to given value.
 
@@ -238,20 +238,20 @@ SetType sets Type field to given value.
 
 ### GetRedirectUrl
 
-`func (o *PageUpdateResponseData) GetRedirectUrl() map[string]interface{}`
+`func (o *PageUpdateResponseData) GetRedirectUrl() interface{}`
 
 GetRedirectUrl returns the RedirectUrl field if non-nil, zero value otherwise.
 
 ### GetRedirectUrlOk
 
-`func (o *PageUpdateResponseData) GetRedirectUrlOk() (*map[string]interface{}, bool)`
+`func (o *PageUpdateResponseData) GetRedirectUrlOk() (*interface{}, bool)`
 
 GetRedirectUrlOk returns a tuple with the RedirectUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRedirectUrl
 
-`func (o *PageUpdateResponseData) SetRedirectUrl(v map[string]interface{})`
+`func (o *PageUpdateResponseData) SetRedirectUrl(v interface{})`
 
 SetRedirectUrl sets RedirectUrl field to given value.
 
@@ -268,20 +268,20 @@ SetRedirectUrl sets RedirectUrl field to given value.
 UnsetRedirectUrl ensures that no value is present for RedirectUrl, not even an explicit nil
 ### GetSuccessMessage
 
-`func (o *PageUpdateResponseData) GetSuccessMessage() map[string]interface{}`
+`func (o *PageUpdateResponseData) GetSuccessMessage() interface{}`
 
 GetSuccessMessage returns the SuccessMessage field if non-nil, zero value otherwise.
 
 ### GetSuccessMessageOk
 
-`func (o *PageUpdateResponseData) GetSuccessMessageOk() (*map[string]interface{}, bool)`
+`func (o *PageUpdateResponseData) GetSuccessMessageOk() (*interface{}, bool)`
 
 GetSuccessMessageOk returns a tuple with the SuccessMessage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSuccessMessage
 
-`func (o *PageUpdateResponseData) SetSuccessMessage(v map[string]interface{})`
+`func (o *PageUpdateResponseData) SetSuccessMessage(v interface{})`
 
 SetSuccessMessage sets SuccessMessage field to given value.
 
@@ -378,20 +378,20 @@ SetMigrate sets Migrate field to given value.
 
 ### GetNotificationEmail
 
-`func (o *PageUpdateResponseData) GetNotificationEmail() map[string]interface{}`
+`func (o *PageUpdateResponseData) GetNotificationEmail() interface{}`
 
 GetNotificationEmail returns the NotificationEmail field if non-nil, zero value otherwise.
 
 ### GetNotificationEmailOk
 
-`func (o *PageUpdateResponseData) GetNotificationEmailOk() (*map[string]interface{}, bool)`
+`func (o *PageUpdateResponseData) GetNotificationEmailOk() (*interface{}, bool)`
 
 GetNotificationEmailOk returns a tuple with the NotificationEmail field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNotificationEmail
 
-`func (o *PageUpdateResponseData) SetNotificationEmail(v map[string]interface{})`
+`func (o *PageUpdateResponseData) SetNotificationEmail(v interface{})`
 
 SetNotificationEmail sets NotificationEmail field to given value.
 
@@ -408,20 +408,20 @@ SetNotificationEmail sets NotificationEmail field to given value.
 UnsetNotificationEmail ensures that no value is present for NotificationEmail, not even an explicit nil
 ### GetMetadata
 
-`func (o *PageUpdateResponseData) GetMetadata() map[string]interface{}`
+`func (o *PageUpdateResponseData) GetMetadata() interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *PageUpdateResponseData) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *PageUpdateResponseData) GetMetadataOk() (*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *PageUpdateResponseData) SetMetadata(v map[string]interface{})`
+`func (o *PageUpdateResponseData) SetMetadata(v interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -438,20 +438,20 @@ SetMetadata sets Metadata field to given value.
 UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
 ### GetSplitCode
 
-`func (o *PageUpdateResponseData) GetSplitCode() map[string]interface{}`
+`func (o *PageUpdateResponseData) GetSplitCode() interface{}`
 
 GetSplitCode returns the SplitCode field if non-nil, zero value otherwise.
 
 ### GetSplitCodeOk
 
-`func (o *PageUpdateResponseData) GetSplitCodeOk() (*map[string]interface{}, bool)`
+`func (o *PageUpdateResponseData) GetSplitCodeOk() (*interface{}, bool)`
 
 GetSplitCodeOk returns a tuple with the SplitCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSplitCode
 
-`func (o *PageUpdateResponseData) SetSplitCode(v map[string]interface{})`
+`func (o *PageUpdateResponseData) SetSplitCode(v interface{})`
 
 SetSplitCode sets SplitCode field to given value.
 
@@ -508,20 +508,20 @@ SetIntegration sets Integration field to given value.
 
 ### GetPlan
 
-`func (o *PageUpdateResponseData) GetPlan() map[string]interface{}`
+`func (o *PageUpdateResponseData) GetPlan() interface{}`
 
 GetPlan returns the Plan field if non-nil, zero value otherwise.
 
 ### GetPlanOk
 
-`func (o *PageUpdateResponseData) GetPlanOk() (*map[string]interface{}, bool)`
+`func (o *PageUpdateResponseData) GetPlanOk() (*interface{}, bool)`
 
 GetPlanOk returns a tuple with the Plan field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPlan
 
-`func (o *PageUpdateResponseData) SetPlan(v map[string]interface{})`
+`func (o *PageUpdateResponseData) SetPlan(v interface{})`
 
 SetPlan sets Plan field to given value.
 

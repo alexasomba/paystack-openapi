@@ -29,11 +29,11 @@ type ApiPageAddProductsRequest struct {
 	ctx context.Context
 	ApiService *PageAPIService
 	id string
-	body *PageIdProduct
+	pageProduct *PageProduct
 }
 
-func (r ApiPageAddProductsRequest) Body(body PageIdProduct) ApiPageAddProductsRequest {
-	r.body = &body
+func (r ApiPageAddProductsRequest) PageProduct(pageProduct PageProduct) ApiPageAddProductsRequest {
+	r.pageProduct = &pageProduct
 	return r
 }
 
@@ -100,7 +100,7 @@ func (a *PageAPIService) PageAddProductsExecute(r ApiPageAddProductsRequest) (*P
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.pageProduct
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -682,11 +682,11 @@ type ApiPageUpdateRequest struct {
 	ctx context.Context
 	ApiService *PageAPIService
 	id int32
-	body *PageId
+	pageUpdate *PageUpdate
 }
 
-func (r ApiPageUpdateRequest) Body(body PageId) ApiPageUpdateRequest {
-	r.body = &body
+func (r ApiPageUpdateRequest) PageUpdate(pageUpdate PageUpdate) ApiPageUpdateRequest {
+	r.pageUpdate = &pageUpdate
 	return r
 }
 
@@ -751,7 +751,7 @@ func (a *PageAPIService) PageUpdateExecute(r ApiPageUpdateRequest) (*PageUpdateR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.pageUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

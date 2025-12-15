@@ -29,17 +29,17 @@ type PaymentRequestCreateResponseData struct {
 	HasInvoice bool `json:"has_invoice"`
 	InvoiceNumber NullableInt32 `json:"invoice_number"`
 	Description NullableString `json:"description"`
-	LineItems []map[string]interface{} `json:"line_items"`
-	Tax []map[string]interface{} `json:"tax"`
+	LineItems []interface{} `json:"line_items"`
+	Tax []interface{} `json:"tax"`
 	RequestCode string `json:"request_code"`
 	Status string `json:"status"`
 	Paid bool `json:"paid"`
 	Metadata map[string]interface{} `json:"metadata"`
-	Notifications []map[string]interface{} `json:"notifications"`
+	Notifications []interface{} `json:"notifications"`
 	OfflineReference string `json:"offline_reference"`
 	Customer int32 `json:"customer"`
 	CreatedAt string `json:"created_at"`
-	Discount map[string]interface{} `json:"discount"`
+	Discount interface{} `json:"discount"`
 	SplitCode NullableString `json:"split_code"`
 }
 
@@ -47,7 +47,7 @@ type PaymentRequestCreateResponseData struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaymentRequestCreateResponseData(id int32, integration int32, domain string, amount int32, currency string, dueDate NullableString, hasInvoice bool, invoiceNumber NullableInt32, description NullableString, lineItems []map[string]interface{}, tax []map[string]interface{}, requestCode string, status string, paid bool, metadata map[string]interface{}, notifications []map[string]interface{}, offlineReference string, customer int32, createdAt string, discount map[string]interface{}, splitCode NullableString) *PaymentRequestCreateResponseData {
+func NewPaymentRequestCreateResponseData(id int32, integration int32, domain string, amount int32, currency string, dueDate NullableString, hasInvoice bool, invoiceNumber NullableInt32, description NullableString, lineItems []interface{}, tax []interface{}, requestCode string, status string, paid bool, metadata map[string]interface{}, notifications []interface{}, offlineReference string, customer int32, createdAt string, discount interface{}, splitCode NullableString) *PaymentRequestCreateResponseData {
 	this := PaymentRequestCreateResponseData{}
 	this.Id = id
 	this.Integration = integration
@@ -304,9 +304,9 @@ func (o *PaymentRequestCreateResponseData) SetDescription(v string) {
 }
 
 // GetLineItems returns the LineItems field value
-func (o *PaymentRequestCreateResponseData) GetLineItems() []map[string]interface{} {
+func (o *PaymentRequestCreateResponseData) GetLineItems() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -315,7 +315,7 @@ func (o *PaymentRequestCreateResponseData) GetLineItems() []map[string]interface
 
 // GetLineItemsOk returns a tuple with the LineItems field value
 // and a boolean to check if the value has been set.
-func (o *PaymentRequestCreateResponseData) GetLineItemsOk() ([]map[string]interface{}, bool) {
+func (o *PaymentRequestCreateResponseData) GetLineItemsOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -323,14 +323,14 @@ func (o *PaymentRequestCreateResponseData) GetLineItemsOk() ([]map[string]interf
 }
 
 // SetLineItems sets field value
-func (o *PaymentRequestCreateResponseData) SetLineItems(v []map[string]interface{}) {
+func (o *PaymentRequestCreateResponseData) SetLineItems(v []interface{}) {
 	o.LineItems = v
 }
 
 // GetTax returns the Tax field value
-func (o *PaymentRequestCreateResponseData) GetTax() []map[string]interface{} {
+func (o *PaymentRequestCreateResponseData) GetTax() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -339,7 +339,7 @@ func (o *PaymentRequestCreateResponseData) GetTax() []map[string]interface{} {
 
 // GetTaxOk returns a tuple with the Tax field value
 // and a boolean to check if the value has been set.
-func (o *PaymentRequestCreateResponseData) GetTaxOk() ([]map[string]interface{}, bool) {
+func (o *PaymentRequestCreateResponseData) GetTaxOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -347,7 +347,7 @@ func (o *PaymentRequestCreateResponseData) GetTaxOk() ([]map[string]interface{},
 }
 
 // SetTax sets field value
-func (o *PaymentRequestCreateResponseData) SetTax(v []map[string]interface{}) {
+func (o *PaymentRequestCreateResponseData) SetTax(v []interface{}) {
 	o.Tax = v
 }
 
@@ -450,9 +450,9 @@ func (o *PaymentRequestCreateResponseData) SetMetadata(v map[string]interface{})
 }
 
 // GetNotifications returns the Notifications field value
-func (o *PaymentRequestCreateResponseData) GetNotifications() []map[string]interface{} {
+func (o *PaymentRequestCreateResponseData) GetNotifications() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -461,7 +461,7 @@ func (o *PaymentRequestCreateResponseData) GetNotifications() []map[string]inter
 
 // GetNotificationsOk returns a tuple with the Notifications field value
 // and a boolean to check if the value has been set.
-func (o *PaymentRequestCreateResponseData) GetNotificationsOk() ([]map[string]interface{}, bool) {
+func (o *PaymentRequestCreateResponseData) GetNotificationsOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -469,7 +469,7 @@ func (o *PaymentRequestCreateResponseData) GetNotificationsOk() ([]map[string]in
 }
 
 // SetNotifications sets field value
-func (o *PaymentRequestCreateResponseData) SetNotifications(v []map[string]interface{}) {
+func (o *PaymentRequestCreateResponseData) SetNotifications(v []interface{}) {
 	o.Notifications = v
 }
 
@@ -546,10 +546,10 @@ func (o *PaymentRequestCreateResponseData) SetCreatedAt(v string) {
 }
 
 // GetDiscount returns the Discount field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *PaymentRequestCreateResponseData) GetDiscount() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *PaymentRequestCreateResponseData) GetDiscount() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -559,15 +559,15 @@ func (o *PaymentRequestCreateResponseData) GetDiscount() map[string]interface{} 
 // GetDiscountOk returns a tuple with the Discount field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PaymentRequestCreateResponseData) GetDiscountOk() (map[string]interface{}, bool) {
+func (o *PaymentRequestCreateResponseData) GetDiscountOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Discount) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Discount, true
+	return &o.Discount, true
 }
 
 // SetDiscount sets field value
-func (o *PaymentRequestCreateResponseData) SetDiscount(v map[string]interface{}) {
+func (o *PaymentRequestCreateResponseData) SetDiscount(v interface{}) {
 	o.Discount = v
 }
 

@@ -11,29 +11,29 @@ Name | Type | Description | Notes
 **Email** | **string** |  | 
 **Status** | **string** |  | 
 **Refunded** | **bool** |  | 
-**PaidAt** | **map[string]interface{}** |  | 
-**ShippingAddress** | **map[string]interface{}** |  | 
-**Metadata** | **map[string]interface{}** |  | 
+**PaidAt** | **interface{}** |  | 
+**ShippingAddress** | **interface{}** |  | 
+**Metadata** | **interface{}** |  | 
 **ShippingFees** | **int32** |  | 
-**ShippingMethod** | **map[string]interface{}** |  | 
+**ShippingMethod** | **interface{}** |  | 
 **IsViewed** | **bool** |  | 
 **ExpirationDate** | **string** |  | 
 **PayForMe** | **bool** |  | 
 **Id** | **int32** |  | 
 **Integration** | [**OrderValidateResponseDataIntegration**](OrderValidateResponseDataIntegration.md) |  | 
-**Transaction** | **map[string]interface{}** |  | 
-**Page** | **map[string]interface{}** |  | 
-**Customer** | [**ChargeCreateResponseDataCustomer**](ChargeCreateResponseDataCustomer.md) |  | 
-**Shipping** | **map[string]interface{}** |  | 
+**Transaction** | **interface{}** |  | 
+**Page** | **interface{}** |  | 
+**Customer** | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |  | 
+**Shipping** | **interface{}** |  | 
 **CreatedAt** | **string** |  | 
 **UpdatedAt** | **string** |  | 
-**Payer** | **map[string]interface{}** |  | 
+**Payer** | **interface{}** |  | 
 
 ## Methods
 
 ### NewOrderValidateResponseData
 
-`func NewOrderValidateResponseData(orderCode string, domain string, currency string, amount int32, email string, status string, refunded bool, paidAt map[string]interface{}, shippingAddress map[string]interface{}, metadata map[string]interface{}, shippingFees int32, shippingMethod map[string]interface{}, isViewed bool, expirationDate string, payForMe bool, id int32, integration OrderValidateResponseDataIntegration, transaction map[string]interface{}, page map[string]interface{}, customer ChargeCreateResponseDataCustomer, shipping map[string]interface{}, createdAt string, updatedAt string, payer map[string]interface{}, ) *OrderValidateResponseData`
+`func NewOrderValidateResponseData(orderCode string, domain string, currency string, amount int32, email string, status string, refunded bool, paidAt interface{}, shippingAddress interface{}, metadata interface{}, shippingFees int32, shippingMethod interface{}, isViewed bool, expirationDate string, payForMe bool, id int32, integration OrderValidateResponseDataIntegration, transaction interface{}, page interface{}, customer TransactionFetchResponseDataCustomer, shipping interface{}, createdAt string, updatedAt string, payer interface{}, ) *OrderValidateResponseData`
 
 NewOrderValidateResponseData instantiates a new OrderValidateResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -190,20 +190,20 @@ SetRefunded sets Refunded field to given value.
 
 ### GetPaidAt
 
-`func (o *OrderValidateResponseData) GetPaidAt() map[string]interface{}`
+`func (o *OrderValidateResponseData) GetPaidAt() interface{}`
 
 GetPaidAt returns the PaidAt field if non-nil, zero value otherwise.
 
 ### GetPaidAtOk
 
-`func (o *OrderValidateResponseData) GetPaidAtOk() (*map[string]interface{}, bool)`
+`func (o *OrderValidateResponseData) GetPaidAtOk() (*interface{}, bool)`
 
 GetPaidAtOk returns a tuple with the PaidAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPaidAt
 
-`func (o *OrderValidateResponseData) SetPaidAt(v map[string]interface{})`
+`func (o *OrderValidateResponseData) SetPaidAt(v interface{})`
 
 SetPaidAt sets PaidAt field to given value.
 
@@ -220,20 +220,20 @@ SetPaidAt sets PaidAt field to given value.
 UnsetPaidAt ensures that no value is present for PaidAt, not even an explicit nil
 ### GetShippingAddress
 
-`func (o *OrderValidateResponseData) GetShippingAddress() map[string]interface{}`
+`func (o *OrderValidateResponseData) GetShippingAddress() interface{}`
 
 GetShippingAddress returns the ShippingAddress field if non-nil, zero value otherwise.
 
 ### GetShippingAddressOk
 
-`func (o *OrderValidateResponseData) GetShippingAddressOk() (*map[string]interface{}, bool)`
+`func (o *OrderValidateResponseData) GetShippingAddressOk() (*interface{}, bool)`
 
 GetShippingAddressOk returns a tuple with the ShippingAddress field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShippingAddress
 
-`func (o *OrderValidateResponseData) SetShippingAddress(v map[string]interface{})`
+`func (o *OrderValidateResponseData) SetShippingAddress(v interface{})`
 
 SetShippingAddress sets ShippingAddress field to given value.
 
@@ -250,20 +250,20 @@ SetShippingAddress sets ShippingAddress field to given value.
 UnsetShippingAddress ensures that no value is present for ShippingAddress, not even an explicit nil
 ### GetMetadata
 
-`func (o *OrderValidateResponseData) GetMetadata() map[string]interface{}`
+`func (o *OrderValidateResponseData) GetMetadata() interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *OrderValidateResponseData) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *OrderValidateResponseData) GetMetadataOk() (*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *OrderValidateResponseData) SetMetadata(v map[string]interface{})`
+`func (o *OrderValidateResponseData) SetMetadata(v interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -300,20 +300,20 @@ SetShippingFees sets ShippingFees field to given value.
 
 ### GetShippingMethod
 
-`func (o *OrderValidateResponseData) GetShippingMethod() map[string]interface{}`
+`func (o *OrderValidateResponseData) GetShippingMethod() interface{}`
 
 GetShippingMethod returns the ShippingMethod field if non-nil, zero value otherwise.
 
 ### GetShippingMethodOk
 
-`func (o *OrderValidateResponseData) GetShippingMethodOk() (*map[string]interface{}, bool)`
+`func (o *OrderValidateResponseData) GetShippingMethodOk() (*interface{}, bool)`
 
 GetShippingMethodOk returns a tuple with the ShippingMethod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShippingMethod
 
-`func (o *OrderValidateResponseData) SetShippingMethod(v map[string]interface{})`
+`func (o *OrderValidateResponseData) SetShippingMethod(v interface{})`
 
 SetShippingMethod sets ShippingMethod field to given value.
 
@@ -430,20 +430,20 @@ SetIntegration sets Integration field to given value.
 
 ### GetTransaction
 
-`func (o *OrderValidateResponseData) GetTransaction() map[string]interface{}`
+`func (o *OrderValidateResponseData) GetTransaction() interface{}`
 
 GetTransaction returns the Transaction field if non-nil, zero value otherwise.
 
 ### GetTransactionOk
 
-`func (o *OrderValidateResponseData) GetTransactionOk() (*map[string]interface{}, bool)`
+`func (o *OrderValidateResponseData) GetTransactionOk() (*interface{}, bool)`
 
 GetTransactionOk returns a tuple with the Transaction field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTransaction
 
-`func (o *OrderValidateResponseData) SetTransaction(v map[string]interface{})`
+`func (o *OrderValidateResponseData) SetTransaction(v interface{})`
 
 SetTransaction sets Transaction field to given value.
 
@@ -460,20 +460,20 @@ SetTransaction sets Transaction field to given value.
 UnsetTransaction ensures that no value is present for Transaction, not even an explicit nil
 ### GetPage
 
-`func (o *OrderValidateResponseData) GetPage() map[string]interface{}`
+`func (o *OrderValidateResponseData) GetPage() interface{}`
 
 GetPage returns the Page field if non-nil, zero value otherwise.
 
 ### GetPageOk
 
-`func (o *OrderValidateResponseData) GetPageOk() (*map[string]interface{}, bool)`
+`func (o *OrderValidateResponseData) GetPageOk() (*interface{}, bool)`
 
 GetPageOk returns a tuple with the Page field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPage
 
-`func (o *OrderValidateResponseData) SetPage(v map[string]interface{})`
+`func (o *OrderValidateResponseData) SetPage(v interface{})`
 
 SetPage sets Page field to given value.
 
@@ -490,40 +490,40 @@ SetPage sets Page field to given value.
 UnsetPage ensures that no value is present for Page, not even an explicit nil
 ### GetCustomer
 
-`func (o *OrderValidateResponseData) GetCustomer() ChargeCreateResponseDataCustomer`
+`func (o *OrderValidateResponseData) GetCustomer() TransactionFetchResponseDataCustomer`
 
 GetCustomer returns the Customer field if non-nil, zero value otherwise.
 
 ### GetCustomerOk
 
-`func (o *OrderValidateResponseData) GetCustomerOk() (*ChargeCreateResponseDataCustomer, bool)`
+`func (o *OrderValidateResponseData) GetCustomerOk() (*TransactionFetchResponseDataCustomer, bool)`
 
 GetCustomerOk returns a tuple with the Customer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCustomer
 
-`func (o *OrderValidateResponseData) SetCustomer(v ChargeCreateResponseDataCustomer)`
+`func (o *OrderValidateResponseData) SetCustomer(v TransactionFetchResponseDataCustomer)`
 
 SetCustomer sets Customer field to given value.
 
 
 ### GetShipping
 
-`func (o *OrderValidateResponseData) GetShipping() map[string]interface{}`
+`func (o *OrderValidateResponseData) GetShipping() interface{}`
 
 GetShipping returns the Shipping field if non-nil, zero value otherwise.
 
 ### GetShippingOk
 
-`func (o *OrderValidateResponseData) GetShippingOk() (*map[string]interface{}, bool)`
+`func (o *OrderValidateResponseData) GetShippingOk() (*interface{}, bool)`
 
 GetShippingOk returns a tuple with the Shipping field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShipping
 
-`func (o *OrderValidateResponseData) SetShipping(v map[string]interface{})`
+`func (o *OrderValidateResponseData) SetShipping(v interface{})`
 
 SetShipping sets Shipping field to given value.
 
@@ -580,20 +580,20 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 ### GetPayer
 
-`func (o *OrderValidateResponseData) GetPayer() map[string]interface{}`
+`func (o *OrderValidateResponseData) GetPayer() interface{}`
 
 GetPayer returns the Payer field if non-nil, zero value otherwise.
 
 ### GetPayerOk
 
-`func (o *OrderValidateResponseData) GetPayerOk() (*map[string]interface{}, bool)`
+`func (o *OrderValidateResponseData) GetPayerOk() (*interface{}, bool)`
 
 GetPayerOk returns a tuple with the Payer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPayer
 
-`func (o *OrderValidateResponseData) SetPayer(v map[string]interface{})`
+`func (o *OrderValidateResponseData) SetPayer(v interface{})`
 
 SetPayer sets Payer field to given value.
 

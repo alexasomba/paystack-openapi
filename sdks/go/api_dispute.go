@@ -199,11 +199,11 @@ type ApiDisputeEvidenceRequest struct {
 	ctx context.Context
 	ApiService *DisputeAPIService
 	id int32
-	body *DisputeIdEvidence
+	disputeEvidence *DisputeEvidence
 }
 
-func (r ApiDisputeEvidenceRequest) Body(body DisputeIdEvidence) ApiDisputeEvidenceRequest {
-	r.body = &body
+func (r ApiDisputeEvidenceRequest) DisputeEvidence(disputeEvidence DisputeEvidence) ApiDisputeEvidenceRequest {
+	r.disputeEvidence = &disputeEvidence
 	return r
 }
 
@@ -268,7 +268,7 @@ func (a *DisputeAPIService) DisputeEvidenceExecute(r ApiDisputeEvidenceRequest) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.disputeEvidence
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -627,11 +627,11 @@ type ApiDisputeResolveRequest struct {
 	ctx context.Context
 	ApiService *DisputeAPIService
 	id int32
-	body *DisputeIdResolve
+	disputeResolve *DisputeResolve
 }
 
-func (r ApiDisputeResolveRequest) Body(body DisputeIdResolve) ApiDisputeResolveRequest {
-	r.body = &body
+func (r ApiDisputeResolveRequest) DisputeResolve(disputeResolve DisputeResolve) ApiDisputeResolveRequest {
+	r.disputeResolve = &disputeResolve
 	return r
 }
 
@@ -696,7 +696,7 @@ func (a *DisputeAPIService) DisputeResolveExecute(r ApiDisputeResolveRequest) (*
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.disputeResolve
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -885,11 +885,11 @@ type ApiDisputeUpdateRequest struct {
 	ctx context.Context
 	ApiService *DisputeAPIService
 	id int32
-	body *DisputeId
+	disputeUpdate *DisputeUpdate
 }
 
-func (r ApiDisputeUpdateRequest) Body(body DisputeId) ApiDisputeUpdateRequest {
-	r.body = &body
+func (r ApiDisputeUpdateRequest) DisputeUpdate(disputeUpdate DisputeUpdate) ApiDisputeUpdateRequest {
+	r.disputeUpdate = &disputeUpdate
 	return r
 }
 
@@ -954,7 +954,7 @@ func (a *DisputeAPIService) DisputeUpdateExecute(r ApiDisputeUpdateRequest) (*Di
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.disputeUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

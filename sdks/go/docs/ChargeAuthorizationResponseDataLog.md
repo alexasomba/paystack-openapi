@@ -10,14 +10,14 @@ Name | Type | Description | Notes
 **Errors** | **int32** |  | 
 **Success** | **bool** |  | 
 **Mobile** | **bool** |  | 
-**Input** | **[]map[string]interface{}** |  | 
+**Input** | **[]interface{}** |  | 
 **History** | [**[]ChargeAuthorizationResponseDataLogHistoryInner**](ChargeAuthorizationResponseDataLogHistoryInner.md) |  | 
 
 ## Methods
 
 ### NewChargeAuthorizationResponseDataLog
 
-`func NewChargeAuthorizationResponseDataLog(startTime int32, timeSpent int32, attempts int32, errors int32, success bool, mobile bool, input []map[string]interface{}, history []ChargeAuthorizationResponseDataLogHistoryInner, ) *ChargeAuthorizationResponseDataLog`
+`func NewChargeAuthorizationResponseDataLog(startTime int32, timeSpent int32, attempts int32, errors int32, success bool, mobile bool, input []interface{}, history []ChargeAuthorizationResponseDataLogHistoryInner, ) *ChargeAuthorizationResponseDataLog`
 
 NewChargeAuthorizationResponseDataLog instantiates a new ChargeAuthorizationResponseDataLog object
 This constructor will assign default values to properties that have it defined,
@@ -154,20 +154,20 @@ SetMobile sets Mobile field to given value.
 
 ### GetInput
 
-`func (o *ChargeAuthorizationResponseDataLog) GetInput() []map[string]interface{}`
+`func (o *ChargeAuthorizationResponseDataLog) GetInput() []interface{}`
 
 GetInput returns the Input field if non-nil, zero value otherwise.
 
 ### GetInputOk
 
-`func (o *ChargeAuthorizationResponseDataLog) GetInputOk() (*[]map[string]interface{}, bool)`
+`func (o *ChargeAuthorizationResponseDataLog) GetInputOk() (*[]interface{}, bool)`
 
 GetInputOk returns a tuple with the Input field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInput
 
-`func (o *ChargeAuthorizationResponseDataLog) SetInput(v []map[string]interface{})`
+`func (o *ChargeAuthorizationResponseDataLog) SetInput(v []interface{})`
 
 SetInput sets Input field to given value.
 

@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 ## StorefrontAddProducts
 
-> Response StorefrontAddProducts(ctx, id).Body(body).Execute()
+> Response StorefrontAddProducts(ctx, id).StorefrontAddProducts(storefrontAddProducts).Execute()
 
 Add Products to Storefront
 
@@ -40,11 +40,11 @@ import (
 
 func main() {
     id := int32(1559046) // int32 | The unique identifier of the Storefront
-    body := StorefrontIdProduct(987) // StorefrontIdProduct |  (optional)
+    storefrontAddProducts := *openapiclient.NewStorefrontAddProducts([]int32{int32(123)}) // StorefrontAddProducts |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StorefrontAPI.StorefrontAddProducts(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.StorefrontAPI.StorefrontAddProducts(context.Background(), id).StorefrontAddProducts(storefrontAddProducts).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StorefrontAPI.StorefrontAddProducts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -70,7 +70,7 @@ Other parameters are passed through a pointer to a apiStorefrontAddProductsReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **StorefrontIdProduct** |  | 
+ **storefrontAddProducts** | [**StorefrontAddProducts**](StorefrontAddProducts.md) |  | 
 
 ### Return type
 
@@ -648,7 +648,7 @@ Name | Type | Description  | Notes
 
 ## StorefrontUpdate
 
-> StorefrontUpdateResponse StorefrontUpdate(ctx, id).Body(body).Execute()
+> StorefrontUpdateResponse StorefrontUpdate(ctx, id).StorefrontUpdate(storefrontUpdate).Execute()
 
 Update Storefront
 
@@ -668,11 +668,11 @@ import (
 
 func main() {
     id := int32(1559046) // int32 | The unique identifier of the Storefront
-    body := StorefrontId(987) // StorefrontId |  (optional)
+    storefrontUpdate := *openapiclient.NewStorefrontUpdate() // StorefrontUpdate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StorefrontAPI.StorefrontUpdate(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.StorefrontAPI.StorefrontUpdate(context.Background(), id).StorefrontUpdate(storefrontUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StorefrontAPI.StorefrontUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -698,7 +698,7 @@ Other parameters are passed through a pointer to a apiStorefrontUpdateRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **StorefrontId** |  | 
+ **storefrontUpdate** | [**StorefrontUpdate**](StorefrontUpdate.md) |  | 
 
 ### Return type
 

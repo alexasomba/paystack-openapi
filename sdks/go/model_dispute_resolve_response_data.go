@@ -23,14 +23,14 @@ type DisputeResolveResponseData struct {
 	Currency string `json:"currency"`
 	Last4 string `json:"last4"`
 	Bin string `json:"bin"`
-	TransactionReference map[string]interface{} `json:"transaction_reference"`
+	TransactionReference interface{} `json:"transaction_reference"`
 	MerchantTransactionReference string `json:"merchant_transaction_reference"`
 	RefundAmount int32 `json:"refund_amount"`
 	Status string `json:"status"`
 	Domain string `json:"domain"`
 	Resolution string `json:"resolution"`
 	Category string `json:"category"`
-	Note map[string]interface{} `json:"note"`
+	Note interface{} `json:"note"`
 	Attachments string `json:"attachments"`
 	Id int32 `json:"id"`
 	Integration int32 `json:"integration"`
@@ -40,7 +40,7 @@ type DisputeResolveResponseData struct {
 	ResolvedAt string `json:"resolvedAt"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
-	DueAt map[string]interface{} `json:"dueAt"`
+	DueAt interface{} `json:"dueAt"`
 	Message DisputeResolveResponseDataMessage `json:"message"`
 }
 
@@ -48,7 +48,7 @@ type DisputeResolveResponseData struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDisputeResolveResponseData(currency string, last4 string, bin string, transactionReference map[string]interface{}, merchantTransactionReference string, refundAmount int32, status string, domain string, resolution string, category string, note map[string]interface{}, attachments string, id int32, integration int32, transaction int32, createdBy int32, evidence int32, resolvedAt string, createdAt string, updatedAt string, dueAt map[string]interface{}, message DisputeResolveResponseDataMessage) *DisputeResolveResponseData {
+func NewDisputeResolveResponseData(currency string, last4 string, bin string, transactionReference interface{}, merchantTransactionReference string, refundAmount int32, status string, domain string, resolution string, category string, note interface{}, attachments string, id int32, integration int32, transaction int32, createdBy int32, evidence int32, resolvedAt string, createdAt string, updatedAt string, dueAt interface{}, message DisputeResolveResponseDataMessage) *DisputeResolveResponseData {
 	this := DisputeResolveResponseData{}
 	this.Currency = currency
 	this.Last4 = last4
@@ -156,10 +156,10 @@ func (o *DisputeResolveResponseData) SetBin(v string) {
 }
 
 // GetTransactionReference returns the TransactionReference field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *DisputeResolveResponseData) GetTransactionReference() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *DisputeResolveResponseData) GetTransactionReference() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -169,15 +169,15 @@ func (o *DisputeResolveResponseData) GetTransactionReference() map[string]interf
 // GetTransactionReferenceOk returns a tuple with the TransactionReference field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeResolveResponseData) GetTransactionReferenceOk() (map[string]interface{}, bool) {
+func (o *DisputeResolveResponseData) GetTransactionReferenceOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.TransactionReference) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.TransactionReference, true
+	return &o.TransactionReference, true
 }
 
 // SetTransactionReference sets field value
-func (o *DisputeResolveResponseData) SetTransactionReference(v map[string]interface{}) {
+func (o *DisputeResolveResponseData) SetTransactionReference(v interface{}) {
 	o.TransactionReference = v
 }
 
@@ -326,10 +326,10 @@ func (o *DisputeResolveResponseData) SetCategory(v string) {
 }
 
 // GetNote returns the Note field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *DisputeResolveResponseData) GetNote() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *DisputeResolveResponseData) GetNote() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -339,15 +339,15 @@ func (o *DisputeResolveResponseData) GetNote() map[string]interface{} {
 // GetNoteOk returns a tuple with the Note field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeResolveResponseData) GetNoteOk() (map[string]interface{}, bool) {
+func (o *DisputeResolveResponseData) GetNoteOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Note) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Note, true
+	return &o.Note, true
 }
 
 // SetNote sets field value
-func (o *DisputeResolveResponseData) SetNote(v map[string]interface{}) {
+func (o *DisputeResolveResponseData) SetNote(v interface{}) {
 	o.Note = v
 }
 
@@ -568,10 +568,10 @@ func (o *DisputeResolveResponseData) SetUpdatedAt(v string) {
 }
 
 // GetDueAt returns the DueAt field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *DisputeResolveResponseData) GetDueAt() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *DisputeResolveResponseData) GetDueAt() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -581,15 +581,15 @@ func (o *DisputeResolveResponseData) GetDueAt() map[string]interface{} {
 // GetDueAtOk returns a tuple with the DueAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeResolveResponseData) GetDueAtOk() (map[string]interface{}, bool) {
+func (o *DisputeResolveResponseData) GetDueAtOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.DueAt) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.DueAt, true
+	return &o.DueAt, true
 }
 
 // SetDueAt sets field value
-func (o *DisputeResolveResponseData) SetDueAt(v map[string]interface{}) {
+func (o *DisputeResolveResponseData) SetDueAt(v interface{}) {
 	o.DueAt = v
 }
 

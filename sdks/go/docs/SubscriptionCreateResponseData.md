@@ -14,11 +14,11 @@ Name | Type | Description | Notes
 **Amount** | **int32** |  | 
 **Authorization** | **int32** |  | 
 **InvoiceLimit** | **int32** |  | 
-**SplitCode** | **map[string]interface{}** |  | 
+**SplitCode** | **interface{}** |  | 
 **SubscriptionCode** | **string** |  | 
 **EmailToken** | **string** |  | 
 **Id** | **int32** |  | 
-**CancelledAt** | **map[string]interface{}** |  | 
+**CancelledAt** | **interface{}** |  | 
 **CreatedAt** | **string** |  | 
 **UpdatedAt** | **string** |  | 
 **CronExpression** | **string** |  | 
@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 
 ### NewSubscriptionCreateResponseData
 
-`func NewSubscriptionCreateResponseData(customer int32, plan int32, integration int32, domain string, start int32, status string, quantity int32, amount int32, authorization int32, invoiceLimit int32, splitCode map[string]interface{}, subscriptionCode string, emailToken string, id int32, cancelledAt map[string]interface{}, createdAt string, updatedAt string, cronExpression string, nextPaymentDate string, easyCronId NullableString, openInvoice NullableString, metadata map[string]interface{}, ) *SubscriptionCreateResponseData`
+`func NewSubscriptionCreateResponseData(customer int32, plan int32, integration int32, domain string, start int32, status string, quantity int32, amount int32, authorization int32, invoiceLimit int32, splitCode interface{}, subscriptionCode string, emailToken string, id int32, cancelledAt interface{}, createdAt string, updatedAt string, cronExpression string, nextPaymentDate string, easyCronId NullableString, openInvoice NullableString, metadata map[string]interface{}, ) *SubscriptionCreateResponseData`
 
 NewSubscriptionCreateResponseData instantiates a new SubscriptionCreateResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -248,20 +248,20 @@ SetInvoiceLimit sets InvoiceLimit field to given value.
 
 ### GetSplitCode
 
-`func (o *SubscriptionCreateResponseData) GetSplitCode() map[string]interface{}`
+`func (o *SubscriptionCreateResponseData) GetSplitCode() interface{}`
 
 GetSplitCode returns the SplitCode field if non-nil, zero value otherwise.
 
 ### GetSplitCodeOk
 
-`func (o *SubscriptionCreateResponseData) GetSplitCodeOk() (*map[string]interface{}, bool)`
+`func (o *SubscriptionCreateResponseData) GetSplitCodeOk() (*interface{}, bool)`
 
 GetSplitCodeOk returns a tuple with the SplitCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSplitCode
 
-`func (o *SubscriptionCreateResponseData) SetSplitCode(v map[string]interface{})`
+`func (o *SubscriptionCreateResponseData) SetSplitCode(v interface{})`
 
 SetSplitCode sets SplitCode field to given value.
 
@@ -338,20 +338,20 @@ SetId sets Id field to given value.
 
 ### GetCancelledAt
 
-`func (o *SubscriptionCreateResponseData) GetCancelledAt() map[string]interface{}`
+`func (o *SubscriptionCreateResponseData) GetCancelledAt() interface{}`
 
 GetCancelledAt returns the CancelledAt field if non-nil, zero value otherwise.
 
 ### GetCancelledAtOk
 
-`func (o *SubscriptionCreateResponseData) GetCancelledAtOk() (*map[string]interface{}, bool)`
+`func (o *SubscriptionCreateResponseData) GetCancelledAtOk() (*interface{}, bool)`
 
 GetCancelledAtOk returns a tuple with the CancelledAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCancelledAt
 
-`func (o *SubscriptionCreateResponseData) SetCancelledAt(v map[string]interface{})`
+`func (o *SubscriptionCreateResponseData) SetCancelledAt(v interface{})`
 
 SetCancelledAt sets CancelledAt field to given value.
 

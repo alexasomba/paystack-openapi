@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Transaction** | [**RefundCreateResponseDataTransaction**](RefundCreateResponseDataTransaction.md) |  | 
 **Integration** | **int32** |  | 
 **DeductedAmount** | **int32** |  | 
-**Channel** | **map[string]interface{}** |  | 
+**Channel** | **interface{}** |  | 
 **MerchantNote** | **string** |  | 
 **CustomerNote** | **string** |  | 
 **Status** | **string** |  | 
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewRefundCreateResponseData
 
-`func NewRefundCreateResponseData(transaction RefundCreateResponseDataTransaction, integration int32, deductedAmount int32, channel map[string]interface{}, merchantNote string, customerNote string, status string, refundedBy string, expectedAt string, currency string, domain string, amount int32, fullyDeducted bool, id int32, createdAt string, updatedAt string, ) *RefundCreateResponseData`
+`func NewRefundCreateResponseData(transaction RefundCreateResponseDataTransaction, integration int32, deductedAmount int32, channel interface{}, merchantNote string, customerNote string, status string, refundedBy string, expectedAt string, currency string, domain string, amount int32, fullyDeducted bool, id int32, createdAt string, updatedAt string, ) *RefundCreateResponseData`
 
 NewRefundCreateResponseData instantiates a new RefundCreateResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -102,20 +102,20 @@ SetDeductedAmount sets DeductedAmount field to given value.
 
 ### GetChannel
 
-`func (o *RefundCreateResponseData) GetChannel() map[string]interface{}`
+`func (o *RefundCreateResponseData) GetChannel() interface{}`
 
 GetChannel returns the Channel field if non-nil, zero value otherwise.
 
 ### GetChannelOk
 
-`func (o *RefundCreateResponseData) GetChannelOk() (*map[string]interface{}, bool)`
+`func (o *RefundCreateResponseData) GetChannelOk() (*interface{}, bool)`
 
 GetChannelOk returns a tuple with the Channel field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetChannel
 
-`func (o *RefundCreateResponseData) SetChannel(v map[string]interface{})`
+`func (o *RefundCreateResponseData) SetChannel(v interface{})`
 
 SetChannel sets Channel field to given value.
 

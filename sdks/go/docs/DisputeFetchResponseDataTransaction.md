@@ -10,14 +10,14 @@ Name | Type | Description | Notes
 **Reference** | **string** |  | 
 **ReceiptNumber** | Pointer to **NullableInt32** |  | [optional] 
 **Amount** | **int32** |  | 
-**Message** | **map[string]interface{}** |  | 
+**Message** | **interface{}** |  | 
 **GatewayResponse** | **string** |  | 
 **PaidAt** | **string** |  | 
 **CreatedAt** | **string** |  | 
 **Channel** | **string** |  | 
 **Currency** | **string** |  | 
 **IpAddress** | **string** |  | 
-**Metadata** | [**ChargeCreateResponseDataMetadata**](ChargeCreateResponseDataMetadata.md) |  | 
+**Metadata** | [**TransactionFetchResponseDataMetadata**](TransactionFetchResponseDataMetadata.md) |  | 
 **Log** | [**NullableChargeAuthorizationResponseDataLog**](ChargeAuthorizationResponseDataLog.md) |  | 
 **Fees** | **int32** |  | 
 **FeesSplit** | **NullableInt32** |  | 
@@ -26,18 +26,18 @@ Name | Type | Description | Notes
 **Plan** | **map[string]interface{}** |  | 
 **Subaccount** | **map[string]interface{}** |  | 
 **Split** | **map[string]interface{}** |  | 
-**OrderId** | **map[string]interface{}** |  | 
+**OrderId** | **interface{}** |  | 
 **RequestedAmount** | **int32** |  | 
-**PosTransactionData** | **map[string]interface{}** |  | 
-**Source** | **map[string]interface{}** |  | 
-**FeesBreakdown** | **map[string]interface{}** |  | 
-**Connect** | **map[string]interface{}** |  | 
+**PosTransactionData** | **interface{}** |  | 
+**Source** | **interface{}** |  | 
+**FeesBreakdown** | **interface{}** |  | 
+**Connect** | **interface{}** |  | 
 
 ## Methods
 
 ### NewDisputeFetchResponseDataTransaction
 
-`func NewDisputeFetchResponseDataTransaction(id int32, domain string, status string, reference string, amount int32, message map[string]interface{}, gatewayResponse string, paidAt string, createdAt string, channel string, currency string, ipAddress string, metadata ChargeCreateResponseDataMetadata, log NullableChargeAuthorizationResponseDataLog, fees int32, feesSplit NullableInt32, authorization DisputeFetchResponseDataTransactionAuthorization, customer DisputeFetchResponseDataTransactionCustomer, plan map[string]interface{}, subaccount map[string]interface{}, split map[string]interface{}, orderId map[string]interface{}, requestedAmount int32, posTransactionData map[string]interface{}, source map[string]interface{}, feesBreakdown map[string]interface{}, connect map[string]interface{}, ) *DisputeFetchResponseDataTransaction`
+`func NewDisputeFetchResponseDataTransaction(id int32, domain string, status string, reference string, amount int32, message interface{}, gatewayResponse string, paidAt string, createdAt string, channel string, currency string, ipAddress string, metadata TransactionFetchResponseDataMetadata, log NullableChargeAuthorizationResponseDataLog, fees int32, feesSplit NullableInt32, authorization DisputeFetchResponseDataTransactionAuthorization, customer DisputeFetchResponseDataTransactionCustomer, plan map[string]interface{}, subaccount map[string]interface{}, split map[string]interface{}, orderId interface{}, requestedAmount int32, posTransactionData interface{}, source interface{}, feesBreakdown interface{}, connect interface{}, ) *DisputeFetchResponseDataTransaction`
 
 NewDisputeFetchResponseDataTransaction instantiates a new DisputeFetchResponseDataTransaction object
 This constructor will assign default values to properties that have it defined,
@@ -189,20 +189,20 @@ SetAmount sets Amount field to given value.
 
 ### GetMessage
 
-`func (o *DisputeFetchResponseDataTransaction) GetMessage() map[string]interface{}`
+`func (o *DisputeFetchResponseDataTransaction) GetMessage() interface{}`
 
 GetMessage returns the Message field if non-nil, zero value otherwise.
 
 ### GetMessageOk
 
-`func (o *DisputeFetchResponseDataTransaction) GetMessageOk() (*map[string]interface{}, bool)`
+`func (o *DisputeFetchResponseDataTransaction) GetMessageOk() (*interface{}, bool)`
 
 GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessage
 
-`func (o *DisputeFetchResponseDataTransaction) SetMessage(v map[string]interface{})`
+`func (o *DisputeFetchResponseDataTransaction) SetMessage(v interface{})`
 
 SetMessage sets Message field to given value.
 
@@ -339,20 +339,20 @@ SetIpAddress sets IpAddress field to given value.
 
 ### GetMetadata
 
-`func (o *DisputeFetchResponseDataTransaction) GetMetadata() ChargeCreateResponseDataMetadata`
+`func (o *DisputeFetchResponseDataTransaction) GetMetadata() TransactionFetchResponseDataMetadata`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *DisputeFetchResponseDataTransaction) GetMetadataOk() (*ChargeCreateResponseDataMetadata, bool)`
+`func (o *DisputeFetchResponseDataTransaction) GetMetadataOk() (*TransactionFetchResponseDataMetadata, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *DisputeFetchResponseDataTransaction) SetMetadata(v ChargeCreateResponseDataMetadata)`
+`func (o *DisputeFetchResponseDataTransaction) SetMetadata(v TransactionFetchResponseDataMetadata)`
 
 SetMetadata sets Metadata field to given value.
 
@@ -539,20 +539,20 @@ SetSplit sets Split field to given value.
 
 ### GetOrderId
 
-`func (o *DisputeFetchResponseDataTransaction) GetOrderId() map[string]interface{}`
+`func (o *DisputeFetchResponseDataTransaction) GetOrderId() interface{}`
 
 GetOrderId returns the OrderId field if non-nil, zero value otherwise.
 
 ### GetOrderIdOk
 
-`func (o *DisputeFetchResponseDataTransaction) GetOrderIdOk() (*map[string]interface{}, bool)`
+`func (o *DisputeFetchResponseDataTransaction) GetOrderIdOk() (*interface{}, bool)`
 
 GetOrderIdOk returns a tuple with the OrderId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOrderId
 
-`func (o *DisputeFetchResponseDataTransaction) SetOrderId(v map[string]interface{})`
+`func (o *DisputeFetchResponseDataTransaction) SetOrderId(v interface{})`
 
 SetOrderId sets OrderId field to given value.
 
@@ -589,20 +589,20 @@ SetRequestedAmount sets RequestedAmount field to given value.
 
 ### GetPosTransactionData
 
-`func (o *DisputeFetchResponseDataTransaction) GetPosTransactionData() map[string]interface{}`
+`func (o *DisputeFetchResponseDataTransaction) GetPosTransactionData() interface{}`
 
 GetPosTransactionData returns the PosTransactionData field if non-nil, zero value otherwise.
 
 ### GetPosTransactionDataOk
 
-`func (o *DisputeFetchResponseDataTransaction) GetPosTransactionDataOk() (*map[string]interface{}, bool)`
+`func (o *DisputeFetchResponseDataTransaction) GetPosTransactionDataOk() (*interface{}, bool)`
 
 GetPosTransactionDataOk returns a tuple with the PosTransactionData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPosTransactionData
 
-`func (o *DisputeFetchResponseDataTransaction) SetPosTransactionData(v map[string]interface{})`
+`func (o *DisputeFetchResponseDataTransaction) SetPosTransactionData(v interface{})`
 
 SetPosTransactionData sets PosTransactionData field to given value.
 
@@ -619,20 +619,20 @@ SetPosTransactionData sets PosTransactionData field to given value.
 UnsetPosTransactionData ensures that no value is present for PosTransactionData, not even an explicit nil
 ### GetSource
 
-`func (o *DisputeFetchResponseDataTransaction) GetSource() map[string]interface{}`
+`func (o *DisputeFetchResponseDataTransaction) GetSource() interface{}`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *DisputeFetchResponseDataTransaction) GetSourceOk() (*map[string]interface{}, bool)`
+`func (o *DisputeFetchResponseDataTransaction) GetSourceOk() (*interface{}, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *DisputeFetchResponseDataTransaction) SetSource(v map[string]interface{})`
+`func (o *DisputeFetchResponseDataTransaction) SetSource(v interface{})`
 
 SetSource sets Source field to given value.
 
@@ -649,20 +649,20 @@ SetSource sets Source field to given value.
 UnsetSource ensures that no value is present for Source, not even an explicit nil
 ### GetFeesBreakdown
 
-`func (o *DisputeFetchResponseDataTransaction) GetFeesBreakdown() map[string]interface{}`
+`func (o *DisputeFetchResponseDataTransaction) GetFeesBreakdown() interface{}`
 
 GetFeesBreakdown returns the FeesBreakdown field if non-nil, zero value otherwise.
 
 ### GetFeesBreakdownOk
 
-`func (o *DisputeFetchResponseDataTransaction) GetFeesBreakdownOk() (*map[string]interface{}, bool)`
+`func (o *DisputeFetchResponseDataTransaction) GetFeesBreakdownOk() (*interface{}, bool)`
 
 GetFeesBreakdownOk returns a tuple with the FeesBreakdown field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFeesBreakdown
 
-`func (o *DisputeFetchResponseDataTransaction) SetFeesBreakdown(v map[string]interface{})`
+`func (o *DisputeFetchResponseDataTransaction) SetFeesBreakdown(v interface{})`
 
 SetFeesBreakdown sets FeesBreakdown field to given value.
 
@@ -679,20 +679,20 @@ SetFeesBreakdown sets FeesBreakdown field to given value.
 UnsetFeesBreakdown ensures that no value is present for FeesBreakdown, not even an explicit nil
 ### GetConnect
 
-`func (o *DisputeFetchResponseDataTransaction) GetConnect() map[string]interface{}`
+`func (o *DisputeFetchResponseDataTransaction) GetConnect() interface{}`
 
 GetConnect returns the Connect field if non-nil, zero value otherwise.
 
 ### GetConnectOk
 
-`func (o *DisputeFetchResponseDataTransaction) GetConnectOk() (*map[string]interface{}, bool)`
+`func (o *DisputeFetchResponseDataTransaction) GetConnectOk() (*interface{}, bool)`
 
 GetConnectOk returns a tuple with the Connect field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConnect
 
-`func (o *DisputeFetchResponseDataTransaction) SetConnect(v map[string]interface{})`
+`func (o *DisputeFetchResponseDataTransaction) SetConnect(v interface{})`
 
 SetConnect sets Connect field to given value.
 

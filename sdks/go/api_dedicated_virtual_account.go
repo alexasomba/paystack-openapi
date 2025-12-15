@@ -506,7 +506,7 @@ type ApiDedicatedAccountDeactivateRequest struct {
 	id string
 }
 
-func (r ApiDedicatedAccountDeactivateRequest) Execute() (*DedicatedAccountId, *http.Response, error) {
+func (r ApiDedicatedAccountDeactivateRequest) Execute() (*DedicatedNubanDeactivateResponse, *http.Response, error) {
 	return r.ApiService.DedicatedAccountDeactivateExecute(r)
 }
 
@@ -528,13 +528,13 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountDeactivate(ctx conte
 }
 
 // Execute executes the request
-//  @return DedicatedAccountId
-func (a *DedicatedVirtualAccountAPIService) DedicatedAccountDeactivateExecute(r ApiDedicatedAccountDeactivateRequest) (*DedicatedAccountId, *http.Response, error) {
+//  @return DedicatedNubanDeactivateResponse
+func (a *DedicatedVirtualAccountAPIService) DedicatedAccountDeactivateExecute(r ApiDedicatedAccountDeactivateRequest) (*DedicatedNubanDeactivateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *DedicatedAccountId
+		localVarReturnValue  *DedicatedNubanDeactivateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedVirtualAccountAPIService.DedicatedAccountDeactivate")
@@ -631,7 +631,7 @@ type ApiDedicatedAccountFetchRequest struct {
 	id string
 }
 
-func (r ApiDedicatedAccountFetchRequest) Execute() (*DedicatedAccountId, *http.Response, error) {
+func (r ApiDedicatedAccountFetchRequest) Execute() (*DedicatedNubanFetchResponse, *http.Response, error) {
 	return r.ApiService.DedicatedAccountFetchExecute(r)
 }
 
@@ -653,13 +653,13 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountFetch(ctx context.Co
 }
 
 // Execute executes the request
-//  @return DedicatedAccountId
-func (a *DedicatedVirtualAccountAPIService) DedicatedAccountFetchExecute(r ApiDedicatedAccountFetchRequest) (*DedicatedAccountId, *http.Response, error) {
+//  @return DedicatedNubanFetchResponse
+func (a *DedicatedVirtualAccountAPIService) DedicatedAccountFetchExecute(r ApiDedicatedAccountFetchRequest) (*DedicatedNubanFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *DedicatedAccountId
+		localVarReturnValue  *DedicatedNubanFetchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedVirtualAccountAPIService.DedicatedAccountFetch")

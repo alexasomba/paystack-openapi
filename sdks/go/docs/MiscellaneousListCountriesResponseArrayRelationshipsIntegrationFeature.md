@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** |  | 
-**Data** | **[]map[string]interface{}** |  | 
+**Data** | **[]interface{}** |  | 
 
 ## Methods
 
 ### NewMiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature
 
-`func NewMiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature(type_ string, data []map[string]interface{}, ) *MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature`
+`func NewMiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature(type_ string, data []interface{}, ) *MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature`
 
 NewMiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature instantiates a new MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetType sets Type field to given value.
 
 ### GetData
 
-`func (o *MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature) GetData() []map[string]interface{}`
+`func (o *MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature) GetData() []interface{}`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature) GetDataOk() (*[]map[string]interface{}, bool)`
+`func (o *MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature) GetDataOk() (*[]interface{}, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature) SetData(v []map[string]interface{})`
+`func (o *MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature) SetData(v []interface{})`
 
 SetData sets Data field to given value.
 

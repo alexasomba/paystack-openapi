@@ -453,11 +453,11 @@ type ApiPlanUpdateRequest struct {
 	ctx context.Context
 	ApiService *PlanAPIService
 	code string
-	body *PlanCode
+	planUpdate *PlanUpdate
 }
 
-func (r ApiPlanUpdateRequest) Body(body PlanCode) ApiPlanUpdateRequest {
-	r.body = &body
+func (r ApiPlanUpdateRequest) PlanUpdate(planUpdate PlanUpdate) ApiPlanUpdateRequest {
+	r.planUpdate = &planUpdate
 	return r
 }
 
@@ -522,7 +522,7 @@ func (a *PlanAPIService) PlanUpdateExecute(r ApiPlanUpdateRequest) (*PlanUpdateR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.planUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

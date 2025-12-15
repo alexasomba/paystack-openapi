@@ -28,26 +28,26 @@ type ProductUpdateResponseData struct {
 	Quantity int32 `json:"quantity"`
 	QuantitySold int32 `json:"quantity_sold"`
 	Type string `json:"type"`
-	Files []map[string]interface{} `json:"files"`
-	FilePath map[string]interface{} `json:"file_path"`
+	Files []interface{} `json:"files"`
+	FilePath interface{} `json:"file_path"`
 	IsShippable bool `json:"is_shippable"`
-	ShippingFields ProductCreateResponseDataShippingFields `json:"shipping_fields"`
+	ShippingFields ProductListsResponseArrayShippingFields `json:"shipping_fields"`
 	Unlimited bool `json:"unlimited"`
 	Domain string `json:"domain"`
 	Active bool `json:"active"`
-	Features map[string]interface{} `json:"features"`
+	Features interface{} `json:"features"`
 	InStock bool `json:"in_stock"`
-	Metadata ProductCreateResponseDataMetadata `json:"metadata"`
+	Metadata ProductListsResponseArrayMetadata `json:"metadata"`
 	Slug string `json:"slug"`
-	SuccessMessage map[string]interface{} `json:"success_message"`
-	RedirectUrl map[string]interface{} `json:"redirect_url"`
-	SplitCode map[string]interface{} `json:"split_code"`
-	NotificationEmails map[string]interface{} `json:"notification_emails"`
+	SuccessMessage interface{} `json:"success_message"`
+	RedirectUrl interface{} `json:"redirect_url"`
+	SplitCode interface{} `json:"split_code"`
+	NotificationEmails interface{} `json:"notification_emails"`
 	MinimumOrderable int32 `json:"minimum_orderable"`
-	MaximumOrderable map[string]interface{} `json:"maximum_orderable"`
+	MaximumOrderable interface{} `json:"maximum_orderable"`
 	LowStockAlert bool `json:"low_stock_alert"`
-	StockThreshold map[string]interface{} `json:"stock_threshold"`
-	ExpiresIn map[string]interface{} `json:"expires_in"`
+	StockThreshold interface{} `json:"stock_threshold"`
+	ExpiresIn interface{} `json:"expires_in"`
 	Id int32 `json:"id"`
 	Integration int32 `json:"integration"`
 	CreatedAt string `json:"createdAt"`
@@ -58,7 +58,7 @@ type ProductUpdateResponseData struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProductUpdateResponseData(name string, description string, productCode string, price int32, currency string, quantity int32, quantitySold int32, type_ string, files []map[string]interface{}, filePath map[string]interface{}, isShippable bool, shippingFields ProductCreateResponseDataShippingFields, unlimited bool, domain string, active bool, features map[string]interface{}, inStock bool, metadata ProductCreateResponseDataMetadata, slug string, successMessage map[string]interface{}, redirectUrl map[string]interface{}, splitCode map[string]interface{}, notificationEmails map[string]interface{}, minimumOrderable int32, maximumOrderable map[string]interface{}, lowStockAlert bool, stockThreshold map[string]interface{}, expiresIn map[string]interface{}, id int32, integration int32, createdAt string, updatedAt string) *ProductUpdateResponseData {
+func NewProductUpdateResponseData(name string, description string, productCode string, price int32, currency string, quantity int32, quantitySold int32, type_ string, files []interface{}, filePath interface{}, isShippable bool, shippingFields ProductListsResponseArrayShippingFields, unlimited bool, domain string, active bool, features interface{}, inStock bool, metadata ProductListsResponseArrayMetadata, slug string, successMessage interface{}, redirectUrl interface{}, splitCode interface{}, notificationEmails interface{}, minimumOrderable int32, maximumOrderable interface{}, lowStockAlert bool, stockThreshold interface{}, expiresIn interface{}, id int32, integration int32, createdAt string, updatedAt string) *ProductUpdateResponseData {
 	this := ProductUpdateResponseData{}
 	this.Name = name
 	this.Description = description
@@ -296,9 +296,9 @@ func (o *ProductUpdateResponseData) SetType(v string) {
 }
 
 // GetFiles returns the Files field value
-func (o *ProductUpdateResponseData) GetFiles() []map[string]interface{} {
+func (o *ProductUpdateResponseData) GetFiles() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -307,7 +307,7 @@ func (o *ProductUpdateResponseData) GetFiles() []map[string]interface{} {
 
 // GetFilesOk returns a tuple with the Files field value
 // and a boolean to check if the value has been set.
-func (o *ProductUpdateResponseData) GetFilesOk() ([]map[string]interface{}, bool) {
+func (o *ProductUpdateResponseData) GetFilesOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -315,15 +315,15 @@ func (o *ProductUpdateResponseData) GetFilesOk() ([]map[string]interface{}, bool
 }
 
 // SetFiles sets field value
-func (o *ProductUpdateResponseData) SetFiles(v []map[string]interface{}) {
+func (o *ProductUpdateResponseData) SetFiles(v []interface{}) {
 	o.Files = v
 }
 
 // GetFilePath returns the FilePath field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *ProductUpdateResponseData) GetFilePath() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ProductUpdateResponseData) GetFilePath() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -333,15 +333,15 @@ func (o *ProductUpdateResponseData) GetFilePath() map[string]interface{} {
 // GetFilePathOk returns a tuple with the FilePath field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductUpdateResponseData) GetFilePathOk() (map[string]interface{}, bool) {
+func (o *ProductUpdateResponseData) GetFilePathOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.FilePath) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.FilePath, true
+	return &o.FilePath, true
 }
 
 // SetFilePath sets field value
-func (o *ProductUpdateResponseData) SetFilePath(v map[string]interface{}) {
+func (o *ProductUpdateResponseData) SetFilePath(v interface{}) {
 	o.FilePath = v
 }
 
@@ -370,9 +370,9 @@ func (o *ProductUpdateResponseData) SetIsShippable(v bool) {
 }
 
 // GetShippingFields returns the ShippingFields field value
-func (o *ProductUpdateResponseData) GetShippingFields() ProductCreateResponseDataShippingFields {
+func (o *ProductUpdateResponseData) GetShippingFields() ProductListsResponseArrayShippingFields {
 	if o == nil {
-		var ret ProductCreateResponseDataShippingFields
+		var ret ProductListsResponseArrayShippingFields
 		return ret
 	}
 
@@ -381,7 +381,7 @@ func (o *ProductUpdateResponseData) GetShippingFields() ProductCreateResponseDat
 
 // GetShippingFieldsOk returns a tuple with the ShippingFields field value
 // and a boolean to check if the value has been set.
-func (o *ProductUpdateResponseData) GetShippingFieldsOk() (*ProductCreateResponseDataShippingFields, bool) {
+func (o *ProductUpdateResponseData) GetShippingFieldsOk() (*ProductListsResponseArrayShippingFields, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -389,7 +389,7 @@ func (o *ProductUpdateResponseData) GetShippingFieldsOk() (*ProductCreateRespons
 }
 
 // SetShippingFields sets field value
-func (o *ProductUpdateResponseData) SetShippingFields(v ProductCreateResponseDataShippingFields) {
+func (o *ProductUpdateResponseData) SetShippingFields(v ProductListsResponseArrayShippingFields) {
 	o.ShippingFields = v
 }
 
@@ -466,10 +466,10 @@ func (o *ProductUpdateResponseData) SetActive(v bool) {
 }
 
 // GetFeatures returns the Features field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *ProductUpdateResponseData) GetFeatures() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ProductUpdateResponseData) GetFeatures() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -479,15 +479,15 @@ func (o *ProductUpdateResponseData) GetFeatures() map[string]interface{} {
 // GetFeaturesOk returns a tuple with the Features field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductUpdateResponseData) GetFeaturesOk() (map[string]interface{}, bool) {
+func (o *ProductUpdateResponseData) GetFeaturesOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Features) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Features, true
+	return &o.Features, true
 }
 
 // SetFeatures sets field value
-func (o *ProductUpdateResponseData) SetFeatures(v map[string]interface{}) {
+func (o *ProductUpdateResponseData) SetFeatures(v interface{}) {
 	o.Features = v
 }
 
@@ -516,9 +516,9 @@ func (o *ProductUpdateResponseData) SetInStock(v bool) {
 }
 
 // GetMetadata returns the Metadata field value
-func (o *ProductUpdateResponseData) GetMetadata() ProductCreateResponseDataMetadata {
+func (o *ProductUpdateResponseData) GetMetadata() ProductListsResponseArrayMetadata {
 	if o == nil {
-		var ret ProductCreateResponseDataMetadata
+		var ret ProductListsResponseArrayMetadata
 		return ret
 	}
 
@@ -527,7 +527,7 @@ func (o *ProductUpdateResponseData) GetMetadata() ProductCreateResponseDataMetad
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
-func (o *ProductUpdateResponseData) GetMetadataOk() (*ProductCreateResponseDataMetadata, bool) {
+func (o *ProductUpdateResponseData) GetMetadataOk() (*ProductListsResponseArrayMetadata, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -535,7 +535,7 @@ func (o *ProductUpdateResponseData) GetMetadataOk() (*ProductCreateResponseDataM
 }
 
 // SetMetadata sets field value
-func (o *ProductUpdateResponseData) SetMetadata(v ProductCreateResponseDataMetadata) {
+func (o *ProductUpdateResponseData) SetMetadata(v ProductListsResponseArrayMetadata) {
 	o.Metadata = v
 }
 
@@ -564,10 +564,10 @@ func (o *ProductUpdateResponseData) SetSlug(v string) {
 }
 
 // GetSuccessMessage returns the SuccessMessage field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *ProductUpdateResponseData) GetSuccessMessage() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ProductUpdateResponseData) GetSuccessMessage() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -577,23 +577,23 @@ func (o *ProductUpdateResponseData) GetSuccessMessage() map[string]interface{} {
 // GetSuccessMessageOk returns a tuple with the SuccessMessage field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductUpdateResponseData) GetSuccessMessageOk() (map[string]interface{}, bool) {
+func (o *ProductUpdateResponseData) GetSuccessMessageOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.SuccessMessage) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.SuccessMessage, true
+	return &o.SuccessMessage, true
 }
 
 // SetSuccessMessage sets field value
-func (o *ProductUpdateResponseData) SetSuccessMessage(v map[string]interface{}) {
+func (o *ProductUpdateResponseData) SetSuccessMessage(v interface{}) {
 	o.SuccessMessage = v
 }
 
 // GetRedirectUrl returns the RedirectUrl field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *ProductUpdateResponseData) GetRedirectUrl() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ProductUpdateResponseData) GetRedirectUrl() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -603,23 +603,23 @@ func (o *ProductUpdateResponseData) GetRedirectUrl() map[string]interface{} {
 // GetRedirectUrlOk returns a tuple with the RedirectUrl field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductUpdateResponseData) GetRedirectUrlOk() (map[string]interface{}, bool) {
+func (o *ProductUpdateResponseData) GetRedirectUrlOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.RedirectUrl) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.RedirectUrl, true
+	return &o.RedirectUrl, true
 }
 
 // SetRedirectUrl sets field value
-func (o *ProductUpdateResponseData) SetRedirectUrl(v map[string]interface{}) {
+func (o *ProductUpdateResponseData) SetRedirectUrl(v interface{}) {
 	o.RedirectUrl = v
 }
 
 // GetSplitCode returns the SplitCode field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *ProductUpdateResponseData) GetSplitCode() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ProductUpdateResponseData) GetSplitCode() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -629,23 +629,23 @@ func (o *ProductUpdateResponseData) GetSplitCode() map[string]interface{} {
 // GetSplitCodeOk returns a tuple with the SplitCode field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductUpdateResponseData) GetSplitCodeOk() (map[string]interface{}, bool) {
+func (o *ProductUpdateResponseData) GetSplitCodeOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.SplitCode) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.SplitCode, true
+	return &o.SplitCode, true
 }
 
 // SetSplitCode sets field value
-func (o *ProductUpdateResponseData) SetSplitCode(v map[string]interface{}) {
+func (o *ProductUpdateResponseData) SetSplitCode(v interface{}) {
 	o.SplitCode = v
 }
 
 // GetNotificationEmails returns the NotificationEmails field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *ProductUpdateResponseData) GetNotificationEmails() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ProductUpdateResponseData) GetNotificationEmails() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -655,15 +655,15 @@ func (o *ProductUpdateResponseData) GetNotificationEmails() map[string]interface
 // GetNotificationEmailsOk returns a tuple with the NotificationEmails field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductUpdateResponseData) GetNotificationEmailsOk() (map[string]interface{}, bool) {
+func (o *ProductUpdateResponseData) GetNotificationEmailsOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.NotificationEmails) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.NotificationEmails, true
+	return &o.NotificationEmails, true
 }
 
 // SetNotificationEmails sets field value
-func (o *ProductUpdateResponseData) SetNotificationEmails(v map[string]interface{}) {
+func (o *ProductUpdateResponseData) SetNotificationEmails(v interface{}) {
 	o.NotificationEmails = v
 }
 
@@ -692,10 +692,10 @@ func (o *ProductUpdateResponseData) SetMinimumOrderable(v int32) {
 }
 
 // GetMaximumOrderable returns the MaximumOrderable field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *ProductUpdateResponseData) GetMaximumOrderable() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ProductUpdateResponseData) GetMaximumOrderable() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -705,15 +705,15 @@ func (o *ProductUpdateResponseData) GetMaximumOrderable() map[string]interface{}
 // GetMaximumOrderableOk returns a tuple with the MaximumOrderable field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductUpdateResponseData) GetMaximumOrderableOk() (map[string]interface{}, bool) {
+func (o *ProductUpdateResponseData) GetMaximumOrderableOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.MaximumOrderable) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.MaximumOrderable, true
+	return &o.MaximumOrderable, true
 }
 
 // SetMaximumOrderable sets field value
-func (o *ProductUpdateResponseData) SetMaximumOrderable(v map[string]interface{}) {
+func (o *ProductUpdateResponseData) SetMaximumOrderable(v interface{}) {
 	o.MaximumOrderable = v
 }
 
@@ -742,10 +742,10 @@ func (o *ProductUpdateResponseData) SetLowStockAlert(v bool) {
 }
 
 // GetStockThreshold returns the StockThreshold field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *ProductUpdateResponseData) GetStockThreshold() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ProductUpdateResponseData) GetStockThreshold() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -755,23 +755,23 @@ func (o *ProductUpdateResponseData) GetStockThreshold() map[string]interface{} {
 // GetStockThresholdOk returns a tuple with the StockThreshold field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductUpdateResponseData) GetStockThresholdOk() (map[string]interface{}, bool) {
+func (o *ProductUpdateResponseData) GetStockThresholdOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.StockThreshold) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.StockThreshold, true
+	return &o.StockThreshold, true
 }
 
 // SetStockThreshold sets field value
-func (o *ProductUpdateResponseData) SetStockThreshold(v map[string]interface{}) {
+func (o *ProductUpdateResponseData) SetStockThreshold(v interface{}) {
 	o.StockThreshold = v
 }
 
 // GetExpiresIn returns the ExpiresIn field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *ProductUpdateResponseData) GetExpiresIn() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ProductUpdateResponseData) GetExpiresIn() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -781,15 +781,15 @@ func (o *ProductUpdateResponseData) GetExpiresIn() map[string]interface{} {
 // GetExpiresInOk returns a tuple with the ExpiresIn field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductUpdateResponseData) GetExpiresInOk() (map[string]interface{}, bool) {
+func (o *ProductUpdateResponseData) GetExpiresInOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.ExpiresIn) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.ExpiresIn, true
+	return &o.ExpiresIn, true
 }
 
 // SetExpiresIn sets field value
-func (o *ProductUpdateResponseData) SetExpiresIn(v map[string]interface{}) {
+func (o *ProductUpdateResponseData) SetExpiresIn(v interface{}) {
 	o.ExpiresIn = v
 }
 

@@ -20,12 +20,12 @@ var _ MappedNullable = &DedicatedNubanCreateResponseData{}
 
 // DedicatedNubanCreateResponseData struct for DedicatedNubanCreateResponseData
 type DedicatedNubanCreateResponseData struct {
-	Bank DedicatedNubanCreateResponseDataBank `json:"bank"`
+	Bank DedicatedNubanListResponseArrayBank `json:"bank"`
 	AccountName string `json:"account_name"`
 	AccountNumber string `json:"account_number"`
 	Assigned bool `json:"assigned"`
 	Currency string `json:"currency"`
-	Metadata map[string]interface{} `json:"metadata"`
+	Metadata interface{} `json:"metadata"`
 	Active bool `json:"active"`
 	Id int32 `json:"id"`
 	CreatedAt string `json:"created_at"`
@@ -38,7 +38,7 @@ type DedicatedNubanCreateResponseData struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDedicatedNubanCreateResponseData(bank DedicatedNubanCreateResponseDataBank, accountName string, accountNumber string, assigned bool, currency string, metadata map[string]interface{}, active bool, id int32, createdAt string, updatedAt string, assignment DedicatedNubanCreateResponseDataAssignment, customer DedicatedNubanCreateResponseDataCustomer) *DedicatedNubanCreateResponseData {
+func NewDedicatedNubanCreateResponseData(bank DedicatedNubanListResponseArrayBank, accountName string, accountNumber string, assigned bool, currency string, metadata interface{}, active bool, id int32, createdAt string, updatedAt string, assignment DedicatedNubanCreateResponseDataAssignment, customer DedicatedNubanCreateResponseDataCustomer) *DedicatedNubanCreateResponseData {
 	this := DedicatedNubanCreateResponseData{}
 	this.Bank = bank
 	this.AccountName = accountName
@@ -64,9 +64,9 @@ func NewDedicatedNubanCreateResponseDataWithDefaults() *DedicatedNubanCreateResp
 }
 
 // GetBank returns the Bank field value
-func (o *DedicatedNubanCreateResponseData) GetBank() DedicatedNubanCreateResponseDataBank {
+func (o *DedicatedNubanCreateResponseData) GetBank() DedicatedNubanListResponseArrayBank {
 	if o == nil {
-		var ret DedicatedNubanCreateResponseDataBank
+		var ret DedicatedNubanListResponseArrayBank
 		return ret
 	}
 
@@ -75,7 +75,7 @@ func (o *DedicatedNubanCreateResponseData) GetBank() DedicatedNubanCreateRespons
 
 // GetBankOk returns a tuple with the Bank field value
 // and a boolean to check if the value has been set.
-func (o *DedicatedNubanCreateResponseData) GetBankOk() (*DedicatedNubanCreateResponseDataBank, bool) {
+func (o *DedicatedNubanCreateResponseData) GetBankOk() (*DedicatedNubanListResponseArrayBank, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -83,7 +83,7 @@ func (o *DedicatedNubanCreateResponseData) GetBankOk() (*DedicatedNubanCreateRes
 }
 
 // SetBank sets field value
-func (o *DedicatedNubanCreateResponseData) SetBank(v DedicatedNubanCreateResponseDataBank) {
+func (o *DedicatedNubanCreateResponseData) SetBank(v DedicatedNubanListResponseArrayBank) {
 	o.Bank = v
 }
 
@@ -184,10 +184,10 @@ func (o *DedicatedNubanCreateResponseData) SetCurrency(v string) {
 }
 
 // GetMetadata returns the Metadata field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *DedicatedNubanCreateResponseData) GetMetadata() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *DedicatedNubanCreateResponseData) GetMetadata() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -197,15 +197,15 @@ func (o *DedicatedNubanCreateResponseData) GetMetadata() map[string]interface{} 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DedicatedNubanCreateResponseData) GetMetadataOk() (map[string]interface{}, bool) {
+func (o *DedicatedNubanCreateResponseData) GetMetadataOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Metadata) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Metadata, true
+	return &o.Metadata, true
 }
 
 // SetMetadata sets field value
-func (o *DedicatedNubanCreateResponseData) SetMetadata(v map[string]interface{}) {
+func (o *DedicatedNubanCreateResponseData) SetMetadata(v interface{}) {
 	o.Metadata = v
 }
 

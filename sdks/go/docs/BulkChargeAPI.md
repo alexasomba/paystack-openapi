@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## BulkChargeCharges
 
-> BulkchargeCodeCharges BulkChargeCharges(ctx, code).PerPage(perPage).Page(page).Status(status).Execute()
+> BulkChargeFetchBulkBatchChargesResponse BulkChargeCharges(ctx, code).PerPage(perPage).Page(page).Status(status).Execute()
 
 List Charges in a Batch
 
@@ -46,7 +46,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BulkChargeAPI.BulkChargeCharges``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `BulkChargeCharges`: BulkchargeCodeCharges
+    // response from `BulkChargeCharges`: BulkChargeFetchBulkBatchChargesResponse
     fmt.Fprintf(os.Stdout, "Response from `BulkChargeAPI.BulkChargeCharges`: %v\n", resp)
 }
 ```
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BulkchargeCodeCharges**](BulkchargeCodeCharges.md)
+[**BulkChargeFetchBulkBatchChargesResponse**](BulkChargeFetchBulkBatchChargesResponse.md)
 
 ### Authorization
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ## BulkChargeFetch
 
-> BulkchargeCode BulkChargeFetch(ctx, code).Execute()
+> BulkChargeFetchResponse BulkChargeFetch(ctx, code).Execute()
 
 Fetch Bulk Charge Batch
 
@@ -119,7 +119,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BulkChargeAPI.BulkChargeFetch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `BulkChargeFetch`: BulkchargeCode
+    // response from `BulkChargeFetch`: BulkChargeFetchResponse
     fmt.Fprintf(os.Stdout, "Response from `BulkChargeAPI.BulkChargeFetch`: %v\n", resp)
 }
 ```
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BulkchargeCode**](BulkchargeCode.md)
+[**BulkChargeFetchResponse**](BulkChargeFetchResponse.md)
 
 ### Authorization
 
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 
 ## BulkChargePause
 
-> BulkchargePauseCode BulkChargePause(ctx, code).Execute()
+> BulkChargePauseResponse BulkChargePause(ctx, code).Execute()
 
 Pause Bulk Charge Batch
 
@@ -325,7 +325,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BulkChargeAPI.BulkChargePause``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `BulkChargePause`: BulkchargePauseCode
+    // response from `BulkChargePause`: BulkChargePauseResponse
     fmt.Fprintf(os.Stdout, "Response from `BulkChargeAPI.BulkChargePause`: %v\n", resp)
 }
 ```
@@ -349,7 +349,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BulkchargePauseCode**](BulkchargePauseCode.md)
+[**BulkChargePauseResponse**](BulkChargePauseResponse.md)
 
 ### Authorization
 
@@ -367,7 +367,7 @@ Name | Type | Description  | Notes
 
 ## BulkChargeResume
 
-> BulkchargeResumeCode BulkChargeResume(ctx, code).Execute()
+> BulkChargeResumeResponse BulkChargeResume(ctx, code).Execute()
 
 Resume Bulk Charge Batch
 
@@ -395,7 +395,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BulkChargeAPI.BulkChargeResume``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `BulkChargeResume`: BulkchargeResumeCode
+    // response from `BulkChargeResume`: BulkChargeResumeResponse
     fmt.Fprintf(os.Stdout, "Response from `BulkChargeAPI.BulkChargeResume`: %v\n", resp)
 }
 ```
@@ -419,7 +419,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BulkchargeResumeCode**](BulkchargeResumeCode.md)
+[**BulkChargeResumeResponse**](BulkChargeResumeResponse.md)
 
 ### Authorization
 

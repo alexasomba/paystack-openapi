@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **int32** |  | 
 **Name** | **string** |  | 
 **PlanCode** | **string** |  | 
-**Description** | **map[string]interface{}** |  | 
+**Description** | **interface{}** |  | 
 **Amount** | **int32** |  | 
 **Interval** | **string** |  | 
 **SendInvoices** | **bool** |  | 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewSubscriptionFetchResponseDataPlan
 
-`func NewSubscriptionFetchResponseDataPlan(id int32, name string, planCode string, description map[string]interface{}, amount int32, interval string, sendInvoices bool, sendSms bool, currency string, ) *SubscriptionFetchResponseDataPlan`
+`func NewSubscriptionFetchResponseDataPlan(id int32, name string, planCode string, description interface{}, amount int32, interval string, sendInvoices bool, sendSms bool, currency string, ) *SubscriptionFetchResponseDataPlan`
 
 NewSubscriptionFetchResponseDataPlan instantiates a new SubscriptionFetchResponseDataPlan object
 This constructor will assign default values to properties that have it defined,
@@ -95,20 +95,20 @@ SetPlanCode sets PlanCode field to given value.
 
 ### GetDescription
 
-`func (o *SubscriptionFetchResponseDataPlan) GetDescription() map[string]interface{}`
+`func (o *SubscriptionFetchResponseDataPlan) GetDescription() interface{}`
 
 GetDescription returns the Description field if non-nil, zero value otherwise.
 
 ### GetDescriptionOk
 
-`func (o *SubscriptionFetchResponseDataPlan) GetDescriptionOk() (*map[string]interface{}, bool)`
+`func (o *SubscriptionFetchResponseDataPlan) GetDescriptionOk() (*interface{}, bool)`
 
 GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDescription
 
-`func (o *SubscriptionFetchResponseDataPlan) SetDescription(v map[string]interface{})`
+`func (o *SubscriptionFetchResponseDataPlan) SetDescription(v interface{})`
 
 SetDescription sets Description field to given value.
 

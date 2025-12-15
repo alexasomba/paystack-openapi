@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Integration** | **int32** |  | 
 **Domain** | **string** |  | 
-**PaymentMethods** | **[]map[string]interface{}** |  | 
+**PaymentMethods** | **[]interface{}** |  | 
 **Active** | **bool** |  | 
 **CreatedAt** | **string** |  | 
 **Currency** | **string** |  | 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewVirtualTerminalListResponseArray
 
-`func NewVirtualTerminalListResponseArray(id int32, code string, name string, integration int32, domain string, paymentMethods []map[string]interface{}, active bool, createdAt string, currency string, ) *VirtualTerminalListResponseArray`
+`func NewVirtualTerminalListResponseArray(id int32, code string, name string, integration int32, domain string, paymentMethods []interface{}, active bool, createdAt string, currency string, ) *VirtualTerminalListResponseArray`
 
 NewVirtualTerminalListResponseArray instantiates a new VirtualTerminalListResponseArray object
 This constructor will assign default values to properties that have it defined,
@@ -135,20 +135,20 @@ SetDomain sets Domain field to given value.
 
 ### GetPaymentMethods
 
-`func (o *VirtualTerminalListResponseArray) GetPaymentMethods() []map[string]interface{}`
+`func (o *VirtualTerminalListResponseArray) GetPaymentMethods() []interface{}`
 
 GetPaymentMethods returns the PaymentMethods field if non-nil, zero value otherwise.
 
 ### GetPaymentMethodsOk
 
-`func (o *VirtualTerminalListResponseArray) GetPaymentMethodsOk() (*[]map[string]interface{}, bool)`
+`func (o *VirtualTerminalListResponseArray) GetPaymentMethodsOk() (*[]interface{}, bool)`
 
 GetPaymentMethodsOk returns a tuple with the PaymentMethods field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPaymentMethods
 
-`func (o *VirtualTerminalListResponseArray) SetPaymentMethods(v []map[string]interface{})`
+`func (o *VirtualTerminalListResponseArray) SetPaymentMethods(v []interface{})`
 
 SetPaymentMethods sets PaymentMethods field to given value.
 

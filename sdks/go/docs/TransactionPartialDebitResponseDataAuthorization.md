@@ -16,13 +16,13 @@ Name | Type | Description | Notes
 **Brand** | **string** |  | 
 **Reusable** | **bool** |  | 
 **Signature** | **string** |  | 
-**AccountName** | **map[string]interface{}** |  | 
+**AccountName** | **interface{}** |  | 
 
 ## Methods
 
 ### NewTransactionPartialDebitResponseDataAuthorization
 
-`func NewTransactionPartialDebitResponseDataAuthorization(authorizationCode string, bin string, last4 string, expMonth string, expYear string, channel string, cardType string, bank string, countryCode string, brand string, reusable bool, signature string, accountName map[string]interface{}, ) *TransactionPartialDebitResponseDataAuthorization`
+`func NewTransactionPartialDebitResponseDataAuthorization(authorizationCode string, bin string, last4 string, expMonth string, expYear string, channel string, cardType string, bank string, countryCode string, brand string, reusable bool, signature string, accountName interface{}, ) *TransactionPartialDebitResponseDataAuthorization`
 
 NewTransactionPartialDebitResponseDataAuthorization instantiates a new TransactionPartialDebitResponseDataAuthorization object
 This constructor will assign default values to properties that have it defined,
@@ -279,20 +279,20 @@ SetSignature sets Signature field to given value.
 
 ### GetAccountName
 
-`func (o *TransactionPartialDebitResponseDataAuthorization) GetAccountName() map[string]interface{}`
+`func (o *TransactionPartialDebitResponseDataAuthorization) GetAccountName() interface{}`
 
 GetAccountName returns the AccountName field if non-nil, zero value otherwise.
 
 ### GetAccountNameOk
 
-`func (o *TransactionPartialDebitResponseDataAuthorization) GetAccountNameOk() (*map[string]interface{}, bool)`
+`func (o *TransactionPartialDebitResponseDataAuthorization) GetAccountNameOk() (*interface{}, bool)`
 
 GetAccountNameOk returns a tuple with the AccountName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccountName
 
-`func (o *TransactionPartialDebitResponseDataAuthorization) SetAccountName(v map[string]interface{})`
+`func (o *TransactionPartialDebitResponseDataAuthorization) SetAccountName(v interface{})`
 
 SetAccountName sets AccountName field to given value.
 

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## PageAddProducts
 
-> PageAddProductsResponse PageAddProducts(ctx, id).Body(body).Execute()
+> PageAddProductsResponse PageAddProducts(ctx, id).PageProduct(pageProduct).Execute()
 
 Add Products
 
@@ -35,11 +35,11 @@ import (
 
 func main() {
     id := "id_example" // string | 
-    body := PageIdProduct(987) // PageIdProduct |  (optional)
+    pageProduct := *openapiclient.NewPageProduct([]int32{int32(123)}) // PageProduct |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PageAPI.PageAddProducts(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.PageAPI.PageAddProducts(context.Background(), id).PageProduct(pageProduct).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PageAPI.PageAddProducts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +65,7 @@ Other parameters are passed through a pointer to a apiPageAddProductsRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **PageIdProduct** |  | 
+ **pageProduct** | [**PageProduct**](PageProduct.md) |  | 
 
 ### Return type
 
@@ -366,7 +366,7 @@ Name | Type | Description  | Notes
 
 ## PageUpdate
 
-> PageUpdateResponse PageUpdate(ctx, id).Body(body).Execute()
+> PageUpdateResponse PageUpdate(ctx, id).PageUpdate(pageUpdate).Execute()
 
 Update Page
 
@@ -386,11 +386,11 @@ import (
 
 func main() {
     id := int32(1891222) // int32 | The unique identifier of a payment page
-    body := PageId(987) // PageId |  (optional)
+    pageUpdate := *openapiclient.NewPageUpdate() // PageUpdate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PageAPI.PageUpdate(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.PageAPI.PageUpdate(context.Background(), id).PageUpdate(pageUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PageAPI.PageUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -416,7 +416,7 @@ Other parameters are passed through a pointer to a apiPageUpdateRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **PageId** |  | 
+ **pageUpdate** | [**PageUpdate**](PageUpdate.md) |  | 
 
 ### Return type
 

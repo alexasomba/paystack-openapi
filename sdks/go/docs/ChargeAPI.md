@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## ChargeCheck
 
-> ChargeReference ChargeCheck(ctx, reference).Execute()
+> ChargeCheckPendingResponse ChargeCheck(ctx, reference).Execute()
 
 Check pending charge
 
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ChargeAPI.ChargeCheck``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ChargeCheck`: ChargeReference
+    // response from `ChargeCheck`: ChargeCheckPendingResponse
     fmt.Fprintf(os.Stdout, "Response from `ChargeAPI.ChargeCheck`: %v\n", resp)
 }
 ```
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ChargeReference**](ChargeReference.md)
+[**ChargeCheckPendingResponse**](ChargeCheckPendingResponse.md)
 
 ### Authorization
 

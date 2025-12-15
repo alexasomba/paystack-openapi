@@ -17,20 +17,20 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **ProductLevelType** | **string** |  | 
 **ProductId** | **int32** |  | 
-**ProductSuccessMessage** | **map[string]interface{}** |  | 
-**ProductRedirectUrl** | **map[string]interface{}** |  | 
-**IFNULLP1ExpiresInP2ExpiresIn** | **map[string]interface{}** |  | 
+**ProductSuccessMessage** | **interface{}** |  | 
+**ProductRedirectUrl** | **interface{}** |  | 
+**IFNULLP1ExpiresInP2ExpiresIn** | **interface{}** |  | 
 **ProductQuantitySold** | **int32** |  | 
-**ProductNotificationEmails** | **map[string]interface{}** |  | 
+**ProductNotificationEmails** | **interface{}** |  | 
 **IFNULLP1MetadataP2Metadata** | **string** |  | 
-**StorefrontRedirectUrl** | **map[string]interface{}** |  | 
-**StorefrontSuccessMessage** | **map[string]interface{}** |  | 
+**StorefrontRedirectUrl** | **interface{}** |  | 
+**StorefrontSuccessMessage** | **interface{}** |  | 
 
 ## Methods
 
 ### NewOrderItemsArray
 
-`func NewOrderItemsArray(orderItemId int32, orderId int32, type_ string, item int32, currentTotalItemsPrice int32, files string, order int32, amount int32, quantity int32, createdAt string, name string, productLevelType string, productId int32, productSuccessMessage map[string]interface{}, productRedirectUrl map[string]interface{}, iFNULLP1ExpiresInP2ExpiresIn map[string]interface{}, productQuantitySold int32, productNotificationEmails map[string]interface{}, iFNULLP1MetadataP2Metadata string, storefrontRedirectUrl map[string]interface{}, storefrontSuccessMessage map[string]interface{}, ) *OrderItemsArray`
+`func NewOrderItemsArray(orderItemId int32, orderId int32, type_ string, item int32, currentTotalItemsPrice int32, files string, order int32, amount int32, quantity int32, createdAt string, name string, productLevelType string, productId int32, productSuccessMessage interface{}, productRedirectUrl interface{}, iFNULLP1ExpiresInP2ExpiresIn interface{}, productQuantitySold int32, productNotificationEmails interface{}, iFNULLP1MetadataP2Metadata string, storefrontRedirectUrl interface{}, storefrontSuccessMessage interface{}, ) *OrderItemsArray`
 
 NewOrderItemsArray instantiates a new OrderItemsArray object
 This constructor will assign default values to properties that have it defined,
@@ -307,20 +307,20 @@ SetProductId sets ProductId field to given value.
 
 ### GetProductSuccessMessage
 
-`func (o *OrderItemsArray) GetProductSuccessMessage() map[string]interface{}`
+`func (o *OrderItemsArray) GetProductSuccessMessage() interface{}`
 
 GetProductSuccessMessage returns the ProductSuccessMessage field if non-nil, zero value otherwise.
 
 ### GetProductSuccessMessageOk
 
-`func (o *OrderItemsArray) GetProductSuccessMessageOk() (*map[string]interface{}, bool)`
+`func (o *OrderItemsArray) GetProductSuccessMessageOk() (*interface{}, bool)`
 
 GetProductSuccessMessageOk returns a tuple with the ProductSuccessMessage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProductSuccessMessage
 
-`func (o *OrderItemsArray) SetProductSuccessMessage(v map[string]interface{})`
+`func (o *OrderItemsArray) SetProductSuccessMessage(v interface{})`
 
 SetProductSuccessMessage sets ProductSuccessMessage field to given value.
 
@@ -337,20 +337,20 @@ SetProductSuccessMessage sets ProductSuccessMessage field to given value.
 UnsetProductSuccessMessage ensures that no value is present for ProductSuccessMessage, not even an explicit nil
 ### GetProductRedirectUrl
 
-`func (o *OrderItemsArray) GetProductRedirectUrl() map[string]interface{}`
+`func (o *OrderItemsArray) GetProductRedirectUrl() interface{}`
 
 GetProductRedirectUrl returns the ProductRedirectUrl field if non-nil, zero value otherwise.
 
 ### GetProductRedirectUrlOk
 
-`func (o *OrderItemsArray) GetProductRedirectUrlOk() (*map[string]interface{}, bool)`
+`func (o *OrderItemsArray) GetProductRedirectUrlOk() (*interface{}, bool)`
 
 GetProductRedirectUrlOk returns a tuple with the ProductRedirectUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProductRedirectUrl
 
-`func (o *OrderItemsArray) SetProductRedirectUrl(v map[string]interface{})`
+`func (o *OrderItemsArray) SetProductRedirectUrl(v interface{})`
 
 SetProductRedirectUrl sets ProductRedirectUrl field to given value.
 
@@ -367,20 +367,20 @@ SetProductRedirectUrl sets ProductRedirectUrl field to given value.
 UnsetProductRedirectUrl ensures that no value is present for ProductRedirectUrl, not even an explicit nil
 ### GetIFNULLP1ExpiresInP2ExpiresIn
 
-`func (o *OrderItemsArray) GetIFNULLP1ExpiresInP2ExpiresIn() map[string]interface{}`
+`func (o *OrderItemsArray) GetIFNULLP1ExpiresInP2ExpiresIn() interface{}`
 
 GetIFNULLP1ExpiresInP2ExpiresIn returns the IFNULLP1ExpiresInP2ExpiresIn field if non-nil, zero value otherwise.
 
 ### GetIFNULLP1ExpiresInP2ExpiresInOk
 
-`func (o *OrderItemsArray) GetIFNULLP1ExpiresInP2ExpiresInOk() (*map[string]interface{}, bool)`
+`func (o *OrderItemsArray) GetIFNULLP1ExpiresInP2ExpiresInOk() (*interface{}, bool)`
 
 GetIFNULLP1ExpiresInP2ExpiresInOk returns a tuple with the IFNULLP1ExpiresInP2ExpiresIn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIFNULLP1ExpiresInP2ExpiresIn
 
-`func (o *OrderItemsArray) SetIFNULLP1ExpiresInP2ExpiresIn(v map[string]interface{})`
+`func (o *OrderItemsArray) SetIFNULLP1ExpiresInP2ExpiresIn(v interface{})`
 
 SetIFNULLP1ExpiresInP2ExpiresIn sets IFNULLP1ExpiresInP2ExpiresIn field to given value.
 
@@ -417,20 +417,20 @@ SetProductQuantitySold sets ProductQuantitySold field to given value.
 
 ### GetProductNotificationEmails
 
-`func (o *OrderItemsArray) GetProductNotificationEmails() map[string]interface{}`
+`func (o *OrderItemsArray) GetProductNotificationEmails() interface{}`
 
 GetProductNotificationEmails returns the ProductNotificationEmails field if non-nil, zero value otherwise.
 
 ### GetProductNotificationEmailsOk
 
-`func (o *OrderItemsArray) GetProductNotificationEmailsOk() (*map[string]interface{}, bool)`
+`func (o *OrderItemsArray) GetProductNotificationEmailsOk() (*interface{}, bool)`
 
 GetProductNotificationEmailsOk returns a tuple with the ProductNotificationEmails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProductNotificationEmails
 
-`func (o *OrderItemsArray) SetProductNotificationEmails(v map[string]interface{})`
+`func (o *OrderItemsArray) SetProductNotificationEmails(v interface{})`
 
 SetProductNotificationEmails sets ProductNotificationEmails field to given value.
 
@@ -467,20 +467,20 @@ SetIFNULLP1MetadataP2Metadata sets IFNULLP1MetadataP2Metadata field to given val
 
 ### GetStorefrontRedirectUrl
 
-`func (o *OrderItemsArray) GetStorefrontRedirectUrl() map[string]interface{}`
+`func (o *OrderItemsArray) GetStorefrontRedirectUrl() interface{}`
 
 GetStorefrontRedirectUrl returns the StorefrontRedirectUrl field if non-nil, zero value otherwise.
 
 ### GetStorefrontRedirectUrlOk
 
-`func (o *OrderItemsArray) GetStorefrontRedirectUrlOk() (*map[string]interface{}, bool)`
+`func (o *OrderItemsArray) GetStorefrontRedirectUrlOk() (*interface{}, bool)`
 
 GetStorefrontRedirectUrlOk returns a tuple with the StorefrontRedirectUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStorefrontRedirectUrl
 
-`func (o *OrderItemsArray) SetStorefrontRedirectUrl(v map[string]interface{})`
+`func (o *OrderItemsArray) SetStorefrontRedirectUrl(v interface{})`
 
 SetStorefrontRedirectUrl sets StorefrontRedirectUrl field to given value.
 
@@ -497,20 +497,20 @@ SetStorefrontRedirectUrl sets StorefrontRedirectUrl field to given value.
 UnsetStorefrontRedirectUrl ensures that no value is present for StorefrontRedirectUrl, not even an explicit nil
 ### GetStorefrontSuccessMessage
 
-`func (o *OrderItemsArray) GetStorefrontSuccessMessage() map[string]interface{}`
+`func (o *OrderItemsArray) GetStorefrontSuccessMessage() interface{}`
 
 GetStorefrontSuccessMessage returns the StorefrontSuccessMessage field if non-nil, zero value otherwise.
 
 ### GetStorefrontSuccessMessageOk
 
-`func (o *OrderItemsArray) GetStorefrontSuccessMessageOk() (*map[string]interface{}, bool)`
+`func (o *OrderItemsArray) GetStorefrontSuccessMessageOk() (*interface{}, bool)`
 
 GetStorefrontSuccessMessageOk returns a tuple with the StorefrontSuccessMessage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStorefrontSuccessMessage
 
-`func (o *OrderItemsArray) SetStorefrontSuccessMessage(v map[string]interface{})`
+`func (o *OrderItemsArray) SetStorefrontSuccessMessage(v interface{})`
 
 SetStorefrontSuccessMessage sets StorefrontSuccessMessage field to given value.
 

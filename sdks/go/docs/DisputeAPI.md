@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 ## DisputeEvidence
 
-> DisputeAddEvidenceResponse DisputeEvidence(ctx, id).Body(body).Execute()
+> DisputeAddEvidenceResponse DisputeEvidence(ctx, id).DisputeEvidence(disputeEvidence).Execute()
 
 Add Evidence
 
@@ -112,11 +112,11 @@ import (
 
 func main() {
     id := int32(4734583785) // int32 | The unique identifier of the dispute
-    body := DisputeIdEvidence(987) // DisputeIdEvidence |  (optional)
+    disputeEvidence := *openapiclient.NewDisputeEvidence("CustomerEmail_example", "CustomerName_example", "CustomerPhone_example", "ServiceDetails_example") // DisputeEvidence |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DisputeAPI.DisputeEvidence(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.DisputeAPI.DisputeEvidence(context.Background(), id).DisputeEvidence(disputeEvidence).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DisputeAPI.DisputeEvidence``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -142,7 +142,7 @@ Other parameters are passed through a pointer to a apiDisputeEvidenceRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **DisputeIdEvidence** |  | 
+ **disputeEvidence** | [**DisputeEvidence**](DisputeEvidence.md) |  | 
 
 ### Return type
 
@@ -311,7 +311,7 @@ Name | Type | Description  | Notes
 
 ## DisputeResolve
 
-> DisputeResolveResponse DisputeResolve(ctx, id).Body(body).Execute()
+> DisputeResolveResponse DisputeResolve(ctx, id).DisputeResolve(disputeResolve).Execute()
 
 Resolve Dispute
 
@@ -331,11 +331,11 @@ import (
 
 func main() {
     id := int32(4734583785) // int32 | The unique identifier of the dispute
-    body := DisputeIdResolve(987) // DisputeIdResolve |  (optional)
+    disputeResolve := *openapiclient.NewDisputeResolve("Resolution_example", "Message_example", int32(123), "UploadedFilename_example") // DisputeResolve |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DisputeAPI.DisputeResolve(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.DisputeAPI.DisputeResolve(context.Background(), id).DisputeResolve(disputeResolve).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DisputeAPI.DisputeResolve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -361,7 +361,7 @@ Other parameters are passed through a pointer to a apiDisputeResolveRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **DisputeIdResolve** |  | 
+ **disputeResolve** | [**DisputeResolve**](DisputeResolve.md) |  | 
 
 ### Return type
 
@@ -453,7 +453,7 @@ Name | Type | Description  | Notes
 
 ## DisputeUpdate
 
-> DisputeUpdateResponse DisputeUpdate(ctx, id).Body(body).Execute()
+> DisputeUpdateResponse DisputeUpdate(ctx, id).DisputeUpdate(disputeUpdate).Execute()
 
 Update Dispute
 
@@ -473,11 +473,11 @@ import (
 
 func main() {
     id := int32(1801929) // int32 | The unique identifier of the dispute
-    body := DisputeId(987) // DisputeId |  (optional)
+    disputeUpdate := *openapiclient.NewDisputeUpdate(int32(123)) // DisputeUpdate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DisputeAPI.DisputeUpdate(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.DisputeAPI.DisputeUpdate(context.Background(), id).DisputeUpdate(disputeUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DisputeAPI.DisputeUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -503,7 +503,7 @@ Other parameters are passed through a pointer to a apiDisputeUpdateRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **DisputeId** |  | 
+ **disputeUpdate** | [**DisputeUpdate**](DisputeUpdate.md) |  | 
 
 ### Return type
 

@@ -12,9 +12,9 @@ Name | Type | Description | Notes
 **Domain** | **string** |  | 
 **Metadata** | **string** |  | 
 **GatewayResponse** | **string** |  | 
-**Message** | **map[string]interface{}** |  | 
+**Message** | **interface{}** |  | 
 **Channel** | **string** |  | 
-**IpAddress** | **map[string]interface{}** |  | 
+**IpAddress** | **interface{}** |  | 
 **Log** | [**NullableChargeAuthorizationResponseDataLog**](ChargeAuthorizationResponseDataLog.md) |  | 
 **Fees** | **int32** |  | 
 **Authorization** | [**TransactionPartialDebitResponseDataAuthorization**](TransactionPartialDebitResponseDataAuthorization.md) |  | 
@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewTransactionPartialDebitResponseData
 
-`func NewTransactionPartialDebitResponseData(amount int32, currency string, transactionDate string, status string, reference string, domain string, metadata string, gatewayResponse string, message map[string]interface{}, channel string, ipAddress map[string]interface{}, log NullableChargeAuthorizationResponseDataLog, fees int32, authorization TransactionPartialDebitResponseDataAuthorization, customer TransactionPartialDebitResponseDataCustomer, plan int32, requestedAmount int32, id int32, ) *TransactionPartialDebitResponseData`
+`func NewTransactionPartialDebitResponseData(amount int32, currency string, transactionDate string, status string, reference string, domain string, metadata string, gatewayResponse string, message interface{}, channel string, ipAddress interface{}, log NullableChargeAuthorizationResponseDataLog, fees int32, authorization TransactionPartialDebitResponseDataAuthorization, customer TransactionPartialDebitResponseDataCustomer, plan int32, requestedAmount int32, id int32, ) *TransactionPartialDebitResponseData`
 
 NewTransactionPartialDebitResponseData instantiates a new TransactionPartialDebitResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -204,20 +204,20 @@ SetGatewayResponse sets GatewayResponse field to given value.
 
 ### GetMessage
 
-`func (o *TransactionPartialDebitResponseData) GetMessage() map[string]interface{}`
+`func (o *TransactionPartialDebitResponseData) GetMessage() interface{}`
 
 GetMessage returns the Message field if non-nil, zero value otherwise.
 
 ### GetMessageOk
 
-`func (o *TransactionPartialDebitResponseData) GetMessageOk() (*map[string]interface{}, bool)`
+`func (o *TransactionPartialDebitResponseData) GetMessageOk() (*interface{}, bool)`
 
 GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessage
 
-`func (o *TransactionPartialDebitResponseData) SetMessage(v map[string]interface{})`
+`func (o *TransactionPartialDebitResponseData) SetMessage(v interface{})`
 
 SetMessage sets Message field to given value.
 
@@ -254,20 +254,20 @@ SetChannel sets Channel field to given value.
 
 ### GetIpAddress
 
-`func (o *TransactionPartialDebitResponseData) GetIpAddress() map[string]interface{}`
+`func (o *TransactionPartialDebitResponseData) GetIpAddress() interface{}`
 
 GetIpAddress returns the IpAddress field if non-nil, zero value otherwise.
 
 ### GetIpAddressOk
 
-`func (o *TransactionPartialDebitResponseData) GetIpAddressOk() (*map[string]interface{}, bool)`
+`func (o *TransactionPartialDebitResponseData) GetIpAddressOk() (*interface{}, bool)`
 
 GetIpAddressOk returns a tuple with the IpAddress field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIpAddress
 
-`func (o *TransactionPartialDebitResponseData) SetIpAddress(v map[string]interface{})`
+`func (o *TransactionPartialDebitResponseData) SetIpAddress(v interface{})`
 
 SetIpAddress sets IpAddress field to given value.
 

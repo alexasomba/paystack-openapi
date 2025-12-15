@@ -347,7 +347,7 @@ Name | Type | Description  | Notes
 
 ## TransferFetch
 
-> TransferCode TransferFetch(ctx, code).Execute()
+> TransferFetchResponse TransferFetch(ctx, code).Execute()
 
 Fetch Transfer
 
@@ -375,7 +375,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TransferAPI.TransferFetch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `TransferFetch`: TransferCode
+    // response from `TransferFetch`: TransferFetchResponse
     fmt.Fprintf(os.Stdout, "Response from `TransferAPI.TransferFetch`: %v\n", resp)
 }
 ```
@@ -399,7 +399,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransferCode**](TransferCode.md)
+[**TransferFetchResponse**](TransferFetchResponse.md)
 
 ### Authorization
 
@@ -698,7 +698,7 @@ Name | Type | Description  | Notes
 
 ## TransferVerify
 
-> TransferVerifyReference TransferVerify(ctx, reference).Execute()
+> TransferVerifyResponse TransferVerify(ctx, reference).Execute()
 
 Verify Transfer
 
@@ -726,7 +726,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TransferAPI.TransferVerify``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `TransferVerify`: TransferVerifyReference
+    // response from `TransferVerify`: TransferVerifyResponse
     fmt.Fprintf(os.Stdout, "Response from `TransferAPI.TransferVerify`: %v\n", resp)
 }
 ```
@@ -750,7 +750,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransferVerifyReference**](TransferVerifyReference.md)
+[**TransferVerifyResponse**](TransferVerifyResponse.md)
 
 ### Authorization
 

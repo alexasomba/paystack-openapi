@@ -8,19 +8,19 @@ Name | Type | Description | Notes
 **RefundAmount** | **int32** |  | 
 **Currency** | **string** |  | 
 **Status** | **string** |  | 
-**Resolution** | **map[string]interface{}** |  | 
+**Resolution** | **interface{}** |  | 
 **Domain** | **string** |  | 
 **Transaction** | [**DisputeFetchResponseDataTransaction**](DisputeFetchResponseDataTransaction.md) |  | 
-**TransactionReference** | **map[string]interface{}** |  | 
+**TransactionReference** | **interface{}** |  | 
 **Category** | **string** |  | 
-**Customer** | [**ChargeCreateResponseDataCustomer**](ChargeCreateResponseDataCustomer.md) |  | 
+**Customer** | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |  | 
 **Bin** | **string** |  | 
 **Last4** | **string** |  | 
-**DueAt** | **map[string]interface{}** |  | 
-**ResolvedAt** | **map[string]interface{}** |  | 
-**Evidence** | **map[string]interface{}** |  | 
-**Attachments** | **map[string]interface{}** |  | 
-**Note** | **map[string]interface{}** |  | 
+**DueAt** | **interface{}** |  | 
+**ResolvedAt** | **interface{}** |  | 
+**Evidence** | **interface{}** |  | 
+**Attachments** | **interface{}** |  | 
+**Note** | **interface{}** |  | 
 **History** | [**[]DisputeHistoryArray**](DisputeHistoryArray.md) |  | 
 **Messages** | [**[]DisputeMessagesArray**](DisputeMessagesArray.md) |  | 
 **CreatedAt** | **string** |  | 
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewDisputeFetchResponseData
 
-`func NewDisputeFetchResponseData(id int32, refundAmount int32, currency string, status string, resolution map[string]interface{}, domain string, transaction DisputeFetchResponseDataTransaction, transactionReference map[string]interface{}, category string, customer ChargeCreateResponseDataCustomer, bin string, last4 string, dueAt map[string]interface{}, resolvedAt map[string]interface{}, evidence map[string]interface{}, attachments map[string]interface{}, note map[string]interface{}, history []DisputeHistoryArray, messages []DisputeMessagesArray, createdAt string, updatedAt string, ) *DisputeFetchResponseData`
+`func NewDisputeFetchResponseData(id int32, refundAmount int32, currency string, status string, resolution interface{}, domain string, transaction DisputeFetchResponseDataTransaction, transactionReference interface{}, category string, customer TransactionFetchResponseDataCustomer, bin string, last4 string, dueAt interface{}, resolvedAt interface{}, evidence interface{}, attachments interface{}, note interface{}, history []DisputeHistoryArray, messages []DisputeMessagesArray, createdAt string, updatedAt string, ) *DisputeFetchResponseData`
 
 NewDisputeFetchResponseData instantiates a new DisputeFetchResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -127,20 +127,20 @@ SetStatus sets Status field to given value.
 
 ### GetResolution
 
-`func (o *DisputeFetchResponseData) GetResolution() map[string]interface{}`
+`func (o *DisputeFetchResponseData) GetResolution() interface{}`
 
 GetResolution returns the Resolution field if non-nil, zero value otherwise.
 
 ### GetResolutionOk
 
-`func (o *DisputeFetchResponseData) GetResolutionOk() (*map[string]interface{}, bool)`
+`func (o *DisputeFetchResponseData) GetResolutionOk() (*interface{}, bool)`
 
 GetResolutionOk returns a tuple with the Resolution field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResolution
 
-`func (o *DisputeFetchResponseData) SetResolution(v map[string]interface{})`
+`func (o *DisputeFetchResponseData) SetResolution(v interface{})`
 
 SetResolution sets Resolution field to given value.
 
@@ -197,20 +197,20 @@ SetTransaction sets Transaction field to given value.
 
 ### GetTransactionReference
 
-`func (o *DisputeFetchResponseData) GetTransactionReference() map[string]interface{}`
+`func (o *DisputeFetchResponseData) GetTransactionReference() interface{}`
 
 GetTransactionReference returns the TransactionReference field if non-nil, zero value otherwise.
 
 ### GetTransactionReferenceOk
 
-`func (o *DisputeFetchResponseData) GetTransactionReferenceOk() (*map[string]interface{}, bool)`
+`func (o *DisputeFetchResponseData) GetTransactionReferenceOk() (*interface{}, bool)`
 
 GetTransactionReferenceOk returns a tuple with the TransactionReference field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTransactionReference
 
-`func (o *DisputeFetchResponseData) SetTransactionReference(v map[string]interface{})`
+`func (o *DisputeFetchResponseData) SetTransactionReference(v interface{})`
 
 SetTransactionReference sets TransactionReference field to given value.
 
@@ -247,20 +247,20 @@ SetCategory sets Category field to given value.
 
 ### GetCustomer
 
-`func (o *DisputeFetchResponseData) GetCustomer() ChargeCreateResponseDataCustomer`
+`func (o *DisputeFetchResponseData) GetCustomer() TransactionFetchResponseDataCustomer`
 
 GetCustomer returns the Customer field if non-nil, zero value otherwise.
 
 ### GetCustomerOk
 
-`func (o *DisputeFetchResponseData) GetCustomerOk() (*ChargeCreateResponseDataCustomer, bool)`
+`func (o *DisputeFetchResponseData) GetCustomerOk() (*TransactionFetchResponseDataCustomer, bool)`
 
 GetCustomerOk returns a tuple with the Customer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCustomer
 
-`func (o *DisputeFetchResponseData) SetCustomer(v ChargeCreateResponseDataCustomer)`
+`func (o *DisputeFetchResponseData) SetCustomer(v TransactionFetchResponseDataCustomer)`
 
 SetCustomer sets Customer field to given value.
 
@@ -307,20 +307,20 @@ SetLast4 sets Last4 field to given value.
 
 ### GetDueAt
 
-`func (o *DisputeFetchResponseData) GetDueAt() map[string]interface{}`
+`func (o *DisputeFetchResponseData) GetDueAt() interface{}`
 
 GetDueAt returns the DueAt field if non-nil, zero value otherwise.
 
 ### GetDueAtOk
 
-`func (o *DisputeFetchResponseData) GetDueAtOk() (*map[string]interface{}, bool)`
+`func (o *DisputeFetchResponseData) GetDueAtOk() (*interface{}, bool)`
 
 GetDueAtOk returns a tuple with the DueAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDueAt
 
-`func (o *DisputeFetchResponseData) SetDueAt(v map[string]interface{})`
+`func (o *DisputeFetchResponseData) SetDueAt(v interface{})`
 
 SetDueAt sets DueAt field to given value.
 
@@ -337,20 +337,20 @@ SetDueAt sets DueAt field to given value.
 UnsetDueAt ensures that no value is present for DueAt, not even an explicit nil
 ### GetResolvedAt
 
-`func (o *DisputeFetchResponseData) GetResolvedAt() map[string]interface{}`
+`func (o *DisputeFetchResponseData) GetResolvedAt() interface{}`
 
 GetResolvedAt returns the ResolvedAt field if non-nil, zero value otherwise.
 
 ### GetResolvedAtOk
 
-`func (o *DisputeFetchResponseData) GetResolvedAtOk() (*map[string]interface{}, bool)`
+`func (o *DisputeFetchResponseData) GetResolvedAtOk() (*interface{}, bool)`
 
 GetResolvedAtOk returns a tuple with the ResolvedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResolvedAt
 
-`func (o *DisputeFetchResponseData) SetResolvedAt(v map[string]interface{})`
+`func (o *DisputeFetchResponseData) SetResolvedAt(v interface{})`
 
 SetResolvedAt sets ResolvedAt field to given value.
 
@@ -367,20 +367,20 @@ SetResolvedAt sets ResolvedAt field to given value.
 UnsetResolvedAt ensures that no value is present for ResolvedAt, not even an explicit nil
 ### GetEvidence
 
-`func (o *DisputeFetchResponseData) GetEvidence() map[string]interface{}`
+`func (o *DisputeFetchResponseData) GetEvidence() interface{}`
 
 GetEvidence returns the Evidence field if non-nil, zero value otherwise.
 
 ### GetEvidenceOk
 
-`func (o *DisputeFetchResponseData) GetEvidenceOk() (*map[string]interface{}, bool)`
+`func (o *DisputeFetchResponseData) GetEvidenceOk() (*interface{}, bool)`
 
 GetEvidenceOk returns a tuple with the Evidence field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEvidence
 
-`func (o *DisputeFetchResponseData) SetEvidence(v map[string]interface{})`
+`func (o *DisputeFetchResponseData) SetEvidence(v interface{})`
 
 SetEvidence sets Evidence field to given value.
 
@@ -397,20 +397,20 @@ SetEvidence sets Evidence field to given value.
 UnsetEvidence ensures that no value is present for Evidence, not even an explicit nil
 ### GetAttachments
 
-`func (o *DisputeFetchResponseData) GetAttachments() map[string]interface{}`
+`func (o *DisputeFetchResponseData) GetAttachments() interface{}`
 
 GetAttachments returns the Attachments field if non-nil, zero value otherwise.
 
 ### GetAttachmentsOk
 
-`func (o *DisputeFetchResponseData) GetAttachmentsOk() (*map[string]interface{}, bool)`
+`func (o *DisputeFetchResponseData) GetAttachmentsOk() (*interface{}, bool)`
 
 GetAttachmentsOk returns a tuple with the Attachments field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttachments
 
-`func (o *DisputeFetchResponseData) SetAttachments(v map[string]interface{})`
+`func (o *DisputeFetchResponseData) SetAttachments(v interface{})`
 
 SetAttachments sets Attachments field to given value.
 
@@ -427,20 +427,20 @@ SetAttachments sets Attachments field to given value.
 UnsetAttachments ensures that no value is present for Attachments, not even an explicit nil
 ### GetNote
 
-`func (o *DisputeFetchResponseData) GetNote() map[string]interface{}`
+`func (o *DisputeFetchResponseData) GetNote() interface{}`
 
 GetNote returns the Note field if non-nil, zero value otherwise.
 
 ### GetNoteOk
 
-`func (o *DisputeFetchResponseData) GetNoteOk() (*map[string]interface{}, bool)`
+`func (o *DisputeFetchResponseData) GetNoteOk() (*interface{}, bool)`
 
 GetNoteOk returns a tuple with the Note field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNote
 
-`func (o *DisputeFetchResponseData) SetNote(v map[string]interface{})`
+`func (o *DisputeFetchResponseData) SetNote(v interface{})`
 
 SetNote sets Note field to given value.
 

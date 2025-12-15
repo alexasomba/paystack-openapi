@@ -34,14 +34,14 @@ type TransferRecipientListResponseArray struct {
 	Type string `json:"type"`
 	UpdatedAt string `json:"updatedAt"`
 	IsDeleted bool `json:"is_deleted"`
-	Details TransferRecipientCreateResponseDataDetails `json:"details"`
+	Details TransferRecipientListResponseArrayDetails `json:"details"`
 }
 
 // NewTransferRecipientListResponseArray instantiates a new TransferRecipientListResponseArray object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferRecipientListResponseArray(active bool, createdAt string, currency string, description string, domain string, email NullableString, id int32, integration int32, name string, recipientCode string, type_ string, updatedAt string, isDeleted bool, details TransferRecipientCreateResponseDataDetails) *TransferRecipientListResponseArray {
+func NewTransferRecipientListResponseArray(active bool, createdAt string, currency string, description string, domain string, email NullableString, id int32, integration int32, name string, recipientCode string, type_ string, updatedAt string, isDeleted bool, details TransferRecipientListResponseArrayDetails) *TransferRecipientListResponseArray {
 	this := TransferRecipientListResponseArray{}
 	this.Active = active
 	this.CreatedAt = createdAt
@@ -416,9 +416,9 @@ func (o *TransferRecipientListResponseArray) SetIsDeleted(v bool) {
 }
 
 // GetDetails returns the Details field value
-func (o *TransferRecipientListResponseArray) GetDetails() TransferRecipientCreateResponseDataDetails {
+func (o *TransferRecipientListResponseArray) GetDetails() TransferRecipientListResponseArrayDetails {
 	if o == nil {
-		var ret TransferRecipientCreateResponseDataDetails
+		var ret TransferRecipientListResponseArrayDetails
 		return ret
 	}
 
@@ -427,7 +427,7 @@ func (o *TransferRecipientListResponseArray) GetDetails() TransferRecipientCreat
 
 // GetDetailsOk returns a tuple with the Details field value
 // and a boolean to check if the value has been set.
-func (o *TransferRecipientListResponseArray) GetDetailsOk() (*TransferRecipientCreateResponseDataDetails, bool) {
+func (o *TransferRecipientListResponseArray) GetDetailsOk() (*TransferRecipientListResponseArrayDetails, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -435,7 +435,7 @@ func (o *TransferRecipientListResponseArray) GetDetailsOk() (*TransferRecipientC
 }
 
 // SetDetails sets field value
-func (o *TransferRecipientListResponseArray) SetDetails(v TransferRecipientCreateResponseDataDetails) {
+func (o *TransferRecipientListResponseArray) SetDetails(v TransferRecipientListResponseArrayDetails) {
 	o.Details = v
 }
 

@@ -433,11 +433,11 @@ type ApiRefundRetryRequest struct {
 	ctx context.Context
 	ApiService *RefundAPIService
 	id int32
-	body *RefundRetryWithCustomerDetailsId
+	refundRetry *RefundRetry
 }
 
-func (r ApiRefundRetryRequest) Body(body RefundRetryWithCustomerDetailsId) ApiRefundRetryRequest {
-	r.body = &body
+func (r ApiRefundRetryRequest) RefundRetry(refundRetry RefundRetry) ApiRefundRetryRequest {
+	r.refundRetry = &refundRetry
 	return r
 }
 
@@ -502,7 +502,7 @@ func (a *RefundAPIService) RefundRetryExecute(r ApiRefundRetryRequest) (*RefundR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.refundRetry
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

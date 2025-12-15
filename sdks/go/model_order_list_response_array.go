@@ -27,23 +27,23 @@ type OrderListResponseArray struct {
 	Currency string `json:"currency"`
 	Amount int32 `json:"amount"`
 	Transaction int32 `json:"transaction"`
-	Page map[string]interface{} `json:"page"`
+	Page interface{} `json:"page"`
 	Customer int32 `json:"customer"`
 	CustomerName string `json:"customer_name"`
 	Status string `json:"status"`
-	ShippingAddress map[string]interface{} `json:"shipping_address"`
+	ShippingAddress interface{} `json:"shipping_address"`
 	Metadata string `json:"metadata"`
 	CreatedAt string `json:"created_at"`
 	UpdatedAt string `json:"updated_at"`
 	Email string `json:"email"`
 	PaidAt string `json:"paid_at"`
-	Shipping map[string]interface{} `json:"shipping"`
+	Shipping interface{} `json:"shipping"`
 	ShippingFees int32 `json:"shipping_fees"`
 	Refunded bool `json:"refunded"`
 	IsViewed bool `json:"is_viewed"`
-	RefundedAmount map[string]interface{} `json:"refunded_amount"`
-	DiscountAmount map[string]interface{} `json:"discount_amount"`
-	Discounts map[string]interface{} `json:"discounts"`
+	RefundedAmount interface{} `json:"refunded_amount"`
+	DiscountAmount interface{} `json:"discount_amount"`
+	Discounts interface{} `json:"discounts"`
 	Items []OrderItemsArray `json:"items"`
 	FullyRefunded bool `json:"fully_refunded"`
 }
@@ -52,7 +52,7 @@ type OrderListResponseArray struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrderListResponseArray(id int32, orderCode string, integration int32, domain string, currency string, amount int32, transaction int32, page map[string]interface{}, customer int32, customerName string, status string, shippingAddress map[string]interface{}, metadata string, createdAt string, updatedAt string, email string, paidAt string, shipping map[string]interface{}, shippingFees int32, refunded bool, isViewed bool, refundedAmount map[string]interface{}, discountAmount map[string]interface{}, discounts map[string]interface{}, items []OrderItemsArray, fullyRefunded bool) *OrderListResponseArray {
+func NewOrderListResponseArray(id int32, orderCode string, integration int32, domain string, currency string, amount int32, transaction int32, page interface{}, customer int32, customerName string, status string, shippingAddress interface{}, metadata string, createdAt string, updatedAt string, email string, paidAt string, shipping interface{}, shippingFees int32, refunded bool, isViewed bool, refundedAmount interface{}, discountAmount interface{}, discounts interface{}, items []OrderItemsArray, fullyRefunded bool) *OrderListResponseArray {
 	this := OrderListResponseArray{}
 	this.Id = id
 	this.OrderCode = orderCode
@@ -260,10 +260,10 @@ func (o *OrderListResponseArray) SetTransaction(v int32) {
 }
 
 // GetPage returns the Page field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *OrderListResponseArray) GetPage() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *OrderListResponseArray) GetPage() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -273,15 +273,15 @@ func (o *OrderListResponseArray) GetPage() map[string]interface{} {
 // GetPageOk returns a tuple with the Page field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderListResponseArray) GetPageOk() (map[string]interface{}, bool) {
+func (o *OrderListResponseArray) GetPageOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Page) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Page, true
+	return &o.Page, true
 }
 
 // SetPage sets field value
-func (o *OrderListResponseArray) SetPage(v map[string]interface{}) {
+func (o *OrderListResponseArray) SetPage(v interface{}) {
 	o.Page = v
 }
 
@@ -358,10 +358,10 @@ func (o *OrderListResponseArray) SetStatus(v string) {
 }
 
 // GetShippingAddress returns the ShippingAddress field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *OrderListResponseArray) GetShippingAddress() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *OrderListResponseArray) GetShippingAddress() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -371,15 +371,15 @@ func (o *OrderListResponseArray) GetShippingAddress() map[string]interface{} {
 // GetShippingAddressOk returns a tuple with the ShippingAddress field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderListResponseArray) GetShippingAddressOk() (map[string]interface{}, bool) {
+func (o *OrderListResponseArray) GetShippingAddressOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.ShippingAddress) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.ShippingAddress, true
+	return &o.ShippingAddress, true
 }
 
 // SetShippingAddress sets field value
-func (o *OrderListResponseArray) SetShippingAddress(v map[string]interface{}) {
+func (o *OrderListResponseArray) SetShippingAddress(v interface{}) {
 	o.ShippingAddress = v
 }
 
@@ -504,10 +504,10 @@ func (o *OrderListResponseArray) SetPaidAt(v string) {
 }
 
 // GetShipping returns the Shipping field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *OrderListResponseArray) GetShipping() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *OrderListResponseArray) GetShipping() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -517,15 +517,15 @@ func (o *OrderListResponseArray) GetShipping() map[string]interface{} {
 // GetShippingOk returns a tuple with the Shipping field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderListResponseArray) GetShippingOk() (map[string]interface{}, bool) {
+func (o *OrderListResponseArray) GetShippingOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Shipping) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Shipping, true
+	return &o.Shipping, true
 }
 
 // SetShipping sets field value
-func (o *OrderListResponseArray) SetShipping(v map[string]interface{}) {
+func (o *OrderListResponseArray) SetShipping(v interface{}) {
 	o.Shipping = v
 }
 
@@ -602,10 +602,10 @@ func (o *OrderListResponseArray) SetIsViewed(v bool) {
 }
 
 // GetRefundedAmount returns the RefundedAmount field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *OrderListResponseArray) GetRefundedAmount() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *OrderListResponseArray) GetRefundedAmount() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -615,23 +615,23 @@ func (o *OrderListResponseArray) GetRefundedAmount() map[string]interface{} {
 // GetRefundedAmountOk returns a tuple with the RefundedAmount field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderListResponseArray) GetRefundedAmountOk() (map[string]interface{}, bool) {
+func (o *OrderListResponseArray) GetRefundedAmountOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.RefundedAmount) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.RefundedAmount, true
+	return &o.RefundedAmount, true
 }
 
 // SetRefundedAmount sets field value
-func (o *OrderListResponseArray) SetRefundedAmount(v map[string]interface{}) {
+func (o *OrderListResponseArray) SetRefundedAmount(v interface{}) {
 	o.RefundedAmount = v
 }
 
 // GetDiscountAmount returns the DiscountAmount field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *OrderListResponseArray) GetDiscountAmount() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *OrderListResponseArray) GetDiscountAmount() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -641,23 +641,23 @@ func (o *OrderListResponseArray) GetDiscountAmount() map[string]interface{} {
 // GetDiscountAmountOk returns a tuple with the DiscountAmount field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderListResponseArray) GetDiscountAmountOk() (map[string]interface{}, bool) {
+func (o *OrderListResponseArray) GetDiscountAmountOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.DiscountAmount) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.DiscountAmount, true
+	return &o.DiscountAmount, true
 }
 
 // SetDiscountAmount sets field value
-func (o *OrderListResponseArray) SetDiscountAmount(v map[string]interface{}) {
+func (o *OrderListResponseArray) SetDiscountAmount(v interface{}) {
 	o.DiscountAmount = v
 }
 
 // GetDiscounts returns the Discounts field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *OrderListResponseArray) GetDiscounts() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *OrderListResponseArray) GetDiscounts() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -667,15 +667,15 @@ func (o *OrderListResponseArray) GetDiscounts() map[string]interface{} {
 // GetDiscountsOk returns a tuple with the Discounts field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderListResponseArray) GetDiscountsOk() (map[string]interface{}, bool) {
+func (o *OrderListResponseArray) GetDiscountsOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Discounts) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Discounts, true
+	return &o.Discounts, true
 }
 
 // SetDiscounts sets field value
-func (o *OrderListResponseArray) SetDiscounts(v map[string]interface{}) {
+func (o *OrderListResponseArray) SetDiscounts(v interface{}) {
 	o.Discounts = v
 }
 

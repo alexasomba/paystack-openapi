@@ -12,14 +12,14 @@ Name | Type | Description | Notes
 **AccountVerificationRequired** | **bool** |  | 
 **AccountNumberLabel** | **string** |  | 
 **AccountNumberPattern** | [**MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern**](MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern.md) |  | 
-**Documents** | **[]map[string]interface{}** |  | 
+**Documents** | **[]interface{}** |  | 
 **Notices** | **[]string** |  | 
 
 ## Methods
 
 ### NewMiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank
 
-`func NewMiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank(bankType string, requiredFields []string, branchCode bool, branchCodeType string, accountName bool, accountVerificationRequired bool, accountNumberLabel string, accountNumberPattern MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern, documents []map[string]interface{}, notices []string, ) *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank`
+`func NewMiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank(bankType string, requiredFields []string, branchCode bool, branchCodeType string, accountName bool, accountVerificationRequired bool, accountNumberLabel string, accountNumberPattern MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern, documents []interface{}, notices []string, ) *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank`
 
 NewMiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank instantiates a new MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank object
 This constructor will assign default values to properties that have it defined,
@@ -196,20 +196,20 @@ SetAccountNumberPattern sets AccountNumberPattern field to given value.
 
 ### GetDocuments
 
-`func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) GetDocuments() []map[string]interface{}`
+`func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) GetDocuments() []interface{}`
 
 GetDocuments returns the Documents field if non-nil, zero value otherwise.
 
 ### GetDocumentsOk
 
-`func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) GetDocumentsOk() (*[]map[string]interface{}, bool)`
+`func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) GetDocumentsOk() (*[]interface{}, bool)`
 
 GetDocumentsOk returns a tuple with the Documents field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDocuments
 
-`func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) SetDocuments(v []map[string]interface{})`
+`func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) SetDocuments(v []interface{})`
 
 SetDocuments sets Documents field to given value.
 

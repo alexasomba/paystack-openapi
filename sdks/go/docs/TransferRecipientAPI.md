@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ## TransferrecipientDelete
 
-> TransferrecipientCode TransferrecipientDelete(ctx, code).Execute()
+> TransferRecipientDeleteResponse TransferrecipientDelete(ctx, code).Execute()
 
 Delete Transfer Recipient
 
@@ -175,7 +175,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TransferRecipientAPI.TransferrecipientDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `TransferrecipientDelete`: TransferrecipientCode
+    // response from `TransferrecipientDelete`: TransferRecipientDeleteResponse
     fmt.Fprintf(os.Stdout, "Response from `TransferRecipientAPI.TransferrecipientDelete`: %v\n", resp)
 }
 ```
@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransferrecipientCode**](TransferrecipientCode.md)
+[**TransferRecipientDeleteResponse**](TransferRecipientDeleteResponse.md)
 
 ### Authorization
 
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 
 ## TransferrecipientFetch
 
-> TransferrecipientCode TransferrecipientFetch(ctx, code).Execute()
+> TransferRecipientFetchResponse TransferrecipientFetch(ctx, code).Execute()
 
 Fetch Transfer recipient
 
@@ -245,7 +245,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TransferRecipientAPI.TransferrecipientFetch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `TransferrecipientFetch`: TransferrecipientCode
+    // response from `TransferrecipientFetch`: TransferRecipientFetchResponse
     fmt.Fprintf(os.Stdout, "Response from `TransferRecipientAPI.TransferrecipientFetch`: %v\n", resp)
 }
 ```
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransferrecipientCode**](TransferrecipientCode.md)
+[**TransferRecipientFetchResponse**](TransferRecipientFetchResponse.md)
 
 ### Authorization
 
@@ -361,7 +361,7 @@ Name | Type | Description  | Notes
 
 ## TransferrecipientUpdate
 
-> TransferrecipientCode TransferrecipientUpdate(ctx, code).Body(body).Execute()
+> TransferRecipientUpdateResponse TransferrecipientUpdate(ctx, code).TransferRecipientUpdate(transferRecipientUpdate).Execute()
 
 Update Transfer Recipient
 
@@ -381,16 +381,16 @@ import (
 
 func main() {
     code := "RCP_5ap8rcimmcj8lbi" // string | Transfer recipient code
-    body := TransferrecipientCode(987) // TransferrecipientCode |  (optional)
+    transferRecipientUpdate := *openapiclient.NewTransferRecipientUpdate() // TransferRecipientUpdate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TransferRecipientAPI.TransferrecipientUpdate(context.Background(), code).Body(body).Execute()
+    resp, r, err := apiClient.TransferRecipientAPI.TransferrecipientUpdate(context.Background(), code).TransferRecipientUpdate(transferRecipientUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TransferRecipientAPI.TransferrecipientUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `TransferrecipientUpdate`: TransferrecipientCode
+    // response from `TransferrecipientUpdate`: TransferRecipientUpdateResponse
     fmt.Fprintf(os.Stdout, "Response from `TransferRecipientAPI.TransferrecipientUpdate`: %v\n", resp)
 }
 ```
@@ -411,11 +411,11 @@ Other parameters are passed through a pointer to a apiTransferrecipientUpdateReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **TransferrecipientCode** |  | 
+ **transferRecipientUpdate** | [**TransferRecipientUpdate**](TransferRecipientUpdate.md) |  | 
 
 ### Return type
 
-[**TransferrecipientCode**](TransferrecipientCode.md)
+[**TransferRecipientUpdateResponse**](TransferRecipientUpdateResponse.md)
 
 ### Authorization
 

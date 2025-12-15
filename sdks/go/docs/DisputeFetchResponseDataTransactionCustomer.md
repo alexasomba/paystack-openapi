@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**InternationalFormatPhone** | **map[string]interface{}** |  | 
+**InternationalFormatPhone** | **interface{}** |  | 
 
 ## Methods
 
 ### NewDisputeFetchResponseDataTransactionCustomer
 
-`func NewDisputeFetchResponseDataTransactionCustomer(internationalFormatPhone map[string]interface{}, ) *DisputeFetchResponseDataTransactionCustomer`
+`func NewDisputeFetchResponseDataTransactionCustomer(internationalFormatPhone interface{}, ) *DisputeFetchResponseDataTransactionCustomer`
 
 NewDisputeFetchResponseDataTransactionCustomer instantiates a new DisputeFetchResponseDataTransactionCustomer object
 This constructor will assign default values to properties that have it defined,
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetInternationalFormatPhone
 
-`func (o *DisputeFetchResponseDataTransactionCustomer) GetInternationalFormatPhone() map[string]interface{}`
+`func (o *DisputeFetchResponseDataTransactionCustomer) GetInternationalFormatPhone() interface{}`
 
 GetInternationalFormatPhone returns the InternationalFormatPhone field if non-nil, zero value otherwise.
 
 ### GetInternationalFormatPhoneOk
 
-`func (o *DisputeFetchResponseDataTransactionCustomer) GetInternationalFormatPhoneOk() (*map[string]interface{}, bool)`
+`func (o *DisputeFetchResponseDataTransactionCustomer) GetInternationalFormatPhoneOk() (*interface{}, bool)`
 
 GetInternationalFormatPhoneOk returns a tuple with the InternationalFormatPhone field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInternationalFormatPhone
 
-`func (o *DisputeFetchResponseDataTransactionCustomer) SetInternationalFormatPhone(v map[string]interface{})`
+`func (o *DisputeFetchResponseDataTransactionCustomer) SetInternationalFormatPhone(v interface{})`
 
 SetInternationalFormatPhone sets InternationalFormatPhone field to given value.
 

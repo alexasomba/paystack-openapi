@@ -13,27 +13,27 @@ Name | Type | Description | Notes
 **HasInvoice** | **bool** |  | 
 **InvoiceNumber** | **NullableInt32** |  | 
 **Description** | **NullableString** |  | 
-**PdfUrl** | **map[string]interface{}** |  | 
+**PdfUrl** | **interface{}** |  | 
 **LineItems** | [**[]PaymentRequestLineItemsArray**](PaymentRequestLineItemsArray.md) |  | 
 **Tax** | [**[]PaymentRequestTaxArray**](PaymentRequestTaxArray.md) |  | 
 **RequestCode** | **string** |  | 
 **Status** | **string** |  | 
 **Paid** | **bool** |  | 
-**PaidAt** | **map[string]interface{}** |  | 
-**Metadata** | **map[string]interface{}** |  | 
-**Notifications** | **[]map[string]interface{}** |  | 
+**PaidAt** | **interface{}** |  | 
+**Metadata** | **interface{}** |  | 
+**Notifications** | **[]interface{}** |  | 
 **OfflineReference** | **string** |  | 
-**Customer** | [**PaymentRequestUpdateResponseDataCustomer**](PaymentRequestUpdateResponseDataCustomer.md) |  | 
+**Customer** | [**BulkChargeFetchBulkBatchChargesResponseArrayCustomer**](BulkChargeFetchBulkBatchChargesResponseArrayCustomer.md) |  | 
 **CreatedAt** | **string** |  | 
 **Discount** | [**NullablePaymentRequestFinalizeResponseDataDiscount**](PaymentRequestFinalizeResponseDataDiscount.md) |  | 
-**SplitCode** | **map[string]interface{}** |  | 
+**SplitCode** | **interface{}** |  | 
 **PendingAmount** | **int32** |  | 
 
 ## Methods
 
 ### NewPaymentRequestFinalizeResponseData
 
-`func NewPaymentRequestFinalizeResponseData(id int32, integration int32, domain string, amount int32, currency string, dueDate NullableString, hasInvoice bool, invoiceNumber NullableInt32, description NullableString, pdfUrl map[string]interface{}, lineItems []PaymentRequestLineItemsArray, tax []PaymentRequestTaxArray, requestCode string, status string, paid bool, paidAt map[string]interface{}, metadata map[string]interface{}, notifications []map[string]interface{}, offlineReference string, customer PaymentRequestUpdateResponseDataCustomer, createdAt string, discount NullablePaymentRequestFinalizeResponseDataDiscount, splitCode map[string]interface{}, pendingAmount int32, ) *PaymentRequestFinalizeResponseData`
+`func NewPaymentRequestFinalizeResponseData(id int32, integration int32, domain string, amount int32, currency string, dueDate NullableString, hasInvoice bool, invoiceNumber NullableInt32, description NullableString, pdfUrl interface{}, lineItems []PaymentRequestLineItemsArray, tax []PaymentRequestTaxArray, requestCode string, status string, paid bool, paidAt interface{}, metadata interface{}, notifications []interface{}, offlineReference string, customer BulkChargeFetchBulkBatchChargesResponseArrayCustomer, createdAt string, discount NullablePaymentRequestFinalizeResponseDataDiscount, splitCode interface{}, pendingAmount int32, ) *PaymentRequestFinalizeResponseData`
 
 NewPaymentRequestFinalizeResponseData instantiates a new PaymentRequestFinalizeResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -260,20 +260,20 @@ SetDescription sets Description field to given value.
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetPdfUrl
 
-`func (o *PaymentRequestFinalizeResponseData) GetPdfUrl() map[string]interface{}`
+`func (o *PaymentRequestFinalizeResponseData) GetPdfUrl() interface{}`
 
 GetPdfUrl returns the PdfUrl field if non-nil, zero value otherwise.
 
 ### GetPdfUrlOk
 
-`func (o *PaymentRequestFinalizeResponseData) GetPdfUrlOk() (*map[string]interface{}, bool)`
+`func (o *PaymentRequestFinalizeResponseData) GetPdfUrlOk() (*interface{}, bool)`
 
 GetPdfUrlOk returns a tuple with the PdfUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPdfUrl
 
-`func (o *PaymentRequestFinalizeResponseData) SetPdfUrl(v map[string]interface{})`
+`func (o *PaymentRequestFinalizeResponseData) SetPdfUrl(v interface{})`
 
 SetPdfUrl sets PdfUrl field to given value.
 
@@ -390,20 +390,20 @@ SetPaid sets Paid field to given value.
 
 ### GetPaidAt
 
-`func (o *PaymentRequestFinalizeResponseData) GetPaidAt() map[string]interface{}`
+`func (o *PaymentRequestFinalizeResponseData) GetPaidAt() interface{}`
 
 GetPaidAt returns the PaidAt field if non-nil, zero value otherwise.
 
 ### GetPaidAtOk
 
-`func (o *PaymentRequestFinalizeResponseData) GetPaidAtOk() (*map[string]interface{}, bool)`
+`func (o *PaymentRequestFinalizeResponseData) GetPaidAtOk() (*interface{}, bool)`
 
 GetPaidAtOk returns a tuple with the PaidAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPaidAt
 
-`func (o *PaymentRequestFinalizeResponseData) SetPaidAt(v map[string]interface{})`
+`func (o *PaymentRequestFinalizeResponseData) SetPaidAt(v interface{})`
 
 SetPaidAt sets PaidAt field to given value.
 
@@ -420,20 +420,20 @@ SetPaidAt sets PaidAt field to given value.
 UnsetPaidAt ensures that no value is present for PaidAt, not even an explicit nil
 ### GetMetadata
 
-`func (o *PaymentRequestFinalizeResponseData) GetMetadata() map[string]interface{}`
+`func (o *PaymentRequestFinalizeResponseData) GetMetadata() interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *PaymentRequestFinalizeResponseData) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *PaymentRequestFinalizeResponseData) GetMetadataOk() (*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *PaymentRequestFinalizeResponseData) SetMetadata(v map[string]interface{})`
+`func (o *PaymentRequestFinalizeResponseData) SetMetadata(v interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -450,20 +450,20 @@ SetMetadata sets Metadata field to given value.
 UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
 ### GetNotifications
 
-`func (o *PaymentRequestFinalizeResponseData) GetNotifications() []map[string]interface{}`
+`func (o *PaymentRequestFinalizeResponseData) GetNotifications() []interface{}`
 
 GetNotifications returns the Notifications field if non-nil, zero value otherwise.
 
 ### GetNotificationsOk
 
-`func (o *PaymentRequestFinalizeResponseData) GetNotificationsOk() (*[]map[string]interface{}, bool)`
+`func (o *PaymentRequestFinalizeResponseData) GetNotificationsOk() (*[]interface{}, bool)`
 
 GetNotificationsOk returns a tuple with the Notifications field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNotifications
 
-`func (o *PaymentRequestFinalizeResponseData) SetNotifications(v []map[string]interface{})`
+`func (o *PaymentRequestFinalizeResponseData) SetNotifications(v []interface{})`
 
 SetNotifications sets Notifications field to given value.
 
@@ -490,20 +490,20 @@ SetOfflineReference sets OfflineReference field to given value.
 
 ### GetCustomer
 
-`func (o *PaymentRequestFinalizeResponseData) GetCustomer() PaymentRequestUpdateResponseDataCustomer`
+`func (o *PaymentRequestFinalizeResponseData) GetCustomer() BulkChargeFetchBulkBatchChargesResponseArrayCustomer`
 
 GetCustomer returns the Customer field if non-nil, zero value otherwise.
 
 ### GetCustomerOk
 
-`func (o *PaymentRequestFinalizeResponseData) GetCustomerOk() (*PaymentRequestUpdateResponseDataCustomer, bool)`
+`func (o *PaymentRequestFinalizeResponseData) GetCustomerOk() (*BulkChargeFetchBulkBatchChargesResponseArrayCustomer, bool)`
 
 GetCustomerOk returns a tuple with the Customer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCustomer
 
-`func (o *PaymentRequestFinalizeResponseData) SetCustomer(v PaymentRequestUpdateResponseDataCustomer)`
+`func (o *PaymentRequestFinalizeResponseData) SetCustomer(v BulkChargeFetchBulkBatchChargesResponseArrayCustomer)`
 
 SetCustomer sets Customer field to given value.
 
@@ -560,20 +560,20 @@ SetDiscount sets Discount field to given value.
 UnsetDiscount ensures that no value is present for Discount, not even an explicit nil
 ### GetSplitCode
 
-`func (o *PaymentRequestFinalizeResponseData) GetSplitCode() map[string]interface{}`
+`func (o *PaymentRequestFinalizeResponseData) GetSplitCode() interface{}`
 
 GetSplitCode returns the SplitCode field if non-nil, zero value otherwise.
 
 ### GetSplitCodeOk
 
-`func (o *PaymentRequestFinalizeResponseData) GetSplitCodeOk() (*map[string]interface{}, bool)`
+`func (o *PaymentRequestFinalizeResponseData) GetSplitCodeOk() (*interface{}, bool)`
 
 GetSplitCodeOk returns a tuple with the SplitCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSplitCode
 
-`func (o *PaymentRequestFinalizeResponseData) SetSplitCode(v map[string]interface{})`
+`func (o *PaymentRequestFinalizeResponseData) SetSplitCode(v interface{})`
 
 SetSplitCode sets SplitCode field to given value.
 

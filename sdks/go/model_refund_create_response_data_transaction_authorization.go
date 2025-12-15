@@ -20,16 +20,16 @@ var _ MappedNullable = &RefundCreateResponseDataTransactionAuthorization{}
 
 // RefundCreateResponseDataTransactionAuthorization struct for RefundCreateResponseDataTransactionAuthorization
 type RefundCreateResponseDataTransactionAuthorization struct {
-	ExpMonth map[string]interface{} `json:"exp_month"`
-	ExpYear map[string]interface{} `json:"exp_year"`
-	AccountName map[string]interface{} `json:"account_name"`
+	ExpMonth interface{} `json:"exp_month"`
+	ExpYear interface{} `json:"exp_year"`
+	AccountName interface{} `json:"account_name"`
 }
 
 // NewRefundCreateResponseDataTransactionAuthorization instantiates a new RefundCreateResponseDataTransactionAuthorization object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRefundCreateResponseDataTransactionAuthorization(expMonth map[string]interface{}, expYear map[string]interface{}, accountName map[string]interface{}) *RefundCreateResponseDataTransactionAuthorization {
+func NewRefundCreateResponseDataTransactionAuthorization(expMonth interface{}, expYear interface{}, accountName interface{}) *RefundCreateResponseDataTransactionAuthorization {
 	this := RefundCreateResponseDataTransactionAuthorization{}
 	this.ExpMonth = expMonth
 	this.ExpYear = expYear
@@ -46,10 +46,10 @@ func NewRefundCreateResponseDataTransactionAuthorizationWithDefaults() *RefundCr
 }
 
 // GetExpMonth returns the ExpMonth field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *RefundCreateResponseDataTransactionAuthorization) GetExpMonth() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *RefundCreateResponseDataTransactionAuthorization) GetExpMonth() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -59,23 +59,23 @@ func (o *RefundCreateResponseDataTransactionAuthorization) GetExpMonth() map[str
 // GetExpMonthOk returns a tuple with the ExpMonth field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundCreateResponseDataTransactionAuthorization) GetExpMonthOk() (map[string]interface{}, bool) {
+func (o *RefundCreateResponseDataTransactionAuthorization) GetExpMonthOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.ExpMonth) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.ExpMonth, true
+	return &o.ExpMonth, true
 }
 
 // SetExpMonth sets field value
-func (o *RefundCreateResponseDataTransactionAuthorization) SetExpMonth(v map[string]interface{}) {
+func (o *RefundCreateResponseDataTransactionAuthorization) SetExpMonth(v interface{}) {
 	o.ExpMonth = v
 }
 
 // GetExpYear returns the ExpYear field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *RefundCreateResponseDataTransactionAuthorization) GetExpYear() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *RefundCreateResponseDataTransactionAuthorization) GetExpYear() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -85,23 +85,23 @@ func (o *RefundCreateResponseDataTransactionAuthorization) GetExpYear() map[stri
 // GetExpYearOk returns a tuple with the ExpYear field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundCreateResponseDataTransactionAuthorization) GetExpYearOk() (map[string]interface{}, bool) {
+func (o *RefundCreateResponseDataTransactionAuthorization) GetExpYearOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.ExpYear) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.ExpYear, true
+	return &o.ExpYear, true
 }
 
 // SetExpYear sets field value
-func (o *RefundCreateResponseDataTransactionAuthorization) SetExpYear(v map[string]interface{}) {
+func (o *RefundCreateResponseDataTransactionAuthorization) SetExpYear(v interface{}) {
 	o.ExpYear = v
 }
 
 // GetAccountName returns the AccountName field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *RefundCreateResponseDataTransactionAuthorization) GetAccountName() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *RefundCreateResponseDataTransactionAuthorization) GetAccountName() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -111,15 +111,15 @@ func (o *RefundCreateResponseDataTransactionAuthorization) GetAccountName() map[
 // GetAccountNameOk returns a tuple with the AccountName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundCreateResponseDataTransactionAuthorization) GetAccountNameOk() (map[string]interface{}, bool) {
+func (o *RefundCreateResponseDataTransactionAuthorization) GetAccountNameOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.AccountName) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.AccountName, true
+	return &o.AccountName, true
 }
 
 // SetAccountName sets field value
-func (o *RefundCreateResponseDataTransactionAuthorization) SetAccountName(v map[string]interface{}) {
+func (o *RefundCreateResponseDataTransactionAuthorization) SetAccountName(v interface{}) {
 	o.AccountName = v
 }
 

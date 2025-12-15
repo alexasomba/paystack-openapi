@@ -11,14 +11,14 @@ Name | Type | Description | Notes
 **AccountVerificationRequired** | **bool** |  | 
 **AccountNumberLabel** | **string** |  | 
 **AccountNumberPattern** | [**MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern**](MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern.md) |  | 
-**Documents** | **[]map[string]interface{}** |  | 
+**Documents** | **[]interface{}** |  | 
 **ShowAccountNumberTooltip** | **bool** |  | 
 
 ## Methods
 
 ### NewMiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank
 
-`func NewMiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank(bankType string, branchCode bool, branchCodeType string, accountName bool, accountVerificationRequired bool, accountNumberLabel string, accountNumberPattern MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern, documents []map[string]interface{}, showAccountNumberTooltip bool, ) *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank`
+`func NewMiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank(bankType string, branchCode bool, branchCodeType string, accountName bool, accountVerificationRequired bool, accountNumberLabel string, accountNumberPattern MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern, documents []interface{}, showAccountNumberTooltip bool, ) *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank`
 
 NewMiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank instantiates a new MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank object
 This constructor will assign default values to properties that have it defined,
@@ -175,20 +175,20 @@ SetAccountNumberPattern sets AccountNumberPattern field to given value.
 
 ### GetDocuments
 
-`func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank) GetDocuments() []map[string]interface{}`
+`func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank) GetDocuments() []interface{}`
 
 GetDocuments returns the Documents field if non-nil, zero value otherwise.
 
 ### GetDocumentsOk
 
-`func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank) GetDocumentsOk() (*[]map[string]interface{}, bool)`
+`func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank) GetDocumentsOk() (*[]interface{}, bool)`
 
 GetDocumentsOk returns a tuple with the Documents field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDocuments
 
-`func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank) SetDocuments(v []map[string]interface{})`
+`func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank) SetDocuments(v []interface{})`
 
 SetDocuments sets Documents field to given value.
 

@@ -25,7 +25,7 @@ type VirtualTerminalListResponseArray struct {
 	Name string `json:"name"`
 	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
-	PaymentMethods []map[string]interface{} `json:"paymentMethods"`
+	PaymentMethods []interface{} `json:"paymentMethods"`
 	Active bool `json:"active"`
 	CreatedAt string `json:"created_at"`
 	Currency string `json:"currency"`
@@ -35,7 +35,7 @@ type VirtualTerminalListResponseArray struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVirtualTerminalListResponseArray(id int32, code string, name string, integration int32, domain string, paymentMethods []map[string]interface{}, active bool, createdAt string, currency string) *VirtualTerminalListResponseArray {
+func NewVirtualTerminalListResponseArray(id int32, code string, name string, integration int32, domain string, paymentMethods []interface{}, active bool, createdAt string, currency string) *VirtualTerminalListResponseArray {
 	this := VirtualTerminalListResponseArray{}
 	this.Id = id
 	this.Code = code
@@ -178,9 +178,9 @@ func (o *VirtualTerminalListResponseArray) SetDomain(v string) {
 }
 
 // GetPaymentMethods returns the PaymentMethods field value
-func (o *VirtualTerminalListResponseArray) GetPaymentMethods() []map[string]interface{} {
+func (o *VirtualTerminalListResponseArray) GetPaymentMethods() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -189,7 +189,7 @@ func (o *VirtualTerminalListResponseArray) GetPaymentMethods() []map[string]inte
 
 // GetPaymentMethodsOk returns a tuple with the PaymentMethods field value
 // and a boolean to check if the value has been set.
-func (o *VirtualTerminalListResponseArray) GetPaymentMethodsOk() ([]map[string]interface{}, bool) {
+func (o *VirtualTerminalListResponseArray) GetPaymentMethodsOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -197,7 +197,7 @@ func (o *VirtualTerminalListResponseArray) GetPaymentMethodsOk() ([]map[string]i
 }
 
 // SetPaymentMethods sets field value
-func (o *VirtualTerminalListResponseArray) SetPaymentMethods(v []map[string]interface{}) {
+func (o *VirtualTerminalListResponseArray) SetPaymentMethods(v []interface{}) {
 	o.PaymentMethods = v
 }
 

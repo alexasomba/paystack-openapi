@@ -18,13 +18,13 @@ Name | Type | Description | Notes
 **Type** | **string** |  | 
 **UpdatedAt** | **string** |  | 
 **IsDeleted** | **bool** |  | 
-**Details** | [**TransferRecipientCreateResponseDataDetails**](TransferRecipientCreateResponseDataDetails.md) |  | 
+**Details** | [**TransferRecipientListResponseArrayDetails**](TransferRecipientListResponseArrayDetails.md) |  | 
 
 ## Methods
 
 ### NewTransferRecipientCreateResponseData
 
-`func NewTransferRecipientCreateResponseData(active bool, createdAt string, currency string, description string, domain string, email string, id int32, integration int32, name string, recipientCode string, type_ string, updatedAt string, isDeleted bool, details TransferRecipientCreateResponseDataDetails, ) *TransferRecipientCreateResponseData`
+`func NewTransferRecipientCreateResponseData(active bool, createdAt string, currency string, description string, domain string, email string, id int32, integration int32, name string, recipientCode string, type_ string, updatedAt string, isDeleted bool, details TransferRecipientListResponseArrayDetails, ) *TransferRecipientCreateResponseData`
 
 NewTransferRecipientCreateResponseData instantiates a new TransferRecipientCreateResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -336,20 +336,20 @@ SetIsDeleted sets IsDeleted field to given value.
 
 ### GetDetails
 
-`func (o *TransferRecipientCreateResponseData) GetDetails() TransferRecipientCreateResponseDataDetails`
+`func (o *TransferRecipientCreateResponseData) GetDetails() TransferRecipientListResponseArrayDetails`
 
 GetDetails returns the Details field if non-nil, zero value otherwise.
 
 ### GetDetailsOk
 
-`func (o *TransferRecipientCreateResponseData) GetDetailsOk() (*TransferRecipientCreateResponseDataDetails, bool)`
+`func (o *TransferRecipientCreateResponseData) GetDetailsOk() (*TransferRecipientListResponseArrayDetails, bool)`
 
 GetDetailsOk returns a tuple with the Details field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDetails
 
-`func (o *TransferRecipientCreateResponseData) SetDetails(v TransferRecipientCreateResponseDataDetails)`
+`func (o *TransferRecipientCreateResponseData) SetDetails(v TransferRecipientListResponseArrayDetails)`
 
 SetDetails sets Details field to given value.
 

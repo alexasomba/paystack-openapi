@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Domain** | **string** |  | 
 **BatchCode** | **string** |  | 
 **Status** | **string** |  | 
-**EasyCronId** | **map[string]interface{}** |  | 
+**EasyCronId** | **interface{}** |  | 
 **Reference** | **string** |  | 
 **Id** | **int32** |  | 
 **CreatedAt** | **string** |  | 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewBulkChargeListResponseArray
 
-`func NewBulkChargeListResponseArray(integration int32, domain string, batchCode string, status string, easyCronId map[string]interface{}, reference string, id int32, createdAt string, updatedAt string, ) *BulkChargeListResponseArray`
+`func NewBulkChargeListResponseArray(integration int32, domain string, batchCode string, status string, easyCronId interface{}, reference string, id int32, createdAt string, updatedAt string, ) *BulkChargeListResponseArray`
 
 NewBulkChargeListResponseArray instantiates a new BulkChargeListResponseArray object
 This constructor will assign default values to properties that have it defined,
@@ -115,20 +115,20 @@ SetStatus sets Status field to given value.
 
 ### GetEasyCronId
 
-`func (o *BulkChargeListResponseArray) GetEasyCronId() map[string]interface{}`
+`func (o *BulkChargeListResponseArray) GetEasyCronId() interface{}`
 
 GetEasyCronId returns the EasyCronId field if non-nil, zero value otherwise.
 
 ### GetEasyCronIdOk
 
-`func (o *BulkChargeListResponseArray) GetEasyCronIdOk() (*map[string]interface{}, bool)`
+`func (o *BulkChargeListResponseArray) GetEasyCronIdOk() (*interface{}, bool)`
 
 GetEasyCronIdOk returns a tuple with the EasyCronId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEasyCronId
 
-`func (o *BulkChargeListResponseArray) SetEasyCronId(v map[string]interface{})`
+`func (o *BulkChargeListResponseArray) SetEasyCronId(v interface{})`
 
 SetEasyCronId sets EasyCronId field to given value.
 

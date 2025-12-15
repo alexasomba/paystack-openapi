@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Value** | **string** |  | 
 **Id** | **int32** |  | 
-**TypeName** | **map[string]interface{}** |  | 
+**TypeName** | **interface{}** |  | 
 **Type** | **int32** |  | 
 
 ## Methods
 
 ### NewStorefrontContactsArray
 
-`func NewStorefrontContactsArray(value string, id int32, typeName map[string]interface{}, type_ int32, ) *StorefrontContactsArray`
+`func NewStorefrontContactsArray(value string, id int32, typeName interface{}, type_ int32, ) *StorefrontContactsArray`
 
 NewStorefrontContactsArray instantiates a new StorefrontContactsArray object
 This constructor will assign default values to properties that have it defined,
@@ -70,20 +70,20 @@ SetId sets Id field to given value.
 
 ### GetTypeName
 
-`func (o *StorefrontContactsArray) GetTypeName() map[string]interface{}`
+`func (o *StorefrontContactsArray) GetTypeName() interface{}`
 
 GetTypeName returns the TypeName field if non-nil, zero value otherwise.
 
 ### GetTypeNameOk
 
-`func (o *StorefrontContactsArray) GetTypeNameOk() (*map[string]interface{}, bool)`
+`func (o *StorefrontContactsArray) GetTypeNameOk() (*interface{}, bool)`
 
 GetTypeNameOk returns a tuple with the TypeName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTypeName
 
-`func (o *StorefrontContactsArray) SetTypeName(v map[string]interface{})`
+`func (o *StorefrontContactsArray) SetTypeName(v interface{})`
 
 SetTypeName sets TypeName field to given value.
 

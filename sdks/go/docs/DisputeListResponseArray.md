@@ -8,19 +8,19 @@ Name | Type | Description | Notes
 **RefundAmount** | **int32** |  | 
 **Currency** | **string** |  | 
 **Status** | **string** |  | 
-**Resolution** | **map[string]interface{}** |  | 
+**Resolution** | **interface{}** |  | 
 **Domain** | **string** |  | 
 **Transaction** | [**DisputeListResponseArrayTransaction**](DisputeListResponseArrayTransaction.md) |  | 
-**TransactionReference** | **map[string]interface{}** |  | 
+**TransactionReference** | **interface{}** |  | 
 **Category** | **string** |  | 
 **Customer** | [**SubscriptionListResponseArrayCustomer**](SubscriptionListResponseArrayCustomer.md) |  | 
 **Bin** | **string** |  | 
 **Last4** | **string** |  | 
-**DueAt** | **map[string]interface{}** |  | 
-**ResolvedAt** | **map[string]interface{}** |  | 
-**Evidence** | **map[string]interface{}** |  | 
-**Attachments** | **map[string]interface{}** |  | 
-**Note** | **map[string]interface{}** |  | 
+**DueAt** | **interface{}** |  | 
+**ResolvedAt** | **interface{}** |  | 
+**Evidence** | **interface{}** |  | 
+**Attachments** | **interface{}** |  | 
+**Note** | **interface{}** |  | 
 **History** | [**[]DisputeHistoryArray**](DisputeHistoryArray.md) |  | 
 **Messages** | [**[]DisputeMessagesArray**](DisputeMessagesArray.md) |  | 
 **CreatedAt** | **string** |  | 
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewDisputeListResponseArray
 
-`func NewDisputeListResponseArray(id int32, refundAmount int32, currency string, status string, resolution map[string]interface{}, domain string, transaction DisputeListResponseArrayTransaction, transactionReference map[string]interface{}, category string, customer SubscriptionListResponseArrayCustomer, bin string, last4 string, dueAt map[string]interface{}, resolvedAt map[string]interface{}, evidence map[string]interface{}, attachments map[string]interface{}, note map[string]interface{}, history []DisputeHistoryArray, messages []DisputeMessagesArray, createdAt string, updatedAt string, ) *DisputeListResponseArray`
+`func NewDisputeListResponseArray(id int32, refundAmount int32, currency string, status string, resolution interface{}, domain string, transaction DisputeListResponseArrayTransaction, transactionReference interface{}, category string, customer SubscriptionListResponseArrayCustomer, bin string, last4 string, dueAt interface{}, resolvedAt interface{}, evidence interface{}, attachments interface{}, note interface{}, history []DisputeHistoryArray, messages []DisputeMessagesArray, createdAt string, updatedAt string, ) *DisputeListResponseArray`
 
 NewDisputeListResponseArray instantiates a new DisputeListResponseArray object
 This constructor will assign default values to properties that have it defined,
@@ -127,20 +127,20 @@ SetStatus sets Status field to given value.
 
 ### GetResolution
 
-`func (o *DisputeListResponseArray) GetResolution() map[string]interface{}`
+`func (o *DisputeListResponseArray) GetResolution() interface{}`
 
 GetResolution returns the Resolution field if non-nil, zero value otherwise.
 
 ### GetResolutionOk
 
-`func (o *DisputeListResponseArray) GetResolutionOk() (*map[string]interface{}, bool)`
+`func (o *DisputeListResponseArray) GetResolutionOk() (*interface{}, bool)`
 
 GetResolutionOk returns a tuple with the Resolution field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResolution
 
-`func (o *DisputeListResponseArray) SetResolution(v map[string]interface{})`
+`func (o *DisputeListResponseArray) SetResolution(v interface{})`
 
 SetResolution sets Resolution field to given value.
 
@@ -197,20 +197,20 @@ SetTransaction sets Transaction field to given value.
 
 ### GetTransactionReference
 
-`func (o *DisputeListResponseArray) GetTransactionReference() map[string]interface{}`
+`func (o *DisputeListResponseArray) GetTransactionReference() interface{}`
 
 GetTransactionReference returns the TransactionReference field if non-nil, zero value otherwise.
 
 ### GetTransactionReferenceOk
 
-`func (o *DisputeListResponseArray) GetTransactionReferenceOk() (*map[string]interface{}, bool)`
+`func (o *DisputeListResponseArray) GetTransactionReferenceOk() (*interface{}, bool)`
 
 GetTransactionReferenceOk returns a tuple with the TransactionReference field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTransactionReference
 
-`func (o *DisputeListResponseArray) SetTransactionReference(v map[string]interface{})`
+`func (o *DisputeListResponseArray) SetTransactionReference(v interface{})`
 
 SetTransactionReference sets TransactionReference field to given value.
 
@@ -307,20 +307,20 @@ SetLast4 sets Last4 field to given value.
 
 ### GetDueAt
 
-`func (o *DisputeListResponseArray) GetDueAt() map[string]interface{}`
+`func (o *DisputeListResponseArray) GetDueAt() interface{}`
 
 GetDueAt returns the DueAt field if non-nil, zero value otherwise.
 
 ### GetDueAtOk
 
-`func (o *DisputeListResponseArray) GetDueAtOk() (*map[string]interface{}, bool)`
+`func (o *DisputeListResponseArray) GetDueAtOk() (*interface{}, bool)`
 
 GetDueAtOk returns a tuple with the DueAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDueAt
 
-`func (o *DisputeListResponseArray) SetDueAt(v map[string]interface{})`
+`func (o *DisputeListResponseArray) SetDueAt(v interface{})`
 
 SetDueAt sets DueAt field to given value.
 
@@ -337,20 +337,20 @@ SetDueAt sets DueAt field to given value.
 UnsetDueAt ensures that no value is present for DueAt, not even an explicit nil
 ### GetResolvedAt
 
-`func (o *DisputeListResponseArray) GetResolvedAt() map[string]interface{}`
+`func (o *DisputeListResponseArray) GetResolvedAt() interface{}`
 
 GetResolvedAt returns the ResolvedAt field if non-nil, zero value otherwise.
 
 ### GetResolvedAtOk
 
-`func (o *DisputeListResponseArray) GetResolvedAtOk() (*map[string]interface{}, bool)`
+`func (o *DisputeListResponseArray) GetResolvedAtOk() (*interface{}, bool)`
 
 GetResolvedAtOk returns a tuple with the ResolvedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResolvedAt
 
-`func (o *DisputeListResponseArray) SetResolvedAt(v map[string]interface{})`
+`func (o *DisputeListResponseArray) SetResolvedAt(v interface{})`
 
 SetResolvedAt sets ResolvedAt field to given value.
 
@@ -367,20 +367,20 @@ SetResolvedAt sets ResolvedAt field to given value.
 UnsetResolvedAt ensures that no value is present for ResolvedAt, not even an explicit nil
 ### GetEvidence
 
-`func (o *DisputeListResponseArray) GetEvidence() map[string]interface{}`
+`func (o *DisputeListResponseArray) GetEvidence() interface{}`
 
 GetEvidence returns the Evidence field if non-nil, zero value otherwise.
 
 ### GetEvidenceOk
 
-`func (o *DisputeListResponseArray) GetEvidenceOk() (*map[string]interface{}, bool)`
+`func (o *DisputeListResponseArray) GetEvidenceOk() (*interface{}, bool)`
 
 GetEvidenceOk returns a tuple with the Evidence field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEvidence
 
-`func (o *DisputeListResponseArray) SetEvidence(v map[string]interface{})`
+`func (o *DisputeListResponseArray) SetEvidence(v interface{})`
 
 SetEvidence sets Evidence field to given value.
 
@@ -397,20 +397,20 @@ SetEvidence sets Evidence field to given value.
 UnsetEvidence ensures that no value is present for Evidence, not even an explicit nil
 ### GetAttachments
 
-`func (o *DisputeListResponseArray) GetAttachments() map[string]interface{}`
+`func (o *DisputeListResponseArray) GetAttachments() interface{}`
 
 GetAttachments returns the Attachments field if non-nil, zero value otherwise.
 
 ### GetAttachmentsOk
 
-`func (o *DisputeListResponseArray) GetAttachmentsOk() (*map[string]interface{}, bool)`
+`func (o *DisputeListResponseArray) GetAttachmentsOk() (*interface{}, bool)`
 
 GetAttachmentsOk returns a tuple with the Attachments field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttachments
 
-`func (o *DisputeListResponseArray) SetAttachments(v map[string]interface{})`
+`func (o *DisputeListResponseArray) SetAttachments(v interface{})`
 
 SetAttachments sets Attachments field to given value.
 
@@ -427,20 +427,20 @@ SetAttachments sets Attachments field to given value.
 UnsetAttachments ensures that no value is present for Attachments, not even an explicit nil
 ### GetNote
 
-`func (o *DisputeListResponseArray) GetNote() map[string]interface{}`
+`func (o *DisputeListResponseArray) GetNote() interface{}`
 
 GetNote returns the Note field if non-nil, zero value otherwise.
 
 ### GetNoteOk
 
-`func (o *DisputeListResponseArray) GetNoteOk() (*map[string]interface{}, bool)`
+`func (o *DisputeListResponseArray) GetNoteOk() (*interface{}, bool)`
 
 GetNoteOk returns a tuple with the Note field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNote
 
-`func (o *DisputeListResponseArray) SetNote(v map[string]interface{})`
+`func (o *DisputeListResponseArray) SetNote(v interface{})`
 
 SetNote sets Note field to given value.
 

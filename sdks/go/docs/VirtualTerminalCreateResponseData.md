@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **Integration** | **int32** |  | 
 **Domain** | **string** |  | 
 **Code** | **string** |  | 
-**PaymentMethods** | **[]map[string]interface{}** |  | 
+**PaymentMethods** | **[]interface{}** |  | 
 **Active** | **bool** |  | 
-**Metadata** | **map[string]interface{}** |  | 
+**Metadata** | **interface{}** |  | 
 **Destinations** | [**[]VirtualTerminalCreateResponseDataDestinationsInner**](VirtualTerminalCreateResponseDataDestinationsInner.md) |  | 
 **Currency** | **string** |  | 
 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewVirtualTerminalCreateResponseData
 
-`func NewVirtualTerminalCreateResponseData(id int32, name string, integration int32, domain string, code string, paymentMethods []map[string]interface{}, active bool, metadata map[string]interface{}, destinations []VirtualTerminalCreateResponseDataDestinationsInner, currency string, ) *VirtualTerminalCreateResponseData`
+`func NewVirtualTerminalCreateResponseData(id int32, name string, integration int32, domain string, code string, paymentMethods []interface{}, active bool, metadata interface{}, destinations []VirtualTerminalCreateResponseDataDestinationsInner, currency string, ) *VirtualTerminalCreateResponseData`
 
 NewVirtualTerminalCreateResponseData instantiates a new VirtualTerminalCreateResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -136,20 +136,20 @@ SetCode sets Code field to given value.
 
 ### GetPaymentMethods
 
-`func (o *VirtualTerminalCreateResponseData) GetPaymentMethods() []map[string]interface{}`
+`func (o *VirtualTerminalCreateResponseData) GetPaymentMethods() []interface{}`
 
 GetPaymentMethods returns the PaymentMethods field if non-nil, zero value otherwise.
 
 ### GetPaymentMethodsOk
 
-`func (o *VirtualTerminalCreateResponseData) GetPaymentMethodsOk() (*[]map[string]interface{}, bool)`
+`func (o *VirtualTerminalCreateResponseData) GetPaymentMethodsOk() (*[]interface{}, bool)`
 
 GetPaymentMethodsOk returns a tuple with the PaymentMethods field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPaymentMethods
 
-`func (o *VirtualTerminalCreateResponseData) SetPaymentMethods(v []map[string]interface{})`
+`func (o *VirtualTerminalCreateResponseData) SetPaymentMethods(v []interface{})`
 
 SetPaymentMethods sets PaymentMethods field to given value.
 
@@ -176,20 +176,20 @@ SetActive sets Active field to given value.
 
 ### GetMetadata
 
-`func (o *VirtualTerminalCreateResponseData) GetMetadata() map[string]interface{}`
+`func (o *VirtualTerminalCreateResponseData) GetMetadata() interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *VirtualTerminalCreateResponseData) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *VirtualTerminalCreateResponseData) GetMetadataOk() (*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *VirtualTerminalCreateResponseData) SetMetadata(v map[string]interface{})`
+`func (o *VirtualTerminalCreateResponseData) SetMetadata(v interface{})`
 
 SetMetadata sets Metadata field to given value.
 

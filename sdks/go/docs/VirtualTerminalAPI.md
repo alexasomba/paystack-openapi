@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## VirtualTerminalAddSplitCode
 
-> VirtualTerminalAddSplitCodeResponse VirtualTerminalAddSplitCode(ctx, code).Body(body).Execute()
+> VirtualTerminalAddSplitCodeResponse VirtualTerminalAddSplitCode(ctx, code).VirtualTerminalAddSplitCode(virtualTerminalAddSplitCode).Execute()
 
 Add Split Code to Virtual Terminal
 
@@ -38,11 +38,11 @@ import (
 
 func main() {
     code := "VT_MCK5292Z" // string | Code of the Virtual Terminal
-    body := VirtualTerminalCodeSplitCode(987) // VirtualTerminalCodeSplitCode |  (optional)
+    virtualTerminalAddSplitCode := *openapiclient.NewVirtualTerminalAddSplitCode("SplitCode_example") // VirtualTerminalAddSplitCode |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VirtualTerminalAPI.VirtualTerminalAddSplitCode(context.Background(), code).Body(body).Execute()
+    resp, r, err := apiClient.VirtualTerminalAPI.VirtualTerminalAddSplitCode(context.Background(), code).VirtualTerminalAddSplitCode(virtualTerminalAddSplitCode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VirtualTerminalAPI.VirtualTerminalAddSplitCode``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -68,7 +68,7 @@ Other parameters are passed through a pointer to a apiVirtualTerminalAddSplitCod
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **VirtualTerminalCodeSplitCode** |  | 
+ **virtualTerminalAddSplitCode** | [**VirtualTerminalAddSplitCode**](VirtualTerminalAddSplitCode.md) |  | 
 
 ### Return type
 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ## VirtualTerminalDeleteSplitCode
 
-> VirtualTerminalDeleteSplitCodeResponse VirtualTerminalDeleteSplitCode(ctx, code).Body(body).Execute()
+> VirtualTerminalDeleteSplitCodeResponse VirtualTerminalDeleteSplitCode(ctx, code).VirtualTerminalDeleteSplitCode(virtualTerminalDeleteSplitCode).Execute()
 
 Remove Split Code from Virtual Terminal
 
@@ -246,11 +246,11 @@ import (
 
 func main() {
     code := "VT_MCK5292Z" // string | Code of the Virtual Terminal
-    body := VirtualTerminalCodeSplitCode(987) // VirtualTerminalCodeSplitCode |  (optional)
+    virtualTerminalDeleteSplitCode := *openapiclient.NewVirtualTerminalDeleteSplitCode("SplitCode_example") // VirtualTerminalDeleteSplitCode |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VirtualTerminalAPI.VirtualTerminalDeleteSplitCode(context.Background(), code).Body(body).Execute()
+    resp, r, err := apiClient.VirtualTerminalAPI.VirtualTerminalDeleteSplitCode(context.Background(), code).VirtualTerminalDeleteSplitCode(virtualTerminalDeleteSplitCode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VirtualTerminalAPI.VirtualTerminalDeleteSplitCode``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -276,7 +276,7 @@ Other parameters are passed through a pointer to a apiVirtualTerminalDeleteSplit
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **VirtualTerminalCodeSplitCode** |  | 
+ **virtualTerminalDeleteSplitCode** | [**VirtualTerminalDeleteSplitCode**](VirtualTerminalDeleteSplitCode.md) |  | 
 
 ### Return type
 
@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
 
 ## VirtualTerminalDestinationAssign
 
-> VirtualTerminalDestinationAssignResponse VirtualTerminalDestinationAssign(ctx, code).Body(body).Execute()
+> VirtualTerminalDestinationAssignResponse VirtualTerminalDestinationAssign(ctx, code).VirtualTerminalDestinationAssign(virtualTerminalDestinationAssign).Execute()
 
 Assign Destination to Virtual Terminal
 
@@ -318,11 +318,11 @@ import (
 
 func main() {
     code := "VT_MCK5292Z" // string | Code of the Virtual Terminal
-    body := VirtualTerminalCodeDestinationAssign(987) // VirtualTerminalCodeDestinationAssign |  (optional)
+    virtualTerminalDestinationAssign := *openapiclient.NewVirtualTerminalDestinationAssign([]openapiclient.VirtualTerminalCreateDestinationsInner{*openapiclient.NewVirtualTerminalCreateDestinationsInner()}) // VirtualTerminalDestinationAssign |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VirtualTerminalAPI.VirtualTerminalDestinationAssign(context.Background(), code).Body(body).Execute()
+    resp, r, err := apiClient.VirtualTerminalAPI.VirtualTerminalDestinationAssign(context.Background(), code).VirtualTerminalDestinationAssign(virtualTerminalDestinationAssign).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VirtualTerminalAPI.VirtualTerminalDestinationAssign``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -348,7 +348,7 @@ Other parameters are passed through a pointer to a apiVirtualTerminalDestination
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **VirtualTerminalCodeDestinationAssign** |  | 
+ **virtualTerminalDestinationAssign** | [**VirtualTerminalDestinationAssign**](VirtualTerminalDestinationAssign.md) |  | 
 
 ### Return type
 
@@ -370,7 +370,7 @@ Name | Type | Description  | Notes
 
 ## VirtualTerminalDestinationUnassign
 
-> VirtualTerminalDestinationUnassignResponse VirtualTerminalDestinationUnassign(ctx, code).Body(body).Execute()
+> VirtualTerminalDestinationUnassignResponse VirtualTerminalDestinationUnassign(ctx, code).VirtualTerminalDestinationUnassign(virtualTerminalDestinationUnassign).Execute()
 
 Unassign Destination from Virtual Terminal
 
@@ -390,11 +390,11 @@ import (
 
 func main() {
     code := "VT_MCK5292Z" // string | Code of the Virtual Terminal
-    body := VirtualTerminalCodeDestinationUnassign(987) // VirtualTerminalCodeDestinationUnassign |  (optional)
+    virtualTerminalDestinationUnassign := *openapiclient.NewVirtualTerminalDestinationUnassign([]string{"Targets_example"}) // VirtualTerminalDestinationUnassign |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VirtualTerminalAPI.VirtualTerminalDestinationUnassign(context.Background(), code).Body(body).Execute()
+    resp, r, err := apiClient.VirtualTerminalAPI.VirtualTerminalDestinationUnassign(context.Background(), code).VirtualTerminalDestinationUnassign(virtualTerminalDestinationUnassign).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VirtualTerminalAPI.VirtualTerminalDestinationUnassign``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -420,7 +420,7 @@ Other parameters are passed through a pointer to a apiVirtualTerminalDestination
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **VirtualTerminalCodeDestinationUnassign** |  | 
+ **virtualTerminalDestinationUnassign** | [**VirtualTerminalDestinationUnassign**](VirtualTerminalDestinationUnassign.md) |  | 
 
 ### Return type
 
@@ -580,7 +580,7 @@ Name | Type | Description  | Notes
 
 ## VirtualTerminalUpdate
 
-> VirtualTerminalUpdateResponse VirtualTerminalUpdate(ctx, code).Body(body).Execute()
+> VirtualTerminalUpdateResponse VirtualTerminalUpdate(ctx, code).VirtualTerminalUpdate(virtualTerminalUpdate).Execute()
 
 Update Virtual Terminal
 
@@ -600,11 +600,11 @@ import (
 
 func main() {
     code := "VT_MCK5292Z" // string | Code of the Virtual Terminal
-    body := VirtualTerminalCode(987) // VirtualTerminalCode |  (optional)
+    virtualTerminalUpdate := *openapiclient.NewVirtualTerminalUpdate("Name_example") // VirtualTerminalUpdate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VirtualTerminalAPI.VirtualTerminalUpdate(context.Background(), code).Body(body).Execute()
+    resp, r, err := apiClient.VirtualTerminalAPI.VirtualTerminalUpdate(context.Background(), code).VirtualTerminalUpdate(virtualTerminalUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VirtualTerminalAPI.VirtualTerminalUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -630,7 +630,7 @@ Other parameters are passed through a pointer to a apiVirtualTerminalUpdateReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **VirtualTerminalCode** |  | 
+ **virtualTerminalUpdate** | [**VirtualTerminalUpdate**](VirtualTerminalUpdate.md) |  | 
 
 ### Return type
 

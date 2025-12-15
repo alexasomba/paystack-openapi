@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AuthorizationCode** | **map[string]interface{}** |  | 
+**AuthorizationCode** | **interface{}** |  | 
 **AccountNumber** | **string** |  | 
 **AccountName** | **NullableString** |  | 
 **BankCode** | **string** |  | 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewTransferListResponseArrayRecipientDetails
 
-`func NewTransferListResponseArrayRecipientDetails(authorizationCode map[string]interface{}, accountNumber string, accountName NullableString, bankCode string, bankName string, ) *TransferListResponseArrayRecipientDetails`
+`func NewTransferListResponseArrayRecipientDetails(authorizationCode interface{}, accountNumber string, accountName NullableString, bankCode string, bankName string, ) *TransferListResponseArrayRecipientDetails`
 
 NewTransferListResponseArrayRecipientDetails instantiates a new TransferListResponseArrayRecipientDetails object
 This constructor will assign default values to properties that have it defined,
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAuthorizationCode
 
-`func (o *TransferListResponseArrayRecipientDetails) GetAuthorizationCode() map[string]interface{}`
+`func (o *TransferListResponseArrayRecipientDetails) GetAuthorizationCode() interface{}`
 
 GetAuthorizationCode returns the AuthorizationCode field if non-nil, zero value otherwise.
 
 ### GetAuthorizationCodeOk
 
-`func (o *TransferListResponseArrayRecipientDetails) GetAuthorizationCodeOk() (*map[string]interface{}, bool)`
+`func (o *TransferListResponseArrayRecipientDetails) GetAuthorizationCodeOk() (*interface{}, bool)`
 
 GetAuthorizationCodeOk returns a tuple with the AuthorizationCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizationCode
 
-`func (o *TransferListResponseArrayRecipientDetails) SetAuthorizationCode(v map[string]interface{})`
+`func (o *TransferListResponseArrayRecipientDetails) SetAuthorizationCode(v interface{})`
 
 SetAuthorizationCode sets AuthorizationCode field to given value.
 

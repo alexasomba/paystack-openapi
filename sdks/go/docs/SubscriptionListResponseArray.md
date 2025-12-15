@@ -14,23 +14,23 @@ Name | Type | Description | Notes
 **Amount** | **int32** |  | 
 **CronExpression** | **NullableString** |  | 
 **NextPaymentDate** | **NullableString** |  | 
-**OpenInvoice** | **map[string]interface{}** |  | 
+**OpenInvoice** | **interface{}** |  | 
 **CreatedAt** | **string** |  | 
 **Integration** | **int32** |  | 
 **Plan** | [**SubscriptionListResponseArrayPlan**](SubscriptionListResponseArrayPlan.md) |  | 
 **Authorization** | [**SubscriptionListResponseArrayAuthorization**](SubscriptionListResponseArrayAuthorization.md) |  | 
 **Customer** | [**SubscriptionListResponseArrayCustomer**](SubscriptionListResponseArrayCustomer.md) |  | 
 **InvoiceLimit** | **int32** |  | 
-**SplitCode** | **map[string]interface{}** |  | 
+**SplitCode** | **interface{}** |  | 
 **PaymentsCount** | **int32** |  | 
-**MostRecentInvoice** | **map[string]interface{}** |  | 
+**MostRecentInvoice** | **interface{}** |  | 
 **Metadata** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewSubscriptionListResponseArray
 
-`func NewSubscriptionListResponseArray(id int32, domain string, status string, start int32, quantity int32, subscriptionCode string, emailToken string, amount int32, cronExpression NullableString, nextPaymentDate NullableString, openInvoice map[string]interface{}, createdAt string, integration int32, plan SubscriptionListResponseArrayPlan, authorization SubscriptionListResponseArrayAuthorization, customer SubscriptionListResponseArrayCustomer, invoiceLimit int32, splitCode map[string]interface{}, paymentsCount int32, mostRecentInvoice map[string]interface{}, metadata map[string]interface{}, ) *SubscriptionListResponseArray`
+`func NewSubscriptionListResponseArray(id int32, domain string, status string, start int32, quantity int32, subscriptionCode string, emailToken string, amount int32, cronExpression NullableString, nextPaymentDate NullableString, openInvoice interface{}, createdAt string, integration int32, plan SubscriptionListResponseArrayPlan, authorization SubscriptionListResponseArrayAuthorization, customer SubscriptionListResponseArrayCustomer, invoiceLimit int32, splitCode interface{}, paymentsCount int32, mostRecentInvoice interface{}, metadata map[string]interface{}, ) *SubscriptionListResponseArray`
 
 NewSubscriptionListResponseArray instantiates a new SubscriptionListResponseArray object
 This constructor will assign default values to properties that have it defined,
@@ -267,20 +267,20 @@ SetNextPaymentDate sets NextPaymentDate field to given value.
 UnsetNextPaymentDate ensures that no value is present for NextPaymentDate, not even an explicit nil
 ### GetOpenInvoice
 
-`func (o *SubscriptionListResponseArray) GetOpenInvoice() map[string]interface{}`
+`func (o *SubscriptionListResponseArray) GetOpenInvoice() interface{}`
 
 GetOpenInvoice returns the OpenInvoice field if non-nil, zero value otherwise.
 
 ### GetOpenInvoiceOk
 
-`func (o *SubscriptionListResponseArray) GetOpenInvoiceOk() (*map[string]interface{}, bool)`
+`func (o *SubscriptionListResponseArray) GetOpenInvoiceOk() (*interface{}, bool)`
 
 GetOpenInvoiceOk returns a tuple with the OpenInvoice field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOpenInvoice
 
-`func (o *SubscriptionListResponseArray) SetOpenInvoice(v map[string]interface{})`
+`func (o *SubscriptionListResponseArray) SetOpenInvoice(v interface{})`
 
 SetOpenInvoice sets OpenInvoice field to given value.
 
@@ -417,20 +417,20 @@ SetInvoiceLimit sets InvoiceLimit field to given value.
 
 ### GetSplitCode
 
-`func (o *SubscriptionListResponseArray) GetSplitCode() map[string]interface{}`
+`func (o *SubscriptionListResponseArray) GetSplitCode() interface{}`
 
 GetSplitCode returns the SplitCode field if non-nil, zero value otherwise.
 
 ### GetSplitCodeOk
 
-`func (o *SubscriptionListResponseArray) GetSplitCodeOk() (*map[string]interface{}, bool)`
+`func (o *SubscriptionListResponseArray) GetSplitCodeOk() (*interface{}, bool)`
 
 GetSplitCodeOk returns a tuple with the SplitCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSplitCode
 
-`func (o *SubscriptionListResponseArray) SetSplitCode(v map[string]interface{})`
+`func (o *SubscriptionListResponseArray) SetSplitCode(v interface{})`
 
 SetSplitCode sets SplitCode field to given value.
 
@@ -467,20 +467,20 @@ SetPaymentsCount sets PaymentsCount field to given value.
 
 ### GetMostRecentInvoice
 
-`func (o *SubscriptionListResponseArray) GetMostRecentInvoice() map[string]interface{}`
+`func (o *SubscriptionListResponseArray) GetMostRecentInvoice() interface{}`
 
 GetMostRecentInvoice returns the MostRecentInvoice field if non-nil, zero value otherwise.
 
 ### GetMostRecentInvoiceOk
 
-`func (o *SubscriptionListResponseArray) GetMostRecentInvoiceOk() (*map[string]interface{}, bool)`
+`func (o *SubscriptionListResponseArray) GetMostRecentInvoiceOk() (*interface{}, bool)`
 
 GetMostRecentInvoiceOk returns a tuple with the MostRecentInvoice field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMostRecentInvoice
 
-`func (o *SubscriptionListResponseArray) SetMostRecentInvoice(v map[string]interface{})`
+`func (o *SubscriptionListResponseArray) SetMostRecentInvoice(v interface{})`
 
 SetMostRecentInvoice sets MostRecentInvoice field to given value.
 

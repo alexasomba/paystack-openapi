@@ -7,21 +7,21 @@ Name | Type | Description | Notes
 **Integration** | **int32** |  | 
 **Domain** | **string** |  | 
 **Name** | **string** |  | 
-**Description** | **map[string]interface{}** |  | 
+**Description** | **interface{}** |  | 
 **Amount** | **NullableInt32** |  | 
 **Currency** | **string** |  | 
 **Slug** | **string** |  | 
-**CustomFields** | **map[string]interface{}** |  | 
+**CustomFields** | **interface{}** |  | 
 **Type** | **string** |  | 
-**RedirectUrl** | **map[string]interface{}** |  | 
-**SuccessMessage** | **map[string]interface{}** |  | 
+**RedirectUrl** | **interface{}** |  | 
+**SuccessMessage** | **interface{}** |  | 
 **CollectPhone** | **bool** |  | 
 **Active** | **bool** |  | 
 **Published** | **bool** |  | 
 **Migrate** | **bool** |  | 
-**NotificationEmail** | **map[string]interface{}** |  | 
-**Metadata** | **map[string]interface{}** |  | 
-**SplitCode** | **map[string]interface{}** |  | 
+**NotificationEmail** | **interface{}** |  | 
+**Metadata** | **interface{}** |  | 
+**SplitCode** | **interface{}** |  | 
 **Id** | **int32** |  | 
 **CreatedAt** | **string** |  | 
 **UpdatedAt** | **string** |  | 
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewPageFetchResponseData
 
-`func NewPageFetchResponseData(integration int32, domain string, name string, description map[string]interface{}, amount NullableInt32, currency string, slug string, customFields map[string]interface{}, type_ string, redirectUrl map[string]interface{}, successMessage map[string]interface{}, collectPhone bool, active bool, published bool, migrate bool, notificationEmail map[string]interface{}, metadata map[string]interface{}, splitCode map[string]interface{}, id int32, createdAt string, updatedAt string, ) *PageFetchResponseData`
+`func NewPageFetchResponseData(integration int32, domain string, name string, description interface{}, amount NullableInt32, currency string, slug string, customFields interface{}, type_ string, redirectUrl interface{}, successMessage interface{}, collectPhone bool, active bool, published bool, migrate bool, notificationEmail interface{}, metadata interface{}, splitCode interface{}, id int32, createdAt string, updatedAt string, ) *PageFetchResponseData`
 
 NewPageFetchResponseData instantiates a new PageFetchResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -107,20 +107,20 @@ SetName sets Name field to given value.
 
 ### GetDescription
 
-`func (o *PageFetchResponseData) GetDescription() map[string]interface{}`
+`func (o *PageFetchResponseData) GetDescription() interface{}`
 
 GetDescription returns the Description field if non-nil, zero value otherwise.
 
 ### GetDescriptionOk
 
-`func (o *PageFetchResponseData) GetDescriptionOk() (*map[string]interface{}, bool)`
+`func (o *PageFetchResponseData) GetDescriptionOk() (*interface{}, bool)`
 
 GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDescription
 
-`func (o *PageFetchResponseData) SetDescription(v map[string]interface{})`
+`func (o *PageFetchResponseData) SetDescription(v interface{})`
 
 SetDescription sets Description field to given value.
 
@@ -207,20 +207,20 @@ SetSlug sets Slug field to given value.
 
 ### GetCustomFields
 
-`func (o *PageFetchResponseData) GetCustomFields() map[string]interface{}`
+`func (o *PageFetchResponseData) GetCustomFields() interface{}`
 
 GetCustomFields returns the CustomFields field if non-nil, zero value otherwise.
 
 ### GetCustomFieldsOk
 
-`func (o *PageFetchResponseData) GetCustomFieldsOk() (*map[string]interface{}, bool)`
+`func (o *PageFetchResponseData) GetCustomFieldsOk() (*interface{}, bool)`
 
 GetCustomFieldsOk returns a tuple with the CustomFields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCustomFields
 
-`func (o *PageFetchResponseData) SetCustomFields(v map[string]interface{})`
+`func (o *PageFetchResponseData) SetCustomFields(v interface{})`
 
 SetCustomFields sets CustomFields field to given value.
 
@@ -257,20 +257,20 @@ SetType sets Type field to given value.
 
 ### GetRedirectUrl
 
-`func (o *PageFetchResponseData) GetRedirectUrl() map[string]interface{}`
+`func (o *PageFetchResponseData) GetRedirectUrl() interface{}`
 
 GetRedirectUrl returns the RedirectUrl field if non-nil, zero value otherwise.
 
 ### GetRedirectUrlOk
 
-`func (o *PageFetchResponseData) GetRedirectUrlOk() (*map[string]interface{}, bool)`
+`func (o *PageFetchResponseData) GetRedirectUrlOk() (*interface{}, bool)`
 
 GetRedirectUrlOk returns a tuple with the RedirectUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRedirectUrl
 
-`func (o *PageFetchResponseData) SetRedirectUrl(v map[string]interface{})`
+`func (o *PageFetchResponseData) SetRedirectUrl(v interface{})`
 
 SetRedirectUrl sets RedirectUrl field to given value.
 
@@ -287,20 +287,20 @@ SetRedirectUrl sets RedirectUrl field to given value.
 UnsetRedirectUrl ensures that no value is present for RedirectUrl, not even an explicit nil
 ### GetSuccessMessage
 
-`func (o *PageFetchResponseData) GetSuccessMessage() map[string]interface{}`
+`func (o *PageFetchResponseData) GetSuccessMessage() interface{}`
 
 GetSuccessMessage returns the SuccessMessage field if non-nil, zero value otherwise.
 
 ### GetSuccessMessageOk
 
-`func (o *PageFetchResponseData) GetSuccessMessageOk() (*map[string]interface{}, bool)`
+`func (o *PageFetchResponseData) GetSuccessMessageOk() (*interface{}, bool)`
 
 GetSuccessMessageOk returns a tuple with the SuccessMessage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSuccessMessage
 
-`func (o *PageFetchResponseData) SetSuccessMessage(v map[string]interface{})`
+`func (o *PageFetchResponseData) SetSuccessMessage(v interface{})`
 
 SetSuccessMessage sets SuccessMessage field to given value.
 
@@ -397,20 +397,20 @@ SetMigrate sets Migrate field to given value.
 
 ### GetNotificationEmail
 
-`func (o *PageFetchResponseData) GetNotificationEmail() map[string]interface{}`
+`func (o *PageFetchResponseData) GetNotificationEmail() interface{}`
 
 GetNotificationEmail returns the NotificationEmail field if non-nil, zero value otherwise.
 
 ### GetNotificationEmailOk
 
-`func (o *PageFetchResponseData) GetNotificationEmailOk() (*map[string]interface{}, bool)`
+`func (o *PageFetchResponseData) GetNotificationEmailOk() (*interface{}, bool)`
 
 GetNotificationEmailOk returns a tuple with the NotificationEmail field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNotificationEmail
 
-`func (o *PageFetchResponseData) SetNotificationEmail(v map[string]interface{})`
+`func (o *PageFetchResponseData) SetNotificationEmail(v interface{})`
 
 SetNotificationEmail sets NotificationEmail field to given value.
 
@@ -427,20 +427,20 @@ SetNotificationEmail sets NotificationEmail field to given value.
 UnsetNotificationEmail ensures that no value is present for NotificationEmail, not even an explicit nil
 ### GetMetadata
 
-`func (o *PageFetchResponseData) GetMetadata() map[string]interface{}`
+`func (o *PageFetchResponseData) GetMetadata() interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *PageFetchResponseData) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *PageFetchResponseData) GetMetadataOk() (*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *PageFetchResponseData) SetMetadata(v map[string]interface{})`
+`func (o *PageFetchResponseData) SetMetadata(v interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -457,20 +457,20 @@ SetMetadata sets Metadata field to given value.
 UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
 ### GetSplitCode
 
-`func (o *PageFetchResponseData) GetSplitCode() map[string]interface{}`
+`func (o *PageFetchResponseData) GetSplitCode() interface{}`
 
 GetSplitCode returns the SplitCode field if non-nil, zero value otherwise.
 
 ### GetSplitCodeOk
 
-`func (o *PageFetchResponseData) GetSplitCodeOk() (*map[string]interface{}, bool)`
+`func (o *PageFetchResponseData) GetSplitCodeOk() (*interface{}, bool)`
 
 GetSplitCodeOk returns a tuple with the SplitCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSplitCode
 
-`func (o *PageFetchResponseData) SetSplitCode(v map[string]interface{})`
+`func (o *PageFetchResponseData) SetSplitCode(v interface{})`
 
 SetSplitCode sets SplitCode field to given value.
 

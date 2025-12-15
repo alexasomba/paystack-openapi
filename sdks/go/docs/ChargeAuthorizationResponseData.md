@@ -14,19 +14,19 @@ Name | Type | Description | Notes
 **GatewayResponse** | **string** |  | 
 **Message** | **NullableString** |  | 
 **Channel** | **string** |  | 
-**IpAddress** | **map[string]interface{}** |  | 
+**IpAddress** | **interface{}** |  | 
 **Log** | [**NullableChargeAuthorizationResponseDataLog**](ChargeAuthorizationResponseDataLog.md) |  | 
 **Fees** | **NullableInt32** |  | 
 **Authorization** | [**ChargeAuthorizationResponseDataAuthorization**](ChargeAuthorizationResponseDataAuthorization.md) |  | 
 **Customer** | [**ChargeAuthorizationResponseDataCustomer**](ChargeAuthorizationResponseDataCustomer.md) |  | 
-**Plan** | **map[string]interface{}** |  | 
+**Plan** | **interface{}** |  | 
 **Id** | **int32** |  | 
 
 ## Methods
 
 ### NewChargeAuthorizationResponseData
 
-`func NewChargeAuthorizationResponseData(amount int32, currency string, transactionDate string, status string, reference string, domain string, metadata string, gatewayResponse string, message NullableString, channel string, ipAddress map[string]interface{}, log NullableChargeAuthorizationResponseDataLog, fees NullableInt32, authorization ChargeAuthorizationResponseDataAuthorization, customer ChargeAuthorizationResponseDataCustomer, plan map[string]interface{}, id int32, ) *ChargeAuthorizationResponseData`
+`func NewChargeAuthorizationResponseData(amount int32, currency string, transactionDate string, status string, reference string, domain string, metadata string, gatewayResponse string, message NullableString, channel string, ipAddress interface{}, log NullableChargeAuthorizationResponseDataLog, fees NullableInt32, authorization ChargeAuthorizationResponseDataAuthorization, customer ChargeAuthorizationResponseDataCustomer, plan interface{}, id int32, ) *ChargeAuthorizationResponseData`
 
 NewChargeAuthorizationResponseData instantiates a new ChargeAuthorizationResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -253,20 +253,20 @@ SetChannel sets Channel field to given value.
 
 ### GetIpAddress
 
-`func (o *ChargeAuthorizationResponseData) GetIpAddress() map[string]interface{}`
+`func (o *ChargeAuthorizationResponseData) GetIpAddress() interface{}`
 
 GetIpAddress returns the IpAddress field if non-nil, zero value otherwise.
 
 ### GetIpAddressOk
 
-`func (o *ChargeAuthorizationResponseData) GetIpAddressOk() (*map[string]interface{}, bool)`
+`func (o *ChargeAuthorizationResponseData) GetIpAddressOk() (*interface{}, bool)`
 
 GetIpAddressOk returns a tuple with the IpAddress field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIpAddress
 
-`func (o *ChargeAuthorizationResponseData) SetIpAddress(v map[string]interface{})`
+`func (o *ChargeAuthorizationResponseData) SetIpAddress(v interface{})`
 
 SetIpAddress sets IpAddress field to given value.
 
@@ -383,20 +383,20 @@ SetCustomer sets Customer field to given value.
 
 ### GetPlan
 
-`func (o *ChargeAuthorizationResponseData) GetPlan() map[string]interface{}`
+`func (o *ChargeAuthorizationResponseData) GetPlan() interface{}`
 
 GetPlan returns the Plan field if non-nil, zero value otherwise.
 
 ### GetPlanOk
 
-`func (o *ChargeAuthorizationResponseData) GetPlanOk() (*map[string]interface{}, bool)`
+`func (o *ChargeAuthorizationResponseData) GetPlanOk() (*interface{}, bool)`
 
 GetPlanOk returns a tuple with the Plan field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPlan
 
-`func (o *ChargeAuthorizationResponseData) SetPlan(v map[string]interface{})`
+`func (o *ChargeAuthorizationResponseData) SetPlan(v interface{})`
 
 SetPlan sets Plan field to given value.
 

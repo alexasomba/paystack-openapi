@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Source** | **string** |  | 
 **Type** | **string** |  | 
-**Identifier** | **map[string]interface{}** |  | 
+**Identifier** | **interface{}** |  | 
 **EntryPoint** | **string** |  | 
 
 ## Methods
 
 ### NewTransactionListResponseArraySource
 
-`func NewTransactionListResponseArraySource(source string, type_ string, identifier map[string]interface{}, entryPoint string, ) *TransactionListResponseArraySource`
+`func NewTransactionListResponseArraySource(source string, type_ string, identifier interface{}, entryPoint string, ) *TransactionListResponseArraySource`
 
 NewTransactionListResponseArraySource instantiates a new TransactionListResponseArraySource object
 This constructor will assign default values to properties that have it defined,
@@ -70,20 +70,20 @@ SetType sets Type field to given value.
 
 ### GetIdentifier
 
-`func (o *TransactionListResponseArraySource) GetIdentifier() map[string]interface{}`
+`func (o *TransactionListResponseArraySource) GetIdentifier() interface{}`
 
 GetIdentifier returns the Identifier field if non-nil, zero value otherwise.
 
 ### GetIdentifierOk
 
-`func (o *TransactionListResponseArraySource) GetIdentifierOk() (*map[string]interface{}, bool)`
+`func (o *TransactionListResponseArraySource) GetIdentifierOk() (*interface{}, bool)`
 
 GetIdentifierOk returns a tuple with the Identifier field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdentifier
 
-`func (o *TransactionListResponseArraySource) SetIdentifier(v map[string]interface{})`
+`func (o *TransactionListResponseArraySource) SetIdentifier(v interface{})`
 
 SetIdentifier sets Identifier field to given value.
 

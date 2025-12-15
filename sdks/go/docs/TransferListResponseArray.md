@@ -8,18 +8,18 @@ Name | Type | Description | Notes
 **CreatedAt** | **string** |  | 
 **Currency** | **string** |  | 
 **Domain** | **string** |  | 
-**Failures** | **map[string]interface{}** |  | 
+**Failures** | **interface{}** |  | 
 **Id** | **int32** |  | 
 **Integration** | **int32** |  | 
 **Reason** | **string** |  | 
 **Reference** | **string** |  | 
 **Source** | **string** |  | 
-**SourceDetails** | **map[string]interface{}** |  | 
+**SourceDetails** | **interface{}** |  | 
 **Status** | **string** |  | 
-**TitanCode** | **map[string]interface{}** |  | 
+**TitanCode** | **interface{}** |  | 
 **TransferCode** | **string** |  | 
 **Request** | **int32** |  | 
-**TransferredAt** | **map[string]interface{}** |  | 
+**TransferredAt** | **interface{}** |  | 
 **UpdatedAt** | **string** |  | 
 **Recipient** | [**TransferListResponseArrayRecipient**](TransferListResponseArrayRecipient.md) |  | 
 **Session** | [**TransferListResponseArraySession**](TransferListResponseArraySession.md) |  | 
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewTransferListResponseArray
 
-`func NewTransferListResponseArray(amount int32, createdAt string, currency string, domain string, failures map[string]interface{}, id int32, integration int32, reason string, reference string, source string, sourceDetails map[string]interface{}, status string, titanCode map[string]interface{}, transferCode string, request int32, transferredAt map[string]interface{}, updatedAt string, recipient TransferListResponseArrayRecipient, session TransferListResponseArraySession, feeCharged int32, feesBreakdown NullableInt32, ) *TransferListResponseArray`
+`func NewTransferListResponseArray(amount int32, createdAt string, currency string, domain string, failures interface{}, id int32, integration int32, reason string, reference string, source string, sourceDetails interface{}, status string, titanCode interface{}, transferCode string, request int32, transferredAt interface{}, updatedAt string, recipient TransferListResponseArrayRecipient, session TransferListResponseArraySession, feeCharged int32, feesBreakdown NullableInt32, ) *TransferListResponseArray`
 
 NewTransferListResponseArray instantiates a new TransferListResponseArray object
 This constructor will assign default values to properties that have it defined,
@@ -127,20 +127,20 @@ SetDomain sets Domain field to given value.
 
 ### GetFailures
 
-`func (o *TransferListResponseArray) GetFailures() map[string]interface{}`
+`func (o *TransferListResponseArray) GetFailures() interface{}`
 
 GetFailures returns the Failures field if non-nil, zero value otherwise.
 
 ### GetFailuresOk
 
-`func (o *TransferListResponseArray) GetFailuresOk() (*map[string]interface{}, bool)`
+`func (o *TransferListResponseArray) GetFailuresOk() (*interface{}, bool)`
 
 GetFailuresOk returns a tuple with the Failures field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFailures
 
-`func (o *TransferListResponseArray) SetFailures(v map[string]interface{})`
+`func (o *TransferListResponseArray) SetFailures(v interface{})`
 
 SetFailures sets Failures field to given value.
 
@@ -257,20 +257,20 @@ SetSource sets Source field to given value.
 
 ### GetSourceDetails
 
-`func (o *TransferListResponseArray) GetSourceDetails() map[string]interface{}`
+`func (o *TransferListResponseArray) GetSourceDetails() interface{}`
 
 GetSourceDetails returns the SourceDetails field if non-nil, zero value otherwise.
 
 ### GetSourceDetailsOk
 
-`func (o *TransferListResponseArray) GetSourceDetailsOk() (*map[string]interface{}, bool)`
+`func (o *TransferListResponseArray) GetSourceDetailsOk() (*interface{}, bool)`
 
 GetSourceDetailsOk returns a tuple with the SourceDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSourceDetails
 
-`func (o *TransferListResponseArray) SetSourceDetails(v map[string]interface{})`
+`func (o *TransferListResponseArray) SetSourceDetails(v interface{})`
 
 SetSourceDetails sets SourceDetails field to given value.
 
@@ -307,20 +307,20 @@ SetStatus sets Status field to given value.
 
 ### GetTitanCode
 
-`func (o *TransferListResponseArray) GetTitanCode() map[string]interface{}`
+`func (o *TransferListResponseArray) GetTitanCode() interface{}`
 
 GetTitanCode returns the TitanCode field if non-nil, zero value otherwise.
 
 ### GetTitanCodeOk
 
-`func (o *TransferListResponseArray) GetTitanCodeOk() (*map[string]interface{}, bool)`
+`func (o *TransferListResponseArray) GetTitanCodeOk() (*interface{}, bool)`
 
 GetTitanCodeOk returns a tuple with the TitanCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTitanCode
 
-`func (o *TransferListResponseArray) SetTitanCode(v map[string]interface{})`
+`func (o *TransferListResponseArray) SetTitanCode(v interface{})`
 
 SetTitanCode sets TitanCode field to given value.
 
@@ -377,20 +377,20 @@ SetRequest sets Request field to given value.
 
 ### GetTransferredAt
 
-`func (o *TransferListResponseArray) GetTransferredAt() map[string]interface{}`
+`func (o *TransferListResponseArray) GetTransferredAt() interface{}`
 
 GetTransferredAt returns the TransferredAt field if non-nil, zero value otherwise.
 
 ### GetTransferredAtOk
 
-`func (o *TransferListResponseArray) GetTransferredAtOk() (*map[string]interface{}, bool)`
+`func (o *TransferListResponseArray) GetTransferredAtOk() (*interface{}, bool)`
 
 GetTransferredAtOk returns a tuple with the TransferredAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTransferredAt
 
-`func (o *TransferListResponseArray) SetTransferredAt(v map[string]interface{})`
+`func (o *TransferListResponseArray) SetTransferredAt(v interface{})`
 
 SetTransferredAt sets TransferredAt field to given value.
 

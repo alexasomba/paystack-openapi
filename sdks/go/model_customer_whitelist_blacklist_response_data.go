@@ -20,9 +20,9 @@ var _ MappedNullable = &CustomerWhitelistBlacklistResponseData{}
 
 // CustomerWhitelistBlacklistResponseData struct for CustomerWhitelistBlacklistResponseData
 type CustomerWhitelistBlacklistResponseData struct {
-	Transactions []map[string]interface{} `json:"transactions"`
-	Subscriptions []map[string]interface{} `json:"subscriptions"`
-	Authorizations []map[string]interface{} `json:"authorizations"`
+	Transactions []interface{} `json:"transactions"`
+	Subscriptions []interface{} `json:"subscriptions"`
+	Authorizations []interface{} `json:"authorizations"`
 	FirstName string `json:"first_name"`
 	LastName string `json:"last_name"`
 	Email string `json:"email"`
@@ -36,14 +36,14 @@ type CustomerWhitelistBlacklistResponseData struct {
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
 	Identified bool `json:"identified"`
-	Identifications map[string]interface{} `json:"identifications"`
+	Identifications interface{} `json:"identifications"`
 }
 
 // NewCustomerWhitelistBlacklistResponseData instantiates a new CustomerWhitelistBlacklistResponseData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomerWhitelistBlacklistResponseData(transactions []map[string]interface{}, subscriptions []map[string]interface{}, authorizations []map[string]interface{}, firstName string, lastName string, email string, phone string, metadata map[string]interface{}, domain string, customerCode string, riskAction string, id int32, integration int32, createdAt string, updatedAt string, identified bool, identifications map[string]interface{}) *CustomerWhitelistBlacklistResponseData {
+func NewCustomerWhitelistBlacklistResponseData(transactions []interface{}, subscriptions []interface{}, authorizations []interface{}, firstName string, lastName string, email string, phone string, metadata map[string]interface{}, domain string, customerCode string, riskAction string, id int32, integration int32, createdAt string, updatedAt string, identified bool, identifications interface{}) *CustomerWhitelistBlacklistResponseData {
 	this := CustomerWhitelistBlacklistResponseData{}
 	this.Transactions = transactions
 	this.Subscriptions = subscriptions
@@ -74,9 +74,9 @@ func NewCustomerWhitelistBlacklistResponseDataWithDefaults() *CustomerWhitelistB
 }
 
 // GetTransactions returns the Transactions field value
-func (o *CustomerWhitelistBlacklistResponseData) GetTransactions() []map[string]interface{} {
+func (o *CustomerWhitelistBlacklistResponseData) GetTransactions() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -85,7 +85,7 @@ func (o *CustomerWhitelistBlacklistResponseData) GetTransactions() []map[string]
 
 // GetTransactionsOk returns a tuple with the Transactions field value
 // and a boolean to check if the value has been set.
-func (o *CustomerWhitelistBlacklistResponseData) GetTransactionsOk() ([]map[string]interface{}, bool) {
+func (o *CustomerWhitelistBlacklistResponseData) GetTransactionsOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,14 +93,14 @@ func (o *CustomerWhitelistBlacklistResponseData) GetTransactionsOk() ([]map[stri
 }
 
 // SetTransactions sets field value
-func (o *CustomerWhitelistBlacklistResponseData) SetTransactions(v []map[string]interface{}) {
+func (o *CustomerWhitelistBlacklistResponseData) SetTransactions(v []interface{}) {
 	o.Transactions = v
 }
 
 // GetSubscriptions returns the Subscriptions field value
-func (o *CustomerWhitelistBlacklistResponseData) GetSubscriptions() []map[string]interface{} {
+func (o *CustomerWhitelistBlacklistResponseData) GetSubscriptions() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -109,7 +109,7 @@ func (o *CustomerWhitelistBlacklistResponseData) GetSubscriptions() []map[string
 
 // GetSubscriptionsOk returns a tuple with the Subscriptions field value
 // and a boolean to check if the value has been set.
-func (o *CustomerWhitelistBlacklistResponseData) GetSubscriptionsOk() ([]map[string]interface{}, bool) {
+func (o *CustomerWhitelistBlacklistResponseData) GetSubscriptionsOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -117,14 +117,14 @@ func (o *CustomerWhitelistBlacklistResponseData) GetSubscriptionsOk() ([]map[str
 }
 
 // SetSubscriptions sets field value
-func (o *CustomerWhitelistBlacklistResponseData) SetSubscriptions(v []map[string]interface{}) {
+func (o *CustomerWhitelistBlacklistResponseData) SetSubscriptions(v []interface{}) {
 	o.Subscriptions = v
 }
 
 // GetAuthorizations returns the Authorizations field value
-func (o *CustomerWhitelistBlacklistResponseData) GetAuthorizations() []map[string]interface{} {
+func (o *CustomerWhitelistBlacklistResponseData) GetAuthorizations() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -133,7 +133,7 @@ func (o *CustomerWhitelistBlacklistResponseData) GetAuthorizations() []map[strin
 
 // GetAuthorizationsOk returns a tuple with the Authorizations field value
 // and a boolean to check if the value has been set.
-func (o *CustomerWhitelistBlacklistResponseData) GetAuthorizationsOk() ([]map[string]interface{}, bool) {
+func (o *CustomerWhitelistBlacklistResponseData) GetAuthorizationsOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -141,7 +141,7 @@ func (o *CustomerWhitelistBlacklistResponseData) GetAuthorizationsOk() ([]map[st
 }
 
 // SetAuthorizations sets field value
-func (o *CustomerWhitelistBlacklistResponseData) SetAuthorizations(v []map[string]interface{}) {
+func (o *CustomerWhitelistBlacklistResponseData) SetAuthorizations(v []interface{}) {
 	o.Authorizations = v
 }
 
@@ -458,10 +458,10 @@ func (o *CustomerWhitelistBlacklistResponseData) SetIdentified(v bool) {
 }
 
 // GetIdentifications returns the Identifications field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *CustomerWhitelistBlacklistResponseData) GetIdentifications() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *CustomerWhitelistBlacklistResponseData) GetIdentifications() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -471,15 +471,15 @@ func (o *CustomerWhitelistBlacklistResponseData) GetIdentifications() map[string
 // GetIdentificationsOk returns a tuple with the Identifications field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CustomerWhitelistBlacklistResponseData) GetIdentificationsOk() (map[string]interface{}, bool) {
+func (o *CustomerWhitelistBlacklistResponseData) GetIdentificationsOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Identifications) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Identifications, true
+	return &o.Identifications, true
 }
 
 // SetIdentifications sets field value
-func (o *CustomerWhitelistBlacklistResponseData) SetIdentifications(v map[string]interface{}) {
+func (o *CustomerWhitelistBlacklistResponseData) SetIdentifications(v interface{}) {
 	o.Identifications = v
 }
 

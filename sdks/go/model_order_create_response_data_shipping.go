@@ -24,13 +24,13 @@ type OrderCreateResponseDataShipping struct {
 	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
 	Fees int32 `json:"fees"`
-	DeliveryNote map[string]interface{} `json:"delivery_note"`
+	DeliveryNote interface{} `json:"delivery_note"`
 	StreetLine string `json:"street_line"`
 	City string `json:"city"`
 	State string `json:"state"`
 	Country string `json:"country"`
 	IsShipped bool `json:"is_shipped"`
-	DeliveryTrackingLink map[string]interface{} `json:"delivery_tracking_link"`
+	DeliveryTrackingLink interface{} `json:"delivery_tracking_link"`
 	Id int32 `json:"id"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
@@ -40,7 +40,7 @@ type OrderCreateResponseDataShipping struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrderCreateResponseDataShipping(customer int32, integration int32, domain string, fees int32, deliveryNote map[string]interface{}, streetLine string, city string, state string, country string, isShipped bool, deliveryTrackingLink map[string]interface{}, id int32, createdAt string, updatedAt string) *OrderCreateResponseDataShipping {
+func NewOrderCreateResponseDataShipping(customer int32, integration int32, domain string, fees int32, deliveryNote interface{}, streetLine string, city string, state string, country string, isShipped bool, deliveryTrackingLink interface{}, id int32, createdAt string, updatedAt string) *OrderCreateResponseDataShipping {
 	this := OrderCreateResponseDataShipping{}
 	this.Customer = customer
 	this.Integration = integration
@@ -164,10 +164,10 @@ func (o *OrderCreateResponseDataShipping) SetFees(v int32) {
 }
 
 // GetDeliveryNote returns the DeliveryNote field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *OrderCreateResponseDataShipping) GetDeliveryNote() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *OrderCreateResponseDataShipping) GetDeliveryNote() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -177,15 +177,15 @@ func (o *OrderCreateResponseDataShipping) GetDeliveryNote() map[string]interface
 // GetDeliveryNoteOk returns a tuple with the DeliveryNote field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderCreateResponseDataShipping) GetDeliveryNoteOk() (map[string]interface{}, bool) {
+func (o *OrderCreateResponseDataShipping) GetDeliveryNoteOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.DeliveryNote) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.DeliveryNote, true
+	return &o.DeliveryNote, true
 }
 
 // SetDeliveryNote sets field value
-func (o *OrderCreateResponseDataShipping) SetDeliveryNote(v map[string]interface{}) {
+func (o *OrderCreateResponseDataShipping) SetDeliveryNote(v interface{}) {
 	o.DeliveryNote = v
 }
 
@@ -310,10 +310,10 @@ func (o *OrderCreateResponseDataShipping) SetIsShipped(v bool) {
 }
 
 // GetDeliveryTrackingLink returns the DeliveryTrackingLink field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *OrderCreateResponseDataShipping) GetDeliveryTrackingLink() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *OrderCreateResponseDataShipping) GetDeliveryTrackingLink() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -323,15 +323,15 @@ func (o *OrderCreateResponseDataShipping) GetDeliveryTrackingLink() map[string]i
 // GetDeliveryTrackingLinkOk returns a tuple with the DeliveryTrackingLink field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderCreateResponseDataShipping) GetDeliveryTrackingLinkOk() (map[string]interface{}, bool) {
+func (o *OrderCreateResponseDataShipping) GetDeliveryTrackingLinkOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.DeliveryTrackingLink) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.DeliveryTrackingLink, true
+	return &o.DeliveryTrackingLink, true
 }
 
 // SetDeliveryTrackingLink sets field value
-func (o *OrderCreateResponseDataShipping) SetDeliveryTrackingLink(v map[string]interface{}) {
+func (o *OrderCreateResponseDataShipping) SetDeliveryTrackingLink(v interface{}) {
 	o.DeliveryTrackingLink = v
 }
 

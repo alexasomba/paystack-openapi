@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Bank** | [**DedicatedNubanCreateResponseDataBank**](DedicatedNubanCreateResponseDataBank.md) |  | 
+**Bank** | [**DedicatedNubanListResponseArrayBank**](DedicatedNubanListResponseArrayBank.md) |  | 
 **AccountName** | **string** |  | 
 **AccountNumber** | **string** |  | 
 **Assigned** | **bool** |  | 
 **Currency** | **string** |  | 
-**Metadata** | **map[string]interface{}** |  | 
+**Metadata** | **interface{}** |  | 
 **Active** | **bool** |  | 
 **Id** | **int32** |  | 
 **CreatedAt** | **string** |  | 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewDedicatedNubanCreateResponseData
 
-`func NewDedicatedNubanCreateResponseData(bank DedicatedNubanCreateResponseDataBank, accountName string, accountNumber string, assigned bool, currency string, metadata map[string]interface{}, active bool, id int32, createdAt string, updatedAt string, assignment DedicatedNubanCreateResponseDataAssignment, customer DedicatedNubanCreateResponseDataCustomer, ) *DedicatedNubanCreateResponseData`
+`func NewDedicatedNubanCreateResponseData(bank DedicatedNubanListResponseArrayBank, accountName string, accountNumber string, assigned bool, currency string, metadata interface{}, active bool, id int32, createdAt string, updatedAt string, assignment DedicatedNubanCreateResponseDataAssignment, customer DedicatedNubanCreateResponseDataCustomer, ) *DedicatedNubanCreateResponseData`
 
 NewDedicatedNubanCreateResponseData instantiates a new DedicatedNubanCreateResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -38,20 +38,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetBank
 
-`func (o *DedicatedNubanCreateResponseData) GetBank() DedicatedNubanCreateResponseDataBank`
+`func (o *DedicatedNubanCreateResponseData) GetBank() DedicatedNubanListResponseArrayBank`
 
 GetBank returns the Bank field if non-nil, zero value otherwise.
 
 ### GetBankOk
 
-`func (o *DedicatedNubanCreateResponseData) GetBankOk() (*DedicatedNubanCreateResponseDataBank, bool)`
+`func (o *DedicatedNubanCreateResponseData) GetBankOk() (*DedicatedNubanListResponseArrayBank, bool)`
 
 GetBankOk returns a tuple with the Bank field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBank
 
-`func (o *DedicatedNubanCreateResponseData) SetBank(v DedicatedNubanCreateResponseDataBank)`
+`func (o *DedicatedNubanCreateResponseData) SetBank(v DedicatedNubanListResponseArrayBank)`
 
 SetBank sets Bank field to given value.
 
@@ -138,20 +138,20 @@ SetCurrency sets Currency field to given value.
 
 ### GetMetadata
 
-`func (o *DedicatedNubanCreateResponseData) GetMetadata() map[string]interface{}`
+`func (o *DedicatedNubanCreateResponseData) GetMetadata() interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *DedicatedNubanCreateResponseData) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *DedicatedNubanCreateResponseData) GetMetadataOk() (*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *DedicatedNubanCreateResponseData) SetMetadata(v map[string]interface{})`
+`func (o *DedicatedNubanCreateResponseData) SetMetadata(v interface{})`
 
 SetMetadata sets Metadata field to given value.
 

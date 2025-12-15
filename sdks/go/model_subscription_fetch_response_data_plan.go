@@ -23,7 +23,7 @@ type SubscriptionFetchResponseDataPlan struct {
 	Id int32 `json:"id"`
 	Name string `json:"name"`
 	PlanCode string `json:"plan_code"`
-	Description map[string]interface{} `json:"description"`
+	Description interface{} `json:"description"`
 	Amount int32 `json:"amount"`
 	Interval string `json:"interval"`
 	SendInvoices bool `json:"send_invoices"`
@@ -35,7 +35,7 @@ type SubscriptionFetchResponseDataPlan struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSubscriptionFetchResponseDataPlan(id int32, name string, planCode string, description map[string]interface{}, amount int32, interval string, sendInvoices bool, sendSms bool, currency string) *SubscriptionFetchResponseDataPlan {
+func NewSubscriptionFetchResponseDataPlan(id int32, name string, planCode string, description interface{}, amount int32, interval string, sendInvoices bool, sendSms bool, currency string) *SubscriptionFetchResponseDataPlan {
 	this := SubscriptionFetchResponseDataPlan{}
 	this.Id = id
 	this.Name = name
@@ -130,10 +130,10 @@ func (o *SubscriptionFetchResponseDataPlan) SetPlanCode(v string) {
 }
 
 // GetDescription returns the Description field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *SubscriptionFetchResponseDataPlan) GetDescription() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *SubscriptionFetchResponseDataPlan) GetDescription() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -143,15 +143,15 @@ func (o *SubscriptionFetchResponseDataPlan) GetDescription() map[string]interfac
 // GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubscriptionFetchResponseDataPlan) GetDescriptionOk() (map[string]interface{}, bool) {
+func (o *SubscriptionFetchResponseDataPlan) GetDescriptionOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Description) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Description, true
+	return &o.Description, true
 }
 
 // SetDescription sets field value
-func (o *SubscriptionFetchResponseDataPlan) SetDescription(v map[string]interface{}) {
+func (o *SubscriptionFetchResponseDataPlan) SetDescription(v interface{}) {
 	o.Description = v
 }
 

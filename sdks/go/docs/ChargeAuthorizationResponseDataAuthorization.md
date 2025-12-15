@@ -16,13 +16,13 @@ Name | Type | Description | Notes
 **Brand** | **string** |  | 
 **Reusable** | **bool** |  | 
 **Signature** | **string** |  | 
-**AccountName** | **map[string]interface{}** |  | 
+**AccountName** | **interface{}** |  | 
 
 ## Methods
 
 ### NewChargeAuthorizationResponseDataAuthorization
 
-`func NewChargeAuthorizationResponseDataAuthorization(authorizationCode string, bin NullableString, last4 string, expMonth string, expYear string, channel string, cardType string, bank string, countryCode string, brand string, reusable bool, signature string, accountName map[string]interface{}, ) *ChargeAuthorizationResponseDataAuthorization`
+`func NewChargeAuthorizationResponseDataAuthorization(authorizationCode string, bin NullableString, last4 string, expMonth string, expYear string, channel string, cardType string, bank string, countryCode string, brand string, reusable bool, signature string, accountName interface{}, ) *ChargeAuthorizationResponseDataAuthorization`
 
 NewChargeAuthorizationResponseDataAuthorization instantiates a new ChargeAuthorizationResponseDataAuthorization object
 This constructor will assign default values to properties that have it defined,
@@ -289,20 +289,20 @@ SetSignature sets Signature field to given value.
 
 ### GetAccountName
 
-`func (o *ChargeAuthorizationResponseDataAuthorization) GetAccountName() map[string]interface{}`
+`func (o *ChargeAuthorizationResponseDataAuthorization) GetAccountName() interface{}`
 
 GetAccountName returns the AccountName field if non-nil, zero value otherwise.
 
 ### GetAccountNameOk
 
-`func (o *ChargeAuthorizationResponseDataAuthorization) GetAccountNameOk() (*map[string]interface{}, bool)`
+`func (o *ChargeAuthorizationResponseDataAuthorization) GetAccountNameOk() (*interface{}, bool)`
 
 GetAccountNameOk returns a tuple with the AccountName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccountName
 
-`func (o *ChargeAuthorizationResponseDataAuthorization) SetAccountName(v map[string]interface{})`
+`func (o *ChargeAuthorizationResponseDataAuthorization) SetAccountName(v interface{})`
 
 SetAccountName sets AccountName field to given value.
 

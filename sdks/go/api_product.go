@@ -568,11 +568,11 @@ type ApiProductUpdateRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
 	id int32
-	body *ProductId
+	productUpdate *ProductUpdate
 }
 
-func (r ApiProductUpdateRequest) Body(body ProductId) ApiProductUpdateRequest {
-	r.body = &body
+func (r ApiProductUpdateRequest) ProductUpdate(productUpdate ProductUpdate) ApiProductUpdateRequest {
+	r.productUpdate = &productUpdate
 	return r
 }
 
@@ -637,7 +637,7 @@ func (a *ProductAPIService) ProductUpdateExecute(r ApiProductUpdateRequest) (*Pr
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.productUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **SplitCode** | **string** |  | 
 **Active** | **bool** |  | 
 **BearerType** | **string** |  | 
-**BearerSubaccount** | **map[string]interface{}** |  | 
+**BearerSubaccount** | **interface{}** |  | 
 **CreatedAt** | **string** |  | 
 **UpdatedAt** | **string** |  | 
 **IsDynamic** | **bool** |  | 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewVirtualTerminalAddSplitCodeResponseData
 
-`func NewVirtualTerminalAddSplitCodeResponseData(id int32, name string, type_ string, currency string, integration int32, domain string, splitCode string, active bool, bearerType string, bearerSubaccount map[string]interface{}, createdAt string, updatedAt string, isDynamic bool, subaccounts []SplitSubaccountsArray, totalSubaccounts int32, ) *VirtualTerminalAddSplitCodeResponseData`
+`func NewVirtualTerminalAddSplitCodeResponseData(id int32, name string, type_ string, currency string, integration int32, domain string, splitCode string, active bool, bearerType string, bearerSubaccount interface{}, createdAt string, updatedAt string, isDynamic bool, subaccounts []SplitSubaccountsArray, totalSubaccounts int32, ) *VirtualTerminalAddSplitCodeResponseData`
 
 NewVirtualTerminalAddSplitCodeResponseData instantiates a new VirtualTerminalAddSplitCodeResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -221,20 +221,20 @@ SetBearerType sets BearerType field to given value.
 
 ### GetBearerSubaccount
 
-`func (o *VirtualTerminalAddSplitCodeResponseData) GetBearerSubaccount() map[string]interface{}`
+`func (o *VirtualTerminalAddSplitCodeResponseData) GetBearerSubaccount() interface{}`
 
 GetBearerSubaccount returns the BearerSubaccount field if non-nil, zero value otherwise.
 
 ### GetBearerSubaccountOk
 
-`func (o *VirtualTerminalAddSplitCodeResponseData) GetBearerSubaccountOk() (*map[string]interface{}, bool)`
+`func (o *VirtualTerminalAddSplitCodeResponseData) GetBearerSubaccountOk() (*interface{}, bool)`
 
 GetBearerSubaccountOk returns a tuple with the BearerSubaccount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBearerSubaccount
 
-`func (o *VirtualTerminalAddSplitCodeResponseData) SetBearerSubaccount(v map[string]interface{})`
+`func (o *VirtualTerminalAddSplitCodeResponseData) SetBearerSubaccount(v interface{})`
 
 SetBearerSubaccount sets BearerSubaccount field to given value.
 

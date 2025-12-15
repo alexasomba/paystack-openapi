@@ -16,13 +16,13 @@ Name | Type | Description | Notes
 **Brand** | **string** |  | 
 **Reusable** | **int32** |  | 
 **Signature** | **NullableString** |  | 
-**AccountName** | **map[string]interface{}** |  | 
+**AccountName** | **interface{}** |  | 
 
 ## Methods
 
 ### NewSubscriptionListResponseArrayAuthorization
 
-`func NewSubscriptionListResponseArrayAuthorization(authorizationCode string, bin NullableString, last4 string, expMonth string, expYear string, channel string, cardType NullableString, bank string, countryCode string, brand string, reusable int32, signature NullableString, accountName map[string]interface{}, ) *SubscriptionListResponseArrayAuthorization`
+`func NewSubscriptionListResponseArrayAuthorization(authorizationCode string, bin NullableString, last4 string, expMonth string, expYear string, channel string, cardType NullableString, bank string, countryCode string, brand string, reusable int32, signature NullableString, accountName interface{}, ) *SubscriptionListResponseArrayAuthorization`
 
 NewSubscriptionListResponseArrayAuthorization instantiates a new SubscriptionListResponseArrayAuthorization object
 This constructor will assign default values to properties that have it defined,
@@ -309,20 +309,20 @@ SetSignature sets Signature field to given value.
 UnsetSignature ensures that no value is present for Signature, not even an explicit nil
 ### GetAccountName
 
-`func (o *SubscriptionListResponseArrayAuthorization) GetAccountName() map[string]interface{}`
+`func (o *SubscriptionListResponseArrayAuthorization) GetAccountName() interface{}`
 
 GetAccountName returns the AccountName field if non-nil, zero value otherwise.
 
 ### GetAccountNameOk
 
-`func (o *SubscriptionListResponseArrayAuthorization) GetAccountNameOk() (*map[string]interface{}, bool)`
+`func (o *SubscriptionListResponseArrayAuthorization) GetAccountNameOk() (*interface{}, bool)`
 
 GetAccountNameOk returns a tuple with the AccountName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccountName
 
-`func (o *SubscriptionListResponseArrayAuthorization) SetAccountName(v map[string]interface{})`
+`func (o *SubscriptionListResponseArrayAuthorization) SetAccountName(v interface{})`
 
 SetAccountName sets AccountName field to given value.
 

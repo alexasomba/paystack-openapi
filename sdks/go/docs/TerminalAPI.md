@@ -432,7 +432,7 @@ Name | Type | Description  | Notes
 
 ## TerminalSendEvent
 
-> Response TerminalSendEvent(ctx, id).Body(body).Execute()
+> Response TerminalSendEvent(ctx, id).TerminalSendEvent(terminalSendEvent).Execute()
 
 Send Event
 
@@ -452,11 +452,11 @@ import (
 
 func main() {
     id := "Z0R4orOU" // string | The ID of the Terminal the event should be sent to.
-    body := TerminalIdEvent(987) // TerminalIdEvent |  (optional)
+    terminalSendEvent := *openapiclient.NewTerminalSendEvent() // TerminalSendEvent |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TerminalAPI.TerminalSendEvent(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.TerminalAPI.TerminalSendEvent(context.Background(), id).TerminalSendEvent(terminalSendEvent).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TerminalAPI.TerminalSendEvent``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -482,7 +482,7 @@ Other parameters are passed through a pointer to a apiTerminalSendEventRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **TerminalIdEvent** |  | 
+ **terminalSendEvent** | [**TerminalSendEvent**](TerminalSendEvent.md) |  | 
 
 ### Return type
 
@@ -504,7 +504,7 @@ Name | Type | Description  | Notes
 
 ## TerminalUpdate
 
-> TerminalUpdateResponse TerminalUpdate(ctx, terminalId).Body(body).Execute()
+> TerminalUpdateResponse TerminalUpdate(ctx, terminalId).TerminalUpate(terminalUpate).Execute()
 
 Update Terminal
 
@@ -524,11 +524,11 @@ import (
 
 func main() {
     terminalId := "Z0R4orOU" // string | The ID of the Terminal the event should be sent to.
-    body := TerminalTerminalId(987) // TerminalTerminalId |  (optional)
+    terminalUpate := *openapiclient.NewTerminalUpate() // TerminalUpate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TerminalAPI.TerminalUpdate(context.Background(), terminalId).Body(body).Execute()
+    resp, r, err := apiClient.TerminalAPI.TerminalUpdate(context.Background(), terminalId).TerminalUpate(terminalUpate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TerminalAPI.TerminalUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -554,7 +554,7 @@ Other parameters are passed through a pointer to a apiTerminalUpdateRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **TerminalTerminalId** |  | 
+ **terminalUpate** | [**TerminalUpate**](TerminalUpate.md) |  | 
 
 ### Return type
 

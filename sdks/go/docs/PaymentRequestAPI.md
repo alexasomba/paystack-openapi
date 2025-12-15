@@ -504,7 +504,7 @@ Other parameters are passed through a pointer to a apiPaymentRequestTotalsReques
 
 ## PaymentRequestUpdate
 
-> PaymentRequestUpdateResponse PaymentRequestUpdate(ctx, id).Body(body).Execute()
+> PaymentRequestUpdateResponse PaymentRequestUpdate(ctx, id).PaymentRequestUpdate(paymentRequestUpdate).Execute()
 
 Update Payment Request
 
@@ -524,11 +524,11 @@ import (
 
 func main() {
     id := int32(18823736) // int32 | The unique identifier of a previously created payment request
-    body := PaymentrequestId(987) // PaymentrequestId |  (optional)
+    paymentRequestUpdate := *openapiclient.NewPaymentRequestUpdate() // PaymentRequestUpdate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PaymentRequestAPI.PaymentRequestUpdate(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.PaymentRequestAPI.PaymentRequestUpdate(context.Background(), id).PaymentRequestUpdate(paymentRequestUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PaymentRequestAPI.PaymentRequestUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -554,7 +554,7 @@ Other parameters are passed through a pointer to a apiPaymentRequestUpdateReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **PaymentrequestId** |  | 
+ **paymentRequestUpdate** | [**PaymentRequestUpdate**](PaymentRequestUpdate.md) |  | 
 
 ### Return type
 

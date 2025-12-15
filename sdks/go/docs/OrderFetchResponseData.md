@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Discounts** | **[]map[string]interface{}** |  | 
+**Discounts** | **[]interface{}** |  | 
 **OrderCode** | **string** |  | 
 **Domain** | **string** |  | 
 **Currency** | **string** |  | 
@@ -13,33 +13,33 @@ Name | Type | Description | Notes
 **Status** | **string** |  | 
 **Refunded** | **bool** |  | 
 **PaidAt** | **string** |  | 
-**ShippingAddress** | **map[string]interface{}** |  | 
+**ShippingAddress** | **interface{}** |  | 
 **Metadata** | **map[string]interface{}** |  | 
 **ShippingFees** | **int32** |  | 
-**ShippingMethod** | **map[string]interface{}** |  | 
+**ShippingMethod** | **interface{}** |  | 
 **IsViewed** | **bool** |  | 
 **ExpirationDate** | **string** |  | 
 **PayForMe** | **bool** |  | 
 **Id** | **int32** |  | 
 **Integration** | **int32** |  | 
-**Page** | **map[string]interface{}** |  | 
-**Customer** | [**ChargeCreateResponseDataCustomer**](ChargeCreateResponseDataCustomer.md) |  | 
-**Shipping** | **map[string]interface{}** |  | 
+**Page** | **interface{}** |  | 
+**Customer** | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |  | 
+**Shipping** | **interface{}** |  | 
 **CreatedAt** | **string** |  | 
 **UpdatedAt** | **string** |  | 
 **Transaction** | **int32** |  | 
 **IsGift** | **bool** |  | 
-**Payer** | [**ChargeCreateResponseDataCustomer**](ChargeCreateResponseDataCustomer.md) |  | 
+**Payer** | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |  | 
 **FullyRefunded** | **bool** |  | 
 **RefundedAmount** | **int32** |  | 
 **Items** | [**[]OrderItemsArray**](OrderItemsArray.md) |  | 
-**DiscountAmount** | **map[string]interface{}** |  | 
+**DiscountAmount** | **interface{}** |  | 
 
 ## Methods
 
 ### NewOrderFetchResponseData
 
-`func NewOrderFetchResponseData(discounts []map[string]interface{}, orderCode string, domain string, currency string, amount int32, email string, status string, refunded bool, paidAt string, shippingAddress map[string]interface{}, metadata map[string]interface{}, shippingFees int32, shippingMethod map[string]interface{}, isViewed bool, expirationDate string, payForMe bool, id int32, integration int32, page map[string]interface{}, customer ChargeCreateResponseDataCustomer, shipping map[string]interface{}, createdAt string, updatedAt string, transaction int32, isGift bool, payer ChargeCreateResponseDataCustomer, fullyRefunded bool, refundedAmount int32, items []OrderItemsArray, discountAmount map[string]interface{}, ) *OrderFetchResponseData`
+`func NewOrderFetchResponseData(discounts []interface{}, orderCode string, domain string, currency string, amount int32, email string, status string, refunded bool, paidAt string, shippingAddress interface{}, metadata map[string]interface{}, shippingFees int32, shippingMethod interface{}, isViewed bool, expirationDate string, payForMe bool, id int32, integration int32, page interface{}, customer TransactionFetchResponseDataCustomer, shipping interface{}, createdAt string, updatedAt string, transaction int32, isGift bool, payer TransactionFetchResponseDataCustomer, fullyRefunded bool, refundedAmount int32, items []OrderItemsArray, discountAmount interface{}, ) *OrderFetchResponseData`
 
 NewOrderFetchResponseData instantiates a new OrderFetchResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -56,20 +56,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDiscounts
 
-`func (o *OrderFetchResponseData) GetDiscounts() []map[string]interface{}`
+`func (o *OrderFetchResponseData) GetDiscounts() []interface{}`
 
 GetDiscounts returns the Discounts field if non-nil, zero value otherwise.
 
 ### GetDiscountsOk
 
-`func (o *OrderFetchResponseData) GetDiscountsOk() (*[]map[string]interface{}, bool)`
+`func (o *OrderFetchResponseData) GetDiscountsOk() (*[]interface{}, bool)`
 
 GetDiscountsOk returns a tuple with the Discounts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDiscounts
 
-`func (o *OrderFetchResponseData) SetDiscounts(v []map[string]interface{})`
+`func (o *OrderFetchResponseData) SetDiscounts(v []interface{})`
 
 SetDiscounts sets Discounts field to given value.
 
@@ -236,20 +236,20 @@ SetPaidAt sets PaidAt field to given value.
 
 ### GetShippingAddress
 
-`func (o *OrderFetchResponseData) GetShippingAddress() map[string]interface{}`
+`func (o *OrderFetchResponseData) GetShippingAddress() interface{}`
 
 GetShippingAddress returns the ShippingAddress field if non-nil, zero value otherwise.
 
 ### GetShippingAddressOk
 
-`func (o *OrderFetchResponseData) GetShippingAddressOk() (*map[string]interface{}, bool)`
+`func (o *OrderFetchResponseData) GetShippingAddressOk() (*interface{}, bool)`
 
 GetShippingAddressOk returns a tuple with the ShippingAddress field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShippingAddress
 
-`func (o *OrderFetchResponseData) SetShippingAddress(v map[string]interface{})`
+`func (o *OrderFetchResponseData) SetShippingAddress(v interface{})`
 
 SetShippingAddress sets ShippingAddress field to given value.
 
@@ -306,20 +306,20 @@ SetShippingFees sets ShippingFees field to given value.
 
 ### GetShippingMethod
 
-`func (o *OrderFetchResponseData) GetShippingMethod() map[string]interface{}`
+`func (o *OrderFetchResponseData) GetShippingMethod() interface{}`
 
 GetShippingMethod returns the ShippingMethod field if non-nil, zero value otherwise.
 
 ### GetShippingMethodOk
 
-`func (o *OrderFetchResponseData) GetShippingMethodOk() (*map[string]interface{}, bool)`
+`func (o *OrderFetchResponseData) GetShippingMethodOk() (*interface{}, bool)`
 
 GetShippingMethodOk returns a tuple with the ShippingMethod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShippingMethod
 
-`func (o *OrderFetchResponseData) SetShippingMethod(v map[string]interface{})`
+`func (o *OrderFetchResponseData) SetShippingMethod(v interface{})`
 
 SetShippingMethod sets ShippingMethod field to given value.
 
@@ -436,20 +436,20 @@ SetIntegration sets Integration field to given value.
 
 ### GetPage
 
-`func (o *OrderFetchResponseData) GetPage() map[string]interface{}`
+`func (o *OrderFetchResponseData) GetPage() interface{}`
 
 GetPage returns the Page field if non-nil, zero value otherwise.
 
 ### GetPageOk
 
-`func (o *OrderFetchResponseData) GetPageOk() (*map[string]interface{}, bool)`
+`func (o *OrderFetchResponseData) GetPageOk() (*interface{}, bool)`
 
 GetPageOk returns a tuple with the Page field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPage
 
-`func (o *OrderFetchResponseData) SetPage(v map[string]interface{})`
+`func (o *OrderFetchResponseData) SetPage(v interface{})`
 
 SetPage sets Page field to given value.
 
@@ -466,40 +466,40 @@ SetPage sets Page field to given value.
 UnsetPage ensures that no value is present for Page, not even an explicit nil
 ### GetCustomer
 
-`func (o *OrderFetchResponseData) GetCustomer() ChargeCreateResponseDataCustomer`
+`func (o *OrderFetchResponseData) GetCustomer() TransactionFetchResponseDataCustomer`
 
 GetCustomer returns the Customer field if non-nil, zero value otherwise.
 
 ### GetCustomerOk
 
-`func (o *OrderFetchResponseData) GetCustomerOk() (*ChargeCreateResponseDataCustomer, bool)`
+`func (o *OrderFetchResponseData) GetCustomerOk() (*TransactionFetchResponseDataCustomer, bool)`
 
 GetCustomerOk returns a tuple with the Customer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCustomer
 
-`func (o *OrderFetchResponseData) SetCustomer(v ChargeCreateResponseDataCustomer)`
+`func (o *OrderFetchResponseData) SetCustomer(v TransactionFetchResponseDataCustomer)`
 
 SetCustomer sets Customer field to given value.
 
 
 ### GetShipping
 
-`func (o *OrderFetchResponseData) GetShipping() map[string]interface{}`
+`func (o *OrderFetchResponseData) GetShipping() interface{}`
 
 GetShipping returns the Shipping field if non-nil, zero value otherwise.
 
 ### GetShippingOk
 
-`func (o *OrderFetchResponseData) GetShippingOk() (*map[string]interface{}, bool)`
+`func (o *OrderFetchResponseData) GetShippingOk() (*interface{}, bool)`
 
 GetShippingOk returns a tuple with the Shipping field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShipping
 
-`func (o *OrderFetchResponseData) SetShipping(v map[string]interface{})`
+`func (o *OrderFetchResponseData) SetShipping(v interface{})`
 
 SetShipping sets Shipping field to given value.
 
@@ -596,20 +596,20 @@ SetIsGift sets IsGift field to given value.
 
 ### GetPayer
 
-`func (o *OrderFetchResponseData) GetPayer() ChargeCreateResponseDataCustomer`
+`func (o *OrderFetchResponseData) GetPayer() TransactionFetchResponseDataCustomer`
 
 GetPayer returns the Payer field if non-nil, zero value otherwise.
 
 ### GetPayerOk
 
-`func (o *OrderFetchResponseData) GetPayerOk() (*ChargeCreateResponseDataCustomer, bool)`
+`func (o *OrderFetchResponseData) GetPayerOk() (*TransactionFetchResponseDataCustomer, bool)`
 
 GetPayerOk returns a tuple with the Payer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPayer
 
-`func (o *OrderFetchResponseData) SetPayer(v ChargeCreateResponseDataCustomer)`
+`func (o *OrderFetchResponseData) SetPayer(v TransactionFetchResponseDataCustomer)`
 
 SetPayer sets Payer field to given value.
 
@@ -676,20 +676,20 @@ SetItems sets Items field to given value.
 
 ### GetDiscountAmount
 
-`func (o *OrderFetchResponseData) GetDiscountAmount() map[string]interface{}`
+`func (o *OrderFetchResponseData) GetDiscountAmount() interface{}`
 
 GetDiscountAmount returns the DiscountAmount field if non-nil, zero value otherwise.
 
 ### GetDiscountAmountOk
 
-`func (o *OrderFetchResponseData) GetDiscountAmountOk() (*map[string]interface{}, bool)`
+`func (o *OrderFetchResponseData) GetDiscountAmountOk() (*interface{}, bool)`
 
 GetDiscountAmountOk returns a tuple with the DiscountAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDiscountAmount
 
-`func (o *OrderFetchResponseData) SetDiscountAmount(v map[string]interface{})`
+`func (o *OrderFetchResponseData) SetDiscountAmount(v interface{})`
 
 SetDiscountAmount sets DiscountAmount field to given value.
 

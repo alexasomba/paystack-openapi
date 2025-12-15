@@ -51,7 +51,7 @@ func (r ApiBulkChargeChargesRequest) Status(status string) ApiBulkChargeChargesR
 	return r
 }
 
-func (r ApiBulkChargeChargesRequest) Execute() (*BulkchargeCodeCharges, *http.Response, error) {
+func (r ApiBulkChargeChargesRequest) Execute() (*BulkChargeFetchBulkBatchChargesResponse, *http.Response, error) {
 	return r.ApiService.BulkChargeChargesExecute(r)
 }
 
@@ -73,13 +73,13 @@ func (a *BulkChargeAPIService) BulkChargeCharges(ctx context.Context, code strin
 }
 
 // Execute executes the request
-//  @return BulkchargeCodeCharges
-func (a *BulkChargeAPIService) BulkChargeChargesExecute(r ApiBulkChargeChargesRequest) (*BulkchargeCodeCharges, *http.Response, error) {
+//  @return BulkChargeFetchBulkBatchChargesResponse
+func (a *BulkChargeAPIService) BulkChargeChargesExecute(r ApiBulkChargeChargesRequest) (*BulkChargeFetchBulkBatchChargesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BulkchargeCodeCharges
+		localVarReturnValue  *BulkChargeFetchBulkBatchChargesResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BulkChargeAPIService.BulkChargeCharges")
@@ -185,7 +185,7 @@ type ApiBulkChargeFetchRequest struct {
 	code string
 }
 
-func (r ApiBulkChargeFetchRequest) Execute() (*BulkchargeCode, *http.Response, error) {
+func (r ApiBulkChargeFetchRequest) Execute() (*BulkChargeFetchResponse, *http.Response, error) {
 	return r.ApiService.BulkChargeFetchExecute(r)
 }
 
@@ -209,13 +209,13 @@ func (a *BulkChargeAPIService) BulkChargeFetch(ctx context.Context, code string)
 }
 
 // Execute executes the request
-//  @return BulkchargeCode
-func (a *BulkChargeAPIService) BulkChargeFetchExecute(r ApiBulkChargeFetchRequest) (*BulkchargeCode, *http.Response, error) {
+//  @return BulkChargeFetchResponse
+func (a *BulkChargeAPIService) BulkChargeFetchExecute(r ApiBulkChargeFetchRequest) (*BulkChargeFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BulkchargeCode
+		localVarReturnValue  *BulkChargeFetchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BulkChargeAPIService.BulkChargeFetch")
@@ -581,7 +581,7 @@ type ApiBulkChargePauseRequest struct {
 	code string
 }
 
-func (r ApiBulkChargePauseRequest) Execute() (*BulkchargePauseCode, *http.Response, error) {
+func (r ApiBulkChargePauseRequest) Execute() (*BulkChargePauseResponse, *http.Response, error) {
 	return r.ApiService.BulkChargePauseExecute(r)
 }
 
@@ -603,13 +603,13 @@ func (a *BulkChargeAPIService) BulkChargePause(ctx context.Context, code string)
 }
 
 // Execute executes the request
-//  @return BulkchargePauseCode
-func (a *BulkChargeAPIService) BulkChargePauseExecute(r ApiBulkChargePauseRequest) (*BulkchargePauseCode, *http.Response, error) {
+//  @return BulkChargePauseResponse
+func (a *BulkChargeAPIService) BulkChargePauseExecute(r ApiBulkChargePauseRequest) (*BulkChargePauseResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BulkchargePauseCode
+		localVarReturnValue  *BulkChargePauseResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BulkChargeAPIService.BulkChargePause")
@@ -706,7 +706,7 @@ type ApiBulkChargeResumeRequest struct {
 	code string
 }
 
-func (r ApiBulkChargeResumeRequest) Execute() (*BulkchargeResumeCode, *http.Response, error) {
+func (r ApiBulkChargeResumeRequest) Execute() (*BulkChargeResumeResponse, *http.Response, error) {
 	return r.ApiService.BulkChargeResumeExecute(r)
 }
 
@@ -728,13 +728,13 @@ func (a *BulkChargeAPIService) BulkChargeResume(ctx context.Context, code string
 }
 
 // Execute executes the request
-//  @return BulkchargeResumeCode
-func (a *BulkChargeAPIService) BulkChargeResumeExecute(r ApiBulkChargeResumeRequest) (*BulkchargeResumeCode, *http.Response, error) {
+//  @return BulkChargeResumeResponse
+func (a *BulkChargeAPIService) BulkChargeResumeExecute(r ApiBulkChargeResumeRequest) (*BulkChargeResumeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BulkchargeResumeCode
+		localVarReturnValue  *BulkChargeResumeResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BulkChargeAPIService.BulkChargeResume")

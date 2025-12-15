@@ -10,13 +10,13 @@ Name | Type | Description | Notes
 **Expired** | **bool** |  | 
 **AccountType** | **string** |  | 
 **AssignedAt** | **string** |  | 
-**ExpiredAt** | **map[string]interface{}** |  | 
+**ExpiredAt** | **interface{}** |  | 
 
 ## Methods
 
 ### NewDedicatedNubanCreateResponseDataAssignment
 
-`func NewDedicatedNubanCreateResponseDataAssignment(integration int32, assigneeId int32, assigneeType string, expired bool, accountType string, assignedAt string, expiredAt map[string]interface{}, ) *DedicatedNubanCreateResponseDataAssignment`
+`func NewDedicatedNubanCreateResponseDataAssignment(integration int32, assigneeId int32, assigneeType string, expired bool, accountType string, assignedAt string, expiredAt interface{}, ) *DedicatedNubanCreateResponseDataAssignment`
 
 NewDedicatedNubanCreateResponseDataAssignment instantiates a new DedicatedNubanCreateResponseDataAssignment object
 This constructor will assign default values to properties that have it defined,
@@ -153,20 +153,20 @@ SetAssignedAt sets AssignedAt field to given value.
 
 ### GetExpiredAt
 
-`func (o *DedicatedNubanCreateResponseDataAssignment) GetExpiredAt() map[string]interface{}`
+`func (o *DedicatedNubanCreateResponseDataAssignment) GetExpiredAt() interface{}`
 
 GetExpiredAt returns the ExpiredAt field if non-nil, zero value otherwise.
 
 ### GetExpiredAtOk
 
-`func (o *DedicatedNubanCreateResponseDataAssignment) GetExpiredAtOk() (*map[string]interface{}, bool)`
+`func (o *DedicatedNubanCreateResponseDataAssignment) GetExpiredAtOk() (*interface{}, bool)`
 
 GetExpiredAtOk returns a tuple with the ExpiredAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiredAt
 
-`func (o *DedicatedNubanCreateResponseDataAssignment) SetExpiredAt(v map[string]interface{})`
+`func (o *DedicatedNubanCreateResponseDataAssignment) SetExpiredAt(v interface{})`
 
 SetExpiredAt sets ExpiredAt field to given value.
 

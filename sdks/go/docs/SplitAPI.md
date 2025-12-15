@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## SplitAddSubaccount
 
-> SplitIdSubaccountAdd SplitAddSubaccount(ctx, id).Body(body).Execute()
+> SplitAddUpdateSubaccountResponse SplitAddSubaccount(ctx, id).SplitSubaccounts(splitSubaccounts).Execute()
 
 Add Subaccount to Split
 
@@ -35,16 +35,16 @@ import (
 
 func main() {
     id := int32(4896895) // int32 | The ID of the split configuration to fetch
-    body := SplitIdSubaccountAdd(987) // SplitIdSubaccountAdd |  (optional)
+    splitSubaccounts := *openapiclient.NewSplitSubaccounts() // SplitSubaccounts |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SplitAPI.SplitAddSubaccount(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.SplitAPI.SplitAddSubaccount(context.Background(), id).SplitSubaccounts(splitSubaccounts).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SplitAPI.SplitAddSubaccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SplitAddSubaccount`: SplitIdSubaccountAdd
+    // response from `SplitAddSubaccount`: SplitAddUpdateSubaccountResponse
     fmt.Fprintf(os.Stdout, "Response from `SplitAPI.SplitAddSubaccount`: %v\n", resp)
 }
 ```
@@ -65,11 +65,11 @@ Other parameters are passed through a pointer to a apiSplitAddSubaccountRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **SplitIdSubaccountAdd** |  | 
+ **splitSubaccounts** | [**SplitSubaccounts**](SplitSubaccounts.md) |  | 
 
 ### Return type
 
-[**SplitIdSubaccountAdd**](SplitIdSubaccountAdd.md)
+[**SplitAddUpdateSubaccountResponse**](SplitAddUpdateSubaccountResponse.md)
 
 ### Authorization
 
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ## SplitFetch
 
-> SplitId SplitFetch(ctx, id).Execute()
+> SplitFetchResponse SplitFetch(ctx, id).Execute()
 
 Fetch Split
 
@@ -181,7 +181,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SplitAPI.SplitFetch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SplitFetch`: SplitId
+    // response from `SplitFetch`: SplitFetchResponse
     fmt.Fprintf(os.Stdout, "Response from `SplitAPI.SplitFetch`: %v\n", resp)
 }
 ```
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SplitId**](SplitId.md)
+[**SplitFetchResponse**](SplitFetchResponse.md)
 
 ### Authorization
 
@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 
 ## SplitRemoveSubaccount
 
-> SplitIdSubaccountRemove SplitRemoveSubaccount(ctx, id).Body(body).Execute()
+> SplitRemoveSubaccountResponse SplitRemoveSubaccount(ctx, id).SplitSubaccounts(splitSubaccounts).Execute()
 
 Remove Subaccount from split
 
@@ -322,16 +322,16 @@ import (
 
 func main() {
     id := int32(4896895) // int32 | The ID of the split configuration to fetch
-    body := SplitIdSubaccountRemove(987) // SplitIdSubaccountRemove |  (optional)
+    splitSubaccounts := *openapiclient.NewSplitSubaccounts() // SplitSubaccounts |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SplitAPI.SplitRemoveSubaccount(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.SplitAPI.SplitRemoveSubaccount(context.Background(), id).SplitSubaccounts(splitSubaccounts).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SplitAPI.SplitRemoveSubaccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SplitRemoveSubaccount`: SplitIdSubaccountRemove
+    // response from `SplitRemoveSubaccount`: SplitRemoveSubaccountResponse
     fmt.Fprintf(os.Stdout, "Response from `SplitAPI.SplitRemoveSubaccount`: %v\n", resp)
 }
 ```
@@ -352,11 +352,11 @@ Other parameters are passed through a pointer to a apiSplitRemoveSubaccountReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **SplitIdSubaccountRemove** |  | 
+ **splitSubaccounts** | [**SplitSubaccounts**](SplitSubaccounts.md) |  | 
 
 ### Return type
 
-[**SplitIdSubaccountRemove**](SplitIdSubaccountRemove.md)
+[**SplitRemoveSubaccountResponse**](SplitRemoveSubaccountResponse.md)
 
 ### Authorization
 
@@ -374,7 +374,7 @@ Name | Type | Description  | Notes
 
 ## SplitUpdate
 
-> SplitId SplitUpdate(ctx, id).Body(body).Execute()
+> SplitUpdateResponse SplitUpdate(ctx, id).SplitUpdate(splitUpdate).Execute()
 
 Update Split
 
@@ -394,16 +394,16 @@ import (
 
 func main() {
     id := "id_example" // string | 
-    body := SplitId(987) // SplitId |  (optional)
+    splitUpdate := *openapiclient.NewSplitUpdate() // SplitUpdate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SplitAPI.SplitUpdate(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.SplitAPI.SplitUpdate(context.Background(), id).SplitUpdate(splitUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SplitAPI.SplitUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SplitUpdate`: SplitId
+    // response from `SplitUpdate`: SplitUpdateResponse
     fmt.Fprintf(os.Stdout, "Response from `SplitAPI.SplitUpdate`: %v\n", resp)
 }
 ```
@@ -424,11 +424,11 @@ Other parameters are passed through a pointer to a apiSplitUpdateRequest struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **SplitId** |  | 
+ **splitUpdate** | [**SplitUpdate**](SplitUpdate.md) |  | 
 
 ### Return type
 
-[**SplitId**](SplitId.md)
+[**SplitUpdateResponse**](SplitUpdateResponse.md)
 
 ### Authorization
 

@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Subscriptions** | **[]map[string]interface{}** |  | 
-**Pages** | **[]map[string]interface{}** |  | 
+**Subscriptions** | **[]interface{}** |  | 
+**Pages** | **[]interface{}** |  | 
 **Domain** | **string** |  | 
 **Name** | **string** |  | 
 **PlanCode** | **string** |  | 
-**Description** | **map[string]interface{}** |  | 
+**Description** | **interface{}** |  | 
 **Amount** | **int32** |  | 
 **Interval** | **string** |  | 
 **InvoiceLimit** | **int32** |  | 
 **SendInvoices** | **bool** |  | 
 **SendSms** | **bool** |  | 
 **HostedPage** | **bool** |  | 
-**HostedPageUrl** | **map[string]interface{}** |  | 
-**HostedPageSummary** | **map[string]interface{}** |  | 
+**HostedPageUrl** | **interface{}** |  | 
+**HostedPageSummary** | **interface{}** |  | 
 **Currency** | **string** |  | 
 **Migrate** | **bool** |  | 
 **IsDeleted** | **bool** |  | 
@@ -31,13 +31,13 @@ Name | Type | Description | Notes
 **SubscriptionsCount** | **int32** |  | 
 **ActiveSubscriptionsCount** | **NullableInt32** |  | 
 **TotalRevenue** | **int32** |  | 
-**Subscribers** | **[]map[string]interface{}** |  | 
+**Subscribers** | **[]interface{}** |  | 
 
 ## Methods
 
 ### NewPlanFetchResponseData
 
-`func NewPlanFetchResponseData(subscriptions []map[string]interface{}, pages []map[string]interface{}, domain string, name string, planCode string, description map[string]interface{}, amount int32, interval string, invoiceLimit int32, sendInvoices bool, sendSms bool, hostedPage bool, hostedPageUrl map[string]interface{}, hostedPageSummary map[string]interface{}, currency string, migrate bool, isDeleted bool, isArchived bool, id int32, integration int32, createdAt string, updatedAt string, pagesCount int32, subscribersCount int32, subscriptionsCount int32, activeSubscriptionsCount NullableInt32, totalRevenue int32, subscribers []map[string]interface{}, ) *PlanFetchResponseData`
+`func NewPlanFetchResponseData(subscriptions []interface{}, pages []interface{}, domain string, name string, planCode string, description interface{}, amount int32, interval string, invoiceLimit int32, sendInvoices bool, sendSms bool, hostedPage bool, hostedPageUrl interface{}, hostedPageSummary interface{}, currency string, migrate bool, isDeleted bool, isArchived bool, id int32, integration int32, createdAt string, updatedAt string, pagesCount int32, subscribersCount int32, subscriptionsCount int32, activeSubscriptionsCount NullableInt32, totalRevenue int32, subscribers []interface{}, ) *PlanFetchResponseData`
 
 NewPlanFetchResponseData instantiates a new PlanFetchResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -54,40 +54,40 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSubscriptions
 
-`func (o *PlanFetchResponseData) GetSubscriptions() []map[string]interface{}`
+`func (o *PlanFetchResponseData) GetSubscriptions() []interface{}`
 
 GetSubscriptions returns the Subscriptions field if non-nil, zero value otherwise.
 
 ### GetSubscriptionsOk
 
-`func (o *PlanFetchResponseData) GetSubscriptionsOk() (*[]map[string]interface{}, bool)`
+`func (o *PlanFetchResponseData) GetSubscriptionsOk() (*[]interface{}, bool)`
 
 GetSubscriptionsOk returns a tuple with the Subscriptions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSubscriptions
 
-`func (o *PlanFetchResponseData) SetSubscriptions(v []map[string]interface{})`
+`func (o *PlanFetchResponseData) SetSubscriptions(v []interface{})`
 
 SetSubscriptions sets Subscriptions field to given value.
 
 
 ### GetPages
 
-`func (o *PlanFetchResponseData) GetPages() []map[string]interface{}`
+`func (o *PlanFetchResponseData) GetPages() []interface{}`
 
 GetPages returns the Pages field if non-nil, zero value otherwise.
 
 ### GetPagesOk
 
-`func (o *PlanFetchResponseData) GetPagesOk() (*[]map[string]interface{}, bool)`
+`func (o *PlanFetchResponseData) GetPagesOk() (*[]interface{}, bool)`
 
 GetPagesOk returns a tuple with the Pages field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPages
 
-`func (o *PlanFetchResponseData) SetPages(v []map[string]interface{})`
+`func (o *PlanFetchResponseData) SetPages(v []interface{})`
 
 SetPages sets Pages field to given value.
 
@@ -154,20 +154,20 @@ SetPlanCode sets PlanCode field to given value.
 
 ### GetDescription
 
-`func (o *PlanFetchResponseData) GetDescription() map[string]interface{}`
+`func (o *PlanFetchResponseData) GetDescription() interface{}`
 
 GetDescription returns the Description field if non-nil, zero value otherwise.
 
 ### GetDescriptionOk
 
-`func (o *PlanFetchResponseData) GetDescriptionOk() (*map[string]interface{}, bool)`
+`func (o *PlanFetchResponseData) GetDescriptionOk() (*interface{}, bool)`
 
 GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDescription
 
-`func (o *PlanFetchResponseData) SetDescription(v map[string]interface{})`
+`func (o *PlanFetchResponseData) SetDescription(v interface{})`
 
 SetDescription sets Description field to given value.
 
@@ -304,20 +304,20 @@ SetHostedPage sets HostedPage field to given value.
 
 ### GetHostedPageUrl
 
-`func (o *PlanFetchResponseData) GetHostedPageUrl() map[string]interface{}`
+`func (o *PlanFetchResponseData) GetHostedPageUrl() interface{}`
 
 GetHostedPageUrl returns the HostedPageUrl field if non-nil, zero value otherwise.
 
 ### GetHostedPageUrlOk
 
-`func (o *PlanFetchResponseData) GetHostedPageUrlOk() (*map[string]interface{}, bool)`
+`func (o *PlanFetchResponseData) GetHostedPageUrlOk() (*interface{}, bool)`
 
 GetHostedPageUrlOk returns a tuple with the HostedPageUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHostedPageUrl
 
-`func (o *PlanFetchResponseData) SetHostedPageUrl(v map[string]interface{})`
+`func (o *PlanFetchResponseData) SetHostedPageUrl(v interface{})`
 
 SetHostedPageUrl sets HostedPageUrl field to given value.
 
@@ -334,20 +334,20 @@ SetHostedPageUrl sets HostedPageUrl field to given value.
 UnsetHostedPageUrl ensures that no value is present for HostedPageUrl, not even an explicit nil
 ### GetHostedPageSummary
 
-`func (o *PlanFetchResponseData) GetHostedPageSummary() map[string]interface{}`
+`func (o *PlanFetchResponseData) GetHostedPageSummary() interface{}`
 
 GetHostedPageSummary returns the HostedPageSummary field if non-nil, zero value otherwise.
 
 ### GetHostedPageSummaryOk
 
-`func (o *PlanFetchResponseData) GetHostedPageSummaryOk() (*map[string]interface{}, bool)`
+`func (o *PlanFetchResponseData) GetHostedPageSummaryOk() (*interface{}, bool)`
 
 GetHostedPageSummaryOk returns a tuple with the HostedPageSummary field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHostedPageSummary
 
-`func (o *PlanFetchResponseData) SetHostedPageSummary(v map[string]interface{})`
+`func (o *PlanFetchResponseData) SetHostedPageSummary(v interface{})`
 
 SetHostedPageSummary sets HostedPageSummary field to given value.
 
@@ -634,20 +634,20 @@ SetTotalRevenue sets TotalRevenue field to given value.
 
 ### GetSubscribers
 
-`func (o *PlanFetchResponseData) GetSubscribers() []map[string]interface{}`
+`func (o *PlanFetchResponseData) GetSubscribers() []interface{}`
 
 GetSubscribers returns the Subscribers field if non-nil, zero value otherwise.
 
 ### GetSubscribersOk
 
-`func (o *PlanFetchResponseData) GetSubscribersOk() (*[]map[string]interface{}, bool)`
+`func (o *PlanFetchResponseData) GetSubscribersOk() (*[]interface{}, bool)`
 
 GetSubscribersOk returns a tuple with the Subscribers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSubscribers
 
-`func (o *PlanFetchResponseData) SetSubscribers(v []map[string]interface{})`
+`func (o *PlanFetchResponseData) SetSubscribers(v []interface{})`
 
 SetSubscribers sets Subscribers field to given value.
 

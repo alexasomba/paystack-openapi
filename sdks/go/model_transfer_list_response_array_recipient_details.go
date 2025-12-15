@@ -20,7 +20,7 @@ var _ MappedNullable = &TransferListResponseArrayRecipientDetails{}
 
 // TransferListResponseArrayRecipientDetails struct for TransferListResponseArrayRecipientDetails
 type TransferListResponseArrayRecipientDetails struct {
-	AuthorizationCode map[string]interface{} `json:"authorization_code"`
+	AuthorizationCode interface{} `json:"authorization_code"`
 	AccountNumber string `json:"account_number"`
 	AccountName NullableString `json:"account_name"`
 	BankCode string `json:"bank_code"`
@@ -31,7 +31,7 @@ type TransferListResponseArrayRecipientDetails struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferListResponseArrayRecipientDetails(authorizationCode map[string]interface{}, accountNumber string, accountName NullableString, bankCode string, bankName string) *TransferListResponseArrayRecipientDetails {
+func NewTransferListResponseArrayRecipientDetails(authorizationCode interface{}, accountNumber string, accountName NullableString, bankCode string, bankName string) *TransferListResponseArrayRecipientDetails {
 	this := TransferListResponseArrayRecipientDetails{}
 	this.AuthorizationCode = authorizationCode
 	this.AccountNumber = accountNumber
@@ -50,10 +50,10 @@ func NewTransferListResponseArrayRecipientDetailsWithDefaults() *TransferListRes
 }
 
 // GetAuthorizationCode returns the AuthorizationCode field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *TransferListResponseArrayRecipientDetails) GetAuthorizationCode() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *TransferListResponseArrayRecipientDetails) GetAuthorizationCode() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -63,15 +63,15 @@ func (o *TransferListResponseArrayRecipientDetails) GetAuthorizationCode() map[s
 // GetAuthorizationCodeOk returns a tuple with the AuthorizationCode field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransferListResponseArrayRecipientDetails) GetAuthorizationCodeOk() (map[string]interface{}, bool) {
+func (o *TransferListResponseArrayRecipientDetails) GetAuthorizationCodeOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.AuthorizationCode) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.AuthorizationCode, true
+	return &o.AuthorizationCode, true
 }
 
 // SetAuthorizationCode sets field value
-func (o *TransferListResponseArrayRecipientDetails) SetAuthorizationCode(v map[string]interface{}) {
+func (o *TransferListResponseArrayRecipientDetails) SetAuthorizationCode(v interface{}) {
 	o.AuthorizationCode = v
 }
 

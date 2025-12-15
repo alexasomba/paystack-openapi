@@ -32,14 +32,14 @@ type ChargeAuthorizationResponseDataAuthorization struct {
 	Brand string `json:"brand"`
 	Reusable bool `json:"reusable"`
 	Signature string `json:"signature"`
-	AccountName map[string]interface{} `json:"account_name"`
+	AccountName interface{} `json:"account_name"`
 }
 
 // NewChargeAuthorizationResponseDataAuthorization instantiates a new ChargeAuthorizationResponseDataAuthorization object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChargeAuthorizationResponseDataAuthorization(authorizationCode string, bin NullableString, last4 string, expMonth string, expYear string, channel string, cardType string, bank string, countryCode string, brand string, reusable bool, signature string, accountName map[string]interface{}) *ChargeAuthorizationResponseDataAuthorization {
+func NewChargeAuthorizationResponseDataAuthorization(authorizationCode string, bin NullableString, last4 string, expMonth string, expYear string, channel string, cardType string, bank string, countryCode string, brand string, reusable bool, signature string, accountName interface{}) *ChargeAuthorizationResponseDataAuthorization {
 	this := ChargeAuthorizationResponseDataAuthorization{}
 	this.AuthorizationCode = authorizationCode
 	this.Bin = bin
@@ -356,10 +356,10 @@ func (o *ChargeAuthorizationResponseDataAuthorization) SetSignature(v string) {
 }
 
 // GetAccountName returns the AccountName field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *ChargeAuthorizationResponseDataAuthorization) GetAccountName() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ChargeAuthorizationResponseDataAuthorization) GetAccountName() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -369,15 +369,15 @@ func (o *ChargeAuthorizationResponseDataAuthorization) GetAccountName() map[stri
 // GetAccountNameOk returns a tuple with the AccountName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ChargeAuthorizationResponseDataAuthorization) GetAccountNameOk() (map[string]interface{}, bool) {
+func (o *ChargeAuthorizationResponseDataAuthorization) GetAccountNameOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.AccountName) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.AccountName, true
+	return &o.AccountName, true
 }
 
 // SetAccountName sets field value
-func (o *ChargeAuthorizationResponseDataAuthorization) SetAccountName(v map[string]interface{}) {
+func (o *ChargeAuthorizationResponseDataAuthorization) SetAccountName(v interface{}) {
 	o.AccountName = v
 }
 

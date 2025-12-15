@@ -13,86 +13,368 @@ package paystack
 
 import (
 	"encoding/json"
-	"fmt"
-	"gopkg.in/validator.v2"
 )
 
-// VerifyResponseDataPlanObject - struct for VerifyResponseDataPlanObject
+// checks if the VerifyResponseDataPlanObject type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VerifyResponseDataPlanObject{}
+
+// VerifyResponseDataPlanObject struct for VerifyResponseDataPlanObject
 type VerifyResponseDataPlanObject struct {
-	Any *interface{}
+	Id *int32 `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
+	PlanCode *string `json:"plan_code,omitempty"`
+	Description interface{} `json:"description,omitempty"`
+	Amount *int32 `json:"amount,omitempty"`
+	Interval *string `json:"interval,omitempty"`
+	SendInvoices *bool `json:"send_invoices,omitempty"`
+	SendSms *bool `json:"send_sms,omitempty"`
+	Currency *string `json:"currency,omitempty"`
 }
 
-// interface{}AsVerifyResponseDataPlanObject is a convenience function that returns interface{} wrapped in VerifyResponseDataPlanObject
-func AnyAsVerifyResponseDataPlanObject(v *interface{}) VerifyResponseDataPlanObject {
-	return VerifyResponseDataPlanObject{
-		Any: v,
-	}
+// NewVerifyResponseDataPlanObject instantiates a new VerifyResponseDataPlanObject object
+// This constructor will assign default values to properties that have it defined,
+// and makes sure properties required by API are set, but the set of arguments
+// will change when the set of required properties is changed
+func NewVerifyResponseDataPlanObject() *VerifyResponseDataPlanObject {
+	this := VerifyResponseDataPlanObject{}
+	return &this
 }
 
-
-// Unmarshal JSON data into one of the pointers in the struct
-func (dst *VerifyResponseDataPlanObject) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into Any
-	err = newStrictDecoder(data).Decode(&dst.Any)
-	if err == nil {
-		jsonAny, _ := json.Marshal(dst.Any)
-		if string(jsonAny) == "{}" { // empty struct
-			dst.Any = nil
-		} else {
-			if err = validator.Validate(dst.Any); err != nil {
-				dst.Any = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.Any = nil
-	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.Any = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(VerifyResponseDataPlanObject)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(VerifyResponseDataPlanObject)")
-	}
+// NewVerifyResponseDataPlanObjectWithDefaults instantiates a new VerifyResponseDataPlanObject object
+// This constructor will only assign default values to properties that have it defined,
+// but it doesn't guarantee that properties required by API are set
+func NewVerifyResponseDataPlanObjectWithDefaults() *VerifyResponseDataPlanObject {
+	this := VerifyResponseDataPlanObject{}
+	return &this
 }
 
-// Marshal data from the first non-nil pointers in the struct to JSON
-func (src VerifyResponseDataPlanObject) MarshalJSON() ([]byte, error) {
-	if src.Any != nil {
-		return json.Marshal(&src.Any)
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *VerifyResponseDataPlanObject) GetId() int32 {
+	if o == nil || IsNil(o.Id) {
+		var ret int32
+		return ret
 	}
-
-	return nil, nil // no data in oneOf schemas
+	return *o.Id
 }
 
-// Get the actual instance
-func (obj *VerifyResponseDataPlanObject) GetActualInstance() (interface{}) {
-	if obj == nil {
-		return nil
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VerifyResponseDataPlanObject) GetIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
-	if obj.Any != nil {
-		return obj.Any
-	}
-
-	// all schemas are nil
-	return nil
+	return o.Id, true
 }
 
-// Get the actual instance value
-func (obj VerifyResponseDataPlanObject) GetActualInstanceValue() (interface{}) {
-	if obj.Any != nil {
-		return *obj.Any
+// HasId returns a boolean if a field has been set.
+func (o *VerifyResponseDataPlanObject) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
 	}
 
-	// all schemas are nil
-	return nil
+	return false
+}
+
+// SetId gets a reference to the given int32 and assigns it to the Id field.
+func (o *VerifyResponseDataPlanObject) SetId(v int32) {
+	o.Id = &v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *VerifyResponseDataPlanObject) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VerifyResponseDataPlanObject) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *VerifyResponseDataPlanObject) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *VerifyResponseDataPlanObject) SetName(v string) {
+	o.Name = &v
+}
+
+// GetPlanCode returns the PlanCode field value if set, zero value otherwise.
+func (o *VerifyResponseDataPlanObject) GetPlanCode() string {
+	if o == nil || IsNil(o.PlanCode) {
+		var ret string
+		return ret
+	}
+	return *o.PlanCode
+}
+
+// GetPlanCodeOk returns a tuple with the PlanCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VerifyResponseDataPlanObject) GetPlanCodeOk() (*string, bool) {
+	if o == nil || IsNil(o.PlanCode) {
+		return nil, false
+	}
+	return o.PlanCode, true
+}
+
+// HasPlanCode returns a boolean if a field has been set.
+func (o *VerifyResponseDataPlanObject) HasPlanCode() bool {
+	if o != nil && !IsNil(o.PlanCode) {
+		return true
+	}
+
+	return false
+}
+
+// SetPlanCode gets a reference to the given string and assigns it to the PlanCode field.
+func (o *VerifyResponseDataPlanObject) SetPlanCode(v string) {
+	o.PlanCode = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *VerifyResponseDataPlanObject) GetDescription() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+	return o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VerifyResponseDataPlanObject) GetDescriptionOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return &o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *VerifyResponseDataPlanObject) HasDescription() bool {
+	if o != nil && IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given interface{} and assigns it to the Description field.
+func (o *VerifyResponseDataPlanObject) SetDescription(v interface{}) {
+	o.Description = v
+}
+
+// GetAmount returns the Amount field value if set, zero value otherwise.
+func (o *VerifyResponseDataPlanObject) GetAmount() int32 {
+	if o == nil || IsNil(o.Amount) {
+		var ret int32
+		return ret
+	}
+	return *o.Amount
+}
+
+// GetAmountOk returns a tuple with the Amount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VerifyResponseDataPlanObject) GetAmountOk() (*int32, bool) {
+	if o == nil || IsNil(o.Amount) {
+		return nil, false
+	}
+	return o.Amount, true
+}
+
+// HasAmount returns a boolean if a field has been set.
+func (o *VerifyResponseDataPlanObject) HasAmount() bool {
+	if o != nil && !IsNil(o.Amount) {
+		return true
+	}
+
+	return false
+}
+
+// SetAmount gets a reference to the given int32 and assigns it to the Amount field.
+func (o *VerifyResponseDataPlanObject) SetAmount(v int32) {
+	o.Amount = &v
+}
+
+// GetInterval returns the Interval field value if set, zero value otherwise.
+func (o *VerifyResponseDataPlanObject) GetInterval() string {
+	if o == nil || IsNil(o.Interval) {
+		var ret string
+		return ret
+	}
+	return *o.Interval
+}
+
+// GetIntervalOk returns a tuple with the Interval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VerifyResponseDataPlanObject) GetIntervalOk() (*string, bool) {
+	if o == nil || IsNil(o.Interval) {
+		return nil, false
+	}
+	return o.Interval, true
+}
+
+// HasInterval returns a boolean if a field has been set.
+func (o *VerifyResponseDataPlanObject) HasInterval() bool {
+	if o != nil && !IsNil(o.Interval) {
+		return true
+	}
+
+	return false
+}
+
+// SetInterval gets a reference to the given string and assigns it to the Interval field.
+func (o *VerifyResponseDataPlanObject) SetInterval(v string) {
+	o.Interval = &v
+}
+
+// GetSendInvoices returns the SendInvoices field value if set, zero value otherwise.
+func (o *VerifyResponseDataPlanObject) GetSendInvoices() bool {
+	if o == nil || IsNil(o.SendInvoices) {
+		var ret bool
+		return ret
+	}
+	return *o.SendInvoices
+}
+
+// GetSendInvoicesOk returns a tuple with the SendInvoices field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VerifyResponseDataPlanObject) GetSendInvoicesOk() (*bool, bool) {
+	if o == nil || IsNil(o.SendInvoices) {
+		return nil, false
+	}
+	return o.SendInvoices, true
+}
+
+// HasSendInvoices returns a boolean if a field has been set.
+func (o *VerifyResponseDataPlanObject) HasSendInvoices() bool {
+	if o != nil && !IsNil(o.SendInvoices) {
+		return true
+	}
+
+	return false
+}
+
+// SetSendInvoices gets a reference to the given bool and assigns it to the SendInvoices field.
+func (o *VerifyResponseDataPlanObject) SetSendInvoices(v bool) {
+	o.SendInvoices = &v
+}
+
+// GetSendSms returns the SendSms field value if set, zero value otherwise.
+func (o *VerifyResponseDataPlanObject) GetSendSms() bool {
+	if o == nil || IsNil(o.SendSms) {
+		var ret bool
+		return ret
+	}
+	return *o.SendSms
+}
+
+// GetSendSmsOk returns a tuple with the SendSms field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VerifyResponseDataPlanObject) GetSendSmsOk() (*bool, bool) {
+	if o == nil || IsNil(o.SendSms) {
+		return nil, false
+	}
+	return o.SendSms, true
+}
+
+// HasSendSms returns a boolean if a field has been set.
+func (o *VerifyResponseDataPlanObject) HasSendSms() bool {
+	if o != nil && !IsNil(o.SendSms) {
+		return true
+	}
+
+	return false
+}
+
+// SetSendSms gets a reference to the given bool and assigns it to the SendSms field.
+func (o *VerifyResponseDataPlanObject) SetSendSms(v bool) {
+	o.SendSms = &v
+}
+
+// GetCurrency returns the Currency field value if set, zero value otherwise.
+func (o *VerifyResponseDataPlanObject) GetCurrency() string {
+	if o == nil || IsNil(o.Currency) {
+		var ret string
+		return ret
+	}
+	return *o.Currency
+}
+
+// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VerifyResponseDataPlanObject) GetCurrencyOk() (*string, bool) {
+	if o == nil || IsNil(o.Currency) {
+		return nil, false
+	}
+	return o.Currency, true
+}
+
+// HasCurrency returns a boolean if a field has been set.
+func (o *VerifyResponseDataPlanObject) HasCurrency() bool {
+	if o != nil && !IsNil(o.Currency) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrency gets a reference to the given string and assigns it to the Currency field.
+func (o *VerifyResponseDataPlanObject) SetCurrency(v string) {
+	o.Currency = &v
+}
+
+func (o VerifyResponseDataPlanObject) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o VerifyResponseDataPlanObject) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.PlanCode) {
+		toSerialize["plan_code"] = o.PlanCode
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Amount) {
+		toSerialize["amount"] = o.Amount
+	}
+	if !IsNil(o.Interval) {
+		toSerialize["interval"] = o.Interval
+	}
+	if !IsNil(o.SendInvoices) {
+		toSerialize["send_invoices"] = o.SendInvoices
+	}
+	if !IsNil(o.SendSms) {
+		toSerialize["send_sms"] = o.SendSms
+	}
+	if !IsNil(o.Currency) {
+		toSerialize["currency"] = o.Currency
+	}
+	return toSerialize, nil
 }
 
 type NullableVerifyResponseDataPlanObject struct {

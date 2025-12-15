@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ## PlanUpdate
 
-> PlanUpdateResponse PlanUpdate(ctx, code).Body(body).Execute()
+> PlanUpdateResponse PlanUpdate(ctx, code).PlanUpdate(planUpdate).Execute()
 
 Update Plan
 
@@ -246,11 +246,11 @@ import (
 
 func main() {
     code := "PLN_gx2wn530m0i3w3m" // string | The plan code you want to fetch
-    body := PlanCode(987) // PlanCode |  (optional)
+    planUpdate := *openapiclient.NewPlanUpdate() // PlanUpdate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PlanAPI.PlanUpdate(context.Background(), code).Body(body).Execute()
+    resp, r, err := apiClient.PlanAPI.PlanUpdate(context.Background(), code).PlanUpdate(planUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PlanAPI.PlanUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -276,7 +276,7 @@ Other parameters are passed through a pointer to a apiPlanUpdateRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **PlanCode** |  | 
+ **planUpdate** | [**PlanUpdate**](PlanUpdate.md) |  | 
 
 ### Return type
 

@@ -20,7 +20,7 @@ var _ MappedNullable = &TransferRecipientBulkCreateResponseData{}
 
 // TransferRecipientBulkCreateResponseData struct for TransferRecipientBulkCreateResponseData
 type TransferRecipientBulkCreateResponseData struct {
-	Success []map[string]interface{} `json:"success"`
+	Success []interface{} `json:"success"`
 	Errors []TransferRecipientErrorsArray `json:"errors"`
 }
 
@@ -28,7 +28,7 @@ type TransferRecipientBulkCreateResponseData struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferRecipientBulkCreateResponseData(success []map[string]interface{}, errors []TransferRecipientErrorsArray) *TransferRecipientBulkCreateResponseData {
+func NewTransferRecipientBulkCreateResponseData(success []interface{}, errors []TransferRecipientErrorsArray) *TransferRecipientBulkCreateResponseData {
 	this := TransferRecipientBulkCreateResponseData{}
 	this.Success = success
 	this.Errors = errors
@@ -44,9 +44,9 @@ func NewTransferRecipientBulkCreateResponseDataWithDefaults() *TransferRecipient
 }
 
 // GetSuccess returns the Success field value
-func (o *TransferRecipientBulkCreateResponseData) GetSuccess() []map[string]interface{} {
+func (o *TransferRecipientBulkCreateResponseData) GetSuccess() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -55,7 +55,7 @@ func (o *TransferRecipientBulkCreateResponseData) GetSuccess() []map[string]inte
 
 // GetSuccessOk returns a tuple with the Success field value
 // and a boolean to check if the value has been set.
-func (o *TransferRecipientBulkCreateResponseData) GetSuccessOk() ([]map[string]interface{}, bool) {
+func (o *TransferRecipientBulkCreateResponseData) GetSuccessOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *TransferRecipientBulkCreateResponseData) GetSuccessOk() ([]map[string]i
 }
 
 // SetSuccess sets field value
-func (o *TransferRecipientBulkCreateResponseData) SetSuccess(v []map[string]interface{}) {
+func (o *TransferRecipientBulkCreateResponseData) SetSuccess(v []interface{}) {
 	o.Success = v
 }
 

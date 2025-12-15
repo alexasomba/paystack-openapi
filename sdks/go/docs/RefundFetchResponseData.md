@@ -6,21 +6,21 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Integration** | **int32** |  | 
 **Transaction** | **int32** |  | 
-**Dispute** | **map[string]interface{}** |  | 
-**Settlement** | **map[string]interface{}** |  | 
+**Dispute** | **interface{}** |  | 
+**Settlement** | **interface{}** |  | 
 **Id** | **int32** |  | 
 **Domain** | **string** |  | 
 **Currency** | **string** |  | 
 **Amount** | **int32** |  | 
 **Status** | **string** |  | 
-**RefundedAt** | **map[string]interface{}** |  | 
+**RefundedAt** | **interface{}** |  | 
 **RefundedBy** | **string** |  | 
 **CustomerNote** | **string** |  | 
 **MerchantNote** | **string** |  | 
 **DeductedAmount** | **int32** |  | 
 **FullyDeducted** | **int32** |  | 
 **CreatedAt** | **string** |  | 
-**BankReference** | **map[string]interface{}** |  | 
+**BankReference** | **interface{}** |  | 
 **TransactionReference** | **string** |  | 
 **Reason** | **string** |  | 
 **Customer** | [**RefundFetchResponseDataCustomer**](RefundFetchResponseDataCustomer.md) |  | 
@@ -28,14 +28,14 @@ Name | Type | Description | Notes
 **TransactionAmount** | **int32** |  | 
 **InitiatedBy** | **string** |  | 
 **RefundChannel** | **string** |  | 
-**SessionId** | **map[string]interface{}** |  | 
+**SessionId** | **interface{}** |  | 
 **CollectAccountNumber** | **bool** |  | 
 
 ## Methods
 
 ### NewRefundFetchResponseData
 
-`func NewRefundFetchResponseData(integration int32, transaction int32, dispute map[string]interface{}, settlement map[string]interface{}, id int32, domain string, currency string, amount int32, status string, refundedAt map[string]interface{}, refundedBy string, customerNote string, merchantNote string, deductedAmount int32, fullyDeducted int32, createdAt string, bankReference map[string]interface{}, transactionReference string, reason string, customer RefundFetchResponseDataCustomer, refundType string, transactionAmount int32, initiatedBy string, refundChannel string, sessionId map[string]interface{}, collectAccountNumber bool, ) *RefundFetchResponseData`
+`func NewRefundFetchResponseData(integration int32, transaction int32, dispute interface{}, settlement interface{}, id int32, domain string, currency string, amount int32, status string, refundedAt interface{}, refundedBy string, customerNote string, merchantNote string, deductedAmount int32, fullyDeducted int32, createdAt string, bankReference interface{}, transactionReference string, reason string, customer RefundFetchResponseDataCustomer, refundType string, transactionAmount int32, initiatedBy string, refundChannel string, sessionId interface{}, collectAccountNumber bool, ) *RefundFetchResponseData`
 
 NewRefundFetchResponseData instantiates a new RefundFetchResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -92,20 +92,20 @@ SetTransaction sets Transaction field to given value.
 
 ### GetDispute
 
-`func (o *RefundFetchResponseData) GetDispute() map[string]interface{}`
+`func (o *RefundFetchResponseData) GetDispute() interface{}`
 
 GetDispute returns the Dispute field if non-nil, zero value otherwise.
 
 ### GetDisputeOk
 
-`func (o *RefundFetchResponseData) GetDisputeOk() (*map[string]interface{}, bool)`
+`func (o *RefundFetchResponseData) GetDisputeOk() (*interface{}, bool)`
 
 GetDisputeOk returns a tuple with the Dispute field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDispute
 
-`func (o *RefundFetchResponseData) SetDispute(v map[string]interface{})`
+`func (o *RefundFetchResponseData) SetDispute(v interface{})`
 
 SetDispute sets Dispute field to given value.
 
@@ -122,20 +122,20 @@ SetDispute sets Dispute field to given value.
 UnsetDispute ensures that no value is present for Dispute, not even an explicit nil
 ### GetSettlement
 
-`func (o *RefundFetchResponseData) GetSettlement() map[string]interface{}`
+`func (o *RefundFetchResponseData) GetSettlement() interface{}`
 
 GetSettlement returns the Settlement field if non-nil, zero value otherwise.
 
 ### GetSettlementOk
 
-`func (o *RefundFetchResponseData) GetSettlementOk() (*map[string]interface{}, bool)`
+`func (o *RefundFetchResponseData) GetSettlementOk() (*interface{}, bool)`
 
 GetSettlementOk returns a tuple with the Settlement field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSettlement
 
-`func (o *RefundFetchResponseData) SetSettlement(v map[string]interface{})`
+`func (o *RefundFetchResponseData) SetSettlement(v interface{})`
 
 SetSettlement sets Settlement field to given value.
 
@@ -252,20 +252,20 @@ SetStatus sets Status field to given value.
 
 ### GetRefundedAt
 
-`func (o *RefundFetchResponseData) GetRefundedAt() map[string]interface{}`
+`func (o *RefundFetchResponseData) GetRefundedAt() interface{}`
 
 GetRefundedAt returns the RefundedAt field if non-nil, zero value otherwise.
 
 ### GetRefundedAtOk
 
-`func (o *RefundFetchResponseData) GetRefundedAtOk() (*map[string]interface{}, bool)`
+`func (o *RefundFetchResponseData) GetRefundedAtOk() (*interface{}, bool)`
 
 GetRefundedAtOk returns a tuple with the RefundedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRefundedAt
 
-`func (o *RefundFetchResponseData) SetRefundedAt(v map[string]interface{})`
+`func (o *RefundFetchResponseData) SetRefundedAt(v interface{})`
 
 SetRefundedAt sets RefundedAt field to given value.
 
@@ -402,20 +402,20 @@ SetCreatedAt sets CreatedAt field to given value.
 
 ### GetBankReference
 
-`func (o *RefundFetchResponseData) GetBankReference() map[string]interface{}`
+`func (o *RefundFetchResponseData) GetBankReference() interface{}`
 
 GetBankReference returns the BankReference field if non-nil, zero value otherwise.
 
 ### GetBankReferenceOk
 
-`func (o *RefundFetchResponseData) GetBankReferenceOk() (*map[string]interface{}, bool)`
+`func (o *RefundFetchResponseData) GetBankReferenceOk() (*interface{}, bool)`
 
 GetBankReferenceOk returns a tuple with the BankReference field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBankReference
 
-`func (o *RefundFetchResponseData) SetBankReference(v map[string]interface{})`
+`func (o *RefundFetchResponseData) SetBankReference(v interface{})`
 
 SetBankReference sets BankReference field to given value.
 
@@ -572,20 +572,20 @@ SetRefundChannel sets RefundChannel field to given value.
 
 ### GetSessionId
 
-`func (o *RefundFetchResponseData) GetSessionId() map[string]interface{}`
+`func (o *RefundFetchResponseData) GetSessionId() interface{}`
 
 GetSessionId returns the SessionId field if non-nil, zero value otherwise.
 
 ### GetSessionIdOk
 
-`func (o *RefundFetchResponseData) GetSessionIdOk() (*map[string]interface{}, bool)`
+`func (o *RefundFetchResponseData) GetSessionIdOk() (*interface{}, bool)`
 
 GetSessionIdOk returns a tuple with the SessionId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSessionId
 
-`func (o *RefundFetchResponseData) SetSessionId(v map[string]interface{})`
+`func (o *RefundFetchResponseData) SetSessionId(v interface{})`
 
 SetSessionId sets SessionId field to given value.
 

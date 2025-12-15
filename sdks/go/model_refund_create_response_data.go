@@ -23,7 +23,7 @@ type RefundCreateResponseData struct {
 	Transaction RefundCreateResponseDataTransaction `json:"transaction"`
 	Integration int32 `json:"integration"`
 	DeductedAmount int32 `json:"deducted_amount"`
-	Channel map[string]interface{} `json:"channel"`
+	Channel interface{} `json:"channel"`
 	MerchantNote string `json:"merchant_note"`
 	CustomerNote string `json:"customer_note"`
 	Status string `json:"status"`
@@ -42,7 +42,7 @@ type RefundCreateResponseData struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRefundCreateResponseData(transaction RefundCreateResponseDataTransaction, integration int32, deductedAmount int32, channel map[string]interface{}, merchantNote string, customerNote string, status string, refundedBy string, expectedAt string, currency string, domain string, amount int32, fullyDeducted bool, id int32, createdAt string, updatedAt string) *RefundCreateResponseData {
+func NewRefundCreateResponseData(transaction RefundCreateResponseDataTransaction, integration int32, deductedAmount int32, channel interface{}, merchantNote string, customerNote string, status string, refundedBy string, expectedAt string, currency string, domain string, amount int32, fullyDeducted bool, id int32, createdAt string, updatedAt string) *RefundCreateResponseData {
 	this := RefundCreateResponseData{}
 	this.Transaction = transaction
 	this.Integration = integration
@@ -144,10 +144,10 @@ func (o *RefundCreateResponseData) SetDeductedAmount(v int32) {
 }
 
 // GetChannel returns the Channel field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *RefundCreateResponseData) GetChannel() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *RefundCreateResponseData) GetChannel() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -157,15 +157,15 @@ func (o *RefundCreateResponseData) GetChannel() map[string]interface{} {
 // GetChannelOk returns a tuple with the Channel field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundCreateResponseData) GetChannelOk() (map[string]interface{}, bool) {
+func (o *RefundCreateResponseData) GetChannelOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Channel) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Channel, true
+	return &o.Channel, true
 }
 
 // SetChannel sets field value
-func (o *RefundCreateResponseData) SetChannel(v map[string]interface{}) {
+func (o *RefundCreateResponseData) SetChannel(v interface{}) {
 	o.Channel = v
 }
 

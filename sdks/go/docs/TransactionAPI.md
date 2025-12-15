@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 
 ## TransactionFetch
 
-> TransactionId TransactionFetch(ctx, id).Execute()
+> TransactionFetchResponse TransactionFetch(ctx, id).Execute()
 
 Fetch Transaction
 
@@ -334,7 +334,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TransactionAPI.TransactionFetch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `TransactionFetch`: TransactionId
+    // response from `TransactionFetch`: TransactionFetchResponse
     fmt.Fprintf(os.Stdout, "Response from `TransactionAPI.TransactionFetch`: %v\n", resp)
 }
 ```
@@ -358,7 +358,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransactionId**](TransactionId.md)
+[**TransactionFetchResponse**](TransactionFetchResponse.md)
 
 ### Authorization
 
@@ -677,7 +677,7 @@ Name | Type | Description  | Notes
 
 ## TransactionTimeline
 
-> TransactionTimelineId TransactionTimeline(ctx, id).Execute()
+> TransactionTimelineResponse TransactionTimeline(ctx, id).Execute()
 
 Fetch Transaction Timeline
 
@@ -705,7 +705,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TransactionAPI.TransactionTimeline``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `TransactionTimeline`: TransactionTimelineId
+    // response from `TransactionTimeline`: TransactionTimelineResponse
     fmt.Fprintf(os.Stdout, "Response from `TransactionAPI.TransactionTimeline`: %v\n", resp)
 }
 ```
@@ -729,7 +729,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransactionTimelineId**](TransactionTimelineId.md)
+[**TransactionTimelineResponse**](TransactionTimelineResponse.md)
 
 ### Authorization
 
@@ -816,7 +816,7 @@ Name | Type | Description  | Notes
 
 ## TransactionVerify
 
-> TransactionVerifyReference TransactionVerify(ctx, reference).Execute()
+> VerifyResponse TransactionVerify(ctx, reference).Execute()
 
 Verify Transaction
 
@@ -844,7 +844,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TransactionAPI.TransactionVerify``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `TransactionVerify`: TransactionVerifyReference
+    // response from `TransactionVerify`: VerifyResponse
     fmt.Fprintf(os.Stdout, "Response from `TransactionAPI.TransactionVerify`: %v\n", resp)
 }
 ```
@@ -868,7 +868,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransactionVerifyReference**](TransactionVerifyReference.md)
+[**VerifyResponse**](VerifyResponse.md)
 
 ### Authorization
 

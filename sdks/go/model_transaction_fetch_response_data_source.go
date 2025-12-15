@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the TransactionFetchResponseDataSource type satisfies the MappedNullable interface at compile time
@@ -26,8 +24,6 @@ type TransactionFetchResponseDataSource struct {
 	Source string `json:"source"`
 	Identifier interface{} `json:"identifier"`
 }
-
-type _TransactionFetchResponseDataSource TransactionFetchResponseDataSource
 
 // NewTransactionFetchResponseDataSource instantiates a new TransactionFetchResponseDataSource object
 // This constructor will assign default values to properties that have it defined,
@@ -139,45 +135,6 @@ func (o TransactionFetchResponseDataSource) ToMap() (map[string]interface{}, err
 		toSerialize["identifier"] = o.Identifier
 	}
 	return toSerialize, nil
-}
-
-func (o *TransactionFetchResponseDataSource) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"type",
-		"source",
-		"identifier",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varTransactionFetchResponseDataSource := _TransactionFetchResponseDataSource{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransactionFetchResponseDataSource)
-
-	if err != nil {
-		return err
-	}
-
-	*o = TransactionFetchResponseDataSource(varTransactionFetchResponseDataSource)
-
-	return err
 }
 
 type NullableTransactionFetchResponseDataSource struct {

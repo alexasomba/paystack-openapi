@@ -22,21 +22,21 @@ var _ MappedNullable = &RefundFetchResponseData{}
 type RefundFetchResponseData struct {
 	Integration int32 `json:"integration"`
 	Transaction int32 `json:"transaction"`
-	Dispute map[string]interface{} `json:"dispute"`
-	Settlement map[string]interface{} `json:"settlement"`
+	Dispute interface{} `json:"dispute"`
+	Settlement interface{} `json:"settlement"`
 	Id int32 `json:"id"`
 	Domain string `json:"domain"`
 	Currency string `json:"currency"`
 	Amount int32 `json:"amount"`
 	Status string `json:"status"`
-	RefundedAt map[string]interface{} `json:"refunded_at"`
+	RefundedAt interface{} `json:"refunded_at"`
 	RefundedBy string `json:"refunded_by"`
 	CustomerNote string `json:"customer_note"`
 	MerchantNote string `json:"merchant_note"`
 	DeductedAmount int32 `json:"deducted_amount"`
 	FullyDeducted int32 `json:"fully_deducted"`
 	CreatedAt string `json:"createdAt"`
-	BankReference map[string]interface{} `json:"bank_reference"`
+	BankReference interface{} `json:"bank_reference"`
 	TransactionReference string `json:"transaction_reference"`
 	Reason string `json:"reason"`
 	Customer RefundFetchResponseDataCustomer `json:"customer"`
@@ -44,7 +44,7 @@ type RefundFetchResponseData struct {
 	TransactionAmount int32 `json:"transaction_amount"`
 	InitiatedBy string `json:"initiated_by"`
 	RefundChannel string `json:"refund_channel"`
-	SessionId map[string]interface{} `json:"session_id"`
+	SessionId interface{} `json:"session_id"`
 	CollectAccountNumber bool `json:"collect_account_number"`
 }
 
@@ -52,7 +52,7 @@ type RefundFetchResponseData struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRefundFetchResponseData(integration int32, transaction int32, dispute map[string]interface{}, settlement map[string]interface{}, id int32, domain string, currency string, amount int32, status string, refundedAt map[string]interface{}, refundedBy string, customerNote string, merchantNote string, deductedAmount int32, fullyDeducted int32, createdAt string, bankReference map[string]interface{}, transactionReference string, reason string, customer RefundFetchResponseDataCustomer, refundType string, transactionAmount int32, initiatedBy string, refundChannel string, sessionId map[string]interface{}, collectAccountNumber bool) *RefundFetchResponseData {
+func NewRefundFetchResponseData(integration int32, transaction int32, dispute interface{}, settlement interface{}, id int32, domain string, currency string, amount int32, status string, refundedAt interface{}, refundedBy string, customerNote string, merchantNote string, deductedAmount int32, fullyDeducted int32, createdAt string, bankReference interface{}, transactionReference string, reason string, customer RefundFetchResponseDataCustomer, refundType string, transactionAmount int32, initiatedBy string, refundChannel string, sessionId interface{}, collectAccountNumber bool) *RefundFetchResponseData {
 	this := RefundFetchResponseData{}
 	this.Integration = integration
 	this.Transaction = transaction
@@ -140,10 +140,10 @@ func (o *RefundFetchResponseData) SetTransaction(v int32) {
 }
 
 // GetDispute returns the Dispute field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *RefundFetchResponseData) GetDispute() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *RefundFetchResponseData) GetDispute() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -153,23 +153,23 @@ func (o *RefundFetchResponseData) GetDispute() map[string]interface{} {
 // GetDisputeOk returns a tuple with the Dispute field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundFetchResponseData) GetDisputeOk() (map[string]interface{}, bool) {
+func (o *RefundFetchResponseData) GetDisputeOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Dispute) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Dispute, true
+	return &o.Dispute, true
 }
 
 // SetDispute sets field value
-func (o *RefundFetchResponseData) SetDispute(v map[string]interface{}) {
+func (o *RefundFetchResponseData) SetDispute(v interface{}) {
 	o.Dispute = v
 }
 
 // GetSettlement returns the Settlement field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *RefundFetchResponseData) GetSettlement() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *RefundFetchResponseData) GetSettlement() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -179,15 +179,15 @@ func (o *RefundFetchResponseData) GetSettlement() map[string]interface{} {
 // GetSettlementOk returns a tuple with the Settlement field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundFetchResponseData) GetSettlementOk() (map[string]interface{}, bool) {
+func (o *RefundFetchResponseData) GetSettlementOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Settlement) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Settlement, true
+	return &o.Settlement, true
 }
 
 // SetSettlement sets field value
-func (o *RefundFetchResponseData) SetSettlement(v map[string]interface{}) {
+func (o *RefundFetchResponseData) SetSettlement(v interface{}) {
 	o.Settlement = v
 }
 
@@ -312,10 +312,10 @@ func (o *RefundFetchResponseData) SetStatus(v string) {
 }
 
 // GetRefundedAt returns the RefundedAt field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *RefundFetchResponseData) GetRefundedAt() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *RefundFetchResponseData) GetRefundedAt() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -325,15 +325,15 @@ func (o *RefundFetchResponseData) GetRefundedAt() map[string]interface{} {
 // GetRefundedAtOk returns a tuple with the RefundedAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundFetchResponseData) GetRefundedAtOk() (map[string]interface{}, bool) {
+func (o *RefundFetchResponseData) GetRefundedAtOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.RefundedAt) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.RefundedAt, true
+	return &o.RefundedAt, true
 }
 
 // SetRefundedAt sets field value
-func (o *RefundFetchResponseData) SetRefundedAt(v map[string]interface{}) {
+func (o *RefundFetchResponseData) SetRefundedAt(v interface{}) {
 	o.RefundedAt = v
 }
 
@@ -482,10 +482,10 @@ func (o *RefundFetchResponseData) SetCreatedAt(v string) {
 }
 
 // GetBankReference returns the BankReference field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *RefundFetchResponseData) GetBankReference() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *RefundFetchResponseData) GetBankReference() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -495,15 +495,15 @@ func (o *RefundFetchResponseData) GetBankReference() map[string]interface{} {
 // GetBankReferenceOk returns a tuple with the BankReference field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundFetchResponseData) GetBankReferenceOk() (map[string]interface{}, bool) {
+func (o *RefundFetchResponseData) GetBankReferenceOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.BankReference) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.BankReference, true
+	return &o.BankReference, true
 }
 
 // SetBankReference sets field value
-func (o *RefundFetchResponseData) SetBankReference(v map[string]interface{}) {
+func (o *RefundFetchResponseData) SetBankReference(v interface{}) {
 	o.BankReference = v
 }
 
@@ -676,10 +676,10 @@ func (o *RefundFetchResponseData) SetRefundChannel(v string) {
 }
 
 // GetSessionId returns the SessionId field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *RefundFetchResponseData) GetSessionId() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *RefundFetchResponseData) GetSessionId() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -689,15 +689,15 @@ func (o *RefundFetchResponseData) GetSessionId() map[string]interface{} {
 // GetSessionIdOk returns a tuple with the SessionId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundFetchResponseData) GetSessionIdOk() (map[string]interface{}, bool) {
+func (o *RefundFetchResponseData) GetSessionIdOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.SessionId) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.SessionId, true
+	return &o.SessionId, true
 }
 
 // SetSessionId sets field value
-func (o *RefundFetchResponseData) SetSessionId(v map[string]interface{}) {
+func (o *RefundFetchResponseData) SetSessionId(v interface{}) {
 	o.SessionId = v
 }
 

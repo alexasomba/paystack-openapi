@@ -25,9 +25,9 @@ type VirtualTerminalCreateResponseData struct {
 	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
 	Code string `json:"code"`
-	PaymentMethods []map[string]interface{} `json:"paymentMethods"`
+	PaymentMethods []interface{} `json:"paymentMethods"`
 	Active bool `json:"active"`
-	Metadata map[string]interface{} `json:"metadata"`
+	Metadata interface{} `json:"metadata"`
 	Destinations []VirtualTerminalCreateResponseDataDestinationsInner `json:"destinations"`
 	Currency string `json:"currency"`
 }
@@ -36,7 +36,7 @@ type VirtualTerminalCreateResponseData struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVirtualTerminalCreateResponseData(id int32, name string, integration int32, domain string, code string, paymentMethods []map[string]interface{}, active bool, metadata map[string]interface{}, destinations []VirtualTerminalCreateResponseDataDestinationsInner, currency string) *VirtualTerminalCreateResponseData {
+func NewVirtualTerminalCreateResponseData(id int32, name string, integration int32, domain string, code string, paymentMethods []interface{}, active bool, metadata interface{}, destinations []VirtualTerminalCreateResponseDataDestinationsInner, currency string) *VirtualTerminalCreateResponseData {
 	this := VirtualTerminalCreateResponseData{}
 	this.Id = id
 	this.Name = name
@@ -180,9 +180,9 @@ func (o *VirtualTerminalCreateResponseData) SetCode(v string) {
 }
 
 // GetPaymentMethods returns the PaymentMethods field value
-func (o *VirtualTerminalCreateResponseData) GetPaymentMethods() []map[string]interface{} {
+func (o *VirtualTerminalCreateResponseData) GetPaymentMethods() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -191,7 +191,7 @@ func (o *VirtualTerminalCreateResponseData) GetPaymentMethods() []map[string]int
 
 // GetPaymentMethodsOk returns a tuple with the PaymentMethods field value
 // and a boolean to check if the value has been set.
-func (o *VirtualTerminalCreateResponseData) GetPaymentMethodsOk() ([]map[string]interface{}, bool) {
+func (o *VirtualTerminalCreateResponseData) GetPaymentMethodsOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -199,7 +199,7 @@ func (o *VirtualTerminalCreateResponseData) GetPaymentMethodsOk() ([]map[string]
 }
 
 // SetPaymentMethods sets field value
-func (o *VirtualTerminalCreateResponseData) SetPaymentMethods(v []map[string]interface{}) {
+func (o *VirtualTerminalCreateResponseData) SetPaymentMethods(v []interface{}) {
 	o.PaymentMethods = v
 }
 
@@ -228,10 +228,10 @@ func (o *VirtualTerminalCreateResponseData) SetActive(v bool) {
 }
 
 // GetMetadata returns the Metadata field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *VirtualTerminalCreateResponseData) GetMetadata() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *VirtualTerminalCreateResponseData) GetMetadata() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -241,15 +241,15 @@ func (o *VirtualTerminalCreateResponseData) GetMetadata() map[string]interface{}
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VirtualTerminalCreateResponseData) GetMetadataOk() (map[string]interface{}, bool) {
+func (o *VirtualTerminalCreateResponseData) GetMetadataOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Metadata) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Metadata, true
+	return &o.Metadata, true
 }
 
 // SetMetadata sets field value
-func (o *VirtualTerminalCreateResponseData) SetMetadata(v map[string]interface{}) {
+func (o *VirtualTerminalCreateResponseData) SetMetadata(v interface{}) {
 	o.Metadata = v
 }
 

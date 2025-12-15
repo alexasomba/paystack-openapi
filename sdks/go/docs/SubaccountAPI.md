@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## SubaccountFetch
 
-> SubaccountCode SubaccountFetch(ctx, code).Execute()
+> SubaccountFetchResponse SubaccountFetch(ctx, code).Execute()
 
 Fetch Subaccount
 
@@ -107,7 +107,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SubaccountAPI.SubaccountFetch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SubaccountFetch`: SubaccountCode
+    // response from `SubaccountFetch`: SubaccountFetchResponse
     fmt.Fprintf(os.Stdout, "Response from `SubaccountAPI.SubaccountFetch`: %v\n", resp)
 }
 ```
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SubaccountCode**](SubaccountCode.md)
+[**SubaccountFetchResponse**](SubaccountFetchResponse.md)
 
 ### Authorization
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ## SubaccountUpdate
 
-> SubaccountCode SubaccountUpdate(ctx, code).Body(body).Execute()
+> SubaccountUpdateResponse SubaccountUpdate(ctx, code).SubaccountUpdate(subaccountUpdate).Execute()
 
 Update Subaccount
 
@@ -239,16 +239,16 @@ import (
 
 func main() {
     code := "ACCT_6uujpqtzmnufzkw" // string | The subaccount code you want to fetch
-    body := SubaccountCode(987) // SubaccountCode |  (optional)
+    subaccountUpdate := *openapiclient.NewSubaccountUpdate() // SubaccountUpdate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SubaccountAPI.SubaccountUpdate(context.Background(), code).Body(body).Execute()
+    resp, r, err := apiClient.SubaccountAPI.SubaccountUpdate(context.Background(), code).SubaccountUpdate(subaccountUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SubaccountAPI.SubaccountUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SubaccountUpdate`: SubaccountCode
+    // response from `SubaccountUpdate`: SubaccountUpdateResponse
     fmt.Fprintf(os.Stdout, "Response from `SubaccountAPI.SubaccountUpdate`: %v\n", resp)
 }
 ```
@@ -269,11 +269,11 @@ Other parameters are passed through a pointer to a apiSubaccountUpdateRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **SubaccountCode** |  | 
+ **subaccountUpdate** | [**SubaccountUpdate**](SubaccountUpdate.md) |  | 
 
 ### Return type
 
-[**SubaccountCode**](SubaccountCode.md)
+[**SubaccountUpdateResponse**](SubaccountUpdateResponse.md)
 
 ### Authorization
 

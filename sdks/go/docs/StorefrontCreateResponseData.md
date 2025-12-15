@@ -4,34 +4,34 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SocialMedia** | **[]map[string]interface{}** |  | 
+**SocialMedia** | **[]interface{}** |  | 
 **Contacts** | [**[]StorefrontContactsArray**](StorefrontContactsArray.md) |  | 
 **Name** | **string** |  | 
 **Slug** | **string** |  | 
 **Currency** | **string** |  | 
-**WelcomeMessage** | **map[string]interface{}** |  | 
-**SuccessMessage** | **map[string]interface{}** |  | 
-**RedirectUrl** | **map[string]interface{}** |  | 
-**Description** | **map[string]interface{}** |  | 
+**WelcomeMessage** | **interface{}** |  | 
+**SuccessMessage** | **interface{}** |  | 
+**RedirectUrl** | **interface{}** |  | 
+**Description** | **interface{}** |  | 
 **DeliveryNote** | **string** |  | 
 **BackgroundColor** | **string** |  | 
 **Status** | **string** |  | 
 **Shippable** | **bool** |  | 
 **Integration** | **int32** |  | 
 **Domain** | **string** |  | 
-**DigitalProductExpiry** | **map[string]interface{}** |  | 
+**DigitalProductExpiry** | **interface{}** |  | 
 **Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
 **Id** | **int32** |  | 
 **CreatedAt** | **string** |  | 
 **UpdatedAt** | **string** |  | 
-**Products** | **[]map[string]interface{}** |  | 
-**ShippingFees** | **[]map[string]interface{}** |  | 
+**Products** | **[]interface{}** |  | 
+**ShippingFees** | **[]interface{}** |  | 
 
 ## Methods
 
 ### NewStorefrontCreateResponseData
 
-`func NewStorefrontCreateResponseData(socialMedia []map[string]interface{}, contacts []StorefrontContactsArray, name string, slug string, currency string, welcomeMessage map[string]interface{}, successMessage map[string]interface{}, redirectUrl map[string]interface{}, description map[string]interface{}, deliveryNote string, backgroundColor string, status string, shippable bool, integration int32, domain string, digitalProductExpiry map[string]interface{}, id int32, createdAt string, updatedAt string, products []map[string]interface{}, shippingFees []map[string]interface{}, ) *StorefrontCreateResponseData`
+`func NewStorefrontCreateResponseData(socialMedia []interface{}, contacts []StorefrontContactsArray, name string, slug string, currency string, welcomeMessage interface{}, successMessage interface{}, redirectUrl interface{}, description interface{}, deliveryNote string, backgroundColor string, status string, shippable bool, integration int32, domain string, digitalProductExpiry interface{}, id int32, createdAt string, updatedAt string, products []interface{}, shippingFees []interface{}, ) *StorefrontCreateResponseData`
 
 NewStorefrontCreateResponseData instantiates a new StorefrontCreateResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSocialMedia
 
-`func (o *StorefrontCreateResponseData) GetSocialMedia() []map[string]interface{}`
+`func (o *StorefrontCreateResponseData) GetSocialMedia() []interface{}`
 
 GetSocialMedia returns the SocialMedia field if non-nil, zero value otherwise.
 
 ### GetSocialMediaOk
 
-`func (o *StorefrontCreateResponseData) GetSocialMediaOk() (*[]map[string]interface{}, bool)`
+`func (o *StorefrontCreateResponseData) GetSocialMediaOk() (*[]interface{}, bool)`
 
 GetSocialMediaOk returns a tuple with the SocialMedia field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSocialMedia
 
-`func (o *StorefrontCreateResponseData) SetSocialMedia(v []map[string]interface{})`
+`func (o *StorefrontCreateResponseData) SetSocialMedia(v []interface{})`
 
 SetSocialMedia sets SocialMedia field to given value.
 
@@ -148,20 +148,20 @@ SetCurrency sets Currency field to given value.
 
 ### GetWelcomeMessage
 
-`func (o *StorefrontCreateResponseData) GetWelcomeMessage() map[string]interface{}`
+`func (o *StorefrontCreateResponseData) GetWelcomeMessage() interface{}`
 
 GetWelcomeMessage returns the WelcomeMessage field if non-nil, zero value otherwise.
 
 ### GetWelcomeMessageOk
 
-`func (o *StorefrontCreateResponseData) GetWelcomeMessageOk() (*map[string]interface{}, bool)`
+`func (o *StorefrontCreateResponseData) GetWelcomeMessageOk() (*interface{}, bool)`
 
 GetWelcomeMessageOk returns a tuple with the WelcomeMessage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWelcomeMessage
 
-`func (o *StorefrontCreateResponseData) SetWelcomeMessage(v map[string]interface{})`
+`func (o *StorefrontCreateResponseData) SetWelcomeMessage(v interface{})`
 
 SetWelcomeMessage sets WelcomeMessage field to given value.
 
@@ -178,20 +178,20 @@ SetWelcomeMessage sets WelcomeMessage field to given value.
 UnsetWelcomeMessage ensures that no value is present for WelcomeMessage, not even an explicit nil
 ### GetSuccessMessage
 
-`func (o *StorefrontCreateResponseData) GetSuccessMessage() map[string]interface{}`
+`func (o *StorefrontCreateResponseData) GetSuccessMessage() interface{}`
 
 GetSuccessMessage returns the SuccessMessage field if non-nil, zero value otherwise.
 
 ### GetSuccessMessageOk
 
-`func (o *StorefrontCreateResponseData) GetSuccessMessageOk() (*map[string]interface{}, bool)`
+`func (o *StorefrontCreateResponseData) GetSuccessMessageOk() (*interface{}, bool)`
 
 GetSuccessMessageOk returns a tuple with the SuccessMessage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSuccessMessage
 
-`func (o *StorefrontCreateResponseData) SetSuccessMessage(v map[string]interface{})`
+`func (o *StorefrontCreateResponseData) SetSuccessMessage(v interface{})`
 
 SetSuccessMessage sets SuccessMessage field to given value.
 
@@ -208,20 +208,20 @@ SetSuccessMessage sets SuccessMessage field to given value.
 UnsetSuccessMessage ensures that no value is present for SuccessMessage, not even an explicit nil
 ### GetRedirectUrl
 
-`func (o *StorefrontCreateResponseData) GetRedirectUrl() map[string]interface{}`
+`func (o *StorefrontCreateResponseData) GetRedirectUrl() interface{}`
 
 GetRedirectUrl returns the RedirectUrl field if non-nil, zero value otherwise.
 
 ### GetRedirectUrlOk
 
-`func (o *StorefrontCreateResponseData) GetRedirectUrlOk() (*map[string]interface{}, bool)`
+`func (o *StorefrontCreateResponseData) GetRedirectUrlOk() (*interface{}, bool)`
 
 GetRedirectUrlOk returns a tuple with the RedirectUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRedirectUrl
 
-`func (o *StorefrontCreateResponseData) SetRedirectUrl(v map[string]interface{})`
+`func (o *StorefrontCreateResponseData) SetRedirectUrl(v interface{})`
 
 SetRedirectUrl sets RedirectUrl field to given value.
 
@@ -238,20 +238,20 @@ SetRedirectUrl sets RedirectUrl field to given value.
 UnsetRedirectUrl ensures that no value is present for RedirectUrl, not even an explicit nil
 ### GetDescription
 
-`func (o *StorefrontCreateResponseData) GetDescription() map[string]interface{}`
+`func (o *StorefrontCreateResponseData) GetDescription() interface{}`
 
 GetDescription returns the Description field if non-nil, zero value otherwise.
 
 ### GetDescriptionOk
 
-`func (o *StorefrontCreateResponseData) GetDescriptionOk() (*map[string]interface{}, bool)`
+`func (o *StorefrontCreateResponseData) GetDescriptionOk() (*interface{}, bool)`
 
 GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDescription
 
-`func (o *StorefrontCreateResponseData) SetDescription(v map[string]interface{})`
+`func (o *StorefrontCreateResponseData) SetDescription(v interface{})`
 
 SetDescription sets Description field to given value.
 
@@ -388,20 +388,20 @@ SetDomain sets Domain field to given value.
 
 ### GetDigitalProductExpiry
 
-`func (o *StorefrontCreateResponseData) GetDigitalProductExpiry() map[string]interface{}`
+`func (o *StorefrontCreateResponseData) GetDigitalProductExpiry() interface{}`
 
 GetDigitalProductExpiry returns the DigitalProductExpiry field if non-nil, zero value otherwise.
 
 ### GetDigitalProductExpiryOk
 
-`func (o *StorefrontCreateResponseData) GetDigitalProductExpiryOk() (*map[string]interface{}, bool)`
+`func (o *StorefrontCreateResponseData) GetDigitalProductExpiryOk() (*interface{}, bool)`
 
 GetDigitalProductExpiryOk returns a tuple with the DigitalProductExpiry field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDigitalProductExpiry
 
-`func (o *StorefrontCreateResponseData) SetDigitalProductExpiry(v map[string]interface{})`
+`func (o *StorefrontCreateResponseData) SetDigitalProductExpiry(v interface{})`
 
 SetDigitalProductExpiry sets DigitalProductExpiry field to given value.
 
@@ -513,40 +513,40 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 ### GetProducts
 
-`func (o *StorefrontCreateResponseData) GetProducts() []map[string]interface{}`
+`func (o *StorefrontCreateResponseData) GetProducts() []interface{}`
 
 GetProducts returns the Products field if non-nil, zero value otherwise.
 
 ### GetProductsOk
 
-`func (o *StorefrontCreateResponseData) GetProductsOk() (*[]map[string]interface{}, bool)`
+`func (o *StorefrontCreateResponseData) GetProductsOk() (*[]interface{}, bool)`
 
 GetProductsOk returns a tuple with the Products field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProducts
 
-`func (o *StorefrontCreateResponseData) SetProducts(v []map[string]interface{})`
+`func (o *StorefrontCreateResponseData) SetProducts(v []interface{})`
 
 SetProducts sets Products field to given value.
 
 
 ### GetShippingFees
 
-`func (o *StorefrontCreateResponseData) GetShippingFees() []map[string]interface{}`
+`func (o *StorefrontCreateResponseData) GetShippingFees() []interface{}`
 
 GetShippingFees returns the ShippingFees field if non-nil, zero value otherwise.
 
 ### GetShippingFeesOk
 
-`func (o *StorefrontCreateResponseData) GetShippingFeesOk() (*[]map[string]interface{}, bool)`
+`func (o *StorefrontCreateResponseData) GetShippingFeesOk() (*[]interface{}, bool)`
 
 GetShippingFeesOk returns a tuple with the ShippingFees field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShippingFees
 
-`func (o *StorefrontCreateResponseData) SetShippingFees(v []map[string]interface{})`
+`func (o *StorefrontCreateResponseData) SetShippingFees(v []interface{})`
 
 SetShippingFees sets ShippingFees field to given value.
 

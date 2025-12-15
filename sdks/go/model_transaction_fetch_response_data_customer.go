@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the TransactionFetchResponseDataCustomer type satisfies the MappedNullable interface at compile time
@@ -32,8 +30,6 @@ type TransactionFetchResponseDataCustomer struct {
 	RiskAction string `json:"risk_action"`
 	InternationalFormatPhone string `json:"international_format_phone"`
 }
-
-type _TransactionFetchResponseDataCustomer TransactionFetchResponseDataCustomer
 
 // NewTransactionFetchResponseDataCustomer instantiates a new TransactionFetchResponseDataCustomer object
 // This constructor will assign default values to properties that have it defined,
@@ -297,51 +293,6 @@ func (o TransactionFetchResponseDataCustomer) ToMap() (map[string]interface{}, e
 	toSerialize["risk_action"] = o.RiskAction
 	toSerialize["international_format_phone"] = o.InternationalFormatPhone
 	return toSerialize, nil
-}
-
-func (o *TransactionFetchResponseDataCustomer) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"first_name",
-		"last_name",
-		"email",
-		"customer_code",
-		"phone",
-		"metadata",
-		"risk_action",
-		"international_format_phone",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varTransactionFetchResponseDataCustomer := _TransactionFetchResponseDataCustomer{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransactionFetchResponseDataCustomer)
-
-	if err != nil {
-		return err
-	}
-
-	*o = TransactionFetchResponseDataCustomer(varTransactionFetchResponseDataCustomer)
-
-	return err
 }
 
 type NullableTransactionFetchResponseDataCustomer struct {

@@ -22,7 +22,7 @@ var _ MappedNullable = &TransactionListResponseArraySource{}
 type TransactionListResponseArraySource struct {
 	Source string `json:"source"`
 	Type string `json:"type"`
-	Identifier map[string]interface{} `json:"identifier"`
+	Identifier interface{} `json:"identifier"`
 	EntryPoint string `json:"entry_point"`
 }
 
@@ -30,7 +30,7 @@ type TransactionListResponseArraySource struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransactionListResponseArraySource(source string, type_ string, identifier map[string]interface{}, entryPoint string) *TransactionListResponseArraySource {
+func NewTransactionListResponseArraySource(source string, type_ string, identifier interface{}, entryPoint string) *TransactionListResponseArraySource {
 	this := TransactionListResponseArraySource{}
 	this.Source = source
 	this.Type = type_
@@ -96,10 +96,10 @@ func (o *TransactionListResponseArraySource) SetType(v string) {
 }
 
 // GetIdentifier returns the Identifier field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *TransactionListResponseArraySource) GetIdentifier() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *TransactionListResponseArraySource) GetIdentifier() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -109,15 +109,15 @@ func (o *TransactionListResponseArraySource) GetIdentifier() map[string]interfac
 // GetIdentifierOk returns a tuple with the Identifier field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransactionListResponseArraySource) GetIdentifierOk() (map[string]interface{}, bool) {
+func (o *TransactionListResponseArraySource) GetIdentifierOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Identifier) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Identifier, true
+	return &o.Identifier, true
 }
 
 // SetIdentifier sets field value
-func (o *TransactionListResponseArraySource) SetIdentifier(v map[string]interface{}) {
+func (o *TransactionListResponseArraySource) SetIdentifier(v interface{}) {
 	o.Identifier = v
 }
 

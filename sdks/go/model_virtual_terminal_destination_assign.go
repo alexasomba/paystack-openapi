@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the VirtualTerminalDestinationAssign type satisfies the MappedNullable interface at compile time
@@ -25,8 +23,6 @@ type VirtualTerminalDestinationAssign struct {
 	// Array of objects containing recipients for payment notifications for the Virtual Terminal.
 	Destinations []VirtualTerminalCreateDestinationsInner `json:"destinations"`
 }
-
-type _VirtualTerminalDestinationAssign VirtualTerminalDestinationAssign
 
 // NewVirtualTerminalDestinationAssign instantiates a new VirtualTerminalDestinationAssign object
 // This constructor will assign default values to properties that have it defined,
@@ -82,43 +78,6 @@ func (o VirtualTerminalDestinationAssign) ToMap() (map[string]interface{}, error
 	toSerialize := map[string]interface{}{}
 	toSerialize["destinations"] = o.Destinations
 	return toSerialize, nil
-}
-
-func (o *VirtualTerminalDestinationAssign) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"destinations",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varVirtualTerminalDestinationAssign := _VirtualTerminalDestinationAssign{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVirtualTerminalDestinationAssign)
-
-	if err != nil {
-		return err
-	}
-
-	*o = VirtualTerminalDestinationAssign(varVirtualTerminalDestinationAssign)
-
-	return err
 }
 
 type NullableVirtualTerminalDestinationAssign struct {

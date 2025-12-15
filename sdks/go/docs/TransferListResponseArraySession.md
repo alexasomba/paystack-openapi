@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Provider** | **map[string]interface{}** |  | 
-**Id** | **map[string]interface{}** |  | 
+**Provider** | **interface{}** |  | 
+**Id** | **interface{}** |  | 
 
 ## Methods
 
 ### NewTransferListResponseArraySession
 
-`func NewTransferListResponseArraySession(provider map[string]interface{}, id map[string]interface{}, ) *TransferListResponseArraySession`
+`func NewTransferListResponseArraySession(provider interface{}, id interface{}, ) *TransferListResponseArraySession`
 
 NewTransferListResponseArraySession instantiates a new TransferListResponseArraySession object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetProvider
 
-`func (o *TransferListResponseArraySession) GetProvider() map[string]interface{}`
+`func (o *TransferListResponseArraySession) GetProvider() interface{}`
 
 GetProvider returns the Provider field if non-nil, zero value otherwise.
 
 ### GetProviderOk
 
-`func (o *TransferListResponseArraySession) GetProviderOk() (*map[string]interface{}, bool)`
+`func (o *TransferListResponseArraySession) GetProviderOk() (*interface{}, bool)`
 
 GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProvider
 
-`func (o *TransferListResponseArraySession) SetProvider(v map[string]interface{})`
+`func (o *TransferListResponseArraySession) SetProvider(v interface{})`
 
 SetProvider sets Provider field to given value.
 
@@ -58,20 +58,20 @@ SetProvider sets Provider field to given value.
 UnsetProvider ensures that no value is present for Provider, not even an explicit nil
 ### GetId
 
-`func (o *TransferListResponseArraySession) GetId() map[string]interface{}`
+`func (o *TransferListResponseArraySession) GetId() interface{}`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *TransferListResponseArraySession) GetIdOk() (*map[string]interface{}, bool)`
+`func (o *TransferListResponseArraySession) GetIdOk() (*interface{}, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *TransferListResponseArraySession) SetId(v map[string]interface{})`
+`func (o *TransferListResponseArraySession) SetId(v interface{})`
 
 SetId sets Id field to given value.
 

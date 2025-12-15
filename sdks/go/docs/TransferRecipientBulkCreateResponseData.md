@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Success** | **[]map[string]interface{}** |  | 
+**Success** | **[]interface{}** |  | 
 **Errors** | [**[]TransferRecipientErrorsArray**](TransferRecipientErrorsArray.md) |  | 
 
 ## Methods
 
 ### NewTransferRecipientBulkCreateResponseData
 
-`func NewTransferRecipientBulkCreateResponseData(success []map[string]interface{}, errors []TransferRecipientErrorsArray, ) *TransferRecipientBulkCreateResponseData`
+`func NewTransferRecipientBulkCreateResponseData(success []interface{}, errors []TransferRecipientErrorsArray, ) *TransferRecipientBulkCreateResponseData`
 
 NewTransferRecipientBulkCreateResponseData instantiates a new TransferRecipientBulkCreateResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSuccess
 
-`func (o *TransferRecipientBulkCreateResponseData) GetSuccess() []map[string]interface{}`
+`func (o *TransferRecipientBulkCreateResponseData) GetSuccess() []interface{}`
 
 GetSuccess returns the Success field if non-nil, zero value otherwise.
 
 ### GetSuccessOk
 
-`func (o *TransferRecipientBulkCreateResponseData) GetSuccessOk() (*[]map[string]interface{}, bool)`
+`func (o *TransferRecipientBulkCreateResponseData) GetSuccessOk() (*[]interface{}, bool)`
 
 GetSuccessOk returns a tuple with the Success field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSuccess
 
-`func (o *TransferRecipientBulkCreateResponseData) SetSuccess(v []map[string]interface{})`
+`func (o *TransferRecipientBulkCreateResponseData) SetSuccess(v []interface{})`
 
 SetSuccess sets Success field to given value.
 

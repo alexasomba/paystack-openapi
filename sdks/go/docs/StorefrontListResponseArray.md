@@ -9,18 +9,18 @@ Name | Type | Description | Notes
 **Slug** | **string** |  | 
 **OrdersCount** | **int32** |  | 
 **Status** | **string** |  | 
-**Revenue** | **map[string]interface{}** |  | 
+**Revenue** | **interface{}** |  | 
 **Currency** | **string** |  | 
-**Products** | **[]map[string]interface{}** |  | 
-**Contacts** | **[]map[string]interface{}** |  | 
-**SocialMedia** | **[]map[string]interface{}** |  | 
-**ShippingFees** | **[]map[string]interface{}** |  | 
+**Products** | **[]interface{}** |  | 
+**Contacts** | **[]interface{}** |  | 
+**SocialMedia** | **[]interface{}** |  | 
+**ShippingFees** | **[]interface{}** |  | 
 
 ## Methods
 
 ### NewStorefrontListResponseArray
 
-`func NewStorefrontListResponseArray(id int32, name string, slug string, ordersCount int32, status string, revenue map[string]interface{}, currency string, products []map[string]interface{}, contacts []map[string]interface{}, socialMedia []map[string]interface{}, shippingFees []map[string]interface{}, ) *StorefrontListResponseArray`
+`func NewStorefrontListResponseArray(id int32, name string, slug string, ordersCount int32, status string, revenue interface{}, currency string, products []interface{}, contacts []interface{}, socialMedia []interface{}, shippingFees []interface{}, ) *StorefrontListResponseArray`
 
 NewStorefrontListResponseArray instantiates a new StorefrontListResponseArray object
 This constructor will assign default values to properties that have it defined,
@@ -137,20 +137,20 @@ SetStatus sets Status field to given value.
 
 ### GetRevenue
 
-`func (o *StorefrontListResponseArray) GetRevenue() map[string]interface{}`
+`func (o *StorefrontListResponseArray) GetRevenue() interface{}`
 
 GetRevenue returns the Revenue field if non-nil, zero value otherwise.
 
 ### GetRevenueOk
 
-`func (o *StorefrontListResponseArray) GetRevenueOk() (*map[string]interface{}, bool)`
+`func (o *StorefrontListResponseArray) GetRevenueOk() (*interface{}, bool)`
 
 GetRevenueOk returns a tuple with the Revenue field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRevenue
 
-`func (o *StorefrontListResponseArray) SetRevenue(v map[string]interface{})`
+`func (o *StorefrontListResponseArray) SetRevenue(v interface{})`
 
 SetRevenue sets Revenue field to given value.
 
@@ -187,80 +187,80 @@ SetCurrency sets Currency field to given value.
 
 ### GetProducts
 
-`func (o *StorefrontListResponseArray) GetProducts() []map[string]interface{}`
+`func (o *StorefrontListResponseArray) GetProducts() []interface{}`
 
 GetProducts returns the Products field if non-nil, zero value otherwise.
 
 ### GetProductsOk
 
-`func (o *StorefrontListResponseArray) GetProductsOk() (*[]map[string]interface{}, bool)`
+`func (o *StorefrontListResponseArray) GetProductsOk() (*[]interface{}, bool)`
 
 GetProductsOk returns a tuple with the Products field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProducts
 
-`func (o *StorefrontListResponseArray) SetProducts(v []map[string]interface{})`
+`func (o *StorefrontListResponseArray) SetProducts(v []interface{})`
 
 SetProducts sets Products field to given value.
 
 
 ### GetContacts
 
-`func (o *StorefrontListResponseArray) GetContacts() []map[string]interface{}`
+`func (o *StorefrontListResponseArray) GetContacts() []interface{}`
 
 GetContacts returns the Contacts field if non-nil, zero value otherwise.
 
 ### GetContactsOk
 
-`func (o *StorefrontListResponseArray) GetContactsOk() (*[]map[string]interface{}, bool)`
+`func (o *StorefrontListResponseArray) GetContactsOk() (*[]interface{}, bool)`
 
 GetContactsOk returns a tuple with the Contacts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContacts
 
-`func (o *StorefrontListResponseArray) SetContacts(v []map[string]interface{})`
+`func (o *StorefrontListResponseArray) SetContacts(v []interface{})`
 
 SetContacts sets Contacts field to given value.
 
 
 ### GetSocialMedia
 
-`func (o *StorefrontListResponseArray) GetSocialMedia() []map[string]interface{}`
+`func (o *StorefrontListResponseArray) GetSocialMedia() []interface{}`
 
 GetSocialMedia returns the SocialMedia field if non-nil, zero value otherwise.
 
 ### GetSocialMediaOk
 
-`func (o *StorefrontListResponseArray) GetSocialMediaOk() (*[]map[string]interface{}, bool)`
+`func (o *StorefrontListResponseArray) GetSocialMediaOk() (*[]interface{}, bool)`
 
 GetSocialMediaOk returns a tuple with the SocialMedia field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSocialMedia
 
-`func (o *StorefrontListResponseArray) SetSocialMedia(v []map[string]interface{})`
+`func (o *StorefrontListResponseArray) SetSocialMedia(v []interface{})`
 
 SetSocialMedia sets SocialMedia field to given value.
 
 
 ### GetShippingFees
 
-`func (o *StorefrontListResponseArray) GetShippingFees() []map[string]interface{}`
+`func (o *StorefrontListResponseArray) GetShippingFees() []interface{}`
 
 GetShippingFees returns the ShippingFees field if non-nil, zero value otherwise.
 
 ### GetShippingFeesOk
 
-`func (o *StorefrontListResponseArray) GetShippingFeesOk() (*[]map[string]interface{}, bool)`
+`func (o *StorefrontListResponseArray) GetShippingFeesOk() (*[]interface{}, bool)`
 
 GetShippingFeesOk returns a tuple with the ShippingFees field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShippingFees
 
-`func (o *StorefrontListResponseArray) SetShippingFees(v []map[string]interface{})`
+`func (o *StorefrontListResponseArray) SetShippingFees(v []interface{})`
 
 SetShippingFees sets ShippingFees field to given value.
 

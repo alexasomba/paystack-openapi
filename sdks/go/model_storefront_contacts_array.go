@@ -22,7 +22,7 @@ var _ MappedNullable = &StorefrontContactsArray{}
 type StorefrontContactsArray struct {
 	Value string `json:"value"`
 	Id int32 `json:"id"`
-	TypeName map[string]interface{} `json:"type_name"`
+	TypeName interface{} `json:"type_name"`
 	Type int32 `json:"type"`
 }
 
@@ -30,7 +30,7 @@ type StorefrontContactsArray struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStorefrontContactsArray(value string, id int32, typeName map[string]interface{}, type_ int32) *StorefrontContactsArray {
+func NewStorefrontContactsArray(value string, id int32, typeName interface{}, type_ int32) *StorefrontContactsArray {
 	this := StorefrontContactsArray{}
 	this.Value = value
 	this.Id = id
@@ -96,10 +96,10 @@ func (o *StorefrontContactsArray) SetId(v int32) {
 }
 
 // GetTypeName returns the TypeName field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *StorefrontContactsArray) GetTypeName() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *StorefrontContactsArray) GetTypeName() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -109,15 +109,15 @@ func (o *StorefrontContactsArray) GetTypeName() map[string]interface{} {
 // GetTypeNameOk returns a tuple with the TypeName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StorefrontContactsArray) GetTypeNameOk() (map[string]interface{}, bool) {
+func (o *StorefrontContactsArray) GetTypeNameOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.TypeName) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.TypeName, true
+	return &o.TypeName, true
 }
 
 // SetTypeName sets field value
-func (o *StorefrontContactsArray) SetTypeName(v map[string]interface{}) {
+func (o *StorefrontContactsArray) SetTypeName(v interface{}) {
 	o.TypeName = v
 }
 

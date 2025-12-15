@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Integration** | **int32** |  | 
-**Plan** | **map[string]interface{}** |  | 
+**Plan** | **interface{}** |  | 
 **Domain** | **string** |  | 
 **Name** | **string** |  | 
 **Description** | **NullableString** |  | 
 **Amount** | **NullableInt32** |  | 
 **Currency** | **string** |  | 
 **Slug** | **string** |  | 
-**CustomFields** | **[]map[string]interface{}** |  | 
+**CustomFields** | **[]interface{}** |  | 
 **Type** | **string** |  | 
 **RedirectUrl** | **NullableString** |  | 
 **SuccessMessage** | **NullableString** |  | 
@@ -20,9 +20,9 @@ Name | Type | Description | Notes
 **Active** | **bool** |  | 
 **Published** | **bool** |  | 
 **Migrate** | **bool** |  | 
-**NotificationEmail** | **map[string]interface{}** |  | 
+**NotificationEmail** | **interface{}** |  | 
 **Metadata** | **map[string]interface{}** |  | 
-**SplitCode** | **map[string]interface{}** |  | 
+**SplitCode** | **interface{}** |  | 
 **Id** | **int32** |  | 
 **CreatedAt** | **string** |  | 
 **UpdatedAt** | **string** |  | 
@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 
 ### NewPageListResponseArray
 
-`func NewPageListResponseArray(integration int32, plan map[string]interface{}, domain string, name string, description NullableString, amount NullableInt32, currency string, slug string, customFields []map[string]interface{}, type_ string, redirectUrl NullableString, successMessage NullableString, collectPhone bool, active bool, published bool, migrate bool, notificationEmail map[string]interface{}, metadata map[string]interface{}, splitCode map[string]interface{}, id int32, createdAt string, updatedAt string, ) *PageListResponseArray`
+`func NewPageListResponseArray(integration int32, plan interface{}, domain string, name string, description NullableString, amount NullableInt32, currency string, slug string, customFields []interface{}, type_ string, redirectUrl NullableString, successMessage NullableString, collectPhone bool, active bool, published bool, migrate bool, notificationEmail interface{}, metadata map[string]interface{}, splitCode interface{}, id int32, createdAt string, updatedAt string, ) *PageListResponseArray`
 
 NewPageListResponseArray instantiates a new PageListResponseArray object
 This constructor will assign default values to properties that have it defined,
@@ -68,20 +68,20 @@ SetIntegration sets Integration field to given value.
 
 ### GetPlan
 
-`func (o *PageListResponseArray) GetPlan() map[string]interface{}`
+`func (o *PageListResponseArray) GetPlan() interface{}`
 
 GetPlan returns the Plan field if non-nil, zero value otherwise.
 
 ### GetPlanOk
 
-`func (o *PageListResponseArray) GetPlanOk() (*map[string]interface{}, bool)`
+`func (o *PageListResponseArray) GetPlanOk() (*interface{}, bool)`
 
 GetPlanOk returns a tuple with the Plan field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPlan
 
-`func (o *PageListResponseArray) SetPlan(v map[string]interface{})`
+`func (o *PageListResponseArray) SetPlan(v interface{})`
 
 SetPlan sets Plan field to given value.
 
@@ -238,20 +238,20 @@ SetSlug sets Slug field to given value.
 
 ### GetCustomFields
 
-`func (o *PageListResponseArray) GetCustomFields() []map[string]interface{}`
+`func (o *PageListResponseArray) GetCustomFields() []interface{}`
 
 GetCustomFields returns the CustomFields field if non-nil, zero value otherwise.
 
 ### GetCustomFieldsOk
 
-`func (o *PageListResponseArray) GetCustomFieldsOk() (*[]map[string]interface{}, bool)`
+`func (o *PageListResponseArray) GetCustomFieldsOk() (*[]interface{}, bool)`
 
 GetCustomFieldsOk returns a tuple with the CustomFields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCustomFields
 
-`func (o *PageListResponseArray) SetCustomFields(v []map[string]interface{})`
+`func (o *PageListResponseArray) SetCustomFields(v []interface{})`
 
 SetCustomFields sets CustomFields field to given value.
 
@@ -428,20 +428,20 @@ SetMigrate sets Migrate field to given value.
 
 ### GetNotificationEmail
 
-`func (o *PageListResponseArray) GetNotificationEmail() map[string]interface{}`
+`func (o *PageListResponseArray) GetNotificationEmail() interface{}`
 
 GetNotificationEmail returns the NotificationEmail field if non-nil, zero value otherwise.
 
 ### GetNotificationEmailOk
 
-`func (o *PageListResponseArray) GetNotificationEmailOk() (*map[string]interface{}, bool)`
+`func (o *PageListResponseArray) GetNotificationEmailOk() (*interface{}, bool)`
 
 GetNotificationEmailOk returns a tuple with the NotificationEmail field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNotificationEmail
 
-`func (o *PageListResponseArray) SetNotificationEmail(v map[string]interface{})`
+`func (o *PageListResponseArray) SetNotificationEmail(v interface{})`
 
 SetNotificationEmail sets NotificationEmail field to given value.
 
@@ -488,20 +488,20 @@ SetMetadata sets Metadata field to given value.
 UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
 ### GetSplitCode
 
-`func (o *PageListResponseArray) GetSplitCode() map[string]interface{}`
+`func (o *PageListResponseArray) GetSplitCode() interface{}`
 
 GetSplitCode returns the SplitCode field if non-nil, zero value otherwise.
 
 ### GetSplitCodeOk
 
-`func (o *PageListResponseArray) GetSplitCodeOk() (*map[string]interface{}, bool)`
+`func (o *PageListResponseArray) GetSplitCodeOk() (*interface{}, bool)`
 
 GetSplitCodeOk returns a tuple with the SplitCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSplitCode
 
-`func (o *PageListResponseArray) SetSplitCode(v map[string]interface{})`
+`func (o *PageListResponseArray) SetSplitCode(v interface{})`
 
 SetSplitCode sets SplitCode field to given value.
 

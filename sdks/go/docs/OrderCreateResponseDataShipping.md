@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **Integration** | **int32** |  | 
 **Domain** | **string** |  | 
 **Fees** | **int32** |  | 
-**DeliveryNote** | **map[string]interface{}** |  | 
+**DeliveryNote** | **interface{}** |  | 
 **StreetLine** | **string** |  | 
 **City** | **string** |  | 
 **State** | **string** |  | 
 **Country** | **string** |  | 
 **IsShipped** | **bool** |  | 
-**DeliveryTrackingLink** | **map[string]interface{}** |  | 
+**DeliveryTrackingLink** | **interface{}** |  | 
 **Id** | **int32** |  | 
 **CreatedAt** | **string** |  | 
 **UpdatedAt** | **string** |  | 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewOrderCreateResponseDataShipping
 
-`func NewOrderCreateResponseDataShipping(customer int32, integration int32, domain string, fees int32, deliveryNote map[string]interface{}, streetLine string, city string, state string, country string, isShipped bool, deliveryTrackingLink map[string]interface{}, id int32, createdAt string, updatedAt string, ) *OrderCreateResponseDataShipping`
+`func NewOrderCreateResponseDataShipping(customer int32, integration int32, domain string, fees int32, deliveryNote interface{}, streetLine string, city string, state string, country string, isShipped bool, deliveryTrackingLink interface{}, id int32, createdAt string, updatedAt string, ) *OrderCreateResponseDataShipping`
 
 NewOrderCreateResponseDataShipping instantiates a new OrderCreateResponseDataShipping object
 This constructor will assign default values to properties that have it defined,
@@ -120,20 +120,20 @@ SetFees sets Fees field to given value.
 
 ### GetDeliveryNote
 
-`func (o *OrderCreateResponseDataShipping) GetDeliveryNote() map[string]interface{}`
+`func (o *OrderCreateResponseDataShipping) GetDeliveryNote() interface{}`
 
 GetDeliveryNote returns the DeliveryNote field if non-nil, zero value otherwise.
 
 ### GetDeliveryNoteOk
 
-`func (o *OrderCreateResponseDataShipping) GetDeliveryNoteOk() (*map[string]interface{}, bool)`
+`func (o *OrderCreateResponseDataShipping) GetDeliveryNoteOk() (*interface{}, bool)`
 
 GetDeliveryNoteOk returns a tuple with the DeliveryNote field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeliveryNote
 
-`func (o *OrderCreateResponseDataShipping) SetDeliveryNote(v map[string]interface{})`
+`func (o *OrderCreateResponseDataShipping) SetDeliveryNote(v interface{})`
 
 SetDeliveryNote sets DeliveryNote field to given value.
 
@@ -250,20 +250,20 @@ SetIsShipped sets IsShipped field to given value.
 
 ### GetDeliveryTrackingLink
 
-`func (o *OrderCreateResponseDataShipping) GetDeliveryTrackingLink() map[string]interface{}`
+`func (o *OrderCreateResponseDataShipping) GetDeliveryTrackingLink() interface{}`
 
 GetDeliveryTrackingLink returns the DeliveryTrackingLink field if non-nil, zero value otherwise.
 
 ### GetDeliveryTrackingLinkOk
 
-`func (o *OrderCreateResponseDataShipping) GetDeliveryTrackingLinkOk() (*map[string]interface{}, bool)`
+`func (o *OrderCreateResponseDataShipping) GetDeliveryTrackingLinkOk() (*interface{}, bool)`
 
 GetDeliveryTrackingLinkOk returns a tuple with the DeliveryTrackingLink field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeliveryTrackingLink
 
-`func (o *OrderCreateResponseDataShipping) SetDeliveryTrackingLink(v map[string]interface{})`
+`func (o *OrderCreateResponseDataShipping) SetDeliveryTrackingLink(v interface{})`
 
 SetDeliveryTrackingLink sets DeliveryTrackingLink field to given value.
 

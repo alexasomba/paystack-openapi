@@ -20,15 +20,15 @@ var _ MappedNullable = &DisputeFetchResponseDataTransactionAuthorization{}
 
 // DisputeFetchResponseDataTransactionAuthorization struct for DisputeFetchResponseDataTransactionAuthorization
 type DisputeFetchResponseDataTransactionAuthorization struct {
-	ReceiverBankAccountNumber map[string]interface{} `json:"receiver_bank_account_number"`
-	ReceiverBank map[string]interface{} `json:"receiver_bank"`
+	ReceiverBankAccountNumber interface{} `json:"receiver_bank_account_number"`
+	ReceiverBank interface{} `json:"receiver_bank"`
 }
 
 // NewDisputeFetchResponseDataTransactionAuthorization instantiates a new DisputeFetchResponseDataTransactionAuthorization object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDisputeFetchResponseDataTransactionAuthorization(receiverBankAccountNumber map[string]interface{}, receiverBank map[string]interface{}) *DisputeFetchResponseDataTransactionAuthorization {
+func NewDisputeFetchResponseDataTransactionAuthorization(receiverBankAccountNumber interface{}, receiverBank interface{}) *DisputeFetchResponseDataTransactionAuthorization {
 	this := DisputeFetchResponseDataTransactionAuthorization{}
 	this.ReceiverBankAccountNumber = receiverBankAccountNumber
 	this.ReceiverBank = receiverBank
@@ -44,10 +44,10 @@ func NewDisputeFetchResponseDataTransactionAuthorizationWithDefaults() *DisputeF
 }
 
 // GetReceiverBankAccountNumber returns the ReceiverBankAccountNumber field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *DisputeFetchResponseDataTransactionAuthorization) GetReceiverBankAccountNumber() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *DisputeFetchResponseDataTransactionAuthorization) GetReceiverBankAccountNumber() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -57,23 +57,23 @@ func (o *DisputeFetchResponseDataTransactionAuthorization) GetReceiverBankAccoun
 // GetReceiverBankAccountNumberOk returns a tuple with the ReceiverBankAccountNumber field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeFetchResponseDataTransactionAuthorization) GetReceiverBankAccountNumberOk() (map[string]interface{}, bool) {
+func (o *DisputeFetchResponseDataTransactionAuthorization) GetReceiverBankAccountNumberOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.ReceiverBankAccountNumber) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.ReceiverBankAccountNumber, true
+	return &o.ReceiverBankAccountNumber, true
 }
 
 // SetReceiverBankAccountNumber sets field value
-func (o *DisputeFetchResponseDataTransactionAuthorization) SetReceiverBankAccountNumber(v map[string]interface{}) {
+func (o *DisputeFetchResponseDataTransactionAuthorization) SetReceiverBankAccountNumber(v interface{}) {
 	o.ReceiverBankAccountNumber = v
 }
 
 // GetReceiverBank returns the ReceiverBank field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *DisputeFetchResponseDataTransactionAuthorization) GetReceiverBank() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *DisputeFetchResponseDataTransactionAuthorization) GetReceiverBank() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -83,15 +83,15 @@ func (o *DisputeFetchResponseDataTransactionAuthorization) GetReceiverBank() map
 // GetReceiverBankOk returns a tuple with the ReceiverBank field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DisputeFetchResponseDataTransactionAuthorization) GetReceiverBankOk() (map[string]interface{}, bool) {
+func (o *DisputeFetchResponseDataTransactionAuthorization) GetReceiverBankOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.ReceiverBank) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.ReceiverBank, true
+	return &o.ReceiverBank, true
 }
 
 // SetReceiverBank sets field value
-func (o *DisputeFetchResponseDataTransactionAuthorization) SetReceiverBank(v map[string]interface{}) {
+func (o *DisputeFetchResponseDataTransactionAuthorization) SetReceiverBank(v interface{}) {
 	o.ReceiverBank = v
 }
 

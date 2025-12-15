@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Discounts** | **[]map[string]interface{}** |  | 
+**Discounts** | **[]interface{}** |  | 
 **Currency** | **string** |  | 
-**ShippingAddress** | **map[string]interface{}** |  | 
+**ShippingAddress** | **interface{}** |  | 
 **Integration** | **int32** |  | 
 **Domain** | **string** |  | 
 **Email** | **string** |  | 
@@ -21,11 +21,11 @@ Name | Type | Description | Notes
 **Status** | **string** |  | 
 **Refunded** | **bool** |  | 
 **IsViewed** | **bool** |  | 
-**ExpirationDate** | **map[string]interface{}** |  | 
+**ExpirationDate** | **interface{}** |  | 
 **Id** | **int32** |  | 
 **CreatedAt** | **string** |  | 
 **UpdatedAt** | **string** |  | 
-**Items** | **[]map[string]interface{}** |  | 
+**Items** | **[]interface{}** |  | 
 **PayForMeCode** | **string** |  | 
 **DiscountAmount** | **int32** |  | 
 
@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 
 ### NewOrderCreateResponseData
 
-`func NewOrderCreateResponseData(discounts []map[string]interface{}, currency string, shippingAddress map[string]interface{}, integration int32, domain string, email string, customer int32, amount int32, payForMe bool, shipping NullableOrderCreateResponseDataShipping, shippingFees int32, metadata map[string]interface{}, orderCode string, status string, refunded bool, isViewed bool, expirationDate map[string]interface{}, id int32, createdAt string, updatedAt string, items []map[string]interface{}, payForMeCode string, discountAmount int32, ) *OrderCreateResponseData`
+`func NewOrderCreateResponseData(discounts []interface{}, currency string, shippingAddress interface{}, integration int32, domain string, email string, customer int32, amount int32, payForMe bool, shipping NullableOrderCreateResponseDataShipping, shippingFees int32, metadata map[string]interface{}, orderCode string, status string, refunded bool, isViewed bool, expirationDate interface{}, id int32, createdAt string, updatedAt string, items []interface{}, payForMeCode string, discountAmount int32, ) *OrderCreateResponseData`
 
 NewOrderCreateResponseData instantiates a new OrderCreateResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -50,20 +50,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDiscounts
 
-`func (o *OrderCreateResponseData) GetDiscounts() []map[string]interface{}`
+`func (o *OrderCreateResponseData) GetDiscounts() []interface{}`
 
 GetDiscounts returns the Discounts field if non-nil, zero value otherwise.
 
 ### GetDiscountsOk
 
-`func (o *OrderCreateResponseData) GetDiscountsOk() (*[]map[string]interface{}, bool)`
+`func (o *OrderCreateResponseData) GetDiscountsOk() (*[]interface{}, bool)`
 
 GetDiscountsOk returns a tuple with the Discounts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDiscounts
 
-`func (o *OrderCreateResponseData) SetDiscounts(v []map[string]interface{})`
+`func (o *OrderCreateResponseData) SetDiscounts(v []interface{})`
 
 SetDiscounts sets Discounts field to given value.
 
@@ -90,20 +90,20 @@ SetCurrency sets Currency field to given value.
 
 ### GetShippingAddress
 
-`func (o *OrderCreateResponseData) GetShippingAddress() map[string]interface{}`
+`func (o *OrderCreateResponseData) GetShippingAddress() interface{}`
 
 GetShippingAddress returns the ShippingAddress field if non-nil, zero value otherwise.
 
 ### GetShippingAddressOk
 
-`func (o *OrderCreateResponseData) GetShippingAddressOk() (*map[string]interface{}, bool)`
+`func (o *OrderCreateResponseData) GetShippingAddressOk() (*interface{}, bool)`
 
 GetShippingAddressOk returns a tuple with the ShippingAddress field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShippingAddress
 
-`func (o *OrderCreateResponseData) SetShippingAddress(v map[string]interface{})`
+`func (o *OrderCreateResponseData) SetShippingAddress(v interface{})`
 
 SetShippingAddress sets ShippingAddress field to given value.
 
@@ -415,20 +415,20 @@ SetIsViewed sets IsViewed field to given value.
 
 ### GetExpirationDate
 
-`func (o *OrderCreateResponseData) GetExpirationDate() map[string]interface{}`
+`func (o *OrderCreateResponseData) GetExpirationDate() interface{}`
 
 GetExpirationDate returns the ExpirationDate field if non-nil, zero value otherwise.
 
 ### GetExpirationDateOk
 
-`func (o *OrderCreateResponseData) GetExpirationDateOk() (*map[string]interface{}, bool)`
+`func (o *OrderCreateResponseData) GetExpirationDateOk() (*interface{}, bool)`
 
 GetExpirationDateOk returns a tuple with the ExpirationDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpirationDate
 
-`func (o *OrderCreateResponseData) SetExpirationDate(v map[string]interface{})`
+`func (o *OrderCreateResponseData) SetExpirationDate(v interface{})`
 
 SetExpirationDate sets ExpirationDate field to given value.
 
@@ -505,20 +505,20 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 ### GetItems
 
-`func (o *OrderCreateResponseData) GetItems() []map[string]interface{}`
+`func (o *OrderCreateResponseData) GetItems() []interface{}`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *OrderCreateResponseData) GetItemsOk() (*[]map[string]interface{}, bool)`
+`func (o *OrderCreateResponseData) GetItemsOk() (*[]interface{}, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *OrderCreateResponseData) SetItems(v []map[string]interface{})`
+`func (o *OrderCreateResponseData) SetItems(v []interface{})`
 
 SetItems sets Items field to given value.
 

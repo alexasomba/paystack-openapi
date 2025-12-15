@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Currency** | **map[string]interface{}** |  | 
+**Currency** | **interface{}** |  | 
 
 ## Methods
 
 ### NewRefundCreateResponseDataTransactionSubaccount
 
-`func NewRefundCreateResponseDataTransactionSubaccount(currency map[string]interface{}, ) *RefundCreateResponseDataTransactionSubaccount`
+`func NewRefundCreateResponseDataTransactionSubaccount(currency interface{}, ) *RefundCreateResponseDataTransactionSubaccount`
 
 NewRefundCreateResponseDataTransactionSubaccount instantiates a new RefundCreateResponseDataTransactionSubaccount object
 This constructor will assign default values to properties that have it defined,
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCurrency
 
-`func (o *RefundCreateResponseDataTransactionSubaccount) GetCurrency() map[string]interface{}`
+`func (o *RefundCreateResponseDataTransactionSubaccount) GetCurrency() interface{}`
 
 GetCurrency returns the Currency field if non-nil, zero value otherwise.
 
 ### GetCurrencyOk
 
-`func (o *RefundCreateResponseDataTransactionSubaccount) GetCurrencyOk() (*map[string]interface{}, bool)`
+`func (o *RefundCreateResponseDataTransactionSubaccount) GetCurrencyOk() (*interface{}, bool)`
 
 GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCurrency
 
-`func (o *RefundCreateResponseDataTransactionSubaccount) SetCurrency(v map[string]interface{})`
+`func (o *RefundCreateResponseDataTransactionSubaccount) SetCurrency(v interface{})`
 
 SetCurrency sets Currency field to given value.
 

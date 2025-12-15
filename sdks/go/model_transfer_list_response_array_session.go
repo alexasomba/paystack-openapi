@@ -20,15 +20,15 @@ var _ MappedNullable = &TransferListResponseArraySession{}
 
 // TransferListResponseArraySession struct for TransferListResponseArraySession
 type TransferListResponseArraySession struct {
-	Provider map[string]interface{} `json:"provider"`
-	Id map[string]interface{} `json:"id"`
+	Provider interface{} `json:"provider"`
+	Id interface{} `json:"id"`
 }
 
 // NewTransferListResponseArraySession instantiates a new TransferListResponseArraySession object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferListResponseArraySession(provider map[string]interface{}, id map[string]interface{}) *TransferListResponseArraySession {
+func NewTransferListResponseArraySession(provider interface{}, id interface{}) *TransferListResponseArraySession {
 	this := TransferListResponseArraySession{}
 	this.Provider = provider
 	this.Id = id
@@ -44,10 +44,10 @@ func NewTransferListResponseArraySessionWithDefaults() *TransferListResponseArra
 }
 
 // GetProvider returns the Provider field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *TransferListResponseArraySession) GetProvider() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *TransferListResponseArraySession) GetProvider() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -57,23 +57,23 @@ func (o *TransferListResponseArraySession) GetProvider() map[string]interface{} 
 // GetProviderOk returns a tuple with the Provider field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransferListResponseArraySession) GetProviderOk() (map[string]interface{}, bool) {
+func (o *TransferListResponseArraySession) GetProviderOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Provider) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Provider, true
+	return &o.Provider, true
 }
 
 // SetProvider sets field value
-func (o *TransferListResponseArraySession) SetProvider(v map[string]interface{}) {
+func (o *TransferListResponseArraySession) SetProvider(v interface{}) {
 	o.Provider = v
 }
 
 // GetId returns the Id field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *TransferListResponseArraySession) GetId() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *TransferListResponseArraySession) GetId() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -83,15 +83,15 @@ func (o *TransferListResponseArraySession) GetId() map[string]interface{} {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransferListResponseArraySession) GetIdOk() (map[string]interface{}, bool) {
+func (o *TransferListResponseArraySession) GetIdOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Id) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
 // SetId sets field value
-func (o *TransferListResponseArraySession) SetId(v map[string]interface{}) {
+func (o *TransferListResponseArraySession) SetId(v interface{}) {
 	o.Id = v
 }
 

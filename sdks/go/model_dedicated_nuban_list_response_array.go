@@ -21,7 +21,7 @@ var _ MappedNullable = &DedicatedNubanListResponseArray{}
 // DedicatedNubanListResponseArray struct for DedicatedNubanListResponseArray
 type DedicatedNubanListResponseArray struct {
 	Customer DedicatedNubanListResponseArrayCustomer `json:"customer"`
-	Bank DedicatedNubanCreateResponseDataBank `json:"bank"`
+	Bank DedicatedNubanListResponseArrayBank `json:"bank"`
 	Id int32 `json:"id"`
 	AccountName string `json:"account_name"`
 	AccountNumber string `json:"account_number"`
@@ -37,7 +37,7 @@ type DedicatedNubanListResponseArray struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDedicatedNubanListResponseArray(customer DedicatedNubanListResponseArrayCustomer, bank DedicatedNubanCreateResponseDataBank, id int32, accountName string, accountNumber string, createdAt string, updatedAt string, currency string, splitConfig NullableDedicatedNubanListResponseArraySplitConfig, active bool, assigned bool) *DedicatedNubanListResponseArray {
+func NewDedicatedNubanListResponseArray(customer DedicatedNubanListResponseArrayCustomer, bank DedicatedNubanListResponseArrayBank, id int32, accountName string, accountNumber string, createdAt string, updatedAt string, currency string, splitConfig NullableDedicatedNubanListResponseArraySplitConfig, active bool, assigned bool) *DedicatedNubanListResponseArray {
 	this := DedicatedNubanListResponseArray{}
 	this.Customer = customer
 	this.Bank = bank
@@ -86,9 +86,9 @@ func (o *DedicatedNubanListResponseArray) SetCustomer(v DedicatedNubanListRespon
 }
 
 // GetBank returns the Bank field value
-func (o *DedicatedNubanListResponseArray) GetBank() DedicatedNubanCreateResponseDataBank {
+func (o *DedicatedNubanListResponseArray) GetBank() DedicatedNubanListResponseArrayBank {
 	if o == nil {
-		var ret DedicatedNubanCreateResponseDataBank
+		var ret DedicatedNubanListResponseArrayBank
 		return ret
 	}
 
@@ -97,7 +97,7 @@ func (o *DedicatedNubanListResponseArray) GetBank() DedicatedNubanCreateResponse
 
 // GetBankOk returns a tuple with the Bank field value
 // and a boolean to check if the value has been set.
-func (o *DedicatedNubanListResponseArray) GetBankOk() (*DedicatedNubanCreateResponseDataBank, bool) {
+func (o *DedicatedNubanListResponseArray) GetBankOk() (*DedicatedNubanListResponseArrayBank, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -105,7 +105,7 @@ func (o *DedicatedNubanListResponseArray) GetBankOk() (*DedicatedNubanCreateResp
 }
 
 // SetBank sets field value
-func (o *DedicatedNubanListResponseArray) SetBank(v DedicatedNubanCreateResponseDataBank) {
+func (o *DedicatedNubanListResponseArray) SetBank(v DedicatedNubanListResponseArrayBank) {
 	o.Bank = v
 }
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DigitalAssets** | **[]map[string]interface{}** |  | 
+**DigitalAssets** | **[]interface{}** |  | 
 **Integration** | **int32** |  | 
 **Name** | **string** |  | 
 **Description** | **string** |  | 
@@ -12,28 +12,28 @@ Name | Type | Description | Notes
 **Price** | **int32** |  | 
 **Currency** | **string** |  | 
 **Quantity** | **int32** |  | 
-**QuantitySold** | **map[string]interface{}** |  | 
+**QuantitySold** | **interface{}** |  | 
 **Type** | **string** |  | 
-**Files** | **[]map[string]interface{}** |  | 
-**FilePath** | **map[string]interface{}** |  | 
+**Files** | **[]interface{}** |  | 
+**FilePath** | **interface{}** |  | 
 **IsShippable** | **bool** |  | 
-**ShippingFields** | [**ProductCreateResponseDataShippingFields**](ProductCreateResponseDataShippingFields.md) |  | 
+**ShippingFields** | [**ProductListsResponseArrayShippingFields**](ProductListsResponseArrayShippingFields.md) |  | 
 **Unlimited** | **bool** |  | 
 **Domain** | **string** |  | 
 **Active** | **bool** |  | 
-**Features** | **map[string]interface{}** |  | 
+**Features** | **interface{}** |  | 
 **InStock** | **bool** |  | 
-**Metadata** | [**ProductCreateResponseDataMetadata**](ProductCreateResponseDataMetadata.md) |  | 
+**Metadata** | [**ProductListsResponseArrayMetadata**](ProductListsResponseArrayMetadata.md) |  | 
 **Slug** | **string** |  | 
-**SuccessMessage** | **map[string]interface{}** |  | 
-**RedirectUrl** | **map[string]interface{}** |  | 
-**SplitCode** | **map[string]interface{}** |  | 
-**NotificationEmails** | **map[string]interface{}** |  | 
+**SuccessMessage** | **interface{}** |  | 
+**RedirectUrl** | **interface{}** |  | 
+**SplitCode** | **interface{}** |  | 
+**NotificationEmails** | **interface{}** |  | 
 **MinimumOrderable** | **int32** |  | 
-**MaximumOrderable** | **map[string]interface{}** |  | 
+**MaximumOrderable** | **interface{}** |  | 
 **LowStockAlert** | **bool** |  | 
-**StockThreshold** | **map[string]interface{}** |  | 
-**ExpiresIn** | **map[string]interface{}** |  | 
+**StockThreshold** | **interface{}** |  | 
+**ExpiresIn** | **interface{}** |  | 
 **Id** | **int32** |  | 
 **CreatedAt** | **string** |  | 
 **UpdatedAt** | **string** |  | 
@@ -42,7 +42,7 @@ Name | Type | Description | Notes
 
 ### NewProductFetchResponseData
 
-`func NewProductFetchResponseData(digitalAssets []map[string]interface{}, integration int32, name string, description string, productCode string, price int32, currency string, quantity int32, quantitySold map[string]interface{}, type_ string, files []map[string]interface{}, filePath map[string]interface{}, isShippable bool, shippingFields ProductCreateResponseDataShippingFields, unlimited bool, domain string, active bool, features map[string]interface{}, inStock bool, metadata ProductCreateResponseDataMetadata, slug string, successMessage map[string]interface{}, redirectUrl map[string]interface{}, splitCode map[string]interface{}, notificationEmails map[string]interface{}, minimumOrderable int32, maximumOrderable map[string]interface{}, lowStockAlert bool, stockThreshold map[string]interface{}, expiresIn map[string]interface{}, id int32, createdAt string, updatedAt string, ) *ProductFetchResponseData`
+`func NewProductFetchResponseData(digitalAssets []interface{}, integration int32, name string, description string, productCode string, price int32, currency string, quantity int32, quantitySold interface{}, type_ string, files []interface{}, filePath interface{}, isShippable bool, shippingFields ProductListsResponseArrayShippingFields, unlimited bool, domain string, active bool, features interface{}, inStock bool, metadata ProductListsResponseArrayMetadata, slug string, successMessage interface{}, redirectUrl interface{}, splitCode interface{}, notificationEmails interface{}, minimumOrderable int32, maximumOrderable interface{}, lowStockAlert bool, stockThreshold interface{}, expiresIn interface{}, id int32, createdAt string, updatedAt string, ) *ProductFetchResponseData`
 
 NewProductFetchResponseData instantiates a new ProductFetchResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -59,20 +59,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDigitalAssets
 
-`func (o *ProductFetchResponseData) GetDigitalAssets() []map[string]interface{}`
+`func (o *ProductFetchResponseData) GetDigitalAssets() []interface{}`
 
 GetDigitalAssets returns the DigitalAssets field if non-nil, zero value otherwise.
 
 ### GetDigitalAssetsOk
 
-`func (o *ProductFetchResponseData) GetDigitalAssetsOk() (*[]map[string]interface{}, bool)`
+`func (o *ProductFetchResponseData) GetDigitalAssetsOk() (*[]interface{}, bool)`
 
 GetDigitalAssetsOk returns a tuple with the DigitalAssets field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDigitalAssets
 
-`func (o *ProductFetchResponseData) SetDigitalAssets(v []map[string]interface{})`
+`func (o *ProductFetchResponseData) SetDigitalAssets(v []interface{})`
 
 SetDigitalAssets sets DigitalAssets field to given value.
 
@@ -219,20 +219,20 @@ SetQuantity sets Quantity field to given value.
 
 ### GetQuantitySold
 
-`func (o *ProductFetchResponseData) GetQuantitySold() map[string]interface{}`
+`func (o *ProductFetchResponseData) GetQuantitySold() interface{}`
 
 GetQuantitySold returns the QuantitySold field if non-nil, zero value otherwise.
 
 ### GetQuantitySoldOk
 
-`func (o *ProductFetchResponseData) GetQuantitySoldOk() (*map[string]interface{}, bool)`
+`func (o *ProductFetchResponseData) GetQuantitySoldOk() (*interface{}, bool)`
 
 GetQuantitySoldOk returns a tuple with the QuantitySold field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuantitySold
 
-`func (o *ProductFetchResponseData) SetQuantitySold(v map[string]interface{})`
+`func (o *ProductFetchResponseData) SetQuantitySold(v interface{})`
 
 SetQuantitySold sets QuantitySold field to given value.
 
@@ -269,40 +269,40 @@ SetType sets Type field to given value.
 
 ### GetFiles
 
-`func (o *ProductFetchResponseData) GetFiles() []map[string]interface{}`
+`func (o *ProductFetchResponseData) GetFiles() []interface{}`
 
 GetFiles returns the Files field if non-nil, zero value otherwise.
 
 ### GetFilesOk
 
-`func (o *ProductFetchResponseData) GetFilesOk() (*[]map[string]interface{}, bool)`
+`func (o *ProductFetchResponseData) GetFilesOk() (*[]interface{}, bool)`
 
 GetFilesOk returns a tuple with the Files field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFiles
 
-`func (o *ProductFetchResponseData) SetFiles(v []map[string]interface{})`
+`func (o *ProductFetchResponseData) SetFiles(v []interface{})`
 
 SetFiles sets Files field to given value.
 
 
 ### GetFilePath
 
-`func (o *ProductFetchResponseData) GetFilePath() map[string]interface{}`
+`func (o *ProductFetchResponseData) GetFilePath() interface{}`
 
 GetFilePath returns the FilePath field if non-nil, zero value otherwise.
 
 ### GetFilePathOk
 
-`func (o *ProductFetchResponseData) GetFilePathOk() (*map[string]interface{}, bool)`
+`func (o *ProductFetchResponseData) GetFilePathOk() (*interface{}, bool)`
 
 GetFilePathOk returns a tuple with the FilePath field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFilePath
 
-`func (o *ProductFetchResponseData) SetFilePath(v map[string]interface{})`
+`func (o *ProductFetchResponseData) SetFilePath(v interface{})`
 
 SetFilePath sets FilePath field to given value.
 
@@ -339,20 +339,20 @@ SetIsShippable sets IsShippable field to given value.
 
 ### GetShippingFields
 
-`func (o *ProductFetchResponseData) GetShippingFields() ProductCreateResponseDataShippingFields`
+`func (o *ProductFetchResponseData) GetShippingFields() ProductListsResponseArrayShippingFields`
 
 GetShippingFields returns the ShippingFields field if non-nil, zero value otherwise.
 
 ### GetShippingFieldsOk
 
-`func (o *ProductFetchResponseData) GetShippingFieldsOk() (*ProductCreateResponseDataShippingFields, bool)`
+`func (o *ProductFetchResponseData) GetShippingFieldsOk() (*ProductListsResponseArrayShippingFields, bool)`
 
 GetShippingFieldsOk returns a tuple with the ShippingFields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShippingFields
 
-`func (o *ProductFetchResponseData) SetShippingFields(v ProductCreateResponseDataShippingFields)`
+`func (o *ProductFetchResponseData) SetShippingFields(v ProductListsResponseArrayShippingFields)`
 
 SetShippingFields sets ShippingFields field to given value.
 
@@ -419,20 +419,20 @@ SetActive sets Active field to given value.
 
 ### GetFeatures
 
-`func (o *ProductFetchResponseData) GetFeatures() map[string]interface{}`
+`func (o *ProductFetchResponseData) GetFeatures() interface{}`
 
 GetFeatures returns the Features field if non-nil, zero value otherwise.
 
 ### GetFeaturesOk
 
-`func (o *ProductFetchResponseData) GetFeaturesOk() (*map[string]interface{}, bool)`
+`func (o *ProductFetchResponseData) GetFeaturesOk() (*interface{}, bool)`
 
 GetFeaturesOk returns a tuple with the Features field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFeatures
 
-`func (o *ProductFetchResponseData) SetFeatures(v map[string]interface{})`
+`func (o *ProductFetchResponseData) SetFeatures(v interface{})`
 
 SetFeatures sets Features field to given value.
 
@@ -469,20 +469,20 @@ SetInStock sets InStock field to given value.
 
 ### GetMetadata
 
-`func (o *ProductFetchResponseData) GetMetadata() ProductCreateResponseDataMetadata`
+`func (o *ProductFetchResponseData) GetMetadata() ProductListsResponseArrayMetadata`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *ProductFetchResponseData) GetMetadataOk() (*ProductCreateResponseDataMetadata, bool)`
+`func (o *ProductFetchResponseData) GetMetadataOk() (*ProductListsResponseArrayMetadata, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *ProductFetchResponseData) SetMetadata(v ProductCreateResponseDataMetadata)`
+`func (o *ProductFetchResponseData) SetMetadata(v ProductListsResponseArrayMetadata)`
 
 SetMetadata sets Metadata field to given value.
 
@@ -509,20 +509,20 @@ SetSlug sets Slug field to given value.
 
 ### GetSuccessMessage
 
-`func (o *ProductFetchResponseData) GetSuccessMessage() map[string]interface{}`
+`func (o *ProductFetchResponseData) GetSuccessMessage() interface{}`
 
 GetSuccessMessage returns the SuccessMessage field if non-nil, zero value otherwise.
 
 ### GetSuccessMessageOk
 
-`func (o *ProductFetchResponseData) GetSuccessMessageOk() (*map[string]interface{}, bool)`
+`func (o *ProductFetchResponseData) GetSuccessMessageOk() (*interface{}, bool)`
 
 GetSuccessMessageOk returns a tuple with the SuccessMessage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSuccessMessage
 
-`func (o *ProductFetchResponseData) SetSuccessMessage(v map[string]interface{})`
+`func (o *ProductFetchResponseData) SetSuccessMessage(v interface{})`
 
 SetSuccessMessage sets SuccessMessage field to given value.
 
@@ -539,20 +539,20 @@ SetSuccessMessage sets SuccessMessage field to given value.
 UnsetSuccessMessage ensures that no value is present for SuccessMessage, not even an explicit nil
 ### GetRedirectUrl
 
-`func (o *ProductFetchResponseData) GetRedirectUrl() map[string]interface{}`
+`func (o *ProductFetchResponseData) GetRedirectUrl() interface{}`
 
 GetRedirectUrl returns the RedirectUrl field if non-nil, zero value otherwise.
 
 ### GetRedirectUrlOk
 
-`func (o *ProductFetchResponseData) GetRedirectUrlOk() (*map[string]interface{}, bool)`
+`func (o *ProductFetchResponseData) GetRedirectUrlOk() (*interface{}, bool)`
 
 GetRedirectUrlOk returns a tuple with the RedirectUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRedirectUrl
 
-`func (o *ProductFetchResponseData) SetRedirectUrl(v map[string]interface{})`
+`func (o *ProductFetchResponseData) SetRedirectUrl(v interface{})`
 
 SetRedirectUrl sets RedirectUrl field to given value.
 
@@ -569,20 +569,20 @@ SetRedirectUrl sets RedirectUrl field to given value.
 UnsetRedirectUrl ensures that no value is present for RedirectUrl, not even an explicit nil
 ### GetSplitCode
 
-`func (o *ProductFetchResponseData) GetSplitCode() map[string]interface{}`
+`func (o *ProductFetchResponseData) GetSplitCode() interface{}`
 
 GetSplitCode returns the SplitCode field if non-nil, zero value otherwise.
 
 ### GetSplitCodeOk
 
-`func (o *ProductFetchResponseData) GetSplitCodeOk() (*map[string]interface{}, bool)`
+`func (o *ProductFetchResponseData) GetSplitCodeOk() (*interface{}, bool)`
 
 GetSplitCodeOk returns a tuple with the SplitCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSplitCode
 
-`func (o *ProductFetchResponseData) SetSplitCode(v map[string]interface{})`
+`func (o *ProductFetchResponseData) SetSplitCode(v interface{})`
 
 SetSplitCode sets SplitCode field to given value.
 
@@ -599,20 +599,20 @@ SetSplitCode sets SplitCode field to given value.
 UnsetSplitCode ensures that no value is present for SplitCode, not even an explicit nil
 ### GetNotificationEmails
 
-`func (o *ProductFetchResponseData) GetNotificationEmails() map[string]interface{}`
+`func (o *ProductFetchResponseData) GetNotificationEmails() interface{}`
 
 GetNotificationEmails returns the NotificationEmails field if non-nil, zero value otherwise.
 
 ### GetNotificationEmailsOk
 
-`func (o *ProductFetchResponseData) GetNotificationEmailsOk() (*map[string]interface{}, bool)`
+`func (o *ProductFetchResponseData) GetNotificationEmailsOk() (*interface{}, bool)`
 
 GetNotificationEmailsOk returns a tuple with the NotificationEmails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNotificationEmails
 
-`func (o *ProductFetchResponseData) SetNotificationEmails(v map[string]interface{})`
+`func (o *ProductFetchResponseData) SetNotificationEmails(v interface{})`
 
 SetNotificationEmails sets NotificationEmails field to given value.
 
@@ -649,20 +649,20 @@ SetMinimumOrderable sets MinimumOrderable field to given value.
 
 ### GetMaximumOrderable
 
-`func (o *ProductFetchResponseData) GetMaximumOrderable() map[string]interface{}`
+`func (o *ProductFetchResponseData) GetMaximumOrderable() interface{}`
 
 GetMaximumOrderable returns the MaximumOrderable field if non-nil, zero value otherwise.
 
 ### GetMaximumOrderableOk
 
-`func (o *ProductFetchResponseData) GetMaximumOrderableOk() (*map[string]interface{}, bool)`
+`func (o *ProductFetchResponseData) GetMaximumOrderableOk() (*interface{}, bool)`
 
 GetMaximumOrderableOk returns a tuple with the MaximumOrderable field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaximumOrderable
 
-`func (o *ProductFetchResponseData) SetMaximumOrderable(v map[string]interface{})`
+`func (o *ProductFetchResponseData) SetMaximumOrderable(v interface{})`
 
 SetMaximumOrderable sets MaximumOrderable field to given value.
 
@@ -699,20 +699,20 @@ SetLowStockAlert sets LowStockAlert field to given value.
 
 ### GetStockThreshold
 
-`func (o *ProductFetchResponseData) GetStockThreshold() map[string]interface{}`
+`func (o *ProductFetchResponseData) GetStockThreshold() interface{}`
 
 GetStockThreshold returns the StockThreshold field if non-nil, zero value otherwise.
 
 ### GetStockThresholdOk
 
-`func (o *ProductFetchResponseData) GetStockThresholdOk() (*map[string]interface{}, bool)`
+`func (o *ProductFetchResponseData) GetStockThresholdOk() (*interface{}, bool)`
 
 GetStockThresholdOk returns a tuple with the StockThreshold field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStockThreshold
 
-`func (o *ProductFetchResponseData) SetStockThreshold(v map[string]interface{})`
+`func (o *ProductFetchResponseData) SetStockThreshold(v interface{})`
 
 SetStockThreshold sets StockThreshold field to given value.
 
@@ -729,20 +729,20 @@ SetStockThreshold sets StockThreshold field to given value.
 UnsetStockThreshold ensures that no value is present for StockThreshold, not even an explicit nil
 ### GetExpiresIn
 
-`func (o *ProductFetchResponseData) GetExpiresIn() map[string]interface{}`
+`func (o *ProductFetchResponseData) GetExpiresIn() interface{}`
 
 GetExpiresIn returns the ExpiresIn field if non-nil, zero value otherwise.
 
 ### GetExpiresInOk
 
-`func (o *ProductFetchResponseData) GetExpiresInOk() (*map[string]interface{}, bool)`
+`func (o *ProductFetchResponseData) GetExpiresInOk() (*interface{}, bool)`
 
 GetExpiresInOk returns a tuple with the ExpiresIn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiresIn
 
-`func (o *ProductFetchResponseData) SetExpiresIn(v map[string]interface{})`
+`func (o *ProductFetchResponseData) SetExpiresIn(v interface{})`
 
 SetExpiresIn sets ExpiresIn field to given value.
 

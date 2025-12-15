@@ -655,7 +655,7 @@ type ApiTransferFetchRequest struct {
 	code string
 }
 
-func (r ApiTransferFetchRequest) Execute() (*TransferCode, *http.Response, error) {
+func (r ApiTransferFetchRequest) Execute() (*TransferFetchResponse, *http.Response, error) {
 	return r.ApiService.TransferFetchExecute(r)
 }
 
@@ -677,13 +677,13 @@ func (a *TransferAPIService) TransferFetch(ctx context.Context, code string) Api
 }
 
 // Execute executes the request
-//  @return TransferCode
-func (a *TransferAPIService) TransferFetchExecute(r ApiTransferFetchRequest) (*TransferCode, *http.Response, error) {
+//  @return TransferFetchResponse
+func (a *TransferAPIService) TransferFetchExecute(r ApiTransferFetchRequest) (*TransferFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *TransferCode
+		localVarReturnValue  *TransferFetchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferAPIService.TransferFetch")
@@ -1345,7 +1345,7 @@ type ApiTransferVerifyRequest struct {
 	reference string
 }
 
-func (r ApiTransferVerifyRequest) Execute() (*TransferVerifyReference, *http.Response, error) {
+func (r ApiTransferVerifyRequest) Execute() (*TransferVerifyResponse, *http.Response, error) {
 	return r.ApiService.TransferVerifyExecute(r)
 }
 
@@ -1367,13 +1367,13 @@ func (a *TransferAPIService) TransferVerify(ctx context.Context, reference strin
 }
 
 // Execute executes the request
-//  @return TransferVerifyReference
-func (a *TransferAPIService) TransferVerifyExecute(r ApiTransferVerifyRequest) (*TransferVerifyReference, *http.Response, error) {
+//  @return TransferVerifyResponse
+func (a *TransferAPIService) TransferVerifyExecute(r ApiTransferVerifyRequest) (*TransferVerifyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *TransferVerifyReference
+		localVarReturnValue  *TransferVerifyResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferAPIService.TransferVerify")

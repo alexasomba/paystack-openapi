@@ -20,8 +20,8 @@ var _ MappedNullable = &ProductCreateResponseData{}
 
 // ProductCreateResponseData struct for ProductCreateResponseData
 type ProductCreateResponseData struct {
-	VariantsOptions []map[string]interface{} `json:"variants_options"`
-	Variants []map[string]interface{} `json:"variants"`
+	VariantsOptions []interface{} `json:"variants_options"`
+	Variants []interface{} `json:"variants"`
 	Name string `json:"name"`
 	Description string `json:"description"`
 	Currency string `json:"currency"`
@@ -30,16 +30,16 @@ type ProductCreateResponseData struct {
 	Type string `json:"type"`
 	IsShippable bool `json:"is_shippable"`
 	Unlimited bool `json:"unlimited"`
-	Files []map[string]interface{} `json:"files"`
-	ShippingFields ProductCreateResponseDataShippingFields `json:"shipping_fields"`
+	Files []interface{} `json:"files"`
+	ShippingFields ProductListsResponseArrayShippingFields `json:"shipping_fields"`
 	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
-	Metadata ProductCreateResponseDataMetadata `json:"metadata"`
+	Metadata ProductListsResponseArrayMetadata `json:"metadata"`
 	Slug string `json:"slug"`
 	ProductCode string `json:"product_code"`
 	QuantitySold int32 `json:"quantity_sold"`
 	Active bool `json:"active"`
-	DeletedAt map[string]interface{} `json:"deleted_at"`
+	DeletedAt interface{} `json:"deleted_at"`
 	InStock bool `json:"in_stock"`
 	MinimumOrderable int32 `json:"minimum_orderable"`
 	MaximumOrderable NullableInt32 `json:"maximum_orderable"`
@@ -54,7 +54,7 @@ type ProductCreateResponseData struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProductCreateResponseData(variantsOptions []map[string]interface{}, variants []map[string]interface{}, name string, description string, currency string, price int32, quantity int32, type_ string, isShippable bool, unlimited bool, files []map[string]interface{}, shippingFields ProductCreateResponseDataShippingFields, integration int32, domain string, metadata ProductCreateResponseDataMetadata, slug string, productCode string, quantitySold int32, active bool, deletedAt map[string]interface{}, inStock bool, minimumOrderable int32, maximumOrderable NullableInt32, lowStockAlert bool, id int32, createdAt string, updatedAt string) *ProductCreateResponseData {
+func NewProductCreateResponseData(variantsOptions []interface{}, variants []interface{}, name string, description string, currency string, price int32, quantity int32, type_ string, isShippable bool, unlimited bool, files []interface{}, shippingFields ProductListsResponseArrayShippingFields, integration int32, domain string, metadata ProductListsResponseArrayMetadata, slug string, productCode string, quantitySold int32, active bool, deletedAt interface{}, inStock bool, minimumOrderable int32, maximumOrderable NullableInt32, lowStockAlert bool, id int32, createdAt string, updatedAt string) *ProductCreateResponseData {
 	this := ProductCreateResponseData{}
 	this.VariantsOptions = variantsOptions
 	this.Variants = variants
@@ -95,9 +95,9 @@ func NewProductCreateResponseDataWithDefaults() *ProductCreateResponseData {
 }
 
 // GetVariantsOptions returns the VariantsOptions field value
-func (o *ProductCreateResponseData) GetVariantsOptions() []map[string]interface{} {
+func (o *ProductCreateResponseData) GetVariantsOptions() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -106,7 +106,7 @@ func (o *ProductCreateResponseData) GetVariantsOptions() []map[string]interface{
 
 // GetVariantsOptionsOk returns a tuple with the VariantsOptions field value
 // and a boolean to check if the value has been set.
-func (o *ProductCreateResponseData) GetVariantsOptionsOk() ([]map[string]interface{}, bool) {
+func (o *ProductCreateResponseData) GetVariantsOptionsOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -114,14 +114,14 @@ func (o *ProductCreateResponseData) GetVariantsOptionsOk() ([]map[string]interfa
 }
 
 // SetVariantsOptions sets field value
-func (o *ProductCreateResponseData) SetVariantsOptions(v []map[string]interface{}) {
+func (o *ProductCreateResponseData) SetVariantsOptions(v []interface{}) {
 	o.VariantsOptions = v
 }
 
 // GetVariants returns the Variants field value
-func (o *ProductCreateResponseData) GetVariants() []map[string]interface{} {
+func (o *ProductCreateResponseData) GetVariants() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -130,7 +130,7 @@ func (o *ProductCreateResponseData) GetVariants() []map[string]interface{} {
 
 // GetVariantsOk returns a tuple with the Variants field value
 // and a boolean to check if the value has been set.
-func (o *ProductCreateResponseData) GetVariantsOk() ([]map[string]interface{}, bool) {
+func (o *ProductCreateResponseData) GetVariantsOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -138,7 +138,7 @@ func (o *ProductCreateResponseData) GetVariantsOk() ([]map[string]interface{}, b
 }
 
 // SetVariants sets field value
-func (o *ProductCreateResponseData) SetVariants(v []map[string]interface{}) {
+func (o *ProductCreateResponseData) SetVariants(v []interface{}) {
 	o.Variants = v
 }
 
@@ -335,9 +335,9 @@ func (o *ProductCreateResponseData) SetUnlimited(v bool) {
 }
 
 // GetFiles returns the Files field value
-func (o *ProductCreateResponseData) GetFiles() []map[string]interface{} {
+func (o *ProductCreateResponseData) GetFiles() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -346,7 +346,7 @@ func (o *ProductCreateResponseData) GetFiles() []map[string]interface{} {
 
 // GetFilesOk returns a tuple with the Files field value
 // and a boolean to check if the value has been set.
-func (o *ProductCreateResponseData) GetFilesOk() ([]map[string]interface{}, bool) {
+func (o *ProductCreateResponseData) GetFilesOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -354,14 +354,14 @@ func (o *ProductCreateResponseData) GetFilesOk() ([]map[string]interface{}, bool
 }
 
 // SetFiles sets field value
-func (o *ProductCreateResponseData) SetFiles(v []map[string]interface{}) {
+func (o *ProductCreateResponseData) SetFiles(v []interface{}) {
 	o.Files = v
 }
 
 // GetShippingFields returns the ShippingFields field value
-func (o *ProductCreateResponseData) GetShippingFields() ProductCreateResponseDataShippingFields {
+func (o *ProductCreateResponseData) GetShippingFields() ProductListsResponseArrayShippingFields {
 	if o == nil {
-		var ret ProductCreateResponseDataShippingFields
+		var ret ProductListsResponseArrayShippingFields
 		return ret
 	}
 
@@ -370,7 +370,7 @@ func (o *ProductCreateResponseData) GetShippingFields() ProductCreateResponseDat
 
 // GetShippingFieldsOk returns a tuple with the ShippingFields field value
 // and a boolean to check if the value has been set.
-func (o *ProductCreateResponseData) GetShippingFieldsOk() (*ProductCreateResponseDataShippingFields, bool) {
+func (o *ProductCreateResponseData) GetShippingFieldsOk() (*ProductListsResponseArrayShippingFields, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -378,7 +378,7 @@ func (o *ProductCreateResponseData) GetShippingFieldsOk() (*ProductCreateRespons
 }
 
 // SetShippingFields sets field value
-func (o *ProductCreateResponseData) SetShippingFields(v ProductCreateResponseDataShippingFields) {
+func (o *ProductCreateResponseData) SetShippingFields(v ProductListsResponseArrayShippingFields) {
 	o.ShippingFields = v
 }
 
@@ -431,9 +431,9 @@ func (o *ProductCreateResponseData) SetDomain(v string) {
 }
 
 // GetMetadata returns the Metadata field value
-func (o *ProductCreateResponseData) GetMetadata() ProductCreateResponseDataMetadata {
+func (o *ProductCreateResponseData) GetMetadata() ProductListsResponseArrayMetadata {
 	if o == nil {
-		var ret ProductCreateResponseDataMetadata
+		var ret ProductListsResponseArrayMetadata
 		return ret
 	}
 
@@ -442,7 +442,7 @@ func (o *ProductCreateResponseData) GetMetadata() ProductCreateResponseDataMetad
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
-func (o *ProductCreateResponseData) GetMetadataOk() (*ProductCreateResponseDataMetadata, bool) {
+func (o *ProductCreateResponseData) GetMetadataOk() (*ProductListsResponseArrayMetadata, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -450,7 +450,7 @@ func (o *ProductCreateResponseData) GetMetadataOk() (*ProductCreateResponseDataM
 }
 
 // SetMetadata sets field value
-func (o *ProductCreateResponseData) SetMetadata(v ProductCreateResponseDataMetadata) {
+func (o *ProductCreateResponseData) SetMetadata(v ProductListsResponseArrayMetadata) {
 	o.Metadata = v
 }
 
@@ -551,10 +551,10 @@ func (o *ProductCreateResponseData) SetActive(v bool) {
 }
 
 // GetDeletedAt returns the DeletedAt field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *ProductCreateResponseData) GetDeletedAt() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ProductCreateResponseData) GetDeletedAt() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -564,15 +564,15 @@ func (o *ProductCreateResponseData) GetDeletedAt() map[string]interface{} {
 // GetDeletedAtOk returns a tuple with the DeletedAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductCreateResponseData) GetDeletedAtOk() (map[string]interface{}, bool) {
+func (o *ProductCreateResponseData) GetDeletedAtOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.DeletedAt) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.DeletedAt, true
+	return &o.DeletedAt, true
 }
 
 // SetDeletedAt sets field value
-func (o *ProductCreateResponseData) SetDeletedAt(v map[string]interface{}) {
+func (o *ProductCreateResponseData) SetDeletedAt(v interface{}) {
 	o.DeletedAt = v
 }
 

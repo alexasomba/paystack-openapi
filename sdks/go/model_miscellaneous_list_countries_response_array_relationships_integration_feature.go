@@ -21,14 +21,14 @@ var _ MappedNullable = &MiscellaneousListCountriesResponseArrayRelationshipsInte
 // MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature struct for MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature
 type MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature struct {
 	Type string `json:"type"`
-	Data []map[string]interface{} `json:"data"`
+	Data []interface{} `json:"data"`
 }
 
 // NewMiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature instantiates a new MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature(type_ string, data []map[string]interface{}) *MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature {
+func NewMiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature(type_ string, data []interface{}) *MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature {
 	this := MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature{}
 	this.Type = type_
 	this.Data = data
@@ -68,9 +68,9 @@ func (o *MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature)
 }
 
 // GetData returns the Data field value
-func (o *MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature) GetData() []map[string]interface{} {
+func (o *MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature) GetData() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -79,7 +79,7 @@ func (o *MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature)
 
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
-func (o *MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature) GetDataOk() ([]map[string]interface{}, bool) {
+func (o *MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature) GetDataOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -87,7 +87,7 @@ func (o *MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature)
 }
 
 // SetData sets field value
-func (o *MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature) SetData(v []map[string]interface{}) {
+func (o *MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature) SetData(v []interface{}) {
 	o.Data = v
 }
 

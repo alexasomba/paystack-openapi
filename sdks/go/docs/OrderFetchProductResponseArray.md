@@ -20,21 +20,21 @@ Name | Type | Description | Notes
 **QuantitySold** | **int32** |  | 
 **Currency** | **string** |  | 
 **Quantity** | **int32** |  | 
-**VariantId** | **map[string]interface{}** |  | 
-**VariantPrice** | **map[string]interface{}** |  | 
-**VariantCode** | **map[string]interface{}** |  | 
+**VariantId** | **interface{}** |  | 
+**VariantPrice** | **interface{}** |  | 
+**VariantCode** | **interface{}** |  | 
 **Amount** | **int32** |  | 
-**ShippingMethod** | **map[string]interface{}** |  | 
+**ShippingMethod** | **interface{}** |  | 
 **Status** | **string** |  | 
-**ShippingAddress** | **map[string]interface{}** |  | 
+**ShippingAddress** | **interface{}** |  | 
 **Refunded** | **bool** |  | 
-**Shipping** | **map[string]interface{}** |  | 
+**Shipping** | **interface{}** |  | 
 **PaidAt** | **string** |  | 
 **CreatedAt** | **string** |  | 
 **IsShipped** | **bool** |  | 
 **IsViewed** | **int32** |  | 
-**DeliveryNote** | **map[string]interface{}** |  | 
-**ShippingFee** | **map[string]interface{}** |  | 
+**DeliveryNote** | **interface{}** |  | 
+**ShippingFee** | **interface{}** |  | 
 **AmountPaid** | **int32** |  | 
 **StorefrontSlug** | **string** |  | 
 
@@ -42,7 +42,7 @@ Name | Type | Description | Notes
 
 ### NewOrderFetchProductResponseArray
 
-`func NewOrderFetchProductResponseArray(orderId int32, transaction int32, orderCode string, customer int32, firstName string, lastName string, customerName string, phone string, email string, productCode string, productId int32, productName string, price int32, quantitySold int32, currency string, quantity int32, variantId map[string]interface{}, variantPrice map[string]interface{}, variantCode map[string]interface{}, amount int32, shippingMethod map[string]interface{}, status string, shippingAddress map[string]interface{}, refunded bool, shipping map[string]interface{}, paidAt string, createdAt string, isShipped bool, isViewed int32, deliveryNote map[string]interface{}, shippingFee map[string]interface{}, amountPaid int32, storefrontSlug string, ) *OrderFetchProductResponseArray`
+`func NewOrderFetchProductResponseArray(orderId int32, transaction int32, orderCode string, customer int32, firstName string, lastName string, customerName string, phone string, email string, productCode string, productId int32, productName string, price int32, quantitySold int32, currency string, quantity int32, variantId interface{}, variantPrice interface{}, variantCode interface{}, amount int32, shippingMethod interface{}, status string, shippingAddress interface{}, refunded bool, shipping interface{}, paidAt string, createdAt string, isShipped bool, isViewed int32, deliveryNote interface{}, shippingFee interface{}, amountPaid int32, storefrontSlug string, ) *OrderFetchProductResponseArray`
 
 NewOrderFetchProductResponseArray instantiates a new OrderFetchProductResponseArray object
 This constructor will assign default values to properties that have it defined,
@@ -379,20 +379,20 @@ SetQuantity sets Quantity field to given value.
 
 ### GetVariantId
 
-`func (o *OrderFetchProductResponseArray) GetVariantId() map[string]interface{}`
+`func (o *OrderFetchProductResponseArray) GetVariantId() interface{}`
 
 GetVariantId returns the VariantId field if non-nil, zero value otherwise.
 
 ### GetVariantIdOk
 
-`func (o *OrderFetchProductResponseArray) GetVariantIdOk() (*map[string]interface{}, bool)`
+`func (o *OrderFetchProductResponseArray) GetVariantIdOk() (*interface{}, bool)`
 
 GetVariantIdOk returns a tuple with the VariantId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVariantId
 
-`func (o *OrderFetchProductResponseArray) SetVariantId(v map[string]interface{})`
+`func (o *OrderFetchProductResponseArray) SetVariantId(v interface{})`
 
 SetVariantId sets VariantId field to given value.
 
@@ -409,20 +409,20 @@ SetVariantId sets VariantId field to given value.
 UnsetVariantId ensures that no value is present for VariantId, not even an explicit nil
 ### GetVariantPrice
 
-`func (o *OrderFetchProductResponseArray) GetVariantPrice() map[string]interface{}`
+`func (o *OrderFetchProductResponseArray) GetVariantPrice() interface{}`
 
 GetVariantPrice returns the VariantPrice field if non-nil, zero value otherwise.
 
 ### GetVariantPriceOk
 
-`func (o *OrderFetchProductResponseArray) GetVariantPriceOk() (*map[string]interface{}, bool)`
+`func (o *OrderFetchProductResponseArray) GetVariantPriceOk() (*interface{}, bool)`
 
 GetVariantPriceOk returns a tuple with the VariantPrice field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVariantPrice
 
-`func (o *OrderFetchProductResponseArray) SetVariantPrice(v map[string]interface{})`
+`func (o *OrderFetchProductResponseArray) SetVariantPrice(v interface{})`
 
 SetVariantPrice sets VariantPrice field to given value.
 
@@ -439,20 +439,20 @@ SetVariantPrice sets VariantPrice field to given value.
 UnsetVariantPrice ensures that no value is present for VariantPrice, not even an explicit nil
 ### GetVariantCode
 
-`func (o *OrderFetchProductResponseArray) GetVariantCode() map[string]interface{}`
+`func (o *OrderFetchProductResponseArray) GetVariantCode() interface{}`
 
 GetVariantCode returns the VariantCode field if non-nil, zero value otherwise.
 
 ### GetVariantCodeOk
 
-`func (o *OrderFetchProductResponseArray) GetVariantCodeOk() (*map[string]interface{}, bool)`
+`func (o *OrderFetchProductResponseArray) GetVariantCodeOk() (*interface{}, bool)`
 
 GetVariantCodeOk returns a tuple with the VariantCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVariantCode
 
-`func (o *OrderFetchProductResponseArray) SetVariantCode(v map[string]interface{})`
+`func (o *OrderFetchProductResponseArray) SetVariantCode(v interface{})`
 
 SetVariantCode sets VariantCode field to given value.
 
@@ -489,20 +489,20 @@ SetAmount sets Amount field to given value.
 
 ### GetShippingMethod
 
-`func (o *OrderFetchProductResponseArray) GetShippingMethod() map[string]interface{}`
+`func (o *OrderFetchProductResponseArray) GetShippingMethod() interface{}`
 
 GetShippingMethod returns the ShippingMethod field if non-nil, zero value otherwise.
 
 ### GetShippingMethodOk
 
-`func (o *OrderFetchProductResponseArray) GetShippingMethodOk() (*map[string]interface{}, bool)`
+`func (o *OrderFetchProductResponseArray) GetShippingMethodOk() (*interface{}, bool)`
 
 GetShippingMethodOk returns a tuple with the ShippingMethod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShippingMethod
 
-`func (o *OrderFetchProductResponseArray) SetShippingMethod(v map[string]interface{})`
+`func (o *OrderFetchProductResponseArray) SetShippingMethod(v interface{})`
 
 SetShippingMethod sets ShippingMethod field to given value.
 
@@ -539,20 +539,20 @@ SetStatus sets Status field to given value.
 
 ### GetShippingAddress
 
-`func (o *OrderFetchProductResponseArray) GetShippingAddress() map[string]interface{}`
+`func (o *OrderFetchProductResponseArray) GetShippingAddress() interface{}`
 
 GetShippingAddress returns the ShippingAddress field if non-nil, zero value otherwise.
 
 ### GetShippingAddressOk
 
-`func (o *OrderFetchProductResponseArray) GetShippingAddressOk() (*map[string]interface{}, bool)`
+`func (o *OrderFetchProductResponseArray) GetShippingAddressOk() (*interface{}, bool)`
 
 GetShippingAddressOk returns a tuple with the ShippingAddress field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShippingAddress
 
-`func (o *OrderFetchProductResponseArray) SetShippingAddress(v map[string]interface{})`
+`func (o *OrderFetchProductResponseArray) SetShippingAddress(v interface{})`
 
 SetShippingAddress sets ShippingAddress field to given value.
 
@@ -589,20 +589,20 @@ SetRefunded sets Refunded field to given value.
 
 ### GetShipping
 
-`func (o *OrderFetchProductResponseArray) GetShipping() map[string]interface{}`
+`func (o *OrderFetchProductResponseArray) GetShipping() interface{}`
 
 GetShipping returns the Shipping field if non-nil, zero value otherwise.
 
 ### GetShippingOk
 
-`func (o *OrderFetchProductResponseArray) GetShippingOk() (*map[string]interface{}, bool)`
+`func (o *OrderFetchProductResponseArray) GetShippingOk() (*interface{}, bool)`
 
 GetShippingOk returns a tuple with the Shipping field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShipping
 
-`func (o *OrderFetchProductResponseArray) SetShipping(v map[string]interface{})`
+`func (o *OrderFetchProductResponseArray) SetShipping(v interface{})`
 
 SetShipping sets Shipping field to given value.
 
@@ -699,20 +699,20 @@ SetIsViewed sets IsViewed field to given value.
 
 ### GetDeliveryNote
 
-`func (o *OrderFetchProductResponseArray) GetDeliveryNote() map[string]interface{}`
+`func (o *OrderFetchProductResponseArray) GetDeliveryNote() interface{}`
 
 GetDeliveryNote returns the DeliveryNote field if non-nil, zero value otherwise.
 
 ### GetDeliveryNoteOk
 
-`func (o *OrderFetchProductResponseArray) GetDeliveryNoteOk() (*map[string]interface{}, bool)`
+`func (o *OrderFetchProductResponseArray) GetDeliveryNoteOk() (*interface{}, bool)`
 
 GetDeliveryNoteOk returns a tuple with the DeliveryNote field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeliveryNote
 
-`func (o *OrderFetchProductResponseArray) SetDeliveryNote(v map[string]interface{})`
+`func (o *OrderFetchProductResponseArray) SetDeliveryNote(v interface{})`
 
 SetDeliveryNote sets DeliveryNote field to given value.
 
@@ -729,20 +729,20 @@ SetDeliveryNote sets DeliveryNote field to given value.
 UnsetDeliveryNote ensures that no value is present for DeliveryNote, not even an explicit nil
 ### GetShippingFee
 
-`func (o *OrderFetchProductResponseArray) GetShippingFee() map[string]interface{}`
+`func (o *OrderFetchProductResponseArray) GetShippingFee() interface{}`
 
 GetShippingFee returns the ShippingFee field if non-nil, zero value otherwise.
 
 ### GetShippingFeeOk
 
-`func (o *OrderFetchProductResponseArray) GetShippingFeeOk() (*map[string]interface{}, bool)`
+`func (o *OrderFetchProductResponseArray) GetShippingFeeOk() (*interface{}, bool)`
 
 GetShippingFeeOk returns a tuple with the ShippingFee field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShippingFee
 
-`func (o *OrderFetchProductResponseArray) SetShippingFee(v map[string]interface{})`
+`func (o *OrderFetchProductResponseArray) SetShippingFee(v interface{})`
 
 SetShippingFee sets ShippingFee field to given value.
 

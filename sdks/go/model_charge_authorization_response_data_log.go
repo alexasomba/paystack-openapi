@@ -26,7 +26,7 @@ type ChargeAuthorizationResponseDataLog struct {
 	Errors int32 `json:"errors"`
 	Success bool `json:"success"`
 	Mobile bool `json:"mobile"`
-	Input []map[string]interface{} `json:"input"`
+	Input []interface{} `json:"input"`
 	History []ChargeAuthorizationResponseDataLogHistoryInner `json:"history"`
 }
 
@@ -34,7 +34,7 @@ type ChargeAuthorizationResponseDataLog struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChargeAuthorizationResponseDataLog(startTime int32, timeSpent int32, attempts int32, errors int32, success bool, mobile bool, input []map[string]interface{}, history []ChargeAuthorizationResponseDataLogHistoryInner) *ChargeAuthorizationResponseDataLog {
+func NewChargeAuthorizationResponseDataLog(startTime int32, timeSpent int32, attempts int32, errors int32, success bool, mobile bool, input []interface{}, history []ChargeAuthorizationResponseDataLogHistoryInner) *ChargeAuthorizationResponseDataLog {
 	this := ChargeAuthorizationResponseDataLog{}
 	this.StartTime = startTime
 	this.TimeSpent = timeSpent
@@ -200,9 +200,9 @@ func (o *ChargeAuthorizationResponseDataLog) SetMobile(v bool) {
 }
 
 // GetInput returns the Input field value
-func (o *ChargeAuthorizationResponseDataLog) GetInput() []map[string]interface{} {
+func (o *ChargeAuthorizationResponseDataLog) GetInput() []interface{} {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 
@@ -211,7 +211,7 @@ func (o *ChargeAuthorizationResponseDataLog) GetInput() []map[string]interface{}
 
 // GetInputOk returns a tuple with the Input field value
 // and a boolean to check if the value has been set.
-func (o *ChargeAuthorizationResponseDataLog) GetInputOk() ([]map[string]interface{}, bool) {
+func (o *ChargeAuthorizationResponseDataLog) GetInputOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -219,7 +219,7 @@ func (o *ChargeAuthorizationResponseDataLog) GetInputOk() ([]map[string]interfac
 }
 
 // SetInput sets field value
-func (o *ChargeAuthorizationResponseDataLog) SetInput(v []map[string]interface{}) {
+func (o *ChargeAuthorizationResponseDataLog) SetInput(v []interface{}) {
 	o.Input = v
 }
 

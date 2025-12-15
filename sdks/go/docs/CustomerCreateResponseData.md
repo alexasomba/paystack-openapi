@@ -4,29 +4,29 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Transactions** | **[]map[string]interface{}** |  | 
-**Subscriptions** | **[]map[string]interface{}** |  | 
-**Authorizations** | **[]map[string]interface{}** |  | 
+**Transactions** | **[]interface{}** |  | 
+**Subscriptions** | **[]interface{}** |  | 
+**Authorizations** | **[]interface{}** |  | 
 **Email** | **string** |  | 
 **FirstName** | **string** |  | 
 **LastName** | **string** |  | 
 **Phone** | **string** |  | 
 **Integration** | **int32** |  | 
 **Domain** | **string** |  | 
-**Metadata** | [**CustomerCreateResponseDataMetadata**](CustomerCreateResponseDataMetadata.md) |  | 
+**Metadata** | [**BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata**](BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata.md) |  | 
 **CustomerCode** | **string** |  | 
 **RiskAction** | **string** |  | 
 **Id** | **int32** |  | 
 **CreatedAt** | **string** |  | 
 **UpdatedAt** | **string** |  | 
 **Identified** | **bool** |  | 
-**Identifications** | **map[string]interface{}** |  | 
+**Identifications** | **interface{}** |  | 
 
 ## Methods
 
 ### NewCustomerCreateResponseData
 
-`func NewCustomerCreateResponseData(transactions []map[string]interface{}, subscriptions []map[string]interface{}, authorizations []map[string]interface{}, email string, firstName string, lastName string, phone string, integration int32, domain string, metadata CustomerCreateResponseDataMetadata, customerCode string, riskAction string, id int32, createdAt string, updatedAt string, identified bool, identifications map[string]interface{}, ) *CustomerCreateResponseData`
+`func NewCustomerCreateResponseData(transactions []interface{}, subscriptions []interface{}, authorizations []interface{}, email string, firstName string, lastName string, phone string, integration int32, domain string, metadata BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata, customerCode string, riskAction string, id int32, createdAt string, updatedAt string, identified bool, identifications interface{}, ) *CustomerCreateResponseData`
 
 NewCustomerCreateResponseData instantiates a new CustomerCreateResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -43,60 +43,60 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetTransactions
 
-`func (o *CustomerCreateResponseData) GetTransactions() []map[string]interface{}`
+`func (o *CustomerCreateResponseData) GetTransactions() []interface{}`
 
 GetTransactions returns the Transactions field if non-nil, zero value otherwise.
 
 ### GetTransactionsOk
 
-`func (o *CustomerCreateResponseData) GetTransactionsOk() (*[]map[string]interface{}, bool)`
+`func (o *CustomerCreateResponseData) GetTransactionsOk() (*[]interface{}, bool)`
 
 GetTransactionsOk returns a tuple with the Transactions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTransactions
 
-`func (o *CustomerCreateResponseData) SetTransactions(v []map[string]interface{})`
+`func (o *CustomerCreateResponseData) SetTransactions(v []interface{})`
 
 SetTransactions sets Transactions field to given value.
 
 
 ### GetSubscriptions
 
-`func (o *CustomerCreateResponseData) GetSubscriptions() []map[string]interface{}`
+`func (o *CustomerCreateResponseData) GetSubscriptions() []interface{}`
 
 GetSubscriptions returns the Subscriptions field if non-nil, zero value otherwise.
 
 ### GetSubscriptionsOk
 
-`func (o *CustomerCreateResponseData) GetSubscriptionsOk() (*[]map[string]interface{}, bool)`
+`func (o *CustomerCreateResponseData) GetSubscriptionsOk() (*[]interface{}, bool)`
 
 GetSubscriptionsOk returns a tuple with the Subscriptions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSubscriptions
 
-`func (o *CustomerCreateResponseData) SetSubscriptions(v []map[string]interface{})`
+`func (o *CustomerCreateResponseData) SetSubscriptions(v []interface{})`
 
 SetSubscriptions sets Subscriptions field to given value.
 
 
 ### GetAuthorizations
 
-`func (o *CustomerCreateResponseData) GetAuthorizations() []map[string]interface{}`
+`func (o *CustomerCreateResponseData) GetAuthorizations() []interface{}`
 
 GetAuthorizations returns the Authorizations field if non-nil, zero value otherwise.
 
 ### GetAuthorizationsOk
 
-`func (o *CustomerCreateResponseData) GetAuthorizationsOk() (*[]map[string]interface{}, bool)`
+`func (o *CustomerCreateResponseData) GetAuthorizationsOk() (*[]interface{}, bool)`
 
 GetAuthorizationsOk returns a tuple with the Authorizations field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizations
 
-`func (o *CustomerCreateResponseData) SetAuthorizations(v []map[string]interface{})`
+`func (o *CustomerCreateResponseData) SetAuthorizations(v []interface{})`
 
 SetAuthorizations sets Authorizations field to given value.
 
@@ -223,20 +223,20 @@ SetDomain sets Domain field to given value.
 
 ### GetMetadata
 
-`func (o *CustomerCreateResponseData) GetMetadata() CustomerCreateResponseDataMetadata`
+`func (o *CustomerCreateResponseData) GetMetadata() BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *CustomerCreateResponseData) GetMetadataOk() (*CustomerCreateResponseDataMetadata, bool)`
+`func (o *CustomerCreateResponseData) GetMetadataOk() (*BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *CustomerCreateResponseData) SetMetadata(v CustomerCreateResponseDataMetadata)`
+`func (o *CustomerCreateResponseData) SetMetadata(v BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata)`
 
 SetMetadata sets Metadata field to given value.
 
@@ -363,20 +363,20 @@ SetIdentified sets Identified field to given value.
 
 ### GetIdentifications
 
-`func (o *CustomerCreateResponseData) GetIdentifications() map[string]interface{}`
+`func (o *CustomerCreateResponseData) GetIdentifications() interface{}`
 
 GetIdentifications returns the Identifications field if non-nil, zero value otherwise.
 
 ### GetIdentificationsOk
 
-`func (o *CustomerCreateResponseData) GetIdentificationsOk() (*map[string]interface{}, bool)`
+`func (o *CustomerCreateResponseData) GetIdentificationsOk() (*interface{}, bool)`
 
 GetIdentificationsOk returns a tuple with the Identifications field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdentifications
 
-`func (o *CustomerCreateResponseData) SetIdentifications(v map[string]interface{})`
+`func (o *CustomerCreateResponseData) SetIdentifications(v interface{})`
 
 SetIdentifications sets Identifications field to given value.
 

@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ## CustomerDirectDebitActivationCharge
 
-> CustomerDirectDebitActivationChargeResponse CustomerDirectDebitActivationCharge(ctx, id).Body(body).Execute()
+> CustomerDirectDebitActivationChargeResponse CustomerDirectDebitActivationCharge(ctx, id).CustomerDirectDebitActivationChargeRequest(customerDirectDebitActivationChargeRequest).Execute()
 
 Direct Debit Activation Charge
 
@@ -173,11 +173,11 @@ import (
 
 func main() {
     id := int32(297346561) // int32 | The customer ID attached to the authorization
-    body := CustomerIdDirectdebitActivationCharge(987) // CustomerIdDirectdebitActivationCharge |  (optional)
+    customerDirectDebitActivationChargeRequest := *openapiclient.NewCustomerDirectDebitActivationChargeRequest(int32(1069309917)) // CustomerDirectDebitActivationChargeRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomerAPI.CustomerDirectDebitActivationCharge(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.CustomerAPI.CustomerDirectDebitActivationCharge(context.Background(), id).CustomerDirectDebitActivationChargeRequest(customerDirectDebitActivationChargeRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomerAPI.CustomerDirectDebitActivationCharge``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -203,7 +203,7 @@ Other parameters are passed through a pointer to a apiCustomerDirectDebitActivat
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **CustomerIdDirectdebitActivationCharge** |  | 
+ **customerDirectDebitActivationChargeRequest** | [**CustomerDirectDebitActivationChargeRequest**](CustomerDirectDebitActivationChargeRequest.md) |  | 
 
 ### Return type
 
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## CustomerFetch
 
-> CustomerCode CustomerFetch(ctx, code).Execute()
+> CustomerFetchResponse CustomerFetch(ctx, code).Execute()
 
 Fetch Customer
 
@@ -253,7 +253,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomerAPI.CustomerFetch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CustomerFetch`: CustomerCode
+    // response from `CustomerFetch`: CustomerFetchResponse
     fmt.Fprintf(os.Stdout, "Response from `CustomerAPI.CustomerFetch`: %v\n", resp)
 }
 ```
@@ -277,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CustomerCode**](CustomerCode.md)
+[**CustomerFetchResponse**](CustomerFetchResponse.md)
 
 ### Authorization
 
@@ -431,7 +431,7 @@ Name | Type | Description  | Notes
 
 ## CustomerInitializeDirectDebit
 
-> CustomerInitializeDirectDebitResponse CustomerInitializeDirectDebit(ctx, id).Body(body).Execute()
+> CustomerInitializeDirectDebitResponse CustomerInitializeDirectDebit(ctx, id).CustomerInitializeDirectDebitRequest(customerInitializeDirectDebitRequest).Execute()
 
 Initialize Direct Debit
 
@@ -451,11 +451,11 @@ import (
 
 func main() {
     id := int32(297346561) // int32 | The ID of the customer to initialize the direct debit for
-    body := CustomerIdInitializeDirectDebit(987) // CustomerIdInitializeDirectDebit |  (optional)
+    customerInitializeDirectDebitRequest := *openapiclient.NewCustomerInitializeDirectDebitRequest(*openapiclient.NewCustomerInitializeDirectDebitAccount("0123456789", "058"), *openapiclient.NewCustomerInitializeDirectDebitAddress("Some Where", "Ikeja", "Lagos")) // CustomerInitializeDirectDebitRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomerAPI.CustomerInitializeDirectDebit(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.CustomerAPI.CustomerInitializeDirectDebit(context.Background(), id).CustomerInitializeDirectDebitRequest(customerInitializeDirectDebitRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomerAPI.CustomerInitializeDirectDebit``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -481,7 +481,7 @@ Other parameters are passed through a pointer to a apiCustomerInitializeDirectDe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **CustomerIdInitializeDirectDebit** |  | 
+ **customerInitializeDirectDebitRequest** | [**CustomerInitializeDirectDebitRequest**](CustomerInitializeDirectDebitRequest.md) |  | 
 
 ### Return type
 
@@ -648,7 +648,7 @@ Name | Type | Description  | Notes
 
 ## CustomerUpdate
 
-> CustomerCode CustomerUpdate(ctx, code).Body(body).Execute()
+> CustomerUpdateResponse CustomerUpdate(ctx, code).CustomerUpdate(customerUpdate).Execute()
 
 Update Customer
 
@@ -668,16 +668,16 @@ import (
 
 func main() {
     code := "CUS_c6wqvwmvwopw4ms" // string | The code for the customer gotten from the response of the customer creation
-    body := CustomerCode(987) // CustomerCode |  (optional)
+    customerUpdate := *openapiclient.NewCustomerUpdate() // CustomerUpdate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomerAPI.CustomerUpdate(context.Background(), code).Body(body).Execute()
+    resp, r, err := apiClient.CustomerAPI.CustomerUpdate(context.Background(), code).CustomerUpdate(customerUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomerAPI.CustomerUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CustomerUpdate`: CustomerCode
+    // response from `CustomerUpdate`: CustomerUpdateResponse
     fmt.Fprintf(os.Stdout, "Response from `CustomerAPI.CustomerUpdate`: %v\n", resp)
 }
 ```
@@ -698,11 +698,11 @@ Other parameters are passed through a pointer to a apiCustomerUpdateRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **CustomerCode** |  | 
+ **customerUpdate** | [**CustomerUpdate**](CustomerUpdate.md) |  | 
 
 ### Return type
 
-[**CustomerCode**](CustomerCode.md)
+[**CustomerUpdateResponse**](CustomerUpdateResponse.md)
 
 ### Authorization
 
@@ -720,7 +720,7 @@ Name | Type | Description  | Notes
 
 ## CustomerValidate
 
-> CustomerCodeIdentification CustomerValidate(ctx, code).Body(body).Execute()
+> CustomerValidateResponse CustomerValidate(ctx, code).CustomerValidate(customerValidate).Execute()
 
 Validate Customer
 
@@ -740,16 +740,16 @@ import (
 
 func main() {
     code := "CUS_c6wqvwmvwopw4ms" // string | The code for the customer gotten from the response of the customer creation
-    body := CustomerCodeIdentification(987) // CustomerCodeIdentification |  (optional)
+    customerValidate := *openapiclient.NewCustomerValidate("FirstName_example", "LastName_example", "Type_example", "Country_example", "Bvn_example", "BankCode_example", "AccountNumber_example") // CustomerValidate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomerAPI.CustomerValidate(context.Background(), code).Body(body).Execute()
+    resp, r, err := apiClient.CustomerAPI.CustomerValidate(context.Background(), code).CustomerValidate(customerValidate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomerAPI.CustomerValidate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CustomerValidate`: CustomerCodeIdentification
+    // response from `CustomerValidate`: CustomerValidateResponse
     fmt.Fprintf(os.Stdout, "Response from `CustomerAPI.CustomerValidate`: %v\n", resp)
 }
 ```
@@ -770,11 +770,11 @@ Other parameters are passed through a pointer to a apiCustomerValidateRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **CustomerCodeIdentification** |  | 
+ **customerValidate** | [**CustomerValidate**](CustomerValidate.md) |  | 
 
 ### Return type
 
-[**CustomerCodeIdentification**](CustomerCodeIdentification.md)
+[**CustomerValidateResponse**](CustomerValidateResponse.md)
 
 ### Authorization
 
