@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
 
 class DedicatedNubanCreateResponseDataAssignment(BaseModel):
@@ -32,7 +32,7 @@ class DedicatedNubanCreateResponseDataAssignment(BaseModel):
     expired: StrictBool = Field(...)
     account_type: StrictStr = Field(...)
     assigned_at: StrictStr = Field(...)
-    expired_at: Optional[Dict[str, Any]] = Field(...)
+    expired_at: Optional[Any] = Field(...)
     __properties = ["integration", "assignee_id", "assignee_type", "expired", "account_type", "assigned_at", "expired_at"]
 
     class Config:

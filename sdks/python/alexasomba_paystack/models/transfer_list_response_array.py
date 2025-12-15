@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
 from alexasomba_paystack.models.transfer_list_response_array_recipient import TransferListResponseArrayRecipient
 from alexasomba_paystack.models.transfer_list_response_array_session import TransferListResponseArraySession
@@ -32,18 +32,18 @@ class TransferListResponseArray(BaseModel):
     created_at: StrictStr = Field(..., alias="createdAt")
     currency: StrictStr = Field(...)
     domain: StrictStr = Field(...)
-    failures: Optional[Dict[str, Any]] = Field(...)
+    failures: Optional[Any] = Field(...)
     id: StrictInt = Field(...)
     integration: StrictInt = Field(...)
     reason: StrictStr = Field(...)
     reference: StrictStr = Field(...)
     source: StrictStr = Field(...)
-    source_details: Optional[Dict[str, Any]] = Field(...)
+    source_details: Optional[Any] = Field(...)
     status: StrictStr = Field(...)
-    titan_code: Optional[Dict[str, Any]] = Field(...)
+    titan_code: Optional[Any] = Field(...)
     transfer_code: StrictStr = Field(...)
     request: StrictInt = Field(...)
-    transferred_at: Optional[Dict[str, Any]] = Field(...)
+    transferred_at: Optional[Any] = Field(...)
     updated_at: StrictStr = Field(..., alias="updatedAt")
     recipient: TransferListResponseArrayRecipient = Field(...)
     session: TransferListResponseArraySession = Field(...)

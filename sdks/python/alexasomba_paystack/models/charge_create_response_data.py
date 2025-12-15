@@ -22,9 +22,9 @@ import json
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
 from alexasomba_paystack.models.charge_authorization_response_data_log import ChargeAuthorizationResponseDataLog
-from alexasomba_paystack.models.charge_create_response_data_authorization import ChargeCreateResponseDataAuthorization
-from alexasomba_paystack.models.charge_create_response_data_customer import ChargeCreateResponseDataCustomer
-from alexasomba_paystack.models.charge_create_response_data_metadata import ChargeCreateResponseDataMetadata
+from alexasomba_paystack.models.transaction_fetch_response_data_authorization import TransactionFetchResponseDataAuthorization
+from alexasomba_paystack.models.transaction_fetch_response_data_customer import TransactionFetchResponseDataCustomer
+from alexasomba_paystack.models.transaction_fetch_response_data_metadata import TransactionFetchResponseDataMetadata
 
 class ChargeCreateResponseData(BaseModel):
     """
@@ -34,7 +34,7 @@ class ChargeCreateResponseData(BaseModel):
     domain: StrictStr = Field(...)
     status: StrictStr = Field(...)
     reference: StrictStr = Field(...)
-    receipt_number: Optional[Dict[str, Any]] = Field(...)
+    receipt_number: Optional[Any] = Field(...)
     amount: StrictInt = Field(...)
     message: Optional[StrictStr] = Field(...)
     gateway_response: StrictStr = Field(...)
@@ -43,20 +43,20 @@ class ChargeCreateResponseData(BaseModel):
     channel: StrictStr = Field(...)
     currency: StrictStr = Field(...)
     ip_address: StrictStr = Field(...)
-    metadata: ChargeCreateResponseDataMetadata = Field(...)
+    metadata: TransactionFetchResponseDataMetadata = Field(...)
     log: Optional[ChargeAuthorizationResponseDataLog] = Field(...)
     fees: StrictInt = Field(...)
     fees_split: Optional[StrictInt] = Field(...)
-    authorization: ChargeCreateResponseDataAuthorization = Field(...)
-    customer: ChargeCreateResponseDataCustomer = Field(...)
-    plan: Optional[Dict[str, Any]] = Field(...)
+    authorization: TransactionFetchResponseDataAuthorization = Field(...)
+    customer: TransactionFetchResponseDataCustomer = Field(...)
+    plan: Optional[Any] = Field(...)
     split: Dict[str, Any] = Field(...)
-    order_id: Optional[Dict[str, Any]] = Field(...)
+    order_id: Optional[Any] = Field(...)
     requested_amount: StrictInt = Field(...)
-    pos_transaction_data: Optional[Dict[str, Any]] = Field(...)
-    source: Optional[Dict[str, Any]] = Field(...)
-    fees_breakdown: Optional[Dict[str, Any]] = Field(...)
-    connect: Optional[Dict[str, Any]] = Field(...)
+    pos_transaction_data: Optional[Any] = Field(...)
+    source: Optional[Any] = Field(...)
+    fees_breakdown: Optional[Any] = Field(...)
+    connect: Optional[Any] = Field(...)
     transaction_date: StrictStr = Field(...)
     plan_object: Dict[str, Any] = Field(...)
     subaccount: Dict[str, Any] = Field(...)
@@ -173,12 +173,12 @@ class ChargeCreateResponseData(BaseModel):
             "channel": obj.get("channel"),
             "currency": obj.get("currency"),
             "ip_address": obj.get("ip_address"),
-            "metadata": ChargeCreateResponseDataMetadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
+            "metadata": TransactionFetchResponseDataMetadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
             "log": ChargeAuthorizationResponseDataLog.from_dict(obj.get("log")) if obj.get("log") is not None else None,
             "fees": obj.get("fees"),
             "fees_split": obj.get("fees_split"),
-            "authorization": ChargeCreateResponseDataAuthorization.from_dict(obj.get("authorization")) if obj.get("authorization") is not None else None,
-            "customer": ChargeCreateResponseDataCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
+            "authorization": TransactionFetchResponseDataAuthorization.from_dict(obj.get("authorization")) if obj.get("authorization") is not None else None,
+            "customer": TransactionFetchResponseDataCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
             "plan": obj.get("plan"),
             "split": obj.get("split"),
             "order_id": obj.get("order_id"),

@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
 
 class ChargeAuthorizationResponseDataAuthorization(BaseModel):
@@ -38,7 +38,7 @@ class ChargeAuthorizationResponseDataAuthorization(BaseModel):
     brand: StrictStr = Field(...)
     reusable: StrictBool = Field(...)
     signature: StrictStr = Field(...)
-    account_name: Optional[Dict[str, Any]] = Field(...)
+    account_name: Optional[Any] = Field(...)
     __properties = ["authorization_code", "bin", "last4", "exp_month", "exp_year", "channel", "card_type", "bank", "country_code", "brand", "reusable", "signature", "account_name"]
 
     class Config:

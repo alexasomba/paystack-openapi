@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List
+from typing import Any, List
 from pydantic import BaseModel, Field, StrictStr, conlist
 
 class OrderValidateResponseDataIntegration(BaseModel):
@@ -29,7 +29,7 @@ class OrderValidateResponseDataIntegration(BaseModel):
     key: StrictStr = Field(...)
     name: StrictStr = Field(...)
     logo: StrictStr = Field(...)
-    allowed_currencies: conlist(Dict[str, Any]) = Field(...)
+    allowed_currencies: conlist(Any) = Field(...)
     __properties = ["key", "name", "logo", "allowed_currencies"]
 
     class Config:

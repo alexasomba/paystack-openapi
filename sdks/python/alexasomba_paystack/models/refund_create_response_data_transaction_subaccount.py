@@ -19,14 +19,14 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field
 
 class RefundCreateResponseDataTransactionSubaccount(BaseModel):
     """
     RefundCreateResponseDataTransactionSubaccount
     """
-    currency: Optional[Dict[str, Any]] = Field(...)
+    currency: Optional[Any] = Field(...)
     __properties = ["currency"]
 
     class Config:

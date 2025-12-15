@@ -19,10 +19,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
-from alexasomba_paystack.models.charge_create_response_data_customer import ChargeCreateResponseDataCustomer
 from alexasomba_paystack.models.order_validate_response_data_integration import OrderValidateResponseDataIntegration
+from alexasomba_paystack.models.transaction_fetch_response_data_customer import TransactionFetchResponseDataCustomer
 
 class OrderValidateResponseData(BaseModel):
     """
@@ -35,23 +35,23 @@ class OrderValidateResponseData(BaseModel):
     email: StrictStr = Field(...)
     status: StrictStr = Field(...)
     refunded: StrictBool = Field(...)
-    paid_at: Optional[Dict[str, Any]] = Field(...)
-    shipping_address: Optional[Dict[str, Any]] = Field(...)
-    metadata: Optional[Dict[str, Any]] = Field(...)
+    paid_at: Optional[Any] = Field(...)
+    shipping_address: Optional[Any] = Field(...)
+    metadata: Optional[Any] = Field(...)
     shipping_fees: StrictInt = Field(...)
-    shipping_method: Optional[Dict[str, Any]] = Field(...)
+    shipping_method: Optional[Any] = Field(...)
     is_viewed: StrictBool = Field(...)
     expiration_date: StrictStr = Field(...)
     pay_for_me: StrictBool = Field(...)
     id: StrictInt = Field(...)
     integration: OrderValidateResponseDataIntegration = Field(...)
-    transaction: Optional[Dict[str, Any]] = Field(...)
-    page: Optional[Dict[str, Any]] = Field(...)
-    customer: ChargeCreateResponseDataCustomer = Field(...)
-    shipping: Optional[Dict[str, Any]] = Field(...)
+    transaction: Optional[Any] = Field(...)
+    page: Optional[Any] = Field(...)
+    customer: TransactionFetchResponseDataCustomer = Field(...)
+    shipping: Optional[Any] = Field(...)
     created_at: StrictStr = Field(..., alias="createdAt")
     updated_at: StrictStr = Field(..., alias="updatedAt")
-    payer: Optional[Dict[str, Any]] = Field(...)
+    payer: Optional[Any] = Field(...)
     __properties = ["order_code", "domain", "currency", "amount", "email", "status", "refunded", "paid_at", "shipping_address", "metadata", "shipping_fees", "shipping_method", "is_viewed", "expiration_date", "pay_for_me", "id", "integration", "transaction", "page", "customer", "shipping", "createdAt", "updatedAt", "payer"]
 
     class Config:
@@ -155,7 +155,7 @@ class OrderValidateResponseData(BaseModel):
             "integration": OrderValidateResponseDataIntegration.from_dict(obj.get("integration")) if obj.get("integration") is not None else None,
             "transaction": obj.get("transaction"),
             "page": obj.get("page"),
-            "customer": ChargeCreateResponseDataCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
+            "customer": TransactionFetchResponseDataCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
             "shipping": obj.get("shipping"),
             "created_at": obj.get("createdAt"),
             "updated_at": obj.get("updatedAt"),

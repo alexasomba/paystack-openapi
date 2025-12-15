@@ -19,15 +19,15 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field
 
 class DisputeFetchResponseDataTransactionAuthorization(BaseModel):
     """
     DisputeFetchResponseDataTransactionAuthorization
     """
-    receiver_bank_account_number: Optional[Dict[str, Any]] = Field(...)
-    receiver_bank: Optional[Dict[str, Any]] = Field(...)
+    receiver_bank_account_number: Optional[Any] = Field(...)
+    receiver_bank: Optional[Any] = Field(...)
     __properties = ["receiver_bank_account_number", "receiver_bank"]
 
     class Config:

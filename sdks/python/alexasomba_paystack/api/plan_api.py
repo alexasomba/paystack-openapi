@@ -26,11 +26,11 @@ from pydantic import Field, StrictInt, StrictStr
 
 from typing import Optional
 
-from alexasomba_paystack.models.plan_code import PlanCode
 from alexasomba_paystack.models.plan_create import PlanCreate
 from alexasomba_paystack.models.plan_create_response import PlanCreateResponse
 from alexasomba_paystack.models.plan_fetch_response import PlanFetchResponse
 from alexasomba_paystack.models.plan_list_response import PlanListResponse
+from alexasomba_paystack.models.plan_update import PlanUpdate
 from alexasomba_paystack.models.plan_update_response import PlanUpdateResponse
 
 from alexasomba_paystack.api_client import ApiClient
@@ -529,20 +529,20 @@ class PlanApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def plan_update(self, code : Annotated[StrictStr, Field(..., description="The plan code you want to fetch")], body : Optional[PlanCode] = None, **kwargs) -> PlanUpdateResponse:  # noqa: E501
+    def plan_update(self, code : Annotated[StrictStr, Field(..., description="The plan code you want to fetch")], plan_update : Optional[PlanUpdate] = None, **kwargs) -> PlanUpdateResponse:  # noqa: E501
         """Update Plan  # noqa: E501
 
         Update a plan details on your integration  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.plan_update(code, body, async_req=True)
+        >>> thread = api.plan_update(code, plan_update, async_req=True)
         >>> result = thread.get()
 
         :param code: The plan code you want to fetch (required)
         :type code: str
-        :param body:
-        :type body: PlanCode
+        :param plan_update:
+        :type plan_update: PlanUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -557,23 +557,23 @@ class PlanApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the plan_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.plan_update_with_http_info(code, body, **kwargs)  # noqa: E501
+        return self.plan_update_with_http_info(code, plan_update, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def plan_update_with_http_info(self, code : Annotated[StrictStr, Field(..., description="The plan code you want to fetch")], body : Optional[PlanCode] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def plan_update_with_http_info(self, code : Annotated[StrictStr, Field(..., description="The plan code you want to fetch")], plan_update : Optional[PlanUpdate] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Update Plan  # noqa: E501
 
         Update a plan details on your integration  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.plan_update_with_http_info(code, body, async_req=True)
+        >>> thread = api.plan_update_with_http_info(code, plan_update, async_req=True)
         >>> result = thread.get()
 
         :param code: The plan code you want to fetch (required)
         :type code: str
-        :param body:
-        :type body: PlanCode
+        :param plan_update:
+        :type plan_update: PlanUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -603,7 +603,7 @@ class PlanApi(object):
 
         _all_params = [
             'code',
-            'body'
+            'plan_update'
         ]
         _all_params.extend(
             [
@@ -644,8 +644,8 @@ class PlanApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['plan_update'] is not None:
+            _body_params = _params['plan_update']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(

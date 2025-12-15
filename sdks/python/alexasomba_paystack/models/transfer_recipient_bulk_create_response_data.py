@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List
+from typing import Any, List
 from pydantic import BaseModel, Field, conlist
 from alexasomba_paystack.models.transfer_recipient_errors_array import TransferRecipientErrorsArray
 
@@ -27,7 +27,7 @@ class TransferRecipientBulkCreateResponseData(BaseModel):
     """
     TransferRecipientBulkCreateResponseData
     """
-    success: conlist(Dict[str, Any]) = Field(...)
+    success: conlist(Any) = Field(...)
     errors: conlist(TransferRecipientErrorsArray) = Field(...)
     __properties = ["success", "errors"]
 

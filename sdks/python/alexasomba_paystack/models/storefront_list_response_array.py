@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
 
 class StorefrontListResponseArray(BaseModel):
@@ -31,12 +31,12 @@ class StorefrontListResponseArray(BaseModel):
     slug: StrictStr = Field(...)
     orders_count: StrictInt = Field(...)
     status: StrictStr = Field(...)
-    revenue: Optional[Dict[str, Any]] = Field(...)
+    revenue: Optional[Any] = Field(...)
     currency: StrictStr = Field(...)
-    products: conlist(Dict[str, Any]) = Field(...)
-    contacts: conlist(Dict[str, Any]) = Field(...)
-    social_media: conlist(Dict[str, Any]) = Field(...)
-    shipping_fees: conlist(Dict[str, Any]) = Field(...)
+    products: conlist(Any) = Field(...)
+    contacts: conlist(Any) = Field(...)
+    social_media: conlist(Any) = Field(...)
+    shipping_fees: conlist(Any) = Field(...)
     __properties = ["id", "name", "slug", "orders_count", "status", "revenue", "currency", "products", "contacts", "social_media", "shipping_fees"]
 
     class Config:

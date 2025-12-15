@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
 
 class OrderFetchProductResponseArray(BaseModel):
@@ -42,21 +42,21 @@ class OrderFetchProductResponseArray(BaseModel):
     quantity_sold: StrictInt = Field(...)
     currency: StrictStr = Field(...)
     quantity: StrictInt = Field(...)
-    variant_id: Optional[Dict[str, Any]] = Field(...)
-    variant_price: Optional[Dict[str, Any]] = Field(...)
-    variant_code: Optional[Dict[str, Any]] = Field(...)
+    variant_id: Optional[Any] = Field(...)
+    variant_price: Optional[Any] = Field(...)
+    variant_code: Optional[Any] = Field(...)
     amount: StrictInt = Field(...)
-    shipping_method: Optional[Dict[str, Any]] = Field(...)
+    shipping_method: Optional[Any] = Field(...)
     status: StrictStr = Field(...)
-    shipping_address: Optional[Dict[str, Any]] = Field(...)
+    shipping_address: Optional[Any] = Field(...)
     refunded: StrictBool = Field(...)
-    shipping: Optional[Dict[str, Any]] = Field(...)
+    shipping: Optional[Any] = Field(...)
     paid_at: StrictStr = Field(...)
     created_at: StrictStr = Field(...)
     is_shipped: StrictBool = Field(...)
     is_viewed: StrictInt = Field(...)
-    delivery_note: Optional[Dict[str, Any]] = Field(...)
-    shipping_fee: Optional[Dict[str, Any]] = Field(...)
+    delivery_note: Optional[Any] = Field(...)
+    shipping_fee: Optional[Any] = Field(...)
     amount_paid: StrictInt = Field(...)
     storefront_slug: StrictStr = Field(...)
     __properties = ["order_id", "transaction", "order_code", "customer", "first_name", "last_name", "customer_name", "phone", "email", "product_code", "product_id", "product_name", "price", "quantity_sold", "currency", "quantity", "variant_id", "variant_price", "variant_code", "amount", "shipping_method", "status", "shipping_address", "refunded", "shipping", "paid_at", "created_at", "is_shipped", "is_viewed", "delivery_note", "shipping_fee", "amount_paid", "storefront_slug"]

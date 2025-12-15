@@ -19,22 +19,22 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
 from alexasomba_paystack.models.dedicated_nuban_create_response_data_assignment import DedicatedNubanCreateResponseDataAssignment
-from alexasomba_paystack.models.dedicated_nuban_create_response_data_bank import DedicatedNubanCreateResponseDataBank
 from alexasomba_paystack.models.dedicated_nuban_create_response_data_customer import DedicatedNubanCreateResponseDataCustomer
+from alexasomba_paystack.models.dedicated_nuban_list_response_array_bank import DedicatedNubanListResponseArrayBank
 
 class DedicatedNubanCreateResponseData(BaseModel):
     """
     DedicatedNubanCreateResponseData
     """
-    bank: DedicatedNubanCreateResponseDataBank = Field(...)
+    bank: DedicatedNubanListResponseArrayBank = Field(...)
     account_name: StrictStr = Field(...)
     account_number: StrictStr = Field(...)
     assigned: StrictBool = Field(...)
     currency: StrictStr = Field(...)
-    metadata: Optional[Dict[str, Any]] = Field(...)
+    metadata: Optional[Any] = Field(...)
     active: StrictBool = Field(...)
     id: StrictInt = Field(...)
     created_at: StrictStr = Field(...)
@@ -93,7 +93,7 @@ class DedicatedNubanCreateResponseData(BaseModel):
             return DedicatedNubanCreateResponseData.parse_obj(obj)
 
         _obj = DedicatedNubanCreateResponseData.parse_obj({
-            "bank": DedicatedNubanCreateResponseDataBank.from_dict(obj.get("bank")) if obj.get("bank") is not None else None,
+            "bank": DedicatedNubanListResponseArrayBank.from_dict(obj.get("bank")) if obj.get("bank") is not None else None,
             "account_name": obj.get("account_name"),
             "account_number": obj.get("account_number"),
             "assigned": obj.get("assigned"),

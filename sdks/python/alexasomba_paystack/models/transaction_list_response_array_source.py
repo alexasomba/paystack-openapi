@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field, StrictStr
 
 class TransactionListResponseArraySource(BaseModel):
@@ -28,7 +28,7 @@ class TransactionListResponseArraySource(BaseModel):
     """
     source: StrictStr = Field(...)
     type: StrictStr = Field(...)
-    identifier: Optional[Dict[str, Any]] = Field(...)
+    identifier: Optional[Any] = Field(...)
     entry_point: StrictStr = Field(...)
     __properties = ["source", "type", "identifier", "entry_point"]
 

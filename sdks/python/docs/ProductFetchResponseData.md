@@ -17,13 +17,13 @@ Name | Type | Description | Notes
 **files** | **List[object]** |  | 
 **file_path** | **object** |  | 
 **is_shippable** | **bool** |  | 
-**shipping_fields** | [**ProductCreateResponseDataShippingFields**](ProductCreateResponseDataShippingFields.md) |  | 
+**shipping_fields** | [**ProductListsResponseArrayShippingFields**](ProductListsResponseArrayShippingFields.md) |  | 
 **unlimited** | **bool** |  | 
 **domain** | **str** |  | 
 **active** | **bool** |  | 
 **features** | **object** |  | 
 **in_stock** | **bool** |  | 
-**metadata** | [**ProductCreateResponseDataMetadata**](ProductCreateResponseDataMetadata.md) |  | 
+**metadata** | [**ProductListsResponseArrayMetadata**](ProductListsResponseArrayMetadata.md) |  | 
 **slug** | **str** |  | 
 **success_message** | **object** |  | 
 **redirect_url** | **object** |  | 

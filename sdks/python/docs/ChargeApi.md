@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **charge_check**
-> ChargeReference charge_check(reference)
+> ChargeCheckPendingResponse charge_check(reference)
 
 Check pending charge
 
@@ -27,7 +27,7 @@ When you get `pending` as a charge status or if there was an exception when call
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.charge_reference import ChargeReference
+from alexasomba_paystack.models.charge_check_pending_response import ChargeCheckPendingResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ChargeReference**](ChargeReference.md)
+[**ChargeCheckPendingResponse**](ChargeCheckPendingResponse.md)
 
 ### Authorization
 

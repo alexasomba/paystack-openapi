@@ -19,10 +19,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
-from alexasomba_paystack.models.product_create_response_data_metadata import ProductCreateResponseDataMetadata
-from alexasomba_paystack.models.product_create_response_data_shipping_fields import ProductCreateResponseDataShippingFields
+from alexasomba_paystack.models.product_lists_response_array_metadata import ProductListsResponseArrayMetadata
+from alexasomba_paystack.models.product_lists_response_array_shipping_fields import ProductListsResponseArrayShippingFields
 
 class ProductListsResponseArray(BaseModel):
     """
@@ -42,20 +42,20 @@ class ProductListsResponseArray(BaseModel):
     type: StrictStr = Field(...)
     in_stock: StrictBool = Field(...)
     unlimited: StrictBool = Field(...)
-    metadata: ProductCreateResponseDataMetadata = Field(...)
-    files: conlist(Dict[str, Any]) = Field(...)
-    success_message: Optional[Dict[str, Any]] = Field(...)
-    redirect_url: Optional[Dict[str, Any]] = Field(...)
-    split_code: Optional[Dict[str, Any]] = Field(...)
-    notification_emails: Optional[Dict[str, Any]] = Field(...)
+    metadata: ProductListsResponseArrayMetadata = Field(...)
+    files: conlist(Any) = Field(...)
+    success_message: Optional[Any] = Field(...)
+    redirect_url: Optional[Any] = Field(...)
+    split_code: Optional[Any] = Field(...)
+    notification_emails: Optional[Any] = Field(...)
     minimum_orderable: StrictInt = Field(...)
-    maximum_orderable: Optional[Dict[str, Any]] = Field(...)
+    maximum_orderable: Optional[Any] = Field(...)
     created_at: StrictStr = Field(..., alias="createdAt")
     updated_at: StrictStr = Field(..., alias="updatedAt")
-    digital_assets: conlist(Dict[str, Any]) = Field(...)
-    variant_options: conlist(Dict[str, Any]) = Field(...)
+    digital_assets: conlist(Any) = Field(...)
+    variant_options: conlist(Any) = Field(...)
     is_shippable: StrictBool = Field(...)
-    shipping_fields: ProductCreateResponseDataShippingFields = Field(...)
+    shipping_fields: ProductListsResponseArrayShippingFields = Field(...)
     integration: StrictInt = Field(...)
     low_stock_alert: StrictInt = Field(...)
     __properties = ["id", "name", "description", "product_code", "slug", "currency", "price", "quantity", "quantity_sold", "active", "domain", "type", "in_stock", "unlimited", "metadata", "files", "success_message", "redirect_url", "split_code", "notification_emails", "minimum_orderable", "maximum_orderable", "createdAt", "updatedAt", "digital_assets", "variant_options", "is_shippable", "shipping_fields", "integration", "low_stock_alert"]
@@ -141,7 +141,7 @@ class ProductListsResponseArray(BaseModel):
             "type": obj.get("type"),
             "in_stock": obj.get("in_stock"),
             "unlimited": obj.get("unlimited"),
-            "metadata": ProductCreateResponseDataMetadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
+            "metadata": ProductListsResponseArrayMetadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
             "files": obj.get("files"),
             "success_message": obj.get("success_message"),
             "redirect_url": obj.get("redirect_url"),
@@ -154,7 +154,7 @@ class ProductListsResponseArray(BaseModel):
             "digital_assets": obj.get("digital_assets"),
             "variant_options": obj.get("variant_options"),
             "is_shippable": obj.get("is_shippable"),
-            "shipping_fields": ProductCreateResponseDataShippingFields.from_dict(obj.get("shipping_fields")) if obj.get("shipping_fields") is not None else None,
+            "shipping_fields": ProductListsResponseArrayShippingFields.from_dict(obj.get("shipping_fields")) if obj.get("shipping_fields") is not None else None,
             "integration": obj.get("integration"),
             "low_stock_alert": obj.get("low_stock_alert")
         })

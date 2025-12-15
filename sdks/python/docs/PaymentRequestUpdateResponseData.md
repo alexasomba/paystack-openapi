@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **metadata** | **object** |  | 
 **notifications** | [**List[PaymentRequestNotificationsArray]**](PaymentRequestNotificationsArray.md) |  | 
 **offline_reference** | **str** |  | 
-**customer** | [**PaymentRequestUpdateResponseDataCustomer**](PaymentRequestUpdateResponseDataCustomer.md) |  | 
+**customer** | [**BulkChargeFetchBulkBatchChargesResponseArrayCustomer**](BulkChargeFetchBulkBatchChargesResponseArrayCustomer.md) |  | 
 **created_at** | **str** |  | 
 **discount** | **object** |  | 
 **split_code** | **object** |  | 

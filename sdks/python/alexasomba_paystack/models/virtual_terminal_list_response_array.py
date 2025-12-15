@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List
+from typing import Any, List
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
 
 class VirtualTerminalListResponseArray(BaseModel):
@@ -31,7 +31,7 @@ class VirtualTerminalListResponseArray(BaseModel):
     name: StrictStr = Field(...)
     integration: StrictInt = Field(...)
     domain: StrictStr = Field(...)
-    payment_methods: conlist(Dict[str, Any]) = Field(..., alias="paymentMethods")
+    payment_methods: conlist(Any) = Field(..., alias="paymentMethods")
     active: StrictBool = Field(...)
     created_at: StrictStr = Field(...)
     currency: StrictStr = Field(...)

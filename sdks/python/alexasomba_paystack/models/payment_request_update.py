@@ -19,80 +19,63 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from typing import Optional, Set
-from typing_extensions import Self
+from typing import Any, Dict, List, Optional
+from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
 
 class PaymentRequestUpdate(BaseModel):
     """
     PaymentRequestUpdate
-    """ # noqa: E501
-    customer: Optional[StrictStr] = Field(default=None, description="Customer id or code")
-    amount: Optional[StrictInt] = Field(default=None, description="Payment request amount. Only useful if line items and tax values are ignored.  The endpoint will throw a friendly warning if neither is available.")
-    currency: Optional[StrictStr] = Field(default=None, description="Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN")
-    due_date: Optional[datetime] = Field(default=None, description="ISO 8601 representation of request due date")
-    description: Optional[StrictStr] = Field(default=None, description="A short description of the payment request")
-    line_items: Optional[List[Dict[str, Any]]] = Field(default=None, description="Array of line items")
-    tax: Optional[List[Dict[str, Any]]] = Field(default=None, description="Array of taxes")
-    send_notification: Optional[StrictBool] = Field(default=None, description="Indicates whether Paystack sends an email notification to customer. Defaults to true")
-    draft: Optional[StrictBool] = Field(default=None, description="Indicate if request should be saved as draft. Defaults to false and overrides send_notification")
-    has_invoice: Optional[List[Dict[str, Any]]] = Field(default=None, description="Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided) even if there are no line_items or tax passed")
-    invoice_number: Optional[StrictInt] = Field(default=None, description="Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help override whatever value Paystack decides.  Auto increment for subsequent invoices continue from this point.")
-    split_code: Optional[StrictStr] = Field(default=None, description="The split code of the transaction split.")
-    __properties: ClassVar[List[str]] = ["customer", "amount", "currency", "due_date", "description", "line_items", "tax", "send_notification", "draft", "has_invoice", "invoice_number", "split_code"]
+    """
+    customer: Optional[StrictStr] = Field(None, description="Customer id or code")
+    amount: Optional[StrictInt] = Field(None, description="Payment request amount. Only useful if line items and tax values are ignored.  The endpoint will throw a friendly warning if neither is available.")
+    currency: Optional[StrictStr] = Field(None, description="Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN")
+    due_date: Optional[datetime] = Field(None, description="ISO 8601 representation of request due date")
+    description: Optional[StrictStr] = Field(None, description="A short description of the payment request")
+    line_items: Optional[conlist(Dict[str, Any])] = Field(None, description="Array of line items")
+    tax: Optional[conlist(Dict[str, Any])] = Field(None, description="Array of taxes")
+    send_notification: Optional[StrictBool] = Field(None, description="Indicates whether Paystack sends an email notification to customer. Defaults to true")
+    draft: Optional[StrictBool] = Field(None, description="Indicate if request should be saved as draft. Defaults to false and overrides send_notification")
+    has_invoice: Optional[conlist(Dict[str, Any])] = Field(None, description="Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided) even if there are no line_items or tax passed")
+    invoice_number: Optional[StrictInt] = Field(None, description="Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help override whatever value Paystack decides.  Auto increment for subsequent invoices continue from this point.")
+    split_code: Optional[StrictStr] = Field(None, description="The split code of the transaction split.")
+    __properties = ["customer", "amount", "currency", "due_date", "description", "line_items", "tax", "send_notification", "draft", "has_invoice", "invoice_number", "split_code"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> PaymentRequestUpdate:
         """Create an instance of PaymentRequestUpdate from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> PaymentRequestUpdate:
         """Create an instance of PaymentRequestUpdate from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return PaymentRequestUpdate.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = PaymentRequestUpdate.parse_obj({
             "customer": obj.get("customer"),
             "amount": obj.get("amount"),
             "currency": obj.get("currency"),

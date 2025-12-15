@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List
+from typing import Any, List
 from pydantic import BaseModel, Field, StrictBool, StrictInt, conlist
 from alexasomba_paystack.models.charge_authorization_response_data_log_history_inner import ChargeAuthorizationResponseDataLogHistoryInner
 
@@ -33,7 +33,7 @@ class ChargeAuthorizationResponseDataLog(BaseModel):
     errors: StrictInt = Field(...)
     success: StrictBool = Field(...)
     mobile: StrictBool = Field(...)
-    input: conlist(Dict[str, Any]) = Field(...)
+    input: conlist(Any) = Field(...)
     history: conlist(ChargeAuthorizationResponseDataLogHistoryInner) = Field(...)
     __properties = ["start_time", "time_spent", "attempts", "errors", "success", "mobile", "input", "history"]
 

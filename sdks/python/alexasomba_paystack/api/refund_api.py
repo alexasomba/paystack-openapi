@@ -30,8 +30,8 @@ from alexasomba_paystack.models.refund_create import RefundCreate
 from alexasomba_paystack.models.refund_create_response import RefundCreateResponse
 from alexasomba_paystack.models.refund_fetch_response import RefundFetchResponse
 from alexasomba_paystack.models.refund_list_response import RefundListResponse
+from alexasomba_paystack.models.refund_retry import RefundRetry
 from alexasomba_paystack.models.refund_retry_response import RefundRetryResponse
-from alexasomba_paystack.models.refund_retry_with_customer_details_id import RefundRetryWithCustomerDetailsId
 
 from alexasomba_paystack.api_client import ApiClient
 from alexasomba_paystack.api_response import ApiResponse
@@ -513,20 +513,20 @@ class RefundApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def refund_retry(self, id : Annotated[StrictInt, Field(..., description="The identifier of the refund")], body : Optional[RefundRetryWithCustomerDetailsId] = None, **kwargs) -> RefundRetryResponse:  # noqa: E501
+    def refund_retry(self, id : Annotated[StrictInt, Field(..., description="The identifier of the refund")], refund_retry : Optional[RefundRetry] = None, **kwargs) -> RefundRetryResponse:  # noqa: E501
         """Retry Refund  # noqa: E501
 
         Retry a refund with a `needs-attention` status by providing the bank account details of a customer.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.refund_retry(id, body, async_req=True)
+        >>> thread = api.refund_retry(id, refund_retry, async_req=True)
         >>> result = thread.get()
 
         :param id: The identifier of the refund (required)
         :type id: int
-        :param body:
-        :type body: RefundRetryWithCustomerDetailsId
+        :param refund_retry:
+        :type refund_retry: RefundRetry
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -541,23 +541,23 @@ class RefundApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the refund_retry_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.refund_retry_with_http_info(id, body, **kwargs)  # noqa: E501
+        return self.refund_retry_with_http_info(id, refund_retry, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def refund_retry_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The identifier of the refund")], body : Optional[RefundRetryWithCustomerDetailsId] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def refund_retry_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The identifier of the refund")], refund_retry : Optional[RefundRetry] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Retry Refund  # noqa: E501
 
         Retry a refund with a `needs-attention` status by providing the bank account details of a customer.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.refund_retry_with_http_info(id, body, async_req=True)
+        >>> thread = api.refund_retry_with_http_info(id, refund_retry, async_req=True)
         >>> result = thread.get()
 
         :param id: The identifier of the refund (required)
         :type id: int
-        :param body:
-        :type body: RefundRetryWithCustomerDetailsId
+        :param refund_retry:
+        :type refund_retry: RefundRetry
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -587,7 +587,7 @@ class RefundApi(object):
 
         _all_params = [
             'id',
-            'body'
+            'refund_retry'
         ]
         _all_params.extend(
             [
@@ -628,8 +628,8 @@ class RefundApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['refund_retry'] is not None:
+            _body_params = _params['refund_retry']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(

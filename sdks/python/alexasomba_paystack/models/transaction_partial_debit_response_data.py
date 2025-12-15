@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
 from alexasomba_paystack.models.charge_authorization_response_data_log import ChargeAuthorizationResponseDataLog
 from alexasomba_paystack.models.transaction_partial_debit_response_data_authorization import TransactionPartialDebitResponseDataAuthorization
@@ -37,9 +37,9 @@ class TransactionPartialDebitResponseData(BaseModel):
     domain: StrictStr = Field(...)
     metadata: StrictStr = Field(...)
     gateway_response: StrictStr = Field(...)
-    message: Optional[Dict[str, Any]] = Field(...)
+    message: Optional[Any] = Field(...)
     channel: StrictStr = Field(...)
-    ip_address: Optional[Dict[str, Any]] = Field(...)
+    ip_address: Optional[Any] = Field(...)
     log: Optional[ChargeAuthorizationResponseDataLog] = Field(...)
     fees: StrictInt = Field(...)
     authorization: TransactionPartialDebitResponseDataAuthorization = Field(...)

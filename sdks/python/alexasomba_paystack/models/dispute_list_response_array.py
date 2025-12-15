@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
 from alexasomba_paystack.models.dispute_history_array import DisputeHistoryArray
 from alexasomba_paystack.models.dispute_list_response_array_transaction import DisputeListResponseArrayTransaction
@@ -34,19 +34,19 @@ class DisputeListResponseArray(BaseModel):
     refund_amount: StrictInt = Field(...)
     currency: StrictStr = Field(...)
     status: StrictStr = Field(...)
-    resolution: Optional[Dict[str, Any]] = Field(...)
+    resolution: Optional[Any] = Field(...)
     domain: StrictStr = Field(...)
     transaction: DisputeListResponseArrayTransaction = Field(...)
-    transaction_reference: Optional[Dict[str, Any]] = Field(...)
+    transaction_reference: Optional[Any] = Field(...)
     category: StrictStr = Field(...)
     customer: SubscriptionListResponseArrayCustomer = Field(...)
     bin: StrictStr = Field(...)
     last4: StrictStr = Field(...)
-    due_at: Optional[Dict[str, Any]] = Field(..., alias="dueAt")
-    resolved_at: Optional[Dict[str, Any]] = Field(..., alias="resolvedAt")
-    evidence: Optional[Dict[str, Any]] = Field(...)
-    attachments: Optional[Dict[str, Any]] = Field(...)
-    note: Optional[Dict[str, Any]] = Field(...)
+    due_at: Optional[Any] = Field(..., alias="dueAt")
+    resolved_at: Optional[Any] = Field(..., alias="resolvedAt")
+    evidence: Optional[Any] = Field(...)
+    attachments: Optional[Any] = Field(...)
+    note: Optional[Any] = Field(...)
     history: conlist(DisputeHistoryArray) = Field(...)
     messages: conlist(DisputeMessagesArray) = Field(...)
     created_at: StrictStr = Field(..., alias="createdAt")

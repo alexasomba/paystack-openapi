@@ -23,13 +23,13 @@ Name | Type | Description | Notes
 **id** | **int** |  | 
 **integration** | **int** |  | 
 **page** | **object** |  | 
-**customer** | [**ChargeCreateResponseDataCustomer**](ChargeCreateResponseDataCustomer.md) |  | 
+**customer** | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |  | 
 **shipping** | **object** |  | 
 **created_at** | **str** |  | 
 **updated_at** | **str** |  | 
 **transaction** | **int** |  | 
 **is_gift** | **bool** |  | 
-**payer** | [**ChargeCreateResponseDataCustomer**](ChargeCreateResponseDataCustomer.md) |  | 
+**payer** | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |  | 
 **fully_refunded** | **bool** |  | 
 **refunded_amount** | **int** |  | 
 **items** | [**List[OrderItemsArray]**](OrderItemsArray.md) |  | 

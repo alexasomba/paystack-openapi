@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **page_add_products**
-> PageAddProductsResponse page_add_products(id, body=body)
+> PageAddProductsResponse page_add_products(id, page_product=page_product)
 
 Add Products
 
@@ -27,7 +27,7 @@ import time
 import os
 import alexasomba_paystack
 from alexasomba_paystack.models.page_add_products_response import PageAddProductsResponse
-from alexasomba_paystack.models.page_id_product import PageIdProduct
+from alexasomba_paystack.models.page_product import PageProduct
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -52,11 +52,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.PageApi(api_client)
     id = 'id_example' # str | 
-    body = alexasomba_paystack.PageIdProduct() # PageIdProduct |  (optional)
+    page_product = alexasomba_paystack.PageProduct() # PageProduct |  (optional)
 
     try:
         # Add Products
-        api_response = api_instance.page_add_products(id, body=body)
+        api_response = api_instance.page_add_products(id, page_product=page_product)
         print("The response of PageApi->page_add_products:\n")
         pprint(api_response)
     except Exception as e:
@@ -70,7 +70,7 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **body** | **PageIdProduct**|  | [optional] 
+ **page_product** | [**PageProduct**](PageProduct.md)|  | [optional] 
 
 ### Return type
 
@@ -421,7 +421,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **page_update**
-> PageUpdateResponse page_update(id, body=body)
+> PageUpdateResponse page_update(id, page_update=page_update)
 
 Update Page
 
@@ -434,7 +434,7 @@ Update a previously created payment page
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.page_id import PageId
+from alexasomba_paystack.models.page_update import PageUpdate
 from alexasomba_paystack.models.page_update_response import PageUpdateResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
@@ -460,11 +460,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.PageApi(api_client)
     id = 1891222 # int | The unique identifier of a payment page
-    body = alexasomba_paystack.PageId() # PageId |  (optional)
+    page_update = alexasomba_paystack.PageUpdate() # PageUpdate |  (optional)
 
     try:
         # Update Page
-        api_response = api_instance.page_update(id, body=body)
+        api_response = api_instance.page_update(id, page_update=page_update)
         print("The response of PageApi->page_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -478,7 +478,7 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The unique identifier of a payment page | 
- **body** | **PageId**|  | [optional] 
+ **page_update** | [**PageUpdate**](PageUpdate.md)|  | [optional] 
 
 ### Return type
 

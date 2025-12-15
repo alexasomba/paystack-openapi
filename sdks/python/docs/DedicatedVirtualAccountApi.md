@@ -332,7 +332,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dedicated_account_deactivate**
-> DedicatedAccountId dedicated_account_deactivate(id)
+> DedicatedNubanDeactivateResponse dedicated_account_deactivate(id)
 
 Deactivate Dedicated Account
 
@@ -345,7 +345,7 @@ Deactivate a dedicated virtual account on your integration.
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.dedicated_account_id import DedicatedAccountId
+from alexasomba_paystack.models.dedicated_nuban_deactivate_response import DedicatedNubanDeactivateResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -390,7 +390,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DedicatedAccountId**](DedicatedAccountId.md)
+[**DedicatedNubanDeactivateResponse**](DedicatedNubanDeactivateResponse.md)
 
 ### Authorization
 
@@ -412,7 +412,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dedicated_account_fetch**
-> DedicatedAccountId dedicated_account_fetch(id)
+> DedicatedNubanFetchResponse dedicated_account_fetch(id)
 
 Fetch Dedicated Account
 
@@ -425,7 +425,7 @@ Get details of a dedicated virtual account on your integration.
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.dedicated_account_id import DedicatedAccountId
+from alexasomba_paystack.models.dedicated_nuban_fetch_response import DedicatedNubanFetchResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -470,7 +470,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DedicatedAccountId**](DedicatedAccountId.md)
+[**DedicatedNubanFetchResponse**](DedicatedNubanFetchResponse.md)
 
 ### Authorization
 

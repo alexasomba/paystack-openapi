@@ -28,8 +28,11 @@ from alexasomba_paystack.models.transfer_recipient_bulk import TransferRecipient
 from alexasomba_paystack.models.transfer_recipient_bulk_create_response import TransferRecipientBulkCreateResponse
 from alexasomba_paystack.models.transfer_recipient_create import TransferRecipientCreate
 from alexasomba_paystack.models.transfer_recipient_create_response import TransferRecipientCreateResponse
+from alexasomba_paystack.models.transfer_recipient_delete_response import TransferRecipientDeleteResponse
+from alexasomba_paystack.models.transfer_recipient_fetch_response import TransferRecipientFetchResponse
 from alexasomba_paystack.models.transfer_recipient_list_response import TransferRecipientListResponse
-from alexasomba_paystack.models.transferrecipient_code import TransferrecipientCode
+from alexasomba_paystack.models.transfer_recipient_update import TransferRecipientUpdate
+from alexasomba_paystack.models.transfer_recipient_update_response import TransferRecipientUpdateResponse
 
 from alexasomba_paystack.api_client import ApiClient
 from alexasomba_paystack.api_response import ApiResponse
@@ -346,7 +349,7 @@ class TransferRecipientApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def transferrecipient_delete(self, code : Annotated[StrictStr, Field(..., description="Transfer recipient code")], **kwargs) -> TransferrecipientCode:  # noqa: E501
+    def transferrecipient_delete(self, code : Annotated[StrictStr, Field(..., description="Transfer recipient code")], **kwargs) -> TransferRecipientDeleteResponse:  # noqa: E501
         """Delete Transfer Recipient  # noqa: E501
 
         Delete a transfer recipient (sets the transfer recipient to inactive)  # noqa: E501
@@ -367,7 +370,7 @@ class TransferRecipientApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: TransferrecipientCode
+        :rtype: TransferRecipientDeleteResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -409,7 +412,7 @@ class TransferRecipientApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(TransferrecipientCode, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(TransferRecipientDeleteResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -464,7 +467,7 @@ class TransferRecipientApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "TransferrecipientCode",
+            '200': "TransferRecipientDeleteResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -487,7 +490,7 @@ class TransferRecipientApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def transferrecipient_fetch(self, code : Annotated[StrictStr, Field(..., description="Transfer recipient code")], **kwargs) -> TransferrecipientCode:  # noqa: E501
+    def transferrecipient_fetch(self, code : Annotated[StrictStr, Field(..., description="Transfer recipient code")], **kwargs) -> TransferRecipientFetchResponse:  # noqa: E501
         """Fetch Transfer recipient  # noqa: E501
 
         Fetch the details of a transfer recipient  # noqa: E501
@@ -508,7 +511,7 @@ class TransferRecipientApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: TransferrecipientCode
+        :rtype: TransferRecipientFetchResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -550,7 +553,7 @@ class TransferRecipientApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(TransferrecipientCode, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(TransferRecipientFetchResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -605,7 +608,7 @@ class TransferRecipientApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "TransferrecipientCode",
+            '200': "TransferRecipientFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -801,20 +804,20 @@ class TransferRecipientApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def transferrecipient_update(self, code : Annotated[StrictStr, Field(..., description="Transfer recipient code")], body : Optional[TransferrecipientCode] = None, **kwargs) -> TransferrecipientCode:  # noqa: E501
+    def transferrecipient_update(self, code : Annotated[StrictStr, Field(..., description="Transfer recipient code")], transfer_recipient_update : Optional[TransferRecipientUpdate] = None, **kwargs) -> TransferRecipientUpdateResponse:  # noqa: E501
         """Update Transfer Recipient  # noqa: E501
 
         Update the details of a transfer recipient  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.transferrecipient_update(code, body, async_req=True)
+        >>> thread = api.transferrecipient_update(code, transfer_recipient_update, async_req=True)
         >>> result = thread.get()
 
         :param code: Transfer recipient code (required)
         :type code: str
-        :param body:
-        :type body: TransferrecipientCode
+        :param transfer_recipient_update:
+        :type transfer_recipient_update: TransferRecipientUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -824,28 +827,28 @@ class TransferRecipientApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: TransferrecipientCode
+        :rtype: TransferRecipientUpdateResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the transferrecipient_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.transferrecipient_update_with_http_info(code, body, **kwargs)  # noqa: E501
+        return self.transferrecipient_update_with_http_info(code, transfer_recipient_update, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def transferrecipient_update_with_http_info(self, code : Annotated[StrictStr, Field(..., description="Transfer recipient code")], body : Optional[TransferrecipientCode] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def transferrecipient_update_with_http_info(self, code : Annotated[StrictStr, Field(..., description="Transfer recipient code")], transfer_recipient_update : Optional[TransferRecipientUpdate] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Update Transfer Recipient  # noqa: E501
 
         Update the details of a transfer recipient  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.transferrecipient_update_with_http_info(code, body, async_req=True)
+        >>> thread = api.transferrecipient_update_with_http_info(code, transfer_recipient_update, async_req=True)
         >>> result = thread.get()
 
         :param code: Transfer recipient code (required)
         :type code: str
-        :param body:
-        :type body: TransferrecipientCode
+        :param transfer_recipient_update:
+        :type transfer_recipient_update: TransferRecipientUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -868,14 +871,14 @@ class TransferRecipientApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(TransferrecipientCode, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(TransferRecipientUpdateResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
 
         _all_params = [
             'code',
-            'body'
+            'transfer_recipient_update'
         ]
         _all_params.extend(
             [
@@ -916,8 +919,8 @@ class TransferRecipientApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['transfer_recipient_update'] is not None:
+            _body_params = _params['transfer_recipient_update']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -934,7 +937,7 @@ class TransferRecipientApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "TransferrecipientCode",
+            '200': "TransferRecipientUpdateResponse",
             '401': "Error",
             '404': "Error",
         }

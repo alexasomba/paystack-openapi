@@ -19,14 +19,14 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field
 
 class DisputeFetchResponseDataTransactionCustomer(BaseModel):
     """
     DisputeFetchResponseDataTransactionCustomer
     """
-    international_format_phone: Optional[Dict[str, Any]] = Field(...)
+    international_format_phone: Optional[Any] = Field(...)
     __properties = ["international_format_phone"]
 
     class Config:

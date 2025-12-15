@@ -27,28 +27,28 @@ class StorefrontCreateResponseData(BaseModel):
     """
     StorefrontCreateResponseData
     """
-    social_media: conlist(Dict[str, Any]) = Field(...)
+    social_media: conlist(Any) = Field(...)
     contacts: conlist(StorefrontContactsArray) = Field(...)
     name: StrictStr = Field(...)
     slug: StrictStr = Field(...)
     currency: StrictStr = Field(...)
-    welcome_message: Optional[Dict[str, Any]] = Field(...)
-    success_message: Optional[Dict[str, Any]] = Field(...)
-    redirect_url: Optional[Dict[str, Any]] = Field(...)
-    description: Optional[Dict[str, Any]] = Field(...)
+    welcome_message: Optional[Any] = Field(...)
+    success_message: Optional[Any] = Field(...)
+    redirect_url: Optional[Any] = Field(...)
+    description: Optional[Any] = Field(...)
     delivery_note: StrictStr = Field(...)
     background_color: StrictStr = Field(...)
     status: StrictStr = Field(...)
     shippable: StrictBool = Field(...)
     integration: StrictInt = Field(...)
     domain: StrictStr = Field(...)
-    digital_product_expiry: Optional[Dict[str, Any]] = Field(...)
+    digital_product_expiry: Optional[Any] = Field(...)
     metadata: Optional[Dict[str, Any]] = None
     id: StrictInt = Field(...)
     created_at: StrictStr = Field(..., alias="createdAt")
     updated_at: StrictStr = Field(..., alias="updatedAt")
-    products: conlist(Dict[str, Any]) = Field(...)
-    shipping_fees: conlist(Dict[str, Any]) = Field(...)
+    products: conlist(Any) = Field(...)
+    shipping_fees: conlist(Any) = Field(...)
     __properties = ["social_media", "contacts", "name", "slug", "currency", "welcome_message", "success_message", "redirect_url", "description", "delivery_note", "background_color", "status", "shippable", "integration", "domain", "digital_product_expiry", "metadata", "id", "createdAt", "updatedAt", "products", "shipping_fees"]
 
     class Config:

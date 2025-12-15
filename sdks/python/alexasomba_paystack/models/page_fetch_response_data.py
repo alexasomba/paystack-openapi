@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
 
 class PageFetchResponseData(BaseModel):
@@ -29,21 +29,21 @@ class PageFetchResponseData(BaseModel):
     integration: StrictInt = Field(...)
     domain: StrictStr = Field(...)
     name: StrictStr = Field(...)
-    description: Optional[Dict[str, Any]] = Field(...)
+    description: Optional[Any] = Field(...)
     amount: Optional[StrictInt] = Field(...)
     currency: StrictStr = Field(...)
     slug: StrictStr = Field(...)
-    custom_fields: Optional[Dict[str, Any]] = Field(...)
+    custom_fields: Optional[Any] = Field(...)
     type: StrictStr = Field(...)
-    redirect_url: Optional[Dict[str, Any]] = Field(...)
-    success_message: Optional[Dict[str, Any]] = Field(...)
+    redirect_url: Optional[Any] = Field(...)
+    success_message: Optional[Any] = Field(...)
     collect_phone: StrictBool = Field(...)
     active: StrictBool = Field(...)
     published: StrictBool = Field(...)
     migrate: StrictBool = Field(...)
-    notification_email: Optional[Dict[str, Any]] = Field(...)
-    metadata: Optional[Dict[str, Any]] = Field(...)
-    split_code: Optional[Dict[str, Any]] = Field(...)
+    notification_email: Optional[Any] = Field(...)
+    metadata: Optional[Any] = Field(...)
+    split_code: Optional[Any] = Field(...)
     id: StrictInt = Field(...)
     created_at: StrictStr = Field(..., alias="createdAt")
     updated_at: StrictStr = Field(..., alias="updatedAt")

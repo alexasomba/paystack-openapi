@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **type** | **str** |  | 
 **in_stock** | **bool** |  | 
 **unlimited** | **bool** |  | 
-**metadata** | [**ProductCreateResponseDataMetadata**](ProductCreateResponseDataMetadata.md) |  | 
+**metadata** | [**ProductListsResponseArrayMetadata**](ProductListsResponseArrayMetadata.md) |  | 
 **files** | **List[object]** |  | 
 **success_message** | **object** |  | 
 **redirect_url** | **object** |  | 
@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **digital_assets** | **List[object]** |  | 
 **variant_options** | **List[object]** |  | 
 **is_shippable** | **bool** |  | 
-**shipping_fields** | [**ProductCreateResponseDataShippingFields**](ProductCreateResponseDataShippingFields.md) |  | 
+**shipping_fields** | [**ProductListsResponseArrayShippingFields**](ProductListsResponseArrayShippingFields.md) |  | 
 **integration** | **int** |  | 
 **low_stock_alert** | **int** |  | 
 

@@ -26,9 +26,9 @@ class CustomerWhitelistBlacklistResponseData(BaseModel):
     """
     CustomerWhitelistBlacklistResponseData
     """
-    transactions: conlist(Dict[str, Any]) = Field(...)
-    subscriptions: conlist(Dict[str, Any]) = Field(...)
-    authorizations: conlist(Dict[str, Any]) = Field(...)
+    transactions: conlist(Any) = Field(...)
+    subscriptions: conlist(Any) = Field(...)
+    authorizations: conlist(Any) = Field(...)
     first_name: StrictStr = Field(...)
     last_name: StrictStr = Field(...)
     email: StrictStr = Field(...)
@@ -42,7 +42,7 @@ class CustomerWhitelistBlacklistResponseData(BaseModel):
     created_at: StrictStr = Field(..., alias="createdAt")
     updated_at: StrictStr = Field(..., alias="updatedAt")
     identified: StrictBool = Field(...)
-    identifications: Optional[Dict[str, Any]] = Field(...)
+    identifications: Optional[Any] = Field(...)
     __properties = ["transactions", "subscriptions", "authorizations", "first_name", "last_name", "email", "phone", "metadata", "domain", "customer_code", "risk_action", "id", "integration", "createdAt", "updatedAt", "identified", "identifications"]
 
     class Config:

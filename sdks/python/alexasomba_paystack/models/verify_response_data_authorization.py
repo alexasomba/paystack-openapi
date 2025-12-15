@@ -18,15 +18,14 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from typing import Optional, Set
-from typing_extensions import Self
+
+from typing import Any, Optional
+from pydantic import BaseModel, StrictBool, StrictStr
 
 class VerifyResponseDataAuthorization(BaseModel):
     """
     VerifyResponseDataAuthorization
-    """ # noqa: E501
+    """
     authorization_code: Optional[StrictStr] = None
     bin: Optional[Any] = None
     last4: Optional[StrictStr] = None
@@ -42,79 +41,64 @@ class VerifyResponseDataAuthorization(BaseModel):
     account_name: Optional[Any] = None
     receiver_bank_account_number: Optional[Any] = None
     receiver_bank: Optional[Any] = None
-    __properties: ClassVar[List[str]] = ["authorization_code", "bin", "last4", "exp_month", "exp_year", "channel", "card_type", "bank", "country_code", "brand", "reusable", "signature", "account_name", "receiver_bank_account_number", "receiver_bank"]
+    __properties = ["authorization_code", "bin", "last4", "exp_month", "exp_year", "channel", "card_type", "bank", "country_code", "brand", "reusable", "signature", "account_name", "receiver_bank_account_number", "receiver_bank"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> VerifyResponseDataAuthorization:
         """Create an instance of VerifyResponseDataAuthorization from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if bin (nullable) is None
-        # and model_fields_set contains the field
-        if self.bin is None and "bin" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.bin is None and "bin" in self.__fields_set__:
             _dict['bin'] = None
 
         # set to None if account_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.account_name is None and "account_name" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.account_name is None and "account_name" in self.__fields_set__:
             _dict['account_name'] = None
 
         # set to None if receiver_bank_account_number (nullable) is None
-        # and model_fields_set contains the field
-        if self.receiver_bank_account_number is None and "receiver_bank_account_number" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.receiver_bank_account_number is None and "receiver_bank_account_number" in self.__fields_set__:
             _dict['receiver_bank_account_number'] = None
 
         # set to None if receiver_bank (nullable) is None
-        # and model_fields_set contains the field
-        if self.receiver_bank is None and "receiver_bank" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.receiver_bank is None and "receiver_bank" in self.__fields_set__:
             _dict['receiver_bank'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> VerifyResponseDataAuthorization:
         """Create an instance of VerifyResponseDataAuthorization from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return VerifyResponseDataAuthorization.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = VerifyResponseDataAuthorization.parse_obj({
             "authorization_code": obj.get("authorization_code"),
             "bin": obj.get("bin"),
             "last4": obj.get("last4"),

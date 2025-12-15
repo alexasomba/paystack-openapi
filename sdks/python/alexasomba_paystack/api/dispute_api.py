@@ -27,14 +27,14 @@ from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 
 from alexasomba_paystack.models.dispute_add_evidence_response import DisputeAddEvidenceResponse
+from alexasomba_paystack.models.dispute_evidence import DisputeEvidence
 from alexasomba_paystack.models.dispute_export_response import DisputeExportResponse
 from alexasomba_paystack.models.dispute_fetch_response import DisputeFetchResponse
-from alexasomba_paystack.models.dispute_id import DisputeId
-from alexasomba_paystack.models.dispute_id_evidence import DisputeIdEvidence
-from alexasomba_paystack.models.dispute_id_resolve import DisputeIdResolve
 from alexasomba_paystack.models.dispute_list_response import DisputeListResponse
 from alexasomba_paystack.models.dispute_list_transaction_response import DisputeListTransactionResponse
+from alexasomba_paystack.models.dispute_resolve import DisputeResolve
 from alexasomba_paystack.models.dispute_resolve_response import DisputeResolveResponse
+from alexasomba_paystack.models.dispute_update import DisputeUpdate
 from alexasomba_paystack.models.dispute_update_response import DisputeUpdateResponse
 from alexasomba_paystack.models.dispute_upload_url_response import DisputeUploadURLResponse
 
@@ -238,20 +238,20 @@ class DisputeApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def dispute_evidence(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of the dispute")], body : Optional[DisputeIdEvidence] = None, **kwargs) -> DisputeAddEvidenceResponse:  # noqa: E501
+    def dispute_evidence(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of the dispute")], dispute_evidence : Optional[DisputeEvidence] = None, **kwargs) -> DisputeAddEvidenceResponse:  # noqa: E501
         """Add Evidence  # noqa: E501
 
         Provide evidence for a dispute  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.dispute_evidence(id, body, async_req=True)
+        >>> thread = api.dispute_evidence(id, dispute_evidence, async_req=True)
         >>> result = thread.get()
 
         :param id: The unique identifier of the dispute (required)
         :type id: int
-        :param body:
-        :type body: DisputeIdEvidence
+        :param dispute_evidence:
+        :type dispute_evidence: DisputeEvidence
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -266,23 +266,23 @@ class DisputeApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the dispute_evidence_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.dispute_evidence_with_http_info(id, body, **kwargs)  # noqa: E501
+        return self.dispute_evidence_with_http_info(id, dispute_evidence, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def dispute_evidence_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of the dispute")], body : Optional[DisputeIdEvidence] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def dispute_evidence_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of the dispute")], dispute_evidence : Optional[DisputeEvidence] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Add Evidence  # noqa: E501
 
         Provide evidence for a dispute  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.dispute_evidence_with_http_info(id, body, async_req=True)
+        >>> thread = api.dispute_evidence_with_http_info(id, dispute_evidence, async_req=True)
         >>> result = thread.get()
 
         :param id: The unique identifier of the dispute (required)
         :type id: int
-        :param body:
-        :type body: DisputeIdEvidence
+        :param dispute_evidence:
+        :type dispute_evidence: DisputeEvidence
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -312,7 +312,7 @@ class DisputeApi(object):
 
         _all_params = [
             'id',
-            'body'
+            'dispute_evidence'
         ]
         _all_params.extend(
             [
@@ -353,8 +353,8 @@ class DisputeApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['dispute_evidence'] is not None:
+            _body_params = _params['dispute_evidence']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -721,20 +721,20 @@ class DisputeApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def dispute_resolve(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of the dispute")], body : Optional[DisputeIdResolve] = None, **kwargs) -> DisputeResolveResponse:  # noqa: E501
+    def dispute_resolve(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of the dispute")], dispute_resolve : Optional[DisputeResolve] = None, **kwargs) -> DisputeResolveResponse:  # noqa: E501
         """Resolve Dispute  # noqa: E501
 
         Resolve a transaction dispute  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.dispute_resolve(id, body, async_req=True)
+        >>> thread = api.dispute_resolve(id, dispute_resolve, async_req=True)
         >>> result = thread.get()
 
         :param id: The unique identifier of the dispute (required)
         :type id: int
-        :param body:
-        :type body: DisputeIdResolve
+        :param dispute_resolve:
+        :type dispute_resolve: DisputeResolve
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -749,23 +749,23 @@ class DisputeApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the dispute_resolve_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.dispute_resolve_with_http_info(id, body, **kwargs)  # noqa: E501
+        return self.dispute_resolve_with_http_info(id, dispute_resolve, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def dispute_resolve_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of the dispute")], body : Optional[DisputeIdResolve] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def dispute_resolve_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of the dispute")], dispute_resolve : Optional[DisputeResolve] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Resolve Dispute  # noqa: E501
 
         Resolve a transaction dispute  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.dispute_resolve_with_http_info(id, body, async_req=True)
+        >>> thread = api.dispute_resolve_with_http_info(id, dispute_resolve, async_req=True)
         >>> result = thread.get()
 
         :param id: The unique identifier of the dispute (required)
         :type id: int
-        :param body:
-        :type body: DisputeIdResolve
+        :param dispute_resolve:
+        :type dispute_resolve: DisputeResolve
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -795,7 +795,7 @@ class DisputeApi(object):
 
         _all_params = [
             'id',
-            'body'
+            'dispute_resolve'
         ]
         _all_params.extend(
             [
@@ -836,8 +836,8 @@ class DisputeApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['dispute_resolve'] is not None:
+            _body_params = _params['dispute_resolve']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -1018,20 +1018,20 @@ class DisputeApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def dispute_update(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of the dispute")], body : Optional[DisputeId] = None, **kwargs) -> DisputeUpdateResponse:  # noqa: E501
+    def dispute_update(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of the dispute")], dispute_update : Optional[DisputeUpdate] = None, **kwargs) -> DisputeUpdateResponse:  # noqa: E501
         """Update Dispute  # noqa: E501
 
         Update a transaction dispute  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.dispute_update(id, body, async_req=True)
+        >>> thread = api.dispute_update(id, dispute_update, async_req=True)
         >>> result = thread.get()
 
         :param id: The unique identifier of the dispute (required)
         :type id: int
-        :param body:
-        :type body: DisputeId
+        :param dispute_update:
+        :type dispute_update: DisputeUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -1046,23 +1046,23 @@ class DisputeApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the dispute_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.dispute_update_with_http_info(id, body, **kwargs)  # noqa: E501
+        return self.dispute_update_with_http_info(id, dispute_update, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def dispute_update_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of the dispute")], body : Optional[DisputeId] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def dispute_update_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of the dispute")], dispute_update : Optional[DisputeUpdate] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Update Dispute  # noqa: E501
 
         Update a transaction dispute  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.dispute_update_with_http_info(id, body, async_req=True)
+        >>> thread = api.dispute_update_with_http_info(id, dispute_update, async_req=True)
         >>> result = thread.get()
 
         :param id: The unique identifier of the dispute (required)
         :type id: int
-        :param body:
-        :type body: DisputeId
+        :param dispute_update:
+        :type dispute_update: DisputeUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -1092,7 +1092,7 @@ class DisputeApi(object):
 
         _all_params = [
             'id',
-            'body'
+            'dispute_update'
         ]
         _all_params.extend(
             [
@@ -1133,8 +1133,8 @@ class DisputeApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['dispute_update'] is not None:
+            _body_params = _params['dispute_update']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(

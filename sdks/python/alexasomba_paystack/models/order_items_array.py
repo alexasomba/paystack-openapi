@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
 
 class OrderItemsArray(BaseModel):
@@ -39,14 +39,14 @@ class OrderItemsArray(BaseModel):
     name: StrictStr = Field(...)
     product_level_type: StrictStr = Field(...)
     product_id: StrictInt = Field(...)
-    product_success_message: Optional[Dict[str, Any]] = Field(...)
-    product_redirect_url: Optional[Dict[str, Any]] = Field(...)
-    ifnull_p1_expires_in_p2_expires_in: Optional[Dict[str, Any]] = Field(..., alias="IFNULL(p1.expires_in, p2.expires_in)")
+    product_success_message: Optional[Any] = Field(...)
+    product_redirect_url: Optional[Any] = Field(...)
+    ifnull_p1_expires_in_p2_expires_in: Optional[Any] = Field(..., alias="IFNULL(p1.expires_in, p2.expires_in)")
     product_quantity_sold: StrictInt = Field(...)
-    product_notification_emails: Optional[Dict[str, Any]] = Field(...)
+    product_notification_emails: Optional[Any] = Field(...)
     ifnull_p1_metadata_p2_metadata: StrictStr = Field(..., alias="IFNULL(p1.metadata, p2.metadata)")
-    storefront_redirect_url: Optional[Dict[str, Any]] = Field(...)
-    storefront_success_message: Optional[Dict[str, Any]] = Field(...)
+    storefront_redirect_url: Optional[Any] = Field(...)
+    storefront_success_message: Optional[Any] = Field(...)
     __properties = ["order_item_id", "orderId", "type", "item", "current_total_items_price", "files", "order", "amount", "quantity", "createdAt", "name", "product_level_type", "product_id", "product_success_message", "product_redirect_url", "IFNULL(p1.expires_in, p2.expires_in)", "product_quantity_sold", "product_notification_emails", "IFNULL(p1.metadata, p2.metadata)", "storefront_redirect_url", "storefront_success_message"]
 
     class Config:

@@ -24,9 +24,9 @@ from pydantic import Field, StrictStr
 
 from typing import Optional
 
+from alexasomba_paystack.models.charge_check_pending_response import ChargeCheckPendingResponse
 from alexasomba_paystack.models.charge_create_request import ChargeCreateRequest
 from alexasomba_paystack.models.charge_create_response import ChargeCreateResponse
-from alexasomba_paystack.models.charge_reference import ChargeReference
 from alexasomba_paystack.models.charge_submit_address import ChargeSubmitAddress
 from alexasomba_paystack.models.charge_submit_birthday import ChargeSubmitBirthday
 from alexasomba_paystack.models.charge_submit_birthday_response import ChargeSubmitBirthdayResponse
@@ -59,7 +59,7 @@ class ChargeApi(object):
         self.api_client = api_client
 
     @validate_arguments
-    def charge_check(self, reference : Annotated[StrictStr, Field(..., description="The reference of the ongoing transaction")], **kwargs) -> ChargeReference:  # noqa: E501
+    def charge_check(self, reference : Annotated[StrictStr, Field(..., description="The reference of the ongoing transaction")], **kwargs) -> ChargeCheckPendingResponse:  # noqa: E501
         """Check pending charge  # noqa: E501
 
         When you get `pending` as a charge status or if there was an exception when calling any of the `/charge` endpoints, wait 10 seconds or more, then make a check to see if its status has changed. Don't call too early as you may get a lot more pending than you should.   # noqa: E501
@@ -80,7 +80,7 @@ class ChargeApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: ChargeReference
+        :rtype: ChargeCheckPendingResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -122,7 +122,7 @@ class ChargeApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(ChargeReference, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(ChargeCheckPendingResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -177,7 +177,7 @@ class ChargeApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "ChargeReference",
+            '200': "ChargeCheckPendingResponse",
             '401': "Error",
             '404': "Error",
         }

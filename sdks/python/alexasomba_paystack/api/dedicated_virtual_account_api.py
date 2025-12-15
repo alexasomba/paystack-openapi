@@ -26,8 +26,9 @@ from pydantic import Field, StrictBool, StrictInt, StrictStr
 
 from typing import Optional
 
-from alexasomba_paystack.models.dedicated_account_id import DedicatedAccountId
 from alexasomba_paystack.models.dedicated_nuban_create_response import DedicatedNubanCreateResponse
+from alexasomba_paystack.models.dedicated_nuban_deactivate_response import DedicatedNubanDeactivateResponse
+from alexasomba_paystack.models.dedicated_nuban_fetch_response import DedicatedNubanFetchResponse
 from alexasomba_paystack.models.dedicated_nuban_list_response import DedicatedNubanListResponse
 from alexasomba_paystack.models.dedicated_virtual_account_assign import DedicatedVirtualAccountAssign
 from alexasomba_paystack.models.dedicated_virtual_account_create import DedicatedVirtualAccountCreate
@@ -630,7 +631,7 @@ class DedicatedVirtualAccountApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def dedicated_account_deactivate(self, id : Annotated[StrictStr, Field(..., description="ID of dedicated virtual account")], **kwargs) -> DedicatedAccountId:  # noqa: E501
+    def dedicated_account_deactivate(self, id : Annotated[StrictStr, Field(..., description="ID of dedicated virtual account")], **kwargs) -> DedicatedNubanDeactivateResponse:  # noqa: E501
         """Deactivate Dedicated Account  # noqa: E501
 
         Deactivate a dedicated virtual account on your integration.  # noqa: E501
@@ -651,7 +652,7 @@ class DedicatedVirtualAccountApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: DedicatedAccountId
+        :rtype: DedicatedNubanDeactivateResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -693,7 +694,7 @@ class DedicatedVirtualAccountApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(DedicatedAccountId, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(DedicatedNubanDeactivateResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -748,7 +749,7 @@ class DedicatedVirtualAccountApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "DedicatedAccountId",
+            '200': "DedicatedNubanDeactivateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -771,7 +772,7 @@ class DedicatedVirtualAccountApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def dedicated_account_fetch(self, id : Annotated[StrictStr, Field(..., description="ID of dedicated virtual account")], **kwargs) -> DedicatedAccountId:  # noqa: E501
+    def dedicated_account_fetch(self, id : Annotated[StrictStr, Field(..., description="ID of dedicated virtual account")], **kwargs) -> DedicatedNubanFetchResponse:  # noqa: E501
         """Fetch Dedicated Account  # noqa: E501
 
         Get details of a dedicated virtual account on your integration.  # noqa: E501
@@ -792,7 +793,7 @@ class DedicatedVirtualAccountApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: DedicatedAccountId
+        :rtype: DedicatedNubanFetchResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -834,7 +835,7 @@ class DedicatedVirtualAccountApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(DedicatedAccountId, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(DedicatedNubanFetchResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -889,7 +890,7 @@ class DedicatedVirtualAccountApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "DedicatedAccountId",
+            '200': "DedicatedNubanFetchResponse",
             '401': "Error",
             '404': "Error",
         }

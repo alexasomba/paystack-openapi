@@ -19,12 +19,12 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
-from alexasomba_paystack.models.charge_create_response_data_customer import ChargeCreateResponseDataCustomer
 from alexasomba_paystack.models.dispute_fetch_response_data_transaction import DisputeFetchResponseDataTransaction
 from alexasomba_paystack.models.dispute_history_array import DisputeHistoryArray
 from alexasomba_paystack.models.dispute_messages_array import DisputeMessagesArray
+from alexasomba_paystack.models.transaction_fetch_response_data_customer import TransactionFetchResponseDataCustomer
 
 class DisputeFetchResponseData(BaseModel):
     """
@@ -34,19 +34,19 @@ class DisputeFetchResponseData(BaseModel):
     refund_amount: StrictInt = Field(...)
     currency: StrictStr = Field(...)
     status: StrictStr = Field(...)
-    resolution: Optional[Dict[str, Any]] = Field(...)
+    resolution: Optional[Any] = Field(...)
     domain: StrictStr = Field(...)
     transaction: DisputeFetchResponseDataTransaction = Field(...)
-    transaction_reference: Optional[Dict[str, Any]] = Field(...)
+    transaction_reference: Optional[Any] = Field(...)
     category: StrictStr = Field(...)
-    customer: ChargeCreateResponseDataCustomer = Field(...)
+    customer: TransactionFetchResponseDataCustomer = Field(...)
     bin: StrictStr = Field(...)
     last4: StrictStr = Field(...)
-    due_at: Optional[Dict[str, Any]] = Field(..., alias="dueAt")
-    resolved_at: Optional[Dict[str, Any]] = Field(..., alias="resolvedAt")
-    evidence: Optional[Dict[str, Any]] = Field(...)
-    attachments: Optional[Dict[str, Any]] = Field(...)
-    note: Optional[Dict[str, Any]] = Field(...)
+    due_at: Optional[Any] = Field(..., alias="dueAt")
+    resolved_at: Optional[Any] = Field(..., alias="resolvedAt")
+    evidence: Optional[Any] = Field(...)
+    attachments: Optional[Any] = Field(...)
+    note: Optional[Any] = Field(...)
     history: conlist(DisputeHistoryArray) = Field(...)
     messages: conlist(DisputeMessagesArray) = Field(...)
     created_at: StrictStr = Field(..., alias="createdAt")
@@ -153,7 +153,7 @@ class DisputeFetchResponseData(BaseModel):
             "transaction": DisputeFetchResponseDataTransaction.from_dict(obj.get("transaction")) if obj.get("transaction") is not None else None,
             "transaction_reference": obj.get("transaction_reference"),
             "category": obj.get("category"),
-            "customer": ChargeCreateResponseDataCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
+            "customer": TransactionFetchResponseDataCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
             "bin": obj.get("bin"),
             "last4": obj.get("last4"),
             "due_at": obj.get("dueAt"),

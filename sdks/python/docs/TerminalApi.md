@@ -501,7 +501,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **terminal_send_event**
-> Response terminal_send_event(id, body=body)
+> Response terminal_send_event(id, terminal_send_event=terminal_send_event)
 
 Send Event
 
@@ -515,7 +515,7 @@ import time
 import os
 import alexasomba_paystack
 from alexasomba_paystack.models.response import Response
-from alexasomba_paystack.models.terminal_id_event import TerminalIdEvent
+from alexasomba_paystack.models.terminal_send_event import TerminalSendEvent
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -540,11 +540,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.TerminalApi(api_client)
     id = 'Z0R4orOU' # str | The ID of the Terminal the event should be sent to.
-    body = alexasomba_paystack.TerminalIdEvent() # TerminalIdEvent |  (optional)
+    terminal_send_event = alexasomba_paystack.TerminalSendEvent() # TerminalSendEvent |  (optional)
 
     try:
         # Send Event
-        api_response = api_instance.terminal_send_event(id, body=body)
+        api_response = api_instance.terminal_send_event(id, terminal_send_event=terminal_send_event)
         print("The response of TerminalApi->terminal_send_event:\n")
         pprint(api_response)
     except Exception as e:
@@ -558,7 +558,7 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| The ID of the Terminal the event should be sent to. | 
- **body** | **TerminalIdEvent**|  | [optional] 
+ **terminal_send_event** | [**TerminalSendEvent**](TerminalSendEvent.md)|  | [optional] 
 
 ### Return type
 
@@ -583,7 +583,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **terminal_update**
-> TerminalUpdateResponse terminal_update(terminal_id, body=body)
+> TerminalUpdateResponse terminal_update(terminal_id, terminal_upate=terminal_upate)
 
 Update Terminal
 
@@ -596,7 +596,7 @@ Update the details of a Terminal
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.terminal_terminal_id import TerminalTerminalId
+from alexasomba_paystack.models.terminal_upate import TerminalUpate
 from alexasomba_paystack.models.terminal_update_response import TerminalUpdateResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
@@ -622,11 +622,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.TerminalApi(api_client)
     terminal_id = 'Z0R4orOU' # str | The ID of the Terminal the event should be sent to.
-    body = alexasomba_paystack.TerminalTerminalId() # TerminalTerminalId |  (optional)
+    terminal_upate = alexasomba_paystack.TerminalUpate() # TerminalUpate |  (optional)
 
     try:
         # Update Terminal
-        api_response = api_instance.terminal_update(terminal_id, body=body)
+        api_response = api_instance.terminal_update(terminal_id, terminal_upate=terminal_upate)
         print("The response of TerminalApi->terminal_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -640,7 +640,7 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **terminal_id** | **str**| The ID of the Terminal the event should be sent to. | 
- **body** | **TerminalTerminalId**|  | [optional] 
+ **terminal_upate** | [**TerminalUpate**](TerminalUpate.md)|  | [optional] 
 
 ### Return type
 

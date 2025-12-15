@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
 
 class OrderCreateResponseDataShipping(BaseModel):
@@ -30,13 +30,13 @@ class OrderCreateResponseDataShipping(BaseModel):
     integration: StrictInt = Field(...)
     domain: StrictStr = Field(...)
     fees: StrictInt = Field(...)
-    delivery_note: Optional[Dict[str, Any]] = Field(...)
+    delivery_note: Optional[Any] = Field(...)
     street_line: StrictStr = Field(...)
     city: StrictStr = Field(...)
     state: StrictStr = Field(...)
     country: StrictStr = Field(...)
     is_shipped: StrictBool = Field(...)
-    delivery_tracking_link: Optional[Dict[str, Any]] = Field(...)
+    delivery_tracking_link: Optional[Any] = Field(...)
     id: StrictInt = Field(...)
     created_at: StrictStr = Field(..., alias="createdAt")
     updated_at: StrictStr = Field(..., alias="updatedAt")

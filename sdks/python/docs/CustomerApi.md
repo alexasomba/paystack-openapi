@@ -179,7 +179,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_direct_debit_activation_charge**
-> CustomerDirectDebitActivationChargeResponse customer_direct_debit_activation_charge(id, body=body)
+> CustomerDirectDebitActivationChargeResponse customer_direct_debit_activation_charge(id, customer_direct_debit_activation_charge_request=customer_direct_debit_activation_charge_request)
 
 Direct Debit Activation Charge
 
@@ -192,8 +192,8 @@ Trigger an activation charge on an inactive mandate on behalf of your customer
 import time
 import os
 import alexasomba_paystack
+from alexasomba_paystack.models.customer_direct_debit_activation_charge_request import CustomerDirectDebitActivationChargeRequest
 from alexasomba_paystack.models.customer_direct_debit_activation_charge_response import CustomerDirectDebitActivationChargeResponse
-from alexasomba_paystack.models.customer_id_directdebit_activation_charge import CustomerIdDirectdebitActivationCharge
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -218,11 +218,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.CustomerApi(api_client)
     id = 297346561 # int | The customer ID attached to the authorization
-    body = alexasomba_paystack.CustomerIdDirectdebitActivationCharge() # CustomerIdDirectdebitActivationCharge |  (optional)
+    customer_direct_debit_activation_charge_request = alexasomba_paystack.CustomerDirectDebitActivationChargeRequest() # CustomerDirectDebitActivationChargeRequest |  (optional)
 
     try:
         # Direct Debit Activation Charge
-        api_response = api_instance.customer_direct_debit_activation_charge(id, body=body)
+        api_response = api_instance.customer_direct_debit_activation_charge(id, customer_direct_debit_activation_charge_request=customer_direct_debit_activation_charge_request)
         print("The response of CustomerApi->customer_direct_debit_activation_charge:\n")
         pprint(api_response)
     except Exception as e:
@@ -236,7 +236,7 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The customer ID attached to the authorization | 
- **body** | **CustomerIdDirectdebitActivationCharge**|  | [optional] 
+ **customer_direct_debit_activation_charge_request** | [**CustomerDirectDebitActivationChargeRequest**](CustomerDirectDebitActivationChargeRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_fetch**
-> CustomerCode customer_fetch(code)
+> CustomerFetchResponse customer_fetch(code)
 
 Fetch Customer
 
@@ -274,7 +274,7 @@ Get details of a customer on your integration.
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.customer_code import CustomerCode
+from alexasomba_paystack.models.customer_fetch_response import CustomerFetchResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -319,7 +319,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CustomerCode**](CustomerCode.md)
+[**CustomerFetchResponse**](CustomerFetchResponse.md)
 
 ### Authorization
 
@@ -500,7 +500,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_initialize_direct_debit**
-> CustomerInitializeDirectDebitResponse customer_initialize_direct_debit(id, body=body)
+> CustomerInitializeDirectDebitResponse customer_initialize_direct_debit(id, customer_initialize_direct_debit_request=customer_initialize_direct_debit_request)
 
 Initialize Direct Debit
 
@@ -513,7 +513,7 @@ Initialize the process of linking an account to a customer for Direct Debit tran
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.customer_id_initialize_direct_debit import CustomerIdInitializeDirectDebit
+from alexasomba_paystack.models.customer_initialize_direct_debit_request import CustomerInitializeDirectDebitRequest
 from alexasomba_paystack.models.customer_initialize_direct_debit_response import CustomerInitializeDirectDebitResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
@@ -539,11 +539,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.CustomerApi(api_client)
     id = 297346561 # int | The ID of the customer to initialize the direct debit for
-    body = alexasomba_paystack.CustomerIdInitializeDirectDebit() # CustomerIdInitializeDirectDebit |  (optional)
+    customer_initialize_direct_debit_request = alexasomba_paystack.CustomerInitializeDirectDebitRequest() # CustomerInitializeDirectDebitRequest |  (optional)
 
     try:
         # Initialize Direct Debit
-        api_response = api_instance.customer_initialize_direct_debit(id, body=body)
+        api_response = api_instance.customer_initialize_direct_debit(id, customer_initialize_direct_debit_request=customer_initialize_direct_debit_request)
         print("The response of CustomerApi->customer_initialize_direct_debit:\n")
         pprint(api_response)
     except Exception as e:
@@ -557,7 +557,7 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The ID of the customer to initialize the direct debit for | 
- **body** | **CustomerIdInitializeDirectDebit**|  | [optional] 
+ **customer_initialize_direct_debit_request** | [**CustomerInitializeDirectDebitRequest**](CustomerInitializeDirectDebitRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -754,7 +754,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_update**
-> CustomerCode customer_update(code, body=body)
+> CustomerUpdateResponse customer_update(code, customer_update=customer_update)
 
 Update Customer
 
@@ -767,7 +767,8 @@ Update a customer's details on your integration
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.customer_code import CustomerCode
+from alexasomba_paystack.models.customer_update import CustomerUpdate
+from alexasomba_paystack.models.customer_update_response import CustomerUpdateResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -792,11 +793,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.CustomerApi(api_client)
     code = 'CUS_c6wqvwmvwopw4ms' # str | The code for the customer gotten from the response of the customer creation
-    body = alexasomba_paystack.CustomerCode() # CustomerCode |  (optional)
+    customer_update = alexasomba_paystack.CustomerUpdate() # CustomerUpdate |  (optional)
 
     try:
         # Update Customer
-        api_response = api_instance.customer_update(code, body=body)
+        api_response = api_instance.customer_update(code, customer_update=customer_update)
         print("The response of CustomerApi->customer_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -810,11 +811,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **code** | **str**| The code for the customer gotten from the response of the customer creation | 
- **body** | **CustomerCode**|  | [optional] 
+ **customer_update** | [**CustomerUpdate**](CustomerUpdate.md)|  | [optional] 
 
 ### Return type
 
-[**CustomerCode**](CustomerCode.md)
+[**CustomerUpdateResponse**](CustomerUpdateResponse.md)
 
 ### Authorization
 
@@ -836,7 +837,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_validate**
-> CustomerCodeIdentification customer_validate(code, body=body)
+> CustomerValidateResponse customer_validate(code, customer_validate=customer_validate)
 
 Validate Customer
 
@@ -849,7 +850,8 @@ Validate a customer's identity
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.customer_code_identification import CustomerCodeIdentification
+from alexasomba_paystack.models.customer_validate import CustomerValidate
+from alexasomba_paystack.models.customer_validate_response import CustomerValidateResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -874,11 +876,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.CustomerApi(api_client)
     code = 'CUS_c6wqvwmvwopw4ms' # str | The code for the customer gotten from the response of the customer creation
-    body = alexasomba_paystack.CustomerCodeIdentification() # CustomerCodeIdentification |  (optional)
+    customer_validate = alexasomba_paystack.CustomerValidate() # CustomerValidate |  (optional)
 
     try:
         # Validate Customer
-        api_response = api_instance.customer_validate(code, body=body)
+        api_response = api_instance.customer_validate(code, customer_validate=customer_validate)
         print("The response of CustomerApi->customer_validate:\n")
         pprint(api_response)
     except Exception as e:
@@ -892,11 +894,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **code** | **str**| The code for the customer gotten from the response of the customer creation | 
- **body** | **CustomerCodeIdentification**|  | [optional] 
+ **customer_validate** | [**CustomerValidate**](CustomerValidate.md)|  | [optional] 
 
 ### Return type
 
-[**CustomerCodeIdentification**](CustomerCodeIdentification.md)
+[**CustomerValidateResponse**](CustomerValidateResponse.md)
 
 ### Authorization
 

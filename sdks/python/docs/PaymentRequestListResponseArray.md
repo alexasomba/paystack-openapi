@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **metadata** | **object** |  | 
 **notifications** | **List[object]** |  | 
 **offline_reference** | **str** |  | 
-**customer** | [**ChargeCreateResponseDataCustomer**](ChargeCreateResponseDataCustomer.md) |  | 
+**customer** | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |  | 
 **created_at** | **str** |  | 
 **discount** | **object** |  | 
 **split_code** | **str** |  | 

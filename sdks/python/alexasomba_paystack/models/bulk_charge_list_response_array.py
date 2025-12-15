@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
 
 class BulkChargeListResponseArray(BaseModel):
@@ -30,7 +30,7 @@ class BulkChargeListResponseArray(BaseModel):
     domain: StrictStr = Field(...)
     batch_code: StrictStr = Field(...)
     status: StrictStr = Field(...)
-    easy_cron_id: Optional[Dict[str, Any]] = Field(...)
+    easy_cron_id: Optional[Any] = Field(...)
     reference: StrictStr = Field(...)
     id: StrictInt = Field(...)
     created_at: StrictStr = Field(..., alias="createdAt")

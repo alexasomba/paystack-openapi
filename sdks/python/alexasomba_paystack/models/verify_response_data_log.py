@@ -18,84 +18,68 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt
-from typing import Any, ClassVar, Dict, List
+
+from typing import Any, List
+from pydantic import BaseModel, Field, StrictBool, StrictInt, conlist
 from alexasomba_paystack.models.verify_response_data_log_history_inner import VerifyResponseDataLogHistoryInner
-from typing import Optional, Set
-from typing_extensions import Self
 
 class VerifyResponseDataLog(BaseModel):
     """
     VerifyResponseDataLog
-    """ # noqa: E501
-    start_time: StrictInt
-    time_spent: StrictInt
-    attempts: StrictInt
-    errors: StrictInt
-    success: StrictBool
-    mobile: StrictBool
-    input: List[Any]
-    history: List[VerifyResponseDataLogHistoryInner]
-    __properties: ClassVar[List[str]] = ["start_time", "time_spent", "attempts", "errors", "success", "mobile", "input", "history"]
+    """
+    start_time: StrictInt = Field(...)
+    time_spent: StrictInt = Field(...)
+    attempts: StrictInt = Field(...)
+    errors: StrictInt = Field(...)
+    success: StrictBool = Field(...)
+    mobile: StrictBool = Field(...)
+    input: conlist(Any) = Field(...)
+    history: conlist(VerifyResponseDataLogHistoryInner) = Field(...)
+    __properties = ["start_time", "time_spent", "attempts", "errors", "success", "mobile", "input", "history"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> VerifyResponseDataLog:
         """Create an instance of VerifyResponseDataLog from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in history (list)
         _items = []
         if self.history:
-            for _item_history in self.history:
-                if _item_history:
-                    _items.append(_item_history.to_dict())
+            for _item in self.history:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict['history'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> VerifyResponseDataLog:
         """Create an instance of VerifyResponseDataLog from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return VerifyResponseDataLog.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = VerifyResponseDataLog.parse_obj({
             "start_time": obj.get("start_time"),
             "time_spent": obj.get("time_spent"),
             "attempts": obj.get("attempts"),
@@ -103,7 +87,7 @@ class VerifyResponseDataLog(BaseModel):
             "success": obj.get("success"),
             "mobile": obj.get("mobile"),
             "input": obj.get("input"),
-            "history": [VerifyResponseDataLogHistoryInner.from_dict(_item) for _item in obj["history"]] if obj.get("history") is not None else None
+            "history": [VerifyResponseDataLogHistoryInner.from_dict(_item) for _item in obj.get("history")] if obj.get("history") is not None else None
         })
         return _obj
 

@@ -19,15 +19,15 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field
 
 class TransferListResponseArraySession(BaseModel):
     """
     TransferListResponseArraySession
     """
-    provider: Optional[Dict[str, Any]] = Field(...)
-    id: Optional[Dict[str, Any]] = Field(...)
+    provider: Optional[Any] = Field(...)
+    id: Optional[Any] = Field(...)
     __properties = ["provider", "id"]
 
     class Config:

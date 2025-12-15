@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
 from alexasomba_paystack.models.refund_fetch_response_data_customer import RefundFetchResponseDataCustomer
 
@@ -29,21 +29,21 @@ class RefundFetchResponseData(BaseModel):
     """
     integration: StrictInt = Field(...)
     transaction: StrictInt = Field(...)
-    dispute: Optional[Dict[str, Any]] = Field(...)
-    settlement: Optional[Dict[str, Any]] = Field(...)
+    dispute: Optional[Any] = Field(...)
+    settlement: Optional[Any] = Field(...)
     id: StrictInt = Field(...)
     domain: StrictStr = Field(...)
     currency: StrictStr = Field(...)
     amount: StrictInt = Field(...)
     status: StrictStr = Field(...)
-    refunded_at: Optional[Dict[str, Any]] = Field(...)
+    refunded_at: Optional[Any] = Field(...)
     refunded_by: StrictStr = Field(...)
     customer_note: StrictStr = Field(...)
     merchant_note: StrictStr = Field(...)
     deducted_amount: StrictInt = Field(...)
     fully_deducted: StrictInt = Field(...)
     created_at: StrictStr = Field(..., alias="createdAt")
-    bank_reference: Optional[Dict[str, Any]] = Field(...)
+    bank_reference: Optional[Any] = Field(...)
     transaction_reference: StrictStr = Field(...)
     reason: StrictStr = Field(...)
     customer: RefundFetchResponseDataCustomer = Field(...)
@@ -51,7 +51,7 @@ class RefundFetchResponseData(BaseModel):
     transaction_amount: StrictInt = Field(...)
     initiated_by: StrictStr = Field(...)
     refund_channel: StrictStr = Field(...)
-    session_id: Optional[Dict[str, Any]] = Field(...)
+    session_id: Optional[Any] = Field(...)
     collect_account_number: StrictBool = Field(...)
     __properties = ["integration", "transaction", "dispute", "settlement", "id", "domain", "currency", "amount", "status", "refunded_at", "refunded_by", "customer_note", "merchant_note", "deducted_amount", "fully_deducted", "createdAt", "bank_reference", "transaction_reference", "reason", "customer", "refund_type", "transaction_amount", "initiated_by", "refund_channel", "session_id", "collect_account_number"]
 

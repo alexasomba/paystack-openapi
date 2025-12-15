@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **virtual_terminal_add_split_code**
-> VirtualTerminalAddSplitCodeResponse virtual_terminal_add_split_code(code, body=body)
+> VirtualTerminalAddSplitCodeResponse virtual_terminal_add_split_code(code, virtual_terminal_add_split_code=virtual_terminal_add_split_code)
 
 Add Split Code to Virtual Terminal
 
@@ -29,8 +29,8 @@ Add Split Code to Virtual Terminal
 import time
 import os
 import alexasomba_paystack
+from alexasomba_paystack.models.virtual_terminal_add_split_code import VirtualTerminalAddSplitCode
 from alexasomba_paystack.models.virtual_terminal_add_split_code_response import VirtualTerminalAddSplitCodeResponse
-from alexasomba_paystack.models.virtual_terminal_code_split_code import VirtualTerminalCodeSplitCode
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -55,11 +55,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.VirtualTerminalApi(api_client)
     code = 'VT_MCK5292Z' # str | Code of the Virtual Terminal
-    body = alexasomba_paystack.VirtualTerminalCodeSplitCode() # VirtualTerminalCodeSplitCode |  (optional)
+    virtual_terminal_add_split_code = alexasomba_paystack.VirtualTerminalAddSplitCode() # VirtualTerminalAddSplitCode |  (optional)
 
     try:
         # Add Split Code to Virtual Terminal
-        api_response = api_instance.virtual_terminal_add_split_code(code, body=body)
+        api_response = api_instance.virtual_terminal_add_split_code(code, virtual_terminal_add_split_code=virtual_terminal_add_split_code)
         print("The response of VirtualTerminalApi->virtual_terminal_add_split_code:\n")
         pprint(api_response)
     except Exception as e:
@@ -73,7 +73,7 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **code** | **str**| Code of the Virtual Terminal | 
- **body** | **VirtualTerminalCodeSplitCode**|  | [optional] 
+ **virtual_terminal_add_split_code** | [**VirtualTerminalAddSplitCode**](VirtualTerminalAddSplitCode.md)|  | [optional] 
 
 ### Return type
 
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **virtual_terminal_delete_split_code**
-> VirtualTerminalDeleteSplitCodeResponse virtual_terminal_delete_split_code(code, body=body)
+> VirtualTerminalDeleteSplitCodeResponse virtual_terminal_delete_split_code(code, virtual_terminal_delete_split_code=virtual_terminal_delete_split_code)
 
 Remove Split Code from Virtual Terminal
 
@@ -270,7 +270,7 @@ Remove Split Code from Virtual Terminal
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.virtual_terminal_code_split_code import VirtualTerminalCodeSplitCode
+from alexasomba_paystack.models.virtual_terminal_delete_split_code import VirtualTerminalDeleteSplitCode
 from alexasomba_paystack.models.virtual_terminal_delete_split_code_response import VirtualTerminalDeleteSplitCodeResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
@@ -296,11 +296,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.VirtualTerminalApi(api_client)
     code = 'VT_MCK5292Z' # str | Code of the Virtual Terminal
-    body = alexasomba_paystack.VirtualTerminalCodeSplitCode() # VirtualTerminalCodeSplitCode |  (optional)
+    virtual_terminal_delete_split_code = alexasomba_paystack.VirtualTerminalDeleteSplitCode() # VirtualTerminalDeleteSplitCode |  (optional)
 
     try:
         # Remove Split Code from Virtual Terminal
-        api_response = api_instance.virtual_terminal_delete_split_code(code, body=body)
+        api_response = api_instance.virtual_terminal_delete_split_code(code, virtual_terminal_delete_split_code=virtual_terminal_delete_split_code)
         print("The response of VirtualTerminalApi->virtual_terminal_delete_split_code:\n")
         pprint(api_response)
     except Exception as e:
@@ -314,7 +314,7 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **code** | **str**| Code of the Virtual Terminal | 
- **body** | **VirtualTerminalCodeSplitCode**|  | [optional] 
+ **virtual_terminal_delete_split_code** | [**VirtualTerminalDeleteSplitCode**](VirtualTerminalDeleteSplitCode.md)|  | [optional] 
 
 ### Return type
 
@@ -339,7 +339,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **virtual_terminal_destination_assign**
-> VirtualTerminalDestinationAssignResponse virtual_terminal_destination_assign(code, body=body)
+> VirtualTerminalDestinationAssignResponse virtual_terminal_destination_assign(code, virtual_terminal_destination_assign=virtual_terminal_destination_assign)
 
 Assign Destination to Virtual Terminal
 
@@ -352,7 +352,7 @@ Add a destination (WhatsApp number) to a Virtual Terminal on your integration
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.virtual_terminal_code_destination_assign import VirtualTerminalCodeDestinationAssign
+from alexasomba_paystack.models.virtual_terminal_destination_assign import VirtualTerminalDestinationAssign
 from alexasomba_paystack.models.virtual_terminal_destination_assign_response import VirtualTerminalDestinationAssignResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
@@ -378,11 +378,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.VirtualTerminalApi(api_client)
     code = 'VT_MCK5292Z' # str | Code of the Virtual Terminal
-    body = alexasomba_paystack.VirtualTerminalCodeDestinationAssign() # VirtualTerminalCodeDestinationAssign |  (optional)
+    virtual_terminal_destination_assign = alexasomba_paystack.VirtualTerminalDestinationAssign() # VirtualTerminalDestinationAssign |  (optional)
 
     try:
         # Assign Destination to Virtual Terminal
-        api_response = api_instance.virtual_terminal_destination_assign(code, body=body)
+        api_response = api_instance.virtual_terminal_destination_assign(code, virtual_terminal_destination_assign=virtual_terminal_destination_assign)
         print("The response of VirtualTerminalApi->virtual_terminal_destination_assign:\n")
         pprint(api_response)
     except Exception as e:
@@ -396,7 +396,7 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **code** | **str**| Code of the Virtual Terminal | 
- **body** | **VirtualTerminalCodeDestinationAssign**|  | [optional] 
+ **virtual_terminal_destination_assign** | [**VirtualTerminalDestinationAssign**](VirtualTerminalDestinationAssign.md)|  | [optional] 
 
 ### Return type
 
@@ -421,7 +421,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **virtual_terminal_destination_unassign**
-> VirtualTerminalDestinationUnassignResponse virtual_terminal_destination_unassign(code, body=body)
+> VirtualTerminalDestinationUnassignResponse virtual_terminal_destination_unassign(code, virtual_terminal_destination_unassign=virtual_terminal_destination_unassign)
 
 Unassign Destination from Virtual Terminal
 
@@ -434,7 +434,7 @@ Unassign a destination (WhatsApp Number) from a Virtual Terminal on your integra
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.virtual_terminal_code_destination_unassign import VirtualTerminalCodeDestinationUnassign
+from alexasomba_paystack.models.virtual_terminal_destination_unassign import VirtualTerminalDestinationUnassign
 from alexasomba_paystack.models.virtual_terminal_destination_unassign_response import VirtualTerminalDestinationUnassignResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
@@ -460,11 +460,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.VirtualTerminalApi(api_client)
     code = 'VT_MCK5292Z' # str | Code of the Virtual Terminal
-    body = alexasomba_paystack.VirtualTerminalCodeDestinationUnassign() # VirtualTerminalCodeDestinationUnassign |  (optional)
+    virtual_terminal_destination_unassign = alexasomba_paystack.VirtualTerminalDestinationUnassign() # VirtualTerminalDestinationUnassign |  (optional)
 
     try:
         # Unassign Destination from Virtual Terminal
-        api_response = api_instance.virtual_terminal_destination_unassign(code, body=body)
+        api_response = api_instance.virtual_terminal_destination_unassign(code, virtual_terminal_destination_unassign=virtual_terminal_destination_unassign)
         print("The response of VirtualTerminalApi->virtual_terminal_destination_unassign:\n")
         pprint(api_response)
     except Exception as e:
@@ -478,7 +478,7 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **code** | **str**| Code of the Virtual Terminal | 
- **body** | **VirtualTerminalCodeDestinationUnassign**|  | [optional] 
+ **virtual_terminal_destination_unassign** | [**VirtualTerminalDestinationUnassign**](VirtualTerminalDestinationUnassign.md)|  | [optional] 
 
 ### Return type
 
@@ -663,7 +663,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **virtual_terminal_update**
-> VirtualTerminalUpdateResponse virtual_terminal_update(code, body=body)
+> VirtualTerminalUpdateResponse virtual_terminal_update(code, virtual_terminal_update=virtual_terminal_update)
 
 Update Virtual Terminal
 
@@ -676,7 +676,7 @@ Update a Virtual Terminal on your integration
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.virtual_terminal_code import VirtualTerminalCode
+from alexasomba_paystack.models.virtual_terminal_update import VirtualTerminalUpdate
 from alexasomba_paystack.models.virtual_terminal_update_response import VirtualTerminalUpdateResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
@@ -702,11 +702,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.VirtualTerminalApi(api_client)
     code = 'VT_MCK5292Z' # str | Code of the Virtual Terminal
-    body = alexasomba_paystack.VirtualTerminalCode() # VirtualTerminalCode |  (optional)
+    virtual_terminal_update = alexasomba_paystack.VirtualTerminalUpdate() # VirtualTerminalUpdate |  (optional)
 
     try:
         # Update Virtual Terminal
-        api_response = api_instance.virtual_terminal_update(code, body=body)
+        api_response = api_instance.virtual_terminal_update(code, virtual_terminal_update=virtual_terminal_update)
         print("The response of VirtualTerminalApi->virtual_terminal_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -720,7 +720,7 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **code** | **str**| Code of the Virtual Terminal | 
- **body** | **VirtualTerminalCode**|  | [optional] 
+ **virtual_terminal_update** | [**VirtualTerminalUpdate**](VirtualTerminalUpdate.md)|  | [optional] 
 
 ### Return type
 

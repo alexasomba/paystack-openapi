@@ -19,27 +19,27 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
 
 class PlanFetchResponseData(BaseModel):
     """
     PlanFetchResponseData
     """
-    subscriptions: conlist(Dict[str, Any]) = Field(...)
-    pages: conlist(Dict[str, Any]) = Field(...)
+    subscriptions: conlist(Any) = Field(...)
+    pages: conlist(Any) = Field(...)
     domain: StrictStr = Field(...)
     name: StrictStr = Field(...)
     plan_code: StrictStr = Field(...)
-    description: Optional[Dict[str, Any]] = Field(...)
+    description: Optional[Any] = Field(...)
     amount: StrictInt = Field(...)
     interval: StrictStr = Field(...)
     invoice_limit: StrictInt = Field(...)
     send_invoices: StrictBool = Field(...)
     send_sms: StrictBool = Field(...)
     hosted_page: StrictBool = Field(...)
-    hosted_page_url: Optional[Dict[str, Any]] = Field(...)
-    hosted_page_summary: Optional[Dict[str, Any]] = Field(...)
+    hosted_page_url: Optional[Any] = Field(...)
+    hosted_page_summary: Optional[Any] = Field(...)
     currency: StrictStr = Field(...)
     migrate: StrictBool = Field(...)
     is_deleted: StrictBool = Field(...)
@@ -53,7 +53,7 @@ class PlanFetchResponseData(BaseModel):
     subscriptions_count: StrictInt = Field(...)
     active_subscriptions_count: Optional[StrictInt] = Field(...)
     total_revenue: StrictInt = Field(...)
-    subscribers: conlist(Dict[str, Any]) = Field(...)
+    subscribers: conlist(Any) = Field(...)
     __properties = ["subscriptions", "pages", "domain", "name", "plan_code", "description", "amount", "interval", "invoice_limit", "send_invoices", "send_sms", "hosted_page", "hosted_page_url", "hosted_page_summary", "currency", "migrate", "is_deleted", "is_archived", "id", "integration", "createdAt", "updatedAt", "pages_count", "subscribers_count", "subscriptions_count", "active_subscriptions_count", "total_revenue", "subscribers"]
 
     class Config:

@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
 from alexasomba_paystack.models.charge_authorization_response_data_authorization import ChargeAuthorizationResponseDataAuthorization
 from alexasomba_paystack.models.charge_authorization_response_data_customer import ChargeAuthorizationResponseDataCustomer
@@ -39,12 +39,12 @@ class ChargeAuthorizationResponseData(BaseModel):
     gateway_response: StrictStr = Field(...)
     message: Optional[StrictStr] = Field(...)
     channel: StrictStr = Field(...)
-    ip_address: Optional[Dict[str, Any]] = Field(...)
+    ip_address: Optional[Any] = Field(...)
     log: Optional[ChargeAuthorizationResponseDataLog] = Field(...)
     fees: Optional[StrictInt] = Field(...)
     authorization: ChargeAuthorizationResponseDataAuthorization = Field(...)
     customer: ChargeAuthorizationResponseDataCustomer = Field(...)
-    plan: Optional[Dict[str, Any]] = Field(...)
+    plan: Optional[Any] = Field(...)
     id: StrictInt = Field(...)
     __properties = ["amount", "currency", "transaction_date", "status", "reference", "domain", "metadata", "gateway_response", "message", "channel", "ip_address", "log", "fees", "authorization", "customer", "plan", "id"]
 

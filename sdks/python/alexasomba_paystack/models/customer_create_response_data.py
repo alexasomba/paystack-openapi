@@ -19,31 +19,31 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
-from alexasomba_paystack.models.customer_create_response_data_metadata import CustomerCreateResponseDataMetadata
+from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_customer_metadata import BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata
 
 class CustomerCreateResponseData(BaseModel):
     """
     CustomerCreateResponseData
     """
-    transactions: conlist(Dict[str, Any]) = Field(...)
-    subscriptions: conlist(Dict[str, Any]) = Field(...)
-    authorizations: conlist(Dict[str, Any]) = Field(...)
+    transactions: conlist(Any) = Field(...)
+    subscriptions: conlist(Any) = Field(...)
+    authorizations: conlist(Any) = Field(...)
     email: StrictStr = Field(...)
     first_name: StrictStr = Field(...)
     last_name: StrictStr = Field(...)
     phone: StrictStr = Field(...)
     integration: StrictInt = Field(...)
     domain: StrictStr = Field(...)
-    metadata: CustomerCreateResponseDataMetadata = Field(...)
+    metadata: BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata = Field(...)
     customer_code: StrictStr = Field(...)
     risk_action: StrictStr = Field(...)
     id: StrictInt = Field(...)
     created_at: StrictStr = Field(..., alias="createdAt")
     updated_at: StrictStr = Field(..., alias="updatedAt")
     identified: StrictBool = Field(...)
-    identifications: Optional[Dict[str, Any]] = Field(...)
+    identifications: Optional[Any] = Field(...)
     __properties = ["transactions", "subscriptions", "authorizations", "email", "first_name", "last_name", "phone", "integration", "domain", "metadata", "customer_code", "risk_action", "id", "createdAt", "updatedAt", "identified", "identifications"]
 
     class Config:
@@ -99,7 +99,7 @@ class CustomerCreateResponseData(BaseModel):
             "phone": obj.get("phone"),
             "integration": obj.get("integration"),
             "domain": obj.get("domain"),
-            "metadata": CustomerCreateResponseDataMetadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
+            "metadata": BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
             "customer_code": obj.get("customer_code"),
             "risk_action": obj.get("risk_action"),
             "id": obj.get("id"),

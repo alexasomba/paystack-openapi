@@ -21,8 +21,8 @@ import json
 
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
-from alexasomba_paystack.models.charge_create_response_data_customer import ChargeCreateResponseDataCustomer
 from alexasomba_paystack.models.subscription_fetch_response_data_plan import SubscriptionFetchResponseDataPlan
+from alexasomba_paystack.models.transaction_fetch_response_data_customer import TransactionFetchResponseDataCustomer
 from alexasomba_paystack.models.transaction_partial_debit_response_data_authorization import TransactionPartialDebitResponseDataAuthorization
 
 class SubscriptionFetchResponseData(BaseModel):
@@ -37,18 +37,18 @@ class SubscriptionFetchResponseData(BaseModel):
     amount: StrictInt = Field(...)
     cron_expression: StrictStr = Field(...)
     next_payment_date: StrictStr = Field(...)
-    open_invoice: Optional[Dict[str, Any]] = Field(...)
+    open_invoice: Optional[Any] = Field(...)
     created_at: StrictStr = Field(..., alias="createdAt")
-    cancelled_at: Optional[Dict[str, Any]] = Field(..., alias="cancelledAt")
+    cancelled_at: Optional[Any] = Field(..., alias="cancelledAt")
     integration: StrictInt = Field(...)
     plan: SubscriptionFetchResponseDataPlan = Field(...)
     authorization: TransactionPartialDebitResponseDataAuthorization = Field(...)
-    customer: ChargeCreateResponseDataCustomer = Field(...)
-    invoices: conlist(Dict[str, Any]) = Field(...)
-    invoices_history: conlist(Dict[str, Any]) = Field(...)
+    customer: TransactionFetchResponseDataCustomer = Field(...)
+    invoices: conlist(Any) = Field(...)
+    invoices_history: conlist(Any) = Field(...)
     invoice_limit: StrictInt = Field(...)
-    split_code: Optional[Dict[str, Any]] = Field(...)
-    most_recent_invoice: Optional[Dict[str, Any]] = Field(...)
+    split_code: Optional[Any] = Field(...)
+    most_recent_invoice: Optional[Any] = Field(...)
     payments_count: StrictInt = Field(...)
     metadata: Optional[Dict[str, Any]] = Field(...)
     __properties = ["id", "domain", "status", "subscription_code", "email_token", "amount", "cron_expression", "next_payment_date", "open_invoice", "createdAt", "cancelledAt", "integration", "plan", "authorization", "customer", "invoices", "invoices_history", "invoice_limit", "split_code", "most_recent_invoice", "payments_count", "metadata"]
@@ -137,7 +137,7 @@ class SubscriptionFetchResponseData(BaseModel):
             "integration": obj.get("integration"),
             "plan": SubscriptionFetchResponseDataPlan.from_dict(obj.get("plan")) if obj.get("plan") is not None else None,
             "authorization": TransactionPartialDebitResponseDataAuthorization.from_dict(obj.get("authorization")) if obj.get("authorization") is not None else None,
-            "customer": ChargeCreateResponseDataCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
+            "customer": TransactionFetchResponseDataCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
             "invoices": obj.get("invoices"),
             "invoices_history": obj.get("invoices_history"),
             "invoice_limit": obj.get("invoice_limit"),

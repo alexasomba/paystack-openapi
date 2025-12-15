@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
 from alexasomba_paystack.models.order_items_array import OrderItemsArray
 
@@ -34,23 +34,23 @@ class OrderListResponseArray(BaseModel):
     currency: StrictStr = Field(...)
     amount: StrictInt = Field(...)
     transaction: StrictInt = Field(...)
-    page: Optional[Dict[str, Any]] = Field(...)
+    page: Optional[Any] = Field(...)
     customer: StrictInt = Field(...)
     customer_name: StrictStr = Field(...)
     status: StrictStr = Field(...)
-    shipping_address: Optional[Dict[str, Any]] = Field(...)
+    shipping_address: Optional[Any] = Field(...)
     metadata: StrictStr = Field(...)
     created_at: StrictStr = Field(...)
     updated_at: StrictStr = Field(...)
     email: StrictStr = Field(...)
     paid_at: StrictStr = Field(...)
-    shipping: Optional[Dict[str, Any]] = Field(...)
+    shipping: Optional[Any] = Field(...)
     shipping_fees: StrictInt = Field(...)
     refunded: StrictBool = Field(...)
     is_viewed: StrictBool = Field(...)
-    refunded_amount: Optional[Dict[str, Any]] = Field(...)
-    discount_amount: Optional[Dict[str, Any]] = Field(...)
-    discounts: Optional[Dict[str, Any]] = Field(...)
+    refunded_amount: Optional[Any] = Field(...)
+    discount_amount: Optional[Any] = Field(...)
+    discounts: Optional[Any] = Field(...)
     items: conlist(OrderItemsArray) = Field(...)
     fully_refunded: StrictBool = Field(...)
     __properties = ["id", "order_code", "integration", "domain", "currency", "amount", "transaction", "page", "customer", "customer_name", "status", "shipping_address", "metadata", "created_at", "updated_at", "email", "paid_at", "shipping", "shipping_fees", "refunded", "is_viewed", "refunded_amount", "discount_amount", "discounts", "items", "fully_refunded"]

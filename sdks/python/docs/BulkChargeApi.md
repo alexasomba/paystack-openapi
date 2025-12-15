@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **bulk_charge_charges**
-> BulkchargeCodeCharges bulk_charge_charges(code, per_page=per_page, page=page, status=status)
+> BulkChargeFetchBulkBatchChargesResponse bulk_charge_charges(code, per_page=per_page, page=page, status=status)
 
 List Charges in a Batch
 
@@ -26,7 +26,7 @@ This endpoint retrieves the charges associated with a specified batch code
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.bulkcharge_code_charges import BulkchargeCodeCharges
+from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response import BulkChargeFetchBulkBatchChargesResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BulkchargeCodeCharges**](BulkchargeCodeCharges.md)
+[**BulkChargeFetchBulkBatchChargesResponse**](BulkChargeFetchBulkBatchChargesResponse.md)
 
 ### Authorization
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **bulk_charge_fetch**
-> BulkchargeCode bulk_charge_fetch(code)
+> BulkChargeFetchResponse bulk_charge_fetch(code)
 
 Fetch Bulk Charge Batch
 
@@ -112,7 +112,7 @@ This endpoint retrieves a specific batch code. It also returns useful informatio
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.bulkcharge_code import BulkchargeCode
+from alexasomba_paystack.models.bulk_charge_fetch_response import BulkChargeFetchResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BulkchargeCode**](BulkchargeCode.md)
+[**BulkChargeFetchResponse**](BulkChargeFetchResponse.md)
 
 ### Authorization
 
@@ -343,7 +343,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **bulk_charge_pause**
-> BulkchargePauseCode bulk_charge_pause(code)
+> BulkChargePauseResponse bulk_charge_pause(code)
 
 Pause Bulk Charge Batch
 
@@ -356,7 +356,7 @@ Pause the processing of a charge batch
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.bulkcharge_pause_code import BulkchargePauseCode
+from alexasomba_paystack.models.bulk_charge_pause_response import BulkChargePauseResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -401,7 +401,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BulkchargePauseCode**](BulkchargePauseCode.md)
+[**BulkChargePauseResponse**](BulkChargePauseResponse.md)
 
 ### Authorization
 
@@ -423,7 +423,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **bulk_charge_resume**
-> BulkchargeResumeCode bulk_charge_resume(code)
+> BulkChargeResumeResponse bulk_charge_resume(code)
 
 Resume Bulk Charge Batch
 
@@ -436,7 +436,7 @@ Resume the processing of a previously paused charge batch
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.bulkcharge_resume_code import BulkchargeResumeCode
+from alexasomba_paystack.models.bulk_charge_resume_response import BulkChargeResumeResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -481,7 +481,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BulkchargeResumeCode**](BulkchargeResumeCode.md)
+[**BulkChargeResumeResponse**](BulkChargeResumeResponse.md)
 
 ### Authorization
 

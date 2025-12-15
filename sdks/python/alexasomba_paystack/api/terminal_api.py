@@ -30,9 +30,9 @@ from alexasomba_paystack.models.terminal_commission_device_response import Termi
 from alexasomba_paystack.models.terminal_decommission_device_response import TerminalDecommissionDeviceResponse
 from alexasomba_paystack.models.terminal_get_response import TerminalGetResponse
 from alexasomba_paystack.models.terminal_get_status_response import TerminalGetStatusResponse
-from alexasomba_paystack.models.terminal_id_event import TerminalIdEvent
 from alexasomba_paystack.models.terminal_lists_response import TerminalListsResponse
-from alexasomba_paystack.models.terminal_terminal_id import TerminalTerminalId
+from alexasomba_paystack.models.terminal_send_event import TerminalSendEvent
+from alexasomba_paystack.models.terminal_upate import TerminalUpate
 from alexasomba_paystack.models.terminal_update_response import TerminalUpdateResponse
 
 from alexasomba_paystack.api_client import ApiClient
@@ -938,20 +938,20 @@ class TerminalApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def terminal_send_event(self, id : Annotated[StrictStr, Field(..., description="The ID of the Terminal the event should be sent to.")], body : Optional[TerminalIdEvent] = None, **kwargs) -> Response:  # noqa: E501
+    def terminal_send_event(self, id : Annotated[StrictStr, Field(..., description="The ID of the Terminal the event should be sent to.")], terminal_send_event : Optional[TerminalSendEvent] = None, **kwargs) -> Response:  # noqa: E501
         """Send Event  # noqa: E501
 
         Send an event from your application to the Paystack Terminal  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.terminal_send_event(id, body, async_req=True)
+        >>> thread = api.terminal_send_event(id, terminal_send_event, async_req=True)
         >>> result = thread.get()
 
         :param id: The ID of the Terminal the event should be sent to. (required)
         :type id: str
-        :param body:
-        :type body: TerminalIdEvent
+        :param terminal_send_event:
+        :type terminal_send_event: TerminalSendEvent
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -966,23 +966,23 @@ class TerminalApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the terminal_send_event_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.terminal_send_event_with_http_info(id, body, **kwargs)  # noqa: E501
+        return self.terminal_send_event_with_http_info(id, terminal_send_event, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def terminal_send_event_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the Terminal the event should be sent to.")], body : Optional[TerminalIdEvent] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def terminal_send_event_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the Terminal the event should be sent to.")], terminal_send_event : Optional[TerminalSendEvent] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Send Event  # noqa: E501
 
         Send an event from your application to the Paystack Terminal  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.terminal_send_event_with_http_info(id, body, async_req=True)
+        >>> thread = api.terminal_send_event_with_http_info(id, terminal_send_event, async_req=True)
         >>> result = thread.get()
 
         :param id: The ID of the Terminal the event should be sent to. (required)
         :type id: str
-        :param body:
-        :type body: TerminalIdEvent
+        :param terminal_send_event:
+        :type terminal_send_event: TerminalSendEvent
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -1012,7 +1012,7 @@ class TerminalApi(object):
 
         _all_params = [
             'id',
-            'body'
+            'terminal_send_event'
         ]
         _all_params.extend(
             [
@@ -1053,8 +1053,8 @@ class TerminalApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['terminal_send_event'] is not None:
+            _body_params = _params['terminal_send_event']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -1093,20 +1093,20 @@ class TerminalApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def terminal_update(self, terminal_id : Annotated[StrictStr, Field(..., description="The ID of the Terminal the event should be sent to.")], body : Optional[TerminalTerminalId] = None, **kwargs) -> TerminalUpdateResponse:  # noqa: E501
+    def terminal_update(self, terminal_id : Annotated[StrictStr, Field(..., description="The ID of the Terminal the event should be sent to.")], terminal_upate : Optional[TerminalUpate] = None, **kwargs) -> TerminalUpdateResponse:  # noqa: E501
         """Update Terminal  # noqa: E501
 
         Update the details of a Terminal  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.terminal_update(terminal_id, body, async_req=True)
+        >>> thread = api.terminal_update(terminal_id, terminal_upate, async_req=True)
         >>> result = thread.get()
 
         :param terminal_id: The ID of the Terminal the event should be sent to. (required)
         :type terminal_id: str
-        :param body:
-        :type body: TerminalTerminalId
+        :param terminal_upate:
+        :type terminal_upate: TerminalUpate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -1121,23 +1121,23 @@ class TerminalApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the terminal_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.terminal_update_with_http_info(terminal_id, body, **kwargs)  # noqa: E501
+        return self.terminal_update_with_http_info(terminal_id, terminal_upate, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def terminal_update_with_http_info(self, terminal_id : Annotated[StrictStr, Field(..., description="The ID of the Terminal the event should be sent to.")], body : Optional[TerminalTerminalId] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def terminal_update_with_http_info(self, terminal_id : Annotated[StrictStr, Field(..., description="The ID of the Terminal the event should be sent to.")], terminal_upate : Optional[TerminalUpate] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Update Terminal  # noqa: E501
 
         Update the details of a Terminal  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.terminal_update_with_http_info(terminal_id, body, async_req=True)
+        >>> thread = api.terminal_update_with_http_info(terminal_id, terminal_upate, async_req=True)
         >>> result = thread.get()
 
         :param terminal_id: The ID of the Terminal the event should be sent to. (required)
         :type terminal_id: str
-        :param body:
-        :type body: TerminalTerminalId
+        :param terminal_upate:
+        :type terminal_upate: TerminalUpate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -1167,7 +1167,7 @@ class TerminalApi(object):
 
         _all_params = [
             'terminal_id',
-            'body'
+            'terminal_upate'
         ]
         _all_params.extend(
             [
@@ -1208,8 +1208,8 @@ class TerminalApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['terminal_upate'] is not None:
+            _body_params = _params['terminal_upate']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(

@@ -18,100 +18,84 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+
+from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
 from alexasomba_paystack.models.transfer_recipient_fetch_response_data_details import TransferRecipientFetchResponseDataDetails
-from typing import Optional, Set
-from typing_extensions import Self
 
 class TransferRecipientFetchResponseData(BaseModel):
     """
     TransferRecipientFetchResponseData
-    """ # noqa: E501
-    integration: StrictInt
-    domain: StrictStr
-    type: StrictStr
-    currency: StrictStr
-    name: StrictStr
-    details: TransferRecipientFetchResponseDataDetails
-    description: StrictStr
+    """
+    integration: StrictInt = Field(...)
+    domain: StrictStr = Field(...)
+    type: StrictStr = Field(...)
+    currency: StrictStr = Field(...)
+    name: StrictStr = Field(...)
+    details: TransferRecipientFetchResponseDataDetails = Field(...)
+    description: StrictStr = Field(...)
     metadata: Optional[Dict[str, Any]] = None
-    recipient_code: StrictStr
-    active: StrictBool
-    recipient_account: StrictStr
-    institution_code: StrictStr
-    email: StrictStr
-    id: StrictInt
-    is_deleted: StrictBool = Field(alias="isDeleted")
-    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
-    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    __properties: ClassVar[List[str]] = ["integration", "domain", "type", "currency", "name", "details", "description", "metadata", "recipient_code", "active", "recipient_account", "institution_code", "email", "id", "isDeleted", "createdAt", "updatedAt"]
+    recipient_code: StrictStr = Field(...)
+    active: StrictBool = Field(...)
+    recipient_account: StrictStr = Field(...)
+    institution_code: StrictStr = Field(...)
+    email: StrictStr = Field(...)
+    id: StrictInt = Field(...)
+    is_deleted: StrictBool = Field(..., alias="isDeleted")
+    created_at: StrictStr = Field(..., alias="createdAt")
+    updated_at: StrictStr = Field(..., alias="updatedAt")
+    __properties = ["integration", "domain", "type", "currency", "name", "details", "description", "metadata", "recipient_code", "active", "recipient_account", "institution_code", "email", "id", "isDeleted", "createdAt", "updatedAt"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> TransferRecipientFetchResponseData:
         """Create an instance of TransferRecipientFetchResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of details
         if self.details:
             _dict['details'] = self.details.to_dict()
         # set to None if metadata (nullable) is None
-        # and model_fields_set contains the field
-        if self.metadata is None and "metadata" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.metadata is None and "metadata" in self.__fields_set__:
             _dict['metadata'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> TransferRecipientFetchResponseData:
         """Create an instance of TransferRecipientFetchResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return TransferRecipientFetchResponseData.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = TransferRecipientFetchResponseData.parse_obj({
             "integration": obj.get("integration"),
             "domain": obj.get("domain"),
             "type": obj.get("type"),
             "currency": obj.get("currency"),
             "name": obj.get("name"),
-            "details": TransferRecipientFetchResponseDataDetails.from_dict(obj["details"]) if obj.get("details") is not None else None,
+            "details": TransferRecipientFetchResponseDataDetails.from_dict(obj.get("details")) if obj.get("details") is not None else None,
             "description": obj.get("description"),
             "metadata": obj.get("metadata"),
             "recipient_code": obj.get("recipient_code"),
@@ -120,9 +104,9 @@ class TransferRecipientFetchResponseData(BaseModel):
             "institution_code": obj.get("institution_code"),
             "email": obj.get("email"),
             "id": obj.get("id"),
-            "isDeleted": obj.get("isDeleted"),
-            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
-            "updatedAt": obj.get("updatedAt")
+            "is_deleted": obj.get("isDeleted"),
+            "created_at": obj.get("createdAt"),
+            "updated_at": obj.get("updatedAt")
         })
         return _obj
 

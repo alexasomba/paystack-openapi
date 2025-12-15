@@ -21,7 +21,7 @@ import json
 
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
-from alexasomba_paystack.models.dedicated_nuban_create_response_data_bank import DedicatedNubanCreateResponseDataBank
+from alexasomba_paystack.models.dedicated_nuban_list_response_array_bank import DedicatedNubanListResponseArrayBank
 from alexasomba_paystack.models.dedicated_nuban_list_response_array_customer import DedicatedNubanListResponseArrayCustomer
 from alexasomba_paystack.models.dedicated_nuban_list_response_array_split_config import DedicatedNubanListResponseArraySplitConfig
 
@@ -30,7 +30,7 @@ class DedicatedNubanListResponseArray(BaseModel):
     DedicatedNubanListResponseArray
     """
     customer: DedicatedNubanListResponseArrayCustomer = Field(...)
-    bank: DedicatedNubanCreateResponseDataBank = Field(...)
+    bank: DedicatedNubanListResponseArrayBank = Field(...)
     id: StrictInt = Field(...)
     account_name: StrictStr = Field(...)
     account_number: StrictStr = Field(...)
@@ -93,7 +93,7 @@ class DedicatedNubanListResponseArray(BaseModel):
 
         _obj = DedicatedNubanListResponseArray.parse_obj({
             "customer": DedicatedNubanListResponseArrayCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
-            "bank": DedicatedNubanCreateResponseDataBank.from_dict(obj.get("bank")) if obj.get("bank") is not None else None,
+            "bank": DedicatedNubanListResponseArrayBank.from_dict(obj.get("bank")) if obj.get("bank") is not None else None,
             "id": obj.get("id"),
             "account_name": obj.get("account_name"),
             "account_number": obj.get("account_number"),

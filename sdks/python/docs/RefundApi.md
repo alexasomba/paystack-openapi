@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **refund_retry**
-> RefundRetryResponse refund_retry(id, body=body)
+> RefundRetryResponse refund_retry(id, refund_retry=refund_retry)
 
 Retry Refund
 
@@ -270,8 +270,8 @@ Retry a refund with a `needs-attention` status by providing the bank account det
 import time
 import os
 import alexasomba_paystack
+from alexasomba_paystack.models.refund_retry import RefundRetry
 from alexasomba_paystack.models.refund_retry_response import RefundRetryResponse
-from alexasomba_paystack.models.refund_retry_with_customer_details_id import RefundRetryWithCustomerDetailsId
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -296,11 +296,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.RefundApi(api_client)
     id = 15581137 # int | The identifier of the refund
-    body = alexasomba_paystack.RefundRetryWithCustomerDetailsId() # RefundRetryWithCustomerDetailsId |  (optional)
+    refund_retry = alexasomba_paystack.RefundRetry() # RefundRetry |  (optional)
 
     try:
         # Retry Refund
-        api_response = api_instance.refund_retry(id, body=body)
+        api_response = api_instance.refund_retry(id, refund_retry=refund_retry)
         print("The response of RefundApi->refund_retry:\n")
         pprint(api_response)
     except Exception as e:
@@ -314,7 +314,7 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The identifier of the refund | 
- **body** | **RefundRetryWithCustomerDetailsId**|  | [optional] 
+ **refund_retry** | [**RefundRetry**](RefundRetry.md)|  | [optional] 
 
 ### Return type
 

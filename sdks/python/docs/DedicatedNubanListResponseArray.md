@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **customer** | [**DedicatedNubanListResponseArrayCustomer**](DedicatedNubanListResponseArrayCustomer.md) |  | 
-**bank** | [**DedicatedNubanCreateResponseDataBank**](DedicatedNubanCreateResponseDataBank.md) |  | 
+**bank** | [**DedicatedNubanListResponseArrayBank**](DedicatedNubanListResponseArrayBank.md) |  | 
 **id** | **int** |  | 
 **account_name** | **str** |  | 
 **account_number** | **str** |  | 

@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bank** | [**DedicatedNubanCreateResponseDataBank**](DedicatedNubanCreateResponseDataBank.md) |  | 
+**bank** | [**DedicatedNubanListResponseArrayBank**](DedicatedNubanListResponseArrayBank.md) |  | 
 **account_name** | **str** |  | 
 **account_number** | **str** |  | 
 **assigned** | **bool** |  | 

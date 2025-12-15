@@ -19,16 +19,16 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field
 
 class RefundCreateResponseDataTransactionAuthorization(BaseModel):
     """
     RefundCreateResponseDataTransactionAuthorization
     """
-    exp_month: Optional[Dict[str, Any]] = Field(...)
-    exp_year: Optional[Dict[str, Any]] = Field(...)
-    account_name: Optional[Dict[str, Any]] = Field(...)
+    exp_month: Optional[Any] = Field(...)
+    exp_year: Optional[Any] = Field(...)
+    account_name: Optional[Any] = Field(...)
     __properties = ["exp_month", "exp_year", "account_name"]
 
     class Config:

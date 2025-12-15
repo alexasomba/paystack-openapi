@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
 from alexasomba_paystack.models.dispute_resolve_response_data_message import DisputeResolveResponseDataMessage
 
@@ -30,14 +30,14 @@ class DisputeResolveResponseData(BaseModel):
     currency: StrictStr = Field(...)
     last4: StrictStr = Field(...)
     bin: StrictStr = Field(...)
-    transaction_reference: Optional[Dict[str, Any]] = Field(...)
+    transaction_reference: Optional[Any] = Field(...)
     merchant_transaction_reference: StrictStr = Field(...)
     refund_amount: StrictInt = Field(...)
     status: StrictStr = Field(...)
     domain: StrictStr = Field(...)
     resolution: StrictStr = Field(...)
     category: StrictStr = Field(...)
-    note: Optional[Dict[str, Any]] = Field(...)
+    note: Optional[Any] = Field(...)
     attachments: StrictStr = Field(...)
     id: StrictInt = Field(...)
     integration: StrictInt = Field(...)
@@ -47,7 +47,7 @@ class DisputeResolveResponseData(BaseModel):
     resolved_at: StrictStr = Field(..., alias="resolvedAt")
     created_at: StrictStr = Field(..., alias="createdAt")
     updated_at: StrictStr = Field(..., alias="updatedAt")
-    due_at: Optional[Dict[str, Any]] = Field(..., alias="dueAt")
+    due_at: Optional[Any] = Field(..., alias="dueAt")
     message: DisputeResolveResponseDataMessage = Field(...)
     __properties = ["currency", "last4", "bin", "transaction_reference", "merchant_transaction_reference", "refund_amount", "status", "domain", "resolution", "category", "note", "attachments", "id", "integration", "transaction", "created_by", "evidence", "resolvedAt", "createdAt", "updatedAt", "dueAt", "message"]
 

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **phone** | **str** |  | 
 **integration** | **int** |  | 
 **domain** | **str** |  | 
-**metadata** | [**CustomerCreateResponseDataMetadata**](CustomerCreateResponseDataMetadata.md) |  | 
+**metadata** | [**BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata**](BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata.md) |  | 
 **customer_code** | **str** |  | 
 **risk_action** | **str** |  | 
 **id** | **int** |  | 

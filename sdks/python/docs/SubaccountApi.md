@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **subaccount_fetch**
-> SubaccountCode subaccount_fetch(code)
+> SubaccountFetchResponse subaccount_fetch(code)
 
 Fetch Subaccount
 
@@ -104,7 +104,7 @@ Get details of a subaccount on your integration
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.subaccount_code import SubaccountCode
+from alexasomba_paystack.models.subaccount_fetch_response import SubaccountFetchResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SubaccountCode**](SubaccountCode.md)
+[**SubaccountFetchResponse**](SubaccountFetchResponse.md)
 
 ### Authorization
 
@@ -255,7 +255,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **subaccount_update**
-> SubaccountCode subaccount_update(code, body=body)
+> SubaccountUpdateResponse subaccount_update(code, subaccount_update=subaccount_update)
 
 Update Subaccount
 
@@ -268,7 +268,8 @@ Update a subaccount details on your integration
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.subaccount_code import SubaccountCode
+from alexasomba_paystack.models.subaccount_update import SubaccountUpdate
+from alexasomba_paystack.models.subaccount_update_response import SubaccountUpdateResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -293,11 +294,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.SubaccountApi(api_client)
     code = 'ACCT_6uujpqtzmnufzkw' # str | The subaccount code you want to fetch
-    body = alexasomba_paystack.SubaccountCode() # SubaccountCode |  (optional)
+    subaccount_update = alexasomba_paystack.SubaccountUpdate() # SubaccountUpdate |  (optional)
 
     try:
         # Update Subaccount
-        api_response = api_instance.subaccount_update(code, body=body)
+        api_response = api_instance.subaccount_update(code, subaccount_update=subaccount_update)
         print("The response of SubaccountApi->subaccount_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -311,11 +312,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **code** | **str**| The subaccount code you want to fetch | 
- **body** | **SubaccountCode**|  | [optional] 
+ **subaccount_update** | [**SubaccountUpdate**](SubaccountUpdate.md)|  | [optional] 
 
 ### Return type
 
-[**SubaccountCode**](SubaccountCode.md)
+[**SubaccountUpdateResponse**](SubaccountUpdateResponse.md)
 
 ### Authorization
 

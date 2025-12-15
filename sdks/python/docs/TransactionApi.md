@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transaction_fetch**
-> TransactionId transaction_fetch(id)
+> TransactionFetchResponse transaction_fetch(id)
 
 Fetch Transaction
 
@@ -367,7 +367,7 @@ Fetch a transaction to get its details
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.transaction_id import TransactionId
+from alexasomba_paystack.models.transaction_fetch_response import TransactionFetchResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -412,7 +412,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransactionId**](TransactionId.md)
+[**TransactionFetchResponse**](TransactionFetchResponse.md)
 
 ### Authorization
 
@@ -787,7 +787,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transaction_timeline**
-> TransactionTimelineId transaction_timeline(id)
+> TransactionTimelineResponse transaction_timeline(id)
 
 Fetch Transaction Timeline
 
@@ -800,7 +800,7 @@ Fetch the steps taken from the initiation to the completion of a transaction
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.transaction_timeline_id import TransactionTimelineId
+from alexasomba_paystack.models.transaction_timeline_response import TransactionTimelineResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -845,7 +845,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransactionTimelineId**](TransactionTimelineId.md)
+[**TransactionTimelineResponse**](TransactionTimelineResponse.md)
 
 ### Authorization
 
@@ -949,7 +949,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transaction_verify**
-> TransactionVerifyReference transaction_verify(reference)
+> VerifyResponse transaction_verify(reference)
 
 Verify Transaction
 
@@ -962,7 +962,7 @@ Verify a previously initiated transaction using it's reference
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.transaction_verify_reference import TransactionVerifyReference
+from alexasomba_paystack.models.verify_response import VerifyResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -1007,7 +1007,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransactionVerifyReference**](TransactionVerifyReference.md)
+[**VerifyResponse**](VerifyResponse.md)
 
 ### Authorization
 

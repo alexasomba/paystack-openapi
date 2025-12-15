@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
 from alexasomba_paystack.models.dispute_history_array import DisputeHistoryArray
 from alexasomba_paystack.models.dispute_list_transaction_response_data_transaction import DisputeListTransactionResponseDataTransaction
@@ -34,24 +34,24 @@ class DisputeListTransactionResponseData(BaseModel):
     currency: StrictStr = Field(...)
     last4: StrictStr = Field(...)
     bin: StrictStr = Field(...)
-    transaction_reference: Optional[Dict[str, Any]] = Field(...)
+    transaction_reference: Optional[Any] = Field(...)
     merchant_transaction_reference: StrictStr = Field(...)
     refund_amount: StrictInt = Field(...)
     status: StrictStr = Field(...)
     domain: StrictStr = Field(...)
-    resolution: Optional[Dict[str, Any]] = Field(...)
+    resolution: Optional[Any] = Field(...)
     category: StrictStr = Field(...)
-    note: Optional[Dict[str, Any]] = Field(...)
-    attachments: Optional[Dict[str, Any]] = Field(...)
+    note: Optional[Any] = Field(...)
+    attachments: Optional[Any] = Field(...)
     id: StrictInt = Field(...)
     integration: StrictInt = Field(...)
     transaction: DisputeListTransactionResponseDataTransaction = Field(...)
     created_by: StrictInt = Field(...)
-    evidence: Optional[Dict[str, Any]] = Field(...)
-    resolved_at: Optional[Dict[str, Any]] = Field(..., alias="resolvedAt")
+    evidence: Optional[Any] = Field(...)
+    resolved_at: Optional[Any] = Field(..., alias="resolvedAt")
     created_at: StrictStr = Field(..., alias="createdAt")
     updated_at: StrictStr = Field(..., alias="updatedAt")
-    due_at: Optional[Dict[str, Any]] = Field(..., alias="dueAt")
+    due_at: Optional[Any] = Field(..., alias="dueAt")
     __properties = ["history", "messages", "currency", "last4", "bin", "transaction_reference", "merchant_transaction_reference", "refund_amount", "status", "domain", "resolution", "category", "note", "attachments", "id", "integration", "transaction", "created_by", "evidence", "resolvedAt", "createdAt", "updatedAt", "dueAt"]
 
     class Config:

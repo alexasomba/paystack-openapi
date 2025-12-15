@@ -19,17 +19,17 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
-from alexasomba_paystack.models.product_create_response_data_metadata import ProductCreateResponseDataMetadata
-from alexasomba_paystack.models.product_create_response_data_shipping_fields import ProductCreateResponseDataShippingFields
+from alexasomba_paystack.models.product_lists_response_array_metadata import ProductListsResponseArrayMetadata
+from alexasomba_paystack.models.product_lists_response_array_shipping_fields import ProductListsResponseArrayShippingFields
 
 class ProductCreateResponseData(BaseModel):
     """
     ProductCreateResponseData
     """
-    variants_options: conlist(Dict[str, Any]) = Field(...)
-    variants: conlist(Dict[str, Any]) = Field(...)
+    variants_options: conlist(Any) = Field(...)
+    variants: conlist(Any) = Field(...)
     name: StrictStr = Field(...)
     description: StrictStr = Field(...)
     currency: StrictStr = Field(...)
@@ -38,16 +38,16 @@ class ProductCreateResponseData(BaseModel):
     type: StrictStr = Field(...)
     is_shippable: StrictBool = Field(...)
     unlimited: StrictBool = Field(...)
-    files: conlist(Dict[str, Any]) = Field(...)
-    shipping_fields: ProductCreateResponseDataShippingFields = Field(...)
+    files: conlist(Any) = Field(...)
+    shipping_fields: ProductListsResponseArrayShippingFields = Field(...)
     integration: StrictInt = Field(...)
     domain: StrictStr = Field(...)
-    metadata: ProductCreateResponseDataMetadata = Field(...)
+    metadata: ProductListsResponseArrayMetadata = Field(...)
     slug: StrictStr = Field(...)
     product_code: StrictStr = Field(...)
     quantity_sold: StrictInt = Field(...)
     active: StrictBool = Field(...)
-    deleted_at: Optional[Dict[str, Any]] = Field(...)
+    deleted_at: Optional[Any] = Field(...)
     in_stock: StrictBool = Field(...)
     minimum_orderable: StrictInt = Field(...)
     maximum_orderable: Optional[StrictInt] = Field(...)
@@ -126,10 +126,10 @@ class ProductCreateResponseData(BaseModel):
             "is_shippable": obj.get("is_shippable"),
             "unlimited": obj.get("unlimited"),
             "files": obj.get("files"),
-            "shipping_fields": ProductCreateResponseDataShippingFields.from_dict(obj.get("shipping_fields")) if obj.get("shipping_fields") is not None else None,
+            "shipping_fields": ProductListsResponseArrayShippingFields.from_dict(obj.get("shipping_fields")) if obj.get("shipping_fields") is not None else None,
             "integration": obj.get("integration"),
             "domain": obj.get("domain"),
-            "metadata": ProductCreateResponseDataMetadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
+            "metadata": ProductListsResponseArrayMetadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
             "slug": obj.get("slug"),
             "product_code": obj.get("product_code"),
             "quantity_sold": obj.get("quantity_sold"),

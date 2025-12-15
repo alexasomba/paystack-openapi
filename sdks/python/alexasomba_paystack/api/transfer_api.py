@@ -29,10 +29,10 @@ from typing import Optional
 from alexasomba_paystack.models.response import Response
 from alexasomba_paystack.models.transfer_bulk import TransferBulk
 from alexasomba_paystack.models.transfer_bulk_response import TransferBulkResponse
-from alexasomba_paystack.models.transfer_code import TransferCode
 from alexasomba_paystack.models.transfer_create_response import TransferCreateResponse
 from alexasomba_paystack.models.transfer_disables_otp_response import TransferDisablesOtpResponse
 from alexasomba_paystack.models.transfer_enables_otp_response import TransferEnablesOtpResponse
+from alexasomba_paystack.models.transfer_fetch_response import TransferFetchResponse
 from alexasomba_paystack.models.transfer_finalize import TransferFinalize
 from alexasomba_paystack.models.transfer_finalize_disable_otp import TransferFinalizeDisableOTP
 from alexasomba_paystack.models.transfer_finalize_disables_otp_response import TransferFinalizeDisablesOtpResponse
@@ -40,7 +40,7 @@ from alexasomba_paystack.models.transfer_initiate import TransferInitiate
 from alexasomba_paystack.models.transfer_list_response import TransferListResponse
 from alexasomba_paystack.models.transfer_resend_otp import TransferResendOTP
 from alexasomba_paystack.models.transfer_resends_otp_response import TransferResendsOtpResponse
-from alexasomba_paystack.models.transfer_verify_reference import TransferVerifyReference
+from alexasomba_paystack.models.transfer_verify_response import TransferVerifyResponse
 
 from alexasomba_paystack.api_client import ApiClient
 from alexasomba_paystack.api_response import ApiResponse
@@ -792,7 +792,7 @@ class TransferApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def transfer_fetch(self, code : Annotated[StrictStr, Field(..., description="Transfer code")], **kwargs) -> TransferCode:  # noqa: E501
+    def transfer_fetch(self, code : Annotated[StrictStr, Field(..., description="Transfer code")], **kwargs) -> TransferFetchResponse:  # noqa: E501
         """Fetch Transfer  # noqa: E501
 
         Get details of a transfer on your integration  # noqa: E501
@@ -813,7 +813,7 @@ class TransferApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: TransferCode
+        :rtype: TransferFetchResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -855,7 +855,7 @@ class TransferApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(TransferCode, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(TransferFetchResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -910,7 +910,7 @@ class TransferApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "TransferCode",
+            '200': "TransferFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1585,7 +1585,7 @@ class TransferApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def transfer_verify(self, reference : Annotated[StrictStr, Field(..., description="Transfer reference")], **kwargs) -> TransferVerifyReference:  # noqa: E501
+    def transfer_verify(self, reference : Annotated[StrictStr, Field(..., description="Transfer reference")], **kwargs) -> TransferVerifyResponse:  # noqa: E501
         """Verify Transfer  # noqa: E501
 
         Verify the status of a transfer on your integration  # noqa: E501
@@ -1606,7 +1606,7 @@ class TransferApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: TransferVerifyReference
+        :rtype: TransferVerifyResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -1648,7 +1648,7 @@ class TransferApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(TransferVerifyReference, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(TransferVerifyResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -1703,7 +1703,7 @@ class TransferApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "TransferVerifyReference",
+            '200': "TransferVerifyResponse",
             '401': "Error",
             '404': "Error",
         }

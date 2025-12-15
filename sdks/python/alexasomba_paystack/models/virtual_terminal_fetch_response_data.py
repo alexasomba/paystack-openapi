@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
 from alexasomba_paystack.models.virtual_terminal_fetch_response_data_destinations_inner import VirtualTerminalFetchResponseDataDestinationsInner
 
@@ -32,10 +32,10 @@ class VirtualTerminalFetchResponseData(BaseModel):
     name: StrictStr = Field(...)
     integration: StrictInt = Field(...)
     domain: StrictStr = Field(...)
-    payment_methods: conlist(Dict[str, Any]) = Field(..., alias="paymentMethods")
+    payment_methods: conlist(Any) = Field(..., alias="paymentMethods")
     active: StrictBool = Field(...)
     created_at: StrictStr = Field(...)
-    connect_account_id: Optional[Dict[str, Any]] = Field(...)
+    connect_account_id: Optional[Any] = Field(...)
     destinations: conlist(VirtualTerminalFetchResponseDataDestinationsInner) = Field(...)
     currency: StrictStr = Field(...)
     __properties = ["id", "code", "name", "integration", "domain", "paymentMethods", "active", "created_at", "connect_account_id", "destinations", "currency"]

@@ -19,27 +19,27 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
 
 class TransferCreateResponseData(BaseModel):
     """
     TransferCreateResponseData
     """
-    transfersessionid: conlist(Dict[str, Any]) = Field(...)
-    transfertrials: conlist(Dict[str, Any]) = Field(...)
+    transfersessionid: conlist(Any) = Field(...)
+    transfertrials: conlist(Any) = Field(...)
     domain: StrictStr = Field(...)
     amount: StrictInt = Field(...)
     currency: StrictStr = Field(...)
     reference: StrictStr = Field(...)
     source: StrictStr = Field(...)
-    source_details: Optional[Dict[str, Any]] = Field(...)
+    source_details: Optional[Any] = Field(...)
     reason: StrictStr = Field(...)
     status: StrictStr = Field(...)
-    failures: Optional[Dict[str, Any]] = Field(...)
+    failures: Optional[Any] = Field(...)
     transfer_code: StrictStr = Field(...)
-    titan_code: Optional[Dict[str, Any]] = Field(...)
-    transferred_at: Optional[Dict[str, Any]] = Field(...)
+    titan_code: Optional[Any] = Field(...)
+    transferred_at: Optional[Any] = Field(...)
     id: StrictInt = Field(...)
     integration: StrictInt = Field(...)
     request: StrictInt = Field(...)

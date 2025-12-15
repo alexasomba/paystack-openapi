@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **transaction** | [**DisputeFetchResponseDataTransaction**](DisputeFetchResponseDataTransaction.md) |  | 
 **transaction_reference** | **object** |  | 
 **category** | **str** |  | 
-**customer** | [**ChargeCreateResponseDataCustomer**](ChargeCreateResponseDataCustomer.md) |  | 
+**customer** | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |  | 
 **bin** | **str** |  | 
 **last4** | **str** |  | 
 **due_at** | **object** |  | 

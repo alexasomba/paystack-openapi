@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **split_add_subaccount**
-> SplitIdSubaccountAdd split_add_subaccount(id, body=body)
+> SplitAddUpdateSubaccountResponse split_add_subaccount(id, split_subaccounts=split_subaccounts)
 
 Add Subaccount to Split
 
@@ -26,7 +26,8 @@ Add a subaccount to a split configuration, or update the share of an existing su
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.split_id_subaccount_add import SplitIdSubaccountAdd
+from alexasomba_paystack.models.split_add_update_subaccount_response import SplitAddUpdateSubaccountResponse
+from alexasomba_paystack.models.split_subaccounts import SplitSubaccounts
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -51,11 +52,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.SplitApi(api_client)
     id = 4896895 # int | The ID of the split configuration to fetch
-    body = alexasomba_paystack.SplitIdSubaccountAdd() # SplitIdSubaccountAdd |  (optional)
+    split_subaccounts = alexasomba_paystack.SplitSubaccounts() # SplitSubaccounts |  (optional)
 
     try:
         # Add Subaccount to Split
-        api_response = api_instance.split_add_subaccount(id, body=body)
+        api_response = api_instance.split_add_subaccount(id, split_subaccounts=split_subaccounts)
         print("The response of SplitApi->split_add_subaccount:\n")
         pprint(api_response)
     except Exception as e:
@@ -69,11 +70,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The ID of the split configuration to fetch | 
- **body** | **SplitIdSubaccountAdd**|  | [optional] 
+ **split_subaccounts** | [**SplitSubaccounts**](SplitSubaccounts.md)|  | [optional] 
 
 ### Return type
 
-[**SplitIdSubaccountAdd**](SplitIdSubaccountAdd.md)
+[**SplitAddUpdateSubaccountResponse**](SplitAddUpdateSubaccountResponse.md)
 
 ### Authorization
 
@@ -174,7 +175,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **split_fetch**
-> SplitId split_fetch(id)
+> SplitFetchResponse split_fetch(id)
 
 Fetch Split
 
@@ -187,7 +188,7 @@ Get details of a split configuration for a transaction
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.split_id import SplitId
+from alexasomba_paystack.models.split_fetch_response import SplitFetchResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -232,7 +233,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SplitId**](SplitId.md)
+[**SplitFetchResponse**](SplitFetchResponse.md)
 
 ### Authorization
 
@@ -346,7 +347,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **split_remove_subaccount**
-> SplitIdSubaccountRemove split_remove_subaccount(id, body=body)
+> SplitRemoveSubaccountResponse split_remove_subaccount(id, split_subaccounts=split_subaccounts)
 
 Remove Subaccount from split
 
@@ -359,7 +360,8 @@ Remove a subaccount from a split configuration
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.split_id_subaccount_remove import SplitIdSubaccountRemove
+from alexasomba_paystack.models.split_remove_subaccount_response import SplitRemoveSubaccountResponse
+from alexasomba_paystack.models.split_subaccounts import SplitSubaccounts
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -384,11 +386,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.SplitApi(api_client)
     id = 4896895 # int | The ID of the split configuration to fetch
-    body = alexasomba_paystack.SplitIdSubaccountRemove() # SplitIdSubaccountRemove |  (optional)
+    split_subaccounts = alexasomba_paystack.SplitSubaccounts() # SplitSubaccounts |  (optional)
 
     try:
         # Remove Subaccount from split
-        api_response = api_instance.split_remove_subaccount(id, body=body)
+        api_response = api_instance.split_remove_subaccount(id, split_subaccounts=split_subaccounts)
         print("The response of SplitApi->split_remove_subaccount:\n")
         pprint(api_response)
     except Exception as e:
@@ -402,11 +404,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The ID of the split configuration to fetch | 
- **body** | **SplitIdSubaccountRemove**|  | [optional] 
+ **split_subaccounts** | [**SplitSubaccounts**](SplitSubaccounts.md)|  | [optional] 
 
 ### Return type
 
-[**SplitIdSubaccountRemove**](SplitIdSubaccountRemove.md)
+[**SplitRemoveSubaccountResponse**](SplitRemoveSubaccountResponse.md)
 
 ### Authorization
 
@@ -427,7 +429,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **split_update**
-> SplitId split_update(id, body=body)
+> SplitUpdateResponse split_update(id, split_update=split_update)
 
 Update Split
 
@@ -440,7 +442,8 @@ Update a split configuration for transactions
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.split_id import SplitId
+from alexasomba_paystack.models.split_update import SplitUpdate
+from alexasomba_paystack.models.split_update_response import SplitUpdateResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -465,11 +468,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.SplitApi(api_client)
     id = 'id_example' # str | 
-    body = alexasomba_paystack.SplitId() # SplitId |  (optional)
+    split_update = alexasomba_paystack.SplitUpdate() # SplitUpdate |  (optional)
 
     try:
         # Update Split
-        api_response = api_instance.split_update(id, body=body)
+        api_response = api_instance.split_update(id, split_update=split_update)
         print("The response of SplitApi->split_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -483,11 +486,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **body** | **SplitId**|  | [optional] 
+ **split_update** | [**SplitUpdate**](SplitUpdate.md)|  | [optional] 
 
 ### Return type
 
-[**SplitId**](SplitId.md)
+[**SplitUpdateResponse**](SplitUpdateResponse.md)
 
 ### Authorization
 

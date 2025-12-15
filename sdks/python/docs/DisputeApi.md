@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dispute_evidence**
-> DisputeAddEvidenceResponse dispute_evidence(id, body=body)
+> DisputeAddEvidenceResponse dispute_evidence(id, dispute_evidence=dispute_evidence)
 
 Add Evidence
 
@@ -117,7 +117,7 @@ import time
 import os
 import alexasomba_paystack
 from alexasomba_paystack.models.dispute_add_evidence_response import DisputeAddEvidenceResponse
-from alexasomba_paystack.models.dispute_id_evidence import DisputeIdEvidence
+from alexasomba_paystack.models.dispute_evidence import DisputeEvidence
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -142,11 +142,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.DisputeApi(api_client)
     id = 4734583785 # int | The unique identifier of the dispute
-    body = alexasomba_paystack.DisputeIdEvidence() # DisputeIdEvidence |  (optional)
+    dispute_evidence = alexasomba_paystack.DisputeEvidence() # DisputeEvidence |  (optional)
 
     try:
         # Add Evidence
-        api_response = api_instance.dispute_evidence(id, body=body)
+        api_response = api_instance.dispute_evidence(id, dispute_evidence=dispute_evidence)
         print("The response of DisputeApi->dispute_evidence:\n")
         pprint(api_response)
     except Exception as e:
@@ -160,7 +160,7 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The unique identifier of the dispute | 
- **body** | **DisputeIdEvidence**|  | [optional] 
+ **dispute_evidence** | [**DisputeEvidence**](DisputeEvidence.md)|  | [optional] 
 
 ### Return type
 
@@ -355,7 +355,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dispute_resolve**
-> DisputeResolveResponse dispute_resolve(id, body=body)
+> DisputeResolveResponse dispute_resolve(id, dispute_resolve=dispute_resolve)
 
 Resolve Dispute
 
@@ -368,7 +368,7 @@ Resolve a transaction dispute
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.dispute_id_resolve import DisputeIdResolve
+from alexasomba_paystack.models.dispute_resolve import DisputeResolve
 from alexasomba_paystack.models.dispute_resolve_response import DisputeResolveResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
@@ -394,11 +394,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.DisputeApi(api_client)
     id = 4734583785 # int | The unique identifier of the dispute
-    body = alexasomba_paystack.DisputeIdResolve() # DisputeIdResolve |  (optional)
+    dispute_resolve = alexasomba_paystack.DisputeResolve() # DisputeResolve |  (optional)
 
     try:
         # Resolve Dispute
-        api_response = api_instance.dispute_resolve(id, body=body)
+        api_response = api_instance.dispute_resolve(id, dispute_resolve=dispute_resolve)
         print("The response of DisputeApi->dispute_resolve:\n")
         pprint(api_response)
     except Exception as e:
@@ -412,7 +412,7 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The unique identifier of the dispute | 
- **body** | **DisputeIdResolve**|  | [optional] 
+ **dispute_resolve** | [**DisputeResolve**](DisputeResolve.md)|  | [optional] 
 
 ### Return type
 
@@ -518,7 +518,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dispute_update**
-> DisputeUpdateResponse dispute_update(id, body=body)
+> DisputeUpdateResponse dispute_update(id, dispute_update=dispute_update)
 
 Update Dispute
 
@@ -531,7 +531,7 @@ Update a transaction dispute
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.dispute_id import DisputeId
+from alexasomba_paystack.models.dispute_update import DisputeUpdate
 from alexasomba_paystack.models.dispute_update_response import DisputeUpdateResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
@@ -557,11 +557,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.DisputeApi(api_client)
     id = 1801929 # int | The unique identifier of the dispute
-    body = alexasomba_paystack.DisputeId() # DisputeId |  (optional)
+    dispute_update = alexasomba_paystack.DisputeUpdate() # DisputeUpdate |  (optional)
 
     try:
         # Update Dispute
-        api_response = api_instance.dispute_update(id, body=body)
+        api_response = api_instance.dispute_update(id, dispute_update=dispute_update)
         print("The response of DisputeApi->dispute_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -575,7 +575,7 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The unique identifier of the dispute | 
- **body** | **DisputeId**|  | [optional] 
+ **dispute_update** | [**DisputeUpdate**](DisputeUpdate.md)|  | [optional] 
 
 ### Return type
 

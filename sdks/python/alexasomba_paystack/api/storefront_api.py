@@ -25,13 +25,13 @@ from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 
 from alexasomba_paystack.models.response import Response
+from alexasomba_paystack.models.storefront_add_products import StorefrontAddProducts
 from alexasomba_paystack.models.storefront_create import StorefrontCreate
 from alexasomba_paystack.models.storefront_create_response import StorefrontCreateResponse
 from alexasomba_paystack.models.storefront_delete_response import StorefrontDeleteResponse
 from alexasomba_paystack.models.storefront_fetch_response import StorefrontFetchResponse
-from alexasomba_paystack.models.storefront_id import StorefrontId
-from alexasomba_paystack.models.storefront_id_product import StorefrontIdProduct
 from alexasomba_paystack.models.storefront_list_response import StorefrontListResponse
+from alexasomba_paystack.models.storefront_update import StorefrontUpdate
 from alexasomba_paystack.models.storefront_update_response import StorefrontUpdateResponse
 
 from alexasomba_paystack.api_client import ApiClient
@@ -55,20 +55,20 @@ class StorefrontApi(object):
         self.api_client = api_client
 
     @validate_arguments
-    def storefront_add_products(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of the Storefront")], body : Optional[StorefrontIdProduct] = None, **kwargs) -> Response:  # noqa: E501
+    def storefront_add_products(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of the Storefront")], storefront_add_products : Optional[StorefrontAddProducts] = None, **kwargs) -> Response:  # noqa: E501
         """Add Products to Storefront  # noqa: E501
 
         Add previously created products to a Storefront  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.storefront_add_products(id, body, async_req=True)
+        >>> thread = api.storefront_add_products(id, storefront_add_products, async_req=True)
         >>> result = thread.get()
 
         :param id: The unique identifier of the Storefront (required)
         :type id: int
-        :param body:
-        :type body: StorefrontIdProduct
+        :param storefront_add_products:
+        :type storefront_add_products: StorefrontAddProducts
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -83,23 +83,23 @@ class StorefrontApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the storefront_add_products_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.storefront_add_products_with_http_info(id, body, **kwargs)  # noqa: E501
+        return self.storefront_add_products_with_http_info(id, storefront_add_products, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def storefront_add_products_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of the Storefront")], body : Optional[StorefrontIdProduct] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def storefront_add_products_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of the Storefront")], storefront_add_products : Optional[StorefrontAddProducts] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Add Products to Storefront  # noqa: E501
 
         Add previously created products to a Storefront  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.storefront_add_products_with_http_info(id, body, async_req=True)
+        >>> thread = api.storefront_add_products_with_http_info(id, storefront_add_products, async_req=True)
         >>> result = thread.get()
 
         :param id: The unique identifier of the Storefront (required)
         :type id: int
-        :param body:
-        :type body: StorefrontIdProduct
+        :param storefront_add_products:
+        :type storefront_add_products: StorefrontAddProducts
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -129,7 +129,7 @@ class StorefrontApi(object):
 
         _all_params = [
             'id',
-            'body'
+            'storefront_add_products'
         ]
         _all_params.extend(
             [
@@ -170,8 +170,8 @@ class StorefrontApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['storefront_add_products'] is not None:
+            _body_params = _params['storefront_add_products']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -1360,20 +1360,20 @@ class StorefrontApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def storefront_update(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of the Storefront")], body : Optional[StorefrontId] = None, **kwargs) -> StorefrontUpdateResponse:  # noqa: E501
+    def storefront_update(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of the Storefront")], storefront_update : Optional[StorefrontUpdate] = None, **kwargs) -> StorefrontUpdateResponse:  # noqa: E501
         """Update Storefront  # noqa: E501
 
         Update the details of a previously created Storefront  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.storefront_update(id, body, async_req=True)
+        >>> thread = api.storefront_update(id, storefront_update, async_req=True)
         >>> result = thread.get()
 
         :param id: The unique identifier of the Storefront (required)
         :type id: int
-        :param body:
-        :type body: StorefrontId
+        :param storefront_update:
+        :type storefront_update: StorefrontUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -1388,23 +1388,23 @@ class StorefrontApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the storefront_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.storefront_update_with_http_info(id, body, **kwargs)  # noqa: E501
+        return self.storefront_update_with_http_info(id, storefront_update, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def storefront_update_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of the Storefront")], body : Optional[StorefrontId] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def storefront_update_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of the Storefront")], storefront_update : Optional[StorefrontUpdate] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Update Storefront  # noqa: E501
 
         Update the details of a previously created Storefront  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.storefront_update_with_http_info(id, body, async_req=True)
+        >>> thread = api.storefront_update_with_http_info(id, storefront_update, async_req=True)
         >>> result = thread.get()
 
         :param id: The unique identifier of the Storefront (required)
         :type id: int
-        :param body:
-        :type body: StorefrontId
+        :param storefront_update:
+        :type storefront_update: StorefrontUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -1434,7 +1434,7 @@ class StorefrontApi(object):
 
         _all_params = [
             'id',
-            'body'
+            'storefront_update'
         ]
         _all_params.extend(
             [
@@ -1475,8 +1475,8 @@ class StorefrontApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['storefront_update'] is not None:
+            _body_params = _params['storefront_update']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(

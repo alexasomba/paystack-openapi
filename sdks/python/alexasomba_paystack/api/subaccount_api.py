@@ -24,10 +24,12 @@ from pydantic import Field, StrictBool, StrictInt, StrictStr
 
 from typing import Optional
 
-from alexasomba_paystack.models.subaccount_code import SubaccountCode
 from alexasomba_paystack.models.subaccount_create import SubaccountCreate
 from alexasomba_paystack.models.subaccount_create_response import SubaccountCreateResponse
+from alexasomba_paystack.models.subaccount_fetch_response import SubaccountFetchResponse
 from alexasomba_paystack.models.subaccount_list_response import SubaccountListResponse
+from alexasomba_paystack.models.subaccount_update import SubaccountUpdate
+from alexasomba_paystack.models.subaccount_update_response import SubaccountUpdateResponse
 
 from alexasomba_paystack.api_client import ApiClient
 from alexasomba_paystack.api_response import ApiResponse
@@ -197,7 +199,7 @@ class SubaccountApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def subaccount_fetch(self, code : Annotated[StrictStr, Field(..., description="The subaccount code you want to fetch")], **kwargs) -> SubaccountCode:  # noqa: E501
+    def subaccount_fetch(self, code : Annotated[StrictStr, Field(..., description="The subaccount code you want to fetch")], **kwargs) -> SubaccountFetchResponse:  # noqa: E501
         """Fetch Subaccount  # noqa: E501
 
         Get details of a subaccount on your integration  # noqa: E501
@@ -218,7 +220,7 @@ class SubaccountApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: SubaccountCode
+        :rtype: SubaccountFetchResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -260,7 +262,7 @@ class SubaccountApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(SubaccountCode, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(SubaccountFetchResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -315,7 +317,7 @@ class SubaccountApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "SubaccountCode",
+            '200': "SubaccountFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -495,20 +497,20 @@ class SubaccountApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def subaccount_update(self, code : Annotated[StrictStr, Field(..., description="The subaccount code you want to fetch")], body : Optional[SubaccountCode] = None, **kwargs) -> SubaccountCode:  # noqa: E501
+    def subaccount_update(self, code : Annotated[StrictStr, Field(..., description="The subaccount code you want to fetch")], subaccount_update : Optional[SubaccountUpdate] = None, **kwargs) -> SubaccountUpdateResponse:  # noqa: E501
         """Update Subaccount  # noqa: E501
 
         Update a subaccount details on your integration  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.subaccount_update(code, body, async_req=True)
+        >>> thread = api.subaccount_update(code, subaccount_update, async_req=True)
         >>> result = thread.get()
 
         :param code: The subaccount code you want to fetch (required)
         :type code: str
-        :param body:
-        :type body: SubaccountCode
+        :param subaccount_update:
+        :type subaccount_update: SubaccountUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -518,28 +520,28 @@ class SubaccountApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: SubaccountCode
+        :rtype: SubaccountUpdateResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the subaccount_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.subaccount_update_with_http_info(code, body, **kwargs)  # noqa: E501
+        return self.subaccount_update_with_http_info(code, subaccount_update, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def subaccount_update_with_http_info(self, code : Annotated[StrictStr, Field(..., description="The subaccount code you want to fetch")], body : Optional[SubaccountCode] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def subaccount_update_with_http_info(self, code : Annotated[StrictStr, Field(..., description="The subaccount code you want to fetch")], subaccount_update : Optional[SubaccountUpdate] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Update Subaccount  # noqa: E501
 
         Update a subaccount details on your integration  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.subaccount_update_with_http_info(code, body, async_req=True)
+        >>> thread = api.subaccount_update_with_http_info(code, subaccount_update, async_req=True)
         >>> result = thread.get()
 
         :param code: The subaccount code you want to fetch (required)
         :type code: str
-        :param body:
-        :type body: SubaccountCode
+        :param subaccount_update:
+        :type subaccount_update: SubaccountUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -562,14 +564,14 @@ class SubaccountApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(SubaccountCode, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(SubaccountUpdateResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
 
         _all_params = [
             'code',
-            'body'
+            'subaccount_update'
         ]
         _all_params.extend(
             [
@@ -610,8 +612,8 @@ class SubaccountApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['subaccount_update'] is not None:
+            _body_params = _params['subaccount_update']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -628,7 +630,7 @@ class SubaccountApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "SubaccountCode",
+            '200': "SubaccountUpdateResponse",
             '401': "Error",
             '404': "Error",
         }

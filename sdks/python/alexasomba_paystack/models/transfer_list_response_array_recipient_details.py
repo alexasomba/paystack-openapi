@@ -19,14 +19,14 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field, StrictStr
 
 class TransferListResponseArrayRecipientDetails(BaseModel):
     """
     TransferListResponseArrayRecipientDetails
     """
-    authorization_code: Optional[Dict[str, Any]] = Field(...)
+    authorization_code: Optional[Any] = Field(...)
     account_number: StrictStr = Field(...)
     account_name: Optional[StrictStr] = Field(...)
     bank_code: StrictStr = Field(...)

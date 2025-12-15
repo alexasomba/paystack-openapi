@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **integration** | [**OrderValidateResponseDataIntegration**](OrderValidateResponseDataIntegration.md) |  | 
 **transaction** | **object** |  | 
 **page** | **object** |  | 
-**customer** | [**ChargeCreateResponseDataCustomer**](ChargeCreateResponseDataCustomer.md) |  | 
+**customer** | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |  | 
 **shipping** | **object** |  | 
 **created_at** | **str** |  | 
 **updated_at** | **str** |  | 

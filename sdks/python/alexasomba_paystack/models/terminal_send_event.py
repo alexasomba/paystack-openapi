@@ -18,98 +18,82 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr, validator
 from alexasomba_paystack.models.terminal_send_event_data import TerminalSendEventData
-from typing import Optional, Set
-from typing_extensions import Self
 
 class TerminalSendEvent(BaseModel):
     """
     TerminalSendEvent
-    """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="The type of event to push")
-    action: Optional[StrictStr] = Field(default=None, description="The action the Terminal needs to perform. For the invoice type, the action can either be process or view.  For the transaction type, the action can either be process or print. ")
+    """
+    type: Optional[StrictStr] = Field(None, description="The type of event to push")
+    action: Optional[StrictStr] = Field(None, description="The action the Terminal needs to perform. For the invoice type, the action can either be process or view.  For the transaction type, the action can either be process or print. ")
     data: Optional[TerminalSendEventData] = None
-    __properties: ClassVar[List[str]] = ["type", "action", "data"]
+    __properties = ["type", "action", "data"]
 
-    @field_validator('type')
+    @validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in set(['invoice', 'transaction']):
+        if value not in ('invoice', 'transaction'):
             raise ValueError("must be one of enum values ('invoice', 'transaction')")
         return value
 
-    @field_validator('action')
+    @validator('action')
     def action_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in set(['process', 'view', 'print']):
+        if value not in ('process', 'view', 'print'):
             raise ValueError("must be one of enum values ('process', 'view', 'print')")
         return value
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> TerminalSendEvent:
         """Create an instance of TerminalSendEvent from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of data
         if self.data:
             _dict['data'] = self.data.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> TerminalSendEvent:
         """Create an instance of TerminalSendEvent from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return TerminalSendEvent.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = TerminalSendEvent.parse_obj({
             "type": obj.get("type"),
             "action": obj.get("action"),
-            "data": TerminalSendEventData.from_dict(obj["data"]) if obj.get("data") is not None else None
+            "data": TerminalSendEventData.from_dict(obj.get("data")) if obj.get("data") is not None else None
         })
         return _obj
 

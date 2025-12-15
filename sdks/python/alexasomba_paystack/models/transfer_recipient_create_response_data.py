@@ -21,7 +21,7 @@ import json
 
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
-from alexasomba_paystack.models.transfer_recipient_create_response_data_details import TransferRecipientCreateResponseDataDetails
+from alexasomba_paystack.models.transfer_recipient_list_response_array_details import TransferRecipientListResponseArrayDetails
 
 class TransferRecipientCreateResponseData(BaseModel):
     """
@@ -41,7 +41,7 @@ class TransferRecipientCreateResponseData(BaseModel):
     type: StrictStr = Field(...)
     updated_at: StrictStr = Field(..., alias="updatedAt")
     is_deleted: StrictBool = Field(...)
-    details: TransferRecipientCreateResponseDataDetails = Field(...)
+    details: TransferRecipientListResponseArrayDetails = Field(...)
     __properties = ["active", "createdAt", "currency", "description", "domain", "email", "id", "integration", "metadata", "name", "recipient_code", "type", "updatedAt", "is_deleted", "details"]
 
     class Config:
@@ -102,7 +102,7 @@ class TransferRecipientCreateResponseData(BaseModel):
             "type": obj.get("type"),
             "updated_at": obj.get("updatedAt"),
             "is_deleted": obj.get("is_deleted"),
-            "details": TransferRecipientCreateResponseDataDetails.from_dict(obj.get("details")) if obj.get("details") is not None else None
+            "details": TransferRecipientListResponseArrayDetails.from_dict(obj.get("details")) if obj.get("details") is not None else None
         })
         return _obj
 

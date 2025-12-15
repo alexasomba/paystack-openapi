@@ -19,10 +19,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_customer import BulkChargeFetchBulkBatchChargesResponseArrayCustomer
 from alexasomba_paystack.models.payment_request_notifications_array import PaymentRequestNotificationsArray
-from alexasomba_paystack.models.payment_request_update_response_data_customer import PaymentRequestUpdateResponseDataCustomer
 
 class PaymentRequestUpdateResponseData(BaseModel):
     """
@@ -36,21 +36,21 @@ class PaymentRequestUpdateResponseData(BaseModel):
     due_date: Optional[StrictStr] = Field(...)
     has_invoice: StrictBool = Field(...)
     invoice_number: Optional[StrictInt] = Field(...)
-    description: Optional[Dict[str, Any]] = Field(...)
+    description: Optional[Any] = Field(...)
     pdf_url: Optional[StrictStr] = Field(...)
-    line_items: conlist(Dict[str, Any]) = Field(...)
-    tax: conlist(Dict[str, Any]) = Field(...)
+    line_items: conlist(Any) = Field(...)
+    tax: conlist(Any) = Field(...)
     request_code: StrictStr = Field(...)
     status: StrictStr = Field(...)
     paid: StrictBool = Field(...)
-    paid_at: Optional[Dict[str, Any]] = Field(...)
-    metadata: Optional[Dict[str, Any]] = Field(...)
+    paid_at: Optional[Any] = Field(...)
+    metadata: Optional[Any] = Field(...)
     notifications: conlist(PaymentRequestNotificationsArray) = Field(...)
     offline_reference: StrictStr = Field(...)
-    customer: PaymentRequestUpdateResponseDataCustomer = Field(...)
+    customer: BulkChargeFetchBulkBatchChargesResponseArrayCustomer = Field(...)
     created_at: StrictStr = Field(...)
-    discount: Optional[Dict[str, Any]] = Field(...)
-    split_code: Optional[Dict[str, Any]] = Field(...)
+    discount: Optional[Any] = Field(...)
+    split_code: Optional[Any] = Field(...)
     __properties = ["id", "integration", "domain", "amount", "currency", "due_date", "has_invoice", "invoice_number", "description", "pdf_url", "line_items", "tax", "request_code", "status", "paid", "paid_at", "metadata", "notifications", "offline_reference", "customer", "created_at", "discount", "split_code"]
 
     class Config:
@@ -158,7 +158,7 @@ class PaymentRequestUpdateResponseData(BaseModel):
             "metadata": obj.get("metadata"),
             "notifications": [PaymentRequestNotificationsArray.from_dict(_item) for _item in obj.get("notifications")] if obj.get("notifications") is not None else None,
             "offline_reference": obj.get("offline_reference"),
-            "customer": PaymentRequestUpdateResponseDataCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
+            "customer": BulkChargeFetchBulkBatchChargesResponseArrayCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
             "created_at": obj.get("created_at"),
             "discount": obj.get("discount"),
             "split_code": obj.get("split_code")

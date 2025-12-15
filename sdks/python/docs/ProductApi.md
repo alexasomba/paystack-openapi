@@ -340,7 +340,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **product_update**
-> ProductUpdateResponse product_update(id, body=body)
+> ProductUpdateResponse product_update(id, product_update=product_update)
 
 Update product
 
@@ -353,7 +353,7 @@ Update a previously created product
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.product_id import ProductId
+from alexasomba_paystack.models.product_update import ProductUpdate
 from alexasomba_paystack.models.product_update_response import ProductUpdateResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
@@ -379,11 +379,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.ProductApi(api_client)
     id = 2196244 # int | The unique identifier of the product
-    body = alexasomba_paystack.ProductId() # ProductId |  (optional)
+    product_update = alexasomba_paystack.ProductUpdate() # ProductUpdate |  (optional)
 
     try:
         # Update product
-        api_response = api_instance.product_update(id, body=body)
+        api_response = api_instance.product_update(id, product_update=product_update)
         print("The response of ProductApi->product_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -397,7 +397,7 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The unique identifier of the product | 
- **body** | **ProductId**|  | [optional] 
+ **product_update** | [**ProductUpdate**](ProductUpdate.md)|  | [optional] 
 
 ### Return type
 

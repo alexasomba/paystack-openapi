@@ -31,9 +31,9 @@ from alexasomba_paystack.models.page_check_slug_availability_response import Pag
 from alexasomba_paystack.models.page_create import PageCreate
 from alexasomba_paystack.models.page_create_response import PageCreateResponse
 from alexasomba_paystack.models.page_fetch_response import PageFetchResponse
-from alexasomba_paystack.models.page_id import PageId
-from alexasomba_paystack.models.page_id_product import PageIdProduct
 from alexasomba_paystack.models.page_list_response import PageListResponse
+from alexasomba_paystack.models.page_product import PageProduct
+from alexasomba_paystack.models.page_update import PageUpdate
 from alexasomba_paystack.models.page_update_response import PageUpdateResponse
 
 from alexasomba_paystack.api_client import ApiClient
@@ -57,20 +57,20 @@ class PageApi(object):
         self.api_client = api_client
 
     @validate_arguments
-    def page_add_products(self, id : StrictStr, body : Optional[PageIdProduct] = None, **kwargs) -> PageAddProductsResponse:  # noqa: E501
+    def page_add_products(self, id : StrictStr, page_product : Optional[PageProduct] = None, **kwargs) -> PageAddProductsResponse:  # noqa: E501
         """Add Products  # noqa: E501
 
         Add products to a previously created payment page. You can only add products to pages that was created with a `product` type.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.page_add_products(id, body, async_req=True)
+        >>> thread = api.page_add_products(id, page_product, async_req=True)
         >>> result = thread.get()
 
         :param id: (required)
         :type id: str
-        :param body:
-        :type body: PageIdProduct
+        :param page_product:
+        :type page_product: PageProduct
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -85,23 +85,23 @@ class PageApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the page_add_products_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.page_add_products_with_http_info(id, body, **kwargs)  # noqa: E501
+        return self.page_add_products_with_http_info(id, page_product, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def page_add_products_with_http_info(self, id : StrictStr, body : Optional[PageIdProduct] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def page_add_products_with_http_info(self, id : StrictStr, page_product : Optional[PageProduct] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Add Products  # noqa: E501
 
         Add products to a previously created payment page. You can only add products to pages that was created with a `product` type.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.page_add_products_with_http_info(id, body, async_req=True)
+        >>> thread = api.page_add_products_with_http_info(id, page_product, async_req=True)
         >>> result = thread.get()
 
         :param id: (required)
         :type id: str
-        :param body:
-        :type body: PageIdProduct
+        :param page_product:
+        :type page_product: PageProduct
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -131,7 +131,7 @@ class PageApi(object):
 
         _all_params = [
             'id',
-            'body'
+            'page_product'
         ]
         _all_params.extend(
             [
@@ -172,8 +172,8 @@ class PageApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['page_product'] is not None:
+            _body_params = _params['page_product']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -812,20 +812,20 @@ class PageApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def page_update(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of a payment page")], body : Optional[PageId] = None, **kwargs) -> PageUpdateResponse:  # noqa: E501
+    def page_update(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of a payment page")], page_update : Optional[PageUpdate] = None, **kwargs) -> PageUpdateResponse:  # noqa: E501
         """Update Page  # noqa: E501
 
         Update a previously created payment page  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.page_update(id, body, async_req=True)
+        >>> thread = api.page_update(id, page_update, async_req=True)
         >>> result = thread.get()
 
         :param id: The unique identifier of a payment page (required)
         :type id: int
-        :param body:
-        :type body: PageId
+        :param page_update:
+        :type page_update: PageUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -840,23 +840,23 @@ class PageApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the page_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.page_update_with_http_info(id, body, **kwargs)  # noqa: E501
+        return self.page_update_with_http_info(id, page_update, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def page_update_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of a payment page")], body : Optional[PageId] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def page_update_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of a payment page")], page_update : Optional[PageUpdate] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Update Page  # noqa: E501
 
         Update a previously created payment page  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.page_update_with_http_info(id, body, async_req=True)
+        >>> thread = api.page_update_with_http_info(id, page_update, async_req=True)
         >>> result = thread.get()
 
         :param id: The unique identifier of a payment page (required)
         :type id: int
-        :param body:
-        :type body: PageId
+        :param page_update:
+        :type page_update: PageUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -886,7 +886,7 @@ class PageApi(object):
 
         _all_params = [
             'id',
-            'body'
+            'page_update'
         ]
         _all_params.extend(
             [
@@ -927,8 +927,8 @@ class PageApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['page_update'] is not None:
+            _body_params = _params['page_update']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(

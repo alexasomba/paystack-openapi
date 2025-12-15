@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **plan_update**
-> PlanUpdateResponse plan_update(code, body=body)
+> PlanUpdateResponse plan_update(code, plan_update=plan_update)
 
 Update Plan
 
@@ -274,7 +274,7 @@ Update a plan details on your integration
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.plan_code import PlanCode
+from alexasomba_paystack.models.plan_update import PlanUpdate
 from alexasomba_paystack.models.plan_update_response import PlanUpdateResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
@@ -300,11 +300,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.PlanApi(api_client)
     code = 'PLN_gx2wn530m0i3w3m' # str | The plan code you want to fetch
-    body = alexasomba_paystack.PlanCode() # PlanCode |  (optional)
+    plan_update = alexasomba_paystack.PlanUpdate() # PlanUpdate |  (optional)
 
     try:
         # Update Plan
-        api_response = api_instance.plan_update(code, body=body)
+        api_response = api_instance.plan_update(code, plan_update=plan_update)
         print("The response of PlanApi->plan_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -318,7 +318,7 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **code** | **str**| The plan code you want to fetch | 
- **body** | **PlanCode**|  | [optional] 
+ **plan_update** | [**PlanUpdate**](PlanUpdate.md)|  | [optional] 
 
 ### Return type
 

@@ -19,27 +19,27 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
 
 class PlanListResponseArray(BaseModel):
     """
     PlanListResponseArray
     """
-    subscriptions: conlist(Dict[str, Any]) = Field(...)
-    pages: conlist(Dict[str, Any]) = Field(...)
+    subscriptions: conlist(Any) = Field(...)
+    pages: conlist(Any) = Field(...)
     domain: StrictStr = Field(...)
     name: StrictStr = Field(...)
     plan_code: StrictStr = Field(...)
-    description: Optional[Dict[str, Any]] = Field(...)
+    description: Optional[Any] = Field(...)
     amount: StrictInt = Field(...)
     interval: StrictStr = Field(...)
     invoice_limit: StrictInt = Field(...)
     send_invoices: StrictBool = Field(...)
     send_sms: StrictBool = Field(...)
     hosted_page: StrictBool = Field(...)
-    hosted_page_url: Optional[Dict[str, Any]] = Field(...)
-    hosted_page_summary: Optional[Dict[str, Any]] = Field(...)
+    hosted_page_url: Optional[Any] = Field(...)
+    hosted_page_summary: Optional[Any] = Field(...)
     currency: StrictStr = Field(...)
     migrate: StrictBool = Field(...)
     is_deleted: StrictBool = Field(...)

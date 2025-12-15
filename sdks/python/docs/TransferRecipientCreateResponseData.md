@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **type** | **str** |  | 
 **updated_at** | **str** |  | 
 **is_deleted** | **bool** |  | 
-**details** | [**TransferRecipientCreateResponseDataDetails**](TransferRecipientCreateResponseDataDetails.md) |  | 
+**details** | [**TransferRecipientListResponseArrayDetails**](TransferRecipientListResponseArrayDetails.md) |  | 
 
 ## Example
 

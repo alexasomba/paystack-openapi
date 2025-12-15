@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **storefront_add_products**
-> Response storefront_add_products(id, body=body)
+> Response storefront_add_products(id, storefront_add_products=storefront_add_products)
 
 Add Products to Storefront
 
@@ -32,7 +32,7 @@ import time
 import os
 import alexasomba_paystack
 from alexasomba_paystack.models.response import Response
-from alexasomba_paystack.models.storefront_id_product import StorefrontIdProduct
+from alexasomba_paystack.models.storefront_add_products import StorefrontAddProducts
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -57,11 +57,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.StorefrontApi(api_client)
     id = 1559046 # int | The unique identifier of the Storefront
-    body = alexasomba_paystack.StorefrontIdProduct() # StorefrontIdProduct |  (optional)
+    storefront_add_products = alexasomba_paystack.StorefrontAddProducts() # StorefrontAddProducts |  (optional)
 
     try:
         # Add Products to Storefront
-        api_response = api_instance.storefront_add_products(id, body=body)
+        api_response = api_instance.storefront_add_products(id, storefront_add_products=storefront_add_products)
         print("The response of StorefrontApi->storefront_add_products:\n")
         pprint(api_response)
     except Exception as e:
@@ -75,7 +75,7 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The unique identifier of the Storefront | 
- **body** | **StorefrontIdProduct**|  | [optional] 
+ **storefront_add_products** | [**StorefrontAddProducts**](StorefrontAddProducts.md)|  | [optional] 
 
 ### Return type
 
@@ -744,7 +744,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **storefront_update**
-> StorefrontUpdateResponse storefront_update(id, body=body)
+> StorefrontUpdateResponse storefront_update(id, storefront_update=storefront_update)
 
 Update Storefront
 
@@ -757,7 +757,7 @@ Update the details of a previously created Storefront
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.storefront_id import StorefrontId
+from alexasomba_paystack.models.storefront_update import StorefrontUpdate
 from alexasomba_paystack.models.storefront_update_response import StorefrontUpdateResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
@@ -783,11 +783,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.StorefrontApi(api_client)
     id = 1559046 # int | The unique identifier of the Storefront
-    body = alexasomba_paystack.StorefrontId() # StorefrontId |  (optional)
+    storefront_update = alexasomba_paystack.StorefrontUpdate() # StorefrontUpdate |  (optional)
 
     try:
         # Update Storefront
-        api_response = api_instance.storefront_update(id, body=body)
+        api_response = api_instance.storefront_update(id, storefront_update=storefront_update)
         print("The response of StorefrontApi->storefront_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -801,7 +801,7 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The unique identifier of the Storefront | 
- **body** | **StorefrontId**|  | [optional] 
+ **storefront_update** | [**StorefrontUpdate**](StorefrontUpdate.md)|  | [optional] 
 
 ### Return type
 

@@ -21,14 +21,14 @@ import json
 
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
-from alexasomba_paystack.models.charge_create_response_data_customer import ChargeCreateResponseDataCustomer
 from alexasomba_paystack.models.order_items_array import OrderItemsArray
+from alexasomba_paystack.models.transaction_fetch_response_data_customer import TransactionFetchResponseDataCustomer
 
 class OrderFetchResponseData(BaseModel):
     """
     OrderFetchResponseData
     """
-    discounts: conlist(Dict[str, Any]) = Field(...)
+    discounts: conlist(Any) = Field(...)
     order_code: StrictStr = Field(...)
     domain: StrictStr = Field(...)
     currency: StrictStr = Field(...)
@@ -37,27 +37,27 @@ class OrderFetchResponseData(BaseModel):
     status: StrictStr = Field(...)
     refunded: StrictBool = Field(...)
     paid_at: StrictStr = Field(...)
-    shipping_address: Optional[Dict[str, Any]] = Field(...)
+    shipping_address: Optional[Any] = Field(...)
     metadata: Dict[str, Any] = Field(...)
     shipping_fees: StrictInt = Field(...)
-    shipping_method: Optional[Dict[str, Any]] = Field(...)
+    shipping_method: Optional[Any] = Field(...)
     is_viewed: StrictBool = Field(...)
     expiration_date: StrictStr = Field(...)
     pay_for_me: StrictBool = Field(...)
     id: StrictInt = Field(...)
     integration: StrictInt = Field(...)
-    page: Optional[Dict[str, Any]] = Field(...)
-    customer: ChargeCreateResponseDataCustomer = Field(...)
-    shipping: Optional[Dict[str, Any]] = Field(...)
+    page: Optional[Any] = Field(...)
+    customer: TransactionFetchResponseDataCustomer = Field(...)
+    shipping: Optional[Any] = Field(...)
     created_at: StrictStr = Field(..., alias="createdAt")
     updated_at: StrictStr = Field(..., alias="updatedAt")
     transaction: StrictInt = Field(...)
     is_gift: StrictBool = Field(...)
-    payer: ChargeCreateResponseDataCustomer = Field(...)
+    payer: TransactionFetchResponseDataCustomer = Field(...)
     fully_refunded: StrictBool = Field(...)
     refunded_amount: StrictInt = Field(...)
     items: conlist(OrderItemsArray) = Field(...)
-    discount_amount: Optional[Dict[str, Any]] = Field(...)
+    discount_amount: Optional[Any] = Field(...)
     __properties = ["discounts", "order_code", "domain", "currency", "amount", "email", "status", "refunded", "paid_at", "shipping_address", "metadata", "shipping_fees", "shipping_method", "is_viewed", "expiration_date", "pay_for_me", "id", "integration", "page", "customer", "shipping", "createdAt", "updatedAt", "transaction", "is_gift", "payer", "fully_refunded", "refunded_amount", "items", "discount_amount"]
 
     class Config:
@@ -153,13 +153,13 @@ class OrderFetchResponseData(BaseModel):
             "id": obj.get("id"),
             "integration": obj.get("integration"),
             "page": obj.get("page"),
-            "customer": ChargeCreateResponseDataCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
+            "customer": TransactionFetchResponseDataCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
             "shipping": obj.get("shipping"),
             "created_at": obj.get("createdAt"),
             "updated_at": obj.get("updatedAt"),
             "transaction": obj.get("transaction"),
             "is_gift": obj.get("is_gift"),
-            "payer": ChargeCreateResponseDataCustomer.from_dict(obj.get("payer")) if obj.get("payer") is not None else None,
+            "payer": TransactionFetchResponseDataCustomer.from_dict(obj.get("payer")) if obj.get("payer") is not None else None,
             "fully_refunded": obj.get("fully_refunded"),
             "refunded_amount": obj.get("refunded_amount"),
             "items": [OrderItemsArray.from_dict(_item) for _item in obj.get("items")] if obj.get("items") is not None else None,

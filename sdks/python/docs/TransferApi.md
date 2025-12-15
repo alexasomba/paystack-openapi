@@ -414,7 +414,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transfer_fetch**
-> TransferCode transfer_fetch(code)
+> TransferFetchResponse transfer_fetch(code)
 
 Fetch Transfer
 
@@ -427,7 +427,7 @@ Get details of a transfer on your integration
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.transfer_code import TransferCode
+from alexasomba_paystack.models.transfer_fetch_response import TransferFetchResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -472,7 +472,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransferCode**](TransferCode.md)
+[**TransferFetchResponse**](TransferFetchResponse.md)
 
 ### Authorization
 
@@ -830,7 +830,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transfer_verify**
-> TransferVerifyReference transfer_verify(reference)
+> TransferVerifyResponse transfer_verify(reference)
 
 Verify Transfer
 
@@ -843,7 +843,7 @@ Verify the status of a transfer on your integration
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.transfer_verify_reference import TransferVerifyReference
+from alexasomba_paystack.models.transfer_verify_response import TransferVerifyResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -888,7 +888,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransferVerifyReference**](TransferVerifyReference.md)
+[**TransferVerifyResponse**](TransferVerifyResponse.md)
 
 ### Authorization
 

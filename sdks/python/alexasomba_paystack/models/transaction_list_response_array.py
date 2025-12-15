@@ -35,7 +35,7 @@ class TransactionListResponseArray(BaseModel):
     status: StrictStr = Field(...)
     reference: StrictStr = Field(...)
     amount: StrictInt = Field(...)
-    message: Optional[Dict[str, Any]] = Field(...)
+    message: Optional[Any] = Field(...)
     gateway_response: StrictStr = Field(...)
     paid_at: Optional[StrictStr] = Field(...)
     created_at: StrictStr = Field(...)
@@ -51,11 +51,11 @@ class TransactionListResponseArray(BaseModel):
     plan: Dict[str, Any] = Field(...)
     split: Dict[str, Any] = Field(...)
     subaccount: Dict[str, Any] = Field(...)
-    order_id: Optional[Dict[str, Any]] = Field(...)
+    order_id: Optional[Any] = Field(...)
     requested_amount: StrictInt = Field(...)
     source: Optional[TransactionListResponseArraySource] = Field(...)
     connect: Optional[Dict[str, Any]] = Field(...)
-    pos_transaction_data: Optional[Dict[str, Any]] = Field(...)
+    pos_transaction_data: Optional[Any] = Field(...)
     __properties = ["id", "domain", "status", "reference", "amount", "message", "gateway_response", "paid_at", "created_at", "channel", "currency", "ip_address", "metadata", "log", "fees", "fees_split", "customer", "authorization", "plan", "split", "subaccount", "order_id", "requested_amount", "source", "connect", "pos_transaction_data"]
 
     class Config:

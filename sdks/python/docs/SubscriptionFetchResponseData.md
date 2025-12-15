@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **integration** | **int** |  | 
 **plan** | [**SubscriptionFetchResponseDataPlan**](SubscriptionFetchResponseDataPlan.md) |  | 
 **authorization** | [**TransactionPartialDebitResponseDataAuthorization**](TransactionPartialDebitResponseDataAuthorization.md) |  | 
-**customer** | [**ChargeCreateResponseDataCustomer**](ChargeCreateResponseDataCustomer.md) |  | 
+**customer** | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |  | 
 **invoices** | **List[object]** |  | 
 **invoices_history** | **List[object]** |  | 
 **invoice_limit** | **int** |  | 

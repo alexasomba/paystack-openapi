@@ -18,75 +18,59 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+
+
+from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
 from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_customer import BulkChargeFetchBulkBatchChargesResponseArrayCustomer
 from alexasomba_paystack.models.transaction_fetch_response_data_metadata import TransactionFetchResponseDataMetadata
 from alexasomba_paystack.models.transaction_partial_debit_response_data_authorization import TransactionPartialDebitResponseDataAuthorization
-from typing import Optional, Set
-from typing_extensions import Self
 
 class BulkChargeFetchBulkBatchChargesResponseArray(BaseModel):
     """
     BulkChargeFetchBulkBatchChargesResponseArray
-    """ # noqa: E501
-    integration: StrictInt
-    bulkcharge: StrictInt
-    customer: BulkChargeFetchBulkBatchChargesResponseArrayCustomer
-    authorization: TransactionPartialDebitResponseDataAuthorization
-    domain: StrictStr
-    amount: StrictInt
-    at_least: StrictInt
-    currency: StrictStr
-    reference: StrictStr
-    metadata: TransactionFetchResponseDataMetadata
-    status: StrictStr
-    message: StrictStr
-    attempt_partial_debit: StrictBool
-    id: StrictInt
-    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
-    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    __properties: ClassVar[List[str]] = ["integration", "bulkcharge", "customer", "authorization", "domain", "amount", "at_least", "currency", "reference", "metadata", "status", "message", "attempt_partial_debit", "id", "createdAt", "updatedAt"]
+    """
+    integration: StrictInt = Field(...)
+    bulkcharge: StrictInt = Field(...)
+    customer: BulkChargeFetchBulkBatchChargesResponseArrayCustomer = Field(...)
+    authorization: TransactionPartialDebitResponseDataAuthorization = Field(...)
+    domain: StrictStr = Field(...)
+    amount: StrictInt = Field(...)
+    at_least: StrictInt = Field(...)
+    currency: StrictStr = Field(...)
+    reference: StrictStr = Field(...)
+    metadata: TransactionFetchResponseDataMetadata = Field(...)
+    status: StrictStr = Field(...)
+    message: StrictStr = Field(...)
+    attempt_partial_debit: StrictBool = Field(...)
+    id: StrictInt = Field(...)
+    created_at: StrictStr = Field(..., alias="createdAt")
+    updated_at: StrictStr = Field(..., alias="updatedAt")
+    __properties = ["integration", "bulkcharge", "customer", "authorization", "domain", "amount", "at_least", "currency", "reference", "metadata", "status", "message", "attempt_partial_debit", "id", "createdAt", "updatedAt"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> BulkChargeFetchBulkBatchChargesResponseArray:
         """Create an instance of BulkChargeFetchBulkBatchChargesResponseArray from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of customer
         if self.customer:
             _dict['customer'] = self.customer.to_dict()
@@ -99,31 +83,31 @@ class BulkChargeFetchBulkBatchChargesResponseArray(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> BulkChargeFetchBulkBatchChargesResponseArray:
         """Create an instance of BulkChargeFetchBulkBatchChargesResponseArray from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return BulkChargeFetchBulkBatchChargesResponseArray.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = BulkChargeFetchBulkBatchChargesResponseArray.parse_obj({
             "integration": obj.get("integration"),
             "bulkcharge": obj.get("bulkcharge"),
-            "customer": BulkChargeFetchBulkBatchChargesResponseArrayCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
-            "authorization": TransactionPartialDebitResponseDataAuthorization.from_dict(obj["authorization"]) if obj.get("authorization") is not None else None,
+            "customer": BulkChargeFetchBulkBatchChargesResponseArrayCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
+            "authorization": TransactionPartialDebitResponseDataAuthorization.from_dict(obj.get("authorization")) if obj.get("authorization") is not None else None,
             "domain": obj.get("domain"),
             "amount": obj.get("amount"),
             "at_least": obj.get("at_least"),
             "currency": obj.get("currency"),
             "reference": obj.get("reference"),
-            "metadata": TransactionFetchResponseDataMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
+            "metadata": TransactionFetchResponseDataMetadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
             "status": obj.get("status"),
             "message": obj.get("message"),
             "attempt_partial_debit": obj.get("attempt_partial_debit"),
             "id": obj.get("id"),
-            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
-            "updatedAt": obj.get("updatedAt")
+            "created_at": obj.get("createdAt"),
+            "updated_at": obj.get("updatedAt")
         })
         return _obj
 

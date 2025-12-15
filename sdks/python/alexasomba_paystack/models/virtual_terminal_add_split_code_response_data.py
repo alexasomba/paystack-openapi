@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
 from alexasomba_paystack.models.split_subaccounts_array import SplitSubaccountsArray
 
@@ -36,7 +36,7 @@ class VirtualTerminalAddSplitCodeResponseData(BaseModel):
     split_code: StrictStr = Field(...)
     active: StrictBool = Field(...)
     bearer_type: StrictStr = Field(...)
-    bearer_subaccount: Optional[Dict[str, Any]] = Field(...)
+    bearer_subaccount: Optional[Any] = Field(...)
     created_at: StrictStr = Field(..., alias="createdAt")
     updated_at: StrictStr = Field(..., alias="updatedAt")
     is_dynamic: StrictBool = Field(...)

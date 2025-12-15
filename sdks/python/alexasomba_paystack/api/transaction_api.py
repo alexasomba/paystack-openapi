@@ -30,15 +30,15 @@ from alexasomba_paystack.models.charge_authorization_response import ChargeAutho
 from alexasomba_paystack.models.response import Response
 from alexasomba_paystack.models.transaction_charge_authorization import TransactionChargeAuthorization
 from alexasomba_paystack.models.transaction_export_response import TransactionExportResponse
-from alexasomba_paystack.models.transaction_id import TransactionId
+from alexasomba_paystack.models.transaction_fetch_response import TransactionFetchResponse
 from alexasomba_paystack.models.transaction_initialize import TransactionInitialize
 from alexasomba_paystack.models.transaction_initialize_response import TransactionInitializeResponse
 from alexasomba_paystack.models.transaction_list_response import TransactionListResponse
 from alexasomba_paystack.models.transaction_partial_debit import TransactionPartialDebit
 from alexasomba_paystack.models.transaction_partial_debit_response import TransactionPartialDebitResponse
-from alexasomba_paystack.models.transaction_timeline_id import TransactionTimelineId
+from alexasomba_paystack.models.transaction_timeline_response import TransactionTimelineResponse
 from alexasomba_paystack.models.transaction_totals_response import TransactionTotalsResponse
-from alexasomba_paystack.models.transaction_verify_reference import TransactionVerifyReference
+from alexasomba_paystack.models.verify_response import VerifyResponse
 
 from alexasomba_paystack.api_client import ApiClient
 from alexasomba_paystack.api_response import ApiResponse
@@ -707,7 +707,7 @@ class TransactionApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def transaction_fetch(self, id : Annotated[StrictInt, Field(..., description="The ID of the transaction to fetch")], **kwargs) -> TransactionId:  # noqa: E501
+    def transaction_fetch(self, id : Annotated[StrictInt, Field(..., description="The ID of the transaction to fetch")], **kwargs) -> TransactionFetchResponse:  # noqa: E501
         """Fetch Transaction  # noqa: E501
 
         Fetch a transaction to get its details  # noqa: E501
@@ -728,7 +728,7 @@ class TransactionApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: TransactionId
+        :rtype: TransactionFetchResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -770,7 +770,7 @@ class TransactionApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(TransactionId, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(TransactionFetchResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -825,7 +825,7 @@ class TransactionApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "TransactionId",
+            '200': "TransactionFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1559,7 +1559,7 @@ class TransactionApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def transaction_timeline(self, id : Annotated[StrictInt, Field(..., description="The ID of the transaction to fetch")], **kwargs) -> TransactionTimelineId:  # noqa: E501
+    def transaction_timeline(self, id : Annotated[StrictInt, Field(..., description="The ID of the transaction to fetch")], **kwargs) -> TransactionTimelineResponse:  # noqa: E501
         """Fetch Transaction Timeline  # noqa: E501
 
         Fetch the steps taken from the initiation to the completion of a transaction  # noqa: E501
@@ -1580,7 +1580,7 @@ class TransactionApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: TransactionTimelineId
+        :rtype: TransactionTimelineResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -1622,7 +1622,7 @@ class TransactionApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(TransactionTimelineId, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(TransactionTimelineResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -1677,7 +1677,7 @@ class TransactionApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "TransactionTimelineId",
+            '200': "TransactionTimelineResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1855,7 +1855,7 @@ class TransactionApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def transaction_verify(self, reference : Annotated[StrictStr, Field(..., description="The transaction reference to verify")], **kwargs) -> TransactionVerifyReference:  # noqa: E501
+    def transaction_verify(self, reference : Annotated[StrictStr, Field(..., description="The transaction reference to verify")], **kwargs) -> VerifyResponse:  # noqa: E501
         """Verify Transaction  # noqa: E501
 
         Verify a previously initiated transaction using it's reference  # noqa: E501
@@ -1876,7 +1876,7 @@ class TransactionApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: TransactionVerifyReference
+        :rtype: VerifyResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -1918,7 +1918,7 @@ class TransactionApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(TransactionVerifyReference, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(VerifyResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -1973,7 +1973,7 @@ class TransactionApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "TransactionVerifyReference",
+            '200': "VerifyResponse",
             '401': "Error",
             '404': "Error",
         }

@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List
+from typing import Any, List
 from pydantic import BaseModel, Field, StrictStr, conlist
 
 class MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature(BaseModel):
@@ -27,7 +27,7 @@ class MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature(Bas
     MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature
     """
     type: StrictStr = Field(...)
-    data: conlist(Dict[str, Any]) = Field(...)
+    data: conlist(Any) = Field(...)
     __properties = ["type", "data"]
 
     class Config:

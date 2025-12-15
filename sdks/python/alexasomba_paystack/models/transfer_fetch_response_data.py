@@ -18,81 +18,65 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+
+from typing import Any, List, Optional
+from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
 from alexasomba_paystack.models.transfer_fees_breakdown_array import TransferFeesBreakdownArray
 from alexasomba_paystack.models.transfer_list_response_array_recipient import TransferListResponseArrayRecipient
 from alexasomba_paystack.models.transfer_list_response_array_session import TransferListResponseArraySession
-from typing import Optional, Set
-from typing_extensions import Self
 
 class TransferFetchResponseData(BaseModel):
     """
     TransferFetchResponseData
-    """ # noqa: E501
-    amount: StrictInt
-    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
-    currency: StrictStr
-    domain: StrictStr
-    failures: Optional[Any]
-    id: StrictInt
-    integration: StrictInt
-    reason: StrictStr
-    reference: StrictStr
-    source: StrictStr
-    source_details: Optional[Any]
-    status: StrictStr
-    titan_code: Optional[Any]
-    transfer_code: StrictStr
-    request: StrictInt
-    transferred_at: Optional[Any]
-    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    recipient: TransferListResponseArrayRecipient
-    session: TransferListResponseArraySession
-    fee_charged: StrictInt
-    fees_breakdown: Optional[List[TransferFeesBreakdownArray]]
-    gateway_response: Optional[StrictStr]
-    __properties: ClassVar[List[str]] = ["amount", "createdAt", "currency", "domain", "failures", "id", "integration", "reason", "reference", "source", "source_details", "status", "titan_code", "transfer_code", "request", "transferred_at", "updatedAt", "recipient", "session", "fee_charged", "fees_breakdown", "gateway_response"]
+    """
+    amount: StrictInt = Field(...)
+    created_at: StrictStr = Field(..., alias="createdAt")
+    currency: StrictStr = Field(...)
+    domain: StrictStr = Field(...)
+    failures: Optional[Any] = Field(...)
+    id: StrictInt = Field(...)
+    integration: StrictInt = Field(...)
+    reason: StrictStr = Field(...)
+    reference: StrictStr = Field(...)
+    source: StrictStr = Field(...)
+    source_details: Optional[Any] = Field(...)
+    status: StrictStr = Field(...)
+    titan_code: Optional[Any] = Field(...)
+    transfer_code: StrictStr = Field(...)
+    request: StrictInt = Field(...)
+    transferred_at: Optional[Any] = Field(...)
+    updated_at: StrictStr = Field(..., alias="updatedAt")
+    recipient: TransferListResponseArrayRecipient = Field(...)
+    session: TransferListResponseArraySession = Field(...)
+    fee_charged: StrictInt = Field(...)
+    fees_breakdown: Optional[conlist(TransferFeesBreakdownArray)] = Field(...)
+    gateway_response: Optional[StrictStr] = Field(...)
+    __properties = ["amount", "createdAt", "currency", "domain", "failures", "id", "integration", "reason", "reference", "source", "source_details", "status", "titan_code", "transfer_code", "request", "transferred_at", "updatedAt", "recipient", "session", "fee_charged", "fees_breakdown", "gateway_response"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> TransferFetchResponseData:
         """Create an instance of TransferFetchResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of recipient
         if self.recipient:
             _dict['recipient'] = self.recipient.to_dict()
@@ -102,54 +86,54 @@ class TransferFetchResponseData(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in fees_breakdown (list)
         _items = []
         if self.fees_breakdown:
-            for _item_fees_breakdown in self.fees_breakdown:
-                if _item_fees_breakdown:
-                    _items.append(_item_fees_breakdown.to_dict())
+            for _item in self.fees_breakdown:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict['fees_breakdown'] = _items
         # set to None if failures (nullable) is None
-        # and model_fields_set contains the field
-        if self.failures is None and "failures" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.failures is None and "failures" in self.__fields_set__:
             _dict['failures'] = None
 
         # set to None if source_details (nullable) is None
-        # and model_fields_set contains the field
-        if self.source_details is None and "source_details" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.source_details is None and "source_details" in self.__fields_set__:
             _dict['source_details'] = None
 
         # set to None if titan_code (nullable) is None
-        # and model_fields_set contains the field
-        if self.titan_code is None and "titan_code" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.titan_code is None and "titan_code" in self.__fields_set__:
             _dict['titan_code'] = None
 
         # set to None if transferred_at (nullable) is None
-        # and model_fields_set contains the field
-        if self.transferred_at is None and "transferred_at" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.transferred_at is None and "transferred_at" in self.__fields_set__:
             _dict['transferred_at'] = None
 
         # set to None if fees_breakdown (nullable) is None
-        # and model_fields_set contains the field
-        if self.fees_breakdown is None and "fees_breakdown" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.fees_breakdown is None and "fees_breakdown" in self.__fields_set__:
             _dict['fees_breakdown'] = None
 
         # set to None if gateway_response (nullable) is None
-        # and model_fields_set contains the field
-        if self.gateway_response is None and "gateway_response" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.gateway_response is None and "gateway_response" in self.__fields_set__:
             _dict['gateway_response'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> TransferFetchResponseData:
         """Create an instance of TransferFetchResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return TransferFetchResponseData.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = TransferFetchResponseData.parse_obj({
             "amount": obj.get("amount"),
-            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "created_at": obj.get("createdAt"),
             "currency": obj.get("currency"),
             "domain": obj.get("domain"),
             "failures": obj.get("failures"),
@@ -164,11 +148,11 @@ class TransferFetchResponseData(BaseModel):
             "transfer_code": obj.get("transfer_code"),
             "request": obj.get("request"),
             "transferred_at": obj.get("transferred_at"),
-            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
-            "recipient": TransferListResponseArrayRecipient.from_dict(obj["recipient"]) if obj.get("recipient") is not None else None,
-            "session": TransferListResponseArraySession.from_dict(obj["session"]) if obj.get("session") is not None else None,
+            "updated_at": obj.get("updatedAt"),
+            "recipient": TransferListResponseArrayRecipient.from_dict(obj.get("recipient")) if obj.get("recipient") is not None else None,
+            "session": TransferListResponseArraySession.from_dict(obj.get("session")) if obj.get("session") is not None else None,
             "fee_charged": obj.get("fee_charged"),
-            "fees_breakdown": [TransferFeesBreakdownArray.from_dict(_item) for _item in obj["fees_breakdown"]] if obj.get("fees_breakdown") is not None else None,
+            "fees_breakdown": [TransferFeesBreakdownArray.from_dict(_item) for _item in obj.get("fees_breakdown")] if obj.get("fees_breakdown") is not None else None,
             "gateway_response": obj.get("gateway_response")
         })
         return _obj

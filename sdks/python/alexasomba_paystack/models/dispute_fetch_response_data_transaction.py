@@ -22,9 +22,9 @@ import json
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
 from alexasomba_paystack.models.charge_authorization_response_data_log import ChargeAuthorizationResponseDataLog
-from alexasomba_paystack.models.charge_create_response_data_metadata import ChargeCreateResponseDataMetadata
 from alexasomba_paystack.models.dispute_fetch_response_data_transaction_authorization import DisputeFetchResponseDataTransactionAuthorization
 from alexasomba_paystack.models.dispute_fetch_response_data_transaction_customer import DisputeFetchResponseDataTransactionCustomer
+from alexasomba_paystack.models.transaction_fetch_response_data_metadata import TransactionFetchResponseDataMetadata
 
 class DisputeFetchResponseDataTransaction(BaseModel):
     """
@@ -36,14 +36,14 @@ class DisputeFetchResponseDataTransaction(BaseModel):
     reference: StrictStr = Field(...)
     receipt_number: Optional[StrictInt] = None
     amount: StrictInt = Field(...)
-    message: Optional[Dict[str, Any]] = Field(...)
+    message: Optional[Any] = Field(...)
     gateway_response: StrictStr = Field(...)
     paid_at: StrictStr = Field(...)
     created_at: StrictStr = Field(...)
     channel: StrictStr = Field(...)
     currency: StrictStr = Field(...)
     ip_address: StrictStr = Field(...)
-    metadata: ChargeCreateResponseDataMetadata = Field(...)
+    metadata: TransactionFetchResponseDataMetadata = Field(...)
     log: Optional[ChargeAuthorizationResponseDataLog] = Field(...)
     fees: StrictInt = Field(...)
     fees_split: Optional[StrictInt] = Field(...)
@@ -52,12 +52,12 @@ class DisputeFetchResponseDataTransaction(BaseModel):
     plan: Dict[str, Any] = Field(...)
     subaccount: Dict[str, Any] = Field(...)
     split: Dict[str, Any] = Field(...)
-    order_id: Optional[Dict[str, Any]] = Field(...)
+    order_id: Optional[Any] = Field(...)
     requested_amount: StrictInt = Field(...)
-    pos_transaction_data: Optional[Dict[str, Any]] = Field(...)
-    source: Optional[Dict[str, Any]] = Field(...)
-    fees_breakdown: Optional[Dict[str, Any]] = Field(...)
-    connect: Optional[Dict[str, Any]] = Field(...)
+    pos_transaction_data: Optional[Any] = Field(...)
+    source: Optional[Any] = Field(...)
+    fees_breakdown: Optional[Any] = Field(...)
+    connect: Optional[Any] = Field(...)
     __properties = ["id", "domain", "status", "reference", "receipt_number", "amount", "message", "gateway_response", "paid_at", "created_at", "channel", "currency", "ip_address", "metadata", "log", "fees", "fees_split", "authorization", "customer", "plan", "subaccount", "split", "order_id", "requested_amount", "pos_transaction_data", "source", "fees_breakdown", "connect"]
 
     class Config:
@@ -166,7 +166,7 @@ class DisputeFetchResponseDataTransaction(BaseModel):
             "channel": obj.get("channel"),
             "currency": obj.get("currency"),
             "ip_address": obj.get("ip_address"),
-            "metadata": ChargeCreateResponseDataMetadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
+            "metadata": TransactionFetchResponseDataMetadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
             "log": ChargeAuthorizationResponseDataLog.from_dict(obj.get("log")) if obj.get("log") is not None else None,
             "fees": obj.get("fees"),
             "fees_split": obj.get("fees_split"),

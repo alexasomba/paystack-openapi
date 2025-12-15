@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
 
 class PageProductsArray(BaseModel):
@@ -35,7 +35,7 @@ class PageProductsArray(BaseModel):
     currency: StrictStr = Field(...)
     quantity: StrictInt = Field(...)
     type: StrictStr = Field(...)
-    features: Optional[Dict[str, Any]] = Field(...)
+    features: Optional[Any] = Field(...)
     is_shippable: StrictInt = Field(...)
     domain: StrictStr = Field(...)
     integration: StrictInt = Field(...)

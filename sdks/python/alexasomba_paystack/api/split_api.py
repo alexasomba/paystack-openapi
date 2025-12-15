@@ -26,12 +26,15 @@ from pydantic import Field, StrictBool, StrictInt, StrictStr
 
 from typing import Optional
 
+from alexasomba_paystack.models.split_add_update_subaccount_response import SplitAddUpdateSubaccountResponse
 from alexasomba_paystack.models.split_create import SplitCreate
 from alexasomba_paystack.models.split_create_response import SplitCreateResponse
-from alexasomba_paystack.models.split_id import SplitId
-from alexasomba_paystack.models.split_id_subaccount_add import SplitIdSubaccountAdd
-from alexasomba_paystack.models.split_id_subaccount_remove import SplitIdSubaccountRemove
+from alexasomba_paystack.models.split_fetch_response import SplitFetchResponse
 from alexasomba_paystack.models.split_list_response import SplitListResponse
+from alexasomba_paystack.models.split_remove_subaccount_response import SplitRemoveSubaccountResponse
+from alexasomba_paystack.models.split_subaccounts import SplitSubaccounts
+from alexasomba_paystack.models.split_update import SplitUpdate
+from alexasomba_paystack.models.split_update_response import SplitUpdateResponse
 
 from alexasomba_paystack.api_client import ApiClient
 from alexasomba_paystack.api_response import ApiResponse
@@ -54,20 +57,20 @@ class SplitApi(object):
         self.api_client = api_client
 
     @validate_arguments
-    def split_add_subaccount(self, id : Annotated[StrictInt, Field(..., description="The ID of the split configuration to fetch")], body : Optional[SplitIdSubaccountAdd] = None, **kwargs) -> SplitIdSubaccountAdd:  # noqa: E501
+    def split_add_subaccount(self, id : Annotated[StrictInt, Field(..., description="The ID of the split configuration to fetch")], split_subaccounts : Optional[SplitSubaccounts] = None, **kwargs) -> SplitAddUpdateSubaccountResponse:  # noqa: E501
         """Add Subaccount to Split  # noqa: E501
 
         Add a subaccount to a split configuration, or update the share of an existing subaccount  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.split_add_subaccount(id, body, async_req=True)
+        >>> thread = api.split_add_subaccount(id, split_subaccounts, async_req=True)
         >>> result = thread.get()
 
         :param id: The ID of the split configuration to fetch (required)
         :type id: int
-        :param body:
-        :type body: SplitIdSubaccountAdd
+        :param split_subaccounts:
+        :type split_subaccounts: SplitSubaccounts
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -77,28 +80,28 @@ class SplitApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: SplitIdSubaccountAdd
+        :rtype: SplitAddUpdateSubaccountResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the split_add_subaccount_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.split_add_subaccount_with_http_info(id, body, **kwargs)  # noqa: E501
+        return self.split_add_subaccount_with_http_info(id, split_subaccounts, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def split_add_subaccount_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The ID of the split configuration to fetch")], body : Optional[SplitIdSubaccountAdd] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def split_add_subaccount_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The ID of the split configuration to fetch")], split_subaccounts : Optional[SplitSubaccounts] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Add Subaccount to Split  # noqa: E501
 
         Add a subaccount to a split configuration, or update the share of an existing subaccount  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.split_add_subaccount_with_http_info(id, body, async_req=True)
+        >>> thread = api.split_add_subaccount_with_http_info(id, split_subaccounts, async_req=True)
         >>> result = thread.get()
 
         :param id: The ID of the split configuration to fetch (required)
         :type id: int
-        :param body:
-        :type body: SplitIdSubaccountAdd
+        :param split_subaccounts:
+        :type split_subaccounts: SplitSubaccounts
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -121,14 +124,14 @@ class SplitApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(SplitIdSubaccountAdd, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(SplitAddUpdateSubaccountResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
 
         _all_params = [
             'id',
-            'body'
+            'split_subaccounts'
         ]
         _all_params.extend(
             [
@@ -169,8 +172,8 @@ class SplitApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['split_subaccounts'] is not None:
+            _body_params = _params['split_subaccounts']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -187,7 +190,7 @@ class SplitApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "SplitIdSubaccountAdd",
+            '200': "SplitAddUpdateSubaccountResponse",
             '401': "Error",
         }
 
@@ -356,7 +359,7 @@ class SplitApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def split_fetch(self, id : Annotated[StrictInt, Field(..., description="The ID of the split configuration to fetch")], **kwargs) -> SplitId:  # noqa: E501
+    def split_fetch(self, id : Annotated[StrictInt, Field(..., description="The ID of the split configuration to fetch")], **kwargs) -> SplitFetchResponse:  # noqa: E501
         """Fetch Split  # noqa: E501
 
         Get details of a split configuration for a transaction  # noqa: E501
@@ -377,7 +380,7 @@ class SplitApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: SplitId
+        :rtype: SplitFetchResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -419,7 +422,7 @@ class SplitApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(SplitId, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(SplitFetchResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -474,7 +477,7 @@ class SplitApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "SplitId",
+            '200': "SplitFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -692,20 +695,20 @@ class SplitApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def split_remove_subaccount(self, id : Annotated[StrictInt, Field(..., description="The ID of the split configuration to fetch")], body : Optional[SplitIdSubaccountRemove] = None, **kwargs) -> SplitIdSubaccountRemove:  # noqa: E501
+    def split_remove_subaccount(self, id : Annotated[StrictInt, Field(..., description="The ID of the split configuration to fetch")], split_subaccounts : Optional[SplitSubaccounts] = None, **kwargs) -> SplitRemoveSubaccountResponse:  # noqa: E501
         """Remove Subaccount from split  # noqa: E501
 
         Remove a subaccount from a split configuration  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.split_remove_subaccount(id, body, async_req=True)
+        >>> thread = api.split_remove_subaccount(id, split_subaccounts, async_req=True)
         >>> result = thread.get()
 
         :param id: The ID of the split configuration to fetch (required)
         :type id: int
-        :param body:
-        :type body: SplitIdSubaccountRemove
+        :param split_subaccounts:
+        :type split_subaccounts: SplitSubaccounts
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -715,28 +718,28 @@ class SplitApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: SplitIdSubaccountRemove
+        :rtype: SplitRemoveSubaccountResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the split_remove_subaccount_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.split_remove_subaccount_with_http_info(id, body, **kwargs)  # noqa: E501
+        return self.split_remove_subaccount_with_http_info(id, split_subaccounts, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def split_remove_subaccount_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The ID of the split configuration to fetch")], body : Optional[SplitIdSubaccountRemove] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def split_remove_subaccount_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The ID of the split configuration to fetch")], split_subaccounts : Optional[SplitSubaccounts] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Remove Subaccount from split  # noqa: E501
 
         Remove a subaccount from a split configuration  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.split_remove_subaccount_with_http_info(id, body, async_req=True)
+        >>> thread = api.split_remove_subaccount_with_http_info(id, split_subaccounts, async_req=True)
         >>> result = thread.get()
 
         :param id: The ID of the split configuration to fetch (required)
         :type id: int
-        :param body:
-        :type body: SplitIdSubaccountRemove
+        :param split_subaccounts:
+        :type split_subaccounts: SplitSubaccounts
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -759,14 +762,14 @@ class SplitApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(SplitIdSubaccountRemove, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(SplitRemoveSubaccountResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
 
         _all_params = [
             'id',
-            'body'
+            'split_subaccounts'
         ]
         _all_params.extend(
             [
@@ -807,8 +810,8 @@ class SplitApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['split_subaccounts'] is not None:
+            _body_params = _params['split_subaccounts']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -825,7 +828,7 @@ class SplitApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "SplitIdSubaccountRemove",
+            '200': "SplitRemoveSubaccountResponse",
             '401': "Error",
         }
 
@@ -847,20 +850,20 @@ class SplitApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def split_update(self, id : StrictStr, body : Optional[SplitId] = None, **kwargs) -> SplitId:  # noqa: E501
+    def split_update(self, id : StrictStr, split_update : Optional[SplitUpdate] = None, **kwargs) -> SplitUpdateResponse:  # noqa: E501
         """Update Split  # noqa: E501
 
         Update a split configuration for transactions  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.split_update(id, body, async_req=True)
+        >>> thread = api.split_update(id, split_update, async_req=True)
         >>> result = thread.get()
 
         :param id: (required)
         :type id: str
-        :param body:
-        :type body: SplitId
+        :param split_update:
+        :type split_update: SplitUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -870,28 +873,28 @@ class SplitApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: SplitId
+        :rtype: SplitUpdateResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the split_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.split_update_with_http_info(id, body, **kwargs)  # noqa: E501
+        return self.split_update_with_http_info(id, split_update, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def split_update_with_http_info(self, id : StrictStr, body : Optional[SplitId] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def split_update_with_http_info(self, id : StrictStr, split_update : Optional[SplitUpdate] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Update Split  # noqa: E501
 
         Update a split configuration for transactions  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.split_update_with_http_info(id, body, async_req=True)
+        >>> thread = api.split_update_with_http_info(id, split_update, async_req=True)
         >>> result = thread.get()
 
         :param id: (required)
         :type id: str
-        :param body:
-        :type body: SplitId
+        :param split_update:
+        :type split_update: SplitUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -914,14 +917,14 @@ class SplitApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(SplitId, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(SplitUpdateResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
 
         _all_params = [
             'id',
-            'body'
+            'split_update'
         ]
         _all_params.extend(
             [
@@ -962,8 +965,8 @@ class SplitApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['split_update'] is not None:
+            _body_params = _params['split_update']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -980,7 +983,7 @@ class SplitApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "SplitId",
+            '200': "SplitUpdateResponse",
             '401': "Error",
             '404': "Error",
         }

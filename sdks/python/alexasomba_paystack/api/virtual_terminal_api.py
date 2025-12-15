@@ -24,19 +24,20 @@ from pydantic import Field, StrictInt, StrictStr
 
 from typing import Optional
 
+from alexasomba_paystack.models.virtual_terminal_add_split_code import VirtualTerminalAddSplitCode
 from alexasomba_paystack.models.virtual_terminal_add_split_code_response import VirtualTerminalAddSplitCodeResponse
-from alexasomba_paystack.models.virtual_terminal_code import VirtualTerminalCode
-from alexasomba_paystack.models.virtual_terminal_code_destination_assign import VirtualTerminalCodeDestinationAssign
-from alexasomba_paystack.models.virtual_terminal_code_destination_unassign import VirtualTerminalCodeDestinationUnassign
-from alexasomba_paystack.models.virtual_terminal_code_split_code import VirtualTerminalCodeSplitCode
 from alexasomba_paystack.models.virtual_terminal_create import VirtualTerminalCreate
 from alexasomba_paystack.models.virtual_terminal_create_response import VirtualTerminalCreateResponse
 from alexasomba_paystack.models.virtual_terminal_deactivate_response import VirtualTerminalDeactivateResponse
+from alexasomba_paystack.models.virtual_terminal_delete_split_code import VirtualTerminalDeleteSplitCode
 from alexasomba_paystack.models.virtual_terminal_delete_split_code_response import VirtualTerminalDeleteSplitCodeResponse
+from alexasomba_paystack.models.virtual_terminal_destination_assign import VirtualTerminalDestinationAssign
 from alexasomba_paystack.models.virtual_terminal_destination_assign_response import VirtualTerminalDestinationAssignResponse
+from alexasomba_paystack.models.virtual_terminal_destination_unassign import VirtualTerminalDestinationUnassign
 from alexasomba_paystack.models.virtual_terminal_destination_unassign_response import VirtualTerminalDestinationUnassignResponse
 from alexasomba_paystack.models.virtual_terminal_fetch_response import VirtualTerminalFetchResponse
 from alexasomba_paystack.models.virtual_terminal_list_response import VirtualTerminalListResponse
+from alexasomba_paystack.models.virtual_terminal_update import VirtualTerminalUpdate
 from alexasomba_paystack.models.virtual_terminal_update_response import VirtualTerminalUpdateResponse
 
 from alexasomba_paystack.api_client import ApiClient
@@ -60,20 +61,20 @@ class VirtualTerminalApi(object):
         self.api_client = api_client
 
     @validate_arguments
-    def virtual_terminal_add_split_code(self, code : Annotated[StrictStr, Field(..., description="Code of the Virtual Terminal")], body : Optional[VirtualTerminalCodeSplitCode] = None, **kwargs) -> VirtualTerminalAddSplitCodeResponse:  # noqa: E501
+    def virtual_terminal_add_split_code(self, code : Annotated[StrictStr, Field(..., description="Code of the Virtual Terminal")], virtual_terminal_add_split_code : Optional[VirtualTerminalAddSplitCode] = None, **kwargs) -> VirtualTerminalAddSplitCodeResponse:  # noqa: E501
         """Add Split Code to Virtual Terminal  # noqa: E501
 
         Add Split Code to Virtual Terminal  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.virtual_terminal_add_split_code(code, body, async_req=True)
+        >>> thread = api.virtual_terminal_add_split_code(code, virtual_terminal_add_split_code, async_req=True)
         >>> result = thread.get()
 
         :param code: Code of the Virtual Terminal (required)
         :type code: str
-        :param body:
-        :type body: VirtualTerminalCodeSplitCode
+        :param virtual_terminal_add_split_code:
+        :type virtual_terminal_add_split_code: VirtualTerminalAddSplitCode
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -88,23 +89,23 @@ class VirtualTerminalApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the virtual_terminal_add_split_code_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.virtual_terminal_add_split_code_with_http_info(code, body, **kwargs)  # noqa: E501
+        return self.virtual_terminal_add_split_code_with_http_info(code, virtual_terminal_add_split_code, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def virtual_terminal_add_split_code_with_http_info(self, code : Annotated[StrictStr, Field(..., description="Code of the Virtual Terminal")], body : Optional[VirtualTerminalCodeSplitCode] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def virtual_terminal_add_split_code_with_http_info(self, code : Annotated[StrictStr, Field(..., description="Code of the Virtual Terminal")], virtual_terminal_add_split_code : Optional[VirtualTerminalAddSplitCode] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Add Split Code to Virtual Terminal  # noqa: E501
 
         Add Split Code to Virtual Terminal  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.virtual_terminal_add_split_code_with_http_info(code, body, async_req=True)
+        >>> thread = api.virtual_terminal_add_split_code_with_http_info(code, virtual_terminal_add_split_code, async_req=True)
         >>> result = thread.get()
 
         :param code: Code of the Virtual Terminal (required)
         :type code: str
-        :param body:
-        :type body: VirtualTerminalCodeSplitCode
+        :param virtual_terminal_add_split_code:
+        :type virtual_terminal_add_split_code: VirtualTerminalAddSplitCode
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -134,7 +135,7 @@ class VirtualTerminalApi(object):
 
         _all_params = [
             'code',
-            'body'
+            'virtual_terminal_add_split_code'
         ]
         _all_params.extend(
             [
@@ -175,8 +176,8 @@ class VirtualTerminalApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['virtual_terminal_add_split_code'] is not None:
+            _body_params = _params['virtual_terminal_add_split_code']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -502,20 +503,20 @@ class VirtualTerminalApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def virtual_terminal_delete_split_code(self, code : Annotated[StrictStr, Field(..., description="Code of the Virtual Terminal")], body : Optional[VirtualTerminalCodeSplitCode] = None, **kwargs) -> VirtualTerminalDeleteSplitCodeResponse:  # noqa: E501
+    def virtual_terminal_delete_split_code(self, code : Annotated[StrictStr, Field(..., description="Code of the Virtual Terminal")], virtual_terminal_delete_split_code : Optional[VirtualTerminalDeleteSplitCode] = None, **kwargs) -> VirtualTerminalDeleteSplitCodeResponse:  # noqa: E501
         """Remove Split Code from Virtual Terminal  # noqa: E501
 
         Remove Split Code from Virtual Terminal  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.virtual_terminal_delete_split_code(code, body, async_req=True)
+        >>> thread = api.virtual_terminal_delete_split_code(code, virtual_terminal_delete_split_code, async_req=True)
         >>> result = thread.get()
 
         :param code: Code of the Virtual Terminal (required)
         :type code: str
-        :param body:
-        :type body: VirtualTerminalCodeSplitCode
+        :param virtual_terminal_delete_split_code:
+        :type virtual_terminal_delete_split_code: VirtualTerminalDeleteSplitCode
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -530,23 +531,23 @@ class VirtualTerminalApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the virtual_terminal_delete_split_code_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.virtual_terminal_delete_split_code_with_http_info(code, body, **kwargs)  # noqa: E501
+        return self.virtual_terminal_delete_split_code_with_http_info(code, virtual_terminal_delete_split_code, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def virtual_terminal_delete_split_code_with_http_info(self, code : Annotated[StrictStr, Field(..., description="Code of the Virtual Terminal")], body : Optional[VirtualTerminalCodeSplitCode] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def virtual_terminal_delete_split_code_with_http_info(self, code : Annotated[StrictStr, Field(..., description="Code of the Virtual Terminal")], virtual_terminal_delete_split_code : Optional[VirtualTerminalDeleteSplitCode] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Remove Split Code from Virtual Terminal  # noqa: E501
 
         Remove Split Code from Virtual Terminal  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.virtual_terminal_delete_split_code_with_http_info(code, body, async_req=True)
+        >>> thread = api.virtual_terminal_delete_split_code_with_http_info(code, virtual_terminal_delete_split_code, async_req=True)
         >>> result = thread.get()
 
         :param code: Code of the Virtual Terminal (required)
         :type code: str
-        :param body:
-        :type body: VirtualTerminalCodeSplitCode
+        :param virtual_terminal_delete_split_code:
+        :type virtual_terminal_delete_split_code: VirtualTerminalDeleteSplitCode
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -576,7 +577,7 @@ class VirtualTerminalApi(object):
 
         _all_params = [
             'code',
-            'body'
+            'virtual_terminal_delete_split_code'
         ]
         _all_params.extend(
             [
@@ -617,8 +618,8 @@ class VirtualTerminalApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['virtual_terminal_delete_split_code'] is not None:
+            _body_params = _params['virtual_terminal_delete_split_code']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -657,20 +658,20 @@ class VirtualTerminalApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def virtual_terminal_destination_assign(self, code : Annotated[StrictStr, Field(..., description="Code of the Virtual Terminal")], body : Optional[VirtualTerminalCodeDestinationAssign] = None, **kwargs) -> VirtualTerminalDestinationAssignResponse:  # noqa: E501
+    def virtual_terminal_destination_assign(self, code : Annotated[StrictStr, Field(..., description="Code of the Virtual Terminal")], virtual_terminal_destination_assign : Optional[VirtualTerminalDestinationAssign] = None, **kwargs) -> VirtualTerminalDestinationAssignResponse:  # noqa: E501
         """Assign Destination to Virtual Terminal  # noqa: E501
 
         Add a destination (WhatsApp number) to a Virtual Terminal on your integration  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.virtual_terminal_destination_assign(code, body, async_req=True)
+        >>> thread = api.virtual_terminal_destination_assign(code, virtual_terminal_destination_assign, async_req=True)
         >>> result = thread.get()
 
         :param code: Code of the Virtual Terminal (required)
         :type code: str
-        :param body:
-        :type body: VirtualTerminalCodeDestinationAssign
+        :param virtual_terminal_destination_assign:
+        :type virtual_terminal_destination_assign: VirtualTerminalDestinationAssign
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -685,23 +686,23 @@ class VirtualTerminalApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the virtual_terminal_destination_assign_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.virtual_terminal_destination_assign_with_http_info(code, body, **kwargs)  # noqa: E501
+        return self.virtual_terminal_destination_assign_with_http_info(code, virtual_terminal_destination_assign, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def virtual_terminal_destination_assign_with_http_info(self, code : Annotated[StrictStr, Field(..., description="Code of the Virtual Terminal")], body : Optional[VirtualTerminalCodeDestinationAssign] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def virtual_terminal_destination_assign_with_http_info(self, code : Annotated[StrictStr, Field(..., description="Code of the Virtual Terminal")], virtual_terminal_destination_assign : Optional[VirtualTerminalDestinationAssign] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Assign Destination to Virtual Terminal  # noqa: E501
 
         Add a destination (WhatsApp number) to a Virtual Terminal on your integration  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.virtual_terminal_destination_assign_with_http_info(code, body, async_req=True)
+        >>> thread = api.virtual_terminal_destination_assign_with_http_info(code, virtual_terminal_destination_assign, async_req=True)
         >>> result = thread.get()
 
         :param code: Code of the Virtual Terminal (required)
         :type code: str
-        :param body:
-        :type body: VirtualTerminalCodeDestinationAssign
+        :param virtual_terminal_destination_assign:
+        :type virtual_terminal_destination_assign: VirtualTerminalDestinationAssign
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -731,7 +732,7 @@ class VirtualTerminalApi(object):
 
         _all_params = [
             'code',
-            'body'
+            'virtual_terminal_destination_assign'
         ]
         _all_params.extend(
             [
@@ -772,8 +773,8 @@ class VirtualTerminalApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['virtual_terminal_destination_assign'] is not None:
+            _body_params = _params['virtual_terminal_destination_assign']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -812,20 +813,20 @@ class VirtualTerminalApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def virtual_terminal_destination_unassign(self, code : Annotated[StrictStr, Field(..., description="Code of the Virtual Terminal")], body : Optional[VirtualTerminalCodeDestinationUnassign] = None, **kwargs) -> VirtualTerminalDestinationUnassignResponse:  # noqa: E501
+    def virtual_terminal_destination_unassign(self, code : Annotated[StrictStr, Field(..., description="Code of the Virtual Terminal")], virtual_terminal_destination_unassign : Optional[VirtualTerminalDestinationUnassign] = None, **kwargs) -> VirtualTerminalDestinationUnassignResponse:  # noqa: E501
         """Unassign Destination from Virtual Terminal  # noqa: E501
 
         Unassign a destination (WhatsApp Number) from a Virtual Terminal on your integration  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.virtual_terminal_destination_unassign(code, body, async_req=True)
+        >>> thread = api.virtual_terminal_destination_unassign(code, virtual_terminal_destination_unassign, async_req=True)
         >>> result = thread.get()
 
         :param code: Code of the Virtual Terminal (required)
         :type code: str
-        :param body:
-        :type body: VirtualTerminalCodeDestinationUnassign
+        :param virtual_terminal_destination_unassign:
+        :type virtual_terminal_destination_unassign: VirtualTerminalDestinationUnassign
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -840,23 +841,23 @@ class VirtualTerminalApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the virtual_terminal_destination_unassign_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.virtual_terminal_destination_unassign_with_http_info(code, body, **kwargs)  # noqa: E501
+        return self.virtual_terminal_destination_unassign_with_http_info(code, virtual_terminal_destination_unassign, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def virtual_terminal_destination_unassign_with_http_info(self, code : Annotated[StrictStr, Field(..., description="Code of the Virtual Terminal")], body : Optional[VirtualTerminalCodeDestinationUnassign] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def virtual_terminal_destination_unassign_with_http_info(self, code : Annotated[StrictStr, Field(..., description="Code of the Virtual Terminal")], virtual_terminal_destination_unassign : Optional[VirtualTerminalDestinationUnassign] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Unassign Destination from Virtual Terminal  # noqa: E501
 
         Unassign a destination (WhatsApp Number) from a Virtual Terminal on your integration  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.virtual_terminal_destination_unassign_with_http_info(code, body, async_req=True)
+        >>> thread = api.virtual_terminal_destination_unassign_with_http_info(code, virtual_terminal_destination_unassign, async_req=True)
         >>> result = thread.get()
 
         :param code: Code of the Virtual Terminal (required)
         :type code: str
-        :param body:
-        :type body: VirtualTerminalCodeDestinationUnassign
+        :param virtual_terminal_destination_unassign:
+        :type virtual_terminal_destination_unassign: VirtualTerminalDestinationUnassign
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -886,7 +887,7 @@ class VirtualTerminalApi(object):
 
         _all_params = [
             'code',
-            'body'
+            'virtual_terminal_destination_unassign'
         ]
         _all_params.extend(
             [
@@ -927,8 +928,8 @@ class VirtualTerminalApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['virtual_terminal_destination_unassign'] is not None:
+            _body_params = _params['virtual_terminal_destination_unassign']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -1255,20 +1256,20 @@ class VirtualTerminalApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def virtual_terminal_update(self, code : Annotated[StrictStr, Field(..., description="Code of the Virtual Terminal")], body : Optional[VirtualTerminalCode] = None, **kwargs) -> VirtualTerminalUpdateResponse:  # noqa: E501
+    def virtual_terminal_update(self, code : Annotated[StrictStr, Field(..., description="Code of the Virtual Terminal")], virtual_terminal_update : Optional[VirtualTerminalUpdate] = None, **kwargs) -> VirtualTerminalUpdateResponse:  # noqa: E501
         """Update Virtual Terminal  # noqa: E501
 
         Update a Virtual Terminal on your integration  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.virtual_terminal_update(code, body, async_req=True)
+        >>> thread = api.virtual_terminal_update(code, virtual_terminal_update, async_req=True)
         >>> result = thread.get()
 
         :param code: Code of the Virtual Terminal (required)
         :type code: str
-        :param body:
-        :type body: VirtualTerminalCode
+        :param virtual_terminal_update:
+        :type virtual_terminal_update: VirtualTerminalUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -1283,23 +1284,23 @@ class VirtualTerminalApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the virtual_terminal_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.virtual_terminal_update_with_http_info(code, body, **kwargs)  # noqa: E501
+        return self.virtual_terminal_update_with_http_info(code, virtual_terminal_update, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def virtual_terminal_update_with_http_info(self, code : Annotated[StrictStr, Field(..., description="Code of the Virtual Terminal")], body : Optional[VirtualTerminalCode] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def virtual_terminal_update_with_http_info(self, code : Annotated[StrictStr, Field(..., description="Code of the Virtual Terminal")], virtual_terminal_update : Optional[VirtualTerminalUpdate] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Update Virtual Terminal  # noqa: E501
 
         Update a Virtual Terminal on your integration  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.virtual_terminal_update_with_http_info(code, body, async_req=True)
+        >>> thread = api.virtual_terminal_update_with_http_info(code, virtual_terminal_update, async_req=True)
         >>> result = thread.get()
 
         :param code: Code of the Virtual Terminal (required)
         :type code: str
-        :param body:
-        :type body: VirtualTerminalCode
+        :param virtual_terminal_update:
+        :type virtual_terminal_update: VirtualTerminalUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -1329,7 +1330,7 @@ class VirtualTerminalApi(object):
 
         _all_params = [
             'code',
-            'body'
+            'virtual_terminal_update'
         ]
         _all_params.extend(
             [
@@ -1370,8 +1371,8 @@ class VirtualTerminalApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['virtual_terminal_update'] is not None:
+            _body_params = _params['virtual_terminal_update']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(

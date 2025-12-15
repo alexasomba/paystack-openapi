@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transferrecipient_delete**
-> TransferrecipientCode transferrecipient_delete(code)
+> TransferRecipientDeleteResponse transferrecipient_delete(code)
 
 Delete Transfer Recipient
 
@@ -186,7 +186,7 @@ Delete a transfer recipient (sets the transfer recipient to inactive)
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.transferrecipient_code import TransferrecipientCode
+from alexasomba_paystack.models.transfer_recipient_delete_response import TransferRecipientDeleteResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransferrecipientCode**](TransferrecipientCode.md)
+[**TransferRecipientDeleteResponse**](TransferRecipientDeleteResponse.md)
 
 ### Authorization
 
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transferrecipient_fetch**
-> TransferrecipientCode transferrecipient_fetch(code)
+> TransferRecipientFetchResponse transferrecipient_fetch(code)
 
 Fetch Transfer recipient
 
@@ -266,7 +266,7 @@ Fetch the details of a transfer recipient
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.transferrecipient_code import TransferrecipientCode
+from alexasomba_paystack.models.transfer_recipient_fetch_response import TransferRecipientFetchResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -311,7 +311,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransferrecipientCode**](TransferrecipientCode.md)
+[**TransferRecipientFetchResponse**](TransferRecipientFetchResponse.md)
 
 ### Authorization
 
@@ -421,7 +421,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transferrecipient_update**
-> TransferrecipientCode transferrecipient_update(code, body=body)
+> TransferRecipientUpdateResponse transferrecipient_update(code, transfer_recipient_update=transfer_recipient_update)
 
 Update Transfer Recipient
 
@@ -434,7 +434,8 @@ Update the details of a transfer recipient
 import time
 import os
 import alexasomba_paystack
-from alexasomba_paystack.models.transferrecipient_code import TransferrecipientCode
+from alexasomba_paystack.models.transfer_recipient_update import TransferRecipientUpdate
+from alexasomba_paystack.models.transfer_recipient_update_response import TransferRecipientUpdateResponse
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -459,11 +460,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.TransferRecipientApi(api_client)
     code = 'RCP_5ap8rcimmcj8lbi' # str | Transfer recipient code
-    body = alexasomba_paystack.TransferrecipientCode() # TransferrecipientCode |  (optional)
+    transfer_recipient_update = alexasomba_paystack.TransferRecipientUpdate() # TransferRecipientUpdate |  (optional)
 
     try:
         # Update Transfer Recipient
-        api_response = api_instance.transferrecipient_update(code, body=body)
+        api_response = api_instance.transferrecipient_update(code, transfer_recipient_update=transfer_recipient_update)
         print("The response of TransferRecipientApi->transferrecipient_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -477,11 +478,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **code** | **str**| Transfer recipient code | 
- **body** | **TransferrecipientCode**|  | [optional] 
+ **transfer_recipient_update** | [**TransferRecipientUpdate**](TransferRecipientUpdate.md)|  | [optional] 
 
 ### Return type
 
-[**TransferrecipientCode**](TransferrecipientCode.md)
+[**TransferRecipientUpdateResponse**](TransferRecipientUpdateResponse.md)
 
 ### Authorization
 

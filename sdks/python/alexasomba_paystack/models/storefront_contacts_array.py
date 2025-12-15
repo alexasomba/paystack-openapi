@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
 
 class StorefrontContactsArray(BaseModel):
@@ -28,7 +28,7 @@ class StorefrontContactsArray(BaseModel):
     """
     value: StrictStr = Field(...)
     id: StrictInt = Field(...)
-    type_name: Optional[Dict[str, Any]] = Field(...)
+    type_name: Optional[Any] = Field(...)
     type: StrictInt = Field(...)
     __properties = ["value", "id", "type_name", "type"]
 

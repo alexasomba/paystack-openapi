@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List
+from typing import Any, List
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
 from alexasomba_paystack.models.miscellaneous_list_countries_response_array_relationships_currency_supported_currencies_ngn_bank_account_number_pattern import MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern
 
@@ -35,7 +35,7 @@ class MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurre
     account_verification_required: StrictBool = Field(...)
     account_number_label: StrictStr = Field(...)
     account_number_pattern: MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern = Field(...)
-    documents: conlist(Dict[str, Any]) = Field(...)
+    documents: conlist(Any) = Field(...)
     notices: conlist(StrictStr) = Field(...)
     __properties = ["bank_type", "required_fields", "branch_code", "branch_code_type", "account_name", "account_verification_required", "account_number_label", "account_number_pattern", "documents", "notices"]
 

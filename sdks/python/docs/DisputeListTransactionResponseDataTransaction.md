@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **channel** | **str** |  | 
 **currency** | **str** |  | 
 **ip_address** | **str** |  | 
-**metadata** | [**ChargeCreateResponseDataMetadata**](ChargeCreateResponseDataMetadata.md) |  | 
+**metadata** | [**TransactionFetchResponseDataMetadata**](TransactionFetchResponseDataMetadata.md) |  | 
 **log** | [**ChargeAuthorizationResponseDataLog**](ChargeAuthorizationResponseDataLog.md) |  | 
 **fees** | **int** |  | 
 **fees_split** | **int** |  | 

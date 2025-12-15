@@ -33,9 +33,9 @@ from alexasomba_paystack.models.payment_request_finalize_response import Payment
 from alexasomba_paystack.models.payment_request_list_response import PaymentRequestListResponse
 from alexasomba_paystack.models.payment_request_send_notification_response import PaymentRequestSendNotificationResponse
 from alexasomba_paystack.models.payment_request_total_response import PaymentRequestTotalResponse
+from alexasomba_paystack.models.payment_request_update import PaymentRequestUpdate
 from alexasomba_paystack.models.payment_request_update_response import PaymentRequestUpdateResponse
 from alexasomba_paystack.models.payment_request_verify_response import PaymentRequestVerifyResponse
-from alexasomba_paystack.models.paymentrequest_id import PaymentrequestId
 
 from alexasomba_paystack.api_client import ApiClient
 from alexasomba_paystack.api_response import ApiResponse
@@ -1094,20 +1094,20 @@ class PaymentRequestApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def payment_request_update(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of a previously created payment request")], body : Optional[PaymentrequestId] = None, **kwargs) -> PaymentRequestUpdateResponse:  # noqa: E501
+    def payment_request_update(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of a previously created payment request")], payment_request_update : Optional[PaymentRequestUpdate] = None, **kwargs) -> PaymentRequestUpdateResponse:  # noqa: E501
         """Update Payment Request  # noqa: E501
 
         Update a previously created payment request  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.payment_request_update(id, body, async_req=True)
+        >>> thread = api.payment_request_update(id, payment_request_update, async_req=True)
         >>> result = thread.get()
 
         :param id: The unique identifier of a previously created payment request (required)
         :type id: int
-        :param body:
-        :type body: PaymentrequestId
+        :param payment_request_update:
+        :type payment_request_update: PaymentRequestUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -1122,23 +1122,23 @@ class PaymentRequestApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the payment_request_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.payment_request_update_with_http_info(id, body, **kwargs)  # noqa: E501
+        return self.payment_request_update_with_http_info(id, payment_request_update, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def payment_request_update_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of a previously created payment request")], body : Optional[PaymentrequestId] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def payment_request_update_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The unique identifier of a previously created payment request")], payment_request_update : Optional[PaymentRequestUpdate] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Update Payment Request  # noqa: E501
 
         Update a previously created payment request  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.payment_request_update_with_http_info(id, body, async_req=True)
+        >>> thread = api.payment_request_update_with_http_info(id, payment_request_update, async_req=True)
         >>> result = thread.get()
 
         :param id: The unique identifier of a previously created payment request (required)
         :type id: int
-        :param body:
-        :type body: PaymentrequestId
+        :param payment_request_update:
+        :type payment_request_update: PaymentRequestUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -1168,7 +1168,7 @@ class PaymentRequestApi(object):
 
         _all_params = [
             'id',
-            'body'
+            'payment_request_update'
         ]
         _all_params.extend(
             [
@@ -1209,8 +1209,8 @@ class PaymentRequestApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['payment_request_update'] is not None:
+            _body_params = _params['payment_request_update']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(

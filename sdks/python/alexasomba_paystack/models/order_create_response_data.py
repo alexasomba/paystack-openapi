@@ -28,9 +28,9 @@ class OrderCreateResponseData(BaseModel):
     """
     OrderCreateResponseData
     """
-    discounts: conlist(Dict[str, Any]) = Field(...)
+    discounts: conlist(Any) = Field(...)
     currency: StrictStr = Field(...)
-    shipping_address: Optional[Dict[str, Any]] = Field(...)
+    shipping_address: Optional[Any] = Field(...)
     integration: StrictInt = Field(...)
     domain: StrictStr = Field(...)
     email: StrictStr = Field(...)
@@ -45,11 +45,11 @@ class OrderCreateResponseData(BaseModel):
     status: StrictStr = Field(...)
     refunded: StrictBool = Field(...)
     is_viewed: StrictBool = Field(...)
-    expiration_date: Optional[Dict[str, Any]] = Field(...)
+    expiration_date: Optional[Any] = Field(...)
     id: StrictInt = Field(...)
     created_at: StrictStr = Field(..., alias="createdAt")
     updated_at: StrictStr = Field(..., alias="updatedAt")
-    items: conlist(Dict[str, Any]) = Field(...)
+    items: conlist(Any) = Field(...)
     pay_for_me_code: StrictStr = Field(...)
     discount_amount: StrictInt = Field(...)
     __properties = ["discounts", "currency", "shipping_address", "integration", "domain", "email", "customer", "amount", "pay_for_me", "shipping", "shipping_fees", "shipping_method", "metadata", "order_code", "status", "refunded", "is_viewed", "expiration_date", "id", "createdAt", "updatedAt", "items", "pay_for_me_code", "discount_amount"]

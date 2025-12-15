@@ -19,12 +19,12 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_customer import BulkChargeFetchBulkBatchChargesResponseArrayCustomer
 from alexasomba_paystack.models.payment_request_finalize_response_data_discount import PaymentRequestFinalizeResponseDataDiscount
 from alexasomba_paystack.models.payment_request_line_items_array import PaymentRequestLineItemsArray
 from alexasomba_paystack.models.payment_request_tax_array import PaymentRequestTaxArray
-from alexasomba_paystack.models.payment_request_update_response_data_customer import PaymentRequestUpdateResponseDataCustomer
 
 class PaymentRequestFinalizeResponseData(BaseModel):
     """
@@ -39,20 +39,20 @@ class PaymentRequestFinalizeResponseData(BaseModel):
     has_invoice: StrictBool = Field(...)
     invoice_number: Optional[StrictInt] = Field(...)
     description: Optional[StrictStr] = Field(...)
-    pdf_url: Optional[Dict[str, Any]] = Field(...)
+    pdf_url: Optional[Any] = Field(...)
     line_items: conlist(PaymentRequestLineItemsArray) = Field(...)
     tax: conlist(PaymentRequestTaxArray) = Field(...)
     request_code: StrictStr = Field(...)
     status: StrictStr = Field(...)
     paid: StrictBool = Field(...)
-    paid_at: Optional[Dict[str, Any]] = Field(...)
-    metadata: Optional[Dict[str, Any]] = Field(...)
-    notifications: conlist(Dict[str, Any]) = Field(...)
+    paid_at: Optional[Any] = Field(...)
+    metadata: Optional[Any] = Field(...)
+    notifications: conlist(Any) = Field(...)
     offline_reference: StrictStr = Field(...)
-    customer: PaymentRequestUpdateResponseDataCustomer = Field(...)
+    customer: BulkChargeFetchBulkBatchChargesResponseArrayCustomer = Field(...)
     created_at: StrictStr = Field(...)
     discount: Optional[PaymentRequestFinalizeResponseDataDiscount] = Field(...)
-    split_code: Optional[Dict[str, Any]] = Field(...)
+    split_code: Optional[Any] = Field(...)
     pending_amount: StrictInt = Field(...)
     __properties = ["id", "integration", "domain", "amount", "currency", "due_date", "has_invoice", "invoice_number", "description", "pdf_url", "line_items", "tax", "request_code", "status", "paid", "paid_at", "metadata", "notifications", "offline_reference", "customer", "created_at", "discount", "split_code", "pending_amount"]
 
@@ -171,7 +171,7 @@ class PaymentRequestFinalizeResponseData(BaseModel):
             "metadata": obj.get("metadata"),
             "notifications": obj.get("notifications"),
             "offline_reference": obj.get("offline_reference"),
-            "customer": PaymentRequestUpdateResponseDataCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
+            "customer": BulkChargeFetchBulkBatchChargesResponseArrayCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
             "created_at": obj.get("created_at"),
             "discount": PaymentRequestFinalizeResponseDataDiscount.from_dict(obj.get("discount")) if obj.get("discount") is not None else None,
             "split_code": obj.get("split_code"),

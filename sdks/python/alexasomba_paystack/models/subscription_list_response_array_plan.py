@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
 
 class SubscriptionListResponseArrayPlan(BaseModel):
@@ -30,7 +30,7 @@ class SubscriptionListResponseArrayPlan(BaseModel):
     domain: StrictStr = Field(...)
     name: StrictStr = Field(...)
     plan_code: StrictStr = Field(...)
-    description: Optional[Dict[str, Any]] = Field(...)
+    description: Optional[Any] = Field(...)
     amount: StrictInt = Field(...)
     interval: StrictStr = Field(...)
     send_invoices: StrictBool = Field(...)

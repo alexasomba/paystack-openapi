@@ -29,19 +29,22 @@ from typing import Optional
 from alexasomba_paystack.models.customer_authorization_initialize_request import CustomerAuthorizationInitializeRequest
 from alexasomba_paystack.models.customer_authorization_initialize_response import CustomerAuthorizationInitializeResponse
 from alexasomba_paystack.models.customer_authorization_verify_response import CustomerAuthorizationVerifyResponse
-from alexasomba_paystack.models.customer_code import CustomerCode
-from alexasomba_paystack.models.customer_code_identification import CustomerCodeIdentification
 from alexasomba_paystack.models.customer_create import CustomerCreate
 from alexasomba_paystack.models.customer_create_response import CustomerCreateResponse
 from alexasomba_paystack.models.customer_deactivate_authorization import CustomerDeactivateAuthorization
 from alexasomba_paystack.models.customer_deactivate_authorization_response import CustomerDeactivateAuthorizationResponse
+from alexasomba_paystack.models.customer_direct_debit_activation_charge_request import CustomerDirectDebitActivationChargeRequest
 from alexasomba_paystack.models.customer_direct_debit_activation_charge_response import CustomerDirectDebitActivationChargeResponse
 from alexasomba_paystack.models.customer_fetch_mandate_authorizations_response import CustomerFetchMandateAuthorizationsResponse
-from alexasomba_paystack.models.customer_id_directdebit_activation_charge import CustomerIdDirectdebitActivationCharge
-from alexasomba_paystack.models.customer_id_initialize_direct_debit import CustomerIdInitializeDirectDebit
+from alexasomba_paystack.models.customer_fetch_response import CustomerFetchResponse
+from alexasomba_paystack.models.customer_initialize_direct_debit_request import CustomerInitializeDirectDebitRequest
 from alexasomba_paystack.models.customer_initialize_direct_debit_response import CustomerInitializeDirectDebitResponse
 from alexasomba_paystack.models.customer_list_response import CustomerListResponse
 from alexasomba_paystack.models.customer_risk_action import CustomerRiskAction
+from alexasomba_paystack.models.customer_update import CustomerUpdate
+from alexasomba_paystack.models.customer_update_response import CustomerUpdateResponse
+from alexasomba_paystack.models.customer_validate import CustomerValidate
+from alexasomba_paystack.models.customer_validate_response import CustomerValidateResponse
 from alexasomba_paystack.models.customer_whitelist_blacklist_response import CustomerWhitelistBlacklistResponse
 
 from alexasomba_paystack.api_client import ApiClient
@@ -359,20 +362,20 @@ class CustomerApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def customer_direct_debit_activation_charge(self, id : Annotated[StrictInt, Field(..., description="The customer ID attached to the authorization")], body : Optional[CustomerIdDirectdebitActivationCharge] = None, **kwargs) -> CustomerDirectDebitActivationChargeResponse:  # noqa: E501
+    def customer_direct_debit_activation_charge(self, id : Annotated[StrictInt, Field(..., description="The customer ID attached to the authorization")], customer_direct_debit_activation_charge_request : Optional[CustomerDirectDebitActivationChargeRequest] = None, **kwargs) -> CustomerDirectDebitActivationChargeResponse:  # noqa: E501
         """Direct Debit Activation Charge  # noqa: E501
 
         Trigger an activation charge on an inactive mandate on behalf of your customer  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.customer_direct_debit_activation_charge(id, body, async_req=True)
+        >>> thread = api.customer_direct_debit_activation_charge(id, customer_direct_debit_activation_charge_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The customer ID attached to the authorization (required)
         :type id: int
-        :param body:
-        :type body: CustomerIdDirectdebitActivationCharge
+        :param customer_direct_debit_activation_charge_request:
+        :type customer_direct_debit_activation_charge_request: CustomerDirectDebitActivationChargeRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -387,23 +390,23 @@ class CustomerApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the customer_direct_debit_activation_charge_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.customer_direct_debit_activation_charge_with_http_info(id, body, **kwargs)  # noqa: E501
+        return self.customer_direct_debit_activation_charge_with_http_info(id, customer_direct_debit_activation_charge_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def customer_direct_debit_activation_charge_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The customer ID attached to the authorization")], body : Optional[CustomerIdDirectdebitActivationCharge] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def customer_direct_debit_activation_charge_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The customer ID attached to the authorization")], customer_direct_debit_activation_charge_request : Optional[CustomerDirectDebitActivationChargeRequest] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Direct Debit Activation Charge  # noqa: E501
 
         Trigger an activation charge on an inactive mandate on behalf of your customer  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.customer_direct_debit_activation_charge_with_http_info(id, body, async_req=True)
+        >>> thread = api.customer_direct_debit_activation_charge_with_http_info(id, customer_direct_debit_activation_charge_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The customer ID attached to the authorization (required)
         :type id: int
-        :param body:
-        :type body: CustomerIdDirectdebitActivationCharge
+        :param customer_direct_debit_activation_charge_request:
+        :type customer_direct_debit_activation_charge_request: CustomerDirectDebitActivationChargeRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -433,7 +436,7 @@ class CustomerApi(object):
 
         _all_params = [
             'id',
-            'body'
+            'customer_direct_debit_activation_charge_request'
         ]
         _all_params.extend(
             [
@@ -474,8 +477,8 @@ class CustomerApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['customer_direct_debit_activation_charge_request'] is not None:
+            _body_params = _params['customer_direct_debit_activation_charge_request']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -514,7 +517,7 @@ class CustomerApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def customer_fetch(self, code : Annotated[StrictStr, Field(..., description="The code for the customer gotten from the response of the customer creation")], **kwargs) -> CustomerCode:  # noqa: E501
+    def customer_fetch(self, code : Annotated[StrictStr, Field(..., description="The code for the customer gotten from the response of the customer creation")], **kwargs) -> CustomerFetchResponse:  # noqa: E501
         """Fetch Customer  # noqa: E501
 
         Get details of a customer on your integration.  # noqa: E501
@@ -535,7 +538,7 @@ class CustomerApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: CustomerCode
+        :rtype: CustomerFetchResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -577,7 +580,7 @@ class CustomerApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(CustomerCode, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(CustomerFetchResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -632,7 +635,7 @@ class CustomerApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "CustomerCode",
+            '200': "CustomerFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -942,20 +945,20 @@ class CustomerApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def customer_initialize_direct_debit(self, id : Annotated[StrictInt, Field(..., description="The ID of the customer to initialize the direct debit for")], body : Optional[CustomerIdInitializeDirectDebit] = None, **kwargs) -> CustomerInitializeDirectDebitResponse:  # noqa: E501
+    def customer_initialize_direct_debit(self, id : Annotated[StrictInt, Field(..., description="The ID of the customer to initialize the direct debit for")], customer_initialize_direct_debit_request : Optional[CustomerInitializeDirectDebitRequest] = None, **kwargs) -> CustomerInitializeDirectDebitResponse:  # noqa: E501
         """Initialize Direct Debit  # noqa: E501
 
         Initialize the process of linking an account to a customer for Direct Debit transactions  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.customer_initialize_direct_debit(id, body, async_req=True)
+        >>> thread = api.customer_initialize_direct_debit(id, customer_initialize_direct_debit_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The ID of the customer to initialize the direct debit for (required)
         :type id: int
-        :param body:
-        :type body: CustomerIdInitializeDirectDebit
+        :param customer_initialize_direct_debit_request:
+        :type customer_initialize_direct_debit_request: CustomerInitializeDirectDebitRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -970,23 +973,23 @@ class CustomerApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the customer_initialize_direct_debit_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.customer_initialize_direct_debit_with_http_info(id, body, **kwargs)  # noqa: E501
+        return self.customer_initialize_direct_debit_with_http_info(id, customer_initialize_direct_debit_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def customer_initialize_direct_debit_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The ID of the customer to initialize the direct debit for")], body : Optional[CustomerIdInitializeDirectDebit] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def customer_initialize_direct_debit_with_http_info(self, id : Annotated[StrictInt, Field(..., description="The ID of the customer to initialize the direct debit for")], customer_initialize_direct_debit_request : Optional[CustomerInitializeDirectDebitRequest] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Initialize Direct Debit  # noqa: E501
 
         Initialize the process of linking an account to a customer for Direct Debit transactions  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.customer_initialize_direct_debit_with_http_info(id, body, async_req=True)
+        >>> thread = api.customer_initialize_direct_debit_with_http_info(id, customer_initialize_direct_debit_request, async_req=True)
         >>> result = thread.get()
 
         :param id: The ID of the customer to initialize the direct debit for (required)
         :type id: int
-        :param body:
-        :type body: CustomerIdInitializeDirectDebit
+        :param customer_initialize_direct_debit_request:
+        :type customer_initialize_direct_debit_request: CustomerInitializeDirectDebitRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -1016,7 +1019,7 @@ class CustomerApi(object):
 
         _all_params = [
             'id',
-            'body'
+            'customer_initialize_direct_debit_request'
         ]
         _all_params.extend(
             [
@@ -1057,8 +1060,8 @@ class CustomerApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['customer_initialize_direct_debit_request'] is not None:
+            _body_params = _params['customer_initialize_direct_debit_request']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -1439,20 +1442,20 @@ class CustomerApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def customer_update(self, code : Annotated[StrictStr, Field(..., description="The code for the customer gotten from the response of the customer creation")], body : Optional[CustomerCode] = None, **kwargs) -> CustomerCode:  # noqa: E501
+    def customer_update(self, code : Annotated[StrictStr, Field(..., description="The code for the customer gotten from the response of the customer creation")], customer_update : Optional[CustomerUpdate] = None, **kwargs) -> CustomerUpdateResponse:  # noqa: E501
         """Update Customer  # noqa: E501
 
         Update a customer's details on your integration  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.customer_update(code, body, async_req=True)
+        >>> thread = api.customer_update(code, customer_update, async_req=True)
         >>> result = thread.get()
 
         :param code: The code for the customer gotten from the response of the customer creation (required)
         :type code: str
-        :param body:
-        :type body: CustomerCode
+        :param customer_update:
+        :type customer_update: CustomerUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -1462,28 +1465,28 @@ class CustomerApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: CustomerCode
+        :rtype: CustomerUpdateResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the customer_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.customer_update_with_http_info(code, body, **kwargs)  # noqa: E501
+        return self.customer_update_with_http_info(code, customer_update, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def customer_update_with_http_info(self, code : Annotated[StrictStr, Field(..., description="The code for the customer gotten from the response of the customer creation")], body : Optional[CustomerCode] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def customer_update_with_http_info(self, code : Annotated[StrictStr, Field(..., description="The code for the customer gotten from the response of the customer creation")], customer_update : Optional[CustomerUpdate] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Update Customer  # noqa: E501
 
         Update a customer's details on your integration  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.customer_update_with_http_info(code, body, async_req=True)
+        >>> thread = api.customer_update_with_http_info(code, customer_update, async_req=True)
         >>> result = thread.get()
 
         :param code: The code for the customer gotten from the response of the customer creation (required)
         :type code: str
-        :param body:
-        :type body: CustomerCode
+        :param customer_update:
+        :type customer_update: CustomerUpdate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -1506,14 +1509,14 @@ class CustomerApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(CustomerCode, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(CustomerUpdateResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
 
         _all_params = [
             'code',
-            'body'
+            'customer_update'
         ]
         _all_params.extend(
             [
@@ -1554,8 +1557,8 @@ class CustomerApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['customer_update'] is not None:
+            _body_params = _params['customer_update']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -1572,7 +1575,7 @@ class CustomerApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "CustomerCode",
+            '200': "CustomerUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1595,20 +1598,20 @@ class CustomerApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def customer_validate(self, code : Annotated[StrictStr, Field(..., description="The code for the customer gotten from the response of the customer creation")], body : Optional[CustomerCodeIdentification] = None, **kwargs) -> CustomerCodeIdentification:  # noqa: E501
+    def customer_validate(self, code : Annotated[StrictStr, Field(..., description="The code for the customer gotten from the response of the customer creation")], customer_validate : Optional[CustomerValidate] = None, **kwargs) -> CustomerValidateResponse:  # noqa: E501
         """Validate Customer  # noqa: E501
 
         Validate a customer's identity  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.customer_validate(code, body, async_req=True)
+        >>> thread = api.customer_validate(code, customer_validate, async_req=True)
         >>> result = thread.get()
 
         :param code: The code for the customer gotten from the response of the customer creation (required)
         :type code: str
-        :param body:
-        :type body: CustomerCodeIdentification
+        :param customer_validate:
+        :type customer_validate: CustomerValidate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -1618,28 +1621,28 @@ class CustomerApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: CustomerCodeIdentification
+        :rtype: CustomerValidateResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the customer_validate_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.customer_validate_with_http_info(code, body, **kwargs)  # noqa: E501
+        return self.customer_validate_with_http_info(code, customer_validate, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def customer_validate_with_http_info(self, code : Annotated[StrictStr, Field(..., description="The code for the customer gotten from the response of the customer creation")], body : Optional[CustomerCodeIdentification] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def customer_validate_with_http_info(self, code : Annotated[StrictStr, Field(..., description="The code for the customer gotten from the response of the customer creation")], customer_validate : Optional[CustomerValidate] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Validate Customer  # noqa: E501
 
         Validate a customer's identity  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.customer_validate_with_http_info(code, body, async_req=True)
+        >>> thread = api.customer_validate_with_http_info(code, customer_validate, async_req=True)
         >>> result = thread.get()
 
         :param code: The code for the customer gotten from the response of the customer creation (required)
         :type code: str
-        :param body:
-        :type body: CustomerCodeIdentification
+        :param customer_validate:
+        :type customer_validate: CustomerValidate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -1662,14 +1665,14 @@ class CustomerApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(CustomerCodeIdentification, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(CustomerValidateResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
 
         _all_params = [
             'code',
-            'body'
+            'customer_validate'
         ]
         _all_params.extend(
             [
@@ -1710,8 +1713,8 @@ class CustomerApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['customer_validate'] is not None:
+            _body_params = _params['customer_validate']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -1728,7 +1731,7 @@ class CustomerApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '202': "CustomerCodeIdentification",
+            '202': "CustomerValidateResponse",
             '401': "Error",
         }
 

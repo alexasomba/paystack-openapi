@@ -18,78 +18,62 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
-from typing import Any, ClassVar, Dict, List
+
+from typing import List
+from pydantic import BaseModel, Field, conlist
 from alexasomba_paystack.models.metadata_custom_fields_array import MetadataCustomFieldsArray
-from typing import Optional, Set
-from typing_extensions import Self
 
 class TransactionFetchResponseDataMetadata(BaseModel):
     """
     TransactionFetchResponseDataMetadata
-    """ # noqa: E501
-    custom_fields: List[MetadataCustomFieldsArray]
-    __properties: ClassVar[List[str]] = ["custom_fields"]
+    """
+    custom_fields: conlist(MetadataCustomFieldsArray) = Field(...)
+    __properties = ["custom_fields"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> TransactionFetchResponseDataMetadata:
         """Create an instance of TransactionFetchResponseDataMetadata from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in custom_fields (list)
         _items = []
         if self.custom_fields:
-            for _item_custom_fields in self.custom_fields:
-                if _item_custom_fields:
-                    _items.append(_item_custom_fields.to_dict())
+            for _item in self.custom_fields:
+                if _item:
+                    _items.append(_item.to_dict())
             _dict['custom_fields'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> TransactionFetchResponseDataMetadata:
         """Create an instance of TransactionFetchResponseDataMetadata from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return TransactionFetchResponseDataMetadata.parse_obj(obj)
 
-        _obj = cls.model_validate({
-            "custom_fields": [MetadataCustomFieldsArray.from_dict(_item) for _item in obj["custom_fields"]] if obj.get("custom_fields") is not None else None
+        _obj = TransactionFetchResponseDataMetadata.parse_obj({
+            "custom_fields": [MetadataCustomFieldsArray.from_dict(_item) for _item in obj.get("custom_fields")] if obj.get("custom_fields") is not None else None
         })
         return _obj
 

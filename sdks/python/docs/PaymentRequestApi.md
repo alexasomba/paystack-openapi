@@ -581,7 +581,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **payment_request_update**
-> PaymentRequestUpdateResponse payment_request_update(id, body=body)
+> PaymentRequestUpdateResponse payment_request_update(id, payment_request_update=payment_request_update)
 
 Update Payment Request
 
@@ -594,8 +594,8 @@ Update a previously created payment request
 import time
 import os
 import alexasomba_paystack
+from alexasomba_paystack.models.payment_request_update import PaymentRequestUpdate
 from alexasomba_paystack.models.payment_request_update_response import PaymentRequestUpdateResponse
-from alexasomba_paystack.models.paymentrequest_id import PaymentrequestId
 from alexasomba_paystack.rest import ApiException
 from pprint import pprint
 
@@ -620,11 +620,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.PaymentRequestApi(api_client)
     id = 18823736 # int | The unique identifier of a previously created payment request
-    body = alexasomba_paystack.PaymentrequestId() # PaymentrequestId |  (optional)
+    payment_request_update = alexasomba_paystack.PaymentRequestUpdate() # PaymentRequestUpdate |  (optional)
 
     try:
         # Update Payment Request
-        api_response = api_instance.payment_request_update(id, body=body)
+        api_response = api_instance.payment_request_update(id, payment_request_update=payment_request_update)
         print("The response of PaymentRequestApi->payment_request_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -638,7 +638,7 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The unique identifier of a previously created payment request | 
- **body** | **PaymentrequestId**|  | [optional] 
+ **payment_request_update** | [**PaymentRequestUpdate**](PaymentRequestUpdate.md)|  | [optional] 
 
 ### Return type
 

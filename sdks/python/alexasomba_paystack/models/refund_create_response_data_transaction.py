@@ -41,10 +41,10 @@ class RefundCreateResponseDataTransaction(BaseModel):
     plan: Dict[str, Any] = Field(...)
     subaccount: RefundCreateResponseDataTransactionSubaccount = Field(...)
     split: Dict[str, Any] = Field(...)
-    order_id: Optional[Dict[str, Any]] = Field(...)
-    pos_transaction_data: Optional[Dict[str, Any]] = Field(...)
-    source: Optional[Dict[str, Any]] = Field(...)
-    fees_breakdown: Optional[Dict[str, Any]] = Field(...)
+    order_id: Optional[Any] = Field(...)
+    pos_transaction_data: Optional[Any] = Field(...)
+    source: Optional[Any] = Field(...)
+    fees_breakdown: Optional[Any] = Field(...)
     __properties = ["id", "domain", "reference", "amount", "paid_at", "channel", "currency", "authorization", "customer", "plan", "subaccount", "split", "order_id", "pos_transaction_data", "source", "fees_breakdown"]
 
     class Config:

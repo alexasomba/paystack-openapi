@@ -24,13 +24,13 @@ from pydantic import Field, StrictInt, StrictStr, conlist
 
 from typing import Optional
 
+from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response import BulkChargeFetchBulkBatchChargesResponse
+from alexasomba_paystack.models.bulk_charge_fetch_response import BulkChargeFetchResponse
 from alexasomba_paystack.models.bulk_charge_initiate import BulkChargeInitiate
 from alexasomba_paystack.models.bulk_charge_initiate_response import BulkChargeInitiateResponse
 from alexasomba_paystack.models.bulk_charge_list_response import BulkChargeListResponse
-from alexasomba_paystack.models.bulkcharge_code import BulkchargeCode
-from alexasomba_paystack.models.bulkcharge_code_charges import BulkchargeCodeCharges
-from alexasomba_paystack.models.bulkcharge_pause_code import BulkchargePauseCode
-from alexasomba_paystack.models.bulkcharge_resume_code import BulkchargeResumeCode
+from alexasomba_paystack.models.bulk_charge_pause_response import BulkChargePauseResponse
+from alexasomba_paystack.models.bulk_charge_resume_response import BulkChargeResumeResponse
 
 from alexasomba_paystack.api_client import ApiClient
 from alexasomba_paystack.api_response import ApiResponse
@@ -53,7 +53,7 @@ class BulkChargeApi(object):
         self.api_client = api_client
 
     @validate_arguments
-    def bulk_charge_charges(self, code : Annotated[StrictStr, Field(..., description="An code for the batch whose charges you want to retrieve")], per_page : Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None, page : Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None, status : Annotated[Optional[StrictStr], Field(description="Filter by the status of the charges")] = None, **kwargs) -> BulkchargeCodeCharges:  # noqa: E501
+    def bulk_charge_charges(self, code : Annotated[StrictStr, Field(..., description="An code for the batch whose charges you want to retrieve")], per_page : Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None, page : Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None, status : Annotated[Optional[StrictStr], Field(description="Filter by the status of the charges")] = None, **kwargs) -> BulkChargeFetchBulkBatchChargesResponse:  # noqa: E501
         """List Charges in a Batch  # noqa: E501
 
         This endpoint retrieves the charges associated with a specified batch code  # noqa: E501
@@ -80,7 +80,7 @@ class BulkChargeApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: BulkchargeCodeCharges
+        :rtype: BulkChargeFetchBulkBatchChargesResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -128,7 +128,7 @@ class BulkChargeApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(BulkchargeCodeCharges, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(BulkChargeFetchBulkBatchChargesResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -195,7 +195,7 @@ class BulkChargeApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "BulkchargeCodeCharges",
+            '200': "BulkChargeFetchBulkBatchChargesResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -218,7 +218,7 @@ class BulkChargeApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def bulk_charge_fetch(self, code : Annotated[StrictStr, Field(..., description="The code for the charge whose batches you want to retrieve")], **kwargs) -> BulkchargeCode:  # noqa: E501
+    def bulk_charge_fetch(self, code : Annotated[StrictStr, Field(..., description="The code for the charge whose batches you want to retrieve")], **kwargs) -> BulkChargeFetchResponse:  # noqa: E501
         """Fetch Bulk Charge Batch  # noqa: E501
 
         This endpoint retrieves a specific batch code. It also returns useful information on its progress by  way of the `total_charges` and `pending_charges` attributes.   # noqa: E501
@@ -239,7 +239,7 @@ class BulkChargeApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: BulkchargeCode
+        :rtype: BulkChargeFetchResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -281,7 +281,7 @@ class BulkChargeApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(BulkchargeCode, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(BulkChargeFetchResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -336,7 +336,7 @@ class BulkChargeApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "BulkchargeCode",
+            '200': "BulkChargeFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -663,7 +663,7 @@ class BulkChargeApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def bulk_charge_pause(self, code : Annotated[StrictStr, Field(..., description="The batch code for the bulk charge you want to pause")], **kwargs) -> BulkchargePauseCode:  # noqa: E501
+    def bulk_charge_pause(self, code : Annotated[StrictStr, Field(..., description="The batch code for the bulk charge you want to pause")], **kwargs) -> BulkChargePauseResponse:  # noqa: E501
         """Pause Bulk Charge Batch  # noqa: E501
 
         Pause the processing of a charge batch  # noqa: E501
@@ -684,7 +684,7 @@ class BulkChargeApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: BulkchargePauseCode
+        :rtype: BulkChargePauseResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -726,7 +726,7 @@ class BulkChargeApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(BulkchargePauseCode, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(BulkChargePauseResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -781,7 +781,7 @@ class BulkChargeApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "BulkchargePauseCode",
+            '200': "BulkChargePauseResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -804,7 +804,7 @@ class BulkChargeApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def bulk_charge_resume(self, code : Annotated[StrictStr, Field(..., description="The batch code for the bulk charge you want to pause")], **kwargs) -> BulkchargeResumeCode:  # noqa: E501
+    def bulk_charge_resume(self, code : Annotated[StrictStr, Field(..., description="The batch code for the bulk charge you want to pause")], **kwargs) -> BulkChargeResumeResponse:  # noqa: E501
         """Resume Bulk Charge Batch  # noqa: E501
 
         Resume the processing of a previously paused charge batch  # noqa: E501
@@ -825,7 +825,7 @@ class BulkChargeApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: BulkchargeResumeCode
+        :rtype: BulkChargeResumeResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -867,7 +867,7 @@ class BulkChargeApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(BulkchargeResumeCode, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(BulkChargeResumeResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -922,7 +922,7 @@ class BulkChargeApi(object):
         _auth_settings = ['bearerAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "BulkchargeResumeCode",
+            '200': "BulkChargeResumeResponse",
             '401': "Error",
             '404': "Error",
         }

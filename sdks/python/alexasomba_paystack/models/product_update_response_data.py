@@ -19,10 +19,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
-from alexasomba_paystack.models.product_create_response_data_metadata import ProductCreateResponseDataMetadata
-from alexasomba_paystack.models.product_create_response_data_shipping_fields import ProductCreateResponseDataShippingFields
+from alexasomba_paystack.models.product_lists_response_array_metadata import ProductListsResponseArrayMetadata
+from alexasomba_paystack.models.product_lists_response_array_shipping_fields import ProductListsResponseArrayShippingFields
 
 class ProductUpdateResponseData(BaseModel):
     """
@@ -36,26 +36,26 @@ class ProductUpdateResponseData(BaseModel):
     quantity: StrictInt = Field(...)
     quantity_sold: StrictInt = Field(...)
     type: StrictStr = Field(...)
-    files: conlist(Dict[str, Any]) = Field(...)
-    file_path: Optional[Dict[str, Any]] = Field(...)
+    files: conlist(Any) = Field(...)
+    file_path: Optional[Any] = Field(...)
     is_shippable: StrictBool = Field(...)
-    shipping_fields: ProductCreateResponseDataShippingFields = Field(...)
+    shipping_fields: ProductListsResponseArrayShippingFields = Field(...)
     unlimited: StrictBool = Field(...)
     domain: StrictStr = Field(...)
     active: StrictBool = Field(...)
-    features: Optional[Dict[str, Any]] = Field(...)
+    features: Optional[Any] = Field(...)
     in_stock: StrictBool = Field(...)
-    metadata: ProductCreateResponseDataMetadata = Field(...)
+    metadata: ProductListsResponseArrayMetadata = Field(...)
     slug: StrictStr = Field(...)
-    success_message: Optional[Dict[str, Any]] = Field(...)
-    redirect_url: Optional[Dict[str, Any]] = Field(...)
-    split_code: Optional[Dict[str, Any]] = Field(...)
-    notification_emails: Optional[Dict[str, Any]] = Field(...)
+    success_message: Optional[Any] = Field(...)
+    redirect_url: Optional[Any] = Field(...)
+    split_code: Optional[Any] = Field(...)
+    notification_emails: Optional[Any] = Field(...)
     minimum_orderable: StrictInt = Field(...)
-    maximum_orderable: Optional[Dict[str, Any]] = Field(...)
+    maximum_orderable: Optional[Any] = Field(...)
     low_stock_alert: StrictBool = Field(...)
-    stock_threshold: Optional[Dict[str, Any]] = Field(...)
-    expires_in: Optional[Dict[str, Any]] = Field(...)
+    stock_threshold: Optional[Any] = Field(...)
+    expires_in: Optional[Any] = Field(...)
     id: StrictInt = Field(...)
     integration: StrictInt = Field(...)
     created_at: StrictStr = Field(..., alias="createdAt")
@@ -160,13 +160,13 @@ class ProductUpdateResponseData(BaseModel):
             "files": obj.get("files"),
             "file_path": obj.get("file_path"),
             "is_shippable": obj.get("is_shippable"),
-            "shipping_fields": ProductCreateResponseDataShippingFields.from_dict(obj.get("shipping_fields")) if obj.get("shipping_fields") is not None else None,
+            "shipping_fields": ProductListsResponseArrayShippingFields.from_dict(obj.get("shipping_fields")) if obj.get("shipping_fields") is not None else None,
             "unlimited": obj.get("unlimited"),
             "domain": obj.get("domain"),
             "active": obj.get("active"),
             "features": obj.get("features"),
             "in_stock": obj.get("in_stock"),
-            "metadata": ProductCreateResponseDataMetadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
+            "metadata": ProductListsResponseArrayMetadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
             "slug": obj.get("slug"),
             "success_message": obj.get("success_message"),
             "redirect_url": obj.get("redirect_url"),

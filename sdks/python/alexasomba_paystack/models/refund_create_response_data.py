@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
 from alexasomba_paystack.models.refund_create_response_data_transaction import RefundCreateResponseDataTransaction
 
@@ -30,7 +30,7 @@ class RefundCreateResponseData(BaseModel):
     transaction: RefundCreateResponseDataTransaction = Field(...)
     integration: StrictInt = Field(...)
     deducted_amount: StrictInt = Field(...)
-    channel: Optional[Dict[str, Any]] = Field(...)
+    channel: Optional[Any] = Field(...)
     merchant_note: StrictStr = Field(...)
     customer_note: StrictStr = Field(...)
     status: StrictStr = Field(...)

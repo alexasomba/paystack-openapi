@@ -15,10 +15,10 @@ Name | Type | Description | Notes
 **is_shippable** | **bool** |  | 
 **unlimited** | **bool** |  | 
 **files** | **List[object]** |  | 
-**shipping_fields** | [**ProductCreateResponseDataShippingFields**](ProductCreateResponseDataShippingFields.md) |  | 
+**shipping_fields** | [**ProductListsResponseArrayShippingFields**](ProductListsResponseArrayShippingFields.md) |  | 
 **integration** | **int** |  | 
 **domain** | **str** |  | 
-**metadata** | [**ProductCreateResponseDataMetadata**](ProductCreateResponseDataMetadata.md) |  | 
+**metadata** | [**ProductListsResponseArrayMetadata**](ProductListsResponseArrayMetadata.md) |  | 
 **slug** | **str** |  | 
 **product_code** | **str** |  | 
 **quantity_sold** | **int** |  | 
