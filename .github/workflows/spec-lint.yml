@@ -55,7 +55,7 @@ jobs:
             -v "$GITHUB_WORKSPACE:/work" \
             -w /work/sdks/go \
             golang:1.23 \
-            go test ./...
+            sh -lc 'set -euo pipefail; go mod tidy; go test ./...'
 
       - name: PHP SDK dependency + syntax check
         run: |
