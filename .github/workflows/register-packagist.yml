@@ -56,7 +56,7 @@ jobs:
             update_status=$(curl -sS -o /tmp/resp2 -w "%{http_code}" -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $AUTH" -d "$BODY" https://packagist.org/api/update-package || true)
             echo "Update response:"; cat /tmp/resp2 || true
             echo "Update HTTP status: $update_status"
-            if [ "$update_status" -ne 200 ] && [ "$update_status" -ne 201 ]; then
+            if [ "$update_status" -ne 200 ] && [ "$update_status" -ne 201 ] && [ "$update_status" -ne 202 ]; then
               echo "Packagist update-package returned non-success status $update_status"
               exit 1
             fi
