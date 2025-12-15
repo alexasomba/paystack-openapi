@@ -65,13 +65,18 @@ jobs:
               exit 1
             fi
 
-            # Determine the tag we expect to see on Packagist
-            EXPECTED_TAG="${{ github.event.inputs.tag }}"
-            if [ -z "$EXPECTED_TAG" ]; then
+            # Determine the tag we expect to see on Packagist.
+            # Prefer an explicit workflow input; otherwise only use GITHUB_REF
+            # when it is a tag (refs/tags/*). If neither is available, skip polling.
+            if [ -n "${{ github.event.inputs.tag }}" ]; then
+              EXPECTED_TAG="${{ github.event.inputs.tag }}"
+            elif [[ "${GITHUB_REF:-}" == refs/tags/* ]]; then
               EXPECTED_TAG="${GITHUB_REF#refs/tags/}"
+            else
+              EXPECTED_TAG=""
             fi
             if [ -z "$EXPECTED_TAG" ]; then
-              echo "No tag provided and no tag ref available to wait for; skipping polling."
+              echo "No tag provided and not a tag ref; skipping polling."
             else
               echo "Polling Packagist for version $EXPECTED_TAG to appear (package: $PACKAGE_NAME)..."
               for i in $(seq 1 24); do
