@@ -75,9 +75,9 @@ jobs:
           php_sha=$(git rev-parse php-split)
           git remote add php "https://x-access-token:${PHP_SPLIT_PUSH_TOKEN}@github.com/${PHP_SPLIT_REPO}.git"
 
-          # Push branch
-          git push php "$php_sha":refs/heads/main --force
+          # Push branch (override any http.extraHeader added by actions/checkout so our PAT is used)
+          git -c http.extraHeader= push php "$php_sha":refs/heads/main --force
 
           # Re-tag the split commit with the same tag name (Packagist uses tags)
           git tag -f "$TAG_NAME" "$php_sha"
-          git push php "refs/tags/$TAG_NAME" --force
+          git -c http.extraHeader= push php "refs/tags/$TAG_NAME" --force
