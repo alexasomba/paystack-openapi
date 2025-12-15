@@ -18,37 +18,39 @@ import (
 
 // VerifyResponseDataMetadata struct for VerifyResponseDataMetadata
 type VerifyResponseDataMetadata struct {
-	map[string]interface{} *map[string]interface{}
-	string *string
+	Map    *map[string]interface{}
+	String *string
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *VerifyResponseDataMetadata) UnmarshalJSON(data []byte) error {
 	var err error
 	// try to unmarshal JSON data into map[string]interface{}
-	err = json.Unmarshal(data, &dst.map[string]interface{});
+	var m map[string]interface{}
+	err = json.Unmarshal(data, &m)
 	if err == nil {
-		jsonmap[string]interface{}, _ := json.Marshal(dst.map[string]interface{})
-		if string(jsonmap[string]interface{}) == "{}" { // empty struct
-			dst.map[string]interface{} = nil
+		if len(m) == 0 {
+			dst.Map = nil
 		} else {
-			return nil // data stored in dst.map[string]interface{}, return on the first match
+			dst.Map = &m
+			return nil // data stored in dst.Map, return on the first match
 		}
 	} else {
-		dst.map[string]interface{} = nil
+		dst.Map = nil
 	}
 
 	// try to unmarshal JSON data into string
-	err = json.Unmarshal(data, &dst.string);
+	var s string
+	err = json.Unmarshal(data, &s)
 	if err == nil {
-		jsonstring, _ := json.Marshal(dst.string)
-		if string(jsonstring) == "{}" { // empty struct
-			dst.string = nil
+		if s == "" {
+			dst.String = nil
 		} else {
-			return nil // data stored in dst.string, return on the first match
+			dst.String = &s
+			return nil // data stored in dst.String, return on the first match
 		}
 	} else {
-		dst.string = nil
+		dst.String = nil
 	}
 
 	return fmt.Errorf("data failed to match schemas in anyOf(VerifyResponseDataMetadata)")
@@ -56,12 +58,11 @@ func (dst *VerifyResponseDataMetadata) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src *VerifyResponseDataMetadata) MarshalJSON() ([]byte, error) {
-	if src.map[string]interface{} != nil {
-		return json.Marshal(&src.map[string]interface{})
+	if src.Map != nil {
+		return json.Marshal(src.Map)
 	}
-
-	if src.string != nil {
-		return json.Marshal(&src.string)
+	if src.String != nil {
+		return json.Marshal(src.String)
 	}
 
 	return nil, nil // no data in anyOf schemas
