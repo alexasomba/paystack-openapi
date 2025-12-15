@@ -22,8 +22,8 @@ var _ MappedNullable = &PageProduct{}
 
 // PageProduct struct for PageProduct
 type PageProduct struct {
-	// IDs of all products to add to a page
-	Product []string `json:"product"`
+	// A list of IDs of products to add to a page.
+	Products []int32 `json:"products"`
 }
 
 type _PageProduct PageProduct
@@ -32,9 +32,9 @@ type _PageProduct PageProduct
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPageProduct(product []string) *PageProduct {
+func NewPageProduct(products []int32) *PageProduct {
 	this := PageProduct{}
-	this.Product = product
+	this.Products = products
 	return &this
 }
 
@@ -46,28 +46,28 @@ func NewPageProductWithDefaults() *PageProduct {
 	return &this
 }
 
-// GetProduct returns the Product field value
-func (o *PageProduct) GetProduct() []string {
+// GetProducts returns the Products field value
+func (o *PageProduct) GetProducts() []int32 {
 	if o == nil {
-		var ret []string
+		var ret []int32
 		return ret
 	}
 
-	return o.Product
+	return o.Products
 }
 
-// GetProductOk returns a tuple with the Product field value
+// GetProductsOk returns a tuple with the Products field value
 // and a boolean to check if the value has been set.
-func (o *PageProduct) GetProductOk() ([]string, bool) {
+func (o *PageProduct) GetProductsOk() ([]int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Product, true
+	return o.Products, true
 }
 
-// SetProduct sets field value
-func (o *PageProduct) SetProduct(v []string) {
-	o.Product = v
+// SetProducts sets field value
+func (o *PageProduct) SetProducts(v []int32) {
+	o.Products = v
 }
 
 func (o PageProduct) MarshalJSON() ([]byte, error) {
@@ -80,7 +80,7 @@ func (o PageProduct) MarshalJSON() ([]byte, error) {
 
 func (o PageProduct) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["product"] = o.Product
+	toSerialize["products"] = o.Products
 	return toSerialize, nil
 }
 
@@ -89,7 +89,7 @@ func (o *PageProduct) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"product",
+		"products",
 	}
 
 	allProperties := make(map[string]interface{})

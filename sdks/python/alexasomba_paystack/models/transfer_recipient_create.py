@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,15 +27,22 @@ class TransferRecipientCreate(BaseModel):
     """
     TransferRecipientCreate
     """ # noqa: E501
-    type: StrictStr = Field(description="Recipient Type (Only nuban at this time)")
-    name: StrictStr = Field(description="Recipient's name")
+    type: StrictStr = Field(description="Recipient Type")
+    name: StrictStr = Field(description="The recipient's name according to their account registration.")
     account_number: StrictStr = Field(description="Recipient's bank account number")
     bank_code: StrictStr = Field(description="Recipient's bank code. You can get the list of Bank Codes by calling the List Banks endpoint")
     description: Optional[StrictStr] = Field(default=None, description="A description for this recipient")
     currency: Optional[StrictStr] = Field(default=None, description="Currency for the account receiving the transfer")
     authorization_code: Optional[StrictStr] = Field(default=None, description="An authorization code from a previous transaction")
-    metadata: Optional[StrictStr] = Field(default=None, description="Stringified JSON object of custom data")
+    metadata: Optional[Dict[str, Any]] = Field(default=None, description="JSON object of custom data")
     __properties: ClassVar[List[str]] = ["type", "name", "account_number", "bank_code", "description", "currency", "authorization_code", "metadata"]
+
+    @field_validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['nuban', 'ghipss', 'mobile_money', 'basa', 'authorization']):
+            raise ValueError("must be one of enum values ('nuban', 'ghipss', 'mobile_money', 'basa', 'authorization')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,

@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,8 +27,8 @@ class PageProduct(BaseModel):
     """
     PageProduct
     """ # noqa: E501
-    product: List[StrictStr] = Field(description="IDs of all products to add to a page")
-    __properties: ClassVar[List[str]] = ["product"]
+    products: List[StrictInt] = Field(description="A list of IDs of products to add to a page.")
+    __properties: ClassVar[List[str]] = ["products"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,7 +81,7 @@ class PageProduct(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "product": obj.get("product")
+            "products": obj.get("products")
         })
         return _obj
 

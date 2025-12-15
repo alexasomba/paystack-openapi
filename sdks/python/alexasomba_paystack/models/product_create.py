@@ -29,11 +29,13 @@ class ProductCreate(BaseModel):
     """ # noqa: E501
     name: StrictStr = Field(description="Name of product")
     description: StrictStr = Field(description="The description of the product")
-    price: StrictInt = Field(description="Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")
-    currency: StrictStr = Field(description="Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD")
-    limited: Optional[StrictBool] = Field(default=None, description="Set to true if the product has limited stock. Leave as false if the product has unlimited stock")
+    price: StrictInt = Field(description="Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR ")
+    currency: StrictStr = Field(description="Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD ")
+    unlimited: Optional[StrictBool] = Field(default=None, description="Set to true if the product has unlimited stock. Leave as false if the product has limited stock ")
     quantity: Optional[StrictInt] = Field(default=None, description="Number of products in stock. Use if limited is true")
-    __properties: ClassVar[List[str]] = ["name", "description", "price", "currency", "limited", "quantity"]
+    split_code: Optional[StrictStr] = Field(default=None, description="The split code if sharing the transaction with partners")
+    metadata: Optional[StrictStr] = Field(default=None, description="Stringified JSON object of custom data")
+    __properties: ClassVar[List[str]] = ["name", "description", "price", "currency", "unlimited", "quantity", "split_code", "metadata"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,8 +92,10 @@ class ProductCreate(BaseModel):
             "description": obj.get("description"),
             "price": obj.get("price"),
             "currency": obj.get("currency"),
-            "limited": obj.get("limited"),
-            "quantity": obj.get("quantity")
+            "unlimited": obj.get("unlimited"),
+            "quantity": obj.get("quantity"),
+            "split_code": obj.get("split_code"),
+            "metadata": obj.get("metadata")
         })
         return _obj
 

@@ -1064,8 +1064,6 @@ components:
           type: string
         is_deleted:
           type: boolean
-        isDeleted:
-          type: boolean
         details:
           type: object
           properties:
@@ -1102,7 +1100,6 @@ components:
         - type
         - updatedAt
         - is_deleted
-        - isDeleted
         - details
     TransferRecipientListResponse:
       type: object
@@ -1222,8 +1219,6 @@ components:
               type: string
             is_deleted:
               type: boolean
-            isDeleted:
-              type: boolean
             details:
               type: object
               properties:
@@ -1260,7 +1255,6 @@ components:
             - type
             - updatedAt
             - is_deleted
-            - isDeleted
             - details
       required:
         - status
@@ -1335,8 +1329,6 @@ components:
               type: string
             is_deleted:
               type: boolean
-            isDeleted:
-              type: boolean
             details:
               type: object
               properties:
@@ -1371,7 +1363,6 @@ components:
             - type
             - updatedAt
             - is_deleted
-            - isDeleted
             - details
         session:
           type: object

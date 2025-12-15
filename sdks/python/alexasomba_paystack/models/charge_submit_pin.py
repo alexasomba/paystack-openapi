@@ -27,7 +27,7 @@ class ChargeSubmitPin(BaseModel):
     """
     ChargeSubmitPin
     """ # noqa: E501
-    pin: StrictStr = Field(description="Customer's PIN")
+    pin: StrictStr = Field(description="Customer's PIN for the ongoing transaction")
     reference: StrictStr = Field(description="Transaction reference that requires the PIN")
     __properties: ClassVar[List[str]] = ["pin", "reference"]
 

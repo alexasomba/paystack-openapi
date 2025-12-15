@@ -18,7 +18,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	"time"
 )
 
 
@@ -28,21 +27,23 @@ type TransferRecipientAPIService service
 type ApiTransferrecipientBulkRequest struct {
 	ctx context.Context
 	ApiService *TransferRecipientAPIService
-	batch *[]TransferRecipientCreate
+	transferRecipientBulk *TransferRecipientBulk
 }
 
-// A list of transfer recipient object. Each object should contain type, name, and bank_code.  Any Create Transfer Recipient param can also be passed.
-func (r ApiTransferrecipientBulkRequest) Batch(batch []TransferRecipientCreate) ApiTransferrecipientBulkRequest {
-	r.batch = &batch
+func (r ApiTransferrecipientBulkRequest) TransferRecipientBulk(transferRecipientBulk TransferRecipientBulk) ApiTransferrecipientBulkRequest {
+	r.transferRecipientBulk = &transferRecipientBulk
 	return r
 }
 
-func (r ApiTransferrecipientBulkRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiTransferrecipientBulkRequest) Execute() (*TransferRecipientBulkCreateResponse, *http.Response, error) {
 	return r.ApiService.TransferrecipientBulkExecute(r)
 }
 
 /*
 TransferrecipientBulk Bulk Create Transfer Recipient
+
+Create multiple transfer recipients in batches. A duplicate account number will lead to the retrieval of the existing record.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTransferrecipientBulkRequest
@@ -55,13 +56,13 @@ func (a *TransferRecipientAPIService) TransferrecipientBulk(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return Response
-func (a *TransferRecipientAPIService) TransferrecipientBulkExecute(r ApiTransferrecipientBulkRequest) (*Response, *http.Response, error) {
+//  @return TransferRecipientBulkCreateResponse
+func (a *TransferRecipientAPIService) TransferrecipientBulkExecute(r ApiTransferrecipientBulkRequest) (*TransferRecipientBulkCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *TransferRecipientBulkCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.TransferrecipientBulk")
@@ -74,12 +75,9 @@ func (a *TransferRecipientAPIService) TransferrecipientBulkExecute(r ApiTransfer
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.batch == nil {
-		return localVarReturnValue, nil, reportError("batch is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -95,7 +93,8 @@ func (a *TransferRecipientAPIService) TransferrecipientBulkExecute(r ApiTransfer
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "batch", r.batch, "", "csv")
+	// body params
+	localVarPostBody = r.transferRecipientBulk
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -147,70 +146,22 @@ func (a *TransferRecipientAPIService) TransferrecipientBulkExecute(r ApiTransfer
 type ApiTransferrecipientCreateRequest struct {
 	ctx context.Context
 	ApiService *TransferRecipientAPIService
-	type_ *string
-	name *string
-	accountNumber *string
-	bankCode *string
-	description *string
-	currency *string
-	authorizationCode *string
-	metadata *string
+	transferRecipientCreate *TransferRecipientCreate
 }
 
-// Recipient Type (Only nuban at this time)
-func (r ApiTransferrecipientCreateRequest) Type_(type_ string) ApiTransferrecipientCreateRequest {
-	r.type_ = &type_
+func (r ApiTransferrecipientCreateRequest) TransferRecipientCreate(transferRecipientCreate TransferRecipientCreate) ApiTransferrecipientCreateRequest {
+	r.transferRecipientCreate = &transferRecipientCreate
 	return r
 }
 
-// Recipient&#39;s name
-func (r ApiTransferrecipientCreateRequest) Name(name string) ApiTransferrecipientCreateRequest {
-	r.name = &name
-	return r
-}
-
-// Recipient&#39;s bank account number
-func (r ApiTransferrecipientCreateRequest) AccountNumber(accountNumber string) ApiTransferrecipientCreateRequest {
-	r.accountNumber = &accountNumber
-	return r
-}
-
-// Recipient&#39;s bank code. You can get the list of Bank Codes by calling the List Banks endpoint
-func (r ApiTransferrecipientCreateRequest) BankCode(bankCode string) ApiTransferrecipientCreateRequest {
-	r.bankCode = &bankCode
-	return r
-}
-
-// A description for this recipient
-func (r ApiTransferrecipientCreateRequest) Description(description string) ApiTransferrecipientCreateRequest {
-	r.description = &description
-	return r
-}
-
-// Currency for the account receiving the transfer
-func (r ApiTransferrecipientCreateRequest) Currency(currency string) ApiTransferrecipientCreateRequest {
-	r.currency = &currency
-	return r
-}
-
-// An authorization code from a previous transaction
-func (r ApiTransferrecipientCreateRequest) AuthorizationCode(authorizationCode string) ApiTransferrecipientCreateRequest {
-	r.authorizationCode = &authorizationCode
-	return r
-}
-
-// Stringified JSON object of custom data
-func (r ApiTransferrecipientCreateRequest) Metadata(metadata string) ApiTransferrecipientCreateRequest {
-	r.metadata = &metadata
-	return r
-}
-
-func (r ApiTransferrecipientCreateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiTransferrecipientCreateRequest) Execute() (*TransferRecipientCreateResponse, *http.Response, error) {
 	return r.ApiService.TransferrecipientCreateExecute(r)
 }
 
 /*
 TransferrecipientCreate Create Transfer Recipient
+
+Creates a new recipient. A duplicate account number will lead to the retrieval of the existing record.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTransferrecipientCreateRequest
@@ -223,13 +174,13 @@ func (a *TransferRecipientAPIService) TransferrecipientCreate(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Response
-func (a *TransferRecipientAPIService) TransferrecipientCreateExecute(r ApiTransferrecipientCreateRequest) (*Response, *http.Response, error) {
+//  @return TransferRecipientCreateResponse
+func (a *TransferRecipientAPIService) TransferrecipientCreateExecute(r ApiTransferrecipientCreateRequest) (*TransferRecipientCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *TransferRecipientCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.TransferrecipientCreate")
@@ -242,21 +193,9 @@ func (a *TransferRecipientAPIService) TransferrecipientCreateExecute(r ApiTransf
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.type_ == nil {
-		return localVarReturnValue, nil, reportError("type_ is required and must be specified")
-	}
-	if r.name == nil {
-		return localVarReturnValue, nil, reportError("name is required and must be specified")
-	}
-	if r.accountNumber == nil {
-		return localVarReturnValue, nil, reportError("accountNumber is required and must be specified")
-	}
-	if r.bankCode == nil {
-		return localVarReturnValue, nil, reportError("bankCode is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -272,22 +211,8 @@ func (a *TransferRecipientAPIService) TransferrecipientCreateExecute(r ApiTransf
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "type", r.type_, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "account_number", r.accountNumber, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "bank_code", r.bankCode, "", "")
-	if r.description != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "description", r.description, "", "")
-	}
-	if r.currency != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "currency", r.currency, "", "")
-	}
-	if r.authorizationCode != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "authorization_code", r.authorizationCode, "", "")
-	}
-	if r.metadata != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "metadata", r.metadata, "", "")
-	}
+	// body params
+	localVarPostBody = r.transferRecipientCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -342,12 +267,14 @@ type ApiTransferrecipientDeleteRequest struct {
 	code string
 }
 
-func (r ApiTransferrecipientDeleteRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiTransferrecipientDeleteRequest) Execute() (*TransferRecipientDeleteResponse, *http.Response, error) {
 	return r.ApiService.TransferrecipientDeleteExecute(r)
 }
 
 /*
 TransferrecipientDelete Delete Transfer Recipient
+
+Delete a transfer recipient (sets the transfer recipient to inactive)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param code Transfer recipient code
@@ -362,13 +289,13 @@ func (a *TransferRecipientAPIService) TransferrecipientDelete(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Response
-func (a *TransferRecipientAPIService) TransferrecipientDeleteExecute(r ApiTransferrecipientDeleteRequest) (*Response, *http.Response, error) {
+//  @return TransferRecipientDeleteResponse
+func (a *TransferRecipientAPIService) TransferrecipientDeleteExecute(r ApiTransferrecipientDeleteRequest) (*TransferRecipientDeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *TransferRecipientDeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.TransferrecipientDelete")
@@ -465,12 +392,14 @@ type ApiTransferrecipientFetchRequest struct {
 	code string
 }
 
-func (r ApiTransferrecipientFetchRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiTransferrecipientFetchRequest) Execute() (*TransferRecipientFetchResponse, *http.Response, error) {
 	return r.ApiService.TransferrecipientFetchExecute(r)
 }
 
 /*
 TransferrecipientFetch Fetch Transfer recipient
+
+Fetch the details of a transfer recipient
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param code Transfer recipient code
@@ -485,13 +414,13 @@ func (a *TransferRecipientAPIService) TransferrecipientFetch(ctx context.Context
 }
 
 // Execute executes the request
-//  @return Response
-func (a *TransferRecipientAPIService) TransferrecipientFetchExecute(r ApiTransferrecipientFetchRequest) (*Response, *http.Response, error) {
+//  @return TransferRecipientFetchResponse
+func (a *TransferRecipientAPIService) TransferrecipientFetchExecute(r ApiTransferrecipientFetchRequest) (*TransferRecipientFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *TransferRecipientFetchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.TransferrecipientFetch")
@@ -585,42 +514,51 @@ func (a *TransferRecipientAPIService) TransferrecipientFetchExecute(r ApiTransfe
 type ApiTransferrecipientListRequest struct {
 	ctx context.Context
 	ApiService *TransferRecipientAPIService
+	useCursor *bool
+	next *string
+	previous *string
 	perPage *int32
 	page *int32
-	from *time.Time
-	to *time.Time
 }
 
-// Number of records to fetch per page
+// A flag to indicate if cursor based pagination should be used
+func (r ApiTransferrecipientListRequest) UseCursor(useCursor bool) ApiTransferrecipientListRequest {
+	r.useCursor = &useCursor
+	return r
+}
+
+// An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
+func (r ApiTransferrecipientListRequest) Next(next string) ApiTransferrecipientListRequest {
+	r.next = &next
+	return r
+}
+
+// An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
+func (r ApiTransferrecipientListRequest) Previous(previous string) ApiTransferrecipientListRequest {
+	r.previous = &previous
+	return r
+}
+
+// The number of records to fetch per request
 func (r ApiTransferrecipientListRequest) PerPage(perPage int32) ApiTransferrecipientListRequest {
 	r.perPage = &perPage
 	return r
 }
 
-// The section to retrieve
+// The offset to retrieve data from
 func (r ApiTransferrecipientListRequest) Page(page int32) ApiTransferrecipientListRequest {
 	r.page = &page
 	return r
 }
 
-// The start date
-func (r ApiTransferrecipientListRequest) From(from time.Time) ApiTransferrecipientListRequest {
-	r.from = &from
-	return r
-}
-
-// The end date
-func (r ApiTransferrecipientListRequest) To(to time.Time) ApiTransferrecipientListRequest {
-	r.to = &to
-	return r
-}
-
-func (r ApiTransferrecipientListRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiTransferrecipientListRequest) Execute() (*TransferRecipientListResponse, *http.Response, error) {
 	return r.ApiService.TransferrecipientListExecute(r)
 }
 
 /*
 TransferrecipientList List Transfer Recipients
+
+List transfer recipients available on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTransferrecipientListRequest
@@ -633,13 +571,13 @@ func (a *TransferRecipientAPIService) TransferrecipientList(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return Response
-func (a *TransferRecipientAPIService) TransferrecipientListExecute(r ApiTransferrecipientListRequest) (*Response, *http.Response, error) {
+//  @return TransferRecipientListResponse
+func (a *TransferRecipientAPIService) TransferrecipientListExecute(r ApiTransferrecipientListRequest) (*TransferRecipientListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *TransferRecipientListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.TransferrecipientList")
@@ -653,17 +591,20 @@ func (a *TransferRecipientAPIService) TransferrecipientListExecute(r ApiTransfer
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.useCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "use_cursor", r.useCursor, "form", "")
+	}
+	if r.next != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "form", "")
+	}
+	if r.previous != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "form", "")
+	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
 	}
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
-	}
-	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
-	}
-	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -745,28 +686,22 @@ type ApiTransferrecipientUpdateRequest struct {
 	ctx context.Context
 	ApiService *TransferRecipientAPIService
 	code string
-	name *string
-	email *string
+	transferRecipientUpdate *TransferRecipientUpdate
 }
 
-// Recipient&#39;s name
-func (r ApiTransferrecipientUpdateRequest) Name(name string) ApiTransferrecipientUpdateRequest {
-	r.name = &name
+func (r ApiTransferrecipientUpdateRequest) TransferRecipientUpdate(transferRecipientUpdate TransferRecipientUpdate) ApiTransferrecipientUpdateRequest {
+	r.transferRecipientUpdate = &transferRecipientUpdate
 	return r
 }
 
-// Recipient&#39;s email address
-func (r ApiTransferrecipientUpdateRequest) Email(email string) ApiTransferrecipientUpdateRequest {
-	r.email = &email
-	return r
-}
-
-func (r ApiTransferrecipientUpdateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiTransferrecipientUpdateRequest) Execute() (*TransferRecipientUpdateResponse, *http.Response, error) {
 	return r.ApiService.TransferrecipientUpdateExecute(r)
 }
 
 /*
-TransferrecipientUpdate Update Transfer recipient
+TransferrecipientUpdate Update Transfer Recipient
+
+Update the details of a transfer recipient
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param code Transfer recipient code
@@ -781,13 +716,13 @@ func (a *TransferRecipientAPIService) TransferrecipientUpdate(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Response
-func (a *TransferRecipientAPIService) TransferrecipientUpdateExecute(r ApiTransferrecipientUpdateRequest) (*Response, *http.Response, error) {
+//  @return TransferRecipientUpdateResponse
+func (a *TransferRecipientAPIService) TransferrecipientUpdateExecute(r ApiTransferrecipientUpdateRequest) (*TransferRecipientUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *TransferRecipientUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferRecipientAPIService.TransferrecipientUpdate")
@@ -803,7 +738,7 @@ func (a *TransferRecipientAPIService) TransferrecipientUpdateExecute(r ApiTransf
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -819,12 +754,8 @@ func (a *TransferRecipientAPIService) TransferrecipientUpdateExecute(r ApiTransf
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
-	}
-	if r.email != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "email", r.email, "", "")
-	}
+	// body params
+	localVarPostBody = r.transferRecipientUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

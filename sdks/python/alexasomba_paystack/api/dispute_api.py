@@ -18,10 +18,20 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from datetime import datetime
-from pydantic import Field, StrictInt, StrictStr
+from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
-from alexasomba_paystack.models.response import Response
+from alexasomba_paystack.models.dispute_add_evidence_response import DisputeAddEvidenceResponse
+from alexasomba_paystack.models.dispute_evidence import DisputeEvidence
+from alexasomba_paystack.models.dispute_export_response import DisputeExportResponse
+from alexasomba_paystack.models.dispute_fetch_response import DisputeFetchResponse
+from alexasomba_paystack.models.dispute_list_response import DisputeListResponse
+from alexasomba_paystack.models.dispute_list_transaction_response import DisputeListTransactionResponse
+from alexasomba_paystack.models.dispute_resolve import DisputeResolve
+from alexasomba_paystack.models.dispute_resolve_response import DisputeResolveResponse
+from alexasomba_paystack.models.dispute_update import DisputeUpdate
+from alexasomba_paystack.models.dispute_update_response import DisputeUpdateResponse
+from alexasomba_paystack.models.dispute_upload_url_response import DisputeUploadURLResponse
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
 from alexasomba_paystack.api_response import ApiResponse
@@ -61,9 +71,10 @@ class DisputeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> DisputeExportResponse:
         """Export Disputes
 
+        Export the disputes available on your integration
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
@@ -110,7 +121,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeExportResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -145,9 +156,10 @@ class DisputeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[DisputeExportResponse]:
         """Export Disputes
 
+        Export the disputes available on your integration
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
@@ -194,7 +206,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeExportResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -232,6 +244,7 @@ class DisputeApi:
     ) -> RESTResponseType:
         """Export Disputes
 
+        Export the disputes available on your integration
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
@@ -278,7 +291,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeExportResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -396,13 +409,8 @@ class DisputeApi:
     @validate_call
     def dispute_evidence(
         self,
-        id: Annotated[StrictStr, Field(description="Dispute ID")],
-        customer_email: Annotated[StrictStr, Field(description="Customer email")],
-        customer_name: Annotated[StrictStr, Field(description="Customer name")],
-        customer_phone: Annotated[StrictStr, Field(description="Customer mobile number")],
-        service_details: Annotated[StrictStr, Field(description="Details of service offered")],
-        delivery_address: Annotated[Optional[StrictStr], Field(description="Delivery address")] = None,
-        delivery_date: Annotated[Optional[datetime], Field(description="ISO 8601 representation of delivery date (YYYY-MM-DD)")] = None,
+        id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
+        dispute_evidence: Optional[DisputeEvidence] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -415,24 +423,15 @@ class DisputeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> DisputeAddEvidenceResponse:
         """Add Evidence
 
+        Provide evidence for a dispute
 
-        :param id: Dispute ID (required)
-        :type id: str
-        :param customer_email: Customer email (required)
-        :type customer_email: str
-        :param customer_name: Customer name (required)
-        :type customer_name: str
-        :param customer_phone: Customer mobile number (required)
-        :type customer_phone: str
-        :param service_details: Details of service offered (required)
-        :type service_details: str
-        :param delivery_address: Delivery address
-        :type delivery_address: str
-        :param delivery_date: ISO 8601 representation of delivery date (YYYY-MM-DD)
-        :type delivery_date: datetime
+        :param id: The unique identifier of the dispute (required)
+        :type id: int
+        :param dispute_evidence:
+        :type dispute_evidence: DisputeEvidence
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -457,12 +456,7 @@ class DisputeApi:
 
         _param = self._dispute_evidence_serialize(
             id=id,
-            customer_email=customer_email,
-            customer_name=customer_name,
-            customer_phone=customer_phone,
-            service_details=service_details,
-            delivery_address=delivery_address,
-            delivery_date=delivery_date,
+            dispute_evidence=dispute_evidence,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -470,7 +464,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeAddEvidenceResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -487,13 +481,8 @@ class DisputeApi:
     @validate_call
     def dispute_evidence_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="Dispute ID")],
-        customer_email: Annotated[StrictStr, Field(description="Customer email")],
-        customer_name: Annotated[StrictStr, Field(description="Customer name")],
-        customer_phone: Annotated[StrictStr, Field(description="Customer mobile number")],
-        service_details: Annotated[StrictStr, Field(description="Details of service offered")],
-        delivery_address: Annotated[Optional[StrictStr], Field(description="Delivery address")] = None,
-        delivery_date: Annotated[Optional[datetime], Field(description="ISO 8601 representation of delivery date (YYYY-MM-DD)")] = None,
+        id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
+        dispute_evidence: Optional[DisputeEvidence] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -506,24 +495,15 @@ class DisputeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[DisputeAddEvidenceResponse]:
         """Add Evidence
 
+        Provide evidence for a dispute
 
-        :param id: Dispute ID (required)
-        :type id: str
-        :param customer_email: Customer email (required)
-        :type customer_email: str
-        :param customer_name: Customer name (required)
-        :type customer_name: str
-        :param customer_phone: Customer mobile number (required)
-        :type customer_phone: str
-        :param service_details: Details of service offered (required)
-        :type service_details: str
-        :param delivery_address: Delivery address
-        :type delivery_address: str
-        :param delivery_date: ISO 8601 representation of delivery date (YYYY-MM-DD)
-        :type delivery_date: datetime
+        :param id: The unique identifier of the dispute (required)
+        :type id: int
+        :param dispute_evidence:
+        :type dispute_evidence: DisputeEvidence
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -548,12 +528,7 @@ class DisputeApi:
 
         _param = self._dispute_evidence_serialize(
             id=id,
-            customer_email=customer_email,
-            customer_name=customer_name,
-            customer_phone=customer_phone,
-            service_details=service_details,
-            delivery_address=delivery_address,
-            delivery_date=delivery_date,
+            dispute_evidence=dispute_evidence,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -561,7 +536,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeAddEvidenceResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -578,13 +553,8 @@ class DisputeApi:
     @validate_call
     def dispute_evidence_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="Dispute ID")],
-        customer_email: Annotated[StrictStr, Field(description="Customer email")],
-        customer_name: Annotated[StrictStr, Field(description="Customer name")],
-        customer_phone: Annotated[StrictStr, Field(description="Customer mobile number")],
-        service_details: Annotated[StrictStr, Field(description="Details of service offered")],
-        delivery_address: Annotated[Optional[StrictStr], Field(description="Delivery address")] = None,
-        delivery_date: Annotated[Optional[datetime], Field(description="ISO 8601 representation of delivery date (YYYY-MM-DD)")] = None,
+        id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
+        dispute_evidence: Optional[DisputeEvidence] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -600,21 +570,12 @@ class DisputeApi:
     ) -> RESTResponseType:
         """Add Evidence
 
+        Provide evidence for a dispute
 
-        :param id: Dispute ID (required)
-        :type id: str
-        :param customer_email: Customer email (required)
-        :type customer_email: str
-        :param customer_name: Customer name (required)
-        :type customer_name: str
-        :param customer_phone: Customer mobile number (required)
-        :type customer_phone: str
-        :param service_details: Details of service offered (required)
-        :type service_details: str
-        :param delivery_address: Delivery address
-        :type delivery_address: str
-        :param delivery_date: ISO 8601 representation of delivery date (YYYY-MM-DD)
-        :type delivery_date: datetime
+        :param id: The unique identifier of the dispute (required)
+        :type id: int
+        :param dispute_evidence:
+        :type dispute_evidence: DisputeEvidence
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -639,12 +600,7 @@ class DisputeApi:
 
         _param = self._dispute_evidence_serialize(
             id=id,
-            customer_email=customer_email,
-            customer_name=customer_name,
-            customer_phone=customer_phone,
-            service_details=service_details,
-            delivery_address=delivery_address,
-            delivery_date=delivery_date,
+            dispute_evidence=dispute_evidence,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -652,7 +608,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeAddEvidenceResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -665,12 +621,7 @@ class DisputeApi:
     def _dispute_evidence_serialize(
         self,
         id,
-        customer_email,
-        customer_name,
-        customer_phone,
-        service_details,
-        delivery_address,
-        delivery_date,
+        dispute_evidence,
         _request_auth,
         _content_type,
         _headers,
@@ -697,19 +648,9 @@ class DisputeApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if customer_email is not None:
-            _form_params.append(('customer_email', customer_email))
-        if customer_name is not None:
-            _form_params.append(('customer_name', customer_name))
-        if customer_phone is not None:
-            _form_params.append(('customer_phone', customer_phone))
-        if service_details is not None:
-            _form_params.append(('service_details', service_details))
-        if delivery_address is not None:
-            _form_params.append(('delivery_address', delivery_address))
-        if delivery_date is not None:
-            _form_params.append(('delivery_date', delivery_date))
         # process the body parameter
+        if dispute_evidence is not None:
+            _body_params = dispute_evidence
 
 
         # set the HTTP header `Accept`
@@ -727,8 +668,8 @@ class DisputeApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -761,7 +702,7 @@ class DisputeApi:
     @validate_call
     def dispute_fetch(
         self,
-        id: Annotated[StrictStr, Field(description="Dispute ID")],
+        id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -774,12 +715,13 @@ class DisputeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> DisputeFetchResponse:
         """Fetch Dispute
 
+        Fetch a transaction dispute
 
-        :param id: Dispute ID (required)
-        :type id: str
+        :param id: The unique identifier of the dispute (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -811,7 +753,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -829,7 +771,7 @@ class DisputeApi:
     @validate_call
     def dispute_fetch_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="Dispute ID")],
+        id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -842,12 +784,13 @@ class DisputeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[DisputeFetchResponse]:
         """Fetch Dispute
 
+        Fetch a transaction dispute
 
-        :param id: Dispute ID (required)
-        :type id: str
+        :param id: The unique identifier of the dispute (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -879,7 +822,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -897,7 +840,7 @@ class DisputeApi:
     @validate_call
     def dispute_fetch_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="Dispute ID")],
+        id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -913,9 +856,10 @@ class DisputeApi:
     ) -> RESTResponseType:
         """Fetch Dispute
 
+        Fetch a transaction dispute
 
-        :param id: Dispute ID (required)
-        :type id: str
+        :param id: The unique identifier of the dispute (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -947,7 +891,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1027,7 +971,7 @@ class DisputeApi:
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        status: Annotated[Optional[StrictStr], Field(description="Dispute Status. Acceptable values are awaiting-merchant-feedback, awaiting-bank-feedback, pending, resolved")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Dispute status")] = None,
         transaction: Annotated[Optional[StrictStr], Field(description="Transaction ID")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
@@ -1043,15 +987,16 @@ class DisputeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> DisputeListResponse:
         """List Disputes
 
+        List transaction disputes filed by customers
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
         :param page: The section to retrieve
         :type page: int
-        :param status: Dispute Status. Acceptable values are awaiting-merchant-feedback, awaiting-bank-feedback, pending, resolved
+        :param status: Dispute status
         :type status: str
         :param transaction: Transaction ID
         :type transaction: str
@@ -1095,7 +1040,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1115,7 +1060,7 @@ class DisputeApi:
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        status: Annotated[Optional[StrictStr], Field(description="Dispute Status. Acceptable values are awaiting-merchant-feedback, awaiting-bank-feedback, pending, resolved")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Dispute status")] = None,
         transaction: Annotated[Optional[StrictStr], Field(description="Transaction ID")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
@@ -1131,15 +1076,16 @@ class DisputeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[DisputeListResponse]:
         """List Disputes
 
+        List transaction disputes filed by customers
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
         :param page: The section to retrieve
         :type page: int
-        :param status: Dispute Status. Acceptable values are awaiting-merchant-feedback, awaiting-bank-feedback, pending, resolved
+        :param status: Dispute status
         :type status: str
         :param transaction: Transaction ID
         :type transaction: str
@@ -1183,7 +1129,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1203,7 +1149,7 @@ class DisputeApi:
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        status: Annotated[Optional[StrictStr], Field(description="Dispute Status. Acceptable values are awaiting-merchant-feedback, awaiting-bank-feedback, pending, resolved")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Dispute status")] = None,
         transaction: Annotated[Optional[StrictStr], Field(description="Transaction ID")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
@@ -1222,12 +1168,13 @@ class DisputeApi:
     ) -> RESTResponseType:
         """List Disputes
 
+        List transaction disputes filed by customers
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
         :param page: The section to retrieve
         :type page: int
-        :param status: Dispute Status. Acceptable values are awaiting-merchant-feedback, awaiting-bank-feedback, pending, resolved
+        :param status: Dispute status
         :type status: str
         :param transaction: Transaction ID
         :type transaction: str
@@ -1271,7 +1218,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1394,12 +1341,8 @@ class DisputeApi:
     @validate_call
     def dispute_resolve(
         self,
-        id: Annotated[StrictStr, Field(description="Dispute ID")],
-        resolution: Annotated[StrictStr, Field(description="Dispute resolution. Accepted values, merchant-accepted, declined")],
-        message: Annotated[StrictStr, Field(description="Reason for resolving")],
-        refund_amount: Annotated[StrictStr, Field(description="The amount to refund, in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        uploaded_filename: Annotated[StrictStr, Field(description="Filename of attachment returned via response from the Dispute upload URL")],
-        evidence: Annotated[Optional[StrictInt], Field(description="Evidence Id for fraud claims")] = None,
+        id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
+        dispute_resolve: Optional[DisputeResolve] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1412,22 +1355,15 @@ class DisputeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
-        """Resolve a Dispute
+    ) -> DisputeResolveResponse:
+        """Resolve Dispute
 
+        Resolve a transaction dispute
 
-        :param id: Dispute ID (required)
-        :type id: str
-        :param resolution: Dispute resolution. Accepted values, merchant-accepted, declined (required)
-        :type resolution: str
-        :param message: Reason for resolving (required)
-        :type message: str
-        :param refund_amount: The amount to refund, in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type refund_amount: str
-        :param uploaded_filename: Filename of attachment returned via response from the Dispute upload URL (required)
-        :type uploaded_filename: str
-        :param evidence: Evidence Id for fraud claims
-        :type evidence: int
+        :param id: The unique identifier of the dispute (required)
+        :type id: int
+        :param dispute_resolve:
+        :type dispute_resolve: DisputeResolve
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1452,11 +1388,7 @@ class DisputeApi:
 
         _param = self._dispute_resolve_serialize(
             id=id,
-            resolution=resolution,
-            message=message,
-            refund_amount=refund_amount,
-            uploaded_filename=uploaded_filename,
-            evidence=evidence,
+            dispute_resolve=dispute_resolve,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1464,7 +1396,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeResolveResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1482,12 +1414,8 @@ class DisputeApi:
     @validate_call
     def dispute_resolve_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="Dispute ID")],
-        resolution: Annotated[StrictStr, Field(description="Dispute resolution. Accepted values, merchant-accepted, declined")],
-        message: Annotated[StrictStr, Field(description="Reason for resolving")],
-        refund_amount: Annotated[StrictStr, Field(description="The amount to refund, in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        uploaded_filename: Annotated[StrictStr, Field(description="Filename of attachment returned via response from the Dispute upload URL")],
-        evidence: Annotated[Optional[StrictInt], Field(description="Evidence Id for fraud claims")] = None,
+        id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
+        dispute_resolve: Optional[DisputeResolve] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1500,22 +1428,15 @@ class DisputeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
-        """Resolve a Dispute
+    ) -> ApiResponse[DisputeResolveResponse]:
+        """Resolve Dispute
 
+        Resolve a transaction dispute
 
-        :param id: Dispute ID (required)
-        :type id: str
-        :param resolution: Dispute resolution. Accepted values, merchant-accepted, declined (required)
-        :type resolution: str
-        :param message: Reason for resolving (required)
-        :type message: str
-        :param refund_amount: The amount to refund, in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type refund_amount: str
-        :param uploaded_filename: Filename of attachment returned via response from the Dispute upload URL (required)
-        :type uploaded_filename: str
-        :param evidence: Evidence Id for fraud claims
-        :type evidence: int
+        :param id: The unique identifier of the dispute (required)
+        :type id: int
+        :param dispute_resolve:
+        :type dispute_resolve: DisputeResolve
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1540,11 +1461,7 @@ class DisputeApi:
 
         _param = self._dispute_resolve_serialize(
             id=id,
-            resolution=resolution,
-            message=message,
-            refund_amount=refund_amount,
-            uploaded_filename=uploaded_filename,
-            evidence=evidence,
+            dispute_resolve=dispute_resolve,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1552,7 +1469,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeResolveResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1570,12 +1487,8 @@ class DisputeApi:
     @validate_call
     def dispute_resolve_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="Dispute ID")],
-        resolution: Annotated[StrictStr, Field(description="Dispute resolution. Accepted values, merchant-accepted, declined")],
-        message: Annotated[StrictStr, Field(description="Reason for resolving")],
-        refund_amount: Annotated[StrictStr, Field(description="The amount to refund, in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        uploaded_filename: Annotated[StrictStr, Field(description="Filename of attachment returned via response from the Dispute upload URL")],
-        evidence: Annotated[Optional[StrictInt], Field(description="Evidence Id for fraud claims")] = None,
+        id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
+        dispute_resolve: Optional[DisputeResolve] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1589,21 +1502,14 @@ class DisputeApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Resolve a Dispute
+        """Resolve Dispute
 
+        Resolve a transaction dispute
 
-        :param id: Dispute ID (required)
-        :type id: str
-        :param resolution: Dispute resolution. Accepted values, merchant-accepted, declined (required)
-        :type resolution: str
-        :param message: Reason for resolving (required)
-        :type message: str
-        :param refund_amount: The amount to refund, in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type refund_amount: str
-        :param uploaded_filename: Filename of attachment returned via response from the Dispute upload URL (required)
-        :type uploaded_filename: str
-        :param evidence: Evidence Id for fraud claims
-        :type evidence: int
+        :param id: The unique identifier of the dispute (required)
+        :type id: int
+        :param dispute_resolve:
+        :type dispute_resolve: DisputeResolve
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1628,11 +1534,7 @@ class DisputeApi:
 
         _param = self._dispute_resolve_serialize(
             id=id,
-            resolution=resolution,
-            message=message,
-            refund_amount=refund_amount,
-            uploaded_filename=uploaded_filename,
-            evidence=evidence,
+            dispute_resolve=dispute_resolve,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1640,7 +1542,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeResolveResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1654,11 +1556,7 @@ class DisputeApi:
     def _dispute_resolve_serialize(
         self,
         id,
-        resolution,
-        message,
-        refund_amount,
-        uploaded_filename,
-        evidence,
+        dispute_resolve,
         _request_auth,
         _content_type,
         _headers,
@@ -1685,17 +1583,9 @@ class DisputeApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if resolution is not None:
-            _form_params.append(('resolution', resolution))
-        if message is not None:
-            _form_params.append(('message', message))
-        if refund_amount is not None:
-            _form_params.append(('refund_amount', refund_amount))
-        if uploaded_filename is not None:
-            _form_params.append(('uploaded_filename', uploaded_filename))
-        if evidence is not None:
-            _form_params.append(('evidence', evidence))
         # process the body parameter
+        if dispute_resolve is not None:
+            _body_params = dispute_resolve
 
 
         # set the HTTP header `Accept`
@@ -1713,8 +1603,8 @@ class DisputeApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -1747,7 +1637,7 @@ class DisputeApi:
     @validate_call
     def dispute_transaction(
         self,
-        id: Annotated[StrictStr, Field(description="Transaction ID")],
+        id: Annotated[StrictInt, Field(description="The unique identifier of the transaction")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1760,12 +1650,13 @@ class DisputeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> DisputeListTransactionResponse:
         """List Transaction Disputes
 
+        List all disputes filed for a transaction
 
-        :param id: Transaction ID (required)
-        :type id: str
+        :param id: The unique identifier of the transaction (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1797,7 +1688,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeListTransactionResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1815,7 +1706,7 @@ class DisputeApi:
     @validate_call
     def dispute_transaction_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="Transaction ID")],
+        id: Annotated[StrictInt, Field(description="The unique identifier of the transaction")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1828,12 +1719,13 @@ class DisputeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[DisputeListTransactionResponse]:
         """List Transaction Disputes
 
+        List all disputes filed for a transaction
 
-        :param id: Transaction ID (required)
-        :type id: str
+        :param id: The unique identifier of the transaction (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1865,7 +1757,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeListTransactionResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1883,7 +1775,7 @@ class DisputeApi:
     @validate_call
     def dispute_transaction_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="Transaction ID")],
+        id: Annotated[StrictInt, Field(description="The unique identifier of the transaction")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1899,9 +1791,10 @@ class DisputeApi:
     ) -> RESTResponseType:
         """List Transaction Disputes
 
+        List all disputes filed for a transaction
 
-        :param id: Transaction ID (required)
-        :type id: str
+        :param id: The unique identifier of the transaction (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1933,7 +1826,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeListTransactionResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -2011,9 +1904,8 @@ class DisputeApi:
     @validate_call
     def dispute_update(
         self,
-        id: Annotated[StrictStr, Field(description="Dispute ID")],
-        refund_amount: Annotated[StrictStr, Field(description="The amount to refund, in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        uploaded_filename: Annotated[Optional[StrictStr], Field(description="Filename of attachment returned via response from the Dispute upload URL")] = None,
+        id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
+        dispute_update: Optional[DisputeUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2026,16 +1918,15 @@ class DisputeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> DisputeUpdateResponse:
         """Update Dispute
 
+        Update a transaction dispute
 
-        :param id: Dispute ID (required)
-        :type id: str
-        :param refund_amount: The amount to refund, in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type refund_amount: str
-        :param uploaded_filename: Filename of attachment returned via response from the Dispute upload URL
-        :type uploaded_filename: str
+        :param id: The unique identifier of the dispute (required)
+        :type id: int
+        :param dispute_update:
+        :type dispute_update: DisputeUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2060,8 +1951,7 @@ class DisputeApi:
 
         _param = self._dispute_update_serialize(
             id=id,
-            refund_amount=refund_amount,
-            uploaded_filename=uploaded_filename,
+            dispute_update=dispute_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2069,7 +1959,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -2087,9 +1977,8 @@ class DisputeApi:
     @validate_call
     def dispute_update_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="Dispute ID")],
-        refund_amount: Annotated[StrictStr, Field(description="The amount to refund, in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        uploaded_filename: Annotated[Optional[StrictStr], Field(description="Filename of attachment returned via response from the Dispute upload URL")] = None,
+        id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
+        dispute_update: Optional[DisputeUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2102,16 +1991,15 @@ class DisputeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[DisputeUpdateResponse]:
         """Update Dispute
 
+        Update a transaction dispute
 
-        :param id: Dispute ID (required)
-        :type id: str
-        :param refund_amount: The amount to refund, in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type refund_amount: str
-        :param uploaded_filename: Filename of attachment returned via response from the Dispute upload URL
-        :type uploaded_filename: str
+        :param id: The unique identifier of the dispute (required)
+        :type id: int
+        :param dispute_update:
+        :type dispute_update: DisputeUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2136,8 +2024,7 @@ class DisputeApi:
 
         _param = self._dispute_update_serialize(
             id=id,
-            refund_amount=refund_amount,
-            uploaded_filename=uploaded_filename,
+            dispute_update=dispute_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2145,7 +2032,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -2163,9 +2050,8 @@ class DisputeApi:
     @validate_call
     def dispute_update_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="Dispute ID")],
-        refund_amount: Annotated[StrictStr, Field(description="The amount to refund, in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        uploaded_filename: Annotated[Optional[StrictStr], Field(description="Filename of attachment returned via response from the Dispute upload URL")] = None,
+        id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
+        dispute_update: Optional[DisputeUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2181,13 +2067,12 @@ class DisputeApi:
     ) -> RESTResponseType:
         """Update Dispute
 
+        Update a transaction dispute
 
-        :param id: Dispute ID (required)
-        :type id: str
-        :param refund_amount: The amount to refund, in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type refund_amount: str
-        :param uploaded_filename: Filename of attachment returned via response from the Dispute upload URL
-        :type uploaded_filename: str
+        :param id: The unique identifier of the dispute (required)
+        :type id: int
+        :param dispute_update:
+        :type dispute_update: DisputeUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2212,8 +2097,7 @@ class DisputeApi:
 
         _param = self._dispute_update_serialize(
             id=id,
-            refund_amount=refund_amount,
-            uploaded_filename=uploaded_filename,
+            dispute_update=dispute_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2221,7 +2105,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -2235,8 +2119,7 @@ class DisputeApi:
     def _dispute_update_serialize(
         self,
         id,
-        refund_amount,
-        uploaded_filename,
+        dispute_update,
         _request_auth,
         _content_type,
         _headers,
@@ -2263,11 +2146,9 @@ class DisputeApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if refund_amount is not None:
-            _form_params.append(('refund_amount', refund_amount))
-        if uploaded_filename is not None:
-            _form_params.append(('uploaded_filename', uploaded_filename))
         # process the body parameter
+        if dispute_update is not None:
+            _body_params = dispute_update
 
 
         # set the HTTP header `Accept`
@@ -2285,8 +2166,8 @@ class DisputeApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -2319,7 +2200,7 @@ class DisputeApi:
     @validate_call
     def dispute_upload_url(
         self,
-        id: Annotated[StrictStr, Field(description="Dispute ID")],
+        id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2332,12 +2213,13 @@ class DisputeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
-        """Get Upload URL
+    ) -> DisputeUploadURLResponse:
+        """Fetch Upload URL
 
+        Get the URL to upload a dispute evidence
 
-        :param id: Dispute ID (required)
-        :type id: str
+        :param id: The unique identifier of the dispute (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2369,7 +2251,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeUploadURLResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -2387,7 +2269,7 @@ class DisputeApi:
     @validate_call
     def dispute_upload_url_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="Dispute ID")],
+        id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2400,12 +2282,13 @@ class DisputeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
-        """Get Upload URL
+    ) -> ApiResponse[DisputeUploadURLResponse]:
+        """Fetch Upload URL
 
+        Get the URL to upload a dispute evidence
 
-        :param id: Dispute ID (required)
-        :type id: str
+        :param id: The unique identifier of the dispute (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2437,7 +2320,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeUploadURLResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -2455,7 +2338,7 @@ class DisputeApi:
     @validate_call
     def dispute_upload_url_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="Dispute ID")],
+        id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2469,11 +2352,12 @@ class DisputeApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Upload URL
+        """Fetch Upload URL
 
+        Get the URL to upload a dispute evidence
 
-        :param id: Dispute ID (required)
-        :type id: str
+        :param id: The unique identifier of the dispute (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2505,7 +2389,7 @@ class DisputeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DisputeUploadURLResponse",
             '401': "Error",
             '404': "Error",
         }

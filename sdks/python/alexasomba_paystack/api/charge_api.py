@@ -17,15 +17,22 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from datetime import datetime
 from pydantic import Field, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from alexasomba_paystack.models.bank import Bank
-from alexasomba_paystack.models.eft import EFT
-from alexasomba_paystack.models.mobile_money import MobileMoney
+from alexasomba_paystack.models.charge_check_pending_response import ChargeCheckPendingResponse
+from alexasomba_paystack.models.charge_create_request import ChargeCreateRequest
+from alexasomba_paystack.models.charge_create_response import ChargeCreateResponse
+from alexasomba_paystack.models.charge_submit_address import ChargeSubmitAddress
+from alexasomba_paystack.models.charge_submit_birthday import ChargeSubmitBirthday
+from alexasomba_paystack.models.charge_submit_birthday_response import ChargeSubmitBirthdayResponse
+from alexasomba_paystack.models.charge_submit_otp import ChargeSubmitOTP
+from alexasomba_paystack.models.charge_submit_otp_response import ChargeSubmitOtpResponse
+from alexasomba_paystack.models.charge_submit_phone import ChargeSubmitPhone
+from alexasomba_paystack.models.charge_submit_phone_response import ChargeSubmitPhoneResponse
+from alexasomba_paystack.models.charge_submit_pin import ChargeSubmitPin
+from alexasomba_paystack.models.charge_submit_pin_response import ChargeSubmitPinResponse
 from alexasomba_paystack.models.response import Response
-from alexasomba_paystack.models.ussd import USSD
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
 from alexasomba_paystack.api_response import ApiResponse
@@ -48,7 +55,7 @@ class ChargeApi:
     @validate_call
     def charge_check(
         self,
-        reference: StrictStr,
+        reference: Annotated[StrictStr, Field(description="The reference of the ongoing transaction")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -61,11 +68,12 @@ class ChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> ChargeCheckPendingResponse:
         """Check pending charge
 
+        When you get `pending` as a charge status or if there was an exception when calling any of the `/charge` endpoints, wait 10 seconds or more, then make a check to see if its status has changed. Don't call too early as you may get a lot more pending than you should. 
 
-        :param reference: (required)
+        :param reference: The reference of the ongoing transaction (required)
         :type reference: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -98,7 +106,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeCheckPendingResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -116,7 +124,7 @@ class ChargeApi:
     @validate_call
     def charge_check_with_http_info(
         self,
-        reference: StrictStr,
+        reference: Annotated[StrictStr, Field(description="The reference of the ongoing transaction")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -129,11 +137,12 @@ class ChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[ChargeCheckPendingResponse]:
         """Check pending charge
 
+        When you get `pending` as a charge status or if there was an exception when calling any of the `/charge` endpoints, wait 10 seconds or more, then make a check to see if its status has changed. Don't call too early as you may get a lot more pending than you should. 
 
-        :param reference: (required)
+        :param reference: The reference of the ongoing transaction (required)
         :type reference: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -166,7 +175,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeCheckPendingResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -184,7 +193,7 @@ class ChargeApi:
     @validate_call
     def charge_check_without_preload_content(
         self,
-        reference: StrictStr,
+        reference: Annotated[StrictStr, Field(description="The reference of the ongoing transaction")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -200,8 +209,9 @@ class ChargeApi:
     ) -> RESTResponseType:
         """Check pending charge
 
+        When you get `pending` as a charge status or if there was an exception when calling any of the `/charge` endpoints, wait 10 seconds or more, then make a check to see if its status has changed. Don't call too early as you may get a lot more pending than you should. 
 
-        :param reference: (required)
+        :param reference: The reference of the ongoing transaction (required)
         :type reference: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -234,7 +244,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeCheckPendingResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -312,18 +322,7 @@ class ChargeApi:
     @validate_call
     def charge_create(
         self,
-        email: Annotated[StrictStr, Field(description="Customer's email address")],
-        amount: Annotated[StrictStr, Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        authorization_code: Annotated[Optional[StrictStr], Field(description="An authorization code to charge.")] = None,
-        pin: Annotated[Optional[StrictStr], Field(description="4-digit PIN (send with a non-reusable authorization code)")] = None,
-        reference: Annotated[Optional[StrictStr], Field(description="Unique transaction reference. Only -, .`, = and alphanumeric characters allowed.")] = None,
-        birthday: Annotated[Optional[datetime], Field(description="The customer's birthday in the format YYYY-MM-DD e.g 2017-05-16")] = None,
-        device_id: Annotated[Optional[StrictStr], Field(description="This is the unique identifier of the device a user uses in making payment.  Only -, .`, = and alphanumeric characters are allowed.")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
-        bank: Optional[Bank] = None,
-        mobile_money: Optional[MobileMoney] = None,
-        ussd: Optional[USSD] = None,
-        eft: Optional[EFT] = None,
+        charge_create_request: Optional[ChargeCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -336,34 +335,13 @@ class ChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> ChargeCreateResponse:
         """Create Charge
 
+        Initiate a payment by integrating the payment channel of your choice.
 
-        :param email: Customer's email address (required)
-        :type email: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type amount: str
-        :param authorization_code: An authorization code to charge.
-        :type authorization_code: str
-        :param pin: 4-digit PIN (send with a non-reusable authorization code)
-        :type pin: str
-        :param reference: Unique transaction reference. Only -, .`, = and alphanumeric characters allowed.
-        :type reference: str
-        :param birthday: The customer's birthday in the format YYYY-MM-DD e.g 2017-05-16
-        :type birthday: datetime
-        :param device_id: This is the unique identifier of the device a user uses in making payment.  Only -, .`, = and alphanumeric characters are allowed.
-        :type device_id: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
-        :param bank:
-        :type bank: Bank
-        :param mobile_money:
-        :type mobile_money: MobileMoney
-        :param ussd:
-        :type ussd: USSD
-        :param eft:
-        :type eft: EFT
+        :param charge_create_request:
+        :type charge_create_request: ChargeCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -387,18 +365,7 @@ class ChargeApi:
         """ # noqa: E501
 
         _param = self._charge_create_serialize(
-            email=email,
-            amount=amount,
-            authorization_code=authorization_code,
-            pin=pin,
-            reference=reference,
-            birthday=birthday,
-            device_id=device_id,
-            metadata=metadata,
-            bank=bank,
-            mobile_money=mobile_money,
-            ussd=ussd,
-            eft=eft,
+            charge_create_request=charge_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -406,7 +373,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -423,18 +390,7 @@ class ChargeApi:
     @validate_call
     def charge_create_with_http_info(
         self,
-        email: Annotated[StrictStr, Field(description="Customer's email address")],
-        amount: Annotated[StrictStr, Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        authorization_code: Annotated[Optional[StrictStr], Field(description="An authorization code to charge.")] = None,
-        pin: Annotated[Optional[StrictStr], Field(description="4-digit PIN (send with a non-reusable authorization code)")] = None,
-        reference: Annotated[Optional[StrictStr], Field(description="Unique transaction reference. Only -, .`, = and alphanumeric characters allowed.")] = None,
-        birthday: Annotated[Optional[datetime], Field(description="The customer's birthday in the format YYYY-MM-DD e.g 2017-05-16")] = None,
-        device_id: Annotated[Optional[StrictStr], Field(description="This is the unique identifier of the device a user uses in making payment.  Only -, .`, = and alphanumeric characters are allowed.")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
-        bank: Optional[Bank] = None,
-        mobile_money: Optional[MobileMoney] = None,
-        ussd: Optional[USSD] = None,
-        eft: Optional[EFT] = None,
+        charge_create_request: Optional[ChargeCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -447,34 +403,13 @@ class ChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[ChargeCreateResponse]:
         """Create Charge
 
+        Initiate a payment by integrating the payment channel of your choice.
 
-        :param email: Customer's email address (required)
-        :type email: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type amount: str
-        :param authorization_code: An authorization code to charge.
-        :type authorization_code: str
-        :param pin: 4-digit PIN (send with a non-reusable authorization code)
-        :type pin: str
-        :param reference: Unique transaction reference. Only -, .`, = and alphanumeric characters allowed.
-        :type reference: str
-        :param birthday: The customer's birthday in the format YYYY-MM-DD e.g 2017-05-16
-        :type birthday: datetime
-        :param device_id: This is the unique identifier of the device a user uses in making payment.  Only -, .`, = and alphanumeric characters are allowed.
-        :type device_id: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
-        :param bank:
-        :type bank: Bank
-        :param mobile_money:
-        :type mobile_money: MobileMoney
-        :param ussd:
-        :type ussd: USSD
-        :param eft:
-        :type eft: EFT
+        :param charge_create_request:
+        :type charge_create_request: ChargeCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -498,18 +433,7 @@ class ChargeApi:
         """ # noqa: E501
 
         _param = self._charge_create_serialize(
-            email=email,
-            amount=amount,
-            authorization_code=authorization_code,
-            pin=pin,
-            reference=reference,
-            birthday=birthday,
-            device_id=device_id,
-            metadata=metadata,
-            bank=bank,
-            mobile_money=mobile_money,
-            ussd=ussd,
-            eft=eft,
+            charge_create_request=charge_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -517,7 +441,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -534,18 +458,7 @@ class ChargeApi:
     @validate_call
     def charge_create_without_preload_content(
         self,
-        email: Annotated[StrictStr, Field(description="Customer's email address")],
-        amount: Annotated[StrictStr, Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        authorization_code: Annotated[Optional[StrictStr], Field(description="An authorization code to charge.")] = None,
-        pin: Annotated[Optional[StrictStr], Field(description="4-digit PIN (send with a non-reusable authorization code)")] = None,
-        reference: Annotated[Optional[StrictStr], Field(description="Unique transaction reference. Only -, .`, = and alphanumeric characters allowed.")] = None,
-        birthday: Annotated[Optional[datetime], Field(description="The customer's birthday in the format YYYY-MM-DD e.g 2017-05-16")] = None,
-        device_id: Annotated[Optional[StrictStr], Field(description="This is the unique identifier of the device a user uses in making payment.  Only -, .`, = and alphanumeric characters are allowed.")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
-        bank: Optional[Bank] = None,
-        mobile_money: Optional[MobileMoney] = None,
-        ussd: Optional[USSD] = None,
-        eft: Optional[EFT] = None,
+        charge_create_request: Optional[ChargeCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -561,31 +474,10 @@ class ChargeApi:
     ) -> RESTResponseType:
         """Create Charge
 
+        Initiate a payment by integrating the payment channel of your choice.
 
-        :param email: Customer's email address (required)
-        :type email: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type amount: str
-        :param authorization_code: An authorization code to charge.
-        :type authorization_code: str
-        :param pin: 4-digit PIN (send with a non-reusable authorization code)
-        :type pin: str
-        :param reference: Unique transaction reference. Only -, .`, = and alphanumeric characters allowed.
-        :type reference: str
-        :param birthday: The customer's birthday in the format YYYY-MM-DD e.g 2017-05-16
-        :type birthday: datetime
-        :param device_id: This is the unique identifier of the device a user uses in making payment.  Only -, .`, = and alphanumeric characters are allowed.
-        :type device_id: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
-        :param bank:
-        :type bank: Bank
-        :param mobile_money:
-        :type mobile_money: MobileMoney
-        :param ussd:
-        :type ussd: USSD
-        :param eft:
-        :type eft: EFT
+        :param charge_create_request:
+        :type charge_create_request: ChargeCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -609,18 +501,7 @@ class ChargeApi:
         """ # noqa: E501
 
         _param = self._charge_create_serialize(
-            email=email,
-            amount=amount,
-            authorization_code=authorization_code,
-            pin=pin,
-            reference=reference,
-            birthday=birthday,
-            device_id=device_id,
-            metadata=metadata,
-            bank=bank,
-            mobile_money=mobile_money,
-            ussd=ussd,
-            eft=eft,
+            charge_create_request=charge_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -628,7 +509,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -640,18 +521,7 @@ class ChargeApi:
 
     def _charge_create_serialize(
         self,
-        email,
-        amount,
-        authorization_code,
-        pin,
-        reference,
-        birthday,
-        device_id,
-        metadata,
-        bank,
-        mobile_money,
-        ussd,
-        eft,
+        charge_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -676,31 +546,9 @@ class ChargeApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if email is not None:
-            _form_params.append(('email', email))
-        if amount is not None:
-            _form_params.append(('amount', amount))
-        if authorization_code is not None:
-            _form_params.append(('authorization_code', authorization_code))
-        if pin is not None:
-            _form_params.append(('pin', pin))
-        if reference is not None:
-            _form_params.append(('reference', reference))
-        if birthday is not None:
-            _form_params.append(('birthday', birthday))
-        if device_id is not None:
-            _form_params.append(('device_id', device_id))
-        if metadata is not None:
-            _form_params.append(('metadata', metadata))
-        if bank is not None:
-            _form_params.append(('bank', bank))
-        if mobile_money is not None:
-            _form_params.append(('mobile_money', mobile_money))
-        if ussd is not None:
-            _form_params.append(('ussd', ussd))
-        if eft is not None:
-            _form_params.append(('eft', eft))
         # process the body parameter
+        if charge_create_request is not None:
+            _body_params = charge_create_request
 
 
         # set the HTTP header `Accept`
@@ -718,8 +566,8 @@ class ChargeApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -752,11 +600,7 @@ class ChargeApi:
     @validate_call
     def charge_submit_address(
         self,
-        address: Annotated[StrictStr, Field(description="Customer's address")],
-        city: Annotated[StrictStr, Field(description="Customer's city")],
-        state: Annotated[StrictStr, Field(description="Customer's state")],
-        zipcode: Annotated[StrictStr, Field(description="Customer's zipcode")],
-        reference: Annotated[StrictStr, Field(description="The reference of the ongoing transaction")],
+        charge_submit_address: Optional[ChargeSubmitAddress] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -772,17 +616,10 @@ class ChargeApi:
     ) -> Response:
         """Submit Address
 
+        Send the details of the customer's address for address verification
 
-        :param address: Customer's address (required)
-        :type address: str
-        :param city: Customer's city (required)
-        :type city: str
-        :param state: Customer's state (required)
-        :type state: str
-        :param zipcode: Customer's zipcode (required)
-        :type zipcode: str
-        :param reference: The reference of the ongoing transaction (required)
-        :type reference: str
+        :param charge_submit_address:
+        :type charge_submit_address: ChargeSubmitAddress
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -806,11 +643,7 @@ class ChargeApi:
         """ # noqa: E501
 
         _param = self._charge_submit_address_serialize(
-            address=address,
-            city=city,
-            state=state,
-            zipcode=zipcode,
-            reference=reference,
+            charge_submit_address=charge_submit_address,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -835,11 +668,7 @@ class ChargeApi:
     @validate_call
     def charge_submit_address_with_http_info(
         self,
-        address: Annotated[StrictStr, Field(description="Customer's address")],
-        city: Annotated[StrictStr, Field(description="Customer's city")],
-        state: Annotated[StrictStr, Field(description="Customer's state")],
-        zipcode: Annotated[StrictStr, Field(description="Customer's zipcode")],
-        reference: Annotated[StrictStr, Field(description="The reference of the ongoing transaction")],
+        charge_submit_address: Optional[ChargeSubmitAddress] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -855,17 +684,10 @@ class ChargeApi:
     ) -> ApiResponse[Response]:
         """Submit Address
 
+        Send the details of the customer's address for address verification
 
-        :param address: Customer's address (required)
-        :type address: str
-        :param city: Customer's city (required)
-        :type city: str
-        :param state: Customer's state (required)
-        :type state: str
-        :param zipcode: Customer's zipcode (required)
-        :type zipcode: str
-        :param reference: The reference of the ongoing transaction (required)
-        :type reference: str
+        :param charge_submit_address:
+        :type charge_submit_address: ChargeSubmitAddress
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -889,11 +711,7 @@ class ChargeApi:
         """ # noqa: E501
 
         _param = self._charge_submit_address_serialize(
-            address=address,
-            city=city,
-            state=state,
-            zipcode=zipcode,
-            reference=reference,
+            charge_submit_address=charge_submit_address,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -918,11 +736,7 @@ class ChargeApi:
     @validate_call
     def charge_submit_address_without_preload_content(
         self,
-        address: Annotated[StrictStr, Field(description="Customer's address")],
-        city: Annotated[StrictStr, Field(description="Customer's city")],
-        state: Annotated[StrictStr, Field(description="Customer's state")],
-        zipcode: Annotated[StrictStr, Field(description="Customer's zipcode")],
-        reference: Annotated[StrictStr, Field(description="The reference of the ongoing transaction")],
+        charge_submit_address: Optional[ChargeSubmitAddress] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -938,17 +752,10 @@ class ChargeApi:
     ) -> RESTResponseType:
         """Submit Address
 
+        Send the details of the customer's address for address verification
 
-        :param address: Customer's address (required)
-        :type address: str
-        :param city: Customer's city (required)
-        :type city: str
-        :param state: Customer's state (required)
-        :type state: str
-        :param zipcode: Customer's zipcode (required)
-        :type zipcode: str
-        :param reference: The reference of the ongoing transaction (required)
-        :type reference: str
+        :param charge_submit_address:
+        :type charge_submit_address: ChargeSubmitAddress
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -972,11 +779,7 @@ class ChargeApi:
         """ # noqa: E501
 
         _param = self._charge_submit_address_serialize(
-            address=address,
-            city=city,
-            state=state,
-            zipcode=zipcode,
-            reference=reference,
+            charge_submit_address=charge_submit_address,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -996,11 +799,7 @@ class ChargeApi:
 
     def _charge_submit_address_serialize(
         self,
-        address,
-        city,
-        state,
-        zipcode,
-        reference,
+        charge_submit_address,
         _request_auth,
         _content_type,
         _headers,
@@ -1025,17 +824,9 @@ class ChargeApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if address is not None:
-            _form_params.append(('address', address))
-        if city is not None:
-            _form_params.append(('city', city))
-        if state is not None:
-            _form_params.append(('state', state))
-        if zipcode is not None:
-            _form_params.append(('zipcode', zipcode))
-        if reference is not None:
-            _form_params.append(('reference', reference))
         # process the body parameter
+        if charge_submit_address is not None:
+            _body_params = charge_submit_address
 
 
         # set the HTTP header `Accept`
@@ -1053,8 +844,8 @@ class ChargeApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -1087,8 +878,7 @@ class ChargeApi:
     @validate_call
     def charge_submit_birthday(
         self,
-        birthday: Annotated[StrictStr, Field(description="Customer's birthday in the format YYYY-MM-DD e.g 2016-09-21")],
-        reference: Annotated[StrictStr, Field(description="The reference of the ongoing transaction")],
+        charge_submit_birthday: Optional[ChargeSubmitBirthday] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1101,14 +891,13 @@ class ChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> ChargeSubmitBirthdayResponse:
         """Submit Birthday
 
+        Submit the customer's birthday when requested
 
-        :param birthday: Customer's birthday in the format YYYY-MM-DD e.g 2016-09-21 (required)
-        :type birthday: str
-        :param reference: The reference of the ongoing transaction (required)
-        :type reference: str
+        :param charge_submit_birthday:
+        :type charge_submit_birthday: ChargeSubmitBirthday
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1132,8 +921,7 @@ class ChargeApi:
         """ # noqa: E501
 
         _param = self._charge_submit_birthday_serialize(
-            birthday=birthday,
-            reference=reference,
+            charge_submit_birthday=charge_submit_birthday,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1141,7 +929,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeSubmitBirthdayResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1158,8 +946,7 @@ class ChargeApi:
     @validate_call
     def charge_submit_birthday_with_http_info(
         self,
-        birthday: Annotated[StrictStr, Field(description="Customer's birthday in the format YYYY-MM-DD e.g 2016-09-21")],
-        reference: Annotated[StrictStr, Field(description="The reference of the ongoing transaction")],
+        charge_submit_birthday: Optional[ChargeSubmitBirthday] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1172,14 +959,13 @@ class ChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[ChargeSubmitBirthdayResponse]:
         """Submit Birthday
 
+        Submit the customer's birthday when requested
 
-        :param birthday: Customer's birthday in the format YYYY-MM-DD e.g 2016-09-21 (required)
-        :type birthday: str
-        :param reference: The reference of the ongoing transaction (required)
-        :type reference: str
+        :param charge_submit_birthday:
+        :type charge_submit_birthday: ChargeSubmitBirthday
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1203,8 +989,7 @@ class ChargeApi:
         """ # noqa: E501
 
         _param = self._charge_submit_birthday_serialize(
-            birthday=birthday,
-            reference=reference,
+            charge_submit_birthday=charge_submit_birthday,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1212,7 +997,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeSubmitBirthdayResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1229,8 +1014,7 @@ class ChargeApi:
     @validate_call
     def charge_submit_birthday_without_preload_content(
         self,
-        birthday: Annotated[StrictStr, Field(description="Customer's birthday in the format YYYY-MM-DD e.g 2016-09-21")],
-        reference: Annotated[StrictStr, Field(description="The reference of the ongoing transaction")],
+        charge_submit_birthday: Optional[ChargeSubmitBirthday] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1246,11 +1030,10 @@ class ChargeApi:
     ) -> RESTResponseType:
         """Submit Birthday
 
+        Submit the customer's birthday when requested
 
-        :param birthday: Customer's birthday in the format YYYY-MM-DD e.g 2016-09-21 (required)
-        :type birthday: str
-        :param reference: The reference of the ongoing transaction (required)
-        :type reference: str
+        :param charge_submit_birthday:
+        :type charge_submit_birthday: ChargeSubmitBirthday
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1274,8 +1057,7 @@ class ChargeApi:
         """ # noqa: E501
 
         _param = self._charge_submit_birthday_serialize(
-            birthday=birthday,
-            reference=reference,
+            charge_submit_birthday=charge_submit_birthday,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1283,7 +1065,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeSubmitBirthdayResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1295,8 +1077,7 @@ class ChargeApi:
 
     def _charge_submit_birthday_serialize(
         self,
-        birthday,
-        reference,
+        charge_submit_birthday,
         _request_auth,
         _content_type,
         _headers,
@@ -1321,11 +1102,9 @@ class ChargeApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if birthday is not None:
-            _form_params.append(('birthday', birthday))
-        if reference is not None:
-            _form_params.append(('reference', reference))
         # process the body parameter
+        if charge_submit_birthday is not None:
+            _body_params = charge_submit_birthday
 
 
         # set the HTTP header `Accept`
@@ -1343,8 +1122,8 @@ class ChargeApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -1377,8 +1156,7 @@ class ChargeApi:
     @validate_call
     def charge_submit_otp(
         self,
-        otp: Annotated[StrictStr, Field(description="Customer's OTP")],
-        reference: Annotated[StrictStr, Field(description="The reference of the ongoing transaction")],
+        charge_submit_otp: Optional[ChargeSubmitOTP] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1391,14 +1169,13 @@ class ChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> ChargeSubmitOtpResponse:
         """Submit OTP
 
+        Submit OTP to complete a charge
 
-        :param otp: Customer's OTP (required)
-        :type otp: str
-        :param reference: The reference of the ongoing transaction (required)
-        :type reference: str
+        :param charge_submit_otp:
+        :type charge_submit_otp: ChargeSubmitOTP
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1422,8 +1199,7 @@ class ChargeApi:
         """ # noqa: E501
 
         _param = self._charge_submit_otp_serialize(
-            otp=otp,
-            reference=reference,
+            charge_submit_otp=charge_submit_otp,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1431,7 +1207,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeSubmitOtpResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1448,8 +1224,7 @@ class ChargeApi:
     @validate_call
     def charge_submit_otp_with_http_info(
         self,
-        otp: Annotated[StrictStr, Field(description="Customer's OTP")],
-        reference: Annotated[StrictStr, Field(description="The reference of the ongoing transaction")],
+        charge_submit_otp: Optional[ChargeSubmitOTP] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1462,14 +1237,13 @@ class ChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[ChargeSubmitOtpResponse]:
         """Submit OTP
 
+        Submit OTP to complete a charge
 
-        :param otp: Customer's OTP (required)
-        :type otp: str
-        :param reference: The reference of the ongoing transaction (required)
-        :type reference: str
+        :param charge_submit_otp:
+        :type charge_submit_otp: ChargeSubmitOTP
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1493,8 +1267,7 @@ class ChargeApi:
         """ # noqa: E501
 
         _param = self._charge_submit_otp_serialize(
-            otp=otp,
-            reference=reference,
+            charge_submit_otp=charge_submit_otp,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1502,7 +1275,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeSubmitOtpResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1519,8 +1292,7 @@ class ChargeApi:
     @validate_call
     def charge_submit_otp_without_preload_content(
         self,
-        otp: Annotated[StrictStr, Field(description="Customer's OTP")],
-        reference: Annotated[StrictStr, Field(description="The reference of the ongoing transaction")],
+        charge_submit_otp: Optional[ChargeSubmitOTP] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1536,11 +1308,10 @@ class ChargeApi:
     ) -> RESTResponseType:
         """Submit OTP
 
+        Submit OTP to complete a charge
 
-        :param otp: Customer's OTP (required)
-        :type otp: str
-        :param reference: The reference of the ongoing transaction (required)
-        :type reference: str
+        :param charge_submit_otp:
+        :type charge_submit_otp: ChargeSubmitOTP
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1564,8 +1335,7 @@ class ChargeApi:
         """ # noqa: E501
 
         _param = self._charge_submit_otp_serialize(
-            otp=otp,
-            reference=reference,
+            charge_submit_otp=charge_submit_otp,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1573,7 +1343,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeSubmitOtpResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1585,8 +1355,7 @@ class ChargeApi:
 
     def _charge_submit_otp_serialize(
         self,
-        otp,
-        reference,
+        charge_submit_otp,
         _request_auth,
         _content_type,
         _headers,
@@ -1611,11 +1380,9 @@ class ChargeApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if otp is not None:
-            _form_params.append(('otp', otp))
-        if reference is not None:
-            _form_params.append(('reference', reference))
         # process the body parameter
+        if charge_submit_otp is not None:
+            _body_params = charge_submit_otp
 
 
         # set the HTTP header `Accept`
@@ -1633,8 +1400,8 @@ class ChargeApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -1667,8 +1434,7 @@ class ChargeApi:
     @validate_call
     def charge_submit_phone(
         self,
-        phone: Annotated[StrictStr, Field(description="Customer's mobile number")],
-        reference: Annotated[StrictStr, Field(description="The reference of the ongoing transaction")],
+        charge_submit_phone: Optional[ChargeSubmitPhone] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1681,14 +1447,13 @@ class ChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> ChargeSubmitPhoneResponse:
         """Submit Phone
 
+        Submit phone number when requested
 
-        :param phone: Customer's mobile number (required)
-        :type phone: str
-        :param reference: The reference of the ongoing transaction (required)
-        :type reference: str
+        :param charge_submit_phone:
+        :type charge_submit_phone: ChargeSubmitPhone
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1712,8 +1477,7 @@ class ChargeApi:
         """ # noqa: E501
 
         _param = self._charge_submit_phone_serialize(
-            phone=phone,
-            reference=reference,
+            charge_submit_phone=charge_submit_phone,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1721,7 +1485,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeSubmitPhoneResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1738,8 +1502,7 @@ class ChargeApi:
     @validate_call
     def charge_submit_phone_with_http_info(
         self,
-        phone: Annotated[StrictStr, Field(description="Customer's mobile number")],
-        reference: Annotated[StrictStr, Field(description="The reference of the ongoing transaction")],
+        charge_submit_phone: Optional[ChargeSubmitPhone] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1752,14 +1515,13 @@ class ChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[ChargeSubmitPhoneResponse]:
         """Submit Phone
 
+        Submit phone number when requested
 
-        :param phone: Customer's mobile number (required)
-        :type phone: str
-        :param reference: The reference of the ongoing transaction (required)
-        :type reference: str
+        :param charge_submit_phone:
+        :type charge_submit_phone: ChargeSubmitPhone
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1783,8 +1545,7 @@ class ChargeApi:
         """ # noqa: E501
 
         _param = self._charge_submit_phone_serialize(
-            phone=phone,
-            reference=reference,
+            charge_submit_phone=charge_submit_phone,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1792,7 +1553,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeSubmitPhoneResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1809,8 +1570,7 @@ class ChargeApi:
     @validate_call
     def charge_submit_phone_without_preload_content(
         self,
-        phone: Annotated[StrictStr, Field(description="Customer's mobile number")],
-        reference: Annotated[StrictStr, Field(description="The reference of the ongoing transaction")],
+        charge_submit_phone: Optional[ChargeSubmitPhone] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1826,11 +1586,10 @@ class ChargeApi:
     ) -> RESTResponseType:
         """Submit Phone
 
+        Submit phone number when requested
 
-        :param phone: Customer's mobile number (required)
-        :type phone: str
-        :param reference: The reference of the ongoing transaction (required)
-        :type reference: str
+        :param charge_submit_phone:
+        :type charge_submit_phone: ChargeSubmitPhone
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1854,8 +1613,7 @@ class ChargeApi:
         """ # noqa: E501
 
         _param = self._charge_submit_phone_serialize(
-            phone=phone,
-            reference=reference,
+            charge_submit_phone=charge_submit_phone,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1863,7 +1621,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeSubmitPhoneResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1875,8 +1633,7 @@ class ChargeApi:
 
     def _charge_submit_phone_serialize(
         self,
-        phone,
-        reference,
+        charge_submit_phone,
         _request_auth,
         _content_type,
         _headers,
@@ -1901,11 +1658,9 @@ class ChargeApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if phone is not None:
-            _form_params.append(('phone', phone))
-        if reference is not None:
-            _form_params.append(('reference', reference))
         # process the body parameter
+        if charge_submit_phone is not None:
+            _body_params = charge_submit_phone
 
 
         # set the HTTP header `Accept`
@@ -1923,8 +1678,8 @@ class ChargeApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -1957,8 +1712,7 @@ class ChargeApi:
     @validate_call
     def charge_submit_pin(
         self,
-        pin: Annotated[StrictStr, Field(description="Customer's PIN")],
-        reference: Annotated[StrictStr, Field(description="Transaction reference that requires the PIN")],
+        charge_submit_pin: Optional[ChargeSubmitPin] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1971,14 +1725,13 @@ class ChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> ChargeSubmitPinResponse:
         """Submit PIN
 
+        Submit PIN to continue a charge
 
-        :param pin: Customer's PIN (required)
-        :type pin: str
-        :param reference: Transaction reference that requires the PIN (required)
-        :type reference: str
+        :param charge_submit_pin:
+        :type charge_submit_pin: ChargeSubmitPin
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2002,8 +1755,7 @@ class ChargeApi:
         """ # noqa: E501
 
         _param = self._charge_submit_pin_serialize(
-            pin=pin,
-            reference=reference,
+            charge_submit_pin=charge_submit_pin,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2011,7 +1763,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeSubmitPinResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -2028,8 +1780,7 @@ class ChargeApi:
     @validate_call
     def charge_submit_pin_with_http_info(
         self,
-        pin: Annotated[StrictStr, Field(description="Customer's PIN")],
-        reference: Annotated[StrictStr, Field(description="Transaction reference that requires the PIN")],
+        charge_submit_pin: Optional[ChargeSubmitPin] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2042,14 +1793,13 @@ class ChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[ChargeSubmitPinResponse]:
         """Submit PIN
 
+        Submit PIN to continue a charge
 
-        :param pin: Customer's PIN (required)
-        :type pin: str
-        :param reference: Transaction reference that requires the PIN (required)
-        :type reference: str
+        :param charge_submit_pin:
+        :type charge_submit_pin: ChargeSubmitPin
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2073,8 +1823,7 @@ class ChargeApi:
         """ # noqa: E501
 
         _param = self._charge_submit_pin_serialize(
-            pin=pin,
-            reference=reference,
+            charge_submit_pin=charge_submit_pin,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2082,7 +1831,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeSubmitPinResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -2099,8 +1848,7 @@ class ChargeApi:
     @validate_call
     def charge_submit_pin_without_preload_content(
         self,
-        pin: Annotated[StrictStr, Field(description="Customer's PIN")],
-        reference: Annotated[StrictStr, Field(description="Transaction reference that requires the PIN")],
+        charge_submit_pin: Optional[ChargeSubmitPin] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2116,11 +1864,10 @@ class ChargeApi:
     ) -> RESTResponseType:
         """Submit PIN
 
+        Submit PIN to continue a charge
 
-        :param pin: Customer's PIN (required)
-        :type pin: str
-        :param reference: Transaction reference that requires the PIN (required)
-        :type reference: str
+        :param charge_submit_pin:
+        :type charge_submit_pin: ChargeSubmitPin
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2144,8 +1891,7 @@ class ChargeApi:
         """ # noqa: E501
 
         _param = self._charge_submit_pin_serialize(
-            pin=pin,
-            reference=reference,
+            charge_submit_pin=charge_submit_pin,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2153,7 +1899,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeSubmitPinResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -2165,8 +1911,7 @@ class ChargeApi:
 
     def _charge_submit_pin_serialize(
         self,
-        pin,
-        reference,
+        charge_submit_pin,
         _request_auth,
         _content_type,
         _headers,
@@ -2191,11 +1936,9 @@ class ChargeApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if pin is not None:
-            _form_params.append(('pin', pin))
-        if reference is not None:
-            _form_params.append(('reference', reference))
         # process the body parameter
+        if charge_submit_pin is not None:
+            _body_params = charge_submit_pin
 
 
         # set the HTTP header `Accept`
@@ -2213,8 +1956,8 @@ class ChargeApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )

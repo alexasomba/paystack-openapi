@@ -24,7 +24,7 @@ var _ MappedNullable = &TransactionCheckAuthorization{}
 type TransactionCheckAuthorization struct {
 	// Customer's email address
 	Email string `json:"email"`
-	// Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
+	// Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR
 	Amount int32 `json:"amount"`
 	// Valid authorization code to charge
 	AuthorizationCode *string `json:"authorization_code,omitempty"`

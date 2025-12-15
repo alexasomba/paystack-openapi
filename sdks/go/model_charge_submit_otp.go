@@ -22,7 +22,7 @@ var _ MappedNullable = &ChargeSubmitOTP{}
 
 // ChargeSubmitOTP struct for ChargeSubmitOTP
 type ChargeSubmitOTP struct {
-	// Customer's OTP
+	// Customer's OTP for ongoing transaction
 	Otp string `json:"otp"`
 	// The reference of the ongoing transaction
 	Reference string `json:"reference"`

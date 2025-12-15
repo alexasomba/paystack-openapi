@@ -24,7 +24,7 @@ var _ MappedNullable = &TransferResendOTP{}
 type TransferResendOTP struct {
 	// The transfer code that requires an OTP validation
 	TransferCode string `json:"transfer_code"`
-	// Either resend_otp or transfer
+	// Specify the flag to indicate the purpose of the OTP
 	Reason string `json:"reason"`
 }
 
@@ -46,6 +46,8 @@ func NewTransferResendOTP(transferCode string, reason string) *TransferResendOTP
 // but it doesn't guarantee that properties required by API are set
 func NewTransferResendOTPWithDefaults() *TransferResendOTP {
 	this := TransferResendOTP{}
+	var reason string = "transfer"
+	this.Reason = reason
 	return &this
 }
 

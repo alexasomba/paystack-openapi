@@ -18,6 +18,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
@@ -27,26 +28,11 @@ type DedicatedVirtualAccountAPIService service
 type ApiDedicatedAccountAddSplitRequest struct {
 	ctx context.Context
 	ApiService *DedicatedVirtualAccountAPIService
-	accountNumber *string
-	subaccount *string
-	splitCode *string
+	dedicatedVirtualAccountSplit *DedicatedVirtualAccountSplit
 }
 
-// Valid Dedicated virtual account
-func (r ApiDedicatedAccountAddSplitRequest) AccountNumber(accountNumber string) ApiDedicatedAccountAddSplitRequest {
-	r.accountNumber = &accountNumber
-	return r
-}
-
-// Subaccount code of the account you want to split the transaction with
-func (r ApiDedicatedAccountAddSplitRequest) Subaccount(subaccount string) ApiDedicatedAccountAddSplitRequest {
-	r.subaccount = &subaccount
-	return r
-}
-
-// Split code consisting of the lists of accounts you want to split the transaction with
-func (r ApiDedicatedAccountAddSplitRequest) SplitCode(splitCode string) ApiDedicatedAccountAddSplitRequest {
-	r.splitCode = &splitCode
+func (r ApiDedicatedAccountAddSplitRequest) DedicatedVirtualAccountSplit(dedicatedVirtualAccountSplit DedicatedVirtualAccountSplit) ApiDedicatedAccountAddSplitRequest {
+	r.dedicatedVirtualAccountSplit = &dedicatedVirtualAccountSplit
 	return r
 }
 
@@ -56,6 +42,8 @@ func (r ApiDedicatedAccountAddSplitRequest) Execute() (*Response, *http.Response
 
 /*
 DedicatedAccountAddSplit Split Dedicated Account Transaction
+
+Split a dedicated virtual account transaction with one or more accounts
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDedicatedAccountAddSplitRequest
@@ -87,12 +75,9 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountAddSplitExecute(r Ap
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.accountNumber == nil {
-		return localVarReturnValue, nil, reportError("accountNumber is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -108,13 +93,126 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountAddSplitExecute(r Ap
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "account_number", r.accountNumber, "", "")
-	if r.subaccount != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "subaccount", r.subaccount, "", "")
+	// body params
+	localVarPostBody = r.dedicatedVirtualAccountSplit
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
 	}
-	if r.splitCode != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "split_code", r.splitCode, "", "")
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiDedicatedAccountAssignRequest struct {
+	ctx context.Context
+	ApiService *DedicatedVirtualAccountAPIService
+	dedicatedVirtualAccountAssign *DedicatedVirtualAccountAssign
+}
+
+func (r ApiDedicatedAccountAssignRequest) DedicatedVirtualAccountAssign(dedicatedVirtualAccountAssign DedicatedVirtualAccountAssign) ApiDedicatedAccountAssignRequest {
+	r.dedicatedVirtualAccountAssign = &dedicatedVirtualAccountAssign
+	return r
+}
+
+func (r ApiDedicatedAccountAssignRequest) Execute() (*Response, *http.Response, error) {
+	return r.ApiService.DedicatedAccountAssignExecute(r)
+}
+
+/*
+DedicatedAccountAssign Assign Dedicated Account
+
+With this endpoint, you can create a customer, validate the customer, and assign a DVA to the customer.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiDedicatedAccountAssignRequest
+*/
+func (a *DedicatedVirtualAccountAPIService) DedicatedAccountAssign(ctx context.Context) ApiDedicatedAccountAssignRequest {
+	return ApiDedicatedAccountAssignRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return Response
+func (a *DedicatedVirtualAccountAPIService) DedicatedAccountAssignExecute(r ApiDedicatedAccountAssignRequest) (*Response, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Response
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedVirtualAccountAPIService.DedicatedAccountAssign")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/dedicated_account/assign"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.dedicatedVirtualAccountAssign
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -174,6 +272,8 @@ func (r ApiDedicatedAccountAvailableProvidersRequest) Execute() (*Response, *htt
 
 /*
 DedicatedAccountAvailableProviders Fetch Bank Providers
+
+Get available bank providers for a dedicated virtual account
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDedicatedAccountAvailableProvidersRequest
@@ -285,42 +385,22 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountAvailableProvidersEx
 type ApiDedicatedAccountCreateRequest struct {
 	ctx context.Context
 	ApiService *DedicatedVirtualAccountAPIService
-	customer *string
-	preferredBank *string
-	subaccount *string
-	splitCode *string
+	dedicatedVirtualAccountCreate *DedicatedVirtualAccountCreate
 }
 
-// Customer ID or code
-func (r ApiDedicatedAccountCreateRequest) Customer(customer string) ApiDedicatedAccountCreateRequest {
-	r.customer = &customer
+func (r ApiDedicatedAccountCreateRequest) DedicatedVirtualAccountCreate(dedicatedVirtualAccountCreate DedicatedVirtualAccountCreate) ApiDedicatedAccountCreateRequest {
+	r.dedicatedVirtualAccountCreate = &dedicatedVirtualAccountCreate
 	return r
 }
 
-// The bank slug for preferred bank. To get a list of available banks, use the List Providers endpoint
-func (r ApiDedicatedAccountCreateRequest) PreferredBank(preferredBank string) ApiDedicatedAccountCreateRequest {
-	r.preferredBank = &preferredBank
-	return r
-}
-
-// Subaccount code of the account you want to split the transaction with
-func (r ApiDedicatedAccountCreateRequest) Subaccount(subaccount string) ApiDedicatedAccountCreateRequest {
-	r.subaccount = &subaccount
-	return r
-}
-
-// Split code consisting of the lists of accounts you want to split the transaction with
-func (r ApiDedicatedAccountCreateRequest) SplitCode(splitCode string) ApiDedicatedAccountCreateRequest {
-	r.splitCode = &splitCode
-	return r
-}
-
-func (r ApiDedicatedAccountCreateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiDedicatedAccountCreateRequest) Execute() (*DedicatedNubanCreateResponse, *http.Response, error) {
 	return r.ApiService.DedicatedAccountCreateExecute(r)
 }
 
 /*
 DedicatedAccountCreate Create Dedicated Account
+
+Create a dedicated virtual account for an existing customer
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDedicatedAccountCreateRequest
@@ -333,13 +413,13 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountCreate(ctx context.C
 }
 
 // Execute executes the request
-//  @return Response
-func (a *DedicatedVirtualAccountAPIService) DedicatedAccountCreateExecute(r ApiDedicatedAccountCreateRequest) (*Response, *http.Response, error) {
+//  @return DedicatedNubanCreateResponse
+func (a *DedicatedVirtualAccountAPIService) DedicatedAccountCreateExecute(r ApiDedicatedAccountCreateRequest) (*DedicatedNubanCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *DedicatedNubanCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedVirtualAccountAPIService.DedicatedAccountCreate")
@@ -352,12 +432,9 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountCreateExecute(r ApiD
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.customer == nil {
-		return localVarReturnValue, nil, reportError("customer is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -373,16 +450,8 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountCreateExecute(r ApiD
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "customer", r.customer, "", "")
-	if r.preferredBank != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "preferred_bank", r.preferredBank, "", "")
-	}
-	if r.subaccount != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "subaccount", r.subaccount, "", "")
-	}
-	if r.splitCode != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "split_code", r.splitCode, "", "")
-	}
+	// body params
+	localVarPostBody = r.dedicatedVirtualAccountCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -434,36 +503,38 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountCreateExecute(r ApiD
 type ApiDedicatedAccountDeactivateRequest struct {
 	ctx context.Context
 	ApiService *DedicatedVirtualAccountAPIService
-	accountId string
+	id string
 }
 
-func (r ApiDedicatedAccountDeactivateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiDedicatedAccountDeactivateRequest) Execute() (*DedicatedNubanDeactivateResponse, *http.Response, error) {
 	return r.ApiService.DedicatedAccountDeactivateExecute(r)
 }
 
 /*
 DedicatedAccountDeactivate Deactivate Dedicated Account
 
+Deactivate a dedicated virtual account on your integration.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
+ @param id ID of dedicated virtual account
  @return ApiDedicatedAccountDeactivateRequest
 */
-func (a *DedicatedVirtualAccountAPIService) DedicatedAccountDeactivate(ctx context.Context, accountId string) ApiDedicatedAccountDeactivateRequest {
+func (a *DedicatedVirtualAccountAPIService) DedicatedAccountDeactivate(ctx context.Context, id string) ApiDedicatedAccountDeactivateRequest {
 	return ApiDedicatedAccountDeactivateRequest{
 		ApiService: a,
 		ctx: ctx,
-		accountId: accountId,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//  @return Response
-func (a *DedicatedVirtualAccountAPIService) DedicatedAccountDeactivateExecute(r ApiDedicatedAccountDeactivateRequest) (*Response, *http.Response, error) {
+//  @return DedicatedNubanDeactivateResponse
+func (a *DedicatedVirtualAccountAPIService) DedicatedAccountDeactivateExecute(r ApiDedicatedAccountDeactivateRequest) (*DedicatedNubanDeactivateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *DedicatedNubanDeactivateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedVirtualAccountAPIService.DedicatedAccountDeactivate")
@@ -471,8 +542,8 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountDeactivateExecute(r 
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/dedicated_account/{account_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"account_id"+"}", url.PathEscape(parameterValueToString(r.accountId, "accountId")), -1)
+	localVarPath := localBasePath + "/dedicated_account/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -557,36 +628,38 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountDeactivateExecute(r 
 type ApiDedicatedAccountFetchRequest struct {
 	ctx context.Context
 	ApiService *DedicatedVirtualAccountAPIService
-	accountId string
+	id string
 }
 
-func (r ApiDedicatedAccountFetchRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiDedicatedAccountFetchRequest) Execute() (*DedicatedNubanFetchResponse, *http.Response, error) {
 	return r.ApiService.DedicatedAccountFetchExecute(r)
 }
 
 /*
 DedicatedAccountFetch Fetch Dedicated Account
 
+Get details of a dedicated virtual account on your integration.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId
+ @param id ID of dedicated virtual account
  @return ApiDedicatedAccountFetchRequest
 */
-func (a *DedicatedVirtualAccountAPIService) DedicatedAccountFetch(ctx context.Context, accountId string) ApiDedicatedAccountFetchRequest {
+func (a *DedicatedVirtualAccountAPIService) DedicatedAccountFetch(ctx context.Context, id string) ApiDedicatedAccountFetchRequest {
 	return ApiDedicatedAccountFetchRequest{
 		ApiService: a,
 		ctx: ctx,
-		accountId: accountId,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//  @return Response
-func (a *DedicatedVirtualAccountAPIService) DedicatedAccountFetchExecute(r ApiDedicatedAccountFetchRequest) (*Response, *http.Response, error) {
+//  @return DedicatedNubanFetchResponse
+func (a *DedicatedVirtualAccountAPIService) DedicatedAccountFetchExecute(r ApiDedicatedAccountFetchRequest) (*DedicatedNubanFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *DedicatedNubanFetchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedVirtualAccountAPIService.DedicatedAccountFetch")
@@ -594,8 +667,8 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountFetchExecute(r ApiDe
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/dedicated_account/{account_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"account_id"+"}", url.PathEscape(parameterValueToString(r.accountId, "accountId")), -1)
+	localVarPath := localBasePath + "/dedicated_account/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -680,62 +753,65 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountFetchExecute(r ApiDe
 type ApiDedicatedAccountListRequest struct {
 	ctx context.Context
 	ApiService *DedicatedVirtualAccountAPIService
-	accountNumber *string
-	customer *string
 	active *bool
+	customer *int32
 	currency *string
 	providerSlug *string
 	bankId *string
-	perPage *string
-	page *string
+	perPage *int32
+	page *int32
 }
 
-func (r ApiDedicatedAccountListRequest) AccountNumber(accountNumber string) ApiDedicatedAccountListRequest {
-	r.accountNumber = &accountNumber
-	return r
-}
-
-func (r ApiDedicatedAccountListRequest) Customer(customer string) ApiDedicatedAccountListRequest {
-	r.customer = &customer
-	return r
-}
-
+// Status of the dedicated virtual account
 func (r ApiDedicatedAccountListRequest) Active(active bool) ApiDedicatedAccountListRequest {
 	r.active = &active
 	return r
 }
 
+// The customer&#39;s ID
+func (r ApiDedicatedAccountListRequest) Customer(customer int32) ApiDedicatedAccountListRequest {
+	r.customer = &customer
+	return r
+}
+
+// The currency of the dedicated virtual account
 func (r ApiDedicatedAccountListRequest) Currency(currency string) ApiDedicatedAccountListRequest {
 	r.currency = &currency
 	return r
 }
 
+// The bank&#39;s slug in lowercase, without spaces
 func (r ApiDedicatedAccountListRequest) ProviderSlug(providerSlug string) ApiDedicatedAccountListRequest {
 	r.providerSlug = &providerSlug
 	return r
 }
 
+// The bank&#39;s ID
 func (r ApiDedicatedAccountListRequest) BankId(bankId string) ApiDedicatedAccountListRequest {
 	r.bankId = &bankId
 	return r
 }
 
-func (r ApiDedicatedAccountListRequest) PerPage(perPage string) ApiDedicatedAccountListRequest {
+// The number of records to fetch per request
+func (r ApiDedicatedAccountListRequest) PerPage(perPage int32) ApiDedicatedAccountListRequest {
 	r.perPage = &perPage
 	return r
 }
 
-func (r ApiDedicatedAccountListRequest) Page(page string) ApiDedicatedAccountListRequest {
+// The offset to retrieve data from
+func (r ApiDedicatedAccountListRequest) Page(page int32) ApiDedicatedAccountListRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiDedicatedAccountListRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiDedicatedAccountListRequest) Execute() (*DedicatedNubanListResponse, *http.Response, error) {
 	return r.ApiService.DedicatedAccountListExecute(r)
 }
 
 /*
 DedicatedAccountList List Dedicated Accounts
+
+List dedicated virtual accounts available on your integration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDedicatedAccountListRequest
@@ -748,13 +824,13 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountList(ctx context.Con
 }
 
 // Execute executes the request
-//  @return Response
-func (a *DedicatedVirtualAccountAPIService) DedicatedAccountListExecute(r ApiDedicatedAccountListRequest) (*Response, *http.Response, error) {
+//  @return DedicatedNubanListResponse
+func (a *DedicatedVirtualAccountAPIService) DedicatedAccountListExecute(r ApiDedicatedAccountListRequest) (*DedicatedNubanListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *DedicatedNubanListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedVirtualAccountAPIService.DedicatedAccountList")
@@ -768,14 +844,11 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountListExecute(r ApiDed
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.accountNumber != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "account_number", r.accountNumber, "form", "")
+	if r.active != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
 	}
 	if r.customer != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "customer", r.customer, "form", "")
-	}
-	if r.active != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
 	}
 	if r.currency != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "currency", r.currency, "form", "")
@@ -788,9 +861,17 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountListExecute(r ApiDed
 	}
 	if r.perPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
+	} else {
+        var defaultValue int32 = 50
+        parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", defaultValue, "form", "")
+        r.perPage = &defaultValue
 	}
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	} else {
+        var defaultValue int32 = 1
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -871,26 +952,11 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountListExecute(r ApiDed
 type ApiDedicatedAccountRemoveSplitRequest struct {
 	ctx context.Context
 	ApiService *DedicatedVirtualAccountAPIService
-	accountNumber *string
-	subaccount *string
-	splitCode *string
+	dedicatedVirtualAccountRemoveSplit *DedicatedVirtualAccountRemoveSplit
 }
 
-// Valid Dedicated virtual account
-func (r ApiDedicatedAccountRemoveSplitRequest) AccountNumber(accountNumber string) ApiDedicatedAccountRemoveSplitRequest {
-	r.accountNumber = &accountNumber
-	return r
-}
-
-// Subaccount code of the account you want to split the transaction with
-func (r ApiDedicatedAccountRemoveSplitRequest) Subaccount(subaccount string) ApiDedicatedAccountRemoveSplitRequest {
-	r.subaccount = &subaccount
-	return r
-}
-
-// Split code consisting of the lists of accounts you want to split the transaction with
-func (r ApiDedicatedAccountRemoveSplitRequest) SplitCode(splitCode string) ApiDedicatedAccountRemoveSplitRequest {
-	r.splitCode = &splitCode
+func (r ApiDedicatedAccountRemoveSplitRequest) DedicatedVirtualAccountRemoveSplit(dedicatedVirtualAccountRemoveSplit DedicatedVirtualAccountRemoveSplit) ApiDedicatedAccountRemoveSplitRequest {
+	r.dedicatedVirtualAccountRemoveSplit = &dedicatedVirtualAccountRemoveSplit
 	return r
 }
 
@@ -900,6 +966,8 @@ func (r ApiDedicatedAccountRemoveSplitRequest) Execute() (*Response, *http.Respo
 
 /*
 DedicatedAccountRemoveSplit Remove Split from Dedicated Account
+
+If you've previously set up split payment for transactions on a dedicated virtual account, you can remove it with this endpoint
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDedicatedAccountRemoveSplitRequest
@@ -931,12 +999,9 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountRemoveSplitExecute(r
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.accountNumber == nil {
-		return localVarReturnValue, nil, reportError("accountNumber is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -952,12 +1017,158 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountRemoveSplitExecute(r
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "account_number", r.accountNumber, "", "")
-	if r.subaccount != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "subaccount", r.subaccount, "", "")
+	// body params
+	localVarPostBody = r.dedicatedVirtualAccountRemoveSplit
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
 	}
-	if r.splitCode != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "split_code", r.splitCode, "", "")
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiDedicatedAccountRequeryRequest struct {
+	ctx context.Context
+	ApiService *DedicatedVirtualAccountAPIService
+	accountNumber *string
+	providerSlug *string
+	date *time.Time
+}
+
+// Virtual account number to requery
+func (r ApiDedicatedAccountRequeryRequest) AccountNumber(accountNumber string) ApiDedicatedAccountRequeryRequest {
+	r.accountNumber = &accountNumber
+	return r
+}
+
+// The bank&#39;s slug in lowercase, without spaces.
+func (r ApiDedicatedAccountRequeryRequest) ProviderSlug(providerSlug string) ApiDedicatedAccountRequeryRequest {
+	r.providerSlug = &providerSlug
+	return r
+}
+
+// The day the transfer was made
+func (r ApiDedicatedAccountRequeryRequest) Date(date time.Time) ApiDedicatedAccountRequeryRequest {
+	r.date = &date
+	return r
+}
+
+func (r ApiDedicatedAccountRequeryRequest) Execute() (*Response, *http.Response, error) {
+	return r.ApiService.DedicatedAccountRequeryExecute(r)
+}
+
+/*
+DedicatedAccountRequery Requery Dedicated Account
+
+Requery Dedicated Virtual Account for new transactions
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiDedicatedAccountRequeryRequest
+*/
+func (a *DedicatedVirtualAccountAPIService) DedicatedAccountRequery(ctx context.Context) ApiDedicatedAccountRequeryRequest {
+	return ApiDedicatedAccountRequeryRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return Response
+func (a *DedicatedVirtualAccountAPIService) DedicatedAccountRequeryExecute(r ApiDedicatedAccountRequeryRequest) (*Response, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Response
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedVirtualAccountAPIService.DedicatedAccountRequery")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/dedicated_account/requery"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.accountNumber != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "account_number", r.accountNumber, "form", "")
+	}
+	if r.providerSlug != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "provider_slug", r.providerSlug, "form", "")
+	}
+	if r.date != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "date", r.date, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {

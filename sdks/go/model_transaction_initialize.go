@@ -20,34 +20,36 @@ import (
 // checks if the TransactionInitialize type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TransactionInitialize{}
 
-// TransactionInitialize struct for TransactionInitialize
+// TransactionInitialize Initialize a transaction
 type TransactionInitialize struct {
 	// Customer's email address
 	Email string `json:"email"`
-	// Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
+	// Amount should be in smallest denomination of the currency. 
 	Amount int32 `json:"amount"`
-	// The transaction currency
-	Currency *string `json:"currency,omitempty"`
+	Currency *Currency `json:"currency,omitempty"`
 	// Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
 	Reference *string `json:"reference,omitempty"`
-	// Fully qualified url, e.g. https://example.com/ . Use this to override the callback url provided on the dashboard for this transaction
+	// An array of payment channels to control what channels you want to make available to the user to make a payment with
+	Channels []string `json:"channels,omitempty"`
+	// Fully qualified url, e.g. https://example.com/ to redirect your customers to after a successful payment. Use this to override the callback url provided on the dashboard for this transaction 
 	CallbackUrl *string `json:"callback_url,omitempty"`
-	// If transaction is to create a subscription to a predefined plan, provide plan code here.  This would invalidate the value provided in amount
+	// If transaction is to create a subscription to a predefined plan, provide plan code here.  This would invalidate the value provided in amount 
 	Plan *string `json:"plan,omitempty"`
 	// Number of times to charge customer during subscription to plan
 	InvoiceLimit *int32 `json:"invoice_limit,omitempty"`
-	// Stringified JSON object of custom data
-	Metadata *string `json:"metadata,omitempty"`
-	// An array of payment channels to control what channels you want to make available to the user to make a payment with
-	Channels []string `json:"channels,omitempty"`
 	// The split code of the transaction split
 	SplitCode *string `json:"split_code,omitempty"`
+	Split *SplitCreate `json:"split,omitempty"`
 	// The code for the subaccount that owns the payment
 	Subaccount *string `json:"subaccount,omitempty"`
-	// A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created
+	// A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created 
 	TransactionCharge *string `json:"transaction_charge,omitempty"`
-	// The beare of the transaction charge
+	// The bearer of the transaction charge
 	Bearer *string `json:"bearer,omitempty"`
+	// Used to replace the email address shown on the Checkout
+	Label *string `json:"label,omitempty"`
+	// JSON object of custom data
+	Metadata map[string]interface{} `json:"metadata,omitempty"`
 }
 
 type _TransactionInitialize TransactionInitialize
@@ -120,9 +122,9 @@ func (o *TransactionInitialize) SetAmount(v int32) {
 }
 
 // GetCurrency returns the Currency field value if set, zero value otherwise.
-func (o *TransactionInitialize) GetCurrency() string {
+func (o *TransactionInitialize) GetCurrency() Currency {
 	if o == nil || IsNil(o.Currency) {
-		var ret string
+		var ret Currency
 		return ret
 	}
 	return *o.Currency
@@ -130,7 +132,7 @@ func (o *TransactionInitialize) GetCurrency() string {
 
 // GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TransactionInitialize) GetCurrencyOk() (*string, bool) {
+func (o *TransactionInitialize) GetCurrencyOk() (*Currency, bool) {
 	if o == nil || IsNil(o.Currency) {
 		return nil, false
 	}
@@ -146,8 +148,8 @@ func (o *TransactionInitialize) HasCurrency() bool {
 	return false
 }
 
-// SetCurrency gets a reference to the given string and assigns it to the Currency field.
-func (o *TransactionInitialize) SetCurrency(v string) {
+// SetCurrency gets a reference to the given Currency and assigns it to the Currency field.
+func (o *TransactionInitialize) SetCurrency(v Currency) {
 	o.Currency = &v
 }
 
@@ -181,6 +183,38 @@ func (o *TransactionInitialize) HasReference() bool {
 // SetReference gets a reference to the given string and assigns it to the Reference field.
 func (o *TransactionInitialize) SetReference(v string) {
 	o.Reference = &v
+}
+
+// GetChannels returns the Channels field value if set, zero value otherwise.
+func (o *TransactionInitialize) GetChannels() []string {
+	if o == nil || IsNil(o.Channels) {
+		var ret []string
+		return ret
+	}
+	return o.Channels
+}
+
+// GetChannelsOk returns a tuple with the Channels field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransactionInitialize) GetChannelsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Channels) {
+		return nil, false
+	}
+	return o.Channels, true
+}
+
+// HasChannels returns a boolean if a field has been set.
+func (o *TransactionInitialize) HasChannels() bool {
+	if o != nil && !IsNil(o.Channels) {
+		return true
+	}
+
+	return false
+}
+
+// SetChannels gets a reference to the given []string and assigns it to the Channels field.
+func (o *TransactionInitialize) SetChannels(v []string) {
+	o.Channels = v
 }
 
 // GetCallbackUrl returns the CallbackUrl field value if set, zero value otherwise.
@@ -279,70 +313,6 @@ func (o *TransactionInitialize) SetInvoiceLimit(v int32) {
 	o.InvoiceLimit = &v
 }
 
-// GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *TransactionInitialize) GetMetadata() string {
-	if o == nil || IsNil(o.Metadata) {
-		var ret string
-		return ret
-	}
-	return *o.Metadata
-}
-
-// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TransactionInitialize) GetMetadataOk() (*string, bool) {
-	if o == nil || IsNil(o.Metadata) {
-		return nil, false
-	}
-	return o.Metadata, true
-}
-
-// HasMetadata returns a boolean if a field has been set.
-func (o *TransactionInitialize) HasMetadata() bool {
-	if o != nil && !IsNil(o.Metadata) {
-		return true
-	}
-
-	return false
-}
-
-// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
-func (o *TransactionInitialize) SetMetadata(v string) {
-	o.Metadata = &v
-}
-
-// GetChannels returns the Channels field value if set, zero value otherwise.
-func (o *TransactionInitialize) GetChannels() []string {
-	if o == nil || IsNil(o.Channels) {
-		var ret []string
-		return ret
-	}
-	return o.Channels
-}
-
-// GetChannelsOk returns a tuple with the Channels field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TransactionInitialize) GetChannelsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Channels) {
-		return nil, false
-	}
-	return o.Channels, true
-}
-
-// HasChannels returns a boolean if a field has been set.
-func (o *TransactionInitialize) HasChannels() bool {
-	if o != nil && !IsNil(o.Channels) {
-		return true
-	}
-
-	return false
-}
-
-// SetChannels gets a reference to the given []string and assigns it to the Channels field.
-func (o *TransactionInitialize) SetChannels(v []string) {
-	o.Channels = v
-}
-
 // GetSplitCode returns the SplitCode field value if set, zero value otherwise.
 func (o *TransactionInitialize) GetSplitCode() string {
 	if o == nil || IsNil(o.SplitCode) {
@@ -373,6 +343,38 @@ func (o *TransactionInitialize) HasSplitCode() bool {
 // SetSplitCode gets a reference to the given string and assigns it to the SplitCode field.
 func (o *TransactionInitialize) SetSplitCode(v string) {
 	o.SplitCode = &v
+}
+
+// GetSplit returns the Split field value if set, zero value otherwise.
+func (o *TransactionInitialize) GetSplit() SplitCreate {
+	if o == nil || IsNil(o.Split) {
+		var ret SplitCreate
+		return ret
+	}
+	return *o.Split
+}
+
+// GetSplitOk returns a tuple with the Split field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransactionInitialize) GetSplitOk() (*SplitCreate, bool) {
+	if o == nil || IsNil(o.Split) {
+		return nil, false
+	}
+	return o.Split, true
+}
+
+// HasSplit returns a boolean if a field has been set.
+func (o *TransactionInitialize) HasSplit() bool {
+	if o != nil && !IsNil(o.Split) {
+		return true
+	}
+
+	return false
+}
+
+// SetSplit gets a reference to the given SplitCreate and assigns it to the Split field.
+func (o *TransactionInitialize) SetSplit(v SplitCreate) {
+	o.Split = &v
 }
 
 // GetSubaccount returns the Subaccount field value if set, zero value otherwise.
@@ -471,6 +473,70 @@ func (o *TransactionInitialize) SetBearer(v string) {
 	o.Bearer = &v
 }
 
+// GetLabel returns the Label field value if set, zero value otherwise.
+func (o *TransactionInitialize) GetLabel() string {
+	if o == nil || IsNil(o.Label) {
+		var ret string
+		return ret
+	}
+	return *o.Label
+}
+
+// GetLabelOk returns a tuple with the Label field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransactionInitialize) GetLabelOk() (*string, bool) {
+	if o == nil || IsNil(o.Label) {
+		return nil, false
+	}
+	return o.Label, true
+}
+
+// HasLabel returns a boolean if a field has been set.
+func (o *TransactionInitialize) HasLabel() bool {
+	if o != nil && !IsNil(o.Label) {
+		return true
+	}
+
+	return false
+}
+
+// SetLabel gets a reference to the given string and assigns it to the Label field.
+func (o *TransactionInitialize) SetLabel(v string) {
+	o.Label = &v
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *TransactionInitialize) GetMetadata() map[string]interface{} {
+	if o == nil || IsNil(o.Metadata) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransactionInitialize) GetMetadataOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Metadata) {
+		return map[string]interface{}{}, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *TransactionInitialize) HasMetadata() bool {
+	if o != nil && !IsNil(o.Metadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
+func (o *TransactionInitialize) SetMetadata(v map[string]interface{}) {
+	o.Metadata = v
+}
+
 func (o TransactionInitialize) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -489,6 +555,9 @@ func (o TransactionInitialize) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Reference) {
 		toSerialize["reference"] = o.Reference
 	}
+	if !IsNil(o.Channels) {
+		toSerialize["channels"] = o.Channels
+	}
 	if !IsNil(o.CallbackUrl) {
 		toSerialize["callback_url"] = o.CallbackUrl
 	}
@@ -498,14 +567,11 @@ func (o TransactionInitialize) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.InvoiceLimit) {
 		toSerialize["invoice_limit"] = o.InvoiceLimit
 	}
-	if !IsNil(o.Metadata) {
-		toSerialize["metadata"] = o.Metadata
-	}
-	if !IsNil(o.Channels) {
-		toSerialize["channels"] = o.Channels
-	}
 	if !IsNil(o.SplitCode) {
 		toSerialize["split_code"] = o.SplitCode
+	}
+	if !IsNil(o.Split) {
+		toSerialize["split"] = o.Split
 	}
 	if !IsNil(o.Subaccount) {
 		toSerialize["subaccount"] = o.Subaccount
@@ -515,6 +581,12 @@ func (o TransactionInitialize) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Bearer) {
 		toSerialize["bearer"] = o.Bearer
+	}
+	if !IsNil(o.Label) {
+		toSerialize["label"] = o.Label
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
 	}
 	return toSerialize, nil
 }

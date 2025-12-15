@@ -13,7 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"time"
 	"bytes"
 	"fmt"
 )
@@ -26,7 +25,7 @@ type ChargeCreateRequest struct {
 	// Customer's email address
 	Email string `json:"email"`
 	// Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-	Amount string `json:"amount"`
+	Amount int32 `json:"amount"`
 	// An authorization code to charge.
 	AuthorizationCode *string `json:"authorization_code,omitempty"`
 	// 4-digit PIN (send with a non-reusable authorization code)
@@ -34,11 +33,11 @@ type ChargeCreateRequest struct {
 	// Unique transaction reference. Only -, .`, = and alphanumeric characters allowed.
 	Reference *string `json:"reference,omitempty"`
 	// The customer's birthday in the format YYYY-MM-DD e.g 2017-05-16
-	Birthday *time.Time `json:"birthday,omitempty"`
+	Birthday *string `json:"birthday,omitempty"`
 	// This is the unique identifier of the device a user uses in making payment.  Only -, .`, = and alphanumeric characters are allowed.
 	DeviceId *string `json:"device_id,omitempty"`
-	// Stringified JSON object of custom data
-	Metadata *string `json:"metadata,omitempty"`
+	// JSON object of custom data
+	Metadata map[string]interface{} `json:"metadata,omitempty"`
 	Bank *Bank `json:"bank,omitempty"`
 	MobileMoney *MobileMoney `json:"mobile_money,omitempty"`
 	Ussd *USSD `json:"ussd,omitempty"`
@@ -51,7 +50,7 @@ type _ChargeCreateRequest ChargeCreateRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChargeCreateRequest(email string, amount string) *ChargeCreateRequest {
+func NewChargeCreateRequest(email string, amount int32) *ChargeCreateRequest {
 	this := ChargeCreateRequest{}
 	this.Email = email
 	this.Amount = amount
@@ -91,9 +90,9 @@ func (o *ChargeCreateRequest) SetEmail(v string) {
 }
 
 // GetAmount returns the Amount field value
-func (o *ChargeCreateRequest) GetAmount() string {
+func (o *ChargeCreateRequest) GetAmount() int32 {
 	if o == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 
@@ -102,7 +101,7 @@ func (o *ChargeCreateRequest) GetAmount() string {
 
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
-func (o *ChargeCreateRequest) GetAmountOk() (*string, bool) {
+func (o *ChargeCreateRequest) GetAmountOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -110,7 +109,7 @@ func (o *ChargeCreateRequest) GetAmountOk() (*string, bool) {
 }
 
 // SetAmount sets field value
-func (o *ChargeCreateRequest) SetAmount(v string) {
+func (o *ChargeCreateRequest) SetAmount(v int32) {
 	o.Amount = v
 }
 
@@ -211,9 +210,9 @@ func (o *ChargeCreateRequest) SetReference(v string) {
 }
 
 // GetBirthday returns the Birthday field value if set, zero value otherwise.
-func (o *ChargeCreateRequest) GetBirthday() time.Time {
+func (o *ChargeCreateRequest) GetBirthday() string {
 	if o == nil || IsNil(o.Birthday) {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 	return *o.Birthday
@@ -221,7 +220,7 @@ func (o *ChargeCreateRequest) GetBirthday() time.Time {
 
 // GetBirthdayOk returns a tuple with the Birthday field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ChargeCreateRequest) GetBirthdayOk() (*time.Time, bool) {
+func (o *ChargeCreateRequest) GetBirthdayOk() (*string, bool) {
 	if o == nil || IsNil(o.Birthday) {
 		return nil, false
 	}
@@ -237,8 +236,8 @@ func (o *ChargeCreateRequest) HasBirthday() bool {
 	return false
 }
 
-// SetBirthday gets a reference to the given time.Time and assigns it to the Birthday field.
-func (o *ChargeCreateRequest) SetBirthday(v time.Time) {
+// SetBirthday gets a reference to the given string and assigns it to the Birthday field.
+func (o *ChargeCreateRequest) SetBirthday(v string) {
 	o.Birthday = &v
 }
 
@@ -275,19 +274,19 @@ func (o *ChargeCreateRequest) SetDeviceId(v string) {
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *ChargeCreateRequest) GetMetadata() string {
+func (o *ChargeCreateRequest) GetMetadata() map[string]interface{} {
 	if o == nil || IsNil(o.Metadata) {
-		var ret string
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Metadata
+	return o.Metadata
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ChargeCreateRequest) GetMetadataOk() (*string, bool) {
+func (o *ChargeCreateRequest) GetMetadataOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Metadata) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Metadata, true
 }
@@ -301,9 +300,9 @@ func (o *ChargeCreateRequest) HasMetadata() bool {
 	return false
 }
 
-// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
-func (o *ChargeCreateRequest) SetMetadata(v string) {
-	o.Metadata = &v
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
+func (o *ChargeCreateRequest) SetMetadata(v map[string]interface{}) {
+	o.Metadata = v
 }
 
 // GetBank returns the Bank field value if set, zero value otherwise.

@@ -3,6 +3,10 @@
 packageName: alexasomba_paystack
 projectName: alexasomba-paystack
 packageVersion: 0.1.0
+# Used for README/repository metadata in generator templates
+gitHost: github.com
+gitUserId: alexasomba
+gitRepoId: paystack-openapi
 # Keep it small and broadly compatible
 library: urllib3
 hideGenerationTimestamp: true

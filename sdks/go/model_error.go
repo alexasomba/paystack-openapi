@@ -20,8 +20,17 @@ var _ MappedNullable = &Error{}
 
 // Error struct for Error
 type Error struct {
+	// An indicator for the state of the request
 	Status *bool `json:"status,omitempty"`
+	// A short description of the error
 	Message *string `json:"message,omitempty"`
+	Meta *ErrorMeta `json:"meta,omitempty"`
+	// A tag to indicate the type of the error
+	Type *string `json:"type,omitempty"`
+	// The error code
+	Code *string `json:"code,omitempty"`
+	// An indicator for error mapping for the request
+	ErrorCodeMappingNotFound *bool `json:"errorCodeMappingNotFound,omitempty"`
 }
 
 // NewError instantiates a new Error object
@@ -105,6 +114,134 @@ func (o *Error) SetMessage(v string) {
 	o.Message = &v
 }
 
+// GetMeta returns the Meta field value if set, zero value otherwise.
+func (o *Error) GetMeta() ErrorMeta {
+	if o == nil || IsNil(o.Meta) {
+		var ret ErrorMeta
+		return ret
+	}
+	return *o.Meta
+}
+
+// GetMetaOk returns a tuple with the Meta field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Error) GetMetaOk() (*ErrorMeta, bool) {
+	if o == nil || IsNil(o.Meta) {
+		return nil, false
+	}
+	return o.Meta, true
+}
+
+// HasMeta returns a boolean if a field has been set.
+func (o *Error) HasMeta() bool {
+	if o != nil && !IsNil(o.Meta) {
+		return true
+	}
+
+	return false
+}
+
+// SetMeta gets a reference to the given ErrorMeta and assigns it to the Meta field.
+func (o *Error) SetMeta(v ErrorMeta) {
+	o.Meta = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *Error) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Error) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *Error) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *Error) SetType(v string) {
+	o.Type = &v
+}
+
+// GetCode returns the Code field value if set, zero value otherwise.
+func (o *Error) GetCode() string {
+	if o == nil || IsNil(o.Code) {
+		var ret string
+		return ret
+	}
+	return *o.Code
+}
+
+// GetCodeOk returns a tuple with the Code field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Error) GetCodeOk() (*string, bool) {
+	if o == nil || IsNil(o.Code) {
+		return nil, false
+	}
+	return o.Code, true
+}
+
+// HasCode returns a boolean if a field has been set.
+func (o *Error) HasCode() bool {
+	if o != nil && !IsNil(o.Code) {
+		return true
+	}
+
+	return false
+}
+
+// SetCode gets a reference to the given string and assigns it to the Code field.
+func (o *Error) SetCode(v string) {
+	o.Code = &v
+}
+
+// GetErrorCodeMappingNotFound returns the ErrorCodeMappingNotFound field value if set, zero value otherwise.
+func (o *Error) GetErrorCodeMappingNotFound() bool {
+	if o == nil || IsNil(o.ErrorCodeMappingNotFound) {
+		var ret bool
+		return ret
+	}
+	return *o.ErrorCodeMappingNotFound
+}
+
+// GetErrorCodeMappingNotFoundOk returns a tuple with the ErrorCodeMappingNotFound field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Error) GetErrorCodeMappingNotFoundOk() (*bool, bool) {
+	if o == nil || IsNil(o.ErrorCodeMappingNotFound) {
+		return nil, false
+	}
+	return o.ErrorCodeMappingNotFound, true
+}
+
+// HasErrorCodeMappingNotFound returns a boolean if a field has been set.
+func (o *Error) HasErrorCodeMappingNotFound() bool {
+	if o != nil && !IsNil(o.ErrorCodeMappingNotFound) {
+		return true
+	}
+
+	return false
+}
+
+// SetErrorCodeMappingNotFound gets a reference to the given bool and assigns it to the ErrorCodeMappingNotFound field.
+func (o *Error) SetErrorCodeMappingNotFound(v bool) {
+	o.ErrorCodeMappingNotFound = &v
+}
+
 func (o Error) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -120,6 +257,18 @@ func (o Error) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
+	}
+	if !IsNil(o.Meta) {
+		toSerialize["meta"] = o.Meta
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Code) {
+		toSerialize["code"] = o.Code
+	}
+	if !IsNil(o.ErrorCodeMappingNotFound) {
+		toSerialize["errorCodeMappingNotFound"] = o.ErrorCodeMappingNotFound
 	}
 	return toSerialize, nil
 }

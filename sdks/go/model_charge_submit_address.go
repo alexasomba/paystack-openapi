@@ -29,7 +29,7 @@ type ChargeSubmitAddress struct {
 	// Customer's state
 	State string `json:"state"`
 	// Customer's zipcode
-	Zipcode string `json:"zipcode"`
+	ZipCode string `json:"zip_code"`
 	// The reference of the ongoing transaction
 	Reference string `json:"reference"`
 }
@@ -40,12 +40,12 @@ type _ChargeSubmitAddress ChargeSubmitAddress
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChargeSubmitAddress(address string, city string, state string, zipcode string, reference string) *ChargeSubmitAddress {
+func NewChargeSubmitAddress(address string, city string, state string, zipCode string, reference string) *ChargeSubmitAddress {
 	this := ChargeSubmitAddress{}
 	this.Address = address
 	this.City = city
 	this.State = state
-	this.Zipcode = zipcode
+	this.ZipCode = zipCode
 	this.Reference = reference
 	return &this
 }
@@ -130,28 +130,28 @@ func (o *ChargeSubmitAddress) SetState(v string) {
 	o.State = v
 }
 
-// GetZipcode returns the Zipcode field value
-func (o *ChargeSubmitAddress) GetZipcode() string {
+// GetZipCode returns the ZipCode field value
+func (o *ChargeSubmitAddress) GetZipCode() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Zipcode
+	return o.ZipCode
 }
 
-// GetZipcodeOk returns a tuple with the Zipcode field value
+// GetZipCodeOk returns a tuple with the ZipCode field value
 // and a boolean to check if the value has been set.
-func (o *ChargeSubmitAddress) GetZipcodeOk() (*string, bool) {
+func (o *ChargeSubmitAddress) GetZipCodeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Zipcode, true
+	return &o.ZipCode, true
 }
 
-// SetZipcode sets field value
-func (o *ChargeSubmitAddress) SetZipcode(v string) {
-	o.Zipcode = v
+// SetZipCode sets field value
+func (o *ChargeSubmitAddress) SetZipCode(v string) {
+	o.ZipCode = v
 }
 
 // GetReference returns the Reference field value
@@ -191,7 +191,7 @@ func (o ChargeSubmitAddress) ToMap() (map[string]interface{}, error) {
 	toSerialize["address"] = o.Address
 	toSerialize["city"] = o.City
 	toSerialize["state"] = o.State
-	toSerialize["zipcode"] = o.Zipcode
+	toSerialize["zip_code"] = o.ZipCode
 	toSerialize["reference"] = o.Reference
 	return toSerialize, nil
 }
@@ -204,7 +204,7 @@ func (o *ChargeSubmitAddress) UnmarshalJSON(data []byte) (err error) {
 		"address",
 		"city",
 		"state",
-		"zipcode",
+		"zip_code",
 		"reference",
 	}
 

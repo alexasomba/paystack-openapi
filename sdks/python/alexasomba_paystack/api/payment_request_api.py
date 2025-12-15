@@ -18,10 +18,19 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from datetime import datetime
-from pydantic import Field, StrictInt, StrictStr
-from typing import Any, Dict, List, Optional
+from pydantic import Field, StrictInt, StrictStr, field_validator
+from typing import Optional
 from typing_extensions import Annotated
-from alexasomba_paystack.models.response import Response
+from alexasomba_paystack.models.payment_request_archive_response import PaymentRequestArchiveResponse
+from alexasomba_paystack.models.payment_request_create import PaymentRequestCreate
+from alexasomba_paystack.models.payment_request_create_response import PaymentRequestCreateResponse
+from alexasomba_paystack.models.payment_request_finalize_response import PaymentRequestFinalizeResponse
+from alexasomba_paystack.models.payment_request_list_response import PaymentRequestListResponse
+from alexasomba_paystack.models.payment_request_send_notification_response import PaymentRequestSendNotificationResponse
+from alexasomba_paystack.models.payment_request_total_response import PaymentRequestTotalResponse
+from alexasomba_paystack.models.payment_request_update import PaymentRequestUpdate
+from alexasomba_paystack.models.payment_request_update_response import PaymentRequestUpdateResponse
+from alexasomba_paystack.models.payment_request_verify_response import PaymentRequestVerifyResponse
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
 from alexasomba_paystack.api_response import ApiResponse
@@ -44,7 +53,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_archive(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -57,12 +66,13 @@ class PaymentRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> PaymentRequestArchiveResponse:
         """Archive Payment Request
 
+        Archive a payment request to clean up your records. An archived payment request cannot be verified and will not  be returned when listing all previously created payment requests. 
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of a previously created payment request (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -94,7 +104,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestArchiveResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -111,7 +121,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_archive_with_http_info(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -124,12 +134,13 @@ class PaymentRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[PaymentRequestArchiveResponse]:
         """Archive Payment Request
 
+        Archive a payment request to clean up your records. An archived payment request cannot be verified and will not  be returned when listing all previously created payment requests. 
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of a previously created payment request (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -161,7 +172,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestArchiveResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -178,7 +189,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_archive_without_preload_content(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -194,9 +205,10 @@ class PaymentRequestApi:
     ) -> RESTResponseType:
         """Archive Payment Request
 
+        Archive a payment request to clean up your records. An archived payment request cannot be verified and will not  be returned when listing all previously created payment requests. 
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of a previously created payment request (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -228,7 +240,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestArchiveResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -305,18 +317,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_create(
         self,
-        customer: Annotated[StrictStr, Field(description="Customer id or code")],
-        amount: Annotated[Optional[StrictInt], Field(description="Payment request amount. Only useful if line items and tax values are ignored.  The endpoint will throw a friendly warning if neither is available.")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN")] = None,
-        due_date: Annotated[Optional[datetime], Field(description="ISO 8601 representation of request due date")] = None,
-        description: Annotated[Optional[StrictStr], Field(description="A short description of the payment request")] = None,
-        line_items: Annotated[Optional[List[Dict[str, Any]]], Field(description="Array of line items")] = None,
-        tax: Annotated[Optional[List[Dict[str, Any]]], Field(description="Array of taxes")] = None,
-        send_notification: Annotated[Optional[List[Dict[str, Any]]], Field(description="Indicates whether Paystack sends an email notification to customer. Defaults to true")] = None,
-        draft: Annotated[Optional[List[Dict[str, Any]]], Field(description="Indicate if request should be saved as draft. Defaults to false and overrides send_notification")] = None,
-        has_invoice: Annotated[Optional[List[Dict[str, Any]]], Field(description="Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided)  even if there are no line_items or tax passed")] = None,
-        invoice_number: Annotated[Optional[StrictInt], Field(description="Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help  override whatever value Paystack decides. Auto increment for subsequent invoices continue from this point.")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="The split code of the transaction split.")] = None,
+        payment_request_create: Optional[PaymentRequestCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -329,34 +330,13 @@ class PaymentRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> PaymentRequestCreateResponse:
         """Create Payment Request
 
+        Create a new payment request by issuing an invoice to a customer
 
-        :param customer: Customer id or code (required)
-        :type customer: str
-        :param amount: Payment request amount. Only useful if line items and tax values are ignored.  The endpoint will throw a friendly warning if neither is available.
-        :type amount: int
-        :param currency: Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN
-        :type currency: str
-        :param due_date: ISO 8601 representation of request due date
-        :type due_date: datetime
-        :param description: A short description of the payment request
-        :type description: str
-        :param line_items: Array of line items
-        :type line_items: List[object]
-        :param tax: Array of taxes
-        :type tax: List[object]
-        :param send_notification: Indicates whether Paystack sends an email notification to customer. Defaults to true
-        :type send_notification: List[object]
-        :param draft: Indicate if request should be saved as draft. Defaults to false and overrides send_notification
-        :type draft: List[object]
-        :param has_invoice: Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided)  even if there are no line_items or tax passed
-        :type has_invoice: List[object]
-        :param invoice_number: Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help  override whatever value Paystack decides. Auto increment for subsequent invoices continue from this point.
-        :type invoice_number: int
-        :param split_code: The split code of the transaction split.
-        :type split_code: str
+        :param payment_request_create:
+        :type payment_request_create: PaymentRequestCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -380,18 +360,7 @@ class PaymentRequestApi:
         """ # noqa: E501
 
         _param = self._payment_request_create_serialize(
-            customer=customer,
-            amount=amount,
-            currency=currency,
-            due_date=due_date,
-            description=description,
-            line_items=line_items,
-            tax=tax,
-            send_notification=send_notification,
-            draft=draft,
-            has_invoice=has_invoice,
-            invoice_number=invoice_number,
-            split_code=split_code,
+            payment_request_create=payment_request_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -399,7 +368,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -416,18 +385,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_create_with_http_info(
         self,
-        customer: Annotated[StrictStr, Field(description="Customer id or code")],
-        amount: Annotated[Optional[StrictInt], Field(description="Payment request amount. Only useful if line items and tax values are ignored.  The endpoint will throw a friendly warning if neither is available.")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN")] = None,
-        due_date: Annotated[Optional[datetime], Field(description="ISO 8601 representation of request due date")] = None,
-        description: Annotated[Optional[StrictStr], Field(description="A short description of the payment request")] = None,
-        line_items: Annotated[Optional[List[Dict[str, Any]]], Field(description="Array of line items")] = None,
-        tax: Annotated[Optional[List[Dict[str, Any]]], Field(description="Array of taxes")] = None,
-        send_notification: Annotated[Optional[List[Dict[str, Any]]], Field(description="Indicates whether Paystack sends an email notification to customer. Defaults to true")] = None,
-        draft: Annotated[Optional[List[Dict[str, Any]]], Field(description="Indicate if request should be saved as draft. Defaults to false and overrides send_notification")] = None,
-        has_invoice: Annotated[Optional[List[Dict[str, Any]]], Field(description="Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided)  even if there are no line_items or tax passed")] = None,
-        invoice_number: Annotated[Optional[StrictInt], Field(description="Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help  override whatever value Paystack decides. Auto increment for subsequent invoices continue from this point.")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="The split code of the transaction split.")] = None,
+        payment_request_create: Optional[PaymentRequestCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -440,34 +398,13 @@ class PaymentRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[PaymentRequestCreateResponse]:
         """Create Payment Request
 
+        Create a new payment request by issuing an invoice to a customer
 
-        :param customer: Customer id or code (required)
-        :type customer: str
-        :param amount: Payment request amount. Only useful if line items and tax values are ignored.  The endpoint will throw a friendly warning if neither is available.
-        :type amount: int
-        :param currency: Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN
-        :type currency: str
-        :param due_date: ISO 8601 representation of request due date
-        :type due_date: datetime
-        :param description: A short description of the payment request
-        :type description: str
-        :param line_items: Array of line items
-        :type line_items: List[object]
-        :param tax: Array of taxes
-        :type tax: List[object]
-        :param send_notification: Indicates whether Paystack sends an email notification to customer. Defaults to true
-        :type send_notification: List[object]
-        :param draft: Indicate if request should be saved as draft. Defaults to false and overrides send_notification
-        :type draft: List[object]
-        :param has_invoice: Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided)  even if there are no line_items or tax passed
-        :type has_invoice: List[object]
-        :param invoice_number: Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help  override whatever value Paystack decides. Auto increment for subsequent invoices continue from this point.
-        :type invoice_number: int
-        :param split_code: The split code of the transaction split.
-        :type split_code: str
+        :param payment_request_create:
+        :type payment_request_create: PaymentRequestCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -491,18 +428,7 @@ class PaymentRequestApi:
         """ # noqa: E501
 
         _param = self._payment_request_create_serialize(
-            customer=customer,
-            amount=amount,
-            currency=currency,
-            due_date=due_date,
-            description=description,
-            line_items=line_items,
-            tax=tax,
-            send_notification=send_notification,
-            draft=draft,
-            has_invoice=has_invoice,
-            invoice_number=invoice_number,
-            split_code=split_code,
+            payment_request_create=payment_request_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -510,7 +436,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -527,18 +453,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_create_without_preload_content(
         self,
-        customer: Annotated[StrictStr, Field(description="Customer id or code")],
-        amount: Annotated[Optional[StrictInt], Field(description="Payment request amount. Only useful if line items and tax values are ignored.  The endpoint will throw a friendly warning if neither is available.")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN")] = None,
-        due_date: Annotated[Optional[datetime], Field(description="ISO 8601 representation of request due date")] = None,
-        description: Annotated[Optional[StrictStr], Field(description="A short description of the payment request")] = None,
-        line_items: Annotated[Optional[List[Dict[str, Any]]], Field(description="Array of line items")] = None,
-        tax: Annotated[Optional[List[Dict[str, Any]]], Field(description="Array of taxes")] = None,
-        send_notification: Annotated[Optional[List[Dict[str, Any]]], Field(description="Indicates whether Paystack sends an email notification to customer. Defaults to true")] = None,
-        draft: Annotated[Optional[List[Dict[str, Any]]], Field(description="Indicate if request should be saved as draft. Defaults to false and overrides send_notification")] = None,
-        has_invoice: Annotated[Optional[List[Dict[str, Any]]], Field(description="Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided)  even if there are no line_items or tax passed")] = None,
-        invoice_number: Annotated[Optional[StrictInt], Field(description="Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help  override whatever value Paystack decides. Auto increment for subsequent invoices continue from this point.")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="The split code of the transaction split.")] = None,
+        payment_request_create: Optional[PaymentRequestCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -554,31 +469,10 @@ class PaymentRequestApi:
     ) -> RESTResponseType:
         """Create Payment Request
 
+        Create a new payment request by issuing an invoice to a customer
 
-        :param customer: Customer id or code (required)
-        :type customer: str
-        :param amount: Payment request amount. Only useful if line items and tax values are ignored.  The endpoint will throw a friendly warning if neither is available.
-        :type amount: int
-        :param currency: Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN
-        :type currency: str
-        :param due_date: ISO 8601 representation of request due date
-        :type due_date: datetime
-        :param description: A short description of the payment request
-        :type description: str
-        :param line_items: Array of line items
-        :type line_items: List[object]
-        :param tax: Array of taxes
-        :type tax: List[object]
-        :param send_notification: Indicates whether Paystack sends an email notification to customer. Defaults to true
-        :type send_notification: List[object]
-        :param draft: Indicate if request should be saved as draft. Defaults to false and overrides send_notification
-        :type draft: List[object]
-        :param has_invoice: Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided)  even if there are no line_items or tax passed
-        :type has_invoice: List[object]
-        :param invoice_number: Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help  override whatever value Paystack decides. Auto increment for subsequent invoices continue from this point.
-        :type invoice_number: int
-        :param split_code: The split code of the transaction split.
-        :type split_code: str
+        :param payment_request_create:
+        :type payment_request_create: PaymentRequestCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -602,18 +496,7 @@ class PaymentRequestApi:
         """ # noqa: E501
 
         _param = self._payment_request_create_serialize(
-            customer=customer,
-            amount=amount,
-            currency=currency,
-            due_date=due_date,
-            description=description,
-            line_items=line_items,
-            tax=tax,
-            send_notification=send_notification,
-            draft=draft,
-            has_invoice=has_invoice,
-            invoice_number=invoice_number,
-            split_code=split_code,
+            payment_request_create=payment_request_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -621,7 +504,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -633,18 +516,7 @@ class PaymentRequestApi:
 
     def _payment_request_create_serialize(
         self,
-        customer,
-        amount,
-        currency,
-        due_date,
-        description,
-        line_items,
-        tax,
-        send_notification,
-        draft,
-        has_invoice,
-        invoice_number,
-        split_code,
+        payment_request_create,
         _request_auth,
         _content_type,
         _headers,
@@ -654,11 +526,6 @@ class PaymentRequestApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'line_items': 'csv',
-            'tax': 'csv',
-            'send_notification': 'csv',
-            'draft': 'csv',
-            'has_invoice': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -674,31 +541,9 @@ class PaymentRequestApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if customer is not None:
-            _form_params.append(('customer', customer))
-        if amount is not None:
-            _form_params.append(('amount', amount))
-        if currency is not None:
-            _form_params.append(('currency', currency))
-        if due_date is not None:
-            _form_params.append(('due_date', due_date))
-        if description is not None:
-            _form_params.append(('description', description))
-        if line_items is not None:
-            _form_params.append(('line_items', line_items))
-        if tax is not None:
-            _form_params.append(('tax', tax))
-        if send_notification is not None:
-            _form_params.append(('send_notification', send_notification))
-        if draft is not None:
-            _form_params.append(('draft', draft))
-        if has_invoice is not None:
-            _form_params.append(('has_invoice', has_invoice))
-        if invoice_number is not None:
-            _form_params.append(('invoice_number', invoice_number))
-        if split_code is not None:
-            _form_params.append(('split_code', split_code))
         # process the body parameter
+        if payment_request_create is not None:
+            _body_params = payment_request_create
 
 
         # set the HTTP header `Accept`
@@ -716,8 +561,8 @@ class PaymentRequestApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -750,7 +595,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_fetch(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -763,12 +608,13 @@ class PaymentRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> PaymentRequestListResponse:
         """Fetch Payment Request
 
+        Fetch a previously created payment request
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of a previously created payment request (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -800,7 +646,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -818,7 +664,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_fetch_with_http_info(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -831,12 +677,13 @@ class PaymentRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[PaymentRequestListResponse]:
         """Fetch Payment Request
 
+        Fetch a previously created payment request
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of a previously created payment request (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -868,7 +715,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -886,7 +733,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_fetch_without_preload_content(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -902,9 +749,10 @@ class PaymentRequestApi:
     ) -> RESTResponseType:
         """Fetch Payment Request
 
+        Fetch a previously created payment request
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of a previously created payment request (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -936,7 +784,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1014,7 +862,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_finalize(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a draft payment request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1027,12 +875,13 @@ class PaymentRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> PaymentRequestFinalizeResponse:
         """Finalize Payment Request
 
+        Finalise the creation of a draft payment request for a customer
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of a draft payment request (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1064,7 +913,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestFinalizeResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1081,7 +930,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_finalize_with_http_info(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a draft payment request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1094,12 +943,13 @@ class PaymentRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[PaymentRequestFinalizeResponse]:
         """Finalize Payment Request
 
+        Finalise the creation of a draft payment request for a customer
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of a draft payment request (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1131,7 +981,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestFinalizeResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1148,7 +998,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_finalize_without_preload_content(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a draft payment request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1164,9 +1014,10 @@ class PaymentRequestApi:
     ) -> RESTResponseType:
         """Finalize Payment Request
 
+        Finalise the creation of a draft payment request for a customer
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of a draft payment request (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1198,7 +1049,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestFinalizeResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1294,9 +1145,10 @@ class PaymentRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> PaymentRequestListResponse:
         """List Payment Request
 
+        List all previously created payment requests to your customers
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
@@ -1349,7 +1201,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1386,9 +1238,10 @@ class PaymentRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[PaymentRequestListResponse]:
         """List Payment Request
 
+        List all previously created payment requests to your customers
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
@@ -1441,7 +1294,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1481,6 +1334,7 @@ class PaymentRequestApi:
     ) -> RESTResponseType:
         """List Payment Request
 
+        List all previously created payment requests to your customers
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
@@ -1533,7 +1387,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1661,7 +1515,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_notify(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1674,12 +1528,13 @@ class PaymentRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> PaymentRequestSendNotificationResponse:
         """Send Notification
 
+        Trigger an email reminder to a customer for a previously created payment request
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of a previously created payment request (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1711,7 +1566,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestSendNotificationResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1728,7 +1583,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_notify_with_http_info(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1741,12 +1596,13 @@ class PaymentRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[PaymentRequestSendNotificationResponse]:
         """Send Notification
 
+        Trigger an email reminder to a customer for a previously created payment request
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of a previously created payment request (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1778,7 +1634,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestSendNotificationResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1795,7 +1651,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_notify_without_preload_content(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1811,9 +1667,10 @@ class PaymentRequestApi:
     ) -> RESTResponseType:
         """Send Notification
 
+        Trigger an email reminder to a customer for a previously created payment request
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of a previously created payment request (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1845,7 +1702,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestSendNotificationResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1934,9 +1791,10 @@ class PaymentRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> PaymentRequestTotalResponse:
         """Payment Request Total
 
+        Get the metric of all pending and successful payment requests
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1968,7 +1826,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestTotalResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1998,9 +1856,10 @@ class PaymentRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[PaymentRequestTotalResponse]:
         """Payment Request Total
 
+        Get the metric of all pending and successful payment requests
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2032,7 +1891,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestTotalResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -2065,6 +1924,7 @@ class PaymentRequestApi:
     ) -> RESTResponseType:
         """Payment Request Total
 
+        Get the metric of all pending and successful payment requests
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2096,7 +1956,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestTotalResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -2171,19 +2031,8 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_update(
         self,
-        id: StrictStr,
-        customer: Annotated[Optional[StrictStr], Field(description="Customer id or code")] = None,
-        amount: Annotated[Optional[StrictInt], Field(description="Payment request amount. Only useful if line items and tax values are ignored.  The endpoint will throw a friendly warning if neither is available.")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN")] = None,
-        due_date: Annotated[Optional[datetime], Field(description="ISO 8601 representation of request due date")] = None,
-        description: Annotated[Optional[StrictStr], Field(description="A short description of the payment request")] = None,
-        line_items: Annotated[Optional[List[Dict[str, Any]]], Field(description="Array of line items")] = None,
-        tax: Annotated[Optional[List[Dict[str, Any]]], Field(description="Array of taxes")] = None,
-        send_notification: Annotated[Optional[List[Dict[str, Any]]], Field(description="Indicates whether Paystack sends an email notification to customer. Defaults to true")] = None,
-        draft: Annotated[Optional[List[Dict[str, Any]]], Field(description="Indicate if request should be saved as draft. Defaults to false and overrides send_notification")] = None,
-        has_invoice: Annotated[Optional[List[Dict[str, Any]]], Field(description="Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided)  even if there are no line_items or tax passed")] = None,
-        invoice_number: Annotated[Optional[StrictInt], Field(description="Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help  override whatever value Paystack decides. Auto increment for subsequent invoices continue from this point.")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="The split code of the transaction split.")] = None,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
+        payment_request_update: Optional[PaymentRequestUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2196,36 +2045,15 @@ class PaymentRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> PaymentRequestUpdateResponse:
         """Update Payment Request
 
+        Update a previously created payment request
 
-        :param id: (required)
-        :type id: str
-        :param customer: Customer id or code
-        :type customer: str
-        :param amount: Payment request amount. Only useful if line items and tax values are ignored.  The endpoint will throw a friendly warning if neither is available.
-        :type amount: int
-        :param currency: Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN
-        :type currency: str
-        :param due_date: ISO 8601 representation of request due date
-        :type due_date: datetime
-        :param description: A short description of the payment request
-        :type description: str
-        :param line_items: Array of line items
-        :type line_items: List[object]
-        :param tax: Array of taxes
-        :type tax: List[object]
-        :param send_notification: Indicates whether Paystack sends an email notification to customer. Defaults to true
-        :type send_notification: List[object]
-        :param draft: Indicate if request should be saved as draft. Defaults to false and overrides send_notification
-        :type draft: List[object]
-        :param has_invoice: Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided)  even if there are no line_items or tax passed
-        :type has_invoice: List[object]
-        :param invoice_number: Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help  override whatever value Paystack decides. Auto increment for subsequent invoices continue from this point.
-        :type invoice_number: int
-        :param split_code: The split code of the transaction split.
-        :type split_code: str
+        :param id: The unique identifier of a previously created payment request (required)
+        :type id: int
+        :param payment_request_update:
+        :type payment_request_update: PaymentRequestUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2250,18 +2078,7 @@ class PaymentRequestApi:
 
         _param = self._payment_request_update_serialize(
             id=id,
-            customer=customer,
-            amount=amount,
-            currency=currency,
-            due_date=due_date,
-            description=description,
-            line_items=line_items,
-            tax=tax,
-            send_notification=send_notification,
-            draft=draft,
-            has_invoice=has_invoice,
-            invoice_number=invoice_number,
-            split_code=split_code,
+            payment_request_update=payment_request_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2269,7 +2086,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -2287,19 +2104,8 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_update_with_http_info(
         self,
-        id: StrictStr,
-        customer: Annotated[Optional[StrictStr], Field(description="Customer id or code")] = None,
-        amount: Annotated[Optional[StrictInt], Field(description="Payment request amount. Only useful if line items and tax values are ignored.  The endpoint will throw a friendly warning if neither is available.")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN")] = None,
-        due_date: Annotated[Optional[datetime], Field(description="ISO 8601 representation of request due date")] = None,
-        description: Annotated[Optional[StrictStr], Field(description="A short description of the payment request")] = None,
-        line_items: Annotated[Optional[List[Dict[str, Any]]], Field(description="Array of line items")] = None,
-        tax: Annotated[Optional[List[Dict[str, Any]]], Field(description="Array of taxes")] = None,
-        send_notification: Annotated[Optional[List[Dict[str, Any]]], Field(description="Indicates whether Paystack sends an email notification to customer. Defaults to true")] = None,
-        draft: Annotated[Optional[List[Dict[str, Any]]], Field(description="Indicate if request should be saved as draft. Defaults to false and overrides send_notification")] = None,
-        has_invoice: Annotated[Optional[List[Dict[str, Any]]], Field(description="Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided)  even if there are no line_items or tax passed")] = None,
-        invoice_number: Annotated[Optional[StrictInt], Field(description="Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help  override whatever value Paystack decides. Auto increment for subsequent invoices continue from this point.")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="The split code of the transaction split.")] = None,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
+        payment_request_update: Optional[PaymentRequestUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2312,36 +2118,15 @@ class PaymentRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[PaymentRequestUpdateResponse]:
         """Update Payment Request
 
+        Update a previously created payment request
 
-        :param id: (required)
-        :type id: str
-        :param customer: Customer id or code
-        :type customer: str
-        :param amount: Payment request amount. Only useful if line items and tax values are ignored.  The endpoint will throw a friendly warning if neither is available.
-        :type amount: int
-        :param currency: Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN
-        :type currency: str
-        :param due_date: ISO 8601 representation of request due date
-        :type due_date: datetime
-        :param description: A short description of the payment request
-        :type description: str
-        :param line_items: Array of line items
-        :type line_items: List[object]
-        :param tax: Array of taxes
-        :type tax: List[object]
-        :param send_notification: Indicates whether Paystack sends an email notification to customer. Defaults to true
-        :type send_notification: List[object]
-        :param draft: Indicate if request should be saved as draft. Defaults to false and overrides send_notification
-        :type draft: List[object]
-        :param has_invoice: Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided)  even if there are no line_items or tax passed
-        :type has_invoice: List[object]
-        :param invoice_number: Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help  override whatever value Paystack decides. Auto increment for subsequent invoices continue from this point.
-        :type invoice_number: int
-        :param split_code: The split code of the transaction split.
-        :type split_code: str
+        :param id: The unique identifier of a previously created payment request (required)
+        :type id: int
+        :param payment_request_update:
+        :type payment_request_update: PaymentRequestUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2366,18 +2151,7 @@ class PaymentRequestApi:
 
         _param = self._payment_request_update_serialize(
             id=id,
-            customer=customer,
-            amount=amount,
-            currency=currency,
-            due_date=due_date,
-            description=description,
-            line_items=line_items,
-            tax=tax,
-            send_notification=send_notification,
-            draft=draft,
-            has_invoice=has_invoice,
-            invoice_number=invoice_number,
-            split_code=split_code,
+            payment_request_update=payment_request_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2385,7 +2159,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -2403,19 +2177,8 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_update_without_preload_content(
         self,
-        id: StrictStr,
-        customer: Annotated[Optional[StrictStr], Field(description="Customer id or code")] = None,
-        amount: Annotated[Optional[StrictInt], Field(description="Payment request amount. Only useful if line items and tax values are ignored.  The endpoint will throw a friendly warning if neither is available.")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN")] = None,
-        due_date: Annotated[Optional[datetime], Field(description="ISO 8601 representation of request due date")] = None,
-        description: Annotated[Optional[StrictStr], Field(description="A short description of the payment request")] = None,
-        line_items: Annotated[Optional[List[Dict[str, Any]]], Field(description="Array of line items")] = None,
-        tax: Annotated[Optional[List[Dict[str, Any]]], Field(description="Array of taxes")] = None,
-        send_notification: Annotated[Optional[List[Dict[str, Any]]], Field(description="Indicates whether Paystack sends an email notification to customer. Defaults to true")] = None,
-        draft: Annotated[Optional[List[Dict[str, Any]]], Field(description="Indicate if request should be saved as draft. Defaults to false and overrides send_notification")] = None,
-        has_invoice: Annotated[Optional[List[Dict[str, Any]]], Field(description="Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided)  even if there are no line_items or tax passed")] = None,
-        invoice_number: Annotated[Optional[StrictInt], Field(description="Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help  override whatever value Paystack decides. Auto increment for subsequent invoices continue from this point.")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="The split code of the transaction split.")] = None,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
+        payment_request_update: Optional[PaymentRequestUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2431,33 +2194,12 @@ class PaymentRequestApi:
     ) -> RESTResponseType:
         """Update Payment Request
 
+        Update a previously created payment request
 
-        :param id: (required)
-        :type id: str
-        :param customer: Customer id or code
-        :type customer: str
-        :param amount: Payment request amount. Only useful if line items and tax values are ignored.  The endpoint will throw a friendly warning if neither is available.
-        :type amount: int
-        :param currency: Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN
-        :type currency: str
-        :param due_date: ISO 8601 representation of request due date
-        :type due_date: datetime
-        :param description: A short description of the payment request
-        :type description: str
-        :param line_items: Array of line items
-        :type line_items: List[object]
-        :param tax: Array of taxes
-        :type tax: List[object]
-        :param send_notification: Indicates whether Paystack sends an email notification to customer. Defaults to true
-        :type send_notification: List[object]
-        :param draft: Indicate if request should be saved as draft. Defaults to false and overrides send_notification
-        :type draft: List[object]
-        :param has_invoice: Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided)  even if there are no line_items or tax passed
-        :type has_invoice: List[object]
-        :param invoice_number: Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help  override whatever value Paystack decides. Auto increment for subsequent invoices continue from this point.
-        :type invoice_number: int
-        :param split_code: The split code of the transaction split.
-        :type split_code: str
+        :param id: The unique identifier of a previously created payment request (required)
+        :type id: int
+        :param payment_request_update:
+        :type payment_request_update: PaymentRequestUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2482,18 +2224,7 @@ class PaymentRequestApi:
 
         _param = self._payment_request_update_serialize(
             id=id,
-            customer=customer,
-            amount=amount,
-            currency=currency,
-            due_date=due_date,
-            description=description,
-            line_items=line_items,
-            tax=tax,
-            send_notification=send_notification,
-            draft=draft,
-            has_invoice=has_invoice,
-            invoice_number=invoice_number,
-            split_code=split_code,
+            payment_request_update=payment_request_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2501,7 +2232,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -2515,18 +2246,7 @@ class PaymentRequestApi:
     def _payment_request_update_serialize(
         self,
         id,
-        customer,
-        amount,
-        currency,
-        due_date,
-        description,
-        line_items,
-        tax,
-        send_notification,
-        draft,
-        has_invoice,
-        invoice_number,
-        split_code,
+        payment_request_update,
         _request_auth,
         _content_type,
         _headers,
@@ -2536,11 +2256,6 @@ class PaymentRequestApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'line_items': 'csv',
-            'tax': 'csv',
-            'send_notification': 'csv',
-            'draft': 'csv',
-            'has_invoice': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2558,31 +2273,9 @@ class PaymentRequestApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if customer is not None:
-            _form_params.append(('customer', customer))
-        if amount is not None:
-            _form_params.append(('amount', amount))
-        if currency is not None:
-            _form_params.append(('currency', currency))
-        if due_date is not None:
-            _form_params.append(('due_date', due_date))
-        if description is not None:
-            _form_params.append(('description', description))
-        if line_items is not None:
-            _form_params.append(('line_items', line_items))
-        if tax is not None:
-            _form_params.append(('tax', tax))
-        if send_notification is not None:
-            _form_params.append(('send_notification', send_notification))
-        if draft is not None:
-            _form_params.append(('draft', draft))
-        if has_invoice is not None:
-            _form_params.append(('has_invoice', has_invoice))
-        if invoice_number is not None:
-            _form_params.append(('invoice_number', invoice_number))
-        if split_code is not None:
-            _form_params.append(('split_code', split_code))
         # process the body parameter
+        if payment_request_update is not None:
+            _body_params = payment_request_update
 
 
         # set the HTTP header `Accept`
@@ -2600,8 +2293,8 @@ class PaymentRequestApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -2634,7 +2327,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_verify(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2647,12 +2340,13 @@ class PaymentRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> PaymentRequestVerifyResponse:
         """Verify Payment Request
 
+        Verify the status of a previously created payment request
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of a previously created payment request (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2684,7 +2378,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestVerifyResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -2702,7 +2396,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_verify_with_http_info(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2715,12 +2409,13 @@ class PaymentRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[PaymentRequestVerifyResponse]:
         """Verify Payment Request
 
+        Verify the status of a previously created payment request
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of a previously created payment request (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2752,7 +2447,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestVerifyResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -2770,7 +2465,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_verify_without_preload_content(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2786,9 +2481,10 @@ class PaymentRequestApi:
     ) -> RESTResponseType:
         """Verify Payment Request
 
+        Verify the status of a previously created payment request
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of a previously created payment request (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2820,7 +2516,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PaymentRequestVerifyResponse",
             '401': "Error",
             '404': "Error",
         }

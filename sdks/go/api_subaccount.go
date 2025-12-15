@@ -18,7 +18,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	"time"
 )
 
 
@@ -28,77 +27,22 @@ type SubaccountAPIService service
 type ApiSubaccountCreateRequest struct {
 	ctx context.Context
 	ApiService *SubaccountAPIService
-	businessName *string
-	settlementBank *string
-	accountNumber *string
-	percentageCharge *float32
-	description *string
-	primaryContactEmail *string
-	primaryContactName *string
-	primaryContactPhone *string
-	metadata *string
+	subaccountCreate *SubaccountCreate
 }
 
-// Name of business for subaccount
-func (r ApiSubaccountCreateRequest) BusinessName(businessName string) ApiSubaccountCreateRequest {
-	r.businessName = &businessName
+func (r ApiSubaccountCreateRequest) SubaccountCreate(subaccountCreate SubaccountCreate) ApiSubaccountCreateRequest {
+	r.subaccountCreate = &subaccountCreate
 	return r
 }
 
-// Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint.
-func (r ApiSubaccountCreateRequest) SettlementBank(settlementBank string) ApiSubaccountCreateRequest {
-	r.settlementBank = &settlementBank
-	return r
-}
-
-// Bank account number
-func (r ApiSubaccountCreateRequest) AccountNumber(accountNumber string) ApiSubaccountCreateRequest {
-	r.accountNumber = &accountNumber
-	return r
-}
-
-// Customer&#39;s phone number
-func (r ApiSubaccountCreateRequest) PercentageCharge(percentageCharge float32) ApiSubaccountCreateRequest {
-	r.percentageCharge = &percentageCharge
-	return r
-}
-
-// A description for this subaccount
-func (r ApiSubaccountCreateRequest) Description(description string) ApiSubaccountCreateRequest {
-	r.description = &description
-	return r
-}
-
-// A contact email for the subaccount
-func (r ApiSubaccountCreateRequest) PrimaryContactEmail(primaryContactEmail string) ApiSubaccountCreateRequest {
-	r.primaryContactEmail = &primaryContactEmail
-	return r
-}
-
-// The name of the contact person for this subaccount
-func (r ApiSubaccountCreateRequest) PrimaryContactName(primaryContactName string) ApiSubaccountCreateRequest {
-	r.primaryContactName = &primaryContactName
-	return r
-}
-
-// A phone number to call for this subaccount
-func (r ApiSubaccountCreateRequest) PrimaryContactPhone(primaryContactPhone string) ApiSubaccountCreateRequest {
-	r.primaryContactPhone = &primaryContactPhone
-	return r
-}
-
-// Stringified JSON object of custom data
-func (r ApiSubaccountCreateRequest) Metadata(metadata string) ApiSubaccountCreateRequest {
-	r.metadata = &metadata
-	return r
-}
-
-func (r ApiSubaccountCreateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiSubaccountCreateRequest) Execute() (*SubaccountCreateResponse, *http.Response, error) {
 	return r.ApiService.SubaccountCreateExecute(r)
 }
 
 /*
 SubaccountCreate Create Subaccount
+
+Create a subacount for a partner
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSubaccountCreateRequest
@@ -111,13 +55,13 @@ func (a *SubaccountAPIService) SubaccountCreate(ctx context.Context) ApiSubaccou
 }
 
 // Execute executes the request
-//  @return Response
-func (a *SubaccountAPIService) SubaccountCreateExecute(r ApiSubaccountCreateRequest) (*Response, *http.Response, error) {
+//  @return SubaccountCreateResponse
+func (a *SubaccountAPIService) SubaccountCreateExecute(r ApiSubaccountCreateRequest) (*SubaccountCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *SubaccountCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubaccountAPIService.SubaccountCreate")
@@ -130,21 +74,9 @@ func (a *SubaccountAPIService) SubaccountCreateExecute(r ApiSubaccountCreateRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.businessName == nil {
-		return localVarReturnValue, nil, reportError("businessName is required and must be specified")
-	}
-	if r.settlementBank == nil {
-		return localVarReturnValue, nil, reportError("settlementBank is required and must be specified")
-	}
-	if r.accountNumber == nil {
-		return localVarReturnValue, nil, reportError("accountNumber is required and must be specified")
-	}
-	if r.percentageCharge == nil {
-		return localVarReturnValue, nil, reportError("percentageCharge is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -160,25 +92,8 @@ func (a *SubaccountAPIService) SubaccountCreateExecute(r ApiSubaccountCreateRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "business_name", r.businessName, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "settlement_bank", r.settlementBank, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "account_number", r.accountNumber, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "percentage_charge", r.percentageCharge, "", "")
-	if r.description != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "description", r.description, "", "")
-	}
-	if r.primaryContactEmail != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "primary_contact_email", r.primaryContactEmail, "", "")
-	}
-	if r.primaryContactName != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "primary_contact_name", r.primaryContactName, "", "")
-	}
-	if r.primaryContactPhone != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "primary_contact_phone", r.primaryContactPhone, "", "")
-	}
-	if r.metadata != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "metadata", r.metadata, "", "")
-	}
+	// body params
+	localVarPostBody = r.subaccountCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -233,15 +148,17 @@ type ApiSubaccountFetchRequest struct {
 	code string
 }
 
-func (r ApiSubaccountFetchRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiSubaccountFetchRequest) Execute() (*SubaccountFetchResponse, *http.Response, error) {
 	return r.ApiService.SubaccountFetchExecute(r)
 }
 
 /*
 SubaccountFetch Fetch Subaccount
 
+Get details of a subaccount on your integration
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code
+ @param code The subaccount code you want to fetch
  @return ApiSubaccountFetchRequest
 */
 func (a *SubaccountAPIService) SubaccountFetch(ctx context.Context, code string) ApiSubaccountFetchRequest {
@@ -253,13 +170,13 @@ func (a *SubaccountAPIService) SubaccountFetch(ctx context.Context, code string)
 }
 
 // Execute executes the request
-//  @return Response
-func (a *SubaccountAPIService) SubaccountFetchExecute(r ApiSubaccountFetchRequest) (*Response, *http.Response, error) {
+//  @return SubaccountFetchResponse
+func (a *SubaccountAPIService) SubaccountFetchExecute(r ApiSubaccountFetchRequest) (*SubaccountFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *SubaccountFetchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubaccountAPIService.SubaccountFetch")
@@ -355,40 +272,35 @@ type ApiSubaccountListRequest struct {
 	ApiService *SubaccountAPIService
 	perPage *int32
 	page *int32
-	from *time.Time
-	to *time.Time
+	active *bool
 }
 
-// Number of records to fetch per page
+// Number of records to fetch per request
 func (r ApiSubaccountListRequest) PerPage(perPage int32) ApiSubaccountListRequest {
 	r.perPage = &perPage
 	return r
 }
 
-// The section to retrieve
+// The offset to retrieve data from
 func (r ApiSubaccountListRequest) Page(page int32) ApiSubaccountListRequest {
 	r.page = &page
 	return r
 }
 
-// The start date
-func (r ApiSubaccountListRequest) From(from time.Time) ApiSubaccountListRequest {
-	r.from = &from
+// Filter by the state of the subaccounts
+func (r ApiSubaccountListRequest) Active(active bool) ApiSubaccountListRequest {
+	r.active = &active
 	return r
 }
 
-// The end date
-func (r ApiSubaccountListRequest) To(to time.Time) ApiSubaccountListRequest {
-	r.to = &to
-	return r
-}
-
-func (r ApiSubaccountListRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiSubaccountListRequest) Execute() (*SubaccountListResponse, *http.Response, error) {
 	return r.ApiService.SubaccountListExecute(r)
 }
 
 /*
 SubaccountList List Subaccounts
+
+List subaccounts available on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSubaccountListRequest
@@ -401,13 +313,13 @@ func (a *SubaccountAPIService) SubaccountList(ctx context.Context) ApiSubaccount
 }
 
 // Execute executes the request
-//  @return Response
-func (a *SubaccountAPIService) SubaccountListExecute(r ApiSubaccountListRequest) (*Response, *http.Response, error) {
+//  @return SubaccountListResponse
+func (a *SubaccountAPIService) SubaccountListExecute(r ApiSubaccountListRequest) (*SubaccountListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *SubaccountListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubaccountAPIService.SubaccountList")
@@ -423,15 +335,20 @@ func (a *SubaccountAPIService) SubaccountListExecute(r ApiSubaccountListRequest)
 
 	if r.perPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
+	} else {
+        var defaultValue int32 = 50
+        parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", defaultValue, "form", "")
+        r.perPage = &defaultValue
 	}
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	} else {
+        var defaultValue int32 = 1
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
 	}
-	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
-	}
-	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	if r.active != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -513,87 +430,25 @@ type ApiSubaccountUpdateRequest struct {
 	ctx context.Context
 	ApiService *SubaccountAPIService
 	code string
-	businessName *string
-	settlementBank *string
-	accountNumber *string
-	active *bool
-	percentageCharge *float32
-	description *string
-	primaryContactEmail *string
-	primaryContactName *string
-	primaryContactPhone *string
-	metadata *string
+	subaccountUpdate *SubaccountUpdate
 }
 
-// Name of business for subaccount
-func (r ApiSubaccountUpdateRequest) BusinessName(businessName string) ApiSubaccountUpdateRequest {
-	r.businessName = &businessName
+func (r ApiSubaccountUpdateRequest) SubaccountUpdate(subaccountUpdate SubaccountUpdate) ApiSubaccountUpdateRequest {
+	r.subaccountUpdate = &subaccountUpdate
 	return r
 }
 
-// Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint.
-func (r ApiSubaccountUpdateRequest) SettlementBank(settlementBank string) ApiSubaccountUpdateRequest {
-	r.settlementBank = &settlementBank
-	return r
-}
-
-// Bank account number
-func (r ApiSubaccountUpdateRequest) AccountNumber(accountNumber string) ApiSubaccountUpdateRequest {
-	r.accountNumber = &accountNumber
-	return r
-}
-
-// Activate or deactivate a subaccount
-func (r ApiSubaccountUpdateRequest) Active(active bool) ApiSubaccountUpdateRequest {
-	r.active = &active
-	return r
-}
-
-// Customer&#39;s phone number
-func (r ApiSubaccountUpdateRequest) PercentageCharge(percentageCharge float32) ApiSubaccountUpdateRequest {
-	r.percentageCharge = &percentageCharge
-	return r
-}
-
-// A description for this subaccount
-func (r ApiSubaccountUpdateRequest) Description(description string) ApiSubaccountUpdateRequest {
-	r.description = &description
-	return r
-}
-
-// A contact email for the subaccount
-func (r ApiSubaccountUpdateRequest) PrimaryContactEmail(primaryContactEmail string) ApiSubaccountUpdateRequest {
-	r.primaryContactEmail = &primaryContactEmail
-	return r
-}
-
-// The name of the contact person for this subaccount
-func (r ApiSubaccountUpdateRequest) PrimaryContactName(primaryContactName string) ApiSubaccountUpdateRequest {
-	r.primaryContactName = &primaryContactName
-	return r
-}
-
-// A phone number to call for this subaccount
-func (r ApiSubaccountUpdateRequest) PrimaryContactPhone(primaryContactPhone string) ApiSubaccountUpdateRequest {
-	r.primaryContactPhone = &primaryContactPhone
-	return r
-}
-
-// Stringified JSON object of custom data
-func (r ApiSubaccountUpdateRequest) Metadata(metadata string) ApiSubaccountUpdateRequest {
-	r.metadata = &metadata
-	return r
-}
-
-func (r ApiSubaccountUpdateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiSubaccountUpdateRequest) Execute() (*SubaccountUpdateResponse, *http.Response, error) {
 	return r.ApiService.SubaccountUpdateExecute(r)
 }
 
 /*
 SubaccountUpdate Update Subaccount
 
+Update a subaccount details on your integration
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code
+ @param code The subaccount code you want to fetch
  @return ApiSubaccountUpdateRequest
 */
 func (a *SubaccountAPIService) SubaccountUpdate(ctx context.Context, code string) ApiSubaccountUpdateRequest {
@@ -605,13 +460,13 @@ func (a *SubaccountAPIService) SubaccountUpdate(ctx context.Context, code string
 }
 
 // Execute executes the request
-//  @return Response
-func (a *SubaccountAPIService) SubaccountUpdateExecute(r ApiSubaccountUpdateRequest) (*Response, *http.Response, error) {
+//  @return SubaccountUpdateResponse
+func (a *SubaccountAPIService) SubaccountUpdateExecute(r ApiSubaccountUpdateRequest) (*SubaccountUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *SubaccountUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubaccountAPIService.SubaccountUpdate")
@@ -627,7 +482,7 @@ func (a *SubaccountAPIService) SubaccountUpdateExecute(r ApiSubaccountUpdateRequ
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -643,36 +498,8 @@ func (a *SubaccountAPIService) SubaccountUpdateExecute(r ApiSubaccountUpdateRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.businessName != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "business_name", r.businessName, "", "")
-	}
-	if r.settlementBank != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "settlement_bank", r.settlementBank, "", "")
-	}
-	if r.accountNumber != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "account_number", r.accountNumber, "", "")
-	}
-	if r.active != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "active", r.active, "", "")
-	}
-	if r.percentageCharge != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "percentage_charge", r.percentageCharge, "", "")
-	}
-	if r.description != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "description", r.description, "", "")
-	}
-	if r.primaryContactEmail != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "primary_contact_email", r.primaryContactEmail, "", "")
-	}
-	if r.primaryContactName != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "primary_contact_name", r.primaryContactName, "", "")
-	}
-	if r.primaryContactPhone != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "primary_contact_phone", r.primaryContactPhone, "", "")
-	}
-	if r.metadata != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "metadata", r.metadata, "", "")
-	}
+	// body params
+	localVarPostBody = r.subaccountUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

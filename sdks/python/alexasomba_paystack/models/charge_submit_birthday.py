@@ -18,6 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
+from datetime import date
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
@@ -27,7 +28,7 @@ class ChargeSubmitBirthday(BaseModel):
     """
     ChargeSubmitBirthday
     """ # noqa: E501
-    birthday: StrictStr = Field(description="Customer's birthday in the format YYYY-MM-DD e.g 2016-09-21")
+    birthday: date = Field(description="Customer's birthday in the format YYYY-MM-DD e.g 2016-09-21")
     reference: StrictStr = Field(description="The reference of the ongoing transaction")
     __properties: ClassVar[List[str]] = ["birthday", "reference"]
 

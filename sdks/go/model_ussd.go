@@ -18,9 +18,9 @@ import (
 // checks if the USSD type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &USSD{}
 
-// USSD struct for USSD
+// USSD The USSD code for the provider to charge
 type USSD struct {
-	// The three-digit USSD code. One of, 737, 919, 822, 966
+	// The three-digit USSD code.
 	Type *string `json:"type,omitempty"`
 }
 

@@ -22,8 +22,8 @@ var _ MappedNullable = &DisputeUpdate{}
 
 // DisputeUpdate struct for DisputeUpdate
 type DisputeUpdate struct {
-	// The amount to refund, in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-	RefundAmount string `json:"refund_amount"`
+	// The amount to refund, in the subunit of your currency
+	RefundAmount int32 `json:"refund_amount"`
 	// Filename of attachment returned via response from the Dispute upload URL
 	UploadedFilename *string `json:"uploaded_filename,omitempty"`
 }
@@ -34,7 +34,7 @@ type _DisputeUpdate DisputeUpdate
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDisputeUpdate(refundAmount string) *DisputeUpdate {
+func NewDisputeUpdate(refundAmount int32) *DisputeUpdate {
 	this := DisputeUpdate{}
 	this.RefundAmount = refundAmount
 	return &this
@@ -49,9 +49,9 @@ func NewDisputeUpdateWithDefaults() *DisputeUpdate {
 }
 
 // GetRefundAmount returns the RefundAmount field value
-func (o *DisputeUpdate) GetRefundAmount() string {
+func (o *DisputeUpdate) GetRefundAmount() int32 {
 	if o == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 
@@ -60,7 +60,7 @@ func (o *DisputeUpdate) GetRefundAmount() string {
 
 // GetRefundAmountOk returns a tuple with the RefundAmount field value
 // and a boolean to check if the value has been set.
-func (o *DisputeUpdate) GetRefundAmountOk() (*string, bool) {
+func (o *DisputeUpdate) GetRefundAmountOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -68,7 +68,7 @@ func (o *DisputeUpdate) GetRefundAmountOk() (*string, bool) {
 }
 
 // SetRefundAmount sets field value
-func (o *DisputeUpdate) SetRefundAmount(v string) {
+func (o *DisputeUpdate) SetRefundAmount(v int32) {
 	o.RefundAmount = v
 }
 

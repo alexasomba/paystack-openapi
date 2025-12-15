@@ -18,18 +18,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 class BulkChargeInitiate(BaseModel):
     """
-    BulkChargeInitiate
+    A list of charge object
     """ # noqa: E501
     authorization: StrictStr = Field(description="Customer's card authorization code")
-    amount: StrictStr = Field(description="Amount to charge on the authorization")
-    __properties: ClassVar[List[str]] = ["authorization", "amount"]
+    amount: StrictInt = Field(description="Amount to charge on the authorization")
+    reference: Optional[StrictStr] = Field(default=None, description="A unique identifier containing lowercase letters `(a-z)`, digits `(0-9)` and these symbols: dash (`-`), underscore(`_`) ")
+    attempt_partial_debit: Optional[StrictBool] = Field(default=None, description="A flag to indicate if you want us to try recouping lower amounts when the customer has insufficient fund")
+    at_least: Optional[StrictInt] = Field(default=None, description="Minimum amount to charge if the attempt_partial_debit flag is set")
+    metadata: Optional[Dict[str, Any]] = Field(default=None, description="JSON object of custom data")
+    __properties: ClassVar[List[str]] = ["authorization", "amount", "reference", "attempt_partial_debit", "at_least", "metadata"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,7 +87,11 @@ class BulkChargeInitiate(BaseModel):
 
         _obj = cls.model_validate({
             "authorization": obj.get("authorization"),
-            "amount": obj.get("amount")
+            "amount": obj.get("amount"),
+            "reference": obj.get("reference"),
+            "attempt_partial_debit": obj.get("attempt_partial_debit"),
+            "at_least": obj.get("at_least"),
+            "metadata": obj.get("metadata")
         })
         return _obj
 

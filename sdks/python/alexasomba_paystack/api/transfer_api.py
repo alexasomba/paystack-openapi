@@ -18,11 +18,24 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from datetime import datetime
-from pydantic import Field, StrictInt, StrictStr
-from typing import List, Optional
+from pydantic import Field, StrictBool, StrictInt, StrictStr, field_validator
+from typing import Optional
 from typing_extensions import Annotated
 from alexasomba_paystack.models.response import Response
+from alexasomba_paystack.models.transfer_bulk import TransferBulk
+from alexasomba_paystack.models.transfer_bulk_response import TransferBulkResponse
+from alexasomba_paystack.models.transfer_create_response import TransferCreateResponse
+from alexasomba_paystack.models.transfer_disables_otp_response import TransferDisablesOtpResponse
+from alexasomba_paystack.models.transfer_enables_otp_response import TransferEnablesOtpResponse
+from alexasomba_paystack.models.transfer_fetch_response import TransferFetchResponse
+from alexasomba_paystack.models.transfer_finalize import TransferFinalize
+from alexasomba_paystack.models.transfer_finalize_disable_otp import TransferFinalizeDisableOTP
+from alexasomba_paystack.models.transfer_finalize_disables_otp_response import TransferFinalizeDisablesOtpResponse
 from alexasomba_paystack.models.transfer_initiate import TransferInitiate
+from alexasomba_paystack.models.transfer_list_response import TransferListResponse
+from alexasomba_paystack.models.transfer_resend_otp import TransferResendOTP
+from alexasomba_paystack.models.transfer_resends_otp_response import TransferResendsOtpResponse
+from alexasomba_paystack.models.transfer_verify_response import TransferVerifyResponse
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
 from alexasomba_paystack.api_response import ApiResponse
@@ -45,8 +58,7 @@ class TransferApi:
     @validate_call
     def transfer_bulk(
         self,
-        source: Annotated[StrictStr, Field(description="Where should we transfer from? Only balance is allowed for now")],
-        transfers: Annotated[List[TransferInitiate], Field(description="A list of transfer object. Each object should contain amount, recipient, and reference")],
+        transfer_bulk: Optional[TransferBulk] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,14 +71,13 @@ class TransferApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> TransferBulkResponse:
         """Initiate Bulk Transfer
 
+        Batch multiple transfers in a single request.  You need to disable the Transfers OTP requirement to use this endpoint. 
 
-        :param source: Where should we transfer from? Only balance is allowed for now (required)
-        :type source: str
-        :param transfers: A list of transfer object. Each object should contain amount, recipient, and reference (required)
-        :type transfers: List[TransferInitiate]
+        :param transfer_bulk:
+        :type transfer_bulk: TransferBulk
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -90,8 +101,7 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_bulk_serialize(
-            source=source,
-            transfers=transfers,
+            transfer_bulk=transfer_bulk,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -99,7 +109,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferBulkResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -116,8 +126,7 @@ class TransferApi:
     @validate_call
     def transfer_bulk_with_http_info(
         self,
-        source: Annotated[StrictStr, Field(description="Where should we transfer from? Only balance is allowed for now")],
-        transfers: Annotated[List[TransferInitiate], Field(description="A list of transfer object. Each object should contain amount, recipient, and reference")],
+        transfer_bulk: Optional[TransferBulk] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -130,14 +139,13 @@ class TransferApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[TransferBulkResponse]:
         """Initiate Bulk Transfer
 
+        Batch multiple transfers in a single request.  You need to disable the Transfers OTP requirement to use this endpoint. 
 
-        :param source: Where should we transfer from? Only balance is allowed for now (required)
-        :type source: str
-        :param transfers: A list of transfer object. Each object should contain amount, recipient, and reference (required)
-        :type transfers: List[TransferInitiate]
+        :param transfer_bulk:
+        :type transfer_bulk: TransferBulk
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -161,8 +169,7 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_bulk_serialize(
-            source=source,
-            transfers=transfers,
+            transfer_bulk=transfer_bulk,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -170,7 +177,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferBulkResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -187,8 +194,7 @@ class TransferApi:
     @validate_call
     def transfer_bulk_without_preload_content(
         self,
-        source: Annotated[StrictStr, Field(description="Where should we transfer from? Only balance is allowed for now")],
-        transfers: Annotated[List[TransferInitiate], Field(description="A list of transfer object. Each object should contain amount, recipient, and reference")],
+        transfer_bulk: Optional[TransferBulk] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -204,11 +210,10 @@ class TransferApi:
     ) -> RESTResponseType:
         """Initiate Bulk Transfer
 
+        Batch multiple transfers in a single request.  You need to disable the Transfers OTP requirement to use this endpoint. 
 
-        :param source: Where should we transfer from? Only balance is allowed for now (required)
-        :type source: str
-        :param transfers: A list of transfer object. Each object should contain amount, recipient, and reference (required)
-        :type transfers: List[TransferInitiate]
+        :param transfer_bulk:
+        :type transfer_bulk: TransferBulk
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -232,8 +237,7 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_bulk_serialize(
-            source=source,
-            transfers=transfers,
+            transfer_bulk=transfer_bulk,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -241,7 +245,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferBulkResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -253,8 +257,7 @@ class TransferApi:
 
     def _transfer_bulk_serialize(
         self,
-        source,
-        transfers,
+        transfer_bulk,
         _request_auth,
         _content_type,
         _headers,
@@ -264,7 +267,6 @@ class TransferApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'transfers': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -280,11 +282,9 @@ class TransferApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if source is not None:
-            _form_params.append(('source', source))
-        if transfers is not None:
-            _form_params.append(('transfers', transfers))
         # process the body parameter
+        if transfer_bulk is not None:
+            _body_params = transfer_bulk
 
 
         # set the HTTP header `Accept`
@@ -302,8 +302,8 @@ class TransferApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -348,9 +348,10 @@ class TransferApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
-        """Disable OTP requirement for Transfers
+    ) -> TransferDisablesOtpResponse:
+        """Disable OTP for Transfers
 
+        This is used in the event that you want to be able to complete transfers programmatically without use of OTPs.  No arguments required. You will get an OTP to complete the request. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -382,7 +383,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferDisablesOtpResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -411,9 +412,10 @@ class TransferApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
-        """Disable OTP requirement for Transfers
+    ) -> ApiResponse[TransferDisablesOtpResponse]:
+        """Disable OTP for Transfers
 
+        This is used in the event that you want to be able to complete transfers programmatically without use of OTPs.  No arguments required. You will get an OTP to complete the request. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -445,7 +447,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferDisablesOtpResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -475,8 +477,9 @@ class TransferApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Disable OTP requirement for Transfers
+        """Disable OTP for Transfers
 
+        This is used in the event that you want to be able to complete transfers programmatically without use of OTPs.  No arguments required. You will get an OTP to complete the request. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -508,7 +511,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferDisablesOtpResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -582,7 +585,7 @@ class TransferApi:
     @validate_call
     def transfer_disable_otp_finalize(
         self,
-        otp: Annotated[StrictStr, Field(description="OTP sent to business phone to verify disabling OTP requirement")],
+        transfer_finalize_disable_otp: Optional[TransferFinalizeDisableOTP] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -595,12 +598,13 @@ class TransferApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
-        """Finalize Disabling of OTP requirement for Transfers
+    ) -> TransferFinalizeDisablesOtpResponse:
+        """Finalize Disabling OTP for Transfers
 
+        Finalize the request to disable OTP on your transfers
 
-        :param otp: OTP sent to business phone to verify disabling OTP requirement (required)
-        :type otp: str
+        :param transfer_finalize_disable_otp:
+        :type transfer_finalize_disable_otp: TransferFinalizeDisableOTP
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -624,7 +628,7 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_disable_otp_finalize_serialize(
-            otp=otp,
+            transfer_finalize_disable_otp=transfer_finalize_disable_otp,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -632,7 +636,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferFinalizeDisablesOtpResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -649,7 +653,7 @@ class TransferApi:
     @validate_call
     def transfer_disable_otp_finalize_with_http_info(
         self,
-        otp: Annotated[StrictStr, Field(description="OTP sent to business phone to verify disabling OTP requirement")],
+        transfer_finalize_disable_otp: Optional[TransferFinalizeDisableOTP] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -662,12 +666,13 @@ class TransferApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
-        """Finalize Disabling of OTP requirement for Transfers
+    ) -> ApiResponse[TransferFinalizeDisablesOtpResponse]:
+        """Finalize Disabling OTP for Transfers
 
+        Finalize the request to disable OTP on your transfers
 
-        :param otp: OTP sent to business phone to verify disabling OTP requirement (required)
-        :type otp: str
+        :param transfer_finalize_disable_otp:
+        :type transfer_finalize_disable_otp: TransferFinalizeDisableOTP
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -691,7 +696,7 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_disable_otp_finalize_serialize(
-            otp=otp,
+            transfer_finalize_disable_otp=transfer_finalize_disable_otp,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -699,7 +704,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferFinalizeDisablesOtpResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -716,7 +721,7 @@ class TransferApi:
     @validate_call
     def transfer_disable_otp_finalize_without_preload_content(
         self,
-        otp: Annotated[StrictStr, Field(description="OTP sent to business phone to verify disabling OTP requirement")],
+        transfer_finalize_disable_otp: Optional[TransferFinalizeDisableOTP] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -730,11 +735,12 @@ class TransferApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Finalize Disabling of OTP requirement for Transfers
+        """Finalize Disabling OTP for Transfers
 
+        Finalize the request to disable OTP on your transfers
 
-        :param otp: OTP sent to business phone to verify disabling OTP requirement (required)
-        :type otp: str
+        :param transfer_finalize_disable_otp:
+        :type transfer_finalize_disable_otp: TransferFinalizeDisableOTP
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -758,7 +764,7 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_disable_otp_finalize_serialize(
-            otp=otp,
+            transfer_finalize_disable_otp=transfer_finalize_disable_otp,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -766,7 +772,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferFinalizeDisablesOtpResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -778,7 +784,7 @@ class TransferApi:
 
     def _transfer_disable_otp_finalize_serialize(
         self,
-        otp,
+        transfer_finalize_disable_otp,
         _request_auth,
         _content_type,
         _headers,
@@ -803,9 +809,9 @@ class TransferApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if otp is not None:
-            _form_params.append(('otp', otp))
         # process the body parameter
+        if transfer_finalize_disable_otp is not None:
+            _body_params = transfer_finalize_disable_otp
 
 
         # set the HTTP header `Accept`
@@ -823,8 +829,8 @@ class TransferApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -855,358 +861,6 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_download(
-        self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        status: Optional[StrictStr] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
-        """Export Transfers
-
-
-        :param per_page: Number of records to fetch per page
-        :type per_page: int
-        :param page: The section to retrieve
-        :type page: int
-        :param status:
-        :type status: str
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._transfer_download_serialize(
-            per_page=per_page,
-            page=page,
-            status=status,
-            var_from=var_from,
-            to=to,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
-            '401': "Error",
-            '404': "Error",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def transfer_download_with_http_info(
-        self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        status: Optional[StrictStr] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
-        """Export Transfers
-
-
-        :param per_page: Number of records to fetch per page
-        :type per_page: int
-        :param page: The section to retrieve
-        :type page: int
-        :param status:
-        :type status: str
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._transfer_download_serialize(
-            per_page=per_page,
-            page=page,
-            status=status,
-            var_from=var_from,
-            to=to,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
-            '401': "Error",
-            '404': "Error",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def transfer_download_without_preload_content(
-        self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        status: Optional[StrictStr] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Export Transfers
-
-
-        :param per_page: Number of records to fetch per page
-        :type per_page: int
-        :param page: The section to retrieve
-        :type page: int
-        :param status:
-        :type status: str
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._transfer_download_serialize(
-            per_page=per_page,
-            page=page,
-            status=status,
-            var_from=var_from,
-            to=to,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
-            '401': "Error",
-            '404': "Error",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _transfer_download_serialize(
-        self,
-        per_page,
-        page,
-        status,
-        var_from,
-        to,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        # process the query parameters
-        if per_page is not None:
-            
-            _query_params.append(('perPage', per_page))
-            
-        if page is not None:
-            
-            _query_params.append(('page', page))
-            
-        if status is not None:
-            
-            _query_params.append(('status', status))
-            
-        if var_from is not None:
-            if isinstance(var_from, datetime):
-                _query_params.append(
-                    (
-                        'from',
-                        var_from.strftime(
-                            self.api_client.configuration.datetime_format
-                        )
-                    )
-                )
-            else:
-                _query_params.append(('from', var_from))
-            
-        if to is not None:
-            if isinstance(to, datetime):
-                _query_params.append(
-                    (
-                        'to',
-                        to.strftime(
-                            self.api_client.configuration.datetime_format
-                        )
-                    )
-                )
-            else:
-                _query_params.append(('to', to))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/transfer/export',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     def transfer_enable_otp(
         self,
         _request_timeout: Union[
@@ -1221,9 +875,10 @@ class TransferApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> TransferEnablesOtpResponse:
         """Enable OTP requirement for Transfers
 
+        In the event that a customer wants to stop being able to complete transfers programmatically, this endpoint helps turn OTP requirement back on.  No arguments required. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1255,7 +910,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferEnablesOtpResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1284,9 +939,10 @@ class TransferApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[TransferEnablesOtpResponse]:
         """Enable OTP requirement for Transfers
 
+        In the event that a customer wants to stop being able to complete transfers programmatically, this endpoint helps turn OTP requirement back on.  No arguments required. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1318,7 +974,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferEnablesOtpResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1350,6 +1006,7 @@ class TransferApi:
     ) -> RESTResponseType:
         """Enable OTP requirement for Transfers
 
+        In the event that a customer wants to stop being able to complete transfers programmatically, this endpoint helps turn OTP requirement back on.  No arguments required. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1381,7 +1038,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferEnablesOtpResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1453,6 +1110,344 @@ class TransferApi:
 
 
     @validate_call
+    def transfer_export_transfer(
+        self,
+        recipient: Annotated[Optional[StrictStr], Field(description="Export transfer by the recipient code")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Export transfer by status")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
+        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Response:
+        """Export Transfers
+
+        Export a list of transfers carried out on your integration
+
+        :param recipient: Export transfer by the recipient code
+        :type recipient: str
+        :param status: Export transfer by status
+        :type status: str
+        :param var_from: The start date
+        :type var_from: datetime
+        :param to: The end date
+        :type to: datetime
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._transfer_export_transfer_serialize(
+            recipient=recipient,
+            status=status,
+            var_from=var_from,
+            to=to,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Response",
+            '401': "Error",
+            '404': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def transfer_export_transfer_with_http_info(
+        self,
+        recipient: Annotated[Optional[StrictStr], Field(description="Export transfer by the recipient code")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Export transfer by status")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
+        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Response]:
+        """Export Transfers
+
+        Export a list of transfers carried out on your integration
+
+        :param recipient: Export transfer by the recipient code
+        :type recipient: str
+        :param status: Export transfer by status
+        :type status: str
+        :param var_from: The start date
+        :type var_from: datetime
+        :param to: The end date
+        :type to: datetime
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._transfer_export_transfer_serialize(
+            recipient=recipient,
+            status=status,
+            var_from=var_from,
+            to=to,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Response",
+            '401': "Error",
+            '404': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def transfer_export_transfer_without_preload_content(
+        self,
+        recipient: Annotated[Optional[StrictStr], Field(description="Export transfer by the recipient code")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Export transfer by status")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
+        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Export Transfers
+
+        Export a list of transfers carried out on your integration
+
+        :param recipient: Export transfer by the recipient code
+        :type recipient: str
+        :param status: Export transfer by status
+        :type status: str
+        :param var_from: The start date
+        :type var_from: datetime
+        :param to: The end date
+        :type to: datetime
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._transfer_export_transfer_serialize(
+            recipient=recipient,
+            status=status,
+            var_from=var_from,
+            to=to,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Response",
+            '401': "Error",
+            '404': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _transfer_export_transfer_serialize(
+        self,
+        recipient,
+        status,
+        var_from,
+        to,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if recipient is not None:
+            
+            _query_params.append(('recipient', recipient))
+            
+        if status is not None:
+            
+            _query_params.append(('status', status))
+            
+        if var_from is not None:
+            if isinstance(var_from, datetime):
+                _query_params.append(
+                    (
+                        'from',
+                        var_from.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('from', var_from))
+            
+        if to is not None:
+            if isinstance(to, datetime):
+                _query_params.append(
+                    (
+                        'to',
+                        to.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('to', to))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/transfer/export',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def transfer_fetch(
         self,
         code: Annotated[StrictStr, Field(description="Transfer code")],
@@ -1468,9 +1463,10 @@ class TransferApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> TransferFetchResponse:
         """Fetch Transfer
 
+        Get details of a transfer on your integration
 
         :param code: Transfer code (required)
         :type code: str
@@ -1505,7 +1501,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1536,9 +1532,10 @@ class TransferApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[TransferFetchResponse]:
         """Fetch Transfer
 
+        Get details of a transfer on your integration
 
         :param code: Transfer code (required)
         :type code: str
@@ -1573,7 +1570,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1607,6 +1604,7 @@ class TransferApi:
     ) -> RESTResponseType:
         """Fetch Transfer
 
+        Get details of a transfer on your integration
 
         :param code: Transfer code (required)
         :type code: str
@@ -1641,7 +1639,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1719,8 +1717,7 @@ class TransferApi:
     @validate_call
     def transfer_finalize(
         self,
-        transfer_code: Annotated[StrictStr, Field(description="The transfer code you want to finalize")],
-        otp: Annotated[StrictStr, Field(description="OTP sent to business phone to verify transfer")],
+        transfer_finalize: Optional[TransferFinalize] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1736,11 +1733,10 @@ class TransferApi:
     ) -> Response:
         """Finalize Transfer
 
+        Finalize an initiated transfer
 
-        :param transfer_code: The transfer code you want to finalize (required)
-        :type transfer_code: str
-        :param otp: OTP sent to business phone to verify transfer (required)
-        :type otp: str
+        :param transfer_finalize:
+        :type transfer_finalize: TransferFinalize
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1764,8 +1760,7 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_finalize_serialize(
-            transfer_code=transfer_code,
-            otp=otp,
+            transfer_finalize=transfer_finalize,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1790,8 +1785,7 @@ class TransferApi:
     @validate_call
     def transfer_finalize_with_http_info(
         self,
-        transfer_code: Annotated[StrictStr, Field(description="The transfer code you want to finalize")],
-        otp: Annotated[StrictStr, Field(description="OTP sent to business phone to verify transfer")],
+        transfer_finalize: Optional[TransferFinalize] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1807,11 +1801,10 @@ class TransferApi:
     ) -> ApiResponse[Response]:
         """Finalize Transfer
 
+        Finalize an initiated transfer
 
-        :param transfer_code: The transfer code you want to finalize (required)
-        :type transfer_code: str
-        :param otp: OTP sent to business phone to verify transfer (required)
-        :type otp: str
+        :param transfer_finalize:
+        :type transfer_finalize: TransferFinalize
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1835,8 +1828,7 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_finalize_serialize(
-            transfer_code=transfer_code,
-            otp=otp,
+            transfer_finalize=transfer_finalize,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1861,8 +1853,7 @@ class TransferApi:
     @validate_call
     def transfer_finalize_without_preload_content(
         self,
-        transfer_code: Annotated[StrictStr, Field(description="The transfer code you want to finalize")],
-        otp: Annotated[StrictStr, Field(description="OTP sent to business phone to verify transfer")],
+        transfer_finalize: Optional[TransferFinalize] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1878,11 +1869,10 @@ class TransferApi:
     ) -> RESTResponseType:
         """Finalize Transfer
 
+        Finalize an initiated transfer
 
-        :param transfer_code: The transfer code you want to finalize (required)
-        :type transfer_code: str
-        :param otp: OTP sent to business phone to verify transfer (required)
-        :type otp: str
+        :param transfer_finalize:
+        :type transfer_finalize: TransferFinalize
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1906,8 +1896,7 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_finalize_serialize(
-            transfer_code=transfer_code,
-            otp=otp,
+            transfer_finalize=transfer_finalize,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1927,8 +1916,7 @@ class TransferApi:
 
     def _transfer_finalize_serialize(
         self,
-        transfer_code,
-        otp,
+        transfer_finalize,
         _request_auth,
         _content_type,
         _headers,
@@ -1953,11 +1941,9 @@ class TransferApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if transfer_code is not None:
-            _form_params.append(('transfer_code', transfer_code))
-        if otp is not None:
-            _form_params.append(('otp', otp))
         # process the body parameter
+        if transfer_finalize is not None:
+            _body_params = transfer_finalize
 
 
         # set the HTTP header `Accept`
@@ -1975,8 +1961,8 @@ class TransferApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -2009,12 +1995,7 @@ class TransferApi:
     @validate_call
     def transfer_initiate(
         self,
-        source: Annotated[StrictStr, Field(description="Where should we transfer from? Only balance is allowed for now")],
-        amount: Annotated[StrictStr, Field(description="Amount to transfer in kobo if currency is NGN and pesewas if currency is GHS.")],
-        recipient: Annotated[StrictStr, Field(description="The transfer recipient's code")],
-        reason: Annotated[Optional[StrictStr], Field(description="The reason or narration for the transfer.")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Specify the currency of the transfer. Defaults to NGN.")] = None,
-        reference: Annotated[Optional[StrictStr], Field(description="If specified, the field should be a unique identifier (in lowercase) for the object.  Only -,_ and alphanumeric characters are allowed.")] = None,
+        transfer_initiate: Optional[TransferInitiate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2027,22 +2008,13 @@ class TransferApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> TransferCreateResponse:
         """Initiate Transfer
 
+        Send money to your customers
 
-        :param source: Where should we transfer from? Only balance is allowed for now (required)
-        :type source: str
-        :param amount: Amount to transfer in kobo if currency is NGN and pesewas if currency is GHS. (required)
-        :type amount: str
-        :param recipient: The transfer recipient's code (required)
-        :type recipient: str
-        :param reason: The reason or narration for the transfer.
-        :type reason: str
-        :param currency: Specify the currency of the transfer. Defaults to NGN.
-        :type currency: str
-        :param reference: If specified, the field should be a unique identifier (in lowercase) for the object.  Only -,_ and alphanumeric characters are allowed.
-        :type reference: str
+        :param transfer_initiate:
+        :type transfer_initiate: TransferInitiate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2066,12 +2038,7 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_initiate_serialize(
-            source=source,
-            amount=amount,
-            recipient=recipient,
-            reason=reason,
-            currency=currency,
-            reference=reference,
+            transfer_initiate=transfer_initiate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2079,7 +2046,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -2096,12 +2063,7 @@ class TransferApi:
     @validate_call
     def transfer_initiate_with_http_info(
         self,
-        source: Annotated[StrictStr, Field(description="Where should we transfer from? Only balance is allowed for now")],
-        amount: Annotated[StrictStr, Field(description="Amount to transfer in kobo if currency is NGN and pesewas if currency is GHS.")],
-        recipient: Annotated[StrictStr, Field(description="The transfer recipient's code")],
-        reason: Annotated[Optional[StrictStr], Field(description="The reason or narration for the transfer.")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Specify the currency of the transfer. Defaults to NGN.")] = None,
-        reference: Annotated[Optional[StrictStr], Field(description="If specified, the field should be a unique identifier (in lowercase) for the object.  Only -,_ and alphanumeric characters are allowed.")] = None,
+        transfer_initiate: Optional[TransferInitiate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2114,22 +2076,13 @@ class TransferApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[TransferCreateResponse]:
         """Initiate Transfer
 
+        Send money to your customers
 
-        :param source: Where should we transfer from? Only balance is allowed for now (required)
-        :type source: str
-        :param amount: Amount to transfer in kobo if currency is NGN and pesewas if currency is GHS. (required)
-        :type amount: str
-        :param recipient: The transfer recipient's code (required)
-        :type recipient: str
-        :param reason: The reason or narration for the transfer.
-        :type reason: str
-        :param currency: Specify the currency of the transfer. Defaults to NGN.
-        :type currency: str
-        :param reference: If specified, the field should be a unique identifier (in lowercase) for the object.  Only -,_ and alphanumeric characters are allowed.
-        :type reference: str
+        :param transfer_initiate:
+        :type transfer_initiate: TransferInitiate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2153,12 +2106,7 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_initiate_serialize(
-            source=source,
-            amount=amount,
-            recipient=recipient,
-            reason=reason,
-            currency=currency,
-            reference=reference,
+            transfer_initiate=transfer_initiate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2166,7 +2114,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -2183,12 +2131,7 @@ class TransferApi:
     @validate_call
     def transfer_initiate_without_preload_content(
         self,
-        source: Annotated[StrictStr, Field(description="Where should we transfer from? Only balance is allowed for now")],
-        amount: Annotated[StrictStr, Field(description="Amount to transfer in kobo if currency is NGN and pesewas if currency is GHS.")],
-        recipient: Annotated[StrictStr, Field(description="The transfer recipient's code")],
-        reason: Annotated[Optional[StrictStr], Field(description="The reason or narration for the transfer.")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Specify the currency of the transfer. Defaults to NGN.")] = None,
-        reference: Annotated[Optional[StrictStr], Field(description="If specified, the field should be a unique identifier (in lowercase) for the object.  Only -,_ and alphanumeric characters are allowed.")] = None,
+        transfer_initiate: Optional[TransferInitiate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2204,19 +2147,10 @@ class TransferApi:
     ) -> RESTResponseType:
         """Initiate Transfer
 
+        Send money to your customers
 
-        :param source: Where should we transfer from? Only balance is allowed for now (required)
-        :type source: str
-        :param amount: Amount to transfer in kobo if currency is NGN and pesewas if currency is GHS. (required)
-        :type amount: str
-        :param recipient: The transfer recipient's code (required)
-        :type recipient: str
-        :param reason: The reason or narration for the transfer.
-        :type reason: str
-        :param currency: Specify the currency of the transfer. Defaults to NGN.
-        :type currency: str
-        :param reference: If specified, the field should be a unique identifier (in lowercase) for the object.  Only -,_ and alphanumeric characters are allowed.
-        :type reference: str
+        :param transfer_initiate:
+        :type transfer_initiate: TransferInitiate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2240,12 +2174,7 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_initiate_serialize(
-            source=source,
-            amount=amount,
-            recipient=recipient,
-            reason=reason,
-            currency=currency,
-            reference=reference,
+            transfer_initiate=transfer_initiate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2253,7 +2182,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -2265,12 +2194,7 @@ class TransferApi:
 
     def _transfer_initiate_serialize(
         self,
-        source,
-        amount,
-        recipient,
-        reason,
-        currency,
-        reference,
+        transfer_initiate,
         _request_auth,
         _content_type,
         _headers,
@@ -2295,19 +2219,9 @@ class TransferApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if source is not None:
-            _form_params.append(('source', source))
-        if amount is not None:
-            _form_params.append(('amount', amount))
-        if recipient is not None:
-            _form_params.append(('recipient', recipient))
-        if reason is not None:
-            _form_params.append(('reason', reason))
-        if currency is not None:
-            _form_params.append(('currency', currency))
-        if reference is not None:
-            _form_params.append(('reference', reference))
         # process the body parameter
+        if transfer_initiate is not None:
+            _body_params = transfer_initiate
 
 
         # set the HTTP header `Accept`
@@ -2325,8 +2239,8 @@ class TransferApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -2359,11 +2273,15 @@ class TransferApi:
     @validate_call
     def transfer_list(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        status: Optional[StrictStr] = None,
+        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
+        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
+        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        recipient: Annotated[Optional[StrictStr], Field(description="Filter transfer by the recipient code")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter transfer by status")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2376,20 +2294,29 @@ class TransferApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> TransferListResponse:
         """List Transfers
 
+        List the transfers made on your integration
 
-        :param per_page: Number of records to fetch per page
+        :param use_cursor: A flag to indicate if cursor based pagination should be used
+        :type use_cursor: bool
+        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
+        :type next: str
+        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
+        :type previous: str
+        :param per_page: The number of records to fetch per request
         :type per_page: int
-        :param page: The section to retrieve
+        :param page: The offset to retrieve data from
         :type page: int
-        :param status:
-        :type status: str
         :param var_from: The start date
         :type var_from: datetime
         :param to: The end date
         :type to: datetime
+        :param recipient: Filter transfer by the recipient code
+        :type recipient: str
+        :param status: Filter transfer by status
+        :type status: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2413,11 +2340,15 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_list_serialize(
+            use_cursor=use_cursor,
+            next=next,
+            previous=previous,
             per_page=per_page,
             page=page,
-            status=status,
             var_from=var_from,
             to=to,
+            recipient=recipient,
+            status=status,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2425,7 +2356,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -2443,11 +2374,15 @@ class TransferApi:
     @validate_call
     def transfer_list_with_http_info(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        status: Optional[StrictStr] = None,
+        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
+        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
+        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        recipient: Annotated[Optional[StrictStr], Field(description="Filter transfer by the recipient code")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter transfer by status")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2460,20 +2395,29 @@ class TransferApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[TransferListResponse]:
         """List Transfers
 
+        List the transfers made on your integration
 
-        :param per_page: Number of records to fetch per page
+        :param use_cursor: A flag to indicate if cursor based pagination should be used
+        :type use_cursor: bool
+        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
+        :type next: str
+        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
+        :type previous: str
+        :param per_page: The number of records to fetch per request
         :type per_page: int
-        :param page: The section to retrieve
+        :param page: The offset to retrieve data from
         :type page: int
-        :param status:
-        :type status: str
         :param var_from: The start date
         :type var_from: datetime
         :param to: The end date
         :type to: datetime
+        :param recipient: Filter transfer by the recipient code
+        :type recipient: str
+        :param status: Filter transfer by status
+        :type status: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2497,11 +2441,15 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_list_serialize(
+            use_cursor=use_cursor,
+            next=next,
+            previous=previous,
             per_page=per_page,
             page=page,
-            status=status,
             var_from=var_from,
             to=to,
+            recipient=recipient,
+            status=status,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2509,7 +2457,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -2527,11 +2475,15 @@ class TransferApi:
     @validate_call
     def transfer_list_without_preload_content(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        status: Optional[StrictStr] = None,
+        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
+        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
+        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        recipient: Annotated[Optional[StrictStr], Field(description="Filter transfer by the recipient code")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter transfer by status")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2547,17 +2499,26 @@ class TransferApi:
     ) -> RESTResponseType:
         """List Transfers
 
+        List the transfers made on your integration
 
-        :param per_page: Number of records to fetch per page
+        :param use_cursor: A flag to indicate if cursor based pagination should be used
+        :type use_cursor: bool
+        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
+        :type next: str
+        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
+        :type previous: str
+        :param per_page: The number of records to fetch per request
         :type per_page: int
-        :param page: The section to retrieve
+        :param page: The offset to retrieve data from
         :type page: int
-        :param status:
-        :type status: str
         :param var_from: The start date
         :type var_from: datetime
         :param to: The end date
         :type to: datetime
+        :param recipient: Filter transfer by the recipient code
+        :type recipient: str
+        :param status: Filter transfer by status
+        :type status: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2581,11 +2542,15 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_list_serialize(
+            use_cursor=use_cursor,
+            next=next,
+            previous=previous,
             per_page=per_page,
             page=page,
-            status=status,
             var_from=var_from,
             to=to,
+            recipient=recipient,
+            status=status,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2593,7 +2558,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -2606,11 +2571,15 @@ class TransferApi:
 
     def _transfer_list_serialize(
         self,
+        use_cursor,
+        next,
+        previous,
         per_page,
         page,
-        status,
         var_from,
         to,
+        recipient,
+        status,
         _request_auth,
         _content_type,
         _headers,
@@ -2633,17 +2602,25 @@ class TransferApi:
 
         # process the path parameters
         # process the query parameters
+        if use_cursor is not None:
+            
+            _query_params.append(('use_cursor', use_cursor))
+            
+        if next is not None:
+            
+            _query_params.append(('next', next))
+            
+        if previous is not None:
+            
+            _query_params.append(('previous', previous))
+            
         if per_page is not None:
             
-            _query_params.append(('perPage', per_page))
+            _query_params.append(('per_page', per_page))
             
         if page is not None:
             
             _query_params.append(('page', page))
-            
-        if status is not None:
-            
-            _query_params.append(('status', status))
             
         if var_from is not None:
             if isinstance(var_from, datetime):
@@ -2670,6 +2647,14 @@ class TransferApi:
                 )
             else:
                 _query_params.append(('to', to))
+            
+        if recipient is not None:
+            
+            _query_params.append(('recipient', recipient))
+            
+        if status is not None:
+            
+            _query_params.append(('status', status))
             
         # process the header parameters
         # process the form parameters
@@ -2711,8 +2696,7 @@ class TransferApi:
     @validate_call
     def transfer_resend_otp(
         self,
-        transfer_code: Annotated[StrictStr, Field(description="The transfer code that requires an OTP validation")],
-        reason: Annotated[StrictStr, Field(description="Either resend_otp or transfer")],
+        transfer_resend_otp: Optional[TransferResendOTP] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2725,14 +2709,13 @@ class TransferApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> TransferResendsOtpResponse:
         """Resend OTP for Transfer
 
+        Generates and send a new OTP to customer in the event they are having trouble receiving one.
 
-        :param transfer_code: The transfer code that requires an OTP validation (required)
-        :type transfer_code: str
-        :param reason: Either resend_otp or transfer (required)
-        :type reason: str
+        :param transfer_resend_otp:
+        :type transfer_resend_otp: TransferResendOTP
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2756,8 +2739,7 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_resend_otp_serialize(
-            transfer_code=transfer_code,
-            reason=reason,
+            transfer_resend_otp=transfer_resend_otp,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2765,7 +2747,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferResendsOtpResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -2782,8 +2764,7 @@ class TransferApi:
     @validate_call
     def transfer_resend_otp_with_http_info(
         self,
-        transfer_code: Annotated[StrictStr, Field(description="The transfer code that requires an OTP validation")],
-        reason: Annotated[StrictStr, Field(description="Either resend_otp or transfer")],
+        transfer_resend_otp: Optional[TransferResendOTP] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2796,14 +2777,13 @@ class TransferApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[TransferResendsOtpResponse]:
         """Resend OTP for Transfer
 
+        Generates and send a new OTP to customer in the event they are having trouble receiving one.
 
-        :param transfer_code: The transfer code that requires an OTP validation (required)
-        :type transfer_code: str
-        :param reason: Either resend_otp or transfer (required)
-        :type reason: str
+        :param transfer_resend_otp:
+        :type transfer_resend_otp: TransferResendOTP
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2827,8 +2807,7 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_resend_otp_serialize(
-            transfer_code=transfer_code,
-            reason=reason,
+            transfer_resend_otp=transfer_resend_otp,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2836,7 +2815,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferResendsOtpResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -2853,8 +2832,7 @@ class TransferApi:
     @validate_call
     def transfer_resend_otp_without_preload_content(
         self,
-        transfer_code: Annotated[StrictStr, Field(description="The transfer code that requires an OTP validation")],
-        reason: Annotated[StrictStr, Field(description="Either resend_otp or transfer")],
+        transfer_resend_otp: Optional[TransferResendOTP] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2870,11 +2848,10 @@ class TransferApi:
     ) -> RESTResponseType:
         """Resend OTP for Transfer
 
+        Generates and send a new OTP to customer in the event they are having trouble receiving one.
 
-        :param transfer_code: The transfer code that requires an OTP validation (required)
-        :type transfer_code: str
-        :param reason: Either resend_otp or transfer (required)
-        :type reason: str
+        :param transfer_resend_otp:
+        :type transfer_resend_otp: TransferResendOTP
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2898,8 +2875,7 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_resend_otp_serialize(
-            transfer_code=transfer_code,
-            reason=reason,
+            transfer_resend_otp=transfer_resend_otp,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2907,7 +2883,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferResendsOtpResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -2919,8 +2895,7 @@ class TransferApi:
 
     def _transfer_resend_otp_serialize(
         self,
-        transfer_code,
-        reason,
+        transfer_resend_otp,
         _request_auth,
         _content_type,
         _headers,
@@ -2945,11 +2920,9 @@ class TransferApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if transfer_code is not None:
-            _form_params.append(('transfer_code', transfer_code))
-        if reason is not None:
-            _form_params.append(('reason', reason))
         # process the body parameter
+        if transfer_resend_otp is not None:
+            _body_params = transfer_resend_otp
 
 
         # set the HTTP header `Accept`
@@ -2967,8 +2940,8 @@ class TransferApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -3001,7 +2974,7 @@ class TransferApi:
     @validate_call
     def transfer_verify(
         self,
-        reference: StrictStr,
+        reference: Annotated[StrictStr, Field(description="Transfer reference")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3014,11 +2987,12 @@ class TransferApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> TransferVerifyResponse:
         """Verify Transfer
 
+        Verify the status of a transfer on your integration
 
-        :param reference: (required)
+        :param reference: Transfer reference (required)
         :type reference: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3051,7 +3025,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferVerifyResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -3069,7 +3043,7 @@ class TransferApi:
     @validate_call
     def transfer_verify_with_http_info(
         self,
-        reference: StrictStr,
+        reference: Annotated[StrictStr, Field(description="Transfer reference")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3082,11 +3056,12 @@ class TransferApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[TransferVerifyResponse]:
         """Verify Transfer
 
+        Verify the status of a transfer on your integration
 
-        :param reference: (required)
+        :param reference: Transfer reference (required)
         :type reference: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3119,7 +3094,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferVerifyResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -3137,7 +3112,7 @@ class TransferApi:
     @validate_call
     def transfer_verify_without_preload_content(
         self,
-        reference: StrictStr,
+        reference: Annotated[StrictStr, Field(description="Transfer reference")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3153,8 +3128,9 @@ class TransferApi:
     ) -> RESTResponseType:
         """Verify Transfer
 
+        Verify the status of a transfer on your integration
 
-        :param reference: (required)
+        :param reference: Transfer reference (required)
         :type reference: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3187,7 +3163,7 @@ class TransferApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferVerifyResponse",
             '401': "Error",
             '404': "Error",
         }

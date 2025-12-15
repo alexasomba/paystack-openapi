@@ -18,8 +18,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from datetime import date
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.bank import Bank
 from alexasomba_paystack.models.eft import EFT
@@ -33,13 +33,13 @@ class ChargeCreateRequest(BaseModel):
     ChargeCreateRequest
     """ # noqa: E501
     email: StrictStr = Field(description="Customer's email address")
-    amount: StrictStr = Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")
+    amount: StrictInt = Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")
     authorization_code: Optional[StrictStr] = Field(default=None, description="An authorization code to charge.")
     pin: Optional[StrictStr] = Field(default=None, description="4-digit PIN (send with a non-reusable authorization code)")
     reference: Optional[StrictStr] = Field(default=None, description="Unique transaction reference. Only -, .`, = and alphanumeric characters allowed.")
-    birthday: Optional[datetime] = Field(default=None, description="The customer's birthday in the format YYYY-MM-DD e.g 2017-05-16")
+    birthday: Optional[date] = Field(default=None, description="The customer's birthday in the format YYYY-MM-DD e.g 2017-05-16")
     device_id: Optional[StrictStr] = Field(default=None, description="This is the unique identifier of the device a user uses in making payment.  Only -, .`, = and alphanumeric characters are allowed.")
-    metadata: Optional[StrictStr] = Field(default=None, description="Stringified JSON object of custom data")
+    metadata: Optional[Dict[str, Any]] = Field(default=None, description="JSON object of custom data")
     bank: Optional[Bank] = None
     mobile_money: Optional[MobileMoney] = None
     ussd: Optional[USSD] = None

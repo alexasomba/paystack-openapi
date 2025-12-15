@@ -27,7 +27,7 @@ class ChargeSubmitOTP(BaseModel):
     """
     ChargeSubmitOTP
     """ # noqa: E501
-    otp: StrictStr = Field(description="Customer's OTP")
+    otp: StrictStr = Field(description="Customer's OTP for ongoing transaction")
     reference: StrictStr = Field(description="The reference of the ongoing transaction")
     __properties: ClassVar[List[str]] = ["otp", "reference"]
 

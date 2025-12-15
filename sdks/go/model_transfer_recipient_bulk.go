@@ -22,7 +22,7 @@ var _ MappedNullable = &TransferRecipientBulk{}
 
 // TransferRecipientBulk struct for TransferRecipientBulk
 type TransferRecipientBulk struct {
-	// A list of transfer recipient object. Each object should contain type, name, and bank_code.  Any Create Transfer Recipient param can also be passed.
+	// A list of transfer recipient object.
 	Batch []TransferRecipientCreate `json:"batch"`
 }
 

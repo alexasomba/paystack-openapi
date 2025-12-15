@@ -22,7 +22,7 @@ var _ MappedNullable = &DedicatedVirtualAccountCreate{}
 
 // DedicatedVirtualAccountCreate struct for DedicatedVirtualAccountCreate
 type DedicatedVirtualAccountCreate struct {
-	// Customer ID or code
+	// The code for the previously created customer
 	Customer string `json:"customer"`
 	// The bank slug for preferred bank. To get a list of available banks, use the List Providers endpoint
 	PreferredBank *string `json:"preferred_bank,omitempty"`

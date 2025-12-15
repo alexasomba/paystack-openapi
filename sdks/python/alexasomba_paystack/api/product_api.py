@@ -18,10 +18,16 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from datetime import datetime
-from pydantic import Field, StrictBool, StrictInt, StrictStr
+from pydantic import Field, StrictBool, StrictInt
 from typing import Optional
 from typing_extensions import Annotated
-from alexasomba_paystack.models.response import Response
+from alexasomba_paystack.models.product_create import ProductCreate
+from alexasomba_paystack.models.product_create_response import ProductCreateResponse
+from alexasomba_paystack.models.product_delete_response import ProductDeleteResponse
+from alexasomba_paystack.models.product_fetch_response import ProductFetchResponse
+from alexasomba_paystack.models.product_lists_response import ProductListsResponse
+from alexasomba_paystack.models.product_update import ProductUpdate
+from alexasomba_paystack.models.product_update_response import ProductUpdateResponse
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
 from alexasomba_paystack.api_response import ApiResponse
@@ -44,12 +50,7 @@ class ProductApi:
     @validate_call
     def product_create(
         self,
-        name: Annotated[StrictStr, Field(description="Name of product")],
-        description: Annotated[StrictStr, Field(description="The description of the product")],
-        price: Annotated[StrictInt, Field(description="Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        currency: Annotated[StrictStr, Field(description="Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD")],
-        limited: Annotated[Optional[StrictBool], Field(description="Set to true if the product has limited stock. Leave as false if the product has unlimited stock")] = None,
-        quantity: Annotated[Optional[StrictInt], Field(description="Number of products in stock. Use if limited is true")] = None,
+        product_create: Optional[ProductCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -62,22 +63,13 @@ class ProductApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> ProductCreateResponse:
         """Create Product
 
+        Create a new product on your integration
 
-        :param name: Name of product (required)
-        :type name: str
-        :param description: The description of the product (required)
-        :type description: str
-        :param price: Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type price: int
-        :param currency: Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD (required)
-        :type currency: str
-        :param limited: Set to true if the product has limited stock. Leave as false if the product has unlimited stock
-        :type limited: bool
-        :param quantity: Number of products in stock. Use if limited is true
-        :type quantity: int
+        :param product_create:
+        :type product_create: ProductCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -101,12 +93,7 @@ class ProductApi:
         """ # noqa: E501
 
         _param = self._product_create_serialize(
-            name=name,
-            description=description,
-            price=price,
-            currency=currency,
-            limited=limited,
-            quantity=quantity,
+            product_create=product_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -114,7 +101,7 @@ class ProductApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Response",
+            '201': "ProductCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -131,12 +118,7 @@ class ProductApi:
     @validate_call
     def product_create_with_http_info(
         self,
-        name: Annotated[StrictStr, Field(description="Name of product")],
-        description: Annotated[StrictStr, Field(description="The description of the product")],
-        price: Annotated[StrictInt, Field(description="Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        currency: Annotated[StrictStr, Field(description="Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD")],
-        limited: Annotated[Optional[StrictBool], Field(description="Set to true if the product has limited stock. Leave as false if the product has unlimited stock")] = None,
-        quantity: Annotated[Optional[StrictInt], Field(description="Number of products in stock. Use if limited is true")] = None,
+        product_create: Optional[ProductCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -149,22 +131,13 @@ class ProductApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[ProductCreateResponse]:
         """Create Product
 
+        Create a new product on your integration
 
-        :param name: Name of product (required)
-        :type name: str
-        :param description: The description of the product (required)
-        :type description: str
-        :param price: Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type price: int
-        :param currency: Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD (required)
-        :type currency: str
-        :param limited: Set to true if the product has limited stock. Leave as false if the product has unlimited stock
-        :type limited: bool
-        :param quantity: Number of products in stock. Use if limited is true
-        :type quantity: int
+        :param product_create:
+        :type product_create: ProductCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -188,12 +161,7 @@ class ProductApi:
         """ # noqa: E501
 
         _param = self._product_create_serialize(
-            name=name,
-            description=description,
-            price=price,
-            currency=currency,
-            limited=limited,
-            quantity=quantity,
+            product_create=product_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -201,7 +169,7 @@ class ProductApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Response",
+            '201': "ProductCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -218,12 +186,7 @@ class ProductApi:
     @validate_call
     def product_create_without_preload_content(
         self,
-        name: Annotated[StrictStr, Field(description="Name of product")],
-        description: Annotated[StrictStr, Field(description="The description of the product")],
-        price: Annotated[StrictInt, Field(description="Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        currency: Annotated[StrictStr, Field(description="Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD")],
-        limited: Annotated[Optional[StrictBool], Field(description="Set to true if the product has limited stock. Leave as false if the product has unlimited stock")] = None,
-        quantity: Annotated[Optional[StrictInt], Field(description="Number of products in stock. Use if limited is true")] = None,
+        product_create: Optional[ProductCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -239,19 +202,10 @@ class ProductApi:
     ) -> RESTResponseType:
         """Create Product
 
+        Create a new product on your integration
 
-        :param name: Name of product (required)
-        :type name: str
-        :param description: The description of the product (required)
-        :type description: str
-        :param price: Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type price: int
-        :param currency: Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD (required)
-        :type currency: str
-        :param limited: Set to true if the product has limited stock. Leave as false if the product has unlimited stock
-        :type limited: bool
-        :param quantity: Number of products in stock. Use if limited is true
-        :type quantity: int
+        :param product_create:
+        :type product_create: ProductCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -275,12 +229,7 @@ class ProductApi:
         """ # noqa: E501
 
         _param = self._product_create_serialize(
-            name=name,
-            description=description,
-            price=price,
-            currency=currency,
-            limited=limited,
-            quantity=quantity,
+            product_create=product_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -288,7 +237,7 @@ class ProductApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Response",
+            '201': "ProductCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -300,12 +249,7 @@ class ProductApi:
 
     def _product_create_serialize(
         self,
-        name,
-        description,
-        price,
-        currency,
-        limited,
-        quantity,
+        product_create,
         _request_auth,
         _content_type,
         _headers,
@@ -330,19 +274,9 @@ class ProductApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if name is not None:
-            _form_params.append(('name', name))
-        if description is not None:
-            _form_params.append(('description', description))
-        if price is not None:
-            _form_params.append(('price', price))
-        if currency is not None:
-            _form_params.append(('currency', currency))
-        if limited is not None:
-            _form_params.append(('limited', limited))
-        if quantity is not None:
-            _form_params.append(('quantity', quantity))
         # process the body parameter
+        if product_create is not None:
+            _body_params = product_create
 
 
         # set the HTTP header `Accept`
@@ -360,8 +294,8 @@ class ProductApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -394,7 +328,7 @@ class ProductApi:
     @validate_call
     def product_delete(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of the product")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -407,12 +341,13 @@ class ProductApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> ProductDeleteResponse:
         """Delete Product
 
+        Delete a previously created product
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of the product (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -444,7 +379,7 @@ class ProductApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ProductDeleteResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -462,7 +397,7 @@ class ProductApi:
     @validate_call
     def product_delete_with_http_info(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of the product")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -475,12 +410,13 @@ class ProductApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[ProductDeleteResponse]:
         """Delete Product
 
+        Delete a previously created product
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of the product (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -512,7 +448,7 @@ class ProductApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ProductDeleteResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -530,7 +466,7 @@ class ProductApi:
     @validate_call
     def product_delete_without_preload_content(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of the product")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -546,9 +482,10 @@ class ProductApi:
     ) -> RESTResponseType:
         """Delete Product
 
+        Delete a previously created product
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of the product (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -580,7 +517,7 @@ class ProductApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ProductDeleteResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -658,7 +595,7 @@ class ProductApi:
     @validate_call
     def product_fetch(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of the product")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -671,12 +608,13 @@ class ProductApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> ProductFetchResponse:
         """Fetch Product
 
+        Fetch a previously created product
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of the product (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -708,7 +646,7 @@ class ProductApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ProductFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -726,7 +664,7 @@ class ProductApi:
     @validate_call
     def product_fetch_with_http_info(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of the product")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -739,12 +677,13 @@ class ProductApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[ProductFetchResponse]:
         """Fetch Product
 
+        Fetch a previously created product
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of the product (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -776,7 +715,7 @@ class ProductApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ProductFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -794,7 +733,7 @@ class ProductApi:
     @validate_call
     def product_fetch_without_preload_content(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of the product")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -810,9 +749,10 @@ class ProductApi:
     ) -> RESTResponseType:
         """Fetch Product
 
+        Fetch a previously created product
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of the product (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -844,7 +784,7 @@ class ProductApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ProductFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -922,9 +862,9 @@ class ProductApi:
     @validate_call
     def product_list(
         self,
-        per_page: Optional[StrictInt] = None,
-        page: Optional[StrictInt] = None,
-        active: Optional[StrictBool] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
+        active: Annotated[Optional[StrictBool], Field(description="The state of the product")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
         _request_timeout: Union[
@@ -939,15 +879,16 @@ class ProductApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> ProductListsResponse:
         """List Products
 
+        List all previously created products
 
-        :param per_page:
+        :param per_page: Number of records to fetch per page
         :type per_page: int
-        :param page:
+        :param page: The section to retrieve
         :type page: int
-        :param active:
+        :param active: The state of the product
         :type active: bool
         :param var_from: The start date
         :type var_from: datetime
@@ -988,7 +929,7 @@ class ProductApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ProductListsResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1006,9 +947,9 @@ class ProductApi:
     @validate_call
     def product_list_with_http_info(
         self,
-        per_page: Optional[StrictInt] = None,
-        page: Optional[StrictInt] = None,
-        active: Optional[StrictBool] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
+        active: Annotated[Optional[StrictBool], Field(description="The state of the product")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
         _request_timeout: Union[
@@ -1023,15 +964,16 @@ class ProductApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[ProductListsResponse]:
         """List Products
 
+        List all previously created products
 
-        :param per_page:
+        :param per_page: Number of records to fetch per page
         :type per_page: int
-        :param page:
+        :param page: The section to retrieve
         :type page: int
-        :param active:
+        :param active: The state of the product
         :type active: bool
         :param var_from: The start date
         :type var_from: datetime
@@ -1072,7 +1014,7 @@ class ProductApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ProductListsResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1090,9 +1032,9 @@ class ProductApi:
     @validate_call
     def product_list_without_preload_content(
         self,
-        per_page: Optional[StrictInt] = None,
-        page: Optional[StrictInt] = None,
-        active: Optional[StrictBool] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
+        active: Annotated[Optional[StrictBool], Field(description="The state of the product")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
         _request_timeout: Union[
@@ -1110,12 +1052,13 @@ class ProductApi:
     ) -> RESTResponseType:
         """List Products
 
+        List all previously created products
 
-        :param per_page:
+        :param per_page: Number of records to fetch per page
         :type per_page: int
-        :param page:
+        :param page: The section to retrieve
         :type page: int
-        :param active:
+        :param active: The state of the product
         :type active: bool
         :param var_from: The start date
         :type var_from: datetime
@@ -1156,7 +1099,7 @@ class ProductApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ProductListsResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1274,13 +1217,8 @@ class ProductApi:
     @validate_call
     def product_update(
         self,
-        id: StrictStr,
-        name: Annotated[Optional[StrictStr], Field(description="Name of product")] = None,
-        description: Annotated[Optional[StrictStr], Field(description="The description of the product")] = None,
-        price: Annotated[Optional[StrictInt], Field(description="Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD")] = None,
-        limited: Annotated[Optional[StrictBool], Field(description="Set to true if the product has limited stock. Leave as false if the product has unlimited stock")] = None,
-        quantity: Annotated[Optional[StrictInt], Field(description="Number of products in stock. Use if limited is true")] = None,
+        id: Annotated[StrictInt, Field(description="The unique identifier of the product")],
+        product_update: Optional[ProductUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1293,24 +1231,15 @@ class ProductApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> ProductUpdateResponse:
         """Update product
 
+        Update a previously created product
 
-        :param id: (required)
-        :type id: str
-        :param name: Name of product
-        :type name: str
-        :param description: The description of the product
-        :type description: str
-        :param price: Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-        :type price: int
-        :param currency: Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD
-        :type currency: str
-        :param limited: Set to true if the product has limited stock. Leave as false if the product has unlimited stock
-        :type limited: bool
-        :param quantity: Number of products in stock. Use if limited is true
-        :type quantity: int
+        :param id: The unique identifier of the product (required)
+        :type id: int
+        :param product_update:
+        :type product_update: ProductUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1335,12 +1264,7 @@ class ProductApi:
 
         _param = self._product_update_serialize(
             id=id,
-            name=name,
-            description=description,
-            price=price,
-            currency=currency,
-            limited=limited,
-            quantity=quantity,
+            product_update=product_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1348,7 +1272,7 @@ class ProductApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ProductUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1366,13 +1290,8 @@ class ProductApi:
     @validate_call
     def product_update_with_http_info(
         self,
-        id: StrictStr,
-        name: Annotated[Optional[StrictStr], Field(description="Name of product")] = None,
-        description: Annotated[Optional[StrictStr], Field(description="The description of the product")] = None,
-        price: Annotated[Optional[StrictInt], Field(description="Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD")] = None,
-        limited: Annotated[Optional[StrictBool], Field(description="Set to true if the product has limited stock. Leave as false if the product has unlimited stock")] = None,
-        quantity: Annotated[Optional[StrictInt], Field(description="Number of products in stock. Use if limited is true")] = None,
+        id: Annotated[StrictInt, Field(description="The unique identifier of the product")],
+        product_update: Optional[ProductUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1385,24 +1304,15 @@ class ProductApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[ProductUpdateResponse]:
         """Update product
 
+        Update a previously created product
 
-        :param id: (required)
-        :type id: str
-        :param name: Name of product
-        :type name: str
-        :param description: The description of the product
-        :type description: str
-        :param price: Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-        :type price: int
-        :param currency: Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD
-        :type currency: str
-        :param limited: Set to true if the product has limited stock. Leave as false if the product has unlimited stock
-        :type limited: bool
-        :param quantity: Number of products in stock. Use if limited is true
-        :type quantity: int
+        :param id: The unique identifier of the product (required)
+        :type id: int
+        :param product_update:
+        :type product_update: ProductUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1427,12 +1337,7 @@ class ProductApi:
 
         _param = self._product_update_serialize(
             id=id,
-            name=name,
-            description=description,
-            price=price,
-            currency=currency,
-            limited=limited,
-            quantity=quantity,
+            product_update=product_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1440,7 +1345,7 @@ class ProductApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ProductUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1458,13 +1363,8 @@ class ProductApi:
     @validate_call
     def product_update_without_preload_content(
         self,
-        id: StrictStr,
-        name: Annotated[Optional[StrictStr], Field(description="Name of product")] = None,
-        description: Annotated[Optional[StrictStr], Field(description="The description of the product")] = None,
-        price: Annotated[Optional[StrictInt], Field(description="Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD")] = None,
-        limited: Annotated[Optional[StrictBool], Field(description="Set to true if the product has limited stock. Leave as false if the product has unlimited stock")] = None,
-        quantity: Annotated[Optional[StrictInt], Field(description="Number of products in stock. Use if limited is true")] = None,
+        id: Annotated[StrictInt, Field(description="The unique identifier of the product")],
+        product_update: Optional[ProductUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1480,21 +1380,12 @@ class ProductApi:
     ) -> RESTResponseType:
         """Update product
 
+        Update a previously created product
 
-        :param id: (required)
-        :type id: str
-        :param name: Name of product
-        :type name: str
-        :param description: The description of the product
-        :type description: str
-        :param price: Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-        :type price: int
-        :param currency: Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD
-        :type currency: str
-        :param limited: Set to true if the product has limited stock. Leave as false if the product has unlimited stock
-        :type limited: bool
-        :param quantity: Number of products in stock. Use if limited is true
-        :type quantity: int
+        :param id: The unique identifier of the product (required)
+        :type id: int
+        :param product_update:
+        :type product_update: ProductUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1519,12 +1410,7 @@ class ProductApi:
 
         _param = self._product_update_serialize(
             id=id,
-            name=name,
-            description=description,
-            price=price,
-            currency=currency,
-            limited=limited,
-            quantity=quantity,
+            product_update=product_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1532,7 +1418,7 @@ class ProductApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ProductUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1546,12 +1432,7 @@ class ProductApi:
     def _product_update_serialize(
         self,
         id,
-        name,
-        description,
-        price,
-        currency,
-        limited,
-        quantity,
+        product_update,
         _request_auth,
         _content_type,
         _headers,
@@ -1578,19 +1459,9 @@ class ProductApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if name is not None:
-            _form_params.append(('name', name))
-        if description is not None:
-            _form_params.append(('description', description))
-        if price is not None:
-            _form_params.append(('price', price))
-        if currency is not None:
-            _form_params.append(('currency', currency))
-        if limited is not None:
-            _form_params.append(('limited', limited))
-        if quantity is not None:
-            _form_params.append(('quantity', quantity))
         # process the body parameter
+        if product_update is not None:
+            _body_params = product_update
 
 
         # set the HTTP header `Accept`
@@ -1608,8 +1479,8 @@ class ProductApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )

@@ -28,7 +28,7 @@ class TransactionCheckAuthorization(BaseModel):
     TransactionCheckAuthorization
     """ # noqa: E501
     email: StrictStr = Field(description="Customer's email address")
-    amount: StrictInt = Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")
+    amount: StrictInt = Field(description="Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR")
     authorization_code: Optional[StrictStr] = Field(default=None, description="Valid authorization code to charge")
     currency: Optional[StrictStr] = Field(default=None, description="The transaction currency")
     __properties: ClassVar[List[str]] = ["email", "amount", "authorization_code", "currency"]

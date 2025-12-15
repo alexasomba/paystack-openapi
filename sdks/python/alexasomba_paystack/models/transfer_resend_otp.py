@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,8 +28,15 @@ class TransferResendOTP(BaseModel):
     TransferResendOTP
     """ # noqa: E501
     transfer_code: StrictStr = Field(description="The transfer code that requires an OTP validation")
-    reason: StrictStr = Field(description="Either resend_otp or transfer")
+    reason: StrictStr = Field(description="Specify the flag to indicate the purpose of the OTP")
     __properties: ClassVar[List[str]] = ["transfer_code", "reason"]
+
+    @field_validator('reason')
+    def reason_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['disable_otp', 'resend_otp', 'transfer']):
+            raise ValueError("must be one of enum values ('disable_otp', 'resend_otp', 'transfer')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,7 +90,7 @@ class TransferResendOTP(BaseModel):
 
         _obj = cls.model_validate({
             "transfer_code": obj.get("transfer_code"),
-            "reason": obj.get("reason")
+            "reason": obj.get("reason") if obj.get("reason") is not None else 'transfer'
         })
         return _obj
 

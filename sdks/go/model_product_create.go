@@ -26,14 +26,18 @@ type ProductCreate struct {
 	Name string `json:"name"`
 	// The description of the product
 	Description string `json:"description"`
-	// Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
+	// Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR 
 	Price int32 `json:"price"`
-	// Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD
+	// Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD 
 	Currency string `json:"currency"`
-	// Set to true if the product has limited stock. Leave as false if the product has unlimited stock
-	Limited *bool `json:"limited,omitempty"`
+	// Set to true if the product has unlimited stock. Leave as false if the product has limited stock 
+	Unlimited *bool `json:"unlimited,omitempty"`
 	// Number of products in stock. Use if limited is true
 	Quantity *int32 `json:"quantity,omitempty"`
+	// The split code if sharing the transaction with partners
+	SplitCode *string `json:"split_code,omitempty"`
+	// Stringified JSON object of custom data
+	Metadata *string `json:"metadata,omitempty"`
 }
 
 type _ProductCreate ProductCreate
@@ -155,36 +159,36 @@ func (o *ProductCreate) SetCurrency(v string) {
 	o.Currency = v
 }
 
-// GetLimited returns the Limited field value if set, zero value otherwise.
-func (o *ProductCreate) GetLimited() bool {
-	if o == nil || IsNil(o.Limited) {
+// GetUnlimited returns the Unlimited field value if set, zero value otherwise.
+func (o *ProductCreate) GetUnlimited() bool {
+	if o == nil || IsNil(o.Unlimited) {
 		var ret bool
 		return ret
 	}
-	return *o.Limited
+	return *o.Unlimited
 }
 
-// GetLimitedOk returns a tuple with the Limited field value if set, nil otherwise
+// GetUnlimitedOk returns a tuple with the Unlimited field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductCreate) GetLimitedOk() (*bool, bool) {
-	if o == nil || IsNil(o.Limited) {
+func (o *ProductCreate) GetUnlimitedOk() (*bool, bool) {
+	if o == nil || IsNil(o.Unlimited) {
 		return nil, false
 	}
-	return o.Limited, true
+	return o.Unlimited, true
 }
 
-// HasLimited returns a boolean if a field has been set.
-func (o *ProductCreate) HasLimited() bool {
-	if o != nil && !IsNil(o.Limited) {
+// HasUnlimited returns a boolean if a field has been set.
+func (o *ProductCreate) HasUnlimited() bool {
+	if o != nil && !IsNil(o.Unlimited) {
 		return true
 	}
 
 	return false
 }
 
-// SetLimited gets a reference to the given bool and assigns it to the Limited field.
-func (o *ProductCreate) SetLimited(v bool) {
-	o.Limited = &v
+// SetUnlimited gets a reference to the given bool and assigns it to the Unlimited field.
+func (o *ProductCreate) SetUnlimited(v bool) {
+	o.Unlimited = &v
 }
 
 // GetQuantity returns the Quantity field value if set, zero value otherwise.
@@ -219,6 +223,70 @@ func (o *ProductCreate) SetQuantity(v int32) {
 	o.Quantity = &v
 }
 
+// GetSplitCode returns the SplitCode field value if set, zero value otherwise.
+func (o *ProductCreate) GetSplitCode() string {
+	if o == nil || IsNil(o.SplitCode) {
+		var ret string
+		return ret
+	}
+	return *o.SplitCode
+}
+
+// GetSplitCodeOk returns a tuple with the SplitCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductCreate) GetSplitCodeOk() (*string, bool) {
+	if o == nil || IsNil(o.SplitCode) {
+		return nil, false
+	}
+	return o.SplitCode, true
+}
+
+// HasSplitCode returns a boolean if a field has been set.
+func (o *ProductCreate) HasSplitCode() bool {
+	if o != nil && !IsNil(o.SplitCode) {
+		return true
+	}
+
+	return false
+}
+
+// SetSplitCode gets a reference to the given string and assigns it to the SplitCode field.
+func (o *ProductCreate) SetSplitCode(v string) {
+	o.SplitCode = &v
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *ProductCreate) GetMetadata() string {
+	if o == nil || IsNil(o.Metadata) {
+		var ret string
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductCreate) GetMetadataOk() (*string, bool) {
+	if o == nil || IsNil(o.Metadata) {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *ProductCreate) HasMetadata() bool {
+	if o != nil && !IsNil(o.Metadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
+func (o *ProductCreate) SetMetadata(v string) {
+	o.Metadata = &v
+}
+
 func (o ProductCreate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -233,11 +301,17 @@ func (o ProductCreate) ToMap() (map[string]interface{}, error) {
 	toSerialize["description"] = o.Description
 	toSerialize["price"] = o.Price
 	toSerialize["currency"] = o.Currency
-	if !IsNil(o.Limited) {
-		toSerialize["limited"] = o.Limited
+	if !IsNil(o.Unlimited) {
+		toSerialize["unlimited"] = o.Unlimited
 	}
 	if !IsNil(o.Quantity) {
 		toSerialize["quantity"] = o.Quantity
+	}
+	if !IsNil(o.SplitCode) {
+		toSerialize["split_code"] = o.SplitCode
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
 	}
 	return toSerialize, nil
 }

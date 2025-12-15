@@ -17,11 +17,19 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBool, StrictStr
-from typing import List, Optional
+from datetime import datetime
+from pydantic import Field, StrictBool, StrictInt, StrictStr
+from typing import Optional
 from typing_extensions import Annotated
-from alexasomba_paystack.models.response import Response
+from alexasomba_paystack.models.split_add_update_subaccount_response import SplitAddUpdateSubaccountResponse
+from alexasomba_paystack.models.split_create import SplitCreate
+from alexasomba_paystack.models.split_create_response import SplitCreateResponse
+from alexasomba_paystack.models.split_fetch_response import SplitFetchResponse
+from alexasomba_paystack.models.split_list_response import SplitListResponse
+from alexasomba_paystack.models.split_remove_subaccount_response import SplitRemoveSubaccountResponse
 from alexasomba_paystack.models.split_subaccounts import SplitSubaccounts
+from alexasomba_paystack.models.split_update import SplitUpdate
+from alexasomba_paystack.models.split_update_response import SplitUpdateResponse
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
 from alexasomba_paystack.api_response import ApiResponse
@@ -44,9 +52,8 @@ class SplitApi:
     @validate_call
     def split_add_subaccount(
         self,
-        id: StrictStr,
-        subaccount: Annotated[Optional[StrictStr], Field(description="Subaccount code of the customer or partner")] = None,
-        share: Annotated[Optional[StrictStr], Field(description="The percentage or flat quota of the customer or partner")] = None,
+        id: Annotated[StrictInt, Field(description="The ID of the split configuration to fetch")],
+        split_subaccounts: Optional[SplitSubaccounts] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,16 +66,15 @@ class SplitApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> SplitAddUpdateSubaccountResponse:
         """Add Subaccount to Split
 
+        Add a subaccount to a split configuration, or update the share of an existing subaccount
 
-        :param id: (required)
-        :type id: str
-        :param subaccount: Subaccount code of the customer or partner
-        :type subaccount: str
-        :param share: The percentage or flat quota of the customer or partner
-        :type share: str
+        :param id: The ID of the split configuration to fetch (required)
+        :type id: int
+        :param split_subaccounts:
+        :type split_subaccounts: SplitSubaccounts
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -93,8 +99,7 @@ class SplitApi:
 
         _param = self._split_add_subaccount_serialize(
             id=id,
-            subaccount=subaccount,
-            share=share,
+            split_subaccounts=split_subaccounts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -102,7 +107,7 @@ class SplitApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SplitAddUpdateSubaccountResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -119,9 +124,8 @@ class SplitApi:
     @validate_call
     def split_add_subaccount_with_http_info(
         self,
-        id: StrictStr,
-        subaccount: Annotated[Optional[StrictStr], Field(description="Subaccount code of the customer or partner")] = None,
-        share: Annotated[Optional[StrictStr], Field(description="The percentage or flat quota of the customer or partner")] = None,
+        id: Annotated[StrictInt, Field(description="The ID of the split configuration to fetch")],
+        split_subaccounts: Optional[SplitSubaccounts] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -134,16 +138,15 @@ class SplitApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[SplitAddUpdateSubaccountResponse]:
         """Add Subaccount to Split
 
+        Add a subaccount to a split configuration, or update the share of an existing subaccount
 
-        :param id: (required)
-        :type id: str
-        :param subaccount: Subaccount code of the customer or partner
-        :type subaccount: str
-        :param share: The percentage or flat quota of the customer or partner
-        :type share: str
+        :param id: The ID of the split configuration to fetch (required)
+        :type id: int
+        :param split_subaccounts:
+        :type split_subaccounts: SplitSubaccounts
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -168,8 +171,7 @@ class SplitApi:
 
         _param = self._split_add_subaccount_serialize(
             id=id,
-            subaccount=subaccount,
-            share=share,
+            split_subaccounts=split_subaccounts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -177,7 +179,7 @@ class SplitApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SplitAddUpdateSubaccountResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -194,9 +196,8 @@ class SplitApi:
     @validate_call
     def split_add_subaccount_without_preload_content(
         self,
-        id: StrictStr,
-        subaccount: Annotated[Optional[StrictStr], Field(description="Subaccount code of the customer or partner")] = None,
-        share: Annotated[Optional[StrictStr], Field(description="The percentage or flat quota of the customer or partner")] = None,
+        id: Annotated[StrictInt, Field(description="The ID of the split configuration to fetch")],
+        split_subaccounts: Optional[SplitSubaccounts] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -212,13 +213,12 @@ class SplitApi:
     ) -> RESTResponseType:
         """Add Subaccount to Split
 
+        Add a subaccount to a split configuration, or update the share of an existing subaccount
 
-        :param id: (required)
-        :type id: str
-        :param subaccount: Subaccount code of the customer or partner
-        :type subaccount: str
-        :param share: The percentage or flat quota of the customer or partner
-        :type share: str
+        :param id: The ID of the split configuration to fetch (required)
+        :type id: int
+        :param split_subaccounts:
+        :type split_subaccounts: SplitSubaccounts
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -243,8 +243,7 @@ class SplitApi:
 
         _param = self._split_add_subaccount_serialize(
             id=id,
-            subaccount=subaccount,
-            share=share,
+            split_subaccounts=split_subaccounts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -252,7 +251,7 @@ class SplitApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SplitAddUpdateSubaccountResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -265,8 +264,7 @@ class SplitApi:
     def _split_add_subaccount_serialize(
         self,
         id,
-        subaccount,
-        share,
+        split_subaccounts,
         _request_auth,
         _content_type,
         _headers,
@@ -293,11 +291,9 @@ class SplitApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if subaccount is not None:
-            _form_params.append(('subaccount', subaccount))
-        if share is not None:
-            _form_params.append(('share', share))
         # process the body parameter
+        if split_subaccounts is not None:
+            _body_params = split_subaccounts
 
 
         # set the HTTP header `Accept`
@@ -315,8 +311,8 @@ class SplitApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -349,12 +345,7 @@ class SplitApi:
     @validate_call
     def split_create(
         self,
-        name: Annotated[StrictStr, Field(description="Name of the transaction split")],
-        type: Annotated[StrictStr, Field(description="The type of transaction split you want to create.")],
-        subaccounts: Annotated[List[SplitSubaccounts], Field(description="A list of object containing subaccount code and number of shares")],
-        currency: Annotated[StrictStr, Field(description="The transaction currency")],
-        bearer_type: Annotated[Optional[StrictStr], Field(description="This allows you specify how the transaction charge should be processed")] = None,
-        bearer_subaccount: Annotated[Optional[StrictStr], Field(description="This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type")] = None,
+        split_create: Optional[SplitCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -367,22 +358,13 @@ class SplitApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> SplitCreateResponse:
         """Create Split
 
+        Create a split configuration for transactions
 
-        :param name: Name of the transaction split (required)
-        :type name: str
-        :param type: The type of transaction split you want to create. (required)
-        :type type: str
-        :param subaccounts: A list of object containing subaccount code and number of shares (required)
-        :type subaccounts: List[SplitSubaccounts]
-        :param currency: The transaction currency (required)
-        :type currency: str
-        :param bearer_type: This allows you specify how the transaction charge should be processed
-        :type bearer_type: str
-        :param bearer_subaccount: This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type
-        :type bearer_subaccount: str
+        :param split_create:
+        :type split_create: SplitCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -406,12 +388,7 @@ class SplitApi:
         """ # noqa: E501
 
         _param = self._split_create_serialize(
-            name=name,
-            type=type,
-            subaccounts=subaccounts,
-            currency=currency,
-            bearer_type=bearer_type,
-            bearer_subaccount=bearer_subaccount,
+            split_create=split_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -419,7 +396,7 @@ class SplitApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SplitCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -436,12 +413,7 @@ class SplitApi:
     @validate_call
     def split_create_with_http_info(
         self,
-        name: Annotated[StrictStr, Field(description="Name of the transaction split")],
-        type: Annotated[StrictStr, Field(description="The type of transaction split you want to create.")],
-        subaccounts: Annotated[List[SplitSubaccounts], Field(description="A list of object containing subaccount code and number of shares")],
-        currency: Annotated[StrictStr, Field(description="The transaction currency")],
-        bearer_type: Annotated[Optional[StrictStr], Field(description="This allows you specify how the transaction charge should be processed")] = None,
-        bearer_subaccount: Annotated[Optional[StrictStr], Field(description="This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type")] = None,
+        split_create: Optional[SplitCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -454,22 +426,13 @@ class SplitApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[SplitCreateResponse]:
         """Create Split
 
+        Create a split configuration for transactions
 
-        :param name: Name of the transaction split (required)
-        :type name: str
-        :param type: The type of transaction split you want to create. (required)
-        :type type: str
-        :param subaccounts: A list of object containing subaccount code and number of shares (required)
-        :type subaccounts: List[SplitSubaccounts]
-        :param currency: The transaction currency (required)
-        :type currency: str
-        :param bearer_type: This allows you specify how the transaction charge should be processed
-        :type bearer_type: str
-        :param bearer_subaccount: This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type
-        :type bearer_subaccount: str
+        :param split_create:
+        :type split_create: SplitCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -493,12 +456,7 @@ class SplitApi:
         """ # noqa: E501
 
         _param = self._split_create_serialize(
-            name=name,
-            type=type,
-            subaccounts=subaccounts,
-            currency=currency,
-            bearer_type=bearer_type,
-            bearer_subaccount=bearer_subaccount,
+            split_create=split_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -506,7 +464,7 @@ class SplitApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SplitCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -523,12 +481,7 @@ class SplitApi:
     @validate_call
     def split_create_without_preload_content(
         self,
-        name: Annotated[StrictStr, Field(description="Name of the transaction split")],
-        type: Annotated[StrictStr, Field(description="The type of transaction split you want to create.")],
-        subaccounts: Annotated[List[SplitSubaccounts], Field(description="A list of object containing subaccount code and number of shares")],
-        currency: Annotated[StrictStr, Field(description="The transaction currency")],
-        bearer_type: Annotated[Optional[StrictStr], Field(description="This allows you specify how the transaction charge should be processed")] = None,
-        bearer_subaccount: Annotated[Optional[StrictStr], Field(description="This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type")] = None,
+        split_create: Optional[SplitCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -544,19 +497,10 @@ class SplitApi:
     ) -> RESTResponseType:
         """Create Split
 
+        Create a split configuration for transactions
 
-        :param name: Name of the transaction split (required)
-        :type name: str
-        :param type: The type of transaction split you want to create. (required)
-        :type type: str
-        :param subaccounts: A list of object containing subaccount code and number of shares (required)
-        :type subaccounts: List[SplitSubaccounts]
-        :param currency: The transaction currency (required)
-        :type currency: str
-        :param bearer_type: This allows you specify how the transaction charge should be processed
-        :type bearer_type: str
-        :param bearer_subaccount: This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type
-        :type bearer_subaccount: str
+        :param split_create:
+        :type split_create: SplitCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -580,12 +524,7 @@ class SplitApi:
         """ # noqa: E501
 
         _param = self._split_create_serialize(
-            name=name,
-            type=type,
-            subaccounts=subaccounts,
-            currency=currency,
-            bearer_type=bearer_type,
-            bearer_subaccount=bearer_subaccount,
+            split_create=split_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -593,7 +532,7 @@ class SplitApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SplitCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -605,12 +544,7 @@ class SplitApi:
 
     def _split_create_serialize(
         self,
-        name,
-        type,
-        subaccounts,
-        currency,
-        bearer_type,
-        bearer_subaccount,
+        split_create,
         _request_auth,
         _content_type,
         _headers,
@@ -620,7 +554,6 @@ class SplitApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'subaccounts': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -636,19 +569,9 @@ class SplitApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if name is not None:
-            _form_params.append(('name', name))
-        if type is not None:
-            _form_params.append(('type', type))
-        if subaccounts is not None:
-            _form_params.append(('subaccounts', subaccounts))
-        if currency is not None:
-            _form_params.append(('currency', currency))
-        if bearer_type is not None:
-            _form_params.append(('bearer_type', bearer_type))
-        if bearer_subaccount is not None:
-            _form_params.append(('bearer_subaccount', bearer_subaccount))
         # process the body parameter
+        if split_create is not None:
+            _body_params = split_create
 
 
         # set the HTTP header `Accept`
@@ -666,8 +589,8 @@ class SplitApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -700,7 +623,7 @@ class SplitApi:
     @validate_call
     def split_fetch(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The ID of the split configuration to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -713,12 +636,13 @@ class SplitApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> SplitFetchResponse:
         """Fetch Split
 
+        Get details of a split configuration for a transaction
 
-        :param id: (required)
-        :type id: str
+        :param id: The ID of the split configuration to fetch (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -750,7 +674,7 @@ class SplitApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SplitFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -768,7 +692,7 @@ class SplitApi:
     @validate_call
     def split_fetch_with_http_info(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The ID of the split configuration to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -781,12 +705,13 @@ class SplitApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[SplitFetchResponse]:
         """Fetch Split
 
+        Get details of a split configuration for a transaction
 
-        :param id: (required)
-        :type id: str
+        :param id: The ID of the split configuration to fetch (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -818,7 +743,7 @@ class SplitApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SplitFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -836,7 +761,7 @@ class SplitApi:
     @validate_call
     def split_fetch_without_preload_content(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The ID of the split configuration to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -852,9 +777,10 @@ class SplitApi:
     ) -> RESTResponseType:
         """Fetch Split
 
+        Get details of a split configuration for a transaction
 
-        :param id: (required)
-        :type id: str
+        :param id: The ID of the split configuration to fetch (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -886,7 +812,7 @@ class SplitApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SplitFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -964,13 +890,13 @@ class SplitApi:
     @validate_call
     def split_list(
         self,
-        name: Optional[StrictStr] = None,
-        active: Optional[StrictStr] = None,
-        sort_by: Optional[StrictStr] = None,
-        var_from: Optional[StrictStr] = None,
-        to: Optional[StrictStr] = None,
-        per_page: Optional[StrictStr] = None,
-        page: Optional[StrictStr] = None,
+        subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter by subaccount code")] = None,
+        name: Annotated[Optional[StrictStr], Field(description="The name of the split")] = None,
+        active: Annotated[Optional[StrictBool], Field(description="The status of the split")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
+        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -983,24 +909,25 @@ class SplitApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
-        """List/Search Splits
+    ) -> SplitListResponse:
+        """List Splits
 
+        List the transaction splits available on your integration
 
-        :param name:
+        :param subaccount_code: Filter by subaccount code
+        :type subaccount_code: str
+        :param name: The name of the split
         :type name: str
-        :param active:
-        :type active: str
-        :param sort_by:
-        :type sort_by: str
-        :param var_from:
-        :type var_from: str
-        :param to:
-        :type to: str
-        :param per_page:
-        :type per_page: str
-        :param page:
-        :type page: str
+        :param active: The status of the split
+        :type active: bool
+        :param per_page: The number of records to fetch per request
+        :type per_page: int
+        :param page: The offset to retrieve data from
+        :type page: int
+        :param var_from: The start date
+        :type var_from: datetime
+        :param to: The end date
+        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1024,13 +951,13 @@ class SplitApi:
         """ # noqa: E501
 
         _param = self._split_list_serialize(
+            subaccount_code=subaccount_code,
             name=name,
             active=active,
-            sort_by=sort_by,
-            var_from=var_from,
-            to=to,
             per_page=per_page,
             page=page,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1038,7 +965,7 @@ class SplitApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SplitListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1056,13 +983,13 @@ class SplitApi:
     @validate_call
     def split_list_with_http_info(
         self,
-        name: Optional[StrictStr] = None,
-        active: Optional[StrictStr] = None,
-        sort_by: Optional[StrictStr] = None,
-        var_from: Optional[StrictStr] = None,
-        to: Optional[StrictStr] = None,
-        per_page: Optional[StrictStr] = None,
-        page: Optional[StrictStr] = None,
+        subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter by subaccount code")] = None,
+        name: Annotated[Optional[StrictStr], Field(description="The name of the split")] = None,
+        active: Annotated[Optional[StrictBool], Field(description="The status of the split")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
+        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1075,24 +1002,25 @@ class SplitApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
-        """List/Search Splits
+    ) -> ApiResponse[SplitListResponse]:
+        """List Splits
 
+        List the transaction splits available on your integration
 
-        :param name:
+        :param subaccount_code: Filter by subaccount code
+        :type subaccount_code: str
+        :param name: The name of the split
         :type name: str
-        :param active:
-        :type active: str
-        :param sort_by:
-        :type sort_by: str
-        :param var_from:
-        :type var_from: str
-        :param to:
-        :type to: str
-        :param per_page:
-        :type per_page: str
-        :param page:
-        :type page: str
+        :param active: The status of the split
+        :type active: bool
+        :param per_page: The number of records to fetch per request
+        :type per_page: int
+        :param page: The offset to retrieve data from
+        :type page: int
+        :param var_from: The start date
+        :type var_from: datetime
+        :param to: The end date
+        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1116,13 +1044,13 @@ class SplitApi:
         """ # noqa: E501
 
         _param = self._split_list_serialize(
+            subaccount_code=subaccount_code,
             name=name,
             active=active,
-            sort_by=sort_by,
-            var_from=var_from,
-            to=to,
             per_page=per_page,
             page=page,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1130,7 +1058,7 @@ class SplitApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SplitListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1148,13 +1076,13 @@ class SplitApi:
     @validate_call
     def split_list_without_preload_content(
         self,
-        name: Optional[StrictStr] = None,
-        active: Optional[StrictStr] = None,
-        sort_by: Optional[StrictStr] = None,
-        var_from: Optional[StrictStr] = None,
-        to: Optional[StrictStr] = None,
-        per_page: Optional[StrictStr] = None,
-        page: Optional[StrictStr] = None,
+        subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter by subaccount code")] = None,
+        name: Annotated[Optional[StrictStr], Field(description="The name of the split")] = None,
+        active: Annotated[Optional[StrictBool], Field(description="The status of the split")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
+        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1168,23 +1096,24 @@ class SplitApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List/Search Splits
+        """List Splits
 
+        List the transaction splits available on your integration
 
-        :param name:
+        :param subaccount_code: Filter by subaccount code
+        :type subaccount_code: str
+        :param name: The name of the split
         :type name: str
-        :param active:
-        :type active: str
-        :param sort_by:
-        :type sort_by: str
-        :param var_from:
-        :type var_from: str
-        :param to:
-        :type to: str
-        :param per_page:
-        :type per_page: str
-        :param page:
-        :type page: str
+        :param active: The status of the split
+        :type active: bool
+        :param per_page: The number of records to fetch per request
+        :type per_page: int
+        :param page: The offset to retrieve data from
+        :type page: int
+        :param var_from: The start date
+        :type var_from: datetime
+        :param to: The end date
+        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1208,13 +1137,13 @@ class SplitApi:
         """ # noqa: E501
 
         _param = self._split_list_serialize(
+            subaccount_code=subaccount_code,
             name=name,
             active=active,
-            sort_by=sort_by,
-            var_from=var_from,
-            to=to,
             per_page=per_page,
             page=page,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1222,7 +1151,7 @@ class SplitApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SplitListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1235,13 +1164,13 @@ class SplitApi:
 
     def _split_list_serialize(
         self,
+        subaccount_code,
         name,
         active,
-        sort_by,
-        var_from,
-        to,
         per_page,
         page,
+        var_from,
+        to,
         _request_auth,
         _content_type,
         _headers,
@@ -1264,6 +1193,10 @@ class SplitApi:
 
         # process the path parameters
         # process the query parameters
+        if subaccount_code is not None:
+            
+            _query_params.append(('subaccount_code', subaccount_code))
+            
         if name is not None:
             
             _query_params.append(('name', name))
@@ -1272,25 +1205,39 @@ class SplitApi:
             
             _query_params.append(('active', active))
             
-        if sort_by is not None:
-            
-            _query_params.append(('sort_by', sort_by))
-            
-        if var_from is not None:
-            
-            _query_params.append(('from', var_from))
-            
-        if to is not None:
-            
-            _query_params.append(('to', to))
-            
         if per_page is not None:
             
-            _query_params.append(('perPage', per_page))
+            _query_params.append(('per_page', per_page))
             
         if page is not None:
             
             _query_params.append(('page', page))
+            
+        if var_from is not None:
+            if isinstance(var_from, datetime):
+                _query_params.append(
+                    (
+                        'from',
+                        var_from.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('from', var_from))
+            
+        if to is not None:
+            if isinstance(to, datetime):
+                _query_params.append(
+                    (
+                        'to',
+                        to.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('to', to))
             
         # process the header parameters
         # process the form parameters
@@ -1332,9 +1279,8 @@ class SplitApi:
     @validate_call
     def split_remove_subaccount(
         self,
-        id: StrictStr,
-        subaccount: Annotated[Optional[StrictStr], Field(description="Subaccount code of the customer or partner")] = None,
-        share: Annotated[Optional[StrictStr], Field(description="The percentage or flat quota of the customer or partner")] = None,
+        id: Annotated[StrictInt, Field(description="The ID of the split configuration to fetch")],
+        split_subaccounts: Optional[SplitSubaccounts] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1347,16 +1293,15 @@ class SplitApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> SplitRemoveSubaccountResponse:
         """Remove Subaccount from split
 
+        Remove a subaccount from a split configuration
 
-        :param id: (required)
-        :type id: str
-        :param subaccount: Subaccount code of the customer or partner
-        :type subaccount: str
-        :param share: The percentage or flat quota of the customer or partner
-        :type share: str
+        :param id: The ID of the split configuration to fetch (required)
+        :type id: int
+        :param split_subaccounts:
+        :type split_subaccounts: SplitSubaccounts
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1381,8 +1326,7 @@ class SplitApi:
 
         _param = self._split_remove_subaccount_serialize(
             id=id,
-            subaccount=subaccount,
-            share=share,
+            split_subaccounts=split_subaccounts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1390,7 +1334,7 @@ class SplitApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SplitRemoveSubaccountResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1407,9 +1351,8 @@ class SplitApi:
     @validate_call
     def split_remove_subaccount_with_http_info(
         self,
-        id: StrictStr,
-        subaccount: Annotated[Optional[StrictStr], Field(description="Subaccount code of the customer or partner")] = None,
-        share: Annotated[Optional[StrictStr], Field(description="The percentage or flat quota of the customer or partner")] = None,
+        id: Annotated[StrictInt, Field(description="The ID of the split configuration to fetch")],
+        split_subaccounts: Optional[SplitSubaccounts] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1422,16 +1365,15 @@ class SplitApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[SplitRemoveSubaccountResponse]:
         """Remove Subaccount from split
 
+        Remove a subaccount from a split configuration
 
-        :param id: (required)
-        :type id: str
-        :param subaccount: Subaccount code of the customer or partner
-        :type subaccount: str
-        :param share: The percentage or flat quota of the customer or partner
-        :type share: str
+        :param id: The ID of the split configuration to fetch (required)
+        :type id: int
+        :param split_subaccounts:
+        :type split_subaccounts: SplitSubaccounts
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1456,8 +1398,7 @@ class SplitApi:
 
         _param = self._split_remove_subaccount_serialize(
             id=id,
-            subaccount=subaccount,
-            share=share,
+            split_subaccounts=split_subaccounts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1465,7 +1406,7 @@ class SplitApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SplitRemoveSubaccountResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1482,9 +1423,8 @@ class SplitApi:
     @validate_call
     def split_remove_subaccount_without_preload_content(
         self,
-        id: StrictStr,
-        subaccount: Annotated[Optional[StrictStr], Field(description="Subaccount code of the customer or partner")] = None,
-        share: Annotated[Optional[StrictStr], Field(description="The percentage or flat quota of the customer or partner")] = None,
+        id: Annotated[StrictInt, Field(description="The ID of the split configuration to fetch")],
+        split_subaccounts: Optional[SplitSubaccounts] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1500,13 +1440,12 @@ class SplitApi:
     ) -> RESTResponseType:
         """Remove Subaccount from split
 
+        Remove a subaccount from a split configuration
 
-        :param id: (required)
-        :type id: str
-        :param subaccount: Subaccount code of the customer or partner
-        :type subaccount: str
-        :param share: The percentage or flat quota of the customer or partner
-        :type share: str
+        :param id: The ID of the split configuration to fetch (required)
+        :type id: int
+        :param split_subaccounts:
+        :type split_subaccounts: SplitSubaccounts
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1531,8 +1470,7 @@ class SplitApi:
 
         _param = self._split_remove_subaccount_serialize(
             id=id,
-            subaccount=subaccount,
-            share=share,
+            split_subaccounts=split_subaccounts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1540,7 +1478,7 @@ class SplitApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SplitRemoveSubaccountResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1553,8 +1491,7 @@ class SplitApi:
     def _split_remove_subaccount_serialize(
         self,
         id,
-        subaccount,
-        share,
+        split_subaccounts,
         _request_auth,
         _content_type,
         _headers,
@@ -1581,11 +1518,9 @@ class SplitApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if subaccount is not None:
-            _form_params.append(('subaccount', subaccount))
-        if share is not None:
-            _form_params.append(('share', share))
         # process the body parameter
+        if split_subaccounts is not None:
+            _body_params = split_subaccounts
 
 
         # set the HTTP header `Accept`
@@ -1603,8 +1538,8 @@ class SplitApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -1638,10 +1573,7 @@ class SplitApi:
     def split_update(
         self,
         id: StrictStr,
-        name: Annotated[Optional[StrictStr], Field(description="Name of the transaction split")] = None,
-        active: Annotated[Optional[StrictBool], Field(description="Toggle status of split. When true, the split is active, else it's inactive")] = None,
-        bearer_type: Annotated[Optional[StrictStr], Field(description="This allows you specify how the transaction charge should be processed")] = None,
-        bearer_subaccount: Annotated[Optional[StrictStr], Field(description="This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type")] = None,
+        split_update: Optional[SplitUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1654,20 +1586,15 @@ class SplitApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> SplitUpdateResponse:
         """Update Split
 
+        Update a split configuration for transactions
 
         :param id: (required)
         :type id: str
-        :param name: Name of the transaction split
-        :type name: str
-        :param active: Toggle status of split. When true, the split is active, else it's inactive
-        :type active: bool
-        :param bearer_type: This allows you specify how the transaction charge should be processed
-        :type bearer_type: str
-        :param bearer_subaccount: This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type
-        :type bearer_subaccount: str
+        :param split_update:
+        :type split_update: SplitUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1692,10 +1619,7 @@ class SplitApi:
 
         _param = self._split_update_serialize(
             id=id,
-            name=name,
-            active=active,
-            bearer_type=bearer_type,
-            bearer_subaccount=bearer_subaccount,
+            split_update=split_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1703,7 +1627,7 @@ class SplitApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SplitUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1722,10 +1646,7 @@ class SplitApi:
     def split_update_with_http_info(
         self,
         id: StrictStr,
-        name: Annotated[Optional[StrictStr], Field(description="Name of the transaction split")] = None,
-        active: Annotated[Optional[StrictBool], Field(description="Toggle status of split. When true, the split is active, else it's inactive")] = None,
-        bearer_type: Annotated[Optional[StrictStr], Field(description="This allows you specify how the transaction charge should be processed")] = None,
-        bearer_subaccount: Annotated[Optional[StrictStr], Field(description="This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type")] = None,
+        split_update: Optional[SplitUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1738,20 +1659,15 @@ class SplitApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[SplitUpdateResponse]:
         """Update Split
 
+        Update a split configuration for transactions
 
         :param id: (required)
         :type id: str
-        :param name: Name of the transaction split
-        :type name: str
-        :param active: Toggle status of split. When true, the split is active, else it's inactive
-        :type active: bool
-        :param bearer_type: This allows you specify how the transaction charge should be processed
-        :type bearer_type: str
-        :param bearer_subaccount: This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type
-        :type bearer_subaccount: str
+        :param split_update:
+        :type split_update: SplitUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1776,10 +1692,7 @@ class SplitApi:
 
         _param = self._split_update_serialize(
             id=id,
-            name=name,
-            active=active,
-            bearer_type=bearer_type,
-            bearer_subaccount=bearer_subaccount,
+            split_update=split_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1787,7 +1700,7 @@ class SplitApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SplitUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1806,10 +1719,7 @@ class SplitApi:
     def split_update_without_preload_content(
         self,
         id: StrictStr,
-        name: Annotated[Optional[StrictStr], Field(description="Name of the transaction split")] = None,
-        active: Annotated[Optional[StrictBool], Field(description="Toggle status of split. When true, the split is active, else it's inactive")] = None,
-        bearer_type: Annotated[Optional[StrictStr], Field(description="This allows you specify how the transaction charge should be processed")] = None,
-        bearer_subaccount: Annotated[Optional[StrictStr], Field(description="This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type")] = None,
+        split_update: Optional[SplitUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1825,17 +1735,12 @@ class SplitApi:
     ) -> RESTResponseType:
         """Update Split
 
+        Update a split configuration for transactions
 
         :param id: (required)
         :type id: str
-        :param name: Name of the transaction split
-        :type name: str
-        :param active: Toggle status of split. When true, the split is active, else it's inactive
-        :type active: bool
-        :param bearer_type: This allows you specify how the transaction charge should be processed
-        :type bearer_type: str
-        :param bearer_subaccount: This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type
-        :type bearer_subaccount: str
+        :param split_update:
+        :type split_update: SplitUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1860,10 +1765,7 @@ class SplitApi:
 
         _param = self._split_update_serialize(
             id=id,
-            name=name,
-            active=active,
-            bearer_type=bearer_type,
-            bearer_subaccount=bearer_subaccount,
+            split_update=split_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1871,7 +1773,7 @@ class SplitApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SplitUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1885,10 +1787,7 @@ class SplitApi:
     def _split_update_serialize(
         self,
         id,
-        name,
-        active,
-        bearer_type,
-        bearer_subaccount,
+        split_update,
         _request_auth,
         _content_type,
         _headers,
@@ -1915,15 +1814,9 @@ class SplitApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if name is not None:
-            _form_params.append(('name', name))
-        if active is not None:
-            _form_params.append(('active', active))
-        if bearer_type is not None:
-            _form_params.append(('bearer_type', bearer_type))
-        if bearer_subaccount is not None:
-            _form_params.append(('bearer_subaccount', bearer_subaccount))
         # process the body parameter
+        if split_update is not None:
+            _body_params = split_update
 
 
         # set the HTTP header `Accept`
@@ -1941,8 +1834,8 @@ class SplitApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )

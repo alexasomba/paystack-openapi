@@ -25,7 +25,7 @@ from typing_extensions import Self
 
 class Bank(BaseModel):
     """
-    Bank
+    The bank object if charging a bank account
     """ # noqa: E501
     code: Optional[StrictStr] = Field(default=None, description="Customer's bank code")
     account_number: Optional[StrictStr] = Field(default=None, description="Customer's account number")

@@ -22,7 +22,7 @@ var _ MappedNullable = &ChargeSubmitPin{}
 
 // ChargeSubmitPin struct for ChargeSubmitPin
 type ChargeSubmitPin struct {
-	// Customer's PIN
+	// Customer's PIN for the ongoing transaction
 	Pin string `json:"pin"`
 	// Transaction reference that requires the PIN
 	Reference string `json:"reference"`

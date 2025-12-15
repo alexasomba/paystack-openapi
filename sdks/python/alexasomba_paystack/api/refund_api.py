@@ -18,10 +18,15 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from datetime import datetime
-from pydantic import Field, StrictInt, StrictStr
+from pydantic import Field, StrictInt
 from typing import Optional
 from typing_extensions import Annotated
-from alexasomba_paystack.models.response import Response
+from alexasomba_paystack.models.refund_create import RefundCreate
+from alexasomba_paystack.models.refund_create_response import RefundCreateResponse
+from alexasomba_paystack.models.refund_fetch_response import RefundFetchResponse
+from alexasomba_paystack.models.refund_list_response import RefundListResponse
+from alexasomba_paystack.models.refund_retry import RefundRetry
+from alexasomba_paystack.models.refund_retry_response import RefundRetryResponse
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
 from alexasomba_paystack.api_response import ApiResponse
@@ -44,11 +49,7 @@ class RefundApi:
     @validate_call
     def refund_create(
         self,
-        transaction: Annotated[StrictStr, Field(description="Transaction reference or id")],
-        amount: Annotated[Optional[StrictInt], Field(description="Amount ( in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR ) to be refunded to the customer.  Amount cannot be more than the original transaction amount")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Three-letter ISO currency. Allowed values are NGN, GHS, ZAR or USD")] = None,
-        customer_note: Annotated[Optional[StrictStr], Field(description="Customer reason")] = None,
-        merchant_note: Annotated[Optional[StrictStr], Field(description="Merchant reason")] = None,
+        refund_create: Optional[RefundCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -61,20 +62,13 @@ class RefundApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> RefundCreateResponse:
         """Create Refund
 
+        Initiate a refund for a previously completed transaction
 
-        :param transaction: Transaction reference or id (required)
-        :type transaction: str
-        :param amount: Amount ( in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR ) to be refunded to the customer.  Amount cannot be more than the original transaction amount
-        :type amount: int
-        :param currency: Three-letter ISO currency. Allowed values are NGN, GHS, ZAR or USD
-        :type currency: str
-        :param customer_note: Customer reason
-        :type customer_note: str
-        :param merchant_note: Merchant reason
-        :type merchant_note: str
+        :param refund_create:
+        :type refund_create: RefundCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -98,11 +92,7 @@ class RefundApi:
         """ # noqa: E501
 
         _param = self._refund_create_serialize(
-            transaction=transaction,
-            amount=amount,
-            currency=currency,
-            customer_note=customer_note,
-            merchant_note=merchant_note,
+            refund_create=refund_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -110,7 +100,7 @@ class RefundApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "RefundCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -127,11 +117,7 @@ class RefundApi:
     @validate_call
     def refund_create_with_http_info(
         self,
-        transaction: Annotated[StrictStr, Field(description="Transaction reference or id")],
-        amount: Annotated[Optional[StrictInt], Field(description="Amount ( in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR ) to be refunded to the customer.  Amount cannot be more than the original transaction amount")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Three-letter ISO currency. Allowed values are NGN, GHS, ZAR or USD")] = None,
-        customer_note: Annotated[Optional[StrictStr], Field(description="Customer reason")] = None,
-        merchant_note: Annotated[Optional[StrictStr], Field(description="Merchant reason")] = None,
+        refund_create: Optional[RefundCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -144,20 +130,13 @@ class RefundApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[RefundCreateResponse]:
         """Create Refund
 
+        Initiate a refund for a previously completed transaction
 
-        :param transaction: Transaction reference or id (required)
-        :type transaction: str
-        :param amount: Amount ( in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR ) to be refunded to the customer.  Amount cannot be more than the original transaction amount
-        :type amount: int
-        :param currency: Three-letter ISO currency. Allowed values are NGN, GHS, ZAR or USD
-        :type currency: str
-        :param customer_note: Customer reason
-        :type customer_note: str
-        :param merchant_note: Merchant reason
-        :type merchant_note: str
+        :param refund_create:
+        :type refund_create: RefundCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -181,11 +160,7 @@ class RefundApi:
         """ # noqa: E501
 
         _param = self._refund_create_serialize(
-            transaction=transaction,
-            amount=amount,
-            currency=currency,
-            customer_note=customer_note,
-            merchant_note=merchant_note,
+            refund_create=refund_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -193,7 +168,7 @@ class RefundApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "RefundCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -210,11 +185,7 @@ class RefundApi:
     @validate_call
     def refund_create_without_preload_content(
         self,
-        transaction: Annotated[StrictStr, Field(description="Transaction reference or id")],
-        amount: Annotated[Optional[StrictInt], Field(description="Amount ( in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR ) to be refunded to the customer.  Amount cannot be more than the original transaction amount")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Three-letter ISO currency. Allowed values are NGN, GHS, ZAR or USD")] = None,
-        customer_note: Annotated[Optional[StrictStr], Field(description="Customer reason")] = None,
-        merchant_note: Annotated[Optional[StrictStr], Field(description="Merchant reason")] = None,
+        refund_create: Optional[RefundCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -230,17 +201,10 @@ class RefundApi:
     ) -> RESTResponseType:
         """Create Refund
 
+        Initiate a refund for a previously completed transaction
 
-        :param transaction: Transaction reference or id (required)
-        :type transaction: str
-        :param amount: Amount ( in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR ) to be refunded to the customer.  Amount cannot be more than the original transaction amount
-        :type amount: int
-        :param currency: Three-letter ISO currency. Allowed values are NGN, GHS, ZAR or USD
-        :type currency: str
-        :param customer_note: Customer reason
-        :type customer_note: str
-        :param merchant_note: Merchant reason
-        :type merchant_note: str
+        :param refund_create:
+        :type refund_create: RefundCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -264,11 +228,7 @@ class RefundApi:
         """ # noqa: E501
 
         _param = self._refund_create_serialize(
-            transaction=transaction,
-            amount=amount,
-            currency=currency,
-            customer_note=customer_note,
-            merchant_note=merchant_note,
+            refund_create=refund_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -276,7 +236,7 @@ class RefundApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "RefundCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -288,11 +248,7 @@ class RefundApi:
 
     def _refund_create_serialize(
         self,
-        transaction,
-        amount,
-        currency,
-        customer_note,
-        merchant_note,
+        refund_create,
         _request_auth,
         _content_type,
         _headers,
@@ -317,17 +273,9 @@ class RefundApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if transaction is not None:
-            _form_params.append(('transaction', transaction))
-        if amount is not None:
-            _form_params.append(('amount', amount))
-        if currency is not None:
-            _form_params.append(('currency', currency))
-        if customer_note is not None:
-            _form_params.append(('customer_note', customer_note))
-        if merchant_note is not None:
-            _form_params.append(('merchant_note', merchant_note))
         # process the body parameter
+        if refund_create is not None:
+            _body_params = refund_create
 
 
         # set the HTTP header `Accept`
@@ -345,8 +293,8 @@ class RefundApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -379,7 +327,7 @@ class RefundApi:
     @validate_call
     def refund_fetch(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The identifier of the refund")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -392,12 +340,13 @@ class RefundApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> RefundFetchResponse:
         """Fetch Refund
 
+        Get a previously created refund
 
-        :param id: (required)
-        :type id: str
+        :param id: The identifier of the refund (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -429,7 +378,7 @@ class RefundApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "RefundFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -447,7 +396,7 @@ class RefundApi:
     @validate_call
     def refund_fetch_with_http_info(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The identifier of the refund")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -460,12 +409,13 @@ class RefundApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[RefundFetchResponse]:
         """Fetch Refund
 
+        Get a previously created refund
 
-        :param id: (required)
-        :type id: str
+        :param id: The identifier of the refund (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -497,7 +447,7 @@ class RefundApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "RefundFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -515,7 +465,7 @@ class RefundApi:
     @validate_call
     def refund_fetch_without_preload_content(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The identifier of the refund")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -531,9 +481,10 @@ class RefundApi:
     ) -> RESTResponseType:
         """Fetch Refund
 
+        Get a previously created refund
 
-        :param id: (required)
-        :type id: str
+        :param id: The identifier of the refund (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -565,7 +516,7 @@ class RefundApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "RefundFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -659,9 +610,10 @@ class RefundApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> RefundListResponse:
         """List Refunds
 
+        List previously created refunds
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
@@ -705,7 +657,7 @@ class RefundApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "RefundListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -739,9 +691,10 @@ class RefundApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[RefundListResponse]:
         """List Refunds
 
+        List previously created refunds
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
@@ -785,7 +738,7 @@ class RefundApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "RefundListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -822,6 +775,7 @@ class RefundApi:
     ) -> RESTResponseType:
         """List Refunds
 
+        List previously created refunds
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
@@ -865,7 +819,7 @@ class RefundApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "RefundListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -960,6 +914,299 @@ class RefundApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/refund',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def refund_retry(
+        self,
+        id: Annotated[StrictInt, Field(description="The identifier of the refund")],
+        refund_retry: Optional[RefundRetry] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RefundRetryResponse:
+        """Retry Refund
+
+        Retry a refund with a `needs-attention` status by providing the bank account details of a customer.
+
+        :param id: The identifier of the refund (required)
+        :type id: int
+        :param refund_retry:
+        :type refund_retry: RefundRetry
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._refund_retry_serialize(
+            id=id,
+            refund_retry=refund_retry,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "RefundRetryResponse",
+            '422': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def refund_retry_with_http_info(
+        self,
+        id: Annotated[StrictInt, Field(description="The identifier of the refund")],
+        refund_retry: Optional[RefundRetry] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[RefundRetryResponse]:
+        """Retry Refund
+
+        Retry a refund with a `needs-attention` status by providing the bank account details of a customer.
+
+        :param id: The identifier of the refund (required)
+        :type id: int
+        :param refund_retry:
+        :type refund_retry: RefundRetry
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._refund_retry_serialize(
+            id=id,
+            refund_retry=refund_retry,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "RefundRetryResponse",
+            '422': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def refund_retry_without_preload_content(
+        self,
+        id: Annotated[StrictInt, Field(description="The identifier of the refund")],
+        refund_retry: Optional[RefundRetry] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Retry Refund
+
+        Retry a refund with a `needs-attention` status by providing the bank account details of a customer.
+
+        :param id: The identifier of the refund (required)
+        :type id: int
+        :param refund_retry:
+        :type refund_retry: RefundRetry
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._refund_retry_serialize(
+            id=id,
+            refund_retry=refund_retry,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "RefundRetryResponse",
+            '422': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _refund_retry_serialize(
+        self,
+        id,
+        refund_retry,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if refund_retry is not None:
+            _body_params = refund_retry
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/refund/retry_with_customer_details/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

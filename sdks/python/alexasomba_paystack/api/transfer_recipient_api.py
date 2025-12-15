@@ -17,12 +17,18 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from datetime import datetime
-from pydantic import Field, StrictInt, StrictStr
-from typing import List, Optional
+from pydantic import Field, StrictBool, StrictInt, StrictStr
+from typing import Optional
 from typing_extensions import Annotated
-from alexasomba_paystack.models.response import Response
+from alexasomba_paystack.models.transfer_recipient_bulk import TransferRecipientBulk
+from alexasomba_paystack.models.transfer_recipient_bulk_create_response import TransferRecipientBulkCreateResponse
 from alexasomba_paystack.models.transfer_recipient_create import TransferRecipientCreate
+from alexasomba_paystack.models.transfer_recipient_create_response import TransferRecipientCreateResponse
+from alexasomba_paystack.models.transfer_recipient_delete_response import TransferRecipientDeleteResponse
+from alexasomba_paystack.models.transfer_recipient_fetch_response import TransferRecipientFetchResponse
+from alexasomba_paystack.models.transfer_recipient_list_response import TransferRecipientListResponse
+from alexasomba_paystack.models.transfer_recipient_update import TransferRecipientUpdate
+from alexasomba_paystack.models.transfer_recipient_update_response import TransferRecipientUpdateResponse
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
 from alexasomba_paystack.api_response import ApiResponse
@@ -45,7 +51,7 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_bulk(
         self,
-        batch: Annotated[List[TransferRecipientCreate], Field(description="A list of transfer recipient object. Each object should contain type, name, and bank_code.  Any Create Transfer Recipient param can also be passed.")],
+        transfer_recipient_bulk: Optional[TransferRecipientBulk] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -58,12 +64,13 @@ class TransferRecipientApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> TransferRecipientBulkCreateResponse:
         """Bulk Create Transfer Recipient
 
+        Create multiple transfer recipients in batches. A duplicate account number will lead to the retrieval of the existing record. 
 
-        :param batch: A list of transfer recipient object. Each object should contain type, name, and bank_code.  Any Create Transfer Recipient param can also be passed. (required)
-        :type batch: List[TransferRecipientCreate]
+        :param transfer_recipient_bulk:
+        :type transfer_recipient_bulk: TransferRecipientBulk
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -87,7 +94,7 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_bulk_serialize(
-            batch=batch,
+            transfer_recipient_bulk=transfer_recipient_bulk,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -95,7 +102,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferRecipientBulkCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -112,7 +119,7 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_bulk_with_http_info(
         self,
-        batch: Annotated[List[TransferRecipientCreate], Field(description="A list of transfer recipient object. Each object should contain type, name, and bank_code.  Any Create Transfer Recipient param can also be passed.")],
+        transfer_recipient_bulk: Optional[TransferRecipientBulk] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -125,12 +132,13 @@ class TransferRecipientApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[TransferRecipientBulkCreateResponse]:
         """Bulk Create Transfer Recipient
 
+        Create multiple transfer recipients in batches. A duplicate account number will lead to the retrieval of the existing record. 
 
-        :param batch: A list of transfer recipient object. Each object should contain type, name, and bank_code.  Any Create Transfer Recipient param can also be passed. (required)
-        :type batch: List[TransferRecipientCreate]
+        :param transfer_recipient_bulk:
+        :type transfer_recipient_bulk: TransferRecipientBulk
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -154,7 +162,7 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_bulk_serialize(
-            batch=batch,
+            transfer_recipient_bulk=transfer_recipient_bulk,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -162,7 +170,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferRecipientBulkCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -179,7 +187,7 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_bulk_without_preload_content(
         self,
-        batch: Annotated[List[TransferRecipientCreate], Field(description="A list of transfer recipient object. Each object should contain type, name, and bank_code.  Any Create Transfer Recipient param can also be passed.")],
+        transfer_recipient_bulk: Optional[TransferRecipientBulk] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -195,9 +203,10 @@ class TransferRecipientApi:
     ) -> RESTResponseType:
         """Bulk Create Transfer Recipient
 
+        Create multiple transfer recipients in batches. A duplicate account number will lead to the retrieval of the existing record. 
 
-        :param batch: A list of transfer recipient object. Each object should contain type, name, and bank_code.  Any Create Transfer Recipient param can also be passed. (required)
-        :type batch: List[TransferRecipientCreate]
+        :param transfer_recipient_bulk:
+        :type transfer_recipient_bulk: TransferRecipientBulk
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -221,7 +230,7 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_bulk_serialize(
-            batch=batch,
+            transfer_recipient_bulk=transfer_recipient_bulk,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -229,7 +238,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferRecipientBulkCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -241,7 +250,7 @@ class TransferRecipientApi:
 
     def _transferrecipient_bulk_serialize(
         self,
-        batch,
+        transfer_recipient_bulk,
         _request_auth,
         _content_type,
         _headers,
@@ -251,7 +260,6 @@ class TransferRecipientApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'batch': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -267,9 +275,9 @@ class TransferRecipientApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if batch is not None:
-            _form_params.append(('batch', batch))
         # process the body parameter
+        if transfer_recipient_bulk is not None:
+            _body_params = transfer_recipient_bulk
 
 
         # set the HTTP header `Accept`
@@ -287,8 +295,8 @@ class TransferRecipientApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -321,14 +329,7 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_create(
         self,
-        type: Annotated[StrictStr, Field(description="Recipient Type (Only nuban at this time)")],
-        name: Annotated[StrictStr, Field(description="Recipient's name")],
-        account_number: Annotated[StrictStr, Field(description="Recipient's bank account number")],
-        bank_code: Annotated[StrictStr, Field(description="Recipient's bank code. You can get the list of Bank Codes by calling the List Banks endpoint")],
-        description: Annotated[Optional[StrictStr], Field(description="A description for this recipient")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Currency for the account receiving the transfer")] = None,
-        authorization_code: Annotated[Optional[StrictStr], Field(description="An authorization code from a previous transaction")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
+        transfer_recipient_create: Optional[TransferRecipientCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -341,26 +342,13 @@ class TransferRecipientApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> TransferRecipientCreateResponse:
         """Create Transfer Recipient
 
+        Creates a new recipient. A duplicate account number will lead to the retrieval of the existing record.
 
-        :param type: Recipient Type (Only nuban at this time) (required)
-        :type type: str
-        :param name: Recipient's name (required)
-        :type name: str
-        :param account_number: Recipient's bank account number (required)
-        :type account_number: str
-        :param bank_code: Recipient's bank code. You can get the list of Bank Codes by calling the List Banks endpoint (required)
-        :type bank_code: str
-        :param description: A description for this recipient
-        :type description: str
-        :param currency: Currency for the account receiving the transfer
-        :type currency: str
-        :param authorization_code: An authorization code from a previous transaction
-        :type authorization_code: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
+        :param transfer_recipient_create:
+        :type transfer_recipient_create: TransferRecipientCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -384,14 +372,7 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_create_serialize(
-            type=type,
-            name=name,
-            account_number=account_number,
-            bank_code=bank_code,
-            description=description,
-            currency=currency,
-            authorization_code=authorization_code,
-            metadata=metadata,
+            transfer_recipient_create=transfer_recipient_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -399,7 +380,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Response",
+            '201': "TransferRecipientCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -416,14 +397,7 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_create_with_http_info(
         self,
-        type: Annotated[StrictStr, Field(description="Recipient Type (Only nuban at this time)")],
-        name: Annotated[StrictStr, Field(description="Recipient's name")],
-        account_number: Annotated[StrictStr, Field(description="Recipient's bank account number")],
-        bank_code: Annotated[StrictStr, Field(description="Recipient's bank code. You can get the list of Bank Codes by calling the List Banks endpoint")],
-        description: Annotated[Optional[StrictStr], Field(description="A description for this recipient")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Currency for the account receiving the transfer")] = None,
-        authorization_code: Annotated[Optional[StrictStr], Field(description="An authorization code from a previous transaction")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
+        transfer_recipient_create: Optional[TransferRecipientCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -436,26 +410,13 @@ class TransferRecipientApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[TransferRecipientCreateResponse]:
         """Create Transfer Recipient
 
+        Creates a new recipient. A duplicate account number will lead to the retrieval of the existing record.
 
-        :param type: Recipient Type (Only nuban at this time) (required)
-        :type type: str
-        :param name: Recipient's name (required)
-        :type name: str
-        :param account_number: Recipient's bank account number (required)
-        :type account_number: str
-        :param bank_code: Recipient's bank code. You can get the list of Bank Codes by calling the List Banks endpoint (required)
-        :type bank_code: str
-        :param description: A description for this recipient
-        :type description: str
-        :param currency: Currency for the account receiving the transfer
-        :type currency: str
-        :param authorization_code: An authorization code from a previous transaction
-        :type authorization_code: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
+        :param transfer_recipient_create:
+        :type transfer_recipient_create: TransferRecipientCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -479,14 +440,7 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_create_serialize(
-            type=type,
-            name=name,
-            account_number=account_number,
-            bank_code=bank_code,
-            description=description,
-            currency=currency,
-            authorization_code=authorization_code,
-            metadata=metadata,
+            transfer_recipient_create=transfer_recipient_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -494,7 +448,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Response",
+            '201': "TransferRecipientCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -511,14 +465,7 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_create_without_preload_content(
         self,
-        type: Annotated[StrictStr, Field(description="Recipient Type (Only nuban at this time)")],
-        name: Annotated[StrictStr, Field(description="Recipient's name")],
-        account_number: Annotated[StrictStr, Field(description="Recipient's bank account number")],
-        bank_code: Annotated[StrictStr, Field(description="Recipient's bank code. You can get the list of Bank Codes by calling the List Banks endpoint")],
-        description: Annotated[Optional[StrictStr], Field(description="A description for this recipient")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Currency for the account receiving the transfer")] = None,
-        authorization_code: Annotated[Optional[StrictStr], Field(description="An authorization code from a previous transaction")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
+        transfer_recipient_create: Optional[TransferRecipientCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -534,23 +481,10 @@ class TransferRecipientApi:
     ) -> RESTResponseType:
         """Create Transfer Recipient
 
+        Creates a new recipient. A duplicate account number will lead to the retrieval of the existing record.
 
-        :param type: Recipient Type (Only nuban at this time) (required)
-        :type type: str
-        :param name: Recipient's name (required)
-        :type name: str
-        :param account_number: Recipient's bank account number (required)
-        :type account_number: str
-        :param bank_code: Recipient's bank code. You can get the list of Bank Codes by calling the List Banks endpoint (required)
-        :type bank_code: str
-        :param description: A description for this recipient
-        :type description: str
-        :param currency: Currency for the account receiving the transfer
-        :type currency: str
-        :param authorization_code: An authorization code from a previous transaction
-        :type authorization_code: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
+        :param transfer_recipient_create:
+        :type transfer_recipient_create: TransferRecipientCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -574,14 +508,7 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_create_serialize(
-            type=type,
-            name=name,
-            account_number=account_number,
-            bank_code=bank_code,
-            description=description,
-            currency=currency,
-            authorization_code=authorization_code,
-            metadata=metadata,
+            transfer_recipient_create=transfer_recipient_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -589,7 +516,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Response",
+            '201': "TransferRecipientCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -601,14 +528,7 @@ class TransferRecipientApi:
 
     def _transferrecipient_create_serialize(
         self,
-        type,
-        name,
-        account_number,
-        bank_code,
-        description,
-        currency,
-        authorization_code,
-        metadata,
+        transfer_recipient_create,
         _request_auth,
         _content_type,
         _headers,
@@ -633,23 +553,9 @@ class TransferRecipientApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if type is not None:
-            _form_params.append(('type', type))
-        if name is not None:
-            _form_params.append(('name', name))
-        if account_number is not None:
-            _form_params.append(('account_number', account_number))
-        if bank_code is not None:
-            _form_params.append(('bank_code', bank_code))
-        if description is not None:
-            _form_params.append(('description', description))
-        if currency is not None:
-            _form_params.append(('currency', currency))
-        if authorization_code is not None:
-            _form_params.append(('authorization_code', authorization_code))
-        if metadata is not None:
-            _form_params.append(('metadata', metadata))
         # process the body parameter
+        if transfer_recipient_create is not None:
+            _body_params = transfer_recipient_create
 
 
         # set the HTTP header `Accept`
@@ -667,8 +573,8 @@ class TransferRecipientApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -714,9 +620,10 @@ class TransferRecipientApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> TransferRecipientDeleteResponse:
         """Delete Transfer Recipient
 
+        Delete a transfer recipient (sets the transfer recipient to inactive)
 
         :param code: Transfer recipient code (required)
         :type code: str
@@ -751,7 +658,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferRecipientDeleteResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -782,9 +689,10 @@ class TransferRecipientApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[TransferRecipientDeleteResponse]:
         """Delete Transfer Recipient
 
+        Delete a transfer recipient (sets the transfer recipient to inactive)
 
         :param code: Transfer recipient code (required)
         :type code: str
@@ -819,7 +727,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferRecipientDeleteResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -853,6 +761,7 @@ class TransferRecipientApi:
     ) -> RESTResponseType:
         """Delete Transfer Recipient
 
+        Delete a transfer recipient (sets the transfer recipient to inactive)
 
         :param code: Transfer recipient code (required)
         :type code: str
@@ -887,7 +796,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferRecipientDeleteResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -978,9 +887,10 @@ class TransferRecipientApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> TransferRecipientFetchResponse:
         """Fetch Transfer recipient
 
+        Fetch the details of a transfer recipient
 
         :param code: Transfer recipient code (required)
         :type code: str
@@ -1015,7 +925,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferRecipientFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1046,9 +956,10 @@ class TransferRecipientApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[TransferRecipientFetchResponse]:
         """Fetch Transfer recipient
 
+        Fetch the details of a transfer recipient
 
         :param code: Transfer recipient code (required)
         :type code: str
@@ -1083,7 +994,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferRecipientFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1117,6 +1028,7 @@ class TransferRecipientApi:
     ) -> RESTResponseType:
         """Fetch Transfer recipient
 
+        Fetch the details of a transfer recipient
 
         :param code: Transfer recipient code (required)
         :type code: str
@@ -1151,7 +1063,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferRecipientFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1229,10 +1141,11 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_list(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
+        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
+        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1245,18 +1158,21 @@ class TransferRecipientApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> TransferRecipientListResponse:
         """List Transfer Recipients
 
+        List transfer recipients available on your integration
 
-        :param per_page: Number of records to fetch per page
+        :param use_cursor: A flag to indicate if cursor based pagination should be used
+        :type use_cursor: bool
+        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
+        :type next: str
+        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
+        :type previous: str
+        :param per_page: The number of records to fetch per request
         :type per_page: int
-        :param page: The section to retrieve
+        :param page: The offset to retrieve data from
         :type page: int
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1280,10 +1196,11 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_list_serialize(
+            use_cursor=use_cursor,
+            next=next,
+            previous=previous,
             per_page=per_page,
             page=page,
-            var_from=var_from,
-            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1291,7 +1208,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferRecipientListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1309,10 +1226,11 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_list_with_http_info(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
+        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
+        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1325,18 +1243,21 @@ class TransferRecipientApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[TransferRecipientListResponse]:
         """List Transfer Recipients
 
+        List transfer recipients available on your integration
 
-        :param per_page: Number of records to fetch per page
+        :param use_cursor: A flag to indicate if cursor based pagination should be used
+        :type use_cursor: bool
+        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
+        :type next: str
+        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
+        :type previous: str
+        :param per_page: The number of records to fetch per request
         :type per_page: int
-        :param page: The section to retrieve
+        :param page: The offset to retrieve data from
         :type page: int
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1360,10 +1281,11 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_list_serialize(
+            use_cursor=use_cursor,
+            next=next,
+            previous=previous,
             per_page=per_page,
             page=page,
-            var_from=var_from,
-            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1371,7 +1293,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferRecipientListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1389,10 +1311,11 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_list_without_preload_content(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
+        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
+        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1408,15 +1331,18 @@ class TransferRecipientApi:
     ) -> RESTResponseType:
         """List Transfer Recipients
 
+        List transfer recipients available on your integration
 
-        :param per_page: Number of records to fetch per page
+        :param use_cursor: A flag to indicate if cursor based pagination should be used
+        :type use_cursor: bool
+        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
+        :type next: str
+        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
+        :type previous: str
+        :param per_page: The number of records to fetch per request
         :type per_page: int
-        :param page: The section to retrieve
+        :param page: The offset to retrieve data from
         :type page: int
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1440,10 +1366,11 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_list_serialize(
+            use_cursor=use_cursor,
+            next=next,
+            previous=previous,
             per_page=per_page,
             page=page,
-            var_from=var_from,
-            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1451,7 +1378,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferRecipientListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1464,10 +1391,11 @@ class TransferRecipientApi:
 
     def _transferrecipient_list_serialize(
         self,
+        use_cursor,
+        next,
+        previous,
         per_page,
         page,
-        var_from,
-        to,
         _request_auth,
         _content_type,
         _headers,
@@ -1490,39 +1418,25 @@ class TransferRecipientApi:
 
         # process the path parameters
         # process the query parameters
+        if use_cursor is not None:
+            
+            _query_params.append(('use_cursor', use_cursor))
+            
+        if next is not None:
+            
+            _query_params.append(('next', next))
+            
+        if previous is not None:
+            
+            _query_params.append(('previous', previous))
+            
         if per_page is not None:
             
-            _query_params.append(('perPage', per_page))
+            _query_params.append(('per_page', per_page))
             
         if page is not None:
             
             _query_params.append(('page', page))
-            
-        if var_from is not None:
-            if isinstance(var_from, datetime):
-                _query_params.append(
-                    (
-                        'from',
-                        var_from.strftime(
-                            self.api_client.configuration.datetime_format
-                        )
-                    )
-                )
-            else:
-                _query_params.append(('from', var_from))
-            
-        if to is not None:
-            if isinstance(to, datetime):
-                _query_params.append(
-                    (
-                        'to',
-                        to.strftime(
-                            self.api_client.configuration.datetime_format
-                        )
-                    )
-                )
-            else:
-                _query_params.append(('to', to))
             
         # process the header parameters
         # process the form parameters
@@ -1565,8 +1479,7 @@ class TransferRecipientApi:
     def transferrecipient_update(
         self,
         code: Annotated[StrictStr, Field(description="Transfer recipient code")],
-        name: Annotated[Optional[StrictStr], Field(description="Recipient's name")] = None,
-        email: Annotated[Optional[StrictStr], Field(description="Recipient's email address")] = None,
+        transfer_recipient_update: Optional[TransferRecipientUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1579,16 +1492,15 @@ class TransferRecipientApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
-        """Update Transfer recipient
+    ) -> TransferRecipientUpdateResponse:
+        """Update Transfer Recipient
 
+        Update the details of a transfer recipient
 
         :param code: Transfer recipient code (required)
         :type code: str
-        :param name: Recipient's name
-        :type name: str
-        :param email: Recipient's email address
-        :type email: str
+        :param transfer_recipient_update:
+        :type transfer_recipient_update: TransferRecipientUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1613,8 +1525,7 @@ class TransferRecipientApi:
 
         _param = self._transferrecipient_update_serialize(
             code=code,
-            name=name,
-            email=email,
+            transfer_recipient_update=transfer_recipient_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1622,7 +1533,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferRecipientUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1641,8 +1552,7 @@ class TransferRecipientApi:
     def transferrecipient_update_with_http_info(
         self,
         code: Annotated[StrictStr, Field(description="Transfer recipient code")],
-        name: Annotated[Optional[StrictStr], Field(description="Recipient's name")] = None,
-        email: Annotated[Optional[StrictStr], Field(description="Recipient's email address")] = None,
+        transfer_recipient_update: Optional[TransferRecipientUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1655,16 +1565,15 @@ class TransferRecipientApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
-        """Update Transfer recipient
+    ) -> ApiResponse[TransferRecipientUpdateResponse]:
+        """Update Transfer Recipient
 
+        Update the details of a transfer recipient
 
         :param code: Transfer recipient code (required)
         :type code: str
-        :param name: Recipient's name
-        :type name: str
-        :param email: Recipient's email address
-        :type email: str
+        :param transfer_recipient_update:
+        :type transfer_recipient_update: TransferRecipientUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1689,8 +1598,7 @@ class TransferRecipientApi:
 
         _param = self._transferrecipient_update_serialize(
             code=code,
-            name=name,
-            email=email,
+            transfer_recipient_update=transfer_recipient_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1698,7 +1606,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferRecipientUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1717,8 +1625,7 @@ class TransferRecipientApi:
     def transferrecipient_update_without_preload_content(
         self,
         code: Annotated[StrictStr, Field(description="Transfer recipient code")],
-        name: Annotated[Optional[StrictStr], Field(description="Recipient's name")] = None,
-        email: Annotated[Optional[StrictStr], Field(description="Recipient's email address")] = None,
+        transfer_recipient_update: Optional[TransferRecipientUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1732,15 +1639,14 @@ class TransferRecipientApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Transfer recipient
+        """Update Transfer Recipient
 
+        Update the details of a transfer recipient
 
         :param code: Transfer recipient code (required)
         :type code: str
-        :param name: Recipient's name
-        :type name: str
-        :param email: Recipient's email address
-        :type email: str
+        :param transfer_recipient_update:
+        :type transfer_recipient_update: TransferRecipientUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1765,8 +1671,7 @@ class TransferRecipientApi:
 
         _param = self._transferrecipient_update_serialize(
             code=code,
-            name=name,
-            email=email,
+            transfer_recipient_update=transfer_recipient_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1774,7 +1679,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransferRecipientUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1788,8 +1693,7 @@ class TransferRecipientApi:
     def _transferrecipient_update_serialize(
         self,
         code,
-        name,
-        email,
+        transfer_recipient_update,
         _request_auth,
         _content_type,
         _headers,
@@ -1816,11 +1720,9 @@ class TransferRecipientApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if name is not None:
-            _form_params.append(('name', name))
-        if email is not None:
-            _form_params.append(('email', email))
         # process the body parameter
+        if transfer_recipient_update is not None:
+            _body_params = transfer_recipient_update
 
 
         # set the HTTP header `Accept`
@@ -1838,8 +1740,8 @@ class TransferRecipientApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )

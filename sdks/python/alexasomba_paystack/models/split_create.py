@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.split_subaccounts import SplitSubaccounts
 from typing import Optional, Set
@@ -26,7 +26,7 @@ from typing_extensions import Self
 
 class SplitCreate(BaseModel):
     """
-    SplitCreate
+    Split configuration for transactions 
     """ # noqa: E501
     name: StrictStr = Field(description="Name of the transaction split")
     type: StrictStr = Field(description="The type of transaction split you want to create.")
@@ -35,6 +35,30 @@ class SplitCreate(BaseModel):
     bearer_type: Optional[StrictStr] = Field(default=None, description="This allows you specify how the transaction charge should be processed")
     bearer_subaccount: Optional[StrictStr] = Field(default=None, description="This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type")
     __properties: ClassVar[List[str]] = ["name", "type", "subaccounts", "currency", "bearer_type", "bearer_subaccount"]
+
+    @field_validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['percentage', 'flat']):
+            raise ValueError("must be one of enum values ('percentage', 'flat')")
+        return value
+
+    @field_validator('currency')
+    def currency_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['NGN', 'GHS', 'ZAR', 'USD']):
+            raise ValueError("must be one of enum values ('NGN', 'GHS', 'ZAR', 'USD')")
+        return value
+
+    @field_validator('bearer_type')
+    def bearer_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['subaccount', 'account', 'all-proportional', 'all']):
+            raise ValueError("must be one of enum values ('subaccount', 'account', 'all-proportional', 'all')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,

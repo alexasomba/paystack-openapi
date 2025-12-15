@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,9 +27,19 @@ class CustomerRiskAction(BaseModel):
     """
     CustomerRiskAction
     """ # noqa: E501
-    customer: StrictStr = Field(description="Customer's code, or email address")
-    risk_action: Optional[StrictStr] = Field(default=None, description="One of the possible risk actions [ default, allow, deny ]. allow to whitelist.  deny to blacklist. Customers start with a default risk action. ")
+    customer: StrictStr = Field(description="The customer code from the response of the customer creation")
+    risk_action: Optional[StrictStr] = Field(default='default', description="This determines the fraud rules that should be applied to the customer")
     __properties: ClassVar[List[str]] = ["customer", "risk_action"]
+
+    @field_validator('risk_action')
+    def risk_action_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['allow', 'deny', 'default']):
+            raise ValueError("must be one of enum values ('allow', 'deny', 'default')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,7 +93,7 @@ class CustomerRiskAction(BaseModel):
 
         _obj = cls.model_validate({
             "customer": obj.get("customer"),
-            "risk_action": obj.get("risk_action")
+            "risk_action": obj.get("risk_action") if obj.get("risk_action") is not None else 'default'
         })
         return _obj
 

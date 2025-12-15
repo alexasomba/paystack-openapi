@@ -28,21 +28,25 @@ type PaymentRequestAPIService service
 type ApiPaymentRequestArchiveRequest struct {
 	ctx context.Context
 	ApiService *PaymentRequestAPIService
-	id string
+	id int32
 }
 
-func (r ApiPaymentRequestArchiveRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiPaymentRequestArchiveRequest) Execute() (*PaymentRequestArchiveResponse, *http.Response, error) {
 	return r.ApiService.PaymentRequestArchiveExecute(r)
 }
 
 /*
 PaymentRequestArchive Archive Payment Request
 
+Archive a payment request to clean up your records. An archived payment request cannot be verified and will not 
+be returned when listing all previously created payment requests.
+
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param id The unique identifier of a previously created payment request
  @return ApiPaymentRequestArchiveRequest
 */
-func (a *PaymentRequestAPIService) PaymentRequestArchive(ctx context.Context, id string) ApiPaymentRequestArchiveRequest {
+func (a *PaymentRequestAPIService) PaymentRequestArchive(ctx context.Context, id int32) ApiPaymentRequestArchiveRequest {
 	return ApiPaymentRequestArchiveRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -51,13 +55,13 @@ func (a *PaymentRequestAPIService) PaymentRequestArchive(ctx context.Context, id
 }
 
 // Execute executes the request
-//  @return Response
-func (a *PaymentRequestAPIService) PaymentRequestArchiveExecute(r ApiPaymentRequestArchiveRequest) (*Response, *http.Response, error) {
+//  @return PaymentRequestArchiveResponse
+func (a *PaymentRequestAPIService) PaymentRequestArchiveExecute(r ApiPaymentRequestArchiveRequest) (*PaymentRequestArchiveResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *PaymentRequestArchiveResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.PaymentRequestArchive")
@@ -140,98 +144,22 @@ func (a *PaymentRequestAPIService) PaymentRequestArchiveExecute(r ApiPaymentRequ
 type ApiPaymentRequestCreateRequest struct {
 	ctx context.Context
 	ApiService *PaymentRequestAPIService
-	customer *string
-	amount *int32
-	currency *string
-	dueDate *time.Time
-	description *string
-	lineItems *[]map[string]interface{}
-	tax *[]map[string]interface{}
-	sendNotification *[]map[string]interface{}
-	draft *[]map[string]interface{}
-	hasInvoice *[]map[string]interface{}
-	invoiceNumber *int32
-	splitCode *string
+	paymentRequestCreate *PaymentRequestCreate
 }
 
-// Customer id or code
-func (r ApiPaymentRequestCreateRequest) Customer(customer string) ApiPaymentRequestCreateRequest {
-	r.customer = &customer
+func (r ApiPaymentRequestCreateRequest) PaymentRequestCreate(paymentRequestCreate PaymentRequestCreate) ApiPaymentRequestCreateRequest {
+	r.paymentRequestCreate = &paymentRequestCreate
 	return r
 }
 
-// Payment request amount. Only useful if line items and tax values are ignored.  The endpoint will throw a friendly warning if neither is available.
-func (r ApiPaymentRequestCreateRequest) Amount(amount int32) ApiPaymentRequestCreateRequest {
-	r.amount = &amount
-	return r
-}
-
-// Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN
-func (r ApiPaymentRequestCreateRequest) Currency(currency string) ApiPaymentRequestCreateRequest {
-	r.currency = &currency
-	return r
-}
-
-// ISO 8601 representation of request due date
-func (r ApiPaymentRequestCreateRequest) DueDate(dueDate time.Time) ApiPaymentRequestCreateRequest {
-	r.dueDate = &dueDate
-	return r
-}
-
-// A short description of the payment request
-func (r ApiPaymentRequestCreateRequest) Description(description string) ApiPaymentRequestCreateRequest {
-	r.description = &description
-	return r
-}
-
-// Array of line items
-func (r ApiPaymentRequestCreateRequest) LineItems(lineItems []map[string]interface{}) ApiPaymentRequestCreateRequest {
-	r.lineItems = &lineItems
-	return r
-}
-
-// Array of taxes
-func (r ApiPaymentRequestCreateRequest) Tax(tax []map[string]interface{}) ApiPaymentRequestCreateRequest {
-	r.tax = &tax
-	return r
-}
-
-// Indicates whether Paystack sends an email notification to customer. Defaults to true
-func (r ApiPaymentRequestCreateRequest) SendNotification(sendNotification []map[string]interface{}) ApiPaymentRequestCreateRequest {
-	r.sendNotification = &sendNotification
-	return r
-}
-
-// Indicate if request should be saved as draft. Defaults to false and overrides send_notification
-func (r ApiPaymentRequestCreateRequest) Draft(draft []map[string]interface{}) ApiPaymentRequestCreateRequest {
-	r.draft = &draft
-	return r
-}
-
-// Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided)  even if there are no line_items or tax passed
-func (r ApiPaymentRequestCreateRequest) HasInvoice(hasInvoice []map[string]interface{}) ApiPaymentRequestCreateRequest {
-	r.hasInvoice = &hasInvoice
-	return r
-}
-
-// Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help  override whatever value Paystack decides. Auto increment for subsequent invoices continue from this point.
-func (r ApiPaymentRequestCreateRequest) InvoiceNumber(invoiceNumber int32) ApiPaymentRequestCreateRequest {
-	r.invoiceNumber = &invoiceNumber
-	return r
-}
-
-// The split code of the transaction split.
-func (r ApiPaymentRequestCreateRequest) SplitCode(splitCode string) ApiPaymentRequestCreateRequest {
-	r.splitCode = &splitCode
-	return r
-}
-
-func (r ApiPaymentRequestCreateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiPaymentRequestCreateRequest) Execute() (*PaymentRequestCreateResponse, *http.Response, error) {
 	return r.ApiService.PaymentRequestCreateExecute(r)
 }
 
 /*
 PaymentRequestCreate Create Payment Request
+
+Create a new payment request by issuing an invoice to a customer
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentRequestCreateRequest
@@ -244,13 +172,13 @@ func (a *PaymentRequestAPIService) PaymentRequestCreate(ctx context.Context) Api
 }
 
 // Execute executes the request
-//  @return Response
-func (a *PaymentRequestAPIService) PaymentRequestCreateExecute(r ApiPaymentRequestCreateRequest) (*Response, *http.Response, error) {
+//  @return PaymentRequestCreateResponse
+func (a *PaymentRequestAPIService) PaymentRequestCreateExecute(r ApiPaymentRequestCreateRequest) (*PaymentRequestCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *PaymentRequestCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.PaymentRequestCreate")
@@ -263,12 +191,9 @@ func (a *PaymentRequestAPIService) PaymentRequestCreateExecute(r ApiPaymentReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.customer == nil {
-		return localVarReturnValue, nil, reportError("customer is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -284,40 +209,8 @@ func (a *PaymentRequestAPIService) PaymentRequestCreateExecute(r ApiPaymentReque
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "customer", r.customer, "", "")
-	if r.amount != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "amount", r.amount, "", "")
-	}
-	if r.currency != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "currency", r.currency, "", "")
-	}
-	if r.dueDate != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "due_date", r.dueDate, "", "")
-	}
-	if r.description != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "description", r.description, "", "")
-	}
-	if r.lineItems != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "line_items", r.lineItems, "", "csv")
-	}
-	if r.tax != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "tax", r.tax, "", "csv")
-	}
-	if r.sendNotification != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "send_notification", r.sendNotification, "", "csv")
-	}
-	if r.draft != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "draft", r.draft, "", "csv")
-	}
-	if r.hasInvoice != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "has_invoice", r.hasInvoice, "", "csv")
-	}
-	if r.invoiceNumber != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "invoice_number", r.invoiceNumber, "", "")
-	}
-	if r.splitCode != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "split_code", r.splitCode, "", "")
-	}
+	// body params
+	localVarPostBody = r.paymentRequestCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -369,21 +262,23 @@ func (a *PaymentRequestAPIService) PaymentRequestCreateExecute(r ApiPaymentReque
 type ApiPaymentRequestFetchRequest struct {
 	ctx context.Context
 	ApiService *PaymentRequestAPIService
-	id string
+	id int32
 }
 
-func (r ApiPaymentRequestFetchRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiPaymentRequestFetchRequest) Execute() (*PaymentRequestListResponse, *http.Response, error) {
 	return r.ApiService.PaymentRequestFetchExecute(r)
 }
 
 /*
 PaymentRequestFetch Fetch Payment Request
 
+Fetch a previously created payment request
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param id The unique identifier of a previously created payment request
  @return ApiPaymentRequestFetchRequest
 */
-func (a *PaymentRequestAPIService) PaymentRequestFetch(ctx context.Context, id string) ApiPaymentRequestFetchRequest {
+func (a *PaymentRequestAPIService) PaymentRequestFetch(ctx context.Context, id int32) ApiPaymentRequestFetchRequest {
 	return ApiPaymentRequestFetchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -392,13 +287,13 @@ func (a *PaymentRequestAPIService) PaymentRequestFetch(ctx context.Context, id s
 }
 
 // Execute executes the request
-//  @return Response
-func (a *PaymentRequestAPIService) PaymentRequestFetchExecute(r ApiPaymentRequestFetchRequest) (*Response, *http.Response, error) {
+//  @return PaymentRequestListResponse
+func (a *PaymentRequestAPIService) PaymentRequestFetchExecute(r ApiPaymentRequestFetchRequest) (*PaymentRequestListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *PaymentRequestListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.PaymentRequestFetch")
@@ -492,21 +387,23 @@ func (a *PaymentRequestAPIService) PaymentRequestFetchExecute(r ApiPaymentReques
 type ApiPaymentRequestFinalizeRequest struct {
 	ctx context.Context
 	ApiService *PaymentRequestAPIService
-	id string
+	id int32
 }
 
-func (r ApiPaymentRequestFinalizeRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiPaymentRequestFinalizeRequest) Execute() (*PaymentRequestFinalizeResponse, *http.Response, error) {
 	return r.ApiService.PaymentRequestFinalizeExecute(r)
 }
 
 /*
 PaymentRequestFinalize Finalize Payment Request
 
+Finalise the creation of a draft payment request for a customer
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param id The unique identifier of a draft payment request
  @return ApiPaymentRequestFinalizeRequest
 */
-func (a *PaymentRequestAPIService) PaymentRequestFinalize(ctx context.Context, id string) ApiPaymentRequestFinalizeRequest {
+func (a *PaymentRequestAPIService) PaymentRequestFinalize(ctx context.Context, id int32) ApiPaymentRequestFinalizeRequest {
 	return ApiPaymentRequestFinalizeRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -515,13 +412,13 @@ func (a *PaymentRequestAPIService) PaymentRequestFinalize(ctx context.Context, i
 }
 
 // Execute executes the request
-//  @return Response
-func (a *PaymentRequestAPIService) PaymentRequestFinalizeExecute(r ApiPaymentRequestFinalizeRequest) (*Response, *http.Response, error) {
+//  @return PaymentRequestFinalizeResponse
+func (a *PaymentRequestAPIService) PaymentRequestFinalizeExecute(r ApiPaymentRequestFinalizeRequest) (*PaymentRequestFinalizeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *PaymentRequestFinalizeResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.PaymentRequestFinalize")
@@ -655,12 +552,14 @@ func (r ApiPaymentRequestListRequest) To(to time.Time) ApiPaymentRequestListRequ
 	return r
 }
 
-func (r ApiPaymentRequestListRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiPaymentRequestListRequest) Execute() (*PaymentRequestListResponse, *http.Response, error) {
 	return r.ApiService.PaymentRequestListExecute(r)
 }
 
 /*
 PaymentRequestList List Payment Request
+
+List all previously created payment requests to your customers
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentRequestListRequest
@@ -673,13 +572,13 @@ func (a *PaymentRequestAPIService) PaymentRequestList(ctx context.Context) ApiPa
 }
 
 // Execute executes the request
-//  @return Response
-func (a *PaymentRequestAPIService) PaymentRequestListExecute(r ApiPaymentRequestListRequest) (*Response, *http.Response, error) {
+//  @return PaymentRequestListResponse
+func (a *PaymentRequestAPIService) PaymentRequestListExecute(r ApiPaymentRequestListRequest) (*PaymentRequestListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *PaymentRequestListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.PaymentRequestList")
@@ -793,21 +692,23 @@ func (a *PaymentRequestAPIService) PaymentRequestListExecute(r ApiPaymentRequest
 type ApiPaymentRequestNotifyRequest struct {
 	ctx context.Context
 	ApiService *PaymentRequestAPIService
-	id string
+	id int32
 }
 
-func (r ApiPaymentRequestNotifyRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiPaymentRequestNotifyRequest) Execute() (*PaymentRequestSendNotificationResponse, *http.Response, error) {
 	return r.ApiService.PaymentRequestNotifyExecute(r)
 }
 
 /*
 PaymentRequestNotify Send Notification
 
+Trigger an email reminder to a customer for a previously created payment request
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param id The unique identifier of a previously created payment request
  @return ApiPaymentRequestNotifyRequest
 */
-func (a *PaymentRequestAPIService) PaymentRequestNotify(ctx context.Context, id string) ApiPaymentRequestNotifyRequest {
+func (a *PaymentRequestAPIService) PaymentRequestNotify(ctx context.Context, id int32) ApiPaymentRequestNotifyRequest {
 	return ApiPaymentRequestNotifyRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -816,13 +717,13 @@ func (a *PaymentRequestAPIService) PaymentRequestNotify(ctx context.Context, id 
 }
 
 // Execute executes the request
-//  @return Response
-func (a *PaymentRequestAPIService) PaymentRequestNotifyExecute(r ApiPaymentRequestNotifyRequest) (*Response, *http.Response, error) {
+//  @return PaymentRequestSendNotificationResponse
+func (a *PaymentRequestAPIService) PaymentRequestNotifyExecute(r ApiPaymentRequestNotifyRequest) (*PaymentRequestSendNotificationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *PaymentRequestSendNotificationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.PaymentRequestNotify")
@@ -907,12 +808,14 @@ type ApiPaymentRequestTotalsRequest struct {
 	ApiService *PaymentRequestAPIService
 }
 
-func (r ApiPaymentRequestTotalsRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiPaymentRequestTotalsRequest) Execute() (*PaymentRequestTotalResponse, *http.Response, error) {
 	return r.ApiService.PaymentRequestTotalsExecute(r)
 }
 
 /*
 PaymentRequestTotals Payment Request Total
+
+Get the metric of all pending and successful payment requests
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentRequestTotalsRequest
@@ -925,13 +828,13 @@ func (a *PaymentRequestAPIService) PaymentRequestTotals(ctx context.Context) Api
 }
 
 // Execute executes the request
-//  @return Response
-func (a *PaymentRequestAPIService) PaymentRequestTotalsExecute(r ApiPaymentRequestTotalsRequest) (*Response, *http.Response, error) {
+//  @return PaymentRequestTotalResponse
+func (a *PaymentRequestAPIService) PaymentRequestTotalsExecute(r ApiPaymentRequestTotalsRequest) (*PaymentRequestTotalResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *PaymentRequestTotalResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.PaymentRequestTotals")
@@ -1024,105 +927,29 @@ func (a *PaymentRequestAPIService) PaymentRequestTotalsExecute(r ApiPaymentReque
 type ApiPaymentRequestUpdateRequest struct {
 	ctx context.Context
 	ApiService *PaymentRequestAPIService
-	id string
-	customer *string
-	amount *int32
-	currency *string
-	dueDate *time.Time
-	description *string
-	lineItems *[]map[string]interface{}
-	tax *[]map[string]interface{}
-	sendNotification *[]map[string]interface{}
-	draft *[]map[string]interface{}
-	hasInvoice *[]map[string]interface{}
-	invoiceNumber *int32
-	splitCode *string
+	id int32
+	paymentRequestUpdate *PaymentRequestUpdate
 }
 
-// Customer id or code
-func (r ApiPaymentRequestUpdateRequest) Customer(customer string) ApiPaymentRequestUpdateRequest {
-	r.customer = &customer
+func (r ApiPaymentRequestUpdateRequest) PaymentRequestUpdate(paymentRequestUpdate PaymentRequestUpdate) ApiPaymentRequestUpdateRequest {
+	r.paymentRequestUpdate = &paymentRequestUpdate
 	return r
 }
 
-// Payment request amount. Only useful if line items and tax values are ignored.  The endpoint will throw a friendly warning if neither is available.
-func (r ApiPaymentRequestUpdateRequest) Amount(amount int32) ApiPaymentRequestUpdateRequest {
-	r.amount = &amount
-	return r
-}
-
-// Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN
-func (r ApiPaymentRequestUpdateRequest) Currency(currency string) ApiPaymentRequestUpdateRequest {
-	r.currency = &currency
-	return r
-}
-
-// ISO 8601 representation of request due date
-func (r ApiPaymentRequestUpdateRequest) DueDate(dueDate time.Time) ApiPaymentRequestUpdateRequest {
-	r.dueDate = &dueDate
-	return r
-}
-
-// A short description of the payment request
-func (r ApiPaymentRequestUpdateRequest) Description(description string) ApiPaymentRequestUpdateRequest {
-	r.description = &description
-	return r
-}
-
-// Array of line items
-func (r ApiPaymentRequestUpdateRequest) LineItems(lineItems []map[string]interface{}) ApiPaymentRequestUpdateRequest {
-	r.lineItems = &lineItems
-	return r
-}
-
-// Array of taxes
-func (r ApiPaymentRequestUpdateRequest) Tax(tax []map[string]interface{}) ApiPaymentRequestUpdateRequest {
-	r.tax = &tax
-	return r
-}
-
-// Indicates whether Paystack sends an email notification to customer. Defaults to true
-func (r ApiPaymentRequestUpdateRequest) SendNotification(sendNotification []map[string]interface{}) ApiPaymentRequestUpdateRequest {
-	r.sendNotification = &sendNotification
-	return r
-}
-
-// Indicate if request should be saved as draft. Defaults to false and overrides send_notification
-func (r ApiPaymentRequestUpdateRequest) Draft(draft []map[string]interface{}) ApiPaymentRequestUpdateRequest {
-	r.draft = &draft
-	return r
-}
-
-// Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided)  even if there are no line_items or tax passed
-func (r ApiPaymentRequestUpdateRequest) HasInvoice(hasInvoice []map[string]interface{}) ApiPaymentRequestUpdateRequest {
-	r.hasInvoice = &hasInvoice
-	return r
-}
-
-// Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help  override whatever value Paystack decides. Auto increment for subsequent invoices continue from this point.
-func (r ApiPaymentRequestUpdateRequest) InvoiceNumber(invoiceNumber int32) ApiPaymentRequestUpdateRequest {
-	r.invoiceNumber = &invoiceNumber
-	return r
-}
-
-// The split code of the transaction split.
-func (r ApiPaymentRequestUpdateRequest) SplitCode(splitCode string) ApiPaymentRequestUpdateRequest {
-	r.splitCode = &splitCode
-	return r
-}
-
-func (r ApiPaymentRequestUpdateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiPaymentRequestUpdateRequest) Execute() (*PaymentRequestUpdateResponse, *http.Response, error) {
 	return r.ApiService.PaymentRequestUpdateExecute(r)
 }
 
 /*
 PaymentRequestUpdate Update Payment Request
 
+Update a previously created payment request
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param id The unique identifier of a previously created payment request
  @return ApiPaymentRequestUpdateRequest
 */
-func (a *PaymentRequestAPIService) PaymentRequestUpdate(ctx context.Context, id string) ApiPaymentRequestUpdateRequest {
+func (a *PaymentRequestAPIService) PaymentRequestUpdate(ctx context.Context, id int32) ApiPaymentRequestUpdateRequest {
 	return ApiPaymentRequestUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1131,13 +958,13 @@ func (a *PaymentRequestAPIService) PaymentRequestUpdate(ctx context.Context, id 
 }
 
 // Execute executes the request
-//  @return Response
-func (a *PaymentRequestAPIService) PaymentRequestUpdateExecute(r ApiPaymentRequestUpdateRequest) (*Response, *http.Response, error) {
+//  @return PaymentRequestUpdateResponse
+func (a *PaymentRequestAPIService) PaymentRequestUpdateExecute(r ApiPaymentRequestUpdateRequest) (*PaymentRequestUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *PaymentRequestUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.PaymentRequestUpdate")
@@ -1153,7 +980,7 @@ func (a *PaymentRequestAPIService) PaymentRequestUpdateExecute(r ApiPaymentReque
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1169,42 +996,8 @@ func (a *PaymentRequestAPIService) PaymentRequestUpdateExecute(r ApiPaymentReque
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.customer != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "customer", r.customer, "", "")
-	}
-	if r.amount != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "amount", r.amount, "", "")
-	}
-	if r.currency != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "currency", r.currency, "", "")
-	}
-	if r.dueDate != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "due_date", r.dueDate, "", "")
-	}
-	if r.description != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "description", r.description, "", "")
-	}
-	if r.lineItems != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "line_items", r.lineItems, "", "csv")
-	}
-	if r.tax != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "tax", r.tax, "", "csv")
-	}
-	if r.sendNotification != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "send_notification", r.sendNotification, "", "csv")
-	}
-	if r.draft != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "draft", r.draft, "", "csv")
-	}
-	if r.hasInvoice != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "has_invoice", r.hasInvoice, "", "csv")
-	}
-	if r.invoiceNumber != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "invoice_number", r.invoiceNumber, "", "")
-	}
-	if r.splitCode != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "split_code", r.splitCode, "", "")
-	}
+	// body params
+	localVarPostBody = r.paymentRequestUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1267,21 +1060,23 @@ func (a *PaymentRequestAPIService) PaymentRequestUpdateExecute(r ApiPaymentReque
 type ApiPaymentRequestVerifyRequest struct {
 	ctx context.Context
 	ApiService *PaymentRequestAPIService
-	id string
+	id int32
 }
 
-func (r ApiPaymentRequestVerifyRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiPaymentRequestVerifyRequest) Execute() (*PaymentRequestVerifyResponse, *http.Response, error) {
 	return r.ApiService.PaymentRequestVerifyExecute(r)
 }
 
 /*
 PaymentRequestVerify Verify Payment Request
 
+Verify the status of a previously created payment request
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param id The unique identifier of a previously created payment request
  @return ApiPaymentRequestVerifyRequest
 */
-func (a *PaymentRequestAPIService) PaymentRequestVerify(ctx context.Context, id string) ApiPaymentRequestVerifyRequest {
+func (a *PaymentRequestAPIService) PaymentRequestVerify(ctx context.Context, id int32) ApiPaymentRequestVerifyRequest {
 	return ApiPaymentRequestVerifyRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1290,13 +1085,13 @@ func (a *PaymentRequestAPIService) PaymentRequestVerify(ctx context.Context, id 
 }
 
 // Execute executes the request
-//  @return Response
-func (a *PaymentRequestAPIService) PaymentRequestVerifyExecute(r ApiPaymentRequestVerifyRequest) (*Response, *http.Response, error) {
+//  @return PaymentRequestVerifyResponse
+func (a *PaymentRequestAPIService) PaymentRequestVerifyExecute(r ApiPaymentRequestVerifyRequest) (*PaymentRequestVerifyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *PaymentRequestVerifyResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.PaymentRequestVerify")

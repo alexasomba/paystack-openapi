@@ -18,17 +18,27 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 class USSD(BaseModel):
     """
-    USSD
+    The USSD code for the provider to charge
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="The three-digit USSD code. One of, 737, 919, 822, 966")
+    type: Optional[StrictStr] = Field(default=None, description="The three-digit USSD code.")
     __properties: ClassVar[List[str]] = ["type"]
+
+    @field_validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['737', '919', '822', '966']):
+            raise ValueError("must be one of enum values ('737', '919', '822', '966')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,

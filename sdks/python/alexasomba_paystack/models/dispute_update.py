@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,7 +27,7 @@ class DisputeUpdate(BaseModel):
     """
     DisputeUpdate
     """ # noqa: E501
-    refund_amount: StrictStr = Field(description="The amount to refund, in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")
+    refund_amount: StrictInt = Field(description="The amount to refund, in the subunit of your currency")
     uploaded_filename: Optional[StrictStr] = Field(default=None, description="Filename of attachment returned via response from the Dispute upload URL")
     __properties: ClassVar[List[str]] = ["refund_amount", "uploaded_filename"]
 

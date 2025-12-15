@@ -18,10 +18,15 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from datetime import datetime
-from pydantic import Field, StrictBool, StrictInt, StrictStr
+from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
-from alexasomba_paystack.models.response import Response
+from alexasomba_paystack.models.plan_create import PlanCreate
+from alexasomba_paystack.models.plan_create_response import PlanCreateResponse
+from alexasomba_paystack.models.plan_fetch_response import PlanFetchResponse
+from alexasomba_paystack.models.plan_list_response import PlanListResponse
+from alexasomba_paystack.models.plan_update import PlanUpdate
+from alexasomba_paystack.models.plan_update_response import PlanUpdateResponse
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
 from alexasomba_paystack.api_response import ApiResponse
@@ -44,14 +49,7 @@ class PlanApi:
     @validate_call
     def plan_create(
         self,
-        name: Annotated[StrictStr, Field(description="Name of plan")],
-        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        interval: Annotated[StrictStr, Field(description="Interval in words. Valid intervals are daily, weekly, monthly,biannually, annually")],
-        description: Annotated[Optional[StrictStr], Field(description="A description for this plan")] = None,
-        send_invoices: Annotated[Optional[StrictBool], Field(description="Set to false if you don't want invoices to be sent to your customers")] = None,
-        send_sms: Annotated[Optional[StrictBool], Field(description="Set to false if you don't want text messages to be sent to your customers")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD")] = None,
-        invoice_limit: Annotated[Optional[StrictInt], Field(description="Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing.")] = None,
+        plan_create: Optional[PlanCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -64,26 +62,13 @@ class PlanApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> PlanCreateResponse:
         """Create Plan
 
+        Create a plan for recurring payments
 
-        :param name: Name of plan (required)
-        :type name: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type amount: int
-        :param interval: Interval in words. Valid intervals are daily, weekly, monthly,biannually, annually (required)
-        :type interval: str
-        :param description: A description for this plan
-        :type description: str
-        :param send_invoices: Set to false if you don't want invoices to be sent to your customers
-        :type send_invoices: bool
-        :param send_sms: Set to false if you don't want text messages to be sent to your customers
-        :type send_sms: bool
-        :param currency: Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD
-        :type currency: str
-        :param invoice_limit: Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing.
-        :type invoice_limit: int
+        :param plan_create:
+        :type plan_create: PlanCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -107,14 +92,7 @@ class PlanApi:
         """ # noqa: E501
 
         _param = self._plan_create_serialize(
-            name=name,
-            amount=amount,
-            interval=interval,
-            description=description,
-            send_invoices=send_invoices,
-            send_sms=send_sms,
-            currency=currency,
-            invoice_limit=invoice_limit,
+            plan_create=plan_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -122,7 +100,7 @@ class PlanApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PlanCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -139,14 +117,7 @@ class PlanApi:
     @validate_call
     def plan_create_with_http_info(
         self,
-        name: Annotated[StrictStr, Field(description="Name of plan")],
-        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        interval: Annotated[StrictStr, Field(description="Interval in words. Valid intervals are daily, weekly, monthly,biannually, annually")],
-        description: Annotated[Optional[StrictStr], Field(description="A description for this plan")] = None,
-        send_invoices: Annotated[Optional[StrictBool], Field(description="Set to false if you don't want invoices to be sent to your customers")] = None,
-        send_sms: Annotated[Optional[StrictBool], Field(description="Set to false if you don't want text messages to be sent to your customers")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD")] = None,
-        invoice_limit: Annotated[Optional[StrictInt], Field(description="Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing.")] = None,
+        plan_create: Optional[PlanCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -159,26 +130,13 @@ class PlanApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[PlanCreateResponse]:
         """Create Plan
 
+        Create a plan for recurring payments
 
-        :param name: Name of plan (required)
-        :type name: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type amount: int
-        :param interval: Interval in words. Valid intervals are daily, weekly, monthly,biannually, annually (required)
-        :type interval: str
-        :param description: A description for this plan
-        :type description: str
-        :param send_invoices: Set to false if you don't want invoices to be sent to your customers
-        :type send_invoices: bool
-        :param send_sms: Set to false if you don't want text messages to be sent to your customers
-        :type send_sms: bool
-        :param currency: Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD
-        :type currency: str
-        :param invoice_limit: Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing.
-        :type invoice_limit: int
+        :param plan_create:
+        :type plan_create: PlanCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -202,14 +160,7 @@ class PlanApi:
         """ # noqa: E501
 
         _param = self._plan_create_serialize(
-            name=name,
-            amount=amount,
-            interval=interval,
-            description=description,
-            send_invoices=send_invoices,
-            send_sms=send_sms,
-            currency=currency,
-            invoice_limit=invoice_limit,
+            plan_create=plan_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -217,7 +168,7 @@ class PlanApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PlanCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -234,14 +185,7 @@ class PlanApi:
     @validate_call
     def plan_create_without_preload_content(
         self,
-        name: Annotated[StrictStr, Field(description="Name of plan")],
-        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        interval: Annotated[StrictStr, Field(description="Interval in words. Valid intervals are daily, weekly, monthly,biannually, annually")],
-        description: Annotated[Optional[StrictStr], Field(description="A description for this plan")] = None,
-        send_invoices: Annotated[Optional[StrictBool], Field(description="Set to false if you don't want invoices to be sent to your customers")] = None,
-        send_sms: Annotated[Optional[StrictBool], Field(description="Set to false if you don't want text messages to be sent to your customers")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD")] = None,
-        invoice_limit: Annotated[Optional[StrictInt], Field(description="Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing.")] = None,
+        plan_create: Optional[PlanCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -257,23 +201,10 @@ class PlanApi:
     ) -> RESTResponseType:
         """Create Plan
 
+        Create a plan for recurring payments
 
-        :param name: Name of plan (required)
-        :type name: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type amount: int
-        :param interval: Interval in words. Valid intervals are daily, weekly, monthly,biannually, annually (required)
-        :type interval: str
-        :param description: A description for this plan
-        :type description: str
-        :param send_invoices: Set to false if you don't want invoices to be sent to your customers
-        :type send_invoices: bool
-        :param send_sms: Set to false if you don't want text messages to be sent to your customers
-        :type send_sms: bool
-        :param currency: Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD
-        :type currency: str
-        :param invoice_limit: Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing.
-        :type invoice_limit: int
+        :param plan_create:
+        :type plan_create: PlanCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -297,14 +228,7 @@ class PlanApi:
         """ # noqa: E501
 
         _param = self._plan_create_serialize(
-            name=name,
-            amount=amount,
-            interval=interval,
-            description=description,
-            send_invoices=send_invoices,
-            send_sms=send_sms,
-            currency=currency,
-            invoice_limit=invoice_limit,
+            plan_create=plan_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -312,7 +236,7 @@ class PlanApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PlanCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -324,14 +248,7 @@ class PlanApi:
 
     def _plan_create_serialize(
         self,
-        name,
-        amount,
-        interval,
-        description,
-        send_invoices,
-        send_sms,
-        currency,
-        invoice_limit,
+        plan_create,
         _request_auth,
         _content_type,
         _headers,
@@ -356,23 +273,9 @@ class PlanApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if name is not None:
-            _form_params.append(('name', name))
-        if amount is not None:
-            _form_params.append(('amount', amount))
-        if interval is not None:
-            _form_params.append(('interval', interval))
-        if description is not None:
-            _form_params.append(('description', description))
-        if send_invoices is not None:
-            _form_params.append(('send_invoices', send_invoices))
-        if send_sms is not None:
-            _form_params.append(('send_sms', send_sms))
-        if currency is not None:
-            _form_params.append(('currency', currency))
-        if invoice_limit is not None:
-            _form_params.append(('invoice_limit', invoice_limit))
         # process the body parameter
+        if plan_create is not None:
+            _body_params = plan_create
 
 
         # set the HTTP header `Accept`
@@ -390,8 +293,8 @@ class PlanApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -424,7 +327,7 @@ class PlanApi:
     @validate_call
     def plan_fetch(
         self,
-        code: StrictStr,
+        code: Annotated[StrictStr, Field(description="The plan code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -437,11 +340,12 @@ class PlanApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> PlanFetchResponse:
         """Fetch Plan
 
+        Get the details of a payment plan
 
-        :param code: (required)
+        :param code: The plan code you want to fetch (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -474,7 +378,7 @@ class PlanApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PlanFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -492,7 +396,7 @@ class PlanApi:
     @validate_call
     def plan_fetch_with_http_info(
         self,
-        code: StrictStr,
+        code: Annotated[StrictStr, Field(description="The plan code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -505,11 +409,12 @@ class PlanApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[PlanFetchResponse]:
         """Fetch Plan
 
+        Get the details of a payment plan
 
-        :param code: (required)
+        :param code: The plan code you want to fetch (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -542,7 +447,7 @@ class PlanApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PlanFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -560,7 +465,7 @@ class PlanApi:
     @validate_call
     def plan_fetch_without_preload_content(
         self,
-        code: StrictStr,
+        code: Annotated[StrictStr, Field(description="The plan code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -576,8 +481,9 @@ class PlanApi:
     ) -> RESTResponseType:
         """Fetch Plan
 
+        Get the details of a payment plan
 
-        :param code: (required)
+        :param code: The plan code you want to fetch (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -610,7 +516,7 @@ class PlanApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PlanFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -706,9 +612,10 @@ class PlanApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> PlanListResponse:
         """List Plans
 
+        List all recurring payment plans
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
@@ -758,7 +665,7 @@ class PlanApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PlanListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -794,9 +701,10 @@ class PlanApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[PlanListResponse]:
         """List Plans
 
+        List all recurring payment plans
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
@@ -846,7 +754,7 @@ class PlanApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PlanListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -885,6 +793,7 @@ class PlanApi:
     ) -> RESTResponseType:
         """List Plans
 
+        List all recurring payment plans
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
@@ -934,7 +843,7 @@ class PlanApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PlanListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1057,15 +966,8 @@ class PlanApi:
     @validate_call
     def plan_update(
         self,
-        code: StrictStr,
-        name: Annotated[Optional[StrictStr], Field(description="Name of plan")] = None,
-        amount: Annotated[Optional[StrictInt], Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")] = None,
-        interval: Annotated[Optional[StrictStr], Field(description="Interval in words. Valid intervals are daily, weekly, monthly,biannually, annually")] = None,
-        description: Annotated[Optional[StrictBool], Field(description="A description for this plan")] = None,
-        send_invoices: Annotated[Optional[StrictBool], Field(description="Set to false if you don't want invoices to be sent to your customers")] = None,
-        send_sms: Annotated[Optional[StrictBool], Field(description="Set to false if you don't want text messages to be sent to your customers")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD")] = None,
-        invoice_limit: Annotated[Optional[StrictInt], Field(description="Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing.")] = None,
+        code: Annotated[StrictStr, Field(description="The plan code you want to fetch")],
+        plan_update: Optional[PlanUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1078,28 +980,15 @@ class PlanApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> PlanUpdateResponse:
         """Update Plan
 
+        Update a plan details on your integration
 
-        :param code: (required)
+        :param code: The plan code you want to fetch (required)
         :type code: str
-        :param name: Name of plan
-        :type name: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-        :type amount: int
-        :param interval: Interval in words. Valid intervals are daily, weekly, monthly,biannually, annually
-        :type interval: str
-        :param description: A description for this plan
-        :type description: bool
-        :param send_invoices: Set to false if you don't want invoices to be sent to your customers
-        :type send_invoices: bool
-        :param send_sms: Set to false if you don't want text messages to be sent to your customers
-        :type send_sms: bool
-        :param currency: Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD
-        :type currency: str
-        :param invoice_limit: Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing.
-        :type invoice_limit: int
+        :param plan_update:
+        :type plan_update: PlanUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1124,14 +1013,7 @@ class PlanApi:
 
         _param = self._plan_update_serialize(
             code=code,
-            name=name,
-            amount=amount,
-            interval=interval,
-            description=description,
-            send_invoices=send_invoices,
-            send_sms=send_sms,
-            currency=currency,
-            invoice_limit=invoice_limit,
+            plan_update=plan_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1139,7 +1021,7 @@ class PlanApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PlanUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1157,15 +1039,8 @@ class PlanApi:
     @validate_call
     def plan_update_with_http_info(
         self,
-        code: StrictStr,
-        name: Annotated[Optional[StrictStr], Field(description="Name of plan")] = None,
-        amount: Annotated[Optional[StrictInt], Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")] = None,
-        interval: Annotated[Optional[StrictStr], Field(description="Interval in words. Valid intervals are daily, weekly, monthly,biannually, annually")] = None,
-        description: Annotated[Optional[StrictBool], Field(description="A description for this plan")] = None,
-        send_invoices: Annotated[Optional[StrictBool], Field(description="Set to false if you don't want invoices to be sent to your customers")] = None,
-        send_sms: Annotated[Optional[StrictBool], Field(description="Set to false if you don't want text messages to be sent to your customers")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD")] = None,
-        invoice_limit: Annotated[Optional[StrictInt], Field(description="Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing.")] = None,
+        code: Annotated[StrictStr, Field(description="The plan code you want to fetch")],
+        plan_update: Optional[PlanUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1178,28 +1053,15 @@ class PlanApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[PlanUpdateResponse]:
         """Update Plan
 
+        Update a plan details on your integration
 
-        :param code: (required)
+        :param code: The plan code you want to fetch (required)
         :type code: str
-        :param name: Name of plan
-        :type name: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-        :type amount: int
-        :param interval: Interval in words. Valid intervals are daily, weekly, monthly,biannually, annually
-        :type interval: str
-        :param description: A description for this plan
-        :type description: bool
-        :param send_invoices: Set to false if you don't want invoices to be sent to your customers
-        :type send_invoices: bool
-        :param send_sms: Set to false if you don't want text messages to be sent to your customers
-        :type send_sms: bool
-        :param currency: Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD
-        :type currency: str
-        :param invoice_limit: Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing.
-        :type invoice_limit: int
+        :param plan_update:
+        :type plan_update: PlanUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1224,14 +1086,7 @@ class PlanApi:
 
         _param = self._plan_update_serialize(
             code=code,
-            name=name,
-            amount=amount,
-            interval=interval,
-            description=description,
-            send_invoices=send_invoices,
-            send_sms=send_sms,
-            currency=currency,
-            invoice_limit=invoice_limit,
+            plan_update=plan_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1239,7 +1094,7 @@ class PlanApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PlanUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1257,15 +1112,8 @@ class PlanApi:
     @validate_call
     def plan_update_without_preload_content(
         self,
-        code: StrictStr,
-        name: Annotated[Optional[StrictStr], Field(description="Name of plan")] = None,
-        amount: Annotated[Optional[StrictInt], Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")] = None,
-        interval: Annotated[Optional[StrictStr], Field(description="Interval in words. Valid intervals are daily, weekly, monthly,biannually, annually")] = None,
-        description: Annotated[Optional[StrictBool], Field(description="A description for this plan")] = None,
-        send_invoices: Annotated[Optional[StrictBool], Field(description="Set to false if you don't want invoices to be sent to your customers")] = None,
-        send_sms: Annotated[Optional[StrictBool], Field(description="Set to false if you don't want text messages to be sent to your customers")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD")] = None,
-        invoice_limit: Annotated[Optional[StrictInt], Field(description="Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing.")] = None,
+        code: Annotated[StrictStr, Field(description="The plan code you want to fetch")],
+        plan_update: Optional[PlanUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1281,25 +1129,12 @@ class PlanApi:
     ) -> RESTResponseType:
         """Update Plan
 
+        Update a plan details on your integration
 
-        :param code: (required)
+        :param code: The plan code you want to fetch (required)
         :type code: str
-        :param name: Name of plan
-        :type name: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-        :type amount: int
-        :param interval: Interval in words. Valid intervals are daily, weekly, monthly,biannually, annually
-        :type interval: str
-        :param description: A description for this plan
-        :type description: bool
-        :param send_invoices: Set to false if you don't want invoices to be sent to your customers
-        :type send_invoices: bool
-        :param send_sms: Set to false if you don't want text messages to be sent to your customers
-        :type send_sms: bool
-        :param currency: Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD
-        :type currency: str
-        :param invoice_limit: Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing.
-        :type invoice_limit: int
+        :param plan_update:
+        :type plan_update: PlanUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1324,14 +1159,7 @@ class PlanApi:
 
         _param = self._plan_update_serialize(
             code=code,
-            name=name,
-            amount=amount,
-            interval=interval,
-            description=description,
-            send_invoices=send_invoices,
-            send_sms=send_sms,
-            currency=currency,
-            invoice_limit=invoice_limit,
+            plan_update=plan_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1339,7 +1167,7 @@ class PlanApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PlanUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1353,14 +1181,7 @@ class PlanApi:
     def _plan_update_serialize(
         self,
         code,
-        name,
-        amount,
-        interval,
-        description,
-        send_invoices,
-        send_sms,
-        currency,
-        invoice_limit,
+        plan_update,
         _request_auth,
         _content_type,
         _headers,
@@ -1387,23 +1208,9 @@ class PlanApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if name is not None:
-            _form_params.append(('name', name))
-        if amount is not None:
-            _form_params.append(('amount', amount))
-        if interval is not None:
-            _form_params.append(('interval', interval))
-        if description is not None:
-            _form_params.append(('description', description))
-        if send_invoices is not None:
-            _form_params.append(('send_invoices', send_invoices))
-        if send_sms is not None:
-            _form_params.append(('send_sms', send_sms))
-        if currency is not None:
-            _form_params.append(('currency', currency))
-        if invoice_limit is not None:
-            _form_params.append(('invoice_limit', invoice_limit))
         # process the body parameter
+        if plan_update is not None:
+            _body_params = plan_update
 
 
         # set the HTTP header `Accept`
@@ -1421,8 +1228,8 @@ class PlanApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )

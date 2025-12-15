@@ -18,8 +18,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from alexasomba_paystack.models.currency import Currency
+from alexasomba_paystack.models.split_create import SplitCreate
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,17 +30,28 @@ class TransactionChargeAuthorization(BaseModel):
     TransactionChargeAuthorization
     """ # noqa: E501
     email: StrictStr = Field(description="Customer's email address")
-    amount: StrictInt = Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")
+    amount: StrictInt = Field(description="Amount in the lower denomination of your currency")
     authorization_code: StrictStr = Field(description="Valid authorization code to charge")
     reference: Optional[StrictStr] = Field(default=None, description="Unique transaction reference. Only -, ., = and alphanumeric characters allowed.")
-    currency: Optional[StrictStr] = Field(default=None, description="The transaction currency")
-    metadata: Optional[StrictStr] = Field(default=None, description="Stringified JSON object of custom data")
+    currency: Optional[Currency] = None
     split_code: Optional[StrictStr] = Field(default=None, description="The split code of the transaction split")
+    split: Optional[SplitCreate] = None
     subaccount: Optional[StrictStr] = Field(default=None, description="The code for the subaccount that owns the payment")
     transaction_charge: Optional[StrictStr] = Field(default=None, description="A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created")
-    bearer: Optional[StrictStr] = Field(default=None, description="The beare of the transaction charge")
+    bearer: Optional[StrictStr] = Field(default=None, description="The bearer of the transaction charge")
+    metadata: Optional[StrictStr] = Field(default=None, description="Stringified JSON object of custom data")
     queue: Optional[StrictBool] = Field(default=None, description="If you are making a scheduled charge call, it is a good idea to queue them so the processing system does not get overloaded causing transaction processing errors.")
-    __properties: ClassVar[List[str]] = ["email", "amount", "authorization_code", "reference", "currency", "metadata", "split_code", "subaccount", "transaction_charge", "bearer", "queue"]
+    __properties: ClassVar[List[str]] = ["email", "amount", "authorization_code", "reference", "currency", "split_code", "split", "subaccount", "transaction_charge", "bearer", "metadata", "queue"]
+
+    @field_validator('bearer')
+    def bearer_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['account', 'subaccount']):
+            raise ValueError("must be one of enum values ('account', 'subaccount')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -79,6 +92,9 @@ class TransactionChargeAuthorization(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of split
+        if self.split:
+            _dict['split'] = self.split.to_dict()
         return _dict
 
     @classmethod
@@ -96,11 +112,12 @@ class TransactionChargeAuthorization(BaseModel):
             "authorization_code": obj.get("authorization_code"),
             "reference": obj.get("reference"),
             "currency": obj.get("currency"),
-            "metadata": obj.get("metadata"),
             "split_code": obj.get("split_code"),
+            "split": SplitCreate.from_dict(obj["split"]) if obj.get("split") is not None else None,
             "subaccount": obj.get("subaccount"),
             "transaction_charge": obj.get("transaction_charge"),
             "bearer": obj.get("bearer"),
+            "metadata": obj.get("metadata"),
             "queue": obj.get("queue")
         })
         return _obj

@@ -28,12 +28,28 @@ type PageCreate struct {
 	Description *string `json:"description,omitempty"`
 	// Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
 	Amount *int32 `json:"amount,omitempty"`
-	// URL slug you would like to be associated with this page. Page will be accessible at https://paystack.com/pay/[slug]
+	// The transaction currency. Defaults to your integration currency.
+	Currency *string `json:"currency,omitempty"`
+	// URL slug you would like to be associated with this page. Page will be accessible at `https://paystack.com/pay/[slug]`
 	Slug *string `json:"slug,omitempty"`
-	// Stringified JSON object of custom data
-	Metadata *string `json:"metadata,omitempty"`
-	// If you would like Paystack to redirect to a URL upon successful payment, specify the URL here.
+	// The type of payment page to create. Defaults to `payment` if no type is specified. 
+	Type *string `json:"type,omitempty"`
+	// The ID of the plan to subscribe customers on this payment page to when `type` is set to `subscription`.
+	Plan *string `json:"plan,omitempty"`
+	// Specifies whether to collect a fixed amount on the payment page. If true, `amount` must be passed.
+	FixedAmount *bool `json:"fixed_amount,omitempty"`
+	// The split code of the transaction split. e.g. `SPL_98WF13Eb3w`
+	SplitCode *string `json:"split_code,omitempty"`
+	// JSON object of custom data
+	Metadata map[string]interface{} `json:"metadata,omitempty"`
+	// If you would like Paystack to redirect to a URL upon successful payment, specify the URL here. 
 	RedirectUrl *string `json:"redirect_url,omitempty"`
+	// A success message to display to the customer after a successful transaction 
+	SuccessMessage *string `json:"success_message,omitempty"`
+	// An email address that will receive transaction notifications for this payment page 
+	NotificationEmail *string `json:"notification_email,omitempty"`
+	// Specify whether to collect phone numbers on the payment page 
+	CollectPhone *bool `json:"collect_phone,omitempty"`
 	// If you would like to accept custom fields, specify them here.
 	CustomFields []map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -146,6 +162,38 @@ func (o *PageCreate) SetAmount(v int32) {
 	o.Amount = &v
 }
 
+// GetCurrency returns the Currency field value if set, zero value otherwise.
+func (o *PageCreate) GetCurrency() string {
+	if o == nil || IsNil(o.Currency) {
+		var ret string
+		return ret
+	}
+	return *o.Currency
+}
+
+// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PageCreate) GetCurrencyOk() (*string, bool) {
+	if o == nil || IsNil(o.Currency) {
+		return nil, false
+	}
+	return o.Currency, true
+}
+
+// HasCurrency returns a boolean if a field has been set.
+func (o *PageCreate) HasCurrency() bool {
+	if o != nil && !IsNil(o.Currency) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrency gets a reference to the given string and assigns it to the Currency field.
+func (o *PageCreate) SetCurrency(v string) {
+	o.Currency = &v
+}
+
 // GetSlug returns the Slug field value if set, zero value otherwise.
 func (o *PageCreate) GetSlug() string {
 	if o == nil || IsNil(o.Slug) {
@@ -178,20 +226,148 @@ func (o *PageCreate) SetSlug(v string) {
 	o.Slug = &v
 }
 
-// GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *PageCreate) GetMetadata() string {
-	if o == nil || IsNil(o.Metadata) {
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *PageCreate) GetType() string {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
-	return *o.Metadata
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PageCreate) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *PageCreate) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *PageCreate) SetType(v string) {
+	o.Type = &v
+}
+
+// GetPlan returns the Plan field value if set, zero value otherwise.
+func (o *PageCreate) GetPlan() string {
+	if o == nil || IsNil(o.Plan) {
+		var ret string
+		return ret
+	}
+	return *o.Plan
+}
+
+// GetPlanOk returns a tuple with the Plan field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PageCreate) GetPlanOk() (*string, bool) {
+	if o == nil || IsNil(o.Plan) {
+		return nil, false
+	}
+	return o.Plan, true
+}
+
+// HasPlan returns a boolean if a field has been set.
+func (o *PageCreate) HasPlan() bool {
+	if o != nil && !IsNil(o.Plan) {
+		return true
+	}
+
+	return false
+}
+
+// SetPlan gets a reference to the given string and assigns it to the Plan field.
+func (o *PageCreate) SetPlan(v string) {
+	o.Plan = &v
+}
+
+// GetFixedAmount returns the FixedAmount field value if set, zero value otherwise.
+func (o *PageCreate) GetFixedAmount() bool {
+	if o == nil || IsNil(o.FixedAmount) {
+		var ret bool
+		return ret
+	}
+	return *o.FixedAmount
+}
+
+// GetFixedAmountOk returns a tuple with the FixedAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PageCreate) GetFixedAmountOk() (*bool, bool) {
+	if o == nil || IsNil(o.FixedAmount) {
+		return nil, false
+	}
+	return o.FixedAmount, true
+}
+
+// HasFixedAmount returns a boolean if a field has been set.
+func (o *PageCreate) HasFixedAmount() bool {
+	if o != nil && !IsNil(o.FixedAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetFixedAmount gets a reference to the given bool and assigns it to the FixedAmount field.
+func (o *PageCreate) SetFixedAmount(v bool) {
+	o.FixedAmount = &v
+}
+
+// GetSplitCode returns the SplitCode field value if set, zero value otherwise.
+func (o *PageCreate) GetSplitCode() string {
+	if o == nil || IsNil(o.SplitCode) {
+		var ret string
+		return ret
+	}
+	return *o.SplitCode
+}
+
+// GetSplitCodeOk returns a tuple with the SplitCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PageCreate) GetSplitCodeOk() (*string, bool) {
+	if o == nil || IsNil(o.SplitCode) {
+		return nil, false
+	}
+	return o.SplitCode, true
+}
+
+// HasSplitCode returns a boolean if a field has been set.
+func (o *PageCreate) HasSplitCode() bool {
+	if o != nil && !IsNil(o.SplitCode) {
+		return true
+	}
+
+	return false
+}
+
+// SetSplitCode gets a reference to the given string and assigns it to the SplitCode field.
+func (o *PageCreate) SetSplitCode(v string) {
+	o.SplitCode = &v
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *PageCreate) GetMetadata() map[string]interface{} {
+	if o == nil || IsNil(o.Metadata) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Metadata
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PageCreate) GetMetadataOk() (*string, bool) {
+func (o *PageCreate) GetMetadataOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Metadata) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Metadata, true
 }
@@ -205,9 +381,9 @@ func (o *PageCreate) HasMetadata() bool {
 	return false
 }
 
-// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
-func (o *PageCreate) SetMetadata(v string) {
-	o.Metadata = &v
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
+func (o *PageCreate) SetMetadata(v map[string]interface{}) {
+	o.Metadata = v
 }
 
 // GetRedirectUrl returns the RedirectUrl field value if set, zero value otherwise.
@@ -240,6 +416,102 @@ func (o *PageCreate) HasRedirectUrl() bool {
 // SetRedirectUrl gets a reference to the given string and assigns it to the RedirectUrl field.
 func (o *PageCreate) SetRedirectUrl(v string) {
 	o.RedirectUrl = &v
+}
+
+// GetSuccessMessage returns the SuccessMessage field value if set, zero value otherwise.
+func (o *PageCreate) GetSuccessMessage() string {
+	if o == nil || IsNil(o.SuccessMessage) {
+		var ret string
+		return ret
+	}
+	return *o.SuccessMessage
+}
+
+// GetSuccessMessageOk returns a tuple with the SuccessMessage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PageCreate) GetSuccessMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.SuccessMessage) {
+		return nil, false
+	}
+	return o.SuccessMessage, true
+}
+
+// HasSuccessMessage returns a boolean if a field has been set.
+func (o *PageCreate) HasSuccessMessage() bool {
+	if o != nil && !IsNil(o.SuccessMessage) {
+		return true
+	}
+
+	return false
+}
+
+// SetSuccessMessage gets a reference to the given string and assigns it to the SuccessMessage field.
+func (o *PageCreate) SetSuccessMessage(v string) {
+	o.SuccessMessage = &v
+}
+
+// GetNotificationEmail returns the NotificationEmail field value if set, zero value otherwise.
+func (o *PageCreate) GetNotificationEmail() string {
+	if o == nil || IsNil(o.NotificationEmail) {
+		var ret string
+		return ret
+	}
+	return *o.NotificationEmail
+}
+
+// GetNotificationEmailOk returns a tuple with the NotificationEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PageCreate) GetNotificationEmailOk() (*string, bool) {
+	if o == nil || IsNil(o.NotificationEmail) {
+		return nil, false
+	}
+	return o.NotificationEmail, true
+}
+
+// HasNotificationEmail returns a boolean if a field has been set.
+func (o *PageCreate) HasNotificationEmail() bool {
+	if o != nil && !IsNil(o.NotificationEmail) {
+		return true
+	}
+
+	return false
+}
+
+// SetNotificationEmail gets a reference to the given string and assigns it to the NotificationEmail field.
+func (o *PageCreate) SetNotificationEmail(v string) {
+	o.NotificationEmail = &v
+}
+
+// GetCollectPhone returns the CollectPhone field value if set, zero value otherwise.
+func (o *PageCreate) GetCollectPhone() bool {
+	if o == nil || IsNil(o.CollectPhone) {
+		var ret bool
+		return ret
+	}
+	return *o.CollectPhone
+}
+
+// GetCollectPhoneOk returns a tuple with the CollectPhone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PageCreate) GetCollectPhoneOk() (*bool, bool) {
+	if o == nil || IsNil(o.CollectPhone) {
+		return nil, false
+	}
+	return o.CollectPhone, true
+}
+
+// HasCollectPhone returns a boolean if a field has been set.
+func (o *PageCreate) HasCollectPhone() bool {
+	if o != nil && !IsNil(o.CollectPhone) {
+		return true
+	}
+
+	return false
+}
+
+// SetCollectPhone gets a reference to the given bool and assigns it to the CollectPhone field.
+func (o *PageCreate) SetCollectPhone(v bool) {
+	o.CollectPhone = &v
 }
 
 // GetCustomFields returns the CustomFields field value if set, zero value otherwise.
@@ -291,14 +563,38 @@ func (o PageCreate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Amount) {
 		toSerialize["amount"] = o.Amount
 	}
+	if !IsNil(o.Currency) {
+		toSerialize["currency"] = o.Currency
+	}
 	if !IsNil(o.Slug) {
 		toSerialize["slug"] = o.Slug
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Plan) {
+		toSerialize["plan"] = o.Plan
+	}
+	if !IsNil(o.FixedAmount) {
+		toSerialize["fixed_amount"] = o.FixedAmount
+	}
+	if !IsNil(o.SplitCode) {
+		toSerialize["split_code"] = o.SplitCode
 	}
 	if !IsNil(o.Metadata) {
 		toSerialize["metadata"] = o.Metadata
 	}
 	if !IsNil(o.RedirectUrl) {
 		toSerialize["redirect_url"] = o.RedirectUrl
+	}
+	if !IsNil(o.SuccessMessage) {
+		toSerialize["success_message"] = o.SuccessMessage
+	}
+	if !IsNil(o.NotificationEmail) {
+		toSerialize["notification_email"] = o.NotificationEmail
+	}
+	if !IsNil(o.CollectPhone) {
+		toSerialize["collect_phone"] = o.CollectPhone
 	}
 	if !IsNil(o.CustomFields) {
 		toSerialize["custom_fields"] = o.CustomFields

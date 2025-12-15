@@ -25,11 +25,6 @@ properties:
         nullable: true
       gateway_response:
         type: string
-      paid_at:
-        type: string
-        nullable: true
-      created_at:
-        type: string
       channel:
         type: string
       currency:
@@ -231,8 +226,6 @@ properties:
       - amount
       - message
       - gateway_response
-      - paid_at
-      - created_at
       - channel
       - currency
       - ip_address

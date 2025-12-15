@@ -18,7 +18,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	"time"
 )
 
 
@@ -31,15 +30,18 @@ type ApiChargeCheckRequest struct {
 	reference string
 }
 
-func (r ApiChargeCheckRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiChargeCheckRequest) Execute() (*ChargeCheckPendingResponse, *http.Response, error) {
 	return r.ApiService.ChargeCheckExecute(r)
 }
 
 /*
 ChargeCheck Check pending charge
 
+When you get `pending` as a charge status or if there was an exception when calling any of the `/charge` endpoints, wait 10 seconds or more, then make a check to see if its status has changed. Don't call too early as you may get a lot more pending than you should.
+
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param reference
+ @param reference The reference of the ongoing transaction
  @return ApiChargeCheckRequest
 */
 func (a *ChargeAPIService) ChargeCheck(ctx context.Context, reference string) ApiChargeCheckRequest {
@@ -51,13 +53,13 @@ func (a *ChargeAPIService) ChargeCheck(ctx context.Context, reference string) Ap
 }
 
 // Execute executes the request
-//  @return Response
-func (a *ChargeAPIService) ChargeCheckExecute(r ApiChargeCheckRequest) (*Response, *http.Response, error) {
+//  @return ChargeCheckPendingResponse
+func (a *ChargeAPIService) ChargeCheckExecute(r ApiChargeCheckRequest) (*ChargeCheckPendingResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *ChargeCheckPendingResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ChargeAPIService.ChargeCheck")
@@ -151,94 +153,22 @@ func (a *ChargeAPIService) ChargeCheckExecute(r ApiChargeCheckRequest) (*Respons
 type ApiChargeCreateRequest struct {
 	ctx context.Context
 	ApiService *ChargeAPIService
-	email *string
-	amount *string
-	authorizationCode *string
-	pin *string
-	reference *string
-	birthday *time.Time
-	deviceId *string
-	metadata *string
-	bank *Bank
-	mobileMoney *MobileMoney
-	ussd *USSD
-	eft *EFT
+	chargeCreateRequest *ChargeCreateRequest
 }
 
-// Customer&#39;s email address
-func (r ApiChargeCreateRequest) Email(email string) ApiChargeCreateRequest {
-	r.email = &email
+func (r ApiChargeCreateRequest) ChargeCreateRequest(chargeCreateRequest ChargeCreateRequest) ApiChargeCreateRequest {
+	r.chargeCreateRequest = &chargeCreateRequest
 	return r
 }
 
-// Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-func (r ApiChargeCreateRequest) Amount(amount string) ApiChargeCreateRequest {
-	r.amount = &amount
-	return r
-}
-
-// An authorization code to charge.
-func (r ApiChargeCreateRequest) AuthorizationCode(authorizationCode string) ApiChargeCreateRequest {
-	r.authorizationCode = &authorizationCode
-	return r
-}
-
-// 4-digit PIN (send with a non-reusable authorization code)
-func (r ApiChargeCreateRequest) Pin(pin string) ApiChargeCreateRequest {
-	r.pin = &pin
-	return r
-}
-
-// Unique transaction reference. Only -, .&#x60;, &#x3D; and alphanumeric characters allowed.
-func (r ApiChargeCreateRequest) Reference(reference string) ApiChargeCreateRequest {
-	r.reference = &reference
-	return r
-}
-
-// The customer&#39;s birthday in the format YYYY-MM-DD e.g 2017-05-16
-func (r ApiChargeCreateRequest) Birthday(birthday time.Time) ApiChargeCreateRequest {
-	r.birthday = &birthday
-	return r
-}
-
-// This is the unique identifier of the device a user uses in making payment.  Only -, .&#x60;, &#x3D; and alphanumeric characters are allowed.
-func (r ApiChargeCreateRequest) DeviceId(deviceId string) ApiChargeCreateRequest {
-	r.deviceId = &deviceId
-	return r
-}
-
-// Stringified JSON object of custom data
-func (r ApiChargeCreateRequest) Metadata(metadata string) ApiChargeCreateRequest {
-	r.metadata = &metadata
-	return r
-}
-
-func (r ApiChargeCreateRequest) Bank(bank Bank) ApiChargeCreateRequest {
-	r.bank = &bank
-	return r
-}
-
-func (r ApiChargeCreateRequest) MobileMoney(mobileMoney MobileMoney) ApiChargeCreateRequest {
-	r.mobileMoney = &mobileMoney
-	return r
-}
-
-func (r ApiChargeCreateRequest) Ussd(ussd USSD) ApiChargeCreateRequest {
-	r.ussd = &ussd
-	return r
-}
-
-func (r ApiChargeCreateRequest) Eft(eft EFT) ApiChargeCreateRequest {
-	r.eft = &eft
-	return r
-}
-
-func (r ApiChargeCreateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiChargeCreateRequest) Execute() (*ChargeCreateResponse, *http.Response, error) {
 	return r.ApiService.ChargeCreateExecute(r)
 }
 
 /*
 ChargeCreate Create Charge
+
+Initiate a payment by integrating the payment channel of your choice.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiChargeCreateRequest
@@ -251,13 +181,13 @@ func (a *ChargeAPIService) ChargeCreate(ctx context.Context) ApiChargeCreateRequ
 }
 
 // Execute executes the request
-//  @return Response
-func (a *ChargeAPIService) ChargeCreateExecute(r ApiChargeCreateRequest) (*Response, *http.Response, error) {
+//  @return ChargeCreateResponse
+func (a *ChargeAPIService) ChargeCreateExecute(r ApiChargeCreateRequest) (*ChargeCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *ChargeCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ChargeAPIService.ChargeCreate")
@@ -270,15 +200,9 @@ func (a *ChargeAPIService) ChargeCreateExecute(r ApiChargeCreateRequest) (*Respo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.email == nil {
-		return localVarReturnValue, nil, reportError("email is required and must be specified")
-	}
-	if r.amount == nil {
-		return localVarReturnValue, nil, reportError("amount is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -294,54 +218,8 @@ func (a *ChargeAPIService) ChargeCreateExecute(r ApiChargeCreateRequest) (*Respo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "email", r.email, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "amount", r.amount, "", "")
-	if r.authorizationCode != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "authorization_code", r.authorizationCode, "", "")
-	}
-	if r.pin != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "pin", r.pin, "", "")
-	}
-	if r.reference != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "reference", r.reference, "", "")
-	}
-	if r.birthday != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "birthday", r.birthday, "", "")
-	}
-	if r.deviceId != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "device_id", r.deviceId, "", "")
-	}
-	if r.metadata != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "metadata", r.metadata, "", "")
-	}
-	if r.bank != nil {
-		paramJson, err := parameterToJson(*r.bank)
-		if err != nil {
-			return localVarReturnValue, nil, err
-		}
-		localVarFormParams.Add("bank", paramJson)
-	}
-	if r.mobileMoney != nil {
-		paramJson, err := parameterToJson(*r.mobileMoney)
-		if err != nil {
-			return localVarReturnValue, nil, err
-		}
-		localVarFormParams.Add("mobile_money", paramJson)
-	}
-	if r.ussd != nil {
-		paramJson, err := parameterToJson(*r.ussd)
-		if err != nil {
-			return localVarReturnValue, nil, err
-		}
-		localVarFormParams.Add("ussd", paramJson)
-	}
-	if r.eft != nil {
-		paramJson, err := parameterToJson(*r.eft)
-		if err != nil {
-			return localVarReturnValue, nil, err
-		}
-		localVarFormParams.Add("eft", paramJson)
-	}
+	// body params
+	localVarPostBody = r.chargeCreateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -393,40 +271,11 @@ func (a *ChargeAPIService) ChargeCreateExecute(r ApiChargeCreateRequest) (*Respo
 type ApiChargeSubmitAddressRequest struct {
 	ctx context.Context
 	ApiService *ChargeAPIService
-	address *string
-	city *string
-	state *string
-	zipcode *string
-	reference *string
+	chargeSubmitAddress *ChargeSubmitAddress
 }
 
-// Customer&#39;s address
-func (r ApiChargeSubmitAddressRequest) Address(address string) ApiChargeSubmitAddressRequest {
-	r.address = &address
-	return r
-}
-
-// Customer&#39;s city
-func (r ApiChargeSubmitAddressRequest) City(city string) ApiChargeSubmitAddressRequest {
-	r.city = &city
-	return r
-}
-
-// Customer&#39;s state
-func (r ApiChargeSubmitAddressRequest) State(state string) ApiChargeSubmitAddressRequest {
-	r.state = &state
-	return r
-}
-
-// Customer&#39;s zipcode
-func (r ApiChargeSubmitAddressRequest) Zipcode(zipcode string) ApiChargeSubmitAddressRequest {
-	r.zipcode = &zipcode
-	return r
-}
-
-// The reference of the ongoing transaction
-func (r ApiChargeSubmitAddressRequest) Reference(reference string) ApiChargeSubmitAddressRequest {
-	r.reference = &reference
+func (r ApiChargeSubmitAddressRequest) ChargeSubmitAddress(chargeSubmitAddress ChargeSubmitAddress) ApiChargeSubmitAddressRequest {
+	r.chargeSubmitAddress = &chargeSubmitAddress
 	return r
 }
 
@@ -436,6 +285,8 @@ func (r ApiChargeSubmitAddressRequest) Execute() (*Response, *http.Response, err
 
 /*
 ChargeSubmitAddress Submit Address
+
+Send the details of the customer's address for address verification
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiChargeSubmitAddressRequest
@@ -467,24 +318,9 @@ func (a *ChargeAPIService) ChargeSubmitAddressExecute(r ApiChargeSubmitAddressRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.address == nil {
-		return localVarReturnValue, nil, reportError("address is required and must be specified")
-	}
-	if r.city == nil {
-		return localVarReturnValue, nil, reportError("city is required and must be specified")
-	}
-	if r.state == nil {
-		return localVarReturnValue, nil, reportError("state is required and must be specified")
-	}
-	if r.zipcode == nil {
-		return localVarReturnValue, nil, reportError("zipcode is required and must be specified")
-	}
-	if r.reference == nil {
-		return localVarReturnValue, nil, reportError("reference is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -500,11 +336,8 @@ func (a *ChargeAPIService) ChargeSubmitAddressExecute(r ApiChargeSubmitAddressRe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "address", r.address, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "city", r.city, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "state", r.state, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "zipcode", r.zipcode, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "reference", r.reference, "", "")
+	// body params
+	localVarPostBody = r.chargeSubmitAddress
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -556,28 +389,22 @@ func (a *ChargeAPIService) ChargeSubmitAddressExecute(r ApiChargeSubmitAddressRe
 type ApiChargeSubmitBirthdayRequest struct {
 	ctx context.Context
 	ApiService *ChargeAPIService
-	birthday *string
-	reference *string
+	chargeSubmitBirthday *ChargeSubmitBirthday
 }
 
-// Customer&#39;s birthday in the format YYYY-MM-DD e.g 2016-09-21
-func (r ApiChargeSubmitBirthdayRequest) Birthday(birthday string) ApiChargeSubmitBirthdayRequest {
-	r.birthday = &birthday
+func (r ApiChargeSubmitBirthdayRequest) ChargeSubmitBirthday(chargeSubmitBirthday ChargeSubmitBirthday) ApiChargeSubmitBirthdayRequest {
+	r.chargeSubmitBirthday = &chargeSubmitBirthday
 	return r
 }
 
-// The reference of the ongoing transaction
-func (r ApiChargeSubmitBirthdayRequest) Reference(reference string) ApiChargeSubmitBirthdayRequest {
-	r.reference = &reference
-	return r
-}
-
-func (r ApiChargeSubmitBirthdayRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiChargeSubmitBirthdayRequest) Execute() (*ChargeSubmitBirthdayResponse, *http.Response, error) {
 	return r.ApiService.ChargeSubmitBirthdayExecute(r)
 }
 
 /*
 ChargeSubmitBirthday Submit Birthday
+
+Submit the customer's birthday when requested
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiChargeSubmitBirthdayRequest
@@ -590,13 +417,13 @@ func (a *ChargeAPIService) ChargeSubmitBirthday(ctx context.Context) ApiChargeSu
 }
 
 // Execute executes the request
-//  @return Response
-func (a *ChargeAPIService) ChargeSubmitBirthdayExecute(r ApiChargeSubmitBirthdayRequest) (*Response, *http.Response, error) {
+//  @return ChargeSubmitBirthdayResponse
+func (a *ChargeAPIService) ChargeSubmitBirthdayExecute(r ApiChargeSubmitBirthdayRequest) (*ChargeSubmitBirthdayResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *ChargeSubmitBirthdayResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ChargeAPIService.ChargeSubmitBirthday")
@@ -609,15 +436,9 @@ func (a *ChargeAPIService) ChargeSubmitBirthdayExecute(r ApiChargeSubmitBirthday
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.birthday == nil {
-		return localVarReturnValue, nil, reportError("birthday is required and must be specified")
-	}
-	if r.reference == nil {
-		return localVarReturnValue, nil, reportError("reference is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -633,8 +454,8 @@ func (a *ChargeAPIService) ChargeSubmitBirthdayExecute(r ApiChargeSubmitBirthday
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "birthday", r.birthday, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "reference", r.reference, "", "")
+	// body params
+	localVarPostBody = r.chargeSubmitBirthday
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -686,28 +507,22 @@ func (a *ChargeAPIService) ChargeSubmitBirthdayExecute(r ApiChargeSubmitBirthday
 type ApiChargeSubmitOtpRequest struct {
 	ctx context.Context
 	ApiService *ChargeAPIService
-	otp *string
-	reference *string
+	chargeSubmitOTP *ChargeSubmitOTP
 }
 
-// Customer&#39;s OTP
-func (r ApiChargeSubmitOtpRequest) Otp(otp string) ApiChargeSubmitOtpRequest {
-	r.otp = &otp
+func (r ApiChargeSubmitOtpRequest) ChargeSubmitOTP(chargeSubmitOTP ChargeSubmitOTP) ApiChargeSubmitOtpRequest {
+	r.chargeSubmitOTP = &chargeSubmitOTP
 	return r
 }
 
-// The reference of the ongoing transaction
-func (r ApiChargeSubmitOtpRequest) Reference(reference string) ApiChargeSubmitOtpRequest {
-	r.reference = &reference
-	return r
-}
-
-func (r ApiChargeSubmitOtpRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiChargeSubmitOtpRequest) Execute() (*ChargeSubmitOtpResponse, *http.Response, error) {
 	return r.ApiService.ChargeSubmitOtpExecute(r)
 }
 
 /*
 ChargeSubmitOtp Submit OTP
+
+Submit OTP to complete a charge
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiChargeSubmitOtpRequest
@@ -720,13 +535,13 @@ func (a *ChargeAPIService) ChargeSubmitOtp(ctx context.Context) ApiChargeSubmitO
 }
 
 // Execute executes the request
-//  @return Response
-func (a *ChargeAPIService) ChargeSubmitOtpExecute(r ApiChargeSubmitOtpRequest) (*Response, *http.Response, error) {
+//  @return ChargeSubmitOtpResponse
+func (a *ChargeAPIService) ChargeSubmitOtpExecute(r ApiChargeSubmitOtpRequest) (*ChargeSubmitOtpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *ChargeSubmitOtpResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ChargeAPIService.ChargeSubmitOtp")
@@ -739,15 +554,9 @@ func (a *ChargeAPIService) ChargeSubmitOtpExecute(r ApiChargeSubmitOtpRequest) (
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.otp == nil {
-		return localVarReturnValue, nil, reportError("otp is required and must be specified")
-	}
-	if r.reference == nil {
-		return localVarReturnValue, nil, reportError("reference is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -763,8 +572,8 @@ func (a *ChargeAPIService) ChargeSubmitOtpExecute(r ApiChargeSubmitOtpRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "otp", r.otp, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "reference", r.reference, "", "")
+	// body params
+	localVarPostBody = r.chargeSubmitOTP
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -816,28 +625,22 @@ func (a *ChargeAPIService) ChargeSubmitOtpExecute(r ApiChargeSubmitOtpRequest) (
 type ApiChargeSubmitPhoneRequest struct {
 	ctx context.Context
 	ApiService *ChargeAPIService
-	phone *string
-	reference *string
+	chargeSubmitPhone *ChargeSubmitPhone
 }
 
-// Customer&#39;s mobile number
-func (r ApiChargeSubmitPhoneRequest) Phone(phone string) ApiChargeSubmitPhoneRequest {
-	r.phone = &phone
+func (r ApiChargeSubmitPhoneRequest) ChargeSubmitPhone(chargeSubmitPhone ChargeSubmitPhone) ApiChargeSubmitPhoneRequest {
+	r.chargeSubmitPhone = &chargeSubmitPhone
 	return r
 }
 
-// The reference of the ongoing transaction
-func (r ApiChargeSubmitPhoneRequest) Reference(reference string) ApiChargeSubmitPhoneRequest {
-	r.reference = &reference
-	return r
-}
-
-func (r ApiChargeSubmitPhoneRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiChargeSubmitPhoneRequest) Execute() (*ChargeSubmitPhoneResponse, *http.Response, error) {
 	return r.ApiService.ChargeSubmitPhoneExecute(r)
 }
 
 /*
 ChargeSubmitPhone Submit Phone
+
+Submit phone number when requested
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiChargeSubmitPhoneRequest
@@ -850,13 +653,13 @@ func (a *ChargeAPIService) ChargeSubmitPhone(ctx context.Context) ApiChargeSubmi
 }
 
 // Execute executes the request
-//  @return Response
-func (a *ChargeAPIService) ChargeSubmitPhoneExecute(r ApiChargeSubmitPhoneRequest) (*Response, *http.Response, error) {
+//  @return ChargeSubmitPhoneResponse
+func (a *ChargeAPIService) ChargeSubmitPhoneExecute(r ApiChargeSubmitPhoneRequest) (*ChargeSubmitPhoneResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *ChargeSubmitPhoneResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ChargeAPIService.ChargeSubmitPhone")
@@ -869,15 +672,9 @@ func (a *ChargeAPIService) ChargeSubmitPhoneExecute(r ApiChargeSubmitPhoneReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.phone == nil {
-		return localVarReturnValue, nil, reportError("phone is required and must be specified")
-	}
-	if r.reference == nil {
-		return localVarReturnValue, nil, reportError("reference is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -893,8 +690,8 @@ func (a *ChargeAPIService) ChargeSubmitPhoneExecute(r ApiChargeSubmitPhoneReques
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "phone", r.phone, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "reference", r.reference, "", "")
+	// body params
+	localVarPostBody = r.chargeSubmitPhone
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -946,28 +743,22 @@ func (a *ChargeAPIService) ChargeSubmitPhoneExecute(r ApiChargeSubmitPhoneReques
 type ApiChargeSubmitPinRequest struct {
 	ctx context.Context
 	ApiService *ChargeAPIService
-	pin *string
-	reference *string
+	chargeSubmitPin *ChargeSubmitPin
 }
 
-// Customer&#39;s PIN
-func (r ApiChargeSubmitPinRequest) Pin(pin string) ApiChargeSubmitPinRequest {
-	r.pin = &pin
+func (r ApiChargeSubmitPinRequest) ChargeSubmitPin(chargeSubmitPin ChargeSubmitPin) ApiChargeSubmitPinRequest {
+	r.chargeSubmitPin = &chargeSubmitPin
 	return r
 }
 
-// Transaction reference that requires the PIN
-func (r ApiChargeSubmitPinRequest) Reference(reference string) ApiChargeSubmitPinRequest {
-	r.reference = &reference
-	return r
-}
-
-func (r ApiChargeSubmitPinRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiChargeSubmitPinRequest) Execute() (*ChargeSubmitPinResponse, *http.Response, error) {
 	return r.ApiService.ChargeSubmitPinExecute(r)
 }
 
 /*
 ChargeSubmitPin Submit PIN
+
+Submit PIN to continue a charge
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiChargeSubmitPinRequest
@@ -980,13 +771,13 @@ func (a *ChargeAPIService) ChargeSubmitPin(ctx context.Context) ApiChargeSubmitP
 }
 
 // Execute executes the request
-//  @return Response
-func (a *ChargeAPIService) ChargeSubmitPinExecute(r ApiChargeSubmitPinRequest) (*Response, *http.Response, error) {
+//  @return ChargeSubmitPinResponse
+func (a *ChargeAPIService) ChargeSubmitPinExecute(r ApiChargeSubmitPinRequest) (*ChargeSubmitPinResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *ChargeSubmitPinResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ChargeAPIService.ChargeSubmitPin")
@@ -999,15 +790,9 @@ func (a *ChargeAPIService) ChargeSubmitPinExecute(r ApiChargeSubmitPinRequest) (
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.pin == nil {
-		return localVarReturnValue, nil, reportError("pin is required and must be specified")
-	}
-	if r.reference == nil {
-		return localVarReturnValue, nil, reportError("reference is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1023,8 +808,8 @@ func (a *ChargeAPIService) ChargeSubmitPinExecute(r ApiChargeSubmitPinRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "pin", r.pin, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "reference", r.reference, "", "")
+	// body params
+	localVarPostBody = r.chargeSubmitPin
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

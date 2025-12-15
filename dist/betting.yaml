@@ -742,11 +742,6 @@ components:
               nullable: true
             gateway_response:
               type: string
-            paid_at:
-              type: string
-              nullable: true
-            created_at:
-              type: string
             channel:
               type: string
             currency:
@@ -948,8 +943,6 @@ components:
             - amount
             - message
             - gateway_response
-            - paid_at
-            - created_at
             - channel
             - currency
             - ip_address
@@ -1033,8 +1026,6 @@ components:
           type: string
         is_deleted:
           type: boolean
-        isDeleted:
-          type: boolean
         details:
           type: object
           properties:
@@ -1071,7 +1062,6 @@ components:
         - type
         - updatedAt
         - is_deleted
-        - isDeleted
         - details
     TransferRecipientListResponse:
       type: object
@@ -1191,8 +1181,6 @@ components:
               type: string
             is_deleted:
               type: boolean
-            isDeleted:
-              type: boolean
             details:
               type: object
               properties:
@@ -1229,7 +1217,6 @@ components:
             - type
             - updatedAt
             - is_deleted
-            - isDeleted
             - details
       required:
         - status

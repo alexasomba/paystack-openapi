@@ -28,12 +28,14 @@ type ApiIntegrationFetchPaymentSessionTimeoutRequest struct {
 	ApiService *IntegrationAPIService
 }
 
-func (r ApiIntegrationFetchPaymentSessionTimeoutRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiIntegrationFetchPaymentSessionTimeoutRequest) Execute() (*ControlPanelFetchPaymentSessionTimeoutResponse, *http.Response, error) {
 	return r.ApiService.IntegrationFetchPaymentSessionTimeoutExecute(r)
 }
 
 /*
 IntegrationFetchPaymentSessionTimeout Fetch Payment Session Timeout
+
+Fetch the session timeout of a transaction
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiIntegrationFetchPaymentSessionTimeoutRequest
@@ -46,13 +48,13 @@ func (a *IntegrationAPIService) IntegrationFetchPaymentSessionTimeout(ctx contex
 }
 
 // Execute executes the request
-//  @return Response
-func (a *IntegrationAPIService) IntegrationFetchPaymentSessionTimeoutExecute(r ApiIntegrationFetchPaymentSessionTimeoutRequest) (*Response, *http.Response, error) {
+//  @return ControlPanelFetchPaymentSessionTimeoutResponse
+func (a *IntegrationAPIService) IntegrationFetchPaymentSessionTimeoutExecute(r ApiIntegrationFetchPaymentSessionTimeoutRequest) (*ControlPanelFetchPaymentSessionTimeoutResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *ControlPanelFetchPaymentSessionTimeoutResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntegrationAPIService.IntegrationFetchPaymentSessionTimeout")
@@ -145,20 +147,22 @@ func (a *IntegrationAPIService) IntegrationFetchPaymentSessionTimeoutExecute(r A
 type ApiIntegrationUpdatePaymentSessionTimeoutRequest struct {
 	ctx context.Context
 	ApiService *IntegrationAPIService
-	body *map[string]interface{}
+	paymentSession *PaymentSession
 }
 
-func (r ApiIntegrationUpdatePaymentSessionTimeoutRequest) Body(body map[string]interface{}) ApiIntegrationUpdatePaymentSessionTimeoutRequest {
-	r.body = &body
+func (r ApiIntegrationUpdatePaymentSessionTimeoutRequest) PaymentSession(paymentSession PaymentSession) ApiIntegrationUpdatePaymentSessionTimeoutRequest {
+	r.paymentSession = &paymentSession
 	return r
 }
 
-func (r ApiIntegrationUpdatePaymentSessionTimeoutRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiIntegrationUpdatePaymentSessionTimeoutRequest) Execute() (*ControlPanelUpdatePaymentSessionTimeoutResponse, *http.Response, error) {
 	return r.ApiService.IntegrationUpdatePaymentSessionTimeoutExecute(r)
 }
 
 /*
 IntegrationUpdatePaymentSessionTimeout Update Payment Session Timeout
+
+Update the session timeout of a transaction
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiIntegrationUpdatePaymentSessionTimeoutRequest
@@ -171,13 +175,13 @@ func (a *IntegrationAPIService) IntegrationUpdatePaymentSessionTimeout(ctx conte
 }
 
 // Execute executes the request
-//  @return Response
-func (a *IntegrationAPIService) IntegrationUpdatePaymentSessionTimeoutExecute(r ApiIntegrationUpdatePaymentSessionTimeoutRequest) (*Response, *http.Response, error) {
+//  @return ControlPanelUpdatePaymentSessionTimeoutResponse
+func (a *IntegrationAPIService) IntegrationUpdatePaymentSessionTimeoutExecute(r ApiIntegrationUpdatePaymentSessionTimeoutRequest) (*ControlPanelUpdatePaymentSessionTimeoutResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *ControlPanelUpdatePaymentSessionTimeoutResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntegrationAPIService.IntegrationUpdatePaymentSessionTimeout")
@@ -209,7 +213,7 @@ func (a *IntegrationAPIService) IntegrationUpdatePaymentSessionTimeoutExecute(r 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.paymentSession
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

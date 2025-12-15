@@ -21,7 +21,8 @@ from datetime import datetime
 from pydantic import Field, StrictInt
 from typing import Optional
 from typing_extensions import Annotated
-from alexasomba_paystack.models.response import Response
+from alexasomba_paystack.models.balance_check_response import BalanceCheckResponse
+from alexasomba_paystack.models.balance_fetch_ledger_response import BalanceFetchLedgerResponse
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
 from alexasomba_paystack.api_response import ApiResponse
@@ -56,10 +57,10 @@ class BalanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> BalanceCheckResponse:
         """Fetch Balance
 
-        You can only transfer from what you have
+        Fetch the available balance on your integration
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -91,7 +92,7 @@ class BalanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BalanceCheckResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -121,10 +122,10 @@ class BalanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[BalanceCheckResponse]:
         """Fetch Balance
 
-        You can only transfer from what you have
+        Fetch the available balance on your integration
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -156,7 +157,7 @@ class BalanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BalanceCheckResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -189,7 +190,7 @@ class BalanceApi:
     ) -> RESTResponseType:
         """Fetch Balance
 
-        You can only transfer from what you have
+        Fetch the available balance on your integration
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -221,7 +222,7 @@ class BalanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BalanceCheckResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -312,9 +313,10 @@ class BalanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> BalanceFetchLedgerResponse:
         """Balance Ledger
 
+        Fetch all pay-ins and pay-outs that occured on your integration
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
@@ -358,7 +360,7 @@ class BalanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BalanceFetchLedgerResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -392,9 +394,10 @@ class BalanceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[BalanceFetchLedgerResponse]:
         """Balance Ledger
 
+        Fetch all pay-ins and pay-outs that occured on your integration
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
@@ -438,7 +441,7 @@ class BalanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BalanceFetchLedgerResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -475,6 +478,7 @@ class BalanceApi:
     ) -> RESTResponseType:
         """Balance Ledger
 
+        Fetch all pay-ins and pay-outs that occured on your integration
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
@@ -518,7 +522,7 @@ class BalanceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BalanceFetchLedgerResponse",
             '401': "Error",
             '404': "Error",
         }

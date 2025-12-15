@@ -24,7 +24,7 @@ type PlanUpdate struct {
 	Name *string `json:"name,omitempty"`
 	// Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
 	Amount *int32 `json:"amount,omitempty"`
-	// Interval in words. Valid intervals are daily, weekly, monthly,biannually, annually
+	// Payment interval
 	Interval *string `json:"interval,omitempty"`
 	// A description for this plan
 	Description *bool `json:"description,omitempty"`

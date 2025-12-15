@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,7 +28,7 @@ class SplitSubaccounts(BaseModel):
     SplitSubaccounts
     """ # noqa: E501
     subaccount: Optional[StrictStr] = Field(default=None, description="Subaccount code of the customer or partner")
-    share: Optional[StrictStr] = Field(default=None, description="The percentage or flat quota of the customer or partner")
+    share: Optional[StrictInt] = Field(default=None, description="The percentage or flat quota of the customer or partner")
     __properties: ClassVar[List[str]] = ["subaccount", "share"]
 
     model_config = ConfigDict(

@@ -20,7 +20,7 @@ import (
 // checks if the SplitCreate type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SplitCreate{}
 
-// SplitCreate struct for SplitCreate
+// SplitCreate Split configuration for transactions 
 type SplitCreate struct {
 	// Name of the transaction split
 	Name string `json:"name"`

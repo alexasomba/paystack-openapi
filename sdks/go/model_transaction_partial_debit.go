@@ -24,16 +24,15 @@ var _ MappedNullable = &TransactionPartialDebit{}
 type TransactionPartialDebit struct {
 	// Customer's email address
 	Email string `json:"email"`
-	// Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-	Amount int32 `json:"amount"`
+	// Specified in the lowest denomination of your currency
+	Amount int64 `json:"amount"`
 	// Valid authorization code to charge
 	AuthorizationCode string `json:"authorization_code"`
-	// The transaction currency
-	Currency string `json:"currency"`
-	// Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
-	Reference *string `json:"reference,omitempty"`
+	Currency Currency `json:"currency"`
 	// Minimum amount to charge
 	AtLeast *string `json:"at_least,omitempty"`
+	// Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
+	Reference *string `json:"reference,omitempty"`
 }
 
 type _TransactionPartialDebit TransactionPartialDebit
@@ -42,7 +41,7 @@ type _TransactionPartialDebit TransactionPartialDebit
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransactionPartialDebit(email string, amount int32, authorizationCode string, currency string) *TransactionPartialDebit {
+func NewTransactionPartialDebit(email string, amount int64, authorizationCode string, currency Currency) *TransactionPartialDebit {
 	this := TransactionPartialDebit{}
 	this.Email = email
 	this.Amount = amount
@@ -84,9 +83,9 @@ func (o *TransactionPartialDebit) SetEmail(v string) {
 }
 
 // GetAmount returns the Amount field value
-func (o *TransactionPartialDebit) GetAmount() int32 {
+func (o *TransactionPartialDebit) GetAmount() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -95,7 +94,7 @@ func (o *TransactionPartialDebit) GetAmount() int32 {
 
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
-func (o *TransactionPartialDebit) GetAmountOk() (*int32, bool) {
+func (o *TransactionPartialDebit) GetAmountOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -103,7 +102,7 @@ func (o *TransactionPartialDebit) GetAmountOk() (*int32, bool) {
 }
 
 // SetAmount sets field value
-func (o *TransactionPartialDebit) SetAmount(v int32) {
+func (o *TransactionPartialDebit) SetAmount(v int64) {
 	o.Amount = v
 }
 
@@ -132,9 +131,9 @@ func (o *TransactionPartialDebit) SetAuthorizationCode(v string) {
 }
 
 // GetCurrency returns the Currency field value
-func (o *TransactionPartialDebit) GetCurrency() string {
+func (o *TransactionPartialDebit) GetCurrency() Currency {
 	if o == nil {
-		var ret string
+		var ret Currency
 		return ret
 	}
 
@@ -143,7 +142,7 @@ func (o *TransactionPartialDebit) GetCurrency() string {
 
 // GetCurrencyOk returns a tuple with the Currency field value
 // and a boolean to check if the value has been set.
-func (o *TransactionPartialDebit) GetCurrencyOk() (*string, bool) {
+func (o *TransactionPartialDebit) GetCurrencyOk() (*Currency, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -151,40 +150,8 @@ func (o *TransactionPartialDebit) GetCurrencyOk() (*string, bool) {
 }
 
 // SetCurrency sets field value
-func (o *TransactionPartialDebit) SetCurrency(v string) {
+func (o *TransactionPartialDebit) SetCurrency(v Currency) {
 	o.Currency = v
-}
-
-// GetReference returns the Reference field value if set, zero value otherwise.
-func (o *TransactionPartialDebit) GetReference() string {
-	if o == nil || IsNil(o.Reference) {
-		var ret string
-		return ret
-	}
-	return *o.Reference
-}
-
-// GetReferenceOk returns a tuple with the Reference field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TransactionPartialDebit) GetReferenceOk() (*string, bool) {
-	if o == nil || IsNil(o.Reference) {
-		return nil, false
-	}
-	return o.Reference, true
-}
-
-// HasReference returns a boolean if a field has been set.
-func (o *TransactionPartialDebit) HasReference() bool {
-	if o != nil && !IsNil(o.Reference) {
-		return true
-	}
-
-	return false
-}
-
-// SetReference gets a reference to the given string and assigns it to the Reference field.
-func (o *TransactionPartialDebit) SetReference(v string) {
-	o.Reference = &v
 }
 
 // GetAtLeast returns the AtLeast field value if set, zero value otherwise.
@@ -219,6 +186,38 @@ func (o *TransactionPartialDebit) SetAtLeast(v string) {
 	o.AtLeast = &v
 }
 
+// GetReference returns the Reference field value if set, zero value otherwise.
+func (o *TransactionPartialDebit) GetReference() string {
+	if o == nil || IsNil(o.Reference) {
+		var ret string
+		return ret
+	}
+	return *o.Reference
+}
+
+// GetReferenceOk returns a tuple with the Reference field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransactionPartialDebit) GetReferenceOk() (*string, bool) {
+	if o == nil || IsNil(o.Reference) {
+		return nil, false
+	}
+	return o.Reference, true
+}
+
+// HasReference returns a boolean if a field has been set.
+func (o *TransactionPartialDebit) HasReference() bool {
+	if o != nil && !IsNil(o.Reference) {
+		return true
+	}
+
+	return false
+}
+
+// SetReference gets a reference to the given string and assigns it to the Reference field.
+func (o *TransactionPartialDebit) SetReference(v string) {
+	o.Reference = &v
+}
+
 func (o TransactionPartialDebit) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -233,11 +232,11 @@ func (o TransactionPartialDebit) ToMap() (map[string]interface{}, error) {
 	toSerialize["amount"] = o.Amount
 	toSerialize["authorization_code"] = o.AuthorizationCode
 	toSerialize["currency"] = o.Currency
-	if !IsNil(o.Reference) {
-		toSerialize["reference"] = o.Reference
-	}
 	if !IsNil(o.AtLeast) {
 		toSerialize["at_least"] = o.AtLeast
+	}
+	if !IsNil(o.Reference) {
+		toSerialize["reference"] = o.Reference
 	}
 	return toSerialize, nil
 }

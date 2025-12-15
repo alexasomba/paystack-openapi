@@ -36,12 +36,12 @@ type PaymentRequestUpdate struct {
 	// Array of taxes
 	Tax []map[string]interface{} `json:"tax,omitempty"`
 	// Indicates whether Paystack sends an email notification to customer. Defaults to true
-	SendNotification []map[string]interface{} `json:"send_notification,omitempty"`
+	SendNotification *bool `json:"send_notification,omitempty"`
 	// Indicate if request should be saved as draft. Defaults to false and overrides send_notification
-	Draft []map[string]interface{} `json:"draft,omitempty"`
-	// Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided)  even if there are no line_items or tax passed
+	Draft *bool `json:"draft,omitempty"`
+	// Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided) even if there are no line_items or tax passed
 	HasInvoice []map[string]interface{} `json:"has_invoice,omitempty"`
-	// Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help  override whatever value Paystack decides. Auto increment for subsequent invoices continue from this point.
+	// Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help override whatever value Paystack decides.  Auto increment for subsequent invoices continue from this point.
 	InvoiceNumber *int32 `json:"invoice_number,omitempty"`
 	// The split code of the transaction split.
 	SplitCode *string `json:"split_code,omitempty"`
@@ -289,17 +289,17 @@ func (o *PaymentRequestUpdate) SetTax(v []map[string]interface{}) {
 }
 
 // GetSendNotification returns the SendNotification field value if set, zero value otherwise.
-func (o *PaymentRequestUpdate) GetSendNotification() []map[string]interface{} {
+func (o *PaymentRequestUpdate) GetSendNotification() bool {
 	if o == nil || IsNil(o.SendNotification) {
-		var ret []map[string]interface{}
+		var ret bool
 		return ret
 	}
-	return o.SendNotification
+	return *o.SendNotification
 }
 
 // GetSendNotificationOk returns a tuple with the SendNotification field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaymentRequestUpdate) GetSendNotificationOk() ([]map[string]interface{}, bool) {
+func (o *PaymentRequestUpdate) GetSendNotificationOk() (*bool, bool) {
 	if o == nil || IsNil(o.SendNotification) {
 		return nil, false
 	}
@@ -315,23 +315,23 @@ func (o *PaymentRequestUpdate) HasSendNotification() bool {
 	return false
 }
 
-// SetSendNotification gets a reference to the given []map[string]interface{} and assigns it to the SendNotification field.
-func (o *PaymentRequestUpdate) SetSendNotification(v []map[string]interface{}) {
-	o.SendNotification = v
+// SetSendNotification gets a reference to the given bool and assigns it to the SendNotification field.
+func (o *PaymentRequestUpdate) SetSendNotification(v bool) {
+	o.SendNotification = &v
 }
 
 // GetDraft returns the Draft field value if set, zero value otherwise.
-func (o *PaymentRequestUpdate) GetDraft() []map[string]interface{} {
+func (o *PaymentRequestUpdate) GetDraft() bool {
 	if o == nil || IsNil(o.Draft) {
-		var ret []map[string]interface{}
+		var ret bool
 		return ret
 	}
-	return o.Draft
+	return *o.Draft
 }
 
 // GetDraftOk returns a tuple with the Draft field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaymentRequestUpdate) GetDraftOk() ([]map[string]interface{}, bool) {
+func (o *PaymentRequestUpdate) GetDraftOk() (*bool, bool) {
 	if o == nil || IsNil(o.Draft) {
 		return nil, false
 	}
@@ -347,9 +347,9 @@ func (o *PaymentRequestUpdate) HasDraft() bool {
 	return false
 }
 
-// SetDraft gets a reference to the given []map[string]interface{} and assigns it to the Draft field.
-func (o *PaymentRequestUpdate) SetDraft(v []map[string]interface{}) {
-	o.Draft = v
+// SetDraft gets a reference to the given bool and assigns it to the Draft field.
+func (o *PaymentRequestUpdate) SetDraft(v bool) {
+	o.Draft = &v
 }
 
 // GetHasInvoice returns the HasInvoice field value if set, zero value otherwise.

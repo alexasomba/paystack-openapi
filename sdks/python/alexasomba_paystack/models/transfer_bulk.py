@@ -18,9 +18,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
-from alexasomba_paystack.models.transfer_initiate import TransferInitiate
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from alexasomba_paystack.models.transfer_base import TransferBase
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,9 +28,20 @@ class TransferBulk(BaseModel):
     """
     TransferBulk
     """ # noqa: E501
-    source: StrictStr = Field(description="Where should we transfer from? Only balance is allowed for now")
-    transfers: List[TransferInitiate] = Field(description="A list of transfer object. Each object should contain amount, recipient, and reference")
-    __properties: ClassVar[List[str]] = ["source", "transfers"]
+    source: StrictStr = Field(description="The source of funds for the transfer.")
+    currency: Optional[StrictStr] = Field(default='NGN', description="Specify the currency of the transfer.")
+    transfers: List[TransferBase] = Field(description="A list of transfer object")
+    __properties: ClassVar[List[str]] = ["source", "currency", "transfers"]
+
+    @field_validator('currency')
+    def currency_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['NGN', 'ZAR', 'KES', 'GHS']):
+            raise ValueError("must be one of enum values ('NGN', 'ZAR', 'KES', 'GHS')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,8 +101,9 @@ class TransferBulk(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "source": obj.get("source"),
-            "transfers": [TransferInitiate.from_dict(_item) for _item in obj["transfers"]] if obj.get("transfers") is not None else None
+            "source": obj.get("source") if obj.get("source") is not None else 'balance',
+            "currency": obj.get("currency") if obj.get("currency") is not None else 'NGN',
+            "transfers": [TransferBase.from_dict(_item) for _item in obj["transfers"]] if obj.get("transfers") is not None else None
         })
         return _obj
 

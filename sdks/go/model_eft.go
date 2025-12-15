@@ -18,7 +18,7 @@ import (
 // checks if the EFT type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &EFT{}
 
-// EFT struct for EFT
+// EFT Details of the EFT provider
 type EFT struct {
 	// The EFT provider
 	Provider *string `json:"provider,omitempty"`

@@ -28,42 +28,22 @@ type SubscriptionAPIService service
 type ApiSubscriptionCreateRequest struct {
 	ctx context.Context
 	ApiService *SubscriptionAPIService
-	customer *string
-	plan *string
-	authorization *string
-	startDate *time.Time
+	subscriptionCreate *SubscriptionCreate
 }
 
-// Customer&#39;s email address or customer code
-func (r ApiSubscriptionCreateRequest) Customer(customer string) ApiSubscriptionCreateRequest {
-	r.customer = &customer
+func (r ApiSubscriptionCreateRequest) SubscriptionCreate(subscriptionCreate SubscriptionCreate) ApiSubscriptionCreateRequest {
+	r.subscriptionCreate = &subscriptionCreate
 	return r
 }
 
-// Plan code
-func (r ApiSubscriptionCreateRequest) Plan(plan string) ApiSubscriptionCreateRequest {
-	r.plan = &plan
-	return r
-}
-
-// If customer has multiple authorizations, you can set the desired authorization you wish to use for this subscription here.  If this is not supplied, the customer&#39;s most recent authorization would be used
-func (r ApiSubscriptionCreateRequest) Authorization(authorization string) ApiSubscriptionCreateRequest {
-	r.authorization = &authorization
-	return r
-}
-
-// Set the date for the first debit. (ISO 8601 format) e.g. 2017-05-16T00:30:13+01:00
-func (r ApiSubscriptionCreateRequest) StartDate(startDate time.Time) ApiSubscriptionCreateRequest {
-	r.startDate = &startDate
-	return r
-}
-
-func (r ApiSubscriptionCreateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiSubscriptionCreateRequest) Execute() (*SubscriptionCreateResponse, *http.Response, error) {
 	return r.ApiService.SubscriptionCreateExecute(r)
 }
 
 /*
 SubscriptionCreate Create Subscription
+
+Create a subscription a customer
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSubscriptionCreateRequest
@@ -76,13 +56,13 @@ func (a *SubscriptionAPIService) SubscriptionCreate(ctx context.Context) ApiSubs
 }
 
 // Execute executes the request
-//  @return Response
-func (a *SubscriptionAPIService) SubscriptionCreateExecute(r ApiSubscriptionCreateRequest) (*Response, *http.Response, error) {
+//  @return SubscriptionCreateResponse
+func (a *SubscriptionAPIService) SubscriptionCreateExecute(r ApiSubscriptionCreateRequest) (*SubscriptionCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *SubscriptionCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionAPIService.SubscriptionCreate")
@@ -95,15 +75,9 @@ func (a *SubscriptionAPIService) SubscriptionCreateExecute(r ApiSubscriptionCrea
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.customer == nil {
-		return localVarReturnValue, nil, reportError("customer is required and must be specified")
-	}
-	if r.plan == nil {
-		return localVarReturnValue, nil, reportError("plan is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -119,14 +93,8 @@ func (a *SubscriptionAPIService) SubscriptionCreateExecute(r ApiSubscriptionCrea
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "customer", r.customer, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "plan", r.plan, "", "")
-	if r.authorization != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "authorization", r.authorization, "", "")
-	}
-	if r.startDate != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "start_date", r.startDate, "", "")
-	}
+	// body params
+	localVarPostBody = r.subscriptionCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -178,28 +146,22 @@ func (a *SubscriptionAPIService) SubscriptionCreateExecute(r ApiSubscriptionCrea
 type ApiSubscriptionDisableRequest struct {
 	ctx context.Context
 	ApiService *SubscriptionAPIService
-	code *string
-	token *string
+	subscriptionToggle *SubscriptionToggle
 }
 
-// Subscription code
-func (r ApiSubscriptionDisableRequest) Code(code string) ApiSubscriptionDisableRequest {
-	r.code = &code
+func (r ApiSubscriptionDisableRequest) SubscriptionToggle(subscriptionToggle SubscriptionToggle) ApiSubscriptionDisableRequest {
+	r.subscriptionToggle = &subscriptionToggle
 	return r
 }
 
-// Email token
-func (r ApiSubscriptionDisableRequest) Token(token string) ApiSubscriptionDisableRequest {
-	r.token = &token
-	return r
-}
-
-func (r ApiSubscriptionDisableRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiSubscriptionDisableRequest) Execute() (*SubscriptionDisableResponse, *http.Response, error) {
 	return r.ApiService.SubscriptionDisableExecute(r)
 }
 
 /*
 SubscriptionDisable Disable Subscription
+
+Disable a subscription on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSubscriptionDisableRequest
@@ -212,13 +174,13 @@ func (a *SubscriptionAPIService) SubscriptionDisable(ctx context.Context) ApiSub
 }
 
 // Execute executes the request
-//  @return Response
-func (a *SubscriptionAPIService) SubscriptionDisableExecute(r ApiSubscriptionDisableRequest) (*Response, *http.Response, error) {
+//  @return SubscriptionDisableResponse
+func (a *SubscriptionAPIService) SubscriptionDisableExecute(r ApiSubscriptionDisableRequest) (*SubscriptionDisableResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *SubscriptionDisableResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionAPIService.SubscriptionDisable")
@@ -231,15 +193,9 @@ func (a *SubscriptionAPIService) SubscriptionDisableExecute(r ApiSubscriptionDis
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.code == nil {
-		return localVarReturnValue, nil, reportError("code is required and must be specified")
-	}
-	if r.token == nil {
-		return localVarReturnValue, nil, reportError("token is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -255,8 +211,8 @@ func (a *SubscriptionAPIService) SubscriptionDisableExecute(r ApiSubscriptionDis
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "code", r.code, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "token", r.token, "", "")
+	// body params
+	localVarPostBody = r.subscriptionToggle
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -308,19 +264,11 @@ func (a *SubscriptionAPIService) SubscriptionDisableExecute(r ApiSubscriptionDis
 type ApiSubscriptionEnableRequest struct {
 	ctx context.Context
 	ApiService *SubscriptionAPIService
-	code *string
-	token *string
+	subscriptionToggle *SubscriptionToggle
 }
 
-// Subscription code
-func (r ApiSubscriptionEnableRequest) Code(code string) ApiSubscriptionEnableRequest {
-	r.code = &code
-	return r
-}
-
-// Email token
-func (r ApiSubscriptionEnableRequest) Token(token string) ApiSubscriptionEnableRequest {
-	r.token = &token
+func (r ApiSubscriptionEnableRequest) SubscriptionToggle(subscriptionToggle SubscriptionToggle) ApiSubscriptionEnableRequest {
+	r.subscriptionToggle = &subscriptionToggle
 	return r
 }
 
@@ -330,6 +278,8 @@ func (r ApiSubscriptionEnableRequest) Execute() (*Response, *http.Response, erro
 
 /*
 SubscriptionEnable Enable Subscription
+
+Enable a subscription on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSubscriptionEnableRequest
@@ -361,15 +311,9 @@ func (a *SubscriptionAPIService) SubscriptionEnableExecute(r ApiSubscriptionEnab
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.code == nil {
-		return localVarReturnValue, nil, reportError("code is required and must be specified")
-	}
-	if r.token == nil {
-		return localVarReturnValue, nil, reportError("token is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -385,8 +329,8 @@ func (a *SubscriptionAPIService) SubscriptionEnableExecute(r ApiSubscriptionEnab
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "code", r.code, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "token", r.token, "", "")
+	// body params
+	localVarPostBody = r.subscriptionToggle
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -441,15 +385,17 @@ type ApiSubscriptionFetchRequest struct {
 	code string
 }
 
-func (r ApiSubscriptionFetchRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiSubscriptionFetchRequest) Execute() (*SubscriptionFetchResponse, *http.Response, error) {
 	return r.ApiService.SubscriptionFetchExecute(r)
 }
 
 /*
 SubscriptionFetch Fetch Subscription
 
+Get details of a customer's subscription
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code
+ @param code The subscription code for the subscription you want to fetch
  @return ApiSubscriptionFetchRequest
 */
 func (a *SubscriptionAPIService) SubscriptionFetch(ctx context.Context, code string) ApiSubscriptionFetchRequest {
@@ -461,13 +407,13 @@ func (a *SubscriptionAPIService) SubscriptionFetch(ctx context.Context, code str
 }
 
 // Execute executes the request
-//  @return Response
-func (a *SubscriptionAPIService) SubscriptionFetchExecute(r ApiSubscriptionFetchRequest) (*Response, *http.Response, error) {
+//  @return SubscriptionFetchResponse
+func (a *SubscriptionAPIService) SubscriptionFetchExecute(r ApiSubscriptionFetchRequest) (*SubscriptionFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *SubscriptionFetchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionAPIService.SubscriptionFetch")
@@ -563,7 +509,7 @@ type ApiSubscriptionListRequest struct {
 	ApiService *SubscriptionAPIService
 	perPage *int32
 	page *int32
-	plan *string
+	plan *int32
 	customer *string
 	from *time.Time
 	to *time.Time
@@ -582,7 +528,7 @@ func (r ApiSubscriptionListRequest) Page(page int32) ApiSubscriptionListRequest 
 }
 
 // Plan ID
-func (r ApiSubscriptionListRequest) Plan(plan string) ApiSubscriptionListRequest {
+func (r ApiSubscriptionListRequest) Plan(plan int32) ApiSubscriptionListRequest {
 	r.plan = &plan
 	return r
 }
@@ -605,12 +551,14 @@ func (r ApiSubscriptionListRequest) To(to time.Time) ApiSubscriptionListRequest 
 	return r
 }
 
-func (r ApiSubscriptionListRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiSubscriptionListRequest) Execute() (*SubscriptionListResponse, *http.Response, error) {
 	return r.ApiService.SubscriptionListExecute(r)
 }
 
 /*
 SubscriptionList List Subscriptions
+
+List all subscriptions available on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSubscriptionListRequest
@@ -623,13 +571,13 @@ func (a *SubscriptionAPIService) SubscriptionList(ctx context.Context) ApiSubscr
 }
 
 // Execute executes the request
-//  @return Response
-func (a *SubscriptionAPIService) SubscriptionListExecute(r ApiSubscriptionListRequest) (*Response, *http.Response, error) {
+//  @return SubscriptionListResponse
+func (a *SubscriptionAPIService) SubscriptionListExecute(r ApiSubscriptionListRequest) (*SubscriptionListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *SubscriptionListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionAPIService.SubscriptionList")
@@ -750,8 +698,10 @@ func (r ApiSubscriptionManageEmailRequest) Execute() (*Response, *http.Response,
 /*
 SubscriptionManageEmail Send Update Subscription Link
 
+Email a customer a link for updating the card on their subscription
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code
+ @param code Subscription code
  @return ApiSubscriptionManageEmailRequest
 */
 func (a *SubscriptionAPIService) SubscriptionManageEmail(ctx context.Context, code string) ApiSubscriptionManageEmailRequest {
@@ -862,8 +812,10 @@ func (r ApiSubscriptionManageLinkRequest) Execute() (*Response, *http.Response, 
 /*
 SubscriptionManageLink Generate Update Subscription Link
 
+Generate a link for updating the card on a subscription
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code
+ @param code Subscription code
  @return ApiSubscriptionManageLinkRequest
 */
 func (a *SubscriptionAPIService) SubscriptionManageLink(ctx context.Context, code string) ApiSubscriptionManageLinkRequest {

@@ -23,7 +23,7 @@ type SplitSubaccounts struct {
 	// Subaccount code of the customer or partner
 	Subaccount *string `json:"subaccount,omitempty"`
 	// The percentage or flat quota of the customer or partner
-	Share *string `json:"share,omitempty"`
+	Share *int32 `json:"share,omitempty"`
 }
 
 // NewSplitSubaccounts instantiates a new SplitSubaccounts object
@@ -76,9 +76,9 @@ func (o *SplitSubaccounts) SetSubaccount(v string) {
 }
 
 // GetShare returns the Share field value if set, zero value otherwise.
-func (o *SplitSubaccounts) GetShare() string {
+func (o *SplitSubaccounts) GetShare() int32 {
 	if o == nil || IsNil(o.Share) {
-		var ret string
+		var ret int32
 		return ret
 	}
 	return *o.Share
@@ -86,7 +86,7 @@ func (o *SplitSubaccounts) GetShare() string {
 
 // GetShareOk returns a tuple with the Share field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SplitSubaccounts) GetShareOk() (*string, bool) {
+func (o *SplitSubaccounts) GetShareOk() (*int32, bool) {
 	if o == nil || IsNil(o.Share) {
 		return nil, false
 	}
@@ -102,8 +102,8 @@ func (o *SplitSubaccounts) HasShare() bool {
 	return false
 }
 
-// SetShare gets a reference to the given string and assigns it to the Share field.
-func (o *SplitSubaccounts) SetShare(v string) {
+// SetShare gets a reference to the given int32 and assigns it to the Share field.
+func (o *SplitSubaccounts) SetShare(v int32) {
 	o.Share = &v
 }
 

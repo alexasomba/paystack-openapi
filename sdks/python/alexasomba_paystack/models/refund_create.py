@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,12 +27,22 @@ class RefundCreate(BaseModel):
     """
     RefundCreate
     """ # noqa: E501
-    transaction: StrictStr = Field(description="Transaction reference or id")
-    amount: Optional[StrictInt] = Field(default=None, description="Amount ( in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR ) to be refunded to the customer.  Amount cannot be more than the original transaction amount")
-    currency: Optional[StrictStr] = Field(default=None, description="Three-letter ISO currency. Allowed values are NGN, GHS, ZAR or USD")
+    transaction: StrictStr = Field(description="The reference of a previosuly completed transaction")
+    amount: Optional[StrictInt] = Field(default=None, description="Amount to be refunded to the customer. It cannot be more than the original transaction amount")
+    currency: Optional[StrictStr] = Field(default=None, description="Three-letter ISO currency")
     customer_note: Optional[StrictStr] = Field(default=None, description="Customer reason")
     merchant_note: Optional[StrictStr] = Field(default=None, description="Merchant reason")
     __properties: ClassVar[List[str]] = ["transaction", "amount", "currency", "customer_note", "merchant_note"]
+
+    @field_validator('currency')
+    def currency_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['GHS', 'KES', 'NGN', 'USD', 'ZAR']):
+            raise ValueError("must be one of enum values ('GHS', 'KES', 'NGN', 'USD', 'ZAR')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,

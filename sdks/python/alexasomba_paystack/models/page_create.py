@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,11 +30,39 @@ class PageCreate(BaseModel):
     name: StrictStr = Field(description="Name of page")
     description: Optional[StrictStr] = Field(default=None, description="The description of the page")
     amount: Optional[StrictInt] = Field(default=None, description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")
-    slug: Optional[StrictStr] = Field(default=None, description="URL slug you would like to be associated with this page. Page will be accessible at https://paystack.com/pay/[slug]")
-    metadata: Optional[StrictStr] = Field(default=None, description="Stringified JSON object of custom data")
-    redirect_url: Optional[StrictStr] = Field(default=None, description="If you would like Paystack to redirect to a URL upon successful payment, specify the URL here.")
+    currency: Optional[StrictStr] = Field(default=None, description="The transaction currency. Defaults to your integration currency.")
+    slug: Optional[StrictStr] = Field(default=None, description="URL slug you would like to be associated with this page. Page will be accessible at `https://paystack.com/pay/[slug]`")
+    type: Optional[StrictStr] = Field(default=None, description="The type of payment page to create. Defaults to `payment` if no type is specified. ")
+    plan: Optional[StrictStr] = Field(default=None, description="The ID of the plan to subscribe customers on this payment page to when `type` is set to `subscription`.")
+    fixed_amount: Optional[StrictBool] = Field(default=None, description="Specifies whether to collect a fixed amount on the payment page. If true, `amount` must be passed.")
+    split_code: Optional[StrictStr] = Field(default=None, description="The split code of the transaction split. e.g. `SPL_98WF13Eb3w`")
+    metadata: Optional[Dict[str, Any]] = Field(default=None, description="JSON object of custom data")
+    redirect_url: Optional[StrictStr] = Field(default=None, description="If you would like Paystack to redirect to a URL upon successful payment, specify the URL here. ")
+    success_message: Optional[StrictStr] = Field(default=None, description="A success message to display to the customer after a successful transaction ")
+    notification_email: Optional[StrictStr] = Field(default=None, description="An email address that will receive transaction notifications for this payment page ")
+    collect_phone: Optional[StrictBool] = Field(default=None, description="Specify whether to collect phone numbers on the payment page ")
     custom_fields: Optional[List[Dict[str, Any]]] = Field(default=None, description="If you would like to accept custom fields, specify them here.")
-    __properties: ClassVar[List[str]] = ["name", "description", "amount", "slug", "metadata", "redirect_url", "custom_fields"]
+    __properties: ClassVar[List[str]] = ["name", "description", "amount", "currency", "slug", "type", "plan", "fixed_amount", "split_code", "metadata", "redirect_url", "success_message", "notification_email", "collect_phone", "custom_fields"]
+
+    @field_validator('currency')
+    def currency_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['NGN', 'GHS', 'ZAR', 'KES', 'USD']):
+            raise ValueError("must be one of enum values ('NGN', 'GHS', 'ZAR', 'KES', 'USD')")
+        return value
+
+    @field_validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['payment', 'subscription', 'product', 'plan']):
+            raise ValueError("must be one of enum values ('payment', 'subscription', 'product', 'plan')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,9 +118,17 @@ class PageCreate(BaseModel):
             "name": obj.get("name"),
             "description": obj.get("description"),
             "amount": obj.get("amount"),
+            "currency": obj.get("currency"),
             "slug": obj.get("slug"),
+            "type": obj.get("type"),
+            "plan": obj.get("plan"),
+            "fixed_amount": obj.get("fixed_amount"),
+            "split_code": obj.get("split_code"),
             "metadata": obj.get("metadata"),
             "redirect_url": obj.get("redirect_url"),
+            "success_message": obj.get("success_message"),
+            "notification_email": obj.get("notification_email"),
+            "collect_phone": obj.get("collect_phone"),
             "custom_fields": obj.get("custom_fields")
         })
         return _obj

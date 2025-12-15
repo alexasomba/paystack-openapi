@@ -28,49 +28,22 @@ type RefundAPIService service
 type ApiRefundCreateRequest struct {
 	ctx context.Context
 	ApiService *RefundAPIService
-	transaction *string
-	amount *int32
-	currency *string
-	customerNote *string
-	merchantNote *string
+	refundCreate *RefundCreate
 }
 
-// Transaction reference or id
-func (r ApiRefundCreateRequest) Transaction(transaction string) ApiRefundCreateRequest {
-	r.transaction = &transaction
+func (r ApiRefundCreateRequest) RefundCreate(refundCreate RefundCreate) ApiRefundCreateRequest {
+	r.refundCreate = &refundCreate
 	return r
 }
 
-// Amount ( in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR ) to be refunded to the customer.  Amount cannot be more than the original transaction amount
-func (r ApiRefundCreateRequest) Amount(amount int32) ApiRefundCreateRequest {
-	r.amount = &amount
-	return r
-}
-
-// Three-letter ISO currency. Allowed values are NGN, GHS, ZAR or USD
-func (r ApiRefundCreateRequest) Currency(currency string) ApiRefundCreateRequest {
-	r.currency = &currency
-	return r
-}
-
-// Customer reason
-func (r ApiRefundCreateRequest) CustomerNote(customerNote string) ApiRefundCreateRequest {
-	r.customerNote = &customerNote
-	return r
-}
-
-// Merchant reason
-func (r ApiRefundCreateRequest) MerchantNote(merchantNote string) ApiRefundCreateRequest {
-	r.merchantNote = &merchantNote
-	return r
-}
-
-func (r ApiRefundCreateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiRefundCreateRequest) Execute() (*RefundCreateResponse, *http.Response, error) {
 	return r.ApiService.RefundCreateExecute(r)
 }
 
 /*
 RefundCreate Create Refund
+
+Initiate a refund for a previously completed transaction
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiRefundCreateRequest
@@ -83,13 +56,13 @@ func (a *RefundAPIService) RefundCreate(ctx context.Context) ApiRefundCreateRequ
 }
 
 // Execute executes the request
-//  @return Response
-func (a *RefundAPIService) RefundCreateExecute(r ApiRefundCreateRequest) (*Response, *http.Response, error) {
+//  @return RefundCreateResponse
+func (a *RefundAPIService) RefundCreateExecute(r ApiRefundCreateRequest) (*RefundCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *RefundCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RefundAPIService.RefundCreate")
@@ -102,12 +75,9 @@ func (a *RefundAPIService) RefundCreateExecute(r ApiRefundCreateRequest) (*Respo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.transaction == nil {
-		return localVarReturnValue, nil, reportError("transaction is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -123,19 +93,8 @@ func (a *RefundAPIService) RefundCreateExecute(r ApiRefundCreateRequest) (*Respo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "transaction", r.transaction, "", "")
-	if r.amount != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "amount", r.amount, "", "")
-	}
-	if r.currency != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "currency", r.currency, "", "")
-	}
-	if r.customerNote != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "customer_note", r.customerNote, "", "")
-	}
-	if r.merchantNote != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "merchant_note", r.merchantNote, "", "")
-	}
+	// body params
+	localVarPostBody = r.refundCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -187,21 +146,23 @@ func (a *RefundAPIService) RefundCreateExecute(r ApiRefundCreateRequest) (*Respo
 type ApiRefundFetchRequest struct {
 	ctx context.Context
 	ApiService *RefundAPIService
-	id string
+	id int32
 }
 
-func (r ApiRefundFetchRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiRefundFetchRequest) Execute() (*RefundFetchResponse, *http.Response, error) {
 	return r.ApiService.RefundFetchExecute(r)
 }
 
 /*
 RefundFetch Fetch Refund
 
+Get a previously created refund
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param id The identifier of the refund
  @return ApiRefundFetchRequest
 */
-func (a *RefundAPIService) RefundFetch(ctx context.Context, id string) ApiRefundFetchRequest {
+func (a *RefundAPIService) RefundFetch(ctx context.Context, id int32) ApiRefundFetchRequest {
 	return ApiRefundFetchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -210,13 +171,13 @@ func (a *RefundAPIService) RefundFetch(ctx context.Context, id string) ApiRefund
 }
 
 // Execute executes the request
-//  @return Response
-func (a *RefundAPIService) RefundFetchExecute(r ApiRefundFetchRequest) (*Response, *http.Response, error) {
+//  @return RefundFetchResponse
+func (a *RefundAPIService) RefundFetchExecute(r ApiRefundFetchRequest) (*RefundFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *RefundFetchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RefundAPIService.RefundFetch")
@@ -340,12 +301,14 @@ func (r ApiRefundListRequest) To(to time.Time) ApiRefundListRequest {
 	return r
 }
 
-func (r ApiRefundListRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiRefundListRequest) Execute() (*RefundListResponse, *http.Response, error) {
 	return r.ApiService.RefundListExecute(r)
 }
 
 /*
 RefundList List Refunds
+
+List previously created refunds
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiRefundListRequest
@@ -358,13 +321,13 @@ func (a *RefundAPIService) RefundList(ctx context.Context) ApiRefundListRequest 
 }
 
 // Execute executes the request
-//  @return Response
-func (a *RefundAPIService) RefundListExecute(r ApiRefundListRequest) (*Response, *http.Response, error) {
+//  @return RefundListResponse
+func (a *RefundAPIService) RefundListExecute(r ApiRefundListRequest) (*RefundListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *RefundListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RefundAPIService.RefundList")
@@ -380,6 +343,10 @@ func (a *RefundAPIService) RefundListExecute(r ApiRefundListRequest) (*Response,
 
 	if r.perPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
+	} else {
+        var defaultValue int32 = 50
+        parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", defaultValue, "form", "")
+        r.perPage = &defaultValue
 	}
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
@@ -441,6 +408,128 @@ func (a *RefundAPIService) RefundListExecute(r ApiRefundListRequest) (*Response,
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiRefundRetryRequest struct {
+	ctx context.Context
+	ApiService *RefundAPIService
+	id int32
+	refundRetry *RefundRetry
+}
+
+func (r ApiRefundRetryRequest) RefundRetry(refundRetry RefundRetry) ApiRefundRetryRequest {
+	r.refundRetry = &refundRetry
+	return r
+}
+
+func (r ApiRefundRetryRequest) Execute() (*RefundRetryResponse, *http.Response, error) {
+	return r.ApiService.RefundRetryExecute(r)
+}
+
+/*
+RefundRetry Retry Refund
+
+Retry a refund with a `needs-attention` status by providing the bank account details of a customer.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id The identifier of the refund
+ @return ApiRefundRetryRequest
+*/
+func (a *RefundAPIService) RefundRetry(ctx context.Context, id int32) ApiRefundRetryRequest {
+	return ApiRefundRetryRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return RefundRetryResponse
+func (a *RefundAPIService) RefundRetryExecute(r ApiRefundRetryRequest) (*RefundRetryResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RefundRetryResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RefundAPIService.RefundRetry")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/refund/retry_with_customer_details/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.refundRetry
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 422 {
 			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {

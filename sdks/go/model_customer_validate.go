@@ -24,14 +24,22 @@ var _ MappedNullable = &CustomerValidate{}
 type CustomerValidate struct {
 	// Customer's first name
 	FirstName string `json:"first_name"`
+	// Customer's middle name
+	MiddleName *string `json:"middle_name,omitempty"`
 	// Customer's last name
 	LastName string `json:"last_name"`
-	// Predefined types of identification. e.g. (BVN)
+	// Predefined types of identification.
 	Type string `json:"type"`
-	// Customer's identification number
-	Value string `json:"value"`
-	// 2 letter country code of identification issuer
+	// Customer's identification number.
+	Value *string `json:"value,omitempty"`
+	// Two-letter country code of identification issuer
 	Country string `json:"country"`
+	// Customer's Bank Verification Number
+	Bvn string `json:"bvn"`
+	// You can get the list of bank codes by calling the List Banks endpoint (https://api.paystack.co/bank).
+	BankCode string `json:"bank_code"`
+	// Customer's bank account number.
+	AccountNumber string `json:"account_number"`
 }
 
 type _CustomerValidate CustomerValidate
@@ -40,13 +48,15 @@ type _CustomerValidate CustomerValidate
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomerValidate(firstName string, lastName string, type_ string, value string, country string) *CustomerValidate {
+func NewCustomerValidate(firstName string, lastName string, type_ string, country string, bvn string, bankCode string, accountNumber string) *CustomerValidate {
 	this := CustomerValidate{}
 	this.FirstName = firstName
 	this.LastName = lastName
 	this.Type = type_
-	this.Value = value
 	this.Country = country
+	this.Bvn = bvn
+	this.BankCode = bankCode
+	this.AccountNumber = accountNumber
 	return &this
 }
 
@@ -55,6 +65,8 @@ func NewCustomerValidate(firstName string, lastName string, type_ string, value 
 // but it doesn't guarantee that properties required by API are set
 func NewCustomerValidateWithDefaults() *CustomerValidate {
 	this := CustomerValidate{}
+	var type_ string = "bank_account"
+	this.Type = type_
 	return &this
 }
 
@@ -80,6 +92,38 @@ func (o *CustomerValidate) GetFirstNameOk() (*string, bool) {
 // SetFirstName sets field value
 func (o *CustomerValidate) SetFirstName(v string) {
 	o.FirstName = v
+}
+
+// GetMiddleName returns the MiddleName field value if set, zero value otherwise.
+func (o *CustomerValidate) GetMiddleName() string {
+	if o == nil || IsNil(o.MiddleName) {
+		var ret string
+		return ret
+	}
+	return *o.MiddleName
+}
+
+// GetMiddleNameOk returns a tuple with the MiddleName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerValidate) GetMiddleNameOk() (*string, bool) {
+	if o == nil || IsNil(o.MiddleName) {
+		return nil, false
+	}
+	return o.MiddleName, true
+}
+
+// HasMiddleName returns a boolean if a field has been set.
+func (o *CustomerValidate) HasMiddleName() bool {
+	if o != nil && !IsNil(o.MiddleName) {
+		return true
+	}
+
+	return false
+}
+
+// SetMiddleName gets a reference to the given string and assigns it to the MiddleName field.
+func (o *CustomerValidate) SetMiddleName(v string) {
+	o.MiddleName = &v
 }
 
 // GetLastName returns the LastName field value
@@ -130,28 +174,36 @@ func (o *CustomerValidate) SetType(v string) {
 	o.Type = v
 }
 
-// GetValue returns the Value field value
+// GetValue returns the Value field value if set, zero value otherwise.
 func (o *CustomerValidate) GetValue() string {
-	if o == nil {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
-
-	return o.Value
+	return *o.Value
 }
 
-// GetValueOk returns a tuple with the Value field value
+// GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerValidate) GetValueOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
-	return &o.Value, true
+	return o.Value, true
 }
 
-// SetValue sets field value
+// HasValue returns a boolean if a field has been set.
+func (o *CustomerValidate) HasValue() bool {
+	if o != nil && !IsNil(o.Value) {
+		return true
+	}
+
+	return false
+}
+
+// SetValue gets a reference to the given string and assigns it to the Value field.
 func (o *CustomerValidate) SetValue(v string) {
-	o.Value = v
+	o.Value = &v
 }
 
 // GetCountry returns the Country field value
@@ -178,6 +230,78 @@ func (o *CustomerValidate) SetCountry(v string) {
 	o.Country = v
 }
 
+// GetBvn returns the Bvn field value
+func (o *CustomerValidate) GetBvn() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Bvn
+}
+
+// GetBvnOk returns a tuple with the Bvn field value
+// and a boolean to check if the value has been set.
+func (o *CustomerValidate) GetBvnOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Bvn, true
+}
+
+// SetBvn sets field value
+func (o *CustomerValidate) SetBvn(v string) {
+	o.Bvn = v
+}
+
+// GetBankCode returns the BankCode field value
+func (o *CustomerValidate) GetBankCode() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BankCode
+}
+
+// GetBankCodeOk returns a tuple with the BankCode field value
+// and a boolean to check if the value has been set.
+func (o *CustomerValidate) GetBankCodeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BankCode, true
+}
+
+// SetBankCode sets field value
+func (o *CustomerValidate) SetBankCode(v string) {
+	o.BankCode = v
+}
+
+// GetAccountNumber returns the AccountNumber field value
+func (o *CustomerValidate) GetAccountNumber() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.AccountNumber
+}
+
+// GetAccountNumberOk returns a tuple with the AccountNumber field value
+// and a boolean to check if the value has been set.
+func (o *CustomerValidate) GetAccountNumberOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AccountNumber, true
+}
+
+// SetAccountNumber sets field value
+func (o *CustomerValidate) SetAccountNumber(v string) {
+	o.AccountNumber = v
+}
+
 func (o CustomerValidate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -189,10 +313,18 @@ func (o CustomerValidate) MarshalJSON() ([]byte, error) {
 func (o CustomerValidate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["first_name"] = o.FirstName
+	if !IsNil(o.MiddleName) {
+		toSerialize["middle_name"] = o.MiddleName
+	}
 	toSerialize["last_name"] = o.LastName
 	toSerialize["type"] = o.Type
-	toSerialize["value"] = o.Value
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
 	toSerialize["country"] = o.Country
+	toSerialize["bvn"] = o.Bvn
+	toSerialize["bank_code"] = o.BankCode
+	toSerialize["account_number"] = o.AccountNumber
 	return toSerialize, nil
 }
 
@@ -204,8 +336,10 @@ func (o *CustomerValidate) UnmarshalJSON(data []byte) (err error) {
 		"first_name",
 		"last_name",
 		"type",
-		"value",
 		"country",
+		"bvn",
+		"bank_code",
+		"account_number",
 	}
 
 	allProperties := make(map[string]interface{})

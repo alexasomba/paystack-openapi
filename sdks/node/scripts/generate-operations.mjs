@@ -6,7 +6,7 @@ import YAML from 'yaml';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const specPath = path.resolve(__dirname, '../../../src/assets/sdk/paystack.yaml');
+const specPath = path.resolve(__dirname, '../openapi.yaml');
 const outPath = path.resolve(__dirname, '../src/operations.ts');
 
 function toIdentifier(name) {

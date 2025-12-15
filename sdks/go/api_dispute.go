@@ -64,12 +64,14 @@ func (r ApiDisputeDownloadRequest) To(to time.Time) ApiDisputeDownloadRequest {
 	return r
 }
 
-func (r ApiDisputeDownloadRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiDisputeDownloadRequest) Execute() (*DisputeExportResponse, *http.Response, error) {
 	return r.ApiService.DisputeDownloadExecute(r)
 }
 
 /*
 DisputeDownload Export Disputes
+
+Export the disputes available on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDisputeDownloadRequest
@@ -82,13 +84,13 @@ func (a *DisputeAPIService) DisputeDownload(ctx context.Context) ApiDisputeDownl
 }
 
 // Execute executes the request
-//  @return Response
-func (a *DisputeAPIService) DisputeDownloadExecute(r ApiDisputeDownloadRequest) (*Response, *http.Response, error) {
+//  @return DisputeExportResponse
+func (a *DisputeAPIService) DisputeDownloadExecute(r ApiDisputeDownloadRequest) (*DisputeExportResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *DisputeExportResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DisputeAPIService.DisputeDownload")
@@ -196,63 +198,29 @@ func (a *DisputeAPIService) DisputeDownloadExecute(r ApiDisputeDownloadRequest) 
 type ApiDisputeEvidenceRequest struct {
 	ctx context.Context
 	ApiService *DisputeAPIService
-	id string
-	customerEmail *string
-	customerName *string
-	customerPhone *string
-	serviceDetails *string
-	deliveryAddress *string
-	deliveryDate *time.Time
+	id int32
+	disputeEvidence *DisputeEvidence
 }
 
-// Customer email
-func (r ApiDisputeEvidenceRequest) CustomerEmail(customerEmail string) ApiDisputeEvidenceRequest {
-	r.customerEmail = &customerEmail
+func (r ApiDisputeEvidenceRequest) DisputeEvidence(disputeEvidence DisputeEvidence) ApiDisputeEvidenceRequest {
+	r.disputeEvidence = &disputeEvidence
 	return r
 }
 
-// Customer name
-func (r ApiDisputeEvidenceRequest) CustomerName(customerName string) ApiDisputeEvidenceRequest {
-	r.customerName = &customerName
-	return r
-}
-
-// Customer mobile number
-func (r ApiDisputeEvidenceRequest) CustomerPhone(customerPhone string) ApiDisputeEvidenceRequest {
-	r.customerPhone = &customerPhone
-	return r
-}
-
-// Details of service offered
-func (r ApiDisputeEvidenceRequest) ServiceDetails(serviceDetails string) ApiDisputeEvidenceRequest {
-	r.serviceDetails = &serviceDetails
-	return r
-}
-
-// Delivery address
-func (r ApiDisputeEvidenceRequest) DeliveryAddress(deliveryAddress string) ApiDisputeEvidenceRequest {
-	r.deliveryAddress = &deliveryAddress
-	return r
-}
-
-// ISO 8601 representation of delivery date (YYYY-MM-DD)
-func (r ApiDisputeEvidenceRequest) DeliveryDate(deliveryDate time.Time) ApiDisputeEvidenceRequest {
-	r.deliveryDate = &deliveryDate
-	return r
-}
-
-func (r ApiDisputeEvidenceRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiDisputeEvidenceRequest) Execute() (*DisputeAddEvidenceResponse, *http.Response, error) {
 	return r.ApiService.DisputeEvidenceExecute(r)
 }
 
 /*
 DisputeEvidence Add Evidence
 
+Provide evidence for a dispute
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Dispute ID
+ @param id The unique identifier of the dispute
  @return ApiDisputeEvidenceRequest
 */
-func (a *DisputeAPIService) DisputeEvidence(ctx context.Context, id string) ApiDisputeEvidenceRequest {
+func (a *DisputeAPIService) DisputeEvidence(ctx context.Context, id int32) ApiDisputeEvidenceRequest {
 	return ApiDisputeEvidenceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -261,13 +229,13 @@ func (a *DisputeAPIService) DisputeEvidence(ctx context.Context, id string) ApiD
 }
 
 // Execute executes the request
-//  @return Response
-func (a *DisputeAPIService) DisputeEvidenceExecute(r ApiDisputeEvidenceRequest) (*Response, *http.Response, error) {
+//  @return DisputeAddEvidenceResponse
+func (a *DisputeAPIService) DisputeEvidenceExecute(r ApiDisputeEvidenceRequest) (*DisputeAddEvidenceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *DisputeAddEvidenceResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DisputeAPIService.DisputeEvidence")
@@ -281,21 +249,9 @@ func (a *DisputeAPIService) DisputeEvidenceExecute(r ApiDisputeEvidenceRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.customerEmail == nil {
-		return localVarReturnValue, nil, reportError("customerEmail is required and must be specified")
-	}
-	if r.customerName == nil {
-		return localVarReturnValue, nil, reportError("customerName is required and must be specified")
-	}
-	if r.customerPhone == nil {
-		return localVarReturnValue, nil, reportError("customerPhone is required and must be specified")
-	}
-	if r.serviceDetails == nil {
-		return localVarReturnValue, nil, reportError("serviceDetails is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -311,16 +267,8 @@ func (a *DisputeAPIService) DisputeEvidenceExecute(r ApiDisputeEvidenceRequest) 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "customer_email", r.customerEmail, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "customer_name", r.customerName, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "customer_phone", r.customerPhone, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "service_details", r.serviceDetails, "", "")
-	if r.deliveryAddress != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "delivery_address", r.deliveryAddress, "", "")
-	}
-	if r.deliveryDate != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "delivery_date", r.deliveryDate, "", "")
-	}
+	// body params
+	localVarPostBody = r.disputeEvidence
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -372,21 +320,23 @@ func (a *DisputeAPIService) DisputeEvidenceExecute(r ApiDisputeEvidenceRequest) 
 type ApiDisputeFetchRequest struct {
 	ctx context.Context
 	ApiService *DisputeAPIService
-	id string
+	id int32
 }
 
-func (r ApiDisputeFetchRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiDisputeFetchRequest) Execute() (*DisputeFetchResponse, *http.Response, error) {
 	return r.ApiService.DisputeFetchExecute(r)
 }
 
 /*
 DisputeFetch Fetch Dispute
 
+Fetch a transaction dispute
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Dispute ID
+ @param id The unique identifier of the dispute
  @return ApiDisputeFetchRequest
 */
-func (a *DisputeAPIService) DisputeFetch(ctx context.Context, id string) ApiDisputeFetchRequest {
+func (a *DisputeAPIService) DisputeFetch(ctx context.Context, id int32) ApiDisputeFetchRequest {
 	return ApiDisputeFetchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -395,13 +345,13 @@ func (a *DisputeAPIService) DisputeFetch(ctx context.Context, id string) ApiDisp
 }
 
 // Execute executes the request
-//  @return Response
-func (a *DisputeAPIService) DisputeFetchExecute(r ApiDisputeFetchRequest) (*Response, *http.Response, error) {
+//  @return DisputeFetchResponse
+func (a *DisputeAPIService) DisputeFetchExecute(r ApiDisputeFetchRequest) (*DisputeFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *DisputeFetchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DisputeAPIService.DisputeFetch")
@@ -515,7 +465,7 @@ func (r ApiDisputeListRequest) Page(page int32) ApiDisputeListRequest {
 	return r
 }
 
-// Dispute Status. Acceptable values are awaiting-merchant-feedback, awaiting-bank-feedback, pending, resolved
+// Dispute status
 func (r ApiDisputeListRequest) Status(status string) ApiDisputeListRequest {
 	r.status = &status
 	return r
@@ -539,12 +489,14 @@ func (r ApiDisputeListRequest) To(to time.Time) ApiDisputeListRequest {
 	return r
 }
 
-func (r ApiDisputeListRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiDisputeListRequest) Execute() (*DisputeListResponse, *http.Response, error) {
 	return r.ApiService.DisputeListExecute(r)
 }
 
 /*
 DisputeList List Disputes
+
+List transaction disputes filed by customers
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDisputeListRequest
@@ -557,13 +509,13 @@ func (a *DisputeAPIService) DisputeList(ctx context.Context) ApiDisputeListReque
 }
 
 // Execute executes the request
-//  @return Response
-func (a *DisputeAPIService) DisputeListExecute(r ApiDisputeListRequest) (*Response, *http.Response, error) {
+//  @return DisputeListResponse
+func (a *DisputeAPIService) DisputeListExecute(r ApiDisputeListRequest) (*DisputeListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *DisputeListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DisputeAPIService.DisputeList")
@@ -674,56 +626,29 @@ func (a *DisputeAPIService) DisputeListExecute(r ApiDisputeListRequest) (*Respon
 type ApiDisputeResolveRequest struct {
 	ctx context.Context
 	ApiService *DisputeAPIService
-	id string
-	resolution *string
-	message *string
-	refundAmount *string
-	uploadedFilename *string
-	evidence *int32
+	id int32
+	disputeResolve *DisputeResolve
 }
 
-// Dispute resolution. Accepted values, merchant-accepted, declined
-func (r ApiDisputeResolveRequest) Resolution(resolution string) ApiDisputeResolveRequest {
-	r.resolution = &resolution
+func (r ApiDisputeResolveRequest) DisputeResolve(disputeResolve DisputeResolve) ApiDisputeResolveRequest {
+	r.disputeResolve = &disputeResolve
 	return r
 }
 
-// Reason for resolving
-func (r ApiDisputeResolveRequest) Message(message string) ApiDisputeResolveRequest {
-	r.message = &message
-	return r
-}
-
-// The amount to refund, in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-func (r ApiDisputeResolveRequest) RefundAmount(refundAmount string) ApiDisputeResolveRequest {
-	r.refundAmount = &refundAmount
-	return r
-}
-
-// Filename of attachment returned via response from the Dispute upload URL
-func (r ApiDisputeResolveRequest) UploadedFilename(uploadedFilename string) ApiDisputeResolveRequest {
-	r.uploadedFilename = &uploadedFilename
-	return r
-}
-
-// Evidence Id for fraud claims
-func (r ApiDisputeResolveRequest) Evidence(evidence int32) ApiDisputeResolveRequest {
-	r.evidence = &evidence
-	return r
-}
-
-func (r ApiDisputeResolveRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiDisputeResolveRequest) Execute() (*DisputeResolveResponse, *http.Response, error) {
 	return r.ApiService.DisputeResolveExecute(r)
 }
 
 /*
-DisputeResolve Resolve a Dispute
+DisputeResolve Resolve Dispute
+
+Resolve a transaction dispute
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Dispute ID
+ @param id The unique identifier of the dispute
  @return ApiDisputeResolveRequest
 */
-func (a *DisputeAPIService) DisputeResolve(ctx context.Context, id string) ApiDisputeResolveRequest {
+func (a *DisputeAPIService) DisputeResolve(ctx context.Context, id int32) ApiDisputeResolveRequest {
 	return ApiDisputeResolveRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -732,13 +657,13 @@ func (a *DisputeAPIService) DisputeResolve(ctx context.Context, id string) ApiDi
 }
 
 // Execute executes the request
-//  @return Response
-func (a *DisputeAPIService) DisputeResolveExecute(r ApiDisputeResolveRequest) (*Response, *http.Response, error) {
+//  @return DisputeResolveResponse
+func (a *DisputeAPIService) DisputeResolveExecute(r ApiDisputeResolveRequest) (*DisputeResolveResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *DisputeResolveResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DisputeAPIService.DisputeResolve")
@@ -752,21 +677,9 @@ func (a *DisputeAPIService) DisputeResolveExecute(r ApiDisputeResolveRequest) (*
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.resolution == nil {
-		return localVarReturnValue, nil, reportError("resolution is required and must be specified")
-	}
-	if r.message == nil {
-		return localVarReturnValue, nil, reportError("message is required and must be specified")
-	}
-	if r.refundAmount == nil {
-		return localVarReturnValue, nil, reportError("refundAmount is required and must be specified")
-	}
-	if r.uploadedFilename == nil {
-		return localVarReturnValue, nil, reportError("uploadedFilename is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -782,13 +695,8 @@ func (a *DisputeAPIService) DisputeResolveExecute(r ApiDisputeResolveRequest) (*
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "resolution", r.resolution, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "message", r.message, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "refund_amount", r.refundAmount, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "uploaded_filename", r.uploadedFilename, "", "")
-	if r.evidence != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "evidence", r.evidence, "", "")
-	}
+	// body params
+	localVarPostBody = r.disputeResolve
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -851,21 +759,23 @@ func (a *DisputeAPIService) DisputeResolveExecute(r ApiDisputeResolveRequest) (*
 type ApiDisputeTransactionRequest struct {
 	ctx context.Context
 	ApiService *DisputeAPIService
-	id string
+	id int32
 }
 
-func (r ApiDisputeTransactionRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiDisputeTransactionRequest) Execute() (*DisputeListTransactionResponse, *http.Response, error) {
 	return r.ApiService.DisputeTransactionExecute(r)
 }
 
 /*
 DisputeTransaction List Transaction Disputes
 
+List all disputes filed for a transaction
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Transaction ID
+ @param id The unique identifier of the transaction
  @return ApiDisputeTransactionRequest
 */
-func (a *DisputeAPIService) DisputeTransaction(ctx context.Context, id string) ApiDisputeTransactionRequest {
+func (a *DisputeAPIService) DisputeTransaction(ctx context.Context, id int32) ApiDisputeTransactionRequest {
 	return ApiDisputeTransactionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -874,13 +784,13 @@ func (a *DisputeAPIService) DisputeTransaction(ctx context.Context, id string) A
 }
 
 // Execute executes the request
-//  @return Response
-func (a *DisputeAPIService) DisputeTransactionExecute(r ApiDisputeTransactionRequest) (*Response, *http.Response, error) {
+//  @return DisputeListTransactionResponse
+func (a *DisputeAPIService) DisputeTransactionExecute(r ApiDisputeTransactionRequest) (*DisputeListTransactionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *DisputeListTransactionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DisputeAPIService.DisputeTransaction")
@@ -974,35 +884,29 @@ func (a *DisputeAPIService) DisputeTransactionExecute(r ApiDisputeTransactionReq
 type ApiDisputeUpdateRequest struct {
 	ctx context.Context
 	ApiService *DisputeAPIService
-	id string
-	refundAmount *string
-	uploadedFilename *string
+	id int32
+	disputeUpdate *DisputeUpdate
 }
 
-// The amount to refund, in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-func (r ApiDisputeUpdateRequest) RefundAmount(refundAmount string) ApiDisputeUpdateRequest {
-	r.refundAmount = &refundAmount
+func (r ApiDisputeUpdateRequest) DisputeUpdate(disputeUpdate DisputeUpdate) ApiDisputeUpdateRequest {
+	r.disputeUpdate = &disputeUpdate
 	return r
 }
 
-// Filename of attachment returned via response from the Dispute upload URL
-func (r ApiDisputeUpdateRequest) UploadedFilename(uploadedFilename string) ApiDisputeUpdateRequest {
-	r.uploadedFilename = &uploadedFilename
-	return r
-}
-
-func (r ApiDisputeUpdateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiDisputeUpdateRequest) Execute() (*DisputeUpdateResponse, *http.Response, error) {
 	return r.ApiService.DisputeUpdateExecute(r)
 }
 
 /*
 DisputeUpdate Update Dispute
 
+Update a transaction dispute
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Dispute ID
+ @param id The unique identifier of the dispute
  @return ApiDisputeUpdateRequest
 */
-func (a *DisputeAPIService) DisputeUpdate(ctx context.Context, id string) ApiDisputeUpdateRequest {
+func (a *DisputeAPIService) DisputeUpdate(ctx context.Context, id int32) ApiDisputeUpdateRequest {
 	return ApiDisputeUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1011,13 +915,13 @@ func (a *DisputeAPIService) DisputeUpdate(ctx context.Context, id string) ApiDis
 }
 
 // Execute executes the request
-//  @return Response
-func (a *DisputeAPIService) DisputeUpdateExecute(r ApiDisputeUpdateRequest) (*Response, *http.Response, error) {
+//  @return DisputeUpdateResponse
+func (a *DisputeAPIService) DisputeUpdateExecute(r ApiDisputeUpdateRequest) (*DisputeUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *DisputeUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DisputeAPIService.DisputeUpdate")
@@ -1031,12 +935,9 @@ func (a *DisputeAPIService) DisputeUpdateExecute(r ApiDisputeUpdateRequest) (*Re
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.refundAmount == nil {
-		return localVarReturnValue, nil, reportError("refundAmount is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1052,10 +953,8 @@ func (a *DisputeAPIService) DisputeUpdateExecute(r ApiDisputeUpdateRequest) (*Re
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "refund_amount", r.refundAmount, "", "")
-	if r.uploadedFilename != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "uploaded_filename", r.uploadedFilename, "", "")
-	}
+	// body params
+	localVarPostBody = r.disputeUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1118,21 +1017,23 @@ func (a *DisputeAPIService) DisputeUpdateExecute(r ApiDisputeUpdateRequest) (*Re
 type ApiDisputeUploadUrlRequest struct {
 	ctx context.Context
 	ApiService *DisputeAPIService
-	id string
+	id int32
 }
 
-func (r ApiDisputeUploadUrlRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiDisputeUploadUrlRequest) Execute() (*DisputeUploadURLResponse, *http.Response, error) {
 	return r.ApiService.DisputeUploadUrlExecute(r)
 }
 
 /*
-DisputeUploadUrl Get Upload URL
+DisputeUploadUrl Fetch Upload URL
+
+Get the URL to upload a dispute evidence
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Dispute ID
+ @param id The unique identifier of the dispute
  @return ApiDisputeUploadUrlRequest
 */
-func (a *DisputeAPIService) DisputeUploadUrl(ctx context.Context, id string) ApiDisputeUploadUrlRequest {
+func (a *DisputeAPIService) DisputeUploadUrl(ctx context.Context, id int32) ApiDisputeUploadUrlRequest {
 	return ApiDisputeUploadUrlRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1141,13 +1042,13 @@ func (a *DisputeAPIService) DisputeUploadUrl(ctx context.Context, id string) Api
 }
 
 // Execute executes the request
-//  @return Response
-func (a *DisputeAPIService) DisputeUploadUrlExecute(r ApiDisputeUploadUrlRequest) (*Response, *http.Response, error) {
+//  @return DisputeUploadURLResponse
+func (a *DisputeAPIService) DisputeUploadUrlExecute(r ApiDisputeUploadUrlRequest) (*DisputeUploadURLResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *DisputeUploadURLResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DisputeAPIService.DisputeUploadUrl")

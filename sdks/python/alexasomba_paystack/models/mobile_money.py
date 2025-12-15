@@ -25,7 +25,7 @@ from typing_extensions import Self
 
 class MobileMoney(BaseModel):
     """
-    MobileMoney
+    Details of the mobile service provider
     """ # noqa: E501
     phone: Optional[StrictStr] = Field(default=None, description="Customer's phone number")
     provider: Optional[StrictStr] = Field(default=None, description="The telco provider of customer's phone number. This can be fetched from the List Bank endpoint")

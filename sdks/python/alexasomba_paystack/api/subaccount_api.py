@@ -17,11 +17,15 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from datetime import datetime
-from pydantic import Field, StrictBool, StrictFloat, StrictInt, StrictStr
-from typing import Optional, Union
+from pydantic import Field, StrictBool, StrictInt, StrictStr
+from typing import Optional
 from typing_extensions import Annotated
-from alexasomba_paystack.models.response import Response
+from alexasomba_paystack.models.subaccount_create import SubaccountCreate
+from alexasomba_paystack.models.subaccount_create_response import SubaccountCreateResponse
+from alexasomba_paystack.models.subaccount_fetch_response import SubaccountFetchResponse
+from alexasomba_paystack.models.subaccount_list_response import SubaccountListResponse
+from alexasomba_paystack.models.subaccount_update import SubaccountUpdate
+from alexasomba_paystack.models.subaccount_update_response import SubaccountUpdateResponse
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
 from alexasomba_paystack.api_response import ApiResponse
@@ -44,15 +48,7 @@ class SubaccountApi:
     @validate_call
     def subaccount_create(
         self,
-        business_name: Annotated[StrictStr, Field(description="Name of business for subaccount")],
-        settlement_bank: Annotated[StrictStr, Field(description="Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint.")],
-        account_number: Annotated[StrictStr, Field(description="Bank account number")],
-        percentage_charge: Annotated[Union[StrictFloat, StrictInt], Field(description="Customer's phone number")],
-        description: Annotated[Optional[StrictStr], Field(description="A description for this subaccount")] = None,
-        primary_contact_email: Annotated[Optional[StrictStr], Field(description="A contact email for the subaccount")] = None,
-        primary_contact_name: Annotated[Optional[StrictStr], Field(description="The name of the contact person for this subaccount")] = None,
-        primary_contact_phone: Annotated[Optional[StrictStr], Field(description="A phone number to call for this subaccount")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
+        subaccount_create: Optional[SubaccountCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -65,28 +61,13 @@ class SubaccountApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> SubaccountCreateResponse:
         """Create Subaccount
 
+        Create a subacount for a partner
 
-        :param business_name: Name of business for subaccount (required)
-        :type business_name: str
-        :param settlement_bank: Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint. (required)
-        :type settlement_bank: str
-        :param account_number: Bank account number (required)
-        :type account_number: str
-        :param percentage_charge: Customer's phone number (required)
-        :type percentage_charge: float
-        :param description: A description for this subaccount
-        :type description: str
-        :param primary_contact_email: A contact email for the subaccount
-        :type primary_contact_email: str
-        :param primary_contact_name: The name of the contact person for this subaccount
-        :type primary_contact_name: str
-        :param primary_contact_phone: A phone number to call for this subaccount
-        :type primary_contact_phone: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
+        :param subaccount_create:
+        :type subaccount_create: SubaccountCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -110,15 +91,7 @@ class SubaccountApi:
         """ # noqa: E501
 
         _param = self._subaccount_create_serialize(
-            business_name=business_name,
-            settlement_bank=settlement_bank,
-            account_number=account_number,
-            percentage_charge=percentage_charge,
-            description=description,
-            primary_contact_email=primary_contact_email,
-            primary_contact_name=primary_contact_name,
-            primary_contact_phone=primary_contact_phone,
-            metadata=metadata,
+            subaccount_create=subaccount_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -126,7 +99,7 @@ class SubaccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '201': "SubaccountCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -143,15 +116,7 @@ class SubaccountApi:
     @validate_call
     def subaccount_create_with_http_info(
         self,
-        business_name: Annotated[StrictStr, Field(description="Name of business for subaccount")],
-        settlement_bank: Annotated[StrictStr, Field(description="Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint.")],
-        account_number: Annotated[StrictStr, Field(description="Bank account number")],
-        percentage_charge: Annotated[Union[StrictFloat, StrictInt], Field(description="Customer's phone number")],
-        description: Annotated[Optional[StrictStr], Field(description="A description for this subaccount")] = None,
-        primary_contact_email: Annotated[Optional[StrictStr], Field(description="A contact email for the subaccount")] = None,
-        primary_contact_name: Annotated[Optional[StrictStr], Field(description="The name of the contact person for this subaccount")] = None,
-        primary_contact_phone: Annotated[Optional[StrictStr], Field(description="A phone number to call for this subaccount")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
+        subaccount_create: Optional[SubaccountCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -164,28 +129,13 @@ class SubaccountApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[SubaccountCreateResponse]:
         """Create Subaccount
 
+        Create a subacount for a partner
 
-        :param business_name: Name of business for subaccount (required)
-        :type business_name: str
-        :param settlement_bank: Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint. (required)
-        :type settlement_bank: str
-        :param account_number: Bank account number (required)
-        :type account_number: str
-        :param percentage_charge: Customer's phone number (required)
-        :type percentage_charge: float
-        :param description: A description for this subaccount
-        :type description: str
-        :param primary_contact_email: A contact email for the subaccount
-        :type primary_contact_email: str
-        :param primary_contact_name: The name of the contact person for this subaccount
-        :type primary_contact_name: str
-        :param primary_contact_phone: A phone number to call for this subaccount
-        :type primary_contact_phone: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
+        :param subaccount_create:
+        :type subaccount_create: SubaccountCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -209,15 +159,7 @@ class SubaccountApi:
         """ # noqa: E501
 
         _param = self._subaccount_create_serialize(
-            business_name=business_name,
-            settlement_bank=settlement_bank,
-            account_number=account_number,
-            percentage_charge=percentage_charge,
-            description=description,
-            primary_contact_email=primary_contact_email,
-            primary_contact_name=primary_contact_name,
-            primary_contact_phone=primary_contact_phone,
-            metadata=metadata,
+            subaccount_create=subaccount_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -225,7 +167,7 @@ class SubaccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '201': "SubaccountCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -242,15 +184,7 @@ class SubaccountApi:
     @validate_call
     def subaccount_create_without_preload_content(
         self,
-        business_name: Annotated[StrictStr, Field(description="Name of business for subaccount")],
-        settlement_bank: Annotated[StrictStr, Field(description="Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint.")],
-        account_number: Annotated[StrictStr, Field(description="Bank account number")],
-        percentage_charge: Annotated[Union[StrictFloat, StrictInt], Field(description="Customer's phone number")],
-        description: Annotated[Optional[StrictStr], Field(description="A description for this subaccount")] = None,
-        primary_contact_email: Annotated[Optional[StrictStr], Field(description="A contact email for the subaccount")] = None,
-        primary_contact_name: Annotated[Optional[StrictStr], Field(description="The name of the contact person for this subaccount")] = None,
-        primary_contact_phone: Annotated[Optional[StrictStr], Field(description="A phone number to call for this subaccount")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
+        subaccount_create: Optional[SubaccountCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -266,25 +200,10 @@ class SubaccountApi:
     ) -> RESTResponseType:
         """Create Subaccount
 
+        Create a subacount for a partner
 
-        :param business_name: Name of business for subaccount (required)
-        :type business_name: str
-        :param settlement_bank: Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint. (required)
-        :type settlement_bank: str
-        :param account_number: Bank account number (required)
-        :type account_number: str
-        :param percentage_charge: Customer's phone number (required)
-        :type percentage_charge: float
-        :param description: A description for this subaccount
-        :type description: str
-        :param primary_contact_email: A contact email for the subaccount
-        :type primary_contact_email: str
-        :param primary_contact_name: The name of the contact person for this subaccount
-        :type primary_contact_name: str
-        :param primary_contact_phone: A phone number to call for this subaccount
-        :type primary_contact_phone: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
+        :param subaccount_create:
+        :type subaccount_create: SubaccountCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -308,15 +227,7 @@ class SubaccountApi:
         """ # noqa: E501
 
         _param = self._subaccount_create_serialize(
-            business_name=business_name,
-            settlement_bank=settlement_bank,
-            account_number=account_number,
-            percentage_charge=percentage_charge,
-            description=description,
-            primary_contact_email=primary_contact_email,
-            primary_contact_name=primary_contact_name,
-            primary_contact_phone=primary_contact_phone,
-            metadata=metadata,
+            subaccount_create=subaccount_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -324,7 +235,7 @@ class SubaccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '201': "SubaccountCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -336,15 +247,7 @@ class SubaccountApi:
 
     def _subaccount_create_serialize(
         self,
-        business_name,
-        settlement_bank,
-        account_number,
-        percentage_charge,
-        description,
-        primary_contact_email,
-        primary_contact_name,
-        primary_contact_phone,
-        metadata,
+        subaccount_create,
         _request_auth,
         _content_type,
         _headers,
@@ -369,25 +272,9 @@ class SubaccountApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if business_name is not None:
-            _form_params.append(('business_name', business_name))
-        if settlement_bank is not None:
-            _form_params.append(('settlement_bank', settlement_bank))
-        if account_number is not None:
-            _form_params.append(('account_number', account_number))
-        if percentage_charge is not None:
-            _form_params.append(('percentage_charge', percentage_charge))
-        if description is not None:
-            _form_params.append(('description', description))
-        if primary_contact_email is not None:
-            _form_params.append(('primary_contact_email', primary_contact_email))
-        if primary_contact_name is not None:
-            _form_params.append(('primary_contact_name', primary_contact_name))
-        if primary_contact_phone is not None:
-            _form_params.append(('primary_contact_phone', primary_contact_phone))
-        if metadata is not None:
-            _form_params.append(('metadata', metadata))
         # process the body parameter
+        if subaccount_create is not None:
+            _body_params = subaccount_create
 
 
         # set the HTTP header `Accept`
@@ -405,8 +292,8 @@ class SubaccountApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -439,7 +326,7 @@ class SubaccountApi:
     @validate_call
     def subaccount_fetch(
         self,
-        code: StrictStr,
+        code: Annotated[StrictStr, Field(description="The subaccount code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -452,11 +339,12 @@ class SubaccountApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> SubaccountFetchResponse:
         """Fetch Subaccount
 
+        Get details of a subaccount on your integration
 
-        :param code: (required)
+        :param code: The subaccount code you want to fetch (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -489,7 +377,7 @@ class SubaccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubaccountFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -507,7 +395,7 @@ class SubaccountApi:
     @validate_call
     def subaccount_fetch_with_http_info(
         self,
-        code: StrictStr,
+        code: Annotated[StrictStr, Field(description="The subaccount code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -520,11 +408,12 @@ class SubaccountApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[SubaccountFetchResponse]:
         """Fetch Subaccount
 
+        Get details of a subaccount on your integration
 
-        :param code: (required)
+        :param code: The subaccount code you want to fetch (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -557,7 +446,7 @@ class SubaccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubaccountFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -575,7 +464,7 @@ class SubaccountApi:
     @validate_call
     def subaccount_fetch_without_preload_content(
         self,
-        code: StrictStr,
+        code: Annotated[StrictStr, Field(description="The subaccount code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -591,8 +480,9 @@ class SubaccountApi:
     ) -> RESTResponseType:
         """Fetch Subaccount
 
+        Get details of a subaccount on your integration
 
-        :param code: (required)
+        :param code: The subaccount code you want to fetch (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -625,7 +515,7 @@ class SubaccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubaccountFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -703,10 +593,9 @@ class SubaccountApi:
     @validate_call
     def subaccount_list(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        active: Annotated[Optional[StrictBool], Field(description="Filter by the state of the subaccounts")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -719,18 +608,17 @@ class SubaccountApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> SubaccountListResponse:
         """List Subaccounts
 
+        List subaccounts available on your integration
 
-        :param per_page: Number of records to fetch per page
+        :param per_page: Number of records to fetch per request
         :type per_page: int
-        :param page: The section to retrieve
+        :param page: The offset to retrieve data from
         :type page: int
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
+        :param active: Filter by the state of the subaccounts
+        :type active: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -756,8 +644,7 @@ class SubaccountApi:
         _param = self._subaccount_list_serialize(
             per_page=per_page,
             page=page,
-            var_from=var_from,
-            to=to,
+            active=active,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -765,7 +652,7 @@ class SubaccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubaccountListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -783,10 +670,9 @@ class SubaccountApi:
     @validate_call
     def subaccount_list_with_http_info(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        active: Annotated[Optional[StrictBool], Field(description="Filter by the state of the subaccounts")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -799,18 +685,17 @@ class SubaccountApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[SubaccountListResponse]:
         """List Subaccounts
 
+        List subaccounts available on your integration
 
-        :param per_page: Number of records to fetch per page
+        :param per_page: Number of records to fetch per request
         :type per_page: int
-        :param page: The section to retrieve
+        :param page: The offset to retrieve data from
         :type page: int
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
+        :param active: Filter by the state of the subaccounts
+        :type active: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -836,8 +721,7 @@ class SubaccountApi:
         _param = self._subaccount_list_serialize(
             per_page=per_page,
             page=page,
-            var_from=var_from,
-            to=to,
+            active=active,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -845,7 +729,7 @@ class SubaccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubaccountListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -863,10 +747,9 @@ class SubaccountApi:
     @validate_call
     def subaccount_list_without_preload_content(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        active: Annotated[Optional[StrictBool], Field(description="Filter by the state of the subaccounts")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -882,15 +765,14 @@ class SubaccountApi:
     ) -> RESTResponseType:
         """List Subaccounts
 
+        List subaccounts available on your integration
 
-        :param per_page: Number of records to fetch per page
+        :param per_page: Number of records to fetch per request
         :type per_page: int
-        :param page: The section to retrieve
+        :param page: The offset to retrieve data from
         :type page: int
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
+        :param active: Filter by the state of the subaccounts
+        :type active: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -916,8 +798,7 @@ class SubaccountApi:
         _param = self._subaccount_list_serialize(
             per_page=per_page,
             page=page,
-            var_from=var_from,
-            to=to,
+            active=active,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -925,7 +806,7 @@ class SubaccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubaccountListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -940,8 +821,7 @@ class SubaccountApi:
         self,
         per_page,
         page,
-        var_from,
-        to,
+        active,
         _request_auth,
         _content_type,
         _headers,
@@ -972,31 +852,9 @@ class SubaccountApi:
             
             _query_params.append(('page', page))
             
-        if var_from is not None:
-            if isinstance(var_from, datetime):
-                _query_params.append(
-                    (
-                        'from',
-                        var_from.strftime(
-                            self.api_client.configuration.datetime_format
-                        )
-                    )
-                )
-            else:
-                _query_params.append(('from', var_from))
+        if active is not None:
             
-        if to is not None:
-            if isinstance(to, datetime):
-                _query_params.append(
-                    (
-                        'to',
-                        to.strftime(
-                            self.api_client.configuration.datetime_format
-                        )
-                    )
-                )
-            else:
-                _query_params.append(('to', to))
+            _query_params.append(('active', active))
             
         # process the header parameters
         # process the form parameters
@@ -1038,17 +896,8 @@ class SubaccountApi:
     @validate_call
     def subaccount_update(
         self,
-        code: StrictStr,
-        business_name: Annotated[Optional[StrictStr], Field(description="Name of business for subaccount")] = None,
-        settlement_bank: Annotated[Optional[StrictStr], Field(description="Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint.")] = None,
-        account_number: Annotated[Optional[StrictStr], Field(description="Bank account number")] = None,
-        active: Annotated[Optional[StrictBool], Field(description="Activate or deactivate a subaccount")] = None,
-        percentage_charge: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Customer's phone number")] = None,
-        description: Annotated[Optional[StrictStr], Field(description="A description for this subaccount")] = None,
-        primary_contact_email: Annotated[Optional[StrictStr], Field(description="A contact email for the subaccount")] = None,
-        primary_contact_name: Annotated[Optional[StrictStr], Field(description="The name of the contact person for this subaccount")] = None,
-        primary_contact_phone: Annotated[Optional[StrictStr], Field(description="A phone number to call for this subaccount")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
+        code: Annotated[StrictStr, Field(description="The subaccount code you want to fetch")],
+        subaccount_update: Optional[SubaccountUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1061,32 +910,15 @@ class SubaccountApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> SubaccountUpdateResponse:
         """Update Subaccount
 
+        Update a subaccount details on your integration
 
-        :param code: (required)
+        :param code: The subaccount code you want to fetch (required)
         :type code: str
-        :param business_name: Name of business for subaccount
-        :type business_name: str
-        :param settlement_bank: Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint.
-        :type settlement_bank: str
-        :param account_number: Bank account number
-        :type account_number: str
-        :param active: Activate or deactivate a subaccount
-        :type active: bool
-        :param percentage_charge: Customer's phone number
-        :type percentage_charge: float
-        :param description: A description for this subaccount
-        :type description: str
-        :param primary_contact_email: A contact email for the subaccount
-        :type primary_contact_email: str
-        :param primary_contact_name: The name of the contact person for this subaccount
-        :type primary_contact_name: str
-        :param primary_contact_phone: A phone number to call for this subaccount
-        :type primary_contact_phone: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
+        :param subaccount_update:
+        :type subaccount_update: SubaccountUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1111,16 +943,7 @@ class SubaccountApi:
 
         _param = self._subaccount_update_serialize(
             code=code,
-            business_name=business_name,
-            settlement_bank=settlement_bank,
-            account_number=account_number,
-            active=active,
-            percentage_charge=percentage_charge,
-            description=description,
-            primary_contact_email=primary_contact_email,
-            primary_contact_name=primary_contact_name,
-            primary_contact_phone=primary_contact_phone,
-            metadata=metadata,
+            subaccount_update=subaccount_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1128,7 +951,7 @@ class SubaccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubaccountUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1146,17 +969,8 @@ class SubaccountApi:
     @validate_call
     def subaccount_update_with_http_info(
         self,
-        code: StrictStr,
-        business_name: Annotated[Optional[StrictStr], Field(description="Name of business for subaccount")] = None,
-        settlement_bank: Annotated[Optional[StrictStr], Field(description="Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint.")] = None,
-        account_number: Annotated[Optional[StrictStr], Field(description="Bank account number")] = None,
-        active: Annotated[Optional[StrictBool], Field(description="Activate or deactivate a subaccount")] = None,
-        percentage_charge: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Customer's phone number")] = None,
-        description: Annotated[Optional[StrictStr], Field(description="A description for this subaccount")] = None,
-        primary_contact_email: Annotated[Optional[StrictStr], Field(description="A contact email for the subaccount")] = None,
-        primary_contact_name: Annotated[Optional[StrictStr], Field(description="The name of the contact person for this subaccount")] = None,
-        primary_contact_phone: Annotated[Optional[StrictStr], Field(description="A phone number to call for this subaccount")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
+        code: Annotated[StrictStr, Field(description="The subaccount code you want to fetch")],
+        subaccount_update: Optional[SubaccountUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1169,32 +983,15 @@ class SubaccountApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[SubaccountUpdateResponse]:
         """Update Subaccount
 
+        Update a subaccount details on your integration
 
-        :param code: (required)
+        :param code: The subaccount code you want to fetch (required)
         :type code: str
-        :param business_name: Name of business for subaccount
-        :type business_name: str
-        :param settlement_bank: Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint.
-        :type settlement_bank: str
-        :param account_number: Bank account number
-        :type account_number: str
-        :param active: Activate or deactivate a subaccount
-        :type active: bool
-        :param percentage_charge: Customer's phone number
-        :type percentage_charge: float
-        :param description: A description for this subaccount
-        :type description: str
-        :param primary_contact_email: A contact email for the subaccount
-        :type primary_contact_email: str
-        :param primary_contact_name: The name of the contact person for this subaccount
-        :type primary_contact_name: str
-        :param primary_contact_phone: A phone number to call for this subaccount
-        :type primary_contact_phone: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
+        :param subaccount_update:
+        :type subaccount_update: SubaccountUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1219,16 +1016,7 @@ class SubaccountApi:
 
         _param = self._subaccount_update_serialize(
             code=code,
-            business_name=business_name,
-            settlement_bank=settlement_bank,
-            account_number=account_number,
-            active=active,
-            percentage_charge=percentage_charge,
-            description=description,
-            primary_contact_email=primary_contact_email,
-            primary_contact_name=primary_contact_name,
-            primary_contact_phone=primary_contact_phone,
-            metadata=metadata,
+            subaccount_update=subaccount_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1236,7 +1024,7 @@ class SubaccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubaccountUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1254,17 +1042,8 @@ class SubaccountApi:
     @validate_call
     def subaccount_update_without_preload_content(
         self,
-        code: StrictStr,
-        business_name: Annotated[Optional[StrictStr], Field(description="Name of business for subaccount")] = None,
-        settlement_bank: Annotated[Optional[StrictStr], Field(description="Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint.")] = None,
-        account_number: Annotated[Optional[StrictStr], Field(description="Bank account number")] = None,
-        active: Annotated[Optional[StrictBool], Field(description="Activate or deactivate a subaccount")] = None,
-        percentage_charge: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Customer's phone number")] = None,
-        description: Annotated[Optional[StrictStr], Field(description="A description for this subaccount")] = None,
-        primary_contact_email: Annotated[Optional[StrictStr], Field(description="A contact email for the subaccount")] = None,
-        primary_contact_name: Annotated[Optional[StrictStr], Field(description="The name of the contact person for this subaccount")] = None,
-        primary_contact_phone: Annotated[Optional[StrictStr], Field(description="A phone number to call for this subaccount")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
+        code: Annotated[StrictStr, Field(description="The subaccount code you want to fetch")],
+        subaccount_update: Optional[SubaccountUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1280,29 +1059,12 @@ class SubaccountApi:
     ) -> RESTResponseType:
         """Update Subaccount
 
+        Update a subaccount details on your integration
 
-        :param code: (required)
+        :param code: The subaccount code you want to fetch (required)
         :type code: str
-        :param business_name: Name of business for subaccount
-        :type business_name: str
-        :param settlement_bank: Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint.
-        :type settlement_bank: str
-        :param account_number: Bank account number
-        :type account_number: str
-        :param active: Activate or deactivate a subaccount
-        :type active: bool
-        :param percentage_charge: Customer's phone number
-        :type percentage_charge: float
-        :param description: A description for this subaccount
-        :type description: str
-        :param primary_contact_email: A contact email for the subaccount
-        :type primary_contact_email: str
-        :param primary_contact_name: The name of the contact person for this subaccount
-        :type primary_contact_name: str
-        :param primary_contact_phone: A phone number to call for this subaccount
-        :type primary_contact_phone: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
+        :param subaccount_update:
+        :type subaccount_update: SubaccountUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1327,16 +1089,7 @@ class SubaccountApi:
 
         _param = self._subaccount_update_serialize(
             code=code,
-            business_name=business_name,
-            settlement_bank=settlement_bank,
-            account_number=account_number,
-            active=active,
-            percentage_charge=percentage_charge,
-            description=description,
-            primary_contact_email=primary_contact_email,
-            primary_contact_name=primary_contact_name,
-            primary_contact_phone=primary_contact_phone,
-            metadata=metadata,
+            subaccount_update=subaccount_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1344,7 +1097,7 @@ class SubaccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubaccountUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1358,16 +1111,7 @@ class SubaccountApi:
     def _subaccount_update_serialize(
         self,
         code,
-        business_name,
-        settlement_bank,
-        account_number,
-        active,
-        percentage_charge,
-        description,
-        primary_contact_email,
-        primary_contact_name,
-        primary_contact_phone,
-        metadata,
+        subaccount_update,
         _request_auth,
         _content_type,
         _headers,
@@ -1394,27 +1138,9 @@ class SubaccountApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if business_name is not None:
-            _form_params.append(('business_name', business_name))
-        if settlement_bank is not None:
-            _form_params.append(('settlement_bank', settlement_bank))
-        if account_number is not None:
-            _form_params.append(('account_number', account_number))
-        if active is not None:
-            _form_params.append(('active', active))
-        if percentage_charge is not None:
-            _form_params.append(('percentage_charge', percentage_charge))
-        if description is not None:
-            _form_params.append(('description', description))
-        if primary_contact_email is not None:
-            _form_params.append(('primary_contact_email', primary_contact_email))
-        if primary_contact_name is not None:
-            _form_params.append(('primary_contact_name', primary_contact_name))
-        if primary_contact_phone is not None:
-            _form_params.append(('primary_contact_phone', primary_contact_phone))
-        if metadata is not None:
-            _form_params.append(('metadata', metadata))
         # process the body parameter
+        if subaccount_update is not None:
+            _body_params = subaccount_update
 
 
         # set the HTTP header `Accept`
@@ -1432,8 +1158,8 @@ class SubaccountApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )

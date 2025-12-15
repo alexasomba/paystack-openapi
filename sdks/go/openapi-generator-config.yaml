@@ -3,4 +3,7 @@
 packageName: paystack
 moduleName: github.com/alexasomba/paystack-openapi/sdks/go
 packageVersion: 0.1.0
+gitHost: github.com
+gitUserId: alexasomba
+gitRepoId: paystack-openapi/sdks/go
 hideGenerationTimestamp: true

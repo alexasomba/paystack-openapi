@@ -28,56 +28,22 @@ type ProductAPIService service
 type ApiProductCreateRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
-	name *string
-	description *string
-	price *int32
-	currency *string
-	limited *bool
-	quantity *int32
+	productCreate *ProductCreate
 }
 
-// Name of product
-func (r ApiProductCreateRequest) Name(name string) ApiProductCreateRequest {
-	r.name = &name
+func (r ApiProductCreateRequest) ProductCreate(productCreate ProductCreate) ApiProductCreateRequest {
+	r.productCreate = &productCreate
 	return r
 }
 
-// The description of the product
-func (r ApiProductCreateRequest) Description(description string) ApiProductCreateRequest {
-	r.description = &description
-	return r
-}
-
-// Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-func (r ApiProductCreateRequest) Price(price int32) ApiProductCreateRequest {
-	r.price = &price
-	return r
-}
-
-// Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD
-func (r ApiProductCreateRequest) Currency(currency string) ApiProductCreateRequest {
-	r.currency = &currency
-	return r
-}
-
-// Set to true if the product has limited stock. Leave as false if the product has unlimited stock
-func (r ApiProductCreateRequest) Limited(limited bool) ApiProductCreateRequest {
-	r.limited = &limited
-	return r
-}
-
-// Number of products in stock. Use if limited is true
-func (r ApiProductCreateRequest) Quantity(quantity int32) ApiProductCreateRequest {
-	r.quantity = &quantity
-	return r
-}
-
-func (r ApiProductCreateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiProductCreateRequest) Execute() (*ProductCreateResponse, *http.Response, error) {
 	return r.ApiService.ProductCreateExecute(r)
 }
 
 /*
 ProductCreate Create Product
+
+Create a new product on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiProductCreateRequest
@@ -90,13 +56,13 @@ func (a *ProductAPIService) ProductCreate(ctx context.Context) ApiProductCreateR
 }
 
 // Execute executes the request
-//  @return Response
-func (a *ProductAPIService) ProductCreateExecute(r ApiProductCreateRequest) (*Response, *http.Response, error) {
+//  @return ProductCreateResponse
+func (a *ProductAPIService) ProductCreateExecute(r ApiProductCreateRequest) (*ProductCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *ProductCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.ProductCreate")
@@ -109,21 +75,9 @@ func (a *ProductAPIService) ProductCreateExecute(r ApiProductCreateRequest) (*Re
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.name == nil {
-		return localVarReturnValue, nil, reportError("name is required and must be specified")
-	}
-	if r.description == nil {
-		return localVarReturnValue, nil, reportError("description is required and must be specified")
-	}
-	if r.price == nil {
-		return localVarReturnValue, nil, reportError("price is required and must be specified")
-	}
-	if r.currency == nil {
-		return localVarReturnValue, nil, reportError("currency is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -139,16 +93,8 @@ func (a *ProductAPIService) ProductCreateExecute(r ApiProductCreateRequest) (*Re
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "description", r.description, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "price", r.price, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "currency", r.currency, "", "")
-	if r.limited != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "limited", r.limited, "", "")
-	}
-	if r.quantity != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "quantity", r.quantity, "", "")
-	}
+	// body params
+	localVarPostBody = r.productCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -200,21 +146,23 @@ func (a *ProductAPIService) ProductCreateExecute(r ApiProductCreateRequest) (*Re
 type ApiProductDeleteRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
-	id string
+	id int32
 }
 
-func (r ApiProductDeleteRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiProductDeleteRequest) Execute() (*ProductDeleteResponse, *http.Response, error) {
 	return r.ApiService.ProductDeleteExecute(r)
 }
 
 /*
 ProductDelete Delete Product
 
+Delete a previously created product
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param id The unique identifier of the product
  @return ApiProductDeleteRequest
 */
-func (a *ProductAPIService) ProductDelete(ctx context.Context, id string) ApiProductDeleteRequest {
+func (a *ProductAPIService) ProductDelete(ctx context.Context, id int32) ApiProductDeleteRequest {
 	return ApiProductDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -223,13 +171,13 @@ func (a *ProductAPIService) ProductDelete(ctx context.Context, id string) ApiPro
 }
 
 // Execute executes the request
-//  @return Response
-func (a *ProductAPIService) ProductDeleteExecute(r ApiProductDeleteRequest) (*Response, *http.Response, error) {
+//  @return ProductDeleteResponse
+func (a *ProductAPIService) ProductDeleteExecute(r ApiProductDeleteRequest) (*ProductDeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *ProductDeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.ProductDelete")
@@ -323,21 +271,23 @@ func (a *ProductAPIService) ProductDeleteExecute(r ApiProductDeleteRequest) (*Re
 type ApiProductFetchRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
-	id string
+	id int32
 }
 
-func (r ApiProductFetchRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiProductFetchRequest) Execute() (*ProductFetchResponse, *http.Response, error) {
 	return r.ApiService.ProductFetchExecute(r)
 }
 
 /*
 ProductFetch Fetch Product
 
+Fetch a previously created product
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param id The unique identifier of the product
  @return ApiProductFetchRequest
 */
-func (a *ProductAPIService) ProductFetch(ctx context.Context, id string) ApiProductFetchRequest {
+func (a *ProductAPIService) ProductFetch(ctx context.Context, id int32) ApiProductFetchRequest {
 	return ApiProductFetchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -346,13 +296,13 @@ func (a *ProductAPIService) ProductFetch(ctx context.Context, id string) ApiProd
 }
 
 // Execute executes the request
-//  @return Response
-func (a *ProductAPIService) ProductFetchExecute(r ApiProductFetchRequest) (*Response, *http.Response, error) {
+//  @return ProductFetchResponse
+func (a *ProductAPIService) ProductFetchExecute(r ApiProductFetchRequest) (*ProductFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *ProductFetchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.ProductFetch")
@@ -453,16 +403,19 @@ type ApiProductListRequest struct {
 	to *time.Time
 }
 
+// Number of records to fetch per page
 func (r ApiProductListRequest) PerPage(perPage int32) ApiProductListRequest {
 	r.perPage = &perPage
 	return r
 }
 
+// The section to retrieve
 func (r ApiProductListRequest) Page(page int32) ApiProductListRequest {
 	r.page = &page
 	return r
 }
 
+// The state of the product
 func (r ApiProductListRequest) Active(active bool) ApiProductListRequest {
 	r.active = &active
 	return r
@@ -480,12 +433,14 @@ func (r ApiProductListRequest) To(to time.Time) ApiProductListRequest {
 	return r
 }
 
-func (r ApiProductListRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiProductListRequest) Execute() (*ProductListsResponse, *http.Response, error) {
 	return r.ApiService.ProductListExecute(r)
 }
 
 /*
 ProductList List Products
+
+List all previously created products
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiProductListRequest
@@ -498,13 +453,13 @@ func (a *ProductAPIService) ProductList(ctx context.Context) ApiProductListReque
 }
 
 // Execute executes the request
-//  @return Response
-func (a *ProductAPIService) ProductListExecute(r ApiProductListRequest) (*Response, *http.Response, error) {
+//  @return ProductListsResponse
+func (a *ProductAPIService) ProductListExecute(r ApiProductListRequest) (*ProductListsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *ProductListsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.ProductList")
@@ -612,63 +567,29 @@ func (a *ProductAPIService) ProductListExecute(r ApiProductListRequest) (*Respon
 type ApiProductUpdateRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
-	id string
-	name *string
-	description *string
-	price *int32
-	currency *string
-	limited *bool
-	quantity *int32
+	id int32
+	productUpdate *ProductUpdate
 }
 
-// Name of product
-func (r ApiProductUpdateRequest) Name(name string) ApiProductUpdateRequest {
-	r.name = &name
+func (r ApiProductUpdateRequest) ProductUpdate(productUpdate ProductUpdate) ApiProductUpdateRequest {
+	r.productUpdate = &productUpdate
 	return r
 }
 
-// The description of the product
-func (r ApiProductUpdateRequest) Description(description string) ApiProductUpdateRequest {
-	r.description = &description
-	return r
-}
-
-// Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-func (r ApiProductUpdateRequest) Price(price int32) ApiProductUpdateRequest {
-	r.price = &price
-	return r
-}
-
-// Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD
-func (r ApiProductUpdateRequest) Currency(currency string) ApiProductUpdateRequest {
-	r.currency = &currency
-	return r
-}
-
-// Set to true if the product has limited stock. Leave as false if the product has unlimited stock
-func (r ApiProductUpdateRequest) Limited(limited bool) ApiProductUpdateRequest {
-	r.limited = &limited
-	return r
-}
-
-// Number of products in stock. Use if limited is true
-func (r ApiProductUpdateRequest) Quantity(quantity int32) ApiProductUpdateRequest {
-	r.quantity = &quantity
-	return r
-}
-
-func (r ApiProductUpdateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiProductUpdateRequest) Execute() (*ProductUpdateResponse, *http.Response, error) {
 	return r.ApiService.ProductUpdateExecute(r)
 }
 
 /*
 ProductUpdate Update product
 
+Update a previously created product
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param id The unique identifier of the product
  @return ApiProductUpdateRequest
 */
-func (a *ProductAPIService) ProductUpdate(ctx context.Context, id string) ApiProductUpdateRequest {
+func (a *ProductAPIService) ProductUpdate(ctx context.Context, id int32) ApiProductUpdateRequest {
 	return ApiProductUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -677,13 +598,13 @@ func (a *ProductAPIService) ProductUpdate(ctx context.Context, id string) ApiPro
 }
 
 // Execute executes the request
-//  @return Response
-func (a *ProductAPIService) ProductUpdateExecute(r ApiProductUpdateRequest) (*Response, *http.Response, error) {
+//  @return ProductUpdateResponse
+func (a *ProductAPIService) ProductUpdateExecute(r ApiProductUpdateRequest) (*ProductUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *ProductUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.ProductUpdate")
@@ -699,7 +620,7 @@ func (a *ProductAPIService) ProductUpdateExecute(r ApiProductUpdateRequest) (*Re
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -715,24 +636,8 @@ func (a *ProductAPIService) ProductUpdateExecute(r ApiProductUpdateRequest) (*Re
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
-	}
-	if r.description != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "description", r.description, "", "")
-	}
-	if r.price != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "price", r.price, "", "")
-	}
-	if r.currency != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "currency", r.currency, "", "")
-	}
-	if r.limited != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "limited", r.limited, "", "")
-	}
-	if r.quantity != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "quantity", r.quantity, "", "")
-	}
+	// body params
+	localVarPostBody = r.productUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

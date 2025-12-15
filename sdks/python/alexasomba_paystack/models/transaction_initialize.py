@@ -18,29 +18,54 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from alexasomba_paystack.models.currency import Currency
+from alexasomba_paystack.models.split_create import SplitCreate
 from typing import Optional, Set
 from typing_extensions import Self
 
 class TransactionInitialize(BaseModel):
     """
-    TransactionInitialize
+    Initialize a transaction
     """ # noqa: E501
     email: StrictStr = Field(description="Customer's email address")
-    amount: StrictInt = Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")
-    currency: Optional[StrictStr] = Field(default=None, description="The transaction currency")
+    amount: StrictInt = Field(description="Amount should be in smallest denomination of the currency. ")
+    currency: Optional[Currency] = None
     reference: Optional[StrictStr] = Field(default=None, description="Unique transaction reference. Only -, ., = and alphanumeric characters allowed.")
-    callback_url: Optional[StrictStr] = Field(default=None, description="Fully qualified url, e.g. https://example.com/ . Use this to override the callback url provided on the dashboard for this transaction")
-    plan: Optional[StrictStr] = Field(default=None, description="If transaction is to create a subscription to a predefined plan, provide plan code here.  This would invalidate the value provided in amount")
-    invoice_limit: Optional[StrictInt] = Field(default=None, description="Number of times to charge customer during subscription to plan")
-    metadata: Optional[StrictStr] = Field(default=None, description="Stringified JSON object of custom data")
     channels: Optional[List[StrictStr]] = Field(default=None, description="An array of payment channels to control what channels you want to make available to the user to make a payment with")
+    callback_url: Optional[StrictStr] = Field(default=None, description="Fully qualified url, e.g. https://example.com/ to redirect your customers to after a successful payment. Use this to override the callback url provided on the dashboard for this transaction ")
+    plan: Optional[StrictStr] = Field(default=None, description="If transaction is to create a subscription to a predefined plan, provide plan code here.  This would invalidate the value provided in amount ")
+    invoice_limit: Optional[StrictInt] = Field(default=None, description="Number of times to charge customer during subscription to plan")
     split_code: Optional[StrictStr] = Field(default=None, description="The split code of the transaction split")
+    split: Optional[SplitCreate] = None
     subaccount: Optional[StrictStr] = Field(default=None, description="The code for the subaccount that owns the payment")
-    transaction_charge: Optional[StrictStr] = Field(default=None, description="A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created")
-    bearer: Optional[StrictStr] = Field(default=None, description="The beare of the transaction charge")
-    __properties: ClassVar[List[str]] = ["email", "amount", "currency", "reference", "callback_url", "plan", "invoice_limit", "metadata", "channels", "split_code", "subaccount", "transaction_charge", "bearer"]
+    transaction_charge: Optional[StrictStr] = Field(default=None, description="A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created ")
+    bearer: Optional[StrictStr] = Field(default=None, description="The bearer of the transaction charge")
+    label: Optional[StrictStr] = Field(default=None, description="Used to replace the email address shown on the Checkout")
+    metadata: Optional[Dict[str, Any]] = Field(default=None, description="JSON object of custom data")
+    __properties: ClassVar[List[str]] = ["email", "amount", "currency", "reference", "channels", "callback_url", "plan", "invoice_limit", "split_code", "split", "subaccount", "transaction_charge", "bearer", "label", "metadata"]
+
+    @field_validator('channels')
+    def channels_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        for i in value:
+            if i not in set(['card', 'bank', 'ussd', 'qr', 'eft', 'mobile_money', 'bank_transfer']):
+                raise ValueError("each list item must be one of ('card', 'bank', 'ussd', 'qr', 'eft', 'mobile_money', 'bank_transfer')")
+        return value
+
+    @field_validator('bearer')
+    def bearer_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['account', 'subaccount']):
+            raise ValueError("must be one of enum values ('account', 'subaccount')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,6 +106,9 @@ class TransactionInitialize(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of split
+        if self.split:
+            _dict['split'] = self.split.to_dict()
         return _dict
 
     @classmethod
@@ -97,15 +125,17 @@ class TransactionInitialize(BaseModel):
             "amount": obj.get("amount"),
             "currency": obj.get("currency"),
             "reference": obj.get("reference"),
+            "channels": obj.get("channels"),
             "callback_url": obj.get("callback_url"),
             "plan": obj.get("plan"),
             "invoice_limit": obj.get("invoice_limit"),
-            "metadata": obj.get("metadata"),
-            "channels": obj.get("channels"),
             "split_code": obj.get("split_code"),
+            "split": SplitCreate.from_dict(obj["split"]) if obj.get("split") is not None else None,
             "subaccount": obj.get("subaccount"),
             "transaction_charge": obj.get("transaction_charge"),
-            "bearer": obj.get("bearer")
+            "bearer": obj.get("bearer"),
+            "label": obj.get("label"),
+            "metadata": obj.get("metadata")
         })
         return _obj
 

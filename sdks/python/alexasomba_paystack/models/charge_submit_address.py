@@ -30,9 +30,9 @@ class ChargeSubmitAddress(BaseModel):
     address: StrictStr = Field(description="Customer's address")
     city: StrictStr = Field(description="Customer's city")
     state: StrictStr = Field(description="Customer's state")
-    zipcode: StrictStr = Field(description="Customer's zipcode")
+    zip_code: StrictStr = Field(description="Customer's zipcode")
     reference: StrictStr = Field(description="The reference of the ongoing transaction")
-    __properties: ClassVar[List[str]] = ["address", "city", "state", "zipcode", "reference"]
+    __properties: ClassVar[List[str]] = ["address", "city", "state", "zip_code", "reference"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,7 +88,7 @@ class ChargeSubmitAddress(BaseModel):
             "address": obj.get("address"),
             "city": obj.get("city"),
             "state": obj.get("state"),
-            "zipcode": obj.get("zipcode"),
+            "zip_code": obj.get("zip_code"),
             "reference": obj.get("reference")
         })
         return _obj

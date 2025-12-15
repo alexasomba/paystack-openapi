@@ -22,11 +22,11 @@ var _ MappedNullable = &RefundCreate{}
 
 // RefundCreate struct for RefundCreate
 type RefundCreate struct {
-	// Transaction reference or id
+	// The reference of a previosuly completed transaction
 	Transaction string `json:"transaction"`
-	// Amount ( in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR ) to be refunded to the customer.  Amount cannot be more than the original transaction amount
+	// Amount to be refunded to the customer. It cannot be more than the original transaction amount
 	Amount *int32 `json:"amount,omitempty"`
-	// Three-letter ISO currency. Allowed values are NGN, GHS, ZAR or USD
+	// Three-letter ISO currency
 	Currency *string `json:"currency,omitempty"`
 	// Customer reason
 	CustomerNote *string `json:"customer_note,omitempty"`

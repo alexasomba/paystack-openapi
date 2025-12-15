@@ -39,3 +39,41 @@ jobs:
 
       - name: Run Vacuum lint (SDK spec)
         run: pnpm exec vacuum lint -d -c Schemas src/assets/sdk/paystack.yaml
+
+  sdk-wrapper-checks:
+    name: SDK Wrapper Checks (Docker)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Docker version
+        run: docker version
+
+      - name: Go SDK compile check
+        run: |
+          docker run --rm \
+            -v "$GITHUB_WORKSPACE:/work" \
+            -w /work/sdks/go \
+            golang:1.23 \
+            go test ./...
+
+      - name: PHP SDK dependency + syntax check
+        run: |
+          docker run --rm \
+            -v "$GITHUB_WORKSPACE:/work" \
+            -w /work/sdks/php \
+            composer:2 \
+            sh -lc '
+              set -eu
+              if [ -f composer.lock ]; then
+                composer install --no-interaction --no-progress --prefer-dist --no-scripts
+              else
+                composer update --no-interaction --no-progress --prefer-dist --no-scripts
+              fi
+              php -l lib/Extras/HttpClientFactory.php
+              php -l lib/Extras/PaystackApiError.php
+              php -l lib/Extras/Paystack.php
+              php -l lib/Extras/RequestId.php
+              php -l lib/Extras/Idempotency.php
+            '

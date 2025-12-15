@@ -28,7 +28,7 @@ class TransferRecipientBulk(BaseModel):
     """
     TransferRecipientBulk
     """ # noqa: E501
-    batch: List[TransferRecipientCreate] = Field(description="A list of transfer recipient object. Each object should contain type, name, and bank_code.  Any Create Transfer Recipient param can also be passed.")
+    batch: List[TransferRecipientCreate] = Field(description="A list of transfer recipient object.")
     __properties: ClassVar[List[str]] = ["batch"]
 
     model_config = ConfigDict(

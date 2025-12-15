@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,16 +29,16 @@ class PaymentRequestCreate(BaseModel):
     PaymentRequestCreate
     """ # noqa: E501
     customer: StrictStr = Field(description="Customer id or code")
-    amount: Optional[StrictInt] = Field(default=None, description="Payment request amount. Only useful if line items and tax values are ignored.  The endpoint will throw a friendly warning if neither is available.")
+    amount: StrictInt = Field(description="Payment request amount. Only useful if line items and tax values are ignored.  The endpoint will throw a friendly warning if neither is available.")
     currency: Optional[StrictStr] = Field(default=None, description="Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN")
     due_date: Optional[datetime] = Field(default=None, description="ISO 8601 representation of request due date")
     description: Optional[StrictStr] = Field(default=None, description="A short description of the payment request")
     line_items: Optional[List[Dict[str, Any]]] = Field(default=None, description="Array of line items")
     tax: Optional[List[Dict[str, Any]]] = Field(default=None, description="Array of taxes")
-    send_notification: Optional[List[Dict[str, Any]]] = Field(default=None, description="Indicates whether Paystack sends an email notification to customer. Defaults to true")
-    draft: Optional[List[Dict[str, Any]]] = Field(default=None, description="Indicate if request should be saved as draft. Defaults to false and overrides send_notification")
-    has_invoice: Optional[List[Dict[str, Any]]] = Field(default=None, description="Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided)  even if there are no line_items or tax passed")
-    invoice_number: Optional[StrictInt] = Field(default=None, description="Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help  override whatever value Paystack decides. Auto increment for subsequent invoices continue from this point.")
+    send_notification: Optional[StrictBool] = Field(default=None, description="Indicates whether Paystack sends an email notification to customer. Defaults to true")
+    draft: Optional[StrictBool] = Field(default=None, description="Indicate if request should be saved as draft. Defaults to false and overrides send_notification")
+    has_invoice: Optional[StrictBool] = Field(default=None, description="Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided) even if there are no line_items or tax passed")
+    invoice_number: Optional[StrictInt] = Field(default=None, description="Numeric value of invoice. Invoice will start from 1 and auto increment from there.  This field is to help override whatever value Paystack decides. Auto increment for  subsequent invoices continue from this point.")
     split_code: Optional[StrictStr] = Field(default=None, description="The split code of the transaction split.")
     __properties: ClassVar[List[str]] = ["customer", "amount", "currency", "due_date", "description", "line_items", "tax", "send_notification", "draft", "has_invoice", "invoice_number", "split_code"]
 

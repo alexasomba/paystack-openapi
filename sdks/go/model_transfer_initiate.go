@@ -20,20 +20,20 @@ import (
 // checks if the TransferInitiate type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TransferInitiate{}
 
-// TransferInitiate struct for TransferInitiate
+// TransferInitiate Transfer initiation model
 type TransferInitiate struct {
-	// Where should we transfer from? Only balance is allowed for now
-	Source string `json:"source"`
 	// Amount to transfer in kobo if currency is NGN and pesewas if currency is GHS.
-	Amount string `json:"amount"`
+	Amount int32 `json:"amount"`
 	// The transfer recipient's code
 	Recipient string `json:"recipient"`
+	// To ensure idempotency, you need to provide e a unique identifier for the request.  The identifier should be a lowercase alphanumeric string with only -,_  symbols allowed. 
+	Reference string `json:"reference"`
 	// The reason or narration for the transfer.
 	Reason *string `json:"reason,omitempty"`
-	// Specify the currency of the transfer. Defaults to NGN.
+	// The source of funds to send from
+	Source string `json:"source"`
+	// Specify the currency of the transfer.
 	Currency *string `json:"currency,omitempty"`
-	// If specified, the field should be a unique identifier (in lowercase) for the object.  Only -,_ and alphanumeric characters are allowed.
-	Reference *string `json:"reference,omitempty"`
 }
 
 type _TransferInitiate TransferInitiate
@@ -42,11 +42,14 @@ type _TransferInitiate TransferInitiate
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferInitiate(source string, amount string, recipient string) *TransferInitiate {
+func NewTransferInitiate(amount int32, recipient string, reference string, source string) *TransferInitiate {
 	this := TransferInitiate{}
-	this.Source = source
 	this.Amount = amount
 	this.Recipient = recipient
+	this.Reference = reference
+	this.Source = source
+	var currency string = "NGN"
+	this.Currency = &currency
 	return &this
 }
 
@@ -55,37 +58,17 @@ func NewTransferInitiate(source string, amount string, recipient string) *Transf
 // but it doesn't guarantee that properties required by API are set
 func NewTransferInitiateWithDefaults() *TransferInitiate {
 	this := TransferInitiate{}
+	var source string = "balance"
+	this.Source = source
+	var currency string = "NGN"
+	this.Currency = &currency
 	return &this
 }
 
-// GetSource returns the Source field value
-func (o *TransferInitiate) GetSource() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Source
-}
-
-// GetSourceOk returns a tuple with the Source field value
-// and a boolean to check if the value has been set.
-func (o *TransferInitiate) GetSourceOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Source, true
-}
-
-// SetSource sets field value
-func (o *TransferInitiate) SetSource(v string) {
-	o.Source = v
-}
-
 // GetAmount returns the Amount field value
-func (o *TransferInitiate) GetAmount() string {
+func (o *TransferInitiate) GetAmount() int32 {
 	if o == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 
@@ -94,7 +77,7 @@ func (o *TransferInitiate) GetAmount() string {
 
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
-func (o *TransferInitiate) GetAmountOk() (*string, bool) {
+func (o *TransferInitiate) GetAmountOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -102,7 +85,7 @@ func (o *TransferInitiate) GetAmountOk() (*string, bool) {
 }
 
 // SetAmount sets field value
-func (o *TransferInitiate) SetAmount(v string) {
+func (o *TransferInitiate) SetAmount(v int32) {
 	o.Amount = v
 }
 
@@ -128,6 +111,30 @@ func (o *TransferInitiate) GetRecipientOk() (*string, bool) {
 // SetRecipient sets field value
 func (o *TransferInitiate) SetRecipient(v string) {
 	o.Recipient = v
+}
+
+// GetReference returns the Reference field value
+func (o *TransferInitiate) GetReference() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Reference
+}
+
+// GetReferenceOk returns a tuple with the Reference field value
+// and a boolean to check if the value has been set.
+func (o *TransferInitiate) GetReferenceOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Reference, true
+}
+
+// SetReference sets field value
+func (o *TransferInitiate) SetReference(v string) {
+	o.Reference = v
 }
 
 // GetReason returns the Reason field value if set, zero value otherwise.
@@ -162,6 +169,30 @@ func (o *TransferInitiate) SetReason(v string) {
 	o.Reason = &v
 }
 
+// GetSource returns the Source field value
+func (o *TransferInitiate) GetSource() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Source
+}
+
+// GetSourceOk returns a tuple with the Source field value
+// and a boolean to check if the value has been set.
+func (o *TransferInitiate) GetSourceOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Source, true
+}
+
+// SetSource sets field value
+func (o *TransferInitiate) SetSource(v string) {
+	o.Source = v
+}
+
 // GetCurrency returns the Currency field value if set, zero value otherwise.
 func (o *TransferInitiate) GetCurrency() string {
 	if o == nil || IsNil(o.Currency) {
@@ -194,38 +225,6 @@ func (o *TransferInitiate) SetCurrency(v string) {
 	o.Currency = &v
 }
 
-// GetReference returns the Reference field value if set, zero value otherwise.
-func (o *TransferInitiate) GetReference() string {
-	if o == nil || IsNil(o.Reference) {
-		var ret string
-		return ret
-	}
-	return *o.Reference
-}
-
-// GetReferenceOk returns a tuple with the Reference field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TransferInitiate) GetReferenceOk() (*string, bool) {
-	if o == nil || IsNil(o.Reference) {
-		return nil, false
-	}
-	return o.Reference, true
-}
-
-// HasReference returns a boolean if a field has been set.
-func (o *TransferInitiate) HasReference() bool {
-	if o != nil && !IsNil(o.Reference) {
-		return true
-	}
-
-	return false
-}
-
-// SetReference gets a reference to the given string and assigns it to the Reference field.
-func (o *TransferInitiate) SetReference(v string) {
-	o.Reference = &v
-}
-
 func (o TransferInitiate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -236,17 +235,15 @@ func (o TransferInitiate) MarshalJSON() ([]byte, error) {
 
 func (o TransferInitiate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["source"] = o.Source
 	toSerialize["amount"] = o.Amount
 	toSerialize["recipient"] = o.Recipient
+	toSerialize["reference"] = o.Reference
 	if !IsNil(o.Reason) {
 		toSerialize["reason"] = o.Reason
 	}
+	toSerialize["source"] = o.Source
 	if !IsNil(o.Currency) {
 		toSerialize["currency"] = o.Currency
-	}
-	if !IsNil(o.Reference) {
-		toSerialize["reference"] = o.Reference
 	}
 	return toSerialize, nil
 }
@@ -256,9 +253,10 @@ func (o *TransferInitiate) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"source",
 		"amount",
 		"recipient",
+		"reference",
+		"source",
 	}
 
 	allProperties := make(map[string]interface{})

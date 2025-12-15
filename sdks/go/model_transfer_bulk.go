@@ -22,10 +22,12 @@ var _ MappedNullable = &TransferBulk{}
 
 // TransferBulk struct for TransferBulk
 type TransferBulk struct {
-	// Where should we transfer from? Only balance is allowed for now
+	// The source of funds for the transfer.
 	Source string `json:"source"`
-	// A list of transfer object. Each object should contain amount, recipient, and reference
-	Transfers []TransferInitiate `json:"transfers"`
+	// Specify the currency of the transfer.
+	Currency *string `json:"currency,omitempty"`
+	// A list of transfer object
+	Transfers []TransferBase `json:"transfers"`
 }
 
 type _TransferBulk TransferBulk
@@ -34,9 +36,11 @@ type _TransferBulk TransferBulk
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferBulk(source string, transfers []TransferInitiate) *TransferBulk {
+func NewTransferBulk(source string, transfers []TransferBase) *TransferBulk {
 	this := TransferBulk{}
 	this.Source = source
+	var currency string = "NGN"
+	this.Currency = &currency
 	this.Transfers = transfers
 	return &this
 }
@@ -46,6 +50,10 @@ func NewTransferBulk(source string, transfers []TransferInitiate) *TransferBulk 
 // but it doesn't guarantee that properties required by API are set
 func NewTransferBulkWithDefaults() *TransferBulk {
 	this := TransferBulk{}
+	var source string = "balance"
+	this.Source = source
+	var currency string = "NGN"
+	this.Currency = &currency
 	return &this
 }
 
@@ -73,10 +81,42 @@ func (o *TransferBulk) SetSource(v string) {
 	o.Source = v
 }
 
+// GetCurrency returns the Currency field value if set, zero value otherwise.
+func (o *TransferBulk) GetCurrency() string {
+	if o == nil || IsNil(o.Currency) {
+		var ret string
+		return ret
+	}
+	return *o.Currency
+}
+
+// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransferBulk) GetCurrencyOk() (*string, bool) {
+	if o == nil || IsNil(o.Currency) {
+		return nil, false
+	}
+	return o.Currency, true
+}
+
+// HasCurrency returns a boolean if a field has been set.
+func (o *TransferBulk) HasCurrency() bool {
+	if o != nil && !IsNil(o.Currency) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrency gets a reference to the given string and assigns it to the Currency field.
+func (o *TransferBulk) SetCurrency(v string) {
+	o.Currency = &v
+}
+
 // GetTransfers returns the Transfers field value
-func (o *TransferBulk) GetTransfers() []TransferInitiate {
+func (o *TransferBulk) GetTransfers() []TransferBase {
 	if o == nil {
-		var ret []TransferInitiate
+		var ret []TransferBase
 		return ret
 	}
 
@@ -85,7 +125,7 @@ func (o *TransferBulk) GetTransfers() []TransferInitiate {
 
 // GetTransfersOk returns a tuple with the Transfers field value
 // and a boolean to check if the value has been set.
-func (o *TransferBulk) GetTransfersOk() ([]TransferInitiate, bool) {
+func (o *TransferBulk) GetTransfersOk() ([]TransferBase, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,7 +133,7 @@ func (o *TransferBulk) GetTransfersOk() ([]TransferInitiate, bool) {
 }
 
 // SetTransfers sets field value
-func (o *TransferBulk) SetTransfers(v []TransferInitiate) {
+func (o *TransferBulk) SetTransfers(v []TransferBase) {
 	o.Transfers = v
 }
 
@@ -108,6 +148,9 @@ func (o TransferBulk) MarshalJSON() ([]byte, error) {
 func (o TransferBulk) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["source"] = o.Source
+	if !IsNil(o.Currency) {
+		toSerialize["currency"] = o.Currency
+	}
 	toSerialize["transfers"] = o.Transfers
 	return toSerialize, nil
 }

@@ -18,22 +18,33 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
 class TransferInitiate(BaseModel):
     """
-    TransferInitiate
+    Transfer initiation model
     """ # noqa: E501
-    source: StrictStr = Field(description="Where should we transfer from? Only balance is allowed for now")
-    amount: StrictStr = Field(description="Amount to transfer in kobo if currency is NGN and pesewas if currency is GHS.")
+    amount: StrictInt = Field(description="Amount to transfer in kobo if currency is NGN and pesewas if currency is GHS.")
     recipient: StrictStr = Field(description="The transfer recipient's code")
+    reference: Annotated[str, Field(min_length=16, strict=True)] = Field(description="To ensure idempotency, you need to provide e a unique identifier for the request.  The identifier should be a lowercase alphanumeric string with only -,_  symbols allowed. ")
     reason: Optional[StrictStr] = Field(default=None, description="The reason or narration for the transfer.")
-    currency: Optional[StrictStr] = Field(default=None, description="Specify the currency of the transfer. Defaults to NGN.")
-    reference: Optional[StrictStr] = Field(default=None, description="If specified, the field should be a unique identifier (in lowercase) for the object.  Only -,_ and alphanumeric characters are allowed.")
-    __properties: ClassVar[List[str]] = ["source", "amount", "recipient", "reason", "currency", "reference"]
+    source: StrictStr = Field(description="The source of funds to send from")
+    currency: Optional[StrictStr] = Field(default='NGN', description="Specify the currency of the transfer.")
+    __properties: ClassVar[List[str]] = ["amount", "recipient", "reference", "reason", "source", "currency"]
+
+    @field_validator('currency')
+    def currency_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['NGN', 'ZAR', 'KES', 'GHS']):
+            raise ValueError("must be one of enum values ('NGN', 'ZAR', 'KES', 'GHS')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,12 +97,12 @@ class TransferInitiate(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "source": obj.get("source"),
             "amount": obj.get("amount"),
             "recipient": obj.get("recipient"),
+            "reference": obj.get("reference"),
             "reason": obj.get("reason"),
-            "currency": obj.get("currency"),
-            "reference": obj.get("reference")
+            "source": obj.get("source") if obj.get("source") is not None else 'balance',
+            "currency": obj.get("currency") if obj.get("currency") is not None else 'NGN'
         })
         return _obj
 

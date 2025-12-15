@@ -29,21 +29,24 @@ type ApiPageAddProductsRequest struct {
 	ctx context.Context
 	ApiService *PageAPIService
 	id string
-	product *[]string
+	pageProduct *PageProduct
 }
 
-// IDs of all products to add to a page
-func (r ApiPageAddProductsRequest) Product(product []string) ApiPageAddProductsRequest {
-	r.product = &product
+func (r ApiPageAddProductsRequest) PageProduct(pageProduct PageProduct) ApiPageAddProductsRequest {
+	r.pageProduct = &pageProduct
 	return r
 }
 
-func (r ApiPageAddProductsRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiPageAddProductsRequest) Execute() (*PageAddProductsResponse, *http.Response, error) {
 	return r.ApiService.PageAddProductsExecute(r)
 }
 
 /*
 PageAddProducts Add Products
+
+Add products to a previously created payment page. You can only add products to pages
+that was created with a `product` type.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id
@@ -58,13 +61,13 @@ func (a *PageAPIService) PageAddProducts(ctx context.Context, id string) ApiPage
 }
 
 // Execute executes the request
-//  @return Response
-func (a *PageAPIService) PageAddProductsExecute(r ApiPageAddProductsRequest) (*Response, *http.Response, error) {
+//  @return PageAddProductsResponse
+func (a *PageAPIService) PageAddProductsExecute(r ApiPageAddProductsRequest) (*PageAddProductsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *PageAddProductsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PageAPIService.PageAddProducts")
@@ -78,12 +81,9 @@ func (a *PageAPIService) PageAddProductsExecute(r ApiPageAddProductsRequest) (*R
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.product == nil {
-		return localVarReturnValue, nil, reportError("product is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -99,7 +99,8 @@ func (a *PageAPIService) PageAddProductsExecute(r ApiPageAddProductsRequest) (*R
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "product", r.product, "", "csv")
+	// body params
+	localVarPostBody = r.pageProduct
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -154,15 +155,17 @@ type ApiPageCheckSlugAvailabilityRequest struct {
 	slug string
 }
 
-func (r ApiPageCheckSlugAvailabilityRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiPageCheckSlugAvailabilityRequest) Execute() (*PageCheckSlugAvailabilityResponse, *http.Response, error) {
 	return r.ApiService.PageCheckSlugAvailabilityExecute(r)
 }
 
 /*
 PageCheckSlugAvailability Check Slug Availability
 
+Check if a custom slug is available for use when creating a payment page
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
+ @param slug The custom slug to check
  @return ApiPageCheckSlugAvailabilityRequest
 */
 func (a *PageAPIService) PageCheckSlugAvailability(ctx context.Context, slug string) ApiPageCheckSlugAvailabilityRequest {
@@ -174,13 +177,13 @@ func (a *PageAPIService) PageCheckSlugAvailability(ctx context.Context, slug str
 }
 
 // Execute executes the request
-//  @return Response
-func (a *PageAPIService) PageCheckSlugAvailabilityExecute(r ApiPageCheckSlugAvailabilityRequest) (*Response, *http.Response, error) {
+//  @return PageCheckSlugAvailabilityResponse
+func (a *PageAPIService) PageCheckSlugAvailabilityExecute(r ApiPageCheckSlugAvailabilityRequest) (*PageCheckSlugAvailabilityResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *PageCheckSlugAvailabilityResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PageAPIService.PageCheckSlugAvailability")
@@ -274,63 +277,22 @@ func (a *PageAPIService) PageCheckSlugAvailabilityExecute(r ApiPageCheckSlugAvai
 type ApiPageCreateRequest struct {
 	ctx context.Context
 	ApiService *PageAPIService
-	name *string
-	description *string
-	amount *int32
-	slug *string
-	metadata *string
-	redirectUrl *string
-	customFields *[]map[string]interface{}
+	pageCreate *PageCreate
 }
 
-// Name of page
-func (r ApiPageCreateRequest) Name(name string) ApiPageCreateRequest {
-	r.name = &name
+func (r ApiPageCreateRequest) PageCreate(pageCreate PageCreate) ApiPageCreateRequest {
+	r.pageCreate = &pageCreate
 	return r
 }
 
-// The description of the page
-func (r ApiPageCreateRequest) Description(description string) ApiPageCreateRequest {
-	r.description = &description
-	return r
-}
-
-// Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-func (r ApiPageCreateRequest) Amount(amount int32) ApiPageCreateRequest {
-	r.amount = &amount
-	return r
-}
-
-// URL slug you would like to be associated with this page. Page will be accessible at https://paystack.com/pay/[slug]
-func (r ApiPageCreateRequest) Slug(slug string) ApiPageCreateRequest {
-	r.slug = &slug
-	return r
-}
-
-// Stringified JSON object of custom data
-func (r ApiPageCreateRequest) Metadata(metadata string) ApiPageCreateRequest {
-	r.metadata = &metadata
-	return r
-}
-
-// If you would like Paystack to redirect to a URL upon successful payment, specify the URL here.
-func (r ApiPageCreateRequest) RedirectUrl(redirectUrl string) ApiPageCreateRequest {
-	r.redirectUrl = &redirectUrl
-	return r
-}
-
-// If you would like to accept custom fields, specify them here.
-func (r ApiPageCreateRequest) CustomFields(customFields []map[string]interface{}) ApiPageCreateRequest {
-	r.customFields = &customFields
-	return r
-}
-
-func (r ApiPageCreateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiPageCreateRequest) Execute() (*PageCreateResponse, *http.Response, error) {
 	return r.ApiService.PageCreateExecute(r)
 }
 
 /*
 PageCreate Create Page
+
+Create a webpage to receive payments
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPageCreateRequest
@@ -343,13 +305,13 @@ func (a *PageAPIService) PageCreate(ctx context.Context) ApiPageCreateRequest {
 }
 
 // Execute executes the request
-//  @return Response
-func (a *PageAPIService) PageCreateExecute(r ApiPageCreateRequest) (*Response, *http.Response, error) {
+//  @return PageCreateResponse
+func (a *PageAPIService) PageCreateExecute(r ApiPageCreateRequest) (*PageCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *PageCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PageAPIService.PageCreate")
@@ -362,12 +324,9 @@ func (a *PageAPIService) PageCreateExecute(r ApiPageCreateRequest) (*Response, *
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.name == nil {
-		return localVarReturnValue, nil, reportError("name is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -383,25 +342,8 @@ func (a *PageAPIService) PageCreateExecute(r ApiPageCreateRequest) (*Response, *
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
-	if r.description != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "description", r.description, "", "")
-	}
-	if r.amount != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "amount", r.amount, "", "")
-	}
-	if r.slug != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "slug", r.slug, "", "")
-	}
-	if r.metadata != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "metadata", r.metadata, "", "")
-	}
-	if r.redirectUrl != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "redirect_url", r.redirectUrl, "", "")
-	}
-	if r.customFields != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "custom_fields", r.customFields, "", "csv")
-	}
+	// body params
+	localVarPostBody = r.pageCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -453,21 +395,23 @@ func (a *PageAPIService) PageCreateExecute(r ApiPageCreateRequest) (*Response, *
 type ApiPageFetchRequest struct {
 	ctx context.Context
 	ApiService *PageAPIService
-	id string
+	id int32
 }
 
-func (r ApiPageFetchRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiPageFetchRequest) Execute() (*PageFetchResponse, *http.Response, error) {
 	return r.ApiService.PageFetchExecute(r)
 }
 
 /*
 PageFetch Fetch Page
 
+Get a previously created payment page
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param id The unique identifier of a payment page
  @return ApiPageFetchRequest
 */
-func (a *PageAPIService) PageFetch(ctx context.Context, id string) ApiPageFetchRequest {
+func (a *PageAPIService) PageFetch(ctx context.Context, id int32) ApiPageFetchRequest {
 	return ApiPageFetchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -476,13 +420,13 @@ func (a *PageAPIService) PageFetch(ctx context.Context, id string) ApiPageFetchR
 }
 
 // Execute executes the request
-//  @return Response
-func (a *PageAPIService) PageFetchExecute(r ApiPageFetchRequest) (*Response, *http.Response, error) {
+//  @return PageFetchResponse
+func (a *PageAPIService) PageFetchExecute(r ApiPageFetchRequest) (*PageFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *PageFetchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PageAPIService.PageFetch")
@@ -606,12 +550,14 @@ func (r ApiPageListRequest) To(to time.Time) ApiPageListRequest {
 	return r
 }
 
-func (r ApiPageListRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiPageListRequest) Execute() (*PageListResponse, *http.Response, error) {
 	return r.ApiService.PageListExecute(r)
 }
 
 /*
 PageList List Pages
+
+List all previously created payment pages
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPageListRequest
@@ -624,13 +570,13 @@ func (a *PageAPIService) PageList(ctx context.Context) ApiPageListRequest {
 }
 
 // Execute executes the request
-//  @return Response
-func (a *PageAPIService) PageListExecute(r ApiPageListRequest) (*Response, *http.Response, error) {
+//  @return PageListResponse
+func (a *PageAPIService) PageListExecute(r ApiPageListRequest) (*PageListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *PageListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PageAPIService.PageList")
@@ -646,6 +592,10 @@ func (a *PageAPIService) PageListExecute(r ApiPageListRequest) (*Response, *http
 
 	if r.perPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
+	} else {
+        var defaultValue int32 = 50
+        parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", defaultValue, "form", "")
+        r.perPage = &defaultValue
 	}
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
@@ -735,49 +685,29 @@ func (a *PageAPIService) PageListExecute(r ApiPageListRequest) (*Response, *http
 type ApiPageUpdateRequest struct {
 	ctx context.Context
 	ApiService *PageAPIService
-	id string
-	name *string
-	description *string
-	amount *int32
-	active *bool
+	id int32
+	pageUpdate *PageUpdate
 }
 
-// Name of page
-func (r ApiPageUpdateRequest) Name(name string) ApiPageUpdateRequest {
-	r.name = &name
+func (r ApiPageUpdateRequest) PageUpdate(pageUpdate PageUpdate) ApiPageUpdateRequest {
+	r.pageUpdate = &pageUpdate
 	return r
 }
 
-// The description of the page
-func (r ApiPageUpdateRequest) Description(description string) ApiPageUpdateRequest {
-	r.description = &description
-	return r
-}
-
-// Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-func (r ApiPageUpdateRequest) Amount(amount int32) ApiPageUpdateRequest {
-	r.amount = &amount
-	return r
-}
-
-// Set to false to deactivate page url
-func (r ApiPageUpdateRequest) Active(active bool) ApiPageUpdateRequest {
-	r.active = &active
-	return r
-}
-
-func (r ApiPageUpdateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiPageUpdateRequest) Execute() (*PageUpdateResponse, *http.Response, error) {
 	return r.ApiService.PageUpdateExecute(r)
 }
 
 /*
 PageUpdate Update Page
 
+Update a previously created payment page
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param id The unique identifier of a payment page
  @return ApiPageUpdateRequest
 */
-func (a *PageAPIService) PageUpdate(ctx context.Context, id string) ApiPageUpdateRequest {
+func (a *PageAPIService) PageUpdate(ctx context.Context, id int32) ApiPageUpdateRequest {
 	return ApiPageUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -786,13 +716,13 @@ func (a *PageAPIService) PageUpdate(ctx context.Context, id string) ApiPageUpdat
 }
 
 // Execute executes the request
-//  @return Response
-func (a *PageAPIService) PageUpdateExecute(r ApiPageUpdateRequest) (*Response, *http.Response, error) {
+//  @return PageUpdateResponse
+func (a *PageAPIService) PageUpdateExecute(r ApiPageUpdateRequest) (*PageUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *PageUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PageAPIService.PageUpdate")
@@ -808,7 +738,7 @@ func (a *PageAPIService) PageUpdateExecute(r ApiPageUpdateRequest) (*Response, *
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -824,18 +754,8 @@ func (a *PageAPIService) PageUpdateExecute(r ApiPageUpdateRequest) (*Response, *
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
-	}
-	if r.description != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "description", r.description, "", "")
-	}
-	if r.amount != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "amount", r.amount, "", "")
-	}
-	if r.active != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "active", r.active, "", "")
-	}
+	// body params
+	localVarPostBody = r.pageUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

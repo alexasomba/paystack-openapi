@@ -26,8 +26,8 @@ type DisputeResolve struct {
 	Resolution string `json:"resolution"`
 	// Reason for resolving
 	Message string `json:"message"`
-	// The amount to refund, in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-	RefundAmount string `json:"refund_amount"`
+	// The amount to refund, in the subunit of your integration currency
+	RefundAmount int32 `json:"refund_amount"`
 	// Filename of attachment returned via response from the Dispute upload URL
 	UploadedFilename string `json:"uploaded_filename"`
 	// Evidence Id for fraud claims
@@ -40,7 +40,7 @@ type _DisputeResolve DisputeResolve
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDisputeResolve(resolution string, message string, refundAmount string, uploadedFilename string) *DisputeResolve {
+func NewDisputeResolve(resolution string, message string, refundAmount int32, uploadedFilename string) *DisputeResolve {
 	this := DisputeResolve{}
 	this.Resolution = resolution
 	this.Message = message
@@ -106,9 +106,9 @@ func (o *DisputeResolve) SetMessage(v string) {
 }
 
 // GetRefundAmount returns the RefundAmount field value
-func (o *DisputeResolve) GetRefundAmount() string {
+func (o *DisputeResolve) GetRefundAmount() int32 {
 	if o == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 
@@ -117,7 +117,7 @@ func (o *DisputeResolve) GetRefundAmount() string {
 
 // GetRefundAmountOk returns a tuple with the RefundAmount field value
 // and a boolean to check if the value has been set.
-func (o *DisputeResolve) GetRefundAmountOk() (*string, bool) {
+func (o *DisputeResolve) GetRefundAmountOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -125,7 +125,7 @@ func (o *DisputeResolve) GetRefundAmountOk() (*string, bool) {
 }
 
 // SetRefundAmount sets field value
-func (o *DisputeResolve) SetRefundAmount(v string) {
+func (o *DisputeResolve) SetRefundAmount(v int32) {
 	o.RefundAmount = v
 }
 

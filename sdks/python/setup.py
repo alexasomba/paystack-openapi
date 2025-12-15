@@ -35,7 +35,7 @@ setup(
     name=NAME,
     version=VERSION,
     description="Paystack",
-    author="Paystack Integration",
+    author="OpenAPI Generator community",
     author_email="techsupport@paystack.com",
     url="",
     keywords=["OpenAPI", "OpenAPI-Generator", "Paystack"],

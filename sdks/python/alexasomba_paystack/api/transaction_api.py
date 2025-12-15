@@ -18,10 +18,22 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from datetime import datetime
-from pydantic import Field, StrictBool, StrictInt, StrictStr
-from typing import List, Optional
+from pydantic import Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
+from typing import Optional, Union
 from typing_extensions import Annotated
+from alexasomba_paystack.models.charge_authorization_response import ChargeAuthorizationResponse
 from alexasomba_paystack.models.response import Response
+from alexasomba_paystack.models.transaction_charge_authorization import TransactionChargeAuthorization
+from alexasomba_paystack.models.transaction_export_response import TransactionExportResponse
+from alexasomba_paystack.models.transaction_fetch_response import TransactionFetchResponse
+from alexasomba_paystack.models.transaction_initialize import TransactionInitialize
+from alexasomba_paystack.models.transaction_initialize_response import TransactionInitializeResponse
+from alexasomba_paystack.models.transaction_list_response import TransactionListResponse
+from alexasomba_paystack.models.transaction_partial_debit import TransactionPartialDebit
+from alexasomba_paystack.models.transaction_partial_debit_response import TransactionPartialDebitResponse
+from alexasomba_paystack.models.transaction_timeline_response import TransactionTimelineResponse
+from alexasomba_paystack.models.transaction_totals_response import TransactionTotalsResponse
+from alexasomba_paystack.models.verify_response import VerifyResponse
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
 from alexasomba_paystack.api_response import ApiResponse
@@ -44,17 +56,7 @@ class TransactionApi:
     @validate_call
     def transaction_charge_authorization(
         self,
-        email: Annotated[StrictStr, Field(description="Customer's email address")],
-        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        authorization_code: Annotated[StrictStr, Field(description="Valid authorization code to charge")],
-        reference: Annotated[Optional[StrictStr], Field(description="Unique transaction reference. Only -, ., = and alphanumeric characters allowed.")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="The transaction currency")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="The split code of the transaction split")] = None,
-        subaccount: Annotated[Optional[StrictStr], Field(description="The code for the subaccount that owns the payment")] = None,
-        transaction_charge: Annotated[Optional[StrictStr], Field(description="A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created")] = None,
-        bearer: Annotated[Optional[StrictStr], Field(description="The beare of the transaction charge")] = None,
-        queue: Annotated[Optional[StrictBool], Field(description="If you are making a scheduled charge call, it is a good idea to queue them so the processing system does not get overloaded causing transaction processing errors.")] = None,
+        transaction_charge_authorization: Optional[TransactionChargeAuthorization] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -67,32 +69,13 @@ class TransactionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> ChargeAuthorizationResponse:
         """Charge Authorization
 
+        Charge all authorizations marked as reusable with this endpoint whenever you need to receive payments
 
-        :param email: Customer's email address (required)
-        :type email: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type amount: int
-        :param authorization_code: Valid authorization code to charge (required)
-        :type authorization_code: str
-        :param reference: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
-        :type reference: str
-        :param currency: The transaction currency
-        :type currency: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
-        :param split_code: The split code of the transaction split
-        :type split_code: str
-        :param subaccount: The code for the subaccount that owns the payment
-        :type subaccount: str
-        :param transaction_charge: A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created
-        :type transaction_charge: str
-        :param bearer: The beare of the transaction charge
-        :type bearer: str
-        :param queue: If you are making a scheduled charge call, it is a good idea to queue them so the processing system does not get overloaded causing transaction processing errors.
-        :type queue: bool
+        :param transaction_charge_authorization:
+        :type transaction_charge_authorization: TransactionChargeAuthorization
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -116,17 +99,7 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_charge_authorization_serialize(
-            email=email,
-            amount=amount,
-            authorization_code=authorization_code,
-            reference=reference,
-            currency=currency,
-            metadata=metadata,
-            split_code=split_code,
-            subaccount=subaccount,
-            transaction_charge=transaction_charge,
-            bearer=bearer,
-            queue=queue,
+            transaction_charge_authorization=transaction_charge_authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -134,7 +107,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeAuthorizationResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -151,17 +124,7 @@ class TransactionApi:
     @validate_call
     def transaction_charge_authorization_with_http_info(
         self,
-        email: Annotated[StrictStr, Field(description="Customer's email address")],
-        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        authorization_code: Annotated[StrictStr, Field(description="Valid authorization code to charge")],
-        reference: Annotated[Optional[StrictStr], Field(description="Unique transaction reference. Only -, ., = and alphanumeric characters allowed.")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="The transaction currency")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="The split code of the transaction split")] = None,
-        subaccount: Annotated[Optional[StrictStr], Field(description="The code for the subaccount that owns the payment")] = None,
-        transaction_charge: Annotated[Optional[StrictStr], Field(description="A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created")] = None,
-        bearer: Annotated[Optional[StrictStr], Field(description="The beare of the transaction charge")] = None,
-        queue: Annotated[Optional[StrictBool], Field(description="If you are making a scheduled charge call, it is a good idea to queue them so the processing system does not get overloaded causing transaction processing errors.")] = None,
+        transaction_charge_authorization: Optional[TransactionChargeAuthorization] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -174,32 +137,13 @@ class TransactionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[ChargeAuthorizationResponse]:
         """Charge Authorization
 
+        Charge all authorizations marked as reusable with this endpoint whenever you need to receive payments
 
-        :param email: Customer's email address (required)
-        :type email: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type amount: int
-        :param authorization_code: Valid authorization code to charge (required)
-        :type authorization_code: str
-        :param reference: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
-        :type reference: str
-        :param currency: The transaction currency
-        :type currency: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
-        :param split_code: The split code of the transaction split
-        :type split_code: str
-        :param subaccount: The code for the subaccount that owns the payment
-        :type subaccount: str
-        :param transaction_charge: A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created
-        :type transaction_charge: str
-        :param bearer: The beare of the transaction charge
-        :type bearer: str
-        :param queue: If you are making a scheduled charge call, it is a good idea to queue them so the processing system does not get overloaded causing transaction processing errors.
-        :type queue: bool
+        :param transaction_charge_authorization:
+        :type transaction_charge_authorization: TransactionChargeAuthorization
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -223,17 +167,7 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_charge_authorization_serialize(
-            email=email,
-            amount=amount,
-            authorization_code=authorization_code,
-            reference=reference,
-            currency=currency,
-            metadata=metadata,
-            split_code=split_code,
-            subaccount=subaccount,
-            transaction_charge=transaction_charge,
-            bearer=bearer,
-            queue=queue,
+            transaction_charge_authorization=transaction_charge_authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -241,7 +175,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeAuthorizationResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -258,17 +192,7 @@ class TransactionApi:
     @validate_call
     def transaction_charge_authorization_without_preload_content(
         self,
-        email: Annotated[StrictStr, Field(description="Customer's email address")],
-        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        authorization_code: Annotated[StrictStr, Field(description="Valid authorization code to charge")],
-        reference: Annotated[Optional[StrictStr], Field(description="Unique transaction reference. Only -, ., = and alphanumeric characters allowed.")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="The transaction currency")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="The split code of the transaction split")] = None,
-        subaccount: Annotated[Optional[StrictStr], Field(description="The code for the subaccount that owns the payment")] = None,
-        transaction_charge: Annotated[Optional[StrictStr], Field(description="A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created")] = None,
-        bearer: Annotated[Optional[StrictStr], Field(description="The beare of the transaction charge")] = None,
-        queue: Annotated[Optional[StrictBool], Field(description="If you are making a scheduled charge call, it is a good idea to queue them so the processing system does not get overloaded causing transaction processing errors.")] = None,
+        transaction_charge_authorization: Optional[TransactionChargeAuthorization] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -284,29 +208,10 @@ class TransactionApi:
     ) -> RESTResponseType:
         """Charge Authorization
 
+        Charge all authorizations marked as reusable with this endpoint whenever you need to receive payments
 
-        :param email: Customer's email address (required)
-        :type email: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type amount: int
-        :param authorization_code: Valid authorization code to charge (required)
-        :type authorization_code: str
-        :param reference: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
-        :type reference: str
-        :param currency: The transaction currency
-        :type currency: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
-        :param split_code: The split code of the transaction split
-        :type split_code: str
-        :param subaccount: The code for the subaccount that owns the payment
-        :type subaccount: str
-        :param transaction_charge: A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created
-        :type transaction_charge: str
-        :param bearer: The beare of the transaction charge
-        :type bearer: str
-        :param queue: If you are making a scheduled charge call, it is a good idea to queue them so the processing system does not get overloaded causing transaction processing errors.
-        :type queue: bool
+        :param transaction_charge_authorization:
+        :type transaction_charge_authorization: TransactionChargeAuthorization
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -330,17 +235,7 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_charge_authorization_serialize(
-            email=email,
-            amount=amount,
-            authorization_code=authorization_code,
-            reference=reference,
-            currency=currency,
-            metadata=metadata,
-            split_code=split_code,
-            subaccount=subaccount,
-            transaction_charge=transaction_charge,
-            bearer=bearer,
-            queue=queue,
+            transaction_charge_authorization=transaction_charge_authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -348,7 +243,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeAuthorizationResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -360,17 +255,7 @@ class TransactionApi:
 
     def _transaction_charge_authorization_serialize(
         self,
-        email,
-        amount,
-        authorization_code,
-        reference,
-        currency,
-        metadata,
-        split_code,
-        subaccount,
-        transaction_charge,
-        bearer,
-        queue,
+        transaction_charge_authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -395,29 +280,9 @@ class TransactionApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if email is not None:
-            _form_params.append(('email', email))
-        if amount is not None:
-            _form_params.append(('amount', amount))
-        if authorization_code is not None:
-            _form_params.append(('authorization_code', authorization_code))
-        if reference is not None:
-            _form_params.append(('reference', reference))
-        if currency is not None:
-            _form_params.append(('currency', currency))
-        if metadata is not None:
-            _form_params.append(('metadata', metadata))
-        if split_code is not None:
-            _form_params.append(('split_code', split_code))
-        if subaccount is not None:
-            _form_params.append(('subaccount', subaccount))
-        if transaction_charge is not None:
-            _form_params.append(('transaction_charge', transaction_charge))
-        if bearer is not None:
-            _form_params.append(('bearer', bearer))
-        if queue is not None:
-            _form_params.append(('queue', queue))
         # process the body parameter
+        if transaction_charge_authorization is not None:
+            _body_params = transaction_charge_authorization
 
 
         # set the HTTP header `Accept`
@@ -435,8 +300,8 @@ class TransactionApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -470,7 +335,7 @@ class TransactionApi:
     def transaction_check_authorization(
         self,
         email: Annotated[StrictStr, Field(description="Customer's email address")],
-        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
+        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR")],
         authorization_code: Annotated[Optional[StrictStr], Field(description="Valid authorization code to charge")] = None,
         currency: Annotated[Optional[StrictStr], Field(description="The transaction currency")] = None,
         _request_timeout: Union[
@@ -488,10 +353,11 @@ class TransactionApi:
     ) -> Response:
         """Check Authorization
 
+        Check if an authorization code can be used for a charge.
 
         :param email: Customer's email address (required)
         :type email: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
+        :param amount: Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR (required)
         :type amount: int
         :param authorization_code: Valid authorization code to charge
         :type authorization_code: str
@@ -549,7 +415,7 @@ class TransactionApi:
     def transaction_check_authorization_with_http_info(
         self,
         email: Annotated[StrictStr, Field(description="Customer's email address")],
-        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
+        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR")],
         authorization_code: Annotated[Optional[StrictStr], Field(description="Valid authorization code to charge")] = None,
         currency: Annotated[Optional[StrictStr], Field(description="The transaction currency")] = None,
         _request_timeout: Union[
@@ -567,10 +433,11 @@ class TransactionApi:
     ) -> ApiResponse[Response]:
         """Check Authorization
 
+        Check if an authorization code can be used for a charge.
 
         :param email: Customer's email address (required)
         :type email: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
+        :param amount: Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR (required)
         :type amount: int
         :param authorization_code: Valid authorization code to charge
         :type authorization_code: str
@@ -628,7 +495,7 @@ class TransactionApi:
     def transaction_check_authorization_without_preload_content(
         self,
         email: Annotated[StrictStr, Field(description="Customer's email address")],
-        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
+        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR")],
         authorization_code: Annotated[Optional[StrictStr], Field(description="Valid authorization code to charge")] = None,
         currency: Annotated[Optional[StrictStr], Field(description="The transaction currency")] = None,
         _request_timeout: Union[
@@ -646,10 +513,11 @@ class TransactionApi:
     ) -> RESTResponseType:
         """Check Authorization
 
+        Check if an authorization code can be used for a charge.
 
         :param email: Customer's email address (required)
         :type email: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
+        :param amount: Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR (required)
         :type amount: int
         :param authorization_code: Valid authorization code to charge
         :type authorization_code: str
@@ -787,344 +655,9 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_download(
-        self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
-        """Export Transactions
-
-
-        :param per_page: Number of records to fetch per page
-        :type per_page: int
-        :param page: The section to retrieve
-        :type page: int
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._transaction_download_serialize(
-            per_page=per_page,
-            page=page,
-            var_from=var_from,
-            to=to,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
-            '401': "Error",
-            '404': "Error",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def transaction_download_with_http_info(
-        self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
-        """Export Transactions
-
-
-        :param per_page: Number of records to fetch per page
-        :type per_page: int
-        :param page: The section to retrieve
-        :type page: int
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._transaction_download_serialize(
-            per_page=per_page,
-            page=page,
-            var_from=var_from,
-            to=to,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
-            '401': "Error",
-            '404': "Error",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def transaction_download_without_preload_content(
-        self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Export Transactions
-
-
-        :param per_page: Number of records to fetch per page
-        :type per_page: int
-        :param page: The section to retrieve
-        :type page: int
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._transaction_download_serialize(
-            per_page=per_page,
-            page=page,
-            var_from=var_from,
-            to=to,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
-            '401': "Error",
-            '404': "Error",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _transaction_download_serialize(
-        self,
-        per_page,
-        page,
-        var_from,
-        to,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        # process the query parameters
-        if per_page is not None:
-            
-            _query_params.append(('perPage', per_page))
-            
-        if page is not None:
-            
-            _query_params.append(('page', page))
-            
-        if var_from is not None:
-            if isinstance(var_from, datetime):
-                _query_params.append(
-                    (
-                        'from',
-                        var_from.strftime(
-                            self.api_client.configuration.datetime_format
-                        )
-                    )
-                )
-            else:
-                _query_params.append(('from', var_from))
-            
-        if to is not None:
-            if isinstance(to, datetime):
-                _query_params.append(
-                    (
-                        'to',
-                        to.strftime(
-                            self.api_client.configuration.datetime_format
-                        )
-                    )
-                )
-            else:
-                _query_params.append(('to', to))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/transaction/export',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     def transaction_event(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The ID of the transaction")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1140,9 +673,10 @@ class TransactionApi:
     ) -> Response:
         """Get Transaction Event
 
+        Fetch the event for a specific transaction.
 
-        :param id: (required)
-        :type id: str
+        :param id: The ID of the transaction (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1192,7 +726,7 @@ class TransactionApi:
     @validate_call
     def transaction_event_with_http_info(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The ID of the transaction")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1208,9 +742,10 @@ class TransactionApi:
     ) -> ApiResponse[Response]:
         """Get Transaction Event
 
+        Fetch the event for a specific transaction.
 
-        :param id: (required)
-        :type id: str
+        :param id: The ID of the transaction (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1260,7 +795,7 @@ class TransactionApi:
     @validate_call
     def transaction_event_without_preload_content(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The ID of the transaction")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1276,9 +811,10 @@ class TransactionApi:
     ) -> RESTResponseType:
         """Get Transaction Event
 
+        Fetch the event for a specific transaction.
 
-        :param id: (required)
-        :type id: str
+        :param id: The ID of the transaction (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1386,9 +922,14 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_fetch(
+    def transaction_export(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the transaction to fetch")],
+        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
+        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter by the status of the transaction")] = None,
+        customer: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Filter by customer ID")] = None,
+        subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter by subaccount code")] = None,
+        settlement: Annotated[Optional[StrictInt], Field(description="Filter by the settlement ID")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1401,13 +942,380 @@ class TransactionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> TransactionExportResponse:
+        """Export Transactions
+
+        Download transactions that occurred on your integration for a specific timeframe
+
+        :param var_from: The start date
+        :type var_from: datetime
+        :param to: The end date
+        :type to: datetime
+        :param status: Filter by the status of the transaction
+        :type status: str
+        :param customer: Filter by customer ID
+        :type customer: float
+        :param subaccount_code: Filter by subaccount code
+        :type subaccount_code: str
+        :param settlement: Filter by the settlement ID
+        :type settlement: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._transaction_export_serialize(
+            var_from=var_from,
+            to=to,
+            status=status,
+            customer=customer,
+            subaccount_code=subaccount_code,
+            settlement=settlement,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TransactionExportResponse",
+            '401': "Error",
+            '404': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def transaction_export_with_http_info(
+        self,
+        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
+        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter by the status of the transaction")] = None,
+        customer: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Filter by customer ID")] = None,
+        subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter by subaccount code")] = None,
+        settlement: Annotated[Optional[StrictInt], Field(description="Filter by the settlement ID")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[TransactionExportResponse]:
+        """Export Transactions
+
+        Download transactions that occurred on your integration for a specific timeframe
+
+        :param var_from: The start date
+        :type var_from: datetime
+        :param to: The end date
+        :type to: datetime
+        :param status: Filter by the status of the transaction
+        :type status: str
+        :param customer: Filter by customer ID
+        :type customer: float
+        :param subaccount_code: Filter by subaccount code
+        :type subaccount_code: str
+        :param settlement: Filter by the settlement ID
+        :type settlement: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._transaction_export_serialize(
+            var_from=var_from,
+            to=to,
+            status=status,
+            customer=customer,
+            subaccount_code=subaccount_code,
+            settlement=settlement,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TransactionExportResponse",
+            '401': "Error",
+            '404': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def transaction_export_without_preload_content(
+        self,
+        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
+        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter by the status of the transaction")] = None,
+        customer: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Filter by customer ID")] = None,
+        subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter by subaccount code")] = None,
+        settlement: Annotated[Optional[StrictInt], Field(description="Filter by the settlement ID")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Export Transactions
+
+        Download transactions that occurred on your integration for a specific timeframe
+
+        :param var_from: The start date
+        :type var_from: datetime
+        :param to: The end date
+        :type to: datetime
+        :param status: Filter by the status of the transaction
+        :type status: str
+        :param customer: Filter by customer ID
+        :type customer: float
+        :param subaccount_code: Filter by subaccount code
+        :type subaccount_code: str
+        :param settlement: Filter by the settlement ID
+        :type settlement: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._transaction_export_serialize(
+            var_from=var_from,
+            to=to,
+            status=status,
+            customer=customer,
+            subaccount_code=subaccount_code,
+            settlement=settlement,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TransactionExportResponse",
+            '401': "Error",
+            '404': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _transaction_export_serialize(
+        self,
+        var_from,
+        to,
+        status,
+        customer,
+        subaccount_code,
+        settlement,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if var_from is not None:
+            if isinstance(var_from, datetime):
+                _query_params.append(
+                    (
+                        'from',
+                        var_from.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('from', var_from))
+            
+        if to is not None:
+            if isinstance(to, datetime):
+                _query_params.append(
+                    (
+                        'to',
+                        to.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('to', to))
+            
+        if status is not None:
+            
+            _query_params.append(('status', status))
+            
+        if customer is not None:
+            
+            _query_params.append(('customer', customer))
+            
+        if subaccount_code is not None:
+            
+            _query_params.append(('subaccount_code', subaccount_code))
+            
+        if settlement is not None:
+            
+            _query_params.append(('settlement', settlement))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/transaction/export',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def transaction_fetch(
+        self,
+        id: Annotated[StrictInt, Field(description="The ID of the transaction to fetch")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> TransactionFetchResponse:
         """Fetch Transaction
 
         Fetch a transaction to get its details
 
         :param id: The ID of the transaction to fetch (required)
-        :type id: str
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1439,7 +1347,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransactionFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1457,7 +1365,7 @@ class TransactionApi:
     @validate_call
     def transaction_fetch_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the transaction to fetch")],
+        id: Annotated[StrictInt, Field(description="The ID of the transaction to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1470,13 +1378,13 @@ class TransactionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[TransactionFetchResponse]:
         """Fetch Transaction
 
         Fetch a transaction to get its details
 
         :param id: The ID of the transaction to fetch (required)
-        :type id: str
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1508,7 +1416,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransactionFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1526,7 +1434,7 @@ class TransactionApi:
     @validate_call
     def transaction_fetch_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the transaction to fetch")],
+        id: Annotated[StrictInt, Field(description="The ID of the transaction to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1545,7 +1453,7 @@ class TransactionApi:
         Fetch a transaction to get its details
 
         :param id: The ID of the transaction to fetch (required)
-        :type id: str
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1577,7 +1485,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransactionFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1655,19 +1563,7 @@ class TransactionApi:
     @validate_call
     def transaction_initialize(
         self,
-        email: Annotated[StrictStr, Field(description="Customer's email address")],
-        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        currency: Annotated[Optional[StrictStr], Field(description="The transaction currency")] = None,
-        reference: Annotated[Optional[StrictStr], Field(description="Unique transaction reference. Only -, ., = and alphanumeric characters allowed.")] = None,
-        callback_url: Annotated[Optional[StrictStr], Field(description="Fully qualified url, e.g. https://example.com/ . Use this to override the callback url provided on the dashboard for this transaction")] = None,
-        plan: Annotated[Optional[StrictStr], Field(description="If transaction is to create a subscription to a predefined plan, provide plan code here.  This would invalidate the value provided in amount")] = None,
-        invoice_limit: Annotated[Optional[StrictInt], Field(description="Number of times to charge customer during subscription to plan")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
-        channels: Annotated[Optional[List[StrictStr]], Field(description="An array of payment channels to control what channels you want to make available to the user to make a payment with")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="The split code of the transaction split")] = None,
-        subaccount: Annotated[Optional[StrictStr], Field(description="The code for the subaccount that owns the payment")] = None,
-        transaction_charge: Annotated[Optional[StrictStr], Field(description="A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created")] = None,
-        bearer: Annotated[Optional[StrictStr], Field(description="The beare of the transaction charge")] = None,
+        transaction_initialize: Optional[TransactionInitialize] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1680,37 +1576,13 @@ class TransactionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> TransactionInitializeResponse:
         """Initialize Transaction
 
         Create a new transaction
 
-        :param email: Customer's email address (required)
-        :type email: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type amount: int
-        :param currency: The transaction currency
-        :type currency: str
-        :param reference: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
-        :type reference: str
-        :param callback_url: Fully qualified url, e.g. https://example.com/ . Use this to override the callback url provided on the dashboard for this transaction
-        :type callback_url: str
-        :param plan: If transaction is to create a subscription to a predefined plan, provide plan code here.  This would invalidate the value provided in amount
-        :type plan: str
-        :param invoice_limit: Number of times to charge customer during subscription to plan
-        :type invoice_limit: int
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
-        :param channels: An array of payment channels to control what channels you want to make available to the user to make a payment with
-        :type channels: List[str]
-        :param split_code: The split code of the transaction split
-        :type split_code: str
-        :param subaccount: The code for the subaccount that owns the payment
-        :type subaccount: str
-        :param transaction_charge: A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created
-        :type transaction_charge: str
-        :param bearer: The beare of the transaction charge
-        :type bearer: str
+        :param transaction_initialize:
+        :type transaction_initialize: TransactionInitialize
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1734,19 +1606,7 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_initialize_serialize(
-            email=email,
-            amount=amount,
-            currency=currency,
-            reference=reference,
-            callback_url=callback_url,
-            plan=plan,
-            invoice_limit=invoice_limit,
-            metadata=metadata,
-            channels=channels,
-            split_code=split_code,
-            subaccount=subaccount,
-            transaction_charge=transaction_charge,
-            bearer=bearer,
+            transaction_initialize=transaction_initialize,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1754,7 +1614,8 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransactionInitializeResponse",
+            '400': "TransactionInitializeBadRequestModel",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1771,19 +1632,7 @@ class TransactionApi:
     @validate_call
     def transaction_initialize_with_http_info(
         self,
-        email: Annotated[StrictStr, Field(description="Customer's email address")],
-        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        currency: Annotated[Optional[StrictStr], Field(description="The transaction currency")] = None,
-        reference: Annotated[Optional[StrictStr], Field(description="Unique transaction reference. Only -, ., = and alphanumeric characters allowed.")] = None,
-        callback_url: Annotated[Optional[StrictStr], Field(description="Fully qualified url, e.g. https://example.com/ . Use this to override the callback url provided on the dashboard for this transaction")] = None,
-        plan: Annotated[Optional[StrictStr], Field(description="If transaction is to create a subscription to a predefined plan, provide plan code here.  This would invalidate the value provided in amount")] = None,
-        invoice_limit: Annotated[Optional[StrictInt], Field(description="Number of times to charge customer during subscription to plan")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
-        channels: Annotated[Optional[List[StrictStr]], Field(description="An array of payment channels to control what channels you want to make available to the user to make a payment with")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="The split code of the transaction split")] = None,
-        subaccount: Annotated[Optional[StrictStr], Field(description="The code for the subaccount that owns the payment")] = None,
-        transaction_charge: Annotated[Optional[StrictStr], Field(description="A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created")] = None,
-        bearer: Annotated[Optional[StrictStr], Field(description="The beare of the transaction charge")] = None,
+        transaction_initialize: Optional[TransactionInitialize] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1796,37 +1645,13 @@ class TransactionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[TransactionInitializeResponse]:
         """Initialize Transaction
 
         Create a new transaction
 
-        :param email: Customer's email address (required)
-        :type email: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type amount: int
-        :param currency: The transaction currency
-        :type currency: str
-        :param reference: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
-        :type reference: str
-        :param callback_url: Fully qualified url, e.g. https://example.com/ . Use this to override the callback url provided on the dashboard for this transaction
-        :type callback_url: str
-        :param plan: If transaction is to create a subscription to a predefined plan, provide plan code here.  This would invalidate the value provided in amount
-        :type plan: str
-        :param invoice_limit: Number of times to charge customer during subscription to plan
-        :type invoice_limit: int
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
-        :param channels: An array of payment channels to control what channels you want to make available to the user to make a payment with
-        :type channels: List[str]
-        :param split_code: The split code of the transaction split
-        :type split_code: str
-        :param subaccount: The code for the subaccount that owns the payment
-        :type subaccount: str
-        :param transaction_charge: A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created
-        :type transaction_charge: str
-        :param bearer: The beare of the transaction charge
-        :type bearer: str
+        :param transaction_initialize:
+        :type transaction_initialize: TransactionInitialize
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1850,19 +1675,7 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_initialize_serialize(
-            email=email,
-            amount=amount,
-            currency=currency,
-            reference=reference,
-            callback_url=callback_url,
-            plan=plan,
-            invoice_limit=invoice_limit,
-            metadata=metadata,
-            channels=channels,
-            split_code=split_code,
-            subaccount=subaccount,
-            transaction_charge=transaction_charge,
-            bearer=bearer,
+            transaction_initialize=transaction_initialize,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1870,7 +1683,8 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransactionInitializeResponse",
+            '400': "TransactionInitializeBadRequestModel",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1887,19 +1701,7 @@ class TransactionApi:
     @validate_call
     def transaction_initialize_without_preload_content(
         self,
-        email: Annotated[StrictStr, Field(description="Customer's email address")],
-        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        currency: Annotated[Optional[StrictStr], Field(description="The transaction currency")] = None,
-        reference: Annotated[Optional[StrictStr], Field(description="Unique transaction reference. Only -, ., = and alphanumeric characters allowed.")] = None,
-        callback_url: Annotated[Optional[StrictStr], Field(description="Fully qualified url, e.g. https://example.com/ . Use this to override the callback url provided on the dashboard for this transaction")] = None,
-        plan: Annotated[Optional[StrictStr], Field(description="If transaction is to create a subscription to a predefined plan, provide plan code here.  This would invalidate the value provided in amount")] = None,
-        invoice_limit: Annotated[Optional[StrictInt], Field(description="Number of times to charge customer during subscription to plan")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
-        channels: Annotated[Optional[List[StrictStr]], Field(description="An array of payment channels to control what channels you want to make available to the user to make a payment with")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="The split code of the transaction split")] = None,
-        subaccount: Annotated[Optional[StrictStr], Field(description="The code for the subaccount that owns the payment")] = None,
-        transaction_charge: Annotated[Optional[StrictStr], Field(description="A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created")] = None,
-        bearer: Annotated[Optional[StrictStr], Field(description="The beare of the transaction charge")] = None,
+        transaction_initialize: Optional[TransactionInitialize] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1917,32 +1719,8 @@ class TransactionApi:
 
         Create a new transaction
 
-        :param email: Customer's email address (required)
-        :type email: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type amount: int
-        :param currency: The transaction currency
-        :type currency: str
-        :param reference: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
-        :type reference: str
-        :param callback_url: Fully qualified url, e.g. https://example.com/ . Use this to override the callback url provided on the dashboard for this transaction
-        :type callback_url: str
-        :param plan: If transaction is to create a subscription to a predefined plan, provide plan code here.  This would invalidate the value provided in amount
-        :type plan: str
-        :param invoice_limit: Number of times to charge customer during subscription to plan
-        :type invoice_limit: int
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
-        :param channels: An array of payment channels to control what channels you want to make available to the user to make a payment with
-        :type channels: List[str]
-        :param split_code: The split code of the transaction split
-        :type split_code: str
-        :param subaccount: The code for the subaccount that owns the payment
-        :type subaccount: str
-        :param transaction_charge: A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created
-        :type transaction_charge: str
-        :param bearer: The beare of the transaction charge
-        :type bearer: str
+        :param transaction_initialize:
+        :type transaction_initialize: TransactionInitialize
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1966,19 +1744,7 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_initialize_serialize(
-            email=email,
-            amount=amount,
-            currency=currency,
-            reference=reference,
-            callback_url=callback_url,
-            plan=plan,
-            invoice_limit=invoice_limit,
-            metadata=metadata,
-            channels=channels,
-            split_code=split_code,
-            subaccount=subaccount,
-            transaction_charge=transaction_charge,
-            bearer=bearer,
+            transaction_initialize=transaction_initialize,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1986,7 +1752,8 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransactionInitializeResponse",
+            '400': "TransactionInitializeBadRequestModel",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1998,19 +1765,7 @@ class TransactionApi:
 
     def _transaction_initialize_serialize(
         self,
-        email,
-        amount,
-        currency,
-        reference,
-        callback_url,
-        plan,
-        invoice_limit,
-        metadata,
-        channels,
-        split_code,
-        subaccount,
-        transaction_charge,
-        bearer,
+        transaction_initialize,
         _request_auth,
         _content_type,
         _headers,
@@ -2020,7 +1775,6 @@ class TransactionApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'channels': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2036,33 +1790,9 @@ class TransactionApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if email is not None:
-            _form_params.append(('email', email))
-        if amount is not None:
-            _form_params.append(('amount', amount))
-        if currency is not None:
-            _form_params.append(('currency', currency))
-        if reference is not None:
-            _form_params.append(('reference', reference))
-        if callback_url is not None:
-            _form_params.append(('callback_url', callback_url))
-        if plan is not None:
-            _form_params.append(('plan', plan))
-        if invoice_limit is not None:
-            _form_params.append(('invoice_limit', invoice_limit))
-        if metadata is not None:
-            _form_params.append(('metadata', metadata))
-        if channels is not None:
-            _form_params.append(('channels', channels))
-        if split_code is not None:
-            _form_params.append(('split_code', split_code))
-        if subaccount is not None:
-            _form_params.append(('subaccount', subaccount))
-        if transaction_charge is not None:
-            _form_params.append(('transaction_charge', transaction_charge))
-        if bearer is not None:
-            _form_params.append(('bearer', bearer))
         # process the body parameter
+        if transaction_initialize is not None:
+            _body_params = transaction_initialize
 
 
         # set the HTTP header `Accept`
@@ -2080,8 +1810,8 @@ class TransactionApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -2114,10 +1844,23 @@ class TransactionApi:
     @validate_call
     def transaction_list(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
+        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
+        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
+        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter transaction by status")] = None,
+        source: Annotated[Optional[StrictStr], Field(description="The origin of the payment")] = None,
+        terminal_id: Annotated[Optional[StrictStr], Field(description="Filter transactions by a terminal ID")] = None,
+        virtual_account_number: Annotated[Optional[StrictStr], Field(description="Filter transactions by a virtual account number")] = None,
+        customer_code: Annotated[Optional[StrictStr], Field(description="Filter transactions by a customer code")] = None,
+        amount: Annotated[Optional[StrictInt], Field(description="Filter transactions by a specific amount")] = None,
+        settlement: Annotated[Optional[StrictInt], Field(description="The settlement ID to filter for settled transactions")] = None,
+        channel: Annotated[Optional[StrictStr], Field(description="The payment method the customer used to complete the transaction")] = None,
+        subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter transaction by subaccount code")] = None,
+        split_code: Annotated[Optional[StrictStr], Field(description="Filter transaction by split code")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2130,19 +1873,45 @@ class TransactionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> TransactionListResponse:
         """List Transactions
 
         List transactions that has occurred on your integration
 
-        :param per_page: Number of records to fetch per page
+        :param use_cursor: A flag to indicate if cursor based pagination should be used
+        :type use_cursor: bool
+        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
+        :type next: str
+        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
+        :type previous: str
+        :param per_page: The number of records to fetch per request
         :type per_page: int
-        :param page: The section to retrieve
+        :param page: The offset to retrieve data from
         :type page: int
         :param var_from: The start date
         :type var_from: datetime
         :param to: The end date
         :type to: datetime
+        :param status: Filter transaction by status
+        :type status: str
+        :param source: The origin of the payment
+        :type source: str
+        :param terminal_id: Filter transactions by a terminal ID
+        :type terminal_id: str
+        :param virtual_account_number: Filter transactions by a virtual account number
+        :type virtual_account_number: str
+        :param customer_code: Filter transactions by a customer code
+        :type customer_code: str
+        :param amount: Filter transactions by a specific amount
+        :type amount: int
+        :param settlement: The settlement ID to filter for settled transactions
+        :type settlement: int
+        :param channel: The payment method the customer used to complete the transaction
+        :type channel: str
+        :param subaccount_code: Filter transaction by subaccount code
+        :type subaccount_code: str
+        :param split_code: Filter transaction by split code
+        :type split_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2166,10 +1935,23 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_list_serialize(
+            use_cursor=use_cursor,
+            next=next,
+            previous=previous,
             per_page=per_page,
             page=page,
             var_from=var_from,
             to=to,
+            status=status,
+            source=source,
+            terminal_id=terminal_id,
+            virtual_account_number=virtual_account_number,
+            customer_code=customer_code,
+            amount=amount,
+            settlement=settlement,
+            channel=channel,
+            subaccount_code=subaccount_code,
+            split_code=split_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2177,7 +1959,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransactionListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -2195,10 +1977,23 @@ class TransactionApi:
     @validate_call
     def transaction_list_with_http_info(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
+        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
+        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
+        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter transaction by status")] = None,
+        source: Annotated[Optional[StrictStr], Field(description="The origin of the payment")] = None,
+        terminal_id: Annotated[Optional[StrictStr], Field(description="Filter transactions by a terminal ID")] = None,
+        virtual_account_number: Annotated[Optional[StrictStr], Field(description="Filter transactions by a virtual account number")] = None,
+        customer_code: Annotated[Optional[StrictStr], Field(description="Filter transactions by a customer code")] = None,
+        amount: Annotated[Optional[StrictInt], Field(description="Filter transactions by a specific amount")] = None,
+        settlement: Annotated[Optional[StrictInt], Field(description="The settlement ID to filter for settled transactions")] = None,
+        channel: Annotated[Optional[StrictStr], Field(description="The payment method the customer used to complete the transaction")] = None,
+        subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter transaction by subaccount code")] = None,
+        split_code: Annotated[Optional[StrictStr], Field(description="Filter transaction by split code")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2211,19 +2006,45 @@ class TransactionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[TransactionListResponse]:
         """List Transactions
 
         List transactions that has occurred on your integration
 
-        :param per_page: Number of records to fetch per page
+        :param use_cursor: A flag to indicate if cursor based pagination should be used
+        :type use_cursor: bool
+        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
+        :type next: str
+        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
+        :type previous: str
+        :param per_page: The number of records to fetch per request
         :type per_page: int
-        :param page: The section to retrieve
+        :param page: The offset to retrieve data from
         :type page: int
         :param var_from: The start date
         :type var_from: datetime
         :param to: The end date
         :type to: datetime
+        :param status: Filter transaction by status
+        :type status: str
+        :param source: The origin of the payment
+        :type source: str
+        :param terminal_id: Filter transactions by a terminal ID
+        :type terminal_id: str
+        :param virtual_account_number: Filter transactions by a virtual account number
+        :type virtual_account_number: str
+        :param customer_code: Filter transactions by a customer code
+        :type customer_code: str
+        :param amount: Filter transactions by a specific amount
+        :type amount: int
+        :param settlement: The settlement ID to filter for settled transactions
+        :type settlement: int
+        :param channel: The payment method the customer used to complete the transaction
+        :type channel: str
+        :param subaccount_code: Filter transaction by subaccount code
+        :type subaccount_code: str
+        :param split_code: Filter transaction by split code
+        :type split_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2247,10 +2068,23 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_list_serialize(
+            use_cursor=use_cursor,
+            next=next,
+            previous=previous,
             per_page=per_page,
             page=page,
             var_from=var_from,
             to=to,
+            status=status,
+            source=source,
+            terminal_id=terminal_id,
+            virtual_account_number=virtual_account_number,
+            customer_code=customer_code,
+            amount=amount,
+            settlement=settlement,
+            channel=channel,
+            subaccount_code=subaccount_code,
+            split_code=split_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2258,7 +2092,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransactionListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -2276,10 +2110,23 @@ class TransactionApi:
     @validate_call
     def transaction_list_without_preload_content(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
+        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
+        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
+        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter transaction by status")] = None,
+        source: Annotated[Optional[StrictStr], Field(description="The origin of the payment")] = None,
+        terminal_id: Annotated[Optional[StrictStr], Field(description="Filter transactions by a terminal ID")] = None,
+        virtual_account_number: Annotated[Optional[StrictStr], Field(description="Filter transactions by a virtual account number")] = None,
+        customer_code: Annotated[Optional[StrictStr], Field(description="Filter transactions by a customer code")] = None,
+        amount: Annotated[Optional[StrictInt], Field(description="Filter transactions by a specific amount")] = None,
+        settlement: Annotated[Optional[StrictInt], Field(description="The settlement ID to filter for settled transactions")] = None,
+        channel: Annotated[Optional[StrictStr], Field(description="The payment method the customer used to complete the transaction")] = None,
+        subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter transaction by subaccount code")] = None,
+        split_code: Annotated[Optional[StrictStr], Field(description="Filter transaction by split code")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2297,14 +2144,40 @@ class TransactionApi:
 
         List transactions that has occurred on your integration
 
-        :param per_page: Number of records to fetch per page
+        :param use_cursor: A flag to indicate if cursor based pagination should be used
+        :type use_cursor: bool
+        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
+        :type next: str
+        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
+        :type previous: str
+        :param per_page: The number of records to fetch per request
         :type per_page: int
-        :param page: The section to retrieve
+        :param page: The offset to retrieve data from
         :type page: int
         :param var_from: The start date
         :type var_from: datetime
         :param to: The end date
         :type to: datetime
+        :param status: Filter transaction by status
+        :type status: str
+        :param source: The origin of the payment
+        :type source: str
+        :param terminal_id: Filter transactions by a terminal ID
+        :type terminal_id: str
+        :param virtual_account_number: Filter transactions by a virtual account number
+        :type virtual_account_number: str
+        :param customer_code: Filter transactions by a customer code
+        :type customer_code: str
+        :param amount: Filter transactions by a specific amount
+        :type amount: int
+        :param settlement: The settlement ID to filter for settled transactions
+        :type settlement: int
+        :param channel: The payment method the customer used to complete the transaction
+        :type channel: str
+        :param subaccount_code: Filter transaction by subaccount code
+        :type subaccount_code: str
+        :param split_code: Filter transaction by split code
+        :type split_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2328,10 +2201,23 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_list_serialize(
+            use_cursor=use_cursor,
+            next=next,
+            previous=previous,
             per_page=per_page,
             page=page,
             var_from=var_from,
             to=to,
+            status=status,
+            source=source,
+            terminal_id=terminal_id,
+            virtual_account_number=virtual_account_number,
+            customer_code=customer_code,
+            amount=amount,
+            settlement=settlement,
+            channel=channel,
+            subaccount_code=subaccount_code,
+            split_code=split_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2339,7 +2225,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransactionListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -2352,10 +2238,23 @@ class TransactionApi:
 
     def _transaction_list_serialize(
         self,
+        use_cursor,
+        next,
+        previous,
         per_page,
         page,
         var_from,
         to,
+        status,
+        source,
+        terminal_id,
+        virtual_account_number,
+        customer_code,
+        amount,
+        settlement,
+        channel,
+        subaccount_code,
+        split_code,
         _request_auth,
         _content_type,
         _headers,
@@ -2378,9 +2277,21 @@ class TransactionApi:
 
         # process the path parameters
         # process the query parameters
+        if use_cursor is not None:
+            
+            _query_params.append(('use_cursor', use_cursor))
+            
+        if next is not None:
+            
+            _query_params.append(('next', next))
+            
+        if previous is not None:
+            
+            _query_params.append(('previous', previous))
+            
         if per_page is not None:
             
-            _query_params.append(('perPage', per_page))
+            _query_params.append(('per_page', per_page))
             
         if page is not None:
             
@@ -2411,6 +2322,46 @@ class TransactionApi:
                 )
             else:
                 _query_params.append(('to', to))
+            
+        if status is not None:
+            
+            _query_params.append(('status', status))
+            
+        if source is not None:
+            
+            _query_params.append(('source', source))
+            
+        if terminal_id is not None:
+            
+            _query_params.append(('terminal_id', terminal_id))
+            
+        if virtual_account_number is not None:
+            
+            _query_params.append(('virtual_account_number', virtual_account_number))
+            
+        if customer_code is not None:
+            
+            _query_params.append(('customer_code', customer_code))
+            
+        if amount is not None:
+            
+            _query_params.append(('amount', amount))
+            
+        if settlement is not None:
+            
+            _query_params.append(('settlement', settlement))
+            
+        if channel is not None:
+            
+            _query_params.append(('channel', channel))
+            
+        if subaccount_code is not None:
+            
+            _query_params.append(('subaccount_code', subaccount_code))
+            
+        if split_code is not None:
+            
+            _query_params.append(('split_code', split_code))
             
         # process the header parameters
         # process the form parameters
@@ -2452,12 +2403,7 @@ class TransactionApi:
     @validate_call
     def transaction_partial_debit(
         self,
-        email: Annotated[StrictStr, Field(description="Customer's email address")],
-        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        authorization_code: Annotated[StrictStr, Field(description="Valid authorization code to charge")],
-        currency: Annotated[StrictStr, Field(description="The transaction currency")],
-        reference: Annotated[Optional[StrictStr], Field(description="Unique transaction reference. Only -, ., = and alphanumeric characters allowed.")] = None,
-        at_least: Annotated[Optional[StrictStr], Field(description="Minimum amount to charge")] = None,
+        transaction_partial_debit: Optional[TransactionPartialDebit] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2470,22 +2416,13 @@ class TransactionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> TransactionPartialDebitResponse:
         """Partial Debit
 
+        Retrieve part of a payment from a customer
 
-        :param email: Customer's email address (required)
-        :type email: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type amount: int
-        :param authorization_code: Valid authorization code to charge (required)
-        :type authorization_code: str
-        :param currency: The transaction currency (required)
-        :type currency: str
-        :param reference: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
-        :type reference: str
-        :param at_least: Minimum amount to charge
-        :type at_least: str
+        :param transaction_partial_debit:
+        :type transaction_partial_debit: TransactionPartialDebit
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2509,12 +2446,7 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_partial_debit_serialize(
-            email=email,
-            amount=amount,
-            authorization_code=authorization_code,
-            currency=currency,
-            reference=reference,
-            at_least=at_least,
+            transaction_partial_debit=transaction_partial_debit,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2522,7 +2454,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransactionPartialDebitResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -2539,12 +2471,7 @@ class TransactionApi:
     @validate_call
     def transaction_partial_debit_with_http_info(
         self,
-        email: Annotated[StrictStr, Field(description="Customer's email address")],
-        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        authorization_code: Annotated[StrictStr, Field(description="Valid authorization code to charge")],
-        currency: Annotated[StrictStr, Field(description="The transaction currency")],
-        reference: Annotated[Optional[StrictStr], Field(description="Unique transaction reference. Only -, ., = and alphanumeric characters allowed.")] = None,
-        at_least: Annotated[Optional[StrictStr], Field(description="Minimum amount to charge")] = None,
+        transaction_partial_debit: Optional[TransactionPartialDebit] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2557,22 +2484,13 @@ class TransactionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[TransactionPartialDebitResponse]:
         """Partial Debit
 
+        Retrieve part of a payment from a customer
 
-        :param email: Customer's email address (required)
-        :type email: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type amount: int
-        :param authorization_code: Valid authorization code to charge (required)
-        :type authorization_code: str
-        :param currency: The transaction currency (required)
-        :type currency: str
-        :param reference: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
-        :type reference: str
-        :param at_least: Minimum amount to charge
-        :type at_least: str
+        :param transaction_partial_debit:
+        :type transaction_partial_debit: TransactionPartialDebit
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2596,12 +2514,7 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_partial_debit_serialize(
-            email=email,
-            amount=amount,
-            authorization_code=authorization_code,
-            currency=currency,
-            reference=reference,
-            at_least=at_least,
+            transaction_partial_debit=transaction_partial_debit,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2609,7 +2522,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransactionPartialDebitResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -2626,12 +2539,7 @@ class TransactionApi:
     @validate_call
     def transaction_partial_debit_without_preload_content(
         self,
-        email: Annotated[StrictStr, Field(description="Customer's email address")],
-        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")],
-        authorization_code: Annotated[StrictStr, Field(description="Valid authorization code to charge")],
-        currency: Annotated[StrictStr, Field(description="The transaction currency")],
-        reference: Annotated[Optional[StrictStr], Field(description="Unique transaction reference. Only -, ., = and alphanumeric characters allowed.")] = None,
-        at_least: Annotated[Optional[StrictStr], Field(description="Minimum amount to charge")] = None,
+        transaction_partial_debit: Optional[TransactionPartialDebit] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2647,19 +2555,10 @@ class TransactionApi:
     ) -> RESTResponseType:
         """Partial Debit
 
+        Retrieve part of a payment from a customer
 
-        :param email: Customer's email address (required)
-        :type email: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR (required)
-        :type amount: int
-        :param authorization_code: Valid authorization code to charge (required)
-        :type authorization_code: str
-        :param currency: The transaction currency (required)
-        :type currency: str
-        :param reference: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
-        :type reference: str
-        :param at_least: Minimum amount to charge
-        :type at_least: str
+        :param transaction_partial_debit:
+        :type transaction_partial_debit: TransactionPartialDebit
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2683,12 +2582,7 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_partial_debit_serialize(
-            email=email,
-            amount=amount,
-            authorization_code=authorization_code,
-            currency=currency,
-            reference=reference,
-            at_least=at_least,
+            transaction_partial_debit=transaction_partial_debit,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2696,7 +2590,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransactionPartialDebitResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -2708,12 +2602,7 @@ class TransactionApi:
 
     def _transaction_partial_debit_serialize(
         self,
-        email,
-        amount,
-        authorization_code,
-        currency,
-        reference,
-        at_least,
+        transaction_partial_debit,
         _request_auth,
         _content_type,
         _headers,
@@ -2738,19 +2627,9 @@ class TransactionApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if email is not None:
-            _form_params.append(('email', email))
-        if amount is not None:
-            _form_params.append(('amount', amount))
-        if authorization_code is not None:
-            _form_params.append(('authorization_code', authorization_code))
-        if currency is not None:
-            _form_params.append(('currency', currency))
-        if reference is not None:
-            _form_params.append(('reference', reference))
-        if at_least is not None:
-            _form_params.append(('at_least', at_least))
         # process the body parameter
+        if transaction_partial_debit is not None:
+            _body_params = transaction_partial_debit
 
 
         # set the HTTP header `Accept`
@@ -2768,8 +2647,8 @@ class TransactionApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -2802,7 +2681,7 @@ class TransactionApi:
     @validate_call
     def transaction_session(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The ID of the transaction")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2818,9 +2697,10 @@ class TransactionApi:
     ) -> Response:
         """Get Transaction Session
 
+        Fetch the session for a specific transaction.
 
-        :param id: (required)
-        :type id: str
+        :param id: The ID of the transaction (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2870,7 +2750,7 @@ class TransactionApi:
     @validate_call
     def transaction_session_with_http_info(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The ID of the transaction")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2886,9 +2766,10 @@ class TransactionApi:
     ) -> ApiResponse[Response]:
         """Get Transaction Session
 
+        Fetch the session for a specific transaction.
 
-        :param id: (required)
-        :type id: str
+        :param id: The ID of the transaction (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2938,7 +2819,7 @@ class TransactionApi:
     @validate_call
     def transaction_session_without_preload_content(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The ID of the transaction")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2954,9 +2835,10 @@ class TransactionApi:
     ) -> RESTResponseType:
         """Get Transaction Session
 
+        Fetch the session for a specific transaction.
 
-        :param id: (required)
-        :type id: str
+        :param id: The ID of the transaction (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3066,7 +2948,7 @@ class TransactionApi:
     @validate_call
     def transaction_timeline(
         self,
-        id_or_reference: StrictStr,
+        id: Annotated[StrictInt, Field(description="The ID of the transaction to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3079,13 +2961,13 @@ class TransactionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> TransactionTimelineResponse:
         """Fetch Transaction Timeline
 
-        Get the details about the lifecycle of a transaction from initiation to completion
+        Fetch the steps taken from the initiation to the completion of a transaction
 
-        :param id_or_reference: (required)
-        :type id_or_reference: str
+        :param id: The ID of the transaction to fetch (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3109,7 +2991,7 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_timeline_serialize(
-            id_or_reference=id_or_reference,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3117,7 +2999,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransactionTimelineResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -3135,7 +3017,7 @@ class TransactionApi:
     @validate_call
     def transaction_timeline_with_http_info(
         self,
-        id_or_reference: StrictStr,
+        id: Annotated[StrictInt, Field(description="The ID of the transaction to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3148,13 +3030,13 @@ class TransactionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[TransactionTimelineResponse]:
         """Fetch Transaction Timeline
 
-        Get the details about the lifecycle of a transaction from initiation to completion
+        Fetch the steps taken from the initiation to the completion of a transaction
 
-        :param id_or_reference: (required)
-        :type id_or_reference: str
+        :param id: The ID of the transaction to fetch (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3178,7 +3060,7 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_timeline_serialize(
-            id_or_reference=id_or_reference,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3186,7 +3068,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransactionTimelineResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -3204,7 +3086,7 @@ class TransactionApi:
     @validate_call
     def transaction_timeline_without_preload_content(
         self,
-        id_or_reference: StrictStr,
+        id: Annotated[StrictInt, Field(description="The ID of the transaction to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3220,10 +3102,10 @@ class TransactionApi:
     ) -> RESTResponseType:
         """Fetch Transaction Timeline
 
-        Get the details about the lifecycle of a transaction from initiation to completion
+        Fetch the steps taken from the initiation to the completion of a transaction
 
-        :param id_or_reference: (required)
-        :type id_or_reference: str
+        :param id: The ID of the transaction to fetch (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3247,7 +3129,7 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_timeline_serialize(
-            id_or_reference=id_or_reference,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3255,7 +3137,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransactionTimelineResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -3268,7 +3150,7 @@ class TransactionApi:
 
     def _transaction_timeline_serialize(
         self,
-        id_or_reference,
+        id,
         _request_auth,
         _content_type,
         _headers,
@@ -3290,8 +3172,8 @@ class TransactionApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id_or_reference is not None:
-            _path_params['id_or_reference'] = id_or_reference
+        if id is not None:
+            _path_params['id'] = id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -3314,7 +3196,7 @@ class TransactionApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/transaction/timeline/{id_or_reference}',
+            resource_path='/transaction/timeline/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3333,8 +3215,6 @@ class TransactionApi:
     @validate_call
     def transaction_totals(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
         _request_timeout: Union[
@@ -3349,15 +3229,11 @@ class TransactionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> TransactionTotalsResponse:
         """Transaction Totals
 
         Get the total amount of all transactions
 
-        :param per_page: Number of records to fetch per page
-        :type per_page: int
-        :param page: The section to retrieve
-        :type page: int
         :param var_from: The start date
         :type var_from: datetime
         :param to: The end date
@@ -3385,8 +3261,6 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_totals_serialize(
-            per_page=per_page,
-            page=page,
             var_from=var_from,
             to=to,
             _request_auth=_request_auth,
@@ -3396,7 +3270,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransactionTotalsResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -3414,8 +3288,6 @@ class TransactionApi:
     @validate_call
     def transaction_totals_with_http_info(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
         _request_timeout: Union[
@@ -3430,15 +3302,11 @@ class TransactionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[TransactionTotalsResponse]:
         """Transaction Totals
 
         Get the total amount of all transactions
 
-        :param per_page: Number of records to fetch per page
-        :type per_page: int
-        :param page: The section to retrieve
-        :type page: int
         :param var_from: The start date
         :type var_from: datetime
         :param to: The end date
@@ -3466,8 +3334,6 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_totals_serialize(
-            per_page=per_page,
-            page=page,
             var_from=var_from,
             to=to,
             _request_auth=_request_auth,
@@ -3477,7 +3343,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransactionTotalsResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -3495,8 +3361,6 @@ class TransactionApi:
     @validate_call
     def transaction_totals_without_preload_content(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
         _request_timeout: Union[
@@ -3516,10 +3380,6 @@ class TransactionApi:
 
         Get the total amount of all transactions
 
-        :param per_page: Number of records to fetch per page
-        :type per_page: int
-        :param page: The section to retrieve
-        :type page: int
         :param var_from: The start date
         :type var_from: datetime
         :param to: The end date
@@ -3547,8 +3407,6 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_totals_serialize(
-            per_page=per_page,
-            page=page,
             var_from=var_from,
             to=to,
             _request_auth=_request_auth,
@@ -3558,7 +3416,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "TransactionTotalsResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -3571,8 +3429,6 @@ class TransactionApi:
 
     def _transaction_totals_serialize(
         self,
-        per_page,
-        page,
         var_from,
         to,
         _request_auth,
@@ -3597,14 +3453,6 @@ class TransactionApi:
 
         # process the path parameters
         # process the query parameters
-        if per_page is not None:
-            
-            _query_params.append(('perPage', per_page))
-            
-        if page is not None:
-            
-            _query_params.append(('page', page))
-            
         if var_from is not None:
             if isinstance(var_from, datetime):
                 _query_params.append(
@@ -3684,7 +3532,7 @@ class TransactionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> VerifyResponse:
         """Verify Transaction
 
         Verify a previously initiated transaction using it's reference
@@ -3722,7 +3570,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "VerifyResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -3753,7 +3601,7 @@ class TransactionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[VerifyResponse]:
         """Verify Transaction
 
         Verify a previously initiated transaction using it's reference
@@ -3791,7 +3639,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "VerifyResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -3860,7 +3708,7 @@ class TransactionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "VerifyResponse",
             '401': "Error",
             '404': "Error",
         }

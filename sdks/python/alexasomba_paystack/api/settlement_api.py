@@ -17,8 +17,9 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictInt, StrictStr
+from pydantic import Field, StrictInt
 from typing import Optional
+from typing_extensions import Annotated
 from alexasomba_paystack.models.response import Response
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
@@ -42,8 +43,8 @@ class SettlementApi:
     @validate_call
     def settlements_fetch(
         self,
-        per_page: Optional[StrictInt] = None,
-        page: Optional[StrictInt] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -57,12 +58,13 @@ class SettlementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Response:
-        """Fetch Settlements
+        """List Settlements
 
+        List settlements made to your settlement accounts
 
-        :param per_page:
+        :param per_page: The number of records to fetch per request
         :type per_page: int
-        :param page:
+        :param page: The offset to retrieve data from
         :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -114,8 +116,8 @@ class SettlementApi:
     @validate_call
     def settlements_fetch_with_http_info(
         self,
-        per_page: Optional[StrictInt] = None,
-        page: Optional[StrictInt] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -129,12 +131,13 @@ class SettlementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Response]:
-        """Fetch Settlements
+        """List Settlements
 
+        List settlements made to your settlement accounts
 
-        :param per_page:
+        :param per_page: The number of records to fetch per request
         :type per_page: int
-        :param page:
+        :param page: The offset to retrieve data from
         :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -186,8 +189,8 @@ class SettlementApi:
     @validate_call
     def settlements_fetch_without_preload_content(
         self,
-        per_page: Optional[StrictInt] = None,
-        page: Optional[StrictInt] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -201,12 +204,13 @@ class SettlementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Fetch Settlements
+        """List Settlements
 
+        List settlements made to your settlement accounts
 
-        :param per_page:
+        :param per_page: The number of records to fetch per request
         :type per_page: int
-        :param page:
+        :param page: The offset to retrieve data from
         :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -325,7 +329,7 @@ class SettlementApi:
     @validate_call
     def settlements_transaction(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The settlement ID in which you want to fetch its transactions")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -339,11 +343,12 @@ class SettlementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Response:
-        """Settlement Transactions
+        """Fetch Settlement Transactions
 
+        Get the transactions that make up a particular settlement
 
-        :param id: (required)
-        :type id: str
+        :param id: The settlement ID in which you want to fetch its transactions (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -393,7 +398,7 @@ class SettlementApi:
     @validate_call
     def settlements_transaction_with_http_info(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The settlement ID in which you want to fetch its transactions")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -407,11 +412,12 @@ class SettlementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Response]:
-        """Settlement Transactions
+        """Fetch Settlement Transactions
 
+        Get the transactions that make up a particular settlement
 
-        :param id: (required)
-        :type id: str
+        :param id: The settlement ID in which you want to fetch its transactions (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -461,7 +467,7 @@ class SettlementApi:
     @validate_call
     def settlements_transaction_without_preload_content(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The settlement ID in which you want to fetch its transactions")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -475,11 +481,12 @@ class SettlementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Settlement Transactions
+        """Fetch Settlement Transactions
 
+        Get the transactions that make up a particular settlement
 
-        :param id: (required)
-        :type id: str
+        :param id: The settlement ID in which you want to fetch its transactions (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -570,7 +577,7 @@ class SettlementApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/settlement/{id}/transaction',
+            resource_path='/settlement/{id}/transactions',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

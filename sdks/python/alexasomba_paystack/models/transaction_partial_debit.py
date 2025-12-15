@@ -20,6 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from alexasomba_paystack.models.currency import Currency
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,12 +29,12 @@ class TransactionPartialDebit(BaseModel):
     TransactionPartialDebit
     """ # noqa: E501
     email: StrictStr = Field(description="Customer's email address")
-    amount: StrictInt = Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")
+    amount: StrictInt = Field(description="Specified in the lowest denomination of your currency")
     authorization_code: StrictStr = Field(description="Valid authorization code to charge")
-    currency: StrictStr = Field(description="The transaction currency")
-    reference: Optional[StrictStr] = Field(default=None, description="Unique transaction reference. Only -, ., = and alphanumeric characters allowed.")
+    currency: Currency
     at_least: Optional[StrictStr] = Field(default=None, description="Minimum amount to charge")
-    __properties: ClassVar[List[str]] = ["email", "amount", "authorization_code", "currency", "reference", "at_least"]
+    reference: Optional[StrictStr] = Field(default=None, description="Unique transaction reference. Only -, ., = and alphanumeric characters allowed.")
+    __properties: ClassVar[List[str]] = ["email", "amount", "authorization_code", "currency", "at_least", "reference"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,8 +91,8 @@ class TransactionPartialDebit(BaseModel):
             "amount": obj.get("amount"),
             "authorization_code": obj.get("authorization_code"),
             "currency": obj.get("currency"),
-            "reference": obj.get("reference"),
-            "at_least": obj.get("at_least")
+            "at_least": obj.get("at_least"),
+            "reference": obj.get("reference")
         })
         return _obj
 

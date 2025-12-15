@@ -24,7 +24,7 @@ type PageUpdate struct {
 	Name *string `json:"name,omitempty"`
 	// The description of the page
 	Description *string `json:"description,omitempty"`
-	// Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
+	// Amount should be in the subunit of the currency
 	Amount *int32 `json:"amount,omitempty"`
 	// Set to false to deactivate page url
 	Active *bool `json:"active,omitempty"`

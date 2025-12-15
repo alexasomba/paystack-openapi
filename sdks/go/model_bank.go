@@ -18,7 +18,7 @@ import (
 // checks if the Bank type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Bank{}
 
-// Bank struct for Bank
+// Bank The bank object if charging a bank account
 type Bank struct {
 	// Customer's bank code
 	Code *string `json:"code,omitempty"`

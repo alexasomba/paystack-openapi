@@ -18,10 +18,18 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from datetime import datetime
-from pydantic import Field, StrictBool, StrictInt, StrictStr
-from typing import Any, Dict, List, Optional
+from pydantic import Field, StrictInt, StrictStr
+from typing import Optional
 from typing_extensions import Annotated
-from alexasomba_paystack.models.response import Response
+from alexasomba_paystack.models.page_add_products_response import PageAddProductsResponse
+from alexasomba_paystack.models.page_check_slug_availability_response import PageCheckSlugAvailabilityResponse
+from alexasomba_paystack.models.page_create import PageCreate
+from alexasomba_paystack.models.page_create_response import PageCreateResponse
+from alexasomba_paystack.models.page_fetch_response import PageFetchResponse
+from alexasomba_paystack.models.page_list_response import PageListResponse
+from alexasomba_paystack.models.page_product import PageProduct
+from alexasomba_paystack.models.page_update import PageUpdate
+from alexasomba_paystack.models.page_update_response import PageUpdateResponse
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
 from alexasomba_paystack.api_response import ApiResponse
@@ -45,7 +53,7 @@ class PageApi:
     def page_add_products(
         self,
         id: StrictStr,
-        product: Annotated[List[StrictStr], Field(description="IDs of all products to add to a page")],
+        page_product: Optional[PageProduct] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -58,14 +66,15 @@ class PageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> PageAddProductsResponse:
         """Add Products
 
+        Add products to a previously created payment page. You can only add products to pages that was created with a `product` type. 
 
         :param id: (required)
         :type id: str
-        :param product: IDs of all products to add to a page (required)
-        :type product: List[str]
+        :param page_product:
+        :type page_product: PageProduct
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -90,7 +99,7 @@ class PageApi:
 
         _param = self._page_add_products_serialize(
             id=id,
-            product=product,
+            page_product=page_product,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -98,7 +107,7 @@ class PageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PageAddProductsResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -116,7 +125,7 @@ class PageApi:
     def page_add_products_with_http_info(
         self,
         id: StrictStr,
-        product: Annotated[List[StrictStr], Field(description="IDs of all products to add to a page")],
+        page_product: Optional[PageProduct] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -129,14 +138,15 @@ class PageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[PageAddProductsResponse]:
         """Add Products
 
+        Add products to a previously created payment page. You can only add products to pages that was created with a `product` type. 
 
         :param id: (required)
         :type id: str
-        :param product: IDs of all products to add to a page (required)
-        :type product: List[str]
+        :param page_product:
+        :type page_product: PageProduct
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -161,7 +171,7 @@ class PageApi:
 
         _param = self._page_add_products_serialize(
             id=id,
-            product=product,
+            page_product=page_product,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -169,7 +179,7 @@ class PageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PageAddProductsResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -187,7 +197,7 @@ class PageApi:
     def page_add_products_without_preload_content(
         self,
         id: StrictStr,
-        product: Annotated[List[StrictStr], Field(description="IDs of all products to add to a page")],
+        page_product: Optional[PageProduct] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -203,11 +213,12 @@ class PageApi:
     ) -> RESTResponseType:
         """Add Products
 
+        Add products to a previously created payment page. You can only add products to pages that was created with a `product` type. 
 
         :param id: (required)
         :type id: str
-        :param product: IDs of all products to add to a page (required)
-        :type product: List[str]
+        :param page_product:
+        :type page_product: PageProduct
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -232,7 +243,7 @@ class PageApi:
 
         _param = self._page_add_products_serialize(
             id=id,
-            product=product,
+            page_product=page_product,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -240,7 +251,7 @@ class PageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PageAddProductsResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -253,7 +264,7 @@ class PageApi:
     def _page_add_products_serialize(
         self,
         id,
-        product,
+        page_product,
         _request_auth,
         _content_type,
         _headers,
@@ -263,7 +274,6 @@ class PageApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'product': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -281,9 +291,9 @@ class PageApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if product is not None:
-            _form_params.append(('product', product))
         # process the body parameter
+        if page_product is not None:
+            _body_params = page_product
 
 
         # set the HTTP header `Accept`
@@ -301,8 +311,8 @@ class PageApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -335,7 +345,7 @@ class PageApi:
     @validate_call
     def page_check_slug_availability(
         self,
-        slug: StrictStr,
+        slug: Annotated[StrictStr, Field(description="The custom slug to check")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -348,11 +358,12 @@ class PageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> PageCheckSlugAvailabilityResponse:
         """Check Slug Availability
 
+        Check if a custom slug is available for use when creating a payment page
 
-        :param slug: (required)
+        :param slug: The custom slug to check (required)
         :type slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -385,7 +396,7 @@ class PageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PageCheckSlugAvailabilityResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -403,7 +414,7 @@ class PageApi:
     @validate_call
     def page_check_slug_availability_with_http_info(
         self,
-        slug: StrictStr,
+        slug: Annotated[StrictStr, Field(description="The custom slug to check")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -416,11 +427,12 @@ class PageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[PageCheckSlugAvailabilityResponse]:
         """Check Slug Availability
 
+        Check if a custom slug is available for use when creating a payment page
 
-        :param slug: (required)
+        :param slug: The custom slug to check (required)
         :type slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -453,7 +465,7 @@ class PageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PageCheckSlugAvailabilityResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -471,7 +483,7 @@ class PageApi:
     @validate_call
     def page_check_slug_availability_without_preload_content(
         self,
-        slug: StrictStr,
+        slug: Annotated[StrictStr, Field(description="The custom slug to check")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -487,8 +499,9 @@ class PageApi:
     ) -> RESTResponseType:
         """Check Slug Availability
 
+        Check if a custom slug is available for use when creating a payment page
 
-        :param slug: (required)
+        :param slug: The custom slug to check (required)
         :type slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -521,7 +534,7 @@ class PageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PageCheckSlugAvailabilityResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -599,13 +612,7 @@ class PageApi:
     @validate_call
     def page_create(
         self,
-        name: Annotated[StrictStr, Field(description="Name of page")],
-        description: Annotated[Optional[StrictStr], Field(description="The description of the page")] = None,
-        amount: Annotated[Optional[StrictInt], Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")] = None,
-        slug: Annotated[Optional[StrictStr], Field(description="URL slug you would like to be associated with this page. Page will be accessible at https://paystack.com/pay/[slug]")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
-        redirect_url: Annotated[Optional[StrictStr], Field(description="If you would like Paystack to redirect to a URL upon successful payment, specify the URL here.")] = None,
-        custom_fields: Annotated[Optional[List[Dict[str, Any]]], Field(description="If you would like to accept custom fields, specify them here.")] = None,
+        page_create: Optional[PageCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -618,24 +625,13 @@ class PageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> PageCreateResponse:
         """Create Page
 
+        Create a webpage to receive payments
 
-        :param name: Name of page (required)
-        :type name: str
-        :param description: The description of the page
-        :type description: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-        :type amount: int
-        :param slug: URL slug you would like to be associated with this page. Page will be accessible at https://paystack.com/pay/[slug]
-        :type slug: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
-        :param redirect_url: If you would like Paystack to redirect to a URL upon successful payment, specify the URL here.
-        :type redirect_url: str
-        :param custom_fields: If you would like to accept custom fields, specify them here.
-        :type custom_fields: List[object]
+        :param page_create:
+        :type page_create: PageCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -659,13 +655,7 @@ class PageApi:
         """ # noqa: E501
 
         _param = self._page_create_serialize(
-            name=name,
-            description=description,
-            amount=amount,
-            slug=slug,
-            metadata=metadata,
-            redirect_url=redirect_url,
-            custom_fields=custom_fields,
+            page_create=page_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -673,7 +663,7 @@ class PageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PageCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -690,13 +680,7 @@ class PageApi:
     @validate_call
     def page_create_with_http_info(
         self,
-        name: Annotated[StrictStr, Field(description="Name of page")],
-        description: Annotated[Optional[StrictStr], Field(description="The description of the page")] = None,
-        amount: Annotated[Optional[StrictInt], Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")] = None,
-        slug: Annotated[Optional[StrictStr], Field(description="URL slug you would like to be associated with this page. Page will be accessible at https://paystack.com/pay/[slug]")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
-        redirect_url: Annotated[Optional[StrictStr], Field(description="If you would like Paystack to redirect to a URL upon successful payment, specify the URL here.")] = None,
-        custom_fields: Annotated[Optional[List[Dict[str, Any]]], Field(description="If you would like to accept custom fields, specify them here.")] = None,
+        page_create: Optional[PageCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -709,24 +693,13 @@ class PageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[PageCreateResponse]:
         """Create Page
 
+        Create a webpage to receive payments
 
-        :param name: Name of page (required)
-        :type name: str
-        :param description: The description of the page
-        :type description: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-        :type amount: int
-        :param slug: URL slug you would like to be associated with this page. Page will be accessible at https://paystack.com/pay/[slug]
-        :type slug: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
-        :param redirect_url: If you would like Paystack to redirect to a URL upon successful payment, specify the URL here.
-        :type redirect_url: str
-        :param custom_fields: If you would like to accept custom fields, specify them here.
-        :type custom_fields: List[object]
+        :param page_create:
+        :type page_create: PageCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -750,13 +723,7 @@ class PageApi:
         """ # noqa: E501
 
         _param = self._page_create_serialize(
-            name=name,
-            description=description,
-            amount=amount,
-            slug=slug,
-            metadata=metadata,
-            redirect_url=redirect_url,
-            custom_fields=custom_fields,
+            page_create=page_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -764,7 +731,7 @@ class PageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PageCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -781,13 +748,7 @@ class PageApi:
     @validate_call
     def page_create_without_preload_content(
         self,
-        name: Annotated[StrictStr, Field(description="Name of page")],
-        description: Annotated[Optional[StrictStr], Field(description="The description of the page")] = None,
-        amount: Annotated[Optional[StrictInt], Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")] = None,
-        slug: Annotated[Optional[StrictStr], Field(description="URL slug you would like to be associated with this page. Page will be accessible at https://paystack.com/pay/[slug]")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
-        redirect_url: Annotated[Optional[StrictStr], Field(description="If you would like Paystack to redirect to a URL upon successful payment, specify the URL here.")] = None,
-        custom_fields: Annotated[Optional[List[Dict[str, Any]]], Field(description="If you would like to accept custom fields, specify them here.")] = None,
+        page_create: Optional[PageCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -803,21 +764,10 @@ class PageApi:
     ) -> RESTResponseType:
         """Create Page
 
+        Create a webpage to receive payments
 
-        :param name: Name of page (required)
-        :type name: str
-        :param description: The description of the page
-        :type description: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-        :type amount: int
-        :param slug: URL slug you would like to be associated with this page. Page will be accessible at https://paystack.com/pay/[slug]
-        :type slug: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
-        :param redirect_url: If you would like Paystack to redirect to a URL upon successful payment, specify the URL here.
-        :type redirect_url: str
-        :param custom_fields: If you would like to accept custom fields, specify them here.
-        :type custom_fields: List[object]
+        :param page_create:
+        :type page_create: PageCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -841,13 +791,7 @@ class PageApi:
         """ # noqa: E501
 
         _param = self._page_create_serialize(
-            name=name,
-            description=description,
-            amount=amount,
-            slug=slug,
-            metadata=metadata,
-            redirect_url=redirect_url,
-            custom_fields=custom_fields,
+            page_create=page_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -855,7 +799,7 @@ class PageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PageCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -867,13 +811,7 @@ class PageApi:
 
     def _page_create_serialize(
         self,
-        name,
-        description,
-        amount,
-        slug,
-        metadata,
-        redirect_url,
-        custom_fields,
+        page_create,
         _request_auth,
         _content_type,
         _headers,
@@ -883,7 +821,6 @@ class PageApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'custom_fields': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -899,21 +836,9 @@ class PageApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if name is not None:
-            _form_params.append(('name', name))
-        if description is not None:
-            _form_params.append(('description', description))
-        if amount is not None:
-            _form_params.append(('amount', amount))
-        if slug is not None:
-            _form_params.append(('slug', slug))
-        if metadata is not None:
-            _form_params.append(('metadata', metadata))
-        if redirect_url is not None:
-            _form_params.append(('redirect_url', redirect_url))
-        if custom_fields is not None:
-            _form_params.append(('custom_fields', custom_fields))
         # process the body parameter
+        if page_create is not None:
+            _body_params = page_create
 
 
         # set the HTTP header `Accept`
@@ -931,8 +856,8 @@ class PageApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -965,7 +890,7 @@ class PageApi:
     @validate_call
     def page_fetch(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a payment page")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -978,12 +903,13 @@ class PageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> PageFetchResponse:
         """Fetch Page
 
+        Get a previously created payment page
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of a payment page (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1015,7 +941,7 @@ class PageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PageFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1033,7 +959,7 @@ class PageApi:
     @validate_call
     def page_fetch_with_http_info(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a payment page")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1046,12 +972,13 @@ class PageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[PageFetchResponse]:
         """Fetch Page
 
+        Get a previously created payment page
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of a payment page (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1083,7 +1010,7 @@ class PageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PageFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1101,7 +1028,7 @@ class PageApi:
     @validate_call
     def page_fetch_without_preload_content(
         self,
-        id: StrictStr,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a payment page")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1117,9 +1044,10 @@ class PageApi:
     ) -> RESTResponseType:
         """Fetch Page
 
+        Get a previously created payment page
 
-        :param id: (required)
-        :type id: str
+        :param id: The unique identifier of a payment page (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1151,7 +1079,7 @@ class PageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PageFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1245,9 +1173,10 @@ class PageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> PageListResponse:
         """List Pages
 
+        List all previously created payment pages
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
@@ -1291,7 +1220,7 @@ class PageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PageListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1325,9 +1254,10 @@ class PageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[PageListResponse]:
         """List Pages
 
+        List all previously created payment pages
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
@@ -1371,7 +1301,7 @@ class PageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PageListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1408,6 +1338,7 @@ class PageApi:
     ) -> RESTResponseType:
         """List Pages
 
+        List all previously created payment pages
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
@@ -1451,7 +1382,7 @@ class PageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PageListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1564,11 +1495,8 @@ class PageApi:
     @validate_call
     def page_update(
         self,
-        id: StrictStr,
-        name: Annotated[Optional[StrictStr], Field(description="Name of page")] = None,
-        description: Annotated[Optional[StrictStr], Field(description="The description of the page")] = None,
-        amount: Annotated[Optional[StrictInt], Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")] = None,
-        active: Annotated[Optional[StrictBool], Field(description="Set to false to deactivate page url")] = None,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a payment page")],
+        page_update: Optional[PageUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1581,20 +1509,15 @@ class PageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> PageUpdateResponse:
         """Update Page
 
+        Update a previously created payment page
 
-        :param id: (required)
-        :type id: str
-        :param name: Name of page
-        :type name: str
-        :param description: The description of the page
-        :type description: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-        :type amount: int
-        :param active: Set to false to deactivate page url
-        :type active: bool
+        :param id: The unique identifier of a payment page (required)
+        :type id: int
+        :param page_update:
+        :type page_update: PageUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1619,10 +1542,7 @@ class PageApi:
 
         _param = self._page_update_serialize(
             id=id,
-            name=name,
-            description=description,
-            amount=amount,
-            active=active,
+            page_update=page_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1630,7 +1550,7 @@ class PageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PageUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1648,11 +1568,8 @@ class PageApi:
     @validate_call
     def page_update_with_http_info(
         self,
-        id: StrictStr,
-        name: Annotated[Optional[StrictStr], Field(description="Name of page")] = None,
-        description: Annotated[Optional[StrictStr], Field(description="The description of the page")] = None,
-        amount: Annotated[Optional[StrictInt], Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")] = None,
-        active: Annotated[Optional[StrictBool], Field(description="Set to false to deactivate page url")] = None,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a payment page")],
+        page_update: Optional[PageUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1665,20 +1582,15 @@ class PageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[PageUpdateResponse]:
         """Update Page
 
+        Update a previously created payment page
 
-        :param id: (required)
-        :type id: str
-        :param name: Name of page
-        :type name: str
-        :param description: The description of the page
-        :type description: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-        :type amount: int
-        :param active: Set to false to deactivate page url
-        :type active: bool
+        :param id: The unique identifier of a payment page (required)
+        :type id: int
+        :param page_update:
+        :type page_update: PageUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1703,10 +1615,7 @@ class PageApi:
 
         _param = self._page_update_serialize(
             id=id,
-            name=name,
-            description=description,
-            amount=amount,
-            active=active,
+            page_update=page_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1714,7 +1623,7 @@ class PageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PageUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1732,11 +1641,8 @@ class PageApi:
     @validate_call
     def page_update_without_preload_content(
         self,
-        id: StrictStr,
-        name: Annotated[Optional[StrictStr], Field(description="Name of page")] = None,
-        description: Annotated[Optional[StrictStr], Field(description="The description of the page")] = None,
-        amount: Annotated[Optional[StrictInt], Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")] = None,
-        active: Annotated[Optional[StrictBool], Field(description="Set to false to deactivate page url")] = None,
+        id: Annotated[StrictInt, Field(description="The unique identifier of a payment page")],
+        page_update: Optional[PageUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1752,17 +1658,12 @@ class PageApi:
     ) -> RESTResponseType:
         """Update Page
 
+        Update a previously created payment page
 
-        :param id: (required)
-        :type id: str
-        :param name: Name of page
-        :type name: str
-        :param description: The description of the page
-        :type description: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-        :type amount: int
-        :param active: Set to false to deactivate page url
-        :type active: bool
+        :param id: The unique identifier of a payment page (required)
+        :type id: int
+        :param page_update:
+        :type page_update: PageUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1787,10 +1688,7 @@ class PageApi:
 
         _param = self._page_update_serialize(
             id=id,
-            name=name,
-            description=description,
-            amount=amount,
-            active=active,
+            page_update=page_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1798,7 +1696,7 @@ class PageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "PageUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1812,10 +1710,7 @@ class PageApi:
     def _page_update_serialize(
         self,
         id,
-        name,
-        description,
-        amount,
-        active,
+        page_update,
         _request_auth,
         _content_type,
         _headers,
@@ -1842,15 +1737,9 @@ class PageApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if name is not None:
-            _form_params.append(('name', name))
-        if description is not None:
-            _form_params.append(('description', description))
-        if amount is not None:
-            _form_params.append(('amount', amount))
-        if active is not None:
-            _form_params.append(('active', active))
         # process the body parameter
+        if page_update is not None:
+            _body_params = page_update
 
 
         # set the HTTP header `Accept`
@@ -1868,8 +1757,8 @@ class PageApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )

@@ -17,11 +17,30 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBool, StrictStr
+from datetime import datetime
+from pydantic import Field, StrictBool, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from alexasomba_paystack.models.accepted import Accepted
-from alexasomba_paystack.models.response import Response
+from alexasomba_paystack.models.customer_authorization_initialize_request import CustomerAuthorizationInitializeRequest
+from alexasomba_paystack.models.customer_authorization_initialize_response import CustomerAuthorizationInitializeResponse
+from alexasomba_paystack.models.customer_authorization_verify_response import CustomerAuthorizationVerifyResponse
+from alexasomba_paystack.models.customer_create import CustomerCreate
+from alexasomba_paystack.models.customer_create_response import CustomerCreateResponse
+from alexasomba_paystack.models.customer_deactivate_authorization import CustomerDeactivateAuthorization
+from alexasomba_paystack.models.customer_deactivate_authorization_response import CustomerDeactivateAuthorizationResponse
+from alexasomba_paystack.models.customer_direct_debit_activation_charge_request import CustomerDirectDebitActivationChargeRequest
+from alexasomba_paystack.models.customer_direct_debit_activation_charge_response import CustomerDirectDebitActivationChargeResponse
+from alexasomba_paystack.models.customer_fetch_mandate_authorizations_response import CustomerFetchMandateAuthorizationsResponse
+from alexasomba_paystack.models.customer_fetch_response import CustomerFetchResponse
+from alexasomba_paystack.models.customer_initialize_direct_debit_request import CustomerInitializeDirectDebitRequest
+from alexasomba_paystack.models.customer_initialize_direct_debit_response import CustomerInitializeDirectDebitResponse
+from alexasomba_paystack.models.customer_list_response import CustomerListResponse
+from alexasomba_paystack.models.customer_risk_action import CustomerRiskAction
+from alexasomba_paystack.models.customer_update import CustomerUpdate
+from alexasomba_paystack.models.customer_update_response import CustomerUpdateResponse
+from alexasomba_paystack.models.customer_validate import CustomerValidate
+from alexasomba_paystack.models.customer_validate_response import CustomerValidateResponse
+from alexasomba_paystack.models.customer_whitelist_blacklist_response import CustomerWhitelistBlacklistResponse
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
 from alexasomba_paystack.api_response import ApiResponse
@@ -44,11 +63,7 @@ class CustomerApi:
     @validate_call
     def customer_create(
         self,
-        email: Annotated[StrictStr, Field(description="Customer's email address")],
-        first_name: Annotated[Optional[StrictStr], Field(description="Customer's first name")] = None,
-        last_name: Annotated[Optional[StrictStr], Field(description="Customer's last name")] = None,
-        phone: Annotated[Optional[StrictStr], Field(description="Customer's phone number")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
+        customer_create: Optional[CustomerCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -61,20 +76,13 @@ class CustomerApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> CustomerCreateResponse:
         """Create Customer
 
+        Create a customer on your integration
 
-        :param email: Customer's email address (required)
-        :type email: str
-        :param first_name: Customer's first name
-        :type first_name: str
-        :param last_name: Customer's last name
-        :type last_name: str
-        :param phone: Customer's phone number
-        :type phone: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
+        :param customer_create:
+        :type customer_create: CustomerCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -98,11 +106,7 @@ class CustomerApi:
         """ # noqa: E501
 
         _param = self._customer_create_serialize(
-            email=email,
-            first_name=first_name,
-            last_name=last_name,
-            phone=phone,
-            metadata=metadata,
+            customer_create=customer_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -110,7 +114,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "CustomerCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -127,11 +131,7 @@ class CustomerApi:
     @validate_call
     def customer_create_with_http_info(
         self,
-        email: Annotated[StrictStr, Field(description="Customer's email address")],
-        first_name: Annotated[Optional[StrictStr], Field(description="Customer's first name")] = None,
-        last_name: Annotated[Optional[StrictStr], Field(description="Customer's last name")] = None,
-        phone: Annotated[Optional[StrictStr], Field(description="Customer's phone number")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
+        customer_create: Optional[CustomerCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -144,20 +144,13 @@ class CustomerApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[CustomerCreateResponse]:
         """Create Customer
 
+        Create a customer on your integration
 
-        :param email: Customer's email address (required)
-        :type email: str
-        :param first_name: Customer's first name
-        :type first_name: str
-        :param last_name: Customer's last name
-        :type last_name: str
-        :param phone: Customer's phone number
-        :type phone: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
+        :param customer_create:
+        :type customer_create: CustomerCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -181,11 +174,7 @@ class CustomerApi:
         """ # noqa: E501
 
         _param = self._customer_create_serialize(
-            email=email,
-            first_name=first_name,
-            last_name=last_name,
-            phone=phone,
-            metadata=metadata,
+            customer_create=customer_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -193,7 +182,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "CustomerCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -210,11 +199,7 @@ class CustomerApi:
     @validate_call
     def customer_create_without_preload_content(
         self,
-        email: Annotated[StrictStr, Field(description="Customer's email address")],
-        first_name: Annotated[Optional[StrictStr], Field(description="Customer's first name")] = None,
-        last_name: Annotated[Optional[StrictStr], Field(description="Customer's last name")] = None,
-        phone: Annotated[Optional[StrictStr], Field(description="Customer's phone number")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
+        customer_create: Optional[CustomerCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -230,17 +215,10 @@ class CustomerApi:
     ) -> RESTResponseType:
         """Create Customer
 
+        Create a customer on your integration
 
-        :param email: Customer's email address (required)
-        :type email: str
-        :param first_name: Customer's first name
-        :type first_name: str
-        :param last_name: Customer's last name
-        :type last_name: str
-        :param phone: Customer's phone number
-        :type phone: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
+        :param customer_create:
+        :type customer_create: CustomerCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -264,11 +242,7 @@ class CustomerApi:
         """ # noqa: E501
 
         _param = self._customer_create_serialize(
-            email=email,
-            first_name=first_name,
-            last_name=last_name,
-            phone=phone,
-            metadata=metadata,
+            customer_create=customer_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -276,7 +250,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "CustomerCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -288,11 +262,7 @@ class CustomerApi:
 
     def _customer_create_serialize(
         self,
-        email,
-        first_name,
-        last_name,
-        phone,
-        metadata,
+        customer_create,
         _request_auth,
         _content_type,
         _headers,
@@ -317,17 +287,9 @@ class CustomerApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if email is not None:
-            _form_params.append(('email', email))
-        if first_name is not None:
-            _form_params.append(('first_name', first_name))
-        if last_name is not None:
-            _form_params.append(('last_name', last_name))
-        if phone is not None:
-            _form_params.append(('phone', phone))
-        if metadata is not None:
-            _form_params.append(('metadata', metadata))
         # process the body parameter
+        if customer_create is not None:
+            _body_params = customer_create
 
 
         # set the HTTP header `Accept`
@@ -345,8 +307,8 @@ class CustomerApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -379,7 +341,7 @@ class CustomerApi:
     @validate_call
     def customer_deactivate_authorization(
         self,
-        authorization_code: Annotated[StrictStr, Field(description="Authorization code to be deactivated")],
+        customer_deactivate_authorization: Optional[CustomerDeactivateAuthorization] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -392,13 +354,13 @@ class CustomerApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> CustomerDeactivateAuthorizationResponse:
         """Deactivate Authorization
 
-        Deactivate a customer's card
+        Deactivate an authorization for any payment channel.
 
-        :param authorization_code: Authorization code to be deactivated (required)
-        :type authorization_code: str
+        :param customer_deactivate_authorization:
+        :type customer_deactivate_authorization: CustomerDeactivateAuthorization
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -422,7 +384,7 @@ class CustomerApi:
         """ # noqa: E501
 
         _param = self._customer_deactivate_authorization_serialize(
-            authorization_code=authorization_code,
+            customer_deactivate_authorization=customer_deactivate_authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -430,7 +392,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "CustomerDeactivateAuthorizationResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -447,7 +409,7 @@ class CustomerApi:
     @validate_call
     def customer_deactivate_authorization_with_http_info(
         self,
-        authorization_code: Annotated[StrictStr, Field(description="Authorization code to be deactivated")],
+        customer_deactivate_authorization: Optional[CustomerDeactivateAuthorization] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -460,13 +422,13 @@ class CustomerApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[CustomerDeactivateAuthorizationResponse]:
         """Deactivate Authorization
 
-        Deactivate a customer's card
+        Deactivate an authorization for any payment channel.
 
-        :param authorization_code: Authorization code to be deactivated (required)
-        :type authorization_code: str
+        :param customer_deactivate_authorization:
+        :type customer_deactivate_authorization: CustomerDeactivateAuthorization
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -490,7 +452,7 @@ class CustomerApi:
         """ # noqa: E501
 
         _param = self._customer_deactivate_authorization_serialize(
-            authorization_code=authorization_code,
+            customer_deactivate_authorization=customer_deactivate_authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -498,7 +460,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "CustomerDeactivateAuthorizationResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -515,7 +477,7 @@ class CustomerApi:
     @validate_call
     def customer_deactivate_authorization_without_preload_content(
         self,
-        authorization_code: Annotated[StrictStr, Field(description="Authorization code to be deactivated")],
+        customer_deactivate_authorization: Optional[CustomerDeactivateAuthorization] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -531,10 +493,10 @@ class CustomerApi:
     ) -> RESTResponseType:
         """Deactivate Authorization
 
-        Deactivate a customer's card
+        Deactivate an authorization for any payment channel.
 
-        :param authorization_code: Authorization code to be deactivated (required)
-        :type authorization_code: str
+        :param customer_deactivate_authorization:
+        :type customer_deactivate_authorization: CustomerDeactivateAuthorization
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -558,7 +520,7 @@ class CustomerApi:
         """ # noqa: E501
 
         _param = self._customer_deactivate_authorization_serialize(
-            authorization_code=authorization_code,
+            customer_deactivate_authorization=customer_deactivate_authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -566,7 +528,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "CustomerDeactivateAuthorizationResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -578,7 +540,7 @@ class CustomerApi:
 
     def _customer_deactivate_authorization_serialize(
         self,
-        authorization_code,
+        customer_deactivate_authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -603,9 +565,9 @@ class CustomerApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if authorization_code is not None:
-            _form_params.append(('authorization_code', authorization_code))
         # process the body parameter
+        if customer_deactivate_authorization is not None:
+            _body_params = customer_deactivate_authorization
 
 
         # set the HTTP header `Accept`
@@ -623,8 +585,8 @@ class CustomerApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -638,7 +600,300 @@ class CustomerApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/customer/deactivate_authorization',
+            resource_path='/customer/authorization/deactivate',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def customer_direct_debit_activation_charge(
+        self,
+        id: Annotated[StrictInt, Field(description="The customer ID attached to the authorization")],
+        customer_direct_debit_activation_charge_request: Optional[CustomerDirectDebitActivationChargeRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> CustomerDirectDebitActivationChargeResponse:
+        """Direct Debit Activation Charge
+
+        Trigger an activation charge on an inactive mandate on behalf of your customer
+
+        :param id: The customer ID attached to the authorization (required)
+        :type id: int
+        :param customer_direct_debit_activation_charge_request:
+        :type customer_direct_debit_activation_charge_request: CustomerDirectDebitActivationChargeRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._customer_direct_debit_activation_charge_serialize(
+            id=id,
+            customer_direct_debit_activation_charge_request=customer_direct_debit_activation_charge_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomerDirectDebitActivationChargeResponse",
+            '401': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def customer_direct_debit_activation_charge_with_http_info(
+        self,
+        id: Annotated[StrictInt, Field(description="The customer ID attached to the authorization")],
+        customer_direct_debit_activation_charge_request: Optional[CustomerDirectDebitActivationChargeRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[CustomerDirectDebitActivationChargeResponse]:
+        """Direct Debit Activation Charge
+
+        Trigger an activation charge on an inactive mandate on behalf of your customer
+
+        :param id: The customer ID attached to the authorization (required)
+        :type id: int
+        :param customer_direct_debit_activation_charge_request:
+        :type customer_direct_debit_activation_charge_request: CustomerDirectDebitActivationChargeRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._customer_direct_debit_activation_charge_serialize(
+            id=id,
+            customer_direct_debit_activation_charge_request=customer_direct_debit_activation_charge_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomerDirectDebitActivationChargeResponse",
+            '401': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def customer_direct_debit_activation_charge_without_preload_content(
+        self,
+        id: Annotated[StrictInt, Field(description="The customer ID attached to the authorization")],
+        customer_direct_debit_activation_charge_request: Optional[CustomerDirectDebitActivationChargeRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Direct Debit Activation Charge
+
+        Trigger an activation charge on an inactive mandate on behalf of your customer
+
+        :param id: The customer ID attached to the authorization (required)
+        :type id: int
+        :param customer_direct_debit_activation_charge_request:
+        :type customer_direct_debit_activation_charge_request: CustomerDirectDebitActivationChargeRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._customer_direct_debit_activation_charge_serialize(
+            id=id,
+            customer_direct_debit_activation_charge_request=customer_direct_debit_activation_charge_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomerDirectDebitActivationChargeResponse",
+            '401': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _customer_direct_debit_activation_charge_serialize(
+        self,
+        id,
+        customer_direct_debit_activation_charge_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if customer_direct_debit_activation_charge_request is not None:
+            _body_params = customer_direct_debit_activation_charge_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/customer/{id}/directdebit-activation-charge',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -657,7 +912,7 @@ class CustomerApi:
     @validate_call
     def customer_fetch(
         self,
-        code: StrictStr,
+        code: Annotated[StrictStr, Field(description="The code for the customer gotten from the response of the customer creation")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -670,11 +925,12 @@ class CustomerApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> CustomerFetchResponse:
         """Fetch Customer
 
+        Get details of a customer on your integration.
 
-        :param code: (required)
+        :param code: The code for the customer gotten from the response of the customer creation (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -707,7 +963,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "CustomerFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -725,7 +981,7 @@ class CustomerApi:
     @validate_call
     def customer_fetch_with_http_info(
         self,
-        code: StrictStr,
+        code: Annotated[StrictStr, Field(description="The code for the customer gotten from the response of the customer creation")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -738,11 +994,12 @@ class CustomerApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[CustomerFetchResponse]:
         """Fetch Customer
 
+        Get details of a customer on your integration.
 
-        :param code: (required)
+        :param code: The code for the customer gotten from the response of the customer creation (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -775,7 +1032,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "CustomerFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -793,7 +1050,7 @@ class CustomerApi:
     @validate_call
     def customer_fetch_without_preload_content(
         self,
-        code: StrictStr,
+        code: Annotated[StrictStr, Field(description="The code for the customer gotten from the response of the customer creation")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -809,8 +1066,9 @@ class CustomerApi:
     ) -> RESTResponseType:
         """Fetch Customer
 
+        Get details of a customer on your integration.
 
-        :param code: (required)
+        :param code: The code for the customer gotten from the response of the customer creation (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -843,7 +1101,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "CustomerFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -919,15 +1177,9 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_list(
+    def customer_fetch_mandate_authorizations(
         self,
-        use_cursor: Optional[StrictBool] = None,
-        next: Optional[StrictStr] = None,
-        previous: Optional[StrictStr] = None,
-        var_from: Optional[StrictStr] = None,
-        to: Optional[StrictStr] = None,
-        per_page: Optional[StrictStr] = None,
-        page: Optional[StrictStr] = None,
+        id: Annotated[StrictInt, Field(description="The customer ID for the authorizations to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -940,24 +1192,865 @@ class CustomerApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> CustomerFetchMandateAuthorizationsResponse:
+        """Fetch Mandate Authorizations
+
+        Get the list of direct debit mandates associated with a customer
+
+        :param id: The customer ID for the authorizations to fetch (required)
+        :type id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._customer_fetch_mandate_authorizations_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomerFetchMandateAuthorizationsResponse",
+            '401': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def customer_fetch_mandate_authorizations_with_http_info(
+        self,
+        id: Annotated[StrictInt, Field(description="The customer ID for the authorizations to fetch")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[CustomerFetchMandateAuthorizationsResponse]:
+        """Fetch Mandate Authorizations
+
+        Get the list of direct debit mandates associated with a customer
+
+        :param id: The customer ID for the authorizations to fetch (required)
+        :type id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._customer_fetch_mandate_authorizations_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomerFetchMandateAuthorizationsResponse",
+            '401': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def customer_fetch_mandate_authorizations_without_preload_content(
+        self,
+        id: Annotated[StrictInt, Field(description="The customer ID for the authorizations to fetch")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Fetch Mandate Authorizations
+
+        Get the list of direct debit mandates associated with a customer
+
+        :param id: The customer ID for the authorizations to fetch (required)
+        :type id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._customer_fetch_mandate_authorizations_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomerFetchMandateAuthorizationsResponse",
+            '401': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _customer_fetch_mandate_authorizations_serialize(
+        self,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/customer/{id}/directdebit-mandate-authorizations',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def customer_initialize_authorization(
+        self,
+        customer_authorization_initialize_request: CustomerAuthorizationInitializeRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> CustomerAuthorizationInitializeResponse:
+        """Initialize Authorization
+
+        Initiate a request to create a reusable authorization code for recurring transactions
+
+        :param customer_authorization_initialize_request: (required)
+        :type customer_authorization_initialize_request: CustomerAuthorizationInitializeRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._customer_initialize_authorization_serialize(
+            customer_authorization_initialize_request=customer_authorization_initialize_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomerAuthorizationInitializeResponse",
+            '401': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def customer_initialize_authorization_with_http_info(
+        self,
+        customer_authorization_initialize_request: CustomerAuthorizationInitializeRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[CustomerAuthorizationInitializeResponse]:
+        """Initialize Authorization
+
+        Initiate a request to create a reusable authorization code for recurring transactions
+
+        :param customer_authorization_initialize_request: (required)
+        :type customer_authorization_initialize_request: CustomerAuthorizationInitializeRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._customer_initialize_authorization_serialize(
+            customer_authorization_initialize_request=customer_authorization_initialize_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomerAuthorizationInitializeResponse",
+            '401': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def customer_initialize_authorization_without_preload_content(
+        self,
+        customer_authorization_initialize_request: CustomerAuthorizationInitializeRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Initialize Authorization
+
+        Initiate a request to create a reusable authorization code for recurring transactions
+
+        :param customer_authorization_initialize_request: (required)
+        :type customer_authorization_initialize_request: CustomerAuthorizationInitializeRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._customer_initialize_authorization_serialize(
+            customer_authorization_initialize_request=customer_authorization_initialize_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomerAuthorizationInitializeResponse",
+            '401': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _customer_initialize_authorization_serialize(
+        self,
+        customer_authorization_initialize_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if customer_authorization_initialize_request is not None:
+            _body_params = customer_authorization_initialize_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/customer/authorization/initialize',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def customer_initialize_direct_debit(
+        self,
+        id: Annotated[StrictInt, Field(description="The ID of the customer to initialize the direct debit for")],
+        customer_initialize_direct_debit_request: Optional[CustomerInitializeDirectDebitRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> CustomerInitializeDirectDebitResponse:
+        """Initialize Direct Debit
+
+        Initialize the process of linking an account to a customer for Direct Debit transactions
+
+        :param id: The ID of the customer to initialize the direct debit for (required)
+        :type id: int
+        :param customer_initialize_direct_debit_request:
+        :type customer_initialize_direct_debit_request: CustomerInitializeDirectDebitRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._customer_initialize_direct_debit_serialize(
+            id=id,
+            customer_initialize_direct_debit_request=customer_initialize_direct_debit_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomerInitializeDirectDebitResponse",
+            '401': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def customer_initialize_direct_debit_with_http_info(
+        self,
+        id: Annotated[StrictInt, Field(description="The ID of the customer to initialize the direct debit for")],
+        customer_initialize_direct_debit_request: Optional[CustomerInitializeDirectDebitRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[CustomerInitializeDirectDebitResponse]:
+        """Initialize Direct Debit
+
+        Initialize the process of linking an account to a customer for Direct Debit transactions
+
+        :param id: The ID of the customer to initialize the direct debit for (required)
+        :type id: int
+        :param customer_initialize_direct_debit_request:
+        :type customer_initialize_direct_debit_request: CustomerInitializeDirectDebitRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._customer_initialize_direct_debit_serialize(
+            id=id,
+            customer_initialize_direct_debit_request=customer_initialize_direct_debit_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomerInitializeDirectDebitResponse",
+            '401': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def customer_initialize_direct_debit_without_preload_content(
+        self,
+        id: Annotated[StrictInt, Field(description="The ID of the customer to initialize the direct debit for")],
+        customer_initialize_direct_debit_request: Optional[CustomerInitializeDirectDebitRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Initialize Direct Debit
+
+        Initialize the process of linking an account to a customer for Direct Debit transactions
+
+        :param id: The ID of the customer to initialize the direct debit for (required)
+        :type id: int
+        :param customer_initialize_direct_debit_request:
+        :type customer_initialize_direct_debit_request: CustomerInitializeDirectDebitRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._customer_initialize_direct_debit_serialize(
+            id=id,
+            customer_initialize_direct_debit_request=customer_initialize_direct_debit_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomerInitializeDirectDebitResponse",
+            '401': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _customer_initialize_direct_debit_serialize(
+        self,
+        id,
+        customer_initialize_direct_debit_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if customer_initialize_direct_debit_request is not None:
+            _body_params = customer_initialize_direct_debit_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/customer/{id}/initialize-direct-debit',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def customer_list(
+        self,
+        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
+        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
+        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
+        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        per_page: Annotated[Optional[StrictStr], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictStr], Field(description="The offset to retrieve data from")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> CustomerListResponse:
         """List Customers
 
         List customers on your integration
 
-        :param use_cursor:
+        :param use_cursor: A flag to indicate if cursor based pagination should be used
         :type use_cursor: bool
-        :param next:
+        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
         :type next: str
-        :param previous:
+        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
         :type previous: str
-        :param var_from:
-        :type var_from: str
-        :param to:
-        :type to: str
-        :param per_page:
+        :param var_from: The start date
+        :type var_from: datetime
+        :param to: The end date
+        :type to: datetime
+        :param per_page: The number of records to fetch per request
         :type per_page: str
-        :param page:
+        :param page: The offset to retrieve data from
         :type page: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -996,7 +2089,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "CustomerListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1014,13 +2107,13 @@ class CustomerApi:
     @validate_call
     def customer_list_with_http_info(
         self,
-        use_cursor: Optional[StrictBool] = None,
-        next: Optional[StrictStr] = None,
-        previous: Optional[StrictStr] = None,
-        var_from: Optional[StrictStr] = None,
-        to: Optional[StrictStr] = None,
-        per_page: Optional[StrictStr] = None,
-        page: Optional[StrictStr] = None,
+        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
+        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
+        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
+        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        per_page: Annotated[Optional[StrictStr], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictStr], Field(description="The offset to retrieve data from")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1033,24 +2126,24 @@ class CustomerApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[CustomerListResponse]:
         """List Customers
 
         List customers on your integration
 
-        :param use_cursor:
+        :param use_cursor: A flag to indicate if cursor based pagination should be used
         :type use_cursor: bool
-        :param next:
+        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
         :type next: str
-        :param previous:
+        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
         :type previous: str
-        :param var_from:
-        :type var_from: str
-        :param to:
-        :type to: str
-        :param per_page:
+        :param var_from: The start date
+        :type var_from: datetime
+        :param to: The end date
+        :type to: datetime
+        :param per_page: The number of records to fetch per request
         :type per_page: str
-        :param page:
+        :param page: The offset to retrieve data from
         :type page: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1089,7 +2182,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "CustomerListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1107,13 +2200,13 @@ class CustomerApi:
     @validate_call
     def customer_list_without_preload_content(
         self,
-        use_cursor: Optional[StrictBool] = None,
-        next: Optional[StrictStr] = None,
-        previous: Optional[StrictStr] = None,
-        var_from: Optional[StrictStr] = None,
-        to: Optional[StrictStr] = None,
-        per_page: Optional[StrictStr] = None,
-        page: Optional[StrictStr] = None,
+        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
+        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
+        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
+        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        per_page: Annotated[Optional[StrictStr], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictStr], Field(description="The offset to retrieve data from")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1131,19 +2224,19 @@ class CustomerApi:
 
         List customers on your integration
 
-        :param use_cursor:
+        :param use_cursor: A flag to indicate if cursor based pagination should be used
         :type use_cursor: bool
-        :param next:
+        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
         :type next: str
-        :param previous:
+        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
         :type previous: str
-        :param var_from:
-        :type var_from: str
-        :param to:
-        :type to: str
-        :param per_page:
+        :param var_from: The start date
+        :type var_from: datetime
+        :param to: The end date
+        :type to: datetime
+        :param per_page: The number of records to fetch per request
         :type per_page: str
-        :param page:
+        :param page: The offset to retrieve data from
         :type page: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1182,7 +2275,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "CustomerListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1237,12 +2330,30 @@ class CustomerApi:
             _query_params.append(('previous', previous))
             
         if var_from is not None:
-            
-            _query_params.append(('from', var_from))
+            if isinstance(var_from, datetime):
+                _query_params.append(
+                    (
+                        'from',
+                        var_from.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('from', var_from))
             
         if to is not None:
-            
-            _query_params.append(('to', to))
+            if isinstance(to, datetime):
+                _query_params.append(
+                    (
+                        'to',
+                        to.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('to', to))
             
         if per_page is not None:
             
@@ -1292,8 +2403,7 @@ class CustomerApi:
     @validate_call
     def customer_risk_action(
         self,
-        customer: Annotated[StrictStr, Field(description="Customer's code, or email address")],
-        risk_action: Annotated[Optional[StrictStr], Field(description="One of the possible risk actions [ default, allow, deny ]. allow to whitelist.  deny to blacklist. Customers start with a default risk action. ")] = None,
+        customer_risk_action: Optional[CustomerRiskAction] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1306,15 +2416,13 @@ class CustomerApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
-        """White/blacklist Customer
+    ) -> CustomerWhitelistBlacklistResponse:
+        """Set Risk Action
 
         Set customer's risk action by whitelisting or blacklisting the customer
 
-        :param customer: Customer's code, or email address (required)
-        :type customer: str
-        :param risk_action: One of the possible risk actions [ default, allow, deny ]. allow to whitelist.  deny to blacklist. Customers start with a default risk action. 
-        :type risk_action: str
+        :param customer_risk_action:
+        :type customer_risk_action: CustomerRiskAction
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1338,8 +2446,7 @@ class CustomerApi:
         """ # noqa: E501
 
         _param = self._customer_risk_action_serialize(
-            customer=customer,
-            risk_action=risk_action,
+            customer_risk_action=customer_risk_action,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1347,7 +2454,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "CustomerWhitelistBlacklistResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1364,8 +2471,7 @@ class CustomerApi:
     @validate_call
     def customer_risk_action_with_http_info(
         self,
-        customer: Annotated[StrictStr, Field(description="Customer's code, or email address")],
-        risk_action: Annotated[Optional[StrictStr], Field(description="One of the possible risk actions [ default, allow, deny ]. allow to whitelist.  deny to blacklist. Customers start with a default risk action. ")] = None,
+        customer_risk_action: Optional[CustomerRiskAction] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1378,15 +2484,13 @@ class CustomerApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
-        """White/blacklist Customer
+    ) -> ApiResponse[CustomerWhitelistBlacklistResponse]:
+        """Set Risk Action
 
         Set customer's risk action by whitelisting or blacklisting the customer
 
-        :param customer: Customer's code, or email address (required)
-        :type customer: str
-        :param risk_action: One of the possible risk actions [ default, allow, deny ]. allow to whitelist.  deny to blacklist. Customers start with a default risk action. 
-        :type risk_action: str
+        :param customer_risk_action:
+        :type customer_risk_action: CustomerRiskAction
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1410,8 +2514,7 @@ class CustomerApi:
         """ # noqa: E501
 
         _param = self._customer_risk_action_serialize(
-            customer=customer,
-            risk_action=risk_action,
+            customer_risk_action=customer_risk_action,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1419,7 +2522,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "CustomerWhitelistBlacklistResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1436,8 +2539,7 @@ class CustomerApi:
     @validate_call
     def customer_risk_action_without_preload_content(
         self,
-        customer: Annotated[StrictStr, Field(description="Customer's code, or email address")],
-        risk_action: Annotated[Optional[StrictStr], Field(description="One of the possible risk actions [ default, allow, deny ]. allow to whitelist.  deny to blacklist. Customers start with a default risk action. ")] = None,
+        customer_risk_action: Optional[CustomerRiskAction] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1451,14 +2553,12 @@ class CustomerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """White/blacklist Customer
+        """Set Risk Action
 
         Set customer's risk action by whitelisting or blacklisting the customer
 
-        :param customer: Customer's code, or email address (required)
-        :type customer: str
-        :param risk_action: One of the possible risk actions [ default, allow, deny ]. allow to whitelist.  deny to blacklist. Customers start with a default risk action. 
-        :type risk_action: str
+        :param customer_risk_action:
+        :type customer_risk_action: CustomerRiskAction
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1482,8 +2582,7 @@ class CustomerApi:
         """ # noqa: E501
 
         _param = self._customer_risk_action_serialize(
-            customer=customer,
-            risk_action=risk_action,
+            customer_risk_action=customer_risk_action,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1491,7 +2590,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "CustomerWhitelistBlacklistResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -1503,8 +2602,7 @@ class CustomerApi:
 
     def _customer_risk_action_serialize(
         self,
-        customer,
-        risk_action,
+        customer_risk_action,
         _request_auth,
         _content_type,
         _headers,
@@ -1529,11 +2627,9 @@ class CustomerApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if customer is not None:
-            _form_params.append(('customer', customer))
-        if risk_action is not None:
-            _form_params.append(('risk_action', risk_action))
         # process the body parameter
+        if customer_risk_action is not None:
+            _body_params = customer_risk_action
 
 
         # set the HTTP header `Accept`
@@ -1551,8 +2647,8 @@ class CustomerApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -1585,11 +2681,8 @@ class CustomerApi:
     @validate_call
     def customer_update(
         self,
-        code: StrictStr,
-        first_name: Annotated[Optional[StrictStr], Field(description="Customer's first name")] = None,
-        last_name: Annotated[Optional[StrictStr], Field(description="Customer's last name")] = None,
-        phone: Annotated[Optional[StrictStr], Field(description="Customer's phone number")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
+        code: Annotated[StrictStr, Field(description="The code for the customer gotten from the response of the customer creation")],
+        customer_update: Optional[CustomerUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1602,20 +2695,15 @@ class CustomerApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> CustomerUpdateResponse:
         """Update Customer
 
+        Update a customer's details on your integration
 
-        :param code: (required)
+        :param code: The code for the customer gotten from the response of the customer creation (required)
         :type code: str
-        :param first_name: Customer's first name
-        :type first_name: str
-        :param last_name: Customer's last name
-        :type last_name: str
-        :param phone: Customer's phone number
-        :type phone: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
+        :param customer_update:
+        :type customer_update: CustomerUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1640,10 +2728,7 @@ class CustomerApi:
 
         _param = self._customer_update_serialize(
             code=code,
-            first_name=first_name,
-            last_name=last_name,
-            phone=phone,
-            metadata=metadata,
+            customer_update=customer_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1651,7 +2736,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "CustomerUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1669,11 +2754,8 @@ class CustomerApi:
     @validate_call
     def customer_update_with_http_info(
         self,
-        code: StrictStr,
-        first_name: Annotated[Optional[StrictStr], Field(description="Customer's first name")] = None,
-        last_name: Annotated[Optional[StrictStr], Field(description="Customer's last name")] = None,
-        phone: Annotated[Optional[StrictStr], Field(description="Customer's phone number")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
+        code: Annotated[StrictStr, Field(description="The code for the customer gotten from the response of the customer creation")],
+        customer_update: Optional[CustomerUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1686,20 +2768,15 @@ class CustomerApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[CustomerUpdateResponse]:
         """Update Customer
 
+        Update a customer's details on your integration
 
-        :param code: (required)
+        :param code: The code for the customer gotten from the response of the customer creation (required)
         :type code: str
-        :param first_name: Customer's first name
-        :type first_name: str
-        :param last_name: Customer's last name
-        :type last_name: str
-        :param phone: Customer's phone number
-        :type phone: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
+        :param customer_update:
+        :type customer_update: CustomerUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1724,10 +2801,7 @@ class CustomerApi:
 
         _param = self._customer_update_serialize(
             code=code,
-            first_name=first_name,
-            last_name=last_name,
-            phone=phone,
-            metadata=metadata,
+            customer_update=customer_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1735,7 +2809,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "CustomerUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1753,11 +2827,8 @@ class CustomerApi:
     @validate_call
     def customer_update_without_preload_content(
         self,
-        code: StrictStr,
-        first_name: Annotated[Optional[StrictStr], Field(description="Customer's first name")] = None,
-        last_name: Annotated[Optional[StrictStr], Field(description="Customer's last name")] = None,
-        phone: Annotated[Optional[StrictStr], Field(description="Customer's phone number")] = None,
-        metadata: Annotated[Optional[StrictStr], Field(description="Stringified JSON object of custom data")] = None,
+        code: Annotated[StrictStr, Field(description="The code for the customer gotten from the response of the customer creation")],
+        customer_update: Optional[CustomerUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1773,17 +2844,12 @@ class CustomerApi:
     ) -> RESTResponseType:
         """Update Customer
 
+        Update a customer's details on your integration
 
-        :param code: (required)
+        :param code: The code for the customer gotten from the response of the customer creation (required)
         :type code: str
-        :param first_name: Customer's first name
-        :type first_name: str
-        :param last_name: Customer's last name
-        :type last_name: str
-        :param phone: Customer's phone number
-        :type phone: str
-        :param metadata: Stringified JSON object of custom data
-        :type metadata: str
+        :param customer_update:
+        :type customer_update: CustomerUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1808,10 +2874,7 @@ class CustomerApi:
 
         _param = self._customer_update_serialize(
             code=code,
-            first_name=first_name,
-            last_name=last_name,
-            phone=phone,
-            metadata=metadata,
+            customer_update=customer_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1819,7 +2882,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "CustomerUpdateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1833,10 +2896,7 @@ class CustomerApi:
     def _customer_update_serialize(
         self,
         code,
-        first_name,
-        last_name,
-        phone,
-        metadata,
+        customer_update,
         _request_auth,
         _content_type,
         _headers,
@@ -1863,15 +2923,9 @@ class CustomerApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if first_name is not None:
-            _form_params.append(('first_name', first_name))
-        if last_name is not None:
-            _form_params.append(('last_name', last_name))
-        if phone is not None:
-            _form_params.append(('phone', phone))
-        if metadata is not None:
-            _form_params.append(('metadata', metadata))
         # process the body parameter
+        if customer_update is not None:
+            _body_params = customer_update
 
 
         # set the HTTP header `Accept`
@@ -1889,8 +2943,8 @@ class CustomerApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -1923,15 +2977,8 @@ class CustomerApi:
     @validate_call
     def customer_validate(
         self,
-        code: StrictStr,
-        first_name: Annotated[StrictStr, Field(description="Customer's first name")],
-        last_name: Annotated[StrictStr, Field(description="Customer's last name")],
-        type: Annotated[StrictStr, Field(description="Predefined types of identification.")],
-        country: Annotated[StrictStr, Field(description="Two-letter country code of identification issuer")],
-        bvn: Annotated[StrictStr, Field(description="Customer's Bank Verification Number")],
-        bank_code: Annotated[StrictStr, Field(description="You can get the list of bank codes by calling the List Banks endpoint (https://api.paystack.co/bank).")],
-        account_number: Annotated[StrictStr, Field(description="Customer's bank account number.")],
-        value: Annotated[Optional[StrictStr], Field(description="Customer's identification number. Required if type is bvn")] = None,
+        code: Annotated[StrictStr, Field(description="The code for the customer gotten from the response of the customer creation")],
+        customer_validate: Optional[CustomerValidate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1944,29 +2991,15 @@ class CustomerApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accepted:
+    ) -> CustomerValidateResponse:
         """Validate Customer
 
         Validate a customer's identity
 
-        :param code: (required)
+        :param code: The code for the customer gotten from the response of the customer creation (required)
         :type code: str
-        :param first_name: Customer's first name (required)
-        :type first_name: str
-        :param last_name: Customer's last name (required)
-        :type last_name: str
-        :param type: Predefined types of identification. (required)
-        :type type: str
-        :param country: Two-letter country code of identification issuer (required)
-        :type country: str
-        :param bvn: Customer's Bank Verification Number (required)
-        :type bvn: str
-        :param bank_code: You can get the list of bank codes by calling the List Banks endpoint (https://api.paystack.co/bank). (required)
-        :type bank_code: str
-        :param account_number: Customer's bank account number. (required)
-        :type account_number: str
-        :param value: Customer's identification number. Required if type is bvn
-        :type value: str
+        :param customer_validate:
+        :type customer_validate: CustomerValidate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1991,14 +3024,7 @@ class CustomerApi:
 
         _param = self._customer_validate_serialize(
             code=code,
-            first_name=first_name,
-            last_name=last_name,
-            type=type,
-            country=country,
-            bvn=bvn,
-            bank_code=bank_code,
-            account_number=account_number,
-            value=value,
+            customer_validate=customer_validate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2006,7 +3032,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accepted",
+            '202': "CustomerValidateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -2023,15 +3049,8 @@ class CustomerApi:
     @validate_call
     def customer_validate_with_http_info(
         self,
-        code: StrictStr,
-        first_name: Annotated[StrictStr, Field(description="Customer's first name")],
-        last_name: Annotated[StrictStr, Field(description="Customer's last name")],
-        type: Annotated[StrictStr, Field(description="Predefined types of identification.")],
-        country: Annotated[StrictStr, Field(description="Two-letter country code of identification issuer")],
-        bvn: Annotated[StrictStr, Field(description="Customer's Bank Verification Number")],
-        bank_code: Annotated[StrictStr, Field(description="You can get the list of bank codes by calling the List Banks endpoint (https://api.paystack.co/bank).")],
-        account_number: Annotated[StrictStr, Field(description="Customer's bank account number.")],
-        value: Annotated[Optional[StrictStr], Field(description="Customer's identification number. Required if type is bvn")] = None,
+        code: Annotated[StrictStr, Field(description="The code for the customer gotten from the response of the customer creation")],
+        customer_validate: Optional[CustomerValidate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2044,29 +3063,15 @@ class CustomerApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accepted]:
+    ) -> ApiResponse[CustomerValidateResponse]:
         """Validate Customer
 
         Validate a customer's identity
 
-        :param code: (required)
+        :param code: The code for the customer gotten from the response of the customer creation (required)
         :type code: str
-        :param first_name: Customer's first name (required)
-        :type first_name: str
-        :param last_name: Customer's last name (required)
-        :type last_name: str
-        :param type: Predefined types of identification. (required)
-        :type type: str
-        :param country: Two-letter country code of identification issuer (required)
-        :type country: str
-        :param bvn: Customer's Bank Verification Number (required)
-        :type bvn: str
-        :param bank_code: You can get the list of bank codes by calling the List Banks endpoint (https://api.paystack.co/bank). (required)
-        :type bank_code: str
-        :param account_number: Customer's bank account number. (required)
-        :type account_number: str
-        :param value: Customer's identification number. Required if type is bvn
-        :type value: str
+        :param customer_validate:
+        :type customer_validate: CustomerValidate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2091,14 +3096,7 @@ class CustomerApi:
 
         _param = self._customer_validate_serialize(
             code=code,
-            first_name=first_name,
-            last_name=last_name,
-            type=type,
-            country=country,
-            bvn=bvn,
-            bank_code=bank_code,
-            account_number=account_number,
-            value=value,
+            customer_validate=customer_validate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2106,7 +3104,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accepted",
+            '202': "CustomerValidateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -2123,15 +3121,8 @@ class CustomerApi:
     @validate_call
     def customer_validate_without_preload_content(
         self,
-        code: StrictStr,
-        first_name: Annotated[StrictStr, Field(description="Customer's first name")],
-        last_name: Annotated[StrictStr, Field(description="Customer's last name")],
-        type: Annotated[StrictStr, Field(description="Predefined types of identification.")],
-        country: Annotated[StrictStr, Field(description="Two-letter country code of identification issuer")],
-        bvn: Annotated[StrictStr, Field(description="Customer's Bank Verification Number")],
-        bank_code: Annotated[StrictStr, Field(description="You can get the list of bank codes by calling the List Banks endpoint (https://api.paystack.co/bank).")],
-        account_number: Annotated[StrictStr, Field(description="Customer's bank account number.")],
-        value: Annotated[Optional[StrictStr], Field(description="Customer's identification number. Required if type is bvn")] = None,
+        code: Annotated[StrictStr, Field(description="The code for the customer gotten from the response of the customer creation")],
+        customer_validate: Optional[CustomerValidate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2149,24 +3140,10 @@ class CustomerApi:
 
         Validate a customer's identity
 
-        :param code: (required)
+        :param code: The code for the customer gotten from the response of the customer creation (required)
         :type code: str
-        :param first_name: Customer's first name (required)
-        :type first_name: str
-        :param last_name: Customer's last name (required)
-        :type last_name: str
-        :param type: Predefined types of identification. (required)
-        :type type: str
-        :param country: Two-letter country code of identification issuer (required)
-        :type country: str
-        :param bvn: Customer's Bank Verification Number (required)
-        :type bvn: str
-        :param bank_code: You can get the list of bank codes by calling the List Banks endpoint (https://api.paystack.co/bank). (required)
-        :type bank_code: str
-        :param account_number: Customer's bank account number. (required)
-        :type account_number: str
-        :param value: Customer's identification number. Required if type is bvn
-        :type value: str
+        :param customer_validate:
+        :type customer_validate: CustomerValidate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2191,14 +3168,7 @@ class CustomerApi:
 
         _param = self._customer_validate_serialize(
             code=code,
-            first_name=first_name,
-            last_name=last_name,
-            type=type,
-            country=country,
-            bvn=bvn,
-            bank_code=bank_code,
-            account_number=account_number,
-            value=value,
+            customer_validate=customer_validate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2206,7 +3176,7 @@ class CustomerApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accepted",
+            '202': "CustomerValidateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -2219,14 +3189,7 @@ class CustomerApi:
     def _customer_validate_serialize(
         self,
         code,
-        first_name,
-        last_name,
-        type,
-        country,
-        bvn,
-        bank_code,
-        account_number,
-        value,
+        customer_validate,
         _request_auth,
         _content_type,
         _headers,
@@ -2253,23 +3216,9 @@ class CustomerApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if first_name is not None:
-            _form_params.append(('first_name', first_name))
-        if last_name is not None:
-            _form_params.append(('last_name', last_name))
-        if type is not None:
-            _form_params.append(('type', type))
-        if country is not None:
-            _form_params.append(('country', country))
-        if bvn is not None:
-            _form_params.append(('bvn', bvn))
-        if bank_code is not None:
-            _form_params.append(('bank_code', bank_code))
-        if account_number is not None:
-            _form_params.append(('account_number', account_number))
-        if value is not None:
-            _form_params.append(('value', value))
         # process the body parameter
+        if customer_validate is not None:
+            _body_params = customer_validate
 
 
         # set the HTTP header `Accept`
@@ -2287,8 +3236,8 @@ class CustomerApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -2303,6 +3252,273 @@ class CustomerApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/customer/{code}/identification',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def customer_verify_authorization(
+        self,
+        reference: Annotated[StrictStr, Field(description="The reference returned in the initialization response")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> CustomerAuthorizationVerifyResponse:
+        """Verify Authorization
+
+        Check the status of an authorization request
+
+        :param reference: The reference returned in the initialization response (required)
+        :type reference: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._customer_verify_authorization_serialize(
+            reference=reference,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomerAuthorizationVerifyResponse",
+            '401': "Error",
+            '404': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def customer_verify_authorization_with_http_info(
+        self,
+        reference: Annotated[StrictStr, Field(description="The reference returned in the initialization response")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[CustomerAuthorizationVerifyResponse]:
+        """Verify Authorization
+
+        Check the status of an authorization request
+
+        :param reference: The reference returned in the initialization response (required)
+        :type reference: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._customer_verify_authorization_serialize(
+            reference=reference,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomerAuthorizationVerifyResponse",
+            '401': "Error",
+            '404': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def customer_verify_authorization_without_preload_content(
+        self,
+        reference: Annotated[StrictStr, Field(description="The reference returned in the initialization response")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Verify Authorization
+
+        Check the status of an authorization request
+
+        :param reference: The reference returned in the initialization response (required)
+        :type reference: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._customer_verify_authorization_serialize(
+            reference=reference,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomerAuthorizationVerifyResponse",
+            '401': "Error",
+            '404': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _customer_verify_authorization_serialize(
+        self,
+        reference,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if reference is not None:
+            _path_params['reference'] = reference
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/customer/authorization/verify/{reference}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

@@ -18,7 +18,7 @@ import (
 // checks if the MobileMoney type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &MobileMoney{}
 
-// MobileMoney struct for MobileMoney
+// MobileMoney Details of the mobile service provider
 type MobileMoney struct {
 	// Customer's phone number
 	Phone *string `json:"phone,omitempty"`

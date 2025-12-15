@@ -50,7 +50,11 @@ type APIClient struct {
 
 	// API Services
 
+	ApplePayAPI *ApplePayAPIService
+
 	BalanceAPI *BalanceAPIService
+
+	BankAPI *BankAPIService
 
 	BulkChargeAPI *BulkChargeAPIService
 
@@ -60,9 +64,15 @@ type APIClient struct {
 
 	DedicatedVirtualAccountAPI *DedicatedVirtualAccountAPIService
 
+	DirectDebitAPI *DirectDebitAPIService
+
 	DisputeAPI *DisputeAPIService
 
 	IntegrationAPI *IntegrationAPIService
+
+	MiscellaneousAPI *MiscellaneousAPIService
+
+	OrderAPI *OrderAPIService
 
 	PageAPI *PageAPIService
 
@@ -78,9 +88,13 @@ type APIClient struct {
 
 	SplitAPI *SplitAPIService
 
+	StorefrontAPI *StorefrontAPIService
+
 	SubaccountAPI *SubaccountAPIService
 
 	SubscriptionAPI *SubscriptionAPIService
+
+	TerminalAPI *TerminalAPIService
 
 	TransactionAPI *TransactionAPIService
 
@@ -88,7 +102,7 @@ type APIClient struct {
 
 	TransferRecipientAPI *TransferRecipientAPIService
 
-	VerificationAPI *VerificationAPIService
+	VirtualTerminalAPI *VirtualTerminalAPIService
 }
 
 type service struct {
@@ -107,13 +121,18 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.ApplePayAPI = (*ApplePayAPIService)(&c.common)
 	c.BalanceAPI = (*BalanceAPIService)(&c.common)
+	c.BankAPI = (*BankAPIService)(&c.common)
 	c.BulkChargeAPI = (*BulkChargeAPIService)(&c.common)
 	c.ChargeAPI = (*ChargeAPIService)(&c.common)
 	c.CustomerAPI = (*CustomerAPIService)(&c.common)
 	c.DedicatedVirtualAccountAPI = (*DedicatedVirtualAccountAPIService)(&c.common)
+	c.DirectDebitAPI = (*DirectDebitAPIService)(&c.common)
 	c.DisputeAPI = (*DisputeAPIService)(&c.common)
 	c.IntegrationAPI = (*IntegrationAPIService)(&c.common)
+	c.MiscellaneousAPI = (*MiscellaneousAPIService)(&c.common)
+	c.OrderAPI = (*OrderAPIService)(&c.common)
 	c.PageAPI = (*PageAPIService)(&c.common)
 	c.PaymentRequestAPI = (*PaymentRequestAPIService)(&c.common)
 	c.PlanAPI = (*PlanAPIService)(&c.common)
@@ -121,12 +140,14 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.RefundAPI = (*RefundAPIService)(&c.common)
 	c.SettlementAPI = (*SettlementAPIService)(&c.common)
 	c.SplitAPI = (*SplitAPIService)(&c.common)
+	c.StorefrontAPI = (*StorefrontAPIService)(&c.common)
 	c.SubaccountAPI = (*SubaccountAPIService)(&c.common)
 	c.SubscriptionAPI = (*SubscriptionAPIService)(&c.common)
+	c.TerminalAPI = (*TerminalAPIService)(&c.common)
 	c.TransactionAPI = (*TransactionAPIService)(&c.common)
 	c.TransferAPI = (*TransferAPIService)(&c.common)
 	c.TransferRecipientAPI = (*TransferRecipientAPIService)(&c.common)
-	c.VerificationAPI = (*VerificationAPIService)(&c.common)
+	c.VirtualTerminalAPI = (*VirtualTerminalAPIService)(&c.common)
 
 	return c
 }

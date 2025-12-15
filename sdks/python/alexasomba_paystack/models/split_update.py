@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,6 +32,16 @@ class SplitUpdate(BaseModel):
     bearer_type: Optional[StrictStr] = Field(default=None, description="This allows you specify how the transaction charge should be processed")
     bearer_subaccount: Optional[StrictStr] = Field(default=None, description="This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type")
     __properties: ClassVar[List[str]] = ["name", "active", "bearer_type", "bearer_subaccount"]
+
+    @field_validator('bearer_type')
+    def bearer_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['subaccount', 'account', 'all-proportional', 'all']):
+            raise ValueError("must be one of enum values ('subaccount', 'account', 'all-proportional', 'all')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,

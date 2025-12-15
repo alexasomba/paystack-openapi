@@ -1,0 +1,13 @@
+# SDK spec overlays
+#
+# Purpose:
+# - Add a small set of SDK-only endpoints that are not yet present in the main bundled spec.
+# - Keep the repo's main bundled spec (dist/paystack.yaml) as the primary source.
+#
+# This file is intentionally minimal: only SDK-only paths live here.
+# The merged SDK spec output is written to src/assets/sdk/paystack.yaml and synced to each
+# sdks/*/openapi.yaml.
+
+# No SDK-only overrides are currently required.
+paths: {}
+components: {}

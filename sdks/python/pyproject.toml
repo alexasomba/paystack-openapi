@@ -3,7 +3,7 @@ name = "alexasomba_paystack"
 version = "0.1.0"
 description = "Paystack"
 authors = [
-  {name = "Paystack Integration",email = "techsupport@paystack.com"},
+  {name = "OpenAPI Generator Community",email = "techsupport@paystack.com"},
 ]
 readme = "README.md"
 keywords = ["OpenAPI", "OpenAPI-Generator", "Paystack"]
@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
+Repository = "https://github.com/alexasomba/paystack-openapi"
 
 [tool.poetry]
 requires-poetry = ">=2.0"

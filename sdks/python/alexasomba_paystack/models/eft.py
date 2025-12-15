@@ -25,7 +25,7 @@ from typing_extensions import Self
 
 class EFT(BaseModel):
     """
-    EFT
+    Details of the EFT provider
     """ # noqa: E501
     provider: Optional[StrictStr] = Field(default=None, description="The EFT provider")
     __properties: ClassVar[List[str]] = ["provider"]

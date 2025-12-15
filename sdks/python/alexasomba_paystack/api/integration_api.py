@@ -17,8 +17,10 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from typing import Any, Dict, Optional
-from alexasomba_paystack.models.response import Response
+from typing import Optional
+from alexasomba_paystack.models.control_panel_fetch_payment_session_timeout_response import ControlPanelFetchPaymentSessionTimeoutResponse
+from alexasomba_paystack.models.control_panel_update_payment_session_timeout_response import ControlPanelUpdatePaymentSessionTimeoutResponse
+from alexasomba_paystack.models.payment_session import PaymentSession
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
 from alexasomba_paystack.api_response import ApiResponse
@@ -53,9 +55,10 @@ class IntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> ControlPanelFetchPaymentSessionTimeoutResponse:
         """Fetch Payment Session Timeout
 
+        Fetch the session timeout of a transaction
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -87,7 +90,7 @@ class IntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ControlPanelFetchPaymentSessionTimeoutResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -117,9 +120,10 @@ class IntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[ControlPanelFetchPaymentSessionTimeoutResponse]:
         """Fetch Payment Session Timeout
 
+        Fetch the session timeout of a transaction
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -151,7 +155,7 @@ class IntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ControlPanelFetchPaymentSessionTimeoutResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -184,6 +188,7 @@ class IntegrationApi:
     ) -> RESTResponseType:
         """Fetch Payment Session Timeout
 
+        Fetch the session timeout of a transaction
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -215,7 +220,7 @@ class IntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ControlPanelFetchPaymentSessionTimeoutResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -290,7 +295,7 @@ class IntegrationApi:
     @validate_call
     def integration_update_payment_session_timeout(
         self,
-        body: Optional[Dict[str, Any]] = None,
+        payment_session: Optional[PaymentSession] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -303,12 +308,13 @@ class IntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> ControlPanelUpdatePaymentSessionTimeoutResponse:
         """Update Payment Session Timeout
 
+        Update the session timeout of a transaction
 
-        :param body:
-        :type body: object
+        :param payment_session:
+        :type payment_session: PaymentSession
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -332,7 +338,7 @@ class IntegrationApi:
         """ # noqa: E501
 
         _param = self._integration_update_payment_session_timeout_serialize(
-            body=body,
+            payment_session=payment_session,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -340,7 +346,7 @@ class IntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ControlPanelUpdatePaymentSessionTimeoutResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -358,7 +364,7 @@ class IntegrationApi:
     @validate_call
     def integration_update_payment_session_timeout_with_http_info(
         self,
-        body: Optional[Dict[str, Any]] = None,
+        payment_session: Optional[PaymentSession] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -371,12 +377,13 @@ class IntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[ControlPanelUpdatePaymentSessionTimeoutResponse]:
         """Update Payment Session Timeout
 
+        Update the session timeout of a transaction
 
-        :param body:
-        :type body: object
+        :param payment_session:
+        :type payment_session: PaymentSession
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -400,7 +407,7 @@ class IntegrationApi:
         """ # noqa: E501
 
         _param = self._integration_update_payment_session_timeout_serialize(
-            body=body,
+            payment_session=payment_session,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -408,7 +415,7 @@ class IntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ControlPanelUpdatePaymentSessionTimeoutResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -426,7 +433,7 @@ class IntegrationApi:
     @validate_call
     def integration_update_payment_session_timeout_without_preload_content(
         self,
-        body: Optional[Dict[str, Any]] = None,
+        payment_session: Optional[PaymentSession] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -442,9 +449,10 @@ class IntegrationApi:
     ) -> RESTResponseType:
         """Update Payment Session Timeout
 
+        Update the session timeout of a transaction
 
-        :param body:
-        :type body: object
+        :param payment_session:
+        :type payment_session: PaymentSession
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -468,7 +476,7 @@ class IntegrationApi:
         """ # noqa: E501
 
         _param = self._integration_update_payment_session_timeout_serialize(
-            body=body,
+            payment_session=payment_session,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -476,7 +484,7 @@ class IntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ControlPanelUpdatePaymentSessionTimeoutResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -489,7 +497,7 @@ class IntegrationApi:
 
     def _integration_update_payment_session_timeout_serialize(
         self,
-        body,
+        payment_session,
         _request_auth,
         _content_type,
         _headers,
@@ -515,8 +523,8 @@ class IntegrationApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if payment_session is not None:
+            _body_params = payment_session
 
 
         # set the HTTP header `Accept`

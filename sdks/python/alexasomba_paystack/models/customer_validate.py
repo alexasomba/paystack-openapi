@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,11 +28,15 @@ class CustomerValidate(BaseModel):
     CustomerValidate
     """ # noqa: E501
     first_name: StrictStr = Field(description="Customer's first name")
+    middle_name: Optional[StrictStr] = Field(default=None, description="Customer's middle name")
     last_name: StrictStr = Field(description="Customer's last name")
-    type: StrictStr = Field(description="Predefined types of identification. e.g. (BVN)")
-    value: StrictStr = Field(description="Customer's identification number")
-    country: StrictStr = Field(description="2 letter country code of identification issuer")
-    __properties: ClassVar[List[str]] = ["first_name", "last_name", "type", "value", "country"]
+    type: StrictStr = Field(description="Predefined types of identification.")
+    value: Optional[StrictStr] = Field(default=None, description="Customer's identification number.")
+    country: StrictStr = Field(description="Two-letter country code of identification issuer")
+    bvn: StrictStr = Field(description="Customer's Bank Verification Number")
+    bank_code: StrictStr = Field(description="You can get the list of bank codes by calling the List Banks endpoint (https://api.paystack.co/bank).")
+    account_number: StrictStr = Field(description="Customer's bank account number.")
+    __properties: ClassVar[List[str]] = ["first_name", "middle_name", "last_name", "type", "value", "country", "bvn", "bank_code", "account_number"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,10 +90,14 @@ class CustomerValidate(BaseModel):
 
         _obj = cls.model_validate({
             "first_name": obj.get("first_name"),
+            "middle_name": obj.get("middle_name"),
             "last_name": obj.get("last_name"),
-            "type": obj.get("type"),
+            "type": obj.get("type") if obj.get("type") is not None else 'bank_account',
             "value": obj.get("value"),
-            "country": obj.get("country")
+            "country": obj.get("country"),
+            "bvn": obj.get("bvn"),
+            "bank_code": obj.get("bank_code"),
+            "account_number": obj.get("account_number")
         })
         return _obj
 

@@ -31,11 +31,13 @@ type ApiSettlementsFetchRequest struct {
 	page *int32
 }
 
+// The number of records to fetch per request
 func (r ApiSettlementsFetchRequest) PerPage(perPage int32) ApiSettlementsFetchRequest {
 	r.perPage = &perPage
 	return r
 }
 
+// The offset to retrieve data from
 func (r ApiSettlementsFetchRequest) Page(page int32) ApiSettlementsFetchRequest {
 	r.page = &page
 	return r
@@ -46,7 +48,9 @@ func (r ApiSettlementsFetchRequest) Execute() (*Response, *http.Response, error)
 }
 
 /*
-SettlementsFetch Fetch Settlements
+SettlementsFetch List Settlements
+
+List settlements made to your settlement accounts
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSettlementsFetchRequest
@@ -164,7 +168,7 @@ func (a *SettlementAPIService) SettlementsFetchExecute(r ApiSettlementsFetchRequ
 type ApiSettlementsTransactionRequest struct {
 	ctx context.Context
 	ApiService *SettlementAPIService
-	id string
+	id int32
 }
 
 func (r ApiSettlementsTransactionRequest) Execute() (*Response, *http.Response, error) {
@@ -172,13 +176,15 @@ func (r ApiSettlementsTransactionRequest) Execute() (*Response, *http.Response, 
 }
 
 /*
-SettlementsTransaction Settlement Transactions
+SettlementsTransaction Fetch Settlement Transactions
+
+Get the transactions that make up a particular settlement
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param id The settlement ID in which you want to fetch its transactions
  @return ApiSettlementsTransactionRequest
 */
-func (a *SettlementAPIService) SettlementsTransaction(ctx context.Context, id string) ApiSettlementsTransactionRequest {
+func (a *SettlementAPIService) SettlementsTransaction(ctx context.Context, id int32) ApiSettlementsTransactionRequest {
 	return ApiSettlementsTransactionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -201,7 +207,7 @@ func (a *SettlementAPIService) SettlementsTransactionExecute(r ApiSettlementsTra
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/settlement/{id}/transaction"
+	localVarPath := localBasePath + "/settlement/{id}/transactions"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)

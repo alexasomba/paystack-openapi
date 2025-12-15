@@ -26,7 +26,7 @@ type PaymentRequestCreate struct {
 	// Customer id or code
 	Customer string `json:"customer"`
 	// Payment request amount. Only useful if line items and tax values are ignored.  The endpoint will throw a friendly warning if neither is available.
-	Amount *int32 `json:"amount,omitempty"`
+	Amount int32 `json:"amount"`
 	// Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN
 	Currency *string `json:"currency,omitempty"`
 	// ISO 8601 representation of request due date
@@ -38,12 +38,12 @@ type PaymentRequestCreate struct {
 	// Array of taxes
 	Tax []map[string]interface{} `json:"tax,omitempty"`
 	// Indicates whether Paystack sends an email notification to customer. Defaults to true
-	SendNotification []map[string]interface{} `json:"send_notification,omitempty"`
+	SendNotification *bool `json:"send_notification,omitempty"`
 	// Indicate if request should be saved as draft. Defaults to false and overrides send_notification
-	Draft []map[string]interface{} `json:"draft,omitempty"`
-	// Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided)  even if there are no line_items or tax passed
-	HasInvoice []map[string]interface{} `json:"has_invoice,omitempty"`
-	// Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help  override whatever value Paystack decides. Auto increment for subsequent invoices continue from this point.
+	Draft *bool `json:"draft,omitempty"`
+	// Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided) even if there are no line_items or tax passed
+	HasInvoice *bool `json:"has_invoice,omitempty"`
+	// Numeric value of invoice. Invoice will start from 1 and auto increment from there.  This field is to help override whatever value Paystack decides. Auto increment for  subsequent invoices continue from this point.
 	InvoiceNumber *int32 `json:"invoice_number,omitempty"`
 	// The split code of the transaction split.
 	SplitCode *string `json:"split_code,omitempty"`
@@ -55,9 +55,10 @@ type _PaymentRequestCreate PaymentRequestCreate
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaymentRequestCreate(customer string) *PaymentRequestCreate {
+func NewPaymentRequestCreate(customer string, amount int32) *PaymentRequestCreate {
 	this := PaymentRequestCreate{}
 	this.Customer = customer
+	this.Amount = amount
 	return &this
 }
 
@@ -93,36 +94,28 @@ func (o *PaymentRequestCreate) SetCustomer(v string) {
 	o.Customer = v
 }
 
-// GetAmount returns the Amount field value if set, zero value otherwise.
+// GetAmount returns the Amount field value
 func (o *PaymentRequestCreate) GetAmount() int32 {
-	if o == nil || IsNil(o.Amount) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Amount
+
+	return o.Amount
 }
 
-// GetAmountOk returns a tuple with the Amount field value if set, nil otherwise
+// GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
 func (o *PaymentRequestCreate) GetAmountOk() (*int32, bool) {
-	if o == nil || IsNil(o.Amount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Amount, true
+	return &o.Amount, true
 }
 
-// HasAmount returns a boolean if a field has been set.
-func (o *PaymentRequestCreate) HasAmount() bool {
-	if o != nil && !IsNil(o.Amount) {
-		return true
-	}
-
-	return false
-}
-
-// SetAmount gets a reference to the given int32 and assigns it to the Amount field.
+// SetAmount sets field value
 func (o *PaymentRequestCreate) SetAmount(v int32) {
-	o.Amount = &v
+	o.Amount = v
 }
 
 // GetCurrency returns the Currency field value if set, zero value otherwise.
@@ -286,17 +279,17 @@ func (o *PaymentRequestCreate) SetTax(v []map[string]interface{}) {
 }
 
 // GetSendNotification returns the SendNotification field value if set, zero value otherwise.
-func (o *PaymentRequestCreate) GetSendNotification() []map[string]interface{} {
+func (o *PaymentRequestCreate) GetSendNotification() bool {
 	if o == nil || IsNil(o.SendNotification) {
-		var ret []map[string]interface{}
+		var ret bool
 		return ret
 	}
-	return o.SendNotification
+	return *o.SendNotification
 }
 
 // GetSendNotificationOk returns a tuple with the SendNotification field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaymentRequestCreate) GetSendNotificationOk() ([]map[string]interface{}, bool) {
+func (o *PaymentRequestCreate) GetSendNotificationOk() (*bool, bool) {
 	if o == nil || IsNil(o.SendNotification) {
 		return nil, false
 	}
@@ -312,23 +305,23 @@ func (o *PaymentRequestCreate) HasSendNotification() bool {
 	return false
 }
 
-// SetSendNotification gets a reference to the given []map[string]interface{} and assigns it to the SendNotification field.
-func (o *PaymentRequestCreate) SetSendNotification(v []map[string]interface{}) {
-	o.SendNotification = v
+// SetSendNotification gets a reference to the given bool and assigns it to the SendNotification field.
+func (o *PaymentRequestCreate) SetSendNotification(v bool) {
+	o.SendNotification = &v
 }
 
 // GetDraft returns the Draft field value if set, zero value otherwise.
-func (o *PaymentRequestCreate) GetDraft() []map[string]interface{} {
+func (o *PaymentRequestCreate) GetDraft() bool {
 	if o == nil || IsNil(o.Draft) {
-		var ret []map[string]interface{}
+		var ret bool
 		return ret
 	}
-	return o.Draft
+	return *o.Draft
 }
 
 // GetDraftOk returns a tuple with the Draft field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaymentRequestCreate) GetDraftOk() ([]map[string]interface{}, bool) {
+func (o *PaymentRequestCreate) GetDraftOk() (*bool, bool) {
 	if o == nil || IsNil(o.Draft) {
 		return nil, false
 	}
@@ -344,23 +337,23 @@ func (o *PaymentRequestCreate) HasDraft() bool {
 	return false
 }
 
-// SetDraft gets a reference to the given []map[string]interface{} and assigns it to the Draft field.
-func (o *PaymentRequestCreate) SetDraft(v []map[string]interface{}) {
-	o.Draft = v
+// SetDraft gets a reference to the given bool and assigns it to the Draft field.
+func (o *PaymentRequestCreate) SetDraft(v bool) {
+	o.Draft = &v
 }
 
 // GetHasInvoice returns the HasInvoice field value if set, zero value otherwise.
-func (o *PaymentRequestCreate) GetHasInvoice() []map[string]interface{} {
+func (o *PaymentRequestCreate) GetHasInvoice() bool {
 	if o == nil || IsNil(o.HasInvoice) {
-		var ret []map[string]interface{}
+		var ret bool
 		return ret
 	}
-	return o.HasInvoice
+	return *o.HasInvoice
 }
 
 // GetHasInvoiceOk returns a tuple with the HasInvoice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaymentRequestCreate) GetHasInvoiceOk() ([]map[string]interface{}, bool) {
+func (o *PaymentRequestCreate) GetHasInvoiceOk() (*bool, bool) {
 	if o == nil || IsNil(o.HasInvoice) {
 		return nil, false
 	}
@@ -376,9 +369,9 @@ func (o *PaymentRequestCreate) HasHasInvoice() bool {
 	return false
 }
 
-// SetHasInvoice gets a reference to the given []map[string]interface{} and assigns it to the HasInvoice field.
-func (o *PaymentRequestCreate) SetHasInvoice(v []map[string]interface{}) {
-	o.HasInvoice = v
+// SetHasInvoice gets a reference to the given bool and assigns it to the HasInvoice field.
+func (o *PaymentRequestCreate) SetHasInvoice(v bool) {
+	o.HasInvoice = &v
 }
 
 // GetInvoiceNumber returns the InvoiceNumber field value if set, zero value otherwise.
@@ -456,9 +449,7 @@ func (o PaymentRequestCreate) MarshalJSON() ([]byte, error) {
 func (o PaymentRequestCreate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["customer"] = o.Customer
-	if !IsNil(o.Amount) {
-		toSerialize["amount"] = o.Amount
-	}
+	toSerialize["amount"] = o.Amount
 	if !IsNil(o.Currency) {
 		toSerialize["currency"] = o.Currency
 	}
@@ -498,6 +489,7 @@ func (o *PaymentRequestCreate) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"customer",
+		"amount",
 	}
 
 	allProperties := make(map[string]interface{})

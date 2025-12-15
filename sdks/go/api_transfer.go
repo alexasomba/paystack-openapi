@@ -28,28 +28,25 @@ type TransferAPIService service
 type ApiTransferBulkRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
-	source *string
-	transfers *[]TransferInitiate
+	transferBulk *TransferBulk
 }
 
-// Where should we transfer from? Only balance is allowed for now
-func (r ApiTransferBulkRequest) Source(source string) ApiTransferBulkRequest {
-	r.source = &source
+func (r ApiTransferBulkRequest) TransferBulk(transferBulk TransferBulk) ApiTransferBulkRequest {
+	r.transferBulk = &transferBulk
 	return r
 }
 
-// A list of transfer object. Each object should contain amount, recipient, and reference
-func (r ApiTransferBulkRequest) Transfers(transfers []TransferInitiate) ApiTransferBulkRequest {
-	r.transfers = &transfers
-	return r
-}
-
-func (r ApiTransferBulkRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiTransferBulkRequest) Execute() (*TransferBulkResponse, *http.Response, error) {
 	return r.ApiService.TransferBulkExecute(r)
 }
 
 /*
 TransferBulk Initiate Bulk Transfer
+
+Batch multiple transfers in a single request.
+
+You need to disable the Transfers OTP requirement to use this endpoint.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTransferBulkRequest
@@ -62,13 +59,13 @@ func (a *TransferAPIService) TransferBulk(ctx context.Context) ApiTransferBulkRe
 }
 
 // Execute executes the request
-//  @return Response
-func (a *TransferAPIService) TransferBulkExecute(r ApiTransferBulkRequest) (*Response, *http.Response, error) {
+//  @return TransferBulkResponse
+func (a *TransferAPIService) TransferBulkExecute(r ApiTransferBulkRequest) (*TransferBulkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *TransferBulkResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferAPIService.TransferBulk")
@@ -81,15 +78,9 @@ func (a *TransferAPIService) TransferBulkExecute(r ApiTransferBulkRequest) (*Res
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.source == nil {
-		return localVarReturnValue, nil, reportError("source is required and must be specified")
-	}
-	if r.transfers == nil {
-		return localVarReturnValue, nil, reportError("transfers is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -105,8 +96,8 @@ func (a *TransferAPIService) TransferBulkExecute(r ApiTransferBulkRequest) (*Res
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "source", r.source, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "transfers", r.transfers, "", "csv")
+	// body params
+	localVarPostBody = r.transferBulk
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -160,12 +151,16 @@ type ApiTransferDisableOtpRequest struct {
 	ApiService *TransferAPIService
 }
 
-func (r ApiTransferDisableOtpRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiTransferDisableOtpRequest) Execute() (*TransferDisablesOtpResponse, *http.Response, error) {
 	return r.ApiService.TransferDisableOtpExecute(r)
 }
 
 /*
-TransferDisableOtp Disable OTP requirement for Transfers
+TransferDisableOtp Disable OTP for Transfers
+
+This is used in the event that you want to be able to complete transfers programmatically without use of OTPs. 
+No arguments required. You will get an OTP to complete the request.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTransferDisableOtpRequest
@@ -178,13 +173,13 @@ func (a *TransferAPIService) TransferDisableOtp(ctx context.Context) ApiTransfer
 }
 
 // Execute executes the request
-//  @return Response
-func (a *TransferAPIService) TransferDisableOtpExecute(r ApiTransferDisableOtpRequest) (*Response, *http.Response, error) {
+//  @return TransferDisablesOtpResponse
+func (a *TransferAPIService) TransferDisableOtpExecute(r ApiTransferDisableOtpRequest) (*TransferDisablesOtpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *TransferDisablesOtpResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferAPIService.TransferDisableOtp")
@@ -266,21 +261,22 @@ func (a *TransferAPIService) TransferDisableOtpExecute(r ApiTransferDisableOtpRe
 type ApiTransferDisableOtpFinalizeRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
-	otp *string
+	transferFinalizeDisableOTP *TransferFinalizeDisableOTP
 }
 
-// OTP sent to business phone to verify disabling OTP requirement
-func (r ApiTransferDisableOtpFinalizeRequest) Otp(otp string) ApiTransferDisableOtpFinalizeRequest {
-	r.otp = &otp
+func (r ApiTransferDisableOtpFinalizeRequest) TransferFinalizeDisableOTP(transferFinalizeDisableOTP TransferFinalizeDisableOTP) ApiTransferDisableOtpFinalizeRequest {
+	r.transferFinalizeDisableOTP = &transferFinalizeDisableOTP
 	return r
 }
 
-func (r ApiTransferDisableOtpFinalizeRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiTransferDisableOtpFinalizeRequest) Execute() (*TransferFinalizeDisablesOtpResponse, *http.Response, error) {
 	return r.ApiService.TransferDisableOtpFinalizeExecute(r)
 }
 
 /*
-TransferDisableOtpFinalize Finalize Disabling of OTP requirement for Transfers
+TransferDisableOtpFinalize Finalize Disabling OTP for Transfers
+
+Finalize the request to disable OTP on your transfers
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTransferDisableOtpFinalizeRequest
@@ -293,13 +289,13 @@ func (a *TransferAPIService) TransferDisableOtpFinalize(ctx context.Context) Api
 }
 
 // Execute executes the request
-//  @return Response
-func (a *TransferAPIService) TransferDisableOtpFinalizeExecute(r ApiTransferDisableOtpFinalizeRequest) (*Response, *http.Response, error) {
+//  @return TransferFinalizeDisablesOtpResponse
+func (a *TransferAPIService) TransferDisableOtpFinalizeExecute(r ApiTransferDisableOtpFinalizeRequest) (*TransferFinalizeDisablesOtpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *TransferFinalizeDisablesOtpResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferAPIService.TransferDisableOtpFinalize")
@@ -312,12 +308,9 @@ func (a *TransferAPIService) TransferDisableOtpFinalizeExecute(r ApiTransferDisa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.otp == nil {
-		return localVarReturnValue, nil, reportError("otp is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -333,7 +326,8 @@ func (a *TransferAPIService) TransferDisableOtpFinalizeExecute(r ApiTransferDisa
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "otp", r.otp, "", "")
+	// body params
+	localVarPostBody = r.transferFinalizeDisableOTP
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -382,57 +376,165 @@ func (a *TransferAPIService) TransferDisableOtpFinalizeExecute(r ApiTransferDisa
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiTransferDownloadRequest struct {
+type ApiTransferEnableOtpRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
-	perPage *int32
-	page *int32
+}
+
+func (r ApiTransferEnableOtpRequest) Execute() (*TransferEnablesOtpResponse, *http.Response, error) {
+	return r.ApiService.TransferEnableOtpExecute(r)
+}
+
+/*
+TransferEnableOtp Enable OTP requirement for Transfers
+
+In the event that a customer wants to stop being able to complete transfers programmatically, this endpoint helps turn OTP requirement back on. 
+No arguments required.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTransferEnableOtpRequest
+*/
+func (a *TransferAPIService) TransferEnableOtp(ctx context.Context) ApiTransferEnableOtpRequest {
+	return ApiTransferEnableOtpRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return TransferEnablesOtpResponse
+func (a *TransferAPIService) TransferEnableOtpExecute(r ApiTransferEnableOtpRequest) (*TransferEnablesOtpResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TransferEnablesOtpResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferAPIService.TransferEnableOtp")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/transfer/enable_otp"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiTransferExportTransferRequest struct {
+	ctx context.Context
+	ApiService *TransferAPIService
+	recipient *string
 	status *string
 	from *time.Time
 	to *time.Time
 }
 
-// Number of records to fetch per page
-func (r ApiTransferDownloadRequest) PerPage(perPage int32) ApiTransferDownloadRequest {
-	r.perPage = &perPage
+// Export transfer by the recipient code
+func (r ApiTransferExportTransferRequest) Recipient(recipient string) ApiTransferExportTransferRequest {
+	r.recipient = &recipient
 	return r
 }
 
-// The section to retrieve
-func (r ApiTransferDownloadRequest) Page(page int32) ApiTransferDownloadRequest {
-	r.page = &page
-	return r
-}
-
-func (r ApiTransferDownloadRequest) Status(status string) ApiTransferDownloadRequest {
+// Export transfer by status
+func (r ApiTransferExportTransferRequest) Status(status string) ApiTransferExportTransferRequest {
 	r.status = &status
 	return r
 }
 
 // The start date
-func (r ApiTransferDownloadRequest) From(from time.Time) ApiTransferDownloadRequest {
+func (r ApiTransferExportTransferRequest) From(from time.Time) ApiTransferExportTransferRequest {
 	r.from = &from
 	return r
 }
 
 // The end date
-func (r ApiTransferDownloadRequest) To(to time.Time) ApiTransferDownloadRequest {
+func (r ApiTransferExportTransferRequest) To(to time.Time) ApiTransferExportTransferRequest {
 	r.to = &to
 	return r
 }
 
-func (r ApiTransferDownloadRequest) Execute() (*Response, *http.Response, error) {
-	return r.ApiService.TransferDownloadExecute(r)
+func (r ApiTransferExportTransferRequest) Execute() (*Response, *http.Response, error) {
+	return r.ApiService.TransferExportTransferExecute(r)
 }
 
 /*
-TransferDownload Export Transfers
+TransferExportTransfer Export Transfers
+
+Export a list of transfers carried out on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiTransferDownloadRequest
+ @return ApiTransferExportTransferRequest
 */
-func (a *TransferAPIService) TransferDownload(ctx context.Context) ApiTransferDownloadRequest {
-	return ApiTransferDownloadRequest{
+func (a *TransferAPIService) TransferExportTransfer(ctx context.Context) ApiTransferExportTransferRequest {
+	return ApiTransferExportTransferRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -440,7 +542,7 @@ func (a *TransferAPIService) TransferDownload(ctx context.Context) ApiTransferDo
 
 // Execute executes the request
 //  @return Response
-func (a *TransferAPIService) TransferDownloadExecute(r ApiTransferDownloadRequest) (*Response, *http.Response, error) {
+func (a *TransferAPIService) TransferExportTransferExecute(r ApiTransferExportTransferRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -448,7 +550,7 @@ func (a *TransferAPIService) TransferDownloadExecute(r ApiTransferDownloadReques
 		localVarReturnValue  *Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferAPIService.TransferDownload")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferAPIService.TransferExportTransfer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -459,14 +561,15 @@ func (a *TransferAPIService) TransferDownloadExecute(r ApiTransferDownloadReques
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
-	}
-	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	if r.recipient != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "recipient", r.recipient, "form", "")
 	}
 	if r.status != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+	} else {
+        var defaultValue string = "pending"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "status", defaultValue, "form", "")
+        r.status = &defaultValue
 	}
 	if r.from != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
@@ -550,126 +653,20 @@ func (a *TransferAPIService) TransferDownloadExecute(r ApiTransferDownloadReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiTransferEnableOtpRequest struct {
-	ctx context.Context
-	ApiService *TransferAPIService
-}
-
-func (r ApiTransferEnableOtpRequest) Execute() (*Response, *http.Response, error) {
-	return r.ApiService.TransferEnableOtpExecute(r)
-}
-
-/*
-TransferEnableOtp Enable OTP requirement for Transfers
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiTransferEnableOtpRequest
-*/
-func (a *TransferAPIService) TransferEnableOtp(ctx context.Context) ApiTransferEnableOtpRequest {
-	return ApiTransferEnableOtpRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return Response
-func (a *TransferAPIService) TransferEnableOtpExecute(r ApiTransferEnableOtpRequest) (*Response, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Response
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferAPIService.TransferEnableOtp")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/transfer/enable_otp"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiTransferFetchRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
 	code string
 }
 
-func (r ApiTransferFetchRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiTransferFetchRequest) Execute() (*TransferFetchResponse, *http.Response, error) {
 	return r.ApiService.TransferFetchExecute(r)
 }
 
 /*
 TransferFetch Fetch Transfer
+
+Get details of a transfer on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param code Transfer code
@@ -684,13 +681,13 @@ func (a *TransferAPIService) TransferFetch(ctx context.Context, code string) Api
 }
 
 // Execute executes the request
-//  @return Response
-func (a *TransferAPIService) TransferFetchExecute(r ApiTransferFetchRequest) (*Response, *http.Response, error) {
+//  @return TransferFetchResponse
+func (a *TransferAPIService) TransferFetchExecute(r ApiTransferFetchRequest) (*TransferFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *TransferFetchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferAPIService.TransferFetch")
@@ -784,19 +781,11 @@ func (a *TransferAPIService) TransferFetchExecute(r ApiTransferFetchRequest) (*R
 type ApiTransferFinalizeRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
-	transferCode *string
-	otp *string
+	transferFinalize *TransferFinalize
 }
 
-// The transfer code you want to finalize
-func (r ApiTransferFinalizeRequest) TransferCode(transferCode string) ApiTransferFinalizeRequest {
-	r.transferCode = &transferCode
-	return r
-}
-
-// OTP sent to business phone to verify transfer
-func (r ApiTransferFinalizeRequest) Otp(otp string) ApiTransferFinalizeRequest {
-	r.otp = &otp
+func (r ApiTransferFinalizeRequest) TransferFinalize(transferFinalize TransferFinalize) ApiTransferFinalizeRequest {
+	r.transferFinalize = &transferFinalize
 	return r
 }
 
@@ -806,6 +795,8 @@ func (r ApiTransferFinalizeRequest) Execute() (*Response, *http.Response, error)
 
 /*
 TransferFinalize Finalize Transfer
+
+Finalize an initiated transfer
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTransferFinalizeRequest
@@ -837,15 +828,9 @@ func (a *TransferAPIService) TransferFinalizeExecute(r ApiTransferFinalizeReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.transferCode == nil {
-		return localVarReturnValue, nil, reportError("transferCode is required and must be specified")
-	}
-	if r.otp == nil {
-		return localVarReturnValue, nil, reportError("otp is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -861,8 +846,8 @@ func (a *TransferAPIService) TransferFinalizeExecute(r ApiTransferFinalizeReques
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "transfer_code", r.transferCode, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "otp", r.otp, "", "")
+	// body params
+	localVarPostBody = r.transferFinalize
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -914,56 +899,22 @@ func (a *TransferAPIService) TransferFinalizeExecute(r ApiTransferFinalizeReques
 type ApiTransferInitiateRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
-	source *string
-	amount *string
-	recipient *string
-	reason *string
-	currency *string
-	reference *string
+	transferInitiate *TransferInitiate
 }
 
-// Where should we transfer from? Only balance is allowed for now
-func (r ApiTransferInitiateRequest) Source(source string) ApiTransferInitiateRequest {
-	r.source = &source
+func (r ApiTransferInitiateRequest) TransferInitiate(transferInitiate TransferInitiate) ApiTransferInitiateRequest {
+	r.transferInitiate = &transferInitiate
 	return r
 }
 
-// Amount to transfer in kobo if currency is NGN and pesewas if currency is GHS.
-func (r ApiTransferInitiateRequest) Amount(amount string) ApiTransferInitiateRequest {
-	r.amount = &amount
-	return r
-}
-
-// The transfer recipient&#39;s code
-func (r ApiTransferInitiateRequest) Recipient(recipient string) ApiTransferInitiateRequest {
-	r.recipient = &recipient
-	return r
-}
-
-// The reason or narration for the transfer.
-func (r ApiTransferInitiateRequest) Reason(reason string) ApiTransferInitiateRequest {
-	r.reason = &reason
-	return r
-}
-
-// Specify the currency of the transfer. Defaults to NGN.
-func (r ApiTransferInitiateRequest) Currency(currency string) ApiTransferInitiateRequest {
-	r.currency = &currency
-	return r
-}
-
-// If specified, the field should be a unique identifier (in lowercase) for the object.  Only -,_ and alphanumeric characters are allowed.
-func (r ApiTransferInitiateRequest) Reference(reference string) ApiTransferInitiateRequest {
-	r.reference = &reference
-	return r
-}
-
-func (r ApiTransferInitiateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiTransferInitiateRequest) Execute() (*TransferCreateResponse, *http.Response, error) {
 	return r.ApiService.TransferInitiateExecute(r)
 }
 
 /*
 TransferInitiate Initiate Transfer
+
+Send money to your customers
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTransferInitiateRequest
@@ -976,13 +927,13 @@ func (a *TransferAPIService) TransferInitiate(ctx context.Context) ApiTransferIn
 }
 
 // Execute executes the request
-//  @return Response
-func (a *TransferAPIService) TransferInitiateExecute(r ApiTransferInitiateRequest) (*Response, *http.Response, error) {
+//  @return TransferCreateResponse
+func (a *TransferAPIService) TransferInitiateExecute(r ApiTransferInitiateRequest) (*TransferCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *TransferCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferAPIService.TransferInitiate")
@@ -995,18 +946,9 @@ func (a *TransferAPIService) TransferInitiateExecute(r ApiTransferInitiateReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.source == nil {
-		return localVarReturnValue, nil, reportError("source is required and must be specified")
-	}
-	if r.amount == nil {
-		return localVarReturnValue, nil, reportError("amount is required and must be specified")
-	}
-	if r.recipient == nil {
-		return localVarReturnValue, nil, reportError("recipient is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1022,18 +964,8 @@ func (a *TransferAPIService) TransferInitiateExecute(r ApiTransferInitiateReques
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "source", r.source, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "amount", r.amount, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "recipient", r.recipient, "", "")
-	if r.reason != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "reason", r.reason, "", "")
-	}
-	if r.currency != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "currency", r.currency, "", "")
-	}
-	if r.reference != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "reference", r.reference, "", "")
-	}
+	// body params
+	localVarPostBody = r.transferInitiate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1085,27 +1017,44 @@ func (a *TransferAPIService) TransferInitiateExecute(r ApiTransferInitiateReques
 type ApiTransferListRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
+	useCursor *bool
+	next *string
+	previous *string
 	perPage *int32
 	page *int32
-	status *string
 	from *time.Time
 	to *time.Time
+	recipient *string
+	status *string
 }
 
-// Number of records to fetch per page
+// A flag to indicate if cursor based pagination should be used
+func (r ApiTransferListRequest) UseCursor(useCursor bool) ApiTransferListRequest {
+	r.useCursor = &useCursor
+	return r
+}
+
+// An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
+func (r ApiTransferListRequest) Next(next string) ApiTransferListRequest {
+	r.next = &next
+	return r
+}
+
+// An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
+func (r ApiTransferListRequest) Previous(previous string) ApiTransferListRequest {
+	r.previous = &previous
+	return r
+}
+
+// The number of records to fetch per request
 func (r ApiTransferListRequest) PerPage(perPage int32) ApiTransferListRequest {
 	r.perPage = &perPage
 	return r
 }
 
-// The section to retrieve
+// The offset to retrieve data from
 func (r ApiTransferListRequest) Page(page int32) ApiTransferListRequest {
 	r.page = &page
-	return r
-}
-
-func (r ApiTransferListRequest) Status(status string) ApiTransferListRequest {
-	r.status = &status
 	return r
 }
 
@@ -1121,12 +1070,26 @@ func (r ApiTransferListRequest) To(to time.Time) ApiTransferListRequest {
 	return r
 }
 
-func (r ApiTransferListRequest) Execute() (*Response, *http.Response, error) {
+// Filter transfer by the recipient code
+func (r ApiTransferListRequest) Recipient(recipient string) ApiTransferListRequest {
+	r.recipient = &recipient
+	return r
+}
+
+// Filter transfer by status
+func (r ApiTransferListRequest) Status(status string) ApiTransferListRequest {
+	r.status = &status
+	return r
+}
+
+func (r ApiTransferListRequest) Execute() (*TransferListResponse, *http.Response, error) {
 	return r.ApiService.TransferListExecute(r)
 }
 
 /*
 TransferList List Transfers
+
+List the transfers made on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTransferListRequest
@@ -1139,13 +1102,13 @@ func (a *TransferAPIService) TransferList(ctx context.Context) ApiTransferListRe
 }
 
 // Execute executes the request
-//  @return Response
-func (a *TransferAPIService) TransferListExecute(r ApiTransferListRequest) (*Response, *http.Response, error) {
+//  @return TransferListResponse
+func (a *TransferAPIService) TransferListExecute(r ApiTransferListRequest) (*TransferListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *TransferListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferAPIService.TransferList")
@@ -1159,20 +1122,36 @@ func (a *TransferAPIService) TransferListExecute(r ApiTransferListRequest) (*Res
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.useCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "use_cursor", r.useCursor, "form", "")
+	}
+	if r.next != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "form", "")
+	}
+	if r.previous != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "form", "")
+	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
 	}
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
-	}
-	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
 	}
 	if r.from != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
 	}
 	if r.to != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	}
+	if r.recipient != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "recipient", r.recipient, "form", "")
+	}
+	if r.status != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+	} else {
+        var defaultValue string = "pending"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "status", defaultValue, "form", "")
+        r.status = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1253,28 +1232,22 @@ func (a *TransferAPIService) TransferListExecute(r ApiTransferListRequest) (*Res
 type ApiTransferResendOtpRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
-	transferCode *string
-	reason *string
+	transferResendOTP *TransferResendOTP
 }
 
-// The transfer code that requires an OTP validation
-func (r ApiTransferResendOtpRequest) TransferCode(transferCode string) ApiTransferResendOtpRequest {
-	r.transferCode = &transferCode
+func (r ApiTransferResendOtpRequest) TransferResendOTP(transferResendOTP TransferResendOTP) ApiTransferResendOtpRequest {
+	r.transferResendOTP = &transferResendOTP
 	return r
 }
 
-// Either resend_otp or transfer
-func (r ApiTransferResendOtpRequest) Reason(reason string) ApiTransferResendOtpRequest {
-	r.reason = &reason
-	return r
-}
-
-func (r ApiTransferResendOtpRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiTransferResendOtpRequest) Execute() (*TransferResendsOtpResponse, *http.Response, error) {
 	return r.ApiService.TransferResendOtpExecute(r)
 }
 
 /*
 TransferResendOtp Resend OTP for Transfer
+
+Generates and send a new OTP to customer in the event they are having trouble receiving one.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTransferResendOtpRequest
@@ -1287,13 +1260,13 @@ func (a *TransferAPIService) TransferResendOtp(ctx context.Context) ApiTransferR
 }
 
 // Execute executes the request
-//  @return Response
-func (a *TransferAPIService) TransferResendOtpExecute(r ApiTransferResendOtpRequest) (*Response, *http.Response, error) {
+//  @return TransferResendsOtpResponse
+func (a *TransferAPIService) TransferResendOtpExecute(r ApiTransferResendOtpRequest) (*TransferResendsOtpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *TransferResendsOtpResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferAPIService.TransferResendOtp")
@@ -1306,15 +1279,9 @@ func (a *TransferAPIService) TransferResendOtpExecute(r ApiTransferResendOtpRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.transferCode == nil {
-		return localVarReturnValue, nil, reportError("transferCode is required and must be specified")
-	}
-	if r.reason == nil {
-		return localVarReturnValue, nil, reportError("reason is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1330,8 +1297,8 @@ func (a *TransferAPIService) TransferResendOtpExecute(r ApiTransferResendOtpRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "transfer_code", r.transferCode, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "reason", r.reason, "", "")
+	// body params
+	localVarPostBody = r.transferResendOTP
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1386,15 +1353,17 @@ type ApiTransferVerifyRequest struct {
 	reference string
 }
 
-func (r ApiTransferVerifyRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiTransferVerifyRequest) Execute() (*TransferVerifyResponse, *http.Response, error) {
 	return r.ApiService.TransferVerifyExecute(r)
 }
 
 /*
 TransferVerify Verify Transfer
 
+Verify the status of a transfer on your integration
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param reference
+ @param reference Transfer reference
  @return ApiTransferVerifyRequest
 */
 func (a *TransferAPIService) TransferVerify(ctx context.Context, reference string) ApiTransferVerifyRequest {
@@ -1406,13 +1375,13 @@ func (a *TransferAPIService) TransferVerify(ctx context.Context, reference strin
 }
 
 // Execute executes the request
-//  @return Response
-func (a *TransferAPIService) TransferVerifyExecute(r ApiTransferVerifyRequest) (*Response, *http.Response, error) {
+//  @return TransferVerifyResponse
+func (a *TransferAPIService) TransferVerifyExecute(r ApiTransferVerifyRequest) (*TransferVerifyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *TransferVerifyResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransferAPIService.TransferVerify")

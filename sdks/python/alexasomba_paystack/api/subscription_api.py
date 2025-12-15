@@ -22,6 +22,12 @@ from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
 from alexasomba_paystack.models.response import Response
+from alexasomba_paystack.models.subscription_create import SubscriptionCreate
+from alexasomba_paystack.models.subscription_create_response import SubscriptionCreateResponse
+from alexasomba_paystack.models.subscription_disable_response import SubscriptionDisableResponse
+from alexasomba_paystack.models.subscription_fetch_response import SubscriptionFetchResponse
+from alexasomba_paystack.models.subscription_list_response import SubscriptionListResponse
+from alexasomba_paystack.models.subscription_toggle import SubscriptionToggle
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
 from alexasomba_paystack.api_response import ApiResponse
@@ -44,10 +50,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_create(
         self,
-        customer: Annotated[StrictStr, Field(description="Customer's email address or customer code")],
-        plan: Annotated[StrictStr, Field(description="Plan code")],
-        authorization: Annotated[Optional[StrictStr], Field(description="If customer has multiple authorizations, you can set the desired authorization you wish to use for this subscription here.  If this is not supplied, the customer's most recent authorization would be used")] = None,
-        start_date: Annotated[Optional[datetime], Field(description="Set the date for the first debit. (ISO 8601 format) e.g. 2017-05-16T00:30:13+01:00")] = None,
+        subscription_create: Optional[SubscriptionCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -60,18 +63,13 @@ class SubscriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> SubscriptionCreateResponse:
         """Create Subscription
 
+        Create a subscription a customer
 
-        :param customer: Customer's email address or customer code (required)
-        :type customer: str
-        :param plan: Plan code (required)
-        :type plan: str
-        :param authorization: If customer has multiple authorizations, you can set the desired authorization you wish to use for this subscription here.  If this is not supplied, the customer's most recent authorization would be used
-        :type authorization: str
-        :param start_date: Set the date for the first debit. (ISO 8601 format) e.g. 2017-05-16T00:30:13+01:00
-        :type start_date: datetime
+        :param subscription_create:
+        :type subscription_create: SubscriptionCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -95,10 +93,7 @@ class SubscriptionApi:
         """ # noqa: E501
 
         _param = self._subscription_create_serialize(
-            customer=customer,
-            plan=plan,
-            authorization=authorization,
-            start_date=start_date,
+            subscription_create=subscription_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -106,7 +101,7 @@ class SubscriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubscriptionCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -123,10 +118,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_create_with_http_info(
         self,
-        customer: Annotated[StrictStr, Field(description="Customer's email address or customer code")],
-        plan: Annotated[StrictStr, Field(description="Plan code")],
-        authorization: Annotated[Optional[StrictStr], Field(description="If customer has multiple authorizations, you can set the desired authorization you wish to use for this subscription here.  If this is not supplied, the customer's most recent authorization would be used")] = None,
-        start_date: Annotated[Optional[datetime], Field(description="Set the date for the first debit. (ISO 8601 format) e.g. 2017-05-16T00:30:13+01:00")] = None,
+        subscription_create: Optional[SubscriptionCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -139,18 +131,13 @@ class SubscriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[SubscriptionCreateResponse]:
         """Create Subscription
 
+        Create a subscription a customer
 
-        :param customer: Customer's email address or customer code (required)
-        :type customer: str
-        :param plan: Plan code (required)
-        :type plan: str
-        :param authorization: If customer has multiple authorizations, you can set the desired authorization you wish to use for this subscription here.  If this is not supplied, the customer's most recent authorization would be used
-        :type authorization: str
-        :param start_date: Set the date for the first debit. (ISO 8601 format) e.g. 2017-05-16T00:30:13+01:00
-        :type start_date: datetime
+        :param subscription_create:
+        :type subscription_create: SubscriptionCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -174,10 +161,7 @@ class SubscriptionApi:
         """ # noqa: E501
 
         _param = self._subscription_create_serialize(
-            customer=customer,
-            plan=plan,
-            authorization=authorization,
-            start_date=start_date,
+            subscription_create=subscription_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -185,7 +169,7 @@ class SubscriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubscriptionCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -202,10 +186,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_create_without_preload_content(
         self,
-        customer: Annotated[StrictStr, Field(description="Customer's email address or customer code")],
-        plan: Annotated[StrictStr, Field(description="Plan code")],
-        authorization: Annotated[Optional[StrictStr], Field(description="If customer has multiple authorizations, you can set the desired authorization you wish to use for this subscription here.  If this is not supplied, the customer's most recent authorization would be used")] = None,
-        start_date: Annotated[Optional[datetime], Field(description="Set the date for the first debit. (ISO 8601 format) e.g. 2017-05-16T00:30:13+01:00")] = None,
+        subscription_create: Optional[SubscriptionCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -221,15 +202,10 @@ class SubscriptionApi:
     ) -> RESTResponseType:
         """Create Subscription
 
+        Create a subscription a customer
 
-        :param customer: Customer's email address or customer code (required)
-        :type customer: str
-        :param plan: Plan code (required)
-        :type plan: str
-        :param authorization: If customer has multiple authorizations, you can set the desired authorization you wish to use for this subscription here.  If this is not supplied, the customer's most recent authorization would be used
-        :type authorization: str
-        :param start_date: Set the date for the first debit. (ISO 8601 format) e.g. 2017-05-16T00:30:13+01:00
-        :type start_date: datetime
+        :param subscription_create:
+        :type subscription_create: SubscriptionCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -253,10 +229,7 @@ class SubscriptionApi:
         """ # noqa: E501
 
         _param = self._subscription_create_serialize(
-            customer=customer,
-            plan=plan,
-            authorization=authorization,
-            start_date=start_date,
+            subscription_create=subscription_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -264,7 +237,7 @@ class SubscriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubscriptionCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -276,10 +249,7 @@ class SubscriptionApi:
 
     def _subscription_create_serialize(
         self,
-        customer,
-        plan,
-        authorization,
-        start_date,
+        subscription_create,
         _request_auth,
         _content_type,
         _headers,
@@ -304,15 +274,9 @@ class SubscriptionApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if customer is not None:
-            _form_params.append(('customer', customer))
-        if plan is not None:
-            _form_params.append(('plan', plan))
-        if authorization is not None:
-            _form_params.append(('authorization', authorization))
-        if start_date is not None:
-            _form_params.append(('start_date', start_date))
         # process the body parameter
+        if subscription_create is not None:
+            _body_params = subscription_create
 
 
         # set the HTTP header `Accept`
@@ -330,8 +294,8 @@ class SubscriptionApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -364,8 +328,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_disable(
         self,
-        code: Annotated[StrictStr, Field(description="Subscription code")],
-        token: Annotated[StrictStr, Field(description="Email token")],
+        subscription_toggle: Optional[SubscriptionToggle] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -378,14 +341,13 @@ class SubscriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> SubscriptionDisableResponse:
         """Disable Subscription
 
+        Disable a subscription on your integration
 
-        :param code: Subscription code (required)
-        :type code: str
-        :param token: Email token (required)
-        :type token: str
+        :param subscription_toggle:
+        :type subscription_toggle: SubscriptionToggle
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -409,8 +371,7 @@ class SubscriptionApi:
         """ # noqa: E501
 
         _param = self._subscription_disable_serialize(
-            code=code,
-            token=token,
+            subscription_toggle=subscription_toggle,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -418,7 +379,7 @@ class SubscriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubscriptionDisableResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -435,8 +396,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_disable_with_http_info(
         self,
-        code: Annotated[StrictStr, Field(description="Subscription code")],
-        token: Annotated[StrictStr, Field(description="Email token")],
+        subscription_toggle: Optional[SubscriptionToggle] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -449,14 +409,13 @@ class SubscriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[SubscriptionDisableResponse]:
         """Disable Subscription
 
+        Disable a subscription on your integration
 
-        :param code: Subscription code (required)
-        :type code: str
-        :param token: Email token (required)
-        :type token: str
+        :param subscription_toggle:
+        :type subscription_toggle: SubscriptionToggle
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -480,8 +439,7 @@ class SubscriptionApi:
         """ # noqa: E501
 
         _param = self._subscription_disable_serialize(
-            code=code,
-            token=token,
+            subscription_toggle=subscription_toggle,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -489,7 +447,7 @@ class SubscriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubscriptionDisableResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -506,8 +464,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_disable_without_preload_content(
         self,
-        code: Annotated[StrictStr, Field(description="Subscription code")],
-        token: Annotated[StrictStr, Field(description="Email token")],
+        subscription_toggle: Optional[SubscriptionToggle] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -523,11 +480,10 @@ class SubscriptionApi:
     ) -> RESTResponseType:
         """Disable Subscription
 
+        Disable a subscription on your integration
 
-        :param code: Subscription code (required)
-        :type code: str
-        :param token: Email token (required)
-        :type token: str
+        :param subscription_toggle:
+        :type subscription_toggle: SubscriptionToggle
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -551,8 +507,7 @@ class SubscriptionApi:
         """ # noqa: E501
 
         _param = self._subscription_disable_serialize(
-            code=code,
-            token=token,
+            subscription_toggle=subscription_toggle,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -560,7 +515,7 @@ class SubscriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubscriptionDisableResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -572,8 +527,7 @@ class SubscriptionApi:
 
     def _subscription_disable_serialize(
         self,
-        code,
-        token,
+        subscription_toggle,
         _request_auth,
         _content_type,
         _headers,
@@ -598,11 +552,9 @@ class SubscriptionApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if code is not None:
-            _form_params.append(('code', code))
-        if token is not None:
-            _form_params.append(('token', token))
         # process the body parameter
+        if subscription_toggle is not None:
+            _body_params = subscription_toggle
 
 
         # set the HTTP header `Accept`
@@ -620,8 +572,8 @@ class SubscriptionApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -654,8 +606,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_enable(
         self,
-        code: Annotated[StrictStr, Field(description="Subscription code")],
-        token: Annotated[StrictStr, Field(description="Email token")],
+        subscription_toggle: Optional[SubscriptionToggle] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -671,11 +622,10 @@ class SubscriptionApi:
     ) -> Response:
         """Enable Subscription
 
+        Enable a subscription on your integration
 
-        :param code: Subscription code (required)
-        :type code: str
-        :param token: Email token (required)
-        :type token: str
+        :param subscription_toggle:
+        :type subscription_toggle: SubscriptionToggle
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -699,8 +649,7 @@ class SubscriptionApi:
         """ # noqa: E501
 
         _param = self._subscription_enable_serialize(
-            code=code,
-            token=token,
+            subscription_toggle=subscription_toggle,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -725,8 +674,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_enable_with_http_info(
         self,
-        code: Annotated[StrictStr, Field(description="Subscription code")],
-        token: Annotated[StrictStr, Field(description="Email token")],
+        subscription_toggle: Optional[SubscriptionToggle] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -742,11 +690,10 @@ class SubscriptionApi:
     ) -> ApiResponse[Response]:
         """Enable Subscription
 
+        Enable a subscription on your integration
 
-        :param code: Subscription code (required)
-        :type code: str
-        :param token: Email token (required)
-        :type token: str
+        :param subscription_toggle:
+        :type subscription_toggle: SubscriptionToggle
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -770,8 +717,7 @@ class SubscriptionApi:
         """ # noqa: E501
 
         _param = self._subscription_enable_serialize(
-            code=code,
-            token=token,
+            subscription_toggle=subscription_toggle,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -796,8 +742,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_enable_without_preload_content(
         self,
-        code: Annotated[StrictStr, Field(description="Subscription code")],
-        token: Annotated[StrictStr, Field(description="Email token")],
+        subscription_toggle: Optional[SubscriptionToggle] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -813,11 +758,10 @@ class SubscriptionApi:
     ) -> RESTResponseType:
         """Enable Subscription
 
+        Enable a subscription on your integration
 
-        :param code: Subscription code (required)
-        :type code: str
-        :param token: Email token (required)
-        :type token: str
+        :param subscription_toggle:
+        :type subscription_toggle: SubscriptionToggle
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -841,8 +785,7 @@ class SubscriptionApi:
         """ # noqa: E501
 
         _param = self._subscription_enable_serialize(
-            code=code,
-            token=token,
+            subscription_toggle=subscription_toggle,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -862,8 +805,7 @@ class SubscriptionApi:
 
     def _subscription_enable_serialize(
         self,
-        code,
-        token,
+        subscription_toggle,
         _request_auth,
         _content_type,
         _headers,
@@ -888,11 +830,9 @@ class SubscriptionApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if code is not None:
-            _form_params.append(('code', code))
-        if token is not None:
-            _form_params.append(('token', token))
         # process the body parameter
+        if subscription_toggle is not None:
+            _body_params = subscription_toggle
 
 
         # set the HTTP header `Accept`
@@ -910,8 +850,8 @@ class SubscriptionApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -944,7 +884,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_fetch(
         self,
-        code: StrictStr,
+        code: Annotated[StrictStr, Field(description="The subscription code for the subscription you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -957,11 +897,12 @@ class SubscriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> SubscriptionFetchResponse:
         """Fetch Subscription
 
+        Get details of a customer's subscription
 
-        :param code: (required)
+        :param code: The subscription code for the subscription you want to fetch (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -994,7 +935,7 @@ class SubscriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubscriptionFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1012,7 +953,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_fetch_with_http_info(
         self,
-        code: StrictStr,
+        code: Annotated[StrictStr, Field(description="The subscription code for the subscription you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1025,11 +966,12 @@ class SubscriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[SubscriptionFetchResponse]:
         """Fetch Subscription
 
+        Get details of a customer's subscription
 
-        :param code: (required)
+        :param code: The subscription code for the subscription you want to fetch (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1062,7 +1004,7 @@ class SubscriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubscriptionFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1080,7 +1022,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_fetch_without_preload_content(
         self,
-        code: StrictStr,
+        code: Annotated[StrictStr, Field(description="The subscription code for the subscription you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1096,8 +1038,9 @@ class SubscriptionApi:
     ) -> RESTResponseType:
         """Fetch Subscription
 
+        Get details of a customer's subscription
 
-        :param code: (required)
+        :param code: The subscription code for the subscription you want to fetch (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1130,7 +1073,7 @@ class SubscriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubscriptionFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1210,7 +1153,7 @@ class SubscriptionApi:
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        plan: Annotated[Optional[StrictStr], Field(description="Plan ID")] = None,
+        plan: Annotated[Optional[StrictInt], Field(description="Plan ID")] = None,
         customer: Annotated[Optional[StrictStr], Field(description="Customer ID")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
@@ -1226,16 +1169,17 @@ class SubscriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> SubscriptionListResponse:
         """List Subscriptions
 
+        List all subscriptions available on your integration
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
         :param page: The section to retrieve
         :type page: int
         :param plan: Plan ID
-        :type plan: str
+        :type plan: int
         :param customer: Customer ID
         :type customer: str
         :param var_from: The start date
@@ -1278,7 +1222,7 @@ class SubscriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubscriptionListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1298,7 +1242,7 @@ class SubscriptionApi:
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        plan: Annotated[Optional[StrictStr], Field(description="Plan ID")] = None,
+        plan: Annotated[Optional[StrictInt], Field(description="Plan ID")] = None,
         customer: Annotated[Optional[StrictStr], Field(description="Customer ID")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
@@ -1314,16 +1258,17 @@ class SubscriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[SubscriptionListResponse]:
         """List Subscriptions
 
+        List all subscriptions available on your integration
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
         :param page: The section to retrieve
         :type page: int
         :param plan: Plan ID
-        :type plan: str
+        :type plan: int
         :param customer: Customer ID
         :type customer: str
         :param var_from: The start date
@@ -1366,7 +1311,7 @@ class SubscriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubscriptionListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1386,7 +1331,7 @@ class SubscriptionApi:
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        plan: Annotated[Optional[StrictStr], Field(description="Plan ID")] = None,
+        plan: Annotated[Optional[StrictInt], Field(description="Plan ID")] = None,
         customer: Annotated[Optional[StrictStr], Field(description="Customer ID")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
@@ -1405,13 +1350,14 @@ class SubscriptionApi:
     ) -> RESTResponseType:
         """List Subscriptions
 
+        List all subscriptions available on your integration
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
         :param page: The section to retrieve
         :type page: int
         :param plan: Plan ID
-        :type plan: str
+        :type plan: int
         :param customer: Customer ID
         :type customer: str
         :param var_from: The start date
@@ -1454,7 +1400,7 @@ class SubscriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SubscriptionListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1577,7 +1523,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_manage_email(
         self,
-        code: StrictStr,
+        code: Annotated[StrictStr, Field(description="Subscription code")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1593,8 +1539,9 @@ class SubscriptionApi:
     ) -> Response:
         """Send Update Subscription Link
 
+        Email a customer a link for updating the card on their subscription
 
-        :param code: (required)
+        :param code: Subscription code (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1644,7 +1591,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_manage_email_with_http_info(
         self,
-        code: StrictStr,
+        code: Annotated[StrictStr, Field(description="Subscription code")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1660,8 +1607,9 @@ class SubscriptionApi:
     ) -> ApiResponse[Response]:
         """Send Update Subscription Link
 
+        Email a customer a link for updating the card on their subscription
 
-        :param code: (required)
+        :param code: Subscription code (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1711,7 +1659,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_manage_email_without_preload_content(
         self,
-        code: StrictStr,
+        code: Annotated[StrictStr, Field(description="Subscription code")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1727,8 +1675,9 @@ class SubscriptionApi:
     ) -> RESTResponseType:
         """Send Update Subscription Link
 
+        Email a customer a link for updating the card on their subscription
 
-        :param code: (required)
+        :param code: Subscription code (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1838,7 +1787,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_manage_link(
         self,
-        code: StrictStr,
+        code: Annotated[StrictStr, Field(description="Subscription code")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1854,8 +1803,9 @@ class SubscriptionApi:
     ) -> Response:
         """Generate Update Subscription Link
 
+        Generate a link for updating the card on a subscription
 
-        :param code: (required)
+        :param code: Subscription code (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1905,7 +1855,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_manage_link_with_http_info(
         self,
-        code: StrictStr,
+        code: Annotated[StrictStr, Field(description="Subscription code")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1921,8 +1871,9 @@ class SubscriptionApi:
     ) -> ApiResponse[Response]:
         """Generate Update Subscription Link
 
+        Generate a link for updating the card on a subscription
 
-        :param code: (required)
+        :param code: Subscription code (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1972,7 +1923,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_manage_link_without_preload_content(
         self,
-        code: StrictStr,
+        code: Annotated[StrictStr, Field(description="Subscription code")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1988,8 +1939,9 @@ class SubscriptionApi:
     ) -> RESTResponseType:
         """Generate Update Subscription Link
 
+        Generate a link for updating the card on a subscription
 
-        :param code: (required)
+        :param code: Subscription code (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

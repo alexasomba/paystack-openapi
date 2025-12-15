@@ -18,8 +18,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from alexasomba_paystack.models.error_meta import ErrorMeta
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,9 +28,23 @@ class Error(BaseModel):
     """
     Error
     """ # noqa: E501
-    status: Optional[StrictBool] = None
-    message: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["status", "message"]
+    status: Optional[StrictBool] = Field(default=None, description="An indicator for the state of the request")
+    message: Optional[StrictStr] = Field(default=None, description="A short description of the error")
+    meta: Optional[ErrorMeta] = None
+    type: Optional[StrictStr] = Field(default=None, description="A tag to indicate the type of the error")
+    code: Optional[StrictStr] = Field(default=None, description="The error code")
+    error_code_mapping_not_found: Optional[StrictBool] = Field(default=None, description="An indicator for error mapping for the request", alias="errorCodeMappingNotFound")
+    __properties: ClassVar[List[str]] = ["status", "message", "meta", "type", "code", "errorCodeMappingNotFound"]
+
+    @field_validator('code')
+    def code_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['validation_error', 'processor_error', 'api_error']):
+            raise ValueError("must be one of enum values ('validation_error', 'processor_error', 'api_error')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -70,6 +85,9 @@ class Error(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of meta
+        if self.meta:
+            _dict['meta'] = self.meta.to_dict()
         return _dict
 
     @classmethod
@@ -83,7 +101,11 @@ class Error(BaseModel):
 
         _obj = cls.model_validate({
             "status": obj.get("status"),
-            "message": obj.get("message")
+            "message": obj.get("message"),
+            "meta": ErrorMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None,
+            "type": obj.get("type"),
+            "code": obj.get("code"),
+            "errorCodeMappingNotFound": obj.get("errorCodeMappingNotFound")
         })
         return _obj
 

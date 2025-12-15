@@ -22,9 +22,9 @@ var _ MappedNullable = &CustomerRiskAction{}
 
 // CustomerRiskAction struct for CustomerRiskAction
 type CustomerRiskAction struct {
-	// Customer's code, or email address
+	// The customer code from the response of the customer creation
 	Customer string `json:"customer"`
-	// One of the possible risk actions [ default, allow, deny ]. allow to whitelist.  deny to blacklist. Customers start with a default risk action. 
+	// This determines the fraud rules that should be applied to the customer
 	RiskAction *string `json:"risk_action,omitempty"`
 }
 
@@ -37,6 +37,8 @@ type _CustomerRiskAction CustomerRiskAction
 func NewCustomerRiskAction(customer string) *CustomerRiskAction {
 	this := CustomerRiskAction{}
 	this.Customer = customer
+	var riskAction string = "default"
+	this.RiskAction = &riskAction
 	return &this
 }
 
@@ -45,6 +47,8 @@ func NewCustomerRiskAction(customer string) *CustomerRiskAction {
 // but it doesn't guarantee that properties required by API are set
 func NewCustomerRiskActionWithDefaults() *CustomerRiskAction {
 	this := CustomerRiskAction{}
+	var riskAction string = "default"
+	this.RiskAction = &riskAction
 	return &this
 }
 

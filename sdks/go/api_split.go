@@ -18,6 +18,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
@@ -27,35 +28,29 @@ type SplitAPIService service
 type ApiSplitAddSubaccountRequest struct {
 	ctx context.Context
 	ApiService *SplitAPIService
-	id string
-	subaccount *string
-	share *string
+	id int32
+	splitSubaccounts *SplitSubaccounts
 }
 
-// Subaccount code of the customer or partner
-func (r ApiSplitAddSubaccountRequest) Subaccount(subaccount string) ApiSplitAddSubaccountRequest {
-	r.subaccount = &subaccount
+func (r ApiSplitAddSubaccountRequest) SplitSubaccounts(splitSubaccounts SplitSubaccounts) ApiSplitAddSubaccountRequest {
+	r.splitSubaccounts = &splitSubaccounts
 	return r
 }
 
-// The percentage or flat quota of the customer or partner
-func (r ApiSplitAddSubaccountRequest) Share(share string) ApiSplitAddSubaccountRequest {
-	r.share = &share
-	return r
-}
-
-func (r ApiSplitAddSubaccountRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiSplitAddSubaccountRequest) Execute() (*SplitAddUpdateSubaccountResponse, *http.Response, error) {
 	return r.ApiService.SplitAddSubaccountExecute(r)
 }
 
 /*
 SplitAddSubaccount Add Subaccount to Split
 
+Add a subaccount to a split configuration, or update the share of an existing subaccount
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param id The ID of the split configuration to fetch
  @return ApiSplitAddSubaccountRequest
 */
-func (a *SplitAPIService) SplitAddSubaccount(ctx context.Context, id string) ApiSplitAddSubaccountRequest {
+func (a *SplitAPIService) SplitAddSubaccount(ctx context.Context, id int32) ApiSplitAddSubaccountRequest {
 	return ApiSplitAddSubaccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -64,13 +59,13 @@ func (a *SplitAPIService) SplitAddSubaccount(ctx context.Context, id string) Api
 }
 
 // Execute executes the request
-//  @return Response
-func (a *SplitAPIService) SplitAddSubaccountExecute(r ApiSplitAddSubaccountRequest) (*Response, *http.Response, error) {
+//  @return SplitAddUpdateSubaccountResponse
+func (a *SplitAPIService) SplitAddSubaccountExecute(r ApiSplitAddSubaccountRequest) (*SplitAddUpdateSubaccountResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *SplitAddUpdateSubaccountResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SplitAPIService.SplitAddSubaccount")
@@ -86,7 +81,7 @@ func (a *SplitAPIService) SplitAddSubaccountExecute(r ApiSplitAddSubaccountReque
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -102,12 +97,8 @@ func (a *SplitAPIService) SplitAddSubaccountExecute(r ApiSplitAddSubaccountReque
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.subaccount != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "subaccount", r.subaccount, "", "")
-	}
-	if r.share != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "share", r.share, "", "")
-	}
+	// body params
+	localVarPostBody = r.splitSubaccounts
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -159,56 +150,22 @@ func (a *SplitAPIService) SplitAddSubaccountExecute(r ApiSplitAddSubaccountReque
 type ApiSplitCreateRequest struct {
 	ctx context.Context
 	ApiService *SplitAPIService
-	name *string
-	type_ *string
-	subaccounts *[]SplitSubaccounts
-	currency *string
-	bearerType *string
-	bearerSubaccount *string
+	splitCreate *SplitCreate
 }
 
-// Name of the transaction split
-func (r ApiSplitCreateRequest) Name(name string) ApiSplitCreateRequest {
-	r.name = &name
+func (r ApiSplitCreateRequest) SplitCreate(splitCreate SplitCreate) ApiSplitCreateRequest {
+	r.splitCreate = &splitCreate
 	return r
 }
 
-// The type of transaction split you want to create.
-func (r ApiSplitCreateRequest) Type_(type_ string) ApiSplitCreateRequest {
-	r.type_ = &type_
-	return r
-}
-
-// A list of object containing subaccount code and number of shares
-func (r ApiSplitCreateRequest) Subaccounts(subaccounts []SplitSubaccounts) ApiSplitCreateRequest {
-	r.subaccounts = &subaccounts
-	return r
-}
-
-// The transaction currency
-func (r ApiSplitCreateRequest) Currency(currency string) ApiSplitCreateRequest {
-	r.currency = &currency
-	return r
-}
-
-// This allows you specify how the transaction charge should be processed
-func (r ApiSplitCreateRequest) BearerType(bearerType string) ApiSplitCreateRequest {
-	r.bearerType = &bearerType
-	return r
-}
-
-// This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type
-func (r ApiSplitCreateRequest) BearerSubaccount(bearerSubaccount string) ApiSplitCreateRequest {
-	r.bearerSubaccount = &bearerSubaccount
-	return r
-}
-
-func (r ApiSplitCreateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiSplitCreateRequest) Execute() (*SplitCreateResponse, *http.Response, error) {
 	return r.ApiService.SplitCreateExecute(r)
 }
 
 /*
 SplitCreate Create Split
+
+Create a split configuration for transactions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSplitCreateRequest
@@ -221,13 +178,13 @@ func (a *SplitAPIService) SplitCreate(ctx context.Context) ApiSplitCreateRequest
 }
 
 // Execute executes the request
-//  @return Response
-func (a *SplitAPIService) SplitCreateExecute(r ApiSplitCreateRequest) (*Response, *http.Response, error) {
+//  @return SplitCreateResponse
+func (a *SplitAPIService) SplitCreateExecute(r ApiSplitCreateRequest) (*SplitCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *SplitCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SplitAPIService.SplitCreate")
@@ -240,21 +197,9 @@ func (a *SplitAPIService) SplitCreateExecute(r ApiSplitCreateRequest) (*Response
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.name == nil {
-		return localVarReturnValue, nil, reportError("name is required and must be specified")
-	}
-	if r.type_ == nil {
-		return localVarReturnValue, nil, reportError("type_ is required and must be specified")
-	}
-	if r.subaccounts == nil {
-		return localVarReturnValue, nil, reportError("subaccounts is required and must be specified")
-	}
-	if r.currency == nil {
-		return localVarReturnValue, nil, reportError("currency is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -270,16 +215,8 @@ func (a *SplitAPIService) SplitCreateExecute(r ApiSplitCreateRequest) (*Response
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "type", r.type_, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "subaccounts", r.subaccounts, "", "csv")
-	parameterAddToHeaderOrQuery(localVarFormParams, "currency", r.currency, "", "")
-	if r.bearerType != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "bearer_type", r.bearerType, "", "")
-	}
-	if r.bearerSubaccount != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "bearer_subaccount", r.bearerSubaccount, "", "")
-	}
+	// body params
+	localVarPostBody = r.splitCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -331,21 +268,23 @@ func (a *SplitAPIService) SplitCreateExecute(r ApiSplitCreateRequest) (*Response
 type ApiSplitFetchRequest struct {
 	ctx context.Context
 	ApiService *SplitAPIService
-	id string
+	id int32
 }
 
-func (r ApiSplitFetchRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiSplitFetchRequest) Execute() (*SplitFetchResponse, *http.Response, error) {
 	return r.ApiService.SplitFetchExecute(r)
 }
 
 /*
 SplitFetch Fetch Split
 
+Get details of a split configuration for a transaction
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param id The ID of the split configuration to fetch
  @return ApiSplitFetchRequest
 */
-func (a *SplitAPIService) SplitFetch(ctx context.Context, id string) ApiSplitFetchRequest {
+func (a *SplitAPIService) SplitFetch(ctx context.Context, id int32) ApiSplitFetchRequest {
 	return ApiSplitFetchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -354,13 +293,13 @@ func (a *SplitAPIService) SplitFetch(ctx context.Context, id string) ApiSplitFet
 }
 
 // Execute executes the request
-//  @return Response
-func (a *SplitAPIService) SplitFetchExecute(r ApiSplitFetchRequest) (*Response, *http.Response, error) {
+//  @return SplitFetchResponse
+func (a *SplitAPIService) SplitFetchExecute(r ApiSplitFetchRequest) (*SplitFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *SplitFetchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SplitAPIService.SplitFetch")
@@ -454,56 +393,65 @@ func (a *SplitAPIService) SplitFetchExecute(r ApiSplitFetchRequest) (*Response, 
 type ApiSplitListRequest struct {
 	ctx context.Context
 	ApiService *SplitAPIService
+	subaccountCode *string
 	name *string
-	active *string
-	sortBy *string
-	from *string
-	to *string
-	perPage *string
-	page *string
+	active *bool
+	perPage *int32
+	page *int32
+	from *time.Time
+	to *time.Time
 }
 
+// Filter by subaccount code
+func (r ApiSplitListRequest) SubaccountCode(subaccountCode string) ApiSplitListRequest {
+	r.subaccountCode = &subaccountCode
+	return r
+}
+
+// The name of the split
 func (r ApiSplitListRequest) Name(name string) ApiSplitListRequest {
 	r.name = &name
 	return r
 }
 
-func (r ApiSplitListRequest) Active(active string) ApiSplitListRequest {
+// The status of the split
+func (r ApiSplitListRequest) Active(active bool) ApiSplitListRequest {
 	r.active = &active
 	return r
 }
 
-func (r ApiSplitListRequest) SortBy(sortBy string) ApiSplitListRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiSplitListRequest) From(from string) ApiSplitListRequest {
-	r.from = &from
-	return r
-}
-
-func (r ApiSplitListRequest) To(to string) ApiSplitListRequest {
-	r.to = &to
-	return r
-}
-
-func (r ApiSplitListRequest) PerPage(perPage string) ApiSplitListRequest {
+// The number of records to fetch per request
+func (r ApiSplitListRequest) PerPage(perPage int32) ApiSplitListRequest {
 	r.perPage = &perPage
 	return r
 }
 
-func (r ApiSplitListRequest) Page(page string) ApiSplitListRequest {
+// The offset to retrieve data from
+func (r ApiSplitListRequest) Page(page int32) ApiSplitListRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiSplitListRequest) Execute() (*Response, *http.Response, error) {
+// The start date
+func (r ApiSplitListRequest) From(from time.Time) ApiSplitListRequest {
+	r.from = &from
+	return r
+}
+
+// The end date
+func (r ApiSplitListRequest) To(to time.Time) ApiSplitListRequest {
+	r.to = &to
+	return r
+}
+
+func (r ApiSplitListRequest) Execute() (*SplitListResponse, *http.Response, error) {
 	return r.ApiService.SplitListExecute(r)
 }
 
 /*
-SplitList List/Search Splits
+SplitList List Splits
+
+List the transaction splits available on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSplitListRequest
@@ -516,13 +464,13 @@ func (a *SplitAPIService) SplitList(ctx context.Context) ApiSplitListRequest {
 }
 
 // Execute executes the request
-//  @return Response
-func (a *SplitAPIService) SplitListExecute(r ApiSplitListRequest) (*Response, *http.Response, error) {
+//  @return SplitListResponse
+func (a *SplitAPIService) SplitListExecute(r ApiSplitListRequest) (*SplitListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *SplitListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SplitAPIService.SplitList")
@@ -536,26 +484,26 @@ func (a *SplitAPIService) SplitListExecute(r ApiSplitListRequest) (*Response, *h
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.subaccountCode != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "subaccount_code", r.subaccountCode, "form", "")
+	}
 	if r.name != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.active != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "form", "")
+	if r.perPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.from != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
 	}
 	if r.to != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
-	}
-	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
-	}
-	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -636,35 +584,29 @@ func (a *SplitAPIService) SplitListExecute(r ApiSplitListRequest) (*Response, *h
 type ApiSplitRemoveSubaccountRequest struct {
 	ctx context.Context
 	ApiService *SplitAPIService
-	id string
-	subaccount *string
-	share *string
+	id int32
+	splitSubaccounts *SplitSubaccounts
 }
 
-// Subaccount code of the customer or partner
-func (r ApiSplitRemoveSubaccountRequest) Subaccount(subaccount string) ApiSplitRemoveSubaccountRequest {
-	r.subaccount = &subaccount
+func (r ApiSplitRemoveSubaccountRequest) SplitSubaccounts(splitSubaccounts SplitSubaccounts) ApiSplitRemoveSubaccountRequest {
+	r.splitSubaccounts = &splitSubaccounts
 	return r
 }
 
-// The percentage or flat quota of the customer or partner
-func (r ApiSplitRemoveSubaccountRequest) Share(share string) ApiSplitRemoveSubaccountRequest {
-	r.share = &share
-	return r
-}
-
-func (r ApiSplitRemoveSubaccountRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiSplitRemoveSubaccountRequest) Execute() (*SplitRemoveSubaccountResponse, *http.Response, error) {
 	return r.ApiService.SplitRemoveSubaccountExecute(r)
 }
 
 /*
 SplitRemoveSubaccount Remove Subaccount from split
 
+Remove a subaccount from a split configuration
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
+ @param id The ID of the split configuration to fetch
  @return ApiSplitRemoveSubaccountRequest
 */
-func (a *SplitAPIService) SplitRemoveSubaccount(ctx context.Context, id string) ApiSplitRemoveSubaccountRequest {
+func (a *SplitAPIService) SplitRemoveSubaccount(ctx context.Context, id int32) ApiSplitRemoveSubaccountRequest {
 	return ApiSplitRemoveSubaccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -673,13 +615,13 @@ func (a *SplitAPIService) SplitRemoveSubaccount(ctx context.Context, id string) 
 }
 
 // Execute executes the request
-//  @return Response
-func (a *SplitAPIService) SplitRemoveSubaccountExecute(r ApiSplitRemoveSubaccountRequest) (*Response, *http.Response, error) {
+//  @return SplitRemoveSubaccountResponse
+func (a *SplitAPIService) SplitRemoveSubaccountExecute(r ApiSplitRemoveSubaccountRequest) (*SplitRemoveSubaccountResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *SplitRemoveSubaccountResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SplitAPIService.SplitRemoveSubaccount")
@@ -695,7 +637,7 @@ func (a *SplitAPIService) SplitRemoveSubaccountExecute(r ApiSplitRemoveSubaccoun
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -711,12 +653,8 @@ func (a *SplitAPIService) SplitRemoveSubaccountExecute(r ApiSplitRemoveSubaccoun
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.subaccount != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "subaccount", r.subaccount, "", "")
-	}
-	if r.share != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "share", r.share, "", "")
-	}
+	// body params
+	localVarPostBody = r.splitSubaccounts
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -769,42 +707,22 @@ type ApiSplitUpdateRequest struct {
 	ctx context.Context
 	ApiService *SplitAPIService
 	id string
-	name *string
-	active *bool
-	bearerType *string
-	bearerSubaccount *string
+	splitUpdate *SplitUpdate
 }
 
-// Name of the transaction split
-func (r ApiSplitUpdateRequest) Name(name string) ApiSplitUpdateRequest {
-	r.name = &name
+func (r ApiSplitUpdateRequest) SplitUpdate(splitUpdate SplitUpdate) ApiSplitUpdateRequest {
+	r.splitUpdate = &splitUpdate
 	return r
 }
 
-// Toggle status of split. When true, the split is active, else it&#39;s inactive
-func (r ApiSplitUpdateRequest) Active(active bool) ApiSplitUpdateRequest {
-	r.active = &active
-	return r
-}
-
-// This allows you specify how the transaction charge should be processed
-func (r ApiSplitUpdateRequest) BearerType(bearerType string) ApiSplitUpdateRequest {
-	r.bearerType = &bearerType
-	return r
-}
-
-// This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type
-func (r ApiSplitUpdateRequest) BearerSubaccount(bearerSubaccount string) ApiSplitUpdateRequest {
-	r.bearerSubaccount = &bearerSubaccount
-	return r
-}
-
-func (r ApiSplitUpdateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiSplitUpdateRequest) Execute() (*SplitUpdateResponse, *http.Response, error) {
 	return r.ApiService.SplitUpdateExecute(r)
 }
 
 /*
 SplitUpdate Update Split
+
+Update a split configuration for transactions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id
@@ -819,13 +737,13 @@ func (a *SplitAPIService) SplitUpdate(ctx context.Context, id string) ApiSplitUp
 }
 
 // Execute executes the request
-//  @return Response
-func (a *SplitAPIService) SplitUpdateExecute(r ApiSplitUpdateRequest) (*Response, *http.Response, error) {
+//  @return SplitUpdateResponse
+func (a *SplitAPIService) SplitUpdateExecute(r ApiSplitUpdateRequest) (*SplitUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *SplitUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SplitAPIService.SplitUpdate")
@@ -841,7 +759,7 @@ func (a *SplitAPIService) SplitUpdateExecute(r ApiSplitUpdateRequest) (*Response
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -857,18 +775,8 @@ func (a *SplitAPIService) SplitUpdateExecute(r ApiSplitUpdateRequest) (*Response
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
-	}
-	if r.active != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "active", r.active, "", "")
-	}
-	if r.bearerType != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "bearer_type", r.bearerType, "", "")
-	}
-	if r.bearerSubaccount != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "bearer_subaccount", r.bearerSubaccount, "", "")
-	}
+	// body params
+	localVarPostBody = r.splitUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

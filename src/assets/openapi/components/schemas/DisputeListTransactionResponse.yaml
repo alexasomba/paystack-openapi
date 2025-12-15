@@ -63,10 +63,6 @@ properties:
             nullable: true
           gateway_response:
             type: string
-          paid_at:
-            type: string
-          created_at:
-            type: string
           channel:
             type: string
           currency:
@@ -155,10 +151,6 @@ properties:
             type: object
           order_id:
             nullable: true
-          paidAt:
-            type: string
-          createdAt:
-            type: string
           requested_amount:
             type: integer
           pos_transaction_data:
@@ -178,8 +170,6 @@ properties:
           - amount
           - message
           - gateway_response
-          - paid_at
-          - created_at
           - channel
           - currency
           - ip_address
@@ -193,8 +183,6 @@ properties:
           - subaccount
           - split
           - order_id
-          - paidAt
-          - createdAt
           - requested_amount
           - pos_transaction_data
           - source

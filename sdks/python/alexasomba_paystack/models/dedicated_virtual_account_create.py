@@ -27,7 +27,7 @@ class DedicatedVirtualAccountCreate(BaseModel):
     """
     DedicatedVirtualAccountCreate
     """ # noqa: E501
-    customer: StrictStr = Field(description="Customer ID or code")
+    customer: StrictStr = Field(description="The code for the previously created customer")
     preferred_bank: Optional[StrictStr] = Field(default=None, description="The bank slug for preferred bank. To get a list of available banks, use the List Providers endpoint")
     subaccount: Optional[StrictStr] = Field(default=None, description="Subaccount code of the account you want to split the transaction with")
     split_code: Optional[StrictStr] = Field(default=None, description="Split code consisting of the lists of accounts you want to split the transaction with")

@@ -29,7 +29,7 @@ class PageUpdate(BaseModel):
     """ # noqa: E501
     name: Optional[StrictStr] = Field(default=None, description="Name of page")
     description: Optional[StrictStr] = Field(default=None, description="The description of the page")
-    amount: Optional[StrictInt] = Field(default=None, description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")
+    amount: Optional[StrictInt] = Field(default=None, description="Amount should be in the subunit of the currency")
     active: Optional[StrictBool] = Field(default=None, description="Set to false to deactivate page url")
     __properties: ClassVar[List[str]] = ["name", "description", "amount", "active"]
 

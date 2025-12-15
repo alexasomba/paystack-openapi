@@ -17,9 +17,18 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBool, StrictStr
+from datetime import datetime
+from pydantic import Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
+from alexasomba_paystack.models.dedicated_nuban_create_response import DedicatedNubanCreateResponse
+from alexasomba_paystack.models.dedicated_nuban_deactivate_response import DedicatedNubanDeactivateResponse
+from alexasomba_paystack.models.dedicated_nuban_fetch_response import DedicatedNubanFetchResponse
+from alexasomba_paystack.models.dedicated_nuban_list_response import DedicatedNubanListResponse
+from alexasomba_paystack.models.dedicated_virtual_account_assign import DedicatedVirtualAccountAssign
+from alexasomba_paystack.models.dedicated_virtual_account_create import DedicatedVirtualAccountCreate
+from alexasomba_paystack.models.dedicated_virtual_account_remove_split import DedicatedVirtualAccountRemoveSplit
+from alexasomba_paystack.models.dedicated_virtual_account_split import DedicatedVirtualAccountSplit
 from alexasomba_paystack.models.response import Response
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
@@ -43,9 +52,7 @@ class DedicatedVirtualAccountApi:
     @validate_call
     def dedicated_account_add_split(
         self,
-        account_number: Annotated[StrictStr, Field(description="Valid Dedicated virtual account")],
-        subaccount: Annotated[Optional[StrictStr], Field(description="Subaccount code of the account you want to split the transaction with")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="Split code consisting of the lists of accounts you want to split the transaction with")] = None,
+        dedicated_virtual_account_split: Optional[DedicatedVirtualAccountSplit] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -61,13 +68,10 @@ class DedicatedVirtualAccountApi:
     ) -> Response:
         """Split Dedicated Account Transaction
 
+        Split a dedicated virtual account transaction with one or more accounts
 
-        :param account_number: Valid Dedicated virtual account (required)
-        :type account_number: str
-        :param subaccount: Subaccount code of the account you want to split the transaction with
-        :type subaccount: str
-        :param split_code: Split code consisting of the lists of accounts you want to split the transaction with
-        :type split_code: str
+        :param dedicated_virtual_account_split:
+        :type dedicated_virtual_account_split: DedicatedVirtualAccountSplit
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -91,9 +95,7 @@ class DedicatedVirtualAccountApi:
         """ # noqa: E501
 
         _param = self._dedicated_account_add_split_serialize(
-            account_number=account_number,
-            subaccount=subaccount,
-            split_code=split_code,
+            dedicated_virtual_account_split=dedicated_virtual_account_split,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -118,9 +120,7 @@ class DedicatedVirtualAccountApi:
     @validate_call
     def dedicated_account_add_split_with_http_info(
         self,
-        account_number: Annotated[StrictStr, Field(description="Valid Dedicated virtual account")],
-        subaccount: Annotated[Optional[StrictStr], Field(description="Subaccount code of the account you want to split the transaction with")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="Split code consisting of the lists of accounts you want to split the transaction with")] = None,
+        dedicated_virtual_account_split: Optional[DedicatedVirtualAccountSplit] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -136,13 +136,10 @@ class DedicatedVirtualAccountApi:
     ) -> ApiResponse[Response]:
         """Split Dedicated Account Transaction
 
+        Split a dedicated virtual account transaction with one or more accounts
 
-        :param account_number: Valid Dedicated virtual account (required)
-        :type account_number: str
-        :param subaccount: Subaccount code of the account you want to split the transaction with
-        :type subaccount: str
-        :param split_code: Split code consisting of the lists of accounts you want to split the transaction with
-        :type split_code: str
+        :param dedicated_virtual_account_split:
+        :type dedicated_virtual_account_split: DedicatedVirtualAccountSplit
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -166,9 +163,7 @@ class DedicatedVirtualAccountApi:
         """ # noqa: E501
 
         _param = self._dedicated_account_add_split_serialize(
-            account_number=account_number,
-            subaccount=subaccount,
-            split_code=split_code,
+            dedicated_virtual_account_split=dedicated_virtual_account_split,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -193,9 +188,7 @@ class DedicatedVirtualAccountApi:
     @validate_call
     def dedicated_account_add_split_without_preload_content(
         self,
-        account_number: Annotated[StrictStr, Field(description="Valid Dedicated virtual account")],
-        subaccount: Annotated[Optional[StrictStr], Field(description="Subaccount code of the account you want to split the transaction with")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="Split code consisting of the lists of accounts you want to split the transaction with")] = None,
+        dedicated_virtual_account_split: Optional[DedicatedVirtualAccountSplit] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -211,13 +204,10 @@ class DedicatedVirtualAccountApi:
     ) -> RESTResponseType:
         """Split Dedicated Account Transaction
 
+        Split a dedicated virtual account transaction with one or more accounts
 
-        :param account_number: Valid Dedicated virtual account (required)
-        :type account_number: str
-        :param subaccount: Subaccount code of the account you want to split the transaction with
-        :type subaccount: str
-        :param split_code: Split code consisting of the lists of accounts you want to split the transaction with
-        :type split_code: str
+        :param dedicated_virtual_account_split:
+        :type dedicated_virtual_account_split: DedicatedVirtualAccountSplit
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -241,9 +231,7 @@ class DedicatedVirtualAccountApi:
         """ # noqa: E501
 
         _param = self._dedicated_account_add_split_serialize(
-            account_number=account_number,
-            subaccount=subaccount,
-            split_code=split_code,
+            dedicated_virtual_account_split=dedicated_virtual_account_split,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -263,9 +251,7 @@ class DedicatedVirtualAccountApi:
 
     def _dedicated_account_add_split_serialize(
         self,
-        account_number,
-        subaccount,
-        split_code,
+        dedicated_virtual_account_split,
         _request_auth,
         _content_type,
         _headers,
@@ -290,13 +276,9 @@ class DedicatedVirtualAccountApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if account_number is not None:
-            _form_params.append(('account_number', account_number))
-        if subaccount is not None:
-            _form_params.append(('subaccount', subaccount))
-        if split_code is not None:
-            _form_params.append(('split_code', split_code))
         # process the body parameter
+        if dedicated_virtual_account_split is not None:
+            _body_params = dedicated_virtual_account_split
 
 
         # set the HTTP header `Accept`
@@ -314,8 +296,8 @@ class DedicatedVirtualAccountApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -330,6 +312,284 @@ class DedicatedVirtualAccountApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/dedicated_account/split',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def dedicated_account_assign(
+        self,
+        dedicated_virtual_account_assign: Optional[DedicatedVirtualAccountAssign] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Response:
+        """Assign Dedicated Account
+
+        With this endpoint, you can create a customer, validate the customer, and assign a DVA to the customer.
+
+        :param dedicated_virtual_account_assign:
+        :type dedicated_virtual_account_assign: DedicatedVirtualAccountAssign
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._dedicated_account_assign_serialize(
+            dedicated_virtual_account_assign=dedicated_virtual_account_assign,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Response",
+            '401': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def dedicated_account_assign_with_http_info(
+        self,
+        dedicated_virtual_account_assign: Optional[DedicatedVirtualAccountAssign] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Response]:
+        """Assign Dedicated Account
+
+        With this endpoint, you can create a customer, validate the customer, and assign a DVA to the customer.
+
+        :param dedicated_virtual_account_assign:
+        :type dedicated_virtual_account_assign: DedicatedVirtualAccountAssign
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._dedicated_account_assign_serialize(
+            dedicated_virtual_account_assign=dedicated_virtual_account_assign,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Response",
+            '401': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def dedicated_account_assign_without_preload_content(
+        self,
+        dedicated_virtual_account_assign: Optional[DedicatedVirtualAccountAssign] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Assign Dedicated Account
+
+        With this endpoint, you can create a customer, validate the customer, and assign a DVA to the customer.
+
+        :param dedicated_virtual_account_assign:
+        :type dedicated_virtual_account_assign: DedicatedVirtualAccountAssign
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._dedicated_account_assign_serialize(
+            dedicated_virtual_account_assign=dedicated_virtual_account_assign,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Response",
+            '401': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _dedicated_account_assign_serialize(
+        self,
+        dedicated_virtual_account_assign,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if dedicated_virtual_account_assign is not None:
+            _body_params = dedicated_virtual_account_assign
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/dedicated_account/assign',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -363,6 +623,7 @@ class DedicatedVirtualAccountApi:
     ) -> Response:
         """Fetch Bank Providers
 
+        Get available bank providers for a dedicated virtual account
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -427,6 +688,7 @@ class DedicatedVirtualAccountApi:
     ) -> ApiResponse[Response]:
         """Fetch Bank Providers
 
+        Get available bank providers for a dedicated virtual account
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -491,6 +753,7 @@ class DedicatedVirtualAccountApi:
     ) -> RESTResponseType:
         """Fetch Bank Providers
 
+        Get available bank providers for a dedicated virtual account
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -597,10 +860,7 @@ class DedicatedVirtualAccountApi:
     @validate_call
     def dedicated_account_create(
         self,
-        customer: Annotated[StrictStr, Field(description="Customer ID or code")],
-        preferred_bank: Annotated[Optional[StrictStr], Field(description="The bank slug for preferred bank. To get a list of available banks, use the List Providers endpoint")] = None,
-        subaccount: Annotated[Optional[StrictStr], Field(description="Subaccount code of the account you want to split the transaction with")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="Split code consisting of the lists of accounts you want to split the transaction with")] = None,
+        dedicated_virtual_account_create: Optional[DedicatedVirtualAccountCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -613,18 +873,13 @@ class DedicatedVirtualAccountApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> DedicatedNubanCreateResponse:
         """Create Dedicated Account
 
+        Create a dedicated virtual account for an existing customer
 
-        :param customer: Customer ID or code (required)
-        :type customer: str
-        :param preferred_bank: The bank slug for preferred bank. To get a list of available banks, use the List Providers endpoint
-        :type preferred_bank: str
-        :param subaccount: Subaccount code of the account you want to split the transaction with
-        :type subaccount: str
-        :param split_code: Split code consisting of the lists of accounts you want to split the transaction with
-        :type split_code: str
+        :param dedicated_virtual_account_create:
+        :type dedicated_virtual_account_create: DedicatedVirtualAccountCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -648,10 +903,7 @@ class DedicatedVirtualAccountApi:
         """ # noqa: E501
 
         _param = self._dedicated_account_create_serialize(
-            customer=customer,
-            preferred_bank=preferred_bank,
-            subaccount=subaccount,
-            split_code=split_code,
+            dedicated_virtual_account_create=dedicated_virtual_account_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -659,7 +911,7 @@ class DedicatedVirtualAccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DedicatedNubanCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -676,10 +928,7 @@ class DedicatedVirtualAccountApi:
     @validate_call
     def dedicated_account_create_with_http_info(
         self,
-        customer: Annotated[StrictStr, Field(description="Customer ID or code")],
-        preferred_bank: Annotated[Optional[StrictStr], Field(description="The bank slug for preferred bank. To get a list of available banks, use the List Providers endpoint")] = None,
-        subaccount: Annotated[Optional[StrictStr], Field(description="Subaccount code of the account you want to split the transaction with")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="Split code consisting of the lists of accounts you want to split the transaction with")] = None,
+        dedicated_virtual_account_create: Optional[DedicatedVirtualAccountCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -692,18 +941,13 @@ class DedicatedVirtualAccountApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[DedicatedNubanCreateResponse]:
         """Create Dedicated Account
 
+        Create a dedicated virtual account for an existing customer
 
-        :param customer: Customer ID or code (required)
-        :type customer: str
-        :param preferred_bank: The bank slug for preferred bank. To get a list of available banks, use the List Providers endpoint
-        :type preferred_bank: str
-        :param subaccount: Subaccount code of the account you want to split the transaction with
-        :type subaccount: str
-        :param split_code: Split code consisting of the lists of accounts you want to split the transaction with
-        :type split_code: str
+        :param dedicated_virtual_account_create:
+        :type dedicated_virtual_account_create: DedicatedVirtualAccountCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -727,10 +971,7 @@ class DedicatedVirtualAccountApi:
         """ # noqa: E501
 
         _param = self._dedicated_account_create_serialize(
-            customer=customer,
-            preferred_bank=preferred_bank,
-            subaccount=subaccount,
-            split_code=split_code,
+            dedicated_virtual_account_create=dedicated_virtual_account_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -738,7 +979,7 @@ class DedicatedVirtualAccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DedicatedNubanCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -755,10 +996,7 @@ class DedicatedVirtualAccountApi:
     @validate_call
     def dedicated_account_create_without_preload_content(
         self,
-        customer: Annotated[StrictStr, Field(description="Customer ID or code")],
-        preferred_bank: Annotated[Optional[StrictStr], Field(description="The bank slug for preferred bank. To get a list of available banks, use the List Providers endpoint")] = None,
-        subaccount: Annotated[Optional[StrictStr], Field(description="Subaccount code of the account you want to split the transaction with")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="Split code consisting of the lists of accounts you want to split the transaction with")] = None,
+        dedicated_virtual_account_create: Optional[DedicatedVirtualAccountCreate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -774,15 +1012,10 @@ class DedicatedVirtualAccountApi:
     ) -> RESTResponseType:
         """Create Dedicated Account
 
+        Create a dedicated virtual account for an existing customer
 
-        :param customer: Customer ID or code (required)
-        :type customer: str
-        :param preferred_bank: The bank slug for preferred bank. To get a list of available banks, use the List Providers endpoint
-        :type preferred_bank: str
-        :param subaccount: Subaccount code of the account you want to split the transaction with
-        :type subaccount: str
-        :param split_code: Split code consisting of the lists of accounts you want to split the transaction with
-        :type split_code: str
+        :param dedicated_virtual_account_create:
+        :type dedicated_virtual_account_create: DedicatedVirtualAccountCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -806,10 +1039,7 @@ class DedicatedVirtualAccountApi:
         """ # noqa: E501
 
         _param = self._dedicated_account_create_serialize(
-            customer=customer,
-            preferred_bank=preferred_bank,
-            subaccount=subaccount,
-            split_code=split_code,
+            dedicated_virtual_account_create=dedicated_virtual_account_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -817,7 +1047,7 @@ class DedicatedVirtualAccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DedicatedNubanCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -829,10 +1059,7 @@ class DedicatedVirtualAccountApi:
 
     def _dedicated_account_create_serialize(
         self,
-        customer,
-        preferred_bank,
-        subaccount,
-        split_code,
+        dedicated_virtual_account_create,
         _request_auth,
         _content_type,
         _headers,
@@ -857,15 +1084,9 @@ class DedicatedVirtualAccountApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if customer is not None:
-            _form_params.append(('customer', customer))
-        if preferred_bank is not None:
-            _form_params.append(('preferred_bank', preferred_bank))
-        if subaccount is not None:
-            _form_params.append(('subaccount', subaccount))
-        if split_code is not None:
-            _form_params.append(('split_code', split_code))
         # process the body parameter
+        if dedicated_virtual_account_create is not None:
+            _body_params = dedicated_virtual_account_create
 
 
         # set the HTTP header `Accept`
@@ -883,8 +1104,8 @@ class DedicatedVirtualAccountApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -917,7 +1138,7 @@ class DedicatedVirtualAccountApi:
     @validate_call
     def dedicated_account_deactivate(
         self,
-        account_id: StrictStr,
+        id: Annotated[StrictStr, Field(description="ID of dedicated virtual account")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -930,12 +1151,13 @@ class DedicatedVirtualAccountApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> DedicatedNubanDeactivateResponse:
         """Deactivate Dedicated Account
 
+        Deactivate a dedicated virtual account on your integration.
 
-        :param account_id: (required)
-        :type account_id: str
+        :param id: ID of dedicated virtual account (required)
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -959,7 +1181,7 @@ class DedicatedVirtualAccountApi:
         """ # noqa: E501
 
         _param = self._dedicated_account_deactivate_serialize(
-            account_id=account_id,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -967,7 +1189,7 @@ class DedicatedVirtualAccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DedicatedNubanDeactivateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -985,7 +1207,7 @@ class DedicatedVirtualAccountApi:
     @validate_call
     def dedicated_account_deactivate_with_http_info(
         self,
-        account_id: StrictStr,
+        id: Annotated[StrictStr, Field(description="ID of dedicated virtual account")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -998,12 +1220,13 @@ class DedicatedVirtualAccountApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[DedicatedNubanDeactivateResponse]:
         """Deactivate Dedicated Account
 
+        Deactivate a dedicated virtual account on your integration.
 
-        :param account_id: (required)
-        :type account_id: str
+        :param id: ID of dedicated virtual account (required)
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1027,7 +1250,7 @@ class DedicatedVirtualAccountApi:
         """ # noqa: E501
 
         _param = self._dedicated_account_deactivate_serialize(
-            account_id=account_id,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1035,7 +1258,7 @@ class DedicatedVirtualAccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DedicatedNubanDeactivateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1053,7 +1276,7 @@ class DedicatedVirtualAccountApi:
     @validate_call
     def dedicated_account_deactivate_without_preload_content(
         self,
-        account_id: StrictStr,
+        id: Annotated[StrictStr, Field(description="ID of dedicated virtual account")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1069,9 +1292,10 @@ class DedicatedVirtualAccountApi:
     ) -> RESTResponseType:
         """Deactivate Dedicated Account
 
+        Deactivate a dedicated virtual account on your integration.
 
-        :param account_id: (required)
-        :type account_id: str
+        :param id: ID of dedicated virtual account (required)
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1095,7 +1319,7 @@ class DedicatedVirtualAccountApi:
         """ # noqa: E501
 
         _param = self._dedicated_account_deactivate_serialize(
-            account_id=account_id,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1103,7 +1327,7 @@ class DedicatedVirtualAccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DedicatedNubanDeactivateResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1116,7 +1340,7 @@ class DedicatedVirtualAccountApi:
 
     def _dedicated_account_deactivate_serialize(
         self,
-        account_id,
+        id,
         _request_auth,
         _content_type,
         _headers,
@@ -1138,8 +1362,8 @@ class DedicatedVirtualAccountApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if account_id is not None:
-            _path_params['account_id'] = account_id
+        if id is not None:
+            _path_params['id'] = id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -1162,7 +1386,7 @@ class DedicatedVirtualAccountApi:
 
         return self.api_client.param_serialize(
             method='DELETE',
-            resource_path='/dedicated_account/{account_id}',
+            resource_path='/dedicated_account/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1181,7 +1405,7 @@ class DedicatedVirtualAccountApi:
     @validate_call
     def dedicated_account_fetch(
         self,
-        account_id: StrictStr,
+        id: Annotated[StrictStr, Field(description="ID of dedicated virtual account")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1194,12 +1418,13 @@ class DedicatedVirtualAccountApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> DedicatedNubanFetchResponse:
         """Fetch Dedicated Account
 
+        Get details of a dedicated virtual account on your integration.
 
-        :param account_id: (required)
-        :type account_id: str
+        :param id: ID of dedicated virtual account (required)
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1223,7 +1448,7 @@ class DedicatedVirtualAccountApi:
         """ # noqa: E501
 
         _param = self._dedicated_account_fetch_serialize(
-            account_id=account_id,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1231,7 +1456,7 @@ class DedicatedVirtualAccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DedicatedNubanFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1249,7 +1474,7 @@ class DedicatedVirtualAccountApi:
     @validate_call
     def dedicated_account_fetch_with_http_info(
         self,
-        account_id: StrictStr,
+        id: Annotated[StrictStr, Field(description="ID of dedicated virtual account")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1262,12 +1487,13 @@ class DedicatedVirtualAccountApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[DedicatedNubanFetchResponse]:
         """Fetch Dedicated Account
 
+        Get details of a dedicated virtual account on your integration.
 
-        :param account_id: (required)
-        :type account_id: str
+        :param id: ID of dedicated virtual account (required)
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1291,7 +1517,7 @@ class DedicatedVirtualAccountApi:
         """ # noqa: E501
 
         _param = self._dedicated_account_fetch_serialize(
-            account_id=account_id,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1299,7 +1525,7 @@ class DedicatedVirtualAccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DedicatedNubanFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1317,7 +1543,7 @@ class DedicatedVirtualAccountApi:
     @validate_call
     def dedicated_account_fetch_without_preload_content(
         self,
-        account_id: StrictStr,
+        id: Annotated[StrictStr, Field(description="ID of dedicated virtual account")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1333,9 +1559,10 @@ class DedicatedVirtualAccountApi:
     ) -> RESTResponseType:
         """Fetch Dedicated Account
 
+        Get details of a dedicated virtual account on your integration.
 
-        :param account_id: (required)
-        :type account_id: str
+        :param id: ID of dedicated virtual account (required)
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1359,7 +1586,7 @@ class DedicatedVirtualAccountApi:
         """ # noqa: E501
 
         _param = self._dedicated_account_fetch_serialize(
-            account_id=account_id,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1367,7 +1594,7 @@ class DedicatedVirtualAccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DedicatedNubanFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1380,7 +1607,7 @@ class DedicatedVirtualAccountApi:
 
     def _dedicated_account_fetch_serialize(
         self,
-        account_id,
+        id,
         _request_auth,
         _content_type,
         _headers,
@@ -1402,8 +1629,8 @@ class DedicatedVirtualAccountApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if account_id is not None:
-            _path_params['account_id'] = account_id
+        if id is not None:
+            _path_params['id'] = id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -1426,7 +1653,7 @@ class DedicatedVirtualAccountApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/dedicated_account/{account_id}',
+            resource_path='/dedicated_account/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1445,14 +1672,13 @@ class DedicatedVirtualAccountApi:
     @validate_call
     def dedicated_account_list(
         self,
-        account_number: Optional[StrictStr] = None,
-        customer: Optional[StrictStr] = None,
-        active: Optional[StrictBool] = None,
-        currency: Optional[StrictStr] = None,
-        provider_slug: Optional[StrictStr] = None,
-        bank_id: Optional[StrictStr] = None,
-        per_page: Optional[StrictStr] = None,
-        page: Optional[StrictStr] = None,
+        active: Annotated[Optional[StrictBool], Field(description="Status of the dedicated virtual account")] = None,
+        customer: Annotated[Optional[StrictInt], Field(description="The customer's ID")] = None,
+        currency: Annotated[Optional[StrictStr], Field(description="The currency of the dedicated virtual account")] = None,
+        provider_slug: Annotated[Optional[StrictStr], Field(description="The bank's slug in lowercase, without spaces")] = None,
+        bank_id: Annotated[Optional[StrictStr], Field(description="The bank's ID")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1465,26 +1691,25 @@ class DedicatedVirtualAccountApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> DedicatedNubanListResponse:
         """List Dedicated Accounts
 
+        List dedicated virtual accounts available on your integration.
 
-        :param account_number:
-        :type account_number: str
-        :param customer:
-        :type customer: str
-        :param active:
+        :param active: Status of the dedicated virtual account
         :type active: bool
-        :param currency:
+        :param customer: The customer's ID
+        :type customer: int
+        :param currency: The currency of the dedicated virtual account
         :type currency: str
-        :param provider_slug:
+        :param provider_slug: The bank's slug in lowercase, without spaces
         :type provider_slug: str
-        :param bank_id:
+        :param bank_id: The bank's ID
         :type bank_id: str
-        :param per_page:
-        :type per_page: str
-        :param page:
-        :type page: str
+        :param per_page: The number of records to fetch per request
+        :type per_page: int
+        :param page: The offset to retrieve data from
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1508,9 +1733,8 @@ class DedicatedVirtualAccountApi:
         """ # noqa: E501
 
         _param = self._dedicated_account_list_serialize(
-            account_number=account_number,
-            customer=customer,
             active=active,
+            customer=customer,
             currency=currency,
             provider_slug=provider_slug,
             bank_id=bank_id,
@@ -1523,7 +1747,7 @@ class DedicatedVirtualAccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DedicatedNubanListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1541,14 +1765,13 @@ class DedicatedVirtualAccountApi:
     @validate_call
     def dedicated_account_list_with_http_info(
         self,
-        account_number: Optional[StrictStr] = None,
-        customer: Optional[StrictStr] = None,
-        active: Optional[StrictBool] = None,
-        currency: Optional[StrictStr] = None,
-        provider_slug: Optional[StrictStr] = None,
-        bank_id: Optional[StrictStr] = None,
-        per_page: Optional[StrictStr] = None,
-        page: Optional[StrictStr] = None,
+        active: Annotated[Optional[StrictBool], Field(description="Status of the dedicated virtual account")] = None,
+        customer: Annotated[Optional[StrictInt], Field(description="The customer's ID")] = None,
+        currency: Annotated[Optional[StrictStr], Field(description="The currency of the dedicated virtual account")] = None,
+        provider_slug: Annotated[Optional[StrictStr], Field(description="The bank's slug in lowercase, without spaces")] = None,
+        bank_id: Annotated[Optional[StrictStr], Field(description="The bank's ID")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1561,26 +1784,25 @@ class DedicatedVirtualAccountApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[DedicatedNubanListResponse]:
         """List Dedicated Accounts
 
+        List dedicated virtual accounts available on your integration.
 
-        :param account_number:
-        :type account_number: str
-        :param customer:
-        :type customer: str
-        :param active:
+        :param active: Status of the dedicated virtual account
         :type active: bool
-        :param currency:
+        :param customer: The customer's ID
+        :type customer: int
+        :param currency: The currency of the dedicated virtual account
         :type currency: str
-        :param provider_slug:
+        :param provider_slug: The bank's slug in lowercase, without spaces
         :type provider_slug: str
-        :param bank_id:
+        :param bank_id: The bank's ID
         :type bank_id: str
-        :param per_page:
-        :type per_page: str
-        :param page:
-        :type page: str
+        :param per_page: The number of records to fetch per request
+        :type per_page: int
+        :param page: The offset to retrieve data from
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1604,9 +1826,8 @@ class DedicatedVirtualAccountApi:
         """ # noqa: E501
 
         _param = self._dedicated_account_list_serialize(
-            account_number=account_number,
-            customer=customer,
             active=active,
+            customer=customer,
             currency=currency,
             provider_slug=provider_slug,
             bank_id=bank_id,
@@ -1619,7 +1840,7 @@ class DedicatedVirtualAccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DedicatedNubanListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1637,14 +1858,13 @@ class DedicatedVirtualAccountApi:
     @validate_call
     def dedicated_account_list_without_preload_content(
         self,
-        account_number: Optional[StrictStr] = None,
-        customer: Optional[StrictStr] = None,
-        active: Optional[StrictBool] = None,
-        currency: Optional[StrictStr] = None,
-        provider_slug: Optional[StrictStr] = None,
-        bank_id: Optional[StrictStr] = None,
-        per_page: Optional[StrictStr] = None,
-        page: Optional[StrictStr] = None,
+        active: Annotated[Optional[StrictBool], Field(description="Status of the dedicated virtual account")] = None,
+        customer: Annotated[Optional[StrictInt], Field(description="The customer's ID")] = None,
+        currency: Annotated[Optional[StrictStr], Field(description="The currency of the dedicated virtual account")] = None,
+        provider_slug: Annotated[Optional[StrictStr], Field(description="The bank's slug in lowercase, without spaces")] = None,
+        bank_id: Annotated[Optional[StrictStr], Field(description="The bank's ID")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1660,23 +1880,22 @@ class DedicatedVirtualAccountApi:
     ) -> RESTResponseType:
         """List Dedicated Accounts
 
+        List dedicated virtual accounts available on your integration.
 
-        :param account_number:
-        :type account_number: str
-        :param customer:
-        :type customer: str
-        :param active:
+        :param active: Status of the dedicated virtual account
         :type active: bool
-        :param currency:
+        :param customer: The customer's ID
+        :type customer: int
+        :param currency: The currency of the dedicated virtual account
         :type currency: str
-        :param provider_slug:
+        :param provider_slug: The bank's slug in lowercase, without spaces
         :type provider_slug: str
-        :param bank_id:
+        :param bank_id: The bank's ID
         :type bank_id: str
-        :param per_page:
-        :type per_page: str
-        :param page:
-        :type page: str
+        :param per_page: The number of records to fetch per request
+        :type per_page: int
+        :param page: The offset to retrieve data from
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1700,9 +1919,8 @@ class DedicatedVirtualAccountApi:
         """ # noqa: E501
 
         _param = self._dedicated_account_list_serialize(
-            account_number=account_number,
-            customer=customer,
             active=active,
+            customer=customer,
             currency=currency,
             provider_slug=provider_slug,
             bank_id=bank_id,
@@ -1715,7 +1933,7 @@ class DedicatedVirtualAccountApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "DedicatedNubanListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1728,9 +1946,8 @@ class DedicatedVirtualAccountApi:
 
     def _dedicated_account_list_serialize(
         self,
-        account_number,
-        customer,
         active,
+        customer,
         currency,
         provider_slug,
         bank_id,
@@ -1758,17 +1975,13 @@ class DedicatedVirtualAccountApi:
 
         # process the path parameters
         # process the query parameters
-        if account_number is not None:
+        if active is not None:
             
-            _query_params.append(('account_number', account_number))
+            _query_params.append(('active', active))
             
         if customer is not None:
             
             _query_params.append(('customer', customer))
-            
-        if active is not None:
-            
-            _query_params.append(('active', active))
             
         if currency is not None:
             
@@ -1830,9 +2043,7 @@ class DedicatedVirtualAccountApi:
     @validate_call
     def dedicated_account_remove_split(
         self,
-        account_number: Annotated[StrictStr, Field(description="Valid Dedicated virtual account")],
-        subaccount: Annotated[Optional[StrictStr], Field(description="Subaccount code of the account you want to split the transaction with")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="Split code consisting of the lists of accounts you want to split the transaction with")] = None,
+        dedicated_virtual_account_remove_split: Optional[DedicatedVirtualAccountRemoveSplit] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1848,13 +2059,10 @@ class DedicatedVirtualAccountApi:
     ) -> Response:
         """Remove Split from Dedicated Account
 
+        If you've previously set up split payment for transactions on a dedicated virtual account, you can remove it with this endpoint
 
-        :param account_number: Valid Dedicated virtual account (required)
-        :type account_number: str
-        :param subaccount: Subaccount code of the account you want to split the transaction with
-        :type subaccount: str
-        :param split_code: Split code consisting of the lists of accounts you want to split the transaction with
-        :type split_code: str
+        :param dedicated_virtual_account_remove_split:
+        :type dedicated_virtual_account_remove_split: DedicatedVirtualAccountRemoveSplit
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1878,9 +2086,7 @@ class DedicatedVirtualAccountApi:
         """ # noqa: E501
 
         _param = self._dedicated_account_remove_split_serialize(
-            account_number=account_number,
-            subaccount=subaccount,
-            split_code=split_code,
+            dedicated_virtual_account_remove_split=dedicated_virtual_account_remove_split,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1906,9 +2112,7 @@ class DedicatedVirtualAccountApi:
     @validate_call
     def dedicated_account_remove_split_with_http_info(
         self,
-        account_number: Annotated[StrictStr, Field(description="Valid Dedicated virtual account")],
-        subaccount: Annotated[Optional[StrictStr], Field(description="Subaccount code of the account you want to split the transaction with")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="Split code consisting of the lists of accounts you want to split the transaction with")] = None,
+        dedicated_virtual_account_remove_split: Optional[DedicatedVirtualAccountRemoveSplit] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1924,13 +2128,10 @@ class DedicatedVirtualAccountApi:
     ) -> ApiResponse[Response]:
         """Remove Split from Dedicated Account
 
+        If you've previously set up split payment for transactions on a dedicated virtual account, you can remove it with this endpoint
 
-        :param account_number: Valid Dedicated virtual account (required)
-        :type account_number: str
-        :param subaccount: Subaccount code of the account you want to split the transaction with
-        :type subaccount: str
-        :param split_code: Split code consisting of the lists of accounts you want to split the transaction with
-        :type split_code: str
+        :param dedicated_virtual_account_remove_split:
+        :type dedicated_virtual_account_remove_split: DedicatedVirtualAccountRemoveSplit
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1954,9 +2155,7 @@ class DedicatedVirtualAccountApi:
         """ # noqa: E501
 
         _param = self._dedicated_account_remove_split_serialize(
-            account_number=account_number,
-            subaccount=subaccount,
-            split_code=split_code,
+            dedicated_virtual_account_remove_split=dedicated_virtual_account_remove_split,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1982,9 +2181,7 @@ class DedicatedVirtualAccountApi:
     @validate_call
     def dedicated_account_remove_split_without_preload_content(
         self,
-        account_number: Annotated[StrictStr, Field(description="Valid Dedicated virtual account")],
-        subaccount: Annotated[Optional[StrictStr], Field(description="Subaccount code of the account you want to split the transaction with")] = None,
-        split_code: Annotated[Optional[StrictStr], Field(description="Split code consisting of the lists of accounts you want to split the transaction with")] = None,
+        dedicated_virtual_account_remove_split: Optional[DedicatedVirtualAccountRemoveSplit] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2000,13 +2197,10 @@ class DedicatedVirtualAccountApi:
     ) -> RESTResponseType:
         """Remove Split from Dedicated Account
 
+        If you've previously set up split payment for transactions on a dedicated virtual account, you can remove it with this endpoint
 
-        :param account_number: Valid Dedicated virtual account (required)
-        :type account_number: str
-        :param subaccount: Subaccount code of the account you want to split the transaction with
-        :type subaccount: str
-        :param split_code: Split code consisting of the lists of accounts you want to split the transaction with
-        :type split_code: str
+        :param dedicated_virtual_account_remove_split:
+        :type dedicated_virtual_account_remove_split: DedicatedVirtualAccountRemoveSplit
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2030,9 +2224,7 @@ class DedicatedVirtualAccountApi:
         """ # noqa: E501
 
         _param = self._dedicated_account_remove_split_serialize(
-            account_number=account_number,
-            subaccount=subaccount,
-            split_code=split_code,
+            dedicated_virtual_account_remove_split=dedicated_virtual_account_remove_split,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2053,9 +2245,7 @@ class DedicatedVirtualAccountApi:
 
     def _dedicated_account_remove_split_serialize(
         self,
-        account_number,
-        subaccount,
-        split_code,
+        dedicated_virtual_account_remove_split,
         _request_auth,
         _content_type,
         _headers,
@@ -2080,13 +2270,9 @@ class DedicatedVirtualAccountApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if account_number is not None:
-            _form_params.append(('account_number', account_number))
-        if subaccount is not None:
-            _form_params.append(('subaccount', subaccount))
-        if split_code is not None:
-            _form_params.append(('split_code', split_code))
         # process the body parameter
+        if dedicated_virtual_account_remove_split is not None:
+            _body_params = dedicated_virtual_account_remove_split
 
 
         # set the HTTP header `Accept`
@@ -2104,8 +2290,8 @@ class DedicatedVirtualAccountApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -2120,6 +2306,318 @@ class DedicatedVirtualAccountApi:
         return self.api_client.param_serialize(
             method='DELETE',
             resource_path='/dedicated_account/split',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def dedicated_account_requery(
+        self,
+        account_number: Annotated[Optional[StrictStr], Field(description="Virtual account number to requery")] = None,
+        provider_slug: Annotated[Optional[StrictStr], Field(description="The bank's slug in lowercase, without spaces.")] = None,
+        var_date: Annotated[Optional[datetime], Field(description="The day the transfer was made")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Response:
+        """Requery Dedicated Account
+
+        Requery Dedicated Virtual Account for new transactions
+
+        :param account_number: Virtual account number to requery
+        :type account_number: str
+        :param provider_slug: The bank's slug in lowercase, without spaces.
+        :type provider_slug: str
+        :param var_date: The day the transfer was made
+        :type var_date: datetime
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._dedicated_account_requery_serialize(
+            account_number=account_number,
+            provider_slug=provider_slug,
+            var_date=var_date,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Response",
+            '401': "Error",
+            '404': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def dedicated_account_requery_with_http_info(
+        self,
+        account_number: Annotated[Optional[StrictStr], Field(description="Virtual account number to requery")] = None,
+        provider_slug: Annotated[Optional[StrictStr], Field(description="The bank's slug in lowercase, without spaces.")] = None,
+        var_date: Annotated[Optional[datetime], Field(description="The day the transfer was made")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Response]:
+        """Requery Dedicated Account
+
+        Requery Dedicated Virtual Account for new transactions
+
+        :param account_number: Virtual account number to requery
+        :type account_number: str
+        :param provider_slug: The bank's slug in lowercase, without spaces.
+        :type provider_slug: str
+        :param var_date: The day the transfer was made
+        :type var_date: datetime
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._dedicated_account_requery_serialize(
+            account_number=account_number,
+            provider_slug=provider_slug,
+            var_date=var_date,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Response",
+            '401': "Error",
+            '404': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def dedicated_account_requery_without_preload_content(
+        self,
+        account_number: Annotated[Optional[StrictStr], Field(description="Virtual account number to requery")] = None,
+        provider_slug: Annotated[Optional[StrictStr], Field(description="The bank's slug in lowercase, without spaces.")] = None,
+        var_date: Annotated[Optional[datetime], Field(description="The day the transfer was made")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Requery Dedicated Account
+
+        Requery Dedicated Virtual Account for new transactions
+
+        :param account_number: Virtual account number to requery
+        :type account_number: str
+        :param provider_slug: The bank's slug in lowercase, without spaces.
+        :type provider_slug: str
+        :param var_date: The day the transfer was made
+        :type var_date: datetime
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._dedicated_account_requery_serialize(
+            account_number=account_number,
+            provider_slug=provider_slug,
+            var_date=var_date,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Response",
+            '401': "Error",
+            '404': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _dedicated_account_requery_serialize(
+        self,
+        account_number,
+        provider_slug,
+        var_date,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if account_number is not None:
+            
+            _query_params.append(('account_number', account_number))
+            
+        if provider_slug is not None:
+            
+            _query_params.append(('provider_slug', provider_slug))
+            
+        if var_date is not None:
+            if isinstance(var_date, datetime):
+                _query_params.append(
+                    (
+                        'date',
+                        var_date.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('date', var_date))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/dedicated_account/requery',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

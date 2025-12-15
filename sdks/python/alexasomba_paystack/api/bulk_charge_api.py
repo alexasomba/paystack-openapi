@@ -17,12 +17,16 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from datetime import datetime
-from pydantic import Field, StrictInt, StrictStr
+from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
+from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response import BulkChargeFetchBulkBatchChargesResponse
+from alexasomba_paystack.models.bulk_charge_fetch_response import BulkChargeFetchResponse
 from alexasomba_paystack.models.bulk_charge_initiate import BulkChargeInitiate
-from alexasomba_paystack.models.response import Response
+from alexasomba_paystack.models.bulk_charge_initiate_response import BulkChargeInitiateResponse
+from alexasomba_paystack.models.bulk_charge_list_response import BulkChargeListResponse
+from alexasomba_paystack.models.bulk_charge_pause_response import BulkChargePauseResponse
+from alexasomba_paystack.models.bulk_charge_resume_response import BulkChargeResumeResponse
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
 from alexasomba_paystack.api_response import ApiResponse
@@ -45,7 +49,10 @@ class BulkChargeApi:
     @validate_call
     def bulk_charge_charges(
         self,
-        code: Annotated[StrictStr, Field(description="Batch code")],
+        code: Annotated[StrictStr, Field(description="An code for the batch whose charges you want to retrieve")],
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter by the status of the charges")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -58,12 +65,19 @@ class BulkChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
-        """Fetch Charges in a Batch
+    ) -> BulkChargeFetchBulkBatchChargesResponse:
+        """List Charges in a Batch
 
+        This endpoint retrieves the charges associated with a specified batch code
 
-        :param code: Batch code (required)
+        :param code: An code for the batch whose charges you want to retrieve (required)
         :type code: str
+        :param per_page: Number of records to fetch per page
+        :type per_page: int
+        :param page: The offset to retrieve data from
+        :type page: int
+        :param status: Filter by the status of the charges
+        :type status: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -88,6 +102,9 @@ class BulkChargeApi:
 
         _param = self._bulk_charge_charges_serialize(
             code=code,
+            per_page=per_page,
+            page=page,
+            status=status,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -95,7 +112,7 @@ class BulkChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BulkChargeFetchBulkBatchChargesResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -113,7 +130,10 @@ class BulkChargeApi:
     @validate_call
     def bulk_charge_charges_with_http_info(
         self,
-        code: Annotated[StrictStr, Field(description="Batch code")],
+        code: Annotated[StrictStr, Field(description="An code for the batch whose charges you want to retrieve")],
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter by the status of the charges")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -126,12 +146,19 @@ class BulkChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
-        """Fetch Charges in a Batch
+    ) -> ApiResponse[BulkChargeFetchBulkBatchChargesResponse]:
+        """List Charges in a Batch
 
+        This endpoint retrieves the charges associated with a specified batch code
 
-        :param code: Batch code (required)
+        :param code: An code for the batch whose charges you want to retrieve (required)
         :type code: str
+        :param per_page: Number of records to fetch per page
+        :type per_page: int
+        :param page: The offset to retrieve data from
+        :type page: int
+        :param status: Filter by the status of the charges
+        :type status: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -156,6 +183,9 @@ class BulkChargeApi:
 
         _param = self._bulk_charge_charges_serialize(
             code=code,
+            per_page=per_page,
+            page=page,
+            status=status,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -163,7 +193,7 @@ class BulkChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BulkChargeFetchBulkBatchChargesResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -181,7 +211,10 @@ class BulkChargeApi:
     @validate_call
     def bulk_charge_charges_without_preload_content(
         self,
-        code: Annotated[StrictStr, Field(description="Batch code")],
+        code: Annotated[StrictStr, Field(description="An code for the batch whose charges you want to retrieve")],
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter by the status of the charges")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -195,11 +228,18 @@ class BulkChargeApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Fetch Charges in a Batch
+        """List Charges in a Batch
 
+        This endpoint retrieves the charges associated with a specified batch code
 
-        :param code: Batch code (required)
+        :param code: An code for the batch whose charges you want to retrieve (required)
         :type code: str
+        :param per_page: Number of records to fetch per page
+        :type per_page: int
+        :param page: The offset to retrieve data from
+        :type page: int
+        :param status: Filter by the status of the charges
+        :type status: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -224,6 +264,9 @@ class BulkChargeApi:
 
         _param = self._bulk_charge_charges_serialize(
             code=code,
+            per_page=per_page,
+            page=page,
+            status=status,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -231,7 +274,7 @@ class BulkChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BulkChargeFetchBulkBatchChargesResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -245,6 +288,9 @@ class BulkChargeApi:
     def _bulk_charge_charges_serialize(
         self,
         code,
+        per_page,
+        page,
+        status,
         _request_auth,
         _content_type,
         _headers,
@@ -269,6 +315,18 @@ class BulkChargeApi:
         if code is not None:
             _path_params['code'] = code
         # process the query parameters
+        if per_page is not None:
+            
+            _query_params.append(('perPage', per_page))
+            
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
+        if status is not None:
+            
+            _query_params.append(('status', status))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -309,7 +367,7 @@ class BulkChargeApi:
     @validate_call
     def bulk_charge_fetch(
         self,
-        code: Annotated[StrictStr, Field(description="Batch code")],
+        code: Annotated[StrictStr, Field(description="The code for the charge whose batches you want to retrieve")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -322,11 +380,12 @@ class BulkChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> BulkChargeFetchResponse:
         """Fetch Bulk Charge Batch
 
+        This endpoint retrieves a specific batch code. It also returns useful information on its progress by  way of the `total_charges` and `pending_charges` attributes. 
 
-        :param code: Batch code (required)
+        :param code: The code for the charge whose batches you want to retrieve (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -359,7 +418,7 @@ class BulkChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BulkChargeFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -377,7 +436,7 @@ class BulkChargeApi:
     @validate_call
     def bulk_charge_fetch_with_http_info(
         self,
-        code: Annotated[StrictStr, Field(description="Batch code")],
+        code: Annotated[StrictStr, Field(description="The code for the charge whose batches you want to retrieve")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -390,11 +449,12 @@ class BulkChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[BulkChargeFetchResponse]:
         """Fetch Bulk Charge Batch
 
+        This endpoint retrieves a specific batch code. It also returns useful information on its progress by  way of the `total_charges` and `pending_charges` attributes. 
 
-        :param code: Batch code (required)
+        :param code: The code for the charge whose batches you want to retrieve (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -427,7 +487,7 @@ class BulkChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BulkChargeFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -445,7 +505,7 @@ class BulkChargeApi:
     @validate_call
     def bulk_charge_fetch_without_preload_content(
         self,
-        code: Annotated[StrictStr, Field(description="Batch code")],
+        code: Annotated[StrictStr, Field(description="The code for the charge whose batches you want to retrieve")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -461,8 +521,9 @@ class BulkChargeApi:
     ) -> RESTResponseType:
         """Fetch Bulk Charge Batch
 
+        This endpoint retrieves a specific batch code. It also returns useful information on its progress by  way of the `total_charges` and `pending_charges` attributes. 
 
-        :param code: Batch code (required)
+        :param code: The code for the charge whose batches you want to retrieve (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -495,7 +556,7 @@ class BulkChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BulkChargeFetchResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -586,9 +647,10 @@ class BulkChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> BulkChargeInitiateResponse:
         """Initiate Bulk Charge
 
+        Charge multiple customers in batches
 
         :param bulk_charge_initiate:
         :type bulk_charge_initiate: List[BulkChargeInitiate]
@@ -623,7 +685,7 @@ class BulkChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BulkChargeInitiateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -653,9 +715,10 @@ class BulkChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[BulkChargeInitiateResponse]:
         """Initiate Bulk Charge
 
+        Charge multiple customers in batches
 
         :param bulk_charge_initiate:
         :type bulk_charge_initiate: List[BulkChargeInitiate]
@@ -690,7 +753,7 @@ class BulkChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BulkChargeInitiateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -723,6 +786,7 @@ class BulkChargeApi:
     ) -> RESTResponseType:
         """Initiate Bulk Charge
 
+        Charge multiple customers in batches
 
         :param bulk_charge_initiate:
         :type bulk_charge_initiate: List[BulkChargeInitiate]
@@ -757,7 +821,7 @@ class BulkChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BulkChargeInitiateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -815,7 +879,8 @@ class BulkChargeApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json'
+                        'application/json', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -849,9 +914,8 @@ class BulkChargeApi:
     def bulk_charge_list(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter by the status of the charges")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -864,18 +928,17 @@ class BulkChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> BulkChargeListResponse:
         """List Bulk Charge Batches
 
+        List all bulk charge batches.
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
-        :param page: The section to retrieve
+        :param page: The offset to retrieve data from
         :type page: int
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
+        :param status: Filter by the status of the charges
+        :type status: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -901,8 +964,7 @@ class BulkChargeApi:
         _param = self._bulk_charge_list_serialize(
             per_page=per_page,
             page=page,
-            var_from=var_from,
-            to=to,
+            status=status,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -910,7 +972,7 @@ class BulkChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BulkChargeListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -929,9 +991,8 @@ class BulkChargeApi:
     def bulk_charge_list_with_http_info(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter by the status of the charges")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -944,18 +1005,17 @@ class BulkChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[BulkChargeListResponse]:
         """List Bulk Charge Batches
 
+        List all bulk charge batches.
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
-        :param page: The section to retrieve
+        :param page: The offset to retrieve data from
         :type page: int
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
+        :param status: Filter by the status of the charges
+        :type status: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -981,8 +1041,7 @@ class BulkChargeApi:
         _param = self._bulk_charge_list_serialize(
             per_page=per_page,
             page=page,
-            var_from=var_from,
-            to=to,
+            status=status,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -990,7 +1049,7 @@ class BulkChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BulkChargeListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1009,9 +1068,8 @@ class BulkChargeApi:
     def bulk_charge_list_without_preload_content(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter by the status of the charges")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1027,15 +1085,14 @@ class BulkChargeApi:
     ) -> RESTResponseType:
         """List Bulk Charge Batches
 
+        List all bulk charge batches.
 
         :param per_page: Number of records to fetch per page
         :type per_page: int
-        :param page: The section to retrieve
+        :param page: The offset to retrieve data from
         :type page: int
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
+        :param status: Filter by the status of the charges
+        :type status: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1061,8 +1118,7 @@ class BulkChargeApi:
         _param = self._bulk_charge_list_serialize(
             per_page=per_page,
             page=page,
-            var_from=var_from,
-            to=to,
+            status=status,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1070,7 +1126,7 @@ class BulkChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BulkChargeListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1085,8 +1141,7 @@ class BulkChargeApi:
         self,
         per_page,
         page,
-        var_from,
-        to,
+        status,
         _request_auth,
         _content_type,
         _headers,
@@ -1117,31 +1172,9 @@ class BulkChargeApi:
             
             _query_params.append(('page', page))
             
-        if var_from is not None:
-            if isinstance(var_from, datetime):
-                _query_params.append(
-                    (
-                        'from',
-                        var_from.strftime(
-                            self.api_client.configuration.datetime_format
-                        )
-                    )
-                )
-            else:
-                _query_params.append(('from', var_from))
+        if status is not None:
             
-        if to is not None:
-            if isinstance(to, datetime):
-                _query_params.append(
-                    (
-                        'to',
-                        to.strftime(
-                            self.api_client.configuration.datetime_format
-                        )
-                    )
-                )
-            else:
-                _query_params.append(('to', to))
+            _query_params.append(('status', status))
             
         # process the header parameters
         # process the form parameters
@@ -1183,7 +1216,7 @@ class BulkChargeApi:
     @validate_call
     def bulk_charge_pause(
         self,
-        code: Annotated[StrictStr, Field(description="Batch code")],
+        code: Annotated[StrictStr, Field(description="The batch code for the bulk charge you want to pause")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1196,11 +1229,12 @@ class BulkChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> BulkChargePauseResponse:
         """Pause Bulk Charge Batch
 
+        Pause the processing of a charge batch
 
-        :param code: Batch code (required)
+        :param code: The batch code for the bulk charge you want to pause (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1233,7 +1267,7 @@ class BulkChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BulkChargePauseResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1251,7 +1285,7 @@ class BulkChargeApi:
     @validate_call
     def bulk_charge_pause_with_http_info(
         self,
-        code: Annotated[StrictStr, Field(description="Batch code")],
+        code: Annotated[StrictStr, Field(description="The batch code for the bulk charge you want to pause")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1264,11 +1298,12 @@ class BulkChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[BulkChargePauseResponse]:
         """Pause Bulk Charge Batch
 
+        Pause the processing of a charge batch
 
-        :param code: Batch code (required)
+        :param code: The batch code for the bulk charge you want to pause (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1301,7 +1336,7 @@ class BulkChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BulkChargePauseResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1319,7 +1354,7 @@ class BulkChargeApi:
     @validate_call
     def bulk_charge_pause_without_preload_content(
         self,
-        code: Annotated[StrictStr, Field(description="Batch code")],
+        code: Annotated[StrictStr, Field(description="The batch code for the bulk charge you want to pause")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1335,8 +1370,9 @@ class BulkChargeApi:
     ) -> RESTResponseType:
         """Pause Bulk Charge Batch
 
+        Pause the processing of a charge batch
 
-        :param code: Batch code (required)
+        :param code: The batch code for the bulk charge you want to pause (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1369,7 +1405,7 @@ class BulkChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BulkChargePauseResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1447,7 +1483,7 @@ class BulkChargeApi:
     @validate_call
     def bulk_charge_resume(
         self,
-        code: Annotated[StrictStr, Field(description="Batch code")],
+        code: Annotated[StrictStr, Field(description="The batch code for the bulk charge you want to pause")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1460,11 +1496,12 @@ class BulkChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> BulkChargeResumeResponse:
         """Resume Bulk Charge Batch
 
+        Resume the processing of a previously paused charge batch
 
-        :param code: Batch code (required)
+        :param code: The batch code for the bulk charge you want to pause (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1497,7 +1534,7 @@ class BulkChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BulkChargeResumeResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1515,7 +1552,7 @@ class BulkChargeApi:
     @validate_call
     def bulk_charge_resume_with_http_info(
         self,
-        code: Annotated[StrictStr, Field(description="Batch code")],
+        code: Annotated[StrictStr, Field(description="The batch code for the bulk charge you want to pause")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1528,11 +1565,12 @@ class BulkChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[BulkChargeResumeResponse]:
         """Resume Bulk Charge Batch
 
+        Resume the processing of a previously paused charge batch
 
-        :param code: Batch code (required)
+        :param code: The batch code for the bulk charge you want to pause (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1565,7 +1603,7 @@ class BulkChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BulkChargeResumeResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -1583,7 +1621,7 @@ class BulkChargeApi:
     @validate_call
     def bulk_charge_resume_without_preload_content(
         self,
-        code: Annotated[StrictStr, Field(description="Batch code")],
+        code: Annotated[StrictStr, Field(description="The batch code for the bulk charge you want to pause")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1599,8 +1637,9 @@ class BulkChargeApi:
     ) -> RESTResponseType:
         """Resume Bulk Charge Batch
 
+        Resume the processing of a previously paused charge batch
 
-        :param code: Batch code (required)
+        :param code: The batch code for the bulk charge you want to pause (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1633,7 +1672,7 @@ class BulkChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "BulkChargeResumeResponse",
             '401': "Error",
             '404': "Error",
         }

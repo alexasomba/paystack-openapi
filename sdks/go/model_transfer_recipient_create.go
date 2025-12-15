@@ -22,9 +22,9 @@ var _ MappedNullable = &TransferRecipientCreate{}
 
 // TransferRecipientCreate struct for TransferRecipientCreate
 type TransferRecipientCreate struct {
-	// Recipient Type (Only nuban at this time)
+	// Recipient Type
 	Type string `json:"type"`
-	// Recipient's name
+	// The recipient's name according to their account registration.
 	Name string `json:"name"`
 	// Recipient's bank account number
 	AccountNumber string `json:"account_number"`
@@ -36,8 +36,8 @@ type TransferRecipientCreate struct {
 	Currency *string `json:"currency,omitempty"`
 	// An authorization code from a previous transaction
 	AuthorizationCode *string `json:"authorization_code,omitempty"`
-	// Stringified JSON object of custom data
-	Metadata *string `json:"metadata,omitempty"`
+	// JSON object of custom data
+	Metadata map[string]interface{} `json:"metadata,omitempty"`
 }
 
 type _TransferRecipientCreate TransferRecipientCreate
@@ -256,19 +256,19 @@ func (o *TransferRecipientCreate) SetAuthorizationCode(v string) {
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *TransferRecipientCreate) GetMetadata() string {
+func (o *TransferRecipientCreate) GetMetadata() map[string]interface{} {
 	if o == nil || IsNil(o.Metadata) {
-		var ret string
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Metadata
+	return o.Metadata
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TransferRecipientCreate) GetMetadataOk() (*string, bool) {
+func (o *TransferRecipientCreate) GetMetadataOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Metadata) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Metadata, true
 }
@@ -282,9 +282,9 @@ func (o *TransferRecipientCreate) HasMetadata() bool {
 	return false
 }
 
-// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
-func (o *TransferRecipientCreate) SetMetadata(v string) {
-	o.Metadata = &v
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
+func (o *TransferRecipientCreate) SetMetadata(v map[string]interface{}) {
+	o.Metadata = v
 }
 
 func (o TransferRecipientCreate) MarshalJSON() ([]byte, error) {

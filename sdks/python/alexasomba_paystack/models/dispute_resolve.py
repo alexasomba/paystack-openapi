@@ -29,7 +29,7 @@ class DisputeResolve(BaseModel):
     """ # noqa: E501
     resolution: StrictStr = Field(description="Dispute resolution. Accepted values, merchant-accepted, declined")
     message: StrictStr = Field(description="Reason for resolving")
-    refund_amount: StrictStr = Field(description="The amount to refund, in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")
+    refund_amount: StrictInt = Field(description="The amount to refund, in the subunit of your integration currency")
     uploaded_filename: StrictStr = Field(description="Filename of attachment returned via response from the Dispute upload URL")
     evidence: Optional[StrictInt] = Field(default=None, description="Evidence Id for fraud claims")
     __properties: ClassVar[List[str]] = ["resolution", "message", "refund_amount", "uploaded_filename", "evidence"]

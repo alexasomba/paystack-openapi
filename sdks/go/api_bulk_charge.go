@@ -18,7 +18,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	"time"
 )
 
 
@@ -29,17 +28,40 @@ type ApiBulkChargeChargesRequest struct {
 	ctx context.Context
 	ApiService *BulkChargeAPIService
 	code string
+	perPage *int32
+	page *int32
+	status *string
 }
 
-func (r ApiBulkChargeChargesRequest) Execute() (*Response, *http.Response, error) {
+// Number of records to fetch per page
+func (r ApiBulkChargeChargesRequest) PerPage(perPage int32) ApiBulkChargeChargesRequest {
+	r.perPage = &perPage
+	return r
+}
+
+// The offset to retrieve data from
+func (r ApiBulkChargeChargesRequest) Page(page int32) ApiBulkChargeChargesRequest {
+	r.page = &page
+	return r
+}
+
+// Filter by the status of the charges
+func (r ApiBulkChargeChargesRequest) Status(status string) ApiBulkChargeChargesRequest {
+	r.status = &status
+	return r
+}
+
+func (r ApiBulkChargeChargesRequest) Execute() (*BulkChargeFetchBulkBatchChargesResponse, *http.Response, error) {
 	return r.ApiService.BulkChargeChargesExecute(r)
 }
 
 /*
-BulkChargeCharges Fetch Charges in a Batch
+BulkChargeCharges List Charges in a Batch
+
+This endpoint retrieves the charges associated with a specified batch code
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code Batch code
+ @param code An code for the batch whose charges you want to retrieve
  @return ApiBulkChargeChargesRequest
 */
 func (a *BulkChargeAPIService) BulkChargeCharges(ctx context.Context, code string) ApiBulkChargeChargesRequest {
@@ -51,13 +73,13 @@ func (a *BulkChargeAPIService) BulkChargeCharges(ctx context.Context, code strin
 }
 
 // Execute executes the request
-//  @return Response
-func (a *BulkChargeAPIService) BulkChargeChargesExecute(r ApiBulkChargeChargesRequest) (*Response, *http.Response, error) {
+//  @return BulkChargeFetchBulkBatchChargesResponse
+func (a *BulkChargeAPIService) BulkChargeChargesExecute(r ApiBulkChargeChargesRequest) (*BulkChargeFetchBulkBatchChargesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *BulkChargeFetchBulkBatchChargesResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BulkChargeAPIService.BulkChargeCharges")
@@ -72,6 +94,15 @@ func (a *BulkChargeAPIService) BulkChargeChargesExecute(r ApiBulkChargeChargesRe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.perPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	}
+	if r.status != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -154,15 +185,19 @@ type ApiBulkChargeFetchRequest struct {
 	code string
 }
 
-func (r ApiBulkChargeFetchRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiBulkChargeFetchRequest) Execute() (*BulkChargeFetchResponse, *http.Response, error) {
 	return r.ApiService.BulkChargeFetchExecute(r)
 }
 
 /*
 BulkChargeFetch Fetch Bulk Charge Batch
 
+This endpoint retrieves a specific batch code. It also returns useful information on its progress by 
+way of the `total_charges` and `pending_charges` attributes.
+
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code Batch code
+ @param code The code for the charge whose batches you want to retrieve
  @return ApiBulkChargeFetchRequest
 */
 func (a *BulkChargeAPIService) BulkChargeFetch(ctx context.Context, code string) ApiBulkChargeFetchRequest {
@@ -174,13 +209,13 @@ func (a *BulkChargeAPIService) BulkChargeFetch(ctx context.Context, code string)
 }
 
 // Execute executes the request
-//  @return Response
-func (a *BulkChargeAPIService) BulkChargeFetchExecute(r ApiBulkChargeFetchRequest) (*Response, *http.Response, error) {
+//  @return BulkChargeFetchResponse
+func (a *BulkChargeAPIService) BulkChargeFetchExecute(r ApiBulkChargeFetchRequest) (*BulkChargeFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *BulkChargeFetchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BulkChargeAPIService.BulkChargeFetch")
@@ -282,12 +317,14 @@ func (r ApiBulkChargeInitiateRequest) BulkChargeInitiate(bulkChargeInitiate []Bu
 	return r
 }
 
-func (r ApiBulkChargeInitiateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiBulkChargeInitiateRequest) Execute() (*BulkChargeInitiateResponse, *http.Response, error) {
 	return r.ApiService.BulkChargeInitiateExecute(r)
 }
 
 /*
 BulkChargeInitiate Initiate Bulk Charge
+
+Charge multiple customers in batches
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiBulkChargeInitiateRequest
@@ -300,13 +337,13 @@ func (a *BulkChargeAPIService) BulkChargeInitiate(ctx context.Context) ApiBulkCh
 }
 
 // Execute executes the request
-//  @return Response
-func (a *BulkChargeAPIService) BulkChargeInitiateExecute(r ApiBulkChargeInitiateRequest) (*Response, *http.Response, error) {
+//  @return BulkChargeInitiateResponse
+func (a *BulkChargeAPIService) BulkChargeInitiateExecute(r ApiBulkChargeInitiateRequest) (*BulkChargeInitiateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *BulkChargeInitiateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BulkChargeAPIService.BulkChargeInitiate")
@@ -321,7 +358,7 @@ func (a *BulkChargeAPIService) BulkChargeInitiateExecute(r ApiBulkChargeInitiate
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -392,8 +429,7 @@ type ApiBulkChargeListRequest struct {
 	ApiService *BulkChargeAPIService
 	perPage *int32
 	page *int32
-	from *time.Time
-	to *time.Time
+	status *string
 }
 
 // Number of records to fetch per page
@@ -402,30 +438,26 @@ func (r ApiBulkChargeListRequest) PerPage(perPage int32) ApiBulkChargeListReques
 	return r
 }
 
-// The section to retrieve
+// The offset to retrieve data from
 func (r ApiBulkChargeListRequest) Page(page int32) ApiBulkChargeListRequest {
 	r.page = &page
 	return r
 }
 
-// The start date
-func (r ApiBulkChargeListRequest) From(from time.Time) ApiBulkChargeListRequest {
-	r.from = &from
+// Filter by the status of the charges
+func (r ApiBulkChargeListRequest) Status(status string) ApiBulkChargeListRequest {
+	r.status = &status
 	return r
 }
 
-// The end date
-func (r ApiBulkChargeListRequest) To(to time.Time) ApiBulkChargeListRequest {
-	r.to = &to
-	return r
-}
-
-func (r ApiBulkChargeListRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiBulkChargeListRequest) Execute() (*BulkChargeListResponse, *http.Response, error) {
 	return r.ApiService.BulkChargeListExecute(r)
 }
 
 /*
 BulkChargeList List Bulk Charge Batches
+
+List all bulk charge batches.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiBulkChargeListRequest
@@ -438,13 +470,13 @@ func (a *BulkChargeAPIService) BulkChargeList(ctx context.Context) ApiBulkCharge
 }
 
 // Execute executes the request
-//  @return Response
-func (a *BulkChargeAPIService) BulkChargeListExecute(r ApiBulkChargeListRequest) (*Response, *http.Response, error) {
+//  @return BulkChargeListResponse
+func (a *BulkChargeAPIService) BulkChargeListExecute(r ApiBulkChargeListRequest) (*BulkChargeListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *BulkChargeListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BulkChargeAPIService.BulkChargeList")
@@ -464,11 +496,8 @@ func (a *BulkChargeAPIService) BulkChargeListExecute(r ApiBulkChargeListRequest)
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
-	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
-	}
-	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	if r.status != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -552,15 +581,17 @@ type ApiBulkChargePauseRequest struct {
 	code string
 }
 
-func (r ApiBulkChargePauseRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiBulkChargePauseRequest) Execute() (*BulkChargePauseResponse, *http.Response, error) {
 	return r.ApiService.BulkChargePauseExecute(r)
 }
 
 /*
 BulkChargePause Pause Bulk Charge Batch
 
+Pause the processing of a charge batch
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code Batch code
+ @param code The batch code for the bulk charge you want to pause
  @return ApiBulkChargePauseRequest
 */
 func (a *BulkChargeAPIService) BulkChargePause(ctx context.Context, code string) ApiBulkChargePauseRequest {
@@ -572,13 +603,13 @@ func (a *BulkChargeAPIService) BulkChargePause(ctx context.Context, code string)
 }
 
 // Execute executes the request
-//  @return Response
-func (a *BulkChargeAPIService) BulkChargePauseExecute(r ApiBulkChargePauseRequest) (*Response, *http.Response, error) {
+//  @return BulkChargePauseResponse
+func (a *BulkChargeAPIService) BulkChargePauseExecute(r ApiBulkChargePauseRequest) (*BulkChargePauseResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *BulkChargePauseResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BulkChargeAPIService.BulkChargePause")
@@ -675,15 +706,17 @@ type ApiBulkChargeResumeRequest struct {
 	code string
 }
 
-func (r ApiBulkChargeResumeRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiBulkChargeResumeRequest) Execute() (*BulkChargeResumeResponse, *http.Response, error) {
 	return r.ApiService.BulkChargeResumeExecute(r)
 }
 
 /*
 BulkChargeResume Resume Bulk Charge Batch
 
+Resume the processing of a previously paused charge batch
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code Batch code
+ @param code The batch code for the bulk charge you want to pause
  @return ApiBulkChargeResumeRequest
 */
 func (a *BulkChargeAPIService) BulkChargeResume(ctx context.Context, code string) ApiBulkChargeResumeRequest {
@@ -695,13 +728,13 @@ func (a *BulkChargeAPIService) BulkChargeResume(ctx context.Context, code string
 }
 
 // Execute executes the request
-//  @return Response
-func (a *BulkChargeAPIService) BulkChargeResumeExecute(r ApiBulkChargeResumeRequest) (*Response, *http.Response, error) {
+//  @return BulkChargeResumeResponse
+func (a *BulkChargeAPIService) BulkChargeResumeExecute(r ApiBulkChargeResumeRequest) (*BulkChargeResumeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *BulkChargeResumeResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BulkChargeAPIService.BulkChargeResume")

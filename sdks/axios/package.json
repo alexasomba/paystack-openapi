@@ -33,13 +33,14 @@
   },
   "files": [
     "dist",
-    "src"
+    "src",
+    "openapi.yaml"
   ],
   "engines": {
     "node": ">=18"
   },
   "scripts": {
-    "generate:types": "openapi-typescript ../../src/assets/sdk/paystack.yaml -o src/openapi-types.ts",
+    "generate:types": "openapi-typescript ./openapi.yaml -o src/openapi-types.ts",
     "generate:operations": "node ./scripts/generate-operations.mjs",
     "build": "pnpm generate:types && pnpm generate:operations && tsc -p tsconfig.json",
     "clean": "rm -rf dist",

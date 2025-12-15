@@ -20,6 +20,7 @@ export function createAxiosFetch(options: AxiosFetchOptions = {}): typeof fetch 
       method,
       data: init?.body as any,
       headers: init?.headers as any,
+      signal: init?.signal as any,
       responseType: 'arraybuffer',
       // make axios behave like fetch: don't throw on non-2xx
       validateStatus: () => true,

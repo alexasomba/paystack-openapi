@@ -24,24 +24,24 @@ var _ MappedNullable = &TransactionChargeAuthorization{}
 type TransactionChargeAuthorization struct {
 	// Customer's email address
 	Email string `json:"email"`
-	// Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
+	// Amount in the lower denomination of your currency
 	Amount int32 `json:"amount"`
 	// Valid authorization code to charge
 	AuthorizationCode string `json:"authorization_code"`
 	// Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
 	Reference *string `json:"reference,omitempty"`
-	// The transaction currency
-	Currency *string `json:"currency,omitempty"`
-	// Stringified JSON object of custom data
-	Metadata *string `json:"metadata,omitempty"`
+	Currency *Currency `json:"currency,omitempty"`
 	// The split code of the transaction split
 	SplitCode *string `json:"split_code,omitempty"`
+	Split *SplitCreate `json:"split,omitempty"`
 	// The code for the subaccount that owns the payment
 	Subaccount *string `json:"subaccount,omitempty"`
 	// A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created
 	TransactionCharge *string `json:"transaction_charge,omitempty"`
-	// The beare of the transaction charge
+	// The bearer of the transaction charge
 	Bearer *string `json:"bearer,omitempty"`
+	// Stringified JSON object of custom data
+	Metadata *string `json:"metadata,omitempty"`
 	// If you are making a scheduled charge call, it is a good idea to queue them so the processing system does not get overloaded causing transaction processing errors.
 	Queue *bool `json:"queue,omitempty"`
 }
@@ -173,9 +173,9 @@ func (o *TransactionChargeAuthorization) SetReference(v string) {
 }
 
 // GetCurrency returns the Currency field value if set, zero value otherwise.
-func (o *TransactionChargeAuthorization) GetCurrency() string {
+func (o *TransactionChargeAuthorization) GetCurrency() Currency {
 	if o == nil || IsNil(o.Currency) {
-		var ret string
+		var ret Currency
 		return ret
 	}
 	return *o.Currency
@@ -183,7 +183,7 @@ func (o *TransactionChargeAuthorization) GetCurrency() string {
 
 // GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TransactionChargeAuthorization) GetCurrencyOk() (*string, bool) {
+func (o *TransactionChargeAuthorization) GetCurrencyOk() (*Currency, bool) {
 	if o == nil || IsNil(o.Currency) {
 		return nil, false
 	}
@@ -199,41 +199,9 @@ func (o *TransactionChargeAuthorization) HasCurrency() bool {
 	return false
 }
 
-// SetCurrency gets a reference to the given string and assigns it to the Currency field.
-func (o *TransactionChargeAuthorization) SetCurrency(v string) {
+// SetCurrency gets a reference to the given Currency and assigns it to the Currency field.
+func (o *TransactionChargeAuthorization) SetCurrency(v Currency) {
 	o.Currency = &v
-}
-
-// GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *TransactionChargeAuthorization) GetMetadata() string {
-	if o == nil || IsNil(o.Metadata) {
-		var ret string
-		return ret
-	}
-	return *o.Metadata
-}
-
-// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TransactionChargeAuthorization) GetMetadataOk() (*string, bool) {
-	if o == nil || IsNil(o.Metadata) {
-		return nil, false
-	}
-	return o.Metadata, true
-}
-
-// HasMetadata returns a boolean if a field has been set.
-func (o *TransactionChargeAuthorization) HasMetadata() bool {
-	if o != nil && !IsNil(o.Metadata) {
-		return true
-	}
-
-	return false
-}
-
-// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
-func (o *TransactionChargeAuthorization) SetMetadata(v string) {
-	o.Metadata = &v
 }
 
 // GetSplitCode returns the SplitCode field value if set, zero value otherwise.
@@ -266,6 +234,38 @@ func (o *TransactionChargeAuthorization) HasSplitCode() bool {
 // SetSplitCode gets a reference to the given string and assigns it to the SplitCode field.
 func (o *TransactionChargeAuthorization) SetSplitCode(v string) {
 	o.SplitCode = &v
+}
+
+// GetSplit returns the Split field value if set, zero value otherwise.
+func (o *TransactionChargeAuthorization) GetSplit() SplitCreate {
+	if o == nil || IsNil(o.Split) {
+		var ret SplitCreate
+		return ret
+	}
+	return *o.Split
+}
+
+// GetSplitOk returns a tuple with the Split field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransactionChargeAuthorization) GetSplitOk() (*SplitCreate, bool) {
+	if o == nil || IsNil(o.Split) {
+		return nil, false
+	}
+	return o.Split, true
+}
+
+// HasSplit returns a boolean if a field has been set.
+func (o *TransactionChargeAuthorization) HasSplit() bool {
+	if o != nil && !IsNil(o.Split) {
+		return true
+	}
+
+	return false
+}
+
+// SetSplit gets a reference to the given SplitCreate and assigns it to the Split field.
+func (o *TransactionChargeAuthorization) SetSplit(v SplitCreate) {
+	o.Split = &v
 }
 
 // GetSubaccount returns the Subaccount field value if set, zero value otherwise.
@@ -364,6 +364,38 @@ func (o *TransactionChargeAuthorization) SetBearer(v string) {
 	o.Bearer = &v
 }
 
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *TransactionChargeAuthorization) GetMetadata() string {
+	if o == nil || IsNil(o.Metadata) {
+		var ret string
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransactionChargeAuthorization) GetMetadataOk() (*string, bool) {
+	if o == nil || IsNil(o.Metadata) {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *TransactionChargeAuthorization) HasMetadata() bool {
+	if o != nil && !IsNil(o.Metadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
+func (o *TransactionChargeAuthorization) SetMetadata(v string) {
+	o.Metadata = &v
+}
+
 // GetQueue returns the Queue field value if set, zero value otherwise.
 func (o *TransactionChargeAuthorization) GetQueue() bool {
 	if o == nil || IsNil(o.Queue) {
@@ -415,11 +447,11 @@ func (o TransactionChargeAuthorization) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Currency) {
 		toSerialize["currency"] = o.Currency
 	}
-	if !IsNil(o.Metadata) {
-		toSerialize["metadata"] = o.Metadata
-	}
 	if !IsNil(o.SplitCode) {
 		toSerialize["split_code"] = o.SplitCode
+	}
+	if !IsNil(o.Split) {
+		toSerialize["split"] = o.Split
 	}
 	if !IsNil(o.Subaccount) {
 		toSerialize["subaccount"] = o.Subaccount
@@ -429,6 +461,9 @@ func (o TransactionChargeAuthorization) ToMap() (map[string]interface{}, error) 
 	}
 	if !IsNil(o.Bearer) {
 		toSerialize["bearer"] = o.Bearer
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
 	}
 	if !IsNil(o.Queue) {
 		toSerialize["queue"] = o.Queue

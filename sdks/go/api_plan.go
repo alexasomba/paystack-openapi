@@ -28,70 +28,22 @@ type PlanAPIService service
 type ApiPlanCreateRequest struct {
 	ctx context.Context
 	ApiService *PlanAPIService
-	name *string
-	amount *int32
-	interval *string
-	description *string
-	sendInvoices *bool
-	sendSms *bool
-	currency *string
-	invoiceLimit *int32
+	planCreate *PlanCreate
 }
 
-// Name of plan
-func (r ApiPlanCreateRequest) Name(name string) ApiPlanCreateRequest {
-	r.name = &name
+func (r ApiPlanCreateRequest) PlanCreate(planCreate PlanCreate) ApiPlanCreateRequest {
+	r.planCreate = &planCreate
 	return r
 }
 
-// Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-func (r ApiPlanCreateRequest) Amount(amount int32) ApiPlanCreateRequest {
-	r.amount = &amount
-	return r
-}
-
-// Interval in words. Valid intervals are daily, weekly, monthly,biannually, annually
-func (r ApiPlanCreateRequest) Interval(interval string) ApiPlanCreateRequest {
-	r.interval = &interval
-	return r
-}
-
-// A description for this plan
-func (r ApiPlanCreateRequest) Description(description string) ApiPlanCreateRequest {
-	r.description = &description
-	return r
-}
-
-// Set to false if you don&#39;t want invoices to be sent to your customers
-func (r ApiPlanCreateRequest) SendInvoices(sendInvoices bool) ApiPlanCreateRequest {
-	r.sendInvoices = &sendInvoices
-	return r
-}
-
-// Set to false if you don&#39;t want text messages to be sent to your customers
-func (r ApiPlanCreateRequest) SendSms(sendSms bool) ApiPlanCreateRequest {
-	r.sendSms = &sendSms
-	return r
-}
-
-// Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD
-func (r ApiPlanCreateRequest) Currency(currency string) ApiPlanCreateRequest {
-	r.currency = &currency
-	return r
-}
-
-// Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing.
-func (r ApiPlanCreateRequest) InvoiceLimit(invoiceLimit int32) ApiPlanCreateRequest {
-	r.invoiceLimit = &invoiceLimit
-	return r
-}
-
-func (r ApiPlanCreateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiPlanCreateRequest) Execute() (*PlanCreateResponse, *http.Response, error) {
 	return r.ApiService.PlanCreateExecute(r)
 }
 
 /*
 PlanCreate Create Plan
+
+Create a plan for recurring payments
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPlanCreateRequest
@@ -104,13 +56,13 @@ func (a *PlanAPIService) PlanCreate(ctx context.Context) ApiPlanCreateRequest {
 }
 
 // Execute executes the request
-//  @return Response
-func (a *PlanAPIService) PlanCreateExecute(r ApiPlanCreateRequest) (*Response, *http.Response, error) {
+//  @return PlanCreateResponse
+func (a *PlanAPIService) PlanCreateExecute(r ApiPlanCreateRequest) (*PlanCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *PlanCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PlanAPIService.PlanCreate")
@@ -123,18 +75,9 @@ func (a *PlanAPIService) PlanCreateExecute(r ApiPlanCreateRequest) (*Response, *
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.name == nil {
-		return localVarReturnValue, nil, reportError("name is required and must be specified")
-	}
-	if r.amount == nil {
-		return localVarReturnValue, nil, reportError("amount is required and must be specified")
-	}
-	if r.interval == nil {
-		return localVarReturnValue, nil, reportError("interval is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -150,24 +93,8 @@ func (a *PlanAPIService) PlanCreateExecute(r ApiPlanCreateRequest) (*Response, *
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "amount", r.amount, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "interval", r.interval, "", "")
-	if r.description != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "description", r.description, "", "")
-	}
-	if r.sendInvoices != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "send_invoices", r.sendInvoices, "", "")
-	}
-	if r.sendSms != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "send_sms", r.sendSms, "", "")
-	}
-	if r.currency != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "currency", r.currency, "", "")
-	}
-	if r.invoiceLimit != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "invoice_limit", r.invoiceLimit, "", "")
-	}
+	// body params
+	localVarPostBody = r.planCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -222,15 +149,17 @@ type ApiPlanFetchRequest struct {
 	code string
 }
 
-func (r ApiPlanFetchRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiPlanFetchRequest) Execute() (*PlanFetchResponse, *http.Response, error) {
 	return r.ApiService.PlanFetchExecute(r)
 }
 
 /*
 PlanFetch Fetch Plan
 
+Get the details of a payment plan
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code
+ @param code The plan code you want to fetch
  @return ApiPlanFetchRequest
 */
 func (a *PlanAPIService) PlanFetch(ctx context.Context, code string) ApiPlanFetchRequest {
@@ -242,13 +171,13 @@ func (a *PlanAPIService) PlanFetch(ctx context.Context, code string) ApiPlanFetc
 }
 
 // Execute executes the request
-//  @return Response
-func (a *PlanAPIService) PlanFetchExecute(r ApiPlanFetchRequest) (*Response, *http.Response, error) {
+//  @return PlanFetchResponse
+func (a *PlanAPIService) PlanFetchExecute(r ApiPlanFetchRequest) (*PlanFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *PlanFetchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PlanAPIService.PlanFetch")
@@ -386,12 +315,14 @@ func (r ApiPlanListRequest) To(to time.Time) ApiPlanListRequest {
 	return r
 }
 
-func (r ApiPlanListRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiPlanListRequest) Execute() (*PlanListResponse, *http.Response, error) {
 	return r.ApiService.PlanListExecute(r)
 }
 
 /*
 PlanList List Plans
+
+List all recurring payment plans
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPlanListRequest
@@ -404,13 +335,13 @@ func (a *PlanAPIService) PlanList(ctx context.Context) ApiPlanListRequest {
 }
 
 // Execute executes the request
-//  @return Response
-func (a *PlanAPIService) PlanListExecute(r ApiPlanListRequest) (*Response, *http.Response, error) {
+//  @return PlanListResponse
+func (a *PlanAPIService) PlanListExecute(r ApiPlanListRequest) (*PlanListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *PlanListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PlanAPIService.PlanList")
@@ -522,73 +453,25 @@ type ApiPlanUpdateRequest struct {
 	ctx context.Context
 	ApiService *PlanAPIService
 	code string
-	name *string
-	amount *int32
-	interval *string
-	description *bool
-	sendInvoices *bool
-	sendSms *bool
-	currency *string
-	invoiceLimit *int32
+	planUpdate *PlanUpdate
 }
 
-// Name of plan
-func (r ApiPlanUpdateRequest) Name(name string) ApiPlanUpdateRequest {
-	r.name = &name
+func (r ApiPlanUpdateRequest) PlanUpdate(planUpdate PlanUpdate) ApiPlanUpdateRequest {
+	r.planUpdate = &planUpdate
 	return r
 }
 
-// Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
-func (r ApiPlanUpdateRequest) Amount(amount int32) ApiPlanUpdateRequest {
-	r.amount = &amount
-	return r
-}
-
-// Interval in words. Valid intervals are daily, weekly, monthly,biannually, annually
-func (r ApiPlanUpdateRequest) Interval(interval string) ApiPlanUpdateRequest {
-	r.interval = &interval
-	return r
-}
-
-// A description for this plan
-func (r ApiPlanUpdateRequest) Description(description bool) ApiPlanUpdateRequest {
-	r.description = &description
-	return r
-}
-
-// Set to false if you don&#39;t want invoices to be sent to your customers
-func (r ApiPlanUpdateRequest) SendInvoices(sendInvoices bool) ApiPlanUpdateRequest {
-	r.sendInvoices = &sendInvoices
-	return r
-}
-
-// Set to false if you don&#39;t want text messages to be sent to your customers
-func (r ApiPlanUpdateRequest) SendSms(sendSms bool) ApiPlanUpdateRequest {
-	r.sendSms = &sendSms
-	return r
-}
-
-// Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD
-func (r ApiPlanUpdateRequest) Currency(currency string) ApiPlanUpdateRequest {
-	r.currency = &currency
-	return r
-}
-
-// Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing.
-func (r ApiPlanUpdateRequest) InvoiceLimit(invoiceLimit int32) ApiPlanUpdateRequest {
-	r.invoiceLimit = &invoiceLimit
-	return r
-}
-
-func (r ApiPlanUpdateRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiPlanUpdateRequest) Execute() (*PlanUpdateResponse, *http.Response, error) {
 	return r.ApiService.PlanUpdateExecute(r)
 }
 
 /*
 PlanUpdate Update Plan
 
+Update a plan details on your integration
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code
+ @param code The plan code you want to fetch
  @return ApiPlanUpdateRequest
 */
 func (a *PlanAPIService) PlanUpdate(ctx context.Context, code string) ApiPlanUpdateRequest {
@@ -600,13 +483,13 @@ func (a *PlanAPIService) PlanUpdate(ctx context.Context, code string) ApiPlanUpd
 }
 
 // Execute executes the request
-//  @return Response
-func (a *PlanAPIService) PlanUpdateExecute(r ApiPlanUpdateRequest) (*Response, *http.Response, error) {
+//  @return PlanUpdateResponse
+func (a *PlanAPIService) PlanUpdateExecute(r ApiPlanUpdateRequest) (*PlanUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *PlanUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PlanAPIService.PlanUpdate")
@@ -622,7 +505,7 @@ func (a *PlanAPIService) PlanUpdateExecute(r ApiPlanUpdateRequest) (*Response, *
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -638,30 +521,8 @@ func (a *PlanAPIService) PlanUpdateExecute(r ApiPlanUpdateRequest) (*Response, *
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
-	}
-	if r.amount != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "amount", r.amount, "", "")
-	}
-	if r.interval != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "interval", r.interval, "", "")
-	}
-	if r.description != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "description", r.description, "", "")
-	}
-	if r.sendInvoices != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "send_invoices", r.sendInvoices, "", "")
-	}
-	if r.sendSms != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "send_sms", r.sendSms, "", "")
-	}
-	if r.currency != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "currency", r.currency, "", "")
-	}
-	if r.invoiceLimit != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "invoice_limit", r.invoiceLimit, "", "")
-	}
+	// body params
+	localVarPostBody = r.planUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

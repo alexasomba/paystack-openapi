@@ -20,12 +20,20 @@ import (
 // checks if the BulkChargeInitiate type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &BulkChargeInitiate{}
 
-// BulkChargeInitiate struct for BulkChargeInitiate
+// BulkChargeInitiate A list of charge object
 type BulkChargeInitiate struct {
 	// Customer's card authorization code
 	Authorization string `json:"authorization"`
 	// Amount to charge on the authorization
-	Amount string `json:"amount"`
+	Amount int32 `json:"amount"`
+	// A unique identifier containing lowercase letters `(a-z)`, digits `(0-9)` and these symbols: dash (`-`), underscore(`_`) 
+	Reference *string `json:"reference,omitempty"`
+	// A flag to indicate if you want us to try recouping lower amounts when the customer has insufficient fund
+	AttemptPartialDebit *bool `json:"attempt_partial_debit,omitempty"`
+	// Minimum amount to charge if the attempt_partial_debit flag is set
+	AtLeast *int32 `json:"at_least,omitempty"`
+	// JSON object of custom data
+	Metadata map[string]interface{} `json:"metadata,omitempty"`
 }
 
 type _BulkChargeInitiate BulkChargeInitiate
@@ -34,7 +42,7 @@ type _BulkChargeInitiate BulkChargeInitiate
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBulkChargeInitiate(authorization string, amount string) *BulkChargeInitiate {
+func NewBulkChargeInitiate(authorization string, amount int32) *BulkChargeInitiate {
 	this := BulkChargeInitiate{}
 	this.Authorization = authorization
 	this.Amount = amount
@@ -74,9 +82,9 @@ func (o *BulkChargeInitiate) SetAuthorization(v string) {
 }
 
 // GetAmount returns the Amount field value
-func (o *BulkChargeInitiate) GetAmount() string {
+func (o *BulkChargeInitiate) GetAmount() int32 {
 	if o == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 
@@ -85,7 +93,7 @@ func (o *BulkChargeInitiate) GetAmount() string {
 
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
-func (o *BulkChargeInitiate) GetAmountOk() (*string, bool) {
+func (o *BulkChargeInitiate) GetAmountOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,8 +101,136 @@ func (o *BulkChargeInitiate) GetAmountOk() (*string, bool) {
 }
 
 // SetAmount sets field value
-func (o *BulkChargeInitiate) SetAmount(v string) {
+func (o *BulkChargeInitiate) SetAmount(v int32) {
 	o.Amount = v
+}
+
+// GetReference returns the Reference field value if set, zero value otherwise.
+func (o *BulkChargeInitiate) GetReference() string {
+	if o == nil || IsNil(o.Reference) {
+		var ret string
+		return ret
+	}
+	return *o.Reference
+}
+
+// GetReferenceOk returns a tuple with the Reference field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BulkChargeInitiate) GetReferenceOk() (*string, bool) {
+	if o == nil || IsNil(o.Reference) {
+		return nil, false
+	}
+	return o.Reference, true
+}
+
+// HasReference returns a boolean if a field has been set.
+func (o *BulkChargeInitiate) HasReference() bool {
+	if o != nil && !IsNil(o.Reference) {
+		return true
+	}
+
+	return false
+}
+
+// SetReference gets a reference to the given string and assigns it to the Reference field.
+func (o *BulkChargeInitiate) SetReference(v string) {
+	o.Reference = &v
+}
+
+// GetAttemptPartialDebit returns the AttemptPartialDebit field value if set, zero value otherwise.
+func (o *BulkChargeInitiate) GetAttemptPartialDebit() bool {
+	if o == nil || IsNil(o.AttemptPartialDebit) {
+		var ret bool
+		return ret
+	}
+	return *o.AttemptPartialDebit
+}
+
+// GetAttemptPartialDebitOk returns a tuple with the AttemptPartialDebit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BulkChargeInitiate) GetAttemptPartialDebitOk() (*bool, bool) {
+	if o == nil || IsNil(o.AttemptPartialDebit) {
+		return nil, false
+	}
+	return o.AttemptPartialDebit, true
+}
+
+// HasAttemptPartialDebit returns a boolean if a field has been set.
+func (o *BulkChargeInitiate) HasAttemptPartialDebit() bool {
+	if o != nil && !IsNil(o.AttemptPartialDebit) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttemptPartialDebit gets a reference to the given bool and assigns it to the AttemptPartialDebit field.
+func (o *BulkChargeInitiate) SetAttemptPartialDebit(v bool) {
+	o.AttemptPartialDebit = &v
+}
+
+// GetAtLeast returns the AtLeast field value if set, zero value otherwise.
+func (o *BulkChargeInitiate) GetAtLeast() int32 {
+	if o == nil || IsNil(o.AtLeast) {
+		var ret int32
+		return ret
+	}
+	return *o.AtLeast
+}
+
+// GetAtLeastOk returns a tuple with the AtLeast field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BulkChargeInitiate) GetAtLeastOk() (*int32, bool) {
+	if o == nil || IsNil(o.AtLeast) {
+		return nil, false
+	}
+	return o.AtLeast, true
+}
+
+// HasAtLeast returns a boolean if a field has been set.
+func (o *BulkChargeInitiate) HasAtLeast() bool {
+	if o != nil && !IsNil(o.AtLeast) {
+		return true
+	}
+
+	return false
+}
+
+// SetAtLeast gets a reference to the given int32 and assigns it to the AtLeast field.
+func (o *BulkChargeInitiate) SetAtLeast(v int32) {
+	o.AtLeast = &v
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *BulkChargeInitiate) GetMetadata() map[string]interface{} {
+	if o == nil || IsNil(o.Metadata) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BulkChargeInitiate) GetMetadataOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Metadata) {
+		return map[string]interface{}{}, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *BulkChargeInitiate) HasMetadata() bool {
+	if o != nil && !IsNil(o.Metadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
+func (o *BulkChargeInitiate) SetMetadata(v map[string]interface{}) {
+	o.Metadata = v
 }
 
 func (o BulkChargeInitiate) MarshalJSON() ([]byte, error) {
@@ -109,6 +245,18 @@ func (o BulkChargeInitiate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["authorization"] = o.Authorization
 	toSerialize["amount"] = o.Amount
+	if !IsNil(o.Reference) {
+		toSerialize["reference"] = o.Reference
+	}
+	if !IsNil(o.AttemptPartialDebit) {
+		toSerialize["attempt_partial_debit"] = o.AttemptPartialDebit
+	}
+	if !IsNil(o.AtLeast) {
+		toSerialize["at_least"] = o.AtLeast
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
+	}
 	return toSerialize, nil
 }
 
