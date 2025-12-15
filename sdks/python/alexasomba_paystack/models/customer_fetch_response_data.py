@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_customer_metadata import BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata
 from typing import Optional, Set
@@ -41,8 +41,8 @@ class CustomerFetchResponseData(BaseModel):
     risk_action: StrictStr
     id: StrictInt
     integration: StrictInt
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     total_transactions: StrictInt
     total_transaction_value: List[Any]
     dedicated_account: Optional[Any]
@@ -133,8 +133,8 @@ class CustomerFetchResponseData(BaseModel):
             "risk_action": obj.get("risk_action"),
             "id": obj.get("id"),
             "integration": obj.get("integration"),
-            "createdAt": obj.get("createdAt"),
-            "updatedAt": obj.get("updatedAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "total_transactions": obj.get("total_transactions"),
             "total_transaction_value": obj.get("total_transaction_value"),
             "dedicated_account": obj.get("dedicated_account"),

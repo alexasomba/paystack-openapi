@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
@@ -41,8 +41,8 @@ class PlanCreateResponseData(BaseModel):
     migrate: StrictBool
     is_archived: StrictBool
     id: StrictInt
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     __properties: ClassVar[List[str]] = ["currency", "name", "amount", "interval", "integration", "domain", "plan_code", "invoice_limit", "send_invoices", "send_sms", "hosted_page", "migrate", "is_archived", "id", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
@@ -110,7 +110,7 @@ class PlanCreateResponseData(BaseModel):
             "migrate": obj.get("migrate"),
             "is_archived": obj.get("is_archived"),
             "id": obj.get("id"),
-            "createdAt": obj.get("createdAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt")
         })
         return _obj

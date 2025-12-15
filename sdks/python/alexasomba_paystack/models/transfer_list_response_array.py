@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.transfer_list_response_array_recipient import TransferListResponseArrayRecipient
 from alexasomba_paystack.models.transfer_list_response_array_session import TransferListResponseArraySession
@@ -30,7 +30,7 @@ class TransferListResponseArray(BaseModel):
     TransferListResponseArray
     """ # noqa: E501
     amount: StrictInt
-    created_at: StrictStr = Field(alias="createdAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     currency: StrictStr
     domain: StrictStr
     failures: Optional[Any]
@@ -45,7 +45,7 @@ class TransferListResponseArray(BaseModel):
     transfer_code: StrictStr
     request: StrictInt
     transferred_at: Optional[Any]
-    updated_at: StrictStr = Field(alias="updatedAt")
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     recipient: TransferListResponseArrayRecipient
     session: TransferListResponseArraySession
     fee_charged: StrictInt
@@ -135,7 +135,7 @@ class TransferListResponseArray(BaseModel):
 
         _obj = cls.model_validate({
             "amount": obj.get("amount"),
-            "createdAt": obj.get("createdAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "currency": obj.get("currency"),
             "domain": obj.get("domain"),
             "failures": obj.get("failures"),
@@ -150,7 +150,7 @@ class TransferListResponseArray(BaseModel):
             "transfer_code": obj.get("transfer_code"),
             "request": obj.get("request"),
             "transferred_at": obj.get("transferred_at"),
-            "updatedAt": obj.get("updatedAt"),
+            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "recipient": TransferListResponseArrayRecipient.from_dict(obj["recipient"]) if obj.get("recipient") is not None else None,
             "session": TransferListResponseArraySession.from_dict(obj["session"]) if obj.get("session") is not None else None,
             "fee_charged": obj.get("fee_charged"),

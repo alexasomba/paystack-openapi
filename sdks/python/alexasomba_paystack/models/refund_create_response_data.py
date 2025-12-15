@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.refund_create_response_data_transaction import RefundCreateResponseDataTransaction
 from typing import Optional, Set
@@ -42,8 +42,8 @@ class RefundCreateResponseData(BaseModel):
     amount: StrictInt
     fully_deducted: StrictBool
     id: StrictInt
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     __properties: ClassVar[List[str]] = ["transaction", "integration", "deducted_amount", "channel", "merchant_note", "customer_note", "status", "refunded_by", "expected_at", "currency", "domain", "amount", "fully_deducted", "id", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
@@ -119,7 +119,7 @@ class RefundCreateResponseData(BaseModel):
             "amount": obj.get("amount"),
             "fully_deducted": obj.get("fully_deducted"),
             "id": obj.get("id"),
-            "createdAt": obj.get("createdAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt")
         })
         return _obj

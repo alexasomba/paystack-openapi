@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.page_products_array import PageProductsArray
 from typing import Optional, Set
@@ -48,8 +48,8 @@ class PageAddProductsResponseData(BaseModel):
     metadata: Optional[Any]
     split_code: Optional[Any]
     id: StrictInt
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     products: List[PageProductsArray]
     __properties: ClassVar[List[str]] = ["integration", "plan", "domain", "name", "description", "amount", "currency", "slug", "custom_fields", "type", "redirect_url", "success_message", "collect_phone", "active", "published", "migrate", "notification_email", "metadata", "split_code", "id", "createdAt", "updatedAt", "products"]
 
@@ -176,8 +176,8 @@ class PageAddProductsResponseData(BaseModel):
             "metadata": obj.get("metadata"),
             "split_code": obj.get("split_code"),
             "id": obj.get("id"),
-            "createdAt": obj.get("createdAt"),
-            "updatedAt": obj.get("updatedAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "products": [PageProductsArray.from_dict(_item) for _item in obj["products"]] if obj.get("products") is not None else None
         })
         return _obj

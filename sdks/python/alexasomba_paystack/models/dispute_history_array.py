@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +29,7 @@ class DisputeHistoryArray(BaseModel):
     """ # noqa: E501
     status: StrictStr
     by: StrictStr
-    created_at: StrictStr = Field(alias="createdAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     __properties: ClassVar[List[str]] = ["status", "by", "createdAt"]
 
     model_config = ConfigDict(

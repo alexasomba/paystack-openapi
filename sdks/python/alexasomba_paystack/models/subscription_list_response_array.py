@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.subscription_list_response_array_authorization import SubscriptionListResponseArrayAuthorization
 from alexasomba_paystack.models.subscription_list_response_array_customer import SubscriptionListResponseArrayCustomer
@@ -41,7 +41,7 @@ class SubscriptionListResponseArray(BaseModel):
     cron_expression: Optional[StrictStr]
     next_payment_date: Optional[StrictStr]
     open_invoice: Optional[Any]
-    created_at: StrictStr = Field(alias="createdAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     integration: StrictInt
     plan: SubscriptionListResponseArrayPlan
     authorization: SubscriptionListResponseArrayAuthorization
@@ -154,7 +154,7 @@ class SubscriptionListResponseArray(BaseModel):
             "cron_expression": obj.get("cron_expression"),
             "next_payment_date": obj.get("next_payment_date"),
             "open_invoice": obj.get("open_invoice"),
-            "createdAt": obj.get("createdAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "integration": obj.get("integration"),
             "plan": SubscriptionListResponseArrayPlan.from_dict(obj["plan"]) if obj.get("plan") is not None else None,
             "authorization": SubscriptionListResponseArrayAuthorization.from_dict(obj["authorization"]) if obj.get("authorization") is not None else None,

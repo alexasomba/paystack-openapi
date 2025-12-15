@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.refund_fetch_response_data_customer import RefundFetchResponseDataCustomer
 from typing import Optional, Set
@@ -43,7 +43,7 @@ class RefundFetchResponseData(BaseModel):
     merchant_note: StrictStr
     deducted_amount: StrictInt
     fully_deducted: StrictInt
-    created_at: StrictStr = Field(alias="createdAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     bank_reference: Optional[Any]
     transaction_reference: StrictStr
     reason: StrictStr
@@ -150,7 +150,7 @@ class RefundFetchResponseData(BaseModel):
             "merchant_note": obj.get("merchant_note"),
             "deducted_amount": obj.get("deducted_amount"),
             "fully_deducted": obj.get("fully_deducted"),
-            "createdAt": obj.get("createdAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "bank_reference": obj.get("bank_reference"),
             "transaction_reference": obj.get("transaction_reference"),
             "reason": obj.get("reason"),

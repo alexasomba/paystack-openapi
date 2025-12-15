@@ -43,6 +43,10 @@ properties:
         type: string
       updatedAt:
         type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
       total_transactions:
         type: integer
       total_transaction_value:

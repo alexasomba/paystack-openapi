@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -42,8 +42,8 @@ class SubscriptionCreateResponseData(BaseModel):
     email_token: StrictStr
     id: StrictInt
     cancelled_at: Optional[Any] = Field(alias="cancelledAt")
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     cron_expression: StrictStr
     next_payment_date: StrictStr
     easy_cron_id: Optional[StrictStr]
@@ -142,8 +142,8 @@ class SubscriptionCreateResponseData(BaseModel):
             "email_token": obj.get("email_token"),
             "id": obj.get("id"),
             "cancelledAt": obj.get("cancelledAt"),
-            "createdAt": obj.get("createdAt"),
-            "updatedAt": obj.get("updatedAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "cron_expression": obj.get("cron_expression"),
             "next_payment_date": obj.get("next_payment_date"),
             "easy_cron_id": obj.get("easy_cron_id"),

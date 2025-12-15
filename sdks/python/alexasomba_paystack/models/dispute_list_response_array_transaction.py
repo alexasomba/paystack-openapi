@@ -36,6 +36,8 @@ class DisputeListResponseArrayTransaction(BaseModel):
     amount: StrictInt
     message: Optional[Any]
     gateway_response: StrictStr
+    paid_at: Optional[StrictStr] = None
+    created_at: Optional[StrictStr] = None
     channel: StrictStr
     currency: StrictStr
     ip_address: StrictStr
@@ -53,7 +55,7 @@ class DisputeListResponseArrayTransaction(BaseModel):
     source: Optional[Any]
     fees_breakdown: Optional[Any]
     connect: Optional[Any]
-    __properties: ClassVar[List[str]] = ["id", "domain", "status", "reference", "amount", "message", "gateway_response", "channel", "currency", "ip_address", "metadata", "log", "fees", "fees_split", "authorization", "customer", "plan", "subaccount", "split", "order_id", "pos_transaction_data", "source", "fees_breakdown", "connect"]
+    __properties: ClassVar[List[str]] = ["id", "domain", "status", "reference", "amount", "message", "gateway_response", "paid_at", "created_at", "channel", "currency", "ip_address", "metadata", "log", "fees", "fees_split", "authorization", "customer", "plan", "subaccount", "split", "order_id", "pos_transaction_data", "source", "fees_breakdown", "connect"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -104,6 +106,11 @@ class DisputeListResponseArrayTransaction(BaseModel):
         # and model_fields_set contains the field
         if self.message is None and "message" in self.model_fields_set:
             _dict['message'] = None
+
+        # set to None if paid_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.paid_at is None and "paid_at" in self.model_fields_set:
+            _dict['paid_at'] = None
 
         # set to None if log (nullable) is None
         # and model_fields_set contains the field
@@ -164,6 +171,8 @@ class DisputeListResponseArrayTransaction(BaseModel):
             "amount": obj.get("amount"),
             "message": obj.get("message"),
             "gateway_response": obj.get("gateway_response"),
+            "paid_at": obj.get("paid_at"),
+            "created_at": obj.get("created_at"),
             "channel": obj.get("channel"),
             "currency": obj.get("currency"),
             "ip_address": obj.get("ip_address"),

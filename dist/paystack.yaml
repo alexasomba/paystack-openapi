@@ -5784,6 +5784,11 @@ components:
               nullable: true
             gateway_response:
               type: string
+            paid_at:
+              type: string
+              nullable: true
+            created_at:
+              type: string
             channel:
               type: string
             currency:
@@ -9658,6 +9663,10 @@ components:
             createdAt:
               type: string
             updatedAt:
+              type: string
+            created_at:
+              type: string
+            updated_at:
               type: string
             total_transactions:
               type: integer
@@ -16969,6 +16978,11 @@ components:
               nullable: true
             gateway_response:
               type: string
+            paid_at:
+              type: string
+              nullable: true
+            created_at:
+              type: string
             channel:
               type: string
             currency:
@@ -17835,6 +17849,11 @@ components:
                 message:
                   nullable: true
                 gateway_response:
+                  type: string
+                paid_at:
+                  type: string
+                  nullable: true
+                created_at:
                   type: string
                 channel:
                   type: string

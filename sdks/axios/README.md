@@ -14,33 +14,37 @@ This package provides:
 
 ## Modules
 
-- Transactions
-- Charges
-- Bulk Charges
-- Subaccounts
-- Transaction Splits
-- Terminal
-- Virtual Terminal
-- Customers
-- Direct Debit
-- Dedicated Virtual Accounts
-- Apple Pay
-- Plans
-- Subscriptions
-- Transfer Recipients
-- Transfers
-- Balance
-- Payment Requests
-- Products
-- Storefronts
-- Orders
-- Payment Pages
-- Settlements
-- Integration
-- Refunds
-- Disputes
-- Banks
-- Miscellaneous
+- [x] Charge
+- [x] Customers
+- [x] Plans
+- [x] Products
+- [x] Subscriptions
+- [x] Transactions
+- [x] Transfers
+- [x] Dedicated Virtual Accounts
+- [x] Apple Pay
+- [x] Subaccounts
+- [x] Transaction Splits
+- [x] Settlements
+- [x] Invoices (Payment Requests)
+- [x] Transfer Recipients
+- [ ] Transfers Control
+- [x] Bulk Charges
+- [x] Refunds
+- [x] Verification (Payments + Account/BIN)
+- [x] Miscellaneous
+- [x] Disputes
+- [ ] Control Panel
+- [x] Terminal
+- [x] Virtual Terminal
+- [x] Direct Debit
+- [x] Payment Pages
+- [x] Payment Requests
+- [x] Integration
+- [x] Balance
+- [x] Banks
+- [x] Orders
+- [x] Storefronts
 
 ## Install
 

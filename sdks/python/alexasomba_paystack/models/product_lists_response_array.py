@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.product_lists_response_array_metadata import ProductListsResponseArrayMetadata
 from alexasomba_paystack.models.product_lists_response_array_shipping_fields import ProductListsResponseArrayShippingFields
@@ -51,8 +51,8 @@ class ProductListsResponseArray(BaseModel):
     notification_emails: Optional[Any]
     minimum_orderable: StrictInt
     maximum_orderable: Optional[Any]
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     digital_assets: List[Any]
     variant_options: List[Any]
     is_shippable: StrictBool
@@ -165,8 +165,8 @@ class ProductListsResponseArray(BaseModel):
             "notification_emails": obj.get("notification_emails"),
             "minimum_orderable": obj.get("minimum_orderable"),
             "maximum_orderable": obj.get("maximum_orderable"),
-            "createdAt": obj.get("createdAt"),
-            "updatedAt": obj.get("updatedAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "digital_assets": obj.get("digital_assets"),
             "variant_options": obj.get("variant_options"),
             "is_shippable": obj.get("is_shippable"),

@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.dispute_fetch_response_data_transaction import DisputeFetchResponseDataTransaction
 from alexasomba_paystack.models.dispute_history_array import DisputeHistoryArray
@@ -50,8 +50,8 @@ class DisputeFetchResponseData(BaseModel):
     note: Optional[Any]
     history: List[DisputeHistoryArray]
     messages: List[DisputeMessagesArray]
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     __properties: ClassVar[List[str]] = ["id", "refund_amount", "currency", "status", "resolution", "domain", "transaction", "transaction_reference", "category", "customer", "bin", "last4", "dueAt", "resolvedAt", "evidence", "attachments", "note", "history", "messages", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
@@ -179,7 +179,7 @@ class DisputeFetchResponseData(BaseModel):
             "note": obj.get("note"),
             "history": [DisputeHistoryArray.from_dict(_item) for _item in obj["history"]] if obj.get("history") is not None else None,
             "messages": [DisputeMessagesArray.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
-            "createdAt": obj.get("createdAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt")
         })
         return _obj

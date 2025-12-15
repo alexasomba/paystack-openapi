@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -36,7 +36,7 @@ class OrderItemsArray(BaseModel):
     order: StrictInt
     amount: StrictInt
     quantity: StrictInt
-    created_at: StrictStr = Field(alias="createdAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     name: StrictStr
     product_level_type: StrictStr
     product_id: StrictInt
@@ -140,7 +140,7 @@ class OrderItemsArray(BaseModel):
             "order": obj.get("order"),
             "amount": obj.get("amount"),
             "quantity": obj.get("quantity"),
-            "createdAt": obj.get("createdAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "name": obj.get("name"),
             "product_level_type": obj.get("product_level_type"),
             "product_id": obj.get("product_id"),

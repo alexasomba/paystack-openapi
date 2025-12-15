@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -47,8 +47,8 @@ class PlanListResponseArray(BaseModel):
     is_archived: StrictBool
     id: StrictInt
     integration: StrictInt
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     total_subscriptions: StrictInt
     active_subscriptions: StrictInt
     total_subscriptions_revenue: StrictInt
@@ -140,8 +140,8 @@ class PlanListResponseArray(BaseModel):
             "is_archived": obj.get("is_archived"),
             "id": obj.get("id"),
             "integration": obj.get("integration"),
-            "createdAt": obj.get("createdAt"),
-            "updatedAt": obj.get("updatedAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "total_subscriptions": obj.get("total_subscriptions"),
             "active_subscriptions": obj.get("active_subscriptions"),
             "total_subscriptions_revenue": obj.get("total_subscriptions_revenue")

@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.product_lists_response_array_metadata import ProductListsResponseArrayMetadata
 from alexasomba_paystack.models.product_lists_response_array_shipping_fields import ProductListsResponseArrayShippingFields
@@ -60,8 +60,8 @@ class ProductFetchResponseData(BaseModel):
     stock_threshold: Optional[Any]
     expires_in: Optional[Any]
     id: StrictInt
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     __properties: ClassVar[List[str]] = ["digital_assets", "integration", "name", "description", "product_code", "price", "currency", "quantity", "quantity_sold", "type", "files", "file_path", "is_shippable", "shipping_fields", "unlimited", "domain", "active", "features", "in_stock", "metadata", "slug", "success_message", "redirect_url", "split_code", "notification_emails", "minimum_orderable", "maximum_orderable", "low_stock_alert", "stock_threshold", "expires_in", "id", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
@@ -202,7 +202,7 @@ class ProductFetchResponseData(BaseModel):
             "stock_threshold": obj.get("stock_threshold"),
             "expires_in": obj.get("expires_in"),
             "id": obj.get("id"),
-            "createdAt": obj.get("createdAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt")
         })
         return _obj

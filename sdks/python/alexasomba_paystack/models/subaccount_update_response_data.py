@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
@@ -49,8 +49,8 @@ class SubaccountUpdateResponseData(BaseModel):
     integration: StrictInt
     bank: StrictInt
     managed_by_integration: StrictInt
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     __properties: ClassVar[List[str]] = ["domain", "subaccount_code", "account_name", "business_name", "description", "primary_contact_name", "primary_contact_email", "primary_contact_phone", "metadata", "percentage_charge", "is_verified", "settlement_bank", "account_number", "settlement_schedule", "active", "migrate", "currency", "product", "id", "integration", "bank", "managed_by_integration", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
@@ -131,7 +131,7 @@ class SubaccountUpdateResponseData(BaseModel):
             "integration": obj.get("integration"),
             "bank": obj.get("bank"),
             "managed_by_integration": obj.get("managed_by_integration"),
-            "createdAt": obj.get("createdAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt")
         })
         return _obj

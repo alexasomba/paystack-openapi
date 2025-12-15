@@ -29,6 +29,8 @@ type DisputeListResponseArrayTransaction struct {
 	Amount int32 `json:"amount"`
 	Message interface{} `json:"message"`
 	GatewayResponse string `json:"gateway_response"`
+	PaidAt NullableString `json:"paid_at,omitempty"`
+	CreatedAt *string `json:"created_at,omitempty"`
 	Channel string `json:"channel"`
 	Currency string `json:"currency"`
 	IpAddress string `json:"ip_address"`
@@ -259,6 +261,80 @@ func (o *DisputeListResponseArrayTransaction) GetGatewayResponseOk() (*string, b
 // SetGatewayResponse sets field value
 func (o *DisputeListResponseArrayTransaction) SetGatewayResponse(v string) {
 	o.GatewayResponse = v
+}
+
+// GetPaidAt returns the PaidAt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DisputeListResponseArrayTransaction) GetPaidAt() string {
+	if o == nil || IsNil(o.PaidAt.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PaidAt.Get()
+}
+
+// GetPaidAtOk returns a tuple with the PaidAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DisputeListResponseArrayTransaction) GetPaidAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PaidAt.Get(), o.PaidAt.IsSet()
+}
+
+// HasPaidAt returns a boolean if a field has been set.
+func (o *DisputeListResponseArrayTransaction) HasPaidAt() bool {
+	if o != nil && o.PaidAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPaidAt gets a reference to the given NullableString and assigns it to the PaidAt field.
+func (o *DisputeListResponseArrayTransaction) SetPaidAt(v string) {
+	o.PaidAt.Set(&v)
+}
+// SetPaidAtNil sets the value for PaidAt to be an explicit nil
+func (o *DisputeListResponseArrayTransaction) SetPaidAtNil() {
+	o.PaidAt.Set(nil)
+}
+
+// UnsetPaidAt ensures that no value is present for PaidAt, not even an explicit nil
+func (o *DisputeListResponseArrayTransaction) UnsetPaidAt() {
+	o.PaidAt.Unset()
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+func (o *DisputeListResponseArrayTransaction) GetCreatedAt() string {
+	if o == nil || IsNil(o.CreatedAt) {
+		var ret string
+		return ret
+	}
+	return *o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DisputeListResponseArrayTransaction) GetCreatedAtOk() (*string, bool) {
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
+	}
+	return o.CreatedAt, true
+}
+
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *DisputeListResponseArrayTransaction) HasCreatedAt() bool {
+	if o != nil && !IsNil(o.CreatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+func (o *DisputeListResponseArrayTransaction) SetCreatedAt(v string) {
+	o.CreatedAt = &v
 }
 
 // GetChannel returns the Channel field value
@@ -704,6 +780,12 @@ func (o DisputeListResponseArrayTransaction) ToMap() (map[string]interface{}, er
 		toSerialize["message"] = o.Message
 	}
 	toSerialize["gateway_response"] = o.GatewayResponse
+	if o.PaidAt.IsSet() {
+		toSerialize["paid_at"] = o.PaidAt.Get()
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
+	}
 	toSerialize["channel"] = o.Channel
 	toSerialize["currency"] = o.Currency
 	toSerialize["ip_address"] = o.IpAddress

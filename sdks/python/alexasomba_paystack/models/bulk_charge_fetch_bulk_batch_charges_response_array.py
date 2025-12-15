@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List
 from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_customer import BulkChargeFetchBulkBatchChargesResponseArrayCustomer
 from alexasomba_paystack.models.transaction_fetch_response_data_metadata import TransactionFetchResponseDataMetadata
@@ -44,8 +44,8 @@ class BulkChargeFetchBulkBatchChargesResponseArray(BaseModel):
     message: StrictStr
     attempt_partial_debit: StrictBool
     id: StrictInt
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     __properties: ClassVar[List[str]] = ["integration", "bulkcharge", "customer", "authorization", "domain", "amount", "at_least", "currency", "reference", "metadata", "status", "message", "attempt_partial_debit", "id", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
@@ -122,7 +122,7 @@ class BulkChargeFetchBulkBatchChargesResponseArray(BaseModel):
             "message": obj.get("message"),
             "attempt_partial_debit": obj.get("attempt_partial_debit"),
             "id": obj.get("id"),
-            "createdAt": obj.get("createdAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt")
         })
         return _obj

@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.dispute_resolve_response_data_message import DisputeResolveResponseDataMessage
 from typing import Optional, Set
@@ -46,8 +46,8 @@ class DisputeResolveResponseData(BaseModel):
     created_by: StrictInt
     evidence: StrictInt
     resolved_at: StrictStr = Field(alias="resolvedAt")
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     due_at: Optional[Any] = Field(alias="dueAt")
     message: DisputeResolveResponseDataMessage
     __properties: ClassVar[List[str]] = ["currency", "last4", "bin", "transaction_reference", "merchant_transaction_reference", "refund_amount", "status", "domain", "resolution", "category", "note", "attachments", "id", "integration", "transaction", "created_by", "evidence", "resolvedAt", "createdAt", "updatedAt", "dueAt", "message"]
@@ -139,8 +139,8 @@ class DisputeResolveResponseData(BaseModel):
             "created_by": obj.get("created_by"),
             "evidence": obj.get("evidence"),
             "resolvedAt": obj.get("resolvedAt"),
-            "createdAt": obj.get("createdAt"),
-            "updatedAt": obj.get("updatedAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "dueAt": obj.get("dueAt"),
             "message": DisputeResolveResponseDataMessage.from_dict(obj["message"]) if obj.get("message") is not None else None
         })

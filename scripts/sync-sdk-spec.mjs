@@ -180,6 +180,69 @@ function dedupeOperationIds(mergedSpec, sdkSpec) {
   }
 }
 
+function isObjectSchema(schema) {
+  return isPlainObject(schema) && schema.type === 'object' && isPlainObject(schema.properties);
+}
+
+function removeFromRequired(schema, propertyName) {
+  if (!Array.isArray(schema.required)) return;
+  schema.required = schema.required.filter((name) => name !== propertyName);
+  if (schema.required.length === 0) delete schema.required;
+}
+
+function dedupeTimestampCasing(schema, snakeKey, camelKey) {
+  if (!isObjectSchema(schema)) return;
+
+  const props = schema.properties;
+  if (!(snakeKey in props) || !(camelKey in props)) return;
+
+  const required = new Set(Array.isArray(schema.required) ? schema.required : []);
+
+  // Prefer the key that is explicitly required. If ambiguous, keep camelCase.
+  const keepSnake = required.has(snakeKey) && !required.has(camelKey);
+  const keepCamel = required.has(camelKey) && !required.has(snakeKey);
+  const keepKey = keepSnake ? snakeKey : keepCamel ? camelKey : camelKey;
+  const dropKey = keepKey === snakeKey ? camelKey : snakeKey;
+
+  delete props[dropKey];
+  removeFromRequired(schema, dropKey);
+}
+
+function sanitizeSdkSpecForGenerators(spec) {
+  // Some generators (notably Python/PHP/Go) cannot safely handle both snake_case and
+  // camelCase variants of the same logical field within a single schema, because both
+  // variants often map to the same language identifier.
+  //
+  // The bundled spec contains both casings in some responses to match Paystack reality,
+  // but the SDK spec needs to be generator-friendly. We dedupe these fields everywhere
+  // in the merged spec (including inline schemas).
+
+  const pairs = [
+    ['paid_at', 'paidAt'],
+    ['created_at', 'createdAt'],
+    ['updated_at', 'updatedAt'],
+  ];
+
+  const visit = (node) => {
+    if (Array.isArray(node)) {
+      for (const item of node) visit(item);
+      return;
+    }
+
+    if (!isPlainObject(node)) return;
+
+    for (const [snakeKey, camelKey] of pairs) {
+      dedupeTimestampCasing(node, snakeKey, camelKey);
+    }
+
+    for (const value of Object.values(node)) {
+      visit(value);
+    }
+  };
+
+  visit(spec);
+}
+
 function runBundleMainIfNeeded() {
   if (process.env.PAYSTACK_SDK_SPEC_SKIP_BUNDLE === '1') return;
 
@@ -216,6 +279,8 @@ mergedSpec.paths = mergePaths(bundledSpec?.paths, sdkSpec?.paths);
 mergedSpec.components = deepMergePreferBase(bundledSpec?.components ?? {}, sdkSpec?.components ?? {});
 
 dedupeOperationIds(mergedSpec, sdkSpec);
+
+sanitizeSdkSpecForGenerators(mergedSpec);
 
 const mergedYaml = `${stringifyYaml(mergedSpec)}\n`;
 

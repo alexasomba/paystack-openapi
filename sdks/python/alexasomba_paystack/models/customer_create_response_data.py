@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_customer_metadata import BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata
 from typing import Optional, Set
@@ -41,8 +41,8 @@ class CustomerCreateResponseData(BaseModel):
     customer_code: StrictStr
     risk_action: StrictStr
     id: StrictInt
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     identified: StrictBool
     identifications: Optional[Any]
     __properties: ClassVar[List[str]] = ["transactions", "subscriptions", "authorizations", "email", "first_name", "last_name", "phone", "integration", "domain", "metadata", "customer_code", "risk_action", "id", "createdAt", "updatedAt", "identified", "identifications"]
@@ -119,8 +119,8 @@ class CustomerCreateResponseData(BaseModel):
             "customer_code": obj.get("customer_code"),
             "risk_action": obj.get("risk_action"),
             "id": obj.get("id"),
-            "createdAt": obj.get("createdAt"),
-            "updatedAt": obj.get("updatedAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "identified": obj.get("identified"),
             "identifications": obj.get("identifications")
         })

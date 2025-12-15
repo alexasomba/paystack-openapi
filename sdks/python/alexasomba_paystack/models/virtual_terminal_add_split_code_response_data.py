@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.split_subaccounts_array import SplitSubaccountsArray
 from typing import Optional, Set
@@ -38,8 +38,8 @@ class VirtualTerminalAddSplitCodeResponseData(BaseModel):
     active: StrictBool
     bearer_type: StrictStr
     bearer_subaccount: Optional[Any]
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     is_dynamic: StrictBool
     subaccounts: List[SplitSubaccountsArray]
     total_subaccounts: StrictInt
@@ -118,8 +118,8 @@ class VirtualTerminalAddSplitCodeResponseData(BaseModel):
             "active": obj.get("active"),
             "bearer_type": obj.get("bearer_type"),
             "bearer_subaccount": obj.get("bearer_subaccount"),
-            "createdAt": obj.get("createdAt"),
-            "updatedAt": obj.get("updatedAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "is_dynamic": obj.get("is_dynamic"),
             "subaccounts": [SplitSubaccountsArray.from_dict(_item) for _item in obj["subaccounts"]] if obj.get("subaccounts") is not None else None,
             "total_subaccounts": obj.get("total_subaccounts")

@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.order_validate_response_data_integration import OrderValidateResponseDataIntegration
 from alexasomba_paystack.models.transaction_fetch_response_data_customer import TransactionFetchResponseDataCustomer
@@ -50,8 +50,8 @@ class OrderValidateResponseData(BaseModel):
     page: Optional[Any]
     customer: TransactionFetchResponseDataCustomer
     shipping: Optional[Any]
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     payer: Optional[Any]
     __properties: ClassVar[List[str]] = ["order_code", "domain", "currency", "amount", "email", "status", "refunded", "paid_at", "shipping_address", "metadata", "shipping_fees", "shipping_method", "is_viewed", "expiration_date", "pay_for_me", "id", "integration", "transaction", "page", "customer", "shipping", "createdAt", "updatedAt", "payer"]
 
@@ -173,8 +173,8 @@ class OrderValidateResponseData(BaseModel):
             "page": obj.get("page"),
             "customer": TransactionFetchResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
             "shipping": obj.get("shipping"),
-            "createdAt": obj.get("createdAt"),
-            "updatedAt": obj.get("updatedAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "payer": obj.get("payer")
         })
         return _obj

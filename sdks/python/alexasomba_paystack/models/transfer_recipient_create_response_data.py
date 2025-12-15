@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.transfer_recipient_list_response_array_details import TransferRecipientListResponseArrayDetails
 from typing import Optional, Set
@@ -29,7 +29,7 @@ class TransferRecipientCreateResponseData(BaseModel):
     TransferRecipientCreateResponseData
     """ # noqa: E501
     active: StrictBool
-    created_at: StrictStr = Field(alias="createdAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     currency: StrictStr
     description: StrictStr
     domain: StrictStr
@@ -40,7 +40,7 @@ class TransferRecipientCreateResponseData(BaseModel):
     name: StrictStr
     recipient_code: StrictStr
     type: StrictStr
-    updated_at: StrictStr = Field(alias="updatedAt")
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     is_deleted: StrictBool
     details: TransferRecipientListResponseArrayDetails
     __properties: ClassVar[List[str]] = ["active", "createdAt", "currency", "description", "domain", "email", "id", "integration", "metadata", "name", "recipient_code", "type", "updatedAt", "is_deleted", "details"]
@@ -105,7 +105,7 @@ class TransferRecipientCreateResponseData(BaseModel):
 
         _obj = cls.model_validate({
             "active": obj.get("active"),
-            "createdAt": obj.get("createdAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "currency": obj.get("currency"),
             "description": obj.get("description"),
             "domain": obj.get("domain"),
@@ -116,7 +116,7 @@ class TransferRecipientCreateResponseData(BaseModel):
             "name": obj.get("name"),
             "recipient_code": obj.get("recipient_code"),
             "type": obj.get("type"),
-            "updatedAt": obj.get("updatedAt"),
+            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "is_deleted": obj.get("is_deleted"),
             "details": TransferRecipientListResponseArrayDetails.from_dict(obj["details"]) if obj.get("details") is not None else None
         })

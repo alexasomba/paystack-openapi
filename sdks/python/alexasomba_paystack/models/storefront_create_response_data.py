@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.storefront_contacts_array import StorefrontContactsArray
 from typing import Optional, Set
@@ -46,8 +46,8 @@ class StorefrontCreateResponseData(BaseModel):
     digital_product_expiry: Optional[Any]
     metadata: Optional[Dict[str, Any]] = None
     id: StrictInt
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     products: List[Any]
     shipping_fees: List[Any]
     __properties: ClassVar[List[str]] = ["social_media", "contacts", "name", "slug", "currency", "welcome_message", "success_message", "redirect_url", "description", "delivery_note", "background_color", "status", "shippable", "integration", "domain", "digital_product_expiry", "metadata", "id", "createdAt", "updatedAt", "products", "shipping_fees"]
@@ -158,8 +158,8 @@ class StorefrontCreateResponseData(BaseModel):
             "digital_product_expiry": obj.get("digital_product_expiry"),
             "metadata": obj.get("metadata"),
             "id": obj.get("id"),
-            "createdAt": obj.get("createdAt"),
-            "updatedAt": obj.get("updatedAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "products": obj.get("products"),
             "shipping_fees": obj.get("shipping_fees")
         })
