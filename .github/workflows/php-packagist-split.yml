@@ -1,0 +1,48 @@
+name: php-packagist-split
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  split-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Split subtree (sdks/php)
+        run: |
+          git subtree split --prefix=sdks/php -b php-split
+
+      - name: Push split repo branch + tag
+        env:
+          PHP_SPLIT_PUSH_TOKEN: ${{ secrets.PHP_SPLIT_PUSH_TOKEN }}
+          PHP_SPLIT_REPO: ${{ secrets.PHP_SPLIT_REPO }}
+          TAG_NAME: ${{ github.ref_name }}
+        run: |
+          if [ -z "$PHP_SPLIT_PUSH_TOKEN" ] || [ -z "$PHP_SPLIT_REPO" ]; then
+            echo "Missing secrets. Set PHP_SPLIT_PUSH_TOKEN and PHP_SPLIT_REPO." >&2
+            exit 1
+          fi
+
+          php_sha=$(git rev-parse php-split)
+          git remote add php "https://x-access-token:${PHP_SPLIT_PUSH_TOKEN}@github.com/${PHP_SPLIT_REPO}.git"
+
+          # Push branch
+          git push php "$php_sha":refs/heads/main --force
+
+          # Re-tag the split commit with the same tag name (Packagist uses tags)
+          git tag -f "$TAG_NAME" "$php_sha"
+          git push php "refs/tags/$TAG_NAME" --force

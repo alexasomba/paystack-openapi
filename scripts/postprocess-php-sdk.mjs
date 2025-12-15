@@ -3,6 +3,7 @@ import path from 'node:path';
 
 const repoRoot = path.resolve(new URL('.', import.meta.url).pathname, '..');
 const phpLibDir = path.join(repoRoot, 'sdks/php/lib');
+const phpComposerJsonPath = path.join(repoRoot, 'sdks/php/composer.json');
 
 async function* walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -21,6 +22,46 @@ function normalizePaystackNamespaceLine(line) {
   // Only touch lines that reference our own namespace to avoid breaking regex strings.
   // Replace double backslashes with single backslashes.
   return line.replace(/\\\\/g, '\\');
+}
+
+async function postprocessComposerJson() {
+  let prev;
+  try {
+    prev = await fs.readFile(phpComposerJsonPath, 'utf8');
+  } catch (error) {
+    if (error && error.code === 'ENOENT') return false;
+    throw error;
+  }
+
+  let json;
+  try {
+    json = JSON.parse(prev);
+  } catch (error) {
+    throw new Error(`[sdk:php:postprocess] Failed to parse ${phpComposerJsonPath}: ${error.message}`);
+  }
+
+  // Packagist expects a VCS repository with composer.json at the repository root.
+  // This SDK lives in a subdirectory in the monorepo, so we enforce stable package
+  // metadata here to keep the split-repo (used for Packagist) consistent.
+  const nextJson = {
+    ...json,
+    name: 'alexasomba/paystack',
+    description: 'Paystack API client for PHP',
+    license: 'MIT',
+    homepage: 'https://github.com/alexasomba/paystack-php',
+    support: {
+      issues: 'https://github.com/alexasomba/paystack-php/issues',
+      source: 'https://github.com/alexasomba/paystack-php',
+    },
+    authors: [{ name: 'alexasomba' }],
+  };
+
+  const next = `${JSON.stringify(nextJson, null, 4)}\n`;
+  const prevNormalized = prev.replace(/\r\n/g, '\n');
+  if (next === prevNormalized) return false;
+
+  await fs.writeFile(phpComposerJsonPath, next, 'utf8');
+  return true;
 }
 
 async function main() {
@@ -45,6 +86,9 @@ async function main() {
       changedFiles += 1;
     }
   }
+
+  const composerChanged = await postprocessComposerJson();
+  if (composerChanged) changedFiles += 1;
 
   if (changedFiles) {
     console.log(`[sdk:php:postprocess] Updated ${changedFiles} PHP files`);

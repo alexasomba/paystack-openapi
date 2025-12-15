@@ -1,15 +1,19 @@
 # Paystack OpenAPI Specification
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 The OpenAPI specification for the [Paystack API](https://paystack.com/docs/api).
 
 ## Getting Started
+
 The [OpenAPI specification](https://swagger.io/specification/) provides another alternative to test the Paystack API.
 You can download the specification and make use of it on:
+
 - [SwaggerHub](https://swagger.io/tools/swaggerhub/)
 - [OpenAPI (Swagger) Editor](https://marketplace.visualstudio.com/items?itemName=42Crunch.vscode-openapi)
 
 ## Set up locally
+
 - Clone repo
   ```sh
   git clone git@github.com:PaystackOSS/openapi.git
@@ -27,7 +31,9 @@ You can download the specification and make use of it on:
   > At the moment, the `paystack.yaml` file is the only spec that is automatically opened in your browser. If the spec doesn't open automatically in your browser, you can manually open http://localhost:7070 in your browser.
 
 ## Components
+
 There are two top-level folders of interest in this repo:
+
 - `src`: This contains the assets, scripts and basic .html for working and viewing the OpenAPI Specification (OAS) file.
   - `assets`: This contains the Paystack OAS files:
     - `base`: Default single OAS file that was used to rebuild codebase (to be removed)
@@ -37,54 +43,58 @@ There are two top-level folders of interest in this repo:
 - `dist`: Not all OpenAPI readers can read from different file sources, so we built a single file from all the components in the `main` directory.
 
 ## SDKs
+
 This repo also contains TypeScript SDKs generated from the OpenAPI spec in `src/assets/sdk/paystack.yaml`.
 
 ### Node (server)
+
 - Package: `@alexasomba/paystack-node`
 
 ```ts
-import { createPaystack } from '@alexasomba/paystack-node';
+import { createPaystack } from "@alexasomba/paystack-node";
 
 const paystack = createPaystack({
   secretKey: process.env.PAYSTACK_SECRET_KEY!,
 });
 
 const { data, error } = await paystack.transaction_initialize({
-  body: { email: 'customer@example.com', amount: 5000 },
+  body: { email: "customer@example.com", amount: 5000 },
 });
 
 if (error) throw error;
 ```
 
 ### Axios (server)
+
 - Package: `@alexasomba/paystack-axios`
 
 ```ts
-import { createPaystack } from '@alexasomba/paystack-axios';
+import { createPaystack } from "@alexasomba/paystack-axios";
 
 const paystack = createPaystack({
   secretKey: process.env.PAYSTACK_SECRET_KEY!,
 });
 
 const { data, error } = await paystack.transaction_initialize({
-  body: { email: 'customer@example.com', amount: 5000 },
+  body: { email: "customer@example.com", amount: 5000 },
 });
 
 if (error) throw error;
 ```
 
 ### Browser
+
 - Package: `@alexasomba/paystack-browser`
 
 ```ts
-import { createPaystackClient } from '@alexasomba/paystack-browser';
+import { createPaystackClient } from "@alexasomba/paystack-browser";
 
 const paystack = createPaystackClient({
-  apiKey: 'YOUR_API_KEY',
+  apiKey: "YOUR_API_KEY",
 });
 
-const { data, error } = await paystack.POST('/transaction/initialize', {
-  body: { email: 'customer@example.com', amount: 5000 },
+const { data, error } = await paystack.POST("/transaction/initialize", {
+  body: { email: "customer@example.com", amount: 5000 },
 });
 
 if (error) throw error;
@@ -97,6 +107,7 @@ pnpm sdk:build
 ```
 
 ### Other languages (generated)
+
 The following SDKs are generated via OpenAPI Generator and live in the `sdks/` directory:
 
 - Python: `sdks/python` (includes `pyproject.toml` / `setup.py`)
@@ -111,14 +122,28 @@ pnpm sdk:others:generate
 
 Each folder contains its own README with language-specific usage and install instructions.
 
+### Packagist (PHP)
+
+Packagist (public) expects a VCS repository where the package's `composer.json` is at the repository root. Since this repo is a monorepo and the PHP SDK lives in `sdks/php`, publishing to Packagist is handled by splitting `sdks/php` into its own repository.
+
+- Create a dedicated repo for the PHP SDK (`alexasomba/paystack-php`) and add it on Packagist.
+- This repo includes a GitHub Action which, on tags like `v1.1.0`, subtree-splits `sdks/php` and pushes it to the dedicated repo (including the same tag).
+- Configure these GitHub repo secrets:
+  - `PHP_SPLIT_REPO`: `alexasomba/paystack-php`
+  - `PHP_SPLIT_PUSH_TOKEN`: a GitHub token with `contents:write` access to that repo
+
 ## Contributing
+
 Here are some of the ways to contribute to this repository:
+
 - Create a use case
 - Raise an issue
 - Suggest an improvement
 
 ## Issues
+
 You can [open an issue](https://github.com/PaystackOSS/openapi/issues) if you discover any bug or have problems using this repo.
 
 ## License
+
 This repository is made available under the MIT license. Kindly read the [LICENSE](https://github.com/PaystackOSS/openapi/blob/main/LICENSE) file for more information.

@@ -2,7 +2,7 @@
 # Generated output goes to: sdks/python
 packageName: alexasomba_paystack
 projectName: alexasomba-paystack
-packageVersion: 0.1.0
+packageVersion: 1.1.0
 # Used for README/repository metadata in generator templates
 gitHost: github.com
 gitUserId: alexasomba

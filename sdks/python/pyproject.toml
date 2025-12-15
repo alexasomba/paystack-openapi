@@ -1,6 +1,6 @@
 [project]
 name = "alexasomba_paystack"
-version = "0.1.0"
+version = "1.1.0"
 description = "Paystack"
 authors = [
   {name = "OpenAPI Generator Community",email = "techsupport@paystack.com"},
