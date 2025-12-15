@@ -13,7 +13,21 @@ jobs:
         uses: stoplightio/spectral-action@latest
         with:
           file_glob: 'sdk/*.yaml'
+      - name: Check dist YAML changes
+        id: check_dist
+        run: |
+          echo "Checking for changed dist YAML files..."
+          CHANGED=$(git diff --name-only ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} | grep -E '^dist/.*\.ya?ml' || true)
+          if [ -n "$CHANGED" ]; then
+            echo "dist_changed=true" >> $GITHUB_OUTPUT
+            echo "Found dist changes:\n$CHANGED"
+          else
+            echo "dist_changed=false" >> $GITHUB_OUTPUT
+            echo "No dist YAML changes detected; skipping distribution lint."
+          fi
+
       - name: Lint distribution specification
+        if: steps.check_dist.outputs.dist_changed == 'true'
         uses: stoplightio/spectral-action@latest
         with:
           file_glob: 'dist/*.yaml'
