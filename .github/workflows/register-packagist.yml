@@ -3,7 +3,11 @@ name: Register package on Packagist
 on:
   push:
     branches: [ main ]
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Optional tag name to wait for (e.g. v1.1.1)'
+        required: false
 
 jobs:
   register:
@@ -15,14 +19,72 @@ jobs:
       - name: Register package on Packagist
         env:
           PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
+          PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
         run: |
           set -euo pipefail
           REPO_URL="https://github.com/alexasomba/paystack-php.git"
           echo "Registering $REPO_URL on Packagist..."
-          http_status=$(curl -sS -o /tmp/resp -w "%{http_code}" -X POST -d "repository[url]=$REPO_URL" -H "Authorization: Bearer $PACKAGIST_TOKEN" https://packagist.org/api/create || true)
-          echo "Response body:"; cat /tmp/resp || true
-          echo "HTTP status: $http_status"
-          if [ "$http_status" -ne 200 ] && [ "$http_status" -ne 201 ]; then
-            echo "Packagist API returned non-success status $http_status"
+
+          if [ -z "${PACKAGIST_TOKEN:-}" ]; then
+            echo "Missing PACKAGIST_TOKEN secret" >&2
             exit 1
+          fi
+
+          # Build Authorization header. Packagist expects 'username:apiToken' after Bearer.
+          if [[ "${PACKAGIST_TOKEN}" == *":"* ]]; then
+            AUTH_HEADER="Authorization: Bearer ${PACKAGIST_TOKEN}"
+          elif [ -n "${PACKAGIST_USERNAME:-}" ]; then
+            AUTH_HEADER="Authorization: Bearer ${PACKAGIST_USERNAME}:${PACKAGIST_TOKEN}"
+          else
+            echo "PACKAGIST_TOKEN should be 'username:token' or set PACKAGIST_USERNAME secret" >&2
+            exit 1
+          fi
+
+          # determine composer package name from sdks/php/composer.json
+          if [ -f sdks/php/composer.json ]; then
+            PACKAGE_NAME=$(jq -r .name sdks/php/composer.json)
+          else
+            PACKAGE_NAME="alexasomba/paystack-openapi"
+          fi
+          echo "Detected composer package: $PACKAGE_NAME"
+
+          # Try to create the package using Packagist's documented endpoint. If that fails, try update-package.
+          http_status=$(curl -sS -o /tmp/resp -w "%{http_code}" -X POST -H "Content-Type: application/json" -H "$AUTH_HEADER" -d "{\"repository\": \"$REPO_URL\"}" https://packagist.org/api/create-package || true)
+          echo "Create response body:"; cat /tmp/resp || true
+          echo "Create HTTP status: $http_status"
+
+          if [ "$http_status" -eq 200 ] || [ "$http_status" -eq 201 ]; then
+            echo "Package created successfully"
+          else
+            echo "Create-package did not return success (status $http_status). Attempting update-package..."
+            update_status=$(curl -sS -o /tmp/resp2 -w "%{http_code}" -X POST -H "Content-Type: application/json" -H "$AUTH_HEADER" -d "{\"repository\": \"$REPO_URL\"}" https://packagist.org/api/update-package || true)
+            echo "Update response:"; cat /tmp/resp2 || true
+            echo "Update HTTP status: $update_status"
+            if [ "$update_status" -ne 200 ] && [ "$update_status" -ne 201 ] && [ "$update_status" -ne 202 ]; then
+              echo "Packagist update-package returned non-success status $update_status"
+              exit 1
+            fi
+
+            # Determine the tag we expect to see on Packagist
+            EXPECTED_TAG="${{ github.event.inputs.tag }}"
+            if [ -z "$EXPECTED_TAG" ]; then
+              EXPECTED_TAG="${GITHUB_REF#refs/tags/}"
+            fi
+            if [ -z "$EXPECTED_TAG" ]; then
+              echo "No tag provided and no tag ref available to wait for; skipping polling."
+            else
+              echo "Polling Packagist for version $EXPECTED_TAG to appear (package: $PACKAGE_NAME)..."
+              for i in $(seq 1 24); do
+                sleep 10
+                echo "Attempt $i: checking versions on Packagist..."
+                if curl -sS "https://packagist.org/packages/${PACKAGE_NAME}.json" | jq -e ".package.versions[\"${EXPECTED_TAG#v}\"]" > /dev/null; then
+                  echo "Version ${EXPECTED_TAG#v} found on Packagist"
+                  break
+                fi
+                if [ "$i" -eq 24 ]; then
+                  echo "Timed out waiting for Packagist to index the new tag"
+                  exit 1
+                fi
+              done
+            fi
           fi

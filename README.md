@@ -130,7 +130,10 @@ Packagist (public) expects a VCS repository where the package's `composer.json` 
 - This repo includes a GitHub Action which, on tags like `v1.1.1`, subtree-splits `sdks/php` and pushes it to the dedicated repo (including the same tag).
 - Configure these GitHub repo secrets:
   - `PHP_SPLIT_REPO`: `alexasomba/paystack-php`
-  - `PHP_SPLIT_PUSH_TOKEN`: a GitHub token with `contents:write` access to that repo
+  - `PHP_SPLIT_PUSH_TOKEN`: a GitHub Personal Access Token (PAT) with `repo` scope (used to push the split branch and tags to the target repo)
+  - `PACKAGIST_TOKEN`: a Packagist API token (or `username:token`) used by the `register-packagist` workflow to create or update the package on Packagist
+
+If you see `Permission to ... denied to github-actions[bot]` in the split workflow, check that `PHP_SPLIT_PUSH_TOKEN` is set and has the required permissions.
 
 ## Contributing
 

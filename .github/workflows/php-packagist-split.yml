@@ -26,6 +26,41 @@ jobs:
         run: |
           git subtree split --prefix=sdks/php -b php-split
 
+      - name: Verify split target auth
+        env:
+          PHP_SPLIT_PUSH_TOKEN: ${{ secrets.PHP_SPLIT_PUSH_TOKEN }}
+          PHP_SPLIT_REPO: ${{ secrets.PHP_SPLIT_REPO }}
+        run: |
+          set -euo pipefail
+          if [ -z "$PHP_SPLIT_PUSH_TOKEN" ] || [ -z "$PHP_SPLIT_REPO" ]; then
+            echo "Missing secrets. Set PHP_SPLIT_PUSH_TOKEN and PHP_SPLIT_REPO." >&2
+            exit 1
+          fi
+
+          # quick API probe to validate the token has repo access
+          resp=$(curl -sS -o /tmp/repo_probe -w "%{http_code}" -H "Authorization: token ${PHP_SPLIT_PUSH_TOKEN}" "https://api.github.com/repos/${PHP_SPLIT_REPO}" || true)
+          if [ "$resp" -ne 200 ]; then
+            echo "Token probe failed (HTTP $resp). Ensure PHP_SPLIT_PUSH_TOKEN is a Personal Access Token with 'repo' scope and PHP_SPLIT_REPO is correct: ${PHP_SPLIT_REPO}" >&2
+            echo "Response body:"; cat /tmp/repo_probe || true
+            exit 1
+          fi
+
+          # validate what user the token authenticates as and that it has push permission
+          user=$(curl -sS -H "Authorization: token ${PHP_SPLIT_PUSH_TOKEN}" https://api.github.com/user | jq -r .login || true)
+          if [ -z "$user" ] || [ "$user" = "null" ]; then
+            echo "Unable to determine user from token; token is likely invalid." >&2
+            exit 1
+          fi
+
+          perm_json=$(curl -sS -H "Authorization: token ${PHP_SPLIT_PUSH_TOKEN}" "https://api.github.com/repos/${PHP_SPLIT_REPO}/collaborators/${user}/permission" || true)
+          perm=$(echo "$perm_json" | jq -r .permission || true)
+          echo "Token authenticates as '$user' with collaborator permission: '$perm'"
+          if [ "$perm" != "admin" ] && [ "$perm" != "write" ]; then
+            echo "The token user '$user' does not have write access to ${PHP_SPLIT_REPO}. Give the token owner write or admin access or use a token with appropriate permissions." >&2
+            echo "Permission response:"; echo "$perm_json" || true
+            exit 1
+          fi
+
       - name: Push split repo branch + tag
         env:
           PHP_SPLIT_PUSH_TOKEN: ${{ secrets.PHP_SPLIT_PUSH_TOKEN }}
@@ -38,11 +73,13 @@ jobs:
           fi
 
           php_sha=$(git rev-parse php-split)
+          # Ensure any extra Authorization headers set by actions/checkout are removed so the PAT in the URL is used
+          git config --local --unset-all http.https://github.com/.extraheader || true
           git remote add php "https://x-access-token:${PHP_SPLIT_PUSH_TOKEN}@github.com/${PHP_SPLIT_REPO}.git"
 
-          # Push branch
-          git push php "$php_sha":refs/heads/main --force
+          # Push branch (override any http.extraHeader added by actions/checkout so our PAT is used)
+          git -c http.extraHeader= push php "$php_sha":refs/heads/main --force
 
           # Re-tag the split commit with the same tag name (Packagist uses tags)
           git tag -f "$TAG_NAME" "$php_sha"
-          git push php "refs/tags/$TAG_NAME" --force
+          git -c http.extraHeader= push php "refs/tags/$TAG_NAME" --force
