@@ -85,6 +85,33 @@ jobs:
               echo "Failed to create branch via API (status $api_branch_create)" >&2
               exit 1
             fi
+
+            # If API returned 409, repo may be empty and we need to create initial commit via Git Data API
+            if [ "$api_branch_create" = "409" ]; then
+              echo "API returned 409; checking if repo is empty"
+              repo_msg=$(curl -s -H "Authorization: Bearer $PHP_SPLIT_PUSH_TOKEN" "https://api.github.com/repos/$PHP_SPLIT_REPO" | jq -r '.message // empty') || repo_msg=""
+              if echo "$repo_msg" | grep -qi "Git Repository is empty"; then
+                echo "Repo is empty — creating initial commit via Git Data API"
+                tmpdir=$(mktemp -d)
+                git archive php-split | tar -x -C "$tmpdir"
+                items=()
+                for f in $(cd "$tmpdir" && find . -type f | sed 's|^./||' | sort); do
+                  sha=$(base64 -w0 "$tmpdir/$f" | jq -Rs .)
+                  blob=$(curl -s -X POST -H "Authorization: Bearer $PHP_SPLIT_PUSH_TOKEN" -H "Content-Type: application/json" -d "{\"content\": $sha, \"encoding\": \"base64\"}" "https://api.github.com/repos/$PHP_SPLIT_REPO/git/blobs")
+                  blob_sha=$(echo "$blob" | jq -r .sha)
+                  items+=("{\"path\": \"$f\", \"mode\": \"100644\", \"type\": \"blob\", \"sha\": \"$blob_sha\"}")
+                done
+                tree_json=$(printf '%s
+' "${items[@]}" | jq -cs '{tree: map(fromjson)}')
+                tree_sha=$(curl -s -X POST -H "Authorization: Bearer $PHP_SPLIT_PUSH_TOKEN" -H "Content-Type: application/json" -d "$tree_json" "https://api.github.com/repos/$PHP_SPLIT_REPO/git/trees" | jq -r .sha)
+                commit_sha=$(curl -s -X POST -H "Authorization: Bearer $PHP_SPLIT_PUSH_TOKEN" -H "Content-Type: application/json" -d "{\"message\": \"Init from paystack-openapi php subtree\", \"tree\": \"$tree_sha\"}" "https://api.github.com/repos/$PHP_SPLIT_REPO/git/commits" | jq -r .sha)
+                echo "Created commit $commit_sha in $PHP_SPLIT_REPO"
+                curl -s -X POST -H "Authorization: Bearer $PHP_SPLIT_PUSH_TOKEN" -H "Content-Type: application/json" -d "{\"ref\": \"refs/heads/main\", \"sha\": \"$commit_sha\"}" "https://api.github.com/repos/$PHP_SPLIT_REPO/git/refs"
+                curl -s -X POST -H "Authorization: Bearer $PHP_SPLIT_PUSH_TOKEN" -H "Content-Type: application/json" -d "{\"ref\": \"refs/tags/$TAG_NAME\", \"sha\": \"$commit_sha\"}" "https://api.github.com/repos/$PHP_SPLIT_REPO/git/refs"
+              else
+                echo "Repo not empty or unexpected message: $repo_msg"
+              fi
+            fi
           fi
 
           # Re-tag the split commit with the same tag name (Packagist uses tags)
