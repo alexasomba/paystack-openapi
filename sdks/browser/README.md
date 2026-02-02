@@ -1,12 +1,12 @@
 # @alexasomba/paystack-browser
 
-TypeScript-first Paystack API client for browser runtimes, generated from this repo’s OpenAPI spec.
+TypeScript-first Paystack API client for browser runtimes, generated from the Paystack OpenAPI spec.
 
 > Note: Paystack API endpoints generally require a secret key. Do not expose secret keys in a real browser app.
 
 ## Why this SDK
 
-- Spec-driven: generated from the OpenAPI spec in this repo.
+- Spec-driven: generated from the Paystack OpenAPI spec.
 - Typed operations: ergonomic helpers generated from `operationId`.
 - Production-friendly networking: built-in `timeoutMs` and safe `retry` defaults.
 
@@ -55,10 +55,10 @@ pnpm add @alexasomba/paystack-browser
 ## Usage
 
 ```ts
-import { createPaystack } from '@alexasomba/paystack-browser';
+import { createPaystack } from "@alexasomba/paystack-browser";
 
 const paystack = createPaystack({
-  apiKey: 'YOUR_KEY',
+  apiKey: "YOUR_KEY",
   // Optional reliability knobs
   timeoutMs: 30_000,
   retry: { retries: 2 },
@@ -66,7 +66,7 @@ const paystack = createPaystack({
 
 const { data, error } = await paystack.transaction_initialize({
   body: {
-    email: 'customer@example.com',
+    email: "customer@example.com",
     amount: 5000,
   },
 });
@@ -79,4 +79,3 @@ console.log(data);
 
 - The Browser SDK currently generates ~119 typed operations from the bundled SDK OpenAPI spec.
 - For missing/incorrect endpoints, please open an issue or PR against the spec (`src/assets/sdk/paystack.yaml`).
-

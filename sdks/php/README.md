@@ -66,33 +66,27 @@ The OpenAPI specification of the Paystack API that merchants and developers can 
 
 PHP 8.1 and later.
 
-### Composer (from this monorepo)
+### Installation
 
-Because this repository is a monorepo, Composer cannot install the `sdks/php` subdirectory directly from the VCS URL alone.
+```sh
+composer require alexasomba/paystack
+```
 
-To use it today:
-
-1. Clone this repo locally
-2. Add a path repository pointing at `sdks/php`
-
-Example `composer.json`:
+Or from source (standalone repository):
 
 ```json
 {
   "repositories": [
     {
-      "type": "path",
-      "url": "../path/to/paystack-openapi/sdks/php",
-      "options": { "symlink": true }
+      "type": "vcs",
+      "url": "https://github.com/alexasomba/paystack-php.git"
     }
   ],
   "require": {
-    "alexasomba/paystack-openapi": "*"
+    "alexasomba/paystack": "*"
   }
 }
 ```
-
-Then run `composer install`.
 
 ### Manual Installation
 

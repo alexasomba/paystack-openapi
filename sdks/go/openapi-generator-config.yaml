@@ -5,5 +5,5 @@ moduleName: github.com/alexasomba/paystack-go
 packageVersion: 1.1.1
 gitHost: github.com
 gitUserId: alexasomba
-gitRepoId: paystack-openapi/sdks/go
+gitRepoId: paystack-go
 hideGenerationTimestamp: true

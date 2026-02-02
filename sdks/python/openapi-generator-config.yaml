@@ -6,7 +6,7 @@ packageVersion: 1.1.1
 # Used for README/repository metadata in generator templates
 gitHost: github.com
 gitUserId: alexasomba
-gitRepoId: paystack-openapi
+gitRepoId: paystack-python
 # Keep it small and broadly compatible
 library: urllib3
 hideGenerationTimestamp: true

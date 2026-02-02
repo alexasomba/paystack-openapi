@@ -1,7 +1,24 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const modelsDir = path.resolve('sdks/python/alexasomba_paystack/models');
+const sdkDir = path.resolve('sdks/python');
+const modelsDir = path.join(sdkDir, 'alexasomba_paystack/models');
+const pyprojectPath = path.join(sdkDir, 'pyproject.toml');
+const gitPushPath = path.join(sdkDir, 'git_push.sh');
+
+function updatePyproject(contents) {
+  return contents.replace(
+    /^Repository\s*=\s*".*"$/m,
+    'Repository = "https://github.com/alexasomba/paystack-python"'
+  );
+}
+
+function updateGitPush(contents) {
+  return contents.replace(
+    /^(\s*git_repo_id=)".*"$/m,
+    '$1"paystack-python"'
+  );
+}
 
 function syncAliasChoicesImport(contents) {
   const importRe = /^from pydantic import (.+)$/m;
@@ -111,6 +128,24 @@ function main() {
     if (updated !== original) {
       fs.writeFileSync(filePath, updated, 'utf8');
       patched += 1;
+    }
+  }
+
+  if (fs.existsSync(pyprojectPath)) {
+    const original = fs.readFileSync(pyprojectPath, 'utf8');
+    const updated = updatePyproject(original);
+    if (updated !== original) {
+      fs.writeFileSync(pyprojectPath, updated, 'utf8');
+      console.log('postprocess-python-sdk: updated pyproject.toml');
+    }
+  }
+
+  if (fs.existsSync(gitPushPath)) {
+    const original = fs.readFileSync(gitPushPath, 'utf8');
+    const updated = updateGitPush(original);
+    if (updated !== original) {
+      fs.writeFileSync(gitPushPath, updated, 'utf8');
+      console.log('postprocess-python-sdk: updated git_push.sh');
     }
   }
 

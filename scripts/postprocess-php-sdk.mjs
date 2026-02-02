@@ -4,6 +4,7 @@ import path from 'node:path';
 const repoRoot = path.resolve(new URL('.', import.meta.url).pathname, '..');
 const phpLibDir = path.join(repoRoot, 'sdks/php/lib');
 const phpComposerJsonPath = path.join(repoRoot, 'sdks/php/composer.json');
+const phpGitPushPath = path.join(repoRoot, 'sdks/php/git_push.sh');
 
 async function* walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -64,6 +65,27 @@ async function postprocessComposerJson() {
   return true;
 }
 
+async function postprocessGitPush() {
+  let prev;
+  try {
+    prev = await fs.readFile(phpGitPushPath, 'utf8');
+  } catch (error) {
+    if (error && error.code === 'ENOENT') return false;
+    throw error;
+  }
+
+  const next = prev.replace(
+    /^(\s*git_repo_id=)".*"$/m,
+    '$1"paystack-php"'
+  );
+
+  const prevNormalized = prev.replace(/\r\n/g, '\n');
+  if (next === prevNormalized) return false;
+
+  await fs.writeFile(phpGitPushPath, next, 'utf8');
+  return true;
+}
+
 async function main() {
   let changedFiles = 0;
 
@@ -89,6 +111,9 @@ async function main() {
 
   const composerChanged = await postprocessComposerJson();
   if (composerChanged) changedFiles += 1;
+
+  const gitPushChanged = await postprocessGitPush();
+  if (gitPushChanged) changedFiles += 1;
 
   if (changedFiles) {
     console.log(`[sdk:php:postprocess] Updated ${changedFiles} PHP files`);

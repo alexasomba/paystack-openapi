@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/alexasomba/paystack-openapi"
+Repository = "https://github.com/alexasomba/paystack-python"
 
 [tool.poetry]
 requires-poetry = ">=2.0"

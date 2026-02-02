@@ -9,9 +9,9 @@
     "url": "https://github.com/alexasomba/paystack-axios.git"
   },
   "bugs": {
-    "url": "https://github.com/alexasomba/paystack-openapi/issues"
+    "url": "https://github.com/alexasomba/paystack-axios/issues"
   },
-  "homepage": "https://github.com/alexasomba/paystack-openapi#readme",
+  "homepage": "https://github.com/alexasomba/paystack-axios#readme",
   "keywords": [
     "paystack",
     "openapi",

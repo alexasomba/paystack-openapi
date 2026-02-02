@@ -1,14 +1,15 @@
 # @alexasomba/paystack-node
 
-TypeScript-first Paystack API client for Node.js, generated from this repo’s OpenAPI spec.
+TypeScript-first Paystack API client for Node.js, generated from the Paystack OpenAPI spec.
 
 This package provides:
+
 - A typed low-level client (`createPaystackClient`) backed by `openapi-fetch`
 - Ergonomic operation helpers generated from `operationId` (`transaction_initialize`, `transferrecipient_update`, ...)
 
 ## Why this SDK
 
-- Spec-driven: generated from the OpenAPI spec in this repo (keeps surface area aligned with the spec).
+- Spec-driven: generated from the Paystack OpenAPI spec (keeps surface area aligned with the spec).
 - Production-friendly networking: built-in `timeoutMs` and safe `retry` defaults.
 - Safe retries for POST: optional `idempotencyKey` support (so retries don’t accidentally duplicate operations).
 - Better debugging: `PaystackApiError` includes `status` and `requestId` when available.
@@ -58,7 +59,12 @@ pnpm add @alexasomba/paystack-node
 ## Usage
 
 ```ts
-import { assertOk, createPaystack, PaystackApiError, toPaystackApiError } from '@alexasomba/paystack-node';
+import {
+  assertOk,
+  createPaystack,
+  PaystackApiError,
+  toPaystackApiError,
+} from "@alexasomba/paystack-node";
 
 const paystack = createPaystack({
   secretKey: process.env.PAYSTACK_SECRET_KEY!,
@@ -66,13 +72,13 @@ const paystack = createPaystack({
   timeoutMs: 30_000,
   retry: { retries: 2 },
   // Optional: auto-add Idempotency-Key on POST requests
-  idempotencyKey: 'auto',
+  idempotencyKey: "auto",
 });
 
 // ergonomic operation wrappers (generated from operationId)
 const result = await paystack.transaction_initialize({
   body: {
-    email: 'customer@example.com',
+    email: "customer@example.com",
     amount: 5000,
   },
 });
@@ -83,7 +89,7 @@ try {
 } catch (e) {
   if (e instanceof PaystackApiError) {
     // Useful for support/debugging
-    console.error('Paystack requestId:', e.requestId);
+    console.error("Paystack requestId:", e.requestId);
   }
   throw e;
 }
@@ -98,7 +104,7 @@ if (apiError) {
 ### Usage (CommonJS)
 
 ```js
-const { createPaystack } = require('@alexasomba/paystack-node');
+const { createPaystack } = require("@alexasomba/paystack-node");
 
 const paystack = createPaystack({
   secretKey: process.env.PAYSTACK_SECRET_KEY,
@@ -110,12 +116,14 @@ const paystack = createPaystack({
 If you prefer calling by path/method:
 
 ```ts
-import { createPaystackClient } from '@alexasomba/paystack-node';
+import { createPaystackClient } from "@alexasomba/paystack-node";
 
-const client = createPaystackClient({ secretKey: process.env.PAYSTACK_SECRET_KEY! });
+const client = createPaystackClient({
+  secretKey: process.env.PAYSTACK_SECRET_KEY!,
+});
 
-const { data, error } = await client.POST('/transaction/initialize', {
-  body: { email: 'customer@example.com', amount: 5000 },
+const { data, error } = await client.POST("/transaction/initialize", {
+  body: { email: "customer@example.com", amount: 5000 },
 });
 
 if (error) throw error;
@@ -129,15 +137,14 @@ console.log(data);
 
 ## Webhooks
 
-Webhook signature verification requires the *raw request body*.
+Webhook signature verification requires the _raw request body_.
 
 ```ts
-import { verifyPaystackWebhookSignature } from '@alexasomba/paystack-node';
+import { verifyPaystackWebhookSignature } from "@alexasomba/paystack-node";
 
 const ok = verifyPaystackWebhookSignature({
   rawBody: req.rawBody,
-  signature: req.headers['x-paystack-signature'] as string,
+  signature: req.headers["x-paystack-signature"] as string,
   secret: process.env.PAYSTACK_SECRET_KEY!,
 });
 ```
-
