@@ -18,37 +18,37 @@ import (
 
 // VerifyResponseDataMetadata struct for VerifyResponseDataMetadata
 type VerifyResponseDataMetadata struct {
-	map[string]interface{} *map[string]interface{}
-	string *string
+	MapmapOfStringAny *map[string]interface{}
+	String            *string
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *VerifyResponseDataMetadata) UnmarshalJSON(data []byte) error {
 	var err error
-	// try to unmarshal JSON data into map[string]interface{}
-	err = json.Unmarshal(data, &dst.map[string]interface{});
+	// try to unmarshal JSON data into MapmapOfStringAny
+	err = json.Unmarshal(data, &dst.MapmapOfStringAny)
 	if err == nil {
-		jsonmap[string]interface{}, _ := json.Marshal(dst.map[string]interface{})
-		if string(jsonmap[string]interface{}) == "{}" { // empty struct
-			dst.map[string]interface{} = nil
+		jsonMapmapOfStringAny, _ := json.Marshal(dst.MapmapOfStringAny)
+		if string(jsonMapmapOfStringAny) == "{}" { // empty struct
+			dst.MapmapOfStringAny = nil
 		} else {
-			return nil // data stored in dst.map[string]interface{}, return on the first match
+			return nil // data stored in dst.MapmapOfStringAny, return on the first match
 		}
 	} else {
-		dst.map[string]interface{} = nil
+		dst.MapmapOfStringAny = nil
 	}
 
-	// try to unmarshal JSON data into string
-	err = json.Unmarshal(data, &dst.string);
+	// try to unmarshal JSON data into String
+	err = json.Unmarshal(data, &dst.String)
 	if err == nil {
-		jsonstring, _ := json.Marshal(dst.string)
-		if string(jsonstring) == "{}" { // empty struct
-			dst.string = nil
+		jsonString, _ := json.Marshal(dst.String)
+		if string(jsonString) == "{}" { // empty struct
+			dst.String = nil
 		} else {
-			return nil // data stored in dst.string, return on the first match
+			return nil // data stored in dst.String, return on the first match
 		}
 	} else {
-		dst.string = nil
+		dst.String = nil
 	}
 
 	return fmt.Errorf("data failed to match schemas in anyOf(VerifyResponseDataMetadata)")
@@ -56,12 +56,12 @@ func (dst *VerifyResponseDataMetadata) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src *VerifyResponseDataMetadata) MarshalJSON() ([]byte, error) {
-	if src.map[string]interface{} != nil {
-		return json.Marshal(&src.map[string]interface{})
+	if src.MapmapOfStringAny != nil {
+		return json.Marshal(&src.MapmapOfStringAny)
 	}
 
-	if src.string != nil {
-		return json.Marshal(&src.string)
+	if src.String != nil {
+		return json.Marshal(&src.String)
 	}
 
 	return nil, nil // no data in anyOf schemas
