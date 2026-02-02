@@ -32,8 +32,7 @@
   },
   "files": [
     "dist",
-    "src",
-    "openapi.yaml"
+    "src"
   ],
   "scripts": {
     "generate:types": "openapi-typescript ./openapi.yaml -o src/openapi-types.ts",
