@@ -5,7 +5,7 @@ description = "Paystack"
 authors = ["OpenAPI Generator Community <techsupport@paystack.com>"]
 license = "NoLicense"
 readme = "README.md"
-repository = "https://github.com/alexasomba/paystack-openapi"
+repository = "https://github.com/alexasomba/paystack-python"
 keywords = ["OpenAPI", "OpenAPI-Generator", "Paystack"]
 include = ["alexasomba_paystack/py.typed"]
 

@@ -6,8 +6,7 @@
   "author": "alexasomba",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alexasomba/paystack-openapi.git",
-    "directory": "sdks/axios"
+    "url": "https://github.com/alexasomba/paystack-axios.git"
   },
   "bugs": {
     "url": "https://github.com/alexasomba/paystack-openapi/issues"
@@ -48,11 +47,11 @@
     "publish:public": "npm publish --access public"
   },
   "dependencies": {
-    "axios": "^1.13.2",
+    "axios": "^1.13.4",
     "openapi-fetch": "^0.15.0"
   },
   "devDependencies": {
-    "@types/node": "^22.19.3",
+    "@types/node": "^22.19.7",
     "openapi-typescript": "^7.10.1",
     "typescript": "^5.9.3",
     "yaml": "^2.8.2"
