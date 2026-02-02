@@ -14,66 +14,131 @@
 
 
 from __future__ import annotations
-import pprint
-import re  # noqa: F401
 import json
+import pprint
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
+from typing import Any, Dict, List, Optional
+from pydantic import StrictStr, Field
+from typing import Union, List, Set, Optional, Dict
+from typing_extensions import Literal, Self
 
-
-from typing import Any, Optional
-from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
+VERIFYRESPONSEDATAPLANOBJECT_ONE_OF_SCHEMAS = ["object"]
 
 class VerifyResponseDataPlanObject(BaseModel):
     """
     VerifyResponseDataPlanObject
     """
-    id: Optional[StrictInt] = None
-    name: Optional[StrictStr] = None
-    plan_code: Optional[StrictStr] = None
-    description: Optional[Any] = None
-    amount: Optional[StrictInt] = None
-    interval: Optional[StrictStr] = None
-    send_invoices: Optional[StrictBool] = None
-    send_sms: Optional[StrictBool] = None
-    currency: Optional[StrictStr] = None
-    __properties = []
+    # data type: object
+    oneof_schema_1_validator: Optional[Any] = None
+    # data type: object
+    oneof_schema_2_validator: Optional[Dict[str, Any]] = None
+    actual_instance: Optional[Union[object]] = None
+    one_of_schemas: Set[str] = { "object" }
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
-    def to_str(self) -> str:
-        """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+
+    def __init__(self, *args, **kwargs) -> None:
+        if args:
+            if len(args) > 1:
+                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
+            if kwargs:
+                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
+            super().__init__(actual_instance=args[0])
+        else:
+            super().__init__(**kwargs)
+
+    @field_validator('actual_instance')
+    def actual_instance_must_validate_oneof(cls, v):
+        instance = VerifyResponseDataPlanObject.model_construct()
+        error_messages = []
+        match = 0
+        # validate data type: object
+        try:
+            instance.oneof_schema_1_validator = v
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # validate data type: object
+        try:
+            instance.oneof_schema_2_validator = v
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        if match > 1:
+            # more than 1 match
+            raise ValueError("Multiple matches found when setting `actual_instance` in VerifyResponseDataPlanObject with oneOf schemas: object. Details: " + ", ".join(error_messages))
+        elif match == 0:
+            # no match
+            raise ValueError("No match found when setting `actual_instance` in VerifyResponseDataPlanObject with oneOf schemas: object. Details: " + ", ".join(error_messages))
+        else:
+            return v
+
+    @classmethod
+    def from_dict(cls, obj: Union[str, Dict[str, Any]]) -> Self:
+        return cls.from_json(json.dumps(obj))
+
+    @classmethod
+    def from_json(cls, json_str: str) -> Self:
+        """Returns the object represented by the json string"""
+        instance = cls.model_construct()
+        error_messages = []
+        match = 0
+
+        # deserialize data into object
+        try:
+            # validation
+            instance.oneof_schema_1_validator = json.loads(json_str)
+            # assign value to actual_instance
+            instance.actual_instance = instance.oneof_schema_1_validator
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into object
+        try:
+            # validation
+            instance.oneof_schema_2_validator = json.loads(json_str)
+            # assign value to actual_instance
+            instance.actual_instance = instance.oneof_schema_2_validator
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+
+        if match > 1:
+            # more than 1 match
+            raise ValueError("Multiple matches found when deserializing the JSON string into VerifyResponseDataPlanObject with oneOf schemas: object. Details: " + ", ".join(error_messages))
+        elif match == 0:
+            # no match
+            raise ValueError("No match found when deserializing the JSON string into VerifyResponseDataPlanObject with oneOf schemas: object. Details: " + ", ".join(error_messages))
+        else:
+            return instance
 
     def to_json(self) -> str:
-        """Returns the JSON representation of the model using alias"""
-        return json.dumps(self.to_dict())
+        """Returns the JSON representation of the actual instance"""
+        if self.actual_instance is None:
+            return "null"
 
-    @classmethod
-    def from_json(cls, json_str: str) -> VerifyResponseDataPlanObject:
-        """Create an instance of VerifyResponseDataPlanObject from a JSON string"""
-        return cls.from_dict(json.loads(json_str))
+        if hasattr(self.actual_instance, "to_json") and callable(self.actual_instance.to_json):
+            return self.actual_instance.to_json()
+        else:
+            return json.dumps(self.actual_instance)
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
-        return _dict
-
-    @classmethod
-    def from_dict(cls, obj: dict) -> VerifyResponseDataPlanObject:
-        """Create an instance of VerifyResponseDataPlanObject from a dict"""
-        if obj is None:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], object]]:
+        """Returns the dict representation of the actual instance"""
+        if self.actual_instance is None:
             return None
 
-        if not isinstance(obj, dict):
-            return VerifyResponseDataPlanObject.parse_obj(obj)
+        if hasattr(self.actual_instance, "to_dict") and callable(self.actual_instance.to_dict):
+            return self.actual_instance.to_dict()
+        else:
+            # primitive type
+            return self.actual_instance
 
-        _obj = VerifyResponseDataPlanObject.parse_obj({
-        })
-        return _obj
+    def to_str(self) -> str:
+        """Returns the string representation of the actual instance"""
+        return pprint.pformat(self.model_dump())
 
 

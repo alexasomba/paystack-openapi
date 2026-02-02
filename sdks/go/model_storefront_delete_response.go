@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the StorefrontDeleteResponse type satisfies the MappedNullable interface at compile time
@@ -23,6 +25,8 @@ type StorefrontDeleteResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
 }
+
+type _StorefrontDeleteResponse StorefrontDeleteResponse
 
 // NewStorefrontDeleteResponse instantiates a new StorefrontDeleteResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -104,6 +108,44 @@ func (o StorefrontDeleteResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["status"] = o.Status
 	toSerialize["message"] = o.Message
 	return toSerialize, nil
+}
+
+func (o *StorefrontDeleteResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"status",
+		"message",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varStorefrontDeleteResponse := _StorefrontDeleteResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varStorefrontDeleteResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StorefrontDeleteResponse(varStorefrontDeleteResponse)
+
+	return err
 }
 
 type NullableStorefrontDeleteResponse struct {

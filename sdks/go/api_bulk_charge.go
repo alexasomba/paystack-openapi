@@ -95,13 +95,13 @@ func (a *BulkChargeAPIService) BulkChargeChargesExecute(r ApiBulkChargeChargesRe
 	localVarFormParams := url.Values{}
 
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -491,13 +491,13 @@ func (a *BulkChargeAPIService) BulkChargeListExecute(r ApiBulkChargeListRequest)
 	localVarFormParams := url.Values{}
 
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

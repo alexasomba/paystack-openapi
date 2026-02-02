@@ -18,81 +18,97 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Optional, Union
-from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Optional, Set
+from typing_extensions import Self
 
 class SubaccountCreateResponseData(BaseModel):
     """
     SubaccountCreateResponseData
-    """
-    business_name: StrictStr = Field(...)
+    """ # noqa: E501
+    business_name: StrictStr
     account_name: Optional[StrictStr] = None
-    description: StrictStr = Field(...)
-    primary_contact_name: StrictStr = Field(...)
-    primary_contact_email: StrictStr = Field(...)
-    primary_contact_phone: StrictStr = Field(...)
-    metadata: StrictStr = Field(...)
-    account_number: StrictStr = Field(...)
-    percentage_charge: Union[StrictFloat, StrictInt] = Field(...)
-    settlement_bank: StrictStr = Field(...)
-    currency: StrictStr = Field(...)
-    bank: StrictInt = Field(...)
-    integration: StrictInt = Field(...)
-    domain: StrictStr = Field(...)
-    product: StrictStr = Field(...)
-    managed_by_integration: StrictInt = Field(...)
-    subaccount_code: StrictStr = Field(...)
-    is_verified: StrictBool = Field(...)
-    settlement_schedule: StrictStr = Field(...)
-    active: StrictBool = Field(...)
-    migrate: StrictBool = Field(...)
-    id: StrictInt = Field(...)
-    created_at: StrictStr = Field(..., alias="createdAt")
-    updated_at: StrictStr = Field(..., alias="updatedAt")
-    __properties = ["business_name", "account_name", "description", "primary_contact_name", "primary_contact_email", "primary_contact_phone", "metadata", "account_number", "percentage_charge", "settlement_bank", "currency", "bank", "integration", "domain", "product", "managed_by_integration", "subaccount_code", "is_verified", "settlement_schedule", "active", "migrate", "id", "createdAt", "updatedAt"]
+    description: StrictStr
+    primary_contact_name: StrictStr
+    primary_contact_email: StrictStr
+    primary_contact_phone: StrictStr
+    metadata: StrictStr
+    account_number: StrictStr
+    percentage_charge: Union[StrictFloat, StrictInt]
+    settlement_bank: StrictStr
+    currency: StrictStr
+    bank: StrictInt
+    integration: StrictInt
+    domain: StrictStr
+    product: StrictStr
+    managed_by_integration: StrictInt
+    subaccount_code: StrictStr
+    is_verified: StrictBool
+    settlement_schedule: StrictStr
+    active: StrictBool
+    migrate: StrictBool
+    id: StrictInt
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
+    __properties: ClassVar[List[str]] = ["business_name", "account_name", "description", "primary_contact_name", "primary_contact_email", "primary_contact_phone", "metadata", "account_number", "percentage_charge", "settlement_bank", "currency", "bank", "integration", "domain", "product", "managed_by_integration", "subaccount_code", "is_verified", "settlement_schedule", "active", "migrate", "id", "createdAt", "updatedAt"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> SubaccountCreateResponseData:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of SubaccountCreateResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # set to None if account_name (nullable) is None
-        # and __fields_set__ contains the field
-        if self.account_name is None and "account_name" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.account_name is None and "account_name" in self.model_fields_set:
             _dict['account_name'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> SubaccountCreateResponseData:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of SubaccountCreateResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return SubaccountCreateResponseData.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = SubaccountCreateResponseData.parse_obj({
+        _obj = cls.model_validate({
             "business_name": obj.get("business_name"),
             "account_name": obj.get("account_name"),
             "description": obj.get("description"),
@@ -115,8 +131,8 @@ class SubaccountCreateResponseData(BaseModel):
             "active": obj.get("active"),
             "migrate": obj.get("migrate"),
             "id": obj.get("id"),
-            "created_at": obj.get("createdAt"),
-            "updated_at": obj.get("updatedAt")
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updatedAt": obj.get("updatedAt")
         })
         return _obj
 

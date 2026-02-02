@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ProductCreateResponseData type satisfies the MappedNullable interface at compile time
@@ -49,6 +51,8 @@ type ProductCreateResponseData struct {
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
 }
+
+type _ProductCreateResponseData ProductCreateResponseData
 
 // NewProductCreateResponseData instantiates a new ProductCreateResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -831,6 +835,69 @@ func (o ProductCreateResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["updatedAt"] = o.UpdatedAt
 	return toSerialize, nil
+}
+
+func (o *ProductCreateResponseData) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"variants_options",
+		"variants",
+		"name",
+		"description",
+		"currency",
+		"price",
+		"quantity",
+		"type",
+		"is_shippable",
+		"unlimited",
+		"files",
+		"shipping_fields",
+		"integration",
+		"domain",
+		"metadata",
+		"slug",
+		"product_code",
+		"quantity_sold",
+		"active",
+		"deleted_at",
+		"in_stock",
+		"minimum_orderable",
+		"maximum_orderable",
+		"low_stock_alert",
+		"id",
+		"createdAt",
+		"updatedAt",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varProductCreateResponseData := _ProductCreateResponseData{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varProductCreateResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProductCreateResponseData(varProductCreateResponseData)
+
+	return err
 }
 
 type NullableProductCreateResponseData struct {

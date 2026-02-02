@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CustomerValidateResponse type satisfies the MappedNullable interface at compile time
@@ -23,6 +25,8 @@ type CustomerValidateResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
 }
+
+type _CustomerValidateResponse CustomerValidateResponse
 
 // NewCustomerValidateResponse instantiates a new CustomerValidateResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -104,6 +108,44 @@ func (o CustomerValidateResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["status"] = o.Status
 	toSerialize["message"] = o.Message
 	return toSerialize, nil
+}
+
+func (o *CustomerValidateResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"status",
+		"message",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCustomerValidateResponse := _CustomerValidateResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCustomerValidateResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerValidateResponse(varCustomerValidateResponse)
+
+	return err
 }
 
 type NullableCustomerValidateResponse struct {

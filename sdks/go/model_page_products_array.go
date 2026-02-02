@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PageProductsArray type satisfies the MappedNullable interface at compile time
@@ -36,6 +38,8 @@ type PageProductsArray struct {
 	Active int32 `json:"active"`
 	InStock int32 `json:"in_stock"`
 }
+
+type _PageProductsArray PageProductsArray
 
 // NewPageProductsArray instantiates a new PageProductsArray object
 // This constructor will assign default values to properties that have it defined,
@@ -459,6 +463,57 @@ func (o PageProductsArray) ToMap() (map[string]interface{}, error) {
 	toSerialize["active"] = o.Active
 	toSerialize["in_stock"] = o.InStock
 	return toSerialize, nil
+}
+
+func (o *PageProductsArray) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"product_id",
+		"name",
+		"description",
+		"product_code",
+		"page",
+		"price",
+		"currency",
+		"quantity",
+		"type",
+		"features",
+		"is_shippable",
+		"domain",
+		"integration",
+		"active",
+		"in_stock",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPageProductsArray := _PageProductsArray{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPageProductsArray)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PageProductsArray(varPageProductsArray)
+
+	return err
 }
 
 type NullablePageProductsArray struct {

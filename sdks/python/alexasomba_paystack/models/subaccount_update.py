@@ -18,62 +18,78 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Optional, Union
-from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Optional, Set
+from typing_extensions import Self
 
 class SubaccountUpdate(BaseModel):
     """
     SubaccountUpdate
-    """
-    business_name: Optional[StrictStr] = Field(None, description="Name of business for subaccount")
-    settlement_bank: Optional[StrictStr] = Field(None, description="Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint.")
-    account_number: Optional[StrictStr] = Field(None, description="Bank account number")
-    active: Optional[StrictBool] = Field(None, description="Activate or deactivate a subaccount")
-    percentage_charge: Optional[Union[StrictFloat, StrictInt]] = Field(None, description="Customer's phone number")
-    description: Optional[StrictStr] = Field(None, description="A description for this subaccount")
-    primary_contact_email: Optional[StrictStr] = Field(None, description="A contact email for the subaccount")
-    primary_contact_name: Optional[StrictStr] = Field(None, description="The name of the contact person for this subaccount")
-    primary_contact_phone: Optional[StrictStr] = Field(None, description="A phone number to call for this subaccount")
-    metadata: Optional[StrictStr] = Field(None, description="Stringified JSON object of custom data")
-    __properties = ["business_name", "settlement_bank", "account_number", "active", "percentage_charge", "description", "primary_contact_email", "primary_contact_name", "primary_contact_phone", "metadata"]
+    """ # noqa: E501
+    business_name: Optional[StrictStr] = Field(default=None, description="Name of business for subaccount")
+    settlement_bank: Optional[StrictStr] = Field(default=None, description="Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint.")
+    account_number: Optional[StrictStr] = Field(default=None, description="Bank account number")
+    active: Optional[StrictBool] = Field(default=None, description="Activate or deactivate a subaccount")
+    percentage_charge: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Customer's phone number")
+    description: Optional[StrictStr] = Field(default=None, description="A description for this subaccount")
+    primary_contact_email: Optional[StrictStr] = Field(default=None, description="A contact email for the subaccount")
+    primary_contact_name: Optional[StrictStr] = Field(default=None, description="The name of the contact person for this subaccount")
+    primary_contact_phone: Optional[StrictStr] = Field(default=None, description="A phone number to call for this subaccount")
+    metadata: Optional[StrictStr] = Field(default=None, description="Stringified JSON object of custom data")
+    __properties: ClassVar[List[str]] = ["business_name", "settlement_bank", "account_number", "active", "percentage_charge", "description", "primary_contact_email", "primary_contact_name", "primary_contact_phone", "metadata"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> SubaccountUpdate:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of SubaccountUpdate from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> SubaccountUpdate:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of SubaccountUpdate from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return SubaccountUpdate.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = SubaccountUpdate.parse_obj({
+        _obj = cls.model_validate({
             "business_name": obj.get("business_name"),
             "settlement_bank": obj.get("settlement_bank"),
             "account_number": obj.get("account_number"),

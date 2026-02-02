@@ -18,125 +18,141 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional, Set
+from typing_extensions import Self
 
 class TransactionListResponseArrayAuthorization(BaseModel):
     """
     TransactionListResponseArrayAuthorization
-    """
-    authorization_code: Optional[StrictStr] = Field(...)
-    bin: Optional[StrictStr] = Field(...)
-    last4: Optional[StrictStr] = Field(...)
-    exp_month: Optional[StrictStr] = Field(...)
-    exp_year: Optional[StrictStr] = Field(...)
-    channel: Optional[StrictStr] = Field(...)
-    card_type: Optional[StrictStr] = Field(...)
-    bank: Optional[StrictStr] = Field(...)
-    country_code: Optional[StrictStr] = Field(...)
-    brand: Optional[StrictStr] = Field(...)
-    reusable: StrictBool = Field(...)
-    signature: Optional[StrictStr] = Field(...)
-    account_name: Optional[StrictStr] = Field(...)
-    __properties = ["authorization_code", "bin", "last4", "exp_month", "exp_year", "channel", "card_type", "bank", "country_code", "brand", "reusable", "signature", "account_name"]
+    """ # noqa: E501
+    authorization_code: Optional[StrictStr]
+    bin: Optional[StrictStr]
+    last4: Optional[StrictStr]
+    exp_month: Optional[StrictStr]
+    exp_year: Optional[StrictStr]
+    channel: Optional[StrictStr]
+    card_type: Optional[StrictStr]
+    bank: Optional[StrictStr]
+    country_code: Optional[StrictStr]
+    brand: Optional[StrictStr]
+    reusable: StrictBool
+    signature: Optional[StrictStr]
+    account_name: Optional[StrictStr]
+    __properties: ClassVar[List[str]] = ["authorization_code", "bin", "last4", "exp_month", "exp_year", "channel", "card_type", "bank", "country_code", "brand", "reusable", "signature", "account_name"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> TransactionListResponseArrayAuthorization:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of TransactionListResponseArrayAuthorization from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # set to None if authorization_code (nullable) is None
-        # and __fields_set__ contains the field
-        if self.authorization_code is None and "authorization_code" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.authorization_code is None and "authorization_code" in self.model_fields_set:
             _dict['authorization_code'] = None
 
         # set to None if bin (nullable) is None
-        # and __fields_set__ contains the field
-        if self.bin is None and "bin" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.bin is None and "bin" in self.model_fields_set:
             _dict['bin'] = None
 
         # set to None if last4 (nullable) is None
-        # and __fields_set__ contains the field
-        if self.last4 is None and "last4" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.last4 is None and "last4" in self.model_fields_set:
             _dict['last4'] = None
 
         # set to None if exp_month (nullable) is None
-        # and __fields_set__ contains the field
-        if self.exp_month is None and "exp_month" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.exp_month is None and "exp_month" in self.model_fields_set:
             _dict['exp_month'] = None
 
         # set to None if exp_year (nullable) is None
-        # and __fields_set__ contains the field
-        if self.exp_year is None and "exp_year" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.exp_year is None and "exp_year" in self.model_fields_set:
             _dict['exp_year'] = None
 
         # set to None if channel (nullable) is None
-        # and __fields_set__ contains the field
-        if self.channel is None and "channel" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.channel is None and "channel" in self.model_fields_set:
             _dict['channel'] = None
 
         # set to None if card_type (nullable) is None
-        # and __fields_set__ contains the field
-        if self.card_type is None and "card_type" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.card_type is None and "card_type" in self.model_fields_set:
             _dict['card_type'] = None
 
         # set to None if bank (nullable) is None
-        # and __fields_set__ contains the field
-        if self.bank is None and "bank" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.bank is None and "bank" in self.model_fields_set:
             _dict['bank'] = None
 
         # set to None if country_code (nullable) is None
-        # and __fields_set__ contains the field
-        if self.country_code is None and "country_code" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.country_code is None and "country_code" in self.model_fields_set:
             _dict['country_code'] = None
 
         # set to None if brand (nullable) is None
-        # and __fields_set__ contains the field
-        if self.brand is None and "brand" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.brand is None and "brand" in self.model_fields_set:
             _dict['brand'] = None
 
         # set to None if signature (nullable) is None
-        # and __fields_set__ contains the field
-        if self.signature is None and "signature" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.signature is None and "signature" in self.model_fields_set:
             _dict['signature'] = None
 
         # set to None if account_name (nullable) is None
-        # and __fields_set__ contains the field
-        if self.account_name is None and "account_name" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.account_name is None and "account_name" in self.model_fields_set:
             _dict['account_name'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> TransactionListResponseArrayAuthorization:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of TransactionListResponseArrayAuthorization from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return TransactionListResponseArrayAuthorization.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = TransactionListResponseArrayAuthorization.parse_obj({
+        _obj = cls.model_validate({
             "authorization_code": obj.get("authorization_code"),
             "bin": obj.get("bin"),
             "last4": obj.get("last4"),

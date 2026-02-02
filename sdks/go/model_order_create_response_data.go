@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the OrderCreateResponseData type satisfies the MappedNullable interface at compile time
@@ -45,6 +47,8 @@ type OrderCreateResponseData struct {
 	PayForMeCode string `json:"pay_for_me_code"`
 	DiscountAmount int32 `json:"discount_amount"`
 }
+
+type _OrderCreateResponseData OrderCreateResponseData
 
 // NewOrderCreateResponseData instantiates a new OrderCreateResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -717,6 +721,65 @@ func (o OrderCreateResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["pay_for_me_code"] = o.PayForMeCode
 	toSerialize["discount_amount"] = o.DiscountAmount
 	return toSerialize, nil
+}
+
+func (o *OrderCreateResponseData) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"discounts",
+		"currency",
+		"shipping_address",
+		"integration",
+		"domain",
+		"email",
+		"customer",
+		"amount",
+		"pay_for_me",
+		"shipping",
+		"shipping_fees",
+		"metadata",
+		"order_code",
+		"status",
+		"refunded",
+		"is_viewed",
+		"expiration_date",
+		"id",
+		"createdAt",
+		"updatedAt",
+		"items",
+		"pay_for_me_code",
+		"discount_amount",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOrderCreateResponseData := _OrderCreateResponseData{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOrderCreateResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrderCreateResponseData(varOrderCreateResponseData)
+
+	return err
 }
 
 type NullableOrderCreateResponseData struct {

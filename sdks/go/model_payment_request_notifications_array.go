@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PaymentRequestNotificationsArray type satisfies the MappedNullable interface at compile time
@@ -23,6 +25,8 @@ type PaymentRequestNotificationsArray struct {
 	SentAt string `json:"sent_at"`
 	Channel string `json:"channel"`
 }
+
+type _PaymentRequestNotificationsArray PaymentRequestNotificationsArray
 
 // NewPaymentRequestNotificationsArray instantiates a new PaymentRequestNotificationsArray object
 // This constructor will assign default values to properties that have it defined,
@@ -104,6 +108,44 @@ func (o PaymentRequestNotificationsArray) ToMap() (map[string]interface{}, error
 	toSerialize["sent_at"] = o.SentAt
 	toSerialize["channel"] = o.Channel
 	return toSerialize, nil
+}
+
+func (o *PaymentRequestNotificationsArray) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"sent_at",
+		"channel",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPaymentRequestNotificationsArray := _PaymentRequestNotificationsArray{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPaymentRequestNotificationsArray)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PaymentRequestNotificationsArray(varPaymentRequestNotificationsArray)
+
+	return err
 }
 
 type NullablePaymentRequestNotificationsArray struct {

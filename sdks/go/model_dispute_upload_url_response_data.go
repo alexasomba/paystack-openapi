@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DisputeUploadURLResponseData type satisfies the MappedNullable interface at compile time
@@ -23,6 +25,8 @@ type DisputeUploadURLResponseData struct {
 	SignedUrl string `json:"signedUrl"`
 	FileName string `json:"fileName"`
 }
+
+type _DisputeUploadURLResponseData DisputeUploadURLResponseData
 
 // NewDisputeUploadURLResponseData instantiates a new DisputeUploadURLResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -104,6 +108,44 @@ func (o DisputeUploadURLResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["signedUrl"] = o.SignedUrl
 	toSerialize["fileName"] = o.FileName
 	return toSerialize, nil
+}
+
+func (o *DisputeUploadURLResponseData) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"signedUrl",
+		"fileName",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDisputeUploadURLResponseData := _DisputeUploadURLResponseData{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDisputeUploadURLResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DisputeUploadURLResponseData(varDisputeUploadURLResponseData)
+
+	return err
 }
 
 type NullableDisputeUploadURLResponseData struct {

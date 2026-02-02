@@ -18,72 +18,88 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Any, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.product_lists_response_array_metadata import ProductListsResponseArrayMetadata
 from alexasomba_paystack.models.product_lists_response_array_shipping_fields import ProductListsResponseArrayShippingFields
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ProductListsResponseArray(BaseModel):
     """
     ProductListsResponseArray
-    """
-    id: StrictInt = Field(...)
-    name: StrictStr = Field(...)
-    description: StrictStr = Field(...)
-    product_code: StrictStr = Field(...)
-    slug: StrictStr = Field(...)
-    currency: StrictStr = Field(...)
-    price: StrictInt = Field(...)
-    quantity: StrictInt = Field(...)
-    quantity_sold: StrictInt = Field(...)
-    active: StrictBool = Field(...)
-    domain: StrictStr = Field(...)
-    type: StrictStr = Field(...)
-    in_stock: StrictBool = Field(...)
-    unlimited: StrictBool = Field(...)
-    metadata: ProductListsResponseArrayMetadata = Field(...)
-    files: conlist(Any) = Field(...)
-    success_message: Optional[Any] = Field(...)
-    redirect_url: Optional[Any] = Field(...)
-    split_code: Optional[Any] = Field(...)
-    notification_emails: Optional[Any] = Field(...)
-    minimum_orderable: StrictInt = Field(...)
-    maximum_orderable: Optional[Any] = Field(...)
-    created_at: StrictStr = Field(..., alias="createdAt")
-    updated_at: StrictStr = Field(..., alias="updatedAt")
-    digital_assets: conlist(Any) = Field(...)
-    variant_options: conlist(Any) = Field(...)
-    is_shippable: StrictBool = Field(...)
-    shipping_fields: ProductListsResponseArrayShippingFields = Field(...)
-    integration: StrictInt = Field(...)
-    low_stock_alert: StrictInt = Field(...)
-    __properties = ["id", "name", "description", "product_code", "slug", "currency", "price", "quantity", "quantity_sold", "active", "domain", "type", "in_stock", "unlimited", "metadata", "files", "success_message", "redirect_url", "split_code", "notification_emails", "minimum_orderable", "maximum_orderable", "createdAt", "updatedAt", "digital_assets", "variant_options", "is_shippable", "shipping_fields", "integration", "low_stock_alert"]
+    """ # noqa: E501
+    id: StrictInt
+    name: StrictStr
+    description: StrictStr
+    product_code: StrictStr
+    slug: StrictStr
+    currency: StrictStr
+    price: StrictInt
+    quantity: StrictInt
+    quantity_sold: StrictInt
+    active: StrictBool
+    domain: StrictStr
+    type: StrictStr
+    in_stock: StrictBool
+    unlimited: StrictBool
+    metadata: ProductListsResponseArrayMetadata
+    files: List[Any]
+    success_message: Optional[Any]
+    redirect_url: Optional[Any]
+    split_code: Optional[Any]
+    notification_emails: Optional[Any]
+    minimum_orderable: StrictInt
+    maximum_orderable: Optional[Any]
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
+    digital_assets: List[Any]
+    variant_options: List[Any]
+    is_shippable: StrictBool
+    shipping_fields: ProductListsResponseArrayShippingFields
+    integration: StrictInt
+    low_stock_alert: StrictInt
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "product_code", "slug", "currency", "price", "quantity", "quantity_sold", "active", "domain", "type", "in_stock", "unlimited", "metadata", "files", "success_message", "redirect_url", "split_code", "notification_emails", "minimum_orderable", "maximum_orderable", "createdAt", "updatedAt", "digital_assets", "variant_options", "is_shippable", "shipping_fields", "integration", "low_stock_alert"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ProductListsResponseArray:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ProductListsResponseArray from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of metadata
         if self.metadata:
             _dict['metadata'] = self.metadata.to_dict()
@@ -91,42 +107,42 @@ class ProductListsResponseArray(BaseModel):
         if self.shipping_fields:
             _dict['shipping_fields'] = self.shipping_fields.to_dict()
         # set to None if success_message (nullable) is None
-        # and __fields_set__ contains the field
-        if self.success_message is None and "success_message" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.success_message is None and "success_message" in self.model_fields_set:
             _dict['success_message'] = None
 
         # set to None if redirect_url (nullable) is None
-        # and __fields_set__ contains the field
-        if self.redirect_url is None and "redirect_url" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.redirect_url is None and "redirect_url" in self.model_fields_set:
             _dict['redirect_url'] = None
 
         # set to None if split_code (nullable) is None
-        # and __fields_set__ contains the field
-        if self.split_code is None and "split_code" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.split_code is None and "split_code" in self.model_fields_set:
             _dict['split_code'] = None
 
         # set to None if notification_emails (nullable) is None
-        # and __fields_set__ contains the field
-        if self.notification_emails is None and "notification_emails" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.notification_emails is None and "notification_emails" in self.model_fields_set:
             _dict['notification_emails'] = None
 
         # set to None if maximum_orderable (nullable) is None
-        # and __fields_set__ contains the field
-        if self.maximum_orderable is None and "maximum_orderable" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.maximum_orderable is None and "maximum_orderable" in self.model_fields_set:
             _dict['maximum_orderable'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ProductListsResponseArray:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ProductListsResponseArray from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ProductListsResponseArray.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = ProductListsResponseArray.parse_obj({
+        _obj = cls.model_validate({
             "id": obj.get("id"),
             "name": obj.get("name"),
             "description": obj.get("description"),
@@ -141,7 +157,7 @@ class ProductListsResponseArray(BaseModel):
             "type": obj.get("type"),
             "in_stock": obj.get("in_stock"),
             "unlimited": obj.get("unlimited"),
-            "metadata": ProductListsResponseArrayMetadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
+            "metadata": ProductListsResponseArrayMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
             "files": obj.get("files"),
             "success_message": obj.get("success_message"),
             "redirect_url": obj.get("redirect_url"),
@@ -149,12 +165,12 @@ class ProductListsResponseArray(BaseModel):
             "notification_emails": obj.get("notification_emails"),
             "minimum_orderable": obj.get("minimum_orderable"),
             "maximum_orderable": obj.get("maximum_orderable"),
-            "created_at": obj.get("createdAt"),
-            "updated_at": obj.get("updatedAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "digital_assets": obj.get("digital_assets"),
             "variant_options": obj.get("variant_options"),
             "is_shippable": obj.get("is_shippable"),
-            "shipping_fields": ProductListsResponseArrayShippingFields.from_dict(obj.get("shipping_fields")) if obj.get("shipping_fields") is not None else None,
+            "shipping_fields": ProductListsResponseArrayShippingFields.from_dict(obj["shipping_fields"]) if obj.get("shipping_fields") is not None else None,
             "integration": obj.get("integration"),
             "low_stock_alert": obj.get("low_stock_alert")
         })

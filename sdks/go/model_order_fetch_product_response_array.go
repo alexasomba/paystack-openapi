@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the OrderFetchProductResponseArray type satisfies the MappedNullable interface at compile time
@@ -54,6 +56,8 @@ type OrderFetchProductResponseArray struct {
 	AmountPaid int32 `json:"amount_paid"`
 	StorefrontSlug string `json:"storefront_slug"`
 }
+
+type _OrderFetchProductResponseArray OrderFetchProductResponseArray
 
 // NewOrderFetchProductResponseArray instantiates a new OrderFetchProductResponseArray object
 // This constructor will assign default values to properties that have it defined,
@@ -973,6 +977,75 @@ func (o OrderFetchProductResponseArray) ToMap() (map[string]interface{}, error) 
 	toSerialize["amount_paid"] = o.AmountPaid
 	toSerialize["storefront_slug"] = o.StorefrontSlug
 	return toSerialize, nil
+}
+
+func (o *OrderFetchProductResponseArray) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"order_id",
+		"transaction",
+		"order_code",
+		"customer",
+		"first_name",
+		"last_name",
+		"customer_name",
+		"phone",
+		"email",
+		"product_code",
+		"product_id",
+		"product_name",
+		"price",
+		"quantity_sold",
+		"currency",
+		"quantity",
+		"variant_id",
+		"variant_price",
+		"variant_code",
+		"amount",
+		"shipping_method",
+		"status",
+		"shipping_address",
+		"refunded",
+		"shipping",
+		"paid_at",
+		"created_at",
+		"is_shipped",
+		"is_viewed",
+		"delivery_note",
+		"shipping_fee",
+		"amount_paid",
+		"storefront_slug",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOrderFetchProductResponseArray := _OrderFetchProductResponseArray{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOrderFetchProductResponseArray)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrderFetchProductResponseArray(varOrderFetchProductResponseArray)
+
+	return err
 }
 
 type NullableOrderFetchProductResponseArray struct {

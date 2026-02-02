@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the OrderListResponseArray type satisfies the MappedNullable interface at compile time
@@ -47,6 +49,8 @@ type OrderListResponseArray struct {
 	Items []OrderItemsArray `json:"items"`
 	FullyRefunded bool `json:"fully_refunded"`
 }
+
+type _OrderListResponseArray OrderListResponseArray
 
 // NewOrderListResponseArray instantiates a new OrderListResponseArray object
 // This constructor will assign default values to properties that have it defined,
@@ -776,6 +780,68 @@ func (o OrderListResponseArray) ToMap() (map[string]interface{}, error) {
 	toSerialize["items"] = o.Items
 	toSerialize["fully_refunded"] = o.FullyRefunded
 	return toSerialize, nil
+}
+
+func (o *OrderListResponseArray) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"order_code",
+		"integration",
+		"domain",
+		"currency",
+		"amount",
+		"transaction",
+		"page",
+		"customer",
+		"customer_name",
+		"status",
+		"shipping_address",
+		"metadata",
+		"created_at",
+		"updated_at",
+		"email",
+		"paid_at",
+		"shipping",
+		"shipping_fees",
+		"refunded",
+		"is_viewed",
+		"refunded_amount",
+		"discount_amount",
+		"discounts",
+		"items",
+		"fully_refunded",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOrderListResponseArray := _OrderListResponseArray{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOrderListResponseArray)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrderListResponseArray(varOrderListResponseArray)
+
+	return err
 }
 
 type NullableOrderListResponseArray struct {

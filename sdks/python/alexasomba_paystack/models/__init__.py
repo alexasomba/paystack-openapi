@@ -13,7 +13,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from alexasomba_paystack.models.apple_pay_create_ok_model import ApplePayCreateOkModel
 from alexasomba_paystack.models.apple_pay_param import ApplePayParam
@@ -448,3 +447,4 @@ from alexasomba_paystack.models.virtual_terminal_list_response_array import Virt
 from alexasomba_paystack.models.virtual_terminal_list_response_meta import VirtualTerminalListResponseMeta
 from alexasomba_paystack.models.virtual_terminal_update import VirtualTerminalUpdate
 from alexasomba_paystack.models.virtual_terminal_update_response import VirtualTerminalUpdateResponse
+

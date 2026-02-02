@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the StorefrontCreateResponseData type satisfies the MappedNullable interface at compile time
@@ -43,6 +45,8 @@ type StorefrontCreateResponseData struct {
 	Products []interface{} `json:"products"`
 	ShippingFees []interface{} `json:"shipping_fees"`
 }
+
+type _StorefrontCreateResponseData StorefrontCreateResponseData
 
 // NewStorefrontCreateResponseData instantiates a new StorefrontCreateResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -497,7 +501,7 @@ func (o *StorefrontCreateResponseData) GetMetadataOk() (map[string]interface{}, 
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *StorefrontCreateResponseData) HasMetadata() bool {
-	if o != nil && IsNil(o.Metadata) {
+	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
 
@@ -674,6 +678,63 @@ func (o StorefrontCreateResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["products"] = o.Products
 	toSerialize["shipping_fees"] = o.ShippingFees
 	return toSerialize, nil
+}
+
+func (o *StorefrontCreateResponseData) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"social_media",
+		"contacts",
+		"name",
+		"slug",
+		"currency",
+		"welcome_message",
+		"success_message",
+		"redirect_url",
+		"description",
+		"delivery_note",
+		"background_color",
+		"status",
+		"shippable",
+		"integration",
+		"domain",
+		"digital_product_expiry",
+		"id",
+		"createdAt",
+		"updatedAt",
+		"products",
+		"shipping_fees",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varStorefrontCreateResponseData := _StorefrontCreateResponseData{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varStorefrontCreateResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StorefrontCreateResponseData(varStorefrontCreateResponseData)
+
+	return err
 }
 
 type NullableStorefrontCreateResponseData struct {

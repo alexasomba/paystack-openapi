@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the TransactionFetchResponseDataMetadata type satisfies the MappedNullable interface at compile time
@@ -22,6 +24,8 @@ var _ MappedNullable = &TransactionFetchResponseDataMetadata{}
 type TransactionFetchResponseDataMetadata struct {
 	CustomFields []MetadataCustomFieldsArray `json:"custom_fields"`
 }
+
+type _TransactionFetchResponseDataMetadata TransactionFetchResponseDataMetadata
 
 // NewTransactionFetchResponseDataMetadata instantiates a new TransactionFetchResponseDataMetadata object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +81,43 @@ func (o TransactionFetchResponseDataMetadata) ToMap() (map[string]interface{}, e
 	toSerialize := map[string]interface{}{}
 	toSerialize["custom_fields"] = o.CustomFields
 	return toSerialize, nil
+}
+
+func (o *TransactionFetchResponseDataMetadata) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"custom_fields",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTransactionFetchResponseDataMetadata := _TransactionFetchResponseDataMetadata{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTransactionFetchResponseDataMetadata)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TransactionFetchResponseDataMetadata(varTransactionFetchResponseDataMetadata)
+
+	return err
 }
 
 type NullableTransactionFetchResponseDataMetadata struct {

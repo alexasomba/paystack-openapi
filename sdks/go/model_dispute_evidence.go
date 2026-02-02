@@ -14,6 +14,8 @@ package paystack
 import (
 	"encoding/json"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DisputeEvidence type satisfies the MappedNullable interface at compile time
@@ -34,6 +36,8 @@ type DisputeEvidence struct {
 	// ISO 8601 representation of delivery date (YYYY-MM-DD)
 	DeliveryDate *time.Time `json:"delivery_date,omitempty"`
 }
+
+type _DisputeEvidence DisputeEvidence
 
 // NewDisputeEvidence instantiates a new DisputeEvidence object
 // This constructor will assign default values to properties that have it defined,
@@ -237,6 +241,46 @@ func (o DisputeEvidence) ToMap() (map[string]interface{}, error) {
 		toSerialize["delivery_date"] = o.DeliveryDate
 	}
 	return toSerialize, nil
+}
+
+func (o *DisputeEvidence) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"customer_email",
+		"customer_name",
+		"customer_phone",
+		"service_details",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDisputeEvidence := _DisputeEvidence{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDisputeEvidence)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DisputeEvidence(varDisputeEvidence)
+
+	return err
 }
 
 type NullableDisputeEvidence struct {

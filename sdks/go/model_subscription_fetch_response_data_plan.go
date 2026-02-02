@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the SubscriptionFetchResponseDataPlan type satisfies the MappedNullable interface at compile time
@@ -30,6 +32,8 @@ type SubscriptionFetchResponseDataPlan struct {
 	SendSms bool `json:"send_sms"`
 	Currency string `json:"currency"`
 }
+
+type _SubscriptionFetchResponseDataPlan SubscriptionFetchResponseDataPlan
 
 // NewSubscriptionFetchResponseDataPlan instantiates a new SubscriptionFetchResponseDataPlan object
 // This constructor will assign default values to properties that have it defined,
@@ -297,6 +301,51 @@ func (o SubscriptionFetchResponseDataPlan) ToMap() (map[string]interface{}, erro
 	toSerialize["send_sms"] = o.SendSms
 	toSerialize["currency"] = o.Currency
 	return toSerialize, nil
+}
+
+func (o *SubscriptionFetchResponseDataPlan) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"plan_code",
+		"description",
+		"amount",
+		"interval",
+		"send_invoices",
+		"send_sms",
+		"currency",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSubscriptionFetchResponseDataPlan := _SubscriptionFetchResponseDataPlan{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSubscriptionFetchResponseDataPlan)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SubscriptionFetchResponseDataPlan(varSubscriptionFetchResponseDataPlan)
+
+	return err
 }
 
 type NullableSubscriptionFetchResponseDataPlan struct {

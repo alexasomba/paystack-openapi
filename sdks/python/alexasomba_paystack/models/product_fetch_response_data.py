@@ -18,75 +18,91 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Any, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.product_lists_response_array_metadata import ProductListsResponseArrayMetadata
 from alexasomba_paystack.models.product_lists_response_array_shipping_fields import ProductListsResponseArrayShippingFields
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ProductFetchResponseData(BaseModel):
     """
     ProductFetchResponseData
-    """
-    digital_assets: conlist(Any) = Field(...)
-    integration: StrictInt = Field(...)
-    name: StrictStr = Field(...)
-    description: StrictStr = Field(...)
-    product_code: StrictStr = Field(...)
-    price: StrictInt = Field(...)
-    currency: StrictStr = Field(...)
-    quantity: StrictInt = Field(...)
-    quantity_sold: Optional[Any] = Field(...)
-    type: StrictStr = Field(...)
-    files: conlist(Any) = Field(...)
-    file_path: Optional[Any] = Field(...)
-    is_shippable: StrictBool = Field(...)
-    shipping_fields: ProductListsResponseArrayShippingFields = Field(...)
-    unlimited: StrictBool = Field(...)
-    domain: StrictStr = Field(...)
-    active: StrictBool = Field(...)
-    features: Optional[Any] = Field(...)
-    in_stock: StrictBool = Field(...)
-    metadata: ProductListsResponseArrayMetadata = Field(...)
-    slug: StrictStr = Field(...)
-    success_message: Optional[Any] = Field(...)
-    redirect_url: Optional[Any] = Field(...)
-    split_code: Optional[Any] = Field(...)
-    notification_emails: Optional[Any] = Field(...)
-    minimum_orderable: StrictInt = Field(...)
-    maximum_orderable: Optional[Any] = Field(...)
-    low_stock_alert: StrictBool = Field(...)
-    stock_threshold: Optional[Any] = Field(...)
-    expires_in: Optional[Any] = Field(...)
-    id: StrictInt = Field(...)
-    created_at: StrictStr = Field(..., alias="createdAt")
-    updated_at: StrictStr = Field(..., alias="updatedAt")
-    __properties = ["digital_assets", "integration", "name", "description", "product_code", "price", "currency", "quantity", "quantity_sold", "type", "files", "file_path", "is_shippable", "shipping_fields", "unlimited", "domain", "active", "features", "in_stock", "metadata", "slug", "success_message", "redirect_url", "split_code", "notification_emails", "minimum_orderable", "maximum_orderable", "low_stock_alert", "stock_threshold", "expires_in", "id", "createdAt", "updatedAt"]
+    """ # noqa: E501
+    digital_assets: List[Any]
+    integration: StrictInt
+    name: StrictStr
+    description: StrictStr
+    product_code: StrictStr
+    price: StrictInt
+    currency: StrictStr
+    quantity: StrictInt
+    quantity_sold: Optional[Any]
+    type: StrictStr
+    files: List[Any]
+    file_path: Optional[Any]
+    is_shippable: StrictBool
+    shipping_fields: ProductListsResponseArrayShippingFields
+    unlimited: StrictBool
+    domain: StrictStr
+    active: StrictBool
+    features: Optional[Any]
+    in_stock: StrictBool
+    metadata: ProductListsResponseArrayMetadata
+    slug: StrictStr
+    success_message: Optional[Any]
+    redirect_url: Optional[Any]
+    split_code: Optional[Any]
+    notification_emails: Optional[Any]
+    minimum_orderable: StrictInt
+    maximum_orderable: Optional[Any]
+    low_stock_alert: StrictBool
+    stock_threshold: Optional[Any]
+    expires_in: Optional[Any]
+    id: StrictInt
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
+    __properties: ClassVar[List[str]] = ["digital_assets", "integration", "name", "description", "product_code", "price", "currency", "quantity", "quantity_sold", "type", "files", "file_path", "is_shippable", "shipping_fields", "unlimited", "domain", "active", "features", "in_stock", "metadata", "slug", "success_message", "redirect_url", "split_code", "notification_emails", "minimum_orderable", "maximum_orderable", "low_stock_alert", "stock_threshold", "expires_in", "id", "createdAt", "updatedAt"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ProductFetchResponseData:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ProductFetchResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of shipping_fields
         if self.shipping_fields:
             _dict['shipping_fields'] = self.shipping_fields.to_dict()
@@ -94,67 +110,67 @@ class ProductFetchResponseData(BaseModel):
         if self.metadata:
             _dict['metadata'] = self.metadata.to_dict()
         # set to None if quantity_sold (nullable) is None
-        # and __fields_set__ contains the field
-        if self.quantity_sold is None and "quantity_sold" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.quantity_sold is None and "quantity_sold" in self.model_fields_set:
             _dict['quantity_sold'] = None
 
         # set to None if file_path (nullable) is None
-        # and __fields_set__ contains the field
-        if self.file_path is None and "file_path" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.file_path is None and "file_path" in self.model_fields_set:
             _dict['file_path'] = None
 
         # set to None if features (nullable) is None
-        # and __fields_set__ contains the field
-        if self.features is None and "features" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.features is None and "features" in self.model_fields_set:
             _dict['features'] = None
 
         # set to None if success_message (nullable) is None
-        # and __fields_set__ contains the field
-        if self.success_message is None and "success_message" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.success_message is None and "success_message" in self.model_fields_set:
             _dict['success_message'] = None
 
         # set to None if redirect_url (nullable) is None
-        # and __fields_set__ contains the field
-        if self.redirect_url is None and "redirect_url" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.redirect_url is None and "redirect_url" in self.model_fields_set:
             _dict['redirect_url'] = None
 
         # set to None if split_code (nullable) is None
-        # and __fields_set__ contains the field
-        if self.split_code is None and "split_code" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.split_code is None and "split_code" in self.model_fields_set:
             _dict['split_code'] = None
 
         # set to None if notification_emails (nullable) is None
-        # and __fields_set__ contains the field
-        if self.notification_emails is None and "notification_emails" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.notification_emails is None and "notification_emails" in self.model_fields_set:
             _dict['notification_emails'] = None
 
         # set to None if maximum_orderable (nullable) is None
-        # and __fields_set__ contains the field
-        if self.maximum_orderable is None and "maximum_orderable" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.maximum_orderable is None and "maximum_orderable" in self.model_fields_set:
             _dict['maximum_orderable'] = None
 
         # set to None if stock_threshold (nullable) is None
-        # and __fields_set__ contains the field
-        if self.stock_threshold is None and "stock_threshold" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.stock_threshold is None and "stock_threshold" in self.model_fields_set:
             _dict['stock_threshold'] = None
 
         # set to None if expires_in (nullable) is None
-        # and __fields_set__ contains the field
-        if self.expires_in is None and "expires_in" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.expires_in is None and "expires_in" in self.model_fields_set:
             _dict['expires_in'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ProductFetchResponseData:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ProductFetchResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ProductFetchResponseData.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = ProductFetchResponseData.parse_obj({
+        _obj = cls.model_validate({
             "digital_assets": obj.get("digital_assets"),
             "integration": obj.get("integration"),
             "name": obj.get("name"),
@@ -168,13 +184,13 @@ class ProductFetchResponseData(BaseModel):
             "files": obj.get("files"),
             "file_path": obj.get("file_path"),
             "is_shippable": obj.get("is_shippable"),
-            "shipping_fields": ProductListsResponseArrayShippingFields.from_dict(obj.get("shipping_fields")) if obj.get("shipping_fields") is not None else None,
+            "shipping_fields": ProductListsResponseArrayShippingFields.from_dict(obj["shipping_fields"]) if obj.get("shipping_fields") is not None else None,
             "unlimited": obj.get("unlimited"),
             "domain": obj.get("domain"),
             "active": obj.get("active"),
             "features": obj.get("features"),
             "in_stock": obj.get("in_stock"),
-            "metadata": ProductListsResponseArrayMetadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
+            "metadata": ProductListsResponseArrayMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
             "slug": obj.get("slug"),
             "success_message": obj.get("success_message"),
             "redirect_url": obj.get("redirect_url"),
@@ -186,8 +202,8 @@ class ProductFetchResponseData(BaseModel):
             "stock_threshold": obj.get("stock_threshold"),
             "expires_in": obj.get("expires_in"),
             "id": obj.get("id"),
-            "created_at": obj.get("createdAt"),
-            "updated_at": obj.get("updatedAt")
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updatedAt": obj.get("updatedAt")
         })
         return _obj
 

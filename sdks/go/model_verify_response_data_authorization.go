@@ -107,7 +107,7 @@ func (o *VerifyResponseDataAuthorization) GetBinOk() (*interface{}, bool) {
 
 // HasBin returns a boolean if a field has been set.
 func (o *VerifyResponseDataAuthorization) HasBin() bool {
-	if o != nil && IsNil(o.Bin) {
+	if o != nil && !IsNil(o.Bin) {
 		return true
 	}
 
@@ -460,7 +460,7 @@ func (o *VerifyResponseDataAuthorization) GetAccountNameOk() (*interface{}, bool
 
 // HasAccountName returns a boolean if a field has been set.
 func (o *VerifyResponseDataAuthorization) HasAccountName() bool {
-	if o != nil && IsNil(o.AccountName) {
+	if o != nil && !IsNil(o.AccountName) {
 		return true
 	}
 
@@ -493,7 +493,7 @@ func (o *VerifyResponseDataAuthorization) GetReceiverBankAccountNumberOk() (*int
 
 // HasReceiverBankAccountNumber returns a boolean if a field has been set.
 func (o *VerifyResponseDataAuthorization) HasReceiverBankAccountNumber() bool {
-	if o != nil && IsNil(o.ReceiverBankAccountNumber) {
+	if o != nil && !IsNil(o.ReceiverBankAccountNumber) {
 		return true
 	}
 
@@ -526,7 +526,7 @@ func (o *VerifyResponseDataAuthorization) GetReceiverBankOk() (*interface{}, boo
 
 // HasReceiverBank returns a boolean if a field has been set.
 func (o *VerifyResponseDataAuthorization) HasReceiverBank() bool {
-	if o != nil && IsNil(o.ReceiverBank) {
+	if o != nil && !IsNil(o.ReceiverBank) {
 		return true
 	}
 

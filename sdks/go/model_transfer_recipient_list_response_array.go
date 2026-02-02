@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the TransferRecipientListResponseArray type satisfies the MappedNullable interface at compile time
@@ -36,6 +38,8 @@ type TransferRecipientListResponseArray struct {
 	IsDeleted bool `json:"is_deleted"`
 	Details TransferRecipientListResponseArrayDetails `json:"details"`
 }
+
+type _TransferRecipientListResponseArray TransferRecipientListResponseArray
 
 // NewTransferRecipientListResponseArray instantiates a new TransferRecipientListResponseArray object
 // This constructor will assign default values to properties that have it defined,
@@ -283,7 +287,7 @@ func (o *TransferRecipientListResponseArray) GetMetadataOk() (map[string]interfa
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *TransferRecipientListResponseArray) HasMetadata() bool {
-	if o != nil && IsNil(o.Metadata) {
+	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
 
@@ -467,6 +471,56 @@ func (o TransferRecipientListResponseArray) ToMap() (map[string]interface{}, err
 	toSerialize["is_deleted"] = o.IsDeleted
 	toSerialize["details"] = o.Details
 	return toSerialize, nil
+}
+
+func (o *TransferRecipientListResponseArray) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"active",
+		"createdAt",
+		"currency",
+		"description",
+		"domain",
+		"email",
+		"id",
+		"integration",
+		"name",
+		"recipient_code",
+		"type",
+		"updatedAt",
+		"is_deleted",
+		"details",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTransferRecipientListResponseArray := _TransferRecipientListResponseArray{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTransferRecipientListResponseArray)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TransferRecipientListResponseArray(varTransferRecipientListResponseArray)
+
+	return err
 }
 
 type NullableTransferRecipientListResponseArray struct {

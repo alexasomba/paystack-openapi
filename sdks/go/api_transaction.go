@@ -239,13 +239,13 @@ func (a *TransactionAPIService) TransactionCheckAuthorizationExecute(r ApiTransa
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "email", r.email, "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "amount", r.amount, "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "email", r.email, "", "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "amount", r.amount, "", "")
 	if r.authorizationCode != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "authorization_code", r.authorizationCode, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "authorization_code", r.authorizationCode, "", "")
 	}
 	if r.currency != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "currency", r.currency, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "currency", r.currency, "", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -508,22 +508,22 @@ func (a *TransactionAPIService) TransactionExportExecute(r ApiTransactionExportR
 	localVarFormParams := url.Values{}
 
 	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
 	}
 	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
 	}
 	if r.customer != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "customer", r.customer, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "customer", r.customer, "form", "")
 	}
 	if r.subaccountCode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "subaccount_code", r.subaccountCode, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "subaccount_code", r.subaccountCode, "form", "")
 	}
 	if r.settlement != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "settlement", r.settlement, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "settlement", r.settlement, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1020,55 +1020,55 @@ func (a *TransactionAPIService) TransactionListExecute(r ApiTransactionListReque
 	localVarFormParams := url.Values{}
 
 	if r.useCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "use_cursor", r.useCursor, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "use_cursor", r.useCursor, "form", "")
 	}
 	if r.next != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "form", "")
 	}
 	if r.previous != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "form", "")
 	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
 	}
 	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
 	}
 	if r.source != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "form", "")
 	}
 	if r.terminalId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "terminal_id", r.terminalId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "terminal_id", r.terminalId, "form", "")
 	}
 	if r.virtualAccountNumber != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "virtual_account_number", r.virtualAccountNumber, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "virtual_account_number", r.virtualAccountNumber, "form", "")
 	}
 	if r.customerCode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_code", r.customerCode, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_code", r.customerCode, "form", "")
 	}
 	if r.amount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "amount", r.amount, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "amount", r.amount, "form", "")
 	}
 	if r.settlement != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "settlement", r.settlement, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "settlement", r.settlement, "form", "")
 	}
 	if r.channel != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "channel", r.channel, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "channel", r.channel, "form", "")
 	}
 	if r.subaccountCode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "subaccount_code", r.subaccountCode, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "subaccount_code", r.subaccountCode, "form", "")
 	}
 	if r.splitCode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "split_code", r.splitCode, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "split_code", r.splitCode, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1574,10 +1574,10 @@ func (a *TransactionAPIService) TransactionTotalsExecute(r ApiTransactionTotalsR
 	localVarFormParams := url.Values{}
 
 	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
 	}
 	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

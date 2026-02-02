@@ -18,66 +18,82 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional, Set
+from typing_extensions import Self
 
 class TransferRecipientFetchResponseDataDetails(BaseModel):
     """
     TransferRecipientFetchResponseDataDetails
-    """
-    account_number: Optional[StrictStr] = Field(...)
-    account_name: Optional[StrictStr] = Field(...)
-    bank_code: StrictStr = Field(...)
-    bank_name: StrictStr = Field(...)
-    __properties = ["account_number", "account_name", "bank_code", "bank_name"]
+    """ # noqa: E501
+    account_number: Optional[StrictStr]
+    account_name: Optional[StrictStr]
+    bank_code: StrictStr
+    bank_name: StrictStr
+    __properties: ClassVar[List[str]] = ["account_number", "account_name", "bank_code", "bank_name"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> TransferRecipientFetchResponseDataDetails:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of TransferRecipientFetchResponseDataDetails from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # set to None if account_number (nullable) is None
-        # and __fields_set__ contains the field
-        if self.account_number is None and "account_number" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.account_number is None and "account_number" in self.model_fields_set:
             _dict['account_number'] = None
 
         # set to None if account_name (nullable) is None
-        # and __fields_set__ contains the field
-        if self.account_name is None and "account_name" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.account_name is None and "account_name" in self.model_fields_set:
             _dict['account_name'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> TransferRecipientFetchResponseDataDetails:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of TransferRecipientFetchResponseDataDetails from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return TransferRecipientFetchResponseDataDetails.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = TransferRecipientFetchResponseDataDetails.parse_obj({
+        _obj = cls.model_validate({
             "account_number": obj.get("account_number"),
             "account_name": obj.get("account_name"),
             "bank_code": obj.get("bank_code"),

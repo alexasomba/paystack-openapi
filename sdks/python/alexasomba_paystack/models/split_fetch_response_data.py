@@ -18,75 +18,91 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import List
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List
 from alexasomba_paystack.models.split_subaccounts_array import SplitSubaccountsArray
+from typing import Optional, Set
+from typing_extensions import Self
 
 class SplitFetchResponseData(BaseModel):
     """
     SplitFetchResponseData
-    """
-    id: StrictInt = Field(...)
-    name: StrictStr = Field(...)
-    type: StrictStr = Field(...)
-    currency: StrictStr = Field(...)
-    integration: StrictInt = Field(...)
-    domain: StrictStr = Field(...)
-    split_code: StrictStr = Field(...)
-    active: StrictBool = Field(...)
-    bearer_type: StrictStr = Field(...)
-    bearer_subaccount: StrictInt = Field(...)
-    created_at: StrictStr = Field(..., alias="createdAt")
-    updated_at: StrictStr = Field(..., alias="updatedAt")
-    is_dynamic: StrictBool = Field(...)
-    subaccounts: conlist(SplitSubaccountsArray) = Field(...)
-    total_subaccounts: StrictInt = Field(...)
-    __properties = ["id", "name", "type", "currency", "integration", "domain", "split_code", "active", "bearer_type", "bearer_subaccount", "createdAt", "updatedAt", "is_dynamic", "subaccounts", "total_subaccounts"]
+    """ # noqa: E501
+    id: StrictInt
+    name: StrictStr
+    type: StrictStr
+    currency: StrictStr
+    integration: StrictInt
+    domain: StrictStr
+    split_code: StrictStr
+    active: StrictBool
+    bearer_type: StrictStr
+    bearer_subaccount: StrictInt
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
+    is_dynamic: StrictBool
+    subaccounts: List[SplitSubaccountsArray]
+    total_subaccounts: StrictInt
+    __properties: ClassVar[List[str]] = ["id", "name", "type", "currency", "integration", "domain", "split_code", "active", "bearer_type", "bearer_subaccount", "createdAt", "updatedAt", "is_dynamic", "subaccounts", "total_subaccounts"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> SplitFetchResponseData:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of SplitFetchResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in subaccounts (list)
         _items = []
         if self.subaccounts:
-            for _item in self.subaccounts:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_subaccounts in self.subaccounts:
+                if _item_subaccounts:
+                    _items.append(_item_subaccounts.to_dict())
             _dict['subaccounts'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> SplitFetchResponseData:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of SplitFetchResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return SplitFetchResponseData.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = SplitFetchResponseData.parse_obj({
+        _obj = cls.model_validate({
             "id": obj.get("id"),
             "name": obj.get("name"),
             "type": obj.get("type"),
@@ -97,10 +113,10 @@ class SplitFetchResponseData(BaseModel):
             "active": obj.get("active"),
             "bearer_type": obj.get("bearer_type"),
             "bearer_subaccount": obj.get("bearer_subaccount"),
-            "created_at": obj.get("createdAt"),
-            "updated_at": obj.get("updatedAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "is_dynamic": obj.get("is_dynamic"),
-            "subaccounts": [SplitSubaccountsArray.from_dict(_item) for _item in obj.get("subaccounts")] if obj.get("subaccounts") is not None else None,
+            "subaccounts": [SplitSubaccountsArray.from_dict(_item) for _item in obj["subaccounts"]] if obj.get("subaccounts") is not None else None,
             "total_subaccounts": obj.get("total_subaccounts")
         })
         return _obj

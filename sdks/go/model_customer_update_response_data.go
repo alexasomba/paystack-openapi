@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CustomerUpdateResponseData type satisfies the MappedNullable interface at compile time
@@ -35,6 +37,8 @@ type CustomerUpdateResponseData struct {
 	Identified bool `json:"identified"`
 	Identifications interface{} `json:"identifications"`
 }
+
+type _CustomerUpdateResponseData CustomerUpdateResponseData
 
 // NewCustomerUpdateResponseData instantiates a new CustomerUpdateResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -432,6 +436,56 @@ func (o CustomerUpdateResponseData) ToMap() (map[string]interface{}, error) {
 		toSerialize["identifications"] = o.Identifications
 	}
 	return toSerialize, nil
+}
+
+func (o *CustomerUpdateResponseData) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"first_name",
+		"last_name",
+		"email",
+		"phone",
+		"metadata",
+		"domain",
+		"customer_code",
+		"risk_action",
+		"id",
+		"integration",
+		"createdAt",
+		"updatedAt",
+		"identified",
+		"identifications",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCustomerUpdateResponseData := _CustomerUpdateResponseData{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCustomerUpdateResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerUpdateResponseData(varCustomerUpdateResponseData)
+
+	return err
 }
 
 type NullableCustomerUpdateResponseData struct {

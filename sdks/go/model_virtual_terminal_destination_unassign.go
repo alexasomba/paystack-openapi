@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the VirtualTerminalDestinationUnassign type satisfies the MappedNullable interface at compile time
@@ -23,6 +25,8 @@ type VirtualTerminalDestinationUnassign struct {
 	// Array of destination targets to unassign
 	Targets []string `json:"targets"`
 }
+
+type _VirtualTerminalDestinationUnassign VirtualTerminalDestinationUnassign
 
 // NewVirtualTerminalDestinationUnassign instantiates a new VirtualTerminalDestinationUnassign object
 // This constructor will assign default values to properties that have it defined,
@@ -78,6 +82,43 @@ func (o VirtualTerminalDestinationUnassign) ToMap() (map[string]interface{}, err
 	toSerialize := map[string]interface{}{}
 	toSerialize["targets"] = o.Targets
 	return toSerialize, nil
+}
+
+func (o *VirtualTerminalDestinationUnassign) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"targets",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varVirtualTerminalDestinationUnassign := _VirtualTerminalDestinationUnassign{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVirtualTerminalDestinationUnassign)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VirtualTerminalDestinationUnassign(varVirtualTerminalDestinationUnassign)
+
+	return err
 }
 
 type NullableVirtualTerminalDestinationUnassign struct {

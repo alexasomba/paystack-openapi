@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ProductListsResponse type satisfies the MappedNullable interface at compile time
@@ -25,6 +27,8 @@ type ProductListsResponse struct {
 	Data []ProductListsResponseArray `json:"data"`
 	Meta ProductListsResponseMeta `json:"meta"`
 }
+
+type _ProductListsResponse ProductListsResponse
 
 // NewProductListsResponse instantiates a new ProductListsResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -158,6 +162,46 @@ func (o ProductListsResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["data"] = o.Data
 	toSerialize["meta"] = o.Meta
 	return toSerialize, nil
+}
+
+func (o *ProductListsResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"status",
+		"message",
+		"data",
+		"meta",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varProductListsResponse := _ProductListsResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varProductListsResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProductListsResponse(varProductListsResponse)
+
+	return err
 }
 
 type NullableProductListsResponse struct {

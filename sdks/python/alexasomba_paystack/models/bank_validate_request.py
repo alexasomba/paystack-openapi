@@ -18,73 +18,89 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Optional
-from pydantic import BaseModel, Field, StrictStr, validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional, Set
+from typing_extensions import Self
 
 class BankValidateRequest(BaseModel):
     """
     BankValidateRequest
-    """
-    account_name: StrictStr = Field(..., description="Customer's first and last name registered with their bank")
-    account_number: StrictStr = Field(..., description="Customer's account number")
-    account_type: StrictStr = Field(..., description="The type of the customer's account number")
-    bank_code: StrictStr = Field(..., description="The bank code of the customer’s bank. You can fetch the bank codes by using our List Banks endpoint")
-    country_code: StrictStr = Field(..., description="The two digit ISO code of the customer’s bank")
-    document_type: StrictStr = Field(..., description="Customer’s mode of identity")
-    document_number: Optional[StrictStr] = Field(None, description="Customer’s mode of identity number")
-    __properties = ["account_name", "account_number", "account_type", "bank_code", "country_code", "document_type", "document_number"]
+    """ # noqa: E501
+    account_name: StrictStr = Field(description="Customer's first and last name registered with their bank")
+    account_number: StrictStr = Field(description="Customer's account number")
+    account_type: StrictStr = Field(description="The type of the customer's account number")
+    bank_code: StrictStr = Field(description="The bank code of the customer’s bank. You can fetch the bank codes by using our List Banks endpoint")
+    country_code: StrictStr = Field(description="The two digit ISO code of the customer’s bank")
+    document_type: StrictStr = Field(description="Customer’s mode of identity")
+    document_number: Optional[StrictStr] = Field(default=None, description="Customer’s mode of identity number")
+    __properties: ClassVar[List[str]] = ["account_name", "account_number", "account_type", "bank_code", "country_code", "document_type", "document_number"]
 
-    @validator('account_type')
+    @field_validator('account_type')
     def account_type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('personal', 'business'):
+        if value not in set(['personal', 'business']):
             raise ValueError("must be one of enum values ('personal', 'business')")
         return value
 
-    @validator('document_type')
+    @field_validator('document_type')
     def document_type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('identityNumber', 'passportNumber', 'businessRegistrationNumber'):
+        if value not in set(['identityNumber', 'passportNumber', 'businessRegistrationNumber']):
             raise ValueError("must be one of enum values ('identityNumber', 'passportNumber', 'businessRegistrationNumber')")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> BankValidateRequest:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of BankValidateRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> BankValidateRequest:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of BankValidateRequest from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return BankValidateRequest.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = BankValidateRequest.parse_obj({
+        _obj = cls.model_validate({
             "account_name": obj.get("account_name"),
             "account_number": obj.get("account_number"),
             "account_type": obj.get("account_type"),

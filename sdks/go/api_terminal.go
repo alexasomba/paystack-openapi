@@ -706,13 +706,17 @@ func (a *TerminalAPIService) TerminalListExecute(r ApiTerminalListRequest) (*Ter
 	localVarFormParams := url.Values{}
 
 	if r.next != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "form", "")
 	}
 	if r.previous != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "form", "")
 	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
+	} else {
+		var defaultValue int32 = 50
+		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", defaultValue, "form", "")
+		r.perPage = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

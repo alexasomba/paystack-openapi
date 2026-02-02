@@ -18,119 +18,135 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional, Set
+from typing_extensions import Self
 
 class PageListResponseArray(BaseModel):
     """
     PageListResponseArray
-    """
-    integration: StrictInt = Field(...)
-    plan: Optional[Any] = Field(...)
-    domain: StrictStr = Field(...)
-    name: StrictStr = Field(...)
-    description: Optional[StrictStr] = Field(...)
-    amount: Optional[StrictInt] = Field(...)
-    currency: StrictStr = Field(...)
-    slug: StrictStr = Field(...)
-    custom_fields: Optional[conlist(Any)] = Field(...)
-    type: StrictStr = Field(...)
-    redirect_url: Optional[StrictStr] = Field(...)
-    success_message: Optional[StrictStr] = Field(...)
-    collect_phone: StrictBool = Field(...)
-    active: StrictBool = Field(...)
-    published: StrictBool = Field(...)
-    migrate: StrictBool = Field(...)
-    notification_email: Optional[Any] = Field(...)
-    metadata: Optional[Dict[str, Any]] = Field(...)
-    split_code: Optional[Any] = Field(...)
-    id: StrictInt = Field(...)
-    created_at: StrictStr = Field(..., alias="createdAt")
-    updated_at: StrictStr = Field(..., alias="updatedAt")
-    __properties = ["integration", "plan", "domain", "name", "description", "amount", "currency", "slug", "custom_fields", "type", "redirect_url", "success_message", "collect_phone", "active", "published", "migrate", "notification_email", "metadata", "split_code", "id", "createdAt", "updatedAt"]
+    """ # noqa: E501
+    integration: StrictInt
+    plan: Optional[Any]
+    domain: StrictStr
+    name: StrictStr
+    description: Optional[StrictStr]
+    amount: Optional[StrictInt]
+    currency: StrictStr
+    slug: StrictStr
+    custom_fields: Optional[List[Any]]
+    type: StrictStr
+    redirect_url: Optional[StrictStr]
+    success_message: Optional[StrictStr]
+    collect_phone: StrictBool
+    active: StrictBool
+    published: StrictBool
+    migrate: StrictBool
+    notification_email: Optional[Any]
+    metadata: Optional[Dict[str, Any]]
+    split_code: Optional[Any]
+    id: StrictInt
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
+    __properties: ClassVar[List[str]] = ["integration", "plan", "domain", "name", "description", "amount", "currency", "slug", "custom_fields", "type", "redirect_url", "success_message", "collect_phone", "active", "published", "migrate", "notification_email", "metadata", "split_code", "id", "createdAt", "updatedAt"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> PageListResponseArray:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of PageListResponseArray from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # set to None if plan (nullable) is None
-        # and __fields_set__ contains the field
-        if self.plan is None and "plan" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.plan is None and "plan" in self.model_fields_set:
             _dict['plan'] = None
 
         # set to None if description (nullable) is None
-        # and __fields_set__ contains the field
-        if self.description is None and "description" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
         # set to None if amount (nullable) is None
-        # and __fields_set__ contains the field
-        if self.amount is None and "amount" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.amount is None and "amount" in self.model_fields_set:
             _dict['amount'] = None
 
         # set to None if custom_fields (nullable) is None
-        # and __fields_set__ contains the field
-        if self.custom_fields is None and "custom_fields" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.custom_fields is None and "custom_fields" in self.model_fields_set:
             _dict['custom_fields'] = None
 
         # set to None if redirect_url (nullable) is None
-        # and __fields_set__ contains the field
-        if self.redirect_url is None and "redirect_url" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.redirect_url is None and "redirect_url" in self.model_fields_set:
             _dict['redirect_url'] = None
 
         # set to None if success_message (nullable) is None
-        # and __fields_set__ contains the field
-        if self.success_message is None and "success_message" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.success_message is None and "success_message" in self.model_fields_set:
             _dict['success_message'] = None
 
         # set to None if notification_email (nullable) is None
-        # and __fields_set__ contains the field
-        if self.notification_email is None and "notification_email" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.notification_email is None and "notification_email" in self.model_fields_set:
             _dict['notification_email'] = None
 
         # set to None if metadata (nullable) is None
-        # and __fields_set__ contains the field
-        if self.metadata is None and "metadata" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
             _dict['metadata'] = None
 
         # set to None if split_code (nullable) is None
-        # and __fields_set__ contains the field
-        if self.split_code is None and "split_code" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.split_code is None and "split_code" in self.model_fields_set:
             _dict['split_code'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> PageListResponseArray:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of PageListResponseArray from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return PageListResponseArray.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = PageListResponseArray.parse_obj({
+        _obj = cls.model_validate({
             "integration": obj.get("integration"),
             "plan": obj.get("plan"),
             "domain": obj.get("domain"),
@@ -151,8 +167,8 @@ class PageListResponseArray(BaseModel):
             "metadata": obj.get("metadata"),
             "split_code": obj.get("split_code"),
             "id": obj.get("id"),
-            "created_at": obj.get("createdAt"),
-            "updated_at": obj.get("updatedAt")
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updatedAt": obj.get("updatedAt")
         })
         return _obj
 

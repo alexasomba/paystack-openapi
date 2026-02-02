@@ -592,19 +592,19 @@ func (a *TransferRecipientAPIService) TransferrecipientListExecute(r ApiTransfer
 	localVarFormParams := url.Values{}
 
 	if r.useCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "use_cursor", r.useCursor, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "use_cursor", r.useCursor, "form", "")
 	}
 	if r.next != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "form", "")
 	}
 	if r.previous != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "form", "")
 	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

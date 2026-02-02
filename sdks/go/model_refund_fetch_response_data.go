@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the RefundFetchResponseData type satisfies the MappedNullable interface at compile time
@@ -47,6 +49,8 @@ type RefundFetchResponseData struct {
 	SessionId interface{} `json:"session_id"`
 	CollectAccountNumber bool `json:"collect_account_number"`
 }
+
+type _RefundFetchResponseData RefundFetchResponseData
 
 // NewRefundFetchResponseData instantiates a new RefundFetchResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -772,6 +776,68 @@ func (o RefundFetchResponseData) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["collect_account_number"] = o.CollectAccountNumber
 	return toSerialize, nil
+}
+
+func (o *RefundFetchResponseData) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"integration",
+		"transaction",
+		"dispute",
+		"settlement",
+		"id",
+		"domain",
+		"currency",
+		"amount",
+		"status",
+		"refunded_at",
+		"refunded_by",
+		"customer_note",
+		"merchant_note",
+		"deducted_amount",
+		"fully_deducted",
+		"createdAt",
+		"bank_reference",
+		"transaction_reference",
+		"reason",
+		"customer",
+		"refund_type",
+		"transaction_amount",
+		"initiated_by",
+		"refund_channel",
+		"session_id",
+		"collect_account_number",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRefundFetchResponseData := _RefundFetchResponseData{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRefundFetchResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RefundFetchResponseData(varRefundFetchResponseData)
+
+	return err
 }
 
 type NullableRefundFetchResponseData struct {

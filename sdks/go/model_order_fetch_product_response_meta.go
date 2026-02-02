@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the OrderFetchProductResponseMeta type satisfies the MappedNullable interface at compile time
@@ -27,6 +29,8 @@ type OrderFetchProductResponseMeta struct {
 	PerPage int32 `json:"perPage"`
 	PageCount int32 `json:"pageCount"`
 }
+
+type _OrderFetchProductResponseMeta OrderFetchProductResponseMeta
 
 // NewOrderFetchProductResponseMeta instantiates a new OrderFetchProductResponseMeta object
 // This constructor will assign default values to properties that have it defined,
@@ -212,6 +216,48 @@ func (o OrderFetchProductResponseMeta) ToMap() (map[string]interface{}, error) {
 	toSerialize["perPage"] = o.PerPage
 	toSerialize["pageCount"] = o.PageCount
 	return toSerialize, nil
+}
+
+func (o *OrderFetchProductResponseMeta) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"quantity_sold",
+		"revenue",
+		"total",
+		"skipped",
+		"perPage",
+		"pageCount",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOrderFetchProductResponseMeta := _OrderFetchProductResponseMeta{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOrderFetchProductResponseMeta)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrderFetchProductResponseMeta(varOrderFetchProductResponseMeta)
+
+	return err
 }
 
 type NullableOrderFetchProductResponseMeta struct {

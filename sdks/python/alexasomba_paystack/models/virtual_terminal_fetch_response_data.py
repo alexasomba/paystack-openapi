@@ -18,86 +18,102 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Any, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.virtual_terminal_fetch_response_data_destinations_inner import VirtualTerminalFetchResponseDataDestinationsInner
+from typing import Optional, Set
+from typing_extensions import Self
 
 class VirtualTerminalFetchResponseData(BaseModel):
     """
     VirtualTerminalFetchResponseData
-    """
-    id: StrictInt = Field(...)
-    code: StrictStr = Field(...)
-    name: StrictStr = Field(...)
-    integration: StrictInt = Field(...)
-    domain: StrictStr = Field(...)
-    payment_methods: conlist(Any) = Field(..., alias="paymentMethods")
-    active: StrictBool = Field(...)
-    created_at: StrictStr = Field(...)
-    connect_account_id: Optional[Any] = Field(...)
-    destinations: conlist(VirtualTerminalFetchResponseDataDestinationsInner) = Field(...)
-    currency: StrictStr = Field(...)
-    __properties = ["id", "code", "name", "integration", "domain", "paymentMethods", "active", "created_at", "connect_account_id", "destinations", "currency"]
+    """ # noqa: E501
+    id: StrictInt
+    code: StrictStr
+    name: StrictStr
+    integration: StrictInt
+    domain: StrictStr
+    payment_methods: List[Any] = Field(alias="paymentMethods")
+    active: StrictBool
+    created_at: StrictStr
+    connect_account_id: Optional[Any]
+    destinations: List[VirtualTerminalFetchResponseDataDestinationsInner]
+    currency: StrictStr
+    __properties: ClassVar[List[str]] = ["id", "code", "name", "integration", "domain", "paymentMethods", "active", "created_at", "connect_account_id", "destinations", "currency"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> VirtualTerminalFetchResponseData:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of VirtualTerminalFetchResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in destinations (list)
         _items = []
         if self.destinations:
-            for _item in self.destinations:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_destinations in self.destinations:
+                if _item_destinations:
+                    _items.append(_item_destinations.to_dict())
             _dict['destinations'] = _items
         # set to None if connect_account_id (nullable) is None
-        # and __fields_set__ contains the field
-        if self.connect_account_id is None and "connect_account_id" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.connect_account_id is None and "connect_account_id" in self.model_fields_set:
             _dict['connect_account_id'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> VirtualTerminalFetchResponseData:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of VirtualTerminalFetchResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return VirtualTerminalFetchResponseData.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = VirtualTerminalFetchResponseData.parse_obj({
+        _obj = cls.model_validate({
             "id": obj.get("id"),
             "code": obj.get("code"),
             "name": obj.get("name"),
             "integration": obj.get("integration"),
             "domain": obj.get("domain"),
-            "payment_methods": obj.get("paymentMethods"),
+            "paymentMethods": obj.get("paymentMethods"),
             "active": obj.get("active"),
             "created_at": obj.get("created_at"),
             "connect_account_id": obj.get("connect_account_id"),
-            "destinations": [VirtualTerminalFetchResponseDataDestinationsInner.from_dict(_item) for _item in obj.get("destinations")] if obj.get("destinations") is not None else None,
+            "destinations": [VirtualTerminalFetchResponseDataDestinationsInner.from_dict(_item) for _item in obj["destinations"]] if obj.get("destinations") is not None else None,
             "currency": obj.get("currency")
         })
         return _obj

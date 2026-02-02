@@ -18,62 +18,78 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-
-from pydantic import BaseModel, Field, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List
+from typing import Optional, Set
+from typing_extensions import Self
 
 class DisputeAddEvidenceResponseData(BaseModel):
     """
     DisputeAddEvidenceResponseData
-    """
-    customer_email: StrictStr = Field(...)
-    customer_name: StrictStr = Field(...)
-    customer_phone: StrictStr = Field(...)
-    service_details: StrictStr = Field(...)
-    delivery_address: StrictStr = Field(...)
-    delivery_date: StrictStr = Field(...)
-    dispute: StrictInt = Field(...)
-    id: StrictInt = Field(...)
-    created_at: StrictStr = Field(..., alias="createdAt")
-    updated_at: StrictStr = Field(..., alias="updatedAt")
-    __properties = ["customer_email", "customer_name", "customer_phone", "service_details", "delivery_address", "delivery_date", "dispute", "id", "createdAt", "updatedAt"]
+    """ # noqa: E501
+    customer_email: StrictStr
+    customer_name: StrictStr
+    customer_phone: StrictStr
+    service_details: StrictStr
+    delivery_address: StrictStr
+    delivery_date: StrictStr
+    dispute: StrictInt
+    id: StrictInt
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
+    __properties: ClassVar[List[str]] = ["customer_email", "customer_name", "customer_phone", "service_details", "delivery_address", "delivery_date", "dispute", "id", "createdAt", "updatedAt"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> DisputeAddEvidenceResponseData:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of DisputeAddEvidenceResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> DisputeAddEvidenceResponseData:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of DisputeAddEvidenceResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return DisputeAddEvidenceResponseData.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = DisputeAddEvidenceResponseData.parse_obj({
+        _obj = cls.model_validate({
             "customer_email": obj.get("customer_email"),
             "customer_name": obj.get("customer_name"),
             "customer_phone": obj.get("customer_phone"),
@@ -82,8 +98,8 @@ class DisputeAddEvidenceResponseData(BaseModel):
             "delivery_date": obj.get("delivery_date"),
             "dispute": obj.get("dispute"),
             "id": obj.get("id"),
-            "created_at": obj.get("createdAt"),
-            "updated_at": obj.get("updatedAt")
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updatedAt": obj.get("updatedAt")
         })
         return _obj
 

@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the OrderItems type satisfies the MappedNullable interface at compile time
@@ -29,6 +31,8 @@ type OrderItems struct {
 	// The cost of the item
 	Amount int32 `json:"amount"`
 }
+
+type _OrderItems OrderItems
 
 // NewOrderItems instantiates a new OrderItems object
 // This constructor will assign default values to properties that have it defined,
@@ -162,6 +166,46 @@ func (o OrderItems) ToMap() (map[string]interface{}, error) {
 	toSerialize["quantity"] = o.Quantity
 	toSerialize["amount"] = o.Amount
 	return toSerialize, nil
+}
+
+func (o *OrderItems) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"item",
+		"type",
+		"quantity",
+		"amount",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOrderItems := _OrderItems{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOrderItems)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrderItems(varOrderItems)
+
+	return err
 }
 
 type NullableOrderItems struct {

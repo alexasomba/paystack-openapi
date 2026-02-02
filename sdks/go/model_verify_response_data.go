@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the VerifyResponseData type satisfies the MappedNullable interface at compile time
@@ -48,15 +50,17 @@ type VerifyResponseData struct {
 	FeesBreakdown interface{} `json:"fees_breakdown"`
 	Connect interface{} `json:"connect"`
 	TransactionDate string `json:"transaction_date"`
-	PlanObject NullableVerifyResponseDataPlanObject `json:"plan_object"`
+	PlanObject VerifyResponseDataPlanObject `json:"plan_object"`
 	Subaccount map[string]interface{} `json:"subaccount"`
 }
+
+type _VerifyResponseData VerifyResponseData
 
 // NewVerifyResponseData instantiates a new VerifyResponseData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVerifyResponseData(id int32, domain string, status string, reference string, receiptNumber NullableString, amount int32, message NullableString, gatewayResponse string, channel string, currency string, ipAddress string, metadata VerifyResponseDataMetadata, log NullableVerifyResponseDataLog, fees NullableInt32, feesSplit interface{}, authorization VerifyResponseDataAuthorization, customer VerifyResponseDataCustomer, plan NullableString, split map[string]interface{}, orderId interface{}, paidAt NullableString, createdAt string, requestedAmount int32, posTransactionData interface{}, source interface{}, feesBreakdown interface{}, connect interface{}, transactionDate string, planObject NullableVerifyResponseDataPlanObject, subaccount map[string]interface{}) *VerifyResponseData {
+func NewVerifyResponseData(id int32, domain string, status string, reference string, receiptNumber NullableString, amount int32, message NullableString, gatewayResponse string, channel string, currency string, ipAddress string, metadata VerifyResponseDataMetadata, log NullableVerifyResponseDataLog, fees NullableInt32, feesSplit interface{}, authorization VerifyResponseDataAuthorization, customer VerifyResponseDataCustomer, plan NullableString, split map[string]interface{}, orderId interface{}, paidAt NullableString, createdAt string, requestedAmount int32, posTransactionData interface{}, source interface{}, feesBreakdown interface{}, connect interface{}, transactionDate string, planObject VerifyResponseDataPlanObject, subaccount map[string]interface{}) *VerifyResponseData {
 	this := VerifyResponseData{}
 	this.Id = id
 	this.Domain = domain
@@ -796,29 +800,27 @@ func (o *VerifyResponseData) SetTransactionDate(v string) {
 }
 
 // GetPlanObject returns the PlanObject field value
-// If the value is explicit nil, the zero value for VerifyResponseDataPlanObject will be returned
 func (o *VerifyResponseData) GetPlanObject() VerifyResponseDataPlanObject {
-	if o == nil || o.PlanObject.Get() == nil {
+	if o == nil {
 		var ret VerifyResponseDataPlanObject
 		return ret
 	}
 
-	return *o.PlanObject.Get()
+	return o.PlanObject
 }
 
 // GetPlanObjectOk returns a tuple with the PlanObject field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VerifyResponseData) GetPlanObjectOk() (*VerifyResponseDataPlanObject, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.PlanObject.Get(), o.PlanObject.IsSet()
+	return &o.PlanObject, true
 }
 
 // SetPlanObject sets field value
 func (o *VerifyResponseData) SetPlanObject(v VerifyResponseDataPlanObject) {
-	o.PlanObject.Set(&v)
+	o.PlanObject = v
 }
 
 // GetSubaccount returns the Subaccount field value
@@ -895,9 +897,75 @@ func (o VerifyResponseData) ToMap() (map[string]interface{}, error) {
 		toSerialize["connect"] = o.Connect
 	}
 	toSerialize["transaction_date"] = o.TransactionDate
-	toSerialize["plan_object"] = o.PlanObject.Get()
+	toSerialize["plan_object"] = o.PlanObject
 	toSerialize["subaccount"] = o.Subaccount
 	return toSerialize, nil
+}
+
+func (o *VerifyResponseData) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"domain",
+		"status",
+		"reference",
+		"receipt_number",
+		"amount",
+		"message",
+		"gateway_response",
+		"channel",
+		"currency",
+		"ip_address",
+		"metadata",
+		"log",
+		"fees",
+		"fees_split",
+		"authorization",
+		"customer",
+		"plan",
+		"split",
+		"order_id",
+		"paidAt",
+		"createdAt",
+		"requested_amount",
+		"pos_transaction_data",
+		"source",
+		"fees_breakdown",
+		"connect",
+		"transaction_date",
+		"plan_object",
+		"subaccount",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varVerifyResponseData := _VerifyResponseData{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVerifyResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VerifyResponseData(varVerifyResponseData)
+
+	return err
 }
 
 type NullableVerifyResponseData struct {

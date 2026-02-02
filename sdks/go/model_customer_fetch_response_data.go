@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CustomerFetchResponseData type satisfies the MappedNullable interface at compile time
@@ -42,6 +44,8 @@ type CustomerFetchResponseData struct {
 	Identified bool `json:"identified"`
 	Identifications interface{} `json:"identifications"`
 }
+
+type _CustomerFetchResponseData CustomerFetchResponseData
 
 // NewCustomerFetchResponseData instantiates a new CustomerFetchResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -629,6 +633,63 @@ func (o CustomerFetchResponseData) ToMap() (map[string]interface{}, error) {
 		toSerialize["identifications"] = o.Identifications
 	}
 	return toSerialize, nil
+}
+
+func (o *CustomerFetchResponseData) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"transactions",
+		"subscriptions",
+		"authorizations",
+		"first_name",
+		"last_name",
+		"email",
+		"phone",
+		"metadata",
+		"domain",
+		"customer_code",
+		"risk_action",
+		"id",
+		"integration",
+		"createdAt",
+		"updatedAt",
+		"total_transactions",
+		"total_transaction_value",
+		"dedicated_account",
+		"dedicated_accounts",
+		"identified",
+		"identifications",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCustomerFetchResponseData := _CustomerFetchResponseData{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCustomerFetchResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerFetchResponseData(varCustomerFetchResponseData)
+
+	return err
 }
 
 type NullableCustomerFetchResponseData struct {

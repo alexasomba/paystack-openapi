@@ -160,43 +160,43 @@ func (a *BankAPIService) BankListExecute(r ApiBankListRequest) (*MiscellaneousLi
 	localVarFormParams := url.Values{}
 
 	if r.country != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "country", r.country, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "country", r.country, "form", "")
 	}
 	if r.currency != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "currency", r.currency, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "currency", r.currency, "form", "")
 	}
 	if r.useCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "use_cursor", r.useCursor, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "use_cursor", r.useCursor, "form", "")
 	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.next != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "form", "")
 	}
 	if r.previous != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "form", "")
 	}
 	if r.payWithBankTransfer != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pay_with_bank_transfer", r.payWithBankTransfer, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pay_with_bank_transfer", r.payWithBankTransfer, "form", "")
 	}
 	if r.payWithBank != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pay_with_bank", r.payWithBank, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pay_with_bank", r.payWithBank, "form", "")
 	}
 	if r.enabledForVerification != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "enabled_for_verification", r.enabledForVerification, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enabled_for_verification", r.enabledForVerification, "form", "")
 	}
 	if r.gateway != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "gateway", r.gateway, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "gateway", r.gateway, "form", "")
 	}
 	if r.type_ != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
 	}
 	if r.includeNipSortCode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_nip_sort_code", r.includeNipSortCode, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_nip_sort_code", r.includeNipSortCode, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -334,10 +334,10 @@ func (a *BankAPIService) BankResolveAccountNumberExecute(r ApiBankResolveAccount
 	localVarFormParams := url.Values{}
 
 	if r.accountNumber != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "account_number", r.accountNumber, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "account_number", r.accountNumber, "form", "")
 	}
 	if r.bankCode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bank_code", r.bankCode, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bank_code", r.bankCode, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -18,61 +18,77 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Any, Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.charge_authorization_response_data_log import ChargeAuthorizationResponseDataLog
 from alexasomba_paystack.models.transaction_partial_debit_response_data_authorization import TransactionPartialDebitResponseDataAuthorization
 from alexasomba_paystack.models.transaction_partial_debit_response_data_customer import TransactionPartialDebitResponseDataCustomer
+from typing import Optional, Set
+from typing_extensions import Self
 
 class TransactionPartialDebitResponseData(BaseModel):
     """
     TransactionPartialDebitResponseData
-    """
-    amount: StrictInt = Field(...)
-    currency: StrictStr = Field(...)
-    transaction_date: StrictStr = Field(...)
-    status: StrictStr = Field(...)
-    reference: StrictStr = Field(...)
-    domain: StrictStr = Field(...)
-    metadata: StrictStr = Field(...)
-    gateway_response: StrictStr = Field(...)
-    message: Optional[Any] = Field(...)
-    channel: StrictStr = Field(...)
-    ip_address: Optional[Any] = Field(...)
-    log: Optional[ChargeAuthorizationResponseDataLog] = Field(...)
-    fees: StrictInt = Field(...)
-    authorization: TransactionPartialDebitResponseDataAuthorization = Field(...)
-    customer: TransactionPartialDebitResponseDataCustomer = Field(...)
-    plan: StrictInt = Field(...)
-    requested_amount: StrictInt = Field(...)
-    id: StrictInt = Field(...)
-    __properties = ["amount", "currency", "transaction_date", "status", "reference", "domain", "metadata", "gateway_response", "message", "channel", "ip_address", "log", "fees", "authorization", "customer", "plan", "requested_amount", "id"]
+    """ # noqa: E501
+    amount: StrictInt
+    currency: StrictStr
+    transaction_date: StrictStr
+    status: StrictStr
+    reference: StrictStr
+    domain: StrictStr
+    metadata: StrictStr
+    gateway_response: StrictStr
+    message: Optional[Any]
+    channel: StrictStr
+    ip_address: Optional[Any]
+    log: Optional[ChargeAuthorizationResponseDataLog]
+    fees: StrictInt
+    authorization: TransactionPartialDebitResponseDataAuthorization
+    customer: TransactionPartialDebitResponseDataCustomer
+    plan: StrictInt
+    requested_amount: StrictInt
+    id: StrictInt
+    __properties: ClassVar[List[str]] = ["amount", "currency", "transaction_date", "status", "reference", "domain", "metadata", "gateway_response", "message", "channel", "ip_address", "log", "fees", "authorization", "customer", "plan", "requested_amount", "id"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> TransactionPartialDebitResponseData:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of TransactionPartialDebitResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of log
         if self.log:
             _dict['log'] = self.log.to_dict()
@@ -83,32 +99,32 @@ class TransactionPartialDebitResponseData(BaseModel):
         if self.customer:
             _dict['customer'] = self.customer.to_dict()
         # set to None if message (nullable) is None
-        # and __fields_set__ contains the field
-        if self.message is None and "message" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.message is None and "message" in self.model_fields_set:
             _dict['message'] = None
 
         # set to None if ip_address (nullable) is None
-        # and __fields_set__ contains the field
-        if self.ip_address is None and "ip_address" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.ip_address is None and "ip_address" in self.model_fields_set:
             _dict['ip_address'] = None
 
         # set to None if log (nullable) is None
-        # and __fields_set__ contains the field
-        if self.log is None and "log" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.log is None and "log" in self.model_fields_set:
             _dict['log'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> TransactionPartialDebitResponseData:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of TransactionPartialDebitResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return TransactionPartialDebitResponseData.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = TransactionPartialDebitResponseData.parse_obj({
+        _obj = cls.model_validate({
             "amount": obj.get("amount"),
             "currency": obj.get("currency"),
             "transaction_date": obj.get("transaction_date"),
@@ -120,10 +136,10 @@ class TransactionPartialDebitResponseData(BaseModel):
             "message": obj.get("message"),
             "channel": obj.get("channel"),
             "ip_address": obj.get("ip_address"),
-            "log": ChargeAuthorizationResponseDataLog.from_dict(obj.get("log")) if obj.get("log") is not None else None,
+            "log": ChargeAuthorizationResponseDataLog.from_dict(obj["log"]) if obj.get("log") is not None else None,
             "fees": obj.get("fees"),
-            "authorization": TransactionPartialDebitResponseDataAuthorization.from_dict(obj.get("authorization")) if obj.get("authorization") is not None else None,
-            "customer": TransactionPartialDebitResponseDataCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
+            "authorization": TransactionPartialDebitResponseDataAuthorization.from_dict(obj["authorization"]) if obj.get("authorization") is not None else None,
+            "customer": TransactionPartialDebitResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
             "plan": obj.get("plan"),
             "requested_amount": obj.get("requested_amount"),
             "id": obj.get("id")

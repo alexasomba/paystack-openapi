@@ -562,16 +562,20 @@ func (a *TransferAPIService) TransferExportTransferExecute(r ApiTransferExportTr
 	localVarFormParams := url.Values{}
 
 	if r.recipient != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "recipient", r.recipient, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "recipient", r.recipient, "form", "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+	} else {
+		var defaultValue string = "pending"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", defaultValue, "form", "")
+		r.status = &defaultValue
 	}
 	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
 	}
 	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1119,31 +1123,35 @@ func (a *TransferAPIService) TransferListExecute(r ApiTransferListRequest) (*Tra
 	localVarFormParams := url.Values{}
 
 	if r.useCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "use_cursor", r.useCursor, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "use_cursor", r.useCursor, "form", "")
 	}
 	if r.next != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "form", "")
 	}
 	if r.previous != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "form", "")
 	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
 	}
 	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
 	}
 	if r.recipient != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "recipient", r.recipient, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "recipient", r.recipient, "form", "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+	} else {
+		var defaultValue string = "pending"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", defaultValue, "form", "")
+		r.status = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

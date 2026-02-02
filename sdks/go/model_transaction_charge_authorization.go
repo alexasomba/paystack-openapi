@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the TransactionChargeAuthorization type satisfies the MappedNullable interface at compile time
@@ -43,6 +45,8 @@ type TransactionChargeAuthorization struct {
 	// If you are making a scheduled charge call, it is a good idea to queue them so the processing system does not get overloaded causing transaction processing errors.
 	Queue *bool `json:"queue,omitempty"`
 }
+
+type _TransactionChargeAuthorization TransactionChargeAuthorization
 
 // NewTransactionChargeAuthorization instantiates a new TransactionChargeAuthorization object
 // This constructor will assign default values to properties that have it defined,
@@ -465,6 +469,45 @@ func (o TransactionChargeAuthorization) ToMap() (map[string]interface{}, error) 
 		toSerialize["queue"] = o.Queue
 	}
 	return toSerialize, nil
+}
+
+func (o *TransactionChargeAuthorization) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"email",
+		"amount",
+		"authorization_code",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTransactionChargeAuthorization := _TransactionChargeAuthorization{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTransactionChargeAuthorization)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TransactionChargeAuthorization(varTransactionChargeAuthorization)
+
+	return err
 }
 
 type NullableTransactionChargeAuthorization struct {

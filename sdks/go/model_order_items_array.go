@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the OrderItemsArray type satisfies the MappedNullable interface at compile time
@@ -42,6 +44,8 @@ type OrderItemsArray struct {
 	StorefrontRedirectUrl interface{} `json:"storefront_redirect_url"`
 	StorefrontSuccessMessage interface{} `json:"storefront_success_message"`
 }
+
+type _OrderItemsArray OrderItemsArray
 
 // NewOrderItemsArray instantiates a new OrderItemsArray object
 // This constructor will assign default values to properties that have it defined,
@@ -641,6 +645,63 @@ func (o OrderItemsArray) ToMap() (map[string]interface{}, error) {
 		toSerialize["storefront_success_message"] = o.StorefrontSuccessMessage
 	}
 	return toSerialize, nil
+}
+
+func (o *OrderItemsArray) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"order_item_id",
+		"orderId",
+		"type",
+		"item",
+		"current_total_items_price",
+		"files",
+		"order",
+		"amount",
+		"quantity",
+		"createdAt",
+		"name",
+		"product_level_type",
+		"product_id",
+		"product_success_message",
+		"product_redirect_url",
+		"IFNULL(p1.expires_in, p2.expires_in)",
+		"product_quantity_sold",
+		"product_notification_emails",
+		"IFNULL(p1.metadata, p2.metadata)",
+		"storefront_redirect_url",
+		"storefront_success_message",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOrderItemsArray := _OrderItemsArray{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOrderItemsArray)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrderItemsArray(varOrderItemsArray)
+
+	return err
 }
 
 type NullableOrderItemsArray struct {

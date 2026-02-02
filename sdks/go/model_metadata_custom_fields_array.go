@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the MetadataCustomFieldsArray type satisfies the MappedNullable interface at compile time
@@ -24,6 +26,8 @@ type MetadataCustomFieldsArray struct {
 	DisplayName string `json:"display_name"`
 	VariableName string `json:"variable_name"`
 }
+
+type _MetadataCustomFieldsArray MetadataCustomFieldsArray
 
 // NewMetadataCustomFieldsArray instantiates a new MetadataCustomFieldsArray object
 // This constructor will assign default values to properties that have it defined,
@@ -131,6 +135,45 @@ func (o MetadataCustomFieldsArray) ToMap() (map[string]interface{}, error) {
 	toSerialize["display_name"] = o.DisplayName
 	toSerialize["variable_name"] = o.VariableName
 	return toSerialize, nil
+}
+
+func (o *MetadataCustomFieldsArray) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"value",
+		"display_name",
+		"variable_name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varMetadataCustomFieldsArray := _MetadataCustomFieldsArray{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varMetadataCustomFieldsArray)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MetadataCustomFieldsArray(varMetadataCustomFieldsArray)
+
+	return err
 }
 
 type NullableMetadataCustomFieldsArray struct {

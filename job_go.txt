@@ -1,0 +1,211 @@
+SDK Wrapper Checks (Docker)	Set up job	﻿2026-02-02T16:36:39.6166359Z Current runner version: '2.331.0'
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6201070Z ##[group]Runner Image Provisioner
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6202446Z Hosted Compute Agent
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6203460Z Version: 20260123.484
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6204550Z Commit: 6bd6555ca37d84114959e1c76d2c01448ff61c5d
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6205890Z Build Date: 2026-01-23T19:41:17Z
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6207073Z Worker ID: {0ee81103-9749-4e7d-b2aa-82b80f8c6c61}
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6208657Z Azure Region: eastus2
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6209505Z ##[endgroup]
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6212176Z ##[group]Operating System
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6213095Z Ubuntu
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6213833Z 24.04.3
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6214489Z LTS
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6215342Z ##[endgroup]
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6216151Z ##[group]Runner Image
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6217093Z Image: ubuntu-24.04
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6217970Z Version: 20260126.10.1
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6219919Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260126.10/images/ubuntu/Ubuntu2404-Readme.md
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6222950Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260126.10
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6224550Z ##[endgroup]
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6229585Z ##[group]GITHUB_TOKEN Permissions
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6232408Z Actions: write
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6233320Z ArtifactMetadata: write
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6234177Z Attestations: write
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6235099Z Checks: write
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6236088Z Contents: write
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6236973Z Deployments: write
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6237943Z Discussions: write
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6239128Z Issues: write
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6239922Z Metadata: read
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6240811Z Models: read
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6241647Z Packages: write
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6242475Z Pages: write
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6244067Z PullRequests: write
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6245062Z RepositoryProjects: write
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6246099Z SecurityEvents: write
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6247092Z Statuses: write
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6247969Z ##[endgroup]
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6251124Z Secret source: Actions
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6252928Z Prepare workflow directory
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6724806Z Prepare all required actions
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.6781835Z Getting action download info
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:39.8983084Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+SDK Wrapper Checks (Docker)	Set up job	2026-02-02T16:36:40.1212546Z Complete job name: SDK Wrapper Checks (Docker)
+SDK Wrapper Checks (Docker)	Checkout	﻿2026-02-02T16:36:40.1997426Z ##[group]Run actions/checkout@v4
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.1998482Z with:
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.1998945Z   repository: alexasomba/paystack-openapi
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.1999649Z   token: ***
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.2000034Z   ssh-strict: true
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.2000431Z   ssh-user: git
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.2000833Z   persist-credentials: true
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.2001282Z   clean: true
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.2001681Z   sparse-checkout-cone-mode: true
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.2002167Z   fetch-depth: 1
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.2002548Z   fetch-tags: false
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.2002948Z   show-progress: true
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.2003359Z   lfs: false
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.2003723Z   submodules: false
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.2004139Z   set-safe-directory: true
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.2004812Z ##[endgroup]
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3070232Z Syncing repository: alexasomba/paystack-openapi
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3072393Z ##[group]Getting Git version info
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3073205Z Working directory is '/home/runner/work/paystack-openapi/paystack-openapi'
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3074351Z [command]/usr/bin/git version
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3162180Z git version 2.52.0
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3187721Z ##[endgroup]
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3201790Z Temporarily overriding HOME='/home/runner/work/_temp/b499d282-bfe0-41f5-b15f-0f2696c3e455' before making global git config changes
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3203169Z Adding repository directory to the temporary git global config as a safe directory
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3213848Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/paystack-openapi/paystack-openapi
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3253178Z Deleting the contents of '/home/runner/work/paystack-openapi/paystack-openapi'
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3256736Z ##[group]Initializing the repository
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3260939Z [command]/usr/bin/git init /home/runner/work/paystack-openapi/paystack-openapi
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3385358Z hint: Using 'master' as the name for the initial branch. This default branch name
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3386983Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3388841Z hint: to use in all of your new repositories, which will suppress this warning,
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3390066Z hint: call:
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3390651Z hint:
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3391405Z hint: 	git config --global init.defaultBranch <name>
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3392254Z hint:
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3392850Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3393767Z hint: 'development'. The just-created branch can be renamed via this command:
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3394489Z hint:
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3394891Z hint: 	git branch -m <name>
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3395346Z hint:
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3396178Z hint: Disable this message with "git config set advice.defaultBranchName false"
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3397518Z Initialized empty Git repository in /home/runner/work/paystack-openapi/paystack-openapi/.git/
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3401602Z [command]/usr/bin/git remote add origin https://github.com/alexasomba/paystack-openapi
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3435196Z ##[endgroup]
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3435940Z ##[group]Disabling automatic garbage collection
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3439485Z [command]/usr/bin/git config --local gc.auto 0
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3466556Z ##[endgroup]
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3467270Z ##[group]Setting up auth
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3473318Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3502493Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3853124Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.3880908Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.4098881Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.4129516Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.4355292Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.4389070Z ##[endgroup]
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.4390326Z ##[group]Fetching the repository
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:40.4398822Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +2e4ace20d6b1df279ecfec5eeb642f2245d217aa:refs/remotes/origin/main
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:41.3107763Z From https://github.com/alexasomba/paystack-openapi
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:41.3110634Z  * [new ref]         2e4ace20d6b1df279ecfec5eeb642f2245d217aa -> origin/main
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:41.3141494Z ##[endgroup]
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:41.3143135Z ##[group]Determining the checkout info
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:41.3145015Z ##[endgroup]
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:41.3148320Z [command]/usr/bin/git sparse-checkout disable
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:41.3189672Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:41.3215646Z ##[group]Checking out the ref
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:41.3218964Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:41.5381936Z Switched to a new branch 'main'
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:41.5383371Z branch 'main' set up to track 'origin/main'.
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:41.5401027Z ##[endgroup]
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:41.5439812Z [command]/usr/bin/git log -1 --format=%H
+SDK Wrapper Checks (Docker)	Checkout	2026-02-02T16:36:41.5462303Z 2e4ace20d6b1df279ecfec5eeb642f2245d217aa
+SDK Wrapper Checks (Docker)	Docker version	﻿2026-02-02T16:36:41.5647815Z ##[group]Run docker version
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.5648555Z [36;1mdocker version[0m
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.5684163Z shell: /usr/bin/bash -e {0}
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.5684491Z ##[endgroup]
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6671587Z Client: Docker Engine - Community
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6672334Z  Version:           28.0.4
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6672781Z  API version:       1.48
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6673197Z  Go version:        go1.23.7
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6673618Z  Git commit:        b8034c0
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6674053Z  Built:             Tue Mar 25 15:07:16 2025
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6674557Z  OS/Arch:           linux/amd64
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6675022Z  Context:           default
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6675329Z 
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6675523Z Server: Docker Engine - Community
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6676008Z  Engine:
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6676512Z   Version:          28.0.4
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6677027Z   API version:      1.48 (minimum version 1.24)
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6677745Z   Go version:       go1.23.7
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6678392Z   Git commit:       6430e49
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6678945Z   Built:            Tue Mar 25 15:07:16 2025
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6679500Z   OS/Arch:          linux/amd64
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6679982Z   Experimental:     false
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6680441Z  containerd:
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6680872Z   Version:          v2.2.1
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6681457Z   GitCommit:        dea7da592f5d1d2b7755e3a161be07f43fad8f75
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6682058Z  runc:
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6682423Z   Version:          1.3.4
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6682892Z   GitCommit:        v1.3.4-0-gd6d73eb8
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6683354Z  docker-init:
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6683746Z   Version:          0.19.0
+SDK Wrapper Checks (Docker)	Docker version	2026-02-02T16:36:41.6684146Z   GitCommit:        de40ad0
+SDK Wrapper Checks (Docker)	Go SDK compile check	﻿2026-02-02T16:36:41.6726043Z ##[group]Run docker run --rm \
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:41.6726408Z [36;1mdocker run --rm \[0m
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:41.6726722Z [36;1m  -v "$GITHUB_WORKSPACE:/work" \[0m
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:41.6727029Z [36;1m  -w /work/sdks/go \[0m
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:41.6727311Z [36;1m  golang:1.23 \[0m
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:41.6727609Z [36;1m  go test ./...[0m
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:41.6760660Z shell: /usr/bin/bash -e {0}
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:41.6760965Z ##[endgroup]
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:41.6961060Z Unable to find image 'golang:1.23' locally
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:41.9623476Z 1.23: Pulling from library/golang
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:42.0513657Z f014853ae203: Pulling fs layer
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:42.0514722Z 6d6401b7636b: Pulling fs layer
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:42.0515285Z cffef7dc6f99: Pulling fs layer
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:42.0515754Z d64c83132511: Pulling fs layer
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:42.0516074Z d5791340ef18: Pulling fs layer
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:42.0516335Z 01b3c4a0d5c8: Pulling fs layer
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:42.0516586Z 4f4fb700ef54: Pulling fs layer
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:42.0516830Z d5791340ef18: Waiting
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:42.0517159Z 01b3c4a0d5c8: Waiting
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:42.0517414Z 4f4fb700ef54: Waiting
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:42.0517741Z d64c83132511: Waiting
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:42.4917825Z cffef7dc6f99: Download complete
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:42.5276198Z 6d6401b7636b: Verifying Checksum
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:42.5277663Z 6d6401b7636b: Download complete
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:42.6579449Z f014853ae203: Download complete
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:42.7461236Z 01b3c4a0d5c8: Verifying Checksum
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:42.7461780Z 01b3c4a0d5c8: Download complete
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:42.8261263Z 4f4fb700ef54: Verifying Checksum
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:42.8261823Z 4f4fb700ef54: Download complete
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:43.2033495Z d5791340ef18: Verifying Checksum
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:43.2035147Z d5791340ef18: Download complete
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:43.5887602Z d64c83132511: Verifying Checksum
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:43.5888378Z d64c83132511: Download complete
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:44.4343818Z f014853ae203: Pull complete
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:47.5077890Z 6d6401b7636b: Pull complete
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:49.8203021Z cffef7dc6f99: Pull complete
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:52.1012044Z d64c83132511: Pull complete
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:56.6540087Z d5791340ef18: Pull complete
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:56.6639545Z 01b3c4a0d5c8: Pull complete
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:56.6716181Z 4f4fb700ef54: Pull complete
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:56.6761490Z Digest: sha256:60deed95d3888cc5e4d9ff8a10c54e5edc008c6ae3fba6187be6fb592e19e8c0
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:56.6776508Z Status: Downloaded newer image for golang:1.23
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:57.0370135Z # github.com/alexasomba/paystack-go/test
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:57.0371500Z test/api_apple_pay_test.go:14:2: missing go.sum entry for module providing package github.com/stretchr/testify/assert (imported by github.com/alexasomba/paystack-go/test); to add:
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:57.0373142Z 	go get -t github.com/alexasomba/paystack-go/test
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:36:57.0373849Z FAIL	github.com/alexasomba/paystack-go/test [setup failed]
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:37:13.3623143Z ?   	github.com/alexasomba/paystack-go	[no test files]
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:37:13.3623923Z FAIL
+SDK Wrapper Checks (Docker)	Go SDK compile check	2026-02-02T16:37:13.6057440Z ##[error]Process completed with exit code 1.
+SDK Wrapper Checks (Docker)	Post Checkout	﻿2026-02-02T16:37:13.6166195Z Post job cleanup.
+SDK Wrapper Checks (Docker)	Post Checkout	2026-02-02T16:37:13.7118475Z [command]/usr/bin/git version
+SDK Wrapper Checks (Docker)	Post Checkout	2026-02-02T16:37:13.7155391Z git version 2.52.0
+SDK Wrapper Checks (Docker)	Post Checkout	2026-02-02T16:37:13.7197249Z Temporarily overriding HOME='/home/runner/work/_temp/97c7fd7e-0438-4beb-8bb4-e98bf756cc4a' before making global git config changes
+SDK Wrapper Checks (Docker)	Post Checkout	2026-02-02T16:37:13.7198544Z Adding repository directory to the temporary git global config as a safe directory
+SDK Wrapper Checks (Docker)	Post Checkout	2026-02-02T16:37:13.7202858Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/paystack-openapi/paystack-openapi
+SDK Wrapper Checks (Docker)	Post Checkout	2026-02-02T16:37:13.7239486Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+SDK Wrapper Checks (Docker)	Post Checkout	2026-02-02T16:37:13.7272135Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+SDK Wrapper Checks (Docker)	Post Checkout	2026-02-02T16:37:13.7505628Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+SDK Wrapper Checks (Docker)	Post Checkout	2026-02-02T16:37:13.7526520Z http.https://github.com/.extraheader
+SDK Wrapper Checks (Docker)	Post Checkout	2026-02-02T16:37:13.7539072Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+SDK Wrapper Checks (Docker)	Post Checkout	2026-02-02T16:37:13.7569126Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+SDK Wrapper Checks (Docker)	Post Checkout	2026-02-02T16:37:13.7806870Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+SDK Wrapper Checks (Docker)	Post Checkout	2026-02-02T16:37:13.7839220Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+SDK Wrapper Checks (Docker)	Complete job	﻿2026-02-02T16:37:13.8173795Z Cleaning up orphan processes

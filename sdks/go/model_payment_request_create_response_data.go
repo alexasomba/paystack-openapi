@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PaymentRequestCreateResponseData type satisfies the MappedNullable interface at compile time
@@ -42,6 +44,8 @@ type PaymentRequestCreateResponseData struct {
 	Discount interface{} `json:"discount"`
 	SplitCode NullableString `json:"split_code"`
 }
+
+type _PaymentRequestCreateResponseData PaymentRequestCreateResponseData
 
 // NewPaymentRequestCreateResponseData instantiates a new PaymentRequestCreateResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -633,6 +637,63 @@ func (o PaymentRequestCreateResponseData) ToMap() (map[string]interface{}, error
 	}
 	toSerialize["split_code"] = o.SplitCode.Get()
 	return toSerialize, nil
+}
+
+func (o *PaymentRequestCreateResponseData) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"integration",
+		"domain",
+		"amount",
+		"currency",
+		"due_date",
+		"has_invoice",
+		"invoice_number",
+		"description",
+		"line_items",
+		"tax",
+		"request_code",
+		"status",
+		"paid",
+		"metadata",
+		"notifications",
+		"offline_reference",
+		"customer",
+		"created_at",
+		"discount",
+		"split_code",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPaymentRequestCreateResponseData := _PaymentRequestCreateResponseData{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPaymentRequestCreateResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PaymentRequestCreateResponseData(varPaymentRequestCreateResponseData)
+
+	return err
 }
 
 type NullablePaymentRequestCreateResponseData struct {

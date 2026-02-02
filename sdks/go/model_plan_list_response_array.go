@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PlanListResponseArray type satisfies the MappedNullable interface at compile time
@@ -46,6 +48,8 @@ type PlanListResponseArray struct {
 	ActiveSubscriptions int32 `json:"active_subscriptions"`
 	TotalSubscriptionsRevenue int32 `json:"total_subscriptions_revenue"`
 }
+
+type _PlanListResponseArray PlanListResponseArray
 
 // NewPlanListResponseArray instantiates a new PlanListResponseArray object
 // This constructor will assign default values to properties that have it defined,
@@ -737,6 +741,67 @@ func (o PlanListResponseArray) ToMap() (map[string]interface{}, error) {
 	toSerialize["active_subscriptions"] = o.ActiveSubscriptions
 	toSerialize["total_subscriptions_revenue"] = o.TotalSubscriptionsRevenue
 	return toSerialize, nil
+}
+
+func (o *PlanListResponseArray) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"subscriptions",
+		"pages",
+		"domain",
+		"name",
+		"plan_code",
+		"description",
+		"amount",
+		"interval",
+		"invoice_limit",
+		"send_invoices",
+		"send_sms",
+		"hosted_page",
+		"hosted_page_url",
+		"hosted_page_summary",
+		"currency",
+		"migrate",
+		"is_deleted",
+		"is_archived",
+		"id",
+		"integration",
+		"createdAt",
+		"updatedAt",
+		"total_subscriptions",
+		"active_subscriptions",
+		"total_subscriptions_revenue",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPlanListResponseArray := _PlanListResponseArray{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPlanListResponseArray)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PlanListResponseArray(varPlanListResponseArray)
+
+	return err
 }
 
 type NullablePlanListResponseArray struct {

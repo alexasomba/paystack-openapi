@@ -334,13 +334,21 @@ func (a *SubaccountAPIService) SubaccountListExecute(r ApiSubaccountListRequest)
 	localVarFormParams := url.Values{}
 
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
+	} else {
+		var defaultValue int32 = 50
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", defaultValue, "form", "")
+		r.perPage = &defaultValue
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	} else {
+		var defaultValue int32 = 1
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+		r.page = &defaultValue
 	}
 	if r.active != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

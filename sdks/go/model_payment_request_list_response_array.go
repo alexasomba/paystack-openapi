@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PaymentRequestListResponseArray type satisfies the MappedNullable interface at compile time
@@ -44,6 +46,8 @@ type PaymentRequestListResponseArray struct {
 	Discount interface{} `json:"discount"`
 	SplitCode NullableString `json:"split_code"`
 }
+
+type _PaymentRequestListResponseArray PaymentRequestListResponseArray
 
 // NewPaymentRequestListResponseArray instantiates a new PaymentRequestListResponseArray object
 // This constructor will assign default values to properties that have it defined,
@@ -693,6 +697,65 @@ func (o PaymentRequestListResponseArray) ToMap() (map[string]interface{}, error)
 	}
 	toSerialize["split_code"] = o.SplitCode.Get()
 	return toSerialize, nil
+}
+
+func (o *PaymentRequestListResponseArray) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"integration",
+		"domain",
+		"amount",
+		"currency",
+		"due_date",
+		"has_invoice",
+		"invoice_number",
+		"description",
+		"pdf_url",
+		"line_items",
+		"tax",
+		"request_code",
+		"status",
+		"paid",
+		"paid_at",
+		"metadata",
+		"notifications",
+		"offline_reference",
+		"customer",
+		"created_at",
+		"discount",
+		"split_code",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPaymentRequestListResponseArray := _PaymentRequestListResponseArray{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPaymentRequestListResponseArray)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PaymentRequestListResponseArray(varPaymentRequestListResponseArray)
+
+	return err
 }
 
 type NullablePaymentRequestListResponseArray struct {

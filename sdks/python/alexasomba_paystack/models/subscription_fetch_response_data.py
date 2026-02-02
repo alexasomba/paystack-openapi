@@ -18,65 +18,81 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.subscription_fetch_response_data_plan import SubscriptionFetchResponseDataPlan
 from alexasomba_paystack.models.transaction_fetch_response_data_customer import TransactionFetchResponseDataCustomer
 from alexasomba_paystack.models.transaction_partial_debit_response_data_authorization import TransactionPartialDebitResponseDataAuthorization
+from typing import Optional, Set
+from typing_extensions import Self
 
 class SubscriptionFetchResponseData(BaseModel):
     """
     SubscriptionFetchResponseData
-    """
-    id: StrictInt = Field(...)
-    domain: StrictStr = Field(...)
-    status: StrictStr = Field(...)
-    subscription_code: StrictStr = Field(...)
-    email_token: StrictStr = Field(...)
-    amount: StrictInt = Field(...)
-    cron_expression: StrictStr = Field(...)
-    next_payment_date: StrictStr = Field(...)
-    open_invoice: Optional[Any] = Field(...)
-    created_at: StrictStr = Field(..., alias="createdAt")
-    cancelled_at: Optional[Any] = Field(..., alias="cancelledAt")
-    integration: StrictInt = Field(...)
-    plan: SubscriptionFetchResponseDataPlan = Field(...)
-    authorization: TransactionPartialDebitResponseDataAuthorization = Field(...)
-    customer: TransactionFetchResponseDataCustomer = Field(...)
-    invoices: conlist(Any) = Field(...)
-    invoices_history: conlist(Any) = Field(...)
-    invoice_limit: StrictInt = Field(...)
-    split_code: Optional[Any] = Field(...)
-    most_recent_invoice: Optional[Any] = Field(...)
-    payments_count: StrictInt = Field(...)
-    metadata: Optional[Dict[str, Any]] = Field(...)
-    __properties = ["id", "domain", "status", "subscription_code", "email_token", "amount", "cron_expression", "next_payment_date", "open_invoice", "createdAt", "cancelledAt", "integration", "plan", "authorization", "customer", "invoices", "invoices_history", "invoice_limit", "split_code", "most_recent_invoice", "payments_count", "metadata"]
+    """ # noqa: E501
+    id: StrictInt
+    domain: StrictStr
+    status: StrictStr
+    subscription_code: StrictStr
+    email_token: StrictStr
+    amount: StrictInt
+    cron_expression: StrictStr
+    next_payment_date: StrictStr
+    open_invoice: Optional[Any]
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    cancelled_at: Optional[Any] = Field(alias="cancelledAt")
+    integration: StrictInt
+    plan: SubscriptionFetchResponseDataPlan
+    authorization: TransactionPartialDebitResponseDataAuthorization
+    customer: TransactionFetchResponseDataCustomer
+    invoices: List[Any]
+    invoices_history: List[Any]
+    invoice_limit: StrictInt
+    split_code: Optional[Any]
+    most_recent_invoice: Optional[Any]
+    payments_count: StrictInt
+    metadata: Optional[Dict[str, Any]]
+    __properties: ClassVar[List[str]] = ["id", "domain", "status", "subscription_code", "email_token", "amount", "cron_expression", "next_payment_date", "open_invoice", "createdAt", "cancelledAt", "integration", "plan", "authorization", "customer", "invoices", "invoices_history", "invoice_limit", "split_code", "most_recent_invoice", "payments_count", "metadata"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> SubscriptionFetchResponseData:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of SubscriptionFetchResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of plan
         if self.plan:
             _dict['plan'] = self.plan.to_dict()
@@ -87,42 +103,42 @@ class SubscriptionFetchResponseData(BaseModel):
         if self.customer:
             _dict['customer'] = self.customer.to_dict()
         # set to None if open_invoice (nullable) is None
-        # and __fields_set__ contains the field
-        if self.open_invoice is None and "open_invoice" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.open_invoice is None and "open_invoice" in self.model_fields_set:
             _dict['open_invoice'] = None
 
         # set to None if cancelled_at (nullable) is None
-        # and __fields_set__ contains the field
-        if self.cancelled_at is None and "cancelled_at" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.cancelled_at is None and "cancelled_at" in self.model_fields_set:
             _dict['cancelledAt'] = None
 
         # set to None if split_code (nullable) is None
-        # and __fields_set__ contains the field
-        if self.split_code is None and "split_code" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.split_code is None and "split_code" in self.model_fields_set:
             _dict['split_code'] = None
 
         # set to None if most_recent_invoice (nullable) is None
-        # and __fields_set__ contains the field
-        if self.most_recent_invoice is None and "most_recent_invoice" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.most_recent_invoice is None and "most_recent_invoice" in self.model_fields_set:
             _dict['most_recent_invoice'] = None
 
         # set to None if metadata (nullable) is None
-        # and __fields_set__ contains the field
-        if self.metadata is None and "metadata" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
             _dict['metadata'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> SubscriptionFetchResponseData:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of SubscriptionFetchResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return SubscriptionFetchResponseData.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = SubscriptionFetchResponseData.parse_obj({
+        _obj = cls.model_validate({
             "id": obj.get("id"),
             "domain": obj.get("domain"),
             "status": obj.get("status"),
@@ -132,12 +148,12 @@ class SubscriptionFetchResponseData(BaseModel):
             "cron_expression": obj.get("cron_expression"),
             "next_payment_date": obj.get("next_payment_date"),
             "open_invoice": obj.get("open_invoice"),
-            "created_at": obj.get("createdAt"),
-            "cancelled_at": obj.get("cancelledAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "cancelledAt": obj.get("cancelledAt"),
             "integration": obj.get("integration"),
-            "plan": SubscriptionFetchResponseDataPlan.from_dict(obj.get("plan")) if obj.get("plan") is not None else None,
-            "authorization": TransactionPartialDebitResponseDataAuthorization.from_dict(obj.get("authorization")) if obj.get("authorization") is not None else None,
-            "customer": TransactionFetchResponseDataCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
+            "plan": SubscriptionFetchResponseDataPlan.from_dict(obj["plan"]) if obj.get("plan") is not None else None,
+            "authorization": TransactionPartialDebitResponseDataAuthorization.from_dict(obj["authorization"]) if obj.get("authorization") is not None else None,
+            "customer": TransactionFetchResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
             "invoices": obj.get("invoices"),
             "invoices_history": obj.get("invoices_history"),
             "invoice_limit": obj.get("invoice_limit"),

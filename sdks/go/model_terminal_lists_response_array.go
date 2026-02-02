@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the TerminalListsResponseArray type satisfies the MappedNullable interface at compile time
@@ -30,6 +32,8 @@ type TerminalListsResponseArray struct {
 	Address NullableString `json:"address"`
 	Status string `json:"status"`
 }
+
+type _TerminalListsResponseArray TerminalListsResponseArray
 
 // NewTerminalListsResponseArray instantiates a new TerminalListsResponseArray object
 // This constructor will assign default values to properties that have it defined,
@@ -301,6 +305,51 @@ func (o TerminalListsResponseArray) ToMap() (map[string]interface{}, error) {
 	toSerialize["address"] = o.Address.Get()
 	toSerialize["status"] = o.Status
 	return toSerialize, nil
+}
+
+func (o *TerminalListsResponseArray) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"serial_number",
+		"device_make",
+		"terminal_id",
+		"integration",
+		"domain",
+		"name",
+		"address",
+		"status",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTerminalListsResponseArray := _TerminalListsResponseArray{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTerminalListsResponseArray)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TerminalListsResponseArray(varTerminalListsResponseArray)
+
+	return err
 }
 
 type NullableTerminalListsResponseArray struct {

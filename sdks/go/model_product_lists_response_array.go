@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ProductListsResponseArray type satisfies the MappedNullable interface at compile time
@@ -51,6 +53,8 @@ type ProductListsResponseArray struct {
 	Integration int32 `json:"integration"`
 	LowStockAlert int32 `json:"low_stock_alert"`
 }
+
+type _ProductListsResponseArray ProductListsResponseArray
 
 // NewProductListsResponseArray instantiates a new ProductListsResponseArray object
 // This constructor will assign default values to properties that have it defined,
@@ -880,6 +884,72 @@ func (o ProductListsResponseArray) ToMap() (map[string]interface{}, error) {
 	toSerialize["integration"] = o.Integration
 	toSerialize["low_stock_alert"] = o.LowStockAlert
 	return toSerialize, nil
+}
+
+func (o *ProductListsResponseArray) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"description",
+		"product_code",
+		"slug",
+		"currency",
+		"price",
+		"quantity",
+		"quantity_sold",
+		"active",
+		"domain",
+		"type",
+		"in_stock",
+		"unlimited",
+		"metadata",
+		"files",
+		"success_message",
+		"redirect_url",
+		"split_code",
+		"notification_emails",
+		"minimum_orderable",
+		"maximum_orderable",
+		"createdAt",
+		"updatedAt",
+		"digital_assets",
+		"variant_options",
+		"is_shippable",
+		"shipping_fields",
+		"integration",
+		"low_stock_alert",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varProductListsResponseArray := _ProductListsResponseArray{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varProductListsResponseArray)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProductListsResponseArray(varProductListsResponseArray)
+
+	return err
 }
 
 type NullableProductListsResponseArray struct {

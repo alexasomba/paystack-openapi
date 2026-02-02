@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the TransactionListResponseArraySource type satisfies the MappedNullable interface at compile time
@@ -25,6 +27,8 @@ type TransactionListResponseArraySource struct {
 	Identifier interface{} `json:"identifier"`
 	EntryPoint string `json:"entry_point"`
 }
+
+type _TransactionListResponseArraySource TransactionListResponseArraySource
 
 // NewTransactionListResponseArraySource instantiates a new TransactionListResponseArraySource object
 // This constructor will assign default values to properties that have it defined,
@@ -162,6 +166,46 @@ func (o TransactionListResponseArraySource) ToMap() (map[string]interface{}, err
 	}
 	toSerialize["entry_point"] = o.EntryPoint
 	return toSerialize, nil
+}
+
+func (o *TransactionListResponseArraySource) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"source",
+		"type",
+		"identifier",
+		"entry_point",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTransactionListResponseArraySource := _TransactionListResponseArraySource{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTransactionListResponseArraySource)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TransactionListResponseArraySource(varTransactionListResponseArraySource)
+
+	return err
 }
 
 type NullableTransactionListResponseArraySource struct {

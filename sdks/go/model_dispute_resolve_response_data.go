@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DisputeResolveResponseData type satisfies the MappedNullable interface at compile time
@@ -43,6 +45,8 @@ type DisputeResolveResponseData struct {
 	DueAt interface{} `json:"dueAt"`
 	Message DisputeResolveResponseDataMessage `json:"message"`
 }
+
+type _DisputeResolveResponseData DisputeResolveResponseData
 
 // NewDisputeResolveResponseData instantiates a new DisputeResolveResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -656,6 +660,64 @@ func (o DisputeResolveResponseData) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["message"] = o.Message
 	return toSerialize, nil
+}
+
+func (o *DisputeResolveResponseData) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"currency",
+		"last4",
+		"bin",
+		"transaction_reference",
+		"merchant_transaction_reference",
+		"refund_amount",
+		"status",
+		"domain",
+		"resolution",
+		"category",
+		"note",
+		"attachments",
+		"id",
+		"integration",
+		"transaction",
+		"created_by",
+		"evidence",
+		"resolvedAt",
+		"createdAt",
+		"updatedAt",
+		"dueAt",
+		"message",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDisputeResolveResponseData := _DisputeResolveResponseData{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDisputeResolveResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DisputeResolveResponseData(varDisputeResolveResponseData)
+
+	return err
 }
 
 type NullableDisputeResolveResponseData struct {

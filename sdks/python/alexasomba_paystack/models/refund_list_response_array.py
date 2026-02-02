@@ -18,107 +18,123 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Any, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.subscription_list_response_array_customer import SubscriptionListResponseArrayCustomer
+from typing import Optional, Set
+from typing_extensions import Self
 
 class RefundListResponseArray(BaseModel):
     """
     RefundListResponseArray
-    """
-    integration: StrictInt = Field(...)
-    transaction: StrictInt = Field(...)
-    dispute: Optional[Any] = Field(...)
-    settlement: Optional[Any] = Field(...)
-    id: StrictInt = Field(...)
-    domain: StrictStr = Field(...)
-    currency: StrictStr = Field(...)
-    amount: StrictInt = Field(...)
-    status: StrictStr = Field(...)
-    refunded_at: Optional[Any] = Field(...)
-    refunded_by: StrictStr = Field(...)
-    customer_note: StrictStr = Field(...)
-    merchant_note: StrictStr = Field(...)
-    deducted_amount: StrictInt = Field(...)
-    fully_deducted: StrictInt = Field(...)
-    created_at: StrictStr = Field(..., alias="createdAt")
-    bank_reference: Optional[Any] = Field(...)
-    transaction_reference: StrictStr = Field(...)
-    reason: StrictStr = Field(...)
-    customer: SubscriptionListResponseArrayCustomer = Field(...)
-    refund_type: StrictStr = Field(...)
-    transaction_amount: StrictInt = Field(...)
-    initiated_by: StrictStr = Field(...)
-    refund_channel: StrictStr = Field(...)
-    session_id: Optional[Any] = Field(...)
-    collect_account_number: StrictBool = Field(...)
-    __properties = ["integration", "transaction", "dispute", "settlement", "id", "domain", "currency", "amount", "status", "refunded_at", "refunded_by", "customer_note", "merchant_note", "deducted_amount", "fully_deducted", "createdAt", "bank_reference", "transaction_reference", "reason", "customer", "refund_type", "transaction_amount", "initiated_by", "refund_channel", "session_id", "collect_account_number"]
+    """ # noqa: E501
+    integration: StrictInt
+    transaction: StrictInt
+    dispute: Optional[Any]
+    settlement: Optional[Any]
+    id: StrictInt
+    domain: StrictStr
+    currency: StrictStr
+    amount: StrictInt
+    status: StrictStr
+    refunded_at: Optional[Any]
+    refunded_by: StrictStr
+    customer_note: StrictStr
+    merchant_note: StrictStr
+    deducted_amount: StrictInt
+    fully_deducted: StrictInt
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    bank_reference: Optional[Any]
+    transaction_reference: StrictStr
+    reason: StrictStr
+    customer: SubscriptionListResponseArrayCustomer
+    refund_type: StrictStr
+    transaction_amount: StrictInt
+    initiated_by: StrictStr
+    refund_channel: StrictStr
+    session_id: Optional[Any]
+    collect_account_number: StrictBool
+    __properties: ClassVar[List[str]] = ["integration", "transaction", "dispute", "settlement", "id", "domain", "currency", "amount", "status", "refunded_at", "refunded_by", "customer_note", "merchant_note", "deducted_amount", "fully_deducted", "createdAt", "bank_reference", "transaction_reference", "reason", "customer", "refund_type", "transaction_amount", "initiated_by", "refund_channel", "session_id", "collect_account_number"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> RefundListResponseArray:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of RefundListResponseArray from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of customer
         if self.customer:
             _dict['customer'] = self.customer.to_dict()
         # set to None if dispute (nullable) is None
-        # and __fields_set__ contains the field
-        if self.dispute is None and "dispute" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.dispute is None and "dispute" in self.model_fields_set:
             _dict['dispute'] = None
 
         # set to None if settlement (nullable) is None
-        # and __fields_set__ contains the field
-        if self.settlement is None and "settlement" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.settlement is None and "settlement" in self.model_fields_set:
             _dict['settlement'] = None
 
         # set to None if refunded_at (nullable) is None
-        # and __fields_set__ contains the field
-        if self.refunded_at is None and "refunded_at" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.refunded_at is None and "refunded_at" in self.model_fields_set:
             _dict['refunded_at'] = None
 
         # set to None if bank_reference (nullable) is None
-        # and __fields_set__ contains the field
-        if self.bank_reference is None and "bank_reference" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.bank_reference is None and "bank_reference" in self.model_fields_set:
             _dict['bank_reference'] = None
 
         # set to None if session_id (nullable) is None
-        # and __fields_set__ contains the field
-        if self.session_id is None and "session_id" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.session_id is None and "session_id" in self.model_fields_set:
             _dict['session_id'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> RefundListResponseArray:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of RefundListResponseArray from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return RefundListResponseArray.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = RefundListResponseArray.parse_obj({
+        _obj = cls.model_validate({
             "integration": obj.get("integration"),
             "transaction": obj.get("transaction"),
             "dispute": obj.get("dispute"),
@@ -134,11 +150,11 @@ class RefundListResponseArray(BaseModel):
             "merchant_note": obj.get("merchant_note"),
             "deducted_amount": obj.get("deducted_amount"),
             "fully_deducted": obj.get("fully_deducted"),
-            "created_at": obj.get("createdAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "bank_reference": obj.get("bank_reference"),
             "transaction_reference": obj.get("transaction_reference"),
             "reason": obj.get("reason"),
-            "customer": SubscriptionListResponseArrayCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
+            "customer": SubscriptionListResponseArrayCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
             "refund_type": obj.get("refund_type"),
             "transaction_amount": obj.get("transaction_amount"),
             "initiated_by": obj.get("initiated_by"),

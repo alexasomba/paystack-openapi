@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the SubscriptionCreateResponse type satisfies the MappedNullable interface at compile time
@@ -24,6 +26,8 @@ type SubscriptionCreateResponse struct {
 	Message string `json:"message"`
 	Data SubscriptionCreateResponseData `json:"data"`
 }
+
+type _SubscriptionCreateResponse SubscriptionCreateResponse
 
 // NewSubscriptionCreateResponse instantiates a new SubscriptionCreateResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -131,6 +135,45 @@ func (o SubscriptionCreateResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["message"] = o.Message
 	toSerialize["data"] = o.Data
 	return toSerialize, nil
+}
+
+func (o *SubscriptionCreateResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"status",
+		"message",
+		"data",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSubscriptionCreateResponse := _SubscriptionCreateResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSubscriptionCreateResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SubscriptionCreateResponse(varSubscriptionCreateResponse)
+
+	return err
 }
 
 type NullableSubscriptionCreateResponse struct {

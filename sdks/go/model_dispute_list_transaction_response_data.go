@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DisputeListTransactionResponseData type satisfies the MappedNullable interface at compile time
@@ -44,6 +46,8 @@ type DisputeListTransactionResponseData struct {
 	UpdatedAt string `json:"updatedAt"`
 	DueAt interface{} `json:"dueAt"`
 }
+
+type _DisputeListTransactionResponseData DisputeListTransactionResponseData
 
 // NewDisputeListTransactionResponseData instantiates a new DisputeListTransactionResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -699,6 +703,65 @@ func (o DisputeListTransactionResponseData) ToMap() (map[string]interface{}, err
 		toSerialize["dueAt"] = o.DueAt
 	}
 	return toSerialize, nil
+}
+
+func (o *DisputeListTransactionResponseData) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"history",
+		"messages",
+		"currency",
+		"last4",
+		"bin",
+		"transaction_reference",
+		"merchant_transaction_reference",
+		"refund_amount",
+		"status",
+		"domain",
+		"resolution",
+		"category",
+		"note",
+		"attachments",
+		"id",
+		"integration",
+		"transaction",
+		"created_by",
+		"evidence",
+		"resolvedAt",
+		"createdAt",
+		"updatedAt",
+		"dueAt",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDisputeListTransactionResponseData := _DisputeListTransactionResponseData{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDisputeListTransactionResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DisputeListTransactionResponseData(varDisputeListTransactionResponseData)
+
+	return err
 }
 
 type NullableDisputeListTransactionResponseData struct {

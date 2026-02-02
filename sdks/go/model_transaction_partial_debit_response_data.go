@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the TransactionPartialDebitResponseData type satisfies the MappedNullable interface at compile time
@@ -39,6 +41,8 @@ type TransactionPartialDebitResponseData struct {
 	RequestedAmount int32 `json:"requested_amount"`
 	Id int32 `json:"id"`
 }
+
+type _TransactionPartialDebitResponseData TransactionPartialDebitResponseData
 
 // NewTransactionPartialDebitResponseData instantiates a new TransactionPartialDebitResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -546,6 +550,60 @@ func (o TransactionPartialDebitResponseData) ToMap() (map[string]interface{}, er
 	toSerialize["requested_amount"] = o.RequestedAmount
 	toSerialize["id"] = o.Id
 	return toSerialize, nil
+}
+
+func (o *TransactionPartialDebitResponseData) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"amount",
+		"currency",
+		"transaction_date",
+		"status",
+		"reference",
+		"domain",
+		"metadata",
+		"gateway_response",
+		"message",
+		"channel",
+		"ip_address",
+		"log",
+		"fees",
+		"authorization",
+		"customer",
+		"plan",
+		"requested_amount",
+		"id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTransactionPartialDebitResponseData := _TransactionPartialDebitResponseData{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTransactionPartialDebitResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TransactionPartialDebitResponseData(varTransactionPartialDebitResponseData)
+
+	return err
 }
 
 type NullableTransactionPartialDebitResponseData struct {

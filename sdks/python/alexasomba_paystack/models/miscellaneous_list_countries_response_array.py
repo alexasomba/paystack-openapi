@@ -18,65 +18,81 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Any, Dict
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List
 from alexasomba_paystack.models.miscellaneous_list_countries_response_array_relationships import MiscellaneousListCountriesResponseArrayRelationships
+from typing import Optional, Set
+from typing_extensions import Self
 
 class MiscellaneousListCountriesResponseArray(BaseModel):
     """
     MiscellaneousListCountriesResponseArray
-    """
-    id: StrictInt = Field(...)
-    active_for_dashboard_onboarding: StrictBool = Field(...)
-    name: StrictStr = Field(...)
-    iso_code: StrictStr = Field(...)
-    default_currency_code: StrictStr = Field(...)
-    integration_defaults: Dict[str, Any] = Field(...)
-    calling_code: StrictStr = Field(...)
-    pilot_mode: StrictBool = Field(...)
-    relationships: MiscellaneousListCountriesResponseArrayRelationships = Field(...)
-    __properties = ["id", "active_for_dashboard_onboarding", "name", "iso_code", "default_currency_code", "integration_defaults", "calling_code", "pilot_mode", "relationships"]
+    """ # noqa: E501
+    id: StrictInt
+    active_for_dashboard_onboarding: StrictBool
+    name: StrictStr
+    iso_code: StrictStr
+    default_currency_code: StrictStr
+    integration_defaults: Dict[str, Any]
+    calling_code: StrictStr
+    pilot_mode: StrictBool
+    relationships: MiscellaneousListCountriesResponseArrayRelationships
+    __properties: ClassVar[List[str]] = ["id", "active_for_dashboard_onboarding", "name", "iso_code", "default_currency_code", "integration_defaults", "calling_code", "pilot_mode", "relationships"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> MiscellaneousListCountriesResponseArray:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of MiscellaneousListCountriesResponseArray from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of relationships
         if self.relationships:
             _dict['relationships'] = self.relationships.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> MiscellaneousListCountriesResponseArray:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of MiscellaneousListCountriesResponseArray from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return MiscellaneousListCountriesResponseArray.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = MiscellaneousListCountriesResponseArray.parse_obj({
+        _obj = cls.model_validate({
             "id": obj.get("id"),
             "active_for_dashboard_onboarding": obj.get("active_for_dashboard_onboarding"),
             "name": obj.get("name"),
@@ -85,7 +101,7 @@ class MiscellaneousListCountriesResponseArray(BaseModel):
             "integration_defaults": obj.get("integration_defaults"),
             "calling_code": obj.get("calling_code"),
             "pilot_mode": obj.get("pilot_mode"),
-            "relationships": MiscellaneousListCountriesResponseArrayRelationships.from_dict(obj.get("relationships")) if obj.get("relationships") is not None else None
+            "relationships": MiscellaneousListCountriesResponseArrayRelationships.from_dict(obj["relationships"]) if obj.get("relationships") is not None else None
         })
         return _obj
 

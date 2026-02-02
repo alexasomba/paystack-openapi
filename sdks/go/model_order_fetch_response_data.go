@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the OrderFetchResponseData type satisfies the MappedNullable interface at compile time
@@ -51,6 +53,8 @@ type OrderFetchResponseData struct {
 	Items []OrderItemsArray `json:"items"`
 	DiscountAmount interface{} `json:"discount_amount"`
 }
+
+type _OrderFetchResponseData OrderFetchResponseData
 
 // NewOrderFetchResponseData instantiates a new OrderFetchResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -880,6 +884,72 @@ func (o OrderFetchResponseData) ToMap() (map[string]interface{}, error) {
 		toSerialize["discount_amount"] = o.DiscountAmount
 	}
 	return toSerialize, nil
+}
+
+func (o *OrderFetchResponseData) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"discounts",
+		"order_code",
+		"domain",
+		"currency",
+		"amount",
+		"email",
+		"status",
+		"refunded",
+		"paid_at",
+		"shipping_address",
+		"metadata",
+		"shipping_fees",
+		"shipping_method",
+		"is_viewed",
+		"expiration_date",
+		"pay_for_me",
+		"id",
+		"integration",
+		"page",
+		"customer",
+		"shipping",
+		"createdAt",
+		"updatedAt",
+		"transaction",
+		"is_gift",
+		"payer",
+		"fully_refunded",
+		"refunded_amount",
+		"items",
+		"discount_amount",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOrderFetchResponseData := _OrderFetchResponseData{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOrderFetchResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrderFetchResponseData(varOrderFetchResponseData)
+
+	return err
 }
 
 type NullableOrderFetchResponseData struct {

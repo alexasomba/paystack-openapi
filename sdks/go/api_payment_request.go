@@ -593,25 +593,25 @@ func (a *PaymentRequestAPIService) PaymentRequestListExecute(r ApiPaymentRequest
 	localVarFormParams := url.Values{}
 
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.customer != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "customer", r.customer, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "customer", r.customer, "form", "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
 	}
 	if r.currency != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "currency", r.currency, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "currency", r.currency, "form", "")
 	}
 	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
 	}
 	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

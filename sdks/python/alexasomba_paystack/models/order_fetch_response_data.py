@@ -18,72 +18,88 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.order_items_array import OrderItemsArray
 from alexasomba_paystack.models.transaction_fetch_response_data_customer import TransactionFetchResponseDataCustomer
+from typing import Optional, Set
+from typing_extensions import Self
 
 class OrderFetchResponseData(BaseModel):
     """
     OrderFetchResponseData
-    """
-    discounts: conlist(Any) = Field(...)
-    order_code: StrictStr = Field(...)
-    domain: StrictStr = Field(...)
-    currency: StrictStr = Field(...)
-    amount: StrictInt = Field(...)
-    email: StrictStr = Field(...)
-    status: StrictStr = Field(...)
-    refunded: StrictBool = Field(...)
-    paid_at: StrictStr = Field(...)
-    shipping_address: Optional[Any] = Field(...)
-    metadata: Dict[str, Any] = Field(...)
-    shipping_fees: StrictInt = Field(...)
-    shipping_method: Optional[Any] = Field(...)
-    is_viewed: StrictBool = Field(...)
-    expiration_date: StrictStr = Field(...)
-    pay_for_me: StrictBool = Field(...)
-    id: StrictInt = Field(...)
-    integration: StrictInt = Field(...)
-    page: Optional[Any] = Field(...)
-    customer: TransactionFetchResponseDataCustomer = Field(...)
-    shipping: Optional[Any] = Field(...)
-    created_at: StrictStr = Field(..., alias="createdAt")
-    updated_at: StrictStr = Field(..., alias="updatedAt")
-    transaction: StrictInt = Field(...)
-    is_gift: StrictBool = Field(...)
-    payer: TransactionFetchResponseDataCustomer = Field(...)
-    fully_refunded: StrictBool = Field(...)
-    refunded_amount: StrictInt = Field(...)
-    items: conlist(OrderItemsArray) = Field(...)
-    discount_amount: Optional[Any] = Field(...)
-    __properties = ["discounts", "order_code", "domain", "currency", "amount", "email", "status", "refunded", "paid_at", "shipping_address", "metadata", "shipping_fees", "shipping_method", "is_viewed", "expiration_date", "pay_for_me", "id", "integration", "page", "customer", "shipping", "createdAt", "updatedAt", "transaction", "is_gift", "payer", "fully_refunded", "refunded_amount", "items", "discount_amount"]
+    """ # noqa: E501
+    discounts: List[Any]
+    order_code: StrictStr
+    domain: StrictStr
+    currency: StrictStr
+    amount: StrictInt
+    email: StrictStr
+    status: StrictStr
+    refunded: StrictBool
+    paid_at: StrictStr
+    shipping_address: Optional[Any]
+    metadata: Dict[str, Any]
+    shipping_fees: StrictInt
+    shipping_method: Optional[Any]
+    is_viewed: StrictBool
+    expiration_date: StrictStr
+    pay_for_me: StrictBool
+    id: StrictInt
+    integration: StrictInt
+    page: Optional[Any]
+    customer: TransactionFetchResponseDataCustomer
+    shipping: Optional[Any]
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
+    transaction: StrictInt
+    is_gift: StrictBool
+    payer: TransactionFetchResponseDataCustomer
+    fully_refunded: StrictBool
+    refunded_amount: StrictInt
+    items: List[OrderItemsArray]
+    discount_amount: Optional[Any]
+    __properties: ClassVar[List[str]] = ["discounts", "order_code", "domain", "currency", "amount", "email", "status", "refunded", "paid_at", "shipping_address", "metadata", "shipping_fees", "shipping_method", "is_viewed", "expiration_date", "pay_for_me", "id", "integration", "page", "customer", "shipping", "createdAt", "updatedAt", "transaction", "is_gift", "payer", "fully_refunded", "refunded_amount", "items", "discount_amount"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> OrderFetchResponseData:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of OrderFetchResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of customer
         if self.customer:
             _dict['customer'] = self.customer.to_dict()
@@ -93,47 +109,47 @@ class OrderFetchResponseData(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in items (list)
         _items = []
         if self.items:
-            for _item in self.items:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_items in self.items:
+                if _item_items:
+                    _items.append(_item_items.to_dict())
             _dict['items'] = _items
         # set to None if shipping_address (nullable) is None
-        # and __fields_set__ contains the field
-        if self.shipping_address is None and "shipping_address" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.shipping_address is None and "shipping_address" in self.model_fields_set:
             _dict['shipping_address'] = None
 
         # set to None if shipping_method (nullable) is None
-        # and __fields_set__ contains the field
-        if self.shipping_method is None and "shipping_method" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.shipping_method is None and "shipping_method" in self.model_fields_set:
             _dict['shipping_method'] = None
 
         # set to None if page (nullable) is None
-        # and __fields_set__ contains the field
-        if self.page is None and "page" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.page is None and "page" in self.model_fields_set:
             _dict['page'] = None
 
         # set to None if shipping (nullable) is None
-        # and __fields_set__ contains the field
-        if self.shipping is None and "shipping" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.shipping is None and "shipping" in self.model_fields_set:
             _dict['shipping'] = None
 
         # set to None if discount_amount (nullable) is None
-        # and __fields_set__ contains the field
-        if self.discount_amount is None and "discount_amount" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.discount_amount is None and "discount_amount" in self.model_fields_set:
             _dict['discount_amount'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> OrderFetchResponseData:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of OrderFetchResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return OrderFetchResponseData.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = OrderFetchResponseData.parse_obj({
+        _obj = cls.model_validate({
             "discounts": obj.get("discounts"),
             "order_code": obj.get("order_code"),
             "domain": obj.get("domain"),
@@ -153,16 +169,16 @@ class OrderFetchResponseData(BaseModel):
             "id": obj.get("id"),
             "integration": obj.get("integration"),
             "page": obj.get("page"),
-            "customer": TransactionFetchResponseDataCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
+            "customer": TransactionFetchResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
             "shipping": obj.get("shipping"),
-            "created_at": obj.get("createdAt"),
-            "updated_at": obj.get("updatedAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "transaction": obj.get("transaction"),
             "is_gift": obj.get("is_gift"),
-            "payer": TransactionFetchResponseDataCustomer.from_dict(obj.get("payer")) if obj.get("payer") is not None else None,
+            "payer": TransactionFetchResponseDataCustomer.from_dict(obj["payer"]) if obj.get("payer") is not None else None,
             "fully_refunded": obj.get("fully_refunded"),
             "refunded_amount": obj.get("refunded_amount"),
-            "items": [OrderItemsArray.from_dict(_item) for _item in obj.get("items")] if obj.get("items") is not None else None,
+            "items": [OrderItemsArray.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None,
             "discount_amount": obj.get("discount_amount")
         })
         return _obj

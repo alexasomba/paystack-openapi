@@ -592,22 +592,22 @@ func (a *SubscriptionAPIService) SubscriptionListExecute(r ApiSubscriptionListRe
 	localVarFormParams := url.Values{}
 
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.plan != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "plan", r.plan, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "plan", r.plan, "form", "")
 	}
 	if r.customer != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "customer", r.customer, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "customer", r.customer, "form", "")
 	}
 	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
 	}
 	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

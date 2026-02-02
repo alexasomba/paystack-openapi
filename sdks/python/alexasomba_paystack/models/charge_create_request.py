@@ -19,55 +19,72 @@ import re  # noqa: F401
 import json
 
 from datetime import date
-from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.bank import Bank
 from alexasomba_paystack.models.eft import EFT
 from alexasomba_paystack.models.mobile_money import MobileMoney
 from alexasomba_paystack.models.ussd import USSD
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ChargeCreateRequest(BaseModel):
     """
     ChargeCreateRequest
-    """
-    email: StrictStr = Field(..., description="Customer's email address")
-    amount: StrictInt = Field(..., description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")
-    authorization_code: Optional[StrictStr] = Field(None, description="An authorization code to charge.")
-    pin: Optional[StrictStr] = Field(None, description="4-digit PIN (send with a non-reusable authorization code)")
-    reference: Optional[StrictStr] = Field(None, description="Unique transaction reference. Only -, .`, = and alphanumeric characters allowed.")
-    birthday: Optional[date] = Field(None, description="The customer's birthday in the format YYYY-MM-DD e.g 2017-05-16")
-    device_id: Optional[StrictStr] = Field(None, description="This is the unique identifier of the device a user uses in making payment.  Only -, .`, = and alphanumeric characters are allowed.")
-    metadata: Optional[Dict[str, Any]] = Field(None, description="JSON object of custom data")
+    """ # noqa: E501
+    email: StrictStr = Field(description="Customer's email address")
+    amount: StrictInt = Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")
+    authorization_code: Optional[StrictStr] = Field(default=None, description="An authorization code to charge.")
+    pin: Optional[StrictStr] = Field(default=None, description="4-digit PIN (send with a non-reusable authorization code)")
+    reference: Optional[StrictStr] = Field(default=None, description="Unique transaction reference. Only -, .`, = and alphanumeric characters allowed.")
+    birthday: Optional[date] = Field(default=None, description="The customer's birthday in the format YYYY-MM-DD e.g 2017-05-16")
+    device_id: Optional[StrictStr] = Field(default=None, description="This is the unique identifier of the device a user uses in making payment.  Only -, .`, = and alphanumeric characters are allowed.")
+    metadata: Optional[Dict[str, Any]] = Field(default=None, description="JSON object of custom data")
     bank: Optional[Bank] = None
     mobile_money: Optional[MobileMoney] = None
     ussd: Optional[USSD] = None
     eft: Optional[EFT] = None
-    __properties = ["email", "amount", "authorization_code", "pin", "reference", "birthday", "device_id", "metadata", "bank", "mobile_money", "ussd", "eft"]
+    __properties: ClassVar[List[str]] = ["email", "amount", "authorization_code", "pin", "reference", "birthday", "device_id", "metadata", "bank", "mobile_money", "ussd", "eft"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ChargeCreateRequest:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ChargeCreateRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of bank
         if self.bank:
             _dict['bank'] = self.bank.to_dict()
@@ -83,15 +100,15 @@ class ChargeCreateRequest(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ChargeCreateRequest:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ChargeCreateRequest from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ChargeCreateRequest.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = ChargeCreateRequest.parse_obj({
+        _obj = cls.model_validate({
             "email": obj.get("email"),
             "amount": obj.get("amount"),
             "authorization_code": obj.get("authorization_code"),
@@ -100,10 +117,10 @@ class ChargeCreateRequest(BaseModel):
             "birthday": obj.get("birthday"),
             "device_id": obj.get("device_id"),
             "metadata": obj.get("metadata"),
-            "bank": Bank.from_dict(obj.get("bank")) if obj.get("bank") is not None else None,
-            "mobile_money": MobileMoney.from_dict(obj.get("mobile_money")) if obj.get("mobile_money") is not None else None,
-            "ussd": USSD.from_dict(obj.get("ussd")) if obj.get("ussd") is not None else None,
-            "eft": EFT.from_dict(obj.get("eft")) if obj.get("eft") is not None else None
+            "bank": Bank.from_dict(obj["bank"]) if obj.get("bank") is not None else None,
+            "mobile_money": MobileMoney.from_dict(obj["mobile_money"]) if obj.get("mobile_money") is not None else None,
+            "ussd": USSD.from_dict(obj["ussd"]) if obj.get("ussd") is not None else None,
+            "eft": EFT.from_dict(obj["eft"]) if obj.get("eft") is not None else None
         })
         return _obj
 

@@ -18,67 +18,83 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr, validator
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional, Set
+from typing_extensions import Self
 
 class RefundCreate(BaseModel):
     """
     RefundCreate
-    """
-    transaction: StrictStr = Field(..., description="The reference of a previosuly completed transaction")
-    amount: Optional[StrictInt] = Field(None, description="Amount to be refunded to the customer. It cannot be more than the original transaction amount")
-    currency: Optional[StrictStr] = Field(None, description="Three-letter ISO currency")
-    customer_note: Optional[StrictStr] = Field(None, description="Customer reason")
-    merchant_note: Optional[StrictStr] = Field(None, description="Merchant reason")
-    __properties = ["transaction", "amount", "currency", "customer_note", "merchant_note"]
+    """ # noqa: E501
+    transaction: StrictStr = Field(description="The reference of a previosuly completed transaction")
+    amount: Optional[StrictInt] = Field(default=None, description="Amount to be refunded to the customer. It cannot be more than the original transaction amount")
+    currency: Optional[StrictStr] = Field(default=None, description="Three-letter ISO currency")
+    customer_note: Optional[StrictStr] = Field(default=None, description="Customer reason")
+    merchant_note: Optional[StrictStr] = Field(default=None, description="Merchant reason")
+    __properties: ClassVar[List[str]] = ["transaction", "amount", "currency", "customer_note", "merchant_note"]
 
-    @validator('currency')
+    @field_validator('currency')
     def currency_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in ('GHS', 'KES', 'NGN', 'USD', 'ZAR'):
+        if value not in set(['GHS', 'KES', 'NGN', 'USD', 'ZAR']):
             raise ValueError("must be one of enum values ('GHS', 'KES', 'NGN', 'USD', 'ZAR')")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> RefundCreate:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of RefundCreate from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> RefundCreate:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of RefundCreate from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return RefundCreate.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = RefundCreate.parse_obj({
+        _obj = cls.model_validate({
             "transaction": obj.get("transaction"),
             "amount": obj.get("amount"),
             "currency": obj.get("currency"),

@@ -18,55 +18,71 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Any, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.dedicated_nuban_create_response_data_assignment import DedicatedNubanCreateResponseDataAssignment
 from alexasomba_paystack.models.dedicated_nuban_create_response_data_customer import DedicatedNubanCreateResponseDataCustomer
 from alexasomba_paystack.models.dedicated_nuban_list_response_array_bank import DedicatedNubanListResponseArrayBank
+from typing import Optional, Set
+from typing_extensions import Self
 
 class DedicatedNubanCreateResponseData(BaseModel):
     """
     DedicatedNubanCreateResponseData
-    """
-    bank: DedicatedNubanListResponseArrayBank = Field(...)
-    account_name: StrictStr = Field(...)
-    account_number: StrictStr = Field(...)
-    assigned: StrictBool = Field(...)
-    currency: StrictStr = Field(...)
-    metadata: Optional[Any] = Field(...)
-    active: StrictBool = Field(...)
-    id: StrictInt = Field(...)
-    created_at: StrictStr = Field(...)
-    updated_at: StrictStr = Field(...)
-    assignment: DedicatedNubanCreateResponseDataAssignment = Field(...)
-    customer: DedicatedNubanCreateResponseDataCustomer = Field(...)
-    __properties = ["bank", "account_name", "account_number", "assigned", "currency", "metadata", "active", "id", "created_at", "updated_at", "assignment", "customer"]
+    """ # noqa: E501
+    bank: DedicatedNubanListResponseArrayBank
+    account_name: StrictStr
+    account_number: StrictStr
+    assigned: StrictBool
+    currency: StrictStr
+    metadata: Optional[Any]
+    active: StrictBool
+    id: StrictInt
+    created_at: StrictStr
+    updated_at: StrictStr
+    assignment: DedicatedNubanCreateResponseDataAssignment
+    customer: DedicatedNubanCreateResponseDataCustomer
+    __properties: ClassVar[List[str]] = ["bank", "account_name", "account_number", "assigned", "currency", "metadata", "active", "id", "created_at", "updated_at", "assignment", "customer"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> DedicatedNubanCreateResponseData:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of DedicatedNubanCreateResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of bank
         if self.bank:
             _dict['bank'] = self.bank.to_dict()
@@ -77,23 +93,23 @@ class DedicatedNubanCreateResponseData(BaseModel):
         if self.customer:
             _dict['customer'] = self.customer.to_dict()
         # set to None if metadata (nullable) is None
-        # and __fields_set__ contains the field
-        if self.metadata is None and "metadata" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
             _dict['metadata'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> DedicatedNubanCreateResponseData:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of DedicatedNubanCreateResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return DedicatedNubanCreateResponseData.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = DedicatedNubanCreateResponseData.parse_obj({
-            "bank": DedicatedNubanListResponseArrayBank.from_dict(obj.get("bank")) if obj.get("bank") is not None else None,
+        _obj = cls.model_validate({
+            "bank": DedicatedNubanListResponseArrayBank.from_dict(obj["bank"]) if obj.get("bank") is not None else None,
             "account_name": obj.get("account_name"),
             "account_number": obj.get("account_number"),
             "assigned": obj.get("assigned"),
@@ -103,8 +119,8 @@ class DedicatedNubanCreateResponseData(BaseModel):
             "id": obj.get("id"),
             "created_at": obj.get("created_at"),
             "updated_at": obj.get("updated_at"),
-            "assignment": DedicatedNubanCreateResponseDataAssignment.from_dict(obj.get("assignment")) if obj.get("assignment") is not None else None,
-            "customer": DedicatedNubanCreateResponseDataCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None
+            "assignment": DedicatedNubanCreateResponseDataAssignment.from_dict(obj["assignment"]) if obj.get("assignment") is not None else None,
+            "customer": DedicatedNubanCreateResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None
         })
         return _obj
 

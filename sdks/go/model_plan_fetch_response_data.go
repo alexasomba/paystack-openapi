@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PlanFetchResponseData type satisfies the MappedNullable interface at compile time
@@ -49,6 +51,8 @@ type PlanFetchResponseData struct {
 	TotalRevenue int32 `json:"total_revenue"`
 	Subscribers []interface{} `json:"subscribers"`
 }
+
+type _PlanFetchResponseData PlanFetchResponseData
 
 // NewPlanFetchResponseData instantiates a new PlanFetchResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -820,6 +824,70 @@ func (o PlanFetchResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["total_revenue"] = o.TotalRevenue
 	toSerialize["subscribers"] = o.Subscribers
 	return toSerialize, nil
+}
+
+func (o *PlanFetchResponseData) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"subscriptions",
+		"pages",
+		"domain",
+		"name",
+		"plan_code",
+		"description",
+		"amount",
+		"interval",
+		"invoice_limit",
+		"send_invoices",
+		"send_sms",
+		"hosted_page",
+		"hosted_page_url",
+		"hosted_page_summary",
+		"currency",
+		"migrate",
+		"is_deleted",
+		"is_archived",
+		"id",
+		"integration",
+		"createdAt",
+		"updatedAt",
+		"pages_count",
+		"subscribers_count",
+		"subscriptions_count",
+		"active_subscriptions_count",
+		"total_revenue",
+		"subscribers",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPlanFetchResponseData := _PlanFetchResponseData{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPlanFetchResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PlanFetchResponseData(varPlanFetchResponseData)
+
+	return err
 }
 
 type NullablePlanFetchResponseData struct {

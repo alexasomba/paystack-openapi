@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the TransferRecipientBulk type satisfies the MappedNullable interface at compile time
@@ -23,6 +25,8 @@ type TransferRecipientBulk struct {
 	// A list of transfer recipient object.
 	Batch []TransferRecipientCreate `json:"batch"`
 }
+
+type _TransferRecipientBulk TransferRecipientBulk
 
 // NewTransferRecipientBulk instantiates a new TransferRecipientBulk object
 // This constructor will assign default values to properties that have it defined,
@@ -78,6 +82,43 @@ func (o TransferRecipientBulk) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["batch"] = o.Batch
 	return toSerialize, nil
+}
+
+func (o *TransferRecipientBulk) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"batch",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTransferRecipientBulk := _TransferRecipientBulk{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTransferRecipientBulk)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TransferRecipientBulk(varTransferRecipientBulk)
+
+	return err
 }
 
 type NullableTransferRecipientBulk struct {

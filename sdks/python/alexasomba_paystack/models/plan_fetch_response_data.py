@@ -18,100 +18,116 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Any, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional, Set
+from typing_extensions import Self
 
 class PlanFetchResponseData(BaseModel):
     """
     PlanFetchResponseData
-    """
-    subscriptions: conlist(Any) = Field(...)
-    pages: conlist(Any) = Field(...)
-    domain: StrictStr = Field(...)
-    name: StrictStr = Field(...)
-    plan_code: StrictStr = Field(...)
-    description: Optional[Any] = Field(...)
-    amount: StrictInt = Field(...)
-    interval: StrictStr = Field(...)
-    invoice_limit: StrictInt = Field(...)
-    send_invoices: StrictBool = Field(...)
-    send_sms: StrictBool = Field(...)
-    hosted_page: StrictBool = Field(...)
-    hosted_page_url: Optional[Any] = Field(...)
-    hosted_page_summary: Optional[Any] = Field(...)
-    currency: StrictStr = Field(...)
-    migrate: StrictBool = Field(...)
-    is_deleted: StrictBool = Field(...)
-    is_archived: StrictBool = Field(...)
-    id: StrictInt = Field(...)
-    integration: StrictInt = Field(...)
-    created_at: StrictStr = Field(..., alias="createdAt")
-    updated_at: StrictStr = Field(..., alias="updatedAt")
-    pages_count: StrictInt = Field(...)
-    subscribers_count: StrictInt = Field(...)
-    subscriptions_count: StrictInt = Field(...)
-    active_subscriptions_count: Optional[StrictInt] = Field(...)
-    total_revenue: StrictInt = Field(...)
-    subscribers: conlist(Any) = Field(...)
-    __properties = ["subscriptions", "pages", "domain", "name", "plan_code", "description", "amount", "interval", "invoice_limit", "send_invoices", "send_sms", "hosted_page", "hosted_page_url", "hosted_page_summary", "currency", "migrate", "is_deleted", "is_archived", "id", "integration", "createdAt", "updatedAt", "pages_count", "subscribers_count", "subscriptions_count", "active_subscriptions_count", "total_revenue", "subscribers"]
+    """ # noqa: E501
+    subscriptions: List[Any]
+    pages: List[Any]
+    domain: StrictStr
+    name: StrictStr
+    plan_code: StrictStr
+    description: Optional[Any]
+    amount: StrictInt
+    interval: StrictStr
+    invoice_limit: StrictInt
+    send_invoices: StrictBool
+    send_sms: StrictBool
+    hosted_page: StrictBool
+    hosted_page_url: Optional[Any]
+    hosted_page_summary: Optional[Any]
+    currency: StrictStr
+    migrate: StrictBool
+    is_deleted: StrictBool
+    is_archived: StrictBool
+    id: StrictInt
+    integration: StrictInt
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
+    pages_count: StrictInt
+    subscribers_count: StrictInt
+    subscriptions_count: StrictInt
+    active_subscriptions_count: Optional[StrictInt]
+    total_revenue: StrictInt
+    subscribers: List[Any]
+    __properties: ClassVar[List[str]] = ["subscriptions", "pages", "domain", "name", "plan_code", "description", "amount", "interval", "invoice_limit", "send_invoices", "send_sms", "hosted_page", "hosted_page_url", "hosted_page_summary", "currency", "migrate", "is_deleted", "is_archived", "id", "integration", "createdAt", "updatedAt", "pages_count", "subscribers_count", "subscriptions_count", "active_subscriptions_count", "total_revenue", "subscribers"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> PlanFetchResponseData:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of PlanFetchResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # set to None if description (nullable) is None
-        # and __fields_set__ contains the field
-        if self.description is None and "description" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
         # set to None if hosted_page_url (nullable) is None
-        # and __fields_set__ contains the field
-        if self.hosted_page_url is None and "hosted_page_url" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.hosted_page_url is None and "hosted_page_url" in self.model_fields_set:
             _dict['hosted_page_url'] = None
 
         # set to None if hosted_page_summary (nullable) is None
-        # and __fields_set__ contains the field
-        if self.hosted_page_summary is None and "hosted_page_summary" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.hosted_page_summary is None and "hosted_page_summary" in self.model_fields_set:
             _dict['hosted_page_summary'] = None
 
         # set to None if active_subscriptions_count (nullable) is None
-        # and __fields_set__ contains the field
-        if self.active_subscriptions_count is None and "active_subscriptions_count" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.active_subscriptions_count is None and "active_subscriptions_count" in self.model_fields_set:
             _dict['active_subscriptions_count'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> PlanFetchResponseData:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of PlanFetchResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return PlanFetchResponseData.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = PlanFetchResponseData.parse_obj({
+        _obj = cls.model_validate({
             "subscriptions": obj.get("subscriptions"),
             "pages": obj.get("pages"),
             "domain": obj.get("domain"),
@@ -132,8 +148,8 @@ class PlanFetchResponseData(BaseModel):
             "is_archived": obj.get("is_archived"),
             "id": obj.get("id"),
             "integration": obj.get("integration"),
-            "created_at": obj.get("createdAt"),
-            "updated_at": obj.get("updatedAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "pages_count": obj.get("pages_count"),
             "subscribers_count": obj.get("subscribers_count"),
             "subscriptions_count": obj.get("subscriptions_count"),

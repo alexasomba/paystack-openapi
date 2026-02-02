@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the SplitSubaccountsArraySubaccount type satisfies the MappedNullable interface at compile time
@@ -32,6 +34,8 @@ type SplitSubaccountsArraySubaccount struct {
 	Currency string `json:"currency"`
 	AccountNumber string `json:"account_number"`
 }
+
+type _SplitSubaccountsArraySubaccount SplitSubaccountsArraySubaccount
 
 // NewSplitSubaccountsArraySubaccount instantiates a new SplitSubaccountsArraySubaccount object
 // This constructor will assign default values to properties that have it defined,
@@ -347,6 +351,53 @@ func (o SplitSubaccountsArraySubaccount) ToMap() (map[string]interface{}, error)
 	toSerialize["currency"] = o.Currency
 	toSerialize["account_number"] = o.AccountNumber
 	return toSerialize, nil
+}
+
+func (o *SplitSubaccountsArraySubaccount) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"subaccount_code",
+		"business_name",
+		"description",
+		"primary_contact_name",
+		"primary_contact_email",
+		"primary_contact_phone",
+		"metadata",
+		"settlement_bank",
+		"currency",
+		"account_number",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSplitSubaccountsArraySubaccount := _SplitSubaccountsArraySubaccount{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSplitSubaccountsArraySubaccount)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SplitSubaccountsArraySubaccount(varSplitSubaccountsArraySubaccount)
+
+	return err
 }
 
 type NullableSplitSubaccountsArraySubaccount struct {

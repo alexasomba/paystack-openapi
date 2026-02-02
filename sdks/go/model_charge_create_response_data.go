@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ChargeCreateResponseData type satisfies the MappedNullable interface at compile time
@@ -51,6 +53,8 @@ type ChargeCreateResponseData struct {
 	PlanObject map[string]interface{} `json:"plan_object"`
 	Subaccount map[string]interface{} `json:"subaccount"`
 }
+
+type _ChargeCreateResponseData ChargeCreateResponseData
 
 // NewChargeCreateResponseData instantiates a new ChargeCreateResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -894,6 +898,72 @@ func (o ChargeCreateResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["plan_object"] = o.PlanObject
 	toSerialize["subaccount"] = o.Subaccount
 	return toSerialize, nil
+}
+
+func (o *ChargeCreateResponseData) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"domain",
+		"status",
+		"reference",
+		"receipt_number",
+		"amount",
+		"message",
+		"gateway_response",
+		"paid_at",
+		"created_at",
+		"channel",
+		"currency",
+		"ip_address",
+		"metadata",
+		"log",
+		"fees",
+		"fees_split",
+		"authorization",
+		"customer",
+		"plan",
+		"split",
+		"order_id",
+		"requested_amount",
+		"pos_transaction_data",
+		"source",
+		"fees_breakdown",
+		"connect",
+		"transaction_date",
+		"plan_object",
+		"subaccount",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varChargeCreateResponseData := _ChargeCreateResponseData{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varChargeCreateResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ChargeCreateResponseData(varChargeCreateResponseData)
+
+	return err
 }
 
 type NullableChargeCreateResponseData struct {

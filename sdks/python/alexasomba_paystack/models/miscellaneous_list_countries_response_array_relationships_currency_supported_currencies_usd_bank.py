@@ -18,66 +18,82 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Any, List
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List
 from alexasomba_paystack.models.miscellaneous_list_countries_response_array_relationships_currency_supported_currencies_ngn_bank_account_number_pattern import MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern
+from typing import Optional, Set
+from typing_extensions import Self
 
 class MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank(BaseModel):
     """
     MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank
-    """
-    bank_type: StrictStr = Field(...)
-    required_fields: conlist(StrictStr) = Field(...)
-    branch_code: StrictBool = Field(...)
-    branch_code_type: StrictStr = Field(...)
-    account_name: StrictBool = Field(...)
-    account_verification_required: StrictBool = Field(...)
-    account_number_label: StrictStr = Field(...)
-    account_number_pattern: MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern = Field(...)
-    documents: conlist(Any) = Field(...)
-    notices: conlist(StrictStr) = Field(...)
-    __properties = ["bank_type", "required_fields", "branch_code", "branch_code_type", "account_name", "account_verification_required", "account_number_label", "account_number_pattern", "documents", "notices"]
+    """ # noqa: E501
+    bank_type: StrictStr
+    required_fields: List[StrictStr]
+    branch_code: StrictBool
+    branch_code_type: StrictStr
+    account_name: StrictBool
+    account_verification_required: StrictBool
+    account_number_label: StrictStr
+    account_number_pattern: MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern
+    documents: List[Any]
+    notices: List[StrictStr]
+    __properties: ClassVar[List[str]] = ["bank_type", "required_fields", "branch_code", "branch_code_type", "account_name", "account_verification_required", "account_number_label", "account_number_pattern", "documents", "notices"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of account_number_pattern
         if self.account_number_pattern:
             _dict['account_number_pattern'] = self.account_number_pattern.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank.parse_obj({
+        _obj = cls.model_validate({
             "bank_type": obj.get("bank_type"),
             "required_fields": obj.get("required_fields"),
             "branch_code": obj.get("branch_code"),
@@ -85,7 +101,7 @@ class MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurre
             "account_name": obj.get("account_name"),
             "account_verification_required": obj.get("account_verification_required"),
             "account_number_label": obj.get("account_number_label"),
-            "account_number_pattern": MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern.from_dict(obj.get("account_number_pattern")) if obj.get("account_number_pattern") is not None else None,
+            "account_number_pattern": MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern.from_dict(obj["account_number_pattern"]) if obj.get("account_number_pattern") is not None else None,
             "documents": obj.get("documents"),
             "notices": obj.get("notices")
         })

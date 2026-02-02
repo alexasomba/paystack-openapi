@@ -1,0 +1,249 @@
+Spec Lint	Set up job	﻿2026-02-02T16:24:52.9407768Z Current runner version: '2.331.0'
+Spec Lint	Set up job	2026-02-02T16:24:52.9435615Z ##[group]Runner Image Provisioner
+Spec Lint	Set up job	2026-02-02T16:24:52.9436402Z Hosted Compute Agent
+Spec Lint	Set up job	2026-02-02T16:24:52.9437073Z Version: 20260123.484
+Spec Lint	Set up job	2026-02-02T16:24:52.9437643Z Commit: 6bd6555ca37d84114959e1c76d2c01448ff61c5d
+Spec Lint	Set up job	2026-02-02T16:24:52.9438307Z Build Date: 2026-01-23T19:41:17Z
+Spec Lint	Set up job	2026-02-02T16:24:52.9439031Z Worker ID: {3b9ff56c-9118-4a21-a03c-53af04212965}
+Spec Lint	Set up job	2026-02-02T16:24:52.9439718Z Azure Region: northcentralus
+Spec Lint	Set up job	2026-02-02T16:24:52.9440284Z ##[endgroup]
+Spec Lint	Set up job	2026-02-02T16:24:52.9442207Z ##[group]Operating System
+Spec Lint	Set up job	2026-02-02T16:24:52.9442832Z Ubuntu
+Spec Lint	Set up job	2026-02-02T16:24:52.9443263Z 24.04.3
+Spec Lint	Set up job	2026-02-02T16:24:52.9443794Z LTS
+Spec Lint	Set up job	2026-02-02T16:24:52.9444272Z ##[endgroup]
+Spec Lint	Set up job	2026-02-02T16:24:52.9444806Z ##[group]Runner Image
+Spec Lint	Set up job	2026-02-02T16:24:52.9445409Z Image: ubuntu-24.04
+Spec Lint	Set up job	2026-02-02T16:24:52.9445895Z Version: 20260126.10.1
+Spec Lint	Set up job	2026-02-02T16:24:52.9446913Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260126.10/images/ubuntu/Ubuntu2404-Readme.md
+Spec Lint	Set up job	2026-02-02T16:24:52.9448588Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260126.10
+Spec Lint	Set up job	2026-02-02T16:24:52.9449475Z ##[endgroup]
+Spec Lint	Set up job	2026-02-02T16:24:52.9452362Z ##[group]GITHUB_TOKEN Permissions
+Spec Lint	Set up job	2026-02-02T16:24:52.9454381Z Actions: write
+Spec Lint	Set up job	2026-02-02T16:24:52.9455042Z ArtifactMetadata: write
+Spec Lint	Set up job	2026-02-02T16:24:52.9455651Z Attestations: write
+Spec Lint	Set up job	2026-02-02T16:24:52.9456125Z Checks: write
+Spec Lint	Set up job	2026-02-02T16:24:52.9456652Z Contents: write
+Spec Lint	Set up job	2026-02-02T16:24:52.9457126Z Deployments: write
+Spec Lint	Set up job	2026-02-02T16:24:52.9457636Z Discussions: write
+Spec Lint	Set up job	2026-02-02T16:24:52.9458088Z Issues: write
+Spec Lint	Set up job	2026-02-02T16:24:52.9458687Z Metadata: read
+Spec Lint	Set up job	2026-02-02T16:24:52.9459149Z Models: read
+Spec Lint	Set up job	2026-02-02T16:24:52.9459620Z Packages: write
+Spec Lint	Set up job	2026-02-02T16:24:52.9460183Z Pages: write
+Spec Lint	Set up job	2026-02-02T16:24:52.9461105Z PullRequests: write
+Spec Lint	Set up job	2026-02-02T16:24:52.9461645Z RepositoryProjects: write
+Spec Lint	Set up job	2026-02-02T16:24:52.9462295Z SecurityEvents: write
+Spec Lint	Set up job	2026-02-02T16:24:52.9462826Z Statuses: write
+Spec Lint	Set up job	2026-02-02T16:24:52.9463281Z ##[endgroup]
+Spec Lint	Set up job	2026-02-02T16:24:52.9465483Z Secret source: Actions
+Spec Lint	Set up job	2026-02-02T16:24:52.9466215Z Prepare workflow directory
+Spec Lint	Set up job	2026-02-02T16:24:52.9912505Z Prepare all required actions
+Spec Lint	Set up job	2026-02-02T16:24:52.9968786Z Getting action download info
+Spec Lint	Set up job	2026-02-02T16:24:53.3230401Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+Spec Lint	Set up job	2026-02-02T16:24:53.4349204Z Download action repository 'pnpm/action-setup@v2' (SHA:eae0cfeb286e66ffb5155f1a79b90583a127a68b)
+Spec Lint	Set up job	2026-02-02T16:24:53.8969989Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+Spec Lint	Set up job	2026-02-02T16:24:54.0961392Z Complete job name: Spec Lint
+Spec Lint	Checkout	﻿2026-02-02T16:24:54.1660078Z ##[group]Run actions/checkout@v4
+Spec Lint	Checkout	2026-02-02T16:24:54.1661253Z with:
+Spec Lint	Checkout	2026-02-02T16:24:54.1661707Z   repository: alexasomba/paystack-openapi
+Spec Lint	Checkout	2026-02-02T16:24:54.1662426Z   token: ***
+Spec Lint	Checkout	2026-02-02T16:24:54.1662800Z   ssh-strict: true
+Spec Lint	Checkout	2026-02-02T16:24:54.1663195Z   ssh-user: git
+Spec Lint	Checkout	2026-02-02T16:24:54.1663589Z   persist-credentials: true
+Spec Lint	Checkout	2026-02-02T16:24:54.1664107Z   clean: true
+Spec Lint	Checkout	2026-02-02T16:24:54.1664512Z   sparse-checkout-cone-mode: true
+Spec Lint	Checkout	2026-02-02T16:24:54.1664988Z   fetch-depth: 1
+Spec Lint	Checkout	2026-02-02T16:24:54.1665374Z   fetch-tags: false
+Spec Lint	Checkout	2026-02-02T16:24:54.1665759Z   show-progress: true
+Spec Lint	Checkout	2026-02-02T16:24:54.1666163Z   lfs: false
+Spec Lint	Checkout	2026-02-02T16:24:54.1666523Z   submodules: false
+Spec Lint	Checkout	2026-02-02T16:24:54.1666929Z   set-safe-directory: true
+Spec Lint	Checkout	2026-02-02T16:24:54.1667579Z ##[endgroup]
+Spec Lint	Checkout	2026-02-02T16:24:54.2752669Z Syncing repository: alexasomba/paystack-openapi
+Spec Lint	Checkout	2026-02-02T16:24:54.2754674Z ##[group]Getting Git version info
+Spec Lint	Checkout	2026-02-02T16:24:54.2755715Z Working directory is '/home/runner/work/paystack-openapi/paystack-openapi'
+Spec Lint	Checkout	2026-02-02T16:24:54.2756847Z [command]/usr/bin/git version
+Spec Lint	Checkout	2026-02-02T16:24:54.2816586Z git version 2.52.0
+Spec Lint	Checkout	2026-02-02T16:24:54.2842486Z ##[endgroup]
+Spec Lint	Checkout	2026-02-02T16:24:54.2856812Z Temporarily overriding HOME='/home/runner/work/_temp/d9f9b852-72b9-46d4-8b2a-3417ba337d76' before making global git config changes
+Spec Lint	Checkout	2026-02-02T16:24:54.2858168Z Adding repository directory to the temporary git global config as a safe directory
+Spec Lint	Checkout	2026-02-02T16:24:54.2869628Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/paystack-openapi/paystack-openapi
+Spec Lint	Checkout	2026-02-02T16:24:54.2907885Z Deleting the contents of '/home/runner/work/paystack-openapi/paystack-openapi'
+Spec Lint	Checkout	2026-02-02T16:24:54.2911514Z ##[group]Initializing the repository
+Spec Lint	Checkout	2026-02-02T16:24:54.2915768Z [command]/usr/bin/git init /home/runner/work/paystack-openapi/paystack-openapi
+Spec Lint	Checkout	2026-02-02T16:24:54.3015338Z hint: Using 'master' as the name for the initial branch. This default branch name
+Spec Lint	Checkout	2026-02-02T16:24:54.3016750Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Spec Lint	Checkout	2026-02-02T16:24:54.3018612Z hint: to use in all of your new repositories, which will suppress this warning,
+Spec Lint	Checkout	2026-02-02T16:24:54.3019784Z hint: call:
+Spec Lint	Checkout	2026-02-02T16:24:54.3020772Z hint:
+Spec Lint	Checkout	2026-02-02T16:24:54.3021796Z hint: 	git config --global init.defaultBranch <name>
+Spec Lint	Checkout	2026-02-02T16:24:54.3023019Z hint:
+Spec Lint	Checkout	2026-02-02T16:24:54.3024013Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Spec Lint	Checkout	2026-02-02T16:24:54.3025634Z hint: 'development'. The just-created branch can be renamed via this command:
+Spec Lint	Checkout	2026-02-02T16:24:54.3026897Z hint:
+Spec Lint	Checkout	2026-02-02T16:24:54.3027584Z hint: 	git branch -m <name>
+Spec Lint	Checkout	2026-02-02T16:24:54.3028314Z hint:
+Spec Lint	Checkout	2026-02-02T16:24:54.3029304Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Spec Lint	Checkout	2026-02-02T16:24:54.3031418Z Initialized empty Git repository in /home/runner/work/paystack-openapi/paystack-openapi/.git/
+Spec Lint	Checkout	2026-02-02T16:24:54.3034398Z [command]/usr/bin/git remote add origin https://github.com/alexasomba/paystack-openapi
+Spec Lint	Checkout	2026-02-02T16:24:54.3067619Z ##[endgroup]
+Spec Lint	Checkout	2026-02-02T16:24:54.3068806Z ##[group]Disabling automatic garbage collection
+Spec Lint	Checkout	2026-02-02T16:24:54.3072835Z [command]/usr/bin/git config --local gc.auto 0
+Spec Lint	Checkout	2026-02-02T16:24:54.3102149Z ##[endgroup]
+Spec Lint	Checkout	2026-02-02T16:24:54.3103333Z ##[group]Setting up auth
+Spec Lint	Checkout	2026-02-02T16:24:54.3109773Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Spec Lint	Checkout	2026-02-02T16:24:54.3141692Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Spec Lint	Checkout	2026-02-02T16:24:54.3457100Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Spec Lint	Checkout	2026-02-02T16:24:54.3487301Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Spec Lint	Checkout	2026-02-02T16:24:54.3714094Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Spec Lint	Checkout	2026-02-02T16:24:54.3744954Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Spec Lint	Checkout	2026-02-02T16:24:54.3976406Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Spec Lint	Checkout	2026-02-02T16:24:54.4011388Z ##[endgroup]
+Spec Lint	Checkout	2026-02-02T16:24:54.4012176Z ##[group]Fetching the repository
+Spec Lint	Checkout	2026-02-02T16:24:54.4019572Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +9524f27082a1374ba281a0e8a74e01a37bda3e9c:refs/remotes/origin/main
+Spec Lint	Checkout	2026-02-02T16:24:55.3777847Z From https://github.com/alexasomba/paystack-openapi
+Spec Lint	Checkout	2026-02-02T16:24:55.3780065Z  * [new ref]         9524f27082a1374ba281a0e8a74e01a37bda3e9c -> origin/main
+Spec Lint	Checkout	2026-02-02T16:24:55.3812918Z ##[endgroup]
+Spec Lint	Checkout	2026-02-02T16:24:55.3814353Z ##[group]Determining the checkout info
+Spec Lint	Checkout	2026-02-02T16:24:55.3815905Z ##[endgroup]
+Spec Lint	Checkout	2026-02-02T16:24:55.3819829Z [command]/usr/bin/git sparse-checkout disable
+Spec Lint	Checkout	2026-02-02T16:24:55.3861329Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Spec Lint	Checkout	2026-02-02T16:24:55.3889390Z ##[group]Checking out the ref
+Spec Lint	Checkout	2026-02-02T16:24:55.3893708Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+Spec Lint	Checkout	2026-02-02T16:24:55.6099121Z Switched to a new branch 'main'
+Spec Lint	Checkout	2026-02-02T16:24:55.6100322Z branch 'main' set up to track 'origin/main'.
+Spec Lint	Checkout	2026-02-02T16:24:55.6118092Z ##[endgroup]
+Spec Lint	Checkout	2026-02-02T16:24:55.6156781Z [command]/usr/bin/git log -1 --format=%H
+Spec Lint	Checkout	2026-02-02T16:24:55.6179175Z 9524f27082a1374ba281a0e8a74e01a37bda3e9c
+Spec Lint	Setup pnpm	﻿2026-02-02T16:24:55.6420873Z ##[group]Run pnpm/action-setup@v2
+Spec Lint	Setup pnpm	2026-02-02T16:24:55.6421701Z with:
+Spec Lint	Setup pnpm	2026-02-02T16:24:55.6422445Z   version: latest
+Spec Lint	Setup pnpm	2026-02-02T16:24:55.6423043Z   dest: ~/setup-pnpm
+Spec Lint	Setup pnpm	2026-02-02T16:24:55.6423734Z   run_install: null
+Spec Lint	Setup pnpm	2026-02-02T16:24:55.6424485Z   package_json_file: package.json
+Spec Lint	Setup pnpm	2026-02-02T16:24:55.6425336Z   standalone: false
+Spec Lint	Setup pnpm	2026-02-02T16:24:55.6425993Z ##[endgroup]
+Spec Lint	Setup pnpm	2026-02-02T16:24:55.7336987Z ##[group]Running self-installer...
+Spec Lint	Setup pnpm	2026-02-02T16:24:56.2782028Z Progress: resolved 1, reused 0, downloaded 0, added 0
+Spec Lint	Setup pnpm	2026-02-02T16:24:56.2877777Z Packages: +1
+Spec Lint	Setup pnpm	2026-02-02T16:24:57.0543221Z +
+Spec Lint	Setup pnpm	2026-02-02T16:24:57.0544592Z Packages are hard linked from the content-addressable store to the virtual store.
+Spec Lint	Setup pnpm	2026-02-02T16:24:57.0546328Z   Content-addressable store is at: /home/runner/.local/share/pnpm/store/v3
+Spec Lint	Setup pnpm	2026-02-02T16:24:57.0547885Z   Virtual store is at:             node_modules/.pnpm
+Spec Lint	Setup pnpm	2026-02-02T16:24:57.0776710Z 
+Spec Lint	Setup pnpm	2026-02-02T16:24:57.0777407Z dependencies:
+Spec Lint	Setup pnpm	2026-02-02T16:24:57.0778403Z + pnpm 10.28.2
+Spec Lint	Setup pnpm	2026-02-02T16:24:57.0779039Z 
+Spec Lint	Setup pnpm	2026-02-02T16:24:57.0807018Z Done in 1.1s
+Spec Lint	Setup pnpm	2026-02-02T16:24:57.2796309Z Progress: resolved 1, reused 0, downloaded 1, added 1, done
+Spec Lint	Setup pnpm	2026-02-02T16:24:57.2937832Z ##[endgroup]
+Spec Lint	Setup pnpm	2026-02-02T16:24:57.2941236Z Installation Completed!
+Spec Lint	Setup Node.js	﻿2026-02-02T16:24:57.3111467Z ##[group]Run actions/setup-node@v4
+Spec Lint	Setup Node.js	2026-02-02T16:24:57.3111942Z with:
+Spec Lint	Setup Node.js	2026-02-02T16:24:57.3112261Z   node-version: 18
+Spec Lint	Setup Node.js	2026-02-02T16:24:57.3112680Z   cache: pnpm
+Spec Lint	Setup Node.js	2026-02-02T16:24:57.3112988Z   always-auth: false
+Spec Lint	Setup Node.js	2026-02-02T16:24:57.3113327Z   check-latest: false
+Spec Lint	Setup Node.js	2026-02-02T16:24:57.3113858Z   token: ***
+Spec Lint	Setup Node.js	2026-02-02T16:24:57.3114165Z env:
+Spec Lint	Setup Node.js	2026-02-02T16:24:57.3114578Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+Spec Lint	Setup Node.js	2026-02-02T16:24:57.3114988Z ##[endgroup]
+Spec Lint	Setup Node.js	2026-02-02T16:24:57.4916819Z Attempting to download 18...
+Spec Lint	Setup Node.js	2026-02-02T16:24:58.0401149Z Acquiring 18.20.8 - x64 from https://github.com/actions/node-versions/releases/download/18.20.8-14110393767/node-18.20.8-linux-x64.tar.gz
+Spec Lint	Setup Node.js	2026-02-02T16:24:58.4695618Z Extracting ...
+Spec Lint	Setup Node.js	2026-02-02T16:24:58.4805484Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/333ab38a-2f72-41a9-a86b-b7e5f93f9fb1 -f /home/runner/work/_temp/2c23cc94-4ddf-4f00-a749-0ae1a33b741a
+Spec Lint	Setup Node.js	2026-02-02T16:24:59.4386957Z Adding to the cache ...
+Spec Lint	Setup Node.js	2026-02-02T16:25:01.1508816Z ##[group]Environment details
+Spec Lint	Setup Node.js	2026-02-02T16:25:01.3901401Z node: v18.20.8
+Spec Lint	Setup Node.js	2026-02-02T16:25:01.3901854Z npm: 10.8.2
+Spec Lint	Setup Node.js	2026-02-02T16:25:01.3902163Z yarn: 1.22.22
+Spec Lint	Setup Node.js	2026-02-02T16:25:01.3902883Z ##[endgroup]
+Spec Lint	Setup Node.js	2026-02-02T16:25:01.3928585Z [command]/home/runner/setup-pnpm/node_modules/.bin/pnpm store path --silent
+Spec Lint	Setup Node.js	2026-02-02T16:25:01.7781963Z /home/runner/setup-pnpm/node_modules/.bin/store/v10
+Spec Lint	Setup Node.js	2026-02-02T16:25:01.9247595Z pnpm cache is not found
+Spec Lint	Install dependencies	﻿2026-02-02T16:25:01.9439366Z ##[group]Run pnpm install --frozen-lockfile
+Spec Lint	Install dependencies	2026-02-02T16:25:01.9439815Z [36;1mpnpm install --frozen-lockfile[0m
+Spec Lint	Install dependencies	2026-02-02T16:25:01.9475778Z shell: /usr/bin/bash -e {0}
+Spec Lint	Install dependencies	2026-02-02T16:25:01.9476038Z env:
+Spec Lint	Install dependencies	2026-02-02T16:25:01.9476302Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+Spec Lint	Install dependencies	2026-02-02T16:25:01.9476616Z ##[endgroup]
+Spec Lint	Install dependencies	2026-02-02T16:25:02.3693906Z Scope: all 4 workspace projects
+Spec Lint	Install dependencies	2026-02-02T16:25:02.4305887Z Lockfile is up to date, resolution step is skipped
+Spec Lint	Install dependencies	2026-02-02T16:25:02.4920156Z Progress: resolved 1, reused 0, downloaded 0, added 0
+Spec Lint	Install dependencies	2026-02-02T16:25:02.6027961Z Packages: +524
+Spec Lint	Install dependencies	2026-02-02T16:25:02.6030139Z ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Spec Lint	Install dependencies	2026-02-02T16:25:03.4936066Z Progress: resolved 524, reused 0, downloaded 61, added 35
+Spec Lint	Install dependencies	2026-02-02T16:25:04.4934245Z Progress: resolved 524, reused 0, downloaded 170, added 122
+Spec Lint	Install dependencies	2026-02-02T16:25:05.4936004Z Progress: resolved 524, reused 0, downloaded 253, added 170
+Spec Lint	Install dependencies	2026-02-02T16:25:06.4937745Z Progress: resolved 524, reused 0, downloaded 489, added 494
+Spec Lint	Install dependencies	2026-02-02T16:25:06.6927407Z Progress: resolved 524, reused 0, downloaded 519, added 524, done
+Spec Lint	Install dependencies	2026-02-02T16:25:06.9631948Z 
+Spec Lint	Install dependencies	2026-02-02T16:25:06.9632569Z devDependencies:
+Spec Lint	Install dependencies	2026-02-02T16:25:06.9633097Z + @quobix/vacuum 0.23.5
+Spec Lint	Install dependencies	2026-02-02T16:25:06.9633386Z + @redocly/cli 2.15.1
+Spec Lint	Install dependencies	2026-02-02T16:25:06.9633676Z + @stoplight/spectral-cli 6.15.0
+Spec Lint	Install dependencies	2026-02-02T16:25:06.9633937Z + express 5.2.1
+Spec Lint	Install dependencies	2026-02-02T16:25:06.9634135Z + nodemon 3.1.11
+Spec Lint	Install dependencies	2026-02-02T16:25:06.9634323Z + open 11.0.0
+Spec Lint	Install dependencies	2026-02-02T16:25:06.9634495Z + yaml 2.8.2
+Spec Lint	Install dependencies	2026-02-02T16:25:06.9634601Z 
+Spec Lint	Install dependencies	2026-02-02T16:25:06.9824159Z ╭ Warning ─────────────────────────────────────────────────────────────────────╮
+Spec Lint	Install dependencies	2026-02-02T16:25:06.9824848Z │                                                                              │
+Spec Lint	Install dependencies	2026-02-02T16:25:06.9825474Z │   Ignored build scripts: @quobix/vacuum@0.23.5, core-js@3.38.1,              │
+Spec Lint	Install dependencies	2026-02-02T16:25:06.9826086Z │   protobufjs@7.5.4.                                                          │
+Spec Lint	Install dependencies	2026-02-02T16:25:06.9826783Z │   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+Spec Lint	Install dependencies	2026-02-02T16:25:06.9827414Z │   to run scripts.                                                            │
+Spec Lint	Install dependencies	2026-02-02T16:25:06.9827926Z │                                                                              │
+Spec Lint	Install dependencies	2026-02-02T16:25:06.9828514Z ╰──────────────────────────────────────────────────────────────────────────────╯
+Spec Lint	Install dependencies	2026-02-02T16:25:07.0085136Z Done in 5s using pnpm v10.28.2
+Spec Lint	Build spec bundles	﻿2026-02-02T16:25:07.0338046Z ##[group]Run pnpm bundle
+Spec Lint	Build spec bundles	2026-02-02T16:25:07.0338337Z [36;1mpnpm bundle[0m
+Spec Lint	Build spec bundles	2026-02-02T16:25:07.0370578Z shell: /usr/bin/bash -e {0}
+Spec Lint	Build spec bundles	2026-02-02T16:25:07.0370939Z env:
+Spec Lint	Build spec bundles	2026-02-02T16:25:07.0371169Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+Spec Lint	Build spec bundles	2026-02-02T16:25:07.0371476Z ##[endgroup]
+Spec Lint	Build spec bundles	2026-02-02T16:25:07.4543065Z 
+Spec Lint	Build spec bundles	2026-02-02T16:25:07.4544260Z > paystack-openapi@1.1.1 bundle /home/runner/work/paystack-openapi/paystack-openapi
+Spec Lint	Build spec bundles	2026-02-02T16:25:07.4545092Z > pnpm bundle:main && pnpm bundle:usecases
+Spec Lint	Build spec bundles	2026-02-02T16:25:07.4545369Z 
+Spec Lint	Build spec bundles	2026-02-02T16:25:07.8689834Z 
+Spec Lint	Build spec bundles	2026-02-02T16:25:07.8691383Z > paystack-openapi@1.1.1 bundle:main /home/runner/work/paystack-openapi/paystack-openapi
+Spec Lint	Build spec bundles	2026-02-02T16:25:07.8693109Z > redocly bundle ./src/assets/openapi/openapi.yaml --output dist/paystack.yaml --remove-unused-components
+Spec Lint	Build spec bundles	2026-02-02T16:25:07.8694010Z 
+Spec Lint	Build spec bundles	2026-02-02T16:25:08.2615090Z file:///home/runner/work/paystack-openapi/paystack-openapi/node_modules/.pnpm/@redocly+cli@2.15.1_@opentelemetry+api@1.9.0_core-js@3.38.1/node_modules/@redocly/cli/lib/commands/build-docs/utils.js:4
+Spec Lint	Build spec bundles	2026-02-02T16:25:08.2616536Z import { ServerStyleSheet } from 'styled-components';
+Spec Lint	Build spec bundles	2026-02-02T16:25:08.2616890Z          ^^^^^^^^^^^^^^^^
+Spec Lint	Build spec bundles	2026-02-02T16:25:08.2617806Z SyntaxError: Named export 'ServerStyleSheet' not found. The requested module 'styled-components' is a CommonJS module, which may not support all module.exports as named exports.
+Spec Lint	Build spec bundles	2026-02-02T16:25:08.2618810Z CommonJS modules can always be imported via the default export, for example using:
+Spec Lint	Build spec bundles	2026-02-02T16:25:08.2619158Z 
+Spec Lint	Build spec bundles	2026-02-02T16:25:08.2619303Z import pkg from 'styled-components';
+Spec Lint	Build spec bundles	2026-02-02T16:25:08.2619619Z const { ServerStyleSheet } = pkg;
+Spec Lint	Build spec bundles	2026-02-02T16:25:08.2619784Z 
+Spec Lint	Build spec bundles	2026-02-02T16:25:08.2620033Z     at ModuleJob._instantiate (node:internal/modules/esm/module_job:123:21)
+Spec Lint	Build spec bundles	2026-02-02T16:25:08.2620915Z     at async ModuleJob.run (node:internal/modules/esm/module_job:191:5)
+Spec Lint	Build spec bundles	2026-02-02T16:25:08.2621828Z     at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+Spec Lint	Build spec bundles	2026-02-02T16:25:08.2622608Z     at async loadESM (node:internal/process/esm_loader:34:7)
+Spec Lint	Build spec bundles	2026-02-02T16:25:08.2623075Z     at async handleMainPromise (node:internal/modules/run_main:106:12)
+Spec Lint	Build spec bundles	2026-02-02T16:25:08.2623368Z 
+Spec Lint	Build spec bundles	2026-02-02T16:25:08.2623448Z Node.js v18.20.8
+Spec Lint	Build spec bundles	2026-02-02T16:25:08.2809300Z  ELIFECYCLE  Command failed with exit code 1.
+Spec Lint	Build spec bundles	2026-02-02T16:25:08.3100781Z  ELIFECYCLE  Command failed with exit code 1.
+Spec Lint	Build spec bundles	2026-02-02T16:25:08.3296517Z ##[error]Process completed with exit code 1.
+Spec Lint	Post Setup pnpm	﻿2026-02-02T16:25:08.3369104Z Post job cleanup.
+Spec Lint	Post Setup pnpm	2026-02-02T16:25:08.4374334Z Pruning is unnecessary.
+Spec Lint	Post Checkout	﻿2026-02-02T16:25:08.4480174Z Post job cleanup.
+Spec Lint	Post Checkout	2026-02-02T16:25:08.5434481Z [command]/usr/bin/git version
+Spec Lint	Post Checkout	2026-02-02T16:25:08.5476111Z git version 2.52.0
+Spec Lint	Post Checkout	2026-02-02T16:25:08.5524042Z Temporarily overriding HOME='/home/runner/work/_temp/c6bacf7e-3883-4e96-9806-f06b20d4127c' before making global git config changes
+Spec Lint	Post Checkout	2026-02-02T16:25:08.5525675Z Adding repository directory to the temporary git global config as a safe directory
+Spec Lint	Post Checkout	2026-02-02T16:25:08.5529733Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/paystack-openapi/paystack-openapi
+Spec Lint	Post Checkout	2026-02-02T16:25:08.5568887Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Spec Lint	Post Checkout	2026-02-02T16:25:08.5604342Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Spec Lint	Post Checkout	2026-02-02T16:25:08.5860814Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Spec Lint	Post Checkout	2026-02-02T16:25:08.5885695Z http.https://github.com/.extraheader
+Spec Lint	Post Checkout	2026-02-02T16:25:08.5899233Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+Spec Lint	Post Checkout	2026-02-02T16:25:08.5934708Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Spec Lint	Post Checkout	2026-02-02T16:25:08.6182356Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Spec Lint	Post Checkout	2026-02-02T16:25:08.6215686Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Spec Lint	Complete job	﻿2026-02-02T16:25:08.6565084Z Cleaning up orphan processes

@@ -18,74 +18,90 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.charge_authorization_response_data_log import ChargeAuthorizationResponseDataLog
 from alexasomba_paystack.models.transaction_fetch_response_data_authorization import TransactionFetchResponseDataAuthorization
 from alexasomba_paystack.models.transaction_fetch_response_data_customer import TransactionFetchResponseDataCustomer
 from alexasomba_paystack.models.transaction_fetch_response_data_metadata import TransactionFetchResponseDataMetadata
 from alexasomba_paystack.models.transaction_fetch_response_data_source import TransactionFetchResponseDataSource
+from typing import Optional, Set
+from typing_extensions import Self
 
 class TransactionFetchResponseData(BaseModel):
     """
     TransactionFetchResponseData
-    """
-    id: StrictInt = Field(...)
-    domain: StrictStr = Field(...)
-    status: StrictStr = Field(...)
-    reference: StrictStr = Field(...)
-    receipt_number: Optional[Any] = Field(...)
-    amount: StrictInt = Field(...)
-    message: Optional[Any] = Field(...)
-    gateway_response: StrictStr = Field(...)
-    helpdesk_link: Optional[Any] = Field(...)
-    paid_at: StrictStr = Field(...)
-    created_at: StrictStr = Field(...)
-    channel: StrictStr = Field(...)
-    currency: StrictStr = Field(...)
-    ip_address: StrictStr = Field(...)
-    metadata: TransactionFetchResponseDataMetadata = Field(...)
-    log: Optional[ChargeAuthorizationResponseDataLog] = Field(...)
-    fees: StrictInt = Field(...)
-    fees_split: Optional[StrictInt] = Field(...)
-    authorization: TransactionFetchResponseDataAuthorization = Field(...)
-    customer: TransactionFetchResponseDataCustomer = Field(...)
-    plan: Dict[str, Any] = Field(...)
-    subaccount: Dict[str, Any] = Field(...)
-    split: Dict[str, Any] = Field(...)
-    order_id: Optional[Any] = Field(...)
-    requested_amount: StrictInt = Field(...)
-    pos_transaction_data: Optional[Any] = Field(...)
-    source: TransactionFetchResponseDataSource = Field(...)
-    fees_breakdown: Optional[Any] = Field(...)
-    connect: Optional[Any] = Field(...)
-    __properties = ["id", "domain", "status", "reference", "receipt_number", "amount", "message", "gateway_response", "helpdesk_link", "paid_at", "created_at", "channel", "currency", "ip_address", "metadata", "log", "fees", "fees_split", "authorization", "customer", "plan", "subaccount", "split", "order_id", "requested_amount", "pos_transaction_data", "source", "fees_breakdown", "connect"]
+    """ # noqa: E501
+    id: StrictInt
+    domain: StrictStr
+    status: StrictStr
+    reference: StrictStr
+    receipt_number: Optional[Any]
+    amount: StrictInt
+    message: Optional[Any]
+    gateway_response: StrictStr
+    helpdesk_link: Optional[Any]
+    paid_at: StrictStr
+    created_at: StrictStr
+    channel: StrictStr
+    currency: StrictStr
+    ip_address: StrictStr
+    metadata: TransactionFetchResponseDataMetadata
+    log: Optional[ChargeAuthorizationResponseDataLog]
+    fees: StrictInt
+    fees_split: Optional[StrictInt]
+    authorization: TransactionFetchResponseDataAuthorization
+    customer: TransactionFetchResponseDataCustomer
+    plan: Dict[str, Any]
+    subaccount: Dict[str, Any]
+    split: Dict[str, Any]
+    order_id: Optional[Any]
+    requested_amount: StrictInt
+    pos_transaction_data: Optional[Any]
+    source: TransactionFetchResponseDataSource
+    fees_breakdown: Optional[Any]
+    connect: Optional[Any]
+    __properties: ClassVar[List[str]] = ["id", "domain", "status", "reference", "receipt_number", "amount", "message", "gateway_response", "helpdesk_link", "paid_at", "created_at", "channel", "currency", "ip_address", "metadata", "log", "fees", "fees_split", "authorization", "customer", "plan", "subaccount", "split", "order_id", "requested_amount", "pos_transaction_data", "source", "fees_breakdown", "connect"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> TransactionFetchResponseData:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of TransactionFetchResponseData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of metadata
         if self.metadata:
             _dict['metadata'] = self.metadata.to_dict()
@@ -102,62 +118,62 @@ class TransactionFetchResponseData(BaseModel):
         if self.source:
             _dict['source'] = self.source.to_dict()
         # set to None if receipt_number (nullable) is None
-        # and __fields_set__ contains the field
-        if self.receipt_number is None and "receipt_number" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.receipt_number is None and "receipt_number" in self.model_fields_set:
             _dict['receipt_number'] = None
 
         # set to None if message (nullable) is None
-        # and __fields_set__ contains the field
-        if self.message is None and "message" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.message is None and "message" in self.model_fields_set:
             _dict['message'] = None
 
         # set to None if helpdesk_link (nullable) is None
-        # and __fields_set__ contains the field
-        if self.helpdesk_link is None and "helpdesk_link" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.helpdesk_link is None and "helpdesk_link" in self.model_fields_set:
             _dict['helpdesk_link'] = None
 
         # set to None if log (nullable) is None
-        # and __fields_set__ contains the field
-        if self.log is None and "log" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.log is None and "log" in self.model_fields_set:
             _dict['log'] = None
 
         # set to None if fees_split (nullable) is None
-        # and __fields_set__ contains the field
-        if self.fees_split is None and "fees_split" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.fees_split is None and "fees_split" in self.model_fields_set:
             _dict['fees_split'] = None
 
         # set to None if order_id (nullable) is None
-        # and __fields_set__ contains the field
-        if self.order_id is None and "order_id" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.order_id is None and "order_id" in self.model_fields_set:
             _dict['order_id'] = None
 
         # set to None if pos_transaction_data (nullable) is None
-        # and __fields_set__ contains the field
-        if self.pos_transaction_data is None and "pos_transaction_data" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.pos_transaction_data is None and "pos_transaction_data" in self.model_fields_set:
             _dict['pos_transaction_data'] = None
 
         # set to None if fees_breakdown (nullable) is None
-        # and __fields_set__ contains the field
-        if self.fees_breakdown is None and "fees_breakdown" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.fees_breakdown is None and "fees_breakdown" in self.model_fields_set:
             _dict['fees_breakdown'] = None
 
         # set to None if connect (nullable) is None
-        # and __fields_set__ contains the field
-        if self.connect is None and "connect" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.connect is None and "connect" in self.model_fields_set:
             _dict['connect'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> TransactionFetchResponseData:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of TransactionFetchResponseData from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return TransactionFetchResponseData.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = TransactionFetchResponseData.parse_obj({
+        _obj = cls.model_validate({
             "id": obj.get("id"),
             "domain": obj.get("domain"),
             "status": obj.get("status"),
@@ -172,19 +188,19 @@ class TransactionFetchResponseData(BaseModel):
             "channel": obj.get("channel"),
             "currency": obj.get("currency"),
             "ip_address": obj.get("ip_address"),
-            "metadata": TransactionFetchResponseDataMetadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None,
-            "log": ChargeAuthorizationResponseDataLog.from_dict(obj.get("log")) if obj.get("log") is not None else None,
+            "metadata": TransactionFetchResponseDataMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
+            "log": ChargeAuthorizationResponseDataLog.from_dict(obj["log"]) if obj.get("log") is not None else None,
             "fees": obj.get("fees"),
             "fees_split": obj.get("fees_split"),
-            "authorization": TransactionFetchResponseDataAuthorization.from_dict(obj.get("authorization")) if obj.get("authorization") is not None else None,
-            "customer": TransactionFetchResponseDataCustomer.from_dict(obj.get("customer")) if obj.get("customer") is not None else None,
+            "authorization": TransactionFetchResponseDataAuthorization.from_dict(obj["authorization"]) if obj.get("authorization") is not None else None,
+            "customer": TransactionFetchResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
             "plan": obj.get("plan"),
             "subaccount": obj.get("subaccount"),
             "split": obj.get("split"),
             "order_id": obj.get("order_id"),
             "requested_amount": obj.get("requested_amount"),
             "pos_transaction_data": obj.get("pos_transaction_data"),
-            "source": TransactionFetchResponseDataSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "source": TransactionFetchResponseDataSource.from_dict(obj["source"]) if obj.get("source") is not None else None,
             "fees_breakdown": obj.get("fees_breakdown"),
             "connect": obj.get("connect")
         })

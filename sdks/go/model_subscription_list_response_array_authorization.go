@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the SubscriptionListResponseArrayAuthorization type satisfies the MappedNullable interface at compile time
@@ -34,6 +36,8 @@ type SubscriptionListResponseArrayAuthorization struct {
 	Signature NullableString `json:"signature"`
 	AccountName interface{} `json:"account_name"`
 }
+
+type _SubscriptionListResponseArrayAuthorization SubscriptionListResponseArrayAuthorization
 
 // NewSubscriptionListResponseArrayAuthorization instantiates a new SubscriptionListResponseArrayAuthorization object
 // This constructor will assign default values to properties that have it defined,
@@ -411,6 +415,55 @@ func (o SubscriptionListResponseArrayAuthorization) ToMap() (map[string]interfac
 		toSerialize["account_name"] = o.AccountName
 	}
 	return toSerialize, nil
+}
+
+func (o *SubscriptionListResponseArrayAuthorization) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"authorization_code",
+		"bin",
+		"last4",
+		"exp_month",
+		"exp_year",
+		"channel",
+		"card_type",
+		"bank",
+		"country_code",
+		"brand",
+		"reusable",
+		"signature",
+		"account_name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSubscriptionListResponseArrayAuthorization := _SubscriptionListResponseArrayAuthorization{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSubscriptionListResponseArrayAuthorization)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SubscriptionListResponseArrayAuthorization(varSubscriptionListResponseArrayAuthorization)
+
+	return err
 }
 
 type NullableSubscriptionListResponseArrayAuthorization struct {

@@ -845,25 +845,33 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountListExecute(r ApiDed
 	localVarFormParams := url.Values{}
 
 	if r.active != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
 	}
 	if r.customer != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "customer", r.customer, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "customer", r.customer, "form", "")
 	}
 	if r.currency != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "currency", r.currency, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "currency", r.currency, "form", "")
 	}
 	if r.providerSlug != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "provider_slug", r.providerSlug, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "provider_slug", r.providerSlug, "form", "")
 	}
 	if r.bankId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bank_id", r.bankId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bank_id", r.bankId, "form", "")
 	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
+	} else {
+		var defaultValue int32 = 50
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", defaultValue, "form", "")
+		r.perPage = &defaultValue
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	} else {
+		var defaultValue int32 = 1
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+		r.page = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1137,13 +1145,13 @@ func (a *DedicatedVirtualAccountAPIService) DedicatedAccountRequeryExecute(r Api
 	localVarFormParams := url.Values{}
 
 	if r.accountNumber != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "account_number", r.accountNumber, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "account_number", r.accountNumber, "form", "")
 	}
 	if r.providerSlug != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "provider_slug", r.providerSlug, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "provider_slug", r.providerSlug, "form", "")
 	}
 	if r.date != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "date", r.date, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "date", r.date, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

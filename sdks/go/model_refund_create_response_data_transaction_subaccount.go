@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the RefundCreateResponseDataTransactionSubaccount type satisfies the MappedNullable interface at compile time
@@ -22,6 +24,8 @@ var _ MappedNullable = &RefundCreateResponseDataTransactionSubaccount{}
 type RefundCreateResponseDataTransactionSubaccount struct {
 	Currency interface{} `json:"currency"`
 }
+
+type _RefundCreateResponseDataTransactionSubaccount RefundCreateResponseDataTransactionSubaccount
 
 // NewRefundCreateResponseDataTransactionSubaccount instantiates a new RefundCreateResponseDataTransactionSubaccount object
 // This constructor will assign default values to properties that have it defined,
@@ -81,6 +85,43 @@ func (o RefundCreateResponseDataTransactionSubaccount) ToMap() (map[string]inter
 		toSerialize["currency"] = o.Currency
 	}
 	return toSerialize, nil
+}
+
+func (o *RefundCreateResponseDataTransactionSubaccount) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"currency",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRefundCreateResponseDataTransactionSubaccount := _RefundCreateResponseDataTransactionSubaccount{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRefundCreateResponseDataTransactionSubaccount)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RefundCreateResponseDataTransactionSubaccount(varRefundCreateResponseDataTransactionSubaccount)
+
+	return err
 }
 
 type NullableRefundCreateResponseDataTransactionSubaccount struct {

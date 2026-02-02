@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DedicatedNubanCreateResponseData type satisfies the MappedNullable interface at compile time
@@ -33,6 +35,8 @@ type DedicatedNubanCreateResponseData struct {
 	Assignment DedicatedNubanCreateResponseDataAssignment `json:"assignment"`
 	Customer DedicatedNubanCreateResponseDataCustomer `json:"customer"`
 }
+
+type _DedicatedNubanCreateResponseData DedicatedNubanCreateResponseData
 
 // NewDedicatedNubanCreateResponseData instantiates a new DedicatedNubanCreateResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -378,6 +382,54 @@ func (o DedicatedNubanCreateResponseData) ToMap() (map[string]interface{}, error
 	toSerialize["assignment"] = o.Assignment
 	toSerialize["customer"] = o.Customer
 	return toSerialize, nil
+}
+
+func (o *DedicatedNubanCreateResponseData) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"bank",
+		"account_name",
+		"account_number",
+		"assigned",
+		"currency",
+		"metadata",
+		"active",
+		"id",
+		"created_at",
+		"updated_at",
+		"assignment",
+		"customer",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDedicatedNubanCreateResponseData := _DedicatedNubanCreateResponseData{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDedicatedNubanCreateResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DedicatedNubanCreateResponseData(varDedicatedNubanCreateResponseData)
+
+	return err
 }
 
 type NullableDedicatedNubanCreateResponseData struct {

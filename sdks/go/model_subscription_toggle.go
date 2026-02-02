@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the SubscriptionToggle type satisfies the MappedNullable interface at compile time
@@ -25,6 +27,8 @@ type SubscriptionToggle struct {
 	// Email token
 	Token string `json:"token"`
 }
+
+type _SubscriptionToggle SubscriptionToggle
 
 // NewSubscriptionToggle instantiates a new SubscriptionToggle object
 // This constructor will assign default values to properties that have it defined,
@@ -106,6 +110,44 @@ func (o SubscriptionToggle) ToMap() (map[string]interface{}, error) {
 	toSerialize["code"] = o.Code
 	toSerialize["token"] = o.Token
 	return toSerialize, nil
+}
+
+func (o *SubscriptionToggle) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"code",
+		"token",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSubscriptionToggle := _SubscriptionToggle{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSubscriptionToggle)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SubscriptionToggle(varSubscriptionToggle)
+
+	return err
 }
 
 type NullableSubscriptionToggle struct {

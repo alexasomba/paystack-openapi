@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the StorefrontCreate type satisfies the MappedNullable interface at compile time
@@ -29,6 +31,8 @@ type StorefrontCreate struct {
 	// The description of the storefront
 	Description *string `json:"description,omitempty"`
 }
+
+type _StorefrontCreate StorefrontCreate
 
 // NewStorefrontCreate instantiates a new StorefrontCreate object
 // This constructor will assign default values to properties that have it defined,
@@ -171,6 +175,45 @@ func (o StorefrontCreate) ToMap() (map[string]interface{}, error) {
 		toSerialize["description"] = o.Description
 	}
 	return toSerialize, nil
+}
+
+func (o *StorefrontCreate) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"slug",
+		"currency",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varStorefrontCreate := _StorefrontCreate{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varStorefrontCreate)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StorefrontCreate(varStorefrontCreate)
+
+	return err
 }
 
 type NullableStorefrontCreate struct {
