@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/alexasomba/paystack-openapi/sdks/go"
+	openapiclient "github.com/alexasomba/paystack-go"
 )
 
 func Test_paystack_BankAPIService(t *testing.T) {

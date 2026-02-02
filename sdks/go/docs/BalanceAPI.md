@@ -26,7 +26,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/alexasomba/paystack-openapi/sdks/go"
+    openapiclient "github.com/alexasomba/paystack-go"
 )
 
 func main() {
@@ -88,7 +88,7 @@ import (
     "fmt"
     "os"
     "time"
-    openapiclient "github.com/alexasomba/paystack-openapi/sdks/go"
+    openapiclient "github.com/alexasomba/paystack-go"
 )
 
 func main() {

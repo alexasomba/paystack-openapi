@@ -19,11 +19,11 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/alexasomba/paystack-openapi.git"
+      "url": "https://github.com/alexasomba/paystack-php.git"
     }
   ],
   "require": {
-    "alexasomba/paystack-openapi": "*@dev"
+    "alexasomba/paystack-php": "*@dev"
   }
 }
 ```
