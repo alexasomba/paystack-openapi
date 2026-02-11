@@ -21,7 +21,8 @@
     "bundle:main": "redocly bundle ./src/assets/openapi/openapi.yaml --output dist/paystack.yaml --remove-unused-components",
     "bundle:usecases": "pnpm bundle:wallet && pnpm bundle:membership && pnpm bundle:marketplace && pnpm bundle:betting && pnpm bundle:lending && pnpm bundle:savings",
     "dev": "pnpm bundle && pnpm start",
-    "lint": "pnpm lint:main && pnpm lint:sdk",
+    "lint": "pnpm lint:openapi && pnpm -r lint",
+    "lint:openapi": "pnpm lint:main && pnpm lint:sdk",
     "lint:main": "spectral lint dist/paystack.yaml",
     "lint:sdk": "spectral lint ./src/assets/sdk/paystack.yaml",
     "split": "redocly split ./src/assets/base/paystack.yaml --outDir=./src/assets/openapi",
@@ -41,7 +42,10 @@
     "sdk:sync:node": "cd sdks/node && /bin/sh git_push.sh alexasomba paystack-node",
     "sdk:sync:axios": "cd sdks/axios && /bin/sh git_push.sh alexasomba paystack-axios",
     "sdk:sync:browser": "cd sdks/browser && /bin/sh git_push.sh alexasomba paystack-browser",
-    "sdk:sync:all": "./scripts/sync-sdks.sh"
+    "sdk:sync:all": "./scripts/sync-sdks.sh",
+    "build": "pnpm sdk:build",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck"
   },
   "repository": {
     "type": "git",
@@ -57,12 +61,27 @@
   },
   "homepage": "https://github.com/PaystackOSS/openapi#readme",
   "devDependencies": {
-    "@quobix/vacuum": "^0.23.5",
-    "@redocly/cli": "^2.15.1",
+    "@arethetypeswrong/cli": "^0.18.2",
+    "@eslint/compat": "^2.0.2",
+    "@eslint/js": "^10.0.1",
+    "@quobix/vacuum": "^0.23.8",
+    "@redocly/cli": "^2.17.0",
     "@stoplight/spectral-cli": "^6.15.0",
+    "@typescript-eslint/eslint-plugin": "^8.55.0",
+    "@typescript-eslint/parser": "^8.55.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "eslint": "^10.0.0",
+    "eslint-plugin-import-x": "^4.16.1",
+    "eslint-plugin-promise": "^7.2.1",
+    "eslint-plugin-unicorn": "^63.0.0",
     "express": "^5.2.1",
     "nodemon": "^3.1.11",
     "open": "^11.0.0",
+    "publint": "^0.3.17",
+    "tsdown": "^0.20.3",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.55.0",
+    "vitest": "^3.2.4",
     "yaml": "^2.8.2"
   }
 }

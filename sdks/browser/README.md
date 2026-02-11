@@ -1,16 +1,24 @@
 # @alexasomba/paystack-browser
 
-TypeScript-first Paystack API client for browser runtimes, generated from the Paystack OpenAPI spec.
+[![npm version](https://img.shields.io/npm/v/@alexasomba/paystack-browser.svg)](https://www.npmjs.com/package/@alexasomba/paystack-browser)
+[![license](https://img.shields.io/npm/l/@alexasomba/paystack-browser.svg)](https://github.com/alexasomba/paystack-sdks/blob/main/LICENSE)
 
-> Note: Paystack API endpoints generally require a secret key. Do not expose secret keys in a real browser app.
+Paystack API client optimized for **Browser** environments, providing a lightweight, fully typed, and spec-compliant way to interact with the Paystack API.
+
+This package provides:
+
+- A typed low-level client backed by `openapi-fetch`.
+- Ergonomic operation helpers generated from `operationId` (`transaction_initialize`, `transferrecipient_update`, ...).
 
 ## Why this SDK
 
-- Spec-driven: generated from the Paystack OpenAPI spec.
-- Typed operations: ergonomic helpers generated from `operationId`.
-- Production-friendly networking: built-in `timeoutMs` and safe `retry` defaults.
+- **Tree-shakeable**: Only import what you use.
+- **Spec-driven**: Generated from the OpenAPI spec (keeps surface area aligned with the spec).
+- **Safe retries for POST**: Optional `idempotencyKey` support to prevent duplicate operations.
+- **Better debugging**: `PaystackApiError` includes `status` and `requestId` when available.
 
-## Modules
+<details>
+<summary><b>Supported Modules (31/31)</b></summary>
 
 - [x] Charge
 - [x] Customers
@@ -43,39 +51,56 @@ TypeScript-first Paystack API client for browser runtimes, generated from the Pa
 - [x] Banks
 - [x] Orders
 - [x] Storefronts
+</details>
 
 ## Install
 
 ```bash
 pnpm add @alexasomba/paystack-browser
-# or: npm i @alexasomba/paystack-browser
-# or: yarn add @alexasomba/paystack-browser
 ```
 
 ## Usage
 
 ```ts
-import { createPaystack } from "@alexasomba/paystack-browser";
+import {
+  assertOk,
+  createPaystack,
+  PaystackApiError,
+} from "@alexasomba/paystack-browser";
 
 const paystack = createPaystack({
-  apiKey: "YOUR_KEY",
+  secretKey: "pk_...", // Use public key in the browser
   // Optional reliability knobs
   timeoutMs: 30_000,
-  retry: { retries: 2 },
+  // Optional: auto-add Idempotency-Key on POST requests
+  idempotencyKey: "auto",
 });
 
-const { data, error } = await paystack.transaction_initialize({
+// ergonomic operation wrappers (generated from operationId)
+const result = await paystack.transaction_initialize({
   body: {
     email: "customer@example.com",
     amount: 5000,
   },
 });
 
-if (error) throw error;
+const data = assertOk(result);
 console.log(data);
 ```
 
+### ESM Requirement
+
+This package is **ESM-only**. Ensure your project supports ESM or is configured to transpile this package.
+
 ## Coverage
 
-- The Browser SDK currently generates ~119 typed operations from the bundled SDK OpenAPI spec.
-- For missing/incorrect endpoints, please open an issue or PR against the spec (`src/assets/sdk/paystack.yaml`).
+The Browser SDK currently generates **~119 typed operations** from the bundled OpenAPI spec. For missing/incorrect endpoints, please open an issue in the [monorepo](https://github.com/alexasomba/paystack-sdks).
+
+## Related
+
+- [@alexasomba/paystack-node](https://github.com/alexasomba/paystack-sdks/tree/main/sdks/paystack-node)
+- [@alexasomba/paystack-axios](https://github.com/alexasomba/paystack-sdks/tree/main/sdks/paystack-axios)
+
+## License
+
+MIT

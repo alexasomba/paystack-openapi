@@ -9,6 +9,6 @@ import { createPaystackClient, type PaystackAxiosClientOptions } from './client.
 import { bindOperations } from './operations.js';
 
 export function createPaystack(options: PaystackAxiosClientOptions) {
-  const client = createPaystackClient(options);
-  return { client, ...bindOperations(client) };
+	const client = createPaystackClient(options);
+	return { client, ...bindOperations(client) };
 }

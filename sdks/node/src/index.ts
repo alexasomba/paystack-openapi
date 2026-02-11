@@ -8,6 +8,6 @@ import { createPaystackClient, type PaystackClientOptions } from './client.js';
 import { bindOperations } from './operations.js';
 
 export function createPaystack(options: PaystackClientOptions) {
-  const client = createPaystackClient(options);
-  return { client, ...bindOperations(client) };
+	const client = createPaystackClient(options);
+	return { client, ...bindOperations(client) };
 }

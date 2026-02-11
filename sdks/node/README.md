@@ -1,20 +1,25 @@
 # @alexasomba/paystack-node
 
-TypeScript-first Paystack API client for Node.js, generated from the Paystack OpenAPI spec.
+[![npm version](https://img.shields.io/npm/v/@alexasomba/paystack-node.svg)](https://www.npmjs.com/package/@alexasomba/paystack-node)
+[![license](https://img.shields.io/npm/l/@alexasomba/paystack-node.svg)](https://github.com/alexasomba/paystack-sdks/blob/main/LICENSE)
+
+TypeScript-first Paystack API client for Node.js, generated from this repo’s OpenAPI spec.
 
 This package provides:
 
-- A typed low-level client (`createPaystackClient`) backed by `openapi-fetch`
-- Ergonomic operation helpers generated from `operationId` (`transaction_initialize`, `transferrecipient_update`, ...)
+- A typed low-level client (`createPaystackClient`) backed by `openapi-fetch`.
+- Ergonomic operation helpers generated from `operationId` (`transaction_initialize`, `transferrecipient_update`, ...).
+- Built-in webhook signature verification.
 
 ## Why this SDK
 
-- Spec-driven: generated from the Paystack OpenAPI spec (keeps surface area aligned with the spec).
-- Production-friendly networking: built-in `timeoutMs` and safe `retry` defaults.
-- Safe retries for POST: optional `idempotencyKey` support (so retries don’t accidentally duplicate operations).
-- Better debugging: `PaystackApiError` includes `status` and `requestId` when available.
+- **Spec-driven**: Generated from the OpenAPI spec in this repo (keeps surface area aligned with the spec).
+- **Production-friendly**: Built-in `timeoutMs` and safe `retry` defaults (idempotent methods only).
+- **Safe retries for POST**: Optional `idempotencyKey` support to prevent duplicate operations.
+- **Better debugging**: `PaystackApiError` includes `status` and `requestId` when available.
 
-## Modules
+<details>
+<summary><b>Supported Modules (31/31)</b></summary>
 
 - [x] Charge
 - [x] Customers
@@ -47,13 +52,12 @@ This package provides:
 - [x] Banks
 - [x] Orders
 - [x] Storefronts
+</details>
 
 ## Install
 
 ```bash
 pnpm add @alexasomba/paystack-node
-# or: npm i @alexasomba/paystack-node
-# or: yarn add @alexasomba/paystack-node
 ```
 
 ## Usage
@@ -93,21 +97,23 @@ try {
   }
   throw e;
 }
-
-// Alternative: convert without throwing
-const apiError = toPaystackApiError(result);
-if (apiError) {
-  console.error(apiError.requestId, apiError.status);
-}
 ```
 
-### Usage (CommonJS)
+### ESM Requirement
 
-```js
-const { createPaystack } = require("@alexasomba/paystack-node");
+This package is **ESM-only**. Ensure your `package.json` has `"type": "module"`.
 
-const paystack = createPaystack({
-  secretKey: process.env.PAYSTACK_SECRET_KEY,
+### Webhooks
+
+Webhook signature verification requires the _raw request body_.
+
+```ts
+import { verifyPaystackWebhookSignature } from "@alexasomba/paystack-node/webhooks";
+
+const ok = verifyPaystackWebhookSignature({
+  rawBody: req.rawBody,
+  signature: req.headers["x-paystack-signature"] as string,
+  secret: process.env.PAYSTACK_SECRET_KEY!,
 });
 ```
 
@@ -125,26 +131,17 @@ const client = createPaystackClient({
 const { data, error } = await client.POST("/transaction/initialize", {
   body: { email: "customer@example.com", amount: 5000 },
 });
-
-if (error) throw error;
-console.log(data);
 ```
 
 ## Coverage
 
-- The Node SDK currently generates ~119 typed operations from the bundled SDK OpenAPI spec.
-- For missing/incorrect endpoints, please open an issue or PR against the spec (`src/assets/sdk/paystack.yaml`).
+The Node SDK currently generates **~119 typed operations** from the bundled OpenAPI spec. For missing/incorrect endpoints, please open an issue in the [monorepo](https://github.com/alexasomba/paystack-sdks).
 
-## Webhooks
+## Related
 
-Webhook signature verification requires the _raw request body_.
+- [@alexasomba/paystack-browser](https://github.com/alexasomba/paystack-sdks/tree/main/sdks/paystack-browser)
+- [@alexasomba/paystack-axios](https://github.com/alexasomba/paystack-sdks/tree/main/sdks/paystack-axios)
 
-```ts
-import { verifyPaystackWebhookSignature } from "@alexasomba/paystack-node";
+## License
 
-const ok = verifyPaystackWebhookSignature({
-  rawBody: req.rawBody,
-  signature: req.headers["x-paystack-signature"] as string,
-  secret: process.env.PAYSTACK_SECRET_KEY!,
-});
-```
+MIT

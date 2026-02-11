@@ -17,41 +17,72 @@
     "openapi",
     "sdk",
     "typescript",
-    "node"
-  ],
-  "type": "module",
-  "sideEffects": false,
-  "publishConfig": {
-    "access": "public"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    }
-  },
-  "files": [
-    "dist",
-    "src"
+    "node",
+    "fintech",
+    "nigeria",
+    "africa",
+    "ghana",
+    "south-africa",
+    "kenya",
+    "ivory-coast",
+    "côte-d'ivoire",
+    "egypt",
+    "rwanda",
+    "subscriptions",
+    "saas",
+    "webhooks",
+    "idempotency"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=22.0.0"
   },
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
+    },
+    "./webhooks": {
+      "types": "./dist/webhooks.d.mts",
+      "import": "./dist/webhooks.mjs",
+      "default": "./dist/webhooks.mjs"
+    }
+  },
+  "sideEffects": false,
   "scripts": {
     "generate:types": "openapi-typescript ./openapi.yaml -o src/openapi-types.ts",
     "generate:operations": "node ./scripts/generate-operations.mjs",
-    "build": "pnpm generate:types && pnpm generate:operations && tsc -p tsconfig.json",
+    "build": "pnpm generate:types && pnpm generate:operations && tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage",
+    "lint": "eslint . --fix",
+    "lint:package": "publint run --strict",
+    "lint:types": "attw --profile esm-only --pack .",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
     "clean": "rm -rf dist",
-    "prepack": "pnpm build",
-    "publish:public": "npm publish --access public"
+    "prepack": "pnpm build"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "dependencies": {
-    "openapi-fetch": "^0.15.0"
+    "openapi-fetch": "^0.15.2"
   },
   "devDependencies": {
-    "@types/node": "^22.19.7",
-    "openapi-typescript": "^7.10.1",
+    "@arethetypeswrong/cli": "^0.18.2",
+    "@types/node": "^22.19.11",
+    "openapi-typescript": "^7.12.0",
+    "publint": "^0.3.17",
+    "tsdown": "^0.20.3",
     "typescript": "^5.9.3",
+    "vitest": "^3.2.4",
     "yaml": "^2.8.2"
   }
 }

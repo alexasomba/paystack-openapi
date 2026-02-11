@@ -1,19 +1,24 @@
 # @alexasomba/paystack-axios
 
-Paystack API client using Axios as the transport, with types generated from the Paystack OpenAPI spec.
+[![npm version](https://img.shields.io/npm/v/@alexasomba/paystack-axios.svg)](https://www.npmjs.com/package/@alexasomba/paystack-axios)
+[![license](https://img.shields.io/npm/l/@alexasomba/paystack-axios.svg)](https://github.com/alexasomba/paystack-sdks/blob/main/LICENSE)
+
+Paystack API client backed by **Axios**, providing a familiar ecosystem for Axios users while remaining fully typed and spec-compliant.
 
 This package provides:
 
-- A typed low-level client (`createPaystackClient`) backed by Axios
-- Ergonomic operation helpers generated from `operationId` (`transaction_initialize`, `transferrecipient_update`, ...)
+- A typed low-level client backed by `openapi-fetch` (with an Axios adapter).
+- Ergonomic operation helpers generated from `operationId` (`transaction_initialize`, `transferrecipient_update`, ...).
 
 ## Why this SDK
 
-- Spec-driven: generated from the Paystack OpenAPI spec.
-- Production-friendly networking: built-in `timeoutMs` and safe `retry` defaults.
-- Axios-native customization: bring your own `axiosInstance` (timeouts, proxies, interceptors, etc.).
+- **Axios-powered**: Uses your existing Axios instance or configurations.
+- **Spec-driven**: Generated from the OpenAPI spec (keeps surface area aligned with the spec).
+- **Safe retries for POST**: Optional `idempotencyKey` support to prevent duplicate operations.
+- **Better debugging**: `PaystackApiError` includes `status` and `requestId` when available.
 
-## Modules
+<details>
+<summary><b>Supported Modules (31/31)</b></summary>
 
 - [x] Charge
 - [x] Customers
@@ -46,74 +51,72 @@ This package provides:
 - [x] Banks
 - [x] Orders
 - [x] Storefronts
+</details>
 
 ## Install
 
 ```bash
-pnpm add @alexasomba/paystack-axios
-# or: npm i @alexasomba/paystack-axios
-# or: yarn add @alexasomba/paystack-axios
+pnpm add @alexasomba/paystack-axios axios
 ```
 
 ## Usage
 
 ```ts
-import { createPaystack } from "@alexasomba/paystack-axios";
+import {
+  assertOk,
+  createPaystack,
+  PaystackApiError,
+} from "@alexasomba/paystack-axios";
 
 const paystack = createPaystack({
   secretKey: process.env.PAYSTACK_SECRET_KEY!,
   // Optional reliability knobs
   timeoutMs: 30_000,
-  retry: { retries: 2 },
+  // Optional: auto-add Idempotency-Key on POST requests
+  idempotencyKey: "auto",
 });
 
-const { data, error } = await paystack.transaction_initialize({
-  body: { email: "customer@example.com", amount: 5000 },
+// ergonomic operation wrappers (generated from operationId)
+const result = await paystack.transaction_initialize({
+  body: {
+    email: "customer@example.com",
+    amount: 5000,
+  },
 });
 
-if (error) throw error;
+const data = assertOk(result);
 console.log(data);
 ```
 
-### Usage (CommonJS)
+### ESM Requirement
 
-```js
-const { createPaystack } = require("@alexasomba/paystack-axios");
+This package is **ESM-only**. Ensure your `package.json` has `"type": "module"`.
 
-const paystack = createPaystack({
-  secretKey: process.env.PAYSTACK_SECRET_KEY,
-});
-```
-
-### Custom Axios instance
+### Using a custom Axios instance
 
 ```ts
 import axios from "axios";
 import { createPaystack } from "@alexasomba/paystack-axios";
 
-const paystack = createPaystack({
-  secretKey: process.env.PAYSTACK_SECRET_KEY!,
-  axiosInstance: axios.create({ timeout: 30_000 }),
+const myAxios = axios.create({
+  // your custom config
 });
-```
 
-## Webhooks
-
-```ts
-import { verifyPaystackWebhookSignature } from "@alexasomba/paystack-axios";
-
-const ok = verifyPaystackWebhookSignature({
-  rawBody: req.rawBody,
-  signature: req.headers["x-paystack-signature"] as string,
-  secret: process.env.PAYSTACK_SECRET_KEY!,
+const paystack = createPaystack({
+  secretKey: "sk_...",
+  axiosInstance: myAxios,
 });
 ```
 
 ## Coverage
 
-- The Axios SDK currently generates ~119 typed operations from the bundled SDK OpenAPI spec.
-- For missing/incorrect endpoints, please open an issue or PR against the spec (`src/assets/sdk/paystack.yaml`).
+The Axios SDK currently generates **~119 typed operations** from the bundled OpenAPI spec. For missing/incorrect endpoints, please open an issue in the [monorepo](https://github.com/alexasomba/paystack-sdks).
 
-```
+## Related
 
-```
+- [@alexasomba/paystack-node](https://github.com/alexasomba/paystack-sdks/tree/main/sdks/paystack-node)
+- [@alexasomba/paystack-browser](https://github.com/alexasomba/paystack-sdks/tree/main/sdks/paystack-browser)
+
+## License
+
+MIT
