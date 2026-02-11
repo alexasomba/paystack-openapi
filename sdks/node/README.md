@@ -1,7 +1,7 @@
 # @alexasomba/paystack-node
 
 [![npm version](https://img.shields.io/npm/v/@alexasomba/paystack-node.svg)](https://www.npmjs.com/package/@alexasomba/paystack-node)
-[![license](https://img.shields.io/npm/l/@alexasomba/paystack-node.svg)](https://github.com/alexasomba/paystack-sdks/blob/main/LICENSE)
+[![license](https://img.shields.io/npm/l/@alexasomba/paystack-node.svg)](https://github.com/alexasomba/paystack-node/blob/main/LICENSE)
 
 TypeScript-first Paystack API client for Node.js, generated from this repo’s OpenAPI spec.
 
@@ -135,12 +135,18 @@ const { data, error } = await client.POST("/transaction/initialize", {
 
 ## Coverage
 
-The Node SDK currently generates **~119 typed operations** from the bundled OpenAPI spec. For missing/incorrect endpoints, please open an issue in the [monorepo](https://github.com/alexasomba/paystack-sdks).
+The Node SDK currently generates **~119 typed operations** from the bundled OpenAPI spec. For missing/incorrect endpoints, please open an issue in the [monorepo](https://github.com/alexasomba/paystack-openapi).
 
 ## Related
 
-- [@alexasomba/paystack-browser](https://github.com/alexasomba/paystack-sdks/tree/main/sdks/paystack-browser)
-- [@alexasomba/paystack-axios](https://github.com/alexasomba/paystack-sdks/tree/main/sdks/paystack-axios)
+- [@alexasomba/paystack-browser](https://github.com/alexasomba/paystack-browser)
+- [@alexasomba/paystack-axios](https://github.com/alexasomba/paystack-axios)
+
+## Used By
+
+This SDK is used in production by:
+
+- **[Better Auth Paystack Plugin](https://github.com/alexasomba/better-auth-paystack)**: A comprehensive Paystack plugin for Better Auth.
 
 ## License
 

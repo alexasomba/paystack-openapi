@@ -1,7 +1,7 @@
 # @alexasomba/paystack-browser
 
 [![npm version](https://img.shields.io/npm/v/@alexasomba/paystack-browser.svg)](https://www.npmjs.com/package/@alexasomba/paystack-browser)
-[![license](https://img.shields.io/npm/l/@alexasomba/paystack-browser.svg)](https://github.com/alexasomba/paystack-sdks/blob/main/LICENSE)
+[![license](https://img.shields.io/npm/l/@alexasomba/paystack-browser.svg)](https://github.com/alexasomba/paystack-browser/blob/main/LICENSE)
 
 Paystack API client optimized for **Browser** environments, providing a lightweight, fully typed, and spec-compliant way to interact with the Paystack API.
 
@@ -94,12 +94,18 @@ This package is **ESM-only**. Ensure your project supports ESM or is configured 
 
 ## Coverage
 
-The Browser SDK currently generates **~119 typed operations** from the bundled OpenAPI spec. For missing/incorrect endpoints, please open an issue in the [monorepo](https://github.com/alexasomba/paystack-sdks).
+The Browser SDK currently generates **~119 typed operations** from the bundled OpenAPI spec. For missing/incorrect endpoints, please open an issue in the [monorepo](https://github.com/alexasomba/paystack-openapi).
 
 ## Related
 
-- [@alexasomba/paystack-node](https://github.com/alexasomba/paystack-sdks/tree/main/sdks/paystack-node)
-- [@alexasomba/paystack-axios](https://github.com/alexasomba/paystack-sdks/tree/main/sdks/paystack-axios)
+- [@alexasomba/paystack-node](https://github.com/alexasomba/paystack-node)
+- [@alexasomba/paystack-axios](https://github.com/alexasomba/paystack-axios)
+
+## Used By
+
+This SDK is used in production by:
+
+- **[Better Auth Paystack Plugin](https://github.com/alexasomba/better-auth-paystack)**: A comprehensive Paystack plugin for Better Auth.
 
 ## License
 

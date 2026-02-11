@@ -1,7 +1,7 @@
 # @alexasomba/paystack-axios
 
 [![npm version](https://img.shields.io/npm/v/@alexasomba/paystack-axios.svg)](https://www.npmjs.com/package/@alexasomba/paystack-axios)
-[![license](https://img.shields.io/npm/l/@alexasomba/paystack-axios.svg)](https://github.com/alexasomba/paystack-sdks/blob/main/LICENSE)
+[![license](https://img.shields.io/npm/l/@alexasomba/paystack-axios.svg)](https://github.com/alexasomba/paystack-axios/blob/main/LICENSE)
 
 Paystack API client backed by **Axios**, providing a familiar ecosystem for Axios users while remaining fully typed and spec-compliant.
 
@@ -110,12 +110,18 @@ const paystack = createPaystack({
 
 ## Coverage
 
-The Axios SDK currently generates **~119 typed operations** from the bundled OpenAPI spec. For missing/incorrect endpoints, please open an issue in the [monorepo](https://github.com/alexasomba/paystack-sdks).
+The Axios SDK currently generates **~119 typed operations** from the bundled OpenAPI spec. For missing/incorrect endpoints, please open an issue in the [monorepo](https://github.com/alexasomba/paystack-openapi).
 
 ## Related
 
-- [@alexasomba/paystack-node](https://github.com/alexasomba/paystack-sdks/tree/main/sdks/paystack-node)
-- [@alexasomba/paystack-browser](https://github.com/alexasomba/paystack-sdks/tree/main/sdks/paystack-browser)
+- [@alexasomba/paystack-node](https://github.com/alexasomba/paystack-node)
+- [@alexasomba/paystack-browser](https://github.com/alexasomba/paystack-browser)
+
+## Used By
+
+This SDK is used in production by:
+
+- **[Better Auth Paystack Plugin](https://github.com/alexasomba/better-auth-paystack)**: A comprehensive Paystack plugin for Better Auth.
 
 ## License
 
