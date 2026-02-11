@@ -9,7 +9,7 @@ properties:
   amount:
     type: integer
     format: int32
-    description: Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR
+    description: Amount should be in kobo if currency is NGN, pesewas if currency is GHS, cents if currency is ZAR, and whole number if currency is XOF
   authorization_code:
     type: string
     description: Valid authorization code to charge

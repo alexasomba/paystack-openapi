@@ -5050,6 +5050,7 @@ components:
         - NGN
         - ZAR
         - USD
+        - XOF
       example: GHS
     SplitSubaccounts:
       type: object
@@ -5095,6 +5096,7 @@ components:
             - GHS
             - ZAR
             - USD
+            - XOF
         bearer_type:
           description: This allows you specify how the transaction charge should be processed
           type: string
@@ -5125,7 +5127,15 @@ components:
           type: string
         amount:
           description: |
-            Amount should be in smallest denomination of the currency.
+            Amount should be in the smallest unit of the currency (e.g., kobo for NGN, pesewas for GHS, cents for ZAR/USD).
+
+            Minimum amounts:
+             - NGN: ₦50.00
+             - GHS: ₵0.10
+             - ZAR: R1.00
+             - KES: Ksh 3.00
+             - USD: $2.00
+             - XOF: 1.00
           type: integer
         currency:
           $ref: '#/components/schemas/Currency'
@@ -5740,7 +5750,7 @@ components:
         amount:
           type: integer
           format: int32
-          description: Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR
+          description: Amount should be in kobo if currency is NGN, pesewas if currency is GHS, cents if currency is ZAR, and whole number if currency is XOF
         authorization_code:
           type: string
           description: Valid authorization code to charge
@@ -10951,7 +10961,10 @@ components:
           description: Name of plan
           type: string
         amount:
-          description: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
+          description: |-
+            Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
+             Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
+             cents, if currency is ZAR, and whole number if currency is XOF
           type: integer
         interval:
           description: Payment interval
@@ -10972,7 +10985,7 @@ components:
           description: Set to false if you don't want text messages to be sent to your customers
           type: boolean
         currency:
-          description: Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD
+          description: Currency in which amount is set. Allowed values are NGN, GHS, ZAR, USD or XOF
           type: string
         invoice_limit:
           description: |-
@@ -11156,7 +11169,10 @@ components:
           description: Name of plan
           type: string
         amount:
-          description: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
+          description: |-
+            Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
+             Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
+             cents, if currency is ZAR, and whole number if currency is XOF
           type: integer
         interval:
           description: Payment interval
@@ -11177,7 +11193,7 @@ components:
           description: Set to false if you don't want text messages to be sent to your customers
           type: boolean
         currency:
-          description: Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD
+          description: Currency in which amount is set. Allowed values are NGN, GHS, ZAR, USD or XOF
           type: string
         invoice_limit:
           description: |-
@@ -12480,6 +12496,7 @@ components:
             - ZAR
             - KES
             - GHS
+            - XOF
         transfers:
           description: A list of transfer object
           type: array
@@ -14031,11 +14048,12 @@ components:
         price:
           description: |
             Price should be in kobo if currency is NGN, pesewas, if currency is GHS,
-            and cents, if currency is ZAR
+            Price should be in kobo if currency is NGN, pesewas, if currency is GHS,
+            cents, if currency is ZAR, and whole number if currency is XOF
           type: integer
         currency:
           description: |
-            Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD
+            Currency in which price is set. Allowed values are: NGN, GHS, ZAR, USD or XOF
           type: string
         unlimited:
           description: |
@@ -15136,6 +15154,7 @@ components:
             - NGN
             - USD
             - ZAR
+            - XOF
         items:
           type: array
           items:
@@ -15873,7 +15892,7 @@ components:
           description: The description of the page
           type: string
         amount:
-          description: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
+          description: Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, cents, if currency is ZAR, and whole number if currency is XOF
           type: integer
         currency:
           description: The transaction currency. Defaults to your integration currency.
@@ -15884,6 +15903,7 @@ components:
             - ZAR
             - KES
             - USD
+            - XOF
         slug:
           description: URL slug you would like to be associated with this page. Page will be accessible at `https://paystack.com/pay/[slug]`
           type: string
@@ -16538,6 +16558,7 @@ components:
             - NGN
             - USD
             - ZAR
+            - XOF
         customer_note:
           description: Customer reason
           type: string

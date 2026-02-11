@@ -29,6 +29,7 @@ properties:
       - GHS
       - ZAR
       - USD
+      - XOF
   bearer_type:
     description: This allows you specify how the transaction charge should be processed
     type: string

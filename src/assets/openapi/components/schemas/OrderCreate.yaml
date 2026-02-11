@@ -29,6 +29,7 @@ properties:
       - NGN
       - USD
       - ZAR
+      - XOF
   items:
     type: array
     items:

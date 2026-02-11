@@ -489,6 +489,7 @@ components:
         - NGN
         - ZAR
         - USD
+        - XOF
       example: GHS
     SplitSubaccounts:
       type: object
@@ -534,6 +535,7 @@ components:
             - GHS
             - ZAR
             - USD
+            - XOF
         bearer_type:
           description: This allows you specify how the transaction charge should be processed
           type: string
@@ -564,7 +566,15 @@ components:
           type: string
         amount:
           description: |
-            Amount should be in smallest denomination of the currency.
+            Amount should be in the smallest unit of the currency (e.g., kobo for NGN, pesewas for GHS, cents for ZAR/USD).
+
+            Minimum amounts:
+             - NGN: ₦50.00
+             - GHS: ₵0.10
+             - ZAR: R1.00
+             - KES: Ksh 3.00
+             - USD: $2.00
+             - XOF: 1.00
           type: integer
         currency:
           $ref: '#/components/schemas/Currency'

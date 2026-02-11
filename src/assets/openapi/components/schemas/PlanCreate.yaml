@@ -10,7 +10,8 @@ properties:
   amount:
     description: >-
       Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
-      and cents, if currency is ZAR
+       Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
+       cents, if currency is ZAR, and whole number if currency is XOF
     type: integer
   interval:
     description: Payment interval
@@ -31,7 +32,7 @@ properties:
     description: Set to false if you don't want text messages to be sent to your customers
     type: boolean
   currency:
-    description: Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD
+    description: Currency in which amount is set. Allowed values are NGN, GHS, ZAR, USD or XOF
     type: string
   invoice_limit:
     description: |-

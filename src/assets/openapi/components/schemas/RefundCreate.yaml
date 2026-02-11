@@ -18,6 +18,7 @@ properties:
       - NGN
       - USD
       - ZAR
+      - XOF
   customer_note:
     description: Customer reason
     type: string

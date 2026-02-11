@@ -6,4 +6,5 @@ enum:
   - NGN
   - ZAR
   - USD
+  - XOF
 example: GHS

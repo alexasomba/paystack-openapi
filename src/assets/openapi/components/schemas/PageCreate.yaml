@@ -11,7 +11,7 @@ properties:
   amount:
     description: >-
       Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
-      and cents, if currency is ZAR
+      cents, if currency is ZAR, and whole number if currency is XOF
     type: integer
   currency:
     description: The transaction currency. Defaults to your integration currency.
@@ -22,6 +22,7 @@ properties:
       - ZAR
       - KES
       - USD
+      - XOF
   slug:
     description: >-
       URL slug you would like to be associated with this page. Page will be

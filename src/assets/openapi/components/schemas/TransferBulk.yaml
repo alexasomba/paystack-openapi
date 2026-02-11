@@ -16,6 +16,7 @@ properties:
       - ZAR
       - KES
       - GHS
+      - XOF
   transfers:
     description: A list of transfer object
     type: array

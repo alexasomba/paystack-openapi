@@ -14,11 +14,12 @@ properties:
   price:
     description: |
       Price should be in kobo if currency is NGN, pesewas, if currency is GHS,
-      and cents, if currency is ZAR
+      Price should be in kobo if currency is NGN, pesewas, if currency is GHS,
+      cents, if currency is ZAR, and whole number if currency is XOF
     type: integer
   currency:
     description: |
-      Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD
+      Currency in which price is set. Allowed values are: NGN, GHS, ZAR, USD or XOF
     type: string
   unlimited:
     description: |
