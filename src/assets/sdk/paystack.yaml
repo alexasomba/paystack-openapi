@@ -5204,8 +5204,9 @@ components:
           description: Customer's email address
           type: string
         amount:
-          description: |
-            Amount should be in the smallest unit of the currency (e.g., kobo for NGN, pesewas for GHS, cents for ZAR/USD).
+          description: >
+            Amount should be in the smallest unit of the currency (e.g., kobo
+            for NGN, pesewas for GHS, cents for ZAR/USD).
 
 
             Minimum amounts:
@@ -11073,8 +11074,11 @@ components:
           description: Name of plan
           type: string
         amount:
-          description: Amount should be in kobo if currency is NGN, pesewas, if currency
-            is GHS, cents, if currency is ZAR, and whole number if currency is XOF
+          description: >-
+            Amount should be in kobo if currency is NGN, pesewas, if currency is
+            GHS,
+             Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
+             cents, if currency is ZAR, and whole number if currency is XOF
           type: integer
         interval:
           description: Payment interval
@@ -11281,8 +11285,11 @@ components:
           description: Name of plan
           type: string
         amount:
-          description: Amount should be in kobo if currency is NGN, pesewas, if currency
-            is GHS, cents, if currency is ZAR, and whole number if currency is XOF
+          description: >-
+            Amount should be in kobo if currency is NGN, pesewas, if currency is
+            GHS,
+             Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
+             cents, if currency is ZAR, and whole number if currency is XOF
           type: integer
         interval:
           description: Payment interval
@@ -14188,12 +14195,17 @@ components:
         price:
           description: >
             Price should be in kobo if currency is NGN, pesewas, if currency is
-            GHS, cents, if currency is ZAR, and whole number if currency is XOF
+            GHS,
+
+            Price should be in kobo if currency is NGN, pesewas, if currency is
+            GHS,
+
+            cents, if currency is ZAR, and whole number if currency is XOF
           type: integer
         currency:
           description: >
-            Currency in which price is set. Allowed values are: NGN, GHS, ZAR, USD
-            or XOF
+            Currency in which price is set. Allowed values are: NGN, GHS, ZAR,
+            USD or XOF
           type: string
         unlimited:
           description: >
@@ -16043,7 +16055,8 @@ components:
           type: string
         amount:
           description: Amount should be in kobo if currency is NGN, pesewas, if currency
-            is GHS, cents, if currency is ZAR, and whole number if currency is XOF
+            is GHS, cents, if currency is ZAR, and whole number if currency is
+            XOF
           type: integer
         currency:
           description: The transaction currency. Defaults to your integration currency.

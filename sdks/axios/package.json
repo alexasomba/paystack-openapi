@@ -1,6 +1,6 @@
 {
   "name": "@alexasomba/paystack-axios",
-  "version": "1.1.1",
+  "version": "1.2.1",
   "description": "A Paystack SDK backed by Axios - Complete, Type-safe, and Axios-powered with full OpenAPI coverage.",
   "license": "MIT",
   "author": "alexasomba",
@@ -67,7 +67,8 @@
     "lint:types": "attw --profile esm-only --pack .",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "clean": "rm -rf dist",
-    "prepack": "pnpm build"
+    "prepack": "pnpm build",
+    "publish:public": "pnpm publish --no-git-checks --access public"
   },
   "publishConfig": {
     "access": "public"

@@ -2945,7 +2945,7 @@ export interface components {
          * @example GHS
          * @enum {string}
          */
-        Currency: "GHS" | "KES" | "NGN" | "ZAR" | "USD";
+        Currency: "GHS" | "KES" | "NGN" | "ZAR" | "USD" | "XOF";
         /**
          * @example {
          *       "subaccount": "ACCT_6uujpqtzmnufzkw",
@@ -2986,7 +2986,7 @@ export interface components {
              * @description The transaction currency
              * @enum {string}
              */
-            currency: "NGN" | "GHS" | "ZAR" | "USD";
+            currency: "NGN" | "GHS" | "ZAR" | "USD" | "XOF";
             /**
              * @description This allows you specify how the transaction charge should be processed
              * @enum {string}
@@ -3005,7 +3005,17 @@ export interface components {
         TransactionInitialize: {
             /** @description Customer's email address */
             email: string;
-            /** @description Amount should be in smallest denomination of the currency. */
+            /**
+             * @description Amount should be in the smallest unit of the currency (e.g., kobo for NGN, pesewas for GHS, cents for ZAR/USD).
+             *
+             *     Minimum amounts:
+             *      - NGN: ₦50.00
+             *      - GHS: ₵0.10
+             *      - ZAR: R1.00
+             *      - KES: Ksh 3.00
+             *      - USD: $2.00
+             *      - XOF: 1.00
+             */
             amount: number;
             currency?: components["schemas"]["Currency"];
             /** @description Unique transaction reference. Only -, ., = and alphanumeric characters allowed. */
@@ -3289,7 +3299,7 @@ export interface components {
             email: string;
             /**
              * Format: int32
-             * @description Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR
+             * @description Amount should be in kobo if currency is NGN, pesewas if currency is GHS, cents if currency is ZAR, and whole number if currency is XOF
              */
             amount: number;
             /** @description Valid authorization code to charge */
@@ -5507,7 +5517,11 @@ export interface components {
         PlanCreate: {
             /** @description Name of plan */
             name: string;
-            /** @description Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR */
+            /**
+             * @description Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
+             *      Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
+             *      cents, if currency is ZAR, and whole number if currency is XOF
+             */
             amount: number;
             /**
              * @description Payment interval
@@ -5520,7 +5534,7 @@ export interface components {
             send_invoices?: boolean;
             /** @description Set to false if you don't want text messages to be sent to your customers */
             send_sms?: boolean;
-            /** @description Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD */
+            /** @description Currency in which amount is set. Allowed values are NGN, GHS, ZAR, USD or XOF */
             currency?: string;
             /**
              * @description Number of invoices to raise during subscription to this plan.
@@ -5592,7 +5606,11 @@ export interface components {
         PlanUpdate: {
             /** @description Name of plan */
             name?: string;
-            /** @description Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR */
+            /**
+             * @description Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
+             *      Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
+             *      cents, if currency is ZAR, and whole number if currency is XOF
+             */
             amount?: number;
             /**
              * @description Payment interval
@@ -5605,7 +5623,7 @@ export interface components {
             send_invoices?: boolean;
             /** @description Set to false if you don't want text messages to be sent to your customers */
             send_sms?: boolean;
-            /** @description Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD */
+            /** @description Currency in which amount is set. Allowed values are NGN, GHS, ZAR, USD or XOF */
             currency?: string;
             /**
              * @description Number of invoices to raise during subscription to this plan.
@@ -6128,7 +6146,7 @@ export interface components {
              * @default NGN
              * @enum {string}
              */
-            currency: "NGN" | "ZAR" | "KES" | "GHS";
+            currency: "NGN" | "ZAR" | "KES" | "GHS" | "XOF";
             /** @description A list of transfer object */
             transfers: components["schemas"]["TransferBase"][];
         };
@@ -6717,10 +6735,11 @@ export interface components {
             description: string;
             /**
              * @description Price should be in kobo if currency is NGN, pesewas, if currency is GHS,
-             *     and cents, if currency is ZAR
+             *     Price should be in kobo if currency is NGN, pesewas, if currency is GHS,
+             *     cents, if currency is ZAR, and whole number if currency is XOF
              */
             price: number;
-            /** @description Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD */
+            /** @description Currency in which price is set. Allowed values are: NGN, GHS, ZAR, USD or XOF */
             currency: string;
             /**
              * @description Set to true if the product has unlimited stock. Leave as false if the
@@ -7194,7 +7213,7 @@ export interface components {
              * @description Currency in which amount is set
              * @enum {string}
              */
-            currency: "GHS" | "KES" | "NGN" | "USD" | "ZAR";
+            currency: "GHS" | "KES" | "NGN" | "USD" | "ZAR" | "XOF";
             items: components["schemas"]["OrderItems"][];
             shipping: components["schemas"]["OrderShipping"];
             /** @description A flag to indicate if the order is for someone else */
@@ -7447,13 +7466,13 @@ export interface components {
             name: string;
             /** @description The description of the page */
             description?: string;
-            /** @description Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR */
+            /** @description Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, cents, if currency is ZAR, and whole number if currency is XOF */
             amount?: number;
             /**
              * @description The transaction currency. Defaults to your integration currency.
              * @enum {string}
              */
-            currency?: "NGN" | "GHS" | "ZAR" | "KES" | "USD";
+            currency?: "NGN" | "GHS" | "ZAR" | "KES" | "USD" | "XOF";
             /** @description URL slug you would like to be associated with this page. Page will be accessible at `https://paystack.com/pay/[slug]` */
             slug?: string;
             /**
@@ -7717,7 +7736,7 @@ export interface components {
              * @description Three-letter ISO currency
              * @enum {string}
              */
-            currency?: "GHS" | "KES" | "NGN" | "USD" | "ZAR";
+            currency?: "GHS" | "KES" | "NGN" | "USD" | "ZAR" | "XOF";
             /** @description Customer reason */
             customer_note?: string;
             /** @description Merchant reason */

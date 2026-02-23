@@ -2,21 +2,19 @@
 
 [![npm version](https://img.shields.io/npm/v/@alexasomba/paystack-node.svg)](https://www.npmjs.com/package/@alexasomba/paystack-node)
 [![license](https://img.shields.io/npm/l/@alexasomba/paystack-node.svg)](https://github.com/alexasomba/paystack-node/blob/main/LICENSE)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/@alexasomba/paystack-node)](https://bundlephobia.com/package/@alexasomba/paystack-node)
 
-TypeScript-first Paystack API client for Node.js, generated from this repo’s OpenAPI spec.
+TypeScript-first Paystack API client for Node.js, generated from the official Paystack OpenAPI spec.
 
-This package provides:
+## Features
 
-- A typed low-level client (`createPaystackClient`) backed by `openapi-fetch`.
-- Ergonomic operation helpers generated from `operationId` (`transaction_initialize`, `transferrecipient_update`, ...).
-- Built-in webhook signature verification.
-
-## Why this SDK
-
-- **Spec-driven**: Generated from the OpenAPI spec in this repo (keeps surface area aligned with the spec).
-- **Production-friendly**: Built-in `timeoutMs` and safe `retry` defaults (idempotent methods only).
-- **Safe retries for POST**: Optional `idempotencyKey` support to prevent duplicate operations.
-- **Better debugging**: `PaystackApiError` includes `status` and `requestId` when available.
+- **Spec-driven Accuracy**: Generated directly from the official Paystack OpenAPI specification.
+- **100% Type-safe**: Full TypeScript support with auto-generated types for every endpoint, request, and response.
+- **Smart Retries**: Automatic retries for transient failures (408, 429, 5xx) with exponential backoff and jitter.
+- **Retry-After Compliance**: Automatically respects the `Retry-After` header Sent by Paystack on 429 Rate Limit responses.
+- **Sophisticated Idempotency**: Built-in support for manual, static, or fully automatic UUID-based idempotency keys on POST requests.
+- **Detailed Error Handling**: `PaystackApiError` provides access to `status`, `url`, and the Paystack `requestId` for easier debugging.
+- **Webhook Verification**: Timing-safe webhook signature verification helper included.
 
 <details>
 <summary><b>Supported Modules (31/31)</b></summary>
@@ -60,26 +58,17 @@ This package provides:
 pnpm add @alexasomba/paystack-node
 ```
 
-## Usage
+## Quick Start
 
 ```ts
-import {
-  assertOk,
-  createPaystack,
-  PaystackApiError,
-  toPaystackApiError,
-} from "@alexasomba/paystack-node";
+import { createPaystack, assertOk } from "@alexasomba/paystack-node";
 
 const paystack = createPaystack({
   secretKey: process.env.PAYSTACK_SECRET_KEY!,
-  // Optional reliability knobs
-  timeoutMs: 30_000,
-  retry: { retries: 2 },
-  // Optional: auto-add Idempotency-Key on POST requests
-  idempotencyKey: "auto",
+  idempotencyKey: "auto", // Automatically prevent double charges on retries
 });
 
-// ergonomic operation wrappers (generated from operationId)
+// Ergonomic operation helpers
 const result = await paystack.transaction_initialize({
   body: {
     email: "customer@example.com",
@@ -87,64 +76,82 @@ const result = await paystack.transaction_initialize({
   },
 });
 
-try {
-  const data = assertOk(result);
-  console.log(data);
-} catch (e) {
-  if (e instanceof PaystackApiError) {
-    // Useful for support/debugging
-    console.error("Paystack requestId:", e.requestId);
-  }
-  throw e;
-}
+const data = assertOk(result); // Throws structured PaystackApiError on failure
+console.log(data.authorization_url);
 ```
 
-### ESM Requirement
+## Advanced Configuration
 
-This package is **ESM-only**. Ensure your `package.json` has `"type": "module"`.
+The `createPaystack` helper accepts `PaystackClientOptions`:
+
+```ts
+const paystack = createPaystack({
+  secretKey: "sk_...",
+  timeoutMs: 30_000,
+  retry: {
+    retries: 3,
+    minDelayMs: 500,
+    retryOnStatuses: [429, 500, 503],
+  },
+  idempotencyKey: "auto",
+  headers: {
+    "X-My-App": "v1.0.0",
+  },
+});
+```
 
 ### Webhooks
 
-Webhook signature verification requires the _raw request body_.
+Securely verify incoming webhooks from Paystack:
 
 ```ts
 import { verifyPaystackWebhookSignature } from "@alexasomba/paystack-node/webhooks";
 
-const ok = verifyPaystackWebhookSignature({
-  rawBody: req.rawBody,
-  signature: req.headers["x-paystack-signature"] as string,
+const isValid = verifyPaystackWebhookSignature({
+  rawBody: req.body, // Use raw string or Buffer
+  signature: req.headers["x-paystack-signature"],
   secret: process.env.PAYSTACK_SECRET_KEY!,
 });
 ```
 
-### Low-level client usage
+### Handling Pagination
 
-If you prefer calling by path/method:
+Access pagination metadata from response headers:
 
 ```ts
-import { createPaystackClient } from "@alexasomba/paystack-node";
+const result = await paystack.customer_list({ query: { perPage: 20 } });
+const customers = assertOk(result);
 
-const client = createPaystackClient({
-  secretKey: process.env.PAYSTACK_SECRET_KEY!,
-});
+// Access headers for manual pagination control
+const total = result.response.headers.get("x-total-count");
+```
 
-const { data, error } = await client.POST("/transaction/initialize", {
-  body: { email: "customer@example.com", amount: 5000 },
-});
+## Error Handling
+
+The SDK provides utilities for robust error management:
+
+```ts
+import { toPaystackApiError, PaystackApiError } from "@alexasomba/paystack-node";
+
+const result = await paystack.transaction_initialize({ /* ... */ });
+const error = toPaystackApiError(result);
+
+if (error) {
+  console.error(`Status ${error.status}: ${error.message}`);
+  console.error(`Paystack Request ID: ${error.requestId}`);
+}
 ```
 
 ## Coverage
 
-The Node SDK currently generates **~119 typed operations** from the bundled OpenAPI spec. For missing/incorrect endpoints, please open an issue in the [monorepo](https://github.com/alexasomba/paystack-openapi).
+This SDK currently tracks **~119 typed operations** from the Paystack API. For missing/incorrect endpoints, please open an issue in [this repository](https://github.com/alexasomba/paystack-node/issues).
 
-## Related
+## Related SDKs
 
-- [@alexasomba/paystack-browser](https://github.com/alexasomba/paystack-browser)
-- [@alexasomba/paystack-axios](https://github.com/alexasomba/paystack-axios)
+- [@alexasomba/paystack-browser](https://github.com/alexasomba/paystack-browser) - Optimized for browser fetches.
+- [@alexasomba/paystack-axios](https://github.com/alexasomba/paystack-axios) - For projects using Axios.
 
 ## Used By
-
-This SDK is used in production by:
 
 - **[Better Auth Paystack Plugin](https://github.com/alexasomba/better-auth-paystack)**: A comprehensive Paystack plugin for Better Auth.
 

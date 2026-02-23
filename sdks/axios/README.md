@@ -2,20 +2,17 @@
 
 [![npm version](https://img.shields.io/npm/v/@alexasomba/paystack-axios.svg)](https://www.npmjs.com/package/@alexasomba/paystack-axios)
 [![license](https://img.shields.io/npm/l/@alexasomba/paystack-axios.svg)](https://github.com/alexasomba/paystack-axios/blob/main/LICENSE)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/@alexasomba/paystack-axios)](https://bundlephobia.com/package/@alexasomba/paystack-axios)
 
 Paystack API client backed by **Axios**, providing a familiar ecosystem for Axios users while remaining fully typed and spec-compliant.
 
-This package provides:
+## Features
 
-- A typed low-level client backed by `openapi-fetch` (with an Axios adapter).
-- Ergonomic operation helpers generated from `operationId` (`transaction_initialize`, `transferrecipient_update`, ...).
-
-## Why this SDK
-
-- **Axios-powered**: Uses your existing Axios instance or configurations.
-- **Spec-driven**: Generated from the OpenAPI spec (keeps surface area aligned with the spec).
-- **Safe retries for POST**: Optional `idempotencyKey` support to prevent duplicate operations.
-- **Better debugging**: `PaystackApiError` includes `status` and `requestId` when available.
+- **Axios-powered**: Leverage your existing Axios instance, interceptors, and configurations.
+- **Spec-driven Accuracy**: Generated directly from the official Paystack OpenAPI specification.
+- **100% Type-safe**: Full TypeScript support with auto-generated types for every endpoint, request, and response.
+- **Detailed Error Handling**: `PaystackApiError` provides access to `status`, `url`, and the Paystack `requestId` for easier debugging.
+- **Smart Retries & Idempotency**: Built-in support for safe retries on idempotent methods with automatic `Idempotency-Key` handling.
 
 <details>
 <summary><b>Supported Modules (31/31)</b></summary>
@@ -59,24 +56,17 @@ This package provides:
 pnpm add @alexasomba/paystack-axios axios
 ```
 
-## Usage
+## Quick Start
 
 ```ts
-import {
-  assertOk,
-  createPaystack,
-  PaystackApiError,
-} from "@alexasomba/paystack-axios";
+import { createPaystack, assertOk } from "@alexasomba/paystack-axios";
 
 const paystack = createPaystack({
   secretKey: process.env.PAYSTACK_SECRET_KEY!,
-  // Optional reliability knobs
-  timeoutMs: 30_000,
-  // Optional: auto-add Idempotency-Key on POST requests
-  idempotencyKey: "auto",
+  idempotencyKey: "auto", // Automatically prevent double charges on retries
 });
 
-// ergonomic operation wrappers (generated from operationId)
+// Ergonomic operation helpers
 const result = await paystack.transaction_initialize({
   body: {
     email: "customer@example.com",
@@ -84,22 +74,23 @@ const result = await paystack.transaction_initialize({
   },
 });
 
-const data = assertOk(result);
-console.log(data);
+const data = assertOk(result); // Throws structured PaystackApiError on failure
+console.log(data.authorization_url);
 ```
 
-### ESM Requirement
-
-This package is **ESM-only**. Ensure your `package.json` has `"type": "module"`.
+## Advanced Configuration
 
 ### Using a custom Axios instance
+
+You can pass an existing Axios instance to share interceptors or custom configurations:
 
 ```ts
 import axios from "axios";
 import { createPaystack } from "@alexasomba/paystack-axios";
 
 const myAxios = axios.create({
-  // your custom config
+  timeout: 10000,
+  // custom interceptors...
 });
 
 const paystack = createPaystack({
@@ -108,18 +99,44 @@ const paystack = createPaystack({
 });
 ```
 
+### Granular Retry Settings
+
+```ts
+const paystack = createPaystack({
+  secretKey: "sk_...",
+  retry: {
+    retries: 3,
+    retryOnStatuses: [408, 429, 503],
+  }
+});
+```
+
+## Error Handling
+
+The SDK provides utilities for robust error management:
+
+```ts
+import { toPaystackApiError, PaystackApiError } from "@alexasomba/paystack-axios";
+
+const result = await paystack.transaction_initialize({ /* ... */ });
+const error = toPaystackApiError(result);
+
+if (error) {
+  // Access specific details sent back by Paystack
+  console.error(`Paystack Request ID: ${error.requestId}`);
+}
+```
+
 ## Coverage
 
-The Axios SDK currently generates **~119 typed operations** from the bundled OpenAPI spec. For missing/incorrect endpoints, please open an issue in the [monorepo](https://github.com/alexasomba/paystack-openapi).
+This SDK currently tracks **~119 typed operations** from the Paystack API. For missing/incorrect endpoints, please open an issue in [this repository](https://github.com/alexasomba/paystack-axios/issues).
 
-## Related
+## Related SDKs
 
-- [@alexasomba/paystack-node](https://github.com/alexasomba/paystack-node)
-- [@alexasomba/paystack-browser](https://github.com/alexasomba/paystack-browser)
+- [@alexasomba/paystack-node](https://github.com/alexasomba/paystack-node) - Native Node.js fetch implementation.
+- [@alexasomba/paystack-browser](https://github.com/alexasomba/paystack-browser) - Optimized for browser fetches.
 
 ## Used By
-
-This SDK is used in production by:
 
 - **[Better Auth Paystack Plugin](https://github.com/alexasomba/better-auth-paystack)**: A comprehensive Paystack plugin for Better Auth.
 
