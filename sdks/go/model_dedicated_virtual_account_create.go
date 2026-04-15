@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -30,6 +30,7 @@ type DedicatedVirtualAccountCreate struct {
 	Subaccount *string `json:"subaccount,omitempty"`
 	// Split code consisting of the lists of accounts you want to split the transaction with
 	SplitCode *string `json:"split_code,omitempty"`
+	Metadata *TransactionInitializeMetadata `json:"metadata,omitempty"`
 }
 
 type _DedicatedVirtualAccountCreate DedicatedVirtualAccountCreate
@@ -172,6 +173,38 @@ func (o *DedicatedVirtualAccountCreate) SetSplitCode(v string) {
 	o.SplitCode = &v
 }
 
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *DedicatedVirtualAccountCreate) GetMetadata() TransactionInitializeMetadata {
+	if o == nil || IsNil(o.Metadata) {
+		var ret TransactionInitializeMetadata
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DedicatedVirtualAccountCreate) GetMetadataOk() (*TransactionInitializeMetadata, bool) {
+	if o == nil || IsNil(o.Metadata) {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *DedicatedVirtualAccountCreate) HasMetadata() bool {
+	if o != nil && !IsNil(o.Metadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given TransactionInitializeMetadata and assigns it to the Metadata field.
+func (o *DedicatedVirtualAccountCreate) SetMetadata(v TransactionInitializeMetadata) {
+	o.Metadata = &v
+}
+
 func (o DedicatedVirtualAccountCreate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -191,6 +224,9 @@ func (o DedicatedVirtualAccountCreate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SplitCode) {
 		toSerialize["split_code"] = o.SplitCode
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
 	}
 	return toSerialize, nil
 }

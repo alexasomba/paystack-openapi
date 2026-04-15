@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -28,7 +28,7 @@ type SubaccountUpdate struct {
 	AccountNumber *string `json:"account_number,omitempty"`
 	// Activate or deactivate a subaccount
 	Active *bool `json:"active,omitempty"`
-	// Customer's phone number
+	// The percentage the main account receives from each payment made to the subaccount
 	PercentageCharge *float32 `json:"percentage_charge,omitempty"`
 	// A description for this subaccount
 	Description *string `json:"description,omitempty"`
@@ -38,8 +38,7 @@ type SubaccountUpdate struct {
 	PrimaryContactName *string `json:"primary_contact_name,omitempty"`
 	// A phone number to call for this subaccount
 	PrimaryContactPhone *string `json:"primary_contact_phone,omitempty"`
-	// Stringified JSON object of custom data
-	Metadata *string `json:"metadata,omitempty"`
+	Metadata *SubaccountUpdateMetadata `json:"metadata,omitempty"`
 }
 
 // NewSubaccountUpdate instantiates a new SubaccountUpdate object
@@ -348,9 +347,9 @@ func (o *SubaccountUpdate) SetPrimaryContactPhone(v string) {
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *SubaccountUpdate) GetMetadata() string {
+func (o *SubaccountUpdate) GetMetadata() SubaccountUpdateMetadata {
 	if o == nil || IsNil(o.Metadata) {
-		var ret string
+		var ret SubaccountUpdateMetadata
 		return ret
 	}
 	return *o.Metadata
@@ -358,7 +357,7 @@ func (o *SubaccountUpdate) GetMetadata() string {
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SubaccountUpdate) GetMetadataOk() (*string, bool) {
+func (o *SubaccountUpdate) GetMetadataOk() (*SubaccountUpdateMetadata, bool) {
 	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
@@ -374,8 +373,8 @@ func (o *SubaccountUpdate) HasMetadata() bool {
 	return false
 }
 
-// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
-func (o *SubaccountUpdate) SetMetadata(v string) {
+// SetMetadata gets a reference to the given SubaccountUpdateMetadata and assigns it to the Metadata field.
+func (o *SubaccountUpdate) SetMetadata(v SubaccountUpdateMetadata) {
 	o.Metadata = &v
 }
 

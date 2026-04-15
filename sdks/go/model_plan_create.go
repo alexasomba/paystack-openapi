@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -38,6 +38,7 @@ type PlanCreate struct {
 	Currency *string `json:"currency,omitempty"`
 	// Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing.
 	InvoiceLimit *int32 `json:"invoice_limit,omitempty"`
+	Metadata *SubaccountUpdateMetadata `json:"metadata,omitempty"`
 }
 
 type _PlanCreate PlanCreate
@@ -294,6 +295,38 @@ func (o *PlanCreate) SetInvoiceLimit(v int32) {
 	o.InvoiceLimit = &v
 }
 
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *PlanCreate) GetMetadata() SubaccountUpdateMetadata {
+	if o == nil || IsNil(o.Metadata) {
+		var ret SubaccountUpdateMetadata
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PlanCreate) GetMetadataOk() (*SubaccountUpdateMetadata, bool) {
+	if o == nil || IsNil(o.Metadata) {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *PlanCreate) HasMetadata() bool {
+	if o != nil && !IsNil(o.Metadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given SubaccountUpdateMetadata and assigns it to the Metadata field.
+func (o *PlanCreate) SetMetadata(v SubaccountUpdateMetadata) {
+	o.Metadata = &v
+}
+
 func (o PlanCreate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -321,6 +354,9 @@ func (o PlanCreate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.InvoiceLimit) {
 		toSerialize["invoice_limit"] = o.InvoiceLimit
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
 	}
 	return toSerialize, nil
 }

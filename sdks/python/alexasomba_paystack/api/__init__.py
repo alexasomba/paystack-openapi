@@ -5,6 +5,8 @@ from alexasomba_paystack.api.apple_pay_api import ApplePayApi
 from alexasomba_paystack.api.balance_api import BalanceApi
 from alexasomba_paystack.api.bank_api import BankApi
 from alexasomba_paystack.api.bulk_charge_api import BulkChargeApi
+from alexasomba_paystack.api.capitec_pay_api import CapitecPayApi
+from alexasomba_paystack.api.card_preauthorization_api import CardPreauthorizationApi
 from alexasomba_paystack.api.charge_api import ChargeApi
 from alexasomba_paystack.api.customer_api import CustomerApi
 from alexasomba_paystack.api.dedicated_virtual_account_api import DedicatedVirtualAccountApi

@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -18,9 +18,9 @@ import (
 // checks if the ErrorMeta type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ErrorMeta{}
 
-// ErrorMeta Extra details to help with a resolution of the error
+// ErrorMeta Extra diagnostic information to help resolve an error
 type ErrorMeta struct {
-	// A summarised solution for the error
+	// A suggested next action to take to resolve the error
 	NextStep *string `json:"nextStep,omitempty"`
 }
 

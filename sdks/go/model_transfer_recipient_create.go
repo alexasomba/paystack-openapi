@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -36,8 +36,7 @@ type TransferRecipientCreate struct {
 	Currency *string `json:"currency,omitempty"`
 	// An authorization code from a previous transaction
 	AuthorizationCode *string `json:"authorization_code,omitempty"`
-	// JSON object of custom data
-	Metadata map[string]interface{} `json:"metadata,omitempty"`
+	Metadata *TransactionInitializeMetadata `json:"metadata,omitempty"`
 }
 
 type _TransferRecipientCreate TransferRecipientCreate
@@ -256,19 +255,19 @@ func (o *TransferRecipientCreate) SetAuthorizationCode(v string) {
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *TransferRecipientCreate) GetMetadata() map[string]interface{} {
+func (o *TransferRecipientCreate) GetMetadata() TransactionInitializeMetadata {
 	if o == nil || IsNil(o.Metadata) {
-		var ret map[string]interface{}
+		var ret TransactionInitializeMetadata
 		return ret
 	}
-	return o.Metadata
+	return *o.Metadata
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TransferRecipientCreate) GetMetadataOk() (map[string]interface{}, bool) {
+func (o *TransferRecipientCreate) GetMetadataOk() (*TransactionInitializeMetadata, bool) {
 	if o == nil || IsNil(o.Metadata) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Metadata, true
 }
@@ -282,9 +281,9 @@ func (o *TransferRecipientCreate) HasMetadata() bool {
 	return false
 }
 
-// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
-func (o *TransferRecipientCreate) SetMetadata(v map[string]interface{}) {
-	o.Metadata = v
+// SetMetadata gets a reference to the given TransactionInitializeMetadata and assigns it to the Metadata field.
+func (o *TransferRecipientCreate) SetMetadata(v TransactionInitializeMetadata) {
+	o.Metadata = &v
 }
 
 func (o TransferRecipientCreate) MarshalJSON() ([]byte, error) {

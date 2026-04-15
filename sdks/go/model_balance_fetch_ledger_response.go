@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -25,7 +25,7 @@ type BalanceFetchLedgerResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
 	Data []BalanceFetchLedgerResponseArray `json:"data"`
-	Meta BalanceFetchLedgerResponseMeta `json:"meta"`
+	Meta Meta `json:"meta"`
 }
 
 type _BalanceFetchLedgerResponse BalanceFetchLedgerResponse
@@ -34,7 +34,7 @@ type _BalanceFetchLedgerResponse BalanceFetchLedgerResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBalanceFetchLedgerResponse(status bool, message string, data []BalanceFetchLedgerResponseArray, meta BalanceFetchLedgerResponseMeta) *BalanceFetchLedgerResponse {
+func NewBalanceFetchLedgerResponse(status bool, message string, data []BalanceFetchLedgerResponseArray, meta Meta) *BalanceFetchLedgerResponse {
 	this := BalanceFetchLedgerResponse{}
 	this.Status = status
 	this.Message = message
@@ -124,9 +124,9 @@ func (o *BalanceFetchLedgerResponse) SetData(v []BalanceFetchLedgerResponseArray
 }
 
 // GetMeta returns the Meta field value
-func (o *BalanceFetchLedgerResponse) GetMeta() BalanceFetchLedgerResponseMeta {
+func (o *BalanceFetchLedgerResponse) GetMeta() Meta {
 	if o == nil {
-		var ret BalanceFetchLedgerResponseMeta
+		var ret Meta
 		return ret
 	}
 
@@ -135,7 +135,7 @@ func (o *BalanceFetchLedgerResponse) GetMeta() BalanceFetchLedgerResponseMeta {
 
 // GetMetaOk returns a tuple with the Meta field value
 // and a boolean to check if the value has been set.
-func (o *BalanceFetchLedgerResponse) GetMetaOk() (*BalanceFetchLedgerResponseMeta, bool) {
+func (o *BalanceFetchLedgerResponse) GetMetaOk() (*Meta, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -143,7 +143,7 @@ func (o *BalanceFetchLedgerResponse) GetMetaOk() (*BalanceFetchLedgerResponseMet
 }
 
 // SetMeta sets field value
-func (o *BalanceFetchLedgerResponse) SetMeta(v BalanceFetchLedgerResponseMeta) {
+func (o *BalanceFetchLedgerResponse) SetMeta(v Meta) {
 	o.Meta = v
 }
 

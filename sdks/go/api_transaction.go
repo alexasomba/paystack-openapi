@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -158,7 +158,7 @@ func (r ApiTransactionCheckAuthorizationRequest) Email(email string) ApiTransact
 	return r
 }
 
-// Amount should be in kobo if currency is NGN, pesewas if currency is GHS, cents if currency is ZAR, and whole number if currency is XOF
+// Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, send the amount multiplied by 100 even though the currency does not use fractional subunits.
 func (r ApiTransactionCheckAuthorizationRequest) Amount(amount int32) ApiTransactionCheckAuthorizationRequest {
 	r.amount = &amount
 	return r

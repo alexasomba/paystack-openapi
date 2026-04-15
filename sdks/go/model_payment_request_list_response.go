@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -25,7 +25,7 @@ type PaymentRequestListResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
 	Data []PaymentRequestListResponseArray `json:"data"`
-	Meta PaymentRequestListResponseMeta `json:"meta"`
+	Meta Meta `json:"meta"`
 }
 
 type _PaymentRequestListResponse PaymentRequestListResponse
@@ -34,7 +34,7 @@ type _PaymentRequestListResponse PaymentRequestListResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaymentRequestListResponse(status bool, message string, data []PaymentRequestListResponseArray, meta PaymentRequestListResponseMeta) *PaymentRequestListResponse {
+func NewPaymentRequestListResponse(status bool, message string, data []PaymentRequestListResponseArray, meta Meta) *PaymentRequestListResponse {
 	this := PaymentRequestListResponse{}
 	this.Status = status
 	this.Message = message
@@ -124,9 +124,9 @@ func (o *PaymentRequestListResponse) SetData(v []PaymentRequestListResponseArray
 }
 
 // GetMeta returns the Meta field value
-func (o *PaymentRequestListResponse) GetMeta() PaymentRequestListResponseMeta {
+func (o *PaymentRequestListResponse) GetMeta() Meta {
 	if o == nil {
-		var ret PaymentRequestListResponseMeta
+		var ret Meta
 		return ret
 	}
 
@@ -135,7 +135,7 @@ func (o *PaymentRequestListResponse) GetMeta() PaymentRequestListResponseMeta {
 
 // GetMetaOk returns a tuple with the Meta field value
 // and a boolean to check if the value has been set.
-func (o *PaymentRequestListResponse) GetMetaOk() (*PaymentRequestListResponseMeta, bool) {
+func (o *PaymentRequestListResponse) GetMetaOk() (*Meta, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -143,7 +143,7 @@ func (o *PaymentRequestListResponse) GetMetaOk() (*PaymentRequestListResponseMet
 }
 
 // SetMeta sets field value
-func (o *PaymentRequestListResponse) SetMeta(v PaymentRequestListResponseMeta) {
+func (o *PaymentRequestListResponse) SetMeta(v Meta) {
 	o.Meta = v
 }
 

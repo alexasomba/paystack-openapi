@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -33,7 +33,7 @@ type VerifyResponseData struct {
 	Channel string `json:"channel"`
 	Currency string `json:"currency"`
 	IpAddress NullableString `json:"ip_address"`
-	Metadata NullableTransactionPartialDebitResponseDataMetadata `json:"metadata"`
+	Metadata NullableVerifyResponseDataMetadata `json:"metadata"`
 	Log NullableVerifyResponseDataLog `json:"log"`
 	Fees NullableInt32 `json:"fees"`
 	FeesSplit interface{} `json:"fees_split"`
@@ -60,7 +60,7 @@ type _VerifyResponseData VerifyResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVerifyResponseData(id int64, domain string, status string, reference string, receiptNumber NullableString, amount int32, message NullableString, gatewayResponse string, channel string, currency string, ipAddress NullableString, metadata NullableTransactionPartialDebitResponseDataMetadata, log NullableVerifyResponseDataLog, fees NullableInt32, feesSplit interface{}, authorization VerifyResponseDataAuthorization, customer VerifyResponseDataCustomer, plan NullableTransactionPartialDebitResponseDataMetadata, split map[string]interface{}, orderId interface{}, paidAt NullableString, createdAt string, requestedAmount int32, posTransactionData interface{}, source interface{}, feesBreakdown interface{}, connect interface{}, transactionDate string, planObject VerifyResponseDataPlanObject, subaccount map[string]interface{}) *VerifyResponseData {
+func NewVerifyResponseData(id int64, domain string, status string, reference string, receiptNumber NullableString, amount int32, message NullableString, gatewayResponse string, channel string, currency string, ipAddress NullableString, metadata NullableVerifyResponseDataMetadata, log NullableVerifyResponseDataLog, fees NullableInt32, feesSplit interface{}, authorization VerifyResponseDataAuthorization, customer VerifyResponseDataCustomer, plan NullableTransactionPartialDebitResponseDataMetadata, split map[string]interface{}, orderId interface{}, paidAt NullableString, createdAt string, requestedAmount int32, posTransactionData interface{}, source interface{}, feesBreakdown interface{}, connect interface{}, transactionDate string, planObject VerifyResponseDataPlanObject, subaccount map[string]interface{}) *VerifyResponseData {
 	this := VerifyResponseData{}
 	this.Id = id
 	this.Domain = domain
@@ -374,10 +374,10 @@ func (o *VerifyResponseData) SetIpAddress(v string) {
 }
 
 // GetMetadata returns the Metadata field value
-// If the value is explicit nil, the zero value for TransactionPartialDebitResponseDataMetadata will be returned
-func (o *VerifyResponseData) GetMetadata() TransactionPartialDebitResponseDataMetadata {
+// If the value is explicit nil, the zero value for VerifyResponseDataMetadata will be returned
+func (o *VerifyResponseData) GetMetadata() VerifyResponseDataMetadata {
 	if o == nil || o.Metadata.Get() == nil {
-		var ret TransactionPartialDebitResponseDataMetadata
+		var ret VerifyResponseDataMetadata
 		return ret
 	}
 
@@ -387,7 +387,7 @@ func (o *VerifyResponseData) GetMetadata() TransactionPartialDebitResponseDataMe
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VerifyResponseData) GetMetadataOk() (*TransactionPartialDebitResponseDataMetadata, bool) {
+func (o *VerifyResponseData) GetMetadataOk() (*VerifyResponseDataMetadata, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -395,7 +395,7 @@ func (o *VerifyResponseData) GetMetadataOk() (*TransactionPartialDebitResponseDa
 }
 
 // SetMetadata sets field value
-func (o *VerifyResponseData) SetMetadata(v TransactionPartialDebitResponseDataMetadata) {
+func (o *VerifyResponseData) SetMetadata(v VerifyResponseDataMetadata) {
 	o.Metadata.Set(&v)
 }
 

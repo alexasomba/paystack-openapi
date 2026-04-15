@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -18,16 +18,16 @@ import (
 // checks if the Error type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Error{}
 
-// Error struct for Error
+// Error Standard error response returned when a Paystack API request fails.
 type Error struct {
 	// An indicator for the state of the request
 	Status *bool `json:"status,omitempty"`
 	// A short description of the error
 	Message *string `json:"message,omitempty"`
 	Meta *ErrorMeta `json:"meta,omitempty"`
-	// A tag to indicate the type of the error
+	// A category describing the kind of error that occurred
 	Type *string `json:"type,omitempty"`
-	// The error code
+	// A Paystack-defined machine-readable code for the error
 	Code *string `json:"code,omitempty"`
 	// An indicator for error mapping for the request
 	ErrorCodeMappingNotFound *bool `json:"errorCodeMappingNotFound,omitempty"`

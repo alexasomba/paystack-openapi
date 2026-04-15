@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -22,12 +22,13 @@ var _ MappedNullable = &OrderFetchProductResponseMeta{}
 
 // OrderFetchProductResponseMeta struct for OrderFetchProductResponseMeta
 type OrderFetchProductResponseMeta struct {
-	QuantitySold int32 `json:"quantity_sold"`
-	Revenue int32 `json:"revenue"`
 	Total int32 `json:"total"`
 	Skipped int32 `json:"skipped"`
-	PerPage int32 `json:"perPage"`
+	PerPage MetaPerPage `json:"perPage"`
+	Page int32 `json:"page"`
 	PageCount int32 `json:"pageCount"`
+	QuantitySold int32 `json:"quantity_sold"`
+	Revenue int32 `json:"revenue"`
 }
 
 type _OrderFetchProductResponseMeta OrderFetchProductResponseMeta
@@ -36,14 +37,15 @@ type _OrderFetchProductResponseMeta OrderFetchProductResponseMeta
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrderFetchProductResponseMeta(quantitySold int32, revenue int32, total int32, skipped int32, perPage int32, pageCount int32) *OrderFetchProductResponseMeta {
+func NewOrderFetchProductResponseMeta(total int32, skipped int32, perPage MetaPerPage, page int32, pageCount int32, quantitySold int32, revenue int32) *OrderFetchProductResponseMeta {
 	this := OrderFetchProductResponseMeta{}
-	this.QuantitySold = quantitySold
-	this.Revenue = revenue
 	this.Total = total
 	this.Skipped = skipped
 	this.PerPage = perPage
+	this.Page = page
 	this.PageCount = pageCount
+	this.QuantitySold = quantitySold
+	this.Revenue = revenue
 	return &this
 }
 
@@ -53,54 +55,6 @@ func NewOrderFetchProductResponseMeta(quantitySold int32, revenue int32, total i
 func NewOrderFetchProductResponseMetaWithDefaults() *OrderFetchProductResponseMeta {
 	this := OrderFetchProductResponseMeta{}
 	return &this
-}
-
-// GetQuantitySold returns the QuantitySold field value
-func (o *OrderFetchProductResponseMeta) GetQuantitySold() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.QuantitySold
-}
-
-// GetQuantitySoldOk returns a tuple with the QuantitySold field value
-// and a boolean to check if the value has been set.
-func (o *OrderFetchProductResponseMeta) GetQuantitySoldOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.QuantitySold, true
-}
-
-// SetQuantitySold sets field value
-func (o *OrderFetchProductResponseMeta) SetQuantitySold(v int32) {
-	o.QuantitySold = v
-}
-
-// GetRevenue returns the Revenue field value
-func (o *OrderFetchProductResponseMeta) GetRevenue() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Revenue
-}
-
-// GetRevenueOk returns a tuple with the Revenue field value
-// and a boolean to check if the value has been set.
-func (o *OrderFetchProductResponseMeta) GetRevenueOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Revenue, true
-}
-
-// SetRevenue sets field value
-func (o *OrderFetchProductResponseMeta) SetRevenue(v int32) {
-	o.Revenue = v
 }
 
 // GetTotal returns the Total field value
@@ -152,9 +106,9 @@ func (o *OrderFetchProductResponseMeta) SetSkipped(v int32) {
 }
 
 // GetPerPage returns the PerPage field value
-func (o *OrderFetchProductResponseMeta) GetPerPage() int32 {
+func (o *OrderFetchProductResponseMeta) GetPerPage() MetaPerPage {
 	if o == nil {
-		var ret int32
+		var ret MetaPerPage
 		return ret
 	}
 
@@ -163,7 +117,7 @@ func (o *OrderFetchProductResponseMeta) GetPerPage() int32 {
 
 // GetPerPageOk returns a tuple with the PerPage field value
 // and a boolean to check if the value has been set.
-func (o *OrderFetchProductResponseMeta) GetPerPageOk() (*int32, bool) {
+func (o *OrderFetchProductResponseMeta) GetPerPageOk() (*MetaPerPage, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -171,8 +125,32 @@ func (o *OrderFetchProductResponseMeta) GetPerPageOk() (*int32, bool) {
 }
 
 // SetPerPage sets field value
-func (o *OrderFetchProductResponseMeta) SetPerPage(v int32) {
+func (o *OrderFetchProductResponseMeta) SetPerPage(v MetaPerPage) {
 	o.PerPage = v
+}
+
+// GetPage returns the Page field value
+func (o *OrderFetchProductResponseMeta) GetPage() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Page
+}
+
+// GetPageOk returns a tuple with the Page field value
+// and a boolean to check if the value has been set.
+func (o *OrderFetchProductResponseMeta) GetPageOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Page, true
+}
+
+// SetPage sets field value
+func (o *OrderFetchProductResponseMeta) SetPage(v int32) {
+	o.Page = v
 }
 
 // GetPageCount returns the PageCount field value
@@ -199,6 +177,54 @@ func (o *OrderFetchProductResponseMeta) SetPageCount(v int32) {
 	o.PageCount = v
 }
 
+// GetQuantitySold returns the QuantitySold field value
+func (o *OrderFetchProductResponseMeta) GetQuantitySold() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.QuantitySold
+}
+
+// GetQuantitySoldOk returns a tuple with the QuantitySold field value
+// and a boolean to check if the value has been set.
+func (o *OrderFetchProductResponseMeta) GetQuantitySoldOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.QuantitySold, true
+}
+
+// SetQuantitySold sets field value
+func (o *OrderFetchProductResponseMeta) SetQuantitySold(v int32) {
+	o.QuantitySold = v
+}
+
+// GetRevenue returns the Revenue field value
+func (o *OrderFetchProductResponseMeta) GetRevenue() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Revenue
+}
+
+// GetRevenueOk returns a tuple with the Revenue field value
+// and a boolean to check if the value has been set.
+func (o *OrderFetchProductResponseMeta) GetRevenueOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Revenue, true
+}
+
+// SetRevenue sets field value
+func (o *OrderFetchProductResponseMeta) SetRevenue(v int32) {
+	o.Revenue = v
+}
+
 func (o OrderFetchProductResponseMeta) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -209,12 +235,13 @@ func (o OrderFetchProductResponseMeta) MarshalJSON() ([]byte, error) {
 
 func (o OrderFetchProductResponseMeta) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["quantity_sold"] = o.QuantitySold
-	toSerialize["revenue"] = o.Revenue
 	toSerialize["total"] = o.Total
 	toSerialize["skipped"] = o.Skipped
 	toSerialize["perPage"] = o.PerPage
+	toSerialize["page"] = o.Page
 	toSerialize["pageCount"] = o.PageCount
+	toSerialize["quantity_sold"] = o.QuantitySold
+	toSerialize["revenue"] = o.Revenue
 	return toSerialize, nil
 }
 
@@ -223,12 +250,13 @@ func (o *OrderFetchProductResponseMeta) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"quantity_sold",
-		"revenue",
 		"total",
 		"skipped",
 		"perPage",
+		"page",
 		"pageCount",
+		"quantity_sold",
+		"revenue",
 	}
 
 	allProperties := make(map[string]interface{})

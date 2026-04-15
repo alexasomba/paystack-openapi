@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -42,7 +42,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the Paystack API v1.0.0
+// APIClient manages communication with the Paystack API v1.3.0
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -57,6 +57,10 @@ type APIClient struct {
 	BankAPI *BankAPIService
 
 	BulkChargeAPI *BulkChargeAPIService
+
+	CapitecPayAPI *CapitecPayAPIService
+
+	CardPreauthorizationAPI *CardPreauthorizationAPIService
 
 	ChargeAPI *ChargeAPIService
 
@@ -125,6 +129,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.BalanceAPI = (*BalanceAPIService)(&c.common)
 	c.BankAPI = (*BankAPIService)(&c.common)
 	c.BulkChargeAPI = (*BulkChargeAPIService)(&c.common)
+	c.CapitecPayAPI = (*CapitecPayAPIService)(&c.common)
+	c.CardPreauthorizationAPI = (*CardPreauthorizationAPIService)(&c.common)
 	c.ChargeAPI = (*ChargeAPIService)(&c.common)
 	c.CustomerAPI = (*CustomerAPIService)(&c.common)
 	c.DedicatedVirtualAccountAPI = (*DedicatedVirtualAccountAPIService)(&c.common)

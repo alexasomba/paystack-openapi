@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -26,8 +26,7 @@ type CustomerUpdate struct {
 	LastName *string `json:"last_name,omitempty"`
 	// Customer's phone number
 	Phone *string `json:"phone,omitempty"`
-	// Stringified JSON object of custom data
-	Metadata *string `json:"metadata,omitempty"`
+	Metadata *SubaccountUpdateMetadata `json:"metadata,omitempty"`
 }
 
 // NewCustomerUpdate instantiates a new CustomerUpdate object
@@ -144,9 +143,9 @@ func (o *CustomerUpdate) SetPhone(v string) {
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *CustomerUpdate) GetMetadata() string {
+func (o *CustomerUpdate) GetMetadata() SubaccountUpdateMetadata {
 	if o == nil || IsNil(o.Metadata) {
-		var ret string
+		var ret SubaccountUpdateMetadata
 		return ret
 	}
 	return *o.Metadata
@@ -154,7 +153,7 @@ func (o *CustomerUpdate) GetMetadata() string {
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CustomerUpdate) GetMetadataOk() (*string, bool) {
+func (o *CustomerUpdate) GetMetadataOk() (*SubaccountUpdateMetadata, bool) {
 	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
@@ -170,8 +169,8 @@ func (o *CustomerUpdate) HasMetadata() bool {
 	return false
 }
 
-// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
-func (o *CustomerUpdate) SetMetadata(v string) {
+// SetMetadata gets a reference to the given SubaccountUpdateMetadata and assigns it to the Metadata field.
+func (o *CustomerUpdate) SetMetadata(v SubaccountUpdateMetadata) {
 	o.Metadata = &v
 }
 

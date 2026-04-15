@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -36,8 +36,7 @@ type ChargeCreate struct {
 	Birthday *string `json:"birthday,omitempty"`
 	// This is the unique identifier of the device a user uses in making payment.  Only -, .`, = and alphanumeric characters are allowed.
 	DeviceId *string `json:"device_id,omitempty"`
-	// JSON object of custom data
-	Metadata map[string]interface{} `json:"metadata,omitempty"`
+	Metadata *ChargeCreateMetadata `json:"metadata,omitempty"`
 }
 
 type _ChargeCreate ChargeCreate
@@ -270,19 +269,19 @@ func (o *ChargeCreate) SetDeviceId(v string) {
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *ChargeCreate) GetMetadata() map[string]interface{} {
+func (o *ChargeCreate) GetMetadata() ChargeCreateMetadata {
 	if o == nil || IsNil(o.Metadata) {
-		var ret map[string]interface{}
+		var ret ChargeCreateMetadata
 		return ret
 	}
-	return o.Metadata
+	return *o.Metadata
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ChargeCreate) GetMetadataOk() (map[string]interface{}, bool) {
+func (o *ChargeCreate) GetMetadataOk() (*ChargeCreateMetadata, bool) {
 	if o == nil || IsNil(o.Metadata) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Metadata, true
 }
@@ -296,9 +295,9 @@ func (o *ChargeCreate) HasMetadata() bool {
 	return false
 }
 
-// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
-func (o *ChargeCreate) SetMetadata(v map[string]interface{}) {
-	o.Metadata = v
+// SetMetadata gets a reference to the given ChargeCreateMetadata and assigns it to the Metadata field.
+func (o *ChargeCreate) SetMetadata(v ChargeCreateMetadata) {
+	o.Metadata = &v
 }
 
 func (o ChargeCreate) MarshalJSON() ([]byte, error) {

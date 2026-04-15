@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -25,7 +25,7 @@ type BulkChargeFetchBulkBatchChargesResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
 	Data []BulkChargeFetchBulkBatchChargesResponseArray `json:"data"`
-	Meta BulkChargeFetchBulkBatchChargesResponseMeta `json:"meta"`
+	Meta Meta `json:"meta"`
 }
 
 type _BulkChargeFetchBulkBatchChargesResponse BulkChargeFetchBulkBatchChargesResponse
@@ -34,7 +34,7 @@ type _BulkChargeFetchBulkBatchChargesResponse BulkChargeFetchBulkBatchChargesRes
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBulkChargeFetchBulkBatchChargesResponse(status bool, message string, data []BulkChargeFetchBulkBatchChargesResponseArray, meta BulkChargeFetchBulkBatchChargesResponseMeta) *BulkChargeFetchBulkBatchChargesResponse {
+func NewBulkChargeFetchBulkBatchChargesResponse(status bool, message string, data []BulkChargeFetchBulkBatchChargesResponseArray, meta Meta) *BulkChargeFetchBulkBatchChargesResponse {
 	this := BulkChargeFetchBulkBatchChargesResponse{}
 	this.Status = status
 	this.Message = message
@@ -124,9 +124,9 @@ func (o *BulkChargeFetchBulkBatchChargesResponse) SetData(v []BulkChargeFetchBul
 }
 
 // GetMeta returns the Meta field value
-func (o *BulkChargeFetchBulkBatchChargesResponse) GetMeta() BulkChargeFetchBulkBatchChargesResponseMeta {
+func (o *BulkChargeFetchBulkBatchChargesResponse) GetMeta() Meta {
 	if o == nil {
-		var ret BulkChargeFetchBulkBatchChargesResponseMeta
+		var ret Meta
 		return ret
 	}
 
@@ -135,7 +135,7 @@ func (o *BulkChargeFetchBulkBatchChargesResponse) GetMeta() BulkChargeFetchBulkB
 
 // GetMetaOk returns a tuple with the Meta field value
 // and a boolean to check if the value has been set.
-func (o *BulkChargeFetchBulkBatchChargesResponse) GetMetaOk() (*BulkChargeFetchBulkBatchChargesResponseMeta, bool) {
+func (o *BulkChargeFetchBulkBatchChargesResponse) GetMetaOk() (*Meta, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -143,7 +143,7 @@ func (o *BulkChargeFetchBulkBatchChargesResponse) GetMetaOk() (*BulkChargeFetchB
 }
 
 // SetMeta sets field value
-func (o *BulkChargeFetchBulkBatchChargesResponse) SetMeta(v BulkChargeFetchBulkBatchChargesResponseMeta) {
+func (o *BulkChargeFetchBulkBatchChargesResponse) SetMeta(v Meta) {
 	o.Meta = v
 }
 

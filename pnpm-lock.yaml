@@ -28,8 +28,8 @@ importers:
         specifier: ^9.39.4
         version: 9.39.4
       '@quobix/vacuum':
-        specifier: ^0.25.8
-        version: 0.25.8
+        specifier: ^0.25.9
+        version: 0.25.9
       '@redocly/cli':
         specifier: ^2.28.0
         version: 2.28.0(@opentelemetry/api@1.9.1)(core-js@3.38.1)
@@ -79,7 +79,7 @@ importers:
         specifier: 'catalog:'
         version: 0.1.18(@arethetypeswrong/core@0.18.2)(@opentelemetry/api@1.9.1)(@types/node@25.6.0)(@vitest/coverage-v8@4.1.4)(esbuild@0.27.7)(jsdom@29.0.2(@noble/hashes@1.8.0))(publint@0.3.18)(typescript@5.9.3)(vite@7.3.1(@types/node@25.6.0)(lightningcss@1.32.0)(yaml@2.8.3))(yaml@2.8.3)
       vitest:
-        specifier: npm:@voidzero-dev/vite-plus-test@latest
+        specifier: npm:@voidzero-dev/vite-plus-test@^0.1.18
         version: '@voidzero-dev/vite-plus-test@0.1.18(@arethetypeswrong/core@0.18.2)(@opentelemetry/api@1.9.1)(@types/node@25.6.0)(@vitest/coverage-v8@4.1.4)(esbuild@0.27.7)(jsdom@29.0.2(@noble/hashes@1.8.0))(publint@0.3.18)(typescript@5.9.3)(vite@7.3.1(@types/node@25.6.0)(lightningcss@1.32.0)(yaml@2.8.3))(yaml@2.8.3)'
       yaml:
         specifier: ^2.8.3
@@ -1018,8 +1018,8 @@ packages:
     resolution: {integrity: sha512-HDVTWq3H0uTXiU0eeSQntcVUTPP3GamzeXI41+x7uU9J65JgWQh3qWZHblR1i0npXfFtF+mxBiU2nJH8znxWnQ==}
     engines: {node: '>=18'}
 
-  '@quobix/vacuum@0.25.8':
-    resolution: {integrity: sha512-uzYXj87KjBonfBm+WdgrHjomqFNJ0m1rNo6VrXUVFdqJ4pxzvmSRT33SEr3zBN8hSGlUhPXM/413MqC9q4wQRw==}
+  '@quobix/vacuum@0.25.9':
+    resolution: {integrity: sha512-9KgNSY810jfKb9+51rx+6ptJWkkO+wcla8h+MmpxxB2mBvOd3rCMUQn2hi7vbtD19xLj5ZuueMeAoi2MI+yQrQ==}
     engines: {node: '>=16.0.0'}
     hasBin: true
 
@@ -2121,8 +2121,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  electron-to-chromium@1.5.336:
-    resolution: {integrity: sha512-AbH9q9J455r/nLmdNZes0G0ZKcRX73FicwowalLs6ijwOmCJSRRrLX63lcAlzy9ux3dWK1w1+1nsBJEWN11hcQ==}
+  electron-to-chromium@1.5.337:
+    resolution: {integrity: sha512-15gKW9mRUNP9RdzhedJNypFUxtYWSXohFz2nTLzM272xbRXHws68kNDzyATG3qej+vUj/7Sn9hf5XTDh0XK6/w==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -4753,7 +4753,7 @@ snapshots:
 
   '@publint/pack@0.1.4': {}
 
-  '@quobix/vacuum@0.25.8':
+  '@quobix/vacuum@0.25.9':
     dependencies:
       https-proxy-agent: 7.0.6
       node-fetch: 3.3.2
@@ -5787,7 +5787,7 @@ snapshots:
     dependencies:
       baseline-browser-mapping: 2.10.19
       caniuse-lite: 1.0.30001788
-      electron-to-chromium: 1.5.336
+      electron-to-chromium: 1.5.337
       node-releases: 2.0.37
       update-browserslist-db: 1.2.3(browserslist@4.28.2)
 
@@ -6043,7 +6043,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  electron-to-chromium@1.5.336: {}
+  electron-to-chromium@1.5.337: {}
 
   emoji-regex@8.0.0: {}
 

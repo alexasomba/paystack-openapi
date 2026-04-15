@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -30,6 +30,7 @@ type TransferInitiate struct {
 	Reference string `json:"reference"`
 	// The reason or narration for the transfer.
 	Reason *string `json:"reason,omitempty"`
+	Metadata *TransactionInitializeMetadata `json:"metadata,omitempty"`
 	// The source of funds to send from
 	Source string `json:"source"`
 	// Specify the currency of the transfer.
@@ -169,6 +170,38 @@ func (o *TransferInitiate) SetReason(v string) {
 	o.Reason = &v
 }
 
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *TransferInitiate) GetMetadata() TransactionInitializeMetadata {
+	if o == nil || IsNil(o.Metadata) {
+		var ret TransactionInitializeMetadata
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransferInitiate) GetMetadataOk() (*TransactionInitializeMetadata, bool) {
+	if o == nil || IsNil(o.Metadata) {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *TransferInitiate) HasMetadata() bool {
+	if o != nil && !IsNil(o.Metadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given TransactionInitializeMetadata and assigns it to the Metadata field.
+func (o *TransferInitiate) SetMetadata(v TransactionInitializeMetadata) {
+	o.Metadata = &v
+}
+
 // GetSource returns the Source field value
 func (o *TransferInitiate) GetSource() string {
 	if o == nil {
@@ -240,6 +273,9 @@ func (o TransferInitiate) ToMap() (map[string]interface{}, error) {
 	toSerialize["reference"] = o.Reference
 	if !IsNil(o.Reason) {
 		toSerialize["reason"] = o.Reason
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
 	}
 	toSerialize["source"] = o.Source
 	if !IsNil(o.Currency) {

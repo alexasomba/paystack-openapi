@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -28,7 +28,7 @@ type SubaccountCreate struct {
 	SettlementBank string `json:"settlement_bank"`
 	// Bank account number
 	AccountNumber string `json:"account_number"`
-	// Customer's phone number
+	// The percentage the main account receives from each payment made to the subaccount
 	PercentageCharge float32 `json:"percentage_charge"`
 	// A description for this subaccount
 	Description *string `json:"description,omitempty"`
@@ -38,8 +38,7 @@ type SubaccountCreate struct {
 	PrimaryContactName *string `json:"primary_contact_name,omitempty"`
 	// A phone number to call for this subaccount
 	PrimaryContactPhone *string `json:"primary_contact_phone,omitempty"`
-	// Stringified JSON object of custom data
-	Metadata *string `json:"metadata,omitempty"`
+	Metadata *SubaccountCreateMetadata `json:"metadata,omitempty"`
 }
 
 type _SubaccountCreate SubaccountCreate
@@ -290,9 +289,9 @@ func (o *SubaccountCreate) SetPrimaryContactPhone(v string) {
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *SubaccountCreate) GetMetadata() string {
+func (o *SubaccountCreate) GetMetadata() SubaccountCreateMetadata {
 	if o == nil || IsNil(o.Metadata) {
-		var ret string
+		var ret SubaccountCreateMetadata
 		return ret
 	}
 	return *o.Metadata
@@ -300,7 +299,7 @@ func (o *SubaccountCreate) GetMetadata() string {
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SubaccountCreate) GetMetadataOk() (*string, bool) {
+func (o *SubaccountCreate) GetMetadataOk() (*SubaccountCreateMetadata, bool) {
 	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
@@ -316,8 +315,8 @@ func (o *SubaccountCreate) HasMetadata() bool {
 	return false
 }
 
-// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
-func (o *SubaccountCreate) SetMetadata(v string) {
+// SetMetadata gets a reference to the given SubaccountCreateMetadata and assigns it to the Metadata field.
+func (o *SubaccountCreate) SetMetadata(v SubaccountCreateMetadata) {
 	o.Metadata = &v
 }
 

@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -24,6 +24,7 @@ type TransferRecipientUpdate struct {
 	Name *string `json:"name,omitempty"`
 	// Recipient's email address
 	Email *string `json:"email,omitempty"`
+	Metadata *TransactionInitializeMetadata `json:"metadata,omitempty"`
 }
 
 // NewTransferRecipientUpdate instantiates a new TransferRecipientUpdate object
@@ -107,6 +108,38 @@ func (o *TransferRecipientUpdate) SetEmail(v string) {
 	o.Email = &v
 }
 
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *TransferRecipientUpdate) GetMetadata() TransactionInitializeMetadata {
+	if o == nil || IsNil(o.Metadata) {
+		var ret TransactionInitializeMetadata
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransferRecipientUpdate) GetMetadataOk() (*TransactionInitializeMetadata, bool) {
+	if o == nil || IsNil(o.Metadata) {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *TransferRecipientUpdate) HasMetadata() bool {
+	if o != nil && !IsNil(o.Metadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given TransactionInitializeMetadata and assigns it to the Metadata field.
+func (o *TransferRecipientUpdate) SetMetadata(v TransactionInitializeMetadata) {
+	o.Metadata = &v
+}
+
 func (o TransferRecipientUpdate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -122,6 +155,9 @@ func (o TransferRecipientUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Email) {
 		toSerialize["email"] = o.Email
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
 	}
 	return toSerialize, nil
 }

@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.0.0
+API version: 1.3.0
 Contact: techsupport@paystack.com
 */
 
@@ -22,12 +22,13 @@ var _ MappedNullable = &PlanUpdate{}
 type PlanUpdate struct {
 	// Name of plan
 	Name *string `json:"name,omitempty"`
-	// Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,  Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,  cents, if currency is ZAR, and whole number if currency is XOF
+	// Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, send the amount multiplied by 100 even though the currency does not use fractional subunits.
 	Amount *int32 `json:"amount,omitempty"`
 	// Payment interval
 	Interval *string `json:"interval,omitempty"`
 	// A description for this plan
-	Description *bool `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Metadata *SubaccountUpdateMetadata `json:"metadata,omitempty"`
 	// Set to false if you don't want invoices to be sent to your customers
 	SendInvoices *bool `json:"send_invoices,omitempty"`
 	// Set to false if you don't want text messages to be sent to your customers
@@ -152,9 +153,9 @@ func (o *PlanUpdate) SetInterval(v string) {
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *PlanUpdate) GetDescription() bool {
+func (o *PlanUpdate) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
-		var ret bool
+		var ret string
 		return ret
 	}
 	return *o.Description
@@ -162,7 +163,7 @@ func (o *PlanUpdate) GetDescription() bool {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PlanUpdate) GetDescriptionOk() (*bool, bool) {
+func (o *PlanUpdate) GetDescriptionOk() (*string, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
@@ -178,9 +179,41 @@ func (o *PlanUpdate) HasDescription() bool {
 	return false
 }
 
-// SetDescription gets a reference to the given bool and assigns it to the Description field.
-func (o *PlanUpdate) SetDescription(v bool) {
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *PlanUpdate) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *PlanUpdate) GetMetadata() SubaccountUpdateMetadata {
+	if o == nil || IsNil(o.Metadata) {
+		var ret SubaccountUpdateMetadata
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PlanUpdate) GetMetadataOk() (*SubaccountUpdateMetadata, bool) {
+	if o == nil || IsNil(o.Metadata) {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *PlanUpdate) HasMetadata() bool {
+	if o != nil && !IsNil(o.Metadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given SubaccountUpdateMetadata and assigns it to the Metadata field.
+func (o *PlanUpdate) SetMetadata(v SubaccountUpdateMetadata) {
+	o.Metadata = &v
 }
 
 // GetSendInvoices returns the SendInvoices field value if set, zero value otherwise.
@@ -332,6 +365,9 @@ func (o PlanUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
 	}
 	if !IsNil(o.SendInvoices) {
 		toSerialize["send_invoices"] = o.SendInvoices
