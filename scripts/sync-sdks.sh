@@ -14,6 +14,12 @@ if [ -z "$RELEASE_NOTE" ]; then
     RELEASE_NOTE="Update SDKs from openapi spec"
 fi
 
+# Optional local sync if LOCAL_SDK_PATH is provided (at once)
+if [ ! -z "$LOCAL_SDK_PATH" ]; then
+    echo "Local sync path detected: $LOCAL_SDK_PATH"
+    /bin/bash ./scripts/sync-local.sh "$LOCAL_SDK_PATH"
+fi
+
 for sdk in "${SDKS[@]}"; do
     echo "--------------------------------------------------"
     echo "Syncing SDK: $sdk"
