@@ -34,6 +34,7 @@ build/
 out/
 
 # Misc
+.npmrc
 .cache/
 tmp/
 temp/
