@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "42Crunch.vscode-openapi",
-    "pb33f.vacuum"
+    "pb33f.vacuum",
+    "VoidZero.vite-plus-extension-pack"
   ]
 }

@@ -1,11 +1,11 @@
 # TransferResendsOtpResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
+
+| Name        | Type     | Description | Notes |
+| ----------- | -------- | ----------- | ----- |
+| **status**  | **bool** |             |
+| **message** | **str**  |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ transfer_resends_otp_response_dict = transfer_resends_otp_response_instance.to_d
 # create an instance of TransferResendsOtpResponse from a dict
 transfer_resends_otp_response_form_dict = transfer_resends_otp_response.from_dict(transfer_resends_otp_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

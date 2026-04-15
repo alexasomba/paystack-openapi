@@ -1,0 +1,17 @@
+type: object
+properties:
+  status:
+    type: boolean
+  message:
+    type: string
+  data:
+    type: array
+    items:
+      $ref: ./SettlementListResponseArray.yaml
+  meta:
+    $ref: ./Meta.yaml
+required:
+  - status
+  - message
+  - data
+  - meta

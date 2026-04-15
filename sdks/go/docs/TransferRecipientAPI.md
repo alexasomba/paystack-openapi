@@ -2,24 +2,20 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**TransferrecipientBulk**](TransferRecipientAPI.md#TransferrecipientBulk) | **Post** /transferrecipient/bulk | Bulk Create Transfer Recipient
-[**TransferrecipientCreate**](TransferRecipientAPI.md#TransferrecipientCreate) | **Post** /transferrecipient | Create Transfer Recipient
-[**TransferrecipientDelete**](TransferRecipientAPI.md#TransferrecipientDelete) | **Delete** /transferrecipient/{code} | Delete Transfer Recipient
-[**TransferrecipientFetch**](TransferRecipientAPI.md#TransferrecipientFetch) | **Get** /transferrecipient/{code} | Fetch Transfer recipient
-[**TransferrecipientList**](TransferRecipientAPI.md#TransferrecipientList) | **Get** /transferrecipient | List Transfer Recipients
-[**TransferrecipientUpdate**](TransferRecipientAPI.md#TransferrecipientUpdate) | **Put** /transferrecipient/{code} | Update Transfer Recipient
-
-
+| Method                                                                         | HTTP request                         | Description                    |
+| ------------------------------------------------------------------------------ | ------------------------------------ | ------------------------------ |
+| [**TransferrecipientBulk**](TransferRecipientAPI.md#TransferrecipientBulk)     | **Post** /transferrecipient/bulk     | Bulk Create Transfer Recipient |
+| [**TransferrecipientCreate**](TransferRecipientAPI.md#TransferrecipientCreate) | **Post** /transferrecipient          | Create Transfer Recipient      |
+| [**TransferrecipientDelete**](TransferRecipientAPI.md#TransferrecipientDelete) | **Delete** /transferrecipient/{code} | Delete Transfer Recipient      |
+| [**TransferrecipientFetch**](TransferRecipientAPI.md#TransferrecipientFetch)   | **Get** /transferrecipient/{code}    | Fetch Transfer recipient       |
+| [**TransferrecipientList**](TransferRecipientAPI.md#TransferrecipientList)     | **Get** /transferrecipient           | List Transfer Recipients       |
+| [**TransferrecipientUpdate**](TransferRecipientAPI.md#TransferrecipientUpdate) | **Put** /transferrecipient/{code}    | Update Transfer Recipient      |
 
 ## TransferrecipientBulk
 
 > TransferRecipientBulkCreateResponse TransferrecipientBulk(ctx).TransferRecipientBulk(transferRecipientBulk).Execute()
 
 Bulk Create Transfer Recipient
-
-
 
 ### Example
 
@@ -50,16 +46,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransferrecipientBulkRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transferRecipientBulk** | [**TransferRecipientBulk**](TransferRecipientBulk.md) |  | 
+| Name                      | Type                                                  | Description | Notes |
+| ------------------------- | ----------------------------------------------------- | ----------- | ----- |
+| **transferRecipientBulk** | [**TransferRecipientBulk**](TransferRecipientBulk.md) |             |
 
 ### Return type
 
@@ -78,14 +71,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransferrecipientCreate
 
 > TransferRecipientCreateResponse TransferrecipientCreate(ctx).TransferRecipientCreate(transferRecipientCreate).Execute()
 
 Create Transfer Recipient
-
-
 
 ### Example
 
@@ -116,16 +106,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransferrecipientCreateRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transferRecipientCreate** | [**TransferRecipientCreate**](TransferRecipientCreate.md) |  | 
+| Name                        | Type                                                      | Description | Notes |
+| --------------------------- | --------------------------------------------------------- | ----------- | ----- |
+| **transferRecipientCreate** | [**TransferRecipientCreate**](TransferRecipientCreate.md) |             |
 
 ### Return type
 
@@ -144,14 +131,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransferrecipientDelete
 
 > TransferRecipientDeleteResponse TransferrecipientDelete(ctx, code).Execute()
 
 Delete Transfer Recipient
-
-
 
 ### Example
 
@@ -182,20 +166,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | Transfer recipient code | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | Transfer recipient code                                                     |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransferrecipientDeleteRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -214,14 +195,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransferrecipientFetch
 
 > TransferRecipientFetchResponse TransferrecipientFetch(ctx, code).Execute()
 
 Fetch Transfer recipient
-
-
 
 ### Example
 
@@ -252,20 +230,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | Transfer recipient code | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | Transfer recipient code                                                     |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransferrecipientFetchRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -284,14 +259,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransferrecipientList
 
 > TransferRecipientListResponse TransferrecipientList(ctx).UseCursor(useCursor).Next(next).Previous(previous).PerPage(perPage).Page(page).Execute()
 
 List Transfer Recipients
-
-
 
 ### Example
 
@@ -326,20 +298,17 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransferrecipientListRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **useCursor** | **bool** | A flag to indicate if cursor based pagination should be used | 
- **next** | **string** | An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data  | 
- **previous** | **string** | An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data  | 
- **perPage** | **int32** | The number of records to fetch per request | 
- **page** | **int32** | The offset to retrieve data from | 
+| Name          | Type       | Description                                                                                                | Notes |
+| ------------- | ---------- | ---------------------------------------------------------------------------------------------------------- | ----- |
+| **useCursor** | **bool**   | A flag to indicate if cursor based pagination should be used                                               |
+| **next**      | **string** | An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data     |
+| **previous**  | **string** | An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data |
+| **perPage**   | **int32**  | The number of records to fetch per request                                                                 |
+| **page**      | **int32**  | The offset to retrieve data from                                                                           |
 
 ### Return type
 
@@ -358,14 +327,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransferrecipientUpdate
 
 > TransferRecipientUpdateResponse TransferrecipientUpdate(ctx, code).TransferRecipientUpdate(transferRecipientUpdate).Execute()
 
 Update Transfer Recipient
-
-
 
 ### Example
 
@@ -397,21 +363,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | Transfer recipient code | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | Transfer recipient code                                                     |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransferrecipientUpdateRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **transferRecipientUpdate** | [**TransferRecipientUpdate**](TransferRecipientUpdate.md) |  | 
+**transferRecipientUpdate** | [**TransferRecipientUpdate**](TransferRecipientUpdate.md) | |
 
 ### Return type
 
@@ -429,4 +393,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

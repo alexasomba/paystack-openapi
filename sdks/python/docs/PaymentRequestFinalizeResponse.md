@@ -1,12 +1,12 @@
 # PaymentRequestFinalizeResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**PaymentRequestFinalizeResponseData**](PaymentRequestFinalizeResponseData.md) |  | 
+
+| Name        | Type                                                                            | Description | Notes |
+| ----------- | ------------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                        |             |
+| **message** | **str**                                                                         |             |
+| **data**    | [**PaymentRequestFinalizeResponseData**](PaymentRequestFinalizeResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ payment_request_finalize_response_dict = payment_request_finalize_response_insta
 # create an instance of PaymentRequestFinalizeResponse from a dict
 payment_request_finalize_response_form_dict = payment_request_finalize_response.from_dict(payment_request_finalize_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -30,20 +30,25 @@ properties:
         type: integer
       first_name:
         type: string
+        nullable: true
       last_name:
         type: string
+        nullable: true
       email:
         type: string
       customer_code:
         type: string
       phone:
         type: string
+        nullable: true
       metadata:
         type: object
+        nullable: true
       risk_action:
         type: string
       international_format_phone:
         type: string
+        nullable: true
     required:
       - id
       - first_name
@@ -53,7 +58,6 @@ properties:
       - phone
       - metadata
       - risk_action
-      - international_format_phone
   id:
     type: integer
 required:
@@ -67,4 +71,5 @@ required:
   - released_at
   - currency
   - fees
+  - customer
   - id

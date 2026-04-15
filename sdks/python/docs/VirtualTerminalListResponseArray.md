@@ -1,18 +1,18 @@
 # VirtualTerminalListResponseArray
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **int** |  | 
-**code** | **str** |  | 
-**name** | **str** |  | 
-**integration** | **int** |  | 
-**domain** | **str** |  | 
-**payment_methods** | **List[object]** |  | 
-**active** | **bool** |  | 
-**created_at** | **str** |  | 
-**currency** | **str** |  | 
+
+| Name                | Type             | Description | Notes |
+| ------------------- | ---------------- | ----------- | ----- |
+| **id**              | **int**          |             |
+| **code**            | **str**          |             |
+| **name**            | **str**          |             |
+| **integration**     | **int**          |             |
+| **domain**          | **str**          |             |
+| **payment_methods** | **List[object]** |             |
+| **active**          | **bool**         |             |
+| **created_at**      | **str**          |             |
+| **currency**        | **str**          |             |
 
 ## Example
 
@@ -31,6 +31,5 @@ virtual_terminal_list_response_array_dict = virtual_terminal_list_response_array
 # create an instance of VirtualTerminalListResponseArray from a dict
 virtual_terminal_list_response_array_form_dict = virtual_terminal_list_response_array.from_dict(virtual_terminal_list_response_array_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

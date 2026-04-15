@@ -1,11 +1,11 @@
 # TransferRecipientUpdate
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**name** | **str** | Recipient&#39;s name | [optional] 
-**email** | **str** | Recipient&#39;s email address | [optional] 
+
+| Name      | Type    | Description                   | Notes      |
+| --------- | ------- | ----------------------------- | ---------- |
+| **name**  | **str** | Recipient&#39;s name          | [optional] |
+| **email** | **str** | Recipient&#39;s email address | [optional] |
 
 ## Example
 
@@ -24,6 +24,5 @@ transfer_recipient_update_dict = transfer_recipient_update_instance.to_dict()
 # create an instance of TransferRecipientUpdate from a dict
 transfer_recipient_update_form_dict = transfer_recipient_update.from_dict(transfer_recipient_update_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

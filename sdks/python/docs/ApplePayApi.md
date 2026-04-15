@@ -2,14 +2,14 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**apple_pay_list_domain**](ApplePayApi.md#apple_pay_list_domain) | **GET** /apple-pay/domain | List Domains
-[**apple_pay_register_domain**](ApplePayApi.md#apple_pay_register_domain) | **POST** /apple-pay/domain | Register Domain
-[**apple_pay_unregister_domain**](ApplePayApi.md#apple_pay_unregister_domain) | **DELETE** /apple-pay/domain | Unregister Domain
-
+| Method                                                                        | HTTP request                 | Description       |
+| ----------------------------------------------------------------------------- | ---------------------------- | ----------------- |
+| [**apple_pay_list_domain**](ApplePayApi.md#apple_pay_list_domain)             | **GET** /apple-pay/domain    | List Domains      |
+| [**apple_pay_register_domain**](ApplePayApi.md#apple_pay_register_domain)     | **POST** /apple-pay/domain   | Register Domain   |
+| [**apple_pay_unregister_domain**](ApplePayApi.md#apple_pay_unregister_domain) | **DELETE** /apple-pay/domain | Unregister Domain |
 
 # **apple_pay_list_domain**
+
 > Response apple_pay_list_domain(use_cursor=use_cursor, next=next, previous=previous)
 
 List Domains
@@ -18,7 +18,8 @@ Lists all registered domains on your integration. Returns an empty array if no d
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -60,15 +61,13 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling ApplePayApi->apple_pay_list_domain: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **use_cursor** | **bool**| A flag to indicate if cursor based pagination should be used | [optional] 
- **next** | **str**| An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data  | [optional] 
- **previous** | **str**| An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data  | [optional] 
+| Name           | Type     | Description                                                                                                | Notes      |
+| -------------- | -------- | ---------------------------------------------------------------------------------------------------------- | ---------- |
+| **use_cursor** | **bool** | A flag to indicate if cursor based pagination should be used                                               | [optional] |
+| **next**       | **str**  | An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data     | [optional] |
+| **previous**   | **str**  | An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data | [optional] |
 
 ### Return type
 
@@ -80,29 +79,32 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apple_pay_register_domain**
+
 > ApplePayCreateOkModel apple_pay_register_domain(apple_pay_param=apple_pay_param)
 
 Register Domain
 
-Register a top-level domain or subdomain for your Apple Pay integration.  > This endpoint can only be called with one domain or subdomain at a time. 
+Register a top-level domain or subdomain for your Apple Pay integration. > This endpoint can only be called with one domain or subdomain at a time.
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -143,13 +145,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling ApplePayApi->apple_pay_register_domain: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **apple_pay_param** | [**ApplePayParam**](ApplePayParam.md)|  | [optional] 
+| Name                | Type                                  | Description | Notes      |
+| ------------------- | ------------------------------------- | ----------- | ---------- |
+| **apple_pay_param** | [**ApplePayParam**](ApplePayParam.md) |             | [optional] |
 
 ### Return type
 
@@ -161,28 +161,31 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Responses from the Transaction Initialize endpoint |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                                        | Response headers |
+| ----------- | -------------------------------------------------- | ---------------- |
+| **200**     | Responses from the Transaction Initialize endpoint | -                |
+| **401**     | Unauthorized operation                             | -                |
+| **0**       | Server error                                       | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apple_pay_unregister_domain**
+
 > Response apple_pay_unregister_domain(apple_pay_param=apple_pay_param)
 
 Unregister Domain
 
-Unregister a top-level domain or subdomain previously used for your Apple Pay integration. 
+Unregister a top-level domain or subdomain previously used for your Apple Pay integration.
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -223,13 +226,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling ApplePayApi->apple_pay_unregister_domain: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **apple_pay_param** | [**ApplePayParam**](ApplePayParam.md)|  | [optional] 
+| Name                | Type                                  | Description | Notes      |
+| ------------------- | ------------------------------------- | ----------- | ---------- |
+| **apple_pay_param** | [**ApplePayParam**](ApplePayParam.md) |             | [optional] |
 
 ### Return type
 
@@ -241,16 +242,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

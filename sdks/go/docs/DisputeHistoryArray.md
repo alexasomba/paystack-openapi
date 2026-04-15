@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Status** | **string** |  | 
-**By** | **string** |  | 
-**CreatedAt** | **string** |  | 
+| Name          | Type       | Description | Notes |
+| ------------- | ---------- | ----------- | ----- |
+| **Status**    | **string** |             |
+| **By**        | **string** |             |
+| **CreatedAt** | **string** |             |
 
 ## Methods
 
@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-
 ### GetBy
 
 `func (o *DisputeHistoryArray) GetBy() string`
@@ -65,7 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeHistoryArray) SetBy(v string)`
 
 SetBy sets By field to given value.
-
 
 ### GetCreatedAt
 
@@ -86,8 +84,4 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -1,13 +1,13 @@
 # PageUpdate
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**name** | **str** | Name of page | [optional] 
-**description** | **str** | The description of the page | [optional] 
-**amount** | **int** | Amount should be in the subunit of the currency | [optional] 
-**active** | **bool** | Set to false to deactivate page url | [optional] 
+
+| Name            | Type     | Description                                     | Notes      |
+| --------------- | -------- | ----------------------------------------------- | ---------- |
+| **name**        | **str**  | Name of page                                    | [optional] |
+| **description** | **str**  | The description of the page                     | [optional] |
+| **amount**      | **int**  | Amount should be in the subunit of the currency | [optional] |
+| **active**      | **bool** | Set to false to deactivate page url             | [optional] |
 
 ## Example
 
@@ -26,6 +26,5 @@ page_update_dict = page_update_instance.to_dict()
 # create an instance of PageUpdate from a dict
 page_update_form_dict = page_update.from_dict(page_update_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

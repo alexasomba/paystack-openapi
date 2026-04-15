@@ -1,10 +1,10 @@
 # DirectDebitActivationChargeRequest
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**customer_ids** | **List[int]** | Array of customer IDs to trigger activation charge for | 
+
+| Name             | Type          | Description                                            | Notes |
+| ---------------- | ------------- | ------------------------------------------------------ | ----- |
+| **customer_ids** | **List[int]** | Array of customer IDs to trigger activation charge for |
 
 ## Example
 
@@ -23,6 +23,5 @@ direct_debit_activation_charge_request_dict = direct_debit_activation_charge_req
 # create an instance of DirectDebitActivationChargeRequest from a dict
 direct_debit_activation_charge_request_form_dict = direct_debit_activation_charge_request.from_dict(direct_debit_activation_charge_request_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,14 +2,14 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Email** | **string** | Customer&#39;s email address | 
-**Amount** | **int64** | Specified in the lowest denomination of your currency | 
-**AuthorizationCode** | **string** | Valid authorization code to charge | 
-**Currency** | [**Currency**](Currency.md) |  | 
-**AtLeast** | Pointer to **string** | Minimum amount to charge | [optional] 
-**Reference** | Pointer to **string** | Unique transaction reference. Only -, ., &#x3D; and alphanumeric characters allowed. | [optional] 
+| Name                  | Type                        | Description                                                                          | Notes      |
+| --------------------- | --------------------------- | ------------------------------------------------------------------------------------ | ---------- |
+| **Email**             | **string**                  | Customer&#39;s email address                                                         |
+| **Amount**            | **int64**                   | Specified in the lowest denomination of your currency                                |
+| **AuthorizationCode** | **string**                  | Valid authorization code to charge                                                   |
+| **Currency**          | [**Currency**](Currency.md) |                                                                                      |
+| **AtLeast**           | Pointer to **string**       | Minimum amount to charge                                                             | [optional] |
+| **Reference**         | Pointer to **string**       | Unique transaction reference. Only -, ., &#x3D; and alphanumeric characters allowed. | [optional] |
 
 ## Methods
 
@@ -49,7 +49,6 @@ and a boolean to check if the value has been set.
 
 SetEmail sets Email field to given value.
 
-
 ### GetAmount
 
 `func (o *TransactionPartialDebit) GetAmount() int64`
@@ -68,7 +67,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionPartialDebit) SetAmount(v int64)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetAuthorizationCode
 
@@ -89,7 +87,6 @@ and a boolean to check if the value has been set.
 
 SetAuthorizationCode sets AuthorizationCode field to given value.
 
-
 ### GetCurrency
 
 `func (o *TransactionPartialDebit) GetCurrency() Currency`
@@ -108,7 +105,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionPartialDebit) SetCurrency(v Currency)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetAtLeast
 
@@ -160,7 +156,4 @@ SetReference sets Reference field to given value.
 
 HasReference returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

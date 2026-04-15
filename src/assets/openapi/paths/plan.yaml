@@ -13,9 +13,9 @@ post:
         schema:
           $ref: ../components/schemas/PlanCreate.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/PlanCreateSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error
@@ -37,39 +37,37 @@ get:
       schema:
         type: integer
     - in: query
+      name: status
+      description: Filter list by plans with specified status
+      schema:
+        type: string
+    - in: query
       name: interval
       description: Specify interval of the plan
       schema:
         type: string
         enum:
-        - daily
-        - weekly
-        - monthly
-        - biannually
-        - annually
+          - daily
+          - weekly
+          - monthly
+          - quarterly
+          - biannually
+          - annually
     - in: query
       name: amount
       schema:
         type: integer
-      description: The amount on the plans to retrieve
-    - in: query
-      name: from
-      schema:
-        type: string
-        format: date-time
-      description: The start date
-    - in: query
-      name: to
-      schema:
-        type: string
-        format: date-time
-      description: The end date
+      description: >
+        Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES).
+        For XOF, the amount is the same as the base units (not multiplied by 100).
+
+        Filter plans by a specific amount.
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/PlanListSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

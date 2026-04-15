@@ -1,10 +1,10 @@
 # ApplePayParam
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**domain_name** | **str** | The domain or subdomain for your application | 
+
+| Name            | Type    | Description                                  | Notes |
+| --------------- | ------- | -------------------------------------------- | ----- |
+| **domain_name** | **str** | The domain or subdomain for your application |
 
 ## Example
 
@@ -23,6 +23,5 @@ apple_pay_param_dict = apple_pay_param_instance.to_dict()
 # create an instance of ApplePayParam from a dict
 apple_pay_param_form_dict = apple_pay_param.from_dict(apple_pay_param_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

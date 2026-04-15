@@ -21,8 +21,6 @@ properties:
         type: string
       bank:
         type: string
-      currency:
-        type: string
       linked_bank_id:
         type: integer
     required:
@@ -33,7 +31,6 @@ properties:
       - country_name
       - card_type
       - bank
-      - currency
       - linked_bank_id
 required:
   - status

@@ -1,26 +1,26 @@
 # ChargeAuthorizationResponseData
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**amount** | **int** |  | 
-**currency** | **str** |  | 
-**transaction_date** | **str** |  | 
-**status** | **str** |  | 
-**reference** | **str** |  | 
-**domain** | **str** |  | 
-**metadata** | **str** |  | 
-**gateway_response** | **str** |  | 
-**message** | **str** |  | 
-**channel** | **str** |  | 
-**ip_address** | **object** |  | 
-**log** | [**ChargeAuthorizationResponseDataLog**](ChargeAuthorizationResponseDataLog.md) |  | 
-**fees** | **int** |  | 
-**authorization** | [**ChargeAuthorizationResponseDataAuthorization**](ChargeAuthorizationResponseDataAuthorization.md) |  | 
-**customer** | [**ChargeAuthorizationResponseDataCustomer**](ChargeAuthorizationResponseDataCustomer.md) |  | 
-**plan** | **object** |  | 
-**id** | **int** |  | 
+
+| Name                 | Type                                                                                                | Description | Notes |
+| -------------------- | --------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **amount**           | **int**                                                                                             |             |
+| **currency**         | **str**                                                                                             |             |
+| **transaction_date** | **str**                                                                                             |             |
+| **status**           | **str**                                                                                             |             |
+| **reference**        | **str**                                                                                             |             |
+| **domain**           | **str**                                                                                             |             |
+| **metadata**         | **str**                                                                                             |             |
+| **gateway_response** | **str**                                                                                             |             |
+| **message**          | **str**                                                                                             |             |
+| **channel**          | **str**                                                                                             |             |
+| **ip_address**       | **object**                                                                                          |             |
+| **log**              | [**ChargeAuthorizationResponseDataLog**](ChargeAuthorizationResponseDataLog.md)                     |             |
+| **fees**             | **int**                                                                                             |             |
+| **authorization**    | [**ChargeAuthorizationResponseDataAuthorization**](ChargeAuthorizationResponseDataAuthorization.md) |             |
+| **customer**         | [**ChargeAuthorizationResponseDataCustomer**](ChargeAuthorizationResponseDataCustomer.md)           |             |
+| **plan**             | **object**                                                                                          |             |
+| **id**               | **int**                                                                                             |             |
 
 ## Example
 
@@ -39,6 +39,5 @@ charge_authorization_response_data_dict = charge_authorization_response_data_ins
 # create an instance of ChargeAuthorizationResponseData from a dict
 charge_authorization_response_data_form_dict = charge_authorization_response_data.from_dict(charge_authorization_response_data_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

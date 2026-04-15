@@ -11,9 +11,9 @@ put:
         schema:
           $ref: ../components/schemas/DirectDebitActivationChargeRequest.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/DirectDebitActivationChargeSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error

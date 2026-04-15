@@ -1,8 +1,8 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
+import fs from "node:fs/promises";
+import path from "node:path";
 
 const repoRoot = path.resolve(process.cwd());
-const goDir = path.join(repoRoot, 'sdks', 'go');
+const goDir = path.join(repoRoot, "sdks", "go");
 
 async function safeRm(targetPath) {
   await fs.rm(targetPath, { recursive: true, force: true });
@@ -10,19 +10,19 @@ async function safeRm(targetPath) {
 
 async function main() {
   const removableRootFiles = new Set([
-    '.gitignore',
-    '.travis.yml',
-    'README.md',
-    'client.go',
-    'configuration.go',
-    'response.go',
-    'utils.go',
-    'go.mod',
-    'go.sum',
-    'git_push.sh',
+    ".gitignore",
+    ".travis.yml",
+    "README.md",
+    "client.go",
+    "configuration.go",
+    "response.go",
+    "utils.go",
+    "go.mod",
+    "go.sum",
+    "git_push.sh",
   ]);
 
-  const removableDirs = new Set(['.openapi-generator', 'api']);
+  const removableDirs = new Set([".openapi-generator", "api"]);
 
   let entries;
   try {
@@ -45,13 +45,13 @@ async function main() {
 
       if (!entry.isFile()) return;
 
-      if (name.startsWith('api_') || name.startsWith('model_') || removableRootFiles.has(name)) {
+      if (name.startsWith("api_") || name.startsWith("model_") || removableRootFiles.has(name)) {
         await safeRm(fullPath);
       }
     }),
   );
 
-  console.log('Cleaned Go SDK generated output');
+  console.log("Cleaned Go SDK generated output");
 }
 
 await main();

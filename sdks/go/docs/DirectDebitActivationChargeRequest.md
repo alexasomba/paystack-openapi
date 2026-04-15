@@ -2,9 +2,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**CustomerIds** | **[]int32** | Array of customer IDs to trigger activation charge for | 
+| Name            | Type        | Description                                            | Notes |
+| --------------- | ----------- | ------------------------------------------------------ | ----- |
+| **CustomerIds** | **[]int32** | Array of customer IDs to trigger activation charge for |
 
 ## Methods
 
@@ -44,8 +44,4 @@ and a boolean to check if the value has been set.
 
 SetCustomerIds sets CustomerIds field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

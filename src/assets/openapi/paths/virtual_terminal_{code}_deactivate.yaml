@@ -13,9 +13,9 @@ put:
   operationId: virtualTerminal_deactivate
   description: Deactivate a Virtual Terminal on your integration
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/VirtualTerminalDeactivateSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error

@@ -1,18 +1,18 @@
 # VerificationResolveCardBINResponseData
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**bin** | **str** |  | 
-**brand** | **str** |  | 
-**sub_brand** | **str** |  | 
-**country_code** | **str** |  | 
-**country_name** | **str** |  | 
-**card_type** | **str** |  | 
-**bank** | **str** |  | 
-**currency** | **str** |  | 
-**linked_bank_id** | **int** |  | 
+
+| Name               | Type    | Description | Notes |
+| ------------------ | ------- | ----------- | ----- |
+| **bin**            | **str** |             |
+| **brand**          | **str** |             |
+| **sub_brand**      | **str** |             |
+| **country_code**   | **str** |             |
+| **country_name**   | **str** |             |
+| **card_type**      | **str** |             |
+| **bank**           | **str** |             |
+| **currency**       | **str** |             |
+| **linked_bank_id** | **int** |             |
 
 ## Example
 
@@ -31,6 +31,5 @@ verification_resolve_card_bin_response_data_dict = verification_resolve_card_bin
 # create an instance of VerificationResolveCardBINResponseData from a dict
 verification_resolve_card_bin_response_data_form_dict = verification_resolve_card_bin_response_data.from_dict(verification_resolve_card_bin_response_data_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

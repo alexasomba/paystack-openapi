@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Customer** | **string** | The customer code from the response of the customer creation | 
-**RiskAction** | Pointer to **string** | This determines the fraud rules that should be applied to the customer | [optional] [default to "default"]
+| Name           | Type                  | Description                                                            | Notes                             |
+| -------------- | --------------------- | ---------------------------------------------------------------------- | --------------------------------- |
+| **Customer**   | **string**            | The customer code from the response of the customer creation           |
+| **RiskAction** | Pointer to **string** | This determines the fraud rules that should be applied to the customer | [optional] [default to "default"] |
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetCustomer sets Customer field to given value.
 
-
 ### GetRiskAction
 
 `func (o *CustomerRiskAction) GetRiskAction() string`
@@ -71,7 +70,4 @@ SetRiskAction sets RiskAction field to given value.
 
 HasRiskAction returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

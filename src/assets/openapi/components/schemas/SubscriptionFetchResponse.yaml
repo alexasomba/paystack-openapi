@@ -27,14 +27,16 @@ properties:
         nullable: true
       createdAt:
         type: string
-      cancelledAt:
-        nullable: true
       integration:
         type: integer
       plan:
         type: object
         properties:
+          domain:
+            type: string
           id:
+            type: integer
+          integration:
             type: integer
           name:
             type: string
@@ -50,10 +52,22 @@ properties:
             type: boolean
           send_sms:
             type: boolean
+          hosted_page:
+            type: boolean
+          hosted_page_url:
+            nullable: true
+          hosted_page_summary:
+            nullable: true
           currency:
             type: string
+          createdAt:
+            type: string
+          updatedAt:
+            type: string
         required:
+          - domain
           - id
+          - integration
           - name
           - plan_code
           - description
@@ -61,7 +75,12 @@ properties:
           - interval
           - send_invoices
           - send_sms
+          - hosted_page
+          - hosted_page_url
+          - hosted_page_summary
           - currency
+          - createdAt
+          - updatedAt
       authorization:
         type: object
         properties:
@@ -108,7 +127,11 @@ properties:
       customer:
         type: object
         properties:
+          domain:
+            type: string
           id:
+            type: integer
+          integration:
             type: integer
           first_name:
             type: string
@@ -120,39 +143,37 @@ properties:
             type: string
           phone:
             type: string
+            nullable: true
           metadata:
             type: object
+          createdAt:
+            type: string
+          updatedAt:
+            type: string
           risk_action:
             type: string
           international_format_phone:
             type: string
+            nullable: true
         required:
+          - domain
           - id
+          - integration
           - first_name
           - last_name
           - email
           - customer_code
           - phone
           - metadata
-          - risk_action
-          - international_format_phone
+          - createdAt
+          - updatedAt
+      start:
+        type: integer
+      quantity:
+        type: integer
       invoices:
         type: array
         items: {}
-      invoices_history:
-        type: array
-        items: {}
-      invoice_limit:
-        type: integer
-      split_code:
-        nullable: true
-      most_recent_invoice:
-        nullable: true
-      payments_count:
-        type: integer
-      metadata:
-        type: object
-        nullable: true
     required:
       - id
       - domain
@@ -160,22 +181,17 @@ properties:
       - subscription_code
       - email_token
       - amount
+      - start
+      - quantity
       - cron_expression
       - next_payment_date
       - open_invoice
       - createdAt
-      - cancelledAt
       - integration
       - plan
       - authorization
       - customer
       - invoices
-      - invoices_history
-      - invoice_limit
-      - split_code
-      - most_recent_invoice
-      - payments_count
-      - metadata
 required:
   - status
   - message

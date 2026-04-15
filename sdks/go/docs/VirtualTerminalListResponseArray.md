@@ -2,17 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**Code** | **string** |  | 
-**Name** | **string** |  | 
-**Integration** | **int32** |  | 
-**Domain** | **string** |  | 
-**PaymentMethods** | **[]interface{}** |  | 
-**Active** | **bool** |  | 
-**CreatedAt** | **string** |  | 
-**Currency** | **string** |  | 
+| Name               | Type              | Description | Notes |
+| ------------------ | ----------------- | ----------- | ----- |
+| **Id**             | **int32**         |             |
+| **Code**           | **string**        |             |
+| **Name**           | **string**        |             |
+| **Integration**    | **int32**         |             |
+| **Domain**         | **string**        |             |
+| **PaymentMethods** | **[]interface{}** |             |
+| **Active**         | **bool**          |             |
+| **CreatedAt**      | **string**        |             |
+| **Currency**       | **string**        |             |
 
 ## Methods
 
@@ -52,7 +52,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetCode
 
 `func (o *VirtualTerminalListResponseArray) GetCode() string`
@@ -71,7 +70,6 @@ and a boolean to check if the value has been set.
 `func (o *VirtualTerminalListResponseArray) SetCode(v string)`
 
 SetCode sets Code field to given value.
-
 
 ### GetName
 
@@ -92,7 +90,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetIntegration
 
 `func (o *VirtualTerminalListResponseArray) GetIntegration() int32`
@@ -111,7 +108,6 @@ and a boolean to check if the value has been set.
 `func (o *VirtualTerminalListResponseArray) SetIntegration(v int32)`
 
 SetIntegration sets Integration field to given value.
-
 
 ### GetDomain
 
@@ -132,7 +128,6 @@ and a boolean to check if the value has been set.
 
 SetDomain sets Domain field to given value.
 
-
 ### GetPaymentMethods
 
 `func (o *VirtualTerminalListResponseArray) GetPaymentMethods() []interface{}`
@@ -151,7 +146,6 @@ and a boolean to check if the value has been set.
 `func (o *VirtualTerminalListResponseArray) SetPaymentMethods(v []interface{})`
 
 SetPaymentMethods sets PaymentMethods field to given value.
-
 
 ### GetActive
 
@@ -172,7 +166,6 @@ and a boolean to check if the value has been set.
 
 SetActive sets Active field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *VirtualTerminalListResponseArray) GetCreatedAt() string`
@@ -191,7 +184,6 @@ and a boolean to check if the value has been set.
 `func (o *VirtualTerminalListResponseArray) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetCurrency
 
@@ -212,8 +204,4 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

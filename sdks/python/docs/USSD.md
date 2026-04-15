@@ -3,9 +3,10 @@
 The USSD code for the provider to charge
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**type** | **str** | The three-digit USSD code. | [optional] 
+
+| Name     | Type    | Description                | Notes      |
+| -------- | ------- | -------------------------- | ---------- |
+| **type** | **str** | The three-digit USSD code. | [optional] |
 
 ## Example
 
@@ -24,6 +25,5 @@ ussd_dict = ussd_instance.to_dict()
 # create an instance of USSD from a dict
 ussd_form_dict = ussd.from_dict(ussd_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

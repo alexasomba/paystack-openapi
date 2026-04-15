@@ -14,15 +14,15 @@ get:
         type: string
       example: "5bwib5v6anhe9xa"
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/ChargeCheckPendingResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

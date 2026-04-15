@@ -2,21 +2,17 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**ApplePayListDomain**](ApplePayAPI.md#ApplePayListDomain) | **Get** /apple-pay/domain | List Domains
-[**ApplePayRegisterDomain**](ApplePayAPI.md#ApplePayRegisterDomain) | **Post** /apple-pay/domain | Register Domain
-[**ApplePayUnregisterDomain**](ApplePayAPI.md#ApplePayUnregisterDomain) | **Delete** /apple-pay/domain | Unregister Domain
-
-
+| Method                                                                  | HTTP request                 | Description       |
+| ----------------------------------------------------------------------- | ---------------------------- | ----------------- |
+| [**ApplePayListDomain**](ApplePayAPI.md#ApplePayListDomain)             | **Get** /apple-pay/domain    | List Domains      |
+| [**ApplePayRegisterDomain**](ApplePayAPI.md#ApplePayRegisterDomain)     | **Post** /apple-pay/domain   | Register Domain   |
+| [**ApplePayUnregisterDomain**](ApplePayAPI.md#ApplePayUnregisterDomain) | **Delete** /apple-pay/domain | Unregister Domain |
 
 ## ApplePayListDomain
 
 > Response ApplePayListDomain(ctx).UseCursor(useCursor).Next(next).Previous(previous).Execute()
 
 List Domains
-
-
 
 ### Example
 
@@ -49,18 +45,15 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiApplePayListDomainRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **useCursor** | **bool** | A flag to indicate if cursor based pagination should be used | 
- **next** | **string** | An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data  | 
- **previous** | **string** | An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data  | 
+| Name          | Type       | Description                                                                                                | Notes |
+| ------------- | ---------- | ---------------------------------------------------------------------------------------------------------- | ----- |
+| **useCursor** | **bool**   | A flag to indicate if cursor based pagination should be used                                               |
+| **next**      | **string** | An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data     |
+| **previous**  | **string** | An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data |
 
 ### Return type
 
@@ -79,14 +72,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## ApplePayRegisterDomain
 
 > ApplePayCreateOkModel ApplePayRegisterDomain(ctx).ApplePayParam(applePayParam).Execute()
 
 Register Domain
-
-
 
 ### Example
 
@@ -117,16 +107,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiApplePayRegisterDomainRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **applePayParam** | [**ApplePayParam**](ApplePayParam.md) |  | 
+| Name              | Type                                  | Description | Notes |
+| ----------------- | ------------------------------------- | ----------- | ----- |
+| **applePayParam** | [**ApplePayParam**](ApplePayParam.md) |             |
 
 ### Return type
 
@@ -145,14 +132,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## ApplePayUnregisterDomain
 
 > Response ApplePayUnregisterDomain(ctx).ApplePayParam(applePayParam).Execute()
 
 Unregister Domain
-
-
 
 ### Example
 
@@ -183,16 +167,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiApplePayUnregisterDomainRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **applePayParam** | [**ApplePayParam**](ApplePayParam.md) |  | 
+| Name              | Type                                  | Description | Notes |
+| ----------------- | ------------------------------------- | ----------- | ----- |
+| **applePayParam** | [**ApplePayParam**](ApplePayParam.md) |             |
 
 ### Return type
 
@@ -210,4 +191,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

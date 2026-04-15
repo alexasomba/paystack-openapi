@@ -1,15 +1,15 @@
 # TransactionPartialDebit
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**email** | **str** | Customer&#39;s email address | 
-**amount** | **int** | Specified in the lowest denomination of your currency | 
-**authorization_code** | **str** | Valid authorization code to charge | 
-**currency** | [**Currency**](Currency.md) |  | 
-**at_least** | **str** | Minimum amount to charge | [optional] 
-**reference** | **str** | Unique transaction reference. Only -, ., &#x3D; and alphanumeric characters allowed. | [optional] 
+
+| Name                   | Type                        | Description                                                                          | Notes      |
+| ---------------------- | --------------------------- | ------------------------------------------------------------------------------------ | ---------- |
+| **email**              | **str**                     | Customer&#39;s email address                                                         |
+| **amount**             | **int**                     | Specified in the lowest denomination of your currency                                |
+| **authorization_code** | **str**                     | Valid authorization code to charge                                                   |
+| **currency**           | [**Currency**](Currency.md) |                                                                                      |
+| **at_least**           | **str**                     | Minimum amount to charge                                                             | [optional] |
+| **reference**          | **str**                     | Unique transaction reference. Only -, ., &#x3D; and alphanumeric characters allowed. | [optional] |
 
 ## Example
 
@@ -28,6 +28,5 @@ transaction_partial_debit_dict = transaction_partial_debit_instance.to_dict()
 # create an instance of TransactionPartialDebit from a dict
 transaction_partial_debit_form_dict = transaction_partial_debit.from_dict(transaction_partial_debit_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

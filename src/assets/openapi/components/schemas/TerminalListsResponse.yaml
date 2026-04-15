@@ -9,21 +9,7 @@ properties:
     items:
       $ref: ./TerminalListsResponseArray.yaml
   meta:
-    type: object
-    properties:
-      next:
-        type: string
-        nullable: true
-      previous:
-        type: string
-        nullable: true
-      perPage:
-        type: integer
-    required:
-      - next
-      - previous
-      - perPage
-    additionalProperties: false
+    $ref: ./CursorMeta.yaml
 required:
   - status
   - message

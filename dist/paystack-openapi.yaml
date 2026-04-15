@@ -137,21 +137,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransactionInitialize'
+              $ref: "#/components/schemas/TransactionInitialize"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TransactionInitialize'
+              $ref: "#/components/schemas/TransactionInitialize"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransactionInitializeResponse'
-        '400':
-          $ref: '#/components/responses/TransactionInitializeBadRequestResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/TransactionInitializeResponse"
+        "400":
+          $ref: "#/components/responses/TransactionInitializeBadRequestResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /transaction/charge_authorization:
@@ -165,19 +165,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransactionChargeAuthorization'
+              $ref: "#/components/schemas/TransactionChargeAuthorization"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TransactionChargeAuthorization'
+              $ref: "#/components/schemas/TransactionChargeAuthorization"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ChargeAuthorizationResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/ChargeAuthorizationResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /transaction/partial_debit:
@@ -191,19 +191,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransactionPartialDebit'
+              $ref: "#/components/schemas/TransactionPartialDebit"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TransactionPartialDebit'
+              $ref: "#/components/schemas/TransactionPartialDebit"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransactionPartialDebitResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/TransactionPartialDebitResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /transaction/verify/{reference}:
@@ -222,16 +222,16 @@ paths:
             type: string
           example: re4lyvq3s3
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VerifyResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/VerifyResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /transaction:
@@ -352,16 +352,16 @@ paths:
           schema:
             type: string
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransactionListResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/TransactionListResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /transaction/{id}:
@@ -381,16 +381,16 @@ paths:
             format: int64
           example: 4099260516
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransactionFetchResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/TransactionFetchResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /transaction/timeline/{id}:
@@ -410,16 +410,16 @@ paths:
             format: int64
           example: 3936799950
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransactionTimelineResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/TransactionTimelineResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /transaction/totals:
@@ -436,25 +436,25 @@ paths:
           schema:
             type: string
             format: date-time
-          example: '2024-06-01T00:00:01Z'
+          example: "2024-06-01T00:00:01Z"
         - in: query
           name: to
           description: The end date
           schema:
             type: string
             format: date-time
-          example: '2024-06-30T13:36:54Z'
+          example: "2024-06-30T13:36:54Z"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransactionTotalsResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/TransactionTotalsResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /transaction/export:
@@ -472,14 +472,14 @@ paths:
           schema:
             type: string
             format: date-time
-          example: '2024-06-01T00:00:01Z'
+          example: "2024-06-01T00:00:01Z"
         - in: query
           name: to
           description: The end date
           schema:
             type: string
             format: date-time
-          example: '2024-06-30T13:36:54Z'
+          example: "2024-06-30T13:36:54Z"
         - in: query
           name: status
           description: Filter by the status of the transaction
@@ -512,16 +512,16 @@ paths:
             format: int64
           example: 5687910
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransactionExportResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/TransactionExportResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /charge:
@@ -536,52 +536,52 @@ paths:
           application/json:
             schema:
               allOf:
-                - $ref: '#/components/schemas/ChargeCreate'
+                - $ref: "#/components/schemas/ChargeCreate"
                 - type: object
                   properties:
                     bank:
-                      $ref: '#/components/schemas/Bank'
+                      $ref: "#/components/schemas/Bank"
                 - type: object
                   properties:
                     mobile_money:
-                      $ref: '#/components/schemas/MobileMoney'
+                      $ref: "#/components/schemas/MobileMoney"
                 - type: object
                   properties:
                     ussd:
-                      $ref: '#/components/schemas/USSD'
+                      $ref: "#/components/schemas/USSD"
                 - type: object
                   properties:
                     eft:
-                      $ref: '#/components/schemas/EFT'
+                      $ref: "#/components/schemas/EFT"
           application/x-www-form-urlencoded:
             schema:
               allOf:
-                - $ref: '#/components/schemas/ChargeCreate'
+                - $ref: "#/components/schemas/ChargeCreate"
                 - type: object
                   properties:
                     bank:
-                      $ref: '#/components/schemas/Bank'
+                      $ref: "#/components/schemas/Bank"
                 - type: object
                   properties:
                     mobile_money:
-                      $ref: '#/components/schemas/MobileMoney'
+                      $ref: "#/components/schemas/MobileMoney"
                 - type: object
                   properties:
                     ussd:
-                      $ref: '#/components/schemas/USSD'
+                      $ref: "#/components/schemas/USSD"
                 - type: object
                   properties:
                     eft:
-                      $ref: '#/components/schemas/EFT'
+                      $ref: "#/components/schemas/EFT"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ChargeCreateResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/ChargeCreateResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /charge/submit_pin:
@@ -595,19 +595,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ChargeSubmitPin'
+              $ref: "#/components/schemas/ChargeSubmitPin"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/ChargeSubmitPin'
+              $ref: "#/components/schemas/ChargeSubmitPin"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ChargeSubmitPinResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/ChargeSubmitPinResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /charge/submit_otp:
@@ -621,19 +621,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ChargeSubmitOTP'
+              $ref: "#/components/schemas/ChargeSubmitOTP"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/ChargeSubmitOTP'
+              $ref: "#/components/schemas/ChargeSubmitOTP"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ChargeSubmitOtpResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/ChargeSubmitOtpResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /charge/submit_phone:
@@ -647,19 +647,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ChargeSubmitPhone'
+              $ref: "#/components/schemas/ChargeSubmitPhone"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/ChargeSubmitPhone'
+              $ref: "#/components/schemas/ChargeSubmitPhone"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ChargeSubmitPhoneResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/ChargeSubmitPhoneResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /charge/submit_birthday:
@@ -673,19 +673,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ChargeSubmitBirthday'
+              $ref: "#/components/schemas/ChargeSubmitBirthday"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/ChargeSubmitBirthday'
+              $ref: "#/components/schemas/ChargeSubmitBirthday"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ChargeSubmitBirthdayResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/ChargeSubmitBirthdayResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /charge/submit_address:
@@ -699,15 +699,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ChargeSubmitAddress'
+              $ref: "#/components/schemas/ChargeSubmitAddress"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/ChargeSubmitAddress'
+              $ref: "#/components/schemas/ChargeSubmitAddress"
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /charge/{reference}:
@@ -729,16 +729,16 @@ paths:
             type: string
           example: 5bwib5v6anhe9xa
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ChargeCheckPendingResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/ChargeCheckPendingResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /bulkcharge:
@@ -754,21 +754,21 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/BulkChargeInitiate'
+                $ref: "#/components/schemas/BulkChargeInitiate"
           application/x-www-form-urlencoded:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/BulkChargeInitiate'
+                $ref: "#/components/schemas/BulkChargeInitiate"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BulkChargeInitiateResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/BulkChargeInitiateResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -798,16 +798,16 @@ paths:
               - paused
               - complete
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BulkChargeListResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/BulkChargeListResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /bulkcharge/{code}:
@@ -828,16 +828,16 @@ paths:
         This endpoint retrieves a specific batch code. It also returns useful information on its progress by 
         way of the `total_charges` and `pending_charges` attributes.
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BulkChargeFetchResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/BulkChargeFetchResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /bulkcharge/{code}/charges:
@@ -877,16 +877,16 @@ paths:
               - error
               - inactive_authorization
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BulkChargeFetchBulkBatchChargesResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/BulkChargeFetchBulkBatchChargesResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /bulkcharge/pause/{code}:
@@ -905,16 +905,16 @@ paths:
             type: string
           example: BCH_180tl7oq7cayggh
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BulkChargePauseResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/BulkChargePauseResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /bulkcharge/resume/{code}:
@@ -933,16 +933,16 @@ paths:
             type: string
           example: BCH_180tl7oq7cayggh
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BulkChargeResumeResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/BulkChargeResumeResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /subaccount:
@@ -956,19 +956,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SubaccountCreate'
+              $ref: "#/components/schemas/SubaccountCreate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/SubaccountCreate'
+              $ref: "#/components/schemas/SubaccountCreate"
       responses:
-        '201':
-          description: ''
+        "201":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubaccountCreateResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/SubaccountCreateResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -996,16 +996,16 @@ paths:
           schema:
             type: boolean
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubaccountListResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/SubaccountListResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /subaccount/{code}:
@@ -1024,16 +1024,16 @@ paths:
       operationId: subaccount_fetch
       description: Get details of a subaccount on your integration
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubaccountFetchResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/SubaccountFetchResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
     put:
@@ -1046,21 +1046,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SubaccountUpdate'
+              $ref: "#/components/schemas/SubaccountUpdate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/SubaccountUpdate'
+              $ref: "#/components/schemas/SubaccountUpdate"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubaccountUpdateResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/SubaccountUpdateResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /split:
@@ -1074,19 +1074,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SplitCreate'
+              $ref: "#/components/schemas/SplitCreate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/SplitCreate'
+              $ref: "#/components/schemas/SplitCreate"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SplitCreateResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/SplitCreateResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -1135,16 +1135,16 @@ paths:
             type: string
             format: date-time
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SplitListResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/SplitListResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /split/{id}:
@@ -1163,16 +1163,16 @@ paths:
             type: integer
           example: 4896895
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SplitFetchResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/SplitFetchResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
     put:
@@ -1185,10 +1185,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SplitUpdate'
+              $ref: "#/components/schemas/SplitUpdate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/SplitUpdate'
+              $ref: "#/components/schemas/SplitUpdate"
       parameters:
         - name: id
           in: path
@@ -1196,16 +1196,16 @@ paths:
           schema:
             type: string
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SplitUpdateResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/SplitUpdateResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /split/{id}/subaccount/add:
@@ -1219,10 +1219,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SplitSubaccounts'
+              $ref: "#/components/schemas/SplitSubaccounts"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/SplitSubaccounts'
+              $ref: "#/components/schemas/SplitSubaccounts"
       parameters:
         - name: id
           in: path
@@ -1232,14 +1232,14 @@ paths:
             type: integer
           example: 4896895
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SplitAddUpdateSubaccountResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/SplitAddUpdateSubaccountResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /split/{id}/subaccount/remove:
@@ -1253,10 +1253,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SplitSubaccounts'
+              $ref: "#/components/schemas/SplitSubaccounts"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/SplitSubaccounts'
+              $ref: "#/components/schemas/SplitSubaccounts"
       parameters:
         - name: id
           in: path
@@ -1266,14 +1266,14 @@ paths:
             type: integer
           example: 4896895
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SplitRemoveSubaccountResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/SplitRemoveSubaccountResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /terminal/{id}/event:
@@ -1295,15 +1295,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TerminalSendEvent'
+              $ref: "#/components/schemas/TerminalSendEvent"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TerminalSendEvent'
+              $ref: "#/components/schemas/TerminalSendEvent"
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /terminal/{terminal_id}/event/{event_id}:
@@ -1329,12 +1329,12 @@ paths:
             type: string
           example: 616d721e8c5cd40a0cdd54a6
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /terminal/{terminal_id}/presence:
@@ -1353,12 +1353,12 @@ paths:
             type: string
           example: Z0R4orOU
       responses:
-        '200':
-          $ref: '#/components/responses/TerminalGetStatusSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/TerminalGetStatusSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /terminal:
@@ -1388,12 +1388,12 @@ paths:
             type: integer
             default: 50
       responses:
-        '200':
-          $ref: '#/components/responses/TerminalListsSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/TerminalListsSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /terminal/{terminal_id}:
@@ -1412,12 +1412,12 @@ paths:
       description: Get the details of a Terminal
       operationId: terminal_fetch
       responses:
-        '200':
-          $ref: '#/components/responses/TerminalGetSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/TerminalGetSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
     put:
@@ -1430,17 +1430,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TerminalUpate'
+              $ref: "#/components/schemas/TerminalUpate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TerminalUpate'
+              $ref: "#/components/schemas/TerminalUpate"
       responses:
-        '200':
-          $ref: '#/components/responses/TerminalUpdateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/TerminalUpdateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /terminal/commission_device:
@@ -1454,15 +1454,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TerminalActivationToggle'
+              $ref: "#/components/schemas/TerminalActivationToggle"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TerminalActivationToggle'
+              $ref: "#/components/schemas/TerminalActivationToggle"
       responses:
-        '200':
-          $ref: '#/components/responses/TerminalCommissionDeviceSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/TerminalCommissionDeviceSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /terminal/decommission_device:
@@ -1476,15 +1476,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TerminalActivationToggle'
+              $ref: "#/components/schemas/TerminalActivationToggle"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TerminalActivationToggle'
+              $ref: "#/components/schemas/TerminalActivationToggle"
       responses:
-        '200':
-          $ref: '#/components/responses/TerminalDecommissionDeviceSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/TerminalDecommissionDeviceSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /virtual_terminal:
@@ -1498,12 +1498,12 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VirtualTerminalCreate'
+              $ref: "#/components/schemas/VirtualTerminalCreate"
       responses:
-        '200':
-          $ref: '#/components/responses/VirtualTerminalCreateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/VirtualTerminalCreateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -1525,10 +1525,10 @@ paths:
           schema:
             type: integer
       responses:
-        '200':
-          $ref: '#/components/responses/VirtualTerminalListSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/VirtualTerminalListSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /virtual_terminal/{code}:
@@ -1547,10 +1547,10 @@ paths:
       description: Fetch a Virtual Terminal on your integration
       operationId: virtualTerminal_fetch
       responses:
-        '200':
-          $ref: '#/components/responses/VirtualTerminalFetchSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/VirtualTerminalFetchSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     put:
@@ -1563,12 +1563,12 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VirtualTerminalUpdate'
+              $ref: "#/components/schemas/VirtualTerminalUpdate"
       responses:
-        '200':
-          $ref: '#/components/responses/VirtualTerminalUpdateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/VirtualTerminalUpdateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /virtual_terminal/{code}/deactivate:
@@ -1587,10 +1587,10 @@ paths:
       operationId: virtualTerminal_deactivate
       description: Deactivate a Virtual Terminal on your integration
       responses:
-        '200':
-          $ref: '#/components/responses/VirtualTerminalDeactivateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/VirtualTerminalDeactivateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /virtual_terminal/{code}/destination/assign:
@@ -1612,15 +1612,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VirtualTerminalDestinationAssign'
+              $ref: "#/components/schemas/VirtualTerminalDestinationAssign"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/VirtualTerminalDestinationAssign'
+              $ref: "#/components/schemas/VirtualTerminalDestinationAssign"
       responses:
-        '200':
-          $ref: '#/components/responses/VirtualTerminalDestinationAssignSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/VirtualTerminalDestinationAssignSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /virtual_terminal/{code}/destination/unassign:
@@ -1642,15 +1642,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VirtualTerminalDestinationUnassign'
+              $ref: "#/components/schemas/VirtualTerminalDestinationUnassign"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/VirtualTerminalDestinationUnassign'
+              $ref: "#/components/schemas/VirtualTerminalDestinationUnassign"
       responses:
-        '200':
-          $ref: '#/components/responses/VirtualTerminalDestinationUnassignSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/VirtualTerminalDestinationUnassignSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /virtual_terminal/{code}/split_code:
@@ -1672,15 +1672,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VirtualTerminalAddSplitCode'
+              $ref: "#/components/schemas/VirtualTerminalAddSplitCode"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/VirtualTerminalAddSplitCode'
+              $ref: "#/components/schemas/VirtualTerminalAddSplitCode"
       responses:
-        '200':
-          $ref: '#/components/responses/VirtualTerminalAddSplitCodeSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/VirtualTerminalAddSplitCodeSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server Error
     delete:
@@ -1693,15 +1693,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VirtualTerminalDeleteSplitCode'
+              $ref: "#/components/schemas/VirtualTerminalDeleteSplitCode"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/VirtualTerminalDeleteSplitCode'
+              $ref: "#/components/schemas/VirtualTerminalDeleteSplitCode"
       responses:
-        '200':
-          $ref: '#/components/responses/VirtualTerminalDeleteSplitCodeSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/VirtualTerminalDeleteSplitCodeSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server Error
   /customer:
@@ -1715,19 +1715,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CustomerCreate'
+              $ref: "#/components/schemas/CustomerCreate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/CustomerCreate'
+              $ref: "#/components/schemas/CustomerCreate"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerCreateResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/CustomerCreateResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -1777,16 +1777,16 @@ paths:
           schema:
             type: string
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerListResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/CustomerListResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /customer/{code}:
@@ -1805,16 +1805,16 @@ paths:
       operationId: customer_fetch
       description: Get details of a customer on your integration.
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerFetchResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/CustomerFetchResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
     put:
@@ -1827,21 +1827,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CustomerUpdate'
+              $ref: "#/components/schemas/CustomerUpdate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/CustomerUpdate'
+              $ref: "#/components/schemas/CustomerUpdate"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerUpdateResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/CustomerUpdateResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /customer/set_risk_action:
@@ -1855,19 +1855,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CustomerRiskAction'
+              $ref: "#/components/schemas/CustomerRiskAction"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/CustomerRiskAction'
+              $ref: "#/components/schemas/CustomerRiskAction"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerWhitelistBlacklistResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/CustomerWhitelistBlacklistResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /customer/{code}/identification:
@@ -1889,19 +1889,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CustomerValidate'
+              $ref: "#/components/schemas/CustomerValidate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/CustomerValidate'
+              $ref: "#/components/schemas/CustomerValidate"
       responses:
-        '202':
-          description: ''
+        "202":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerValidateResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/CustomerValidateResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /customer/authorization/initialize:
@@ -1916,15 +1916,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CustomerAuthorizationInitializeRequest'
+              $ref: "#/components/schemas/CustomerAuthorizationInitializeRequest"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/CustomerAuthorizationInitializeRequest'
+              $ref: "#/components/schemas/CustomerAuthorizationInitializeRequest"
       responses:
-        '200':
-          $ref: '#/components/responses/CustomerAuthorizationInitializeSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/CustomerAuthorizationInitializeSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /customer/authorization/verify/{reference}:
@@ -1943,12 +1943,12 @@ paths:
             type: string
           example: dfbzfotsrbv4n5s82t4mp5b5mfn51h
       responses:
-        '200':
-          $ref: '#/components/responses/CustomerAuthorizationVerifySuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/CustomerAuthorizationVerifySuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /customer/authorization/deactivate:
@@ -1962,19 +1962,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CustomerDeactivateAuthorization'
+              $ref: "#/components/schemas/CustomerDeactivateAuthorization"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/CustomerDeactivateAuthorization'
+              $ref: "#/components/schemas/CustomerDeactivateAuthorization"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerDeactivateAuthorizationResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/CustomerDeactivateAuthorizationResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /customer/{id}/initialize-direct-debit:
@@ -1996,15 +1996,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CustomerInitializeDirectDebitRequest'
+              $ref: "#/components/schemas/CustomerInitializeDirectDebitRequest"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/CustomerInitializeDirectDebitRequest'
+              $ref: "#/components/schemas/CustomerInitializeDirectDebitRequest"
       responses:
-        '200':
-          $ref: '#/components/responses/CustomerInitializeDirectDebitSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/CustomerInitializeDirectDebitSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /customer/{id}/directdebit-activation-charge:
@@ -2026,15 +2026,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CustomerDirectDebitActivationChargeRequest'
+              $ref: "#/components/schemas/CustomerDirectDebitActivationChargeRequest"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/CustomerDirectDebitActivationChargeRequest'
+              $ref: "#/components/schemas/CustomerDirectDebitActivationChargeRequest"
       responses:
-        '200':
-          $ref: '#/components/responses/CustomerDirectDebitActivationChargeSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/CustomerDirectDebitActivationChargeSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /customer/{id}/directdebit-mandate-authorizations:
@@ -2053,10 +2053,10 @@ paths:
             type: integer
           example: 297346561
       responses:
-        '200':
-          $ref: '#/components/responses/CustomerFetchMandateAuthorizationsSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/CustomerFetchMandateAuthorizationsSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /directdebit/activation-charge:
@@ -2071,12 +2071,12 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DirectDebitActivationChargeRequest'
+              $ref: "#/components/schemas/DirectDebitActivationChargeRequest"
       responses:
-        '200':
-          $ref: '#/components/responses/DirectDebitActivationChargeSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/DirectDebitActivationChargeSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /directdebit/mandate-authorizations:
@@ -2109,10 +2109,10 @@ paths:
           schema:
             type: integer
       responses:
-        '200':
-          $ref: '#/components/responses/CustomerFetchMandateAuthorizationsSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/CustomerFetchMandateAuthorizationsSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /dedicated_account:
@@ -2126,19 +2126,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DedicatedVirtualAccountCreate'
+              $ref: "#/components/schemas/DedicatedVirtualAccountCreate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/DedicatedVirtualAccountCreate'
+              $ref: "#/components/schemas/DedicatedVirtualAccountCreate"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DedicatedNubanCreateResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/DedicatedNubanCreateResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -2179,7 +2179,7 @@ paths:
           description: The bank's ID
           schema:
             type: string
-          example: '035'
+          example: "035"
         - name: perPage
           in: query
           description: The number of records to fetch per request
@@ -2193,16 +2193,16 @@ paths:
             type: integer
             default: 1
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DedicatedNubanListResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/DedicatedNubanListResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /dedicated_account/assign:
@@ -2216,15 +2216,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DedicatedVirtualAccountAssign'
+              $ref: "#/components/schemas/DedicatedVirtualAccountAssign"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/DedicatedVirtualAccountAssign'
+              $ref: "#/components/schemas/DedicatedVirtualAccountAssign"
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /dedicated_account/{id}:
@@ -2242,16 +2242,16 @@ paths:
       operationId: dedicatedAccount_fetch
       description: Get details of a dedicated virtual account on your integration.
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DedicatedNubanFetchResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/DedicatedNubanFetchResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
     delete:
@@ -2261,16 +2261,16 @@ paths:
       operationId: dedicatedAccount_deactivate
       description: Deactivate a dedicated virtual account on your integration.
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DedicatedNubanDeactivateResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/DedicatedNubanDeactivateResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /dedicated_account/requery:
@@ -2280,7 +2280,7 @@ paths:
         in: query
         schema:
           type: string
-        example: '0033322211'
+        example: "0033322211"
       - name: provider_slug
         description: The bank's slug in lowercase, without spaces.
         in: query
@@ -2300,12 +2300,12 @@ paths:
       operationId: dedicatedAccount_requery
       description: Requery Dedicated Virtual Account for new transactions
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /dedicated_account/split:
@@ -2319,15 +2319,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DedicatedVirtualAccountSplit'
+              $ref: "#/components/schemas/DedicatedVirtualAccountSplit"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/DedicatedVirtualAccountSplit'
+              $ref: "#/components/schemas/DedicatedVirtualAccountSplit"
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     delete:
@@ -2342,17 +2342,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DedicatedVirtualAccountRemoveSplit'
+              $ref: "#/components/schemas/DedicatedVirtualAccountRemoveSplit"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/DedicatedVirtualAccountRemoveSplit'
+              $ref: "#/components/schemas/DedicatedVirtualAccountRemoveSplit"
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /dedicated_account/available_providers:
@@ -2363,12 +2363,12 @@ paths:
       operationId: dedicatedAccount_availableProviders
       description: Get available bank providers for a dedicated virtual account
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /apple-pay/domain:
@@ -2385,15 +2385,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ApplePayParam'
+              $ref: "#/components/schemas/ApplePayParam"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/ApplePayParam'
+              $ref: "#/components/schemas/ApplePayParam"
       responses:
-        '200':
-          $ref: '#/components/responses/ApplePayOkResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/ApplePayOkResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -2422,12 +2422,12 @@ paths:
           schema:
             type: string
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
     delete:
@@ -2442,17 +2442,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ApplePayParam'
+              $ref: "#/components/schemas/ApplePayParam"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/ApplePayParam'
+              $ref: "#/components/schemas/ApplePayParam"
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /plan:
@@ -2466,15 +2466,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PlanCreate'
+              $ref: "#/components/schemas/PlanCreate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PlanCreate'
+              $ref: "#/components/schemas/PlanCreate"
       responses:
-        '200':
-          $ref: '#/components/responses/PlanCreateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/PlanCreateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -2523,12 +2523,12 @@ paths:
             format: date-time
           description: The end date
       responses:
-        '200':
-          $ref: '#/components/responses/PlanListSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/PlanListSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /plan/{code}:
@@ -2547,12 +2547,12 @@ paths:
       operationId: plan_fetch
       description: Get the details of a payment plan
       responses:
-        '200':
-          $ref: '#/components/responses/PlanFetchSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/PlanFetchSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
     put:
@@ -2565,17 +2565,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PlanUpdate'
+              $ref: "#/components/schemas/PlanUpdate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PlanUpdate'
+              $ref: "#/components/schemas/PlanUpdate"
       responses:
-        '200':
-          $ref: '#/components/responses/PlanUpdateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/PlanUpdateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /subscription:
@@ -2589,15 +2589,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SubscriptionCreate'
+              $ref: "#/components/schemas/SubscriptionCreate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/SubscriptionCreate'
+              $ref: "#/components/schemas/SubscriptionCreate"
       responses:
-        '200':
-          $ref: '#/components/responses/SubscriptionCreateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/SubscriptionCreateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -2641,12 +2641,12 @@ paths:
             format: date-time
           description: The end date
       responses:
-        '200':
-          $ref: '#/components/responses/SubscriptionListSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/SubscriptionListSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /subscription/{code}:
@@ -2665,12 +2665,12 @@ paths:
       description: Get details of a customer's subscription
       operationId: subscription_fetch
       responses:
-        '200':
-          $ref: '#/components/responses/SubscriptionFetchSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/SubscriptionFetchSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /subscription/disable:
@@ -2684,15 +2684,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SubscriptionToggle'
+              $ref: "#/components/schemas/SubscriptionToggle"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/SubscriptionToggle'
+              $ref: "#/components/schemas/SubscriptionToggle"
       responses:
-        '200':
-          $ref: '#/components/responses/SubscriptionDisableSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/SubscriptionDisableSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /subscription/enable:
@@ -2706,15 +2706,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SubscriptionToggle'
+              $ref: "#/components/schemas/SubscriptionToggle"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/SubscriptionToggle'
+              $ref: "#/components/schemas/SubscriptionToggle"
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /subscription/{code}/manage/link:
@@ -2733,10 +2733,10 @@ paths:
             type: string
           example: qlgwhpyq1ts9nsw
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /subscription/{code}/manage/email:
@@ -2755,10 +2755,10 @@ paths:
             type: string
           example: qlgwhpyq1ts9nsw
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /transferrecipient:
@@ -2772,19 +2772,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransferRecipientCreate'
+              $ref: "#/components/schemas/TransferRecipientCreate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TransferRecipientCreate'
+              $ref: "#/components/schemas/TransferRecipientCreate"
       responses:
-        '201':
-          description: ''
+        "201":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransferRecipientCreateResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/TransferRecipientCreateResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -2822,16 +2822,16 @@ paths:
             type: integer
           description: The offset to retrieve data from
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransferRecipientListResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/TransferRecipientListResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /transferrecipient/bulk:
@@ -2847,19 +2847,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransferRecipientBulk'
+              $ref: "#/components/schemas/TransferRecipientBulk"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TransferRecipientBulk'
+              $ref: "#/components/schemas/TransferRecipientBulk"
       responses:
-        '200':
+        "200":
           description: Sucessful response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransferRecipientBulkCreateResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/TransferRecipientBulkCreateResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /transferrecipient/{code}:
@@ -2878,16 +2878,16 @@ paths:
       description: Fetch the details of a transfer recipient
       operationId: transferrecipient_fetch
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransferRecipientFetchResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/TransferRecipientFetchResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
     put:
@@ -2900,21 +2900,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransferRecipientUpdate'
+              $ref: "#/components/schemas/TransferRecipientUpdate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TransferRecipientUpdate'
+              $ref: "#/components/schemas/TransferRecipientUpdate"
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransferRecipientUpdateResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/TransferRecipientUpdateResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
     delete:
@@ -2924,16 +2924,16 @@ paths:
       description: Delete a transfer recipient (sets the transfer recipient to inactive)
       operationId: transferrecipient_delete
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransferRecipientDeleteResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/TransferRecipientDeleteResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /transfer:
@@ -2947,19 +2947,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransferInitiate'
+              $ref: "#/components/schemas/TransferInitiate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TransferInitiate'
+              $ref: "#/components/schemas/TransferInitiate"
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransferCreateResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/TransferCreateResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -3031,16 +3031,16 @@ paths:
               - rejected
               - received
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransferListResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/TransferListResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /transfer/finalize_transfer:
@@ -3054,15 +3054,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransferFinalize'
+              $ref: "#/components/schemas/TransferFinalize"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TransferFinalize'
+              $ref: "#/components/schemas/TransferFinalize"
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /transfer/bulk:
@@ -3079,19 +3079,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransferBulk'
+              $ref: "#/components/schemas/TransferBulk"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TransferBulk'
+              $ref: "#/components/schemas/TransferBulk"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransferBulkResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/TransferBulkResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /transfer/{code}:
@@ -3110,16 +3110,16 @@ paths:
       description: Get details of a transfer on your integration
       operationId: transfer_fetch
       responses:
-        '200':
+        "200":
           description: Succesful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransferFetchResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/TransferFetchResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /transfer/verify/{reference}:
@@ -3138,16 +3138,16 @@ paths:
             type: string
           example: acv_9ee55786-2323-4760-98e2-6380c9cb3f67
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransferVerifyResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/TransferVerifyResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /transfer/export:
@@ -3193,12 +3193,12 @@ paths:
             format: date-time
           description: The end date
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /transfer/resend_otp:
@@ -3212,19 +3212,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransferResendOTP'
+              $ref: "#/components/schemas/TransferResendOTP"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TransferResendOTP'
+              $ref: "#/components/schemas/TransferResendOTP"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransferResendsOtpResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/TransferResendsOtpResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /transfer/disable_otp:
@@ -3237,14 +3237,14 @@ paths:
         No arguments required. You will get an OTP to complete the request.
       operationId: transfer_disableOtp
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransferDisablesOtpResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/TransferDisablesOtpResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /transfer/disable_otp_finalize:
@@ -3258,19 +3258,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransferFinalizeDisableOTP'
+              $ref: "#/components/schemas/TransferFinalizeDisableOTP"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TransferFinalizeDisableOTP'
+              $ref: "#/components/schemas/TransferFinalizeDisableOTP"
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransferFinalizeDisablesOtpResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/TransferFinalizeDisablesOtpResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /transfer/enable_otp:
@@ -3285,14 +3285,14 @@ paths:
         No arguments required.
       operationId: transfer_enableOtp
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransferEnablesOtpResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/TransferEnablesOtpResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /balance:
@@ -3303,16 +3303,16 @@ paths:
       operationId: balance_fetch
       description: Fetch the available balance on your integration
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BalanceCheckResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/BalanceCheckResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /balance/ledger:
@@ -3346,16 +3346,16 @@ paths:
             format: date-time
           description: The end date
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BalanceFetchLedgerResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/BalanceFetchLedgerResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /paymentrequest:
@@ -3369,15 +3369,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PaymentRequestCreate'
+              $ref: "#/components/schemas/PaymentRequestCreate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PaymentRequestCreate'
+              $ref: "#/components/schemas/PaymentRequestCreate"
       responses:
-        '200':
-          $ref: '#/components/responses/PaymentRequestCreateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/PaymentRequestCreateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -3431,12 +3431,12 @@ paths:
             format: date-time
           description: The end date
       responses:
-        '200':
-          $ref: '#/components/responses/PaymentRequestListSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/PaymentRequestListSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /paymentrequest/{id}:
@@ -3455,12 +3455,12 @@ paths:
       description: Fetch a previously created payment request
       operationId: paymentRequest_fetch
       responses:
-        '200':
-          $ref: '#/components/responses/PaymentRequestListSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/PaymentRequestListSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
     put:
@@ -3473,17 +3473,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PaymentRequestUpdate'
+              $ref: "#/components/schemas/PaymentRequestUpdate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PaymentRequestUpdate'
+              $ref: "#/components/schemas/PaymentRequestUpdate"
       responses:
-        '200':
-          $ref: '#/components/responses/PaymentRequestUpdateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/PaymentRequestUpdateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /paymentrequest/verify/{id}:
@@ -3502,12 +3502,12 @@ paths:
       description: Verify the status of a previously created payment request
       operationId: paymentRequest_verify
       responses:
-        '200':
-          $ref: '#/components/responses/PaymentRequestVerifySuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/PaymentRequestVerifySuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /paymentrequest/notify/{id}:
@@ -3526,10 +3526,10 @@ paths:
       description: Trigger an email reminder to a customer for a previously created payment request
       operationId: paymentRequest_notify
       responses:
-        '200':
-          $ref: '#/components/responses/PaymentRequestSendNotificationSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/PaymentRequestSendNotificationSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /paymentrequest/totals:
@@ -3540,12 +3540,12 @@ paths:
       description: Get the metric of all pending and successful payment requests
       operationId: paymentRequest_totals
       responses:
-        '200':
-          $ref: '#/components/responses/PaymentRequestTotalSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/PaymentRequestTotalSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /paymentrequest/finalize/{id}:
@@ -3564,10 +3564,10 @@ paths:
       description: Finalise the creation of a draft payment request for a customer
       operationId: paymentRequest_finalize
       responses:
-        '200':
-          $ref: '#/components/responses/PaymentRequestFinalizeSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/PaymentRequestFinalizeSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /paymentrequest/archive/{id}:
@@ -3588,10 +3588,10 @@ paths:
         be returned when listing all previously created payment requests.
       operationId: paymentRequest_archive
       responses:
-        '200':
-          $ref: '#/components/responses/PaymentRequestArchiveSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/PaymentRequestArchiveSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /product:
@@ -3605,15 +3605,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductCreate'
+              $ref: "#/components/schemas/ProductCreate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/ProductCreate'
+              $ref: "#/components/schemas/ProductCreate"
       responses:
-        '201':
-          $ref: '#/components/responses/ProductCreateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "201":
+          $ref: "#/components/responses/ProductCreateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -3652,12 +3652,12 @@ paths:
             format: date-time
           description: The end date
       responses:
-        '200':
-          $ref: '#/components/responses/ProductListsSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/ProductListsSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /product/{id}:
@@ -3676,12 +3676,12 @@ paths:
       description: Fetch a previously created product
       operationId: product_fetch
       responses:
-        '200':
-          $ref: '#/components/responses/ProductFetchSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/ProductFetchSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
     put:
@@ -3694,17 +3694,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductUpdate'
+              $ref: "#/components/schemas/ProductUpdate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/ProductUpdate'
+              $ref: "#/components/schemas/ProductUpdate"
       responses:
-        '200':
-          $ref: '#/components/responses/ProductUpdateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/ProductUpdateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
     delete:
@@ -3714,12 +3714,12 @@ paths:
       description: Delete a previously created product
       operationId: product_delete
       responses:
-        '200':
-          $ref: '#/components/responses/ProductDeleteSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/ProductDeleteSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /storefront:
@@ -3733,15 +3733,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/StorefrontCreate'
+              $ref: "#/components/schemas/StorefrontCreate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/StorefrontCreate'
+              $ref: "#/components/schemas/StorefrontCreate"
       responses:
-        '200':
-          $ref: '#/components/responses/StorefrontCreateSuccess'
-        '400':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/StorefrontCreateSuccess"
+        "400":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -3772,12 +3772,12 @@ paths:
               - inactive
           example: active
       responses:
-        '200':
-          $ref: '#/components/responses/StorefrontListSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/StorefrontListSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /storefront/{id}:
@@ -3796,12 +3796,12 @@ paths:
       description: Get the details of a previously created Storefront
       operationId: storefront_fetch
       responses:
-        '200':
-          $ref: '#/components/responses/StorefrontFetchSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/StorefrontFetchSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
     put:
@@ -3814,17 +3814,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/StorefrontUpdate'
+              $ref: "#/components/schemas/StorefrontUpdate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/StorefrontUpdate'
+              $ref: "#/components/schemas/StorefrontUpdate"
       responses:
-        '200':
-          $ref: '#/components/responses/StorefrontUpdateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/StorefrontUpdateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
     delete:
@@ -3834,12 +3834,12 @@ paths:
       description: Delete a previously created Storefront
       operationId: storefront_delete
       responses:
-        '200':
-          $ref: '#/components/responses/StorefrontDeleteSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/StorefrontDeleteSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /storefront/verify/{slug}:
@@ -3858,12 +3858,12 @@ paths:
       description: Verify the availability of a slug before using it for your Storefront
       operationId: storefront_verifySlug
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /storefront/{id}/order:
@@ -3882,10 +3882,10 @@ paths:
             type: integer
           example: 1559046
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /storefront/{id}/product:
@@ -3907,17 +3907,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/StorefrontAddProducts'
+              $ref: "#/components/schemas/StorefrontAddProducts"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/StorefrontAddProducts'
+              $ref: "#/components/schemas/StorefrontAddProducts"
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
     get:
@@ -3927,12 +3927,12 @@ paths:
       description: List the products in a Storefront
       operationId: storefront_listProducts
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /storefront/{id}/publish:
@@ -3951,12 +3951,12 @@ paths:
       description: Make your Storefront publicly available
       operationId: storefront_publish
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /storefront/{id}/duplicate:
@@ -3975,12 +3975,12 @@ paths:
       description: Duplicate a previously created Storefront
       operationId: storefront_duplicate
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /order:
@@ -3994,15 +3994,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OrderCreate'
+              $ref: "#/components/schemas/OrderCreate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/OrderCreate'
+              $ref: "#/components/schemas/OrderCreate"
       responses:
-        '200':
-          $ref: '#/components/responses/OrderCreateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/OrderCreateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -4035,12 +4035,12 @@ paths:
             format: date-time
           description: The end date
       responses:
-        '200':
-          $ref: '#/components/responses/OrderListSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/OrderListSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /order/{id}:
@@ -4059,12 +4059,12 @@ paths:
       description: Fetch the details of a previously created order
       operationId: order_fetch
       responses:
-        '200':
-          $ref: '#/components/responses/OrderFetchSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/OrderFetchSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /order/product/{id}:
@@ -4083,12 +4083,12 @@ paths:
       description: Fetch all orders for a particular product
       operationId: order_product
       responses:
-        '200':
-          $ref: '#/components/responses/OrderFetchProductSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/OrderFetchProductSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /order/{code}/validate:
@@ -4107,12 +4107,12 @@ paths:
       description: Validate a pay for me order
       operationId: order_validate
       responses:
-        '200':
-          $ref: '#/components/responses/OrderValidateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/OrderValidateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /page:
@@ -4126,15 +4126,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PageCreate'
+              $ref: "#/components/schemas/PageCreate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PageCreate'
+              $ref: "#/components/schemas/PageCreate"
       responses:
-        '200':
-          $ref: '#/components/responses/PageCreateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/PageCreateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -4169,12 +4169,12 @@ paths:
             format: date-time
           description: The end date
       responses:
-        '200':
-          $ref: '#/components/responses/PageListSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/PageListSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /page/{id}:
@@ -4193,12 +4193,12 @@ paths:
       description: Get a previously created payment page
       operationId: page_fetch
       responses:
-        '200':
-          $ref: '#/components/responses/PageFetchSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/PageFetchSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
     put:
@@ -4211,17 +4211,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PageUpdate'
+              $ref: "#/components/schemas/PageUpdate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PageUpdate'
+              $ref: "#/components/schemas/PageUpdate"
       responses:
-        '200':
-          $ref: '#/components/responses/PageUpdateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/PageUpdateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /page/check_slug_availability/{slug}:
@@ -4240,12 +4240,12 @@ paths:
       description: Check if a custom slug is available for use when creating a payment page
       operationId: page_checkSlugAvailability
       responses:
-        '200':
-          $ref: '#/components/responses/PageCheckSlugAvailabilitySuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/PageCheckSlugAvailabilitySuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /page/{id}/product:
@@ -4267,15 +4267,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PageProduct'
+              $ref: "#/components/schemas/PageProduct"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PageProduct'
+              $ref: "#/components/schemas/PageProduct"
       responses:
-        '200':
-          $ref: '#/components/responses/PageAddProductsSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/PageAddProductsSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /settlement:
@@ -4299,12 +4299,12 @@ paths:
             type: integer
           example: 2
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /settlement/{id}/transactions:
@@ -4323,12 +4323,12 @@ paths:
             type: integer
           example: 8610870
       responses:
-        '200':
-          $ref: '#/components/responses/Ok'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/Ok"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /integration/payment_session_timeout:
@@ -4339,16 +4339,16 @@ paths:
       description: Fetch the session timeout of a transaction
       operationId: integration_fetchPaymentSessionTimeout
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ControlPanelFetchPaymentSessionTimeoutResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/ControlPanelFetchPaymentSessionTimeoutResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
     put:
@@ -4361,18 +4361,18 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PaymentSession'
+              $ref: "#/components/schemas/PaymentSession"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ControlPanelUpdatePaymentSessionTimeoutResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/ControlPanelUpdatePaymentSessionTimeoutResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /refund:
@@ -4386,15 +4386,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RefundCreate'
+              $ref: "#/components/schemas/RefundCreate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/RefundCreate'
+              $ref: "#/components/schemas/RefundCreate"
       responses:
-        '200':
-          $ref: '#/components/responses/RefundCreateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/RefundCreateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -4429,12 +4429,12 @@ paths:
             format: date-time
           description: The end date
       responses:
-        '200':
-          $ref: '#/components/responses/RefundListSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/RefundListSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /refund/retry_with_customer_details/{id}:
@@ -4456,15 +4456,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RefundRetry'
+              $ref: "#/components/schemas/RefundRetry"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/RefundRetry'
+              $ref: "#/components/schemas/RefundRetry"
       responses:
-        '200':
-          $ref: '#/components/responses/RefundRetrySuccess'
-        '422':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/RefundRetrySuccess"
+        "422":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /refund/{id}:
@@ -4483,12 +4483,12 @@ paths:
             type: integer
           example: 15581137
       responses:
-        '200':
-          $ref: '#/components/responses/RefundFetchSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/RefundFetchSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /dispute:
@@ -4538,12 +4538,12 @@ paths:
             format: date-time
           description: The end date
       responses:
-        '200':
-          $ref: '#/components/responses/DisputeListSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/DisputeListSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /dispute/{id}:
@@ -4562,12 +4562,12 @@ paths:
       description: Fetch a transaction dispute
       operationId: dispute_fetch
       responses:
-        '200':
-          $ref: '#/components/responses/DisputeFetchSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/DisputeFetchSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
     put:
@@ -4580,17 +4580,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DisputeUpdate'
+              $ref: "#/components/schemas/DisputeUpdate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/DisputeUpdate'
+              $ref: "#/components/schemas/DisputeUpdate"
       responses:
-        '200':
-          $ref: '#/components/responses/DisputeUpdateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/DisputeUpdateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /dispute/{id}/upload_url:
@@ -4609,12 +4609,12 @@ paths:
             type: integer
           example: 4734583785
       responses:
-        '200':
-          $ref: '#/components/responses/DisputeUploadURLSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/DisputeUploadURLSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /dispute/export:
@@ -4658,12 +4658,12 @@ paths:
             format: date-time
           description: The end date
       responses:
-        '200':
-          $ref: '#/components/responses/DisputeExportSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/DisputeExportSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /dispute/transaction/{id}:
@@ -4682,12 +4682,12 @@ paths:
             type: integer
           example: 4734583785
       responses:
-        '200':
-          $ref: '#/components/responses/DisputeListTransactionSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/DisputeListTransactionSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /dispute/{id}/resolve:
@@ -4709,17 +4709,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DisputeResolve'
+              $ref: "#/components/schemas/DisputeResolve"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/DisputeResolve'
+              $ref: "#/components/schemas/DisputeResolve"
       responses:
-        '200':
-          $ref: '#/components/responses/DisputeResolveSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/DisputeResolveSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /dispute/{id}/evidence:
@@ -4733,10 +4733,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DisputeEvidence'
+              $ref: "#/components/schemas/DisputeEvidence"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/DisputeEvidence'
+              $ref: "#/components/schemas/DisputeEvidence"
       parameters:
         - name: id
           description: The unique identifier of the dispute
@@ -4746,10 +4746,10 @@ paths:
             type: integer
           example: 4734583785
       responses:
-        '200':
-          $ref: '#/components/responses/DisputeAddEvidenceSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/DisputeAddEvidenceSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /bank:
@@ -4855,12 +4855,12 @@ paths:
           schema:
             type: boolean
       responses:
-        '200':
-          $ref: '#/components/responses/MiscellaneousListBanksSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/MiscellaneousListBanksSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /bank/resolve:
@@ -4884,12 +4884,12 @@ paths:
             type: integer
           example: 63
       responses:
-        '200':
-          $ref: '#/components/responses/VerificationResolveAccountNumberSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/VerificationResolveAccountNumberSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /bank/validate:
@@ -4903,15 +4903,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BankValidateRequest'
+              $ref: "#/components/schemas/BankValidateRequest"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/BankValidateRequest'
+              $ref: "#/components/schemas/BankValidateRequest"
       responses:
-        '200':
-          $ref: '#/components/responses/VerificationValidateAccountSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/VerificationValidateAccountSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /decision/bin/{bin}:
@@ -4930,12 +4930,12 @@ paths:
             type: integer
           example: 539983
       responses:
-        '200':
-          $ref: '#/components/responses/VerificationResolveCardBINSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/VerificationResolveCardBINSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /country:
@@ -4946,12 +4946,12 @@ paths:
       description: List all supported countries on Paystack
       operationId: miscellaneous_listCountries
       responses:
-        '200':
-          $ref: '#/components/responses/MiscellaneousListCountriesSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/MiscellaneousListCountriesSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /address_verification/states:
@@ -4969,12 +4969,12 @@ paths:
             type: string
           example: CA
       responses:
-        '200':
-          $ref: '#/components/responses/MiscellaneousListStatesSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/MiscellaneousListStatesSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
 components:
@@ -5154,12 +5154,12 @@ components:
           type: string
       example:
         account_name: Ann Bron
-        account_number: '0123456789'
+        account_number: "0123456789"
         account_type: personal
-        bank_code: '632005'
+        bank_code: "632005"
         country_code: ZA
         document_type: identityNumber
-        document_number: '1234567890123'
+        document_number: "1234567890123"
     BulkChargeFetchBulkBatchChargesResponse:
       type: object
       properties:
@@ -5296,7 +5296,7 @@ components:
             custom_fields:
               type: array
               items:
-                $ref: '#/components/schemas/MetadataCustomFieldsArray'
+                $ref: "#/components/schemas/MetadataCustomFieldsArray"
           required:
             - custom_fields
         status:
@@ -5459,7 +5459,7 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/BulkChargeListResponseArray'
+            $ref: "#/components/schemas/BulkChargeListResponseArray"
         meta:
           type: object
           properties:
@@ -6342,7 +6342,7 @@ components:
         address: 140 N 2ND ST
         city: Stroudsburg
         state: PA
-        zip_code: '18360'
+        zip_code: "18360"
         reference: 5bwib5v6anhe9xa
     ChargeSubmitBirthday:
       type: object
@@ -6358,7 +6358,7 @@ components:
           description: The reference of the ongoing transaction
           type: string
       example:
-        birthday: '1961-09-21'
+        birthday: "1961-09-21"
         reference: 5bwib5v6anhe9xa
     ChargeSubmitBirthdayResponse:
       type: object
@@ -6394,7 +6394,7 @@ components:
           description: The reference of the ongoing transaction
           type: string
       example:
-        otp: '123456'
+        otp: "123456"
         reference: 5bwib5v6anhe9xa
     ChargeSubmitOtpResponse:
       type: object
@@ -6531,7 +6531,7 @@ components:
           description: The reference of the ongoing transaction
           type: string
       example:
-        phone: '08012345678'
+        phone: "08012345678"
         reference: 5bwib5v6anhe9xa
     ChargeSubmitPhoneResponse:
       type: object
@@ -6671,7 +6671,7 @@ components:
           description: Transaction reference that requires the PIN
           type: string
       example:
-        pin: '1234'
+        pin: "1234"
         reference: 5bwib5v6anhe9xa
     ChargeSubmitPinResponse:
       type: object
@@ -6847,11 +6847,11 @@ components:
         number:
           type: string
           description: The customer's account number
-          example: '0123456789'
+          example: "0123456789"
         bank_code:
           type: string
           description: The code representing the customer's bank
-          example: '058'
+          example: "058"
       required:
         - number
         - bank_code
@@ -7159,10 +7159,10 @@ components:
           example: 463433
         account_number:
           type: string
-          example: '0123456789'
+          example: "0123456789"
         bank_code:
           type: string
-          example: '032'
+          example: "032"
         bank_name:
           type: string
           nullable: true
@@ -7188,7 +7188,7 @@ components:
         authorized_at:
           type: string
           format: date-time
-          example: '2024-09-27T10:57:53.824Z'
+          example: "2024-09-27T10:57:53.824Z"
       required:
         - id
         - status
@@ -7319,11 +7319,11 @@ components:
         number:
           type: string
           description: The customer's account number
-          example: '0123456789'
+          example: "0123456789"
         bank_code:
           type: string
           description: The code representing the customer's bank
-          example: '058'
+          example: "058"
       required:
         - number
         - bank_code
@@ -7676,9 +7676,9 @@ components:
         last_name: Cedar
         country: NG
         type: bank_account
-        account_number: '0123456789'
-        bank_code: '007'
-        bvn: '20012345677'
+        account_number: "0123456789"
+        bank_code: "007"
+        bvn: "20012345677"
     CustomerValidateResponse:
       type: object
       properties:
@@ -8198,7 +8198,7 @@ components:
         email: salmon.orange@email.com
         first_name: Salmon
         last_name: Orange
-        phone: '+2348100000000'
+        phone: "+2348100000000"
         preferred_bank: titan-paystack
         country: NG
     DedicatedVirtualAccountCreate:
@@ -8230,7 +8230,7 @@ components:
           description: Valid Dedicated virtual account
           type: string
       example:
-        account_number: '0033322211'
+        account_number: "0033322211"
     DedicatedVirtualAccountSplit:
       type: object
       required:
@@ -8246,7 +8246,7 @@ components:
           description: Split code consisting of the lists of accounts you want to split the transaction with
           type: string
       example:
-        account_number: '0033322211'
+        account_number: "0033322211"
         split_code: SPL_e7jnRLtzla
     DirectDebitActivationChargeRequest:
       type: object
@@ -8320,10 +8320,10 @@ components:
           example: 463433
         account_number:
           type: string
-          example: '0123456789'
+          example: "0123456789"
         bank_code:
           type: string
-          example: '058'
+          example: "058"
         bank_name:
           type: string
           example: Guaranty Trust Bank
@@ -8332,7 +8332,7 @@ components:
         authorized_at:
           type: string
           format: date-time
-          example: '2025-06-23T12:47:10.632Z'
+          example: "2025-06-23T12:47:10.632Z"
       required:
         - id
         - status
@@ -8459,7 +8459,7 @@ components:
       example:
         customer_email: customer@email.com
         customer_name: Mensah King
-        customer_phone: '08012345678'
+        customer_phone: "08012345678"
         service_details: claim for buying cups
     DisputeExportResponse:
       type: object
@@ -10787,7 +10787,7 @@ components:
         email: test@email.com
         first_name: Demo
         last_name: User
-        phone: '+2348031245678'
+        phone: "+2348031245678"
         currency: NGN
         items:
           - item: 2179824
@@ -16056,8 +16056,8 @@ components:
           type: string
       example:
         currency: NGN
-        account_number: '1234567890'
-        bank_id: '9'
+        account_number: "1234567890"
+        bank_id: "9"
     RefundRetryResponse:
       title: Generated schema for Root
       type: object
@@ -17292,8 +17292,8 @@ components:
           type: string
       example:
         business_name: Oasis
-        account_number: '0123456047'
-        settlement_bank: '058'
+        account_number: "0123456047"
+        settlement_bank: "058"
         percentage_charge: 30
     SubaccountCreateResponse:
       type: object
@@ -18226,7 +18226,7 @@ components:
           description: Device Serial Number
           type: string
       example:
-        serial_number: '1111150412230003899'
+        serial_number: "1111150412230003899"
     TerminalCommissionDeviceResponse:
       type: object
       properties:
@@ -18430,7 +18430,7 @@ components:
         action: process
         data:
           id: 7895939
-          reference: '4634337895939'
+          reference: "4634337895939"
     TerminalSendEventData:
       type: object
       description: The parameters needed to perform the specified action
@@ -18444,7 +18444,7 @@ components:
           type: string
       example:
         id: 7895939
-        reference: '4634337895939'
+        reference: "4634337895939"
     TerminalUpate:
       type: object
       properties:
@@ -20138,7 +20138,7 @@ components:
           type: string
       example:
         transfer_code: TRF_vsyqdmlzble3uii
-        otp: '928783'
+        otp: "928783"
     TransferFinalizeDisableOTP:
       type: object
       required:
@@ -20148,7 +20148,7 @@ components:
           description: OTP sent to business phone to verify disabling OTP requirement
           type: string
       example:
-        otp: '928783'
+        otp: "928783"
     TransferFinalizeDisablesOtpResponse:
       type: object
       properties:
@@ -20437,8 +20437,8 @@ components:
       example:
         type: nuban
         name: Smith Taplo
-        account_number: '01000000010'
-        bank_code: '058'
+        account_number: "01000000010"
+        bank_code: "058"
     TransferRecipientCreateResponse:
       type: object
       properties:
@@ -20937,10 +20937,10 @@ components:
           description: The three-digit USSD code.
           type: string
           enum:
-            - '737'
-            - '919'
-            - '822'
-            - '966'
+            - "737"
+            - "919"
+            - "822"
+            - "966"
     VerificationResolveAccountNumberResponse:
       type: object
       properties:
@@ -23979,9 +23979,9 @@ components:
       example:
         name: Sample Terminal
         destinations:
-          - target: '+2548012345678'
+          - target: "+2548012345678"
             name: John Doe
-          - target: '+2548098765432'
+          - target: "+2548098765432"
             name: Jane Smith
     VirtualTerminalCreateResponse:
       type: object
@@ -24090,9 +24090,9 @@ components:
             - name
       example:
         destinations:
-          - target: '+2548012345678'
+          - target: "+2548012345678"
             name: John Doe
-          - target: '+2548098765432'
+          - target: "+2548098765432"
             name: Jane Smith
     VirtualTerminalDestinationAssignResponse:
       type: object
@@ -24144,8 +24144,8 @@ components:
         - targets
       example:
         targets:
-          - '+2548012345678'
-          - '+2548098765432'
+          - "+2548012345678"
+          - "+2548098765432"
     VirtualTerminalDestinationUnassignResponse:
       type: object
       properties:
@@ -24350,259 +24350,259 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ApplePayCreateOkModel'
+            $ref: "#/components/schemas/ApplePayCreateOkModel"
     BalanceCheckSuccess:
       description: Balance Check response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/BalanceCheckResponse'
+            $ref: "#/components/schemas/BalanceCheckResponse"
     BalanceFetchLedgerSuccess:
       description: Balance Fetch Ledger response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/BalanceFetchLedgerResponse'
+            $ref: "#/components/schemas/BalanceFetchLedgerResponse"
     BulkChargeFetchBulkBatchChargesSuccess:
       description: Bulk Charge Fetch Bulk Batch Charges response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/BulkChargeFetchBulkBatchChargesResponse'
+            $ref: "#/components/schemas/BulkChargeFetchBulkBatchChargesResponse"
     BulkChargeFetchSuccess:
       description: Bulk Charge Fetch response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/BulkChargeFetchResponse'
+            $ref: "#/components/schemas/BulkChargeFetchResponse"
     BulkChargeInitiateSuccess:
       description: Bulk Charge Initiate response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/BulkChargeInitiateResponse'
+            $ref: "#/components/schemas/BulkChargeInitiateResponse"
     BulkChargeListSuccess:
       description: Bulk Charge List response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/BulkChargeListResponse'
+            $ref: "#/components/schemas/BulkChargeListResponse"
     BulkChargePauseSuccess:
       description: Bulk Charge Pause response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/BulkChargePauseResponse'
+            $ref: "#/components/schemas/BulkChargePauseResponse"
     BulkChargeResumeSuccess:
       description: Bulk Charge Resume response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/BulkChargeResumeResponse'
+            $ref: "#/components/schemas/BulkChargeResumeResponse"
     ChargeCheckPendingSuccess:
       description: Charge Check Pending response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ChargeCheckPendingResponse'
+            $ref: "#/components/schemas/ChargeCheckPendingResponse"
     ChargeCreateSuccess:
       description: Charge Create response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ChargeCreateResponse'
+            $ref: "#/components/schemas/ChargeCreateResponse"
     ChargeSubmitBirthdaySuccess:
       description: Charge Submit Birthday response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ChargeSubmitBirthdayResponse'
+            $ref: "#/components/schemas/ChargeSubmitBirthdayResponse"
     ChargeSubmitOtpSuccess:
       description: Charge Submit Otp response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ChargeSubmitOtpResponse'
+            $ref: "#/components/schemas/ChargeSubmitOtpResponse"
     ChargeSubmitPhoneSuccess:
       description: Charge Submit Phone response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ChargeSubmitPhoneResponse'
+            $ref: "#/components/schemas/ChargeSubmitPhoneResponse"
     ChargeSubmitPinSuccess:
       description: Charge Submit Pin response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ChargeSubmitPinResponse'
+            $ref: "#/components/schemas/ChargeSubmitPinResponse"
     CustomerAuthorizationInitializeSuccess:
       description: Customer Authorization Initialize response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CustomerAuthorizationInitializeResponse'
+            $ref: "#/components/schemas/CustomerAuthorizationInitializeResponse"
     CustomerAuthorizationVerifySuccess:
       description: Customer Authorization Verify response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CustomerAuthorizationVerifyResponse'
+            $ref: "#/components/schemas/CustomerAuthorizationVerifyResponse"
     CustomerCreateSuccess:
       description: Customer Create response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CustomerCreateResponse'
+            $ref: "#/components/schemas/CustomerCreateResponse"
     CustomerDeactivateAuthorizationSuccess:
       description: Customer Deactivate Authorization response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CustomerDeactivateAuthorizationResponse'
+            $ref: "#/components/schemas/CustomerDeactivateAuthorizationResponse"
     CustomerDirectDebitActivationChargeSuccess:
       description: Customer Direct Debit Activation Charge response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CustomerDirectDebitActivationChargeResponse'
+            $ref: "#/components/schemas/CustomerDirectDebitActivationChargeResponse"
     CustomerFetchMandateAuthorizationsSuccess:
       description: Customer Fetch Mandate Authorizations response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CustomerFetchMandateAuthorizationsResponse'
+            $ref: "#/components/schemas/CustomerFetchMandateAuthorizationsResponse"
     CustomerFetchSuccess:
       description: Customer Fetch response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CustomerFetchResponse'
+            $ref: "#/components/schemas/CustomerFetchResponse"
     CustomerInitializeDirectDebitSuccess:
       description: Customer Initialize Direct Debit response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CustomerInitializeDirectDebitResponse'
+            $ref: "#/components/schemas/CustomerInitializeDirectDebitResponse"
     CustomerListSuccess:
       description: Customer List response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CustomerListResponse'
+            $ref: "#/components/schemas/CustomerListResponse"
     CustomerUpdateSuccess:
       description: Customer Update response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CustomerUpdateResponse'
+            $ref: "#/components/schemas/CustomerUpdateResponse"
     CustomerValidateSuccess:
       description: Customer Validate response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CustomerValidateResponse'
+            $ref: "#/components/schemas/CustomerValidateResponse"
     CustomerWhitelistBlacklistSuccess:
       description: Customer Whitelist Blacklist response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CustomerRiskActionResponse'
+            $ref: "#/components/schemas/CustomerRiskActionResponse"
     DedicatedNubanCreateSuccess:
       description: Dedicated Nuban Create response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/DedicatedNubanCreateResponse'
+            $ref: "#/components/schemas/DedicatedNubanCreateResponse"
     DedicatedNubanDeactivateSuccess:
       description: Dedicated Nuban Deactivate response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/DedicatedNubanDeactivateResponse'
+            $ref: "#/components/schemas/DedicatedNubanDeactivateResponse"
     DedicatedNubanFetchSuccess:
       description: Dedicated Nuban Fetch response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/DedicatedNubanFetchResponse'
+            $ref: "#/components/schemas/DedicatedNubanFetchResponse"
     DirectDebitActivationChargeSuccess:
       description: Direct Debit Activation Charge response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/DirectDebitActivationChargeResponse'
+            $ref: "#/components/schemas/DirectDebitActivationChargeResponse"
     DisputeAddEvidenceSuccess:
       description: Dispute Add Evidence response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/DisputeAddEvidenceResponse'
+            $ref: "#/components/schemas/DisputeAddEvidenceResponse"
     DisputeExportSuccess:
       description: Dispute Export response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/DisputeExportResponse'
+            $ref: "#/components/schemas/DisputeExportResponse"
     DisputeFetchSuccess:
       description: Dispute Fetch response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/DisputeFetchResponse'
+            $ref: "#/components/schemas/DisputeFetchResponse"
     DisputeListSuccess:
       description: Dispute List response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/DisputeListResponse'
+            $ref: "#/components/schemas/DisputeListResponse"
     DisputeListTransactionSuccess:
       description: Dispute List Transaction response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/DisputeListTransactionResponse'
+            $ref: "#/components/schemas/DisputeListTransactionResponse"
     DisputeResolveSuccess:
       description: Dispute Resolve response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/DisputeResolveResponse'
+            $ref: "#/components/schemas/DisputeResolveResponse"
     DisputeUpdateSuccess:
       description: Dispute Update response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/DisputeUpdateResponse'
+            $ref: "#/components/schemas/DisputeUpdateResponse"
     DisputeUploadURLSuccess:
       description: Dispute Upload URL response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/DisputeUploadURLResponse'
+            $ref: "#/components/schemas/DisputeUploadURLResponse"
     MiscellaneousListBanksSuccess:
       description: Miscellaneous List Banks response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/MiscellaneousListBanksResponse'
+            $ref: "#/components/schemas/MiscellaneousListBanksResponse"
     MiscellaneousListCountriesSuccess:
       description: Miscellaneous List Countries response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/MiscellaneousListCountriesResponse'
+            $ref: "#/components/schemas/MiscellaneousListCountriesResponse"
     MiscellaneousListStatesSuccess:
       description: Miscellaneous List States response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/MiscellaneousListStatesResponse'
+            $ref: "#/components/schemas/MiscellaneousListStatesResponse"
     NotFound:
       description: Entity not found
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
           example:
             status: false
             message: Entity not found
@@ -24611,451 +24611,451 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Response'
+            $ref: "#/components/schemas/Response"
     OrderCreateSuccess:
       description: Order Create response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/OrderCreateResponse'
+            $ref: "#/components/schemas/OrderCreateResponse"
     OrderFetchProductSuccess:
       description: Order Fetch Product response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/OrderFetchProductResponse'
+            $ref: "#/components/schemas/OrderFetchProductResponse"
     OrderFetchSuccess:
       description: Order Fetch response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/OrderFetchResponse'
+            $ref: "#/components/schemas/OrderFetchResponse"
     OrderListSuccess:
       description: Order List response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/OrderListResponse'
+            $ref: "#/components/schemas/OrderListResponse"
     OrderValidateSuccess:
       description: Order Validate response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/OrderValidateResponse'
+            $ref: "#/components/schemas/OrderValidateResponse"
     PageAddProductsSuccess:
       description: Page Add Products response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PageAddProductsResponse'
+            $ref: "#/components/schemas/PageAddProductsResponse"
     PageCheckSlugAvailabilitySuccess:
       description: Page Check Slug Availability response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PageCheckSlugAvailabilityResponse'
+            $ref: "#/components/schemas/PageCheckSlugAvailabilityResponse"
     PageCreateSuccess:
       description: Page Create response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PageCreateResponse'
+            $ref: "#/components/schemas/PageCreateResponse"
     PageFetchSuccess:
       description: Page Fetch response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PageFetchResponse'
+            $ref: "#/components/schemas/PageFetchResponse"
     PageListSuccess:
       description: Page List response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PageListResponse'
+            $ref: "#/components/schemas/PageListResponse"
     PageUpdateSuccess:
       description: Page Update response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PageUpdateResponse'
+            $ref: "#/components/schemas/PageUpdateResponse"
     PaymentRequestArchiveSuccess:
       description: Payment Request Archive response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PaymentRequestArchiveResponse'
+            $ref: "#/components/schemas/PaymentRequestArchiveResponse"
     PaymentRequestCreateSuccess:
       description: Payment Request Create response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PaymentRequestCreateResponse'
+            $ref: "#/components/schemas/PaymentRequestCreateResponse"
     PaymentRequestFinalizeSuccess:
       description: Payment Request Finalize response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PaymentRequestFinalizeResponse'
+            $ref: "#/components/schemas/PaymentRequestFinalizeResponse"
     PaymentRequestListSuccess:
       description: Payment Request List response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PaymentRequestListResponse'
+            $ref: "#/components/schemas/PaymentRequestListResponse"
     PaymentRequestSendNotificationSuccess:
       description: Payment Request Send Notification response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PaymentRequestSendNotificationResponse'
+            $ref: "#/components/schemas/PaymentRequestSendNotificationResponse"
     PaymentRequestTotalSuccess:
       description: Payment Request Total response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PaymentRequestTotalResponse'
+            $ref: "#/components/schemas/PaymentRequestTotalResponse"
     PaymentRequestUpdateSuccess:
       description: Payment Request Update response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PaymentRequestUpdateResponse'
+            $ref: "#/components/schemas/PaymentRequestUpdateResponse"
     PaymentRequestVerifySuccess:
       description: Payment Request Verify response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PaymentRequestVerifyResponse'
+            $ref: "#/components/schemas/PaymentRequestVerifyResponse"
     PlanCreateSuccess:
       description: Plan Create response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PlanCreateResponse'
+            $ref: "#/components/schemas/PlanCreateResponse"
     PlanFetchSuccess:
       description: Plan Fetch response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PlanFetchResponse'
+            $ref: "#/components/schemas/PlanFetchResponse"
     PlanListSuccess:
       description: Plan List response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PlanListResponse'
+            $ref: "#/components/schemas/PlanListResponse"
     PlanUpdateSuccess:
       description: Plan Update response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PlanUpdateResponse'
+            $ref: "#/components/schemas/PlanUpdateResponse"
     ProductCreateSuccess:
       description: Product Create response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ProductCreateResponse'
+            $ref: "#/components/schemas/ProductCreateResponse"
     ProductDeleteSuccess:
       description: Product Delete response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ProductDeleteResponse'
+            $ref: "#/components/schemas/ProductDeleteResponse"
     ProductFetchSuccess:
       description: Product Fetch response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ProductFetchResponse'
+            $ref: "#/components/schemas/ProductFetchResponse"
     ProductListsSuccess:
       description: Product Lists response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ProductListsResponse'
+            $ref: "#/components/schemas/ProductListsResponse"
     ProductUpdateSuccess:
       description: Product Update response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ProductUpdateResponse'
+            $ref: "#/components/schemas/ProductUpdateResponse"
     RefundCreateSuccess:
       description: Refund Create response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/RefundCreateResponse'
+            $ref: "#/components/schemas/RefundCreateResponse"
     RefundFetchSuccess:
       description: Refund Fetch response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/RefundFetchResponse'
+            $ref: "#/components/schemas/RefundFetchResponse"
     RefundListSuccess:
       description: Refund List response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/RefundListResponse'
+            $ref: "#/components/schemas/RefundListResponse"
     RefundRetrySuccess:
       description: Refund Create response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/RefundRetryResponse'
+            $ref: "#/components/schemas/RefundRetryResponse"
     SplitAddUpdateSubaccountSuccess:
       description: Split Add Update Subaccount response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SplitAddUpdateSubaccountResponse'
+            $ref: "#/components/schemas/SplitAddUpdateSubaccountResponse"
     SplitCreateSuccess:
       description: Split Create response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SplitCreateResponse'
+            $ref: "#/components/schemas/SplitCreateResponse"
     SplitFetchSuccess:
       description: Split Fetch response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SplitFetchResponse'
+            $ref: "#/components/schemas/SplitFetchResponse"
     SplitListSuccess:
       description: Split List response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SplitListResponse'
+            $ref: "#/components/schemas/SplitListResponse"
     SplitRemoveSubaccountSuccess:
       description: Split Remove Subaccount response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SplitRemoveSubaccountResponse'
+            $ref: "#/components/schemas/SplitRemoveSubaccountResponse"
     SplitUpdateSuccess:
       description: Split Update response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SplitUpdateResponse'
+            $ref: "#/components/schemas/SplitUpdateResponse"
     StorefrontCreateSuccess:
       description: Storefront Create response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/StorefrontCreateResponse'
+            $ref: "#/components/schemas/StorefrontCreateResponse"
     StorefrontDeleteSuccess:
       description: Storefront Delete response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/StorefrontDeleteResponse'
+            $ref: "#/components/schemas/StorefrontDeleteResponse"
     StorefrontFetchSuccess:
       description: Storefront Fetch response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/StorefrontFetchResponse'
+            $ref: "#/components/schemas/StorefrontFetchResponse"
     StorefrontListSuccess:
       description: Storefront List response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/StorefrontListResponse'
+            $ref: "#/components/schemas/StorefrontListResponse"
     StorefrontUpdateSuccess:
       description: Storefront Update response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/StorefrontUpdateResponse'
+            $ref: "#/components/schemas/StorefrontUpdateResponse"
     SubaccountCreateSuccess:
       description: Subaccount Create response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SubaccountCreateResponse'
+            $ref: "#/components/schemas/SubaccountCreateResponse"
     SubaccountFetchSuccess:
       description: Subaccount Fetch response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SubaccountFetchResponse'
+            $ref: "#/components/schemas/SubaccountFetchResponse"
     SubaccountListSuccess:
       description: Subaccount List response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SubaccountListResponse'
+            $ref: "#/components/schemas/SubaccountListResponse"
     SubaccountUpdateSuccess:
       description: Subaccount Update response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SubaccountUpdateResponse'
+            $ref: "#/components/schemas/SubaccountUpdateResponse"
     SubscriptionCreateSuccess:
       description: Subscription Create response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SubscriptionCreateResponse'
+            $ref: "#/components/schemas/SubscriptionCreateResponse"
     SubscriptionDisableSuccess:
       description: Subscription Disable response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SubscriptionDisableResponse'
+            $ref: "#/components/schemas/SubscriptionDisableResponse"
     SubscriptionFetchSuccess:
       description: Subscription Fetch response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SubscriptionFetchResponse'
+            $ref: "#/components/schemas/SubscriptionFetchResponse"
     SubscriptionListSuccess:
       description: Subscription List response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SubscriptionListResponse'
+            $ref: "#/components/schemas/SubscriptionListResponse"
     TerminalCommissionDeviceSuccess:
       description: Terminal Commission Device response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TerminalCommissionDeviceResponse'
+            $ref: "#/components/schemas/TerminalCommissionDeviceResponse"
     TerminalDecommissionDeviceSuccess:
       description: Terminal Decommission Device response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TerminalDecommissionDeviceResponse'
+            $ref: "#/components/schemas/TerminalDecommissionDeviceResponse"
     TerminalGetStatusSuccess:
       description: Terminal Get Status response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TerminalGetStatusResponse'
+            $ref: "#/components/schemas/TerminalGetStatusResponse"
     TerminalGetSuccess:
       description: Terminal Get response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TerminalGetResponse'
+            $ref: "#/components/schemas/TerminalGetResponse"
     TerminalListsSuccess:
       description: Terminal Lists response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TerminalListsResponse'
+            $ref: "#/components/schemas/TerminalListsResponse"
     TerminalUpdateSuccess:
       description: Terminal Update response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TerminalUpdateResponse'
+            $ref: "#/components/schemas/TerminalUpdateResponse"
     TransactionInitializeBadRequestResponse:
       description: Responses from the Transaction Initialize endpoint
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransactionInitializeBadRequestModel'
+            $ref: "#/components/schemas/TransactionInitializeBadRequestModel"
     TransferBulkSuccess:
       description: Transfer Bulk response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransferBulkResponse'
+            $ref: "#/components/schemas/TransferBulkResponse"
     TransferCreateSuccess:
       description: Transfer Create response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransferCreateResponse'
+            $ref: "#/components/schemas/TransferCreateResponse"
     TransferDisablesOtpSuccess:
       description: Transfer Disables Otp response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransferDisablesOtpResponse'
+            $ref: "#/components/schemas/TransferDisablesOtpResponse"
     TransferEnablesOtpSuccess:
       description: Transfer Enables Otp response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransferEnablesOtpResponse'
+            $ref: "#/components/schemas/TransferEnablesOtpResponse"
     TransferFetchSuccess:
       description: Transfer Fetch response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransferFetchResponse'
+            $ref: "#/components/schemas/TransferFetchResponse"
     TransferFinalizeDisablesOtpSuccess:
       description: Transfer Finalize Disables Otp response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransferFinalizeDisablesOtpResponse'
+            $ref: "#/components/schemas/TransferFinalizeDisablesOtpResponse"
     TransferListSuccess:
       description: Transfer List response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransferListResponse'
+            $ref: "#/components/schemas/TransferListResponse"
     TransferRecipientBulkCreateSuccess:
       description: Transfer Recipient Bulk Create response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransferRecipientBulkCreateResponse'
+            $ref: "#/components/schemas/TransferRecipientBulkCreateResponse"
     TransferRecipientCreateSuccess:
       description: Transfer Recipient Create response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransferRecipientCreateResponse'
+            $ref: "#/components/schemas/TransferRecipientCreateResponse"
     TransferRecipientDeleteSuccess:
       description: Transfer Recipient Delete response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransferRecipientDeleteResponse'
+            $ref: "#/components/schemas/TransferRecipientDeleteResponse"
     TransferRecipientFetchSuccess:
       description: Transfer Recipient Fetch response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransferRecipientFetchResponse'
+            $ref: "#/components/schemas/TransferRecipientFetchResponse"
     TransferRecipientListSuccess:
       description: Transfer Recipient List response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransferRecipientListResponse'
+            $ref: "#/components/schemas/TransferRecipientListResponse"
     TransferRecipientUpdateSuccess:
       description: Transfer Recipient Update response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransferRecipientUpdateResponse'
+            $ref: "#/components/schemas/TransferRecipientUpdateResponse"
     TransferResendsOtpSuccess:
       description: Transfer Resends Otp response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransferResendsOtpResponse'
+            $ref: "#/components/schemas/TransferResendsOtpResponse"
     TransferVerifySuccess:
       description: Transfer Verify response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransferVerifyResponse'
+            $ref: "#/components/schemas/TransferVerifyResponse"
     Unauthorized:
       description: Unauthorized operation
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
           example:
             status: false
             message: Invalid key
@@ -25064,70 +25064,70 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VerificationResolveAccountNumberResponse'
+            $ref: "#/components/schemas/VerificationResolveAccountNumberResponse"
     VerificationResolveCardBINSuccess:
       description: Verification Resolve Card B I N response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VerificationResolveCardBINResponse'
+            $ref: "#/components/schemas/VerificationResolveCardBINResponse"
     VerificationValidateAccountSuccess:
       description: Verification Validate Account response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VerificationValidateAccountResponse'
+            $ref: "#/components/schemas/VerificationValidateAccountResponse"
     VirtualTerminalAddSplitCodeSuccess:
       description: Virtual Terminal Split Assign response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VirtualTerminalAddSplitCodeResponse'
+            $ref: "#/components/schemas/VirtualTerminalAddSplitCodeResponse"
     VirtualTerminalCreateSuccess:
       description: Virtual Terminal Create response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VirtualTerminalCreateResponse'
+            $ref: "#/components/schemas/VirtualTerminalCreateResponse"
     VirtualTerminalDeactivateSuccess:
       description: Virtual Terminal Deactivate response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VirtualTerminalDeactivateResponse'
+            $ref: "#/components/schemas/VirtualTerminalDeactivateResponse"
     VirtualTerminalDeleteSplitCodeSuccess:
       description: Virtual Terminal Split Remove response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VirtualTerminalDeleteSplitCodeResponse'
+            $ref: "#/components/schemas/VirtualTerminalDeleteSplitCodeResponse"
     VirtualTerminalDestinationAssignSuccess:
       description: Virtual Terminal Deactivate response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VirtualTerminalDestinationAssignResponse'
+            $ref: "#/components/schemas/VirtualTerminalDestinationAssignResponse"
     VirtualTerminalDestinationUnassignSuccess:
       description: Virtual Terminal unassign response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VirtualTerminalDestinationUnassignResponse'
+            $ref: "#/components/schemas/VirtualTerminalDestinationUnassignResponse"
     VirtualTerminalFetchSuccess:
       description: Virtual Terminal Fetch response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VirtualTerminalFetchResponse'
+            $ref: "#/components/schemas/VirtualTerminalFetchResponse"
     VirtualTerminalListSuccess:
       description: Virtual Terminal Lists response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VirtualTerminalListResponse'
+            $ref: "#/components/schemas/VirtualTerminalListResponse"
     VirtualTerminalUpdateSuccess:
       description: Virtual Terminal Update response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VirtualTerminalUpdateResponse'
+            $ref: "#/components/schemas/VirtualTerminalUpdateResponse"

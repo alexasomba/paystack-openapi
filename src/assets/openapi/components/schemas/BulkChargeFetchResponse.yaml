@@ -9,11 +9,7 @@ properties:
     properties:
       batch_code:
         type: string
-      reference:
-        type: string
       id:
-        type: integer
-      integration:
         type: integer
       domain:
         type: string
@@ -29,9 +25,7 @@ properties:
         type: string
     required:
       - batch_code
-      - reference
       - id
-      - integration
       - domain
       - status
       - total_charges

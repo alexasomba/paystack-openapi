@@ -1,11 +1,11 @@
 parameters:
-  - name: id
-    description: The unique identifier of a previously created payment request
+  - name: id_or_code
+    description: The payment request ID or code you want to fetch
     in: path
     required: true
     schema:
-      type: integer
-    example: 18823736
+      type: string
+    example: "18823736"
 get:
   tags:
     - Payment Request
@@ -13,11 +13,11 @@ get:
   description: Fetch a previously created payment request
   operationId: paymentRequest_fetch
   responses:
-    '200':
-      $ref: ../components/responses/PaymentRequestListSuccess.yaml
-    '401':
+    "200":
+      $ref: ../components/responses/PaymentRequestViewSuccess.yaml
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error
@@ -36,11 +36,11 @@ put:
         schema:
           $ref: ../components/schemas/PaymentRequestUpdate.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/PaymentRequestUpdateSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

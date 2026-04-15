@@ -1,12 +1,12 @@
 # CustomerWhitelistBlacklistResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**CustomerWhitelistBlacklistResponseData**](CustomerWhitelistBlacklistResponseData.md) |  | 
+
+| Name        | Type                                                                                    | Description | Notes |
+| ----------- | --------------------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                                |             |
+| **message** | **str**                                                                                 |             |
+| **data**    | [**CustomerWhitelistBlacklistResponseData**](CustomerWhitelistBlacklistResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ customer_whitelist_blacklist_response_dict = customer_whitelist_blacklist_respon
 # create an instance of CustomerWhitelistBlacklistResponse from a dict
 customer_whitelist_blacklist_response_form_dict = customer_whitelist_blacklist_response.from_dict(customer_whitelist_blacklist_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,16 +2,16 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**product_create**](ProductApi.md#product_create) | **POST** /product | Create Product
-[**product_delete**](ProductApi.md#product_delete) | **DELETE** /product/{id} | Delete Product
-[**product_fetch**](ProductApi.md#product_fetch) | **GET** /product/{id} | Fetch Product
-[**product_list**](ProductApi.md#product_list) | **GET** /product | List Products
-[**product_update**](ProductApi.md#product_update) | **PUT** /product/{id} | Update product
-
+| Method                                             | HTTP request             | Description    |
+| -------------------------------------------------- | ------------------------ | -------------- |
+| [**product_create**](ProductApi.md#product_create) | **POST** /product        | Create Product |
+| [**product_delete**](ProductApi.md#product_delete) | **DELETE** /product/{id} | Delete Product |
+| [**product_fetch**](ProductApi.md#product_fetch)   | **GET** /product/{id}    | Fetch Product  |
+| [**product_list**](ProductApi.md#product_list)     | **GET** /product         | List Products  |
+| [**product_update**](ProductApi.md#product_update) | **PUT** /product/{id}    | Update product |
 
 # **product_create**
+
 > ProductCreateResponse product_create(product_create=product_create)
 
 Create Product
@@ -20,7 +20,8 @@ Create a new product on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -61,13 +62,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling ProductApi->product_create: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **product_create** | [**ProductCreate**](ProductCreate.md)|  | [optional] 
+| Name               | Type                                  | Description | Notes      |
+| ------------------ | ------------------------------------- | ----------- | ---------- |
+| **product_create** | [**ProductCreate**](ProductCreate.md) |             | [optional] |
 
 ### Return type
 
@@ -79,19 +78,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | Product Create response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description             | Response headers |
+| ----------- | ----------------------- | ---------------- |
+| **201**     | Product Create response | -                |
+| **401**     | Unauthorized operation  | -                |
+| **0**       | Server error            | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **product_delete**
+
 > ProductDeleteResponse product_delete(id)
 
 Delete Product
@@ -100,7 +101,8 @@ Delete a previously created product
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -140,13 +142,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling ProductApi->product_delete: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of the product | 
+| Name   | Type    | Description                          | Notes |
+| ------ | ------- | ------------------------------------ | ----- |
+| **id** | **int** | The unique identifier of the product |
 
 ### Return type
 
@@ -158,20 +158,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Product Delete response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description             | Response headers |
+| ----------- | ----------------------- | ---------------- |
+| **200**     | Product Delete response | -                |
+| **401**     | Unauthorized operation  | -                |
+| **404**     | Entity not found        | -                |
+| **0**       | Server error            | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **product_fetch**
+
 > ProductFetchResponse product_fetch(id)
 
 Fetch Product
@@ -180,7 +182,8 @@ Fetch a previously created product
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -220,13 +223,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling ProductApi->product_fetch: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of the product | 
+| Name   | Type    | Description                          | Notes |
+| ------ | ------- | ------------------------------------ | ----- |
+| **id** | **int** | The unique identifier of the product |
 
 ### Return type
 
@@ -238,20 +239,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Product Fetch response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Product Fetch response | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **product_list**
+
 > ProductListsResponse product_list(per_page=per_page, page=page, active=active, var_from=var_from, to=to)
 
 List Products
@@ -260,7 +263,8 @@ List all previously created products
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -304,17 +308,15 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling ProductApi->product_list: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **per_page** | **int**| Number of records to fetch per page | [optional] 
- **page** | **int**| The section to retrieve | [optional] 
- **active** | **bool**| The state of the product | [optional] 
- **var_from** | **datetime**| The start date | [optional] 
- **to** | **datetime**| The end date | [optional] 
+| Name         | Type         | Description                         | Notes      |
+| ------------ | ------------ | ----------------------------------- | ---------- |
+| **per_page** | **int**      | Number of records to fetch per page | [optional] |
+| **page**     | **int**      | The section to retrieve             | [optional] |
+| **active**   | **bool**     | The state of the product            | [optional] |
+| **var_from** | **datetime** | The start date                      | [optional] |
+| **to**       | **datetime** | The end date                        | [optional] |
 
 ### Return type
 
@@ -326,20 +328,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Product Lists response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Product Lists response | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **product_update**
+
 > ProductUpdateResponse product_update(id, product_update=product_update)
 
 Update product
@@ -348,7 +352,8 @@ Update a previously created product
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -390,14 +395,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling ProductApi->product_update: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of the product | 
- **product_update** | [**ProductUpdate**](ProductUpdate.md)|  | [optional] 
+| Name               | Type                                  | Description                          | Notes      |
+| ------------------ | ------------------------------------- | ------------------------------------ | ---------- |
+| **id**             | **int**                               | The unique identifier of the product |
+| **product_update** | [**ProductUpdate**](ProductUpdate.md) |                                      | [optional] |
 
 ### Return type
 
@@ -409,16 +412,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Product Update response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description             | Response headers |
+| ----------- | ----------------------- | ---------------- |
+| **200**     | Product Update response | -                |
+| **401**     | Unauthorized operation  | -                |
+| **404**     | Entity not found        | -                |
+| **0**       | Server error            | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

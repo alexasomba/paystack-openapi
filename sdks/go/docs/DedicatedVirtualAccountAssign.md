@@ -2,19 +2,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Email** | **string** | Customer&#39;s email address | 
-**FirstName** | **string** | Customer&#39;s first name | 
-**LastName** | **string** | Customer&#39;s last name | 
-**Phone** | **string** | Customer&#39;s phone name | 
-**PreferredBank** | **string** | The bank slug for preferred bank. To get a list of available banks,  use the List Banks endpoint, passing &#x60;pay_with_bank_transfer&#x3D;true&#x60; query parameter  | 
-**Country** | **string** | The two letter code country | 
-**AccountNumber** | Pointer to **string** | Customer&#39;s account number | [optional] 
-**Bvn** | Pointer to **string** | Customer&#39;s Bank Verification Number | [optional] 
-**BankCode** | Pointer to **string** | Customer&#39;s bank code | [optional] 
-**Subaccount** | Pointer to **string** | Subaccount code of the account you want to split the transaction with | [optional] 
-**SplitCode** | Pointer to **string** | Split code consisting of the lists of accounts you want to split the transaction with | [optional] 
+| Name              | Type                  | Description                                                                                                                                                           | Notes      |
+| ----------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **Email**         | **string**            | Customer&#39;s email address                                                                                                                                          |
+| **FirstName**     | **string**            | Customer&#39;s first name                                                                                                                                             |
+| **LastName**      | **string**            | Customer&#39;s last name                                                                                                                                              |
+| **Phone**         | **string**            | Customer&#39;s phone name                                                                                                                                             |
+| **PreferredBank** | **string**            | The bank slug for preferred bank. To get a list of available banks, use the List Banks endpoint, passing &#x60;pay_with_bank_transfer&#x3D;true&#x60; query parameter |
+| **Country**       | **string**            | The two letter code country                                                                                                                                           |
+| **AccountNumber** | Pointer to **string** | Customer&#39;s account number                                                                                                                                         | [optional] |
+| **Bvn**           | Pointer to **string** | Customer&#39;s Bank Verification Number                                                                                                                               | [optional] |
+| **BankCode**      | Pointer to **string** | Customer&#39;s bank code                                                                                                                                              | [optional] |
+| **Subaccount**    | Pointer to **string** | Subaccount code of the account you want to split the transaction with                                                                                                 | [optional] |
+| **SplitCode**     | Pointer to **string** | Split code consisting of the lists of accounts you want to split the transaction with                                                                                 | [optional] |
 
 ## Methods
 
@@ -54,7 +54,6 @@ and a boolean to check if the value has been set.
 
 SetEmail sets Email field to given value.
 
-
 ### GetFirstName
 
 `func (o *DedicatedVirtualAccountAssign) GetFirstName() string`
@@ -73,7 +72,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedVirtualAccountAssign) SetFirstName(v string)`
 
 SetFirstName sets FirstName field to given value.
-
 
 ### GetLastName
 
@@ -94,7 +92,6 @@ and a boolean to check if the value has been set.
 
 SetLastName sets LastName field to given value.
 
-
 ### GetPhone
 
 `func (o *DedicatedVirtualAccountAssign) GetPhone() string`
@@ -113,7 +110,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedVirtualAccountAssign) SetPhone(v string)`
 
 SetPhone sets Phone field to given value.
-
 
 ### GetPreferredBank
 
@@ -134,7 +130,6 @@ and a boolean to check if the value has been set.
 
 SetPreferredBank sets PreferredBank field to given value.
 
-
 ### GetCountry
 
 `func (o *DedicatedVirtualAccountAssign) GetCountry() string`
@@ -153,7 +148,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedVirtualAccountAssign) SetCountry(v string)`
 
 SetCountry sets Country field to given value.
-
 
 ### GetAccountNumber
 
@@ -280,7 +274,4 @@ SetSplitCode sets SplitCode field to given value.
 
 HasSplitCode returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

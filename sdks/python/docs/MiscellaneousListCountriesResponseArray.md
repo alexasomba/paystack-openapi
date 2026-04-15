@@ -1,18 +1,18 @@
 # MiscellaneousListCountriesResponseArray
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **int** |  | 
-**active_for_dashboard_onboarding** | **bool** |  | 
-**name** | **str** |  | 
-**iso_code** | **str** |  | 
-**default_currency_code** | **str** |  | 
-**integration_defaults** | **object** |  | 
-**calling_code** | **str** |  | 
-**pilot_mode** | **bool** |  | 
-**relationships** | [**MiscellaneousListCountriesResponseArrayRelationships**](MiscellaneousListCountriesResponseArrayRelationships.md) |  | 
+
+| Name                                | Type                                                                                                                | Description | Notes |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **id**                              | **int**                                                                                                             |             |
+| **active_for_dashboard_onboarding** | **bool**                                                                                                            |             |
+| **name**                            | **str**                                                                                                             |             |
+| **iso_code**                        | **str**                                                                                                             |             |
+| **default_currency_code**           | **str**                                                                                                             |             |
+| **integration_defaults**            | **object**                                                                                                          |             |
+| **calling_code**                    | **str**                                                                                                             |             |
+| **pilot_mode**                      | **bool**                                                                                                            |             |
+| **relationships**                   | [**MiscellaneousListCountriesResponseArrayRelationships**](MiscellaneousListCountriesResponseArrayRelationships.md) |             |
 
 ## Example
 
@@ -31,6 +31,5 @@ miscellaneous_list_countries_response_array_dict = miscellaneous_list_countries_
 # create an instance of MiscellaneousListCountriesResponseArray from a dict
 miscellaneous_list_countries_response_array_form_dict = miscellaneous_list_countries_response_array.from_dict(miscellaneous_list_countries_response_array_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

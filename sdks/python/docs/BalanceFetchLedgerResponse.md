@@ -1,13 +1,13 @@
 # BalanceFetchLedgerResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**List[BalanceFetchLedgerResponseArray]**](BalanceFetchLedgerResponseArray.md) |  | 
-**meta** | [**SubaccountListResponseMeta**](SubaccountListResponseMeta.md) |  | 
+
+| Name        | Type                                                                            | Description | Notes |
+| ----------- | ------------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                        |             |
+| **message** | **str**                                                                         |             |
+| **data**    | [**List[BalanceFetchLedgerResponseArray]**](BalanceFetchLedgerResponseArray.md) |             |
+| **meta**    | [**SubaccountListResponseMeta**](SubaccountListResponseMeta.md)                 |             |
 
 ## Example
 
@@ -26,6 +26,5 @@ balance_fetch_ledger_response_dict = balance_fetch_ledger_response_instance.to_d
 # create an instance of BalanceFetchLedgerResponse from a dict
 balance_fetch_ledger_response_form_dict = balance_fetch_ledger_response.from_dict(balance_fetch_ledger_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

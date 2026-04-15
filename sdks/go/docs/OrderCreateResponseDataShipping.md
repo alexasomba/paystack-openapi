@@ -2,22 +2,22 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Customer** | **int32** |  | 
-**Integration** | **int32** |  | 
-**Domain** | **string** |  | 
-**Fees** | **int32** |  | 
-**DeliveryNote** | **interface{}** |  | 
-**StreetLine** | **string** |  | 
-**City** | **string** |  | 
-**State** | **string** |  | 
-**Country** | **string** |  | 
-**IsShipped** | **bool** |  | 
-**DeliveryTrackingLink** | **interface{}** |  | 
-**Id** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name                     | Type            | Description | Notes |
+| ------------------------ | --------------- | ----------- | ----- |
+| **Customer**             | **int32**       |             |
+| **Integration**          | **int32**       |             |
+| **Domain**               | **string**      |             |
+| **Fees**                 | **int32**       |             |
+| **DeliveryNote**         | **interface{}** |             |
+| **StreetLine**           | **string**      |             |
+| **City**                 | **string**      |             |
+| **State**                | **string**      |             |
+| **Country**              | **string**      |             |
+| **IsShipped**            | **bool**        |             |
+| **DeliveryTrackingLink** | **interface{}** |             |
+| **Id**                   | **int32**       |             |
+| **CreatedAt**            | **string**      |             |
+| **UpdatedAt**            | **string**      |             |
 
 ## Methods
 
@@ -57,7 +57,6 @@ and a boolean to check if the value has been set.
 
 SetCustomer sets Customer field to given value.
 
-
 ### GetIntegration
 
 `func (o *OrderCreateResponseDataShipping) GetIntegration() int32`
@@ -76,7 +75,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderCreateResponseDataShipping) SetIntegration(v int32)`
 
 SetIntegration sets Integration field to given value.
-
 
 ### GetDomain
 
@@ -97,7 +95,6 @@ and a boolean to check if the value has been set.
 
 SetDomain sets Domain field to given value.
 
-
 ### GetFees
 
 `func (o *OrderCreateResponseDataShipping) GetFees() int32`
@@ -116,7 +113,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderCreateResponseDataShipping) SetFees(v int32)`
 
 SetFees sets Fees field to given value.
-
 
 ### GetDeliveryNote
 
@@ -137,17 +133,18 @@ and a boolean to check if the value has been set.
 
 SetDeliveryNote sets DeliveryNote field to given value.
 
-
 ### SetDeliveryNoteNil
 
 `func (o *OrderCreateResponseDataShipping) SetDeliveryNoteNil(b bool)`
 
- SetDeliveryNoteNil sets the value for DeliveryNote to be an explicit nil
+SetDeliveryNoteNil sets the value for DeliveryNote to be an explicit nil
 
 ### UnsetDeliveryNote
+
 `func (o *OrderCreateResponseDataShipping) UnsetDeliveryNote()`
 
 UnsetDeliveryNote ensures that no value is present for DeliveryNote, not even an explicit nil
+
 ### GetStreetLine
 
 `func (o *OrderCreateResponseDataShipping) GetStreetLine() string`
@@ -166,7 +163,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderCreateResponseDataShipping) SetStreetLine(v string)`
 
 SetStreetLine sets StreetLine field to given value.
-
 
 ### GetCity
 
@@ -187,7 +183,6 @@ and a boolean to check if the value has been set.
 
 SetCity sets City field to given value.
 
-
 ### GetState
 
 `func (o *OrderCreateResponseDataShipping) GetState() string`
@@ -206,7 +201,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderCreateResponseDataShipping) SetState(v string)`
 
 SetState sets State field to given value.
-
 
 ### GetCountry
 
@@ -227,7 +221,6 @@ and a boolean to check if the value has been set.
 
 SetCountry sets Country field to given value.
 
-
 ### GetIsShipped
 
 `func (o *OrderCreateResponseDataShipping) GetIsShipped() bool`
@@ -246,7 +239,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderCreateResponseDataShipping) SetIsShipped(v bool)`
 
 SetIsShipped sets IsShipped field to given value.
-
 
 ### GetDeliveryTrackingLink
 
@@ -267,17 +259,18 @@ and a boolean to check if the value has been set.
 
 SetDeliveryTrackingLink sets DeliveryTrackingLink field to given value.
 
-
 ### SetDeliveryTrackingLinkNil
 
 `func (o *OrderCreateResponseDataShipping) SetDeliveryTrackingLinkNil(b bool)`
 
- SetDeliveryTrackingLinkNil sets the value for DeliveryTrackingLink to be an explicit nil
+SetDeliveryTrackingLinkNil sets the value for DeliveryTrackingLink to be an explicit nil
 
 ### UnsetDeliveryTrackingLink
+
 `func (o *OrderCreateResponseDataShipping) UnsetDeliveryTrackingLink()`
 
 UnsetDeliveryTrackingLink ensures that no value is present for DeliveryTrackingLink, not even an explicit nil
+
 ### GetId
 
 `func (o *OrderCreateResponseDataShipping) GetId() int32`
@@ -296,7 +289,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderCreateResponseDataShipping) SetId(v int32)`
 
 SetId sets Id field to given value.
-
 
 ### GetCreatedAt
 
@@ -317,7 +309,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-
 ### GetUpdatedAt
 
 `func (o *OrderCreateResponseDataShipping) GetUpdatedAt() string`
@@ -337,8 +328,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,29 +2,25 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**StorefrontAddProducts**](StorefrontAPI.md#StorefrontAddProducts) | **Post** /storefront/{id}/product | Add Products to Storefront
-[**StorefrontCreate**](StorefrontAPI.md#StorefrontCreate) | **Post** /storefront | Create Storefront
-[**StorefrontDelete**](StorefrontAPI.md#StorefrontDelete) | **Delete** /storefront/{id} | Delete Storefront
-[**StorefrontDuplicate**](StorefrontAPI.md#StorefrontDuplicate) | **Post** /storefront/{id}/duplicate | Duplicate Storefront
-[**StorefrontFetch**](StorefrontAPI.md#StorefrontFetch) | **Get** /storefront/{id} | Fetch Storefront
-[**StorefrontFetchOrders**](StorefrontAPI.md#StorefrontFetchOrders) | **Get** /storefront/{id}/order | Fetch Storefront Orders
-[**StorefrontList**](StorefrontAPI.md#StorefrontList) | **Get** /storefront | List Storefronts
-[**StorefrontListProducts**](StorefrontAPI.md#StorefrontListProducts) | **Get** /storefront/{id}/product | List Storefront Products
-[**StorefrontPublish**](StorefrontAPI.md#StorefrontPublish) | **Post** /storefront/{id}/publish | Publish Storefront
-[**StorefrontUpdate**](StorefrontAPI.md#StorefrontUpdate) | **Put** /storefront/{id} | Update Storefront
-[**StorefrontVerifySlug**](StorefrontAPI.md#StorefrontVerifySlug) | **Get** /storefront/verify/{slug} | Verify Storefront Slug
-
-
+| Method                                                                | HTTP request                        | Description                |
+| --------------------------------------------------------------------- | ----------------------------------- | -------------------------- |
+| [**StorefrontAddProducts**](StorefrontAPI.md#StorefrontAddProducts)   | **Post** /storefront/{id}/product   | Add Products to Storefront |
+| [**StorefrontCreate**](StorefrontAPI.md#StorefrontCreate)             | **Post** /storefront                | Create Storefront          |
+| [**StorefrontDelete**](StorefrontAPI.md#StorefrontDelete)             | **Delete** /storefront/{id}         | Delete Storefront          |
+| [**StorefrontDuplicate**](StorefrontAPI.md#StorefrontDuplicate)       | **Post** /storefront/{id}/duplicate | Duplicate Storefront       |
+| [**StorefrontFetch**](StorefrontAPI.md#StorefrontFetch)               | **Get** /storefront/{id}            | Fetch Storefront           |
+| [**StorefrontFetchOrders**](StorefrontAPI.md#StorefrontFetchOrders)   | **Get** /storefront/{id}/order      | Fetch Storefront Orders    |
+| [**StorefrontList**](StorefrontAPI.md#StorefrontList)                 | **Get** /storefront                 | List Storefronts           |
+| [**StorefrontListProducts**](StorefrontAPI.md#StorefrontListProducts) | **Get** /storefront/{id}/product    | List Storefront Products   |
+| [**StorefrontPublish**](StorefrontAPI.md#StorefrontPublish)           | **Post** /storefront/{id}/publish   | Publish Storefront         |
+| [**StorefrontUpdate**](StorefrontAPI.md#StorefrontUpdate)             | **Put** /storefront/{id}            | Update Storefront          |
+| [**StorefrontVerifySlug**](StorefrontAPI.md#StorefrontVerifySlug)     | **Get** /storefront/verify/{slug}   | Verify Storefront Slug     |
 
 ## StorefrontAddProducts
 
 > Response StorefrontAddProducts(ctx, id).StorefrontAddProducts(storefrontAddProducts).Execute()
 
 Add Products to Storefront
-
-
 
 ### Example
 
@@ -56,21 +52,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of the Storefront | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of the Storefront                                     |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStorefrontAddProductsRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **storefrontAddProducts** | [**StorefrontAddProducts**](StorefrontAddProducts.md) |  | 
+**storefrontAddProducts** | [**StorefrontAddProducts**](StorefrontAddProducts.md) | |
 
 ### Return type
 
@@ -89,14 +83,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## StorefrontCreate
 
 > StorefrontCreateResponse StorefrontCreate(ctx).StorefrontCreate(storefrontCreate).Execute()
 
 Create Storefront
-
-
 
 ### Example
 
@@ -127,16 +118,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStorefrontCreateRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **storefrontCreate** | [**StorefrontCreate**](StorefrontCreate.md) |  | 
+| Name                 | Type                                        | Description | Notes |
+| -------------------- | ------------------------------------------- | ----------- | ----- |
+| **storefrontCreate** | [**StorefrontCreate**](StorefrontCreate.md) |             |
 
 ### Return type
 
@@ -155,14 +143,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## StorefrontDelete
 
 > StorefrontDeleteResponse StorefrontDelete(ctx, id).Execute()
 
 Delete Storefront
-
-
 
 ### Example
 
@@ -193,20 +178,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of the Storefront | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of the Storefront                                     |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStorefrontDeleteRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -225,14 +207,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## StorefrontDuplicate
 
 > Response StorefrontDuplicate(ctx, id).Execute()
 
 Duplicate Storefront
-
-
 
 ### Example
 
@@ -263,20 +242,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of the Storefront | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of the Storefront                                     |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStorefrontDuplicateRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -295,14 +271,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## StorefrontFetch
 
 > StorefrontFetchResponse StorefrontFetch(ctx, id).Execute()
 
 Fetch Storefront
-
-
 
 ### Example
 
@@ -333,20 +306,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of the Storefront | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of the Storefront                                     |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStorefrontFetchRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -365,14 +335,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## StorefrontFetchOrders
 
 > Response StorefrontFetchOrders(ctx, id).Execute()
 
 Fetch Storefront Orders
-
-
 
 ### Example
 
@@ -403,20 +370,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of the Storefront | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of the Storefront                                     |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStorefrontFetchOrdersRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -435,14 +399,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## StorefrontList
 
 > StorefrontListResponse StorefrontList(ctx).PerPage(perPage).Page(page).Status(status).Execute()
 
 List Storefronts
-
-
 
 ### Example
 
@@ -475,18 +436,15 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStorefrontListRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **perPage** | **int32** | Number of records to fetch per request | [default to 50]
- **page** | **int32** | The offset to retrieve data from | [default to 1]
- **status** | **string** |  | 
+| Name        | Type       | Description                            | Notes           |
+| ----------- | ---------- | -------------------------------------- | --------------- |
+| **perPage** | **int32**  | Number of records to fetch per request | [default to 50] |
+| **page**    | **int32**  | The offset to retrieve data from       | [default to 1]  |
+| **status**  | **string** |                                        |
 
 ### Return type
 
@@ -505,14 +463,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## StorefrontListProducts
 
 > Response StorefrontListProducts(ctx, id).Execute()
 
 List Storefront Products
-
-
 
 ### Example
 
@@ -543,20 +498,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of the Storefront | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of the Storefront                                     |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStorefrontListProductsRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -575,14 +527,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## StorefrontPublish
 
 > Response StorefrontPublish(ctx, id).Execute()
 
 Publish Storefront
-
-
 
 ### Example
 
@@ -613,20 +562,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of the Storefront | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of the Storefront                                     |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStorefrontPublishRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -645,14 +591,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## StorefrontUpdate
 
 > StorefrontUpdateResponse StorefrontUpdate(ctx, id).StorefrontUpdate(storefrontUpdate).Execute()
 
 Update Storefront
-
-
 
 ### Example
 
@@ -684,21 +627,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of the Storefront | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of the Storefront                                     |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStorefrontUpdateRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **storefrontUpdate** | [**StorefrontUpdate**](StorefrontUpdate.md) |  | 
+**storefrontUpdate** | [**StorefrontUpdate**](StorefrontUpdate.md) | |
 
 ### Return type
 
@@ -717,14 +658,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## StorefrontVerifySlug
 
 > Response StorefrontVerifySlug(ctx, slug).Execute()
 
 Verify Storefront Slug
-
-
 
 ### Example
 
@@ -755,20 +693,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**slug** | **string** | The custom slug to check | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **slug** | **string**          | The custom slug to check                                                    |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStorefrontVerifySlugRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -786,4 +721,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

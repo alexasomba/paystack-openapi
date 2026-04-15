@@ -2,29 +2,30 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**payment_request_archive**](PaymentRequestApi.md#payment_request_archive) | **POST** /paymentrequest/archive/{id} | Archive Payment Request
-[**payment_request_create**](PaymentRequestApi.md#payment_request_create) | **POST** /paymentrequest | Create Payment Request
-[**payment_request_fetch**](PaymentRequestApi.md#payment_request_fetch) | **GET** /paymentrequest/{id} | Fetch Payment Request
-[**payment_request_finalize**](PaymentRequestApi.md#payment_request_finalize) | **POST** /paymentrequest/finalize/{id} | Finalize Payment Request
-[**payment_request_list**](PaymentRequestApi.md#payment_request_list) | **GET** /paymentrequest | List Payment Request
-[**payment_request_notify**](PaymentRequestApi.md#payment_request_notify) | **POST** /paymentrequest/notify/{id} | Send Notification
-[**payment_request_totals**](PaymentRequestApi.md#payment_request_totals) | **GET** /paymentrequest/totals | Payment Request Total
-[**payment_request_update**](PaymentRequestApi.md#payment_request_update) | **PUT** /paymentrequest/{id} | Update Payment Request
-[**payment_request_verify**](PaymentRequestApi.md#payment_request_verify) | **GET** /paymentrequest/verify/{id} | Verify Payment Request
-
+| Method                                                                        | HTTP request                           | Description              |
+| ----------------------------------------------------------------------------- | -------------------------------------- | ------------------------ |
+| [**payment_request_archive**](PaymentRequestApi.md#payment_request_archive)   | **POST** /paymentrequest/archive/{id}  | Archive Payment Request  |
+| [**payment_request_create**](PaymentRequestApi.md#payment_request_create)     | **POST** /paymentrequest               | Create Payment Request   |
+| [**payment_request_fetch**](PaymentRequestApi.md#payment_request_fetch)       | **GET** /paymentrequest/{id}           | Fetch Payment Request    |
+| [**payment_request_finalize**](PaymentRequestApi.md#payment_request_finalize) | **POST** /paymentrequest/finalize/{id} | Finalize Payment Request |
+| [**payment_request_list**](PaymentRequestApi.md#payment_request_list)         | **GET** /paymentrequest                | List Payment Request     |
+| [**payment_request_notify**](PaymentRequestApi.md#payment_request_notify)     | **POST** /paymentrequest/notify/{id}   | Send Notification        |
+| [**payment_request_totals**](PaymentRequestApi.md#payment_request_totals)     | **GET** /paymentrequest/totals         | Payment Request Total    |
+| [**payment_request_update**](PaymentRequestApi.md#payment_request_update)     | **PUT** /paymentrequest/{id}           | Update Payment Request   |
+| [**payment_request_verify**](PaymentRequestApi.md#payment_request_verify)     | **GET** /paymentrequest/verify/{id}    | Verify Payment Request   |
 
 # **payment_request_archive**
+
 > PaymentRequestArchiveResponse payment_request_archive(id)
 
 Archive Payment Request
 
-Archive a payment request to clean up your records. An archived payment request cannot be verified and will not  be returned when listing all previously created payment requests. 
+Archive a payment request to clean up your records. An archived payment request cannot be verified and will not be returned when listing all previously created payment requests.
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -64,13 +65,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling PaymentRequestApi->payment_request_archive: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of a previously created payment request | 
+| Name   | Type    | Description                                                   | Notes |
+| ------ | ------- | ------------------------------------------------------------- | ----- |
+| **id** | **int** | The unique identifier of a previously created payment request |
 
 ### Return type
 
@@ -82,19 +81,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Payment Request Archive response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                      | Response headers |
+| ----------- | -------------------------------- | ---------------- |
+| **200**     | Payment Request Archive response | -                |
+| **401**     | Unauthorized operation           | -                |
+| **0**       | Server error                     | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **payment_request_create**
+
 > PaymentRequestCreateResponse payment_request_create(payment_request_create=payment_request_create)
 
 Create Payment Request
@@ -103,7 +104,8 @@ Create a new payment request by issuing an invoice to a customer
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -144,13 +146,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling PaymentRequestApi->payment_request_create: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **payment_request_create** | [**PaymentRequestCreate**](PaymentRequestCreate.md)|  | [optional] 
+| Name                       | Type                                                | Description | Notes      |
+| -------------------------- | --------------------------------------------------- | ----------- | ---------- |
+| **payment_request_create** | [**PaymentRequestCreate**](PaymentRequestCreate.md) |             | [optional] |
 
 ### Return type
 
@@ -162,19 +162,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Payment Request Create response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                     | Response headers |
+| ----------- | ------------------------------- | ---------------- |
+| **200**     | Payment Request Create response | -                |
+| **401**     | Unauthorized operation          | -                |
+| **0**       | Server error                    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **payment_request_fetch**
+
 > PaymentRequestListResponse payment_request_fetch(id)
 
 Fetch Payment Request
@@ -183,7 +185,8 @@ Fetch a previously created payment request
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -223,13 +226,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling PaymentRequestApi->payment_request_fetch: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of a previously created payment request | 
+| Name   | Type    | Description                                                   | Notes |
+| ------ | ------- | ------------------------------------------------------------- | ----- |
+| **id** | **int** | The unique identifier of a previously created payment request |
 
 ### Return type
 
@@ -241,20 +242,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Payment Request List response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                   | Response headers |
+| ----------- | ----------------------------- | ---------------- |
+| **200**     | Payment Request List response | -                |
+| **401**     | Unauthorized operation        | -                |
+| **404**     | Entity not found              | -                |
+| **0**       | Server error                  | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **payment_request_finalize**
+
 > PaymentRequestFinalizeResponse payment_request_finalize(id)
 
 Finalize Payment Request
@@ -263,7 +266,8 @@ Finalise the creation of a draft payment request for a customer
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -303,13 +307,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling PaymentRequestApi->payment_request_finalize: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of a draft payment request | 
+| Name   | Type    | Description                                      | Notes |
+| ------ | ------- | ------------------------------------------------ | ----- |
+| **id** | **int** | The unique identifier of a draft payment request |
 
 ### Return type
 
@@ -321,19 +323,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Payment Request Finalize response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                       | Response headers |
+| ----------- | --------------------------------- | ---------------- |
+| **200**     | Payment Request Finalize response | -                |
+| **401**     | Unauthorized operation            | -                |
+| **0**       | Server error                      | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **payment_request_list**
+
 > PaymentRequestListResponse payment_request_list(per_page=per_page, page=page, customer=customer, status=status, currency=currency, var_from=var_from, to=to)
 
 List Payment Request
@@ -342,7 +346,8 @@ List all previously created payment requests to your customers
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -388,19 +393,17 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling PaymentRequestApi->payment_request_list: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **per_page** | **int**| Number of records to fetch per page | [optional] 
- **page** | **int**| The section to retrieve | [optional] 
- **customer** | **str**| Customer ID | [optional] 
- **status** | **str**| Invoice status to filter | [optional] 
- **currency** | **str**| If your integration supports more than one currency, choose the one to filter | [optional] 
- **var_from** | **datetime**| The start date | [optional] 
- **to** | **datetime**| The end date | [optional] 
+| Name         | Type         | Description                                                                   | Notes      |
+| ------------ | ------------ | ----------------------------------------------------------------------------- | ---------- |
+| **per_page** | **int**      | Number of records to fetch per page                                           | [optional] |
+| **page**     | **int**      | The section to retrieve                                                       | [optional] |
+| **customer** | **str**      | Customer ID                                                                   | [optional] |
+| **status**   | **str**      | Invoice status to filter                                                      | [optional] |
+| **currency** | **str**      | If your integration supports more than one currency, choose the one to filter | [optional] |
+| **var_from** | **datetime** | The start date                                                                | [optional] |
+| **to**       | **datetime** | The end date                                                                  | [optional] |
 
 ### Return type
 
@@ -412,20 +415,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Payment Request List response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                   | Response headers |
+| ----------- | ----------------------------- | ---------------- |
+| **200**     | Payment Request List response | -                |
+| **401**     | Unauthorized operation        | -                |
+| **404**     | Entity not found              | -                |
+| **0**       | Server error                  | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **payment_request_notify**
+
 > PaymentRequestSendNotificationResponse payment_request_notify(id)
 
 Send Notification
@@ -434,7 +439,8 @@ Trigger an email reminder to a customer for a previously created payment request
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -474,13 +480,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling PaymentRequestApi->payment_request_notify: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of a previously created payment request | 
+| Name   | Type    | Description                                                   | Notes |
+| ------ | ------- | ------------------------------------------------------------- | ----- |
+| **id** | **int** | The unique identifier of a previously created payment request |
 
 ### Return type
 
@@ -492,19 +496,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Payment Request Send Notification response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                                | Response headers |
+| ----------- | ------------------------------------------ | ---------------- |
+| **200**     | Payment Request Send Notification response | -                |
+| **401**     | Unauthorized operation                     | -                |
+| **0**       | Server error                               | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **payment_request_totals**
+
 > PaymentRequestTotalResponse payment_request_totals()
 
 Payment Request Total
@@ -513,7 +519,8 @@ Get the metric of all pending and successful payment requests
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -552,9 +559,8 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling PaymentRequestApi->payment_request_totals: %s\n" % e)
 ```
 
-
-
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -567,20 +573,22 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Payment Request Total response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                    | Response headers |
+| ----------- | ------------------------------ | ---------------- |
+| **200**     | Payment Request Total response | -                |
+| **401**     | Unauthorized operation         | -                |
+| **404**     | Entity not found               | -                |
+| **0**       | Server error                   | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **payment_request_update**
+
 > PaymentRequestUpdateResponse payment_request_update(id, payment_request_update=payment_request_update)
 
 Update Payment Request
@@ -589,7 +597,8 @@ Update a previously created payment request
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -631,14 +640,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling PaymentRequestApi->payment_request_update: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of a previously created payment request | 
- **payment_request_update** | [**PaymentRequestUpdate**](PaymentRequestUpdate.md)|  | [optional] 
+| Name                       | Type                                                | Description                                                   | Notes      |
+| -------------------------- | --------------------------------------------------- | ------------------------------------------------------------- | ---------- |
+| **id**                     | **int**                                             | The unique identifier of a previously created payment request |
+| **payment_request_update** | [**PaymentRequestUpdate**](PaymentRequestUpdate.md) |                                                               | [optional] |
 
 ### Return type
 
@@ -650,20 +657,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Payment Request Update response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                     | Response headers |
+| ----------- | ------------------------------- | ---------------- |
+| **200**     | Payment Request Update response | -                |
+| **401**     | Unauthorized operation          | -                |
+| **404**     | Entity not found                | -                |
+| **0**       | Server error                    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **payment_request_verify**
+
 > PaymentRequestVerifyResponse payment_request_verify(id)
 
 Verify Payment Request
@@ -672,7 +681,8 @@ Verify the status of a previously created payment request
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -712,13 +722,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling PaymentRequestApi->payment_request_verify: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of a previously created payment request | 
+| Name   | Type    | Description                                                   | Notes |
+| ------ | ------- | ------------------------------------------------------------- | ----- |
+| **id** | **int** | The unique identifier of a previously created payment request |
 
 ### Return type
 
@@ -730,16 +738,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Payment Request Verify response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                     | Response headers |
+| ----------- | ------------------------------- | ---------------- |
+| **200**     | Payment Request Verify response | -                |
+| **401**     | Unauthorized operation          | -                |
+| **404**     | Entity not found                | -                |
+| **0**       | Server error                    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

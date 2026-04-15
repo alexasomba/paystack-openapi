@@ -1,10 +1,10 @@
 # DedicatedNubanListResponseArraySplitConfig
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**subaccount** | **str** |  | 
+
+| Name           | Type    | Description | Notes |
+| -------------- | ------- | ----------- | ----- |
+| **subaccount** | **str** |             |
 
 ## Example
 
@@ -23,6 +23,5 @@ dedicated_nuban_list_response_array_split_config_dict = dedicated_nuban_list_res
 # create an instance of DedicatedNubanListResponseArraySplitConfig from a dict
 dedicated_nuban_list_response_array_split_config_form_dict = dedicated_nuban_list_response_array_split_config.from_dict(dedicated_nuban_list_response_array_split_config_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

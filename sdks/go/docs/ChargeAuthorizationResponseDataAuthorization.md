@@ -2,21 +2,21 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AuthorizationCode** | **string** |  | 
-**Bin** | **NullableString** |  | 
-**Last4** | **string** |  | 
-**ExpMonth** | **string** |  | 
-**ExpYear** | **string** |  | 
-**Channel** | **string** |  | 
-**CardType** | **string** |  | 
-**Bank** | **string** |  | 
-**CountryCode** | **string** |  | 
-**Brand** | **string** |  | 
-**Reusable** | **bool** |  | 
-**Signature** | **string** |  | 
-**AccountName** | **interface{}** |  | 
+| Name                  | Type               | Description | Notes |
+| --------------------- | ------------------ | ----------- | ----- |
+| **AuthorizationCode** | **string**         |             |
+| **Bin**               | **NullableString** |             |
+| **Last4**             | **string**         |             |
+| **ExpMonth**          | **string**         |             |
+| **ExpYear**           | **string**         |             |
+| **Channel**           | **string**         |             |
+| **CardType**          | **string**         |             |
+| **Bank**              | **string**         |             |
+| **CountryCode**       | **string**         |             |
+| **Brand**             | **string**         |             |
+| **Reusable**          | **bool**           |             |
+| **Signature**         | **string**         |             |
+| **AccountName**       | **interface{}**    |             |
 
 ## Methods
 
@@ -56,7 +56,6 @@ and a boolean to check if the value has been set.
 
 SetAuthorizationCode sets AuthorizationCode field to given value.
 
-
 ### GetBin
 
 `func (o *ChargeAuthorizationResponseDataAuthorization) GetBin() string`
@@ -76,17 +75,18 @@ and a boolean to check if the value has been set.
 
 SetBin sets Bin field to given value.
 
-
 ### SetBinNil
 
 `func (o *ChargeAuthorizationResponseDataAuthorization) SetBinNil(b bool)`
 
- SetBinNil sets the value for Bin to be an explicit nil
+SetBinNil sets the value for Bin to be an explicit nil
 
 ### UnsetBin
+
 `func (o *ChargeAuthorizationResponseDataAuthorization) UnsetBin()`
 
 UnsetBin ensures that no value is present for Bin, not even an explicit nil
+
 ### GetLast4
 
 `func (o *ChargeAuthorizationResponseDataAuthorization) GetLast4() string`
@@ -105,7 +105,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeAuthorizationResponseDataAuthorization) SetLast4(v string)`
 
 SetLast4 sets Last4 field to given value.
-
 
 ### GetExpMonth
 
@@ -126,7 +125,6 @@ and a boolean to check if the value has been set.
 
 SetExpMonth sets ExpMonth field to given value.
 
-
 ### GetExpYear
 
 `func (o *ChargeAuthorizationResponseDataAuthorization) GetExpYear() string`
@@ -145,7 +143,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeAuthorizationResponseDataAuthorization) SetExpYear(v string)`
 
 SetExpYear sets ExpYear field to given value.
-
 
 ### GetChannel
 
@@ -166,7 +163,6 @@ and a boolean to check if the value has been set.
 
 SetChannel sets Channel field to given value.
 
-
 ### GetCardType
 
 `func (o *ChargeAuthorizationResponseDataAuthorization) GetCardType() string`
@@ -185,7 +181,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeAuthorizationResponseDataAuthorization) SetCardType(v string)`
 
 SetCardType sets CardType field to given value.
-
 
 ### GetBank
 
@@ -206,7 +201,6 @@ and a boolean to check if the value has been set.
 
 SetBank sets Bank field to given value.
 
-
 ### GetCountryCode
 
 `func (o *ChargeAuthorizationResponseDataAuthorization) GetCountryCode() string`
@@ -225,7 +219,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeAuthorizationResponseDataAuthorization) SetCountryCode(v string)`
 
 SetCountryCode sets CountryCode field to given value.
-
 
 ### GetBrand
 
@@ -246,7 +239,6 @@ and a boolean to check if the value has been set.
 
 SetBrand sets Brand field to given value.
 
-
 ### GetReusable
 
 `func (o *ChargeAuthorizationResponseDataAuthorization) GetReusable() bool`
@@ -265,7 +257,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeAuthorizationResponseDataAuthorization) SetReusable(v bool)`
 
 SetReusable sets Reusable field to given value.
-
 
 ### GetSignature
 
@@ -286,7 +277,6 @@ and a boolean to check if the value has been set.
 
 SetSignature sets Signature field to given value.
 
-
 ### GetAccountName
 
 `func (o *ChargeAuthorizationResponseDataAuthorization) GetAccountName() interface{}`
@@ -306,18 +296,16 @@ and a boolean to check if the value has been set.
 
 SetAccountName sets AccountName field to given value.
 
-
 ### SetAccountNameNil
 
 `func (o *ChargeAuthorizationResponseDataAuthorization) SetAccountNameNil(b bool)`
 
- SetAccountNameNil sets the value for AccountName to be an explicit nil
+SetAccountNameNil sets the value for AccountName to be an explicit nil
 
 ### UnsetAccountName
+
 `func (o *ChargeAuthorizationResponseDataAuthorization) UnsetAccountName()`
 
 UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

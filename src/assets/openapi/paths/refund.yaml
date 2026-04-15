@@ -13,9 +13,9 @@ post:
         schema:
           $ref: ../components/schemas/RefundCreate.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/RefundCreateSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error
@@ -26,6 +26,16 @@ get:
   description: List previously created refunds
   operationId: refund_list
   parameters:
+    - in: query
+      name: transaction
+      schema:
+        type: string
+      description: The transaction ID of the refunded transaction
+    - in: query
+      name: currency
+      schema:
+        type: string
+      description: Any of the supported currency
     - in: query
       name: perPage
       schema:
@@ -51,11 +61,11 @@ get:
         format: date-time
       description: The end date
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/RefundListSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

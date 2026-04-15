@@ -1,6 +1,6 @@
 parameters:
-  - name: code
-    description: Transfer recipient code
+  - name: id_or_code
+    description: An ID or code for the recipient whose details you want to receive.
     in: path
     required: true
     schema:
@@ -13,15 +13,15 @@ get:
   description: Fetch the details of a transfer recipient
   operationId: transferrecipient_fetch
   responses:
-    '200':
-      description: 'Successful response'
+    "200":
+      description: "Successful response"
       content:
         application/json:
           schema:
             $ref: ../components/schemas/TransferRecipientFetchResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error
@@ -40,15 +40,15 @@ put:
         schema:
           $ref: ../components/schemas/TransferRecipientUpdate.yaml
   responses:
-    '200':
-      description: 'Successful response'
+    "200":
+      description: "Successful response"
       content:
         application/json:
           schema:
             $ref: ../components/schemas/TransferRecipientUpdateResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error
@@ -59,15 +59,15 @@ delete:
   description: Delete a transfer recipient (sets the transfer recipient to inactive)
   operationId: transferrecipient_delete
   responses:
-    '200':
-      description: 'Successful response'
+    "200":
+      description: "Successful response"
       content:
         application/json:
           schema:
             $ref: ../components/schemas/TransferRecipientDeleteResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

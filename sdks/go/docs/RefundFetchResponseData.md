@@ -2,34 +2,34 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Integration** | **int32** |  | 
-**Transaction** | **int32** |  | 
-**Dispute** | **interface{}** |  | 
-**Settlement** | **interface{}** |  | 
-**Id** | **int32** |  | 
-**Domain** | **string** |  | 
-**Currency** | **string** |  | 
-**Amount** | **int32** |  | 
-**Status** | **string** |  | 
-**RefundedAt** | **interface{}** |  | 
-**RefundedBy** | **string** |  | 
-**CustomerNote** | **string** |  | 
-**MerchantNote** | **string** |  | 
-**DeductedAmount** | **int32** |  | 
-**FullyDeducted** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**BankReference** | **interface{}** |  | 
-**TransactionReference** | **string** |  | 
-**Reason** | **string** |  | 
-**Customer** | [**RefundFetchResponseDataCustomer**](RefundFetchResponseDataCustomer.md) |  | 
-**RefundType** | **string** |  | 
-**TransactionAmount** | **int32** |  | 
-**InitiatedBy** | **string** |  | 
-**RefundChannel** | **string** |  | 
-**SessionId** | **interface{}** |  | 
-**CollectAccountNumber** | **bool** |  | 
+| Name                     | Type                                                                      | Description | Notes |
+| ------------------------ | ------------------------------------------------------------------------- | ----------- | ----- |
+| **Integration**          | **int32**                                                                 |             |
+| **Transaction**          | **int32**                                                                 |             |
+| **Dispute**              | **interface{}**                                                           |             |
+| **Settlement**           | **interface{}**                                                           |             |
+| **Id**                   | **int32**                                                                 |             |
+| **Domain**               | **string**                                                                |             |
+| **Currency**             | **string**                                                                |             |
+| **Amount**               | **int32**                                                                 |             |
+| **Status**               | **string**                                                                |             |
+| **RefundedAt**           | **interface{}**                                                           |             |
+| **RefundedBy**           | **string**                                                                |             |
+| **CustomerNote**         | **string**                                                                |             |
+| **MerchantNote**         | **string**                                                                |             |
+| **DeductedAmount**       | **int32**                                                                 |             |
+| **FullyDeducted**        | **int32**                                                                 |             |
+| **CreatedAt**            | **string**                                                                |             |
+| **BankReference**        | **interface{}**                                                           |             |
+| **TransactionReference** | **string**                                                                |             |
+| **Reason**               | **string**                                                                |             |
+| **Customer**             | [**RefundFetchResponseDataCustomer**](RefundFetchResponseDataCustomer.md) |             |
+| **RefundType**           | **string**                                                                |             |
+| **TransactionAmount**    | **int32**                                                                 |             |
+| **InitiatedBy**          | **string**                                                                |             |
+| **RefundChannel**        | **string**                                                                |             |
+| **SessionId**            | **interface{}**                                                           |             |
+| **CollectAccountNumber** | **bool**                                                                  |             |
 
 ## Methods
 
@@ -69,7 +69,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetTransaction
 
 `func (o *RefundFetchResponseData) GetTransaction() int32`
@@ -88,7 +87,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundFetchResponseData) SetTransaction(v int32)`
 
 SetTransaction sets Transaction field to given value.
-
 
 ### GetDispute
 
@@ -109,17 +107,18 @@ and a boolean to check if the value has been set.
 
 SetDispute sets Dispute field to given value.
 
-
 ### SetDisputeNil
 
 `func (o *RefundFetchResponseData) SetDisputeNil(b bool)`
 
- SetDisputeNil sets the value for Dispute to be an explicit nil
+SetDisputeNil sets the value for Dispute to be an explicit nil
 
 ### UnsetDispute
+
 `func (o *RefundFetchResponseData) UnsetDispute()`
 
 UnsetDispute ensures that no value is present for Dispute, not even an explicit nil
+
 ### GetSettlement
 
 `func (o *RefundFetchResponseData) GetSettlement() interface{}`
@@ -139,17 +138,18 @@ and a boolean to check if the value has been set.
 
 SetSettlement sets Settlement field to given value.
 
-
 ### SetSettlementNil
 
 `func (o *RefundFetchResponseData) SetSettlementNil(b bool)`
 
- SetSettlementNil sets the value for Settlement to be an explicit nil
+SetSettlementNil sets the value for Settlement to be an explicit nil
 
 ### UnsetSettlement
+
 `func (o *RefundFetchResponseData) UnsetSettlement()`
 
 UnsetSettlement ensures that no value is present for Settlement, not even an explicit nil
+
 ### GetId
 
 `func (o *RefundFetchResponseData) GetId() int32`
@@ -168,7 +168,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundFetchResponseData) SetId(v int32)`
 
 SetId sets Id field to given value.
-
 
 ### GetDomain
 
@@ -189,7 +188,6 @@ and a boolean to check if the value has been set.
 
 SetDomain sets Domain field to given value.
 
-
 ### GetCurrency
 
 `func (o *RefundFetchResponseData) GetCurrency() string`
@@ -208,7 +206,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundFetchResponseData) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetAmount
 
@@ -229,7 +226,6 @@ and a boolean to check if the value has been set.
 
 SetAmount sets Amount field to given value.
 
-
 ### GetStatus
 
 `func (o *RefundFetchResponseData) GetStatus() string`
@@ -248,7 +244,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundFetchResponseData) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
-
 
 ### GetRefundedAt
 
@@ -269,17 +264,18 @@ and a boolean to check if the value has been set.
 
 SetRefundedAt sets RefundedAt field to given value.
 
-
 ### SetRefundedAtNil
 
 `func (o *RefundFetchResponseData) SetRefundedAtNil(b bool)`
 
- SetRefundedAtNil sets the value for RefundedAt to be an explicit nil
+SetRefundedAtNil sets the value for RefundedAt to be an explicit nil
 
 ### UnsetRefundedAt
+
 `func (o *RefundFetchResponseData) UnsetRefundedAt()`
 
 UnsetRefundedAt ensures that no value is present for RefundedAt, not even an explicit nil
+
 ### GetRefundedBy
 
 `func (o *RefundFetchResponseData) GetRefundedBy() string`
@@ -298,7 +294,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundFetchResponseData) SetRefundedBy(v string)`
 
 SetRefundedBy sets RefundedBy field to given value.
-
 
 ### GetCustomerNote
 
@@ -319,7 +314,6 @@ and a boolean to check if the value has been set.
 
 SetCustomerNote sets CustomerNote field to given value.
 
-
 ### GetMerchantNote
 
 `func (o *RefundFetchResponseData) GetMerchantNote() string`
@@ -338,7 +332,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundFetchResponseData) SetMerchantNote(v string)`
 
 SetMerchantNote sets MerchantNote field to given value.
-
 
 ### GetDeductedAmount
 
@@ -359,7 +352,6 @@ and a boolean to check if the value has been set.
 
 SetDeductedAmount sets DeductedAmount field to given value.
 
-
 ### GetFullyDeducted
 
 `func (o *RefundFetchResponseData) GetFullyDeducted() int32`
@@ -378,7 +370,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundFetchResponseData) SetFullyDeducted(v int32)`
 
 SetFullyDeducted sets FullyDeducted field to given value.
-
 
 ### GetCreatedAt
 
@@ -399,7 +390,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-
 ### GetBankReference
 
 `func (o *RefundFetchResponseData) GetBankReference() interface{}`
@@ -419,17 +409,18 @@ and a boolean to check if the value has been set.
 
 SetBankReference sets BankReference field to given value.
 
-
 ### SetBankReferenceNil
 
 `func (o *RefundFetchResponseData) SetBankReferenceNil(b bool)`
 
- SetBankReferenceNil sets the value for BankReference to be an explicit nil
+SetBankReferenceNil sets the value for BankReference to be an explicit nil
 
 ### UnsetBankReference
+
 `func (o *RefundFetchResponseData) UnsetBankReference()`
 
 UnsetBankReference ensures that no value is present for BankReference, not even an explicit nil
+
 ### GetTransactionReference
 
 `func (o *RefundFetchResponseData) GetTransactionReference() string`
@@ -448,7 +439,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundFetchResponseData) SetTransactionReference(v string)`
 
 SetTransactionReference sets TransactionReference field to given value.
-
 
 ### GetReason
 
@@ -469,7 +459,6 @@ and a boolean to check if the value has been set.
 
 SetReason sets Reason field to given value.
 
-
 ### GetCustomer
 
 `func (o *RefundFetchResponseData) GetCustomer() RefundFetchResponseDataCustomer`
@@ -488,7 +477,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundFetchResponseData) SetCustomer(v RefundFetchResponseDataCustomer)`
 
 SetCustomer sets Customer field to given value.
-
 
 ### GetRefundType
 
@@ -509,7 +497,6 @@ and a boolean to check if the value has been set.
 
 SetRefundType sets RefundType field to given value.
 
-
 ### GetTransactionAmount
 
 `func (o *RefundFetchResponseData) GetTransactionAmount() int32`
@@ -528,7 +515,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundFetchResponseData) SetTransactionAmount(v int32)`
 
 SetTransactionAmount sets TransactionAmount field to given value.
-
 
 ### GetInitiatedBy
 
@@ -549,7 +535,6 @@ and a boolean to check if the value has been set.
 
 SetInitiatedBy sets InitiatedBy field to given value.
 
-
 ### GetRefundChannel
 
 `func (o *RefundFetchResponseData) GetRefundChannel() string`
@@ -568,7 +553,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundFetchResponseData) SetRefundChannel(v string)`
 
 SetRefundChannel sets RefundChannel field to given value.
-
 
 ### GetSessionId
 
@@ -589,17 +573,18 @@ and a boolean to check if the value has been set.
 
 SetSessionId sets SessionId field to given value.
 
-
 ### SetSessionIdNil
 
 `func (o *RefundFetchResponseData) SetSessionIdNil(b bool)`
 
- SetSessionIdNil sets the value for SessionId to be an explicit nil
+SetSessionIdNil sets the value for SessionId to be an explicit nil
 
 ### UnsetSessionId
+
 `func (o *RefundFetchResponseData) UnsetSessionId()`
 
 UnsetSessionId ensures that no value is present for SessionId, not even an explicit nil
+
 ### GetCollectAccountNumber
 
 `func (o *RefundFetchResponseData) GetCollectAccountNumber() bool`
@@ -619,8 +604,4 @@ and a boolean to check if the value has been set.
 
 SetCollectAccountNumber sets CollectAccountNumber field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

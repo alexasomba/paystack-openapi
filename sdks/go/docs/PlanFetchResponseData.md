@@ -2,36 +2,36 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Subscriptions** | **[]interface{}** |  | 
-**Pages** | **[]interface{}** |  | 
-**Domain** | **string** |  | 
-**Name** | **string** |  | 
-**PlanCode** | **string** |  | 
-**Description** | **interface{}** |  | 
-**Amount** | **int32** |  | 
-**Interval** | **string** |  | 
-**InvoiceLimit** | **int32** |  | 
-**SendInvoices** | **bool** |  | 
-**SendSms** | **bool** |  | 
-**HostedPage** | **bool** |  | 
-**HostedPageUrl** | **interface{}** |  | 
-**HostedPageSummary** | **interface{}** |  | 
-**Currency** | **string** |  | 
-**Migrate** | **bool** |  | 
-**IsDeleted** | **bool** |  | 
-**IsArchived** | **bool** |  | 
-**Id** | **int32** |  | 
-**Integration** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
-**PagesCount** | **int32** |  | 
-**SubscribersCount** | **int32** |  | 
-**SubscriptionsCount** | **int32** |  | 
-**ActiveSubscriptionsCount** | **NullableInt32** |  | 
-**TotalRevenue** | **int32** |  | 
-**Subscribers** | **[]interface{}** |  | 
+| Name                         | Type              | Description | Notes |
+| ---------------------------- | ----------------- | ----------- | ----- |
+| **Subscriptions**            | **[]interface{}** |             |
+| **Pages**                    | **[]interface{}** |             |
+| **Domain**                   | **string**        |             |
+| **Name**                     | **string**        |             |
+| **PlanCode**                 | **string**        |             |
+| **Description**              | **interface{}**   |             |
+| **Amount**                   | **int32**         |             |
+| **Interval**                 | **string**        |             |
+| **InvoiceLimit**             | **int32**         |             |
+| **SendInvoices**             | **bool**          |             |
+| **SendSms**                  | **bool**          |             |
+| **HostedPage**               | **bool**          |             |
+| **HostedPageUrl**            | **interface{}**   |             |
+| **HostedPageSummary**        | **interface{}**   |             |
+| **Currency**                 | **string**        |             |
+| **Migrate**                  | **bool**          |             |
+| **IsDeleted**                | **bool**          |             |
+| **IsArchived**               | **bool**          |             |
+| **Id**                       | **int32**         |             |
+| **Integration**              | **int32**         |             |
+| **CreatedAt**                | **string**        |             |
+| **UpdatedAt**                | **string**        |             |
+| **PagesCount**               | **int32**         |             |
+| **SubscribersCount**         | **int32**         |             |
+| **SubscriptionsCount**       | **int32**         |             |
+| **ActiveSubscriptionsCount** | **NullableInt32** |             |
+| **TotalRevenue**             | **int32**         |             |
+| **Subscribers**              | **[]interface{}** |             |
 
 ## Methods
 
@@ -71,7 +71,6 @@ and a boolean to check if the value has been set.
 
 SetSubscriptions sets Subscriptions field to given value.
 
-
 ### GetPages
 
 `func (o *PlanFetchResponseData) GetPages() []interface{}`
@@ -90,7 +89,6 @@ and a boolean to check if the value has been set.
 `func (o *PlanFetchResponseData) SetPages(v []interface{})`
 
 SetPages sets Pages field to given value.
-
 
 ### GetDomain
 
@@ -111,7 +109,6 @@ and a boolean to check if the value has been set.
 
 SetDomain sets Domain field to given value.
 
-
 ### GetName
 
 `func (o *PlanFetchResponseData) GetName() string`
@@ -130,7 +127,6 @@ and a boolean to check if the value has been set.
 `func (o *PlanFetchResponseData) SetName(v string)`
 
 SetName sets Name field to given value.
-
 
 ### GetPlanCode
 
@@ -151,7 +147,6 @@ and a boolean to check if the value has been set.
 
 SetPlanCode sets PlanCode field to given value.
 
-
 ### GetDescription
 
 `func (o *PlanFetchResponseData) GetDescription() interface{}`
@@ -171,17 +166,18 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
-
 ### SetDescriptionNil
 
 `func (o *PlanFetchResponseData) SetDescriptionNil(b bool)`
 
- SetDescriptionNil sets the value for Description to be an explicit nil
+SetDescriptionNil sets the value for Description to be an explicit nil
 
 ### UnsetDescription
+
 `func (o *PlanFetchResponseData) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
+
 ### GetAmount
 
 `func (o *PlanFetchResponseData) GetAmount() int32`
@@ -200,7 +196,6 @@ and a boolean to check if the value has been set.
 `func (o *PlanFetchResponseData) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetInterval
 
@@ -221,7 +216,6 @@ and a boolean to check if the value has been set.
 
 SetInterval sets Interval field to given value.
 
-
 ### GetInvoiceLimit
 
 `func (o *PlanFetchResponseData) GetInvoiceLimit() int32`
@@ -240,7 +234,6 @@ and a boolean to check if the value has been set.
 `func (o *PlanFetchResponseData) SetInvoiceLimit(v int32)`
 
 SetInvoiceLimit sets InvoiceLimit field to given value.
-
 
 ### GetSendInvoices
 
@@ -261,7 +254,6 @@ and a boolean to check if the value has been set.
 
 SetSendInvoices sets SendInvoices field to given value.
 
-
 ### GetSendSms
 
 `func (o *PlanFetchResponseData) GetSendSms() bool`
@@ -280,7 +272,6 @@ and a boolean to check if the value has been set.
 `func (o *PlanFetchResponseData) SetSendSms(v bool)`
 
 SetSendSms sets SendSms field to given value.
-
 
 ### GetHostedPage
 
@@ -301,7 +292,6 @@ and a boolean to check if the value has been set.
 
 SetHostedPage sets HostedPage field to given value.
 
-
 ### GetHostedPageUrl
 
 `func (o *PlanFetchResponseData) GetHostedPageUrl() interface{}`
@@ -321,17 +311,18 @@ and a boolean to check if the value has been set.
 
 SetHostedPageUrl sets HostedPageUrl field to given value.
 
-
 ### SetHostedPageUrlNil
 
 `func (o *PlanFetchResponseData) SetHostedPageUrlNil(b bool)`
 
- SetHostedPageUrlNil sets the value for HostedPageUrl to be an explicit nil
+SetHostedPageUrlNil sets the value for HostedPageUrl to be an explicit nil
 
 ### UnsetHostedPageUrl
+
 `func (o *PlanFetchResponseData) UnsetHostedPageUrl()`
 
 UnsetHostedPageUrl ensures that no value is present for HostedPageUrl, not even an explicit nil
+
 ### GetHostedPageSummary
 
 `func (o *PlanFetchResponseData) GetHostedPageSummary() interface{}`
@@ -351,17 +342,18 @@ and a boolean to check if the value has been set.
 
 SetHostedPageSummary sets HostedPageSummary field to given value.
 
-
 ### SetHostedPageSummaryNil
 
 `func (o *PlanFetchResponseData) SetHostedPageSummaryNil(b bool)`
 
- SetHostedPageSummaryNil sets the value for HostedPageSummary to be an explicit nil
+SetHostedPageSummaryNil sets the value for HostedPageSummary to be an explicit nil
 
 ### UnsetHostedPageSummary
+
 `func (o *PlanFetchResponseData) UnsetHostedPageSummary()`
 
 UnsetHostedPageSummary ensures that no value is present for HostedPageSummary, not even an explicit nil
+
 ### GetCurrency
 
 `func (o *PlanFetchResponseData) GetCurrency() string`
@@ -380,7 +372,6 @@ and a boolean to check if the value has been set.
 `func (o *PlanFetchResponseData) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetMigrate
 
@@ -401,7 +392,6 @@ and a boolean to check if the value has been set.
 
 SetMigrate sets Migrate field to given value.
 
-
 ### GetIsDeleted
 
 `func (o *PlanFetchResponseData) GetIsDeleted() bool`
@@ -420,7 +410,6 @@ and a boolean to check if the value has been set.
 `func (o *PlanFetchResponseData) SetIsDeleted(v bool)`
 
 SetIsDeleted sets IsDeleted field to given value.
-
 
 ### GetIsArchived
 
@@ -441,7 +430,6 @@ and a boolean to check if the value has been set.
 
 SetIsArchived sets IsArchived field to given value.
 
-
 ### GetId
 
 `func (o *PlanFetchResponseData) GetId() int32`
@@ -460,7 +448,6 @@ and a boolean to check if the value has been set.
 `func (o *PlanFetchResponseData) SetId(v int32)`
 
 SetId sets Id field to given value.
-
 
 ### GetIntegration
 
@@ -481,7 +468,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *PlanFetchResponseData) GetCreatedAt() string`
@@ -500,7 +486,6 @@ and a boolean to check if the value has been set.
 `func (o *PlanFetchResponseData) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -521,7 +506,6 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
 ### GetPagesCount
 
 `func (o *PlanFetchResponseData) GetPagesCount() int32`
@@ -540,7 +524,6 @@ and a boolean to check if the value has been set.
 `func (o *PlanFetchResponseData) SetPagesCount(v int32)`
 
 SetPagesCount sets PagesCount field to given value.
-
 
 ### GetSubscribersCount
 
@@ -561,7 +544,6 @@ and a boolean to check if the value has been set.
 
 SetSubscribersCount sets SubscribersCount field to given value.
 
-
 ### GetSubscriptionsCount
 
 `func (o *PlanFetchResponseData) GetSubscriptionsCount() int32`
@@ -580,7 +562,6 @@ and a boolean to check if the value has been set.
 `func (o *PlanFetchResponseData) SetSubscriptionsCount(v int32)`
 
 SetSubscriptionsCount sets SubscriptionsCount field to given value.
-
 
 ### GetActiveSubscriptionsCount
 
@@ -601,17 +582,18 @@ and a boolean to check if the value has been set.
 
 SetActiveSubscriptionsCount sets ActiveSubscriptionsCount field to given value.
 
-
 ### SetActiveSubscriptionsCountNil
 
 `func (o *PlanFetchResponseData) SetActiveSubscriptionsCountNil(b bool)`
 
- SetActiveSubscriptionsCountNil sets the value for ActiveSubscriptionsCount to be an explicit nil
+SetActiveSubscriptionsCountNil sets the value for ActiveSubscriptionsCount to be an explicit nil
 
 ### UnsetActiveSubscriptionsCount
+
 `func (o *PlanFetchResponseData) UnsetActiveSubscriptionsCount()`
 
 UnsetActiveSubscriptionsCount ensures that no value is present for ActiveSubscriptionsCount, not even an explicit nil
+
 ### GetTotalRevenue
 
 `func (o *PlanFetchResponseData) GetTotalRevenue() int32`
@@ -630,7 +612,6 @@ and a boolean to check if the value has been set.
 `func (o *PlanFetchResponseData) SetTotalRevenue(v int32)`
 
 SetTotalRevenue sets TotalRevenue field to given value.
-
 
 ### GetSubscribers
 
@@ -651,8 +632,4 @@ and a boolean to check if the value has been set.
 
 SetSubscribers sets Subscribers field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

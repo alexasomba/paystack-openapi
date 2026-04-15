@@ -2,21 +2,17 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**MiscellaneousAvs**](MiscellaneousAPI.md#MiscellaneousAvs) | **Get** /address_verification/states | List States (AVS)
-[**MiscellaneousListCountries**](MiscellaneousAPI.md#MiscellaneousListCountries) | **Get** /country | List Countries
-[**MiscellaneousResolveCardBin**](MiscellaneousAPI.md#MiscellaneousResolveCardBin) | **Get** /decision/bin/{bin} | Resolve Card BIN
-
-
+| Method                                                                             | HTTP request                         | Description       |
+| ---------------------------------------------------------------------------------- | ------------------------------------ | ----------------- |
+| [**MiscellaneousAvs**](MiscellaneousAPI.md#MiscellaneousAvs)                       | **Get** /address_verification/states | List States (AVS) |
+| [**MiscellaneousListCountries**](MiscellaneousAPI.md#MiscellaneousListCountries)   | **Get** /country                     | List Countries    |
+| [**MiscellaneousResolveCardBin**](MiscellaneousAPI.md#MiscellaneousResolveCardBin) | **Get** /decision/bin/{bin}          | Resolve Card BIN  |
 
 ## MiscellaneousAvs
 
 > MiscellaneousListStatesResponse MiscellaneousAvs(ctx).Country(country).Execute()
 
 List States (AVS)
-
-
 
 ### Example
 
@@ -47,16 +43,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiMiscellaneousAvsRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **country** | **string** | The country code of the states to list. It is gotten after the charge request | 
+| Name        | Type       | Description                                                                   | Notes |
+| ----------- | ---------- | ----------------------------------------------------------------------------- | ----- |
+| **country** | **string** | The country code of the states to list. It is gotten after the charge request |
 
 ### Return type
 
@@ -75,14 +68,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## MiscellaneousListCountries
 
 > MiscellaneousListCountriesResponse MiscellaneousListCountries(ctx).Execute()
 
 List Countries
-
-
 
 ### Example
 
@@ -118,7 +108,6 @@ This endpoint does not need any parameter.
 
 Other parameters are passed through a pointer to a apiMiscellaneousListCountriesRequest struct via the builder pattern
 
-
 ### Return type
 
 [**MiscellaneousListCountriesResponse**](MiscellaneousListCountriesResponse.md)
@@ -136,14 +125,11 @@ Other parameters are passed through a pointer to a apiMiscellaneousListCountries
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## MiscellaneousResolveCardBin
 
 > VerificationResolveCardBINResponse MiscellaneousResolveCardBin(ctx, bin).Execute()
 
 Resolve Card BIN
-
-
 
 ### Example
 
@@ -174,20 +160,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**bin** | **int32** | The card bank identification number | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **bin** | **int32**           | The card bank identification number                                         |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiMiscellaneousResolveCardBinRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -205,4 +188,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

@@ -1,15 +1,15 @@
 # TransactionListResponseMeta
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**total** | **int** |  | 
-**total_volume** | **float** |  | 
-**skipped** | **int** |  | 
-**per_page** | [**TransactionListResponseMetaPerPage**](TransactionListResponseMetaPerPage.md) |  | 
-**page** | **int** |  | 
-**page_count** | **int** |  | 
+
+| Name             | Type                                                                            | Description | Notes |
+| ---------------- | ------------------------------------------------------------------------------- | ----------- | ----- |
+| **total**        | **int**                                                                         |             |
+| **total_volume** | **float**                                                                       |             |
+| **skipped**      | **int**                                                                         |             |
+| **per_page**     | [**TransactionListResponseMetaPerPage**](TransactionListResponseMetaPerPage.md) |             |
+| **page**         | **int**                                                                         |             |
+| **page_count**   | **int**                                                                         |             |
 
 ## Example
 
@@ -28,6 +28,5 @@ transaction_list_response_meta_dict = transaction_list_response_meta_instance.to
 # create an instance of TransactionListResponseMeta from a dict
 transaction_list_response_meta_form_dict = transaction_list_response_meta.from_dict(transaction_list_response_meta_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

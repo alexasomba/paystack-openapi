@@ -13,9 +13,9 @@ post:
   description: Finalise the creation of a draft payment request for a customer
   operationId: paymentRequest_finalize
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/PaymentRequestFinalizeSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error

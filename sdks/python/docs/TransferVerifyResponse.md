@@ -1,12 +1,12 @@
 # TransferVerifyResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**TransferVerifyResponseData**](TransferVerifyResponseData.md) |  | 
+
+| Name        | Type                                                            | Description | Notes |
+| ----------- | --------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                        |             |
+| **message** | **str**                                                         |             |
+| **data**    | [**TransferVerifyResponseData**](TransferVerifyResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ transfer_verify_response_dict = transfer_verify_response_instance.to_dict()
 # create an instance of TransferVerifyResponse from a dict
 transfer_verify_response_form_dict = transfer_verify_response.from_dict(transfer_verify_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

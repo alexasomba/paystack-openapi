@@ -1,13 +1,13 @@
 # StorefrontContactsArray
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**value** | **str** |  | 
-**id** | **int** |  | 
-**type_name** | **object** |  | 
-**type** | **int** |  | 
+
+| Name          | Type       | Description | Notes |
+| ------------- | ---------- | ----------- | ----- |
+| **value**     | **str**    |             |
+| **id**        | **int**    |             |
+| **type_name** | **object** |             |
+| **type**      | **int**    |             |
 
 ## Example
 
@@ -26,6 +26,5 @@ storefront_contacts_array_dict = storefront_contacts_array_instance.to_dict()
 # create an instance of StorefrontContactsArray from a dict
 storefront_contacts_array_form_dict = storefront_contacts_array.from_dict(storefront_contacts_array_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

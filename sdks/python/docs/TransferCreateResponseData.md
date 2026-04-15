@@ -1,29 +1,29 @@
 # TransferCreateResponseData
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**transfersessionid** | **List[object]** |  | 
-**transfertrials** | **List[object]** |  | 
-**domain** | **str** |  | 
-**amount** | **int** |  | 
-**currency** | **str** |  | 
-**reference** | **str** |  | 
-**source** | **str** |  | 
-**source_details** | **object** |  | 
-**reason** | **str** |  | 
-**status** | **str** |  | 
-**failures** | **object** |  | 
-**transfer_code** | **str** |  | 
-**titan_code** | **object** |  | 
-**transferred_at** | **object** |  | 
-**id** | **int** |  | 
-**integration** | **int** |  | 
-**request** | **int** |  | 
-**recipient** | **int** |  | 
-**created_at** | **str** |  | 
-**updated_at** | **str** |  | 
+
+| Name                  | Type             | Description | Notes |
+| --------------------- | ---------------- | ----------- | ----- |
+| **transfersessionid** | **List[object]** |             |
+| **transfertrials**    | **List[object]** |             |
+| **domain**            | **str**          |             |
+| **amount**            | **int**          |             |
+| **currency**          | **str**          |             |
+| **reference**         | **str**          |             |
+| **source**            | **str**          |             |
+| **source_details**    | **object**       |             |
+| **reason**            | **str**          |             |
+| **status**            | **str**          |             |
+| **failures**          | **object**       |             |
+| **transfer_code**     | **str**          |             |
+| **titan_code**        | **object**       |             |
+| **transferred_at**    | **object**       |             |
+| **id**                | **int**          |             |
+| **integration**       | **int**          |             |
+| **request**           | **int**          |             |
+| **recipient**         | **int**          |             |
+| **created_at**        | **str**          |             |
+| **updated_at**        | **str**          |             |
 
 ## Example
 
@@ -42,6 +42,5 @@ transfer_create_response_data_dict = transfer_create_response_data_instance.to_d
 # create an instance of TransferCreateResponseData from a dict
 transfer_create_response_data_form_dict = transfer_create_response_data.from_dict(transfer_create_response_data_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

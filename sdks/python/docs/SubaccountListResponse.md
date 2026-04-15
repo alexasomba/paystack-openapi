@@ -1,13 +1,13 @@
 # SubaccountListResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**List[SubaccountListResponseArray]**](SubaccountListResponseArray.md) |  | 
-**meta** | [**SubaccountListResponseMeta**](SubaccountListResponseMeta.md) |  | 
+
+| Name        | Type                                                                    | Description | Notes |
+| ----------- | ----------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                |             |
+| **message** | **str**                                                                 |             |
+| **data**    | [**List[SubaccountListResponseArray]**](SubaccountListResponseArray.md) |             |
+| **meta**    | [**SubaccountListResponseMeta**](SubaccountListResponseMeta.md)         |             |
 
 ## Example
 
@@ -26,6 +26,5 @@ subaccount_list_response_dict = subaccount_list_response_instance.to_dict()
 # create an instance of SubaccountListResponse from a dict
 subaccount_list_response_form_dict = subaccount_list_response.from_dict(subaccount_list_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

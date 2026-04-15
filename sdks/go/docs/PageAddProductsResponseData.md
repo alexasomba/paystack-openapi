@@ -2,31 +2,31 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Integration** | **int32** |  | 
-**Plan** | **interface{}** |  | 
-**Domain** | **string** |  | 
-**Name** | **string** |  | 
-**Description** | **interface{}** |  | 
-**Amount** | **interface{}** |  | 
-**Currency** | **string** |  | 
-**Slug** | **string** |  | 
-**CustomFields** | **interface{}** |  | 
-**Type** | **string** |  | 
-**RedirectUrl** | **interface{}** |  | 
-**SuccessMessage** | **interface{}** |  | 
-**CollectPhone** | **bool** |  | 
-**Active** | **bool** |  | 
-**Published** | **bool** |  | 
-**Migrate** | **bool** |  | 
-**NotificationEmail** | **interface{}** |  | 
-**Metadata** | **interface{}** |  | 
-**SplitCode** | **interface{}** |  | 
-**Id** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
-**Products** | [**[]PageProductsArray**](PageProductsArray.md) |  | 
+| Name                  | Type                                            | Description | Notes |
+| --------------------- | ----------------------------------------------- | ----------- | ----- |
+| **Integration**       | **int32**                                       |             |
+| **Plan**              | **interface{}**                                 |             |
+| **Domain**            | **string**                                      |             |
+| **Name**              | **string**                                      |             |
+| **Description**       | **interface{}**                                 |             |
+| **Amount**            | **interface{}**                                 |             |
+| **Currency**          | **string**                                      |             |
+| **Slug**              | **string**                                      |             |
+| **CustomFields**      | **interface{}**                                 |             |
+| **Type**              | **string**                                      |             |
+| **RedirectUrl**       | **interface{}**                                 |             |
+| **SuccessMessage**    | **interface{}**                                 |             |
+| **CollectPhone**      | **bool**                                        |             |
+| **Active**            | **bool**                                        |             |
+| **Published**         | **bool**                                        |             |
+| **Migrate**           | **bool**                                        |             |
+| **NotificationEmail** | **interface{}**                                 |             |
+| **Metadata**          | **interface{}**                                 |             |
+| **SplitCode**         | **interface{}**                                 |             |
+| **Id**                | **int32**                                       |             |
+| **CreatedAt**         | **string**                                      |             |
+| **UpdatedAt**         | **string**                                      |             |
+| **Products**          | [**[]PageProductsArray**](PageProductsArray.md) |             |
 
 ## Methods
 
@@ -66,7 +66,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetPlan
 
 `func (o *PageAddProductsResponseData) GetPlan() interface{}`
@@ -86,17 +85,18 @@ and a boolean to check if the value has been set.
 
 SetPlan sets Plan field to given value.
 
-
 ### SetPlanNil
 
 `func (o *PageAddProductsResponseData) SetPlanNil(b bool)`
 
- SetPlanNil sets the value for Plan to be an explicit nil
+SetPlanNil sets the value for Plan to be an explicit nil
 
 ### UnsetPlan
+
 `func (o *PageAddProductsResponseData) UnsetPlan()`
 
 UnsetPlan ensures that no value is present for Plan, not even an explicit nil
+
 ### GetDomain
 
 `func (o *PageAddProductsResponseData) GetDomain() string`
@@ -115,7 +115,6 @@ and a boolean to check if the value has been set.
 `func (o *PageAddProductsResponseData) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetName
 
@@ -136,7 +135,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetDescription
 
 `func (o *PageAddProductsResponseData) GetDescription() interface{}`
@@ -156,17 +154,18 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
-
 ### SetDescriptionNil
 
 `func (o *PageAddProductsResponseData) SetDescriptionNil(b bool)`
 
- SetDescriptionNil sets the value for Description to be an explicit nil
+SetDescriptionNil sets the value for Description to be an explicit nil
 
 ### UnsetDescription
+
 `func (o *PageAddProductsResponseData) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
+
 ### GetAmount
 
 `func (o *PageAddProductsResponseData) GetAmount() interface{}`
@@ -186,17 +185,18 @@ and a boolean to check if the value has been set.
 
 SetAmount sets Amount field to given value.
 
-
 ### SetAmountNil
 
 `func (o *PageAddProductsResponseData) SetAmountNil(b bool)`
 
- SetAmountNil sets the value for Amount to be an explicit nil
+SetAmountNil sets the value for Amount to be an explicit nil
 
 ### UnsetAmount
+
 `func (o *PageAddProductsResponseData) UnsetAmount()`
 
 UnsetAmount ensures that no value is present for Amount, not even an explicit nil
+
 ### GetCurrency
 
 `func (o *PageAddProductsResponseData) GetCurrency() string`
@@ -215,7 +215,6 @@ and a boolean to check if the value has been set.
 `func (o *PageAddProductsResponseData) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetSlug
 
@@ -236,7 +235,6 @@ and a boolean to check if the value has been set.
 
 SetSlug sets Slug field to given value.
 
-
 ### GetCustomFields
 
 `func (o *PageAddProductsResponseData) GetCustomFields() interface{}`
@@ -256,17 +254,18 @@ and a boolean to check if the value has been set.
 
 SetCustomFields sets CustomFields field to given value.
 
-
 ### SetCustomFieldsNil
 
 `func (o *PageAddProductsResponseData) SetCustomFieldsNil(b bool)`
 
- SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
 
 ### UnsetCustomFields
+
 `func (o *PageAddProductsResponseData) UnsetCustomFields()`
 
 UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
+
 ### GetType
 
 `func (o *PageAddProductsResponseData) GetType() string`
@@ -285,7 +284,6 @@ and a boolean to check if the value has been set.
 `func (o *PageAddProductsResponseData) SetType(v string)`
 
 SetType sets Type field to given value.
-
 
 ### GetRedirectUrl
 
@@ -306,17 +304,18 @@ and a boolean to check if the value has been set.
 
 SetRedirectUrl sets RedirectUrl field to given value.
 
-
 ### SetRedirectUrlNil
 
 `func (o *PageAddProductsResponseData) SetRedirectUrlNil(b bool)`
 
- SetRedirectUrlNil sets the value for RedirectUrl to be an explicit nil
+SetRedirectUrlNil sets the value for RedirectUrl to be an explicit nil
 
 ### UnsetRedirectUrl
+
 `func (o *PageAddProductsResponseData) UnsetRedirectUrl()`
 
 UnsetRedirectUrl ensures that no value is present for RedirectUrl, not even an explicit nil
+
 ### GetSuccessMessage
 
 `func (o *PageAddProductsResponseData) GetSuccessMessage() interface{}`
@@ -336,17 +335,18 @@ and a boolean to check if the value has been set.
 
 SetSuccessMessage sets SuccessMessage field to given value.
 
-
 ### SetSuccessMessageNil
 
 `func (o *PageAddProductsResponseData) SetSuccessMessageNil(b bool)`
 
- SetSuccessMessageNil sets the value for SuccessMessage to be an explicit nil
+SetSuccessMessageNil sets the value for SuccessMessage to be an explicit nil
 
 ### UnsetSuccessMessage
+
 `func (o *PageAddProductsResponseData) UnsetSuccessMessage()`
 
 UnsetSuccessMessage ensures that no value is present for SuccessMessage, not even an explicit nil
+
 ### GetCollectPhone
 
 `func (o *PageAddProductsResponseData) GetCollectPhone() bool`
@@ -365,7 +365,6 @@ and a boolean to check if the value has been set.
 `func (o *PageAddProductsResponseData) SetCollectPhone(v bool)`
 
 SetCollectPhone sets CollectPhone field to given value.
-
 
 ### GetActive
 
@@ -386,7 +385,6 @@ and a boolean to check if the value has been set.
 
 SetActive sets Active field to given value.
 
-
 ### GetPublished
 
 `func (o *PageAddProductsResponseData) GetPublished() bool`
@@ -405,7 +403,6 @@ and a boolean to check if the value has been set.
 `func (o *PageAddProductsResponseData) SetPublished(v bool)`
 
 SetPublished sets Published field to given value.
-
 
 ### GetMigrate
 
@@ -426,7 +423,6 @@ and a boolean to check if the value has been set.
 
 SetMigrate sets Migrate field to given value.
 
-
 ### GetNotificationEmail
 
 `func (o *PageAddProductsResponseData) GetNotificationEmail() interface{}`
@@ -446,17 +442,18 @@ and a boolean to check if the value has been set.
 
 SetNotificationEmail sets NotificationEmail field to given value.
 
-
 ### SetNotificationEmailNil
 
 `func (o *PageAddProductsResponseData) SetNotificationEmailNil(b bool)`
 
- SetNotificationEmailNil sets the value for NotificationEmail to be an explicit nil
+SetNotificationEmailNil sets the value for NotificationEmail to be an explicit nil
 
 ### UnsetNotificationEmail
+
 `func (o *PageAddProductsResponseData) UnsetNotificationEmail()`
 
 UnsetNotificationEmail ensures that no value is present for NotificationEmail, not even an explicit nil
+
 ### GetMetadata
 
 `func (o *PageAddProductsResponseData) GetMetadata() interface{}`
@@ -476,17 +473,18 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
-
 ### SetMetadataNil
 
 `func (o *PageAddProductsResponseData) SetMetadataNil(b bool)`
 
- SetMetadataNil sets the value for Metadata to be an explicit nil
+SetMetadataNil sets the value for Metadata to be an explicit nil
 
 ### UnsetMetadata
+
 `func (o *PageAddProductsResponseData) UnsetMetadata()`
 
 UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
+
 ### GetSplitCode
 
 `func (o *PageAddProductsResponseData) GetSplitCode() interface{}`
@@ -506,17 +504,18 @@ and a boolean to check if the value has been set.
 
 SetSplitCode sets SplitCode field to given value.
 
-
 ### SetSplitCodeNil
 
 `func (o *PageAddProductsResponseData) SetSplitCodeNil(b bool)`
 
- SetSplitCodeNil sets the value for SplitCode to be an explicit nil
+SetSplitCodeNil sets the value for SplitCode to be an explicit nil
 
 ### UnsetSplitCode
+
 `func (o *PageAddProductsResponseData) UnsetSplitCode()`
 
 UnsetSplitCode ensures that no value is present for SplitCode, not even an explicit nil
+
 ### GetId
 
 `func (o *PageAddProductsResponseData) GetId() int32`
@@ -535,7 +534,6 @@ and a boolean to check if the value has been set.
 `func (o *PageAddProductsResponseData) SetId(v int32)`
 
 SetId sets Id field to given value.
-
 
 ### GetCreatedAt
 
@@ -556,7 +554,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-
 ### GetUpdatedAt
 
 `func (o *PageAddProductsResponseData) GetUpdatedAt() string`
@@ -575,7 +572,6 @@ and a boolean to check if the value has been set.
 `func (o *PageAddProductsResponseData) SetUpdatedAt(v string)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
-
 
 ### GetProducts
 
@@ -596,8 +592,4 @@ and a boolean to check if the value has been set.
 
 SetProducts sets Products field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

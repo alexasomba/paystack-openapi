@@ -2,13 +2,13 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Total** | Pointer to **int32** |  | [optional] 
-**Skipped** | Pointer to **int32** |  | [optional] 
-**PerPage** | Pointer to [**TransactionListResponseMetaPerPage**](TransactionListResponseMetaPerPage.md) |  | [optional] 
-**Page** | Pointer to **int32** |  | [optional] 
-**PageCount** | Pointer to **int32** |  | [optional] 
+| Name          | Type                                                                                       | Description | Notes      |
+| ------------- | ------------------------------------------------------------------------------------------ | ----------- | ---------- |
+| **Total**     | Pointer to **int32**                                                                       |             | [optional] |
+| **Skipped**   | Pointer to **int32**                                                                       |             | [optional] |
+| **PerPage**   | Pointer to [**TransactionListResponseMetaPerPage**](TransactionListResponseMetaPerPage.md) |             | [optional] |
+| **Page**      | Pointer to **int32**                                                                       |             | [optional] |
+| **PageCount** | Pointer to **int32**                                                                       |             | [optional] |
 
 ## Methods
 
@@ -154,7 +154,4 @@ SetPageCount sets PageCount field to given value.
 
 HasPageCount returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

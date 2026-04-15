@@ -2,38 +2,38 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**Domain** | **string** |  | 
-**Status** | **string** |  | 
-**Reference** | **string** |  | 
-**ReceiptNumber** | **interface{}** |  | 
-**Amount** | **int32** |  | 
-**Message** | **NullableString** |  | 
-**GatewayResponse** | **string** |  | 
-**PaidAt** | **string** |  | 
-**CreatedAt** | **string** |  | 
-**Channel** | **string** |  | 
-**Currency** | **string** |  | 
-**IpAddress** | **string** |  | 
-**Metadata** | [**TransactionFetchResponseDataMetadata**](TransactionFetchResponseDataMetadata.md) |  | 
-**Log** | [**NullableChargeAuthorizationResponseDataLog**](ChargeAuthorizationResponseDataLog.md) |  | 
-**Fees** | **int32** |  | 
-**FeesSplit** | **NullableInt32** |  | 
-**Authorization** | [**TransactionFetchResponseDataAuthorization**](TransactionFetchResponseDataAuthorization.md) |  | 
-**Customer** | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |  | 
-**Plan** | **interface{}** |  | 
-**Split** | **map[string]interface{}** |  | 
-**OrderId** | **interface{}** |  | 
-**RequestedAmount** | **int32** |  | 
-**PosTransactionData** | **interface{}** |  | 
-**Source** | **interface{}** |  | 
-**FeesBreakdown** | **interface{}** |  | 
-**Connect** | **interface{}** |  | 
-**TransactionDate** | **string** |  | 
-**PlanObject** | **map[string]interface{}** |  | 
-**Subaccount** | **map[string]interface{}** |  | 
+| Name                   | Type                                                                                          | Description | Notes |
+| ---------------------- | --------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **Id**                 | **int32**                                                                                     |             |
+| **Domain**             | **string**                                                                                    |             |
+| **Status**             | **string**                                                                                    |             |
+| **Reference**          | **string**                                                                                    |             |
+| **ReceiptNumber**      | **interface{}**                                                                               |             |
+| **Amount**             | **int32**                                                                                     |             |
+| **Message**            | **NullableString**                                                                            |             |
+| **GatewayResponse**    | **string**                                                                                    |             |
+| **PaidAt**             | **string**                                                                                    |             |
+| **CreatedAt**          | **string**                                                                                    |             |
+| **Channel**            | **string**                                                                                    |             |
+| **Currency**           | **string**                                                                                    |             |
+| **IpAddress**          | **string**                                                                                    |             |
+| **Metadata**           | [**TransactionFetchResponseDataMetadata**](TransactionFetchResponseDataMetadata.md)           |             |
+| **Log**                | [**NullableChargeAuthorizationResponseDataLog**](ChargeAuthorizationResponseDataLog.md)       |             |
+| **Fees**               | **int32**                                                                                     |             |
+| **FeesSplit**          | **NullableInt32**                                                                             |             |
+| **Authorization**      | [**TransactionFetchResponseDataAuthorization**](TransactionFetchResponseDataAuthorization.md) |             |
+| **Customer**           | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md)           |             |
+| **Plan**               | **interface{}**                                                                               |             |
+| **Split**              | **map[string]interface{}**                                                                    |             |
+| **OrderId**            | **interface{}**                                                                               |             |
+| **RequestedAmount**    | **int32**                                                                                     |             |
+| **PosTransactionData** | **interface{}**                                                                               |             |
+| **Source**             | **interface{}**                                                                               |             |
+| **FeesBreakdown**      | **interface{}**                                                                               |             |
+| **Connect**            | **interface{}**                                                                               |             |
+| **TransactionDate**    | **string**                                                                                    |             |
+| **PlanObject**         | **map[string]interface{}**                                                                    |             |
+| **Subaccount**         | **map[string]interface{}**                                                                    |             |
 
 ## Methods
 
@@ -73,7 +73,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetDomain
 
 `func (o *ChargeCreateResponseData) GetDomain() string`
@@ -92,7 +91,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeCreateResponseData) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetStatus
 
@@ -113,7 +111,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-
 ### GetReference
 
 `func (o *ChargeCreateResponseData) GetReference() string`
@@ -132,7 +129,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeCreateResponseData) SetReference(v string)`
 
 SetReference sets Reference field to given value.
-
 
 ### GetReceiptNumber
 
@@ -153,17 +149,18 @@ and a boolean to check if the value has been set.
 
 SetReceiptNumber sets ReceiptNumber field to given value.
 
-
 ### SetReceiptNumberNil
 
 `func (o *ChargeCreateResponseData) SetReceiptNumberNil(b bool)`
 
- SetReceiptNumberNil sets the value for ReceiptNumber to be an explicit nil
+SetReceiptNumberNil sets the value for ReceiptNumber to be an explicit nil
 
 ### UnsetReceiptNumber
+
 `func (o *ChargeCreateResponseData) UnsetReceiptNumber()`
 
 UnsetReceiptNumber ensures that no value is present for ReceiptNumber, not even an explicit nil
+
 ### GetAmount
 
 `func (o *ChargeCreateResponseData) GetAmount() int32`
@@ -182,7 +179,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeCreateResponseData) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetMessage
 
@@ -203,17 +199,18 @@ and a boolean to check if the value has been set.
 
 SetMessage sets Message field to given value.
 
-
 ### SetMessageNil
 
 `func (o *ChargeCreateResponseData) SetMessageNil(b bool)`
 
- SetMessageNil sets the value for Message to be an explicit nil
+SetMessageNil sets the value for Message to be an explicit nil
 
 ### UnsetMessage
+
 `func (o *ChargeCreateResponseData) UnsetMessage()`
 
 UnsetMessage ensures that no value is present for Message, not even an explicit nil
+
 ### GetGatewayResponse
 
 `func (o *ChargeCreateResponseData) GetGatewayResponse() string`
@@ -232,7 +229,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeCreateResponseData) SetGatewayResponse(v string)`
 
 SetGatewayResponse sets GatewayResponse field to given value.
-
 
 ### GetPaidAt
 
@@ -253,7 +249,6 @@ and a boolean to check if the value has been set.
 
 SetPaidAt sets PaidAt field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *ChargeCreateResponseData) GetCreatedAt() string`
@@ -272,7 +267,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeCreateResponseData) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetChannel
 
@@ -293,7 +287,6 @@ and a boolean to check if the value has been set.
 
 SetChannel sets Channel field to given value.
 
-
 ### GetCurrency
 
 `func (o *ChargeCreateResponseData) GetCurrency() string`
@@ -312,7 +305,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeCreateResponseData) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetIpAddress
 
@@ -333,7 +325,6 @@ and a boolean to check if the value has been set.
 
 SetIpAddress sets IpAddress field to given value.
 
-
 ### GetMetadata
 
 `func (o *ChargeCreateResponseData) GetMetadata() TransactionFetchResponseDataMetadata`
@@ -352,7 +343,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeCreateResponseData) SetMetadata(v TransactionFetchResponseDataMetadata)`
 
 SetMetadata sets Metadata field to given value.
-
 
 ### GetLog
 
@@ -373,17 +363,18 @@ and a boolean to check if the value has been set.
 
 SetLog sets Log field to given value.
 
-
 ### SetLogNil
 
 `func (o *ChargeCreateResponseData) SetLogNil(b bool)`
 
- SetLogNil sets the value for Log to be an explicit nil
+SetLogNil sets the value for Log to be an explicit nil
 
 ### UnsetLog
+
 `func (o *ChargeCreateResponseData) UnsetLog()`
 
 UnsetLog ensures that no value is present for Log, not even an explicit nil
+
 ### GetFees
 
 `func (o *ChargeCreateResponseData) GetFees() int32`
@@ -402,7 +393,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeCreateResponseData) SetFees(v int32)`
 
 SetFees sets Fees field to given value.
-
 
 ### GetFeesSplit
 
@@ -423,17 +413,18 @@ and a boolean to check if the value has been set.
 
 SetFeesSplit sets FeesSplit field to given value.
 
-
 ### SetFeesSplitNil
 
 `func (o *ChargeCreateResponseData) SetFeesSplitNil(b bool)`
 
- SetFeesSplitNil sets the value for FeesSplit to be an explicit nil
+SetFeesSplitNil sets the value for FeesSplit to be an explicit nil
 
 ### UnsetFeesSplit
+
 `func (o *ChargeCreateResponseData) UnsetFeesSplit()`
 
 UnsetFeesSplit ensures that no value is present for FeesSplit, not even an explicit nil
+
 ### GetAuthorization
 
 `func (o *ChargeCreateResponseData) GetAuthorization() TransactionFetchResponseDataAuthorization`
@@ -452,7 +443,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeCreateResponseData) SetAuthorization(v TransactionFetchResponseDataAuthorization)`
 
 SetAuthorization sets Authorization field to given value.
-
 
 ### GetCustomer
 
@@ -473,7 +463,6 @@ and a boolean to check if the value has been set.
 
 SetCustomer sets Customer field to given value.
 
-
 ### GetPlan
 
 `func (o *ChargeCreateResponseData) GetPlan() interface{}`
@@ -493,17 +482,18 @@ and a boolean to check if the value has been set.
 
 SetPlan sets Plan field to given value.
 
-
 ### SetPlanNil
 
 `func (o *ChargeCreateResponseData) SetPlanNil(b bool)`
 
- SetPlanNil sets the value for Plan to be an explicit nil
+SetPlanNil sets the value for Plan to be an explicit nil
 
 ### UnsetPlan
+
 `func (o *ChargeCreateResponseData) UnsetPlan()`
 
 UnsetPlan ensures that no value is present for Plan, not even an explicit nil
+
 ### GetSplit
 
 `func (o *ChargeCreateResponseData) GetSplit() map[string]interface{}`
@@ -522,7 +512,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeCreateResponseData) SetSplit(v map[string]interface{})`
 
 SetSplit sets Split field to given value.
-
 
 ### GetOrderId
 
@@ -543,17 +532,18 @@ and a boolean to check if the value has been set.
 
 SetOrderId sets OrderId field to given value.
 
-
 ### SetOrderIdNil
 
 `func (o *ChargeCreateResponseData) SetOrderIdNil(b bool)`
 
- SetOrderIdNil sets the value for OrderId to be an explicit nil
+SetOrderIdNil sets the value for OrderId to be an explicit nil
 
 ### UnsetOrderId
+
 `func (o *ChargeCreateResponseData) UnsetOrderId()`
 
 UnsetOrderId ensures that no value is present for OrderId, not even an explicit nil
+
 ### GetRequestedAmount
 
 `func (o *ChargeCreateResponseData) GetRequestedAmount() int32`
@@ -572,7 +562,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeCreateResponseData) SetRequestedAmount(v int32)`
 
 SetRequestedAmount sets RequestedAmount field to given value.
-
 
 ### GetPosTransactionData
 
@@ -593,17 +582,18 @@ and a boolean to check if the value has been set.
 
 SetPosTransactionData sets PosTransactionData field to given value.
 
-
 ### SetPosTransactionDataNil
 
 `func (o *ChargeCreateResponseData) SetPosTransactionDataNil(b bool)`
 
- SetPosTransactionDataNil sets the value for PosTransactionData to be an explicit nil
+SetPosTransactionDataNil sets the value for PosTransactionData to be an explicit nil
 
 ### UnsetPosTransactionData
+
 `func (o *ChargeCreateResponseData) UnsetPosTransactionData()`
 
 UnsetPosTransactionData ensures that no value is present for PosTransactionData, not even an explicit nil
+
 ### GetSource
 
 `func (o *ChargeCreateResponseData) GetSource() interface{}`
@@ -623,17 +613,18 @@ and a boolean to check if the value has been set.
 
 SetSource sets Source field to given value.
 
-
 ### SetSourceNil
 
 `func (o *ChargeCreateResponseData) SetSourceNil(b bool)`
 
- SetSourceNil sets the value for Source to be an explicit nil
+SetSourceNil sets the value for Source to be an explicit nil
 
 ### UnsetSource
+
 `func (o *ChargeCreateResponseData) UnsetSource()`
 
 UnsetSource ensures that no value is present for Source, not even an explicit nil
+
 ### GetFeesBreakdown
 
 `func (o *ChargeCreateResponseData) GetFeesBreakdown() interface{}`
@@ -653,17 +644,18 @@ and a boolean to check if the value has been set.
 
 SetFeesBreakdown sets FeesBreakdown field to given value.
 
-
 ### SetFeesBreakdownNil
 
 `func (o *ChargeCreateResponseData) SetFeesBreakdownNil(b bool)`
 
- SetFeesBreakdownNil sets the value for FeesBreakdown to be an explicit nil
+SetFeesBreakdownNil sets the value for FeesBreakdown to be an explicit nil
 
 ### UnsetFeesBreakdown
+
 `func (o *ChargeCreateResponseData) UnsetFeesBreakdown()`
 
 UnsetFeesBreakdown ensures that no value is present for FeesBreakdown, not even an explicit nil
+
 ### GetConnect
 
 `func (o *ChargeCreateResponseData) GetConnect() interface{}`
@@ -683,17 +675,18 @@ and a boolean to check if the value has been set.
 
 SetConnect sets Connect field to given value.
 
-
 ### SetConnectNil
 
 `func (o *ChargeCreateResponseData) SetConnectNil(b bool)`
 
- SetConnectNil sets the value for Connect to be an explicit nil
+SetConnectNil sets the value for Connect to be an explicit nil
 
 ### UnsetConnect
+
 `func (o *ChargeCreateResponseData) UnsetConnect()`
 
 UnsetConnect ensures that no value is present for Connect, not even an explicit nil
+
 ### GetTransactionDate
 
 `func (o *ChargeCreateResponseData) GetTransactionDate() string`
@@ -712,7 +705,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeCreateResponseData) SetTransactionDate(v string)`
 
 SetTransactionDate sets TransactionDate field to given value.
-
 
 ### GetPlanObject
 
@@ -733,7 +725,6 @@ and a boolean to check if the value has been set.
 
 SetPlanObject sets PlanObject field to given value.
 
-
 ### GetSubaccount
 
 `func (o *ChargeCreateResponseData) GetSubaccount() map[string]interface{}`
@@ -753,8 +744,4 @@ and a boolean to check if the value has been set.
 
 SetSubaccount sets Subaccount field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,16 +2,16 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Email** | **string** | Customer&#39;s email address | 
-**Amount** | **int32** | Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR | 
-**AuthorizationCode** | Pointer to **string** | An authorization code to charge. | [optional] 
-**Pin** | Pointer to **string** | 4-digit PIN (send with a non-reusable authorization code) | [optional] 
-**Reference** | Pointer to **string** | Unique transaction reference. Only -, .&#x60;, &#x3D; and alphanumeric characters allowed. | [optional] 
-**Birthday** | Pointer to **string** | The customer&#39;s birthday in the format YYYY-MM-DD e.g 2017-05-16 | [optional] 
-**DeviceId** | Pointer to **string** | This is the unique identifier of the device a user uses in making payment.  Only -, .&#x60;, &#x3D; and alphanumeric characters are allowed. | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | JSON object of custom data | [optional] 
+| Name                  | Type                                  | Description                                                                                                                                 | Notes      |
+| --------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **Email**             | **string**                            | Customer&#39;s email address                                                                                                                |
+| **Amount**            | **int32**                             | Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR                                     |
+| **AuthorizationCode** | Pointer to **string**                 | An authorization code to charge.                                                                                                            | [optional] |
+| **Pin**               | Pointer to **string**                 | 4-digit PIN (send with a non-reusable authorization code)                                                                                   | [optional] |
+| **Reference**         | Pointer to **string**                 | Unique transaction reference. Only -, .&#x60;, &#x3D; and alphanumeric characters allowed.                                                  | [optional] |
+| **Birthday**          | Pointer to **string**                 | The customer&#39;s birthday in the format YYYY-MM-DD e.g 2017-05-16                                                                         | [optional] |
+| **DeviceId**          | Pointer to **string**                 | This is the unique identifier of the device a user uses in making payment. Only -, .&#x60;, &#x3D; and alphanumeric characters are allowed. | [optional] |
+| **Metadata**          | Pointer to **map[string]interface{}** | JSON object of custom data                                                                                                                  | [optional] |
 
 ## Methods
 
@@ -51,7 +51,6 @@ and a boolean to check if the value has been set.
 
 SetEmail sets Email field to given value.
 
-
 ### GetAmount
 
 `func (o *ChargeCreate) GetAmount() int32`
@@ -70,7 +69,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeCreate) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetAuthorizationCode
 
@@ -222,7 +220,4 @@ SetMetadata sets Metadata field to given value.
 
 HasMetadata returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

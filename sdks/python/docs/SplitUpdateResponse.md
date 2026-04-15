@@ -1,12 +1,12 @@
 # SplitUpdateResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**SplitFetchResponseData**](SplitFetchResponseData.md) |  | 
+
+| Name        | Type                                                    | Description | Notes |
+| ----------- | ------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                |             |
+| **message** | **str**                                                 |             |
+| **data**    | [**SplitFetchResponseData**](SplitFetchResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ split_update_response_dict = split_update_response_instance.to_dict()
 # create an instance of SplitUpdateResponse from a dict
 split_update_response_form_dict = split_update_response.from_dict(split_update_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

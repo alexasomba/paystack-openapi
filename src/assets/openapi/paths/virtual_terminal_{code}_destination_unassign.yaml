@@ -21,9 +21,9 @@ post:
         schema:
           $ref: ../components/schemas/VirtualTerminalDestinationUnassign.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/VirtualTerminalDestinationUnassignSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error

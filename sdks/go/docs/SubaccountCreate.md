@@ -2,17 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**BusinessName** | **string** | Name of business for subaccount | 
-**SettlementBank** | **string** | Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint. | 
-**AccountNumber** | **string** | Bank account number | 
-**PercentageCharge** | **float32** | Customer&#39;s phone number | 
-**Description** | Pointer to **string** | A description for this subaccount | [optional] 
-**PrimaryContactEmail** | Pointer to **string** | A contact email for the subaccount | [optional] 
-**PrimaryContactName** | Pointer to **string** | The name of the contact person for this subaccount | [optional] 
-**PrimaryContactPhone** | Pointer to **string** | A phone number to call for this subaccount | [optional] 
-**Metadata** | Pointer to **string** | Stringified JSON object of custom data | [optional] 
+| Name                    | Type                  | Description                                                                                    | Notes      |
+| ----------------------- | --------------------- | ---------------------------------------------------------------------------------------------- | ---------- |
+| **BusinessName**        | **string**            | Name of business for subaccount                                                                |
+| **SettlementBank**      | **string**            | Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint. |
+| **AccountNumber**       | **string**            | Bank account number                                                                            |
+| **PercentageCharge**    | **float32**           | Customer&#39;s phone number                                                                    |
+| **Description**         | Pointer to **string** | A description for this subaccount                                                              | [optional] |
+| **PrimaryContactEmail** | Pointer to **string** | A contact email for the subaccount                                                             | [optional] |
+| **PrimaryContactName**  | Pointer to **string** | The name of the contact person for this subaccount                                             | [optional] |
+| **PrimaryContactPhone** | Pointer to **string** | A phone number to call for this subaccount                                                     | [optional] |
+| **Metadata**            | Pointer to **string** | Stringified JSON object of custom data                                                         | [optional] |
 
 ## Methods
 
@@ -52,7 +52,6 @@ and a boolean to check if the value has been set.
 
 SetBusinessName sets BusinessName field to given value.
 
-
 ### GetSettlementBank
 
 `func (o *SubaccountCreate) GetSettlementBank() string`
@@ -71,7 +70,6 @@ and a boolean to check if the value has been set.
 `func (o *SubaccountCreate) SetSettlementBank(v string)`
 
 SetSettlementBank sets SettlementBank field to given value.
-
 
 ### GetAccountNumber
 
@@ -92,7 +90,6 @@ and a boolean to check if the value has been set.
 
 SetAccountNumber sets AccountNumber field to given value.
 
-
 ### GetPercentageCharge
 
 `func (o *SubaccountCreate) GetPercentageCharge() float32`
@@ -111,7 +108,6 @@ and a boolean to check if the value has been set.
 `func (o *SubaccountCreate) SetPercentageCharge(v float32)`
 
 SetPercentageCharge sets PercentageCharge field to given value.
-
 
 ### GetDescription
 
@@ -238,7 +234,4 @@ SetMetadata sets Metadata field to given value.
 
 HasMetadata returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

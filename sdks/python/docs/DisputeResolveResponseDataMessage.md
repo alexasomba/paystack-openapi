@@ -1,15 +1,15 @@
 # DisputeResolveResponseDataMessage
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**dispute** | **int** |  | 
-**sender** | **str** |  | 
-**body** | **str** |  | 
-**id** | **int** |  | 
-**created_at** | **str** |  | 
-**updated_at** | **str** |  | 
+
+| Name           | Type    | Description | Notes |
+| -------------- | ------- | ----------- | ----- |
+| **dispute**    | **int** |             |
+| **sender**     | **str** |             |
+| **body**       | **str** |             |
+| **id**         | **int** |             |
+| **created_at** | **str** |             |
+| **updated_at** | **str** |             |
 
 ## Example
 
@@ -28,6 +28,5 @@ dispute_resolve_response_data_message_dict = dispute_resolve_response_data_messa
 # create an instance of DisputeResolveResponseDataMessage from a dict
 dispute_resolve_response_data_message_form_dict = dispute_resolve_response_data_message.from_dict(dispute_resolve_response_data_message_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

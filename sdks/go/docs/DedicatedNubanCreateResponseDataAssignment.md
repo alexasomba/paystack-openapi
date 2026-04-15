@@ -2,15 +2,15 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Integration** | **int32** |  | 
-**AssigneeId** | **int32** |  | 
-**AssigneeType** | **string** |  | 
-**Expired** | **bool** |  | 
-**AccountType** | **string** |  | 
-**AssignedAt** | **string** |  | 
-**ExpiredAt** | **interface{}** |  | 
+| Name             | Type            | Description | Notes |
+| ---------------- | --------------- | ----------- | ----- |
+| **Integration**  | **int32**       |             |
+| **AssigneeId**   | **int32**       |             |
+| **AssigneeType** | **string**      |             |
+| **Expired**      | **bool**        |             |
+| **AccountType**  | **string**      |             |
+| **AssignedAt**   | **string**      |             |
+| **ExpiredAt**    | **interface{}** |             |
 
 ## Methods
 
@@ -50,7 +50,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetAssigneeId
 
 `func (o *DedicatedNubanCreateResponseDataAssignment) GetAssigneeId() int32`
@@ -69,7 +68,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedNubanCreateResponseDataAssignment) SetAssigneeId(v int32)`
 
 SetAssigneeId sets AssigneeId field to given value.
-
 
 ### GetAssigneeType
 
@@ -90,7 +88,6 @@ and a boolean to check if the value has been set.
 
 SetAssigneeType sets AssigneeType field to given value.
 
-
 ### GetExpired
 
 `func (o *DedicatedNubanCreateResponseDataAssignment) GetExpired() bool`
@@ -109,7 +106,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedNubanCreateResponseDataAssignment) SetExpired(v bool)`
 
 SetExpired sets Expired field to given value.
-
 
 ### GetAccountType
 
@@ -130,7 +126,6 @@ and a boolean to check if the value has been set.
 
 SetAccountType sets AccountType field to given value.
 
-
 ### GetAssignedAt
 
 `func (o *DedicatedNubanCreateResponseDataAssignment) GetAssignedAt() string`
@@ -149,7 +144,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedNubanCreateResponseDataAssignment) SetAssignedAt(v string)`
 
 SetAssignedAt sets AssignedAt field to given value.
-
 
 ### GetExpiredAt
 
@@ -170,18 +164,16 @@ and a boolean to check if the value has been set.
 
 SetExpiredAt sets ExpiredAt field to given value.
 
-
 ### SetExpiredAtNil
 
 `func (o *DedicatedNubanCreateResponseDataAssignment) SetExpiredAtNil(b bool)`
 
- SetExpiredAtNil sets the value for ExpiredAt to be an explicit nil
+SetExpiredAtNil sets the value for ExpiredAt to be an explicit nil
 
 ### UnsetExpiredAt
+
 `func (o *DedicatedNubanCreateResponseDataAssignment) UnsetExpiredAt()`
 
 UnsetExpiredAt ensures that no value is present for ExpiredAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

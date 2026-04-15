@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Currency** | **string** | The currency of the customer&#39;s bank account. It should be the same as the currency the payment was made | 
-**AccountNumber** | **string** | The customer&#39;s account number | 
-**BankId** | **string** | The ID representing the customer&#39;s bank. You can get the list of bank IDs by calling the List Banks endpoint. | 
+| Name              | Type       | Description                                                                                                       | Notes |
+| ----------------- | ---------- | ----------------------------------------------------------------------------------------------------------------- | ----- |
+| **Currency**      | **string** | The currency of the customer&#39;s bank account. It should be the same as the currency the payment was made       |
+| **AccountNumber** | **string** | The customer&#39;s account number                                                                                 |
+| **BankId**        | **string** | The ID representing the customer&#39;s bank. You can get the list of bank IDs by calling the List Banks endpoint. |
 
 ## Methods
 
@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetAccountNumber
 
 `func (o *RefundRetryAccountDetails) GetAccountNumber() string`
@@ -65,7 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundRetryAccountDetails) SetAccountNumber(v string)`
 
 SetAccountNumber sets AccountNumber field to given value.
-
 
 ### GetBankId
 
@@ -86,8 +84,4 @@ and a boolean to check if the value has been set.
 
 SetBankId sets BankId field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

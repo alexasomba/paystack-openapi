@@ -9,6 +9,15 @@ properties:
     properties:
       name:
         type: string
+      description:
+        type: string
+        nullable: true
+      amount:
+        type: integer
+        nullable: true
+      split_code:
+        type: string
+        nullable: true
       integration:
         type: integer
       domain:
@@ -35,6 +44,7 @@ properties:
         type: string
     required:
       - name
+      - amount
       - integration
       - domain
       - slug

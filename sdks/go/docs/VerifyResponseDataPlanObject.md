@@ -2,17 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | Pointer to **int32** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**PlanCode** | Pointer to **string** |  | [optional] 
-**Description** | Pointer to **interface{}** |  | [optional] 
-**Amount** | Pointer to **int32** |  | [optional] 
-**Interval** | Pointer to **string** |  | [optional] 
-**SendInvoices** | Pointer to **bool** |  | [optional] 
-**SendSms** | Pointer to **bool** |  | [optional] 
-**Currency** | Pointer to **string** |  | [optional] 
+| Name             | Type                       | Description | Notes      |
+| ---------------- | -------------------------- | ----------- | ---------- |
+| **Id**           | Pointer to **int32**       |             | [optional] |
+| **Name**         | Pointer to **string**      |             | [optional] |
+| **PlanCode**     | Pointer to **string**      |             | [optional] |
+| **Description**  | Pointer to **interface{}** |             | [optional] |
+| **Amount**       | Pointer to **int32**       |             | [optional] |
+| **Interval**     | Pointer to **string**      |             | [optional] |
+| **SendInvoices** | Pointer to **bool**        |             | [optional] |
+| **SendSms**      | Pointer to **bool**        |             | [optional] |
+| **Currency**     | Pointer to **string**      |             | [optional] |
 
 ## Methods
 
@@ -137,12 +137,14 @@ HasDescription returns a boolean if a field has been set.
 
 `func (o *VerifyResponseDataPlanObject) SetDescriptionNil(b bool)`
 
- SetDescriptionNil sets the value for Description to be an explicit nil
+SetDescriptionNil sets the value for Description to be an explicit nil
 
 ### UnsetDescription
+
 `func (o *VerifyResponseDataPlanObject) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
+
 ### GetAmount
 
 `func (o *VerifyResponseDataPlanObject) GetAmount() int32`
@@ -268,7 +270,4 @@ SetCurrency sets Currency field to given value.
 
 HasCurrency returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

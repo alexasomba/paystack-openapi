@@ -1,10 +1,10 @@
 # BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**calling_code** | **str** |  | [optional] 
+
+| Name             | Type    | Description | Notes      |
+| ---------------- | ------- | ----------- | ---------- |
+| **calling_code** | **str** |             | [optional] |
 
 ## Example
 
@@ -23,6 +23,5 @@ bulk_charge_fetch_bulk_batch_charges_response_array_customer_metadata_dict = bul
 # create an instance of BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata from a dict
 bulk_charge_fetch_bulk_batch_charges_response_array_customer_metadata_form_dict = bulk_charge_fetch_bulk_batch_charges_response_array_customer_metadata.from_dict(bulk_charge_fetch_bulk_batch_charges_response_array_customer_metadata_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

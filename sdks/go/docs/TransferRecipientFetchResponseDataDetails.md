@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AccountNumber** | **NullableString** |  | 
-**AccountName** | **NullableString** |  | 
-**BankCode** | **string** |  | 
-**BankName** | **string** |  | 
+| Name              | Type               | Description | Notes |
+| ----------------- | ------------------ | ----------- | ----- |
+| **AccountNumber** | **NullableString** |             |
+| **AccountName**   | **NullableString** |             |
+| **BankCode**      | **string**         |             |
+| **BankName**      | **string**         |             |
 
 ## Methods
 
@@ -47,17 +47,18 @@ and a boolean to check if the value has been set.
 
 SetAccountNumber sets AccountNumber field to given value.
 
-
 ### SetAccountNumberNil
 
 `func (o *TransferRecipientFetchResponseDataDetails) SetAccountNumberNil(b bool)`
 
- SetAccountNumberNil sets the value for AccountNumber to be an explicit nil
+SetAccountNumberNil sets the value for AccountNumber to be an explicit nil
 
 ### UnsetAccountNumber
+
 `func (o *TransferRecipientFetchResponseDataDetails) UnsetAccountNumber()`
 
 UnsetAccountNumber ensures that no value is present for AccountNumber, not even an explicit nil
+
 ### GetAccountName
 
 `func (o *TransferRecipientFetchResponseDataDetails) GetAccountName() string`
@@ -77,17 +78,18 @@ and a boolean to check if the value has been set.
 
 SetAccountName sets AccountName field to given value.
 
-
 ### SetAccountNameNil
 
 `func (o *TransferRecipientFetchResponseDataDetails) SetAccountNameNil(b bool)`
 
- SetAccountNameNil sets the value for AccountName to be an explicit nil
+SetAccountNameNil sets the value for AccountName to be an explicit nil
 
 ### UnsetAccountName
+
 `func (o *TransferRecipientFetchResponseDataDetails) UnsetAccountName()`
 
 UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
+
 ### GetBankCode
 
 `func (o *TransferRecipientFetchResponseDataDetails) GetBankCode() string`
@@ -106,7 +108,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferRecipientFetchResponseDataDetails) SetBankCode(v string)`
 
 SetBankCode sets BankCode field to given value.
-
 
 ### GetBankName
 
@@ -127,8 +128,4 @@ and a boolean to check if the value has been set.
 
 SetBankName sets BankName field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

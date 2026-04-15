@@ -1,11 +1,11 @@
 # VirtualTerminalCreateDestinationsInner
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**target** | **str** | The WhatsApp number to receive payment notifications | [optional] 
-**name** | **str** | The name of the associated WhatsApp number | [optional] 
+
+| Name       | Type    | Description                                          | Notes      |
+| ---------- | ------- | ---------------------------------------------------- | ---------- |
+| **target** | **str** | The WhatsApp number to receive payment notifications | [optional] |
+| **name**   | **str** | The name of the associated WhatsApp number           | [optional] |
 
 ## Example
 
@@ -24,6 +24,5 @@ virtual_terminal_create_destinations_inner_dict = virtual_terminal_create_destin
 # create an instance of VirtualTerminalCreateDestinationsInner from a dict
 virtual_terminal_create_destinations_inner_form_dict = virtual_terminal_create_destinations_inner.from_dict(virtual_terminal_create_destinations_inner_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -93,7 +93,7 @@ tags:
     description: |
       A collection of endpoints for managing invoices for the payment of goods
       and services
-    x-product-name: Payment Requests  
+    x-product-name: Payment Requests
   - name: Product
     description: |
       A collection of endpoints for creating and managing inventories
@@ -156,8 +156,8 @@ paths:
     $ref: paths/transaction_{id}_event.yaml
   /transaction/{id}/session:
     $ref: paths/transaction_{id}_session.yaml
-  /transaction/timeline/{id}:
-    $ref: paths/transaction_timeline_{id}.yaml
+  /transaction/timeline/{id_or_reference}:
+    $ref: paths/transaction_timeline_{id_or_reference}.yaml
   /transaction/totals:
     $ref: paths/transaction_totals.yaml
   /transaction/export:
@@ -178,9 +178,9 @@ paths:
     $ref: paths/charge_{reference}.yaml
   /bulkcharge:
     $ref: paths/bulkcharge.yaml
-  /bulkcharge/{code}:
+  /bulkcharge/{id_or_code}:
     $ref: paths/bulkcharge_{code}.yaml
-  /bulkcharge/{code}/charges:
+  /bulkcharge/{id_or_code}/charges:
     $ref: paths/bulkcharge_{code}_charges.yaml
   /bulkcharge/pause/{code}:
     $ref: paths/bulkcharge_pause_{code}.yaml
@@ -188,7 +188,7 @@ paths:
     $ref: paths/bulkcharge_resume_{code}.yaml
   /subaccount:
     $ref: paths/subaccount.yaml
-  /subaccount/{code}:
+  /subaccount/{id_or_code}:
     $ref: paths/subaccount_{code}.yaml
   /split:
     $ref: paths/split.yaml
@@ -226,14 +226,14 @@ paths:
     $ref: paths/virtual_terminal_{code}_split_code.yaml
   /customer:
     $ref: paths/customer.yaml
-  /customer/{code}:
+  /customer/{email_or_code}:
     $ref: paths/customer_{code}.yaml
   /customer/set_risk_action:
     $ref: paths/customer_set_risk_action.yaml
-  /customer/{code}/identification:
+  /customer/{customer_code}/identification:
     $ref: paths/customer_{code}_identification.yaml
   /customer/authorization/initialize:
-      $ref: paths/customer_authorization_initialize.yaml
+    $ref: paths/customer_authorization_initialize.yaml
   /customer/authorization/verify/{reference}:
     $ref: paths/customer_authorization_verify_{reference}.yaml
   /customer/authorization/deactivate:
@@ -264,12 +264,12 @@ paths:
     $ref: paths/apple-pay_domain.yaml
   /plan:
     $ref: paths/plan.yaml
-  /plan/{code}:
+  /plan/{id_or_code}:
     $ref: paths/plan_{code}.yaml
   /subscription:
     $ref: paths/subscription.yaml
-  /subscription/{code}:
-    $ref: paths/subscription_{code}.yaml
+  /subscription/{id_or_code}:
+    $ref: paths/subscription_{id_or_code}.yaml
   /subscription/disable:
     $ref: paths/subscription_disable.yaml
   /subscription/enable:
@@ -282,7 +282,7 @@ paths:
     $ref: paths/transferrecipient.yaml
   /transferrecipient/bulk:
     $ref: paths/transferrecipient_bulk.yaml
-  /transferrecipient/{code}:
+  /transferrecipient/{id_or_code}:
     $ref: paths/transferrecipient_{code}.yaml
   /transfer:
     $ref: paths/transfer.yaml
@@ -290,7 +290,7 @@ paths:
     $ref: paths/transfer_finalize_transfer.yaml
   /transfer/bulk:
     $ref: paths/transfer_bulk.yaml
-  /transfer/{code}:
+  /transfer/{id_or_code}:
     $ref: paths/transfer_{code}.yaml
   /transfer/verify/{reference}:
     $ref: paths/transfer_verify_{reference}.yaml
@@ -310,7 +310,7 @@ paths:
     $ref: paths/balance_ledger.yaml
   /paymentrequest:
     $ref: paths/paymentrequest.yaml
-  /paymentrequest/{id}:
+  /paymentrequest/{id_or_code}:
     $ref: paths/paymentrequest_{id}.yaml
   /paymentrequest/verify/{id}:
     $ref: paths/paymentrequest_verify_{id}.yaml
@@ -350,7 +350,7 @@ paths:
     $ref: paths/order_{code}_validate.yaml
   /page:
     $ref: paths/page.yaml
-  /page/{id}:
+  /page/{id_or_slug}:
     $ref: paths/page_{id}.yaml
   /page/check_slug_availability/{slug}:
     $ref: paths/page_check_slug_availability_{slug}.yaml

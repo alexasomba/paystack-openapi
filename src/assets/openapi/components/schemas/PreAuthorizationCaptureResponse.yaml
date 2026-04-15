@@ -27,7 +27,11 @@ properties:
           domain:
             type: string
           metadata:
-            type: integer
+            anyOf:
+              - type: string
+              - type: object
+                additionalProperties: true
+            nullable: true
           gateway_response:
             type: string
           message:
@@ -98,10 +102,12 @@ properties:
                 type: string
               metadata:
                 type: object
+                nullable: true
               risk_action:
                 type: string
               international_format_phone:
                 type: string
+                nullable: true
             required:
               - id
               - first_name
@@ -111,7 +117,6 @@ properties:
               - phone
               - metadata
               - risk_action
-              - international_format_phone
           id:
             type: integer
           split:

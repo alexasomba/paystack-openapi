@@ -1,18 +1,18 @@
 # BulkChargeListResponseArray
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**integration** | **int** |  | 
-**domain** | **str** |  | 
-**batch_code** | **str** |  | 
-**status** | **str** |  | 
-**easy_cron_id** | **object** |  | 
-**reference** | **str** |  | 
-**id** | **int** |  | 
-**created_at** | **str** |  | 
-**updated_at** | **str** |  | 
+
+| Name             | Type       | Description | Notes |
+| ---------------- | ---------- | ----------- | ----- |
+| **integration**  | **int**    |             |
+| **domain**       | **str**    |             |
+| **batch_code**   | **str**    |             |
+| **status**       | **str**    |             |
+| **easy_cron_id** | **object** |             |
+| **reference**    | **str**    |             |
+| **id**           | **int**    |             |
+| **created_at**   | **str**    |             |
+| **updated_at**   | **str**    |             |
 
 ## Example
 
@@ -31,6 +31,5 @@ bulk_charge_list_response_array_dict = bulk_charge_list_response_array_instance.
 # create an instance of BulkChargeListResponseArray from a dict
 bulk_charge_list_response_array_form_dict = bulk_charge_list_response_array.from_dict(bulk_charge_list_response_array_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

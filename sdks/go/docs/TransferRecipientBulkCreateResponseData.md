@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Success** | **[]interface{}** |  | 
-**Errors** | [**[]TransferRecipientErrorsArray**](TransferRecipientErrorsArray.md) |  | 
+| Name        | Type                                                                  | Description | Notes |
+| ----------- | --------------------------------------------------------------------- | ----------- | ----- |
+| **Success** | **[]interface{}**                                                     |             |
+| **Errors**  | [**[]TransferRecipientErrorsArray**](TransferRecipientErrorsArray.md) |             |
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetSuccess sets Success field to given value.
 
-
 ### GetErrors
 
 `func (o *TransferRecipientBulkCreateResponseData) GetErrors() []TransferRecipientErrorsArray`
@@ -65,8 +64,4 @@ and a boolean to check if the value has been set.
 
 SetErrors sets Errors field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

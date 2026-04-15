@@ -2,20 +2,20 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Customer** | **string** | Customer id or code | 
-**Amount** | **int32** | Payment request amount. Only useful if line items and tax values are ignored.  The endpoint will throw a friendly warning if neither is available. | 
-**Currency** | Pointer to **string** | Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN | [optional] 
-**DueDate** | Pointer to **time.Time** | ISO 8601 representation of request due date | [optional] 
-**Description** | Pointer to **string** | A short description of the payment request | [optional] 
-**LineItems** | Pointer to **[]map[string]interface{}** | Array of line items | [optional] 
-**Tax** | Pointer to **[]map[string]interface{}** | Array of taxes | [optional] 
-**SendNotification** | Pointer to **bool** | Indicates whether Paystack sends an email notification to customer. Defaults to true | [optional] 
-**Draft** | Pointer to **bool** | Indicate if request should be saved as draft. Defaults to false and overrides send_notification | [optional] 
-**HasInvoice** | Pointer to **bool** | Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided) even if there are no line_items or tax passed | [optional] 
-**InvoiceNumber** | Pointer to **int32** | Numeric value of invoice. Invoice will start from 1 and auto increment from there.  This field is to help override whatever value Paystack decides. Auto increment for  subsequent invoices continue from this point. | [optional] 
-**SplitCode** | Pointer to **string** | The split code of the transaction split. | [optional] 
+| Name                 | Type                                    | Description                                                                                                                                                                                                         | Notes      |
+| -------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **Customer**         | **string**                              | Customer id or code                                                                                                                                                                                                 |
+| **Amount**           | **int32**                               | Payment request amount. Only useful if line items and tax values are ignored. The endpoint will throw a friendly warning if neither is available.                                                                   |
+| **Currency**         | Pointer to **string**                   | Specify the currency of the invoice. Allowed values are NGN, GHS, ZAR and USD. Defaults to NGN                                                                                                                      | [optional] |
+| **DueDate**          | Pointer to **time.Time**                | ISO 8601 representation of request due date                                                                                                                                                                         | [optional] |
+| **Description**      | Pointer to **string**                   | A short description of the payment request                                                                                                                                                                          | [optional] |
+| **LineItems**        | Pointer to **[]map[string]interface{}** | Array of line items                                                                                                                                                                                                 | [optional] |
+| **Tax**              | Pointer to **[]map[string]interface{}** | Array of taxes                                                                                                                                                                                                      | [optional] |
+| **SendNotification** | Pointer to **bool**                     | Indicates whether Paystack sends an email notification to customer. Defaults to true                                                                                                                                | [optional] |
+| **Draft**            | Pointer to **bool**                     | Indicate if request should be saved as draft. Defaults to false and overrides send_notification                                                                                                                     | [optional] |
+| **HasInvoice**       | Pointer to **bool**                     | Set to true to create a draft invoice (adds an auto incrementing invoice number if none is provided) even if there are no line_items or tax passed                                                                  | [optional] |
+| **InvoiceNumber**    | Pointer to **int32**                    | Numeric value of invoice. Invoice will start from 1 and auto increment from there. This field is to help override whatever value Paystack decides. Auto increment for subsequent invoices continue from this point. | [optional] |
+| **SplitCode**        | Pointer to **string**                   | The split code of the transaction split.                                                                                                                                                                            | [optional] |
 
 ## Methods
 
@@ -55,7 +55,6 @@ and a boolean to check if the value has been set.
 
 SetCustomer sets Customer field to given value.
 
-
 ### GetAmount
 
 `func (o *PaymentRequestCreate) GetAmount() int32`
@@ -74,7 +73,6 @@ and a boolean to check if the value has been set.
 `func (o *PaymentRequestCreate) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetCurrency
 
@@ -326,7 +324,4 @@ SetSplitCode sets SplitCode field to given value.
 
 HasSplitCode returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

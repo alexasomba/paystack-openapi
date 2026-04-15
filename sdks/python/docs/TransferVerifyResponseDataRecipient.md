@@ -1,24 +1,24 @@
 # TransferVerifyResponseDataRecipient
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**active** | **bool** |  | 
-**created_at** | **str** |  | 
-**currency** | **str** |  | 
-**description** | **str** |  | 
-**domain** | **str** |  | 
-**email** | **str** |  | 
-**id** | **int** |  | 
-**integration** | **int** |  | 
-**metadata** | **object** |  | [optional] 
-**name** | **str** |  | 
-**recipient_code** | **str** |  | 
-**type** | **str** |  | 
-**updated_at** | **str** |  | 
-**is_deleted** | **bool** |  | 
-**details** | [**TransferVerifyResponseDataRecipientDetails**](TransferVerifyResponseDataRecipientDetails.md) |  | 
+
+| Name               | Type                                                                                            | Description | Notes      |
+| ------------------ | ----------------------------------------------------------------------------------------------- | ----------- | ---------- |
+| **active**         | **bool**                                                                                        |             |
+| **created_at**     | **str**                                                                                         |             |
+| **currency**       | **str**                                                                                         |             |
+| **description**    | **str**                                                                                         |             |
+| **domain**         | **str**                                                                                         |             |
+| **email**          | **str**                                                                                         |             |
+| **id**             | **int**                                                                                         |             |
+| **integration**    | **int**                                                                                         |             |
+| **metadata**       | **object**                                                                                      |             | [optional] |
+| **name**           | **str**                                                                                         |             |
+| **recipient_code** | **str**                                                                                         |             |
+| **type**           | **str**                                                                                         |             |
+| **updated_at**     | **str**                                                                                         |             |
+| **is_deleted**     | **bool**                                                                                        |             |
+| **details**        | [**TransferVerifyResponseDataRecipientDetails**](TransferVerifyResponseDataRecipientDetails.md) |             |
 
 ## Example
 
@@ -37,6 +37,5 @@ transfer_verify_response_data_recipient_dict = transfer_verify_response_data_rec
 # create an instance of TransferVerifyResponseDataRecipient from a dict
 transfer_verify_response_data_recipient_form_dict = transfer_verify_response_data_recipient.from_dict(transfer_verify_response_data_recipient_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

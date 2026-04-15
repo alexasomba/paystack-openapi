@@ -1,12 +1,12 @@
 # TransactionInitializeResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**TransactionInitializeResponseData**](TransactionInitializeResponseData.md) |  | 
+
+| Name        | Type                                                                          | Description | Notes |
+| ----------- | ----------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                      |             |
+| **message** | **str**                                                                       |             |
+| **data**    | [**TransactionInitializeResponseData**](TransactionInitializeResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ transaction_initialize_response_dict = transaction_initialize_response_instance.
 # create an instance of TransactionInitializeResponse from a dict
 transaction_initialize_response_form_dict = transaction_initialize_response.from_dict(transaction_initialize_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,19 +2,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**Name** | **string** |  | 
-**Slug** | **string** |  | 
-**OrdersCount** | **int32** |  | 
-**Status** | **string** |  | 
-**Revenue** | **interface{}** |  | 
-**Currency** | **string** |  | 
-**Products** | **[]interface{}** |  | 
-**Contacts** | **[]interface{}** |  | 
-**SocialMedia** | **[]interface{}** |  | 
-**ShippingFees** | **[]interface{}** |  | 
+| Name             | Type              | Description | Notes |
+| ---------------- | ----------------- | ----------- | ----- |
+| **Id**           | **int32**         |             |
+| **Name**         | **string**        |             |
+| **Slug**         | **string**        |             |
+| **OrdersCount**  | **int32**         |             |
+| **Status**       | **string**        |             |
+| **Revenue**      | **interface{}**   |             |
+| **Currency**     | **string**        |             |
+| **Products**     | **[]interface{}** |             |
+| **Contacts**     | **[]interface{}** |             |
+| **SocialMedia**  | **[]interface{}** |             |
+| **ShippingFees** | **[]interface{}** |             |
 
 ## Methods
 
@@ -54,7 +54,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetName
 
 `func (o *StorefrontListResponseArray) GetName() string`
@@ -73,7 +72,6 @@ and a boolean to check if the value has been set.
 `func (o *StorefrontListResponseArray) SetName(v string)`
 
 SetName sets Name field to given value.
-
 
 ### GetSlug
 
@@ -94,7 +92,6 @@ and a boolean to check if the value has been set.
 
 SetSlug sets Slug field to given value.
 
-
 ### GetOrdersCount
 
 `func (o *StorefrontListResponseArray) GetOrdersCount() int32`
@@ -113,7 +110,6 @@ and a boolean to check if the value has been set.
 `func (o *StorefrontListResponseArray) SetOrdersCount(v int32)`
 
 SetOrdersCount sets OrdersCount field to given value.
-
 
 ### GetStatus
 
@@ -134,7 +130,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-
 ### GetRevenue
 
 `func (o *StorefrontListResponseArray) GetRevenue() interface{}`
@@ -154,17 +149,18 @@ and a boolean to check if the value has been set.
 
 SetRevenue sets Revenue field to given value.
 
-
 ### SetRevenueNil
 
 `func (o *StorefrontListResponseArray) SetRevenueNil(b bool)`
 
- SetRevenueNil sets the value for Revenue to be an explicit nil
+SetRevenueNil sets the value for Revenue to be an explicit nil
 
 ### UnsetRevenue
+
 `func (o *StorefrontListResponseArray) UnsetRevenue()`
 
 UnsetRevenue ensures that no value is present for Revenue, not even an explicit nil
+
 ### GetCurrency
 
 `func (o *StorefrontListResponseArray) GetCurrency() string`
@@ -183,7 +179,6 @@ and a boolean to check if the value has been set.
 `func (o *StorefrontListResponseArray) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetProducts
 
@@ -204,7 +199,6 @@ and a boolean to check if the value has been set.
 
 SetProducts sets Products field to given value.
 
-
 ### GetContacts
 
 `func (o *StorefrontListResponseArray) GetContacts() []interface{}`
@@ -223,7 +217,6 @@ and a boolean to check if the value has been set.
 `func (o *StorefrontListResponseArray) SetContacts(v []interface{})`
 
 SetContacts sets Contacts field to given value.
-
 
 ### GetSocialMedia
 
@@ -244,7 +237,6 @@ and a boolean to check if the value has been set.
 
 SetSocialMedia sets SocialMedia field to given value.
 
-
 ### GetShippingFees
 
 `func (o *StorefrontListResponseArray) GetShippingFees() []interface{}`
@@ -264,8 +256,4 @@ and a boolean to check if the value has been set.
 
 SetShippingFees sets ShippingFees field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

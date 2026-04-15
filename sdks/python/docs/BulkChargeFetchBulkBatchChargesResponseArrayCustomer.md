@@ -1,18 +1,18 @@
 # BulkChargeFetchBulkBatchChargesResponseArrayCustomer
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **int** |  | 
-**first_name** | **str** |  | 
-**last_name** | **str** |  | 
-**email** | **str** |  | 
-**customer_code** | **str** |  | 
-**phone** | **str** |  | 
-**metadata** | [**BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata**](BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata.md) |  | 
-**risk_action** | **str** |  | 
-**international_format_phone** | **str** |  | 
+
+| Name                           | Type                                                                                                                                | Description | Notes |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **id**                         | **int**                                                                                                                             |             |
+| **first_name**                 | **str**                                                                                                                             |             |
+| **last_name**                  | **str**                                                                                                                             |             |
+| **email**                      | **str**                                                                                                                             |             |
+| **customer_code**              | **str**                                                                                                                             |             |
+| **phone**                      | **str**                                                                                                                             |             |
+| **metadata**                   | [**BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata**](BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata.md) |             |
+| **risk_action**                | **str**                                                                                                                             |             |
+| **international_format_phone** | **str**                                                                                                                             |             |
 
 ## Example
 
@@ -31,6 +31,5 @@ bulk_charge_fetch_bulk_batch_charges_response_array_customer_dict = bulk_charge_
 # create an instance of BulkChargeFetchBulkBatchChargesResponseArrayCustomer from a dict
 bulk_charge_fetch_bulk_batch_charges_response_array_customer_form_dict = bulk_charge_fetch_bulk_batch_charges_response_array_customer.from_dict(bulk_charge_fetch_bulk_batch_charges_response_array_customer_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

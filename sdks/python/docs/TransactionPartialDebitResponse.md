@@ -1,12 +1,12 @@
 # TransactionPartialDebitResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**TransactionPartialDebitResponseData**](TransactionPartialDebitResponseData.md) |  | 
+
+| Name        | Type                                                                              | Description | Notes |
+| ----------- | --------------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                          |             |
+| **message** | **str**                                                                           |             |
+| **data**    | [**TransactionPartialDebitResponseData**](TransactionPartialDebitResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ transaction_partial_debit_response_dict = transaction_partial_debit_response_ins
 # create an instance of TransactionPartialDebitResponse from a dict
 transaction_partial_debit_response_form_dict = transaction_partial_debit_response.from_dict(transaction_partial_debit_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

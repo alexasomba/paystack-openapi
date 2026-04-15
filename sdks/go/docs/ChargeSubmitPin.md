@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Pin** | **string** | Customer&#39;s PIN for the ongoing transaction | 
-**Reference** | **string** | Transaction reference that requires the PIN | 
+| Name          | Type       | Description                                    | Notes |
+| ------------- | ---------- | ---------------------------------------------- | ----- |
+| **Pin**       | **string** | Customer&#39;s PIN for the ongoing transaction |
+| **Reference** | **string** | Transaction reference that requires the PIN    |
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetPin sets Pin field to given value.
 
-
 ### GetReference
 
 `func (o *ChargeSubmitPin) GetReference() string`
@@ -65,8 +64,4 @@ and a boolean to check if the value has been set.
 
 SetReference sets Reference field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

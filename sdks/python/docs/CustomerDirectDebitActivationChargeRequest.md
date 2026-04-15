@@ -1,10 +1,10 @@
 # CustomerDirectDebitActivationChargeRequest
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**authorization_id** | **int** | The authorization ID gotten from the initiation response | 
+
+| Name                 | Type    | Description                                              | Notes |
+| -------------------- | ------- | -------------------------------------------------------- | ----- |
+| **authorization_id** | **int** | The authorization ID gotten from the initiation response |
 
 ## Example
 
@@ -23,6 +23,5 @@ customer_direct_debit_activation_charge_request_dict = customer_direct_debit_act
 # create an instance of CustomerDirectDebitActivationChargeRequest from a dict
 customer_direct_debit_activation_charge_request_form_dict = customer_direct_debit_activation_charge_request.from_dict(customer_direct_debit_activation_charge_request_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

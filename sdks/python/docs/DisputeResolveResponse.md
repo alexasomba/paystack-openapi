@@ -1,12 +1,12 @@
 # DisputeResolveResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**DisputeResolveResponseData**](DisputeResolveResponseData.md) |  | 
+
+| Name        | Type                                                            | Description | Notes |
+| ----------- | --------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                        |             |
+| **message** | **str**                                                         |             |
+| **data**    | [**DisputeResolveResponseData**](DisputeResolveResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ dispute_resolve_response_dict = dispute_resolve_response_instance.to_dict()
 # create an instance of DisputeResolveResponse from a dict
 dispute_resolve_response_form_dict = dispute_resolve_response.from_dict(dispute_resolve_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -1,12 +1,12 @@
 # CustomerCreateResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**CustomerCreateResponseData**](CustomerCreateResponseData.md) |  | 
+
+| Name        | Type                                                            | Description | Notes |
+| ----------- | --------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                        |             |
+| **message** | **str**                                                         |             |
+| **data**    | [**CustomerCreateResponseData**](CustomerCreateResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ customer_create_response_dict = customer_create_response_instance.to_dict()
 # create an instance of CustomerCreateResponse from a dict
 customer_create_response_form_dict = customer_create_response.from_dict(customer_create_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

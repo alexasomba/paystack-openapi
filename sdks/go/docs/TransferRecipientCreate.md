@@ -2,16 +2,16 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Type** | **string** | Recipient Type | 
-**Name** | **string** | The recipient&#39;s name according to their account registration. | 
-**AccountNumber** | **string** | Recipient&#39;s bank account number | 
-**BankCode** | **string** | Recipient&#39;s bank code. You can get the list of Bank Codes by calling the List Banks endpoint | 
-**Description** | Pointer to **string** | A description for this recipient | [optional] 
-**Currency** | Pointer to **string** | Currency for the account receiving the transfer | [optional] 
-**AuthorizationCode** | Pointer to **string** | An authorization code from a previous transaction | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | JSON object of custom data | [optional] 
+| Name                  | Type                                  | Description                                                                                      | Notes      |
+| --------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------ | ---------- |
+| **Type**              | **string**                            | Recipient Type                                                                                   |
+| **Name**              | **string**                            | The recipient&#39;s name according to their account registration.                                |
+| **AccountNumber**     | **string**                            | Recipient&#39;s bank account number                                                              |
+| **BankCode**          | **string**                            | Recipient&#39;s bank code. You can get the list of Bank Codes by calling the List Banks endpoint |
+| **Description**       | Pointer to **string**                 | A description for this recipient                                                                 | [optional] |
+| **Currency**          | Pointer to **string**                 | Currency for the account receiving the transfer                                                  | [optional] |
+| **AuthorizationCode** | Pointer to **string**                 | An authorization code from a previous transaction                                                | [optional] |
+| **Metadata**          | Pointer to **map[string]interface{}** | JSON object of custom data                                                                       | [optional] |
 
 ## Methods
 
@@ -51,7 +51,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-
 ### GetName
 
 `func (o *TransferRecipientCreate) GetName() string`
@@ -70,7 +69,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferRecipientCreate) SetName(v string)`
 
 SetName sets Name field to given value.
-
 
 ### GetAccountNumber
 
@@ -91,7 +89,6 @@ and a boolean to check if the value has been set.
 
 SetAccountNumber sets AccountNumber field to given value.
 
-
 ### GetBankCode
 
 `func (o *TransferRecipientCreate) GetBankCode() string`
@@ -110,7 +107,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferRecipientCreate) SetBankCode(v string)`
 
 SetBankCode sets BankCode field to given value.
-
 
 ### GetDescription
 
@@ -212,7 +208,4 @@ SetMetadata sets Metadata field to given value.
 
 HasMetadata returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

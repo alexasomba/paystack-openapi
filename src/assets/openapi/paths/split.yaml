@@ -13,13 +13,13 @@ post:
         schema:
           $ref: ../components/schemas/SplitCreate.yaml
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/SplitCreateResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error
@@ -46,38 +46,43 @@ get:
       in: query
       schema:
         type: boolean
+    - name: sort_by
+      description: Sort by name, defaults to createdAt date
+      in: query
+      schema:
+        type: string
     - in: query
-      name: per_page
+      name: perPage
       schema:
         type: integer
-      description: The number of records to fetch per request
+      description: Number of splits per page. If not specified, we use a default value of 50.
     - in: query
       name: page
       schema:
         type: integer
-      description: The offset to retrieve data from
+      description: Page number to view. If not specified, we use a default value of 1.
     - in: query
       name: from
-      description: The start date
+      description: A timestamp from which to start listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21
       schema:
         type: string
         format: date-time
     - in: query
       name: to
-      description: The end date
+      description: A timestamp at which to stop listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21
       schema:
         type: string
         format: date-time
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/SplitListResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

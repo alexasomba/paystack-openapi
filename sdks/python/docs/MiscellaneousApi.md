@@ -2,14 +2,14 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**miscellaneous_avs**](MiscellaneousApi.md#miscellaneous_avs) | **GET** /address_verification/states | List States (AVS)
-[**miscellaneous_list_countries**](MiscellaneousApi.md#miscellaneous_list_countries) | **GET** /country | List Countries
-[**miscellaneous_resolve_card_bin**](MiscellaneousApi.md#miscellaneous_resolve_card_bin) | **GET** /decision/bin/{bin} | Resolve Card BIN
-
+| Method                                                                                   | HTTP request                         | Description       |
+| ---------------------------------------------------------------------------------------- | ------------------------------------ | ----------------- |
+| [**miscellaneous_avs**](MiscellaneousApi.md#miscellaneous_avs)                           | **GET** /address_verification/states | List States (AVS) |
+| [**miscellaneous_list_countries**](MiscellaneousApi.md#miscellaneous_list_countries)     | **GET** /country                     | List Countries    |
+| [**miscellaneous_resolve_card_bin**](MiscellaneousApi.md#miscellaneous_resolve_card_bin) | **GET** /decision/bin/{bin}          | Resolve Card BIN  |
 
 # **miscellaneous_avs**
+
 > MiscellaneousListStatesResponse miscellaneous_avs(country=country)
 
 List States (AVS)
@@ -18,7 +18,8 @@ Get a list of states for a country for address verification
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -58,13 +59,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling MiscellaneousApi->miscellaneous_avs: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **country** | **str**| The country code of the states to list. It is gotten after the charge request | [optional] 
+| Name        | Type    | Description                                                                   | Notes      |
+| ----------- | ------- | ----------------------------------------------------------------------------- | ---------- |
+| **country** | **str** | The country code of the states to list. It is gotten after the charge request | [optional] |
 
 ### Return type
 
@@ -76,20 +75,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Miscellaneous List States response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                        | Response headers |
+| ----------- | ---------------------------------- | ---------------- |
+| **200**     | Miscellaneous List States response | -                |
+| **401**     | Unauthorized operation             | -                |
+| **404**     | Entity not found                   | -                |
+| **0**       | Server error                       | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **miscellaneous_list_countries**
+
 > MiscellaneousListCountriesResponse miscellaneous_list_countries()
 
 List Countries
@@ -98,7 +99,8 @@ List all supported countries on Paystack
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -137,9 +139,8 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling MiscellaneousApi->miscellaneous_list_countries: %s\n" % e)
 ```
 
-
-
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -152,20 +153,22 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Miscellaneous List Countries response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                           | Response headers |
+| ----------- | ------------------------------------- | ---------------- |
+| **200**     | Miscellaneous List Countries response | -                |
+| **401**     | Unauthorized operation                | -                |
+| **404**     | Entity not found                      | -                |
+| **0**       | Server error                          | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **miscellaneous_resolve_card_bin**
+
 > VerificationResolveCardBINResponse miscellaneous_resolve_card_bin(bin)
 
 Resolve Card BIN
@@ -174,7 +177,8 @@ Get the details of a card BIN
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -214,13 +218,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling MiscellaneousApi->miscellaneous_resolve_card_bin: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bin** | **int**| The card bank identification number | 
+| Name    | Type    | Description                         | Notes |
+| ------- | ------- | ----------------------------------- | ----- |
+| **bin** | **int** | The card bank identification number |
 
 ### Return type
 
@@ -232,16 +234,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Verification Resolve Card B I N response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                              | Response headers |
+| ----------- | ---------------------------------------- | ---------------- |
+| **200**     | Verification Resolve Card B I N response | -                |
+| **401**     | Unauthorized operation                   | -                |
+| **404**     | Entity not found                         | -                |
+| **0**       | Server error                             | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

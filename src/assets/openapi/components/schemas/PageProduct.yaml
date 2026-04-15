@@ -3,7 +3,7 @@ required:
   - products
 properties:
   products:
-    description: A list of IDs of products to add to a page. 
+    description: A list of IDs of products to add to a page.
     type: array
     items:
       type: integer

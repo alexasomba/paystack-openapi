@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Key** | **string** |  | 
-**Name** | **string** |  | 
-**Logo** | **string** |  | 
-**AllowedCurrencies** | **[]string** |  | 
+| Name                  | Type         | Description | Notes |
+| --------------------- | ------------ | ----------- | ----- |
+| **Key**               | **string**   |             |
+| **Name**              | **string**   |             |
+| **Logo**              | **string**   |             |
+| **AllowedCurrencies** | **[]string** |             |
 
 ## Methods
 
@@ -47,7 +47,6 @@ and a boolean to check if the value has been set.
 
 SetKey sets Key field to given value.
 
-
 ### GetName
 
 `func (o *PaymentRequestVerifyResponseDataIntegration) GetName() string`
@@ -66,7 +65,6 @@ and a boolean to check if the value has been set.
 `func (o *PaymentRequestVerifyResponseDataIntegration) SetName(v string)`
 
 SetName sets Name field to given value.
-
 
 ### GetLogo
 
@@ -87,7 +85,6 @@ and a boolean to check if the value has been set.
 
 SetLogo sets Logo field to given value.
 
-
 ### GetAllowedCurrencies
 
 `func (o *PaymentRequestVerifyResponseDataIntegration) GetAllowedCurrencies() []string`
@@ -107,8 +104,4 @@ and a boolean to check if the value has been set.
 
 SetAllowedCurrencies sets AllowedCurrencies field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

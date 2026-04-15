@@ -1,11 +1,11 @@
 # CustomerAuthorizationVerifyResponseCustomer
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**code** | **str** |  | 
-**email** | **str** |  | 
+
+| Name      | Type    | Description | Notes |
+| --------- | ------- | ----------- | ----- |
+| **code**  | **str** |             |
+| **email** | **str** |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ customer_authorization_verify_response_customer_dict = customer_authorization_ve
 # create an instance of CustomerAuthorizationVerifyResponseCustomer from a dict
 customer_authorization_verify_response_customer_form_dict = customer_authorization_verify_response_customer.from_dict(customer_authorization_verify_response_customer_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

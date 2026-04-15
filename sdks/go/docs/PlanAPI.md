@@ -2,22 +2,18 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**PlanCreate**](PlanAPI.md#PlanCreate) | **Post** /plan | Create Plan
-[**PlanFetch**](PlanAPI.md#PlanFetch) | **Get** /plan/{code} | Fetch Plan
-[**PlanList**](PlanAPI.md#PlanList) | **Get** /plan | List Plans
-[**PlanUpdate**](PlanAPI.md#PlanUpdate) | **Put** /plan/{code} | Update Plan
-
-
+| Method                                  | HTTP request         | Description |
+| --------------------------------------- | -------------------- | ----------- |
+| [**PlanCreate**](PlanAPI.md#PlanCreate) | **Post** /plan       | Create Plan |
+| [**PlanFetch**](PlanAPI.md#PlanFetch)   | **Get** /plan/{code} | Fetch Plan  |
+| [**PlanList**](PlanAPI.md#PlanList)     | **Get** /plan        | List Plans  |
+| [**PlanUpdate**](PlanAPI.md#PlanUpdate) | **Put** /plan/{code} | Update Plan |
 
 ## PlanCreate
 
 > PlanCreateResponse PlanCreate(ctx).PlanCreate(planCreate).Execute()
 
 Create Plan
-
-
 
 ### Example
 
@@ -48,16 +44,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPlanCreateRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **planCreate** | [**PlanCreate**](PlanCreate.md) |  | 
+| Name           | Type                            | Description | Notes |
+| -------------- | ------------------------------- | ----------- | ----- |
+| **planCreate** | [**PlanCreate**](PlanCreate.md) |             |
 
 ### Return type
 
@@ -76,14 +69,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## PlanFetch
 
 > PlanFetchResponse PlanFetch(ctx, code).Execute()
 
 Fetch Plan
-
-
 
 ### Example
 
@@ -114,20 +104,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | The plan code you want to fetch | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | The plan code you want to fetch                                             |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPlanFetchRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -146,14 +133,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## PlanList
 
 > PlanListResponse PlanList(ctx).PerPage(perPage).Page(page).Interval(interval).Amount(amount).From(from).To(to).Execute()
 
 List Plans
-
-
 
 ### Example
 
@@ -190,21 +174,18 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPlanListRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **perPage** | **int32** | Number of records to fetch per page | 
- **page** | **int32** | The section to retrieve | 
- **interval** | **string** | Specify interval of the plan | 
- **amount** | **int32** | The amount on the plans to retrieve | 
- **from** | **time.Time** | The start date | 
- **to** | **time.Time** | The end date | 
+| Name         | Type          | Description                         | Notes |
+| ------------ | ------------- | ----------------------------------- | ----- |
+| **perPage**  | **int32**     | Number of records to fetch per page |
+| **page**     | **int32**     | The section to retrieve             |
+| **interval** | **string**    | Specify interval of the plan        |
+| **amount**   | **int32**     | The amount on the plans to retrieve |
+| **from**     | **time.Time** | The start date                      |
+| **to**       | **time.Time** | The end date                        |
 
 ### Return type
 
@@ -223,14 +204,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## PlanUpdate
 
 > PlanUpdateResponse PlanUpdate(ctx, code).PlanUpdate(planUpdate).Execute()
 
 Update Plan
-
-
 
 ### Example
 
@@ -262,21 +240,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | The plan code you want to fetch | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | The plan code you want to fetch                                             |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPlanUpdateRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **planUpdate** | [**PlanUpdate**](PlanUpdate.md) |  | 
+**planUpdate** | [**PlanUpdate**](PlanUpdate.md) | |
 
 ### Return type
 
@@ -294,4 +270,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

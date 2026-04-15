@@ -1,10 +1,10 @@
 # ChargeCreateResponseDataMetadata
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**custom_fields** | [**List[MetadataCustomFieldsArray]**](MetadataCustomFieldsArray.md) |  | 
+
+| Name              | Type                                                                | Description | Notes |
+| ----------------- | ------------------------------------------------------------------- | ----------- | ----- |
+| **custom_fields** | [**List[MetadataCustomFieldsArray]**](MetadataCustomFieldsArray.md) |             |
 
 ## Example
 
@@ -23,6 +23,5 @@ charge_create_response_data_metadata_dict = charge_create_response_data_metadata
 # create an instance of ChargeCreateResponseDataMetadata from a dict
 charge_create_response_data_metadata_form_dict = charge_create_response_data_metadata.from_dict(charge_create_response_data_metadata_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,25 +2,21 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**ChargeCheck**](ChargeAPI.md#ChargeCheck) | **Get** /charge/{reference} | Check pending charge
-[**ChargeCreate**](ChargeAPI.md#ChargeCreate) | **Post** /charge | Create Charge
-[**ChargeSubmitAddress**](ChargeAPI.md#ChargeSubmitAddress) | **Post** /charge/submit_address | Submit Address
-[**ChargeSubmitBirthday**](ChargeAPI.md#ChargeSubmitBirthday) | **Post** /charge/submit_birthday | Submit Birthday
-[**ChargeSubmitOtp**](ChargeAPI.md#ChargeSubmitOtp) | **Post** /charge/submit_otp | Submit OTP
-[**ChargeSubmitPhone**](ChargeAPI.md#ChargeSubmitPhone) | **Post** /charge/submit_phone | Submit Phone
-[**ChargeSubmitPin**](ChargeAPI.md#ChargeSubmitPin) | **Post** /charge/submit_pin | Submit PIN
-
-
+| Method                                                        | HTTP request                     | Description          |
+| ------------------------------------------------------------- | -------------------------------- | -------------------- |
+| [**ChargeCheck**](ChargeAPI.md#ChargeCheck)                   | **Get** /charge/{reference}      | Check pending charge |
+| [**ChargeCreate**](ChargeAPI.md#ChargeCreate)                 | **Post** /charge                 | Create Charge        |
+| [**ChargeSubmitAddress**](ChargeAPI.md#ChargeSubmitAddress)   | **Post** /charge/submit_address  | Submit Address       |
+| [**ChargeSubmitBirthday**](ChargeAPI.md#ChargeSubmitBirthday) | **Post** /charge/submit_birthday | Submit Birthday      |
+| [**ChargeSubmitOtp**](ChargeAPI.md#ChargeSubmitOtp)           | **Post** /charge/submit_otp      | Submit OTP           |
+| [**ChargeSubmitPhone**](ChargeAPI.md#ChargeSubmitPhone)       | **Post** /charge/submit_phone    | Submit Phone         |
+| [**ChargeSubmitPin**](ChargeAPI.md#ChargeSubmitPin)           | **Post** /charge/submit_pin      | Submit PIN           |
 
 ## ChargeCheck
 
 > ChargeCheckPendingResponse ChargeCheck(ctx, reference).Execute()
 
 Check pending charge
-
-
 
 ### Example
 
@@ -51,20 +47,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | The reference of the ongoing transaction | 
+| Name          | Type                | Description                                                                 | Notes |
+| ------------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**       | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **reference** | **string**          | The reference of the ongoing transaction                                    |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiChargeCheckRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -83,14 +76,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## ChargeCreate
 
 > ChargeCreateResponse ChargeCreate(ctx).ChargeCreateRequest(chargeCreateRequest).Execute()
 
 Create Charge
-
-
 
 ### Example
 
@@ -121,16 +111,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiChargeCreateRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **chargeCreateRequest** | [**ChargeCreateRequest**](ChargeCreateRequest.md) |  | 
+| Name                    | Type                                              | Description | Notes |
+| ----------------------- | ------------------------------------------------- | ----------- | ----- |
+| **chargeCreateRequest** | [**ChargeCreateRequest**](ChargeCreateRequest.md) |             |
 
 ### Return type
 
@@ -149,14 +136,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## ChargeSubmitAddress
 
 > Response ChargeSubmitAddress(ctx).ChargeSubmitAddress(chargeSubmitAddress).Execute()
 
 Submit Address
-
-
 
 ### Example
 
@@ -187,16 +171,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiChargeSubmitAddressRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **chargeSubmitAddress** | [**ChargeSubmitAddress**](ChargeSubmitAddress.md) |  | 
+| Name                    | Type                                              | Description | Notes |
+| ----------------------- | ------------------------------------------------- | ----------- | ----- |
+| **chargeSubmitAddress** | [**ChargeSubmitAddress**](ChargeSubmitAddress.md) |             |
 
 ### Return type
 
@@ -215,14 +196,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## ChargeSubmitBirthday
 
 > ChargeSubmitBirthdayResponse ChargeSubmitBirthday(ctx).ChargeSubmitBirthday(chargeSubmitBirthday).Execute()
 
 Submit Birthday
-
-
 
 ### Example
 
@@ -254,16 +232,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiChargeSubmitBirthdayRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **chargeSubmitBirthday** | [**ChargeSubmitBirthday**](ChargeSubmitBirthday.md) |  | 
+| Name                     | Type                                                | Description | Notes |
+| ------------------------ | --------------------------------------------------- | ----------- | ----- |
+| **chargeSubmitBirthday** | [**ChargeSubmitBirthday**](ChargeSubmitBirthday.md) |             |
 
 ### Return type
 
@@ -282,14 +257,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## ChargeSubmitOtp
 
 > ChargeSubmitOtpResponse ChargeSubmitOtp(ctx).ChargeSubmitOTP(chargeSubmitOTP).Execute()
 
 Submit OTP
-
-
 
 ### Example
 
@@ -320,16 +292,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiChargeSubmitOtpRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **chargeSubmitOTP** | [**ChargeSubmitOTP**](ChargeSubmitOTP.md) |  | 
+| Name                | Type                                      | Description | Notes |
+| ------------------- | ----------------------------------------- | ----------- | ----- |
+| **chargeSubmitOTP** | [**ChargeSubmitOTP**](ChargeSubmitOTP.md) |             |
 
 ### Return type
 
@@ -348,14 +317,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## ChargeSubmitPhone
 
 > ChargeSubmitPhoneResponse ChargeSubmitPhone(ctx).ChargeSubmitPhone(chargeSubmitPhone).Execute()
 
 Submit Phone
-
-
 
 ### Example
 
@@ -386,16 +352,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiChargeSubmitPhoneRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **chargeSubmitPhone** | [**ChargeSubmitPhone**](ChargeSubmitPhone.md) |  | 
+| Name                  | Type                                          | Description | Notes |
+| --------------------- | --------------------------------------------- | ----------- | ----- |
+| **chargeSubmitPhone** | [**ChargeSubmitPhone**](ChargeSubmitPhone.md) |             |
 
 ### Return type
 
@@ -414,14 +377,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## ChargeSubmitPin
 
 > ChargeSubmitPinResponse ChargeSubmitPin(ctx).ChargeSubmitPin(chargeSubmitPin).Execute()
 
 Submit PIN
-
-
 
 ### Example
 
@@ -452,16 +412,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiChargeSubmitPinRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **chargeSubmitPin** | [**ChargeSubmitPin**](ChargeSubmitPin.md) |  | 
+| Name                | Type                                      | Description | Notes |
+| ------------------- | ----------------------------------------- | ----------- | ----- |
+| **chargeSubmitPin** | [**ChargeSubmitPin**](ChargeSubmitPin.md) |             |
 
 ### Return type
 
@@ -479,4 +436,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

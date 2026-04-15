@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Region** | **string** |  | 
-**Fee** | **int32** |  | 
-**Currency** | **string** |  | 
+| Name         | Type       | Description | Notes |
+| ------------ | ---------- | ----------- | ----- |
+| **Region**   | **string** |             |
+| **Fee**      | **int32**  |             |
+| **Currency** | **string** |             |
 
 ## Methods
 
@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetRegion sets Region field to given value.
 
-
 ### GetFee
 
 `func (o *OrderCreateResponseDataShippingMethod) GetFee() int32`
@@ -65,7 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderCreateResponseDataShippingMethod) SetFee(v int32)`
 
 SetFee sets Fee field to given value.
-
 
 ### GetCurrency
 
@@ -86,8 +84,4 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

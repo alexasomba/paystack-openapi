@@ -1,20 +1,20 @@
 # DedicatedNubanListResponseArray
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**customer** | [**DedicatedNubanListResponseArrayCustomer**](DedicatedNubanListResponseArrayCustomer.md) |  | 
-**bank** | [**DedicatedNubanListResponseArrayBank**](DedicatedNubanListResponseArrayBank.md) |  | 
-**id** | **int** |  | 
-**account_name** | **str** |  | 
-**account_number** | **str** |  | 
-**created_at** | **str** |  | 
-**updated_at** | **str** |  | 
-**currency** | **str** |  | 
-**split_config** | [**DedicatedNubanListResponseArraySplitConfig**](DedicatedNubanListResponseArraySplitConfig.md) |  | 
-**active** | **bool** |  | 
-**assigned** | **bool** |  | 
+
+| Name               | Type                                                                                            | Description | Notes |
+| ------------------ | ----------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **customer**       | [**DedicatedNubanListResponseArrayCustomer**](DedicatedNubanListResponseArrayCustomer.md)       |             |
+| **bank**           | [**DedicatedNubanListResponseArrayBank**](DedicatedNubanListResponseArrayBank.md)               |             |
+| **id**             | **int**                                                                                         |             |
+| **account_name**   | **str**                                                                                         |             |
+| **account_number** | **str**                                                                                         |             |
+| **created_at**     | **str**                                                                                         |             |
+| **updated_at**     | **str**                                                                                         |             |
+| **currency**       | **str**                                                                                         |             |
+| **split_config**   | [**DedicatedNubanListResponseArraySplitConfig**](DedicatedNubanListResponseArraySplitConfig.md) |             |
+| **active**         | **bool**                                                                                        |             |
+| **assigned**       | **bool**                                                                                        |             |
 
 ## Example
 
@@ -33,6 +33,5 @@ dedicated_nuban_list_response_array_dict = dedicated_nuban_list_response_array_i
 # create an instance of DedicatedNubanListResponseArray from a dict
 dedicated_nuban_list_response_array_form_dict = dedicated_nuban_list_response_array.from_dict(dedicated_nuban_list_response_array_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

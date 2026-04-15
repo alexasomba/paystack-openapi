@@ -2,15 +2,15 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AccountName** | **string** | Customer&#39;s first and last name registered with their bank | 
-**AccountNumber** | **string** | Customer&#39;s account number | 
-**AccountType** | **string** | The type of the customer&#39;s account number | 
-**BankCode** | **string** | The bank code of the customer’s bank. You can fetch the bank codes by using our List Banks endpoint | 
-**CountryCode** | **string** | The two digit ISO code of the customer’s bank | 
-**DocumentType** | **string** | Customer’s mode of identity | 
-**DocumentNumber** | Pointer to **string** | Customer’s mode of identity number | [optional] 
+| Name               | Type                  | Description                                                                                         | Notes      |
+| ------------------ | --------------------- | --------------------------------------------------------------------------------------------------- | ---------- |
+| **AccountName**    | **string**            | Customer&#39;s first and last name registered with their bank                                       |
+| **AccountNumber**  | **string**            | Customer&#39;s account number                                                                       |
+| **AccountType**    | **string**            | The type of the customer&#39;s account number                                                       |
+| **BankCode**       | **string**            | The bank code of the customer’s bank. You can fetch the bank codes by using our List Banks endpoint |
+| **CountryCode**    | **string**            | The two digit ISO code of the customer’s bank                                                       |
+| **DocumentType**   | **string**            | Customer’s mode of identity                                                                         |
+| **DocumentNumber** | Pointer to **string** | Customer’s mode of identity number                                                                  | [optional] |
 
 ## Methods
 
@@ -50,7 +50,6 @@ and a boolean to check if the value has been set.
 
 SetAccountName sets AccountName field to given value.
 
-
 ### GetAccountNumber
 
 `func (o *BankValidateRequest) GetAccountNumber() string`
@@ -69,7 +68,6 @@ and a boolean to check if the value has been set.
 `func (o *BankValidateRequest) SetAccountNumber(v string)`
 
 SetAccountNumber sets AccountNumber field to given value.
-
 
 ### GetAccountType
 
@@ -90,7 +88,6 @@ and a boolean to check if the value has been set.
 
 SetAccountType sets AccountType field to given value.
 
-
 ### GetBankCode
 
 `func (o *BankValidateRequest) GetBankCode() string`
@@ -109,7 +106,6 @@ and a boolean to check if the value has been set.
 `func (o *BankValidateRequest) SetBankCode(v string)`
 
 SetBankCode sets BankCode field to given value.
-
 
 ### GetCountryCode
 
@@ -130,7 +126,6 @@ and a boolean to check if the value has been set.
 
 SetCountryCode sets CountryCode field to given value.
 
-
 ### GetDocumentType
 
 `func (o *BankValidateRequest) GetDocumentType() string`
@@ -149,7 +144,6 @@ and a boolean to check if the value has been set.
 `func (o *BankValidateRequest) SetDocumentType(v string)`
 
 SetDocumentType sets DocumentType field to given value.
-
 
 ### GetDocumentNumber
 
@@ -176,7 +170,4 @@ SetDocumentNumber sets DocumentNumber field to given value.
 
 HasDocumentNumber returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

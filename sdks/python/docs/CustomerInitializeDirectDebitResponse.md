@@ -1,12 +1,12 @@
 # CustomerInitializeDirectDebitResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**CustomerInitializeDirectDebitResponseData**](CustomerInitializeDirectDebitResponseData.md) |  | 
+
+| Name        | Type                                                                                          | Description | Notes |
+| ----------- | --------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                                      |             |
+| **message** | **str**                                                                                       |             |
+| **data**    | [**CustomerInitializeDirectDebitResponseData**](CustomerInitializeDirectDebitResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ customer_initialize_direct_debit_response_dict = customer_initialize_direct_debi
 # create an instance of CustomerInitializeDirectDebitResponse from a dict
 customer_initialize_direct_debit_response_form_dict = customer_initialize_direct_debit_response.from_dict(customer_initialize_direct_debit_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

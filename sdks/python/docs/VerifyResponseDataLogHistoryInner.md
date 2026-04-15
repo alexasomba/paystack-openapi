@@ -1,12 +1,12 @@
 # VerifyResponseDataLogHistoryInner
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**type** | **str** |  | 
-**message** | **str** |  | 
-**time** | **int** |  | 
+
+| Name        | Type    | Description | Notes |
+| ----------- | ------- | ----------- | ----- |
+| **type**    | **str** |             |
+| **message** | **str** |             |
+| **time**    | **int** |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ verify_response_data_log_history_inner_dict = verify_response_data_log_history_i
 # create an instance of VerifyResponseDataLogHistoryInner from a dict
 verify_response_data_log_history_inner_form_dict = verify_response_data_log_history_inner.from_dict(verify_response_data_log_history_inner_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

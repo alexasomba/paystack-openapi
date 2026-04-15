@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Name** | **string** | Name of the storefront | 
-**Slug** | **string** | A unique identifier to access your store. Once the storefront is created, it can be accessed from https://paystack.shop/your-slug  | 
-**Currency** | **string** | Currency for prices of products in your storefront. | 
-**Description** | Pointer to **string** | The description of the storefront | [optional] 
+| Name            | Type                  | Description                                                                                                                       | Notes      |
+| --------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **Name**        | **string**            | Name of the storefront                                                                                                            |
+| **Slug**        | **string**            | A unique identifier to access your store. Once the storefront is created, it can be accessed from https://paystack.shop/your-slug |
+| **Currency**    | **string**            | Currency for prices of products in your storefront.                                                                               |
+| **Description** | Pointer to **string** | The description of the storefront                                                                                                 | [optional] |
 
 ## Methods
 
@@ -47,7 +47,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetSlug
 
 `func (o *StorefrontCreate) GetSlug() string`
@@ -67,7 +66,6 @@ and a boolean to check if the value has been set.
 
 SetSlug sets Slug field to given value.
 
-
 ### GetCurrency
 
 `func (o *StorefrontCreate) GetCurrency() string`
@@ -86,7 +84,6 @@ and a boolean to check if the value has been set.
 `func (o *StorefrontCreate) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetDescription
 
@@ -113,7 +110,4 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

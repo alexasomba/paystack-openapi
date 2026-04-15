@@ -1,13 +1,13 @@
 # TransferRecipientListResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**List[TransferRecipientListResponseArray]**](TransferRecipientListResponseArray.md) |  | 
-**meta** | [**SubaccountListResponseMeta**](SubaccountListResponseMeta.md) |  | 
+
+| Name        | Type                                                                                  | Description | Notes |
+| ----------- | ------------------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                              |             |
+| **message** | **str**                                                                               |             |
+| **data**    | [**List[TransferRecipientListResponseArray]**](TransferRecipientListResponseArray.md) |             |
+| **meta**    | [**SubaccountListResponseMeta**](SubaccountListResponseMeta.md)                       |             |
 
 ## Example
 
@@ -26,6 +26,5 @@ transfer_recipient_list_response_dict = transfer_recipient_list_response_instanc
 # create an instance of TransferRecipientListResponse from a dict
 transfer_recipient_list_response_form_dict = transfer_recipient_list_response.from_dict(transfer_recipient_list_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

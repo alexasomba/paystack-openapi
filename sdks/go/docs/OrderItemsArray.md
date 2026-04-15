@@ -2,29 +2,29 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**OrderItemId** | **int32** |  | 
-**OrderId** | **int32** |  | 
-**Type** | **string** |  | 
-**Item** | **int32** |  | 
-**CurrentTotalItemsPrice** | **int32** |  | 
-**Files** | **string** |  | 
-**Order** | **int32** |  | 
-**Amount** | **int32** |  | 
-**Quantity** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**Name** | **string** |  | 
-**ProductLevelType** | **string** |  | 
-**ProductId** | **int32** |  | 
-**ProductSuccessMessage** | **interface{}** |  | 
-**ProductRedirectUrl** | **interface{}** |  | 
-**IFNULLP1ExpiresInP2ExpiresIn** | **interface{}** |  | 
-**ProductQuantitySold** | **int32** |  | 
-**ProductNotificationEmails** | **interface{}** |  | 
-**IFNULLP1MetadataP2Metadata** | **string** |  | 
-**StorefrontRedirectUrl** | **interface{}** |  | 
-**StorefrontSuccessMessage** | **interface{}** |  | 
+| Name                             | Type            | Description | Notes |
+| -------------------------------- | --------------- | ----------- | ----- |
+| **OrderItemId**                  | **int32**       |             |
+| **OrderId**                      | **int32**       |             |
+| **Type**                         | **string**      |             |
+| **Item**                         | **int32**       |             |
+| **CurrentTotalItemsPrice**       | **int32**       |             |
+| **Files**                        | **string**      |             |
+| **Order**                        | **int32**       |             |
+| **Amount**                       | **int32**       |             |
+| **Quantity**                     | **int32**       |             |
+| **CreatedAt**                    | **string**      |             |
+| **Name**                         | **string**      |             |
+| **ProductLevelType**             | **string**      |             |
+| **ProductId**                    | **int32**       |             |
+| **ProductSuccessMessage**        | **interface{}** |             |
+| **ProductRedirectUrl**           | **interface{}** |             |
+| **IFNULLP1ExpiresInP2ExpiresIn** | **interface{}** |             |
+| **ProductQuantitySold**          | **int32**       |             |
+| **ProductNotificationEmails**    | **interface{}** |             |
+| **IFNULLP1MetadataP2Metadata**   | **string**      |             |
+| **StorefrontRedirectUrl**        | **interface{}** |             |
+| **StorefrontSuccessMessage**     | **interface{}** |             |
 
 ## Methods
 
@@ -64,7 +64,6 @@ and a boolean to check if the value has been set.
 
 SetOrderItemId sets OrderItemId field to given value.
 
-
 ### GetOrderId
 
 `func (o *OrderItemsArray) GetOrderId() int32`
@@ -83,7 +82,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderItemsArray) SetOrderId(v int32)`
 
 SetOrderId sets OrderId field to given value.
-
 
 ### GetType
 
@@ -104,7 +102,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-
 ### GetItem
 
 `func (o *OrderItemsArray) GetItem() int32`
@@ -123,7 +120,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderItemsArray) SetItem(v int32)`
 
 SetItem sets Item field to given value.
-
 
 ### GetCurrentTotalItemsPrice
 
@@ -144,7 +140,6 @@ and a boolean to check if the value has been set.
 
 SetCurrentTotalItemsPrice sets CurrentTotalItemsPrice field to given value.
 
-
 ### GetFiles
 
 `func (o *OrderItemsArray) GetFiles() string`
@@ -163,7 +158,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderItemsArray) SetFiles(v string)`
 
 SetFiles sets Files field to given value.
-
 
 ### GetOrder
 
@@ -184,7 +178,6 @@ and a boolean to check if the value has been set.
 
 SetOrder sets Order field to given value.
 
-
 ### GetAmount
 
 `func (o *OrderItemsArray) GetAmount() int32`
@@ -203,7 +196,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderItemsArray) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetQuantity
 
@@ -224,7 +216,6 @@ and a boolean to check if the value has been set.
 
 SetQuantity sets Quantity field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *OrderItemsArray) GetCreatedAt() string`
@@ -243,7 +234,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderItemsArray) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetName
 
@@ -264,7 +254,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetProductLevelType
 
 `func (o *OrderItemsArray) GetProductLevelType() string`
@@ -283,7 +272,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderItemsArray) SetProductLevelType(v string)`
 
 SetProductLevelType sets ProductLevelType field to given value.
-
 
 ### GetProductId
 
@@ -304,7 +292,6 @@ and a boolean to check if the value has been set.
 
 SetProductId sets ProductId field to given value.
 
-
 ### GetProductSuccessMessage
 
 `func (o *OrderItemsArray) GetProductSuccessMessage() interface{}`
@@ -324,17 +311,18 @@ and a boolean to check if the value has been set.
 
 SetProductSuccessMessage sets ProductSuccessMessage field to given value.
 
-
 ### SetProductSuccessMessageNil
 
 `func (o *OrderItemsArray) SetProductSuccessMessageNil(b bool)`
 
- SetProductSuccessMessageNil sets the value for ProductSuccessMessage to be an explicit nil
+SetProductSuccessMessageNil sets the value for ProductSuccessMessage to be an explicit nil
 
 ### UnsetProductSuccessMessage
+
 `func (o *OrderItemsArray) UnsetProductSuccessMessage()`
 
 UnsetProductSuccessMessage ensures that no value is present for ProductSuccessMessage, not even an explicit nil
+
 ### GetProductRedirectUrl
 
 `func (o *OrderItemsArray) GetProductRedirectUrl() interface{}`
@@ -354,17 +342,18 @@ and a boolean to check if the value has been set.
 
 SetProductRedirectUrl sets ProductRedirectUrl field to given value.
 
-
 ### SetProductRedirectUrlNil
 
 `func (o *OrderItemsArray) SetProductRedirectUrlNil(b bool)`
 
- SetProductRedirectUrlNil sets the value for ProductRedirectUrl to be an explicit nil
+SetProductRedirectUrlNil sets the value for ProductRedirectUrl to be an explicit nil
 
 ### UnsetProductRedirectUrl
+
 `func (o *OrderItemsArray) UnsetProductRedirectUrl()`
 
 UnsetProductRedirectUrl ensures that no value is present for ProductRedirectUrl, not even an explicit nil
+
 ### GetIFNULLP1ExpiresInP2ExpiresIn
 
 `func (o *OrderItemsArray) GetIFNULLP1ExpiresInP2ExpiresIn() interface{}`
@@ -384,17 +373,18 @@ and a boolean to check if the value has been set.
 
 SetIFNULLP1ExpiresInP2ExpiresIn sets IFNULLP1ExpiresInP2ExpiresIn field to given value.
 
-
 ### SetIFNULLP1ExpiresInP2ExpiresInNil
 
 `func (o *OrderItemsArray) SetIFNULLP1ExpiresInP2ExpiresInNil(b bool)`
 
- SetIFNULLP1ExpiresInP2ExpiresInNil sets the value for IFNULLP1ExpiresInP2ExpiresIn to be an explicit nil
+SetIFNULLP1ExpiresInP2ExpiresInNil sets the value for IFNULLP1ExpiresInP2ExpiresIn to be an explicit nil
 
 ### UnsetIFNULLP1ExpiresInP2ExpiresIn
+
 `func (o *OrderItemsArray) UnsetIFNULLP1ExpiresInP2ExpiresIn()`
 
 UnsetIFNULLP1ExpiresInP2ExpiresIn ensures that no value is present for IFNULLP1ExpiresInP2ExpiresIn, not even an explicit nil
+
 ### GetProductQuantitySold
 
 `func (o *OrderItemsArray) GetProductQuantitySold() int32`
@@ -413,7 +403,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderItemsArray) SetProductQuantitySold(v int32)`
 
 SetProductQuantitySold sets ProductQuantitySold field to given value.
-
 
 ### GetProductNotificationEmails
 
@@ -434,17 +423,18 @@ and a boolean to check if the value has been set.
 
 SetProductNotificationEmails sets ProductNotificationEmails field to given value.
 
-
 ### SetProductNotificationEmailsNil
 
 `func (o *OrderItemsArray) SetProductNotificationEmailsNil(b bool)`
 
- SetProductNotificationEmailsNil sets the value for ProductNotificationEmails to be an explicit nil
+SetProductNotificationEmailsNil sets the value for ProductNotificationEmails to be an explicit nil
 
 ### UnsetProductNotificationEmails
+
 `func (o *OrderItemsArray) UnsetProductNotificationEmails()`
 
 UnsetProductNotificationEmails ensures that no value is present for ProductNotificationEmails, not even an explicit nil
+
 ### GetIFNULLP1MetadataP2Metadata
 
 `func (o *OrderItemsArray) GetIFNULLP1MetadataP2Metadata() string`
@@ -463,7 +453,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderItemsArray) SetIFNULLP1MetadataP2Metadata(v string)`
 
 SetIFNULLP1MetadataP2Metadata sets IFNULLP1MetadataP2Metadata field to given value.
-
 
 ### GetStorefrontRedirectUrl
 
@@ -484,17 +473,18 @@ and a boolean to check if the value has been set.
 
 SetStorefrontRedirectUrl sets StorefrontRedirectUrl field to given value.
 
-
 ### SetStorefrontRedirectUrlNil
 
 `func (o *OrderItemsArray) SetStorefrontRedirectUrlNil(b bool)`
 
- SetStorefrontRedirectUrlNil sets the value for StorefrontRedirectUrl to be an explicit nil
+SetStorefrontRedirectUrlNil sets the value for StorefrontRedirectUrl to be an explicit nil
 
 ### UnsetStorefrontRedirectUrl
+
 `func (o *OrderItemsArray) UnsetStorefrontRedirectUrl()`
 
 UnsetStorefrontRedirectUrl ensures that no value is present for StorefrontRedirectUrl, not even an explicit nil
+
 ### GetStorefrontSuccessMessage
 
 `func (o *OrderItemsArray) GetStorefrontSuccessMessage() interface{}`
@@ -514,18 +504,16 @@ and a boolean to check if the value has been set.
 
 SetStorefrontSuccessMessage sets StorefrontSuccessMessage field to given value.
 
-
 ### SetStorefrontSuccessMessageNil
 
 `func (o *OrderItemsArray) SetStorefrontSuccessMessageNil(b bool)`
 
- SetStorefrontSuccessMessageNil sets the value for StorefrontSuccessMessage to be an explicit nil
+SetStorefrontSuccessMessageNil sets the value for StorefrontSuccessMessage to be an explicit nil
 
 ### UnsetStorefrontSuccessMessage
+
 `func (o *OrderItemsArray) UnsetStorefrontSuccessMessage()`
 
 UnsetStorefrontSuccessMessage ensures that no value is present for StorefrontSuccessMessage, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

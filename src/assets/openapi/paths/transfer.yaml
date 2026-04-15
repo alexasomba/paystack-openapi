@@ -13,13 +13,13 @@ post:
         schema:
           $ref: ../components/schemas/TransferInitiate.yaml
   responses:
-    '200':
-      description: 'Successful operation'
+    "200":
+      description: "Successful operation"
       content:
         application/json:
           schema:
             $ref: ../components/schemas/TransferCreateResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error
@@ -31,78 +31,42 @@ get:
   operationId: transfer_list
   parameters:
     - in: query
-      name: use_cursor
-      description: A flag to indicate if cursor based pagination should be used
-      schema:
-        type: boolean
-      example: true
-    - in: query
-      name: next
-      description: >
-        An alphanumeric value returned for every cursor based retrieval, used to
-        retrieve the next set of data
-      schema:
-        type: string
-    - in: query
-      name: previous
-      description: >
-        An alphanumeric value returned for every cursor based retrieval, used to
-        retrieve the previous set of data
-      schema:
-        type: string
-    - in: query
-      name: per_page
+      name: perPage
       schema:
         type: integer
-      description: The number of records to fetch per request
+      description: Specify how many records you want to retrieve per page. If not specify we use a default value of 50.
     - in: query
       name: page
       schema:
         type: integer
-      description: The offset to retrieve data from
+      description: Specify exactly what transfer you want to page. If not specify we use a default value of 1.
     - in: query
       name: from
-      description: The start date
+      description: A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
       schema:
         type: string
         format: date-time
     - in: query
       name: to
-      description: The end date
+      description: A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
       schema:
         type: string
         format: date-time
     - in: query
       name: recipient
-      description: Filter transfer by the recipient code
+      description: Filter by the recipient ID
       schema:
-        type: string
-    - in: query
-      name: status
-      description: Filter transfer by status
-      schema:
-        type: string
-        default: pending
-        enum:
-          - pending
-          - success
-          - failed
-          - otp
-          - abandoned
-          - reversed
-          - blocked
-          - rejected
-          - received
+        type: integer
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/TransferListResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

@@ -1,12 +1,12 @@
 # MiscellaneousListCountriesResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**List[MiscellaneousListCountriesResponseArray]**](MiscellaneousListCountriesResponseArray.md) |  | 
+
+| Name        | Type                                                                                            | Description | Notes |
+| ----------- | ----------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                                        |             |
+| **message** | **str**                                                                                         |             |
+| **data**    | [**List[MiscellaneousListCountriesResponseArray]**](MiscellaneousListCountriesResponseArray.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ miscellaneous_list_countries_response_dict = miscellaneous_list_countries_respon
 # create an instance of MiscellaneousListCountriesResponse from a dict
 miscellaneous_list_countries_response_form_dict = miscellaneous_list_countries_response.from_dict(miscellaneous_list_countries_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -19,7 +19,7 @@ get:
       name: status
       schema:
         type: string
-        enum: 
+        enum:
           - awaiting-merchant-feedback
           - awaiting-bank-feedback
           - pending
@@ -38,11 +38,11 @@ get:
         format: date-time
       description: The end date
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/DisputeExportSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

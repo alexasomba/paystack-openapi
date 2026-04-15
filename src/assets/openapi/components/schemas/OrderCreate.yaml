@@ -46,7 +46,7 @@ example:
   email: test@email.com
   first_name: Demo
   last_name: User
-  phone: '+2348031245678'
+  phone: "+2348031245678"
   currency: NGN
   items:
     - item: 2179824

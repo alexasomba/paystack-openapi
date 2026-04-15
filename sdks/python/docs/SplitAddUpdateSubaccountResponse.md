@@ -1,12 +1,12 @@
 # SplitAddUpdateSubaccountResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**SplitFetchResponseData**](SplitFetchResponseData.md) |  | 
+
+| Name        | Type                                                    | Description | Notes |
+| ----------- | ------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                |             |
+| **message** | **str**                                                 |             |
+| **data**    | [**SplitFetchResponseData**](SplitFetchResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ split_add_update_subaccount_response_dict = split_add_update_subaccount_response
 # create an instance of SplitAddUpdateSubaccountResponse from a dict
 split_add_update_subaccount_response_form_dict = split_add_update_subaccount_response.from_dict(split_add_update_subaccount_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

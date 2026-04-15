@@ -2,20 +2,16 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**DirectdebitListMandateAuthorizations**](DirectDebitAPI.md#DirectdebitListMandateAuthorizations) | **Get** /directdebit/mandate-authorizations | List Mandate Authorizations
-[**DirectdebitTriggerActivationCharge**](DirectDebitAPI.md#DirectdebitTriggerActivationCharge) | **Put** /directdebit/activation-charge | Trigger Activation Charge
-
-
+| Method                                                                                             | HTTP request                                | Description                 |
+| -------------------------------------------------------------------------------------------------- | ------------------------------------------- | --------------------------- |
+| [**DirectdebitListMandateAuthorizations**](DirectDebitAPI.md#DirectdebitListMandateAuthorizations) | **Get** /directdebit/mandate-authorizations | List Mandate Authorizations |
+| [**DirectdebitTriggerActivationCharge**](DirectDebitAPI.md#DirectdebitTriggerActivationCharge)     | **Put** /directdebit/activation-charge      | Trigger Activation Charge   |
 
 ## DirectdebitListMandateAuthorizations
 
 > CustomerFetchMandateAuthorizationsResponse DirectdebitListMandateAuthorizations(ctx).Cursor(cursor).Status(status).PerPage(perPage).Execute()
 
 List Mandate Authorizations
-
-
 
 ### Example
 
@@ -48,18 +44,15 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDirectdebitListMandateAuthorizationsRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cursor** | **string** | The cursor value of the next set of authorizations to fetch. You can get this from the meta object of the response | 
- **status** | **string** | Filter by the authorization status | 
- **perPage** | **int32** | The number of authorizations to fetch per request | 
+| Name        | Type       | Description                                                                                                        | Notes |
+| ----------- | ---------- | ------------------------------------------------------------------------------------------------------------------ | ----- |
+| **cursor**  | **string** | The cursor value of the next set of authorizations to fetch. You can get this from the meta object of the response |
+| **status**  | **string** | Filter by the authorization status                                                                                 |
+| **perPage** | **int32**  | The number of authorizations to fetch per request                                                                  |
 
 ### Return type
 
@@ -78,14 +71,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## DirectdebitTriggerActivationCharge
 
 > DirectDebitActivationChargeResponse DirectdebitTriggerActivationCharge(ctx).DirectDebitActivationChargeRequest(directDebitActivationChargeRequest).Execute()
 
 Trigger Activation Charge
-
-
 
 ### Example
 
@@ -100,7 +90,7 @@ import (
 )
 
 func main() {
-    directDebitActivationChargeRequest := *openapiclient.NewDirectDebitActivationChargeRequest([]int32{int32(123)}) // DirectDebitActivationChargeRequest | 
+    directDebitActivationChargeRequest := *openapiclient.NewDirectDebitActivationChargeRequest([]int32{int32(123)}) // DirectDebitActivationChargeRequest |
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -116,16 +106,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDirectdebitTriggerActivationChargeRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **directDebitActivationChargeRequest** | [**DirectDebitActivationChargeRequest**](DirectDebitActivationChargeRequest.md) |  | 
+| Name                                   | Type                                                                            | Description | Notes |
+| -------------------------------------- | ------------------------------------------------------------------------------- | ----------- | ----- |
+| **directDebitActivationChargeRequest** | [**DirectDebitActivationChargeRequest**](DirectDebitActivationChargeRequest.md) |             |
 
 ### Return type
 
@@ -143,4 +130,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

@@ -9,8 +9,6 @@ properties:
     properties:
       id:
         type: integer
-      integration:
-        type: integer
       domain:
         type: string
       amount:
@@ -29,6 +27,7 @@ properties:
         type: string
         nullable: true
       pdf_url:
+        type: string
         nullable: true
       line_items:
         type: array
@@ -45,8 +44,10 @@ properties:
       paid:
         type: boolean
       paid_at:
+        type: string
         nullable: true
       metadata:
+        type: object
         nullable: true
       notifications:
         type: array
@@ -68,15 +69,15 @@ properties:
             type: string
           phone:
             type: string
+            nullable: true
           metadata:
             type: object
-            properties:
-              calling_code:
-                type: string
+            nullable: true
           risk_action:
             type: string
           international_format_phone:
             type: string
+            nullable: true
         required:
           - id
           - first_name
@@ -86,7 +87,6 @@ properties:
           - phone
           - metadata
           - risk_action
-          - international_format_phone
       created_at:
         type: string
       discount:
@@ -101,12 +101,12 @@ properties:
           - amount
         nullable: true
       split_code:
+        type: string
         nullable: true
       pending_amount:
         type: integer
     required:
       - id
-      - integration
       - domain
       - amount
       - currency
@@ -126,8 +126,6 @@ properties:
       - offline_reference
       - customer
       - created_at
-      - discount
-      - split_code
       - pending_amount
 required:
   - status

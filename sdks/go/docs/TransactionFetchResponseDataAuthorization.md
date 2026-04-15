@@ -2,23 +2,23 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AuthorizationCode** | **string** |  | 
-**Bin** | **string** |  | 
-**Last4** | **string** |  | 
-**ExpMonth** | **string** |  | 
-**ExpYear** | **string** |  | 
-**Channel** | **string** |  | 
-**CardType** | **string** |  | 
-**Bank** | **string** |  | 
-**CountryCode** | **string** |  | 
-**Brand** | **string** |  | 
-**Reusable** | **bool** |  | 
-**Signature** | **string** |  | 
-**AccountName** | **interface{}** |  | 
-**ReceiverBankAccountNumber** | **interface{}** |  | 
-**ReceiverBank** | **interface{}** |  | 
+| Name                          | Type            | Description | Notes |
+| ----------------------------- | --------------- | ----------- | ----- |
+| **AuthorizationCode**         | **string**      |             |
+| **Bin**                       | **string**      |             |
+| **Last4**                     | **string**      |             |
+| **ExpMonth**                  | **string**      |             |
+| **ExpYear**                   | **string**      |             |
+| **Channel**                   | **string**      |             |
+| **CardType**                  | **string**      |             |
+| **Bank**                      | **string**      |             |
+| **CountryCode**               | **string**      |             |
+| **Brand**                     | **string**      |             |
+| **Reusable**                  | **bool**        |             |
+| **Signature**                 | **string**      |             |
+| **AccountName**               | **interface{}** |             |
+| **ReceiverBankAccountNumber** | **interface{}** |             |
+| **ReceiverBank**              | **interface{}** |             |
 
 ## Methods
 
@@ -58,7 +58,6 @@ and a boolean to check if the value has been set.
 
 SetAuthorizationCode sets AuthorizationCode field to given value.
 
-
 ### GetBin
 
 `func (o *TransactionFetchResponseDataAuthorization) GetBin() string`
@@ -77,7 +76,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionFetchResponseDataAuthorization) SetBin(v string)`
 
 SetBin sets Bin field to given value.
-
 
 ### GetLast4
 
@@ -98,7 +96,6 @@ and a boolean to check if the value has been set.
 
 SetLast4 sets Last4 field to given value.
 
-
 ### GetExpMonth
 
 `func (o *TransactionFetchResponseDataAuthorization) GetExpMonth() string`
@@ -117,7 +114,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionFetchResponseDataAuthorization) SetExpMonth(v string)`
 
 SetExpMonth sets ExpMonth field to given value.
-
 
 ### GetExpYear
 
@@ -138,7 +134,6 @@ and a boolean to check if the value has been set.
 
 SetExpYear sets ExpYear field to given value.
 
-
 ### GetChannel
 
 `func (o *TransactionFetchResponseDataAuthorization) GetChannel() string`
@@ -157,7 +152,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionFetchResponseDataAuthorization) SetChannel(v string)`
 
 SetChannel sets Channel field to given value.
-
 
 ### GetCardType
 
@@ -178,7 +172,6 @@ and a boolean to check if the value has been set.
 
 SetCardType sets CardType field to given value.
 
-
 ### GetBank
 
 `func (o *TransactionFetchResponseDataAuthorization) GetBank() string`
@@ -197,7 +190,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionFetchResponseDataAuthorization) SetBank(v string)`
 
 SetBank sets Bank field to given value.
-
 
 ### GetCountryCode
 
@@ -218,7 +210,6 @@ and a boolean to check if the value has been set.
 
 SetCountryCode sets CountryCode field to given value.
 
-
 ### GetBrand
 
 `func (o *TransactionFetchResponseDataAuthorization) GetBrand() string`
@@ -237,7 +228,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionFetchResponseDataAuthorization) SetBrand(v string)`
 
 SetBrand sets Brand field to given value.
-
 
 ### GetReusable
 
@@ -258,7 +248,6 @@ and a boolean to check if the value has been set.
 
 SetReusable sets Reusable field to given value.
 
-
 ### GetSignature
 
 `func (o *TransactionFetchResponseDataAuthorization) GetSignature() string`
@@ -277,7 +266,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionFetchResponseDataAuthorization) SetSignature(v string)`
 
 SetSignature sets Signature field to given value.
-
 
 ### GetAccountName
 
@@ -298,17 +286,18 @@ and a boolean to check if the value has been set.
 
 SetAccountName sets AccountName field to given value.
 
-
 ### SetAccountNameNil
 
 `func (o *TransactionFetchResponseDataAuthorization) SetAccountNameNil(b bool)`
 
- SetAccountNameNil sets the value for AccountName to be an explicit nil
+SetAccountNameNil sets the value for AccountName to be an explicit nil
 
 ### UnsetAccountName
+
 `func (o *TransactionFetchResponseDataAuthorization) UnsetAccountName()`
 
 UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
+
 ### GetReceiverBankAccountNumber
 
 `func (o *TransactionFetchResponseDataAuthorization) GetReceiverBankAccountNumber() interface{}`
@@ -328,17 +317,18 @@ and a boolean to check if the value has been set.
 
 SetReceiverBankAccountNumber sets ReceiverBankAccountNumber field to given value.
 
-
 ### SetReceiverBankAccountNumberNil
 
 `func (o *TransactionFetchResponseDataAuthorization) SetReceiverBankAccountNumberNil(b bool)`
 
- SetReceiverBankAccountNumberNil sets the value for ReceiverBankAccountNumber to be an explicit nil
+SetReceiverBankAccountNumberNil sets the value for ReceiverBankAccountNumber to be an explicit nil
 
 ### UnsetReceiverBankAccountNumber
+
 `func (o *TransactionFetchResponseDataAuthorization) UnsetReceiverBankAccountNumber()`
 
 UnsetReceiverBankAccountNumber ensures that no value is present for ReceiverBankAccountNumber, not even an explicit nil
+
 ### GetReceiverBank
 
 `func (o *TransactionFetchResponseDataAuthorization) GetReceiverBank() interface{}`
@@ -358,18 +348,16 @@ and a boolean to check if the value has been set.
 
 SetReceiverBank sets ReceiverBank field to given value.
 
-
 ### SetReceiverBankNil
 
 `func (o *TransactionFetchResponseDataAuthorization) SetReceiverBankNil(b bool)`
 
- SetReceiverBankNil sets the value for ReceiverBank to be an explicit nil
+SetReceiverBankNil sets the value for ReceiverBank to be an explicit nil
 
 ### UnsetReceiverBank
+
 `func (o *TransactionFetchResponseDataAuthorization) UnsetReceiverBank()`
 
 UnsetReceiverBank ensures that no value is present for ReceiverBank, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

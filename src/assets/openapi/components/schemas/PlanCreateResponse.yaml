@@ -21,17 +21,11 @@ properties:
         type: string
       plan_code:
         type: string
-      invoice_limit:
-        type: integer
       send_invoices:
         type: boolean
       send_sms:
         type: boolean
       hosted_page:
-        type: boolean
-      migrate:
-        type: boolean
-      is_archived:
         type: boolean
       id:
         type: integer
@@ -47,12 +41,9 @@ properties:
       - integration
       - domain
       - plan_code
-      - invoice_limit
       - send_invoices
       - send_sms
       - hosted_page
-      - migrate
-      - is_archived
       - id
       - createdAt
       - updatedAt

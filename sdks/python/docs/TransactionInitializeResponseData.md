@@ -1,12 +1,12 @@
 # TransactionInitializeResponseData
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**authorization_url** | **str** |  | 
-**access_code** | **str** |  | 
-**reference** | **str** |  | 
+
+| Name                  | Type    | Description | Notes |
+| --------------------- | ------- | ----------- | ----- |
+| **authorization_url** | **str** |             |
+| **access_code**       | **str** |             |
+| **reference**         | **str** |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ transaction_initialize_response_data_dict = transaction_initialize_response_data
 # create an instance of TransactionInitializeResponseData from a dict
 transaction_initialize_response_data_form_dict = transaction_initialize_response_data.from_dict(transaction_initialize_response_data_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

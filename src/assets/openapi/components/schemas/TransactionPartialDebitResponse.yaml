@@ -20,7 +20,10 @@ properties:
       domain:
         type: string
       metadata:
-        type: string
+        anyOf:
+          - type: string
+          - type: object
+        nullable: true
       gateway_response:
         type: string
       message:
@@ -102,6 +105,7 @@ properties:
           signature:
             type: string
           account_name:
+            type: string
             nullable: true
         required:
           - authorization_code
@@ -152,7 +156,6 @@ properties:
           - phone
           - metadata
           - risk_action
-          - international_format_phone
       plan:
         type: integer
       requested_amount:

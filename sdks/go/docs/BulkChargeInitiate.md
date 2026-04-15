@@ -2,14 +2,14 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Authorization** | **string** | Customer&#39;s card authorization code | 
-**Amount** | **int32** | Amount to charge on the authorization | 
-**Reference** | Pointer to **string** | A unique identifier containing lowercase letters &#x60;(a-z)&#x60;, digits &#x60;(0-9)&#x60; and these symbols: dash (&#x60;-&#x60;), underscore(&#x60;_&#x60;)  | [optional] 
-**AttemptPartialDebit** | Pointer to **bool** | A flag to indicate if you want us to try recouping lower amounts when the customer has insufficient fund | [optional] 
-**AtLeast** | Pointer to **int32** | Minimum amount to charge if the attempt_partial_debit flag is set | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | JSON object of custom data | [optional] 
+| Name                    | Type                                  | Description                                                                                                                                                      | Notes      |
+| ----------------------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **Authorization**       | **string**                            | Customer&#39;s card authorization code                                                                                                                           |
+| **Amount**              | **int32**                             | Amount to charge on the authorization                                                                                                                            |
+| **Reference**           | Pointer to **string**                 | A unique identifier containing lowercase letters &#x60;(a-z)&#x60;, digits &#x60;(0-9)&#x60; and these symbols: dash (&#x60;-&#x60;), underscore(&#x60;\_&#x60;) | [optional] |
+| **AttemptPartialDebit** | Pointer to **bool**                   | A flag to indicate if you want us to try recouping lower amounts when the customer has insufficient fund                                                         | [optional] |
+| **AtLeast**             | Pointer to **int32**                  | Minimum amount to charge if the attempt_partial_debit flag is set                                                                                                | [optional] |
+| **Metadata**            | Pointer to **map[string]interface{}** | JSON object of custom data                                                                                                                                       | [optional] |
 
 ## Methods
 
@@ -49,7 +49,6 @@ and a boolean to check if the value has been set.
 
 SetAuthorization sets Authorization field to given value.
 
-
 ### GetAmount
 
 `func (o *BulkChargeInitiate) GetAmount() int32`
@@ -68,7 +67,6 @@ and a boolean to check if the value has been set.
 `func (o *BulkChargeInitiate) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetReference
 
@@ -170,7 +168,4 @@ SetMetadata sets Metadata field to given value.
 
 HasMetadata returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

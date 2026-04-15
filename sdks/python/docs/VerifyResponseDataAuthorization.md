@@ -1,24 +1,24 @@
 # VerifyResponseDataAuthorization
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**authorization_code** | **str** |  | [optional] 
-**bin** | **object** |  | [optional] 
-**last4** | **str** |  | [optional] 
-**exp_month** | **str** |  | [optional] 
-**exp_year** | **str** |  | [optional] 
-**channel** | **str** |  | [optional] 
-**card_type** | **str** |  | [optional] 
-**bank** | **str** |  | [optional] 
-**country_code** | **str** |  | [optional] 
-**brand** | **str** |  | [optional] 
-**reusable** | **bool** |  | [optional] 
-**signature** | **str** |  | [optional] 
-**account_name** | **object** |  | [optional] 
-**receiver_bank_account_number** | **object** |  | [optional] 
-**receiver_bank** | **object** |  | [optional] 
+
+| Name                             | Type       | Description | Notes      |
+| -------------------------------- | ---------- | ----------- | ---------- |
+| **authorization_code**           | **str**    |             | [optional] |
+| **bin**                          | **object** |             | [optional] |
+| **last4**                        | **str**    |             | [optional] |
+| **exp_month**                    | **str**    |             | [optional] |
+| **exp_year**                     | **str**    |             | [optional] |
+| **channel**                      | **str**    |             | [optional] |
+| **card_type**                    | **str**    |             | [optional] |
+| **bank**                         | **str**    |             | [optional] |
+| **country_code**                 | **str**    |             | [optional] |
+| **brand**                        | **str**    |             | [optional] |
+| **reusable**                     | **bool**   |             | [optional] |
+| **signature**                    | **str**    |             | [optional] |
+| **account_name**                 | **object** |             | [optional] |
+| **receiver_bank_account_number** | **object** |             | [optional] |
+| **receiver_bank**                | **object** |             | [optional] |
 
 ## Example
 
@@ -37,6 +37,5 @@ verify_response_data_authorization_dict = verify_response_data_authorization_ins
 # create an instance of VerifyResponseDataAuthorization from a dict
 verify_response_data_authorization_form_dict = verify_response_data_authorization.from_dict(verify_response_data_authorization_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

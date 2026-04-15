@@ -1,12 +1,12 @@
 # VerificationResolveAccountNumberResponseData
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**account_number** | **str** |  | 
-**account_name** | **str** |  | 
-**bank_id** | **int** |  | 
+
+| Name               | Type    | Description | Notes |
+| ------------------ | ------- | ----------- | ----- |
+| **account_number** | **str** |             |
+| **account_name**   | **str** |             |
+| **bank_id**        | **int** |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ verification_resolve_account_number_response_data_dict = verification_resolve_ac
 # create an instance of VerificationResolveAccountNumberResponseData from a dict
 verification_resolve_account_number_response_data_form_dict = verification_resolve_account_number_response_data.from_dict(verification_resolve_account_number_response_data_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,14 +2,14 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**StreetLine** | **string** | The address of for the delivery | 
-**City** | **string** | The city of the delivery address | 
-**State** | **string** | The state of the delivery address | 
-**Country** | **string** | The country of the delivery address | 
-**ShippingFee** | **int32** | The cost of delivery | 
-**DeliveryNote** | Pointer to **string** | Extra details to be aware of for the delivery | [optional] 
+| Name             | Type                  | Description                                   | Notes      |
+| ---------------- | --------------------- | --------------------------------------------- | ---------- |
+| **StreetLine**   | **string**            | The address of for the delivery               |
+| **City**         | **string**            | The city of the delivery address              |
+| **State**        | **string**            | The state of the delivery address             |
+| **Country**      | **string**            | The country of the delivery address           |
+| **ShippingFee**  | **int32**             | The cost of delivery                          |
+| **DeliveryNote** | Pointer to **string** | Extra details to be aware of for the delivery | [optional] |
 
 ## Methods
 
@@ -49,7 +49,6 @@ and a boolean to check if the value has been set.
 
 SetStreetLine sets StreetLine field to given value.
 
-
 ### GetCity
 
 `func (o *OrderShipping) GetCity() string`
@@ -68,7 +67,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderShipping) SetCity(v string)`
 
 SetCity sets City field to given value.
-
 
 ### GetState
 
@@ -89,7 +87,6 @@ and a boolean to check if the value has been set.
 
 SetState sets State field to given value.
 
-
 ### GetCountry
 
 `func (o *OrderShipping) GetCountry() string`
@@ -109,7 +106,6 @@ and a boolean to check if the value has been set.
 
 SetCountry sets Country field to given value.
 
-
 ### GetShippingFee
 
 `func (o *OrderShipping) GetShippingFee() int32`
@@ -128,7 +124,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderShipping) SetShippingFee(v int32)`
 
 SetShippingFee sets ShippingFee field to given value.
-
 
 ### GetDeliveryNote
 
@@ -155,7 +150,4 @@ SetDeliveryNote sets DeliveryNote field to given value.
 
 HasDeliveryNote returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

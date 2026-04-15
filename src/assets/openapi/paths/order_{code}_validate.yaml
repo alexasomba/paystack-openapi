@@ -13,11 +13,11 @@ get:
   description: Validate a pay for me order
   operationId: order_validate
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/OrderValidateSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

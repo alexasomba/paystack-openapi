@@ -2,16 +2,16 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**StartTime** | **int32** |  | 
-**TimeSpent** | **int32** |  | 
-**Attempts** | **int32** |  | 
-**Errors** | **int32** |  | 
-**Success** | **bool** |  | 
-**Mobile** | **bool** |  | 
-**Input** | **[]interface{}** |  | 
-**History** | [**[]ChargeAuthorizationResponseDataLogHistoryInner**](ChargeAuthorizationResponseDataLogHistoryInner.md) |  | 
+| Name          | Type                                                                                                      | Description | Notes |
+| ------------- | --------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **StartTime** | **int32**                                                                                                 |             |
+| **TimeSpent** | **int32**                                                                                                 |             |
+| **Attempts**  | **int32**                                                                                                 |             |
+| **Errors**    | **int32**                                                                                                 |             |
+| **Success**   | **bool**                                                                                                  |             |
+| **Mobile**    | **bool**                                                                                                  |             |
+| **Input**     | **[]interface{}**                                                                                         |             |
+| **History**   | [**[]ChargeAuthorizationResponseDataLogHistoryInner**](ChargeAuthorizationResponseDataLogHistoryInner.md) |             |
 
 ## Methods
 
@@ -51,7 +51,6 @@ and a boolean to check if the value has been set.
 
 SetStartTime sets StartTime field to given value.
 
-
 ### GetTimeSpent
 
 `func (o *ChargeAuthorizationResponseDataLog) GetTimeSpent() int32`
@@ -70,7 +69,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeAuthorizationResponseDataLog) SetTimeSpent(v int32)`
 
 SetTimeSpent sets TimeSpent field to given value.
-
 
 ### GetAttempts
 
@@ -91,7 +89,6 @@ and a boolean to check if the value has been set.
 
 SetAttempts sets Attempts field to given value.
 
-
 ### GetErrors
 
 `func (o *ChargeAuthorizationResponseDataLog) GetErrors() int32`
@@ -110,7 +107,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeAuthorizationResponseDataLog) SetErrors(v int32)`
 
 SetErrors sets Errors field to given value.
-
 
 ### GetSuccess
 
@@ -131,7 +127,6 @@ and a boolean to check if the value has been set.
 
 SetSuccess sets Success field to given value.
 
-
 ### GetMobile
 
 `func (o *ChargeAuthorizationResponseDataLog) GetMobile() bool`
@@ -150,7 +145,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeAuthorizationResponseDataLog) SetMobile(v bool)`
 
 SetMobile sets Mobile field to given value.
-
 
 ### GetInput
 
@@ -171,7 +165,6 @@ and a boolean to check if the value has been set.
 
 SetInput sets Input field to given value.
 
-
 ### GetHistory
 
 `func (o *ChargeAuthorizationResponseDataLog) GetHistory() []ChargeAuthorizationResponseDataLogHistoryInner`
@@ -191,8 +184,4 @@ and a boolean to check if the value has been set.
 
 SetHistory sets History field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

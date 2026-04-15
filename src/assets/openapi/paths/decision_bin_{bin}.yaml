@@ -10,14 +10,14 @@ get:
       in: path
       required: true
       schema:
-        type: integer
-      example: 539983
+        type: string
+      example: "539983"
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/VerificationResolveCardBINSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

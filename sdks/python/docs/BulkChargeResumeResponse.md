@@ -1,11 +1,11 @@
 # BulkChargeResumeResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
+
+| Name        | Type     | Description | Notes |
+| ----------- | -------- | ----------- | ----- |
+| **status**  | **bool** |             |
+| **message** | **str**  |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ bulk_charge_resume_response_dict = bulk_charge_resume_response_instance.to_dict(
 # create an instance of BulkChargeResumeResponse from a dict
 bulk_charge_resume_response_form_dict = bulk_charge_resume_response.from_dict(bulk_charge_resume_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

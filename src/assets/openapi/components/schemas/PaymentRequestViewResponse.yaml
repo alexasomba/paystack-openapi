@@ -7,24 +7,25 @@ properties:
   data:
     type: object
     properties:
-      transactions:
-        type: array
-        items: {}
       domain:
         type: string
       request_code:
         type: string
       description:
+        type: string
         nullable: true
       line_items:
         type: array
-        items: {}
+        items:
+          $ref: ./PaymentRequestLineItemsArray.yaml
       tax:
         type: array
-        items: {}
+        items:
+          $ref: ./PaymentRequestTaxArray.yaml
       amount:
         type: integer
       discount:
+        type: integer
         nullable: true
       currency:
         type: string
@@ -36,8 +37,10 @@ properties:
       paid:
         type: boolean
       paid_at:
+        type: string
         nullable: true
       metadata:
+        type: object
         nullable: true
       has_invoice:
         type: boolean
@@ -58,12 +61,16 @@ properties:
       source:
         type: string
       payment_method:
+        type: string
         nullable: true
       note:
+        type: string
         nullable: true
       amount_paid:
+        type: integer
         nullable: true
       split_code:
+        type: string
         nullable: true
       id:
         type: integer
@@ -72,15 +79,6 @@ properties:
       customer:
         type: object
         properties:
-          transactions:
-            type: array
-            items: {}
-          subscriptions:
-            type: array
-            items: {}
-          authorizations:
-            type: array
-            items: {}
           first_name:
             type: string
           last_name:
@@ -89,41 +87,28 @@ properties:
             type: string
           phone:
             type: string
+            nullable: true
           metadata:
             type: object
-            properties:
-              calling_code:
-                type: string
-          domain:
-            type: string
+            nullable: true
           customer_code:
             type: string
           risk_action:
             type: string
           id:
             type: integer
-          integration:
-            type: integer
-          createdAt:
+          international_format_phone:
             type: string
-          updatedAt:
-            type: string
+            nullable: true
         required:
-          - transactions
-          - subscriptions
-          - authorizations
           - first_name
           - last_name
           - email
           - phone
           - metadata
-          - domain
           - customer_code
           - risk_action
           - id
-          - integration
-          - createdAt
-          - updatedAt
       createdAt:
         type: string
       updatedAt:
@@ -131,7 +116,6 @@ properties:
       pending_amount:
         type: integer
     required:
-      - transactions
       - domain
       - request_code
       - description

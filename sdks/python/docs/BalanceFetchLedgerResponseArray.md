@@ -1,20 +1,20 @@
 # BalanceFetchLedgerResponseArray
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**integration** | **int** |  | 
-**domain** | **str** |  | 
-**balance** | **int** |  | 
-**currency** | **str** |  | 
-**difference** | **int** |  | 
-**reason** | **str** |  | 
-**model_responsible** | **str** |  | 
-**model_row** | **int** |  | 
-**id** | **int** |  | 
-**created_at** | **str** |  | 
-**updated_at** | **str** |  | 
+
+| Name                  | Type    | Description | Notes |
+| --------------------- | ------- | ----------- | ----- |
+| **integration**       | **int** |             |
+| **domain**            | **str** |             |
+| **balance**           | **int** |             |
+| **currency**          | **str** |             |
+| **difference**        | **int** |             |
+| **reason**            | **str** |             |
+| **model_responsible** | **str** |             |
+| **model_row**         | **int** |             |
+| **id**                | **int** |             |
+| **created_at**        | **str** |             |
+| **updated_at**        | **str** |             |
 
 ## Example
 
@@ -33,6 +33,5 @@ balance_fetch_ledger_response_array_dict = balance_fetch_ledger_response_array_i
 # create an instance of BalanceFetchLedgerResponseArray from a dict
 balance_fetch_ledger_response_array_form_dict = balance_fetch_ledger_response_array.from_dict(balance_fetch_ledger_response_array_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

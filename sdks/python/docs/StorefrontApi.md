@@ -2,22 +2,22 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**storefront_add_products**](StorefrontApi.md#storefront_add_products) | **POST** /storefront/{id}/product | Add Products to Storefront
-[**storefront_create**](StorefrontApi.md#storefront_create) | **POST** /storefront | Create Storefront
-[**storefront_delete**](StorefrontApi.md#storefront_delete) | **DELETE** /storefront/{id} | Delete Storefront
-[**storefront_duplicate**](StorefrontApi.md#storefront_duplicate) | **POST** /storefront/{id}/duplicate | Duplicate Storefront
-[**storefront_fetch**](StorefrontApi.md#storefront_fetch) | **GET** /storefront/{id} | Fetch Storefront
-[**storefront_fetch_orders**](StorefrontApi.md#storefront_fetch_orders) | **GET** /storefront/{id}/order | Fetch Storefront Orders
-[**storefront_list**](StorefrontApi.md#storefront_list) | **GET** /storefront | List Storefronts
-[**storefront_list_products**](StorefrontApi.md#storefront_list_products) | **GET** /storefront/{id}/product | List Storefront Products
-[**storefront_publish**](StorefrontApi.md#storefront_publish) | **POST** /storefront/{id}/publish | Publish Storefront
-[**storefront_update**](StorefrontApi.md#storefront_update) | **PUT** /storefront/{id} | Update Storefront
-[**storefront_verify_slug**](StorefrontApi.md#storefront_verify_slug) | **GET** /storefront/verify/{slug} | Verify Storefront Slug
-
+| Method                                                                    | HTTP request                        | Description                |
+| ------------------------------------------------------------------------- | ----------------------------------- | -------------------------- |
+| [**storefront_add_products**](StorefrontApi.md#storefront_add_products)   | **POST** /storefront/{id}/product   | Add Products to Storefront |
+| [**storefront_create**](StorefrontApi.md#storefront_create)               | **POST** /storefront                | Create Storefront          |
+| [**storefront_delete**](StorefrontApi.md#storefront_delete)               | **DELETE** /storefront/{id}         | Delete Storefront          |
+| [**storefront_duplicate**](StorefrontApi.md#storefront_duplicate)         | **POST** /storefront/{id}/duplicate | Duplicate Storefront       |
+| [**storefront_fetch**](StorefrontApi.md#storefront_fetch)                 | **GET** /storefront/{id}            | Fetch Storefront           |
+| [**storefront_fetch_orders**](StorefrontApi.md#storefront_fetch_orders)   | **GET** /storefront/{id}/order      | Fetch Storefront Orders    |
+| [**storefront_list**](StorefrontApi.md#storefront_list)                   | **GET** /storefront                 | List Storefronts           |
+| [**storefront_list_products**](StorefrontApi.md#storefront_list_products) | **GET** /storefront/{id}/product    | List Storefront Products   |
+| [**storefront_publish**](StorefrontApi.md#storefront_publish)             | **POST** /storefront/{id}/publish   | Publish Storefront         |
+| [**storefront_update**](StorefrontApi.md#storefront_update)               | **PUT** /storefront/{id}            | Update Storefront          |
+| [**storefront_verify_slug**](StorefrontApi.md#storefront_verify_slug)     | **GET** /storefront/verify/{slug}   | Verify Storefront Slug     |
 
 # **storefront_add_products**
+
 > Response storefront_add_products(id, storefront_add_products=storefront_add_products)
 
 Add Products to Storefront
@@ -26,7 +26,8 @@ Add previously created products to a Storefront
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -68,14 +69,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling StorefrontApi->storefront_add_products: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of the Storefront | 
- **storefront_add_products** | [**StorefrontAddProducts**](StorefrontAddProducts.md)|  | [optional] 
+| Name                        | Type                                                  | Description                             | Notes      |
+| --------------------------- | ----------------------------------------------------- | --------------------------------------- | ---------- |
+| **id**                      | **int**                                               | The unique identifier of the Storefront |
+| **storefront_add_products** | [**StorefrontAddProducts**](StorefrontAddProducts.md) |                                         | [optional] |
 
 ### Return type
 
@@ -87,20 +86,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **storefront_create**
+
 > StorefrontCreateResponse storefront_create(storefront_create=storefront_create)
 
 Create Storefront
@@ -109,7 +110,8 @@ Create a digital shop to manage and display your products
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -150,13 +152,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling StorefrontApi->storefront_create: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **storefront_create** | [**StorefrontCreate**](StorefrontCreate.md)|  | [optional] 
+| Name                  | Type                                        | Description | Notes      |
+| --------------------- | ------------------------------------------- | ----------- | ---------- |
+| **storefront_create** | [**StorefrontCreate**](StorefrontCreate.md) |             | [optional] |
 
 ### Return type
 
@@ -168,19 +168,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Storefront Create response |  -  |
-**400** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                | Response headers |
+| ----------- | -------------------------- | ---------------- |
+| **200**     | Storefront Create response | -                |
+| **400**     | Unauthorized operation     | -                |
+| **0**       | Server error               | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **storefront_delete**
+
 > StorefrontDeleteResponse storefront_delete(id)
 
 Delete Storefront
@@ -189,7 +191,8 @@ Delete a previously created Storefront
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -229,13 +232,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling StorefrontApi->storefront_delete: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of the Storefront | 
+| Name   | Type    | Description                             | Notes |
+| ------ | ------- | --------------------------------------- | ----- |
+| **id** | **int** | The unique identifier of the Storefront |
 
 ### Return type
 
@@ -247,20 +248,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Storefront Delete response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                | Response headers |
+| ----------- | -------------------------- | ---------------- |
+| **200**     | Storefront Delete response | -                |
+| **401**     | Unauthorized operation     | -                |
+| **404**     | Entity not found           | -                |
+| **0**       | Server error               | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **storefront_duplicate**
+
 > Response storefront_duplicate(id)
 
 Duplicate Storefront
@@ -269,7 +272,8 @@ Duplicate a previously created Storefront
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -309,13 +313,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling StorefrontApi->storefront_duplicate: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of the Storefront | 
+| Name   | Type    | Description                             | Notes |
+| ------ | ------- | --------------------------------------- | ----- |
+| **id** | **int** | The unique identifier of the Storefront |
 
 ### Return type
 
@@ -327,20 +329,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **storefront_fetch**
+
 > StorefrontFetchResponse storefront_fetch(id)
 
 Fetch Storefront
@@ -349,7 +353,8 @@ Get the details of a previously created Storefront
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -389,13 +394,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling StorefrontApi->storefront_fetch: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of the Storefront | 
+| Name   | Type    | Description                             | Notes |
+| ------ | ------- | --------------------------------------- | ----- |
+| **id** | **int** | The unique identifier of the Storefront |
 
 ### Return type
 
@@ -407,20 +410,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Storefront Fetch response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description               | Response headers |
+| ----------- | ------------------------- | ---------------- |
+| **200**     | Storefront Fetch response | -                |
+| **401**     | Unauthorized operation    | -                |
+| **404**     | Entity not found          | -                |
+| **0**       | Server error              | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **storefront_fetch_orders**
+
 > Response storefront_fetch_orders(id)
 
 Fetch Storefront Orders
@@ -429,7 +434,8 @@ Fetch all orders in your Storefront
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -469,13 +475,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling StorefrontApi->storefront_fetch_orders: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of the Storefront | 
+| Name   | Type    | Description                             | Notes |
+| ------ | ------- | --------------------------------------- | ----- |
+| **id** | **int** | The unique identifier of the Storefront |
 
 ### Return type
 
@@ -487,19 +491,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **storefront_list**
+
 > StorefrontListResponse storefront_list(per_page=per_page, page=page, status=status)
 
 List Storefronts
@@ -508,7 +514,8 @@ List the storefronts you previously created
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -550,15 +557,13 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling StorefrontApi->storefront_list: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **per_page** | **int**| Number of records to fetch per request | [optional] [default to 50]
- **page** | **int**| The offset to retrieve data from | [optional] [default to 1]
- **status** | **str**|  | [optional] 
+| Name         | Type    | Description                            | Notes                      |
+| ------------ | ------- | -------------------------------------- | -------------------------- |
+| **per_page** | **int** | Number of records to fetch per request | [optional] [default to 50] |
+| **page**     | **int** | The offset to retrieve data from       | [optional] [default to 1]  |
+| **status**   | **str** |                                        | [optional]                 |
 
 ### Return type
 
@@ -570,20 +575,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Storefront List response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description              | Response headers |
+| ----------- | ------------------------ | ---------------- |
+| **200**     | Storefront List response | -                |
+| **401**     | Unauthorized operation   | -                |
+| **404**     | Entity not found         | -                |
+| **0**       | Server error             | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **storefront_list_products**
+
 > Response storefront_list_products(id)
 
 List Storefront Products
@@ -592,7 +599,8 @@ List the products in a Storefront
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -632,13 +640,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling StorefrontApi->storefront_list_products: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of the Storefront | 
+| Name   | Type    | Description                             | Notes |
+| ------ | ------- | --------------------------------------- | ----- |
+| **id** | **int** | The unique identifier of the Storefront |
 
 ### Return type
 
@@ -650,20 +656,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **storefront_publish**
+
 > Response storefront_publish(id)
 
 Publish Storefront
@@ -672,7 +680,8 @@ Make your Storefront publicly available
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -712,13 +721,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling StorefrontApi->storefront_publish: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of the Storefront | 
+| Name   | Type    | Description                             | Notes |
+| ------ | ------- | --------------------------------------- | ----- |
+| **id** | **int** | The unique identifier of the Storefront |
 
 ### Return type
 
@@ -730,20 +737,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **storefront_update**
+
 > StorefrontUpdateResponse storefront_update(id, storefront_update=storefront_update)
 
 Update Storefront
@@ -752,7 +761,8 @@ Update the details of a previously created Storefront
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -794,14 +804,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling StorefrontApi->storefront_update: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of the Storefront | 
- **storefront_update** | [**StorefrontUpdate**](StorefrontUpdate.md)|  | [optional] 
+| Name                  | Type                                        | Description                             | Notes      |
+| --------------------- | ------------------------------------------- | --------------------------------------- | ---------- |
+| **id**                | **int**                                     | The unique identifier of the Storefront |
+| **storefront_update** | [**StorefrontUpdate**](StorefrontUpdate.md) |                                         | [optional] |
 
 ### Return type
 
@@ -813,20 +821,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Storefront Update response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                | Response headers |
+| ----------- | -------------------------- | ---------------- |
+| **200**     | Storefront Update response | -                |
+| **401**     | Unauthorized operation     | -                |
+| **404**     | Entity not found           | -                |
+| **0**       | Server error               | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **storefront_verify_slug**
+
 > Response storefront_verify_slug(slug)
 
 Verify Storefront Slug
@@ -835,7 +845,8 @@ Verify the availability of a slug before using it for your Storefront
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -875,13 +886,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling StorefrontApi->storefront_verify_slug: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **slug** | **str**| The custom slug to check | 
+| Name     | Type    | Description              | Notes |
+| -------- | ------- | ------------------------ | ----- |
+| **slug** | **str** | The custom slug to check |
 
 ### Return type
 
@@ -893,16 +902,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

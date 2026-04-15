@@ -1,13 +1,13 @@
 # CustomerListResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**List[CustomerListResponseArray]**](CustomerListResponseArray.md) |  | 
-**meta** | [**CustomerListResponseMeta**](CustomerListResponseMeta.md) |  | 
+
+| Name        | Type                                                                | Description | Notes |
+| ----------- | ------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                            |             |
+| **message** | **str**                                                             |             |
+| **data**    | [**List[CustomerListResponseArray]**](CustomerListResponseArray.md) |             |
+| **meta**    | [**CustomerListResponseMeta**](CustomerListResponseMeta.md)         |             |
 
 ## Example
 
@@ -26,6 +26,5 @@ customer_list_response_dict = customer_list_response_instance.to_dict()
 # create an instance of CustomerListResponse from a dict
 customer_list_response_form_dict = customer_list_response.from_dict(customer_list_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

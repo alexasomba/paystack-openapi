@@ -11,8 +11,10 @@ properties:
         type: integer
       refund_amount:
         type: integer
+        nullable: true
       currency:
         type: string
+        nullable: true
       status:
         type: string
       resolution:
@@ -113,16 +115,12 @@ properties:
                 nullable: true
               receiver_bank:
                 nullable: true
-            required:
-              - receiver_bank_account_number
-              - receiver_bank
           customer:
             type: object
             properties:
               international_format_phone:
+                type: string
                 nullable: true
-            required:
-              - international_format_phone
           plan:
             type: object
           subaccount:
@@ -173,6 +171,7 @@ properties:
         nullable: true
       category:
         type: string
+        nullable: true
       customer:
         type: object
         properties:
@@ -180,34 +179,36 @@ properties:
             type: integer
           first_name:
             type: string
+            nullable: true
           last_name:
             type: string
+            nullable: true
           email:
             type: string
           customer_code:
             type: string
           phone:
             type: string
+            nullable: true
           metadata:
             type: object
+            nullable: true
           risk_action:
             type: string
           international_format_phone:
             type: string
+            nullable: true
         required:
           - id
-          - first_name
-          - last_name
           - email
           - customer_code
-          - phone
-          - metadata
           - risk_action
-          - international_format_phone
       bin:
         type: string
+        nullable: true
       last4:
         type: string
+        nullable: true
       dueAt:
         nullable: true
       resolvedAt:
@@ -235,19 +236,12 @@ properties:
       - refund_amount
       - currency
       - status
-      - resolution
       - domain
       - transaction
-      - transaction_reference
       - category
       - customer
       - bin
       - last4
-      - dueAt
-      - resolvedAt
-      - evidence
-      - attachments
-      - note
       - history
       - messages
       - createdAt

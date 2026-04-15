@@ -18,16 +18,16 @@ post:
       required: true
       description: The ID of the split configuration to fetch
       schema:
-        type: integer
-      example: 4896895
+        type: string
+      example: "4896895"
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/SplitAddUpdateSubaccountResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error

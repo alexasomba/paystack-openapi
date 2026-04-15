@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | The new name for the Terminal | [optional] 
-**Address** | Pointer to **string** | The new address for the Terminal | [optional] 
+| Name        | Type                  | Description                      | Notes      |
+| ----------- | --------------------- | -------------------------------- | ---------- |
+| **Name**    | Pointer to **string** | The new name for the Terminal    | [optional] |
+| **Address** | Pointer to **string** | The new address for the Terminal | [optional] |
 
 ## Methods
 
@@ -76,7 +76,4 @@ SetAddress sets Address field to given value.
 
 HasAddress returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

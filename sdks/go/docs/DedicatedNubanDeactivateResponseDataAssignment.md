@@ -2,13 +2,13 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AssigneeId** | **int32** |  | 
-**AssigneeType** | **string** |  | 
-**AssignedAt** | **string** |  | 
-**Integration** | **int32** |  | 
-**AccountType** | **string** |  | 
+| Name             | Type       | Description | Notes |
+| ---------------- | ---------- | ----------- | ----- |
+| **AssigneeId**   | **int32**  |             |
+| **AssigneeType** | **string** |             |
+| **AssignedAt**   | **string** |             |
+| **Integration**  | **int32**  |             |
+| **AccountType**  | **string** |             |
 
 ## Methods
 
@@ -48,7 +48,6 @@ and a boolean to check if the value has been set.
 
 SetAssigneeId sets AssigneeId field to given value.
 
-
 ### GetAssigneeType
 
 `func (o *DedicatedNubanDeactivateResponseDataAssignment) GetAssigneeType() string`
@@ -67,7 +66,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedNubanDeactivateResponseDataAssignment) SetAssigneeType(v string)`
 
 SetAssigneeType sets AssigneeType field to given value.
-
 
 ### GetAssignedAt
 
@@ -88,7 +86,6 @@ and a boolean to check if the value has been set.
 
 SetAssignedAt sets AssignedAt field to given value.
 
-
 ### GetIntegration
 
 `func (o *DedicatedNubanDeactivateResponseDataAssignment) GetIntegration() int32`
@@ -107,7 +104,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedNubanDeactivateResponseDataAssignment) SetIntegration(v int32)`
 
 SetIntegration sets Integration field to given value.
-
 
 ### GetAccountType
 
@@ -128,8 +124,4 @@ and a boolean to check if the value has been set.
 
 SetAccountType sets AccountType field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

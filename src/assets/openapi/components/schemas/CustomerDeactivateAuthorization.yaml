@@ -5,5 +5,5 @@ properties:
   authorization_code:
     description: Authorization code to be deactivated
     type: string
-example: 
+example:
   authorization_code: "AUTH_xxxIjkZVj5"

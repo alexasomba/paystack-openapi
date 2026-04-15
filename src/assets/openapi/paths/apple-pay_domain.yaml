@@ -16,9 +16,9 @@ post:
         schema:
           $ref: ../components/schemas/ApplePayParam.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/ApplePayOkResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error
@@ -31,30 +31,26 @@ get:
   parameters:
     - name: use_cursor
       in: query
-      description: A flag to indicate if cursor based pagination should be used
+      description: Flag to enable cursor pagination on the endpoint
       schema:
         type: boolean
       example: true
     - name: next
       in: query
-      description: >
-        An alphanumeric value returned for every cursor based retrieval, used to
-        retrieve the next set of data
+      description: A cursor that indicates your place in the list. It can be used to fetch the next page of the list
       schema:
         type: string
     - name: previous
       in: query
-      description: >
-        An alphanumeric value returned for every cursor based retrieval, used to
-        retrieve the previous set of data
+      description: A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request
       schema:
         type: string
   responses:
-    '200':
-      $ref: ../components/responses/Ok.yaml
-    '401':
+    "200":
+      $ref: ../components/responses/ApplePayDomainsSuccess.yaml
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error
@@ -75,11 +71,11 @@ delete:
         schema:
           $ref: ../components/schemas/ApplePayParam.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/Ok.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

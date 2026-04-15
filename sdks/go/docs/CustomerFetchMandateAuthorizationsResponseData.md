@@ -2,19 +2,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**Status** | **string** |  | 
-**MandateId** | **int32** |  | 
-**AuthorizationId** | **int32** |  | 
-**AuthorizationCode** | **string** |  | 
-**IntegrationId** | **int32** |  | 
-**AccountNumber** | **string** |  | 
-**BankCode** | **string** |  | 
-**BankName** | Pointer to **NullableString** |  | [optional] 
-**Customer** | [**CustomerFetchMandateAuthorizationsResponseDataCustomer**](CustomerFetchMandateAuthorizationsResponseDataCustomer.md) |  | 
-**AuthorizedAt** | **time.Time** |  | 
+| Name                  | Type                                                                                                                    | Description | Notes      |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------- | ---------- |
+| **Id**                | **int32**                                                                                                               |             |
+| **Status**            | **string**                                                                                                              |             |
+| **MandateId**         | **int32**                                                                                                               |             |
+| **AuthorizationId**   | **int32**                                                                                                               |             |
+| **AuthorizationCode** | **string**                                                                                                              |             |
+| **IntegrationId**     | **int32**                                                                                                               |             |
+| **AccountNumber**     | **string**                                                                                                              |             |
+| **BankCode**          | **string**                                                                                                              |             |
+| **BankName**          | Pointer to **NullableString**                                                                                           |             | [optional] |
+| **Customer**          | [**CustomerFetchMandateAuthorizationsResponseDataCustomer**](CustomerFetchMandateAuthorizationsResponseDataCustomer.md) |             |
+| **AuthorizedAt**      | **time.Time**                                                                                                           |             |
 
 ## Methods
 
@@ -54,7 +54,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetStatus
 
 `func (o *CustomerFetchMandateAuthorizationsResponseData) GetStatus() string`
@@ -73,7 +72,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerFetchMandateAuthorizationsResponseData) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
-
 
 ### GetMandateId
 
@@ -94,7 +92,6 @@ and a boolean to check if the value has been set.
 
 SetMandateId sets MandateId field to given value.
 
-
 ### GetAuthorizationId
 
 `func (o *CustomerFetchMandateAuthorizationsResponseData) GetAuthorizationId() int32`
@@ -113,7 +110,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerFetchMandateAuthorizationsResponseData) SetAuthorizationId(v int32)`
 
 SetAuthorizationId sets AuthorizationId field to given value.
-
 
 ### GetAuthorizationCode
 
@@ -134,7 +130,6 @@ and a boolean to check if the value has been set.
 
 SetAuthorizationCode sets AuthorizationCode field to given value.
 
-
 ### GetIntegrationId
 
 `func (o *CustomerFetchMandateAuthorizationsResponseData) GetIntegrationId() int32`
@@ -153,7 +148,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerFetchMandateAuthorizationsResponseData) SetIntegrationId(v int32)`
 
 SetIntegrationId sets IntegrationId field to given value.
-
 
 ### GetAccountNumber
 
@@ -174,7 +168,6 @@ and a boolean to check if the value has been set.
 
 SetAccountNumber sets AccountNumber field to given value.
 
-
 ### GetBankCode
 
 `func (o *CustomerFetchMandateAuthorizationsResponseData) GetBankCode() string`
@@ -193,7 +186,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerFetchMandateAuthorizationsResponseData) SetBankCode(v string)`
 
 SetBankCode sets BankCode field to given value.
-
 
 ### GetBankName
 
@@ -224,12 +216,14 @@ HasBankName returns a boolean if a field has been set.
 
 `func (o *CustomerFetchMandateAuthorizationsResponseData) SetBankNameNil(b bool)`
 
- SetBankNameNil sets the value for BankName to be an explicit nil
+SetBankNameNil sets the value for BankName to be an explicit nil
 
 ### UnsetBankName
+
 `func (o *CustomerFetchMandateAuthorizationsResponseData) UnsetBankName()`
 
 UnsetBankName ensures that no value is present for BankName, not even an explicit nil
+
 ### GetCustomer
 
 `func (o *CustomerFetchMandateAuthorizationsResponseData) GetCustomer() CustomerFetchMandateAuthorizationsResponseDataCustomer`
@@ -248,7 +242,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerFetchMandateAuthorizationsResponseData) SetCustomer(v CustomerFetchMandateAuthorizationsResponseDataCustomer)`
 
 SetCustomer sets Customer field to given value.
-
 
 ### GetAuthorizedAt
 
@@ -269,8 +262,4 @@ and a boolean to check if the value has been set.
 
 SetAuthorizedAt sets AuthorizedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

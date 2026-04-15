@@ -2,15 +2,15 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Verified** | **bool** |  | 
-**VerificationMessage** | **string** |  | 
-**AccountAcceptsDebits** | **bool** |  | 
-**AccountAcceptsCredits** | **bool** |  | 
-**AccountOpenForMoreThanThreeMonths** | **bool** |  | 
-**AccountHolderMatch** | **bool** |  | 
-**AccountOpen** | **bool** |  | 
+| Name                                  | Type       | Description | Notes |
+| ------------------------------------- | ---------- | ----------- | ----- |
+| **Verified**                          | **bool**   |             |
+| **VerificationMessage**               | **string** |             |
+| **AccountAcceptsDebits**              | **bool**   |             |
+| **AccountAcceptsCredits**             | **bool**   |             |
+| **AccountOpenForMoreThanThreeMonths** | **bool**   |             |
+| **AccountHolderMatch**                | **bool**   |             |
+| **AccountOpen**                       | **bool**   |             |
 
 ## Methods
 
@@ -50,7 +50,6 @@ and a boolean to check if the value has been set.
 
 SetVerified sets Verified field to given value.
 
-
 ### GetVerificationMessage
 
 `func (o *VerificationValidateAccountResponseData) GetVerificationMessage() string`
@@ -69,7 +68,6 @@ and a boolean to check if the value has been set.
 `func (o *VerificationValidateAccountResponseData) SetVerificationMessage(v string)`
 
 SetVerificationMessage sets VerificationMessage field to given value.
-
 
 ### GetAccountAcceptsDebits
 
@@ -90,7 +88,6 @@ and a boolean to check if the value has been set.
 
 SetAccountAcceptsDebits sets AccountAcceptsDebits field to given value.
 
-
 ### GetAccountAcceptsCredits
 
 `func (o *VerificationValidateAccountResponseData) GetAccountAcceptsCredits() bool`
@@ -109,7 +106,6 @@ and a boolean to check if the value has been set.
 `func (o *VerificationValidateAccountResponseData) SetAccountAcceptsCredits(v bool)`
 
 SetAccountAcceptsCredits sets AccountAcceptsCredits field to given value.
-
 
 ### GetAccountOpenForMoreThanThreeMonths
 
@@ -130,7 +126,6 @@ and a boolean to check if the value has been set.
 
 SetAccountOpenForMoreThanThreeMonths sets AccountOpenForMoreThanThreeMonths field to given value.
 
-
 ### GetAccountHolderMatch
 
 `func (o *VerificationValidateAccountResponseData) GetAccountHolderMatch() bool`
@@ -149,7 +144,6 @@ and a boolean to check if the value has been set.
 `func (o *VerificationValidateAccountResponseData) SetAccountHolderMatch(v bool)`
 
 SetAccountHolderMatch sets AccountHolderMatch field to given value.
-
 
 ### GetAccountOpen
 
@@ -170,8 +164,4 @@ and a boolean to check if the value has been set.
 
 SetAccountOpen sets AccountOpen field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

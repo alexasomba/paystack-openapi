@@ -1,11 +1,11 @@
 parameters:
-  - name: id
+  - name: id_or_slug
     in: path
-    description: The unique identifier of a payment page
+    description: The page ID or slug you want to fetch
     required: true
     schema:
-      type: integer
-    example: 1891222
+      type: string
+    example: "1891222"
 get:
   tags:
     - Page
@@ -13,11 +13,11 @@ get:
   description: Get a previously created payment page
   operationId: page_fetch
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/PageFetchSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error
@@ -36,11 +36,11 @@ put:
         schema:
           $ref: ../components/schemas/PageUpdate.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/PageUpdateSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

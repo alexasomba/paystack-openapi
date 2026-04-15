@@ -2,27 +2,28 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**charge_check**](ChargeApi.md#charge_check) | **GET** /charge/{reference} | Check pending charge
-[**charge_create**](ChargeApi.md#charge_create) | **POST** /charge | Create Charge
-[**charge_submit_address**](ChargeApi.md#charge_submit_address) | **POST** /charge/submit_address | Submit Address
-[**charge_submit_birthday**](ChargeApi.md#charge_submit_birthday) | **POST** /charge/submit_birthday | Submit Birthday
-[**charge_submit_otp**](ChargeApi.md#charge_submit_otp) | **POST** /charge/submit_otp | Submit OTP
-[**charge_submit_phone**](ChargeApi.md#charge_submit_phone) | **POST** /charge/submit_phone | Submit Phone
-[**charge_submit_pin**](ChargeApi.md#charge_submit_pin) | **POST** /charge/submit_pin | Submit PIN
-
+| Method                                                            | HTTP request                     | Description          |
+| ----------------------------------------------------------------- | -------------------------------- | -------------------- |
+| [**charge_check**](ChargeApi.md#charge_check)                     | **GET** /charge/{reference}      | Check pending charge |
+| [**charge_create**](ChargeApi.md#charge_create)                   | **POST** /charge                 | Create Charge        |
+| [**charge_submit_address**](ChargeApi.md#charge_submit_address)   | **POST** /charge/submit_address  | Submit Address       |
+| [**charge_submit_birthday**](ChargeApi.md#charge_submit_birthday) | **POST** /charge/submit_birthday | Submit Birthday      |
+| [**charge_submit_otp**](ChargeApi.md#charge_submit_otp)           | **POST** /charge/submit_otp      | Submit OTP           |
+| [**charge_submit_phone**](ChargeApi.md#charge_submit_phone)       | **POST** /charge/submit_phone    | Submit Phone         |
+| [**charge_submit_pin**](ChargeApi.md#charge_submit_pin)           | **POST** /charge/submit_pin      | Submit PIN           |
 
 # **charge_check**
+
 > ChargeCheckPendingResponse charge_check(reference)
 
 Check pending charge
 
-When you get `pending` as a charge status or if there was an exception when calling any of the `/charge` endpoints, wait 10 seconds or more, then make a check to see if its status has changed. Don't call too early as you may get a lot more pending than you should. 
+When you get `pending` as a charge status or if there was an exception when calling any of the `/charge` endpoints, wait 10 seconds or more, then make a check to see if its status has changed. Don't call too early as you may get a lot more pending than you should.
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -62,13 +63,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling ChargeApi->charge_check: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **reference** | **str**| The reference of the ongoing transaction | 
+| Name          | Type    | Description                              | Notes |
+| ------------- | ------- | ---------------------------------------- | ----- |
+| **reference** | **str** | The reference of the ongoing transaction |
 
 ### Return type
 
@@ -80,20 +79,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **charge_create**
+
 > ChargeCreateResponse charge_create(charge_create_request=charge_create_request)
 
 Create Charge
@@ -102,7 +103,8 @@ Initiate a payment by integrating the payment channel of your choice.
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -143,13 +145,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling ChargeApi->charge_create: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **charge_create_request** | [**ChargeCreateRequest**](ChargeCreateRequest.md)|  | [optional] 
+| Name                      | Type                                              | Description | Notes      |
+| ------------------------- | ------------------------------------------------- | ----------- | ---------- |
+| **charge_create_request** | [**ChargeCreateRequest**](ChargeCreateRequest.md) |             | [optional] |
 
 ### Return type
 
@@ -161,19 +161,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **charge_submit_address**
+
 > Response charge_submit_address(charge_submit_address=charge_submit_address)
 
 Submit Address
@@ -182,7 +184,8 @@ Send the details of the customer's address for address verification
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -223,13 +226,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling ChargeApi->charge_submit_address: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **charge_submit_address** | [**ChargeSubmitAddress**](ChargeSubmitAddress.md)|  | [optional] 
+| Name                      | Type                                              | Description | Notes      |
+| ------------------------- | ------------------------------------------------- | ----------- | ---------- |
+| **charge_submit_address** | [**ChargeSubmitAddress**](ChargeSubmitAddress.md) |             | [optional] |
 
 ### Return type
 
@@ -241,19 +242,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **charge_submit_birthday**
+
 > ChargeSubmitBirthdayResponse charge_submit_birthday(charge_submit_birthday=charge_submit_birthday)
 
 Submit Birthday
@@ -262,7 +265,8 @@ Submit the customer's birthday when requested
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -303,13 +307,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling ChargeApi->charge_submit_birthday: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **charge_submit_birthday** | [**ChargeSubmitBirthday**](ChargeSubmitBirthday.md)|  | [optional] 
+| Name                       | Type                                                | Description | Notes      |
+| -------------------------- | --------------------------------------------------- | ----------- | ---------- |
+| **charge_submit_birthday** | [**ChargeSubmitBirthday**](ChargeSubmitBirthday.md) |             | [optional] |
 
 ### Return type
 
@@ -321,19 +323,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **charge_submit_otp**
+
 > ChargeSubmitOtpResponse charge_submit_otp(charge_submit_otp=charge_submit_otp)
 
 Submit OTP
@@ -342,7 +346,8 @@ Submit OTP to complete a charge
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -383,13 +388,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling ChargeApi->charge_submit_otp: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **charge_submit_otp** | [**ChargeSubmitOTP**](ChargeSubmitOTP.md)|  | [optional] 
+| Name                  | Type                                      | Description | Notes      |
+| --------------------- | ----------------------------------------- | ----------- | ---------- |
+| **charge_submit_otp** | [**ChargeSubmitOTP**](ChargeSubmitOTP.md) |             | [optional] |
 
 ### Return type
 
@@ -401,19 +404,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **charge_submit_phone**
+
 > ChargeSubmitPhoneResponse charge_submit_phone(charge_submit_phone=charge_submit_phone)
 
 Submit Phone
@@ -422,7 +427,8 @@ Submit phone number when requested
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -463,13 +469,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling ChargeApi->charge_submit_phone: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **charge_submit_phone** | [**ChargeSubmitPhone**](ChargeSubmitPhone.md)|  | [optional] 
+| Name                    | Type                                          | Description | Notes      |
+| ----------------------- | --------------------------------------------- | ----------- | ---------- |
+| **charge_submit_phone** | [**ChargeSubmitPhone**](ChargeSubmitPhone.md) |             | [optional] |
 
 ### Return type
 
@@ -481,19 +485,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **charge_submit_pin**
+
 > ChargeSubmitPinResponse charge_submit_pin(charge_submit_pin=charge_submit_pin)
 
 Submit PIN
@@ -502,7 +508,8 @@ Submit PIN to continue a charge
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -543,13 +550,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling ChargeApi->charge_submit_pin: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **charge_submit_pin** | [**ChargeSubmitPin**](ChargeSubmitPin.md)|  | [optional] 
+| Name                  | Type                                      | Description | Notes      |
+| --------------------- | ----------------------------------------- | ----------- | ---------- |
+| **charge_submit_pin** | [**ChargeSubmitPin**](ChargeSubmitPin.md) |             | [optional] |
 
 ### Return type
 
@@ -561,15 +566,15 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

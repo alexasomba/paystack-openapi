@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Pending** | [**[]PaymentRequestPendingArray**](PaymentRequestPendingArray.md) |  | 
-**Successful** | [**[]PaymentRequestSuccessfulArray**](PaymentRequestSuccessfulArray.md) |  | 
-**Total** | [**[]PaymentRequestTotalArray**](PaymentRequestTotalArray.md) |  | 
+| Name           | Type                                                                    | Description | Notes |
+| -------------- | ----------------------------------------------------------------------- | ----------- | ----- |
+| **Pending**    | [**[]PaymentRequestPendingArray**](PaymentRequestPendingArray.md)       |             |
+| **Successful** | [**[]PaymentRequestSuccessfulArray**](PaymentRequestSuccessfulArray.md) |             |
+| **Total**      | [**[]PaymentRequestTotalArray**](PaymentRequestTotalArray.md)           |             |
 
 ## Methods
 
@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetPending sets Pending field to given value.
 
-
 ### GetSuccessful
 
 `func (o *PaymentRequestTotalResponseData) GetSuccessful() []PaymentRequestSuccessfulArray`
@@ -65,7 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaymentRequestTotalResponseData) SetSuccessful(v []PaymentRequestSuccessfulArray)`
 
 SetSuccessful sets Successful field to given value.
-
 
 ### GetTotal
 
@@ -86,8 +84,4 @@ and a boolean to check if the value has been set.
 
 SetTotal sets Total field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

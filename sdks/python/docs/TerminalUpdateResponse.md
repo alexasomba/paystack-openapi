@@ -1,11 +1,11 @@
 # TerminalUpdateResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
+
+| Name        | Type     | Description | Notes |
+| ----------- | -------- | ----------- | ----- |
+| **status**  | **bool** |             |
+| **message** | **str**  |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ terminal_update_response_dict = terminal_update_response_instance.to_dict()
 # create an instance of TerminalUpdateResponse from a dict
 terminal_update_response_form_dict = terminal_update_response.from_dict(terminal_update_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

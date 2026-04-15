@@ -2,26 +2,22 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**TerminalCommission**](TerminalAPI.md#TerminalCommission) | **Post** /terminal/commission_device | Commission Terminal
-[**TerminalDecommission**](TerminalAPI.md#TerminalDecommission) | **Post** /terminal/decommission_device | Decommission Terminal
-[**TerminalFetch**](TerminalAPI.md#TerminalFetch) | **Get** /terminal/{terminal_id} | Fetch Terminal
-[**TerminalFetchEventStatus**](TerminalAPI.md#TerminalFetchEventStatus) | **Get** /terminal/{terminal_id}/event/{event_id} | Fetch Event Status
-[**TerminalFetchTerminalStatus**](TerminalAPI.md#TerminalFetchTerminalStatus) | **Get** /terminal/{terminal_id}/presence | Fetch Terminal Status
-[**TerminalList**](TerminalAPI.md#TerminalList) | **Get** /terminal | List Terminals
-[**TerminalSendEvent**](TerminalAPI.md#TerminalSendEvent) | **Post** /terminal/{id}/event | Send Event
-[**TerminalUpdate**](TerminalAPI.md#TerminalUpdate) | **Put** /terminal/{terminal_id} | Update Terminal
-
-
+| Method                                                                        | HTTP request                                     | Description           |
+| ----------------------------------------------------------------------------- | ------------------------------------------------ | --------------------- |
+| [**TerminalCommission**](TerminalAPI.md#TerminalCommission)                   | **Post** /terminal/commission_device             | Commission Terminal   |
+| [**TerminalDecommission**](TerminalAPI.md#TerminalDecommission)               | **Post** /terminal/decommission_device           | Decommission Terminal |
+| [**TerminalFetch**](TerminalAPI.md#TerminalFetch)                             | **Get** /terminal/{terminal_id}                  | Fetch Terminal        |
+| [**TerminalFetchEventStatus**](TerminalAPI.md#TerminalFetchEventStatus)       | **Get** /terminal/{terminal_id}/event/{event_id} | Fetch Event Status    |
+| [**TerminalFetchTerminalStatus**](TerminalAPI.md#TerminalFetchTerminalStatus) | **Get** /terminal/{terminal_id}/presence         | Fetch Terminal Status |
+| [**TerminalList**](TerminalAPI.md#TerminalList)                               | **Get** /terminal                                | List Terminals        |
+| [**TerminalSendEvent**](TerminalAPI.md#TerminalSendEvent)                     | **Post** /terminal/{id}/event                    | Send Event            |
+| [**TerminalUpdate**](TerminalAPI.md#TerminalUpdate)                           | **Put** /terminal/{terminal_id}                  | Update Terminal       |
 
 ## TerminalCommission
 
 > TerminalCommissionDeviceResponse TerminalCommission(ctx).TerminalActivationToggle(terminalActivationToggle).Execute()
 
 Commission Terminal
-
-
 
 ### Example
 
@@ -52,16 +48,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTerminalCommissionRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **terminalActivationToggle** | [**TerminalActivationToggle**](TerminalActivationToggle.md) |  | 
+| Name                         | Type                                                        | Description | Notes |
+| ---------------------------- | ----------------------------------------------------------- | ----------- | ----- |
+| **terminalActivationToggle** | [**TerminalActivationToggle**](TerminalActivationToggle.md) |             |
 
 ### Return type
 
@@ -80,14 +73,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TerminalDecommission
 
 > TerminalDecommissionDeviceResponse TerminalDecommission(ctx).TerminalActivationToggle(terminalActivationToggle).Execute()
 
 Decommission Terminal
-
-
 
 ### Example
 
@@ -118,16 +108,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTerminalDecommissionRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **terminalActivationToggle** | [**TerminalActivationToggle**](TerminalActivationToggle.md) |  | 
+| Name                         | Type                                                        | Description | Notes |
+| ---------------------------- | ----------------------------------------------------------- | ----------- | ----- |
+| **terminalActivationToggle** | [**TerminalActivationToggle**](TerminalActivationToggle.md) |             |
 
 ### Return type
 
@@ -146,14 +133,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TerminalFetch
 
 > TerminalGetResponse TerminalFetch(ctx, terminalId).Execute()
 
 Fetch Terminal
-
-
 
 ### Example
 
@@ -184,20 +168,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**terminalId** | **string** | The ID of the Terminal the event should be sent to. | 
+| Name           | Type                | Description                                                                 | Notes |
+| -------------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**        | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **terminalId** | **string**          | The ID of the Terminal the event should be sent to.                         |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTerminalFetchRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -216,14 +197,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TerminalFetchEventStatus
 
 > Response TerminalFetchEventStatus(ctx, terminalId, eventId).Execute()
 
 Fetch Event Status
-
-
 
 ### Example
 
@@ -255,22 +233,18 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**terminalId** | **string** | The ID of the Terminal the event should be sent to. | 
-**eventId** | **string** | The ID of the event that was sent to the Terminal | 
+| Name           | Type                | Description                                                                 | Notes |
+| -------------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**        | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **terminalId** | **string**          | The ID of the Terminal the event should be sent to.                         |
+| **eventId**    | **string**          | The ID of the event that was sent to the Terminal                           |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTerminalFetchEventStatusRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -289,14 +263,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TerminalFetchTerminalStatus
 
 > TerminalGetStatusResponse TerminalFetchTerminalStatus(ctx, terminalId).Execute()
 
 Fetch Terminal Status
-
-
 
 ### Example
 
@@ -327,20 +298,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**terminalId** | **string** | The ID of the Terminal the event should be sent to. | 
+| Name           | Type                | Description                                                                 | Notes |
+| -------------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**        | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **terminalId** | **string**          | The ID of the Terminal the event should be sent to.                         |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTerminalFetchTerminalStatusRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -359,14 +327,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TerminalList
 
 > TerminalListsResponse TerminalList(ctx).Next(next).Previous(previous).PerPage(perPage).Execute()
 
 List Terminals
-
-
 
 ### Example
 
@@ -399,18 +364,15 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTerminalListRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **next** | **string** | A cursor that indicates your place in the list. It can be used to fetch the next page of the list | 
- **previous** | **string** | A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request | 
- **perPage** | **int32** | Specify how many records you want to retrieve per page | [default to 50]
+| Name         | Type       | Description                                                                                                                           | Notes           |
+| ------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| **next**     | **string** | A cursor that indicates your place in the list. It can be used to fetch the next page of the list                                     |
+| **previous** | **string** | A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request |
+| **perPage**  | **int32**  | Specify how many records you want to retrieve per page                                                                                | [default to 50] |
 
 ### Return type
 
@@ -429,14 +391,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TerminalSendEvent
 
 > Response TerminalSendEvent(ctx, id).TerminalSendEvent(terminalSendEvent).Execute()
 
 Send Event
-
-
 
 ### Example
 
@@ -468,21 +427,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the Terminal the event should be sent to. | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **string**          | The ID of the Terminal the event should be sent to.                         |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTerminalSendEventRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **terminalSendEvent** | [**TerminalSendEvent**](TerminalSendEvent.md) |  | 
+**terminalSendEvent** | [**TerminalSendEvent**](TerminalSendEvent.md) | |
 
 ### Return type
 
@@ -501,14 +458,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TerminalUpdate
 
 > TerminalUpdateResponse TerminalUpdate(ctx, terminalId).TerminalUpate(terminalUpate).Execute()
 
 Update Terminal
-
-
 
 ### Example
 
@@ -540,21 +494,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**terminalId** | **string** | The ID of the Terminal the event should be sent to. | 
+| Name           | Type                | Description                                                                 | Notes |
+| -------------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**        | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **terminalId** | **string**          | The ID of the Terminal the event should be sent to.                         |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTerminalUpdateRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **terminalUpate** | [**TerminalUpate**](TerminalUpate.md) |  | 
+**terminalUpate** | [**TerminalUpate**](TerminalUpate.md) | |
 
 ### Return type
 
@@ -572,4 +524,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

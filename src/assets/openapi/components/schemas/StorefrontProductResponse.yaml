@@ -36,8 +36,6 @@ properties:
             items: {}
         required:
           - delivery_note
-          - shipping_address
-          - shipping_fees
       integration:
         type: integer
       domain:
@@ -64,6 +62,7 @@ properties:
       minimum_orderable:
         type: integer
       maximum_orderable:
+        type: integer
         nullable: true
       low_stock_alert:
         type: boolean

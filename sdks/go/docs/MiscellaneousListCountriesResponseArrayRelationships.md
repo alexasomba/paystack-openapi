@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Currency** | [**MiscellaneousListCountriesResponseArrayRelationshipsCurrency**](MiscellaneousListCountriesResponseArrayRelationshipsCurrency.md) |  | 
-**IntegrationFeature** | [**MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature**](MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature.md) |  | 
-**IntegrationType** | [**MiscellaneousListCountriesResponseArrayRelationshipsIntegrationType**](MiscellaneousListCountriesResponseArrayRelationshipsIntegrationType.md) |  | 
-**PaymentMethod** | [**MiscellaneousListCountriesResponseArrayRelationshipsIntegrationType**](MiscellaneousListCountriesResponseArrayRelationshipsIntegrationType.md) |  | 
+| Name                   | Type                                                                                                                                                    | Description | Notes |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **Currency**           | [**MiscellaneousListCountriesResponseArrayRelationshipsCurrency**](MiscellaneousListCountriesResponseArrayRelationshipsCurrency.md)                     |             |
+| **IntegrationFeature** | [**MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature**](MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature.md) |             |
+| **IntegrationType**    | [**MiscellaneousListCountriesResponseArrayRelationshipsIntegrationType**](MiscellaneousListCountriesResponseArrayRelationshipsIntegrationType.md)       |             |
+| **PaymentMethod**      | [**MiscellaneousListCountriesResponseArrayRelationshipsIntegrationType**](MiscellaneousListCountriesResponseArrayRelationshipsIntegrationType.md)       |             |
 
 ## Methods
 
@@ -47,7 +47,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetIntegrationFeature
 
 `func (o *MiscellaneousListCountriesResponseArrayRelationships) GetIntegrationFeature() MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature`
@@ -66,7 +65,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListCountriesResponseArrayRelationships) SetIntegrationFeature(v MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature)`
 
 SetIntegrationFeature sets IntegrationFeature field to given value.
-
 
 ### GetIntegrationType
 
@@ -87,7 +85,6 @@ and a boolean to check if the value has been set.
 
 SetIntegrationType sets IntegrationType field to given value.
 
-
 ### GetPaymentMethod
 
 `func (o *MiscellaneousListCountriesResponseArrayRelationships) GetPaymentMethod() MiscellaneousListCountriesResponseArrayRelationshipsIntegrationType`
@@ -107,8 +104,4 @@ and a boolean to check if the value has been set.
 
 SetPaymentMethod sets PaymentMethod field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

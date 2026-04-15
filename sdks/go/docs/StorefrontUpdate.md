@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Name of the storefront | [optional] 
-**Slug** | Pointer to **string** | A unique identifier to access your store. Once the storefront is created, it can be accessed from https://paystack.shop/your-slug  | [optional] 
-**Description** | Pointer to **string** | The description of the storefront | [optional] 
+| Name            | Type                  | Description                                                                                                                       | Notes      |
+| --------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **Name**        | Pointer to **string** | Name of the storefront                                                                                                            | [optional] |
+| **Slug**        | Pointer to **string** | A unique identifier to access your store. Once the storefront is created, it can be accessed from https://paystack.shop/your-slug | [optional] |
+| **Description** | Pointer to **string** | The description of the storefront                                                                                                 | [optional] |
 
 ## Methods
 
@@ -102,7 +102,4 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

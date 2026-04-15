@@ -2,20 +2,20 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Integration** | **int32** |  | 
-**FirstName** | **NullableString** |  | 
-**LastName** | **NullableString** |  | 
-**Email** | **string** |  | 
-**Phone** | **NullableString** |  | 
-**Metadata** | **map[string]interface{}** |  | 
-**Domain** | **string** |  | 
-**CustomerCode** | **string** |  | 
-**RiskAction** | **string** |  | 
-**Id** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name             | Type                       | Description | Notes |
+| ---------------- | -------------------------- | ----------- | ----- |
+| **Integration**  | **int32**                  |             |
+| **FirstName**    | **NullableString**         |             |
+| **LastName**     | **NullableString**         |             |
+| **Email**        | **string**                 |             |
+| **Phone**        | **NullableString**         |             |
+| **Metadata**     | **map[string]interface{}** |             |
+| **Domain**       | **string**                 |             |
+| **CustomerCode** | **string**                 |             |
+| **RiskAction**   | **string**                 |             |
+| **Id**           | **int32**                  |             |
+| **CreatedAt**    | **string**                 |             |
+| **UpdatedAt**    | **string**                 |             |
 
 ## Methods
 
@@ -55,7 +55,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetFirstName
 
 `func (o *CustomerListResponseArray) GetFirstName() string`
@@ -75,17 +74,18 @@ and a boolean to check if the value has been set.
 
 SetFirstName sets FirstName field to given value.
 
-
 ### SetFirstNameNil
 
 `func (o *CustomerListResponseArray) SetFirstNameNil(b bool)`
 
- SetFirstNameNil sets the value for FirstName to be an explicit nil
+SetFirstNameNil sets the value for FirstName to be an explicit nil
 
 ### UnsetFirstName
+
 `func (o *CustomerListResponseArray) UnsetFirstName()`
 
 UnsetFirstName ensures that no value is present for FirstName, not even an explicit nil
+
 ### GetLastName
 
 `func (o *CustomerListResponseArray) GetLastName() string`
@@ -105,17 +105,18 @@ and a boolean to check if the value has been set.
 
 SetLastName sets LastName field to given value.
 
-
 ### SetLastNameNil
 
 `func (o *CustomerListResponseArray) SetLastNameNil(b bool)`
 
- SetLastNameNil sets the value for LastName to be an explicit nil
+SetLastNameNil sets the value for LastName to be an explicit nil
 
 ### UnsetLastName
+
 `func (o *CustomerListResponseArray) UnsetLastName()`
 
 UnsetLastName ensures that no value is present for LastName, not even an explicit nil
+
 ### GetEmail
 
 `func (o *CustomerListResponseArray) GetEmail() string`
@@ -134,7 +135,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerListResponseArray) SetEmail(v string)`
 
 SetEmail sets Email field to given value.
-
 
 ### GetPhone
 
@@ -155,17 +155,18 @@ and a boolean to check if the value has been set.
 
 SetPhone sets Phone field to given value.
 
-
 ### SetPhoneNil
 
 `func (o *CustomerListResponseArray) SetPhoneNil(b bool)`
 
- SetPhoneNil sets the value for Phone to be an explicit nil
+SetPhoneNil sets the value for Phone to be an explicit nil
 
 ### UnsetPhone
+
 `func (o *CustomerListResponseArray) UnsetPhone()`
 
 UnsetPhone ensures that no value is present for Phone, not even an explicit nil
+
 ### GetMetadata
 
 `func (o *CustomerListResponseArray) GetMetadata() map[string]interface{}`
@@ -185,17 +186,18 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
-
 ### SetMetadataNil
 
 `func (o *CustomerListResponseArray) SetMetadataNil(b bool)`
 
- SetMetadataNil sets the value for Metadata to be an explicit nil
+SetMetadataNil sets the value for Metadata to be an explicit nil
 
 ### UnsetMetadata
+
 `func (o *CustomerListResponseArray) UnsetMetadata()`
 
 UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
+
 ### GetDomain
 
 `func (o *CustomerListResponseArray) GetDomain() string`
@@ -214,7 +216,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerListResponseArray) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetCustomerCode
 
@@ -235,7 +236,6 @@ and a boolean to check if the value has been set.
 
 SetCustomerCode sets CustomerCode field to given value.
 
-
 ### GetRiskAction
 
 `func (o *CustomerListResponseArray) GetRiskAction() string`
@@ -254,7 +254,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerListResponseArray) SetRiskAction(v string)`
 
 SetRiskAction sets RiskAction field to given value.
-
 
 ### GetId
 
@@ -275,7 +274,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *CustomerListResponseArray) GetCreatedAt() string`
@@ -294,7 +292,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerListResponseArray) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -315,8 +312,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

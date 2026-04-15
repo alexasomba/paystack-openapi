@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**RefundAmount** | **int32** | The amount to refund, in the subunit of your currency | 
-**UploadedFilename** | Pointer to **string** | Filename of attachment returned via response from the Dispute upload URL | [optional] 
+| Name                 | Type                  | Description                                                              | Notes      |
+| -------------------- | --------------------- | ------------------------------------------------------------------------ | ---------- |
+| **RefundAmount**     | **int32**             | The amount to refund, in the subunit of your currency                    |
+| **UploadedFilename** | Pointer to **string** | Filename of attachment returned via response from the Dispute upload URL | [optional] |
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetRefundAmount sets RefundAmount field to given value.
 
-
 ### GetUploadedFilename
 
 `func (o *DisputeUpdate) GetUploadedFilename() string`
@@ -71,7 +70,4 @@ SetUploadedFilename sets UploadedFilename field to given value.
 
 HasUploadedFilename returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -1,12 +1,12 @@
 # ControlPanelFetchPaymentSessionTimeoutResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**ControlPanelFetchPaymentSessionTimeoutResponseData**](ControlPanelFetchPaymentSessionTimeoutResponseData.md) |  | 
+
+| Name        | Type                                                                                                            | Description | Notes |
+| ----------- | --------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                                                        |             |
+| **message** | **str**                                                                                                         |             |
+| **data**    | [**ControlPanelFetchPaymentSessionTimeoutResponseData**](ControlPanelFetchPaymentSessionTimeoutResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ control_panel_fetch_payment_session_timeout_response_dict = control_panel_fetch_
 # create an instance of ControlPanelFetchPaymentSessionTimeoutResponse from a dict
 control_panel_fetch_payment_session_timeout_response_form_dict = control_panel_fetch_payment_session_timeout_response.from_dict(control_panel_fetch_payment_session_timeout_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -1,11 +1,11 @@
 # ChargeSubmitPhone
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**phone** | **str** | Customer&#39;s mobile number | 
-**reference** | **str** | The reference of the ongoing transaction | 
+
+| Name          | Type    | Description                              | Notes |
+| ------------- | ------- | ---------------------------------------- | ----- |
+| **phone**     | **str** | Customer&#39;s mobile number             |
+| **reference** | **str** | The reference of the ongoing transaction |
 
 ## Example
 
@@ -24,6 +24,5 @@ charge_submit_phone_dict = charge_submit_phone_instance.to_dict()
 # create an instance of ChargeSubmitPhone from a dict
 charge_submit_phone_form_dict = charge_submit_phone.from_dict(charge_submit_phone_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

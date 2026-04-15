@@ -2,20 +2,16 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**IntegrationFetchPaymentSessionTimeout**](IntegrationAPI.md#IntegrationFetchPaymentSessionTimeout) | **Get** /integration/payment_session_timeout | Fetch Payment Session Timeout
-[**IntegrationUpdatePaymentSessionTimeout**](IntegrationAPI.md#IntegrationUpdatePaymentSessionTimeout) | **Put** /integration/payment_session_timeout | Update Payment Session Timeout
-
-
+| Method                                                                                                 | HTTP request                                 | Description                    |
+| ------------------------------------------------------------------------------------------------------ | -------------------------------------------- | ------------------------------ |
+| [**IntegrationFetchPaymentSessionTimeout**](IntegrationAPI.md#IntegrationFetchPaymentSessionTimeout)   | **Get** /integration/payment_session_timeout | Fetch Payment Session Timeout  |
+| [**IntegrationUpdatePaymentSessionTimeout**](IntegrationAPI.md#IntegrationUpdatePaymentSessionTimeout) | **Put** /integration/payment_session_timeout | Update Payment Session Timeout |
 
 ## IntegrationFetchPaymentSessionTimeout
 
 > ControlPanelFetchPaymentSessionTimeoutResponse IntegrationFetchPaymentSessionTimeout(ctx).Execute()
 
 Fetch Payment Session Timeout
-
-
 
 ### Example
 
@@ -51,7 +47,6 @@ This endpoint does not need any parameter.
 
 Other parameters are passed through a pointer to a apiIntegrationFetchPaymentSessionTimeoutRequest struct via the builder pattern
 
-
 ### Return type
 
 [**ControlPanelFetchPaymentSessionTimeoutResponse**](ControlPanelFetchPaymentSessionTimeoutResponse.md)
@@ -69,14 +64,11 @@ Other parameters are passed through a pointer to a apiIntegrationFetchPaymentSes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## IntegrationUpdatePaymentSessionTimeout
 
 > ControlPanelUpdatePaymentSessionTimeoutResponse IntegrationUpdatePaymentSessionTimeout(ctx).PaymentSession(paymentSession).Execute()
 
 Update Payment Session Timeout
-
-
 
 ### Example
 
@@ -107,16 +99,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiIntegrationUpdatePaymentSessionTimeoutRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **paymentSession** | [**PaymentSession**](PaymentSession.md) |  | 
+| Name               | Type                                    | Description | Notes |
+| ------------------ | --------------------------------------- | ----------- | ----- |
+| **paymentSession** | [**PaymentSession**](PaymentSession.md) |             |
 
 ### Return type
 
@@ -134,4 +123,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

@@ -1,12 +1,12 @@
 # RefundCreateResponseDataTransactionAuthorization
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**exp_month** | **object** |  | 
-**exp_year** | **object** |  | 
-**account_name** | **object** |  | 
+
+| Name             | Type       | Description | Notes |
+| ---------------- | ---------- | ----------- | ----- |
+| **exp_month**    | **object** |             |
+| **exp_year**     | **object** |             |
+| **account_name** | **object** |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ refund_create_response_data_transaction_authorization_dict = refund_create_respo
 # create an instance of RefundCreateResponseDataTransactionAuthorization from a dict
 refund_create_response_data_transaction_authorization_form_dict = refund_create_response_data_transaction_authorization.from_dict(refund_create_response_data_transaction_authorization_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

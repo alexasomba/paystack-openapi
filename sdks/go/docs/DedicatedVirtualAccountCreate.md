@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Customer** | **string** | The code for the previously created customer | 
-**PreferredBank** | Pointer to **string** | The bank slug for preferred bank. To get a list of available banks, use the List Providers endpoint | [optional] 
-**Subaccount** | Pointer to **string** | Subaccount code of the account you want to split the transaction with | [optional] 
-**SplitCode** | Pointer to **string** | Split code consisting of the lists of accounts you want to split the transaction with | [optional] 
+| Name              | Type                  | Description                                                                                         | Notes      |
+| ----------------- | --------------------- | --------------------------------------------------------------------------------------------------- | ---------- |
+| **Customer**      | **string**            | The code for the previously created customer                                                        |
+| **PreferredBank** | Pointer to **string** | The bank slug for preferred bank. To get a list of available banks, use the List Providers endpoint | [optional] |
+| **Subaccount**    | Pointer to **string** | Subaccount code of the account you want to split the transaction with                               | [optional] |
+| **SplitCode**     | Pointer to **string** | Split code consisting of the lists of accounts you want to split the transaction with               | [optional] |
 
 ## Methods
 
@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedVirtualAccountCreate) SetCustomer(v string)`
 
 SetCustomer sets Customer field to given value.
-
 
 ### GetPreferredBank
 
@@ -123,7 +122,4 @@ SetSplitCode sets SplitCode field to given value.
 
 HasSplitCode returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

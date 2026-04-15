@@ -13,9 +13,9 @@ get:
         type: integer
       example: 1559046
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/Ok.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error

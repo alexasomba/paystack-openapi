@@ -27,7 +27,10 @@ properties:
     type: string
     nullable: true
   metadata:
-    type: object
+    oneOf:
+      - type: string
+      - type: object
+        additionalProperties: true
     nullable: true
   log:
     type: object
@@ -183,14 +186,10 @@ properties:
       type:
         type: string
       identifier:
+        type: string
         nullable: true
       entry_point:
         type: string
-    required:
-      - source
-      - type
-      - identifier
-      - entry_point
     nullable: true
   connect:
     type: object

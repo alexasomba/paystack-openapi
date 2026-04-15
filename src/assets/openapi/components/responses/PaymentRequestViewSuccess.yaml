@@ -1,0 +1,5 @@
+description: Payment Request fetch response
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/PaymentRequestViewResponse.yaml

@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Amount** | **int32** | Amount to transfer in kobo if currency is NGN and pesewas if currency is GHS. | 
-**Recipient** | **string** | The transfer recipient&#39;s code | 
-**Reference** | **string** | To ensure idempotency, you need to provide e a unique identifier for the request.  The identifier should be a lowercase alphanumeric string with only -,_  symbols allowed.  | 
-**Reason** | Pointer to **string** | The reason or narration for the transfer. | [optional] 
+| Name          | Type                  | Description                                                                                                                                                                | Notes      |
+| ------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **Amount**    | **int32**             | Amount to transfer in kobo if currency is NGN and pesewas if currency is GHS.                                                                                              |
+| **Recipient** | **string**            | The transfer recipient&#39;s code                                                                                                                                          |
+| **Reference** | **string**            | To ensure idempotency, you need to provide e a unique identifier for the request. The identifier should be a lowercase alphanumeric string with only -,\_ symbols allowed. |
+| **Reason**    | Pointer to **string** | The reason or narration for the transfer.                                                                                                                                  | [optional] |
 
 ## Methods
 
@@ -47,7 +47,6 @@ and a boolean to check if the value has been set.
 
 SetAmount sets Amount field to given value.
 
-
 ### GetRecipient
 
 `func (o *TransferBase) GetRecipient() string`
@@ -67,7 +66,6 @@ and a boolean to check if the value has been set.
 
 SetRecipient sets Recipient field to given value.
 
-
 ### GetReference
 
 `func (o *TransferBase) GetReference() string`
@@ -86,7 +84,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferBase) SetReference(v string)`
 
 SetReference sets Reference field to given value.
-
 
 ### GetReason
 
@@ -113,7 +110,4 @@ SetReason sets Reason field to given value.
 
 HasReason returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

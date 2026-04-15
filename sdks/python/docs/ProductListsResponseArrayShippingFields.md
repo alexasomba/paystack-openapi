@@ -1,12 +1,12 @@
 # ProductListsResponseArrayShippingFields
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**delivery_note** | **str** |  | 
-**shipping_address** | **str** |  | 
-**shipping_fees** | **List[object]** |  | 
+
+| Name                 | Type             | Description | Notes |
+| -------------------- | ---------------- | ----------- | ----- |
+| **delivery_note**    | **str**          |             |
+| **shipping_address** | **str**          |             |
+| **shipping_fees**    | **List[object]** |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ product_lists_response_array_shipping_fields_dict = product_lists_response_array
 # create an instance of ProductListsResponseArrayShippingFields from a dict
 product_lists_response_array_shipping_fields_form_dict = product_lists_response_array_shipping_fields.from_dict(product_lists_response_array_shipping_fields_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

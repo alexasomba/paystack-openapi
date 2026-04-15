@@ -1,8 +1,8 @@
 parameters:
-  - name: code
+  - name: customer_code
     in: path
     required: true
-    description: The code for the customer gotten from the response of the customer creation
+    description: Customer code
     schema:
       type: string
     example: "CUS_c6wqvwmvwopw4ms"
@@ -21,13 +21,13 @@ post:
         schema:
           $ref: ../components/schemas/CustomerValidate.yaml
   responses:
-    '202':
-      description: ''
+    "202":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/CustomerValidateResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error

@@ -2,18 +2,18 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**BankType** | **string** |  | 
-**RequiredFields** | **[]string** |  | 
-**BranchCode** | **bool** |  | 
-**BranchCodeType** | **string** |  | 
-**AccountName** | **bool** |  | 
-**AccountVerificationRequired** | **bool** |  | 
-**AccountNumberLabel** | **string** |  | 
-**AccountNumberPattern** | [**MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern**](MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern.md) |  | 
-**Documents** | **[]interface{}** |  | 
-**Notices** | **[]string** |  | 
+| Name                            | Type                                                                                                                                                                                                                            | Description | Notes |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **BankType**                    | **string**                                                                                                                                                                                                                      |             |
+| **RequiredFields**              | **[]string**                                                                                                                                                                                                                    |             |
+| **BranchCode**                  | **bool**                                                                                                                                                                                                                        |             |
+| **BranchCodeType**              | **string**                                                                                                                                                                                                                      |             |
+| **AccountName**                 | **bool**                                                                                                                                                                                                                        |             |
+| **AccountVerificationRequired** | **bool**                                                                                                                                                                                                                        |             |
+| **AccountNumberLabel**          | **string**                                                                                                                                                                                                                      |             |
+| **AccountNumberPattern**        | [**MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern**](MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern.md) |             |
+| **Documents**                   | **[]interface{}**                                                                                                                                                                                                               |             |
+| **Notices**                     | **[]string**                                                                                                                                                                                                                    |             |
 
 ## Methods
 
@@ -53,7 +53,6 @@ and a boolean to check if the value has been set.
 
 SetBankType sets BankType field to given value.
 
-
 ### GetRequiredFields
 
 `func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) GetRequiredFields() []string`
@@ -72,7 +71,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) SetRequiredFields(v []string)`
 
 SetRequiredFields sets RequiredFields field to given value.
-
 
 ### GetBranchCode
 
@@ -93,7 +91,6 @@ and a boolean to check if the value has been set.
 
 SetBranchCode sets BranchCode field to given value.
 
-
 ### GetBranchCodeType
 
 `func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) GetBranchCodeType() string`
@@ -112,7 +109,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) SetBranchCodeType(v string)`
 
 SetBranchCodeType sets BranchCodeType field to given value.
-
 
 ### GetAccountName
 
@@ -133,7 +129,6 @@ and a boolean to check if the value has been set.
 
 SetAccountName sets AccountName field to given value.
 
-
 ### GetAccountVerificationRequired
 
 `func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) GetAccountVerificationRequired() bool`
@@ -152,7 +147,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) SetAccountVerificationRequired(v bool)`
 
 SetAccountVerificationRequired sets AccountVerificationRequired field to given value.
-
 
 ### GetAccountNumberLabel
 
@@ -173,7 +167,6 @@ and a boolean to check if the value has been set.
 
 SetAccountNumberLabel sets AccountNumberLabel field to given value.
 
-
 ### GetAccountNumberPattern
 
 `func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) GetAccountNumberPattern() MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern`
@@ -192,7 +185,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) SetAccountNumberPattern(v MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern)`
 
 SetAccountNumberPattern sets AccountNumberPattern field to given value.
-
 
 ### GetDocuments
 
@@ -213,7 +205,6 @@ and a boolean to check if the value has been set.
 
 SetDocuments sets Documents field to given value.
 
-
 ### GetNotices
 
 `func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank) GetNotices() []string`
@@ -233,8 +224,4 @@ and a boolean to check if the value has been set.
 
 SetNotices sets Notices field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

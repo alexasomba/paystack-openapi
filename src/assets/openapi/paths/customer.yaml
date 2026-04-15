@@ -13,13 +13,13 @@ post:
         schema:
           $ref: ../components/schemas/CustomerCreate.yaml
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/CustomerCreateResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error
@@ -28,7 +28,7 @@ get:
     - Customer
   summary: List Customers
   operationId: customer_list
-  description: List customers on your integration
+  description: List customers available on your integration
   parameters:
     - name: use_cursor
       description: A flag to indicate if cursor based pagination should be used
@@ -50,37 +50,37 @@ get:
       schema:
         type: string
     - name: from
-      description: The start date
+      description: A timestamp from which to start listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
       in: query
       schema:
         type: string
         format: date-time
     - name: to
-      description: The end date
+      description: A timestamp at which to stop listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
       in: query
       schema:
         type: string
         format: date-time
     - name: perPage
-      description: The number of records to fetch per request
+      description: Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
       in: query
       schema:
-        type: string
+        type: integer
     - name: page
       in: query
-      description: The offset to retrieve data from
+      description: Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
       schema:
-        type: string
+        type: integer
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/CustomerListResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

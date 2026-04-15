@@ -1,25 +1,25 @@
 # BulkChargeFetchBulkBatchChargesResponseArray
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**integration** | **int** |  | 
-**bulkcharge** | **int** |  | 
-**customer** | [**BulkChargeFetchBulkBatchChargesResponseArrayCustomer**](BulkChargeFetchBulkBatchChargesResponseArrayCustomer.md) |  | 
-**authorization** | [**TransactionPartialDebitResponseDataAuthorization**](TransactionPartialDebitResponseDataAuthorization.md) |  | 
-**domain** | **str** |  | 
-**amount** | **int** |  | 
-**at_least** | **int** |  | 
-**currency** | **str** |  | 
-**reference** | **str** |  | 
-**metadata** | [**TransactionFetchResponseDataMetadata**](TransactionFetchResponseDataMetadata.md) |  | 
-**status** | **str** |  | 
-**message** | **str** |  | 
-**attempt_partial_debit** | **bool** |  | 
-**id** | **int** |  | 
-**created_at** | **str** |  | 
-**updated_at** | **str** |  | 
+
+| Name                      | Type                                                                                                                | Description | Notes |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **integration**           | **int**                                                                                                             |             |
+| **bulkcharge**            | **int**                                                                                                             |             |
+| **customer**              | [**BulkChargeFetchBulkBatchChargesResponseArrayCustomer**](BulkChargeFetchBulkBatchChargesResponseArrayCustomer.md) |             |
+| **authorization**         | [**TransactionPartialDebitResponseDataAuthorization**](TransactionPartialDebitResponseDataAuthorization.md)         |             |
+| **domain**                | **str**                                                                                                             |             |
+| **amount**                | **int**                                                                                                             |             |
+| **at_least**              | **int**                                                                                                             |             |
+| **currency**              | **str**                                                                                                             |             |
+| **reference**             | **str**                                                                                                             |             |
+| **metadata**              | [**TransactionFetchResponseDataMetadata**](TransactionFetchResponseDataMetadata.md)                                 |             |
+| **status**                | **str**                                                                                                             |             |
+| **message**               | **str**                                                                                                             |             |
+| **attempt_partial_debit** | **bool**                                                                                                            |             |
+| **id**                    | **int**                                                                                                             |             |
+| **created_at**            | **str**                                                                                                             |             |
+| **updated_at**            | **str**                                                                                                             |             |
 
 ## Example
 
@@ -38,6 +38,5 @@ bulk_charge_fetch_bulk_batch_charges_response_array_dict = bulk_charge_fetch_bul
 # create an instance of BulkChargeFetchBulkBatchChargesResponseArray from a dict
 bulk_charge_fetch_bulk_batch_charges_response_array_form_dict = bulk_charge_fetch_bulk_batch_charges_response_array.from_dict(bulk_charge_fetch_bulk_batch_charges_response_array_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -13,11 +13,11 @@ get:
   description: Fetch the details of a previously created order
   operationId: order_fetch
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/OrderFetchSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

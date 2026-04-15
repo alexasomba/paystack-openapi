@@ -1,25 +1,25 @@
 # MiscellaneousListBanksResponseArray
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**slug** | **str** |  | 
-**code** | **str** |  | 
-**longcode** | **str** |  | 
-**gateway** | **str** |  | 
-**pay_with_bank** | **bool** |  | 
-**supports_transfer** | **bool** |  | 
-**available_for_direct_debit** | **bool** |  | 
-**active** | **bool** |  | 
-**is_deleted** | **bool** |  | 
-**country** | **str** |  | 
-**currency** | **str** |  | 
-**type** | **str** |  | 
-**id** | **int** |  | 
-**created_at** | **str** |  | 
-**updated_at** | **str** |  | 
+
+| Name                           | Type     | Description | Notes |
+| ------------------------------ | -------- | ----------- | ----- |
+| **name**                       | **str**  |             |
+| **slug**                       | **str**  |             |
+| **code**                       | **str**  |             |
+| **longcode**                   | **str**  |             |
+| **gateway**                    | **str**  |             |
+| **pay_with_bank**              | **bool** |             |
+| **supports_transfer**          | **bool** |             |
+| **available_for_direct_debit** | **bool** |             |
+| **active**                     | **bool** |             |
+| **is_deleted**                 | **bool** |             |
+| **country**                    | **str**  |             |
+| **currency**                   | **str**  |             |
+| **type**                       | **str**  |             |
+| **id**                         | **int**  |             |
+| **created_at**                 | **str**  |             |
+| **updated_at**                 | **str**  |             |
 
 ## Example
 
@@ -38,6 +38,5 @@ miscellaneous_list_banks_response_array_dict = miscellaneous_list_banks_response
 # create an instance of MiscellaneousListBanksResponseArray from a dict
 miscellaneous_list_banks_response_array_form_dict = miscellaneous_list_banks_response_array.from_dict(miscellaneous_list_banks_response_array_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

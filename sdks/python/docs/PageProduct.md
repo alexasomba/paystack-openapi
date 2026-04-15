@@ -1,10 +1,10 @@
 # PageProduct
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**products** | **List[int]** | A list of IDs of products to add to a page. | 
+
+| Name         | Type          | Description                                 | Notes |
+| ------------ | ------------- | ------------------------------------------- | ----- |
+| **products** | **List[int]** | A list of IDs of products to add to a page. |
 
 ## Example
 
@@ -23,6 +23,5 @@ page_product_dict = page_product_instance.to_dict()
 # create an instance of PageProduct from a dict
 page_product_form_dict = page_product.from_dict(page_product_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

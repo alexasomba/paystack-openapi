@@ -2,14 +2,14 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ProductCount** | **int32** |  | 
-**Total** | **int32** |  | 
-**Skipped** | **int32** |  | 
-**PerPage** | **int32** |  | 
-**Page** | **int32** |  | 
-**PageCount** | **int32** |  | 
+| Name             | Type      | Description | Notes |
+| ---------------- | --------- | ----------- | ----- |
+| **ProductCount** | **int32** |             |
+| **Total**        | **int32** |             |
+| **Skipped**      | **int32** |             |
+| **PerPage**      | **int32** |             |
+| **Page**         | **int32** |             |
+| **PageCount**    | **int32** |             |
 
 ## Methods
 
@@ -49,7 +49,6 @@ and a boolean to check if the value has been set.
 
 SetProductCount sets ProductCount field to given value.
 
-
 ### GetTotal
 
 `func (o *StorefrontFetchResponseMeta) GetTotal() int32`
@@ -68,7 +67,6 @@ and a boolean to check if the value has been set.
 `func (o *StorefrontFetchResponseMeta) SetTotal(v int32)`
 
 SetTotal sets Total field to given value.
-
 
 ### GetSkipped
 
@@ -89,7 +87,6 @@ and a boolean to check if the value has been set.
 
 SetSkipped sets Skipped field to given value.
 
-
 ### GetPerPage
 
 `func (o *StorefrontFetchResponseMeta) GetPerPage() int32`
@@ -108,7 +105,6 @@ and a boolean to check if the value has been set.
 `func (o *StorefrontFetchResponseMeta) SetPerPage(v int32)`
 
 SetPerPage sets PerPage field to given value.
-
 
 ### GetPage
 
@@ -129,7 +125,6 @@ and a boolean to check if the value has been set.
 
 SetPage sets Page field to given value.
 
-
 ### GetPageCount
 
 `func (o *StorefrontFetchResponseMeta) GetPageCount() int32`
@@ -149,8 +144,4 @@ and a boolean to check if the value has been set.
 
 SetPageCount sets PageCount field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

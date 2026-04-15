@@ -1,12 +1,12 @@
 # VirtualTerminalAddSplitCodeResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**VirtualTerminalAddSplitCodeResponseData**](VirtualTerminalAddSplitCodeResponseData.md) |  | 
+
+| Name        | Type                                                                                      | Description | Notes |
+| ----------- | ----------------------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                                  |             |
+| **message** | **str**                                                                                   |             |
+| **data**    | [**VirtualTerminalAddSplitCodeResponseData**](VirtualTerminalAddSplitCodeResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ virtual_terminal_add_split_code_response_dict = virtual_terminal_add_split_code_
 # create an instance of VirtualTerminalAddSplitCodeResponse from a dict
 virtual_terminal_add_split_code_response_form_dict = virtual_terminal_add_split_code_response.from_dict(virtual_terminal_add_split_code_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

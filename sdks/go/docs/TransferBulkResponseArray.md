@@ -2,14 +2,14 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Reference** | **string** |  | 
-**Recipient** | **string** |  | 
-**Amount** | **int32** |  | 
-**TransferCode** | **string** |  | 
-**Currency** | **string** |  | 
-**Status** | **string** |  | 
+| Name             | Type       | Description | Notes |
+| ---------------- | ---------- | ----------- | ----- |
+| **Reference**    | **string** |             |
+| **Recipient**    | **string** |             |
+| **Amount**       | **int32**  |             |
+| **TransferCode** | **string** |             |
+| **Currency**     | **string** |             |
+| **Status**       | **string** |             |
 
 ## Methods
 
@@ -49,7 +49,6 @@ and a boolean to check if the value has been set.
 
 SetReference sets Reference field to given value.
 
-
 ### GetRecipient
 
 `func (o *TransferBulkResponseArray) GetRecipient() string`
@@ -68,7 +67,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferBulkResponseArray) SetRecipient(v string)`
 
 SetRecipient sets Recipient field to given value.
-
 
 ### GetAmount
 
@@ -89,7 +87,6 @@ and a boolean to check if the value has been set.
 
 SetAmount sets Amount field to given value.
 
-
 ### GetTransferCode
 
 `func (o *TransferBulkResponseArray) GetTransferCode() string`
@@ -108,7 +105,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferBulkResponseArray) SetTransferCode(v string)`
 
 SetTransferCode sets TransferCode field to given value.
-
 
 ### GetCurrency
 
@@ -129,7 +125,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetStatus
 
 `func (o *TransferBulkResponseArray) GetStatus() string`
@@ -149,8 +144,4 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -1,12 +1,12 @@
 # VirtualTerminalDestinationAssignResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**List[VirtualTerminalDestinationAssignResponseDataInner]**](VirtualTerminalDestinationAssignResponseDataInner.md) |  | 
+
+| Name        | Type                                                                                                                | Description | Notes |
+| ----------- | ------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                                                            |             |
+| **message** | **str**                                                                                                             |             |
+| **data**    | [**List[VirtualTerminalDestinationAssignResponseDataInner]**](VirtualTerminalDestinationAssignResponseDataInner.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ virtual_terminal_destination_assign_response_dict = virtual_terminal_destination
 # create an instance of VirtualTerminalDestinationAssignResponse from a dict
 virtual_terminal_destination_assign_response_form_dict = virtual_terminal_destination_assign_response.from_dict(virtual_terminal_destination_assign_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

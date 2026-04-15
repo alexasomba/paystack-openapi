@@ -2,13 +2,13 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**integration_fetch_payment_session_timeout**](IntegrationApi.md#integration_fetch_payment_session_timeout) | **GET** /integration/payment_session_timeout | Fetch Payment Session Timeout
-[**integration_update_payment_session_timeout**](IntegrationApi.md#integration_update_payment_session_timeout) | **PUT** /integration/payment_session_timeout | Update Payment Session Timeout
-
+| Method                                                                                                         | HTTP request                                 | Description                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | ------------------------------ |
+| [**integration_fetch_payment_session_timeout**](IntegrationApi.md#integration_fetch_payment_session_timeout)   | **GET** /integration/payment_session_timeout | Fetch Payment Session Timeout  |
+| [**integration_update_payment_session_timeout**](IntegrationApi.md#integration_update_payment_session_timeout) | **PUT** /integration/payment_session_timeout | Update Payment Session Timeout |
 
 # **integration_fetch_payment_session_timeout**
+
 > ControlPanelFetchPaymentSessionTimeoutResponse integration_fetch_payment_session_timeout()
 
 Fetch Payment Session Timeout
@@ -17,7 +17,8 @@ Fetch the session timeout of a transaction
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -56,9 +57,8 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling IntegrationApi->integration_fetch_payment_session_timeout: %s\n" % e)
 ```
 
-
-
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -71,20 +71,22 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **integration_update_payment_session_timeout**
+
 > ControlPanelUpdatePaymentSessionTimeoutResponse integration_update_payment_session_timeout(payment_session=payment_session)
 
 Update Payment Session Timeout
@@ -93,7 +95,8 @@ Update the session timeout of a transaction
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -134,13 +137,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling IntegrationApi->integration_update_payment_session_timeout: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **payment_session** | [**PaymentSession**](PaymentSession.md)|  | [optional] 
+| Name                | Type                                    | Description | Notes      |
+| ------------------- | --------------------------------------- | ----------- | ---------- |
+| **payment_session** | [**PaymentSession**](PaymentSession.md) |             | [optional] |
 
 ### Return type
 
@@ -152,16 +153,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

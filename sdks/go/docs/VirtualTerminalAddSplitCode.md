@@ -2,9 +2,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**SplitCode** | **string** | The split code to assign to the virtual terminal | 
+| Name          | Type       | Description                                      | Notes |
+| ------------- | ---------- | ------------------------------------------------ | ----- |
+| **SplitCode** | **string** | The split code to assign to the virtual terminal |
 
 ## Methods
 
@@ -44,8 +44,4 @@ and a boolean to check if the value has been set.
 
 SetSplitCode sets SplitCode field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -24,14 +24,19 @@ properties:
         type: string
       description:
         type: string
+        nullable: true
       primary_contact_name:
         type: string
+        nullable: true
       primary_contact_email:
         type: string
+        nullable: true
       primary_contact_phone:
         type: string
+        nullable: true
       metadata:
-        type: string
+        type: object
+        nullable: true
       percentage_charge:
         type: number
       is_verified:
@@ -58,6 +63,7 @@ properties:
         type: string
     required:
       - integration
+      - account_name
       - bank
       - managed_by_integration
       - domain

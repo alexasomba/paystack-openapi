@@ -1,11 +1,11 @@
 # ChargeSubmitBirthday
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**birthday** | **date** | Customer&#39;s birthday in the format YYYY-MM-DD e.g 2016-09-21 | 
-**reference** | **str** | The reference of the ongoing transaction | 
+
+| Name          | Type     | Description                                                     | Notes |
+| ------------- | -------- | --------------------------------------------------------------- | ----- |
+| **birthday**  | **date** | Customer&#39;s birthday in the format YYYY-MM-DD e.g 2016-09-21 |
+| **reference** | **str**  | The reference of the ongoing transaction                        |
 
 ## Example
 
@@ -24,6 +24,5 @@ charge_submit_birthday_dict = charge_submit_birthday_instance.to_dict()
 # create an instance of ChargeSubmitBirthday from a dict
 charge_submit_birthday_form_dict = charge_submit_birthday.from_dict(charge_submit_birthday_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

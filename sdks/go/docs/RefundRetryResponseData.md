@@ -2,31 +2,31 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Integration** | **float32** |  | 
-**Transaction** | **float32** |  | 
-**Dispute** | **map[string]interface{}** |  | 
-**Settlement** | **map[string]interface{}** |  | 
-**Id** | **float32** |  | 
-**Domain** | **string** |  | 
-**Currency** | **string** |  | 
-**Amount** | **float32** |  | 
-**Status** | **string** |  | 
-**RefundedAt** | **NullableString** |  | 
-**ExpectedAt** | **string** |  | 
-**Channel** | **string** |  | 
-**RefundedBy** | **string** |  | 
-**CustomerNote** | **string** |  | 
-**MerchantNote** | **string** |  | 
-**DeductedAmount** | **float32** |  | 
-**FullyDeducted** | **bool** |  | 
-**BankReference** | **NullableString** |  | 
-**Reason** | **string** |  | 
-**Customer** | **map[string]interface{}** |  | 
-**InitiatedBy** | **string** |  | 
-**ReversedAt** | **NullableString** |  | 
-**SessionId** | **NullableString** |  | 
+| Name               | Type                       | Description | Notes |
+| ------------------ | -------------------------- | ----------- | ----- |
+| **Integration**    | **float32**                |             |
+| **Transaction**    | **float32**                |             |
+| **Dispute**        | **map[string]interface{}** |             |
+| **Settlement**     | **map[string]interface{}** |             |
+| **Id**             | **float32**                |             |
+| **Domain**         | **string**                 |             |
+| **Currency**       | **string**                 |             |
+| **Amount**         | **float32**                |             |
+| **Status**         | **string**                 |             |
+| **RefundedAt**     | **NullableString**         |             |
+| **ExpectedAt**     | **string**                 |             |
+| **Channel**        | **string**                 |             |
+| **RefundedBy**     | **string**                 |             |
+| **CustomerNote**   | **string**                 |             |
+| **MerchantNote**   | **string**                 |             |
+| **DeductedAmount** | **float32**                |             |
+| **FullyDeducted**  | **bool**                   |             |
+| **BankReference**  | **NullableString**         |             |
+| **Reason**         | **string**                 |             |
+| **Customer**       | **map[string]interface{}** |             |
+| **InitiatedBy**    | **string**                 |             |
+| **ReversedAt**     | **NullableString**         |             |
+| **SessionId**      | **NullableString**         |             |
 
 ## Methods
 
@@ -66,7 +66,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetTransaction
 
 `func (o *RefundRetryResponseData) GetTransaction() float32`
@@ -85,7 +84,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundRetryResponseData) SetTransaction(v float32)`
 
 SetTransaction sets Transaction field to given value.
-
 
 ### GetDispute
 
@@ -106,7 +104,6 @@ and a boolean to check if the value has been set.
 
 SetDispute sets Dispute field to given value.
 
-
 ### GetSettlement
 
 `func (o *RefundRetryResponseData) GetSettlement() map[string]interface{}`
@@ -125,7 +122,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundRetryResponseData) SetSettlement(v map[string]interface{})`
 
 SetSettlement sets Settlement field to given value.
-
 
 ### GetId
 
@@ -146,7 +142,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetDomain
 
 `func (o *RefundRetryResponseData) GetDomain() string`
@@ -165,7 +160,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundRetryResponseData) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetCurrency
 
@@ -186,7 +180,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetAmount
 
 `func (o *RefundRetryResponseData) GetAmount() float32`
@@ -205,7 +198,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundRetryResponseData) SetAmount(v float32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetStatus
 
@@ -226,7 +218,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-
 ### GetRefundedAt
 
 `func (o *RefundRetryResponseData) GetRefundedAt() string`
@@ -246,17 +237,18 @@ and a boolean to check if the value has been set.
 
 SetRefundedAt sets RefundedAt field to given value.
 
-
 ### SetRefundedAtNil
 
 `func (o *RefundRetryResponseData) SetRefundedAtNil(b bool)`
 
- SetRefundedAtNil sets the value for RefundedAt to be an explicit nil
+SetRefundedAtNil sets the value for RefundedAt to be an explicit nil
 
 ### UnsetRefundedAt
+
 `func (o *RefundRetryResponseData) UnsetRefundedAt()`
 
 UnsetRefundedAt ensures that no value is present for RefundedAt, not even an explicit nil
+
 ### GetExpectedAt
 
 `func (o *RefundRetryResponseData) GetExpectedAt() string`
@@ -275,7 +267,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundRetryResponseData) SetExpectedAt(v string)`
 
 SetExpectedAt sets ExpectedAt field to given value.
-
 
 ### GetChannel
 
@@ -296,7 +287,6 @@ and a boolean to check if the value has been set.
 
 SetChannel sets Channel field to given value.
 
-
 ### GetRefundedBy
 
 `func (o *RefundRetryResponseData) GetRefundedBy() string`
@@ -315,7 +305,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundRetryResponseData) SetRefundedBy(v string)`
 
 SetRefundedBy sets RefundedBy field to given value.
-
 
 ### GetCustomerNote
 
@@ -336,7 +325,6 @@ and a boolean to check if the value has been set.
 
 SetCustomerNote sets CustomerNote field to given value.
 
-
 ### GetMerchantNote
 
 `func (o *RefundRetryResponseData) GetMerchantNote() string`
@@ -355,7 +343,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundRetryResponseData) SetMerchantNote(v string)`
 
 SetMerchantNote sets MerchantNote field to given value.
-
 
 ### GetDeductedAmount
 
@@ -376,7 +363,6 @@ and a boolean to check if the value has been set.
 
 SetDeductedAmount sets DeductedAmount field to given value.
 
-
 ### GetFullyDeducted
 
 `func (o *RefundRetryResponseData) GetFullyDeducted() bool`
@@ -395,7 +381,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundRetryResponseData) SetFullyDeducted(v bool)`
 
 SetFullyDeducted sets FullyDeducted field to given value.
-
 
 ### GetBankReference
 
@@ -416,17 +401,18 @@ and a boolean to check if the value has been set.
 
 SetBankReference sets BankReference field to given value.
 
-
 ### SetBankReferenceNil
 
 `func (o *RefundRetryResponseData) SetBankReferenceNil(b bool)`
 
- SetBankReferenceNil sets the value for BankReference to be an explicit nil
+SetBankReferenceNil sets the value for BankReference to be an explicit nil
 
 ### UnsetBankReference
+
 `func (o *RefundRetryResponseData) UnsetBankReference()`
 
 UnsetBankReference ensures that no value is present for BankReference, not even an explicit nil
+
 ### GetReason
 
 `func (o *RefundRetryResponseData) GetReason() string`
@@ -445,7 +431,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundRetryResponseData) SetReason(v string)`
 
 SetReason sets Reason field to given value.
-
 
 ### GetCustomer
 
@@ -466,7 +451,6 @@ and a boolean to check if the value has been set.
 
 SetCustomer sets Customer field to given value.
 
-
 ### GetInitiatedBy
 
 `func (o *RefundRetryResponseData) GetInitiatedBy() string`
@@ -485,7 +469,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundRetryResponseData) SetInitiatedBy(v string)`
 
 SetInitiatedBy sets InitiatedBy field to given value.
-
 
 ### GetReversedAt
 
@@ -506,17 +489,18 @@ and a boolean to check if the value has been set.
 
 SetReversedAt sets ReversedAt field to given value.
 
-
 ### SetReversedAtNil
 
 `func (o *RefundRetryResponseData) SetReversedAtNil(b bool)`
 
- SetReversedAtNil sets the value for ReversedAt to be an explicit nil
+SetReversedAtNil sets the value for ReversedAt to be an explicit nil
 
 ### UnsetReversedAt
+
 `func (o *RefundRetryResponseData) UnsetReversedAt()`
 
 UnsetReversedAt ensures that no value is present for ReversedAt, not even an explicit nil
+
 ### GetSessionId
 
 `func (o *RefundRetryResponseData) GetSessionId() string`
@@ -536,18 +520,16 @@ and a boolean to check if the value has been set.
 
 SetSessionId sets SessionId field to given value.
 
-
 ### SetSessionIdNil
 
 `func (o *RefundRetryResponseData) SetSessionIdNil(b bool)`
 
- SetSessionIdNil sets the value for SessionId to be an explicit nil
+SetSessionIdNil sets the value for SessionId to be an explicit nil
 
 ### UnsetSessionId
+
 `func (o *RefundRetryResponseData) UnsetSessionId()`
 
 UnsetSessionId ensures that no value is present for SessionId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

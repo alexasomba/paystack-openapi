@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Name** | **string** |  | 
-**Id** | **int32** |  | 
-**Slug** | **string** |  | 
+| Name     | Type       | Description | Notes |
+| -------- | ---------- | ----------- | ----- |
+| **Name** | **string** |             |
+| **Id**   | **int32**  |             |
+| **Slug** | **string** |             |
 
 ## Methods
 
@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetId
 
 `func (o *DedicatedNubanListResponseArrayBank) GetId() int32`
@@ -65,7 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedNubanListResponseArrayBank) SetId(v int32)`
 
 SetId sets Id field to given value.
-
 
 ### GetSlug
 
@@ -86,8 +84,4 @@ and a boolean to check if the value has been set.
 
 SetSlug sets Slug field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

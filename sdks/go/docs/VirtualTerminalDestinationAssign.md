@@ -2,9 +2,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Destinations** | [**[]VirtualTerminalCreateDestinationsInner**](VirtualTerminalCreateDestinationsInner.md) | Array of objects containing recipients for payment notifications for the Virtual Terminal. | 
+| Name             | Type                                                                                      | Description                                                                                | Notes |
+| ---------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ----- |
+| **Destinations** | [**[]VirtualTerminalCreateDestinationsInner**](VirtualTerminalCreateDestinationsInner.md) | Array of objects containing recipients for payment notifications for the Virtual Terminal. |
 
 ## Methods
 
@@ -44,8 +44,4 @@ and a boolean to check if the value has been set.
 
 SetDestinations sets Destinations field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -1,8 +1,8 @@
 parameters:
-  - name: code
+  - name: email_or_code
     in: path
     required: true
-    description: The code for the customer gotten from the response of the customer creation
+    description: An email or customer code for the customer you want to fetch
     schema:
       type: string
     example: "CUS_c6wqvwmvwopw4ms"
@@ -13,15 +13,15 @@ get:
   operationId: customer_fetch
   description: Get details of a customer on your integration.
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/CustomerFetchResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error
@@ -40,15 +40,15 @@ put:
         schema:
           $ref: ../components/schemas/CustomerUpdate.yaml
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/CustomerUpdateResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

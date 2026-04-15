@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Item** | **int32** | The product ID of the item | 
-**Type** | **string** | The type of the item. &#x60;product&#x60; is currently the acceptable value | 
-**Quantity** | **int32** | The number of items to get | 
-**Amount** | **int32** | The cost of the item | 
+| Name         | Type       | Description                                                                 | Notes |
+| ------------ | ---------- | --------------------------------------------------------------------------- | ----- |
+| **Item**     | **int32**  | The product ID of the item                                                  |
+| **Type**     | **string** | The type of the item. &#x60;product&#x60; is currently the acceptable value |
+| **Quantity** | **int32**  | The number of items to get                                                  |
+| **Amount**   | **int32**  | The cost of the item                                                        |
 
 ## Methods
 
@@ -47,7 +47,6 @@ and a boolean to check if the value has been set.
 
 SetItem sets Item field to given value.
 
-
 ### GetType
 
 `func (o *OrderItems) GetType() string`
@@ -66,7 +65,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderItems) SetType(v string)`
 
 SetType sets Type field to given value.
-
 
 ### GetQuantity
 
@@ -87,7 +85,6 @@ and a boolean to check if the value has been set.
 
 SetQuantity sets Quantity field to given value.
 
-
 ### GetAmount
 
 `func (o *OrderItems) GetAmount() int32`
@@ -107,8 +104,4 @@ and a boolean to check if the value has been set.
 
 SetAmount sets Amount field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

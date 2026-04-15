@@ -1,7 +1,7 @@
 parameters:
-  - name: code
+  - name: id_or_code
     in: path
-    description: The subaccount code you want to fetch
+    description: The subaccount ID or code you want to fetch
     required: true
     schema:
       type: string
@@ -13,15 +13,15 @@ get:
   operationId: subaccount_fetch
   description: Get details of a subaccount on your integration
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/SubaccountFetchResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error
@@ -40,15 +40,15 @@ put:
         schema:
           $ref: ../components/schemas/SubaccountUpdate.yaml
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/SubaccountUpdateResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

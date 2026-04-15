@@ -1,12 +1,12 @@
 # Response
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | [optional] 
-**message** | **str** |  | [optional] 
-**data** | **object** |  | [optional] 
+
+| Name        | Type       | Description | Notes      |
+| ----------- | ---------- | ----------- | ---------- |
+| **status**  | **bool**   |             | [optional] |
+| **message** | **str**    |             | [optional] |
+| **data**    | **object** |             | [optional] |
 
 ## Example
 
@@ -25,6 +25,5 @@ response_dict = response_instance.to_dict()
 # create an instance of Response from a dict
 response_form_dict = response.from_dict(response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

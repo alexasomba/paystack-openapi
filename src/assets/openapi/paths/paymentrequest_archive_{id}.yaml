@@ -10,14 +10,14 @@ post:
   tags:
     - Payment Request
   summary: Archive Payment Request
-  description: | 
+  description: |
     Archive a payment request to clean up your records. An archived payment request cannot be verified and will not 
     be returned when listing all previously created payment requests.
   operationId: paymentRequest_archive
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/PaymentRequestArchiveSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error

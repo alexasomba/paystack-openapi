@@ -2,22 +2,22 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**FirstName** | **string** |  | 
-**LastName** | **string** |  | 
-**Email** | **string** |  | 
-**Phone** | **string** |  | 
-**Metadata** | **map[string]interface{}** |  | 
-**Domain** | **string** |  | 
-**CustomerCode** | **string** |  | 
-**RiskAction** | **string** |  | 
-**Id** | **int32** |  | 
-**Integration** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
-**Identified** | **bool** |  | 
-**Identifications** | **interface{}** |  | 
+| Name                | Type                       | Description | Notes |
+| ------------------- | -------------------------- | ----------- | ----- |
+| **FirstName**       | **string**                 |             |
+| **LastName**        | **string**                 |             |
+| **Email**           | **string**                 |             |
+| **Phone**           | **string**                 |             |
+| **Metadata**        | **map[string]interface{}** |             |
+| **Domain**          | **string**                 |             |
+| **CustomerCode**    | **string**                 |             |
+| **RiskAction**      | **string**                 |             |
+| **Id**              | **int32**                  |             |
+| **Integration**     | **int32**                  |             |
+| **CreatedAt**       | **string**                 |             |
+| **UpdatedAt**       | **string**                 |             |
+| **Identified**      | **bool**                   |             |
+| **Identifications** | **interface{}**            |             |
 
 ## Methods
 
@@ -57,7 +57,6 @@ and a boolean to check if the value has been set.
 
 SetFirstName sets FirstName field to given value.
 
-
 ### GetLastName
 
 `func (o *CustomerUpdateResponseData) GetLastName() string`
@@ -76,7 +75,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerUpdateResponseData) SetLastName(v string)`
 
 SetLastName sets LastName field to given value.
-
 
 ### GetEmail
 
@@ -97,7 +95,6 @@ and a boolean to check if the value has been set.
 
 SetEmail sets Email field to given value.
 
-
 ### GetPhone
 
 `func (o *CustomerUpdateResponseData) GetPhone() string`
@@ -116,7 +113,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerUpdateResponseData) SetPhone(v string)`
 
 SetPhone sets Phone field to given value.
-
 
 ### GetMetadata
 
@@ -137,7 +133,6 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
-
 ### GetDomain
 
 `func (o *CustomerUpdateResponseData) GetDomain() string`
@@ -156,7 +151,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerUpdateResponseData) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetCustomerCode
 
@@ -177,7 +171,6 @@ and a boolean to check if the value has been set.
 
 SetCustomerCode sets CustomerCode field to given value.
 
-
 ### GetRiskAction
 
 `func (o *CustomerUpdateResponseData) GetRiskAction() string`
@@ -196,7 +189,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerUpdateResponseData) SetRiskAction(v string)`
 
 SetRiskAction sets RiskAction field to given value.
-
 
 ### GetId
 
@@ -217,7 +209,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetIntegration
 
 `func (o *CustomerUpdateResponseData) GetIntegration() int32`
@@ -236,7 +227,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerUpdateResponseData) SetIntegration(v int32)`
 
 SetIntegration sets Integration field to given value.
-
 
 ### GetCreatedAt
 
@@ -257,7 +247,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-
 ### GetUpdatedAt
 
 `func (o *CustomerUpdateResponseData) GetUpdatedAt() string`
@@ -276,7 +265,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerUpdateResponseData) SetUpdatedAt(v string)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
-
 
 ### GetIdentified
 
@@ -297,7 +285,6 @@ and a boolean to check if the value has been set.
 
 SetIdentified sets Identified field to given value.
 
-
 ### GetIdentifications
 
 `func (o *CustomerUpdateResponseData) GetIdentifications() interface{}`
@@ -317,18 +304,16 @@ and a boolean to check if the value has been set.
 
 SetIdentifications sets Identifications field to given value.
 
-
 ### SetIdentificationsNil
 
 `func (o *CustomerUpdateResponseData) SetIdentificationsNil(b bool)`
 
- SetIdentificationsNil sets the value for Identifications to be an explicit nil
+SetIdentificationsNil sets the value for Identifications to be an explicit nil
 
 ### UnsetIdentifications
+
 `func (o *CustomerUpdateResponseData) UnsetIdentifications()`
 
 UnsetIdentifications ensures that no value is present for Identifications, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

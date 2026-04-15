@@ -1,13 +1,13 @@
 # DedicatedNubanListResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**List[DedicatedNubanListResponseArray]**](DedicatedNubanListResponseArray.md) |  | 
-**meta** | [**SubaccountListResponseMeta**](SubaccountListResponseMeta.md) |  | 
+
+| Name        | Type                                                                            | Description | Notes |
+| ----------- | ------------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                        |             |
+| **message** | **str**                                                                         |             |
+| **data**    | [**List[DedicatedNubanListResponseArray]**](DedicatedNubanListResponseArray.md) |             |
+| **meta**    | [**SubaccountListResponseMeta**](SubaccountListResponseMeta.md)                 |             |
 
 ## Example
 
@@ -26,6 +26,5 @@ dedicated_nuban_list_response_dict = dedicated_nuban_list_response_instance.to_d
 # create an instance of DedicatedNubanListResponse from a dict
 dedicated_nuban_list_response_form_dict = dedicated_nuban_list_response.from_dict(dedicated_nuban_list_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

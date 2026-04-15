@@ -2,31 +2,32 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**transfer_bulk**](TransferApi.md#transfer_bulk) | **POST** /transfer/bulk | Initiate Bulk Transfer
-[**transfer_disable_otp**](TransferApi.md#transfer_disable_otp) | **POST** /transfer/disable_otp | Disable OTP for Transfers
-[**transfer_disable_otp_finalize**](TransferApi.md#transfer_disable_otp_finalize) | **POST** /transfer/disable_otp_finalize | Finalize Disabling OTP for Transfers
-[**transfer_enable_otp**](TransferApi.md#transfer_enable_otp) | **POST** /transfer/enable_otp | Enable OTP requirement for Transfers
-[**transfer_export_transfer**](TransferApi.md#transfer_export_transfer) | **GET** /transfer/export | Export Transfers
-[**transfer_fetch**](TransferApi.md#transfer_fetch) | **GET** /transfer/{code} | Fetch Transfer
-[**transfer_finalize**](TransferApi.md#transfer_finalize) | **POST** /transfer/finalize_transfer | Finalize Transfer
-[**transfer_initiate**](TransferApi.md#transfer_initiate) | **POST** /transfer | Initiate Transfer
-[**transfer_list**](TransferApi.md#transfer_list) | **GET** /transfer | List Transfers
-[**transfer_resend_otp**](TransferApi.md#transfer_resend_otp) | **POST** /transfer/resend_otp | Resend OTP for Transfer
-[**transfer_verify**](TransferApi.md#transfer_verify) | **GET** /transfer/verify/{reference} | Verify Transfer
-
+| Method                                                                            | HTTP request                            | Description                          |
+| --------------------------------------------------------------------------------- | --------------------------------------- | ------------------------------------ |
+| [**transfer_bulk**](TransferApi.md#transfer_bulk)                                 | **POST** /transfer/bulk                 | Initiate Bulk Transfer               |
+| [**transfer_disable_otp**](TransferApi.md#transfer_disable_otp)                   | **POST** /transfer/disable_otp          | Disable OTP for Transfers            |
+| [**transfer_disable_otp_finalize**](TransferApi.md#transfer_disable_otp_finalize) | **POST** /transfer/disable_otp_finalize | Finalize Disabling OTP for Transfers |
+| [**transfer_enable_otp**](TransferApi.md#transfer_enable_otp)                     | **POST** /transfer/enable_otp           | Enable OTP requirement for Transfers |
+| [**transfer_export_transfer**](TransferApi.md#transfer_export_transfer)           | **GET** /transfer/export                | Export Transfers                     |
+| [**transfer_fetch**](TransferApi.md#transfer_fetch)                               | **GET** /transfer/{code}                | Fetch Transfer                       |
+| [**transfer_finalize**](TransferApi.md#transfer_finalize)                         | **POST** /transfer/finalize_transfer    | Finalize Transfer                    |
+| [**transfer_initiate**](TransferApi.md#transfer_initiate)                         | **POST** /transfer                      | Initiate Transfer                    |
+| [**transfer_list**](TransferApi.md#transfer_list)                                 | **GET** /transfer                       | List Transfers                       |
+| [**transfer_resend_otp**](TransferApi.md#transfer_resend_otp)                     | **POST** /transfer/resend_otp           | Resend OTP for Transfer              |
+| [**transfer_verify**](TransferApi.md#transfer_verify)                             | **GET** /transfer/verify/{reference}    | Verify Transfer                      |
 
 # **transfer_bulk**
+
 > TransferBulkResponse transfer_bulk(transfer_bulk=transfer_bulk)
 
 Initiate Bulk Transfer
 
-Batch multiple transfers in a single request.  You need to disable the Transfers OTP requirement to use this endpoint. 
+Batch multiple transfers in a single request. You need to disable the Transfers OTP requirement to use this endpoint.
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -67,13 +68,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TransferApi->transfer_bulk: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transfer_bulk** | [**TransferBulk**](TransferBulk.md)|  | [optional] 
+| Name              | Type                                | Description | Notes      |
+| ----------------- | ----------------------------------- | ----------- | ---------- |
+| **transfer_bulk** | [**TransferBulk**](TransferBulk.md) |             | [optional] |
 
 ### Return type
 
@@ -85,28 +84,31 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transfer_disable_otp**
+
 > TransferDisablesOtpResponse transfer_disable_otp()
 
 Disable OTP for Transfers
 
-This is used in the event that you want to be able to complete transfers programmatically without use of OTPs.  No arguments required. You will get an OTP to complete the request. 
+This is used in the event that you want to be able to complete transfers programmatically without use of OTPs. No arguments required. You will get an OTP to complete the request.
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -145,9 +147,8 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TransferApi->transfer_disable_otp: %s\n" % e)
 ```
 
-
-
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -160,19 +161,21 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Successful response    | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transfer_disable_otp_finalize**
+
 > TransferFinalizeDisablesOtpResponse transfer_disable_otp_finalize(transfer_finalize_disable_otp=transfer_finalize_disable_otp)
 
 Finalize Disabling OTP for Transfers
@@ -181,7 +184,8 @@ Finalize the request to disable OTP on your transfers
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -222,13 +226,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TransferApi->transfer_disable_otp_finalize: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transfer_finalize_disable_otp** | [**TransferFinalizeDisableOTP**](TransferFinalizeDisableOTP.md)|  | [optional] 
+| Name                              | Type                                                            | Description | Notes      |
+| --------------------------------- | --------------------------------------------------------------- | ----------- | ---------- |
+| **transfer_finalize_disable_otp** | [**TransferFinalizeDisableOTP**](TransferFinalizeDisableOTP.md) |             | [optional] |
 
 ### Return type
 
@@ -240,28 +242,31 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Successful response    | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transfer_enable_otp**
+
 > TransferEnablesOtpResponse transfer_enable_otp()
 
 Enable OTP requirement for Transfers
 
-In the event that a customer wants to stop being able to complete transfers programmatically, this endpoint helps turn OTP requirement back on.  No arguments required. 
+In the event that a customer wants to stop being able to complete transfers programmatically, this endpoint helps turn OTP requirement back on. No arguments required.
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -300,9 +305,8 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TransferApi->transfer_enable_otp: %s\n" % e)
 ```
 
-
-
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -315,19 +319,21 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Successful response    | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transfer_export_transfer**
+
 > Response transfer_export_transfer(recipient=recipient, status=status, var_from=var_from, to=to)
 
 Export Transfers
@@ -336,7 +342,8 @@ Export a list of transfers carried out on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -379,16 +386,14 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TransferApi->transfer_export_transfer: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **recipient** | **str**| Export transfer by the recipient code | [optional] 
- **status** | **str**| Export transfer by status | [optional] [default to &#39;pending&#39;]
- **var_from** | **datetime**| The start date | [optional] 
- **to** | **datetime**| The end date | [optional] 
+| Name          | Type         | Description                           | Notes                                     |
+| ------------- | ------------ | ------------------------------------- | ----------------------------------------- |
+| **recipient** | **str**      | Export transfer by the recipient code | [optional]                                |
+| **status**    | **str**      | Export transfer by status             | [optional] [default to &#39;pending&#39;] |
+| **var_from**  | **datetime** | The start date                        | [optional]                                |
+| **to**        | **datetime** | The end date                          | [optional]                                |
 
 ### Return type
 
@@ -400,20 +405,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transfer_fetch**
+
 > TransferFetchResponse transfer_fetch(code)
 
 Fetch Transfer
@@ -422,7 +429,8 @@ Get details of a transfer on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -462,13 +470,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TransferApi->transfer_fetch: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| Transfer code | 
+| Name     | Type    | Description   | Notes |
+| -------- | ------- | ------------- | ----- |
+| **code** | **str** | Transfer code |
 
 ### Return type
 
@@ -480,20 +486,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Succesful operation |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Succesful operation    | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transfer_finalize**
+
 > Response transfer_finalize(transfer_finalize=transfer_finalize)
 
 Finalize Transfer
@@ -502,7 +510,8 @@ Finalize an initiated transfer
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -543,13 +552,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TransferApi->transfer_finalize: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transfer_finalize** | [**TransferFinalize**](TransferFinalize.md)|  | [optional] 
+| Name                  | Type                                        | Description | Notes      |
+| --------------------- | ------------------------------------------- | ----------- | ---------- |
+| **transfer_finalize** | [**TransferFinalize**](TransferFinalize.md) |             | [optional] |
 
 ### Return type
 
@@ -561,19 +568,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transfer_initiate**
+
 > TransferCreateResponse transfer_initiate(transfer_initiate=transfer_initiate)
 
 Initiate Transfer
@@ -582,7 +591,8 @@ Send money to your customers
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -623,13 +633,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TransferApi->transfer_initiate: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transfer_initiate** | [**TransferInitiate**](TransferInitiate.md)|  | [optional] 
+| Name                  | Type                                        | Description | Notes      |
+| --------------------- | ------------------------------------------- | ----------- | ---------- |
+| **transfer_initiate** | [**TransferInitiate**](TransferInitiate.md) |             | [optional] |
 
 ### Return type
 
@@ -641,19 +649,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful operation |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Successful operation   | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transfer_list**
+
 > TransferListResponse transfer_list(use_cursor=use_cursor, next=next, previous=previous, per_page=per_page, page=page, var_from=var_from, to=to, recipient=recipient, status=status)
 
 List Transfers
@@ -662,7 +672,8 @@ List the transfers made on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -710,21 +721,19 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TransferApi->transfer_list: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **use_cursor** | **bool**| A flag to indicate if cursor based pagination should be used | [optional] 
- **next** | **str**| An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data  | [optional] 
- **previous** | **str**| An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data  | [optional] 
- **per_page** | **int**| The number of records to fetch per request | [optional] 
- **page** | **int**| The offset to retrieve data from | [optional] 
- **var_from** | **datetime**| The start date | [optional] 
- **to** | **datetime**| The end date | [optional] 
- **recipient** | **str**| Filter transfer by the recipient code | [optional] 
- **status** | **str**| Filter transfer by status | [optional] [default to &#39;pending&#39;]
+| Name           | Type         | Description                                                                                                | Notes                                     |
+| -------------- | ------------ | ---------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| **use_cursor** | **bool**     | A flag to indicate if cursor based pagination should be used                                               | [optional]                                |
+| **next**       | **str**      | An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data     | [optional]                                |
+| **previous**   | **str**      | An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data | [optional]                                |
+| **per_page**   | **int**      | The number of records to fetch per request                                                                 | [optional]                                |
+| **page**       | **int**      | The offset to retrieve data from                                                                           | [optional]                                |
+| **var_from**   | **datetime** | The start date                                                                                             | [optional]                                |
+| **to**         | **datetime** | The end date                                                                                               | [optional]                                |
+| **recipient**  | **str**      | Filter transfer by the recipient code                                                                      | [optional]                                |
+| **status**     | **str**      | Filter transfer by status                                                                                  | [optional] [default to &#39;pending&#39;] |
 
 ### Return type
 
@@ -736,20 +745,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transfer_resend_otp**
+
 > TransferResendsOtpResponse transfer_resend_otp(transfer_resend_otp=transfer_resend_otp)
 
 Resend OTP for Transfer
@@ -758,7 +769,8 @@ Generates and send a new OTP to customer in the event they are having trouble re
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -799,13 +811,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TransferApi->transfer_resend_otp: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transfer_resend_otp** | [**TransferResendOTP**](TransferResendOTP.md)|  | [optional] 
+| Name                    | Type                                          | Description | Notes      |
+| ----------------------- | --------------------------------------------- | ----------- | ---------- |
+| **transfer_resend_otp** | [**TransferResendOTP**](TransferResendOTP.md) |             | [optional] |
 
 ### Return type
 
@@ -817,19 +827,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transfer_verify**
+
 > TransferVerifyResponse transfer_verify(reference)
 
 Verify Transfer
@@ -838,7 +850,8 @@ Verify the status of a transfer on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -878,13 +891,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TransferApi->transfer_verify: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **reference** | **str**| Transfer reference | 
+| Name          | Type    | Description        | Notes |
+| ------------- | ------- | ------------------ | ----- |
+| **reference** | **str** | Transfer reference |
 
 ### Return type
 
@@ -896,16 +907,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

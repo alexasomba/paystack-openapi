@@ -1,0 +1,50 @@
+type: object
+properties:
+  id:
+    type: integer
+  domain:
+    type: string
+  status:
+    type: string
+  currency:
+    type: string
+  integration:
+    type: integer
+  total_amount:
+    type: integer
+  effective_amount:
+    type: integer
+  total_fees:
+    type: integer
+  total_processed:
+    type: integer
+  deductions:
+    type: integer
+    nullable: true
+  settlement_date:
+    type: string
+    format: date-time
+  settled_by:
+    type: string
+    nullable: true
+  createdAt:
+    type: string
+    format: date-time
+  updatedAt:
+    type: string
+    format: date-time
+required:
+  - id
+  - domain
+  - status
+  - currency
+  - integration
+  - total_amount
+  - effective_amount
+  - total_fees
+  - total_processed
+  - deductions
+  - settlement_date
+  - settled_by
+  - createdAt
+  - updatedAt

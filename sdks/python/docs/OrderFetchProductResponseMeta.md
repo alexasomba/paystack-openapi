@@ -1,15 +1,15 @@
 # OrderFetchProductResponseMeta
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**quantity_sold** | **int** |  | 
-**revenue** | **int** |  | 
-**total** | **int** |  | 
-**skipped** | **int** |  | 
-**per_page** | **int** |  | 
-**page_count** | **int** |  | 
+
+| Name              | Type    | Description | Notes |
+| ----------------- | ------- | ----------- | ----- |
+| **quantity_sold** | **int** |             |
+| **revenue**       | **int** |             |
+| **total**         | **int** |             |
+| **skipped**       | **int** |             |
+| **per_page**      | **int** |             |
+| **page_count**    | **int** |             |
 
 ## Example
 
@@ -28,6 +28,5 @@ order_fetch_product_response_meta_dict = order_fetch_product_response_meta_insta
 # create an instance of OrderFetchProductResponseMeta from a dict
 order_fetch_product_response_meta_form_dict = order_fetch_product_response_meta.from_dict(order_fetch_product_response_meta_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Street** | **string** | The customer&#39;s street | 
-**City** | **string** | The customer&#39;s city | 
-**State** | **string** | The customer&#39;s state | 
+| Name       | Type       | Description               | Notes |
+| ---------- | ---------- | ------------------------- | ----- |
+| **Street** | **string** | The customer&#39;s street |
+| **City**   | **string** | The customer&#39;s city   |
+| **State**  | **string** | The customer&#39;s state  |
 
 ## Methods
 
@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetStreet sets Street field to given value.
 
-
 ### GetCity
 
 `func (o *CustomerAuthorizationInitializeAddress) GetCity() string`
@@ -65,7 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerAuthorizationInitializeAddress) SetCity(v string)`
 
 SetCity sets City field to given value.
-
 
 ### GetState
 
@@ -86,8 +84,4 @@ and a boolean to check if the value has been set.
 
 SetState sets State field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

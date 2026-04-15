@@ -2,19 +2,19 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**dispute_download**](DisputeApi.md#dispute_download) | **GET** /dispute/export | Export Disputes
-[**dispute_evidence**](DisputeApi.md#dispute_evidence) | **POST** /dispute/{id}/evidence | Add Evidence
-[**dispute_fetch**](DisputeApi.md#dispute_fetch) | **GET** /dispute/{id} | Fetch Dispute
-[**dispute_list**](DisputeApi.md#dispute_list) | **GET** /dispute | List Disputes
-[**dispute_resolve**](DisputeApi.md#dispute_resolve) | **PUT** /dispute/{id}/resolve | Resolve Dispute
-[**dispute_transaction**](DisputeApi.md#dispute_transaction) | **GET** /dispute/transaction/{id} | List Transaction Disputes
-[**dispute_update**](DisputeApi.md#dispute_update) | **PUT** /dispute/{id} | Update Dispute
-[**dispute_upload_url**](DisputeApi.md#dispute_upload_url) | **GET** /dispute/{id}/upload_url | Fetch Upload URL
-
+| Method                                                       | HTTP request                      | Description               |
+| ------------------------------------------------------------ | --------------------------------- | ------------------------- |
+| [**dispute_download**](DisputeApi.md#dispute_download)       | **GET** /dispute/export           | Export Disputes           |
+| [**dispute_evidence**](DisputeApi.md#dispute_evidence)       | **POST** /dispute/{id}/evidence   | Add Evidence              |
+| [**dispute_fetch**](DisputeApi.md#dispute_fetch)             | **GET** /dispute/{id}             | Fetch Dispute             |
+| [**dispute_list**](DisputeApi.md#dispute_list)               | **GET** /dispute                  | List Disputes             |
+| [**dispute_resolve**](DisputeApi.md#dispute_resolve)         | **PUT** /dispute/{id}/resolve     | Resolve Dispute           |
+| [**dispute_transaction**](DisputeApi.md#dispute_transaction) | **GET** /dispute/transaction/{id} | List Transaction Disputes |
+| [**dispute_update**](DisputeApi.md#dispute_update)           | **PUT** /dispute/{id}             | Update Dispute            |
+| [**dispute_upload_url**](DisputeApi.md#dispute_upload_url)   | **GET** /dispute/{id}/upload_url  | Fetch Upload URL          |
 
 # **dispute_download**
+
 > DisputeExportResponse dispute_download(per_page=per_page, page=page, status=status, var_from=var_from, to=to)
 
 Export Disputes
@@ -23,7 +23,8 @@ Export the disputes available on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -67,17 +68,15 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling DisputeApi->dispute_download: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **per_page** | **int**| Number of records to fetch per page | [optional] 
- **page** | **int**| The section to retrieve | [optional] 
- **status** | **str**|  | [optional] 
- **var_from** | **datetime**| The start date | [optional] 
- **to** | **datetime**| The end date | [optional] 
+| Name         | Type         | Description                         | Notes      |
+| ------------ | ------------ | ----------------------------------- | ---------- |
+| **per_page** | **int**      | Number of records to fetch per page | [optional] |
+| **page**     | **int**      | The section to retrieve             | [optional] |
+| **status**   | **str**      |                                     | [optional] |
+| **var_from** | **datetime** | The start date                      | [optional] |
+| **to**       | **datetime** | The end date                        | [optional] |
 
 ### Return type
 
@@ -89,20 +88,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Dispute Export response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description             | Response headers |
+| ----------- | ----------------------- | ---------------- |
+| **200**     | Dispute Export response | -                |
+| **401**     | Unauthorized operation  | -                |
+| **404**     | Entity not found        | -                |
+| **0**       | Server error            | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dispute_evidence**
+
 > DisputeAddEvidenceResponse dispute_evidence(id, dispute_evidence=dispute_evidence)
 
 Add Evidence
@@ -111,7 +112,8 @@ Provide evidence for a dispute
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -153,14 +155,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling DisputeApi->dispute_evidence: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of the dispute | 
- **dispute_evidence** | [**DisputeEvidence**](DisputeEvidence.md)|  | [optional] 
+| Name                 | Type                                      | Description                          | Notes      |
+| -------------------- | ----------------------------------------- | ------------------------------------ | ---------- |
+| **id**               | **int**                                   | The unique identifier of the dispute |
+| **dispute_evidence** | [**DisputeEvidence**](DisputeEvidence.md) |                                      | [optional] |
 
 ### Return type
 
@@ -172,19 +172,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Dispute Add Evidence response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                   | Response headers |
+| ----------- | ----------------------------- | ---------------- |
+| **200**     | Dispute Add Evidence response | -                |
+| **401**     | Unauthorized operation        | -                |
+| **0**       | Server error                  | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dispute_fetch**
+
 > DisputeFetchResponse dispute_fetch(id)
 
 Fetch Dispute
@@ -193,7 +195,8 @@ Fetch a transaction dispute
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -233,13 +236,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling DisputeApi->dispute_fetch: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of the dispute | 
+| Name   | Type    | Description                          | Notes |
+| ------ | ------- | ------------------------------------ | ----- |
+| **id** | **int** | The unique identifier of the dispute |
 
 ### Return type
 
@@ -251,20 +252,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Dispute Fetch response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Dispute Fetch response | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dispute_list**
+
 > DisputeListResponse dispute_list(per_page=per_page, page=page, status=status, transaction=transaction, var_from=var_from, to=to)
 
 List Disputes
@@ -273,7 +276,8 @@ List transaction disputes filed by customers
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -318,18 +322,16 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling DisputeApi->dispute_list: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **per_page** | **int**| Number of records to fetch per page | [optional] 
- **page** | **int**| The section to retrieve | [optional] 
- **status** | **str**| Dispute status | [optional] 
- **transaction** | **str**| Transaction ID | [optional] 
- **var_from** | **datetime**| The start date | [optional] 
- **to** | **datetime**| The end date | [optional] 
+| Name            | Type         | Description                         | Notes      |
+| --------------- | ------------ | ----------------------------------- | ---------- |
+| **per_page**    | **int**      | Number of records to fetch per page | [optional] |
+| **page**        | **int**      | The section to retrieve             | [optional] |
+| **status**      | **str**      | Dispute status                      | [optional] |
+| **transaction** | **str**      | Transaction ID                      | [optional] |
+| **var_from**    | **datetime** | The start date                      | [optional] |
+| **to**          | **datetime** | The end date                        | [optional] |
 
 ### Return type
 
@@ -341,20 +343,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Dispute List response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Dispute List response  | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dispute_resolve**
+
 > DisputeResolveResponse dispute_resolve(id, dispute_resolve=dispute_resolve)
 
 Resolve Dispute
@@ -363,7 +367,8 @@ Resolve a transaction dispute
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -405,14 +410,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling DisputeApi->dispute_resolve: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of the dispute | 
- **dispute_resolve** | [**DisputeResolve**](DisputeResolve.md)|  | [optional] 
+| Name                | Type                                    | Description                          | Notes      |
+| ------------------- | --------------------------------------- | ------------------------------------ | ---------- |
+| **id**              | **int**                                 | The unique identifier of the dispute |
+| **dispute_resolve** | [**DisputeResolve**](DisputeResolve.md) |                                      | [optional] |
 
 ### Return type
 
@@ -424,20 +427,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Dispute Resolve response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description              | Response headers |
+| ----------- | ------------------------ | ---------------- |
+| **200**     | Dispute Resolve response | -                |
+| **401**     | Unauthorized operation   | -                |
+| **404**     | Entity not found         | -                |
+| **0**       | Server error             | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dispute_transaction**
+
 > DisputeListTransactionResponse dispute_transaction(id)
 
 List Transaction Disputes
@@ -446,7 +451,8 @@ List all disputes filed for a transaction
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -486,13 +492,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling DisputeApi->dispute_transaction: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of the transaction | 
+| Name   | Type    | Description                              | Notes |
+| ------ | ------- | ---------------------------------------- | ----- |
+| **id** | **int** | The unique identifier of the transaction |
 
 ### Return type
 
@@ -504,20 +508,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Dispute List Transaction response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                       | Response headers |
+| ----------- | --------------------------------- | ---------------- |
+| **200**     | Dispute List Transaction response | -                |
+| **401**     | Unauthorized operation            | -                |
+| **404**     | Entity not found                  | -                |
+| **0**       | Server error                      | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dispute_update**
+
 > DisputeUpdateResponse dispute_update(id, dispute_update=dispute_update)
 
 Update Dispute
@@ -526,7 +532,8 @@ Update a transaction dispute
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -568,14 +575,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling DisputeApi->dispute_update: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of the dispute | 
- **dispute_update** | [**DisputeUpdate**](DisputeUpdate.md)|  | [optional] 
+| Name               | Type                                  | Description                          | Notes      |
+| ------------------ | ------------------------------------- | ------------------------------------ | ---------- |
+| **id**             | **int**                               | The unique identifier of the dispute |
+| **dispute_update** | [**DisputeUpdate**](DisputeUpdate.md) |                                      | [optional] |
 
 ### Return type
 
@@ -587,20 +592,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Dispute Update response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description             | Response headers |
+| ----------- | ----------------------- | ---------------- |
+| **200**     | Dispute Update response | -                |
+| **401**     | Unauthorized operation  | -                |
+| **404**     | Entity not found        | -                |
+| **0**       | Server error            | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dispute_upload_url**
+
 > DisputeUploadURLResponse dispute_upload_url(id)
 
 Fetch Upload URL
@@ -609,7 +616,8 @@ Get the URL to upload a dispute evidence
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -649,13 +657,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling DisputeApi->dispute_upload_url: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of the dispute | 
+| Name   | Type    | Description                          | Notes |
+| ------ | ------- | ------------------------------------ | ----- |
+| **id** | **int** | The unique identifier of the dispute |
 
 ### Return type
 
@@ -667,16 +673,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Dispute Upload URL response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                 | Response headers |
+| ----------- | --------------------------- | ---------------- |
+| **200**     | Dispute Upload URL response | -                |
+| **401**     | Unauthorized operation      | -                |
+| **404**     | Entity not found            | -                |
+| **0**       | Server error                | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

@@ -1,10 +1,10 @@
 # TransferFinalizeDisableOTP
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**otp** | **str** | OTP sent to business phone to verify disabling OTP requirement | 
+
+| Name    | Type    | Description                                                    | Notes |
+| ------- | ------- | -------------------------------------------------------------- | ----- |
+| **otp** | **str** | OTP sent to business phone to verify disabling OTP requirement |
 
 ## Example
 
@@ -23,6 +23,5 @@ transfer_finalize_disable_otp_dict = transfer_finalize_disable_otp_instance.to_d
 # create an instance of TransferFinalizeDisableOTP from a dict
 transfer_finalize_disable_otp_form_dict = transfer_finalize_disable_otp.from_dict(transfer_finalize_disable_otp_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

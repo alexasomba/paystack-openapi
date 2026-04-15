@@ -2,17 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**FirstName** | **string** |  | 
-**LastName** | **string** |  | 
-**Email** | **string** |  | 
-**CustomerCode** | **string** |  | 
-**Phone** | **NullableString** |  | 
-**Metadata** | **string** |  | 
-**RiskAction** | **string** |  | 
-**InternationalFormatPhone** | **string** |  | 
+| Name                         | Type               | Description | Notes |
+| ---------------------------- | ------------------ | ----------- | ----- |
+| **Id**                       | **int32**          |             |
+| **FirstName**                | **string**         |             |
+| **LastName**                 | **string**         |             |
+| **Email**                    | **string**         |             |
+| **CustomerCode**             | **string**         |             |
+| **Phone**                    | **NullableString** |             |
+| **Metadata**                 | **string**         |             |
+| **RiskAction**               | **string**         |             |
+| **InternationalFormatPhone** | **string**         |             |
 
 ## Methods
 
@@ -52,7 +52,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetFirstName
 
 `func (o *SubscriptionListResponseArrayCustomer) GetFirstName() string`
@@ -71,7 +70,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArrayCustomer) SetFirstName(v string)`
 
 SetFirstName sets FirstName field to given value.
-
 
 ### GetLastName
 
@@ -92,7 +90,6 @@ and a boolean to check if the value has been set.
 
 SetLastName sets LastName field to given value.
 
-
 ### GetEmail
 
 `func (o *SubscriptionListResponseArrayCustomer) GetEmail() string`
@@ -111,7 +108,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArrayCustomer) SetEmail(v string)`
 
 SetEmail sets Email field to given value.
-
 
 ### GetCustomerCode
 
@@ -132,7 +128,6 @@ and a boolean to check if the value has been set.
 
 SetCustomerCode sets CustomerCode field to given value.
 
-
 ### GetPhone
 
 `func (o *SubscriptionListResponseArrayCustomer) GetPhone() string`
@@ -152,17 +147,18 @@ and a boolean to check if the value has been set.
 
 SetPhone sets Phone field to given value.
 
-
 ### SetPhoneNil
 
 `func (o *SubscriptionListResponseArrayCustomer) SetPhoneNil(b bool)`
 
- SetPhoneNil sets the value for Phone to be an explicit nil
+SetPhoneNil sets the value for Phone to be an explicit nil
 
 ### UnsetPhone
+
 `func (o *SubscriptionListResponseArrayCustomer) UnsetPhone()`
 
 UnsetPhone ensures that no value is present for Phone, not even an explicit nil
+
 ### GetMetadata
 
 `func (o *SubscriptionListResponseArrayCustomer) GetMetadata() string`
@@ -181,7 +177,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArrayCustomer) SetMetadata(v string)`
 
 SetMetadata sets Metadata field to given value.
-
 
 ### GetRiskAction
 
@@ -202,7 +197,6 @@ and a boolean to check if the value has been set.
 
 SetRiskAction sets RiskAction field to given value.
 
-
 ### GetInternationalFormatPhone
 
 `func (o *SubscriptionListResponseArrayCustomer) GetInternationalFormatPhone() string`
@@ -222,8 +216,4 @@ and a boolean to check if the value has been set.
 
 SetInternationalFormatPhone sets InternationalFormatPhone field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

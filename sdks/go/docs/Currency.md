@@ -2,18 +2,14 @@
 
 ## Enum
 
+- `GHS` (value: `"GHS"`)
 
-* `GHS` (value: `"GHS"`)
+- `KES` (value: `"KES"`)
 
-* `KES` (value: `"KES"`)
+- `NGN` (value: `"NGN"`)
 
-* `NGN` (value: `"NGN"`)
+- `ZAR` (value: `"ZAR"`)
 
-* `ZAR` (value: `"ZAR"`)
-
-* `USD` (value: `"USD"`)
-
+- `USD` (value: `"USD"`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

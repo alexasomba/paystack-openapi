@@ -2,14 +2,14 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**CustomerEmail** | **string** | Customer email | 
-**CustomerName** | **string** | Customer name | 
-**CustomerPhone** | **string** | Customer mobile number | 
-**ServiceDetails** | **string** | Details of service offered | 
-**DeliveryAddress** | Pointer to **string** | Delivery address | [optional] 
-**DeliveryDate** | Pointer to **time.Time** | ISO 8601 representation of delivery date (YYYY-MM-DD) | [optional] 
+| Name                | Type                     | Description                                           | Notes      |
+| ------------------- | ------------------------ | ----------------------------------------------------- | ---------- |
+| **CustomerEmail**   | **string**               | Customer email                                        |
+| **CustomerName**    | **string**               | Customer name                                         |
+| **CustomerPhone**   | **string**               | Customer mobile number                                |
+| **ServiceDetails**  | **string**               | Details of service offered                            |
+| **DeliveryAddress** | Pointer to **string**    | Delivery address                                      | [optional] |
+| **DeliveryDate**    | Pointer to **time.Time** | ISO 8601 representation of delivery date (YYYY-MM-DD) | [optional] |
 
 ## Methods
 
@@ -49,7 +49,6 @@ and a boolean to check if the value has been set.
 
 SetCustomerEmail sets CustomerEmail field to given value.
 
-
 ### GetCustomerName
 
 `func (o *DisputeEvidence) GetCustomerName() string`
@@ -68,7 +67,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeEvidence) SetCustomerName(v string)`
 
 SetCustomerName sets CustomerName field to given value.
-
 
 ### GetCustomerPhone
 
@@ -89,7 +87,6 @@ and a boolean to check if the value has been set.
 
 SetCustomerPhone sets CustomerPhone field to given value.
 
-
 ### GetServiceDetails
 
 `func (o *DisputeEvidence) GetServiceDetails() string`
@@ -108,7 +105,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeEvidence) SetServiceDetails(v string)`
 
 SetServiceDetails sets ServiceDetails field to given value.
-
 
 ### GetDeliveryAddress
 
@@ -160,7 +156,4 @@ SetDeliveryDate sets DeliveryDate field to given value.
 
 HasDeliveryDate returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

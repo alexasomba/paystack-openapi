@@ -1,10 +1,10 @@
 # VirtualTerminalDeleteSplitCode
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**split_code** | **str** | The split code to assign to the virtual terminal | 
+
+| Name           | Type    | Description                                      | Notes |
+| -------------- | ------- | ------------------------------------------------ | ----- |
+| **split_code** | **str** | The split code to assign to the virtual terminal |
 
 ## Example
 
@@ -23,6 +23,5 @@ virtual_terminal_delete_split_code_dict = virtual_terminal_delete_split_code_ins
 # create an instance of VirtualTerminalDeleteSplitCode from a dict
 virtual_terminal_delete_split_code_form_dict = virtual_terminal_delete_split_code.from_dict(virtual_terminal_delete_split_code_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

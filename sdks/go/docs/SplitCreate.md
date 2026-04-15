@@ -2,14 +2,14 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Name** | **string** | Name of the transaction split | 
-**Type** | **string** | The type of transaction split you want to create. | 
-**Subaccounts** | [**[]SplitSubaccounts**](SplitSubaccounts.md) | A list of object containing subaccount code and number of shares | 
-**Currency** | **string** | The transaction currency | 
-**BearerType** | Pointer to **string** | This allows you specify how the transaction charge should be processed | [optional] 
-**BearerSubaccount** | Pointer to **string** | This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type | [optional] 
+| Name                 | Type                                          | Description                                                                                                                                  | Notes      |
+| -------------------- | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **Name**             | **string**                                    | Name of the transaction split                                                                                                                |
+| **Type**             | **string**                                    | The type of transaction split you want to create.                                                                                            |
+| **Subaccounts**      | [**[]SplitSubaccounts**](SplitSubaccounts.md) | A list of object containing subaccount code and number of shares                                                                             |
+| **Currency**         | **string**                                    | The transaction currency                                                                                                                     |
+| **BearerType**       | Pointer to **string**                         | This allows you specify how the transaction charge should be processed                                                                       | [optional] |
+| **BearerSubaccount** | Pointer to **string**                         | This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type | [optional] |
 
 ## Methods
 
@@ -49,7 +49,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetType
 
 `func (o *SplitCreate) GetType() string`
@@ -68,7 +67,6 @@ and a boolean to check if the value has been set.
 `func (o *SplitCreate) SetType(v string)`
 
 SetType sets Type field to given value.
-
 
 ### GetSubaccounts
 
@@ -89,7 +87,6 @@ and a boolean to check if the value has been set.
 
 SetSubaccounts sets Subaccounts field to given value.
 
-
 ### GetCurrency
 
 `func (o *SplitCreate) GetCurrency() string`
@@ -108,7 +105,6 @@ and a boolean to check if the value has been set.
 `func (o *SplitCreate) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetBearerType
 
@@ -160,7 +156,4 @@ SetBearerSubaccount sets BearerSubaccount field to given value.
 
 HasBearerSubaccount returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

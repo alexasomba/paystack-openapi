@@ -1,24 +1,24 @@
 # TransferRecipientCreateResponseData
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**active** | **bool** |  | 
-**created_at** | **str** |  | 
-**currency** | **str** |  | 
-**description** | **str** |  | 
-**domain** | **str** |  | 
-**email** | **str** |  | 
-**id** | **int** |  | 
-**integration** | **int** |  | 
-**metadata** | **object** |  | [optional] 
-**name** | **str** |  | 
-**recipient_code** | **str** |  | 
-**type** | **str** |  | 
-**updated_at** | **str** |  | 
-**is_deleted** | **bool** |  | 
-**details** | [**TransferRecipientListResponseArrayDetails**](TransferRecipientListResponseArrayDetails.md) |  | 
+
+| Name               | Type                                                                                          | Description | Notes      |
+| ------------------ | --------------------------------------------------------------------------------------------- | ----------- | ---------- |
+| **active**         | **bool**                                                                                      |             |
+| **created_at**     | **str**                                                                                       |             |
+| **currency**       | **str**                                                                                       |             |
+| **description**    | **str**                                                                                       |             |
+| **domain**         | **str**                                                                                       |             |
+| **email**          | **str**                                                                                       |             |
+| **id**             | **int**                                                                                       |             |
+| **integration**    | **int**                                                                                       |             |
+| **metadata**       | **object**                                                                                    |             | [optional] |
+| **name**           | **str**                                                                                       |             |
+| **recipient_code** | **str**                                                                                       |             |
+| **type**           | **str**                                                                                       |             |
+| **updated_at**     | **str**                                                                                       |             |
+| **is_deleted**     | **bool**                                                                                      |             |
+| **details**        | [**TransferRecipientListResponseArrayDetails**](TransferRecipientListResponseArrayDetails.md) |             |
 
 ## Example
 
@@ -37,6 +37,5 @@ transfer_recipient_create_response_data_dict = transfer_recipient_create_respons
 # create an instance of TransferRecipientCreateResponseData from a dict
 transfer_recipient_create_response_data_form_dict = transfer_recipient_create_response_data.from_dict(transfer_recipient_create_response_data_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

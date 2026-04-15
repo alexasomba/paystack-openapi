@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Next** | **NullableString** |  | 
-**Previous** | **NullableString** |  | 
-**PerPage** | **int32** |  | 
+| Name         | Type               | Description | Notes |
+| ------------ | ------------------ | ----------- | ----- |
+| **Next**     | **NullableString** |             |
+| **Previous** | **NullableString** |             |
+| **PerPage**  | **int32**          |             |
 
 ## Methods
 
@@ -46,17 +46,18 @@ and a boolean to check if the value has been set.
 
 SetNext sets Next field to given value.
 
-
 ### SetNextNil
 
 `func (o *TerminalListsResponseMeta) SetNextNil(b bool)`
 
- SetNextNil sets the value for Next to be an explicit nil
+SetNextNil sets the value for Next to be an explicit nil
 
 ### UnsetNext
+
 `func (o *TerminalListsResponseMeta) UnsetNext()`
 
 UnsetNext ensures that no value is present for Next, not even an explicit nil
+
 ### GetPrevious
 
 `func (o *TerminalListsResponseMeta) GetPrevious() string`
@@ -76,17 +77,18 @@ and a boolean to check if the value has been set.
 
 SetPrevious sets Previous field to given value.
 
-
 ### SetPreviousNil
 
 `func (o *TerminalListsResponseMeta) SetPreviousNil(b bool)`
 
- SetPreviousNil sets the value for Previous to be an explicit nil
+SetPreviousNil sets the value for Previous to be an explicit nil
 
 ### UnsetPrevious
+
 `func (o *TerminalListsResponseMeta) UnsetPrevious()`
 
 UnsetPrevious ensures that no value is present for Previous, not even an explicit nil
+
 ### GetPerPage
 
 `func (o *TerminalListsResponseMeta) GetPerPage() int32`
@@ -106,8 +108,4 @@ and a boolean to check if the value has been set.
 
 SetPerPage sets PerPage field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

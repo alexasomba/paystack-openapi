@@ -1,20 +1,20 @@
 # DedicatedNubanFetchResponseData
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**customer** | [**DedicatedNubanCreateResponseDataCustomer**](DedicatedNubanCreateResponseDataCustomer.md) |  | 
-**bank** | [**DedicatedNubanListResponseArrayBank**](DedicatedNubanListResponseArrayBank.md) |  | 
-**id** | **int** |  | 
-**account_name** | **str** |  | 
-**account_number** | **str** |  | 
-**created_at** | **str** |  | 
-**updated_at** | **str** |  | 
-**currency** | **str** |  | 
-**split_config** | **object** |  | 
-**active** | **bool** |  | 
-**assigned** | **bool** |  | 
+
+| Name               | Type                                                                                        | Description | Notes |
+| ------------------ | ------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **customer**       | [**DedicatedNubanCreateResponseDataCustomer**](DedicatedNubanCreateResponseDataCustomer.md) |             |
+| **bank**           | [**DedicatedNubanListResponseArrayBank**](DedicatedNubanListResponseArrayBank.md)           |             |
+| **id**             | **int**                                                                                     |             |
+| **account_name**   | **str**                                                                                     |             |
+| **account_number** | **str**                                                                                     |             |
+| **created_at**     | **str**                                                                                     |             |
+| **updated_at**     | **str**                                                                                     |             |
+| **currency**       | **str**                                                                                     |             |
+| **split_config**   | **object**                                                                                  |             |
+| **active**         | **bool**                                                                                    |             |
+| **assigned**       | **bool**                                                                                    |             |
 
 ## Example
 
@@ -33,6 +33,5 @@ dedicated_nuban_fetch_response_data_dict = dedicated_nuban_fetch_response_data_i
 # create an instance of DedicatedNubanFetchResponseData from a dict
 dedicated_nuban_fetch_response_data_form_dict = dedicated_nuban_fetch_response_data.from_dict(dedicated_nuban_fetch_response_data_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

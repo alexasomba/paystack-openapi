@@ -2,19 +2,19 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**terminal_commission**](TerminalApi.md#terminal_commission) | **POST** /terminal/commission_device | Commission Terminal
-[**terminal_decommission**](TerminalApi.md#terminal_decommission) | **POST** /terminal/decommission_device | Decommission Terminal
-[**terminal_fetch**](TerminalApi.md#terminal_fetch) | **GET** /terminal/{terminal_id} | Fetch Terminal
-[**terminal_fetch_event_status**](TerminalApi.md#terminal_fetch_event_status) | **GET** /terminal/{terminal_id}/event/{event_id} | Fetch Event Status
-[**terminal_fetch_terminal_status**](TerminalApi.md#terminal_fetch_terminal_status) | **GET** /terminal/{terminal_id}/presence | Fetch Terminal Status
-[**terminal_list**](TerminalApi.md#terminal_list) | **GET** /terminal | List Terminals
-[**terminal_send_event**](TerminalApi.md#terminal_send_event) | **POST** /terminal/{id}/event | Send Event
-[**terminal_update**](TerminalApi.md#terminal_update) | **PUT** /terminal/{terminal_id} | Update Terminal
-
+| Method                                                                              | HTTP request                                     | Description           |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------ | --------------------- |
+| [**terminal_commission**](TerminalApi.md#terminal_commission)                       | **POST** /terminal/commission_device             | Commission Terminal   |
+| [**terminal_decommission**](TerminalApi.md#terminal_decommission)                   | **POST** /terminal/decommission_device           | Decommission Terminal |
+| [**terminal_fetch**](TerminalApi.md#terminal_fetch)                                 | **GET** /terminal/{terminal_id}                  | Fetch Terminal        |
+| [**terminal_fetch_event_status**](TerminalApi.md#terminal_fetch_event_status)       | **GET** /terminal/{terminal_id}/event/{event_id} | Fetch Event Status    |
+| [**terminal_fetch_terminal_status**](TerminalApi.md#terminal_fetch_terminal_status) | **GET** /terminal/{terminal_id}/presence         | Fetch Terminal Status |
+| [**terminal_list**](TerminalApi.md#terminal_list)                                   | **GET** /terminal                                | List Terminals        |
+| [**terminal_send_event**](TerminalApi.md#terminal_send_event)                       | **POST** /terminal/{id}/event                    | Send Event            |
+| [**terminal_update**](TerminalApi.md#terminal_update)                               | **PUT** /terminal/{terminal_id}                  | Update Terminal       |
 
 # **terminal_commission**
+
 > TerminalCommissionDeviceResponse terminal_commission(terminal_activation_toggle=terminal_activation_toggle)
 
 Commission Terminal
@@ -23,7 +23,8 @@ Activate your debug device by linking it to your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -64,13 +65,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TerminalApi->terminal_commission: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **terminal_activation_toggle** | [**TerminalActivationToggle**](TerminalActivationToggle.md)|  | [optional] 
+| Name                           | Type                                                        | Description | Notes      |
+| ------------------------------ | ----------------------------------------------------------- | ----------- | ---------- |
+| **terminal_activation_toggle** | [**TerminalActivationToggle**](TerminalActivationToggle.md) |             | [optional] |
 
 ### Return type
 
@@ -82,19 +81,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Terminal Commission Device response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                         | Response headers |
+| ----------- | ----------------------------------- | ---------------- |
+| **200**     | Terminal Commission Device response | -                |
+| **401**     | Unauthorized operation              | -                |
+| **0**       | Server error                        | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **terminal_decommission**
+
 > TerminalDecommissionDeviceResponse terminal_decommission(terminal_activation_toggle=terminal_activation_toggle)
 
 Decommission Terminal
@@ -103,7 +104,8 @@ Unlink your debug device from your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -144,13 +146,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TerminalApi->terminal_decommission: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **terminal_activation_toggle** | [**TerminalActivationToggle**](TerminalActivationToggle.md)|  | [optional] 
+| Name                           | Type                                                        | Description | Notes      |
+| ------------------------------ | ----------------------------------------------------------- | ----------- | ---------- |
+| **terminal_activation_toggle** | [**TerminalActivationToggle**](TerminalActivationToggle.md) |             | [optional] |
 
 ### Return type
 
@@ -162,19 +162,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Terminal Decommission Device response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                           | Response headers |
+| ----------- | ------------------------------------- | ---------------- |
+| **200**     | Terminal Decommission Device response | -                |
+| **401**     | Unauthorized operation                | -                |
+| **0**       | Server error                          | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **terminal_fetch**
+
 > TerminalGetResponse terminal_fetch(terminal_id)
 
 Fetch Terminal
@@ -183,7 +185,8 @@ Get the details of a Terminal
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -223,13 +226,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TerminalApi->terminal_fetch: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **terminal_id** | **str**| The ID of the Terminal the event should be sent to. | 
+| Name            | Type    | Description                                         | Notes |
+| --------------- | ------- | --------------------------------------------------- | ----- |
+| **terminal_id** | **str** | The ID of the Terminal the event should be sent to. |
 
 ### Return type
 
@@ -241,20 +242,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Terminal Get response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Terminal Get response  | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **terminal_fetch_event_status**
+
 > Response terminal_fetch_event_status(terminal_id, event_id)
 
 Fetch Event Status
@@ -263,7 +266,8 @@ Check the status of an event sent to the Terminal
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -304,14 +308,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TerminalApi->terminal_fetch_event_status: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **terminal_id** | **str**| The ID of the Terminal the event should be sent to. | 
- **event_id** | **str**| The ID of the event that was sent to the Terminal | 
+| Name            | Type    | Description                                         | Notes |
+| --------------- | ------- | --------------------------------------------------- | ----- |
+| **terminal_id** | **str** | The ID of the Terminal the event should be sent to. |
+| **event_id**    | **str** | The ID of the event that was sent to the Terminal   |
 
 ### Return type
 
@@ -323,20 +325,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **terminal_fetch_terminal_status**
+
 > TerminalGetStatusResponse terminal_fetch_terminal_status(terminal_id)
 
 Fetch Terminal Status
@@ -345,7 +349,8 @@ Check the availiability of a Terminal before sending an event to it
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -385,13 +390,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TerminalApi->terminal_fetch_terminal_status: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **terminal_id** | **str**| The ID of the Terminal the event should be sent to. | 
+| Name            | Type    | Description                                         | Notes |
+| --------------- | ------- | --------------------------------------------------- | ----- |
+| **terminal_id** | **str** | The ID of the Terminal the event should be sent to. |
 
 ### Return type
 
@@ -403,20 +406,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Terminal Get Status response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                  | Response headers |
+| ----------- | ---------------------------- | ---------------- |
+| **200**     | Terminal Get Status response | -                |
+| **401**     | Unauthorized operation       | -                |
+| **404**     | Entity not found             | -                |
+| **0**       | Server error                 | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **terminal_list**
+
 > TerminalListsResponse terminal_list(next=next, previous=previous, per_page=per_page)
 
 List Terminals
@@ -425,7 +430,8 @@ List the Terminals available on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -467,15 +473,13 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TerminalApi->terminal_list: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **next** | **str**| A cursor that indicates your place in the list. It can be used to fetch the next page of the list | [optional] 
- **previous** | **str**| A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request | [optional] 
- **per_page** | **int**| Specify how many records you want to retrieve per page | [optional] [default to 50]
+| Name         | Type    | Description                                                                                                                           | Notes                      |
+| ------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| **next**     | **str** | A cursor that indicates your place in the list. It can be used to fetch the next page of the list                                     | [optional]                 |
+| **previous** | **str** | A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request | [optional]                 |
+| **per_page** | **int** | Specify how many records you want to retrieve per page                                                                                | [optional] [default to 50] |
 
 ### Return type
 
@@ -487,20 +491,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Terminal Lists response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description             | Response headers |
+| ----------- | ----------------------- | ---------------- |
+| **200**     | Terminal Lists response | -                |
+| **401**     | Unauthorized operation  | -                |
+| **404**     | Entity not found        | -                |
+| **0**       | Server error            | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **terminal_send_event**
+
 > Response terminal_send_event(id, terminal_send_event=terminal_send_event)
 
 Send Event
@@ -509,7 +515,8 @@ Send an event from your application to the Paystack Terminal
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -551,14 +558,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TerminalApi->terminal_send_event: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**| The ID of the Terminal the event should be sent to. | 
- **terminal_send_event** | [**TerminalSendEvent**](TerminalSendEvent.md)|  | [optional] 
+| Name                    | Type                                          | Description                                         | Notes      |
+| ----------------------- | --------------------------------------------- | --------------------------------------------------- | ---------- |
+| **id**                  | **str**                                       | The ID of the Terminal the event should be sent to. |
+| **terminal_send_event** | [**TerminalSendEvent**](TerminalSendEvent.md) |                                                     | [optional] |
 
 ### Return type
 
@@ -570,19 +575,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **terminal_update**
+
 > TerminalUpdateResponse terminal_update(terminal_id, terminal_upate=terminal_upate)
 
 Update Terminal
@@ -591,7 +598,8 @@ Update the details of a Terminal
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -633,14 +641,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TerminalApi->terminal_update: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **terminal_id** | **str**| The ID of the Terminal the event should be sent to. | 
- **terminal_upate** | [**TerminalUpate**](TerminalUpate.md)|  | [optional] 
+| Name               | Type                                  | Description                                         | Notes      |
+| ------------------ | ------------------------------------- | --------------------------------------------------- | ---------- |
+| **terminal_id**    | **str**                               | The ID of the Terminal the event should be sent to. |
+| **terminal_upate** | [**TerminalUpate**](TerminalUpate.md) |                                                     | [optional] |
 
 ### Return type
 
@@ -652,16 +658,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Terminal Update response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description              | Response headers |
+| ----------- | ------------------------ | ---------------- |
+| **200**     | Terminal Update response | -                |
+| **401**     | Unauthorized operation   | -                |
+| **404**     | Entity not found         | -                |
+| **0**       | Server error             | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

@@ -2,16 +2,16 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**order_create**](OrderApi.md#order_create) | **POST** /order | Create Order
-[**order_fetch**](OrderApi.md#order_fetch) | **GET** /order/{id} | Fetch Order
-[**order_list**](OrderApi.md#order_list) | **GET** /order | List Orders
-[**order_product**](OrderApi.md#order_product) | **GET** /order/product/{id} | Fetch Product Orders
-[**order_validate**](OrderApi.md#order_validate) | **GET** /order/{code}/validate | Validate Order
-
+| Method                                           | HTTP request                   | Description          |
+| ------------------------------------------------ | ------------------------------ | -------------------- |
+| [**order_create**](OrderApi.md#order_create)     | **POST** /order                | Create Order         |
+| [**order_fetch**](OrderApi.md#order_fetch)       | **GET** /order/{id}            | Fetch Order          |
+| [**order_list**](OrderApi.md#order_list)         | **GET** /order                 | List Orders          |
+| [**order_product**](OrderApi.md#order_product)   | **GET** /order/product/{id}    | Fetch Product Orders |
+| [**order_validate**](OrderApi.md#order_validate) | **GET** /order/{code}/validate | Validate Order       |
 
 # **order_create**
+
 > OrderCreateResponse order_create(order_create=order_create)
 
 Create Order
@@ -20,7 +20,8 @@ Create an order for selected items
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -61,13 +62,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling OrderApi->order_create: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **order_create** | [**OrderCreate**](OrderCreate.md)|  | [optional] 
+| Name             | Type                              | Description | Notes      |
+| ---------------- | --------------------------------- | ----------- | ---------- |
+| **order_create** | [**OrderCreate**](OrderCreate.md) |             | [optional] |
 
 ### Return type
 
@@ -79,19 +78,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Order Create response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Order Create response  | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **order_fetch**
+
 > OrderFetchResponse order_fetch(id)
 
 Fetch Order
@@ -100,7 +101,8 @@ Fetch the details of a previously created order
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -140,13 +142,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling OrderApi->order_fetch: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of the order | 
+| Name   | Type    | Description                        | Notes |
+| ------ | ------- | ---------------------------------- | ----- |
+| **id** | **int** | The unique identifier of the order |
 
 ### Return type
 
@@ -158,20 +158,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Order Fetch response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Order Fetch response   | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **order_list**
+
 > OrderListResponse order_list(per_page=per_page, page=page, var_from=var_from, to=to)
 
 List Orders
@@ -180,7 +182,8 @@ List the previously created orders
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -223,16 +226,14 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling OrderApi->order_list: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **per_page** | **int**| Number of records to fetch per page | [optional] 
- **page** | **int**| The section to retrieve | [optional] 
- **var_from** | **datetime**| The start date | [optional] 
- **to** | **datetime**| The end date | [optional] 
+| Name         | Type         | Description                         | Notes      |
+| ------------ | ------------ | ----------------------------------- | ---------- |
+| **per_page** | **int**      | Number of records to fetch per page | [optional] |
+| **page**     | **int**      | The section to retrieve             | [optional] |
+| **var_from** | **datetime** | The start date                      | [optional] |
+| **to**       | **datetime** | The end date                        | [optional] |
 
 ### Return type
 
@@ -244,20 +245,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Order List response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Order List response    | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **order_product**
+
 > OrderFetchProductResponse order_product(id)
 
 Fetch Product Orders
@@ -266,7 +269,8 @@ Fetch all orders for a particular product
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -306,13 +310,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling OrderApi->order_product: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of the order | 
+| Name   | Type    | Description                        | Notes |
+| ------ | ------- | ---------------------------------- | ----- |
+| **id** | **int** | The unique identifier of the order |
 
 ### Return type
 
@@ -324,20 +326,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Order Fetch Product response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                  | Response headers |
+| ----------- | ---------------------------- | ---------------- |
+| **200**     | Order Fetch Product response | -                |
+| **401**     | Unauthorized operation       | -                |
+| **404**     | Entity not found             | -                |
+| **0**       | Server error                 | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **order_validate**
+
 > OrderValidateResponse order_validate(code)
 
 Validate Order
@@ -346,7 +350,8 @@ Validate a pay for me order
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -386,13 +391,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling OrderApi->order_validate: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| The unique code of a previously created order | 
+| Name     | Type    | Description                                   | Notes |
+| -------- | ------- | --------------------------------------------- | ----- |
+| **code** | **str** | The unique code of a previously created order |
 
 ### Return type
 
@@ -404,16 +407,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Order Validate response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description             | Response headers |
+| ----------- | ----------------------- | ---------------- |
+| **200**     | Order Validate response | -                |
+| **401**     | Unauthorized operation  | -                |
+| **404**     | Entity not found        | -                |
+| **0**       | Server error            | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

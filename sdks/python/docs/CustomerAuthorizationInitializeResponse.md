@@ -1,12 +1,12 @@
 # CustomerAuthorizationInitializeResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**CustomerAuthorizationInitializeResponseData**](CustomerAuthorizationInitializeResponseData.md) |  | 
+
+| Name        | Type                                                                                              | Description | Notes |
+| ----------- | ------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                                          |             |
+| **message** | **str**                                                                                           |             |
+| **data**    | [**CustomerAuthorizationInitializeResponseData**](CustomerAuthorizationInitializeResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ customer_authorization_initialize_response_dict = customer_authorization_initial
 # create an instance of CustomerAuthorizationInitializeResponse from a dict
 customer_authorization_initialize_response_form_dict = customer_authorization_initialize_response.from_dict(customer_authorization_initialize_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

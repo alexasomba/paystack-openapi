@@ -1,11 +1,11 @@
 # DisputeFetchResponseDataTransactionAuthorization
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**receiver_bank_account_number** | **object** |  | 
-**receiver_bank** | **object** |  | 
+
+| Name                             | Type       | Description | Notes |
+| -------------------------------- | ---------- | ----------- | ----- |
+| **receiver_bank_account_number** | **object** |             |
+| **receiver_bank**                | **object** |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ dispute_fetch_response_data_transaction_authorization_dict = dispute_fetch_respo
 # create an instance of DisputeFetchResponseDataTransactionAuthorization from a dict
 dispute_fetch_response_data_transaction_authorization_form_dict = dispute_fetch_response_data_transaction_authorization.from_dict(dispute_fetch_response_data_transaction_authorization_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

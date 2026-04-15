@@ -5,11 +5,11 @@ get:
   description: Get the metric of all pending and successful payment requests
   operationId: paymentRequest_totals
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/PaymentRequestTotalSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

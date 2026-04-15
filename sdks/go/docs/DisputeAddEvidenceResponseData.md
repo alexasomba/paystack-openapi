@@ -2,18 +2,18 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**CustomerEmail** | **string** |  | 
-**CustomerName** | **string** |  | 
-**CustomerPhone** | **string** |  | 
-**ServiceDetails** | **string** |  | 
-**DeliveryAddress** | **string** |  | 
-**DeliveryDate** | **string** |  | 
-**Dispute** | **int32** |  | 
-**Id** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name                | Type       | Description | Notes |
+| ------------------- | ---------- | ----------- | ----- |
+| **CustomerEmail**   | **string** |             |
+| **CustomerName**    | **string** |             |
+| **CustomerPhone**   | **string** |             |
+| **ServiceDetails**  | **string** |             |
+| **DeliveryAddress** | **string** |             |
+| **DeliveryDate**    | **string** |             |
+| **Dispute**         | **int32**  |             |
+| **Id**              | **int32**  |             |
+| **CreatedAt**       | **string** |             |
+| **UpdatedAt**       | **string** |             |
 
 ## Methods
 
@@ -53,7 +53,6 @@ and a boolean to check if the value has been set.
 
 SetCustomerEmail sets CustomerEmail field to given value.
 
-
 ### GetCustomerName
 
 `func (o *DisputeAddEvidenceResponseData) GetCustomerName() string`
@@ -72,7 +71,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeAddEvidenceResponseData) SetCustomerName(v string)`
 
 SetCustomerName sets CustomerName field to given value.
-
 
 ### GetCustomerPhone
 
@@ -93,7 +91,6 @@ and a boolean to check if the value has been set.
 
 SetCustomerPhone sets CustomerPhone field to given value.
 
-
 ### GetServiceDetails
 
 `func (o *DisputeAddEvidenceResponseData) GetServiceDetails() string`
@@ -112,7 +109,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeAddEvidenceResponseData) SetServiceDetails(v string)`
 
 SetServiceDetails sets ServiceDetails field to given value.
-
 
 ### GetDeliveryAddress
 
@@ -133,7 +129,6 @@ and a boolean to check if the value has been set.
 
 SetDeliveryAddress sets DeliveryAddress field to given value.
 
-
 ### GetDeliveryDate
 
 `func (o *DisputeAddEvidenceResponseData) GetDeliveryDate() string`
@@ -152,7 +147,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeAddEvidenceResponseData) SetDeliveryDate(v string)`
 
 SetDeliveryDate sets DeliveryDate field to given value.
-
 
 ### GetDispute
 
@@ -173,7 +167,6 @@ and a boolean to check if the value has been set.
 
 SetDispute sets Dispute field to given value.
 
-
 ### GetId
 
 `func (o *DisputeAddEvidenceResponseData) GetId() int32`
@@ -192,7 +185,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeAddEvidenceResponseData) SetId(v int32)`
 
 SetId sets Id field to given value.
-
 
 ### GetCreatedAt
 
@@ -213,7 +205,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-
 ### GetUpdatedAt
 
 `func (o *DisputeAddEvidenceResponseData) GetUpdatedAt() string`
@@ -233,8 +224,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

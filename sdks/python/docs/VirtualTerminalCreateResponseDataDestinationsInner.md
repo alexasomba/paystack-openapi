@@ -1,12 +1,12 @@
 # VirtualTerminalCreateResponseDataDestinationsInner
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**target** | **str** |  | [optional] 
-**type** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
+
+| Name       | Type    | Description | Notes      |
+| ---------- | ------- | ----------- | ---------- |
+| **target** | **str** |             | [optional] |
+| **type**   | **str** |             | [optional] |
+| **name**   | **str** |             | [optional] |
 
 ## Example
 
@@ -25,6 +25,5 @@ virtual_terminal_create_response_data_destinations_inner_dict = virtual_terminal
 # create an instance of VirtualTerminalCreateResponseDataDestinationsInner from a dict
 virtual_terminal_create_response_data_destinations_inner_form_dict = virtual_terminal_create_response_data_destinations_inner.from_dict(virtual_terminal_create_response_data_destinations_inner_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

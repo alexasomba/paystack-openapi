@@ -1,11 +1,11 @@
 # TransferRecipientBulkCreateResponseData
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**success** | **List[object]** |  | 
-**errors** | [**List[TransferRecipientErrorsArray]**](TransferRecipientErrorsArray.md) |  | 
+
+| Name        | Type                                                                      | Description | Notes |
+| ----------- | ------------------------------------------------------------------------- | ----------- | ----- |
+| **success** | **List[object]**                                                          |             |
+| **errors**  | [**List[TransferRecipientErrorsArray]**](TransferRecipientErrorsArray.md) |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ transfer_recipient_bulk_create_response_data_dict = transfer_recipient_bulk_crea
 # create an instance of TransferRecipientBulkCreateResponseData from a dict
 transfer_recipient_bulk_create_response_data_form_dict = transfer_recipient_bulk_create_response_data.from_dict(transfer_recipient_bulk_create_response_data_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

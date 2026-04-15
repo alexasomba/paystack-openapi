@@ -1,10 +1,10 @@
 # MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSD
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**bank** | [**MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank**](MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank.md) |  | 
+
+| Name     | Type                                                                                                                                                                                    | Description | Notes |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **bank** | [**MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank**](MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank.md) |             |
 
 ## Example
 
@@ -23,6 +23,5 @@ miscellaneous_list_countries_response_array_relationships_currency_supported_cur
 # create an instance of MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSD from a dict
 miscellaneous_list_countries_response_array_relationships_currency_supported_currencies_usd_form_dict = miscellaneous_list_countries_response_array_relationships_currency_supported_currencies_usd.from_dict(miscellaneous_list_countries_response_array_relationships_currency_supported_currencies_usd_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

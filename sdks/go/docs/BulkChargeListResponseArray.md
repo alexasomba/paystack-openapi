@@ -2,17 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Integration** | **int32** |  | 
-**Domain** | **string** |  | 
-**BatchCode** | **string** |  | 
-**Status** | **string** |  | 
-**EasyCronId** | **interface{}** |  | 
-**Reference** | **string** |  | 
-**Id** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name            | Type            | Description | Notes |
+| --------------- | --------------- | ----------- | ----- |
+| **Integration** | **int32**       |             |
+| **Domain**      | **string**      |             |
+| **BatchCode**   | **string**      |             |
+| **Status**      | **string**      |             |
+| **EasyCronId**  | **interface{}** |             |
+| **Reference**   | **string**      |             |
+| **Id**          | **int32**       |             |
+| **CreatedAt**   | **string**      |             |
+| **UpdatedAt**   | **string**      |             |
 
 ## Methods
 
@@ -52,7 +52,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetDomain
 
 `func (o *BulkChargeListResponseArray) GetDomain() string`
@@ -71,7 +70,6 @@ and a boolean to check if the value has been set.
 `func (o *BulkChargeListResponseArray) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetBatchCode
 
@@ -92,7 +90,6 @@ and a boolean to check if the value has been set.
 
 SetBatchCode sets BatchCode field to given value.
 
-
 ### GetStatus
 
 `func (o *BulkChargeListResponseArray) GetStatus() string`
@@ -111,7 +108,6 @@ and a boolean to check if the value has been set.
 `func (o *BulkChargeListResponseArray) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
-
 
 ### GetEasyCronId
 
@@ -132,17 +128,18 @@ and a boolean to check if the value has been set.
 
 SetEasyCronId sets EasyCronId field to given value.
 
-
 ### SetEasyCronIdNil
 
 `func (o *BulkChargeListResponseArray) SetEasyCronIdNil(b bool)`
 
- SetEasyCronIdNil sets the value for EasyCronId to be an explicit nil
+SetEasyCronIdNil sets the value for EasyCronId to be an explicit nil
 
 ### UnsetEasyCronId
+
 `func (o *BulkChargeListResponseArray) UnsetEasyCronId()`
 
 UnsetEasyCronId ensures that no value is present for EasyCronId, not even an explicit nil
+
 ### GetReference
 
 `func (o *BulkChargeListResponseArray) GetReference() string`
@@ -161,7 +158,6 @@ and a boolean to check if the value has been set.
 `func (o *BulkChargeListResponseArray) SetReference(v string)`
 
 SetReference sets Reference field to given value.
-
 
 ### GetId
 
@@ -182,7 +178,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *BulkChargeListResponseArray) GetCreatedAt() string`
@@ -201,7 +196,6 @@ and a boolean to check if the value has been set.
 `func (o *BulkChargeListResponseArray) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -222,8 +216,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

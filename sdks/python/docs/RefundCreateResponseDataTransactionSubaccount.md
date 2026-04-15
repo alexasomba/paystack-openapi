@@ -1,10 +1,10 @@
 # RefundCreateResponseDataTransactionSubaccount
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**currency** | **object** |  | 
+
+| Name         | Type       | Description | Notes |
+| ------------ | ---------- | ----------- | ----- |
+| **currency** | **object** |             |
 
 ## Example
 
@@ -23,6 +23,5 @@ refund_create_response_data_transaction_subaccount_dict = refund_create_response
 # create an instance of RefundCreateResponseDataTransactionSubaccount from a dict
 refund_create_response_data_transaction_subaccount_form_dict = refund_create_response_data_transaction_subaccount.from_dict(refund_create_response_data_transaction_subaccount_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

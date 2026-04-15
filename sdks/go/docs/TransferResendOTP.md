@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**TransferCode** | **string** | The transfer code that requires an OTP validation | 
-**Reason** | **string** | Specify the flag to indicate the purpose of the OTP | [default to "transfer"]
+| Name             | Type       | Description                                         | Notes                   |
+| ---------------- | ---------- | --------------------------------------------------- | ----------------------- |
+| **TransferCode** | **string** | The transfer code that requires an OTP validation   |
+| **Reason**       | **string** | Specify the flag to indicate the purpose of the OTP | [default to "transfer"] |
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetTransferCode sets TransferCode field to given value.
 
-
 ### GetReason
 
 `func (o *TransferResendOTP) GetReason() string`
@@ -65,8 +64,4 @@ and a boolean to check if the value has been set.
 
 SetReason sets Reason field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

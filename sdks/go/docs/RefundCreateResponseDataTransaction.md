@@ -2,24 +2,24 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**Domain** | **string** |  | 
-**Reference** | **string** |  | 
-**Amount** | **int32** |  | 
-**PaidAt** | **string** |  | 
-**Channel** | **string** |  | 
-**Currency** | **string** |  | 
-**Authorization** | [**RefundCreateResponseDataTransactionAuthorization**](RefundCreateResponseDataTransactionAuthorization.md) |  | 
-**Customer** | [**RefundCreateResponseDataTransactionCustomer**](RefundCreateResponseDataTransactionCustomer.md) |  | 
-**Plan** | **map[string]interface{}** |  | 
-**Subaccount** | [**RefundCreateResponseDataTransactionSubaccount**](RefundCreateResponseDataTransactionSubaccount.md) |  | 
-**Split** | **map[string]interface{}** |  | 
-**OrderId** | **interface{}** |  | 
-**PosTransactionData** | **interface{}** |  | 
-**Source** | **interface{}** |  | 
-**FeesBreakdown** | **interface{}** |  | 
+| Name                   | Type                                                                                                        | Description | Notes |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **Id**                 | **int32**                                                                                                   |             |
+| **Domain**             | **string**                                                                                                  |             |
+| **Reference**          | **string**                                                                                                  |             |
+| **Amount**             | **int32**                                                                                                   |             |
+| **PaidAt**             | **string**                                                                                                  |             |
+| **Channel**            | **string**                                                                                                  |             |
+| **Currency**           | **string**                                                                                                  |             |
+| **Authorization**      | [**RefundCreateResponseDataTransactionAuthorization**](RefundCreateResponseDataTransactionAuthorization.md) |             |
+| **Customer**           | [**RefundCreateResponseDataTransactionCustomer**](RefundCreateResponseDataTransactionCustomer.md)           |             |
+| **Plan**               | **map[string]interface{}**                                                                                  |             |
+| **Subaccount**         | [**RefundCreateResponseDataTransactionSubaccount**](RefundCreateResponseDataTransactionSubaccount.md)       |             |
+| **Split**              | **map[string]interface{}**                                                                                  |             |
+| **OrderId**            | **interface{}**                                                                                             |             |
+| **PosTransactionData** | **interface{}**                                                                                             |             |
+| **Source**             | **interface{}**                                                                                             |             |
+| **FeesBreakdown**      | **interface{}**                                                                                             |             |
 
 ## Methods
 
@@ -59,7 +59,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetDomain
 
 `func (o *RefundCreateResponseDataTransaction) GetDomain() string`
@@ -78,7 +77,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundCreateResponseDataTransaction) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetReference
 
@@ -99,7 +97,6 @@ and a boolean to check if the value has been set.
 
 SetReference sets Reference field to given value.
 
-
 ### GetAmount
 
 `func (o *RefundCreateResponseDataTransaction) GetAmount() int32`
@@ -118,7 +115,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundCreateResponseDataTransaction) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetPaidAt
 
@@ -139,7 +135,6 @@ and a boolean to check if the value has been set.
 
 SetPaidAt sets PaidAt field to given value.
 
-
 ### GetChannel
 
 `func (o *RefundCreateResponseDataTransaction) GetChannel() string`
@@ -158,7 +153,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundCreateResponseDataTransaction) SetChannel(v string)`
 
 SetChannel sets Channel field to given value.
-
 
 ### GetCurrency
 
@@ -179,7 +173,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetAuthorization
 
 `func (o *RefundCreateResponseDataTransaction) GetAuthorization() RefundCreateResponseDataTransactionAuthorization`
@@ -198,7 +191,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundCreateResponseDataTransaction) SetAuthorization(v RefundCreateResponseDataTransactionAuthorization)`
 
 SetAuthorization sets Authorization field to given value.
-
 
 ### GetCustomer
 
@@ -219,7 +211,6 @@ and a boolean to check if the value has been set.
 
 SetCustomer sets Customer field to given value.
 
-
 ### GetPlan
 
 `func (o *RefundCreateResponseDataTransaction) GetPlan() map[string]interface{}`
@@ -238,7 +229,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundCreateResponseDataTransaction) SetPlan(v map[string]interface{})`
 
 SetPlan sets Plan field to given value.
-
 
 ### GetSubaccount
 
@@ -259,7 +249,6 @@ and a boolean to check if the value has been set.
 
 SetSubaccount sets Subaccount field to given value.
 
-
 ### GetSplit
 
 `func (o *RefundCreateResponseDataTransaction) GetSplit() map[string]interface{}`
@@ -278,7 +267,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundCreateResponseDataTransaction) SetSplit(v map[string]interface{})`
 
 SetSplit sets Split field to given value.
-
 
 ### GetOrderId
 
@@ -299,17 +287,18 @@ and a boolean to check if the value has been set.
 
 SetOrderId sets OrderId field to given value.
 
-
 ### SetOrderIdNil
 
 `func (o *RefundCreateResponseDataTransaction) SetOrderIdNil(b bool)`
 
- SetOrderIdNil sets the value for OrderId to be an explicit nil
+SetOrderIdNil sets the value for OrderId to be an explicit nil
 
 ### UnsetOrderId
+
 `func (o *RefundCreateResponseDataTransaction) UnsetOrderId()`
 
 UnsetOrderId ensures that no value is present for OrderId, not even an explicit nil
+
 ### GetPosTransactionData
 
 `func (o *RefundCreateResponseDataTransaction) GetPosTransactionData() interface{}`
@@ -329,17 +318,18 @@ and a boolean to check if the value has been set.
 
 SetPosTransactionData sets PosTransactionData field to given value.
 
-
 ### SetPosTransactionDataNil
 
 `func (o *RefundCreateResponseDataTransaction) SetPosTransactionDataNil(b bool)`
 
- SetPosTransactionDataNil sets the value for PosTransactionData to be an explicit nil
+SetPosTransactionDataNil sets the value for PosTransactionData to be an explicit nil
 
 ### UnsetPosTransactionData
+
 `func (o *RefundCreateResponseDataTransaction) UnsetPosTransactionData()`
 
 UnsetPosTransactionData ensures that no value is present for PosTransactionData, not even an explicit nil
+
 ### GetSource
 
 `func (o *RefundCreateResponseDataTransaction) GetSource() interface{}`
@@ -359,17 +349,18 @@ and a boolean to check if the value has been set.
 
 SetSource sets Source field to given value.
 
-
 ### SetSourceNil
 
 `func (o *RefundCreateResponseDataTransaction) SetSourceNil(b bool)`
 
- SetSourceNil sets the value for Source to be an explicit nil
+SetSourceNil sets the value for Source to be an explicit nil
 
 ### UnsetSource
+
 `func (o *RefundCreateResponseDataTransaction) UnsetSource()`
 
 UnsetSource ensures that no value is present for Source, not even an explicit nil
+
 ### GetFeesBreakdown
 
 `func (o *RefundCreateResponseDataTransaction) GetFeesBreakdown() interface{}`
@@ -389,18 +380,16 @@ and a boolean to check if the value has been set.
 
 SetFeesBreakdown sets FeesBreakdown field to given value.
 
-
 ### SetFeesBreakdownNil
 
 `func (o *RefundCreateResponseDataTransaction) SetFeesBreakdownNil(b bool)`
 
- SetFeesBreakdownNil sets the value for FeesBreakdown to be an explicit nil
+SetFeesBreakdownNil sets the value for FeesBreakdown to be an explicit nil
 
 ### UnsetFeesBreakdown
+
 `func (o *RefundCreateResponseDataTransaction) UnsetFeesBreakdown()`
 
 UnsetFeesBreakdown ensures that no value is present for FeesBreakdown, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

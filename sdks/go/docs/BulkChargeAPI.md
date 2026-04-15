@@ -2,24 +2,20 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**BulkChargeCharges**](BulkChargeAPI.md#BulkChargeCharges) | **Get** /bulkcharge/{code}/charges | List Charges in a Batch
-[**BulkChargeFetch**](BulkChargeAPI.md#BulkChargeFetch) | **Get** /bulkcharge/{code} | Fetch Bulk Charge Batch
-[**BulkChargeInitiate**](BulkChargeAPI.md#BulkChargeInitiate) | **Post** /bulkcharge | Initiate Bulk Charge
-[**BulkChargeList**](BulkChargeAPI.md#BulkChargeList) | **Get** /bulkcharge | List Bulk Charge Batches
-[**BulkChargePause**](BulkChargeAPI.md#BulkChargePause) | **Get** /bulkcharge/pause/{code} | Pause Bulk Charge Batch
-[**BulkChargeResume**](BulkChargeAPI.md#BulkChargeResume) | **Get** /bulkcharge/resume/{code} | Resume Bulk Charge Batch
-
-
+| Method                                                        | HTTP request                       | Description              |
+| ------------------------------------------------------------- | ---------------------------------- | ------------------------ |
+| [**BulkChargeCharges**](BulkChargeAPI.md#BulkChargeCharges)   | **Get** /bulkcharge/{code}/charges | List Charges in a Batch  |
+| [**BulkChargeFetch**](BulkChargeAPI.md#BulkChargeFetch)       | **Get** /bulkcharge/{code}         | Fetch Bulk Charge Batch  |
+| [**BulkChargeInitiate**](BulkChargeAPI.md#BulkChargeInitiate) | **Post** /bulkcharge               | Initiate Bulk Charge     |
+| [**BulkChargeList**](BulkChargeAPI.md#BulkChargeList)         | **Get** /bulkcharge                | List Bulk Charge Batches |
+| [**BulkChargePause**](BulkChargeAPI.md#BulkChargePause)       | **Get** /bulkcharge/pause/{code}   | Pause Bulk Charge Batch  |
+| [**BulkChargeResume**](BulkChargeAPI.md#BulkChargeResume)     | **Get** /bulkcharge/resume/{code}  | Resume Bulk Charge Batch |
 
 ## BulkChargeCharges
 
 > BulkChargeFetchBulkBatchChargesResponse BulkChargeCharges(ctx, code).PerPage(perPage).Page(page).Status(status).Execute()
 
 List Charges in a Batch
-
-
 
 ### Example
 
@@ -53,23 +49,21 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | An code for the batch whose charges you want to retrieve | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | An code for the batch whose charges you want to retrieve                    |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiBulkChargeChargesRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **perPage** | **int32** | Number of records to fetch per page | 
- **page** | **int32** | The offset to retrieve data from | 
- **status** | **string** | Filter by the status of the charges | 
+**perPage** | **int32** | Number of records to fetch per page |
+**page** | **int32** | The offset to retrieve data from |
+**status** | **string** | Filter by the status of the charges |
 
 ### Return type
 
@@ -88,14 +82,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## BulkChargeFetch
 
 > BulkChargeFetchResponse BulkChargeFetch(ctx, code).Execute()
 
 Fetch Bulk Charge Batch
-
-
 
 ### Example
 
@@ -126,20 +117,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | The code for the charge whose batches you want to retrieve | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | The code for the charge whose batches you want to retrieve                  |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiBulkChargeFetchRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -158,14 +146,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## BulkChargeInitiate
 
 > BulkChargeInitiateResponse BulkChargeInitiate(ctx).BulkChargeInitiate(bulkChargeInitiate).Execute()
 
 Initiate Bulk Charge
-
-
 
 ### Example
 
@@ -196,16 +181,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiBulkChargeInitiateRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bulkChargeInitiate** | [**[]BulkChargeInitiate**](BulkChargeInitiate.md) |  | 
+| Name                   | Type                                              | Description | Notes |
+| ---------------------- | ------------------------------------------------- | ----------- | ----- |
+| **bulkChargeInitiate** | [**[]BulkChargeInitiate**](BulkChargeInitiate.md) |             |
 
 ### Return type
 
@@ -224,14 +206,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## BulkChargeList
 
 > BulkChargeListResponse BulkChargeList(ctx).PerPage(perPage).Page(page).Status(status).Execute()
 
 List Bulk Charge Batches
-
-
 
 ### Example
 
@@ -264,18 +243,15 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiBulkChargeListRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **perPage** | **int32** | Number of records to fetch per page | 
- **page** | **int32** | The offset to retrieve data from | 
- **status** | **string** | Filter by the status of the charges | 
+| Name        | Type       | Description                         | Notes |
+| ----------- | ---------- | ----------------------------------- | ----- |
+| **perPage** | **int32**  | Number of records to fetch per page |
+| **page**    | **int32**  | The offset to retrieve data from    |
+| **status**  | **string** | Filter by the status of the charges |
 
 ### Return type
 
@@ -294,14 +270,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## BulkChargePause
 
 > BulkChargePauseResponse BulkChargePause(ctx, code).Execute()
 
 Pause Bulk Charge Batch
-
-
 
 ### Example
 
@@ -332,20 +305,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | The batch code for the bulk charge you want to pause | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | The batch code for the bulk charge you want to pause                        |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiBulkChargePauseRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -364,14 +334,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## BulkChargeResume
 
 > BulkChargeResumeResponse BulkChargeResume(ctx, code).Execute()
 
 Resume Bulk Charge Batch
-
-
 
 ### Example
 
@@ -402,20 +369,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | The batch code for the bulk charge you want to pause | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | The batch code for the bulk charge you want to pause                        |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiBulkChargeResumeRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -433,4 +397,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

@@ -2,27 +2,23 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**DedicatedAccountAddSplit**](DedicatedVirtualAccountAPI.md#DedicatedAccountAddSplit) | **Post** /dedicated_account/split | Split Dedicated Account Transaction
-[**DedicatedAccountAssign**](DedicatedVirtualAccountAPI.md#DedicatedAccountAssign) | **Post** /dedicated_account/assign | Assign Dedicated Account
-[**DedicatedAccountAvailableProviders**](DedicatedVirtualAccountAPI.md#DedicatedAccountAvailableProviders) | **Get** /dedicated_account/available_providers | Fetch Bank Providers
-[**DedicatedAccountCreate**](DedicatedVirtualAccountAPI.md#DedicatedAccountCreate) | **Post** /dedicated_account | Create Dedicated Account
-[**DedicatedAccountDeactivate**](DedicatedVirtualAccountAPI.md#DedicatedAccountDeactivate) | **Delete** /dedicated_account/{id} | Deactivate Dedicated Account
-[**DedicatedAccountFetch**](DedicatedVirtualAccountAPI.md#DedicatedAccountFetch) | **Get** /dedicated_account/{id} | Fetch Dedicated Account
-[**DedicatedAccountList**](DedicatedVirtualAccountAPI.md#DedicatedAccountList) | **Get** /dedicated_account | List Dedicated Accounts
-[**DedicatedAccountRemoveSplit**](DedicatedVirtualAccountAPI.md#DedicatedAccountRemoveSplit) | **Delete** /dedicated_account/split | Remove Split from Dedicated Account
-[**DedicatedAccountRequery**](DedicatedVirtualAccountAPI.md#DedicatedAccountRequery) | **Get** /dedicated_account/requery | Requery Dedicated Account
-
-
+| Method                                                                                                     | HTTP request                                   | Description                         |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ----------------------------------- |
+| [**DedicatedAccountAddSplit**](DedicatedVirtualAccountAPI.md#DedicatedAccountAddSplit)                     | **Post** /dedicated_account/split              | Split Dedicated Account Transaction |
+| [**DedicatedAccountAssign**](DedicatedVirtualAccountAPI.md#DedicatedAccountAssign)                         | **Post** /dedicated_account/assign             | Assign Dedicated Account            |
+| [**DedicatedAccountAvailableProviders**](DedicatedVirtualAccountAPI.md#DedicatedAccountAvailableProviders) | **Get** /dedicated_account/available_providers | Fetch Bank Providers                |
+| [**DedicatedAccountCreate**](DedicatedVirtualAccountAPI.md#DedicatedAccountCreate)                         | **Post** /dedicated_account                    | Create Dedicated Account            |
+| [**DedicatedAccountDeactivate**](DedicatedVirtualAccountAPI.md#DedicatedAccountDeactivate)                 | **Delete** /dedicated_account/{id}             | Deactivate Dedicated Account        |
+| [**DedicatedAccountFetch**](DedicatedVirtualAccountAPI.md#DedicatedAccountFetch)                           | **Get** /dedicated_account/{id}                | Fetch Dedicated Account             |
+| [**DedicatedAccountList**](DedicatedVirtualAccountAPI.md#DedicatedAccountList)                             | **Get** /dedicated_account                     | List Dedicated Accounts             |
+| [**DedicatedAccountRemoveSplit**](DedicatedVirtualAccountAPI.md#DedicatedAccountRemoveSplit)               | **Delete** /dedicated_account/split            | Remove Split from Dedicated Account |
+| [**DedicatedAccountRequery**](DedicatedVirtualAccountAPI.md#DedicatedAccountRequery)                       | **Get** /dedicated_account/requery             | Requery Dedicated Account           |
 
 ## DedicatedAccountAddSplit
 
 > Response DedicatedAccountAddSplit(ctx).DedicatedVirtualAccountSplit(dedicatedVirtualAccountSplit).Execute()
 
 Split Dedicated Account Transaction
-
-
 
 ### Example
 
@@ -53,16 +49,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDedicatedAccountAddSplitRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **dedicatedVirtualAccountSplit** | [**DedicatedVirtualAccountSplit**](DedicatedVirtualAccountSplit.md) |  | 
+| Name                             | Type                                                                | Description | Notes |
+| -------------------------------- | ------------------------------------------------------------------- | ----------- | ----- |
+| **dedicatedVirtualAccountSplit** | [**DedicatedVirtualAccountSplit**](DedicatedVirtualAccountSplit.md) |             |
 
 ### Return type
 
@@ -81,14 +74,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## DedicatedAccountAssign
 
 > Response DedicatedAccountAssign(ctx).DedicatedVirtualAccountAssign(dedicatedVirtualAccountAssign).Execute()
 
 Assign Dedicated Account
-
-
 
 ### Example
 
@@ -119,16 +109,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDedicatedAccountAssignRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **dedicatedVirtualAccountAssign** | [**DedicatedVirtualAccountAssign**](DedicatedVirtualAccountAssign.md) |  | 
+| Name                              | Type                                                                  | Description | Notes |
+| --------------------------------- | --------------------------------------------------------------------- | ----------- | ----- |
+| **dedicatedVirtualAccountAssign** | [**DedicatedVirtualAccountAssign**](DedicatedVirtualAccountAssign.md) |             |
 
 ### Return type
 
@@ -147,14 +134,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## DedicatedAccountAvailableProviders
 
 > Response DedicatedAccountAvailableProviders(ctx).Execute()
 
 Fetch Bank Providers
-
-
 
 ### Example
 
@@ -190,7 +174,6 @@ This endpoint does not need any parameter.
 
 Other parameters are passed through a pointer to a apiDedicatedAccountAvailableProvidersRequest struct via the builder pattern
 
-
 ### Return type
 
 [**Response**](Response.md)
@@ -208,14 +191,11 @@ Other parameters are passed through a pointer to a apiDedicatedAccountAvailableP
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## DedicatedAccountCreate
 
 > DedicatedNubanCreateResponse DedicatedAccountCreate(ctx).DedicatedVirtualAccountCreate(dedicatedVirtualAccountCreate).Execute()
 
 Create Dedicated Account
-
-
 
 ### Example
 
@@ -246,16 +226,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDedicatedAccountCreateRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **dedicatedVirtualAccountCreate** | [**DedicatedVirtualAccountCreate**](DedicatedVirtualAccountCreate.md) |  | 
+| Name                              | Type                                                                  | Description | Notes |
+| --------------------------------- | --------------------------------------------------------------------- | ----------- | ----- |
+| **dedicatedVirtualAccountCreate** | [**DedicatedVirtualAccountCreate**](DedicatedVirtualAccountCreate.md) |             |
 
 ### Return type
 
@@ -274,14 +251,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## DedicatedAccountDeactivate
 
 > DedicatedNubanDeactivateResponse DedicatedAccountDeactivate(ctx, id).Execute()
 
 Deactivate Dedicated Account
-
-
 
 ### Example
 
@@ -312,20 +286,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of dedicated virtual account | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **string**          | ID of dedicated virtual account                                             |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDedicatedAccountDeactivateRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -344,14 +315,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## DedicatedAccountFetch
 
 > DedicatedNubanFetchResponse DedicatedAccountFetch(ctx, id).Execute()
 
 Fetch Dedicated Account
-
-
 
 ### Example
 
@@ -382,20 +350,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of dedicated virtual account | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **string**          | ID of dedicated virtual account                                             |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDedicatedAccountFetchRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -414,14 +379,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## DedicatedAccountList
 
 > DedicatedNubanListResponse DedicatedAccountList(ctx).Active(active).Customer(customer).Currency(currency).ProviderSlug(providerSlug).BankId(bankId).PerPage(perPage).Page(page).Execute()
 
 List Dedicated Accounts
-
-
 
 ### Example
 
@@ -458,22 +420,19 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDedicatedAccountListRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **active** | **bool** | Status of the dedicated virtual account | 
- **customer** | **int32** | The customer&#39;s ID | 
- **currency** | **string** | The currency of the dedicated virtual account | 
- **providerSlug** | **string** | The bank&#39;s slug in lowercase, without spaces | 
- **bankId** | **string** | The bank&#39;s ID | 
- **perPage** | **int32** | The number of records to fetch per request | [default to 50]
- **page** | **int32** | The offset to retrieve data from | [default to 1]
+| Name             | Type       | Description                                      | Notes           |
+| ---------------- | ---------- | ------------------------------------------------ | --------------- |
+| **active**       | **bool**   | Status of the dedicated virtual account          |
+| **customer**     | **int32**  | The customer&#39;s ID                            |
+| **currency**     | **string** | The currency of the dedicated virtual account    |
+| **providerSlug** | **string** | The bank&#39;s slug in lowercase, without spaces |
+| **bankId**       | **string** | The bank&#39;s ID                                |
+| **perPage**      | **int32**  | The number of records to fetch per request       | [default to 50] |
+| **page**         | **int32**  | The offset to retrieve data from                 | [default to 1]  |
 
 ### Return type
 
@@ -492,14 +451,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## DedicatedAccountRemoveSplit
 
 > Response DedicatedAccountRemoveSplit(ctx).DedicatedVirtualAccountRemoveSplit(dedicatedVirtualAccountRemoveSplit).Execute()
 
 Remove Split from Dedicated Account
-
-
 
 ### Example
 
@@ -530,16 +486,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDedicatedAccountRemoveSplitRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **dedicatedVirtualAccountRemoveSplit** | [**DedicatedVirtualAccountRemoveSplit**](DedicatedVirtualAccountRemoveSplit.md) |  | 
+| Name                                   | Type                                                                            | Description | Notes |
+| -------------------------------------- | ------------------------------------------------------------------------------- | ----------- | ----- |
+| **dedicatedVirtualAccountRemoveSplit** | [**DedicatedVirtualAccountRemoveSplit**](DedicatedVirtualAccountRemoveSplit.md) |             |
 
 ### Return type
 
@@ -558,14 +511,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## DedicatedAccountRequery
 
 > Response DedicatedAccountRequery(ctx).AccountNumber(accountNumber).ProviderSlug(providerSlug).Date(date).Execute()
 
 Requery Dedicated Account
-
-
 
 ### Example
 
@@ -599,18 +549,15 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDedicatedAccountRequeryRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **accountNumber** | **string** | Virtual account number to requery | 
- **providerSlug** | **string** | The bank&#39;s slug in lowercase, without spaces. | 
- **date** | **time.Time** | The day the transfer was made | 
+| Name              | Type          | Description                                       | Notes |
+| ----------------- | ------------- | ------------------------------------------------- | ----- |
+| **accountNumber** | **string**    | Virtual account number to requery                 |
+| **providerSlug**  | **string**    | The bank&#39;s slug in lowercase, without spaces. |
+| **date**          | **time.Time** | The day the transfer was made                     |
 
 ### Return type
 
@@ -628,4 +575,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

@@ -1,12 +1,12 @@
 # DisputeListTransactionResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**DisputeListTransactionResponseData**](DisputeListTransactionResponseData.md) |  | 
+
+| Name        | Type                                                                            | Description | Notes |
+| ----------- | ------------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                        |             |
+| **message** | **str**                                                                         |             |
+| **data**    | [**DisputeListTransactionResponseData**](DisputeListTransactionResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ dispute_list_transaction_response_dict = dispute_list_transaction_response_insta
 # create an instance of DisputeListTransactionResponse from a dict
 dispute_list_transaction_response_form_dict = dispute_list_transaction_response.from_dict(dispute_list_transaction_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

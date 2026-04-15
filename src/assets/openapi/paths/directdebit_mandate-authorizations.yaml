@@ -27,9 +27,9 @@ get:
       schema:
         type: integer
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/CustomerFetchMandateAuthorizationsSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error

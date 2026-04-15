@@ -2,15 +2,15 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Type** | **string** |  | 
-**Name** | **string** |  | 
-**Description** | **string** |  | 
-**AccountNumber** | **string** |  | 
-**BankCode** | **string** |  | 
-**Currency** | **string** |  | 
-**Email** | **string** |  | 
+| Name              | Type       | Description | Notes |
+| ----------------- | ---------- | ----------- | ----- |
+| **Type**          | **string** |             |
+| **Name**          | **string** |             |
+| **Description**   | **string** |             |
+| **AccountNumber** | **string** |             |
+| **BankCode**      | **string** |             |
+| **Currency**      | **string** |             |
+| **Email**         | **string** |             |
 
 ## Methods
 
@@ -50,7 +50,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-
 ### GetName
 
 `func (o *ErrorRecordsArray) GetName() string`
@@ -69,7 +68,6 @@ and a boolean to check if the value has been set.
 `func (o *ErrorRecordsArray) SetName(v string)`
 
 SetName sets Name field to given value.
-
 
 ### GetDescription
 
@@ -90,7 +88,6 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
-
 ### GetAccountNumber
 
 `func (o *ErrorRecordsArray) GetAccountNumber() string`
@@ -109,7 +106,6 @@ and a boolean to check if the value has been set.
 `func (o *ErrorRecordsArray) SetAccountNumber(v string)`
 
 SetAccountNumber sets AccountNumber field to given value.
-
 
 ### GetBankCode
 
@@ -130,7 +126,6 @@ and a boolean to check if the value has been set.
 
 SetBankCode sets BankCode field to given value.
 
-
 ### GetCurrency
 
 `func (o *ErrorRecordsArray) GetCurrency() string`
@@ -149,7 +144,6 @@ and a boolean to check if the value has been set.
 `func (o *ErrorRecordsArray) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetEmail
 
@@ -170,8 +164,4 @@ and a boolean to check if the value has been set.
 
 SetEmail sets Email field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

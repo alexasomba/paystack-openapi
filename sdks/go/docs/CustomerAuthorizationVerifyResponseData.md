@@ -2,13 +2,13 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AuthorizationCode** | **string** |  | 
-**Channel** | **string** |  | 
-**Bank** | **string** |  | 
-**Active** | **bool** |  | 
-**Customer** | [**CustomerAuthorizationVerifyResponseCustomer**](CustomerAuthorizationVerifyResponseCustomer.md) |  | 
+| Name                  | Type                                                                                              | Description | Notes |
+| --------------------- | ------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **AuthorizationCode** | **string**                                                                                        |             |
+| **Channel**           | **string**                                                                                        |             |
+| **Bank**              | **string**                                                                                        |             |
+| **Active**            | **bool**                                                                                          |             |
+| **Customer**          | [**CustomerAuthorizationVerifyResponseCustomer**](CustomerAuthorizationVerifyResponseCustomer.md) |             |
 
 ## Methods
 
@@ -48,7 +48,6 @@ and a boolean to check if the value has been set.
 
 SetAuthorizationCode sets AuthorizationCode field to given value.
 
-
 ### GetChannel
 
 `func (o *CustomerAuthorizationVerifyResponseData) GetChannel() string`
@@ -67,7 +66,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerAuthorizationVerifyResponseData) SetChannel(v string)`
 
 SetChannel sets Channel field to given value.
-
 
 ### GetBank
 
@@ -88,7 +86,6 @@ and a boolean to check if the value has been set.
 
 SetBank sets Bank field to given value.
 
-
 ### GetActive
 
 `func (o *CustomerAuthorizationVerifyResponseData) GetActive() bool`
@@ -107,7 +104,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerAuthorizationVerifyResponseData) SetActive(v bool)`
 
 SetActive sets Active field to given value.
-
 
 ### GetCustomer
 
@@ -128,8 +124,4 @@ and a boolean to check if the value has been set.
 
 SetCustomer sets Customer field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

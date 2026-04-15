@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Name** | **string** | The name of the virtual terminal | 
-**Destinations** | [**[]VirtualTerminalCreateDestinationsInner**](VirtualTerminalCreateDestinationsInner.md) | Array of objects containing recipients for payment notifications for the Virtual Terminal. | 
-**SplitCode** | Pointer to **string** | Split code to associate with the virtual terminal | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | Additional custom data as key-value pairs | [optional] 
+| Name             | Type                                                                                      | Description                                                                                | Notes      |
+| ---------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ---------- |
+| **Name**         | **string**                                                                                | The name of the virtual terminal                                                           |
+| **Destinations** | [**[]VirtualTerminalCreateDestinationsInner**](VirtualTerminalCreateDestinationsInner.md) | Array of objects containing recipients for payment notifications for the Virtual Terminal. |
+| **SplitCode**    | Pointer to **string**                                                                     | Split code to associate with the virtual terminal                                          | [optional] |
+| **Metadata**     | Pointer to **map[string]interface{}**                                                     | Additional custom data as key-value pairs                                                  | [optional] |
 
 ## Methods
 
@@ -47,7 +47,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetDestinations
 
 `func (o *VirtualTerminalCreate) GetDestinations() []VirtualTerminalCreateDestinationsInner`
@@ -66,7 +65,6 @@ and a boolean to check if the value has been set.
 `func (o *VirtualTerminalCreate) SetDestinations(v []VirtualTerminalCreateDestinationsInner)`
 
 SetDestinations sets Destinations field to given value.
-
 
 ### GetSplitCode
 
@@ -118,7 +116,4 @@ SetMetadata sets Metadata field to given value.
 
 HasMetadata returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

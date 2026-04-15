@@ -1,12 +1,12 @@
 # MiscellaneousListCountriesResponseArrayRelationshipsCurrency
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**type** | **str** |  | 
-**data** | **List[str]** |  | 
-**supported_currencies** | [**MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrencies**](MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrencies.md) |  | 
+
+| Name                     | Type                                                                                                                                                                      | Description | Notes |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **type**                 | **str**                                                                                                                                                                   |             |
+| **data**                 | **List[str]**                                                                                                                                                             |             |
+| **supported_currencies** | [**MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrencies**](MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrencies.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ miscellaneous_list_countries_response_array_relationships_currency_dict = miscel
 # create an instance of MiscellaneousListCountriesResponseArrayRelationshipsCurrency from a dict
 miscellaneous_list_countries_response_array_relationships_currency_form_dict = miscellaneous_list_countries_response_array_relationships_currency.from_dict(miscellaneous_list_countries_response_array_relationships_currency_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

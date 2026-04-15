@@ -1,12 +1,12 @@
 # TransferRecipientBulkCreateResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**TransferRecipientBulkCreateResponseData**](TransferRecipientBulkCreateResponseData.md) |  | 
+
+| Name        | Type                                                                                      | Description | Notes |
+| ----------- | ----------------------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                                  |             |
+| **message** | **str**                                                                                   |             |
+| **data**    | [**TransferRecipientBulkCreateResponseData**](TransferRecipientBulkCreateResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ transfer_recipient_bulk_create_response_dict = transfer_recipient_bulk_create_re
 # create an instance of TransferRecipientBulkCreateResponse from a dict
 transfer_recipient_bulk_create_response_form_dict = transfer_recipient_bulk_create_response.from_dict(transfer_recipient_bulk_create_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -1,12 +1,12 @@
 # TransferRecipientFetchResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**TransferRecipientFetchResponseData**](TransferRecipientFetchResponseData.md) |  | 
+
+| Name        | Type                                                                            | Description | Notes |
+| ----------- | ------------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                        |             |
+| **message** | **str**                                                                         |             |
+| **data**    | [**TransferRecipientFetchResponseData**](TransferRecipientFetchResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ transfer_recipient_fetch_response_dict = transfer_recipient_fetch_response_insta
 # create an instance of TransferRecipientFetchResponse from a dict
 transfer_recipient_fetch_response_form_dict = transfer_recipient_fetch_response.from_dict(transfer_recipient_fetch_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

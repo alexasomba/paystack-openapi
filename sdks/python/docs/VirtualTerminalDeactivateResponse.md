@@ -1,11 +1,11 @@
 # VirtualTerminalDeactivateResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
+
+| Name        | Type     | Description | Notes |
+| ----------- | -------- | ----------- | ----- |
+| **status**  | **bool** |             |
+| **message** | **str**  |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ virtual_terminal_deactivate_response_dict = virtual_terminal_deactivate_response
 # create an instance of VirtualTerminalDeactivateResponse from a dict
 virtual_terminal_deactivate_response_form_dict = virtual_terminal_deactivate_response.from_dict(virtual_terminal_deactivate_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

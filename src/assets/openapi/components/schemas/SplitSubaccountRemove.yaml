@@ -1,0 +1,9 @@
+type: object
+required:
+  - subaccount
+properties:
+  subaccount:
+    description: This is the sub account code
+    type: string
+example:
+  subaccount: ACCT_eg4sob4590pq9vb

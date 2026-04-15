@@ -1,11 +1,11 @@
 # TransactionTotalVolumeByCurrencyArray
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**currency** | **str** |  | 
-**amount** | **int** |  | 
+
+| Name         | Type    | Description | Notes |
+| ------------ | ------- | ----------- | ----- |
+| **currency** | **str** |             |
+| **amount**   | **int** |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ transaction_total_volume_by_currency_array_dict = transaction_total_volume_by_cu
 # create an instance of TransactionTotalVolumeByCurrencyArray from a dict
 transaction_total_volume_by_currency_array_form_dict = transaction_total_volume_by_currency_array.from_dict(transaction_total_volume_by_currency_array_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

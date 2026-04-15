@@ -1,11 +1,11 @@
 # CustomerInitializeDirectDebitRequest
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**account** | [**CustomerInitializeDirectDebitAccount**](CustomerInitializeDirectDebitAccount.md) |  | 
-**address** | [**CustomerInitializeDirectDebitAddress**](CustomerInitializeDirectDebitAddress.md) |  | 
+
+| Name        | Type                                                                                | Description | Notes |
+| ----------- | ----------------------------------------------------------------------------------- | ----------- | ----- |
+| **account** | [**CustomerInitializeDirectDebitAccount**](CustomerInitializeDirectDebitAccount.md) |             |
+| **address** | [**CustomerInitializeDirectDebitAddress**](CustomerInitializeDirectDebitAddress.md) |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ customer_initialize_direct_debit_request_dict = customer_initialize_direct_debit
 # create an instance of CustomerInitializeDirectDebitRequest from a dict
 customer_initialize_direct_debit_request_form_dict = customer_initialize_direct_debit_request.from_dict(customer_initialize_direct_debit_request_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

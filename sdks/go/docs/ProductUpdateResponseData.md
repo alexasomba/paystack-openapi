@@ -2,40 +2,40 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Name** | **string** |  | 
-**Description** | **string** |  | 
-**ProductCode** | **string** |  | 
-**Price** | **int32** |  | 
-**Currency** | **string** |  | 
-**Quantity** | **int32** |  | 
-**QuantitySold** | **int32** |  | 
-**Type** | **string** |  | 
-**Files** | **[]interface{}** |  | 
-**FilePath** | **interface{}** |  | 
-**IsShippable** | **bool** |  | 
-**ShippingFields** | [**ProductListsResponseArrayShippingFields**](ProductListsResponseArrayShippingFields.md) |  | 
-**Unlimited** | **bool** |  | 
-**Domain** | **string** |  | 
-**Active** | **bool** |  | 
-**Features** | **interface{}** |  | 
-**InStock** | **bool** |  | 
-**Metadata** | [**ProductListsResponseArrayMetadata**](ProductListsResponseArrayMetadata.md) |  | 
-**Slug** | **string** |  | 
-**SuccessMessage** | **interface{}** |  | 
-**RedirectUrl** | **interface{}** |  | 
-**SplitCode** | **interface{}** |  | 
-**NotificationEmails** | **interface{}** |  | 
-**MinimumOrderable** | **int32** |  | 
-**MaximumOrderable** | **interface{}** |  | 
-**LowStockAlert** | **bool** |  | 
-**StockThreshold** | **interface{}** |  | 
-**ExpiresIn** | **interface{}** |  | 
-**Id** | **int32** |  | 
-**Integration** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name                   | Type                                                                                      | Description | Notes |
+| ---------------------- | ----------------------------------------------------------------------------------------- | ----------- | ----- |
+| **Name**               | **string**                                                                                |             |
+| **Description**        | **string**                                                                                |             |
+| **ProductCode**        | **string**                                                                                |             |
+| **Price**              | **int32**                                                                                 |             |
+| **Currency**           | **string**                                                                                |             |
+| **Quantity**           | **int32**                                                                                 |             |
+| **QuantitySold**       | **int32**                                                                                 |             |
+| **Type**               | **string**                                                                                |             |
+| **Files**              | **[]interface{}**                                                                         |             |
+| **FilePath**           | **interface{}**                                                                           |             |
+| **IsShippable**        | **bool**                                                                                  |             |
+| **ShippingFields**     | [**ProductListsResponseArrayShippingFields**](ProductListsResponseArrayShippingFields.md) |             |
+| **Unlimited**          | **bool**                                                                                  |             |
+| **Domain**             | **string**                                                                                |             |
+| **Active**             | **bool**                                                                                  |             |
+| **Features**           | **interface{}**                                                                           |             |
+| **InStock**            | **bool**                                                                                  |             |
+| **Metadata**           | [**ProductListsResponseArrayMetadata**](ProductListsResponseArrayMetadata.md)             |             |
+| **Slug**               | **string**                                                                                |             |
+| **SuccessMessage**     | **interface{}**                                                                           |             |
+| **RedirectUrl**        | **interface{}**                                                                           |             |
+| **SplitCode**          | **interface{}**                                                                           |             |
+| **NotificationEmails** | **interface{}**                                                                           |             |
+| **MinimumOrderable**   | **int32**                                                                                 |             |
+| **MaximumOrderable**   | **interface{}**                                                                           |             |
+| **LowStockAlert**      | **bool**                                                                                  |             |
+| **StockThreshold**     | **interface{}**                                                                           |             |
+| **ExpiresIn**          | **interface{}**                                                                           |             |
+| **Id**                 | **int32**                                                                                 |             |
+| **Integration**        | **int32**                                                                                 |             |
+| **CreatedAt**          | **string**                                                                                |             |
+| **UpdatedAt**          | **string**                                                                                |             |
 
 ## Methods
 
@@ -75,7 +75,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetDescription
 
 `func (o *ProductUpdateResponseData) GetDescription() string`
@@ -94,7 +93,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductUpdateResponseData) SetDescription(v string)`
 
 SetDescription sets Description field to given value.
-
 
 ### GetProductCode
 
@@ -115,7 +113,6 @@ and a boolean to check if the value has been set.
 
 SetProductCode sets ProductCode field to given value.
 
-
 ### GetPrice
 
 `func (o *ProductUpdateResponseData) GetPrice() int32`
@@ -134,7 +131,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductUpdateResponseData) SetPrice(v int32)`
 
 SetPrice sets Price field to given value.
-
 
 ### GetCurrency
 
@@ -155,7 +151,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetQuantity
 
 `func (o *ProductUpdateResponseData) GetQuantity() int32`
@@ -174,7 +169,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductUpdateResponseData) SetQuantity(v int32)`
 
 SetQuantity sets Quantity field to given value.
-
 
 ### GetQuantitySold
 
@@ -195,7 +189,6 @@ and a boolean to check if the value has been set.
 
 SetQuantitySold sets QuantitySold field to given value.
 
-
 ### GetType
 
 `func (o *ProductUpdateResponseData) GetType() string`
@@ -214,7 +207,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductUpdateResponseData) SetType(v string)`
 
 SetType sets Type field to given value.
-
 
 ### GetFiles
 
@@ -235,7 +227,6 @@ and a boolean to check if the value has been set.
 
 SetFiles sets Files field to given value.
 
-
 ### GetFilePath
 
 `func (o *ProductUpdateResponseData) GetFilePath() interface{}`
@@ -255,17 +246,18 @@ and a boolean to check if the value has been set.
 
 SetFilePath sets FilePath field to given value.
 
-
 ### SetFilePathNil
 
 `func (o *ProductUpdateResponseData) SetFilePathNil(b bool)`
 
- SetFilePathNil sets the value for FilePath to be an explicit nil
+SetFilePathNil sets the value for FilePath to be an explicit nil
 
 ### UnsetFilePath
+
 `func (o *ProductUpdateResponseData) UnsetFilePath()`
 
 UnsetFilePath ensures that no value is present for FilePath, not even an explicit nil
+
 ### GetIsShippable
 
 `func (o *ProductUpdateResponseData) GetIsShippable() bool`
@@ -284,7 +276,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductUpdateResponseData) SetIsShippable(v bool)`
 
 SetIsShippable sets IsShippable field to given value.
-
 
 ### GetShippingFields
 
@@ -305,7 +296,6 @@ and a boolean to check if the value has been set.
 
 SetShippingFields sets ShippingFields field to given value.
 
-
 ### GetUnlimited
 
 `func (o *ProductUpdateResponseData) GetUnlimited() bool`
@@ -324,7 +314,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductUpdateResponseData) SetUnlimited(v bool)`
 
 SetUnlimited sets Unlimited field to given value.
-
 
 ### GetDomain
 
@@ -345,7 +334,6 @@ and a boolean to check if the value has been set.
 
 SetDomain sets Domain field to given value.
 
-
 ### GetActive
 
 `func (o *ProductUpdateResponseData) GetActive() bool`
@@ -364,7 +352,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductUpdateResponseData) SetActive(v bool)`
 
 SetActive sets Active field to given value.
-
 
 ### GetFeatures
 
@@ -385,17 +372,18 @@ and a boolean to check if the value has been set.
 
 SetFeatures sets Features field to given value.
 
-
 ### SetFeaturesNil
 
 `func (o *ProductUpdateResponseData) SetFeaturesNil(b bool)`
 
- SetFeaturesNil sets the value for Features to be an explicit nil
+SetFeaturesNil sets the value for Features to be an explicit nil
 
 ### UnsetFeatures
+
 `func (o *ProductUpdateResponseData) UnsetFeatures()`
 
 UnsetFeatures ensures that no value is present for Features, not even an explicit nil
+
 ### GetInStock
 
 `func (o *ProductUpdateResponseData) GetInStock() bool`
@@ -414,7 +402,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductUpdateResponseData) SetInStock(v bool)`
 
 SetInStock sets InStock field to given value.
-
 
 ### GetMetadata
 
@@ -435,7 +422,6 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
-
 ### GetSlug
 
 `func (o *ProductUpdateResponseData) GetSlug() string`
@@ -454,7 +440,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductUpdateResponseData) SetSlug(v string)`
 
 SetSlug sets Slug field to given value.
-
 
 ### GetSuccessMessage
 
@@ -475,17 +460,18 @@ and a boolean to check if the value has been set.
 
 SetSuccessMessage sets SuccessMessage field to given value.
 
-
 ### SetSuccessMessageNil
 
 `func (o *ProductUpdateResponseData) SetSuccessMessageNil(b bool)`
 
- SetSuccessMessageNil sets the value for SuccessMessage to be an explicit nil
+SetSuccessMessageNil sets the value for SuccessMessage to be an explicit nil
 
 ### UnsetSuccessMessage
+
 `func (o *ProductUpdateResponseData) UnsetSuccessMessage()`
 
 UnsetSuccessMessage ensures that no value is present for SuccessMessage, not even an explicit nil
+
 ### GetRedirectUrl
 
 `func (o *ProductUpdateResponseData) GetRedirectUrl() interface{}`
@@ -505,17 +491,18 @@ and a boolean to check if the value has been set.
 
 SetRedirectUrl sets RedirectUrl field to given value.
 
-
 ### SetRedirectUrlNil
 
 `func (o *ProductUpdateResponseData) SetRedirectUrlNil(b bool)`
 
- SetRedirectUrlNil sets the value for RedirectUrl to be an explicit nil
+SetRedirectUrlNil sets the value for RedirectUrl to be an explicit nil
 
 ### UnsetRedirectUrl
+
 `func (o *ProductUpdateResponseData) UnsetRedirectUrl()`
 
 UnsetRedirectUrl ensures that no value is present for RedirectUrl, not even an explicit nil
+
 ### GetSplitCode
 
 `func (o *ProductUpdateResponseData) GetSplitCode() interface{}`
@@ -535,17 +522,18 @@ and a boolean to check if the value has been set.
 
 SetSplitCode sets SplitCode field to given value.
 
-
 ### SetSplitCodeNil
 
 `func (o *ProductUpdateResponseData) SetSplitCodeNil(b bool)`
 
- SetSplitCodeNil sets the value for SplitCode to be an explicit nil
+SetSplitCodeNil sets the value for SplitCode to be an explicit nil
 
 ### UnsetSplitCode
+
 `func (o *ProductUpdateResponseData) UnsetSplitCode()`
 
 UnsetSplitCode ensures that no value is present for SplitCode, not even an explicit nil
+
 ### GetNotificationEmails
 
 `func (o *ProductUpdateResponseData) GetNotificationEmails() interface{}`
@@ -565,17 +553,18 @@ and a boolean to check if the value has been set.
 
 SetNotificationEmails sets NotificationEmails field to given value.
 
-
 ### SetNotificationEmailsNil
 
 `func (o *ProductUpdateResponseData) SetNotificationEmailsNil(b bool)`
 
- SetNotificationEmailsNil sets the value for NotificationEmails to be an explicit nil
+SetNotificationEmailsNil sets the value for NotificationEmails to be an explicit nil
 
 ### UnsetNotificationEmails
+
 `func (o *ProductUpdateResponseData) UnsetNotificationEmails()`
 
 UnsetNotificationEmails ensures that no value is present for NotificationEmails, not even an explicit nil
+
 ### GetMinimumOrderable
 
 `func (o *ProductUpdateResponseData) GetMinimumOrderable() int32`
@@ -594,7 +583,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductUpdateResponseData) SetMinimumOrderable(v int32)`
 
 SetMinimumOrderable sets MinimumOrderable field to given value.
-
 
 ### GetMaximumOrderable
 
@@ -615,17 +603,18 @@ and a boolean to check if the value has been set.
 
 SetMaximumOrderable sets MaximumOrderable field to given value.
 
-
 ### SetMaximumOrderableNil
 
 `func (o *ProductUpdateResponseData) SetMaximumOrderableNil(b bool)`
 
- SetMaximumOrderableNil sets the value for MaximumOrderable to be an explicit nil
+SetMaximumOrderableNil sets the value for MaximumOrderable to be an explicit nil
 
 ### UnsetMaximumOrderable
+
 `func (o *ProductUpdateResponseData) UnsetMaximumOrderable()`
 
 UnsetMaximumOrderable ensures that no value is present for MaximumOrderable, not even an explicit nil
+
 ### GetLowStockAlert
 
 `func (o *ProductUpdateResponseData) GetLowStockAlert() bool`
@@ -644,7 +633,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductUpdateResponseData) SetLowStockAlert(v bool)`
 
 SetLowStockAlert sets LowStockAlert field to given value.
-
 
 ### GetStockThreshold
 
@@ -665,17 +653,18 @@ and a boolean to check if the value has been set.
 
 SetStockThreshold sets StockThreshold field to given value.
 
-
 ### SetStockThresholdNil
 
 `func (o *ProductUpdateResponseData) SetStockThresholdNil(b bool)`
 
- SetStockThresholdNil sets the value for StockThreshold to be an explicit nil
+SetStockThresholdNil sets the value for StockThreshold to be an explicit nil
 
 ### UnsetStockThreshold
+
 `func (o *ProductUpdateResponseData) UnsetStockThreshold()`
 
 UnsetStockThreshold ensures that no value is present for StockThreshold, not even an explicit nil
+
 ### GetExpiresIn
 
 `func (o *ProductUpdateResponseData) GetExpiresIn() interface{}`
@@ -695,17 +684,18 @@ and a boolean to check if the value has been set.
 
 SetExpiresIn sets ExpiresIn field to given value.
 
-
 ### SetExpiresInNil
 
 `func (o *ProductUpdateResponseData) SetExpiresInNil(b bool)`
 
- SetExpiresInNil sets the value for ExpiresIn to be an explicit nil
+SetExpiresInNil sets the value for ExpiresIn to be an explicit nil
 
 ### UnsetExpiresIn
+
 `func (o *ProductUpdateResponseData) UnsetExpiresIn()`
 
 UnsetExpiresIn ensures that no value is present for ExpiresIn, not even an explicit nil
+
 ### GetId
 
 `func (o *ProductUpdateResponseData) GetId() int32`
@@ -724,7 +714,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductUpdateResponseData) SetId(v int32)`
 
 SetId sets Id field to given value.
-
 
 ### GetIntegration
 
@@ -745,7 +734,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *ProductUpdateResponseData) GetCreatedAt() string`
@@ -764,7 +752,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductUpdateResponseData) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -785,8 +772,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

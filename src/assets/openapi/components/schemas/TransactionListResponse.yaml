@@ -9,30 +9,9 @@ properties:
     items:
       $ref: ./TransactionListResponseArray.yaml
   meta:
-    type: object
-    properties:
-      total:
-        type: integer
-      total_volume:
-        type: number
-      skipped:
-        type: integer
-      perPage:
-        anyOf:
-          - type: string
-          - type: integer
-      page:
-        type: integer
-      pageCount:
-        type: integer
-    required:
-      - total
-      - total_volume
-      - skipped
-      - perPage
-      - page
-      - pageCount
-    additionalProperties: false
+    oneOf:
+      - $ref: ./MetaWithVolume.yaml
+      - $ref: ./CursorMeta.yaml
 required:
   - status
   - message

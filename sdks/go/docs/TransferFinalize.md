@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**TransferCode** | **string** | The transfer code you want to finalize | 
-**Otp** | **string** | OTP sent to business phone to verify transfer | 
+| Name             | Type       | Description                                   | Notes |
+| ---------------- | ---------- | --------------------------------------------- | ----- |
+| **TransferCode** | **string** | The transfer code you want to finalize        |
+| **Otp**          | **string** | OTP sent to business phone to verify transfer |
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetTransferCode sets TransferCode field to given value.
 
-
 ### GetOtp
 
 `func (o *TransferFinalize) GetOtp() string`
@@ -65,8 +64,4 @@ and a boolean to check if the value has been set.
 
 SetOtp sets Otp field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

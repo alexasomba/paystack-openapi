@@ -9,6 +9,7 @@ properties:
     properties:
       id:
         type: integer
+        format: int64
       domain:
         type: string
       status:
@@ -36,10 +37,12 @@ properties:
         type: string
       ip_address:
         type: string
+        nullable: true
       metadata:
         anyOf:
           - type: string
           - type: object
+        nullable: true
       log:
         type: object
         properties:
@@ -95,6 +98,7 @@ properties:
           authorization_code:
             type: string
           bin:
+            type: string
             nullable: true
           last4:
             type: string
@@ -117,16 +121,20 @@ properties:
           signature:
             type: string
           account_name:
+            type: string
             nullable: true
           receiver_bank_account_number:
+            type: string
             nullable: true
           receiver_bank:
+            type: string
             nullable: true
       customer:
         type: object
         properties:
           id:
             type: integer
+            format: int64
           first_name:
             type: string
             nullable: true
@@ -141,6 +149,7 @@ properties:
             type: string
             nullable: true
           metadata:
+            type: object
             nullable: true
           risk_action:
             type: string
@@ -156,12 +165,14 @@ properties:
           - phone
           - metadata
           - risk_action
-          - international_format_phone
       plan:
-        type: string
+        anyOf:
+          - type: string
+          - type: object
         nullable: true
       split:
         type: object
+        nullable: true
       order_id:
         nullable: true
       paidAt:
@@ -222,6 +233,7 @@ properties:
                 additionalProperties: false
       subaccount:
         type: object
+        nullable: true
     required:
       - id
       - domain

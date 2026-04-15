@@ -2,7 +2,7 @@ post:
   tags:
     - Dispute
   summary: Add Evidence
-  description: Provide evidence for a dispute 
+  description: Provide evidence for a dispute
   operationId: dispute_evidence
   requestBody:
     content:
@@ -21,9 +21,9 @@ post:
         type: integer
       example: 4734583785
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/DisputeAddEvidenceSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error

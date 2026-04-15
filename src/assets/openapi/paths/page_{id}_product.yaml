@@ -8,7 +8,7 @@ post:
   tags:
     - Page
   summary: Add Products
-  description: | 
+  description: |
     Add products to a previously created payment page. You can only add products to pages
     that was created with a `product` type.
   operationId: page_addProducts
@@ -21,9 +21,9 @@ post:
         schema:
           $ref: ../components/schemas/PageProduct.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/PageAddProductsSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error

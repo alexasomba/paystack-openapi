@@ -20,7 +20,7 @@ properties:
     example: 463433
   account_number:
     type: string
-    example: '0123456789'
+    example: "0123456789"
   bank_code:
     type: string
     example: "032"
@@ -49,7 +49,7 @@ properties:
   authorized_at:
     type: string
     format: date-time
-    example: '2024-09-27T10:57:53.824Z'
+    example: "2024-09-27T10:57:53.824Z"
 required:
   - id
   - status

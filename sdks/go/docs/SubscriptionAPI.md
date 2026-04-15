@@ -2,25 +2,21 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**SubscriptionCreate**](SubscriptionAPI.md#SubscriptionCreate) | **Post** /subscription | Create Subscription
-[**SubscriptionDisable**](SubscriptionAPI.md#SubscriptionDisable) | **Post** /subscription/disable | Disable Subscription
-[**SubscriptionEnable**](SubscriptionAPI.md#SubscriptionEnable) | **Post** /subscription/enable | Enable Subscription
-[**SubscriptionFetch**](SubscriptionAPI.md#SubscriptionFetch) | **Get** /subscription/{code} | Fetch Subscription
-[**SubscriptionList**](SubscriptionAPI.md#SubscriptionList) | **Get** /subscription | List Subscriptions
-[**SubscriptionManageEmail**](SubscriptionAPI.md#SubscriptionManageEmail) | **Post** /subscription/{code}/manage/email | Send Update Subscription Link
-[**SubscriptionManageLink**](SubscriptionAPI.md#SubscriptionManageLink) | **Get** /subscription/{code}/manage/link | Generate Update Subscription Link
-
-
+| Method                                                                    | HTTP request                               | Description                       |
+| ------------------------------------------------------------------------- | ------------------------------------------ | --------------------------------- |
+| [**SubscriptionCreate**](SubscriptionAPI.md#SubscriptionCreate)           | **Post** /subscription                     | Create Subscription               |
+| [**SubscriptionDisable**](SubscriptionAPI.md#SubscriptionDisable)         | **Post** /subscription/disable             | Disable Subscription              |
+| [**SubscriptionEnable**](SubscriptionAPI.md#SubscriptionEnable)           | **Post** /subscription/enable              | Enable Subscription               |
+| [**SubscriptionFetch**](SubscriptionAPI.md#SubscriptionFetch)             | **Get** /subscription/{code}               | Fetch Subscription                |
+| [**SubscriptionList**](SubscriptionAPI.md#SubscriptionList)               | **Get** /subscription                      | List Subscriptions                |
+| [**SubscriptionManageEmail**](SubscriptionAPI.md#SubscriptionManageEmail) | **Post** /subscription/{code}/manage/email | Send Update Subscription Link     |
+| [**SubscriptionManageLink**](SubscriptionAPI.md#SubscriptionManageLink)   | **Get** /subscription/{code}/manage/link   | Generate Update Subscription Link |
 
 ## SubscriptionCreate
 
 > SubscriptionCreateResponse SubscriptionCreate(ctx).SubscriptionCreate(subscriptionCreate).Execute()
 
 Create Subscription
-
-
 
 ### Example
 
@@ -51,16 +47,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSubscriptionCreateRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **subscriptionCreate** | [**SubscriptionCreate**](SubscriptionCreate.md) |  | 
+| Name                   | Type                                            | Description | Notes |
+| ---------------------- | ----------------------------------------------- | ----------- | ----- |
+| **subscriptionCreate** | [**SubscriptionCreate**](SubscriptionCreate.md) |             |
 
 ### Return type
 
@@ -79,14 +72,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## SubscriptionDisable
 
 > SubscriptionDisableResponse SubscriptionDisable(ctx).SubscriptionToggle(subscriptionToggle).Execute()
 
 Disable Subscription
-
-
 
 ### Example
 
@@ -117,16 +107,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSubscriptionDisableRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **subscriptionToggle** | [**SubscriptionToggle**](SubscriptionToggle.md) |  | 
+| Name                   | Type                                            | Description | Notes |
+| ---------------------- | ----------------------------------------------- | ----------- | ----- |
+| **subscriptionToggle** | [**SubscriptionToggle**](SubscriptionToggle.md) |             |
 
 ### Return type
 
@@ -145,14 +132,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## SubscriptionEnable
 
 > Response SubscriptionEnable(ctx).SubscriptionToggle(subscriptionToggle).Execute()
 
 Enable Subscription
-
-
 
 ### Example
 
@@ -183,16 +167,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSubscriptionEnableRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **subscriptionToggle** | [**SubscriptionToggle**](SubscriptionToggle.md) |  | 
+| Name                   | Type                                            | Description | Notes |
+| ---------------------- | ----------------------------------------------- | ----------- | ----- |
+| **subscriptionToggle** | [**SubscriptionToggle**](SubscriptionToggle.md) |             |
 
 ### Return type
 
@@ -211,14 +192,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## SubscriptionFetch
 
 > SubscriptionFetchResponse SubscriptionFetch(ctx, code).Execute()
 
 Fetch Subscription
-
-
 
 ### Example
 
@@ -249,20 +227,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | The subscription code for the subscription you want to fetch | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | The subscription code for the subscription you want to fetch                |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSubscriptionFetchRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -281,14 +256,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## SubscriptionList
 
 > SubscriptionListResponse SubscriptionList(ctx).PerPage(perPage).Page(page).Plan(plan).Customer(customer).From(from).To(to).Execute()
 
 List Subscriptions
-
-
 
 ### Example
 
@@ -325,21 +297,18 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSubscriptionListRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **perPage** | **int32** | Number of records to fetch per page | 
- **page** | **int32** | The section to retrieve | 
- **plan** | **int32** | Plan ID | 
- **customer** | **string** | Customer ID | 
- **from** | **time.Time** | The start date | 
- **to** | **time.Time** | The end date | 
+| Name         | Type          | Description                         | Notes |
+| ------------ | ------------- | ----------------------------------- | ----- |
+| **perPage**  | **int32**     | Number of records to fetch per page |
+| **page**     | **int32**     | The section to retrieve             |
+| **plan**     | **int32**     | Plan ID                             |
+| **customer** | **string**    | Customer ID                         |
+| **from**     | **time.Time** | The start date                      |
+| **to**       | **time.Time** | The end date                        |
 
 ### Return type
 
@@ -358,14 +327,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## SubscriptionManageEmail
 
 > Response SubscriptionManageEmail(ctx, code).Execute()
 
 Send Update Subscription Link
-
-
 
 ### Example
 
@@ -396,20 +362,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | Subscription code | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | Subscription code                                                           |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSubscriptionManageEmailRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -428,14 +391,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## SubscriptionManageLink
 
 > Response SubscriptionManageLink(ctx, code).Execute()
 
 Generate Update Subscription Link
-
-
 
 ### Example
 
@@ -466,20 +426,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | Subscription code | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | Subscription code                                                           |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSubscriptionManageLinkRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -497,4 +454,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

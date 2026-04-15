@@ -9,28 +9,7 @@ properties:
     items:
       $ref: ./OrderListResponseArray.yaml
   meta:
-    type: object
-    properties:
-      total:
-        type: integer
-      revenue:
-        type: object
-      skipped:
-        type: integer
-      perPage:
-        type: integer
-      page:
-        type: integer
-      pageCount:
-        type: integer
-    required:
-      - total
-      - revenue
-      - skipped
-      - perPage
-      - page
-      - pageCount
-    additionalProperties: false
+    $ref: ./Meta.yaml
 required:
   - status
   - message

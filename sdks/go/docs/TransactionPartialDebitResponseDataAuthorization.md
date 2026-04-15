@@ -2,21 +2,21 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AuthorizationCode** | **string** |  | 
-**Bin** | **string** |  | 
-**Last4** | **string** |  | 
-**ExpMonth** | **string** |  | 
-**ExpYear** | **string** |  | 
-**Channel** | **string** |  | 
-**CardType** | **string** |  | 
-**Bank** | **string** |  | 
-**CountryCode** | **string** |  | 
-**Brand** | **string** |  | 
-**Reusable** | **bool** |  | 
-**Signature** | **string** |  | 
-**AccountName** | **interface{}** |  | 
+| Name                  | Type            | Description | Notes |
+| --------------------- | --------------- | ----------- | ----- |
+| **AuthorizationCode** | **string**      |             |
+| **Bin**               | **string**      |             |
+| **Last4**             | **string**      |             |
+| **ExpMonth**          | **string**      |             |
+| **ExpYear**           | **string**      |             |
+| **Channel**           | **string**      |             |
+| **CardType**          | **string**      |             |
+| **Bank**              | **string**      |             |
+| **CountryCode**       | **string**      |             |
+| **Brand**             | **string**      |             |
+| **Reusable**          | **bool**        |             |
+| **Signature**         | **string**      |             |
+| **AccountName**       | **interface{}** |             |
 
 ## Methods
 
@@ -56,7 +56,6 @@ and a boolean to check if the value has been set.
 
 SetAuthorizationCode sets AuthorizationCode field to given value.
 
-
 ### GetBin
 
 `func (o *TransactionPartialDebitResponseDataAuthorization) GetBin() string`
@@ -75,7 +74,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionPartialDebitResponseDataAuthorization) SetBin(v string)`
 
 SetBin sets Bin field to given value.
-
 
 ### GetLast4
 
@@ -96,7 +94,6 @@ and a boolean to check if the value has been set.
 
 SetLast4 sets Last4 field to given value.
 
-
 ### GetExpMonth
 
 `func (o *TransactionPartialDebitResponseDataAuthorization) GetExpMonth() string`
@@ -115,7 +112,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionPartialDebitResponseDataAuthorization) SetExpMonth(v string)`
 
 SetExpMonth sets ExpMonth field to given value.
-
 
 ### GetExpYear
 
@@ -136,7 +132,6 @@ and a boolean to check if the value has been set.
 
 SetExpYear sets ExpYear field to given value.
 
-
 ### GetChannel
 
 `func (o *TransactionPartialDebitResponseDataAuthorization) GetChannel() string`
@@ -155,7 +150,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionPartialDebitResponseDataAuthorization) SetChannel(v string)`
 
 SetChannel sets Channel field to given value.
-
 
 ### GetCardType
 
@@ -176,7 +170,6 @@ and a boolean to check if the value has been set.
 
 SetCardType sets CardType field to given value.
 
-
 ### GetBank
 
 `func (o *TransactionPartialDebitResponseDataAuthorization) GetBank() string`
@@ -195,7 +188,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionPartialDebitResponseDataAuthorization) SetBank(v string)`
 
 SetBank sets Bank field to given value.
-
 
 ### GetCountryCode
 
@@ -216,7 +208,6 @@ and a boolean to check if the value has been set.
 
 SetCountryCode sets CountryCode field to given value.
 
-
 ### GetBrand
 
 `func (o *TransactionPartialDebitResponseDataAuthorization) GetBrand() string`
@@ -235,7 +226,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionPartialDebitResponseDataAuthorization) SetBrand(v string)`
 
 SetBrand sets Brand field to given value.
-
 
 ### GetReusable
 
@@ -256,7 +246,6 @@ and a boolean to check if the value has been set.
 
 SetReusable sets Reusable field to given value.
 
-
 ### GetSignature
 
 `func (o *TransactionPartialDebitResponseDataAuthorization) GetSignature() string`
@@ -275,7 +264,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionPartialDebitResponseDataAuthorization) SetSignature(v string)`
 
 SetSignature sets Signature field to given value.
-
 
 ### GetAccountName
 
@@ -296,18 +284,16 @@ and a boolean to check if the value has been set.
 
 SetAccountName sets AccountName field to given value.
 
-
 ### SetAccountNameNil
 
 `func (o *TransactionPartialDebitResponseDataAuthorization) SetAccountNameNil(b bool)`
 
- SetAccountNameNil sets the value for AccountName to be an explicit nil
+SetAccountNameNil sets the value for AccountName to be an explicit nil
 
 ### UnsetAccountName
+
 `func (o *TransactionPartialDebitResponseDataAuthorization) UnsetAccountName()`
 
 UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

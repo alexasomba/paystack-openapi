@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Name** | **string** |  | 
-**Amount** | **int32** |  | 
-**Quantity** | **int32** |  | 
+| Name         | Type       | Description | Notes |
+| ------------ | ---------- | ----------- | ----- |
+| **Name**     | **string** |             |
+| **Amount**   | **int32**  |             |
+| **Quantity** | **int32**  |             |
 
 ## Methods
 
@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetAmount
 
 `func (o *PaymentRequestLineItemsArray) GetAmount() int32`
@@ -65,7 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaymentRequestLineItemsArray) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetQuantity
 
@@ -86,8 +84,4 @@ and a boolean to check if the value has been set.
 
 SetQuantity sets Quantity field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

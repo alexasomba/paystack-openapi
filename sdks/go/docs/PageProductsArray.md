@@ -2,23 +2,23 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ProductId** | **int32** |  | 
-**Name** | **string** |  | 
-**Description** | **string** |  | 
-**ProductCode** | **string** |  | 
-**Page** | **int32** |  | 
-**Price** | **int32** |  | 
-**Currency** | **string** |  | 
-**Quantity** | **int32** |  | 
-**Type** | **string** |  | 
-**Features** | **interface{}** |  | 
-**IsShippable** | **int32** |  | 
-**Domain** | **string** |  | 
-**Integration** | **int32** |  | 
-**Active** | **int32** |  | 
-**InStock** | **int32** |  | 
+| Name            | Type            | Description | Notes |
+| --------------- | --------------- | ----------- | ----- |
+| **ProductId**   | **int32**       |             |
+| **Name**        | **string**      |             |
+| **Description** | **string**      |             |
+| **ProductCode** | **string**      |             |
+| **Page**        | **int32**       |             |
+| **Price**       | **int32**       |             |
+| **Currency**    | **string**      |             |
+| **Quantity**    | **int32**       |             |
+| **Type**        | **string**      |             |
+| **Features**    | **interface{}** |             |
+| **IsShippable** | **int32**       |             |
+| **Domain**      | **string**      |             |
+| **Integration** | **int32**       |             |
+| **Active**      | **int32**       |             |
+| **InStock**     | **int32**       |             |
 
 ## Methods
 
@@ -58,7 +58,6 @@ and a boolean to check if the value has been set.
 
 SetProductId sets ProductId field to given value.
 
-
 ### GetName
 
 `func (o *PageProductsArray) GetName() string`
@@ -77,7 +76,6 @@ and a boolean to check if the value has been set.
 `func (o *PageProductsArray) SetName(v string)`
 
 SetName sets Name field to given value.
-
 
 ### GetDescription
 
@@ -98,7 +96,6 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
-
 ### GetProductCode
 
 `func (o *PageProductsArray) GetProductCode() string`
@@ -117,7 +114,6 @@ and a boolean to check if the value has been set.
 `func (o *PageProductsArray) SetProductCode(v string)`
 
 SetProductCode sets ProductCode field to given value.
-
 
 ### GetPage
 
@@ -138,7 +134,6 @@ and a boolean to check if the value has been set.
 
 SetPage sets Page field to given value.
 
-
 ### GetPrice
 
 `func (o *PageProductsArray) GetPrice() int32`
@@ -157,7 +152,6 @@ and a boolean to check if the value has been set.
 `func (o *PageProductsArray) SetPrice(v int32)`
 
 SetPrice sets Price field to given value.
-
 
 ### GetCurrency
 
@@ -178,7 +172,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetQuantity
 
 `func (o *PageProductsArray) GetQuantity() int32`
@@ -197,7 +190,6 @@ and a boolean to check if the value has been set.
 `func (o *PageProductsArray) SetQuantity(v int32)`
 
 SetQuantity sets Quantity field to given value.
-
 
 ### GetType
 
@@ -218,7 +210,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-
 ### GetFeatures
 
 `func (o *PageProductsArray) GetFeatures() interface{}`
@@ -238,17 +229,18 @@ and a boolean to check if the value has been set.
 
 SetFeatures sets Features field to given value.
 
-
 ### SetFeaturesNil
 
 `func (o *PageProductsArray) SetFeaturesNil(b bool)`
 
- SetFeaturesNil sets the value for Features to be an explicit nil
+SetFeaturesNil sets the value for Features to be an explicit nil
 
 ### UnsetFeatures
+
 `func (o *PageProductsArray) UnsetFeatures()`
 
 UnsetFeatures ensures that no value is present for Features, not even an explicit nil
+
 ### GetIsShippable
 
 `func (o *PageProductsArray) GetIsShippable() int32`
@@ -267,7 +259,6 @@ and a boolean to check if the value has been set.
 `func (o *PageProductsArray) SetIsShippable(v int32)`
 
 SetIsShippable sets IsShippable field to given value.
-
 
 ### GetDomain
 
@@ -288,7 +279,6 @@ and a boolean to check if the value has been set.
 
 SetDomain sets Domain field to given value.
 
-
 ### GetIntegration
 
 `func (o *PageProductsArray) GetIntegration() int32`
@@ -307,7 +297,6 @@ and a boolean to check if the value has been set.
 `func (o *PageProductsArray) SetIntegration(v int32)`
 
 SetIntegration sets Integration field to given value.
-
 
 ### GetActive
 
@@ -328,7 +317,6 @@ and a boolean to check if the value has been set.
 
 SetActive sets Active field to given value.
 
-
 ### GetInStock
 
 `func (o *PageProductsArray) GetInStock() int32`
@@ -348,8 +336,4 @@ and a boolean to check if the value has been set.
 
 SetInStock sets InStock field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

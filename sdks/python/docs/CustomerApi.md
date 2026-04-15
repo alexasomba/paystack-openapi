@@ -2,23 +2,23 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**customer_create**](CustomerApi.md#customer_create) | **POST** /customer | Create Customer
-[**customer_deactivate_authorization**](CustomerApi.md#customer_deactivate_authorization) | **POST** /customer/authorization/deactivate | Deactivate Authorization
-[**customer_direct_debit_activation_charge**](CustomerApi.md#customer_direct_debit_activation_charge) | **PUT** /customer/{id}/directdebit-activation-charge | Direct Debit Activation Charge
-[**customer_fetch**](CustomerApi.md#customer_fetch) | **GET** /customer/{code} | Fetch Customer
-[**customer_fetch_mandate_authorizations**](CustomerApi.md#customer_fetch_mandate_authorizations) | **GET** /customer/{id}/directdebit-mandate-authorizations | Fetch Mandate Authorizations
-[**customer_initialize_authorization**](CustomerApi.md#customer_initialize_authorization) | **POST** /customer/authorization/initialize | Initialize Authorization
-[**customer_initialize_direct_debit**](CustomerApi.md#customer_initialize_direct_debit) | **POST** /customer/{id}/initialize-direct-debit | Initialize Direct Debit
-[**customer_list**](CustomerApi.md#customer_list) | **GET** /customer | List Customers
-[**customer_risk_action**](CustomerApi.md#customer_risk_action) | **POST** /customer/set_risk_action | Set Risk Action
-[**customer_update**](CustomerApi.md#customer_update) | **PUT** /customer/{code} | Update Customer
-[**customer_validate**](CustomerApi.md#customer_validate) | **POST** /customer/{code}/identification | Validate Customer
-[**customer_verify_authorization**](CustomerApi.md#customer_verify_authorization) | **GET** /customer/authorization/verify/{reference} | Verify Authorization
-
+| Method                                                                                                | HTTP request                                              | Description                    |
+| ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ------------------------------ |
+| [**customer_create**](CustomerApi.md#customer_create)                                                 | **POST** /customer                                        | Create Customer                |
+| [**customer_deactivate_authorization**](CustomerApi.md#customer_deactivate_authorization)             | **POST** /customer/authorization/deactivate               | Deactivate Authorization       |
+| [**customer_direct_debit_activation_charge**](CustomerApi.md#customer_direct_debit_activation_charge) | **PUT** /customer/{id}/directdebit-activation-charge      | Direct Debit Activation Charge |
+| [**customer_fetch**](CustomerApi.md#customer_fetch)                                                   | **GET** /customer/{code}                                  | Fetch Customer                 |
+| [**customer_fetch_mandate_authorizations**](CustomerApi.md#customer_fetch_mandate_authorizations)     | **GET** /customer/{id}/directdebit-mandate-authorizations | Fetch Mandate Authorizations   |
+| [**customer_initialize_authorization**](CustomerApi.md#customer_initialize_authorization)             | **POST** /customer/authorization/initialize               | Initialize Authorization       |
+| [**customer_initialize_direct_debit**](CustomerApi.md#customer_initialize_direct_debit)               | **POST** /customer/{id}/initialize-direct-debit           | Initialize Direct Debit        |
+| [**customer_list**](CustomerApi.md#customer_list)                                                     | **GET** /customer                                         | List Customers                 |
+| [**customer_risk_action**](CustomerApi.md#customer_risk_action)                                       | **POST** /customer/set_risk_action                        | Set Risk Action                |
+| [**customer_update**](CustomerApi.md#customer_update)                                                 | **PUT** /customer/{code}                                  | Update Customer                |
+| [**customer_validate**](CustomerApi.md#customer_validate)                                             | **POST** /customer/{code}/identification                  | Validate Customer              |
+| [**customer_verify_authorization**](CustomerApi.md#customer_verify_authorization)                     | **GET** /customer/authorization/verify/{reference}        | Verify Authorization           |
 
 # **customer_create**
+
 > CustomerCreateResponse customer_create(customer_create=customer_create)
 
 Create Customer
@@ -27,7 +27,8 @@ Create a customer on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -68,13 +69,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling CustomerApi->customer_create: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customer_create** | [**CustomerCreate**](CustomerCreate.md)|  | [optional] 
+| Name                | Type                                    | Description | Notes      |
+| ------------------- | --------------------------------------- | ----------- | ---------- |
+| **customer_create** | [**CustomerCreate**](CustomerCreate.md) |             | [optional] |
 
 ### Return type
 
@@ -86,19 +85,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_deactivate_authorization**
+
 > CustomerDeactivateAuthorizationResponse customer_deactivate_authorization(customer_deactivate_authorization=customer_deactivate_authorization)
 
 Deactivate Authorization
@@ -107,7 +108,8 @@ Deactivate an authorization for any payment channel.
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -148,13 +150,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling CustomerApi->customer_deactivate_authorization: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customer_deactivate_authorization** | [**CustomerDeactivateAuthorization**](CustomerDeactivateAuthorization.md)|  | [optional] 
+| Name                                  | Type                                                                      | Description | Notes      |
+| ------------------------------------- | ------------------------------------------------------------------------- | ----------- | ---------- |
+| **customer_deactivate_authorization** | [**CustomerDeactivateAuthorization**](CustomerDeactivateAuthorization.md) |             | [optional] |
 
 ### Return type
 
@@ -166,19 +166,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_direct_debit_activation_charge**
+
 > CustomerDirectDebitActivationChargeResponse customer_direct_debit_activation_charge(id, customer_direct_debit_activation_charge_request=customer_direct_debit_activation_charge_request)
 
 Direct Debit Activation Charge
@@ -187,7 +189,8 @@ Trigger an activation charge on an inactive mandate on behalf of your customer
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -229,14 +232,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling CustomerApi->customer_direct_debit_activation_charge: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The customer ID attached to the authorization | 
- **customer_direct_debit_activation_charge_request** | [**CustomerDirectDebitActivationChargeRequest**](CustomerDirectDebitActivationChargeRequest.md)|  | [optional] 
+| Name                                                | Type                                                                                            | Description                                   | Notes      |
+| --------------------------------------------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------- | ---------- |
+| **id**                                              | **int**                                                                                         | The customer ID attached to the authorization |
+| **customer_direct_debit_activation_charge_request** | [**CustomerDirectDebitActivationChargeRequest**](CustomerDirectDebitActivationChargeRequest.md) |                                               | [optional] |
 
 ### Return type
 
@@ -248,19 +249,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Customer Direct Debit Activation Charge response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                                      | Response headers |
+| ----------- | ------------------------------------------------ | ---------------- |
+| **200**     | Customer Direct Debit Activation Charge response | -                |
+| **401**     | Unauthorized operation                           | -                |
+| **0**       | Server error                                     | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_fetch**
+
 > CustomerFetchResponse customer_fetch(code)
 
 Fetch Customer
@@ -269,7 +272,8 @@ Get details of a customer on your integration.
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -309,13 +313,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling CustomerApi->customer_fetch: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| The code for the customer gotten from the response of the customer creation | 
+| Name     | Type    | Description                                                                 | Notes |
+| -------- | ------- | --------------------------------------------------------------------------- | ----- |
+| **code** | **str** | The code for the customer gotten from the response of the customer creation |
 
 ### Return type
 
@@ -327,20 +329,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_fetch_mandate_authorizations**
+
 > CustomerFetchMandateAuthorizationsResponse customer_fetch_mandate_authorizations(id)
 
 Fetch Mandate Authorizations
@@ -349,7 +353,8 @@ Get the list of direct debit mandates associated with a customer
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -389,13 +394,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling CustomerApi->customer_fetch_mandate_authorizations: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The customer ID for the authorizations to fetch | 
+| Name   | Type    | Description                                     | Notes |
+| ------ | ------- | ----------------------------------------------- | ----- |
+| **id** | **int** | The customer ID for the authorizations to fetch |
 
 ### Return type
 
@@ -407,19 +410,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Customer Fetch Mandate Authorizations response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                                    | Response headers |
+| ----------- | ---------------------------------------------- | ---------------- |
+| **200**     | Customer Fetch Mandate Authorizations response | -                |
+| **401**     | Unauthorized operation                         | -                |
+| **0**       | Server error                                   | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_initialize_authorization**
+
 > CustomerAuthorizationInitializeResponse customer_initialize_authorization(customer_authorization_initialize_request)
 
 Initialize Authorization
@@ -428,7 +433,8 @@ Initiate a request to create a reusable authorization code for recurring transac
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -458,7 +464,7 @@ configuration = alexasomba_paystack.Configuration(
 with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.CustomerApi(api_client)
-    customer_authorization_initialize_request = alexasomba_paystack.CustomerAuthorizationInitializeRequest() # CustomerAuthorizationInitializeRequest | 
+    customer_authorization_initialize_request = alexasomba_paystack.CustomerAuthorizationInitializeRequest() # CustomerAuthorizationInitializeRequest |
 
     try:
         # Initialize Authorization
@@ -469,13 +475,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling CustomerApi->customer_initialize_authorization: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customer_authorization_initialize_request** | [**CustomerAuthorizationInitializeRequest**](CustomerAuthorizationInitializeRequest.md)|  | 
+| Name                                          | Type                                                                                    | Description | Notes |
+| --------------------------------------------- | --------------------------------------------------------------------------------------- | ----------- | ----- |
+| **customer_authorization_initialize_request** | [**CustomerAuthorizationInitializeRequest**](CustomerAuthorizationInitializeRequest.md) |             |
 
 ### Return type
 
@@ -487,19 +491,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Customer Authorization Initialize response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                                | Response headers |
+| ----------- | ------------------------------------------ | ---------------- |
+| **200**     | Customer Authorization Initialize response | -                |
+| **401**     | Unauthorized operation                     | -                |
+| **0**       | Server error                               | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_initialize_direct_debit**
+
 > CustomerInitializeDirectDebitResponse customer_initialize_direct_debit(id, customer_initialize_direct_debit_request=customer_initialize_direct_debit_request)
 
 Initialize Direct Debit
@@ -508,7 +514,8 @@ Initialize the process of linking an account to a customer for Direct Debit tran
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -550,14 +557,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling CustomerApi->customer_initialize_direct_debit: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The ID of the customer to initialize the direct debit for | 
- **customer_initialize_direct_debit_request** | [**CustomerInitializeDirectDebitRequest**](CustomerInitializeDirectDebitRequest.md)|  | [optional] 
+| Name                                         | Type                                                                                | Description                                               | Notes      |
+| -------------------------------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------- | ---------- |
+| **id**                                       | **int**                                                                             | The ID of the customer to initialize the direct debit for |
+| **customer_initialize_direct_debit_request** | [**CustomerInitializeDirectDebitRequest**](CustomerInitializeDirectDebitRequest.md) |                                                           | [optional] |
 
 ### Return type
 
@@ -569,19 +574,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Customer Initialize Direct Debit response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                               | Response headers |
+| ----------- | ----------------------------------------- | ---------------- |
+| **200**     | Customer Initialize Direct Debit response | -                |
+| **401**     | Unauthorized operation                    | -                |
+| **0**       | Server error                              | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_list**
+
 > CustomerListResponse customer_list(use_cursor=use_cursor, next=next, previous=previous, var_from=var_from, to=to, per_page=per_page, page=page)
 
 List Customers
@@ -590,7 +597,8 @@ List customers on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -636,19 +644,17 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling CustomerApi->customer_list: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **use_cursor** | **bool**| A flag to indicate if cursor based pagination should be used | [optional] 
- **next** | **str**| An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data  | [optional] 
- **previous** | **str**| An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data  | [optional] 
- **var_from** | **datetime**| The start date | [optional] 
- **to** | **datetime**| The end date | [optional] 
- **per_page** | **str**| The number of records to fetch per request | [optional] 
- **page** | **str**| The offset to retrieve data from | [optional] 
+| Name           | Type         | Description                                                                                                | Notes      |
+| -------------- | ------------ | ---------------------------------------------------------------------------------------------------------- | ---------- |
+| **use_cursor** | **bool**     | A flag to indicate if cursor based pagination should be used                                               | [optional] |
+| **next**       | **str**      | An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data     | [optional] |
+| **previous**   | **str**      | An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data | [optional] |
+| **var_from**   | **datetime** | The start date                                                                                             | [optional] |
+| **to**         | **datetime** | The end date                                                                                               | [optional] |
+| **per_page**   | **str**      | The number of records to fetch per request                                                                 | [optional] |
+| **page**       | **str**      | The offset to retrieve data from                                                                           | [optional] |
 
 ### Return type
 
@@ -660,20 +666,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_risk_action**
+
 > CustomerWhitelistBlacklistResponse customer_risk_action(customer_risk_action=customer_risk_action)
 
 Set Risk Action
@@ -682,7 +690,8 @@ Set customer's risk action by whitelisting or blacklisting the customer
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -723,13 +732,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling CustomerApi->customer_risk_action: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customer_risk_action** | [**CustomerRiskAction**](CustomerRiskAction.md)|  | [optional] 
+| Name                     | Type                                            | Description | Notes      |
+| ------------------------ | ----------------------------------------------- | ----------- | ---------- |
+| **customer_risk_action** | [**CustomerRiskAction**](CustomerRiskAction.md) |             | [optional] |
 
 ### Return type
 
@@ -741,19 +748,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_update**
+
 > CustomerUpdateResponse customer_update(code, customer_update=customer_update)
 
 Update Customer
@@ -762,7 +771,8 @@ Update a customer's details on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -804,14 +814,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling CustomerApi->customer_update: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| The code for the customer gotten from the response of the customer creation | 
- **customer_update** | [**CustomerUpdate**](CustomerUpdate.md)|  | [optional] 
+| Name                | Type                                    | Description                                                                 | Notes      |
+| ------------------- | --------------------------------------- | --------------------------------------------------------------------------- | ---------- |
+| **code**            | **str**                                 | The code for the customer gotten from the response of the customer creation |
+| **customer_update** | [**CustomerUpdate**](CustomerUpdate.md) |                                                                             | [optional] |
 
 ### Return type
 
@@ -823,20 +831,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_validate**
+
 > CustomerValidateResponse customer_validate(code, customer_validate=customer_validate)
 
 Validate Customer
@@ -845,7 +855,8 @@ Validate a customer's identity
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -887,14 +898,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling CustomerApi->customer_validate: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| The code for the customer gotten from the response of the customer creation | 
- **customer_validate** | [**CustomerValidate**](CustomerValidate.md)|  | [optional] 
+| Name                  | Type                                        | Description                                                                 | Notes      |
+| --------------------- | ------------------------------------------- | --------------------------------------------------------------------------- | ---------- |
+| **code**              | **str**                                     | The code for the customer gotten from the response of the customer creation |
+| **customer_validate** | [**CustomerValidate**](CustomerValidate.md) |                                                                             | [optional] |
 
 ### Return type
 
@@ -906,19 +915,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**202** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **202**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_verify_authorization**
+
 > CustomerAuthorizationVerifyResponse customer_verify_authorization(reference)
 
 Verify Authorization
@@ -927,7 +938,8 @@ Check the status of an authorization request
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -967,13 +979,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling CustomerApi->customer_verify_authorization: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **reference** | **str**| The reference returned in the initialization response | 
+| Name          | Type    | Description                                           | Notes |
+| ------------- | ------- | ----------------------------------------------------- | ----- |
+| **reference** | **str** | The reference returned in the initialization response |
 
 ### Return type
 
@@ -985,16 +995,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Customer Authorization Verify response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                            | Response headers |
+| ----------- | -------------------------------------- | ---------------- |
+| **200**     | Customer Authorization Verify response | -                |
+| **401**     | Unauthorized operation                 | -                |
+| **404**     | Entity not found                       | -                |
+| **0**       | Server error                           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

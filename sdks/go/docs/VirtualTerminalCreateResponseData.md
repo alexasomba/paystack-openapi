@@ -2,18 +2,18 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**Name** | **string** |  | 
-**Integration** | **int32** |  | 
-**Domain** | **string** |  | 
-**Code** | **string** |  | 
-**PaymentMethods** | **[]interface{}** |  | 
-**Active** | **bool** |  | 
-**Metadata** | **interface{}** |  | 
-**Destinations** | [**[]VirtualTerminalCreateResponseDataDestinationsInner**](VirtualTerminalCreateResponseDataDestinationsInner.md) |  | 
-**Currency** | **string** |  | 
+| Name               | Type                                                                                                              | Description | Notes |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **Id**             | **int32**                                                                                                         |             |
+| **Name**           | **string**                                                                                                        |             |
+| **Integration**    | **int32**                                                                                                         |             |
+| **Domain**         | **string**                                                                                                        |             |
+| **Code**           | **string**                                                                                                        |             |
+| **PaymentMethods** | **[]interface{}**                                                                                                 |             |
+| **Active**         | **bool**                                                                                                          |             |
+| **Metadata**       | **interface{}**                                                                                                   |             |
+| **Destinations**   | [**[]VirtualTerminalCreateResponseDataDestinationsInner**](VirtualTerminalCreateResponseDataDestinationsInner.md) |             |
+| **Currency**       | **string**                                                                                                        |             |
 
 ## Methods
 
@@ -53,7 +53,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetName
 
 `func (o *VirtualTerminalCreateResponseData) GetName() string`
@@ -72,7 +71,6 @@ and a boolean to check if the value has been set.
 `func (o *VirtualTerminalCreateResponseData) SetName(v string)`
 
 SetName sets Name field to given value.
-
 
 ### GetIntegration
 
@@ -93,7 +91,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetDomain
 
 `func (o *VirtualTerminalCreateResponseData) GetDomain() string`
@@ -112,7 +109,6 @@ and a boolean to check if the value has been set.
 `func (o *VirtualTerminalCreateResponseData) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetCode
 
@@ -133,7 +129,6 @@ and a boolean to check if the value has been set.
 
 SetCode sets Code field to given value.
 
-
 ### GetPaymentMethods
 
 `func (o *VirtualTerminalCreateResponseData) GetPaymentMethods() []interface{}`
@@ -152,7 +147,6 @@ and a boolean to check if the value has been set.
 `func (o *VirtualTerminalCreateResponseData) SetPaymentMethods(v []interface{})`
 
 SetPaymentMethods sets PaymentMethods field to given value.
-
 
 ### GetActive
 
@@ -173,7 +167,6 @@ and a boolean to check if the value has been set.
 
 SetActive sets Active field to given value.
 
-
 ### GetMetadata
 
 `func (o *VirtualTerminalCreateResponseData) GetMetadata() interface{}`
@@ -193,17 +186,18 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
-
 ### SetMetadataNil
 
 `func (o *VirtualTerminalCreateResponseData) SetMetadataNil(b bool)`
 
- SetMetadataNil sets the value for Metadata to be an explicit nil
+SetMetadataNil sets the value for Metadata to be an explicit nil
 
 ### UnsetMetadata
+
 `func (o *VirtualTerminalCreateResponseData) UnsetMetadata()`
 
 UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
+
 ### GetDestinations
 
 `func (o *VirtualTerminalCreateResponseData) GetDestinations() []VirtualTerminalCreateResponseDataDestinationsInner`
@@ -222,7 +216,6 @@ and a boolean to check if the value has been set.
 `func (o *VirtualTerminalCreateResponseData) SetDestinations(v []VirtualTerminalCreateResponseDataDestinationsInner)`
 
 SetDestinations sets Destinations field to given value.
-
 
 ### GetCurrency
 
@@ -243,8 +236,4 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -1,11 +1,11 @@
 # TerminalUpate
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**name** | **str** | The new name for the Terminal | [optional] 
-**address** | **str** | The new address for the Terminal | [optional] 
+
+| Name        | Type    | Description                      | Notes      |
+| ----------- | ------- | -------------------------------- | ---------- |
+| **name**    | **str** | The new name for the Terminal    | [optional] |
+| **address** | **str** | The new address for the Terminal | [optional] |
 
 ## Example
 
@@ -24,6 +24,5 @@ terminal_upate_dict = terminal_upate_instance.to_dict()
 # create an instance of TerminalUpate from a dict
 terminal_upate_form_dict = terminal_upate.from_dict(terminal_upate_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

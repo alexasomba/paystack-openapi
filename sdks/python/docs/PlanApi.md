@@ -2,15 +2,15 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**plan_create**](PlanApi.md#plan_create) | **POST** /plan | Create Plan
-[**plan_fetch**](PlanApi.md#plan_fetch) | **GET** /plan/{code} | Fetch Plan
-[**plan_list**](PlanApi.md#plan_list) | **GET** /plan | List Plans
-[**plan_update**](PlanApi.md#plan_update) | **PUT** /plan/{code} | Update Plan
-
+| Method                                    | HTTP request         | Description |
+| ----------------------------------------- | -------------------- | ----------- |
+| [**plan_create**](PlanApi.md#plan_create) | **POST** /plan       | Create Plan |
+| [**plan_fetch**](PlanApi.md#plan_fetch)   | **GET** /plan/{code} | Fetch Plan  |
+| [**plan_list**](PlanApi.md#plan_list)     | **GET** /plan        | List Plans  |
+| [**plan_update**](PlanApi.md#plan_update) | **PUT** /plan/{code} | Update Plan |
 
 # **plan_create**
+
 > PlanCreateResponse plan_create(plan_create=plan_create)
 
 Create Plan
@@ -19,7 +19,8 @@ Create a plan for recurring payments
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -60,13 +61,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling PlanApi->plan_create: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **plan_create** | [**PlanCreate**](PlanCreate.md)|  | [optional] 
+| Name            | Type                            | Description | Notes      |
+| --------------- | ------------------------------- | ----------- | ---------- |
+| **plan_create** | [**PlanCreate**](PlanCreate.md) |             | [optional] |
 
 ### Return type
 
@@ -78,19 +77,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Plan Create response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Plan Create response   | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **plan_fetch**
+
 > PlanFetchResponse plan_fetch(code)
 
 Fetch Plan
@@ -99,7 +100,8 @@ Get the details of a payment plan
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -139,13 +141,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling PlanApi->plan_fetch: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| The plan code you want to fetch | 
+| Name     | Type    | Description                     | Notes |
+| -------- | ------- | ------------------------------- | ----- |
+| **code** | **str** | The plan code you want to fetch |
 
 ### Return type
 
@@ -157,20 +157,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Plan Fetch response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Plan Fetch response    | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **plan_list**
+
 > PlanListResponse plan_list(per_page=per_page, page=page, interval=interval, amount=amount, var_from=var_from, to=to)
 
 List Plans
@@ -179,7 +181,8 @@ List all recurring payment plans
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -224,18 +227,16 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling PlanApi->plan_list: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **per_page** | **int**| Number of records to fetch per page | [optional] 
- **page** | **int**| The section to retrieve | [optional] 
- **interval** | **str**| Specify interval of the plan | [optional] 
- **amount** | **int**| The amount on the plans to retrieve | [optional] 
- **var_from** | **datetime**| The start date | [optional] 
- **to** | **datetime**| The end date | [optional] 
+| Name         | Type         | Description                         | Notes      |
+| ------------ | ------------ | ----------------------------------- | ---------- |
+| **per_page** | **int**      | Number of records to fetch per page | [optional] |
+| **page**     | **int**      | The section to retrieve             | [optional] |
+| **interval** | **str**      | Specify interval of the plan        | [optional] |
+| **amount**   | **int**      | The amount on the plans to retrieve | [optional] |
+| **var_from** | **datetime** | The start date                      | [optional] |
+| **to**       | **datetime** | The end date                        | [optional] |
 
 ### Return type
 
@@ -247,20 +248,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Plan List response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Plan List response     | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **plan_update**
+
 > PlanUpdateResponse plan_update(code, plan_update=plan_update)
 
 Update Plan
@@ -269,7 +272,8 @@ Update a plan details on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -311,14 +315,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling PlanApi->plan_update: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| The plan code you want to fetch | 
- **plan_update** | [**PlanUpdate**](PlanUpdate.md)|  | [optional] 
+| Name            | Type                            | Description                     | Notes      |
+| --------------- | ------------------------------- | ------------------------------- | ---------- |
+| **code**        | **str**                         | The plan code you want to fetch |
+| **plan_update** | [**PlanUpdate**](PlanUpdate.md) |                                 | [optional] |
 
 ### Return type
 
@@ -330,16 +332,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Plan Update response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Plan Update response   | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

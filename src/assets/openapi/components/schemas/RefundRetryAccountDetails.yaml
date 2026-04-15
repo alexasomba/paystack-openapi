@@ -16,5 +16,5 @@ properties:
     type: string
 example:
   currency: NGN
-  account_number: '1234567890'
-  bank_id: '9'
+  account_number: "1234567890"
+  bank_id: "9"

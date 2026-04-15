@@ -1,37 +1,37 @@
 # DisputeListTransactionResponseDataTransaction
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **int** |  | 
-**domain** | **str** |  | 
-**status** | **str** |  | 
-**reference** | **str** |  | 
-**receipt_number** | **int** |  | [optional] 
-**amount** | **int** |  | 
-**message** | **object** |  | 
-**gateway_response** | **str** |  | 
-**paid_at** | **str** |  | [optional] 
-**created_at** | **str** |  | [optional] 
-**channel** | **str** |  | 
-**currency** | **str** |  | 
-**ip_address** | **str** |  | 
-**metadata** | [**TransactionFetchResponseDataMetadata**](TransactionFetchResponseDataMetadata.md) |  | 
-**log** | [**ChargeAuthorizationResponseDataLog**](ChargeAuthorizationResponseDataLog.md) |  | 
-**fees** | **int** |  | 
-**fees_split** | **int** |  | 
-**authorization** | [**DisputeFetchResponseDataTransactionAuthorization**](DisputeFetchResponseDataTransactionAuthorization.md) |  | 
-**customer** | [**DisputeFetchResponseDataTransactionCustomer**](DisputeFetchResponseDataTransactionCustomer.md) |  | 
-**plan** | **object** |  | 
-**subaccount** | **object** |  | 
-**split** | **object** |  | 
-**order_id** | **object** |  | 
-**requested_amount** | **int** |  | 
-**pos_transaction_data** | **object** |  | 
-**source** | **object** |  | 
-**fees_breakdown** | **object** |  | 
-**connect** | **object** |  | 
+
+| Name                     | Type                                                                                                        | Description | Notes      |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------- | ----------- | ---------- |
+| **id**                   | **int**                                                                                                     |             |
+| **domain**               | **str**                                                                                                     |             |
+| **status**               | **str**                                                                                                     |             |
+| **reference**            | **str**                                                                                                     |             |
+| **receipt_number**       | **int**                                                                                                     |             | [optional] |
+| **amount**               | **int**                                                                                                     |             |
+| **message**              | **object**                                                                                                  |             |
+| **gateway_response**     | **str**                                                                                                     |             |
+| **paid_at**              | **str**                                                                                                     |             | [optional] |
+| **created_at**           | **str**                                                                                                     |             | [optional] |
+| **channel**              | **str**                                                                                                     |             |
+| **currency**             | **str**                                                                                                     |             |
+| **ip_address**           | **str**                                                                                                     |             |
+| **metadata**             | [**TransactionFetchResponseDataMetadata**](TransactionFetchResponseDataMetadata.md)                         |             |
+| **log**                  | [**ChargeAuthorizationResponseDataLog**](ChargeAuthorizationResponseDataLog.md)                             |             |
+| **fees**                 | **int**                                                                                                     |             |
+| **fees_split**           | **int**                                                                                                     |             |
+| **authorization**        | [**DisputeFetchResponseDataTransactionAuthorization**](DisputeFetchResponseDataTransactionAuthorization.md) |             |
+| **customer**             | [**DisputeFetchResponseDataTransactionCustomer**](DisputeFetchResponseDataTransactionCustomer.md)           |             |
+| **plan**                 | **object**                                                                                                  |             |
+| **subaccount**           | **object**                                                                                                  |             |
+| **split**                | **object**                                                                                                  |             |
+| **order_id**             | **object**                                                                                                  |             |
+| **requested_amount**     | **int**                                                                                                     |             |
+| **pos_transaction_data** | **object**                                                                                                  |             |
+| **source**               | **object**                                                                                                  |             |
+| **fees_breakdown**       | **object**                                                                                                  |             |
+| **connect**              | **object**                                                                                                  |             |
 
 ## Example
 
@@ -50,6 +50,5 @@ dispute_list_transaction_response_data_transaction_dict = dispute_list_transacti
 # create an instance of DisputeListTransactionResponseDataTransaction from a dict
 dispute_list_transaction_response_data_transaction_form_dict = dispute_list_transaction_response_data_transaction.from_dict(dispute_list_transaction_response_data_transaction_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

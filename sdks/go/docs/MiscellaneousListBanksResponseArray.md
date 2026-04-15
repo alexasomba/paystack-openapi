@@ -2,24 +2,24 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Name** | **string** |  | 
-**Slug** | **string** |  | 
-**Code** | **string** |  | 
-**Longcode** | **string** |  | 
-**Gateway** | **NullableString** |  | 
-**PayWithBank** | **bool** |  | 
-**SupportsTransfer** | **bool** |  | 
-**AvailableForDirectDebit** | **bool** |  | 
-**Active** | **bool** |  | 
-**IsDeleted** | **NullableBool** |  | 
-**Country** | **string** |  | 
-**Currency** | **string** |  | 
-**Type** | **string** |  | 
-**Id** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name                        | Type               | Description | Notes |
+| --------------------------- | ------------------ | ----------- | ----- |
+| **Name**                    | **string**         |             |
+| **Slug**                    | **string**         |             |
+| **Code**                    | **string**         |             |
+| **Longcode**                | **string**         |             |
+| **Gateway**                 | **NullableString** |             |
+| **PayWithBank**             | **bool**           |             |
+| **SupportsTransfer**        | **bool**           |             |
+| **AvailableForDirectDebit** | **bool**           |             |
+| **Active**                  | **bool**           |             |
+| **IsDeleted**               | **NullableBool**   |             |
+| **Country**                 | **string**         |             |
+| **Currency**                | **string**         |             |
+| **Type**                    | **string**         |             |
+| **Id**                      | **int32**          |             |
+| **CreatedAt**               | **string**         |             |
+| **UpdatedAt**               | **string**         |             |
 
 ## Methods
 
@@ -59,7 +59,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetSlug
 
 `func (o *MiscellaneousListBanksResponseArray) GetSlug() string`
@@ -78,7 +77,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListBanksResponseArray) SetSlug(v string)`
 
 SetSlug sets Slug field to given value.
-
 
 ### GetCode
 
@@ -99,7 +97,6 @@ and a boolean to check if the value has been set.
 
 SetCode sets Code field to given value.
 
-
 ### GetLongcode
 
 `func (o *MiscellaneousListBanksResponseArray) GetLongcode() string`
@@ -118,7 +115,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListBanksResponseArray) SetLongcode(v string)`
 
 SetLongcode sets Longcode field to given value.
-
 
 ### GetGateway
 
@@ -139,17 +135,18 @@ and a boolean to check if the value has been set.
 
 SetGateway sets Gateway field to given value.
 
-
 ### SetGatewayNil
 
 `func (o *MiscellaneousListBanksResponseArray) SetGatewayNil(b bool)`
 
- SetGatewayNil sets the value for Gateway to be an explicit nil
+SetGatewayNil sets the value for Gateway to be an explicit nil
 
 ### UnsetGateway
+
 `func (o *MiscellaneousListBanksResponseArray) UnsetGateway()`
 
 UnsetGateway ensures that no value is present for Gateway, not even an explicit nil
+
 ### GetPayWithBank
 
 `func (o *MiscellaneousListBanksResponseArray) GetPayWithBank() bool`
@@ -168,7 +165,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListBanksResponseArray) SetPayWithBank(v bool)`
 
 SetPayWithBank sets PayWithBank field to given value.
-
 
 ### GetSupportsTransfer
 
@@ -189,7 +185,6 @@ and a boolean to check if the value has been set.
 
 SetSupportsTransfer sets SupportsTransfer field to given value.
 
-
 ### GetAvailableForDirectDebit
 
 `func (o *MiscellaneousListBanksResponseArray) GetAvailableForDirectDebit() bool`
@@ -208,7 +203,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListBanksResponseArray) SetAvailableForDirectDebit(v bool)`
 
 SetAvailableForDirectDebit sets AvailableForDirectDebit field to given value.
-
 
 ### GetActive
 
@@ -229,7 +223,6 @@ and a boolean to check if the value has been set.
 
 SetActive sets Active field to given value.
 
-
 ### GetIsDeleted
 
 `func (o *MiscellaneousListBanksResponseArray) GetIsDeleted() bool`
@@ -249,17 +242,18 @@ and a boolean to check if the value has been set.
 
 SetIsDeleted sets IsDeleted field to given value.
 
-
 ### SetIsDeletedNil
 
 `func (o *MiscellaneousListBanksResponseArray) SetIsDeletedNil(b bool)`
 
- SetIsDeletedNil sets the value for IsDeleted to be an explicit nil
+SetIsDeletedNil sets the value for IsDeleted to be an explicit nil
 
 ### UnsetIsDeleted
+
 `func (o *MiscellaneousListBanksResponseArray) UnsetIsDeleted()`
 
 UnsetIsDeleted ensures that no value is present for IsDeleted, not even an explicit nil
+
 ### GetCountry
 
 `func (o *MiscellaneousListBanksResponseArray) GetCountry() string`
@@ -278,7 +272,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListBanksResponseArray) SetCountry(v string)`
 
 SetCountry sets Country field to given value.
-
 
 ### GetCurrency
 
@@ -299,7 +292,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetType
 
 `func (o *MiscellaneousListBanksResponseArray) GetType() string`
@@ -318,7 +310,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListBanksResponseArray) SetType(v string)`
 
 SetType sets Type field to given value.
-
 
 ### GetId
 
@@ -339,7 +330,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *MiscellaneousListBanksResponseArray) GetCreatedAt() string`
@@ -358,7 +348,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListBanksResponseArray) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -379,8 +368,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

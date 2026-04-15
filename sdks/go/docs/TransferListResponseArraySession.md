@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Provider** | **interface{}** |  | 
-**Id** | **interface{}** |  | 
+| Name         | Type            | Description | Notes |
+| ------------ | --------------- | ----------- | ----- |
+| **Provider** | **interface{}** |             |
+| **Id**       | **interface{}** |             |
 
 ## Methods
 
@@ -45,17 +45,18 @@ and a boolean to check if the value has been set.
 
 SetProvider sets Provider field to given value.
 
-
 ### SetProviderNil
 
 `func (o *TransferListResponseArraySession) SetProviderNil(b bool)`
 
- SetProviderNil sets the value for Provider to be an explicit nil
+SetProviderNil sets the value for Provider to be an explicit nil
 
 ### UnsetProvider
+
 `func (o *TransferListResponseArraySession) UnsetProvider()`
 
 UnsetProvider ensures that no value is present for Provider, not even an explicit nil
+
 ### GetId
 
 `func (o *TransferListResponseArraySession) GetId() interface{}`
@@ -75,18 +76,16 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### SetIdNil
 
 `func (o *TransferListResponseArraySession) SetIdNil(b bool)`
 
- SetIdNil sets the value for Id to be an explicit nil
+SetIdNil sets the value for Id to be an explicit nil
 
 ### UnsetId
+
 `func (o *TransferListResponseArraySession) UnsetId()`
 
 UnsetId ensures that no value is present for Id, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

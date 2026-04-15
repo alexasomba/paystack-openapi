@@ -1,12 +1,12 @@
 # PlanFetchResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**PlanFetchResponseData**](PlanFetchResponseData.md) |  | 
+
+| Name        | Type                                                  | Description | Notes |
+| ----------- | ----------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                              |             |
+| **message** | **str**                                               |             |
+| **data**    | [**PlanFetchResponseData**](PlanFetchResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ plan_fetch_response_dict = plan_fetch_response_instance.to_dict()
 # create an instance of PlanFetchResponse from a dict
 plan_fetch_response_form_dict = plan_fetch_response.from_dict(plan_fetch_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

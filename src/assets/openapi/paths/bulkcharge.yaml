@@ -17,13 +17,13 @@ post:
           items:
             $ref: ../components/schemas/BulkChargeInitiate.yaml
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BulkChargeInitiateResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error
@@ -32,7 +32,7 @@ get:
     - Bulk Charge
   summary: List Bulk Charge Batches
   operationId: bulkCharge_list
-  description: List all bulk charge batches. 
+  description: List all bulk charge batches.
   parameters:
     - in: query
       name: perPage
@@ -45,24 +45,27 @@ get:
       schema:
         type: integer
     - in: query
-      name: status
-      description: Filter by the status of the charges
+      name: from
+      description: A timestamp from which to start listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
       schema:
         type: string
-        enum:
-          - active
-          - paused
-          - complete
+        format: date-time
+    - in: query
+      name: to
+      description: A timestamp at which to stop listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+      schema:
+        type: string
+        format: date-time
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BulkChargeListResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

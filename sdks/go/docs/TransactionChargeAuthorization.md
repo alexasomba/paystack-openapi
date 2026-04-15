@@ -2,20 +2,20 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Email** | **string** | Customer&#39;s email address | 
-**Amount** | **int32** | Amount in the lower denomination of your currency | 
-**AuthorizationCode** | **string** | Valid authorization code to charge | 
-**Reference** | Pointer to **string** | Unique transaction reference. Only -, ., &#x3D; and alphanumeric characters allowed. | [optional] 
-**Currency** | Pointer to [**Currency**](Currency.md) |  | [optional] 
-**SplitCode** | Pointer to **string** | The split code of the transaction split | [optional] 
-**Split** | Pointer to [**SplitCreate**](SplitCreate.md) |  | [optional] 
-**Subaccount** | Pointer to **string** | The code for the subaccount that owns the payment | [optional] 
-**TransactionCharge** | Pointer to **string** | A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created | [optional] 
-**Bearer** | Pointer to **string** | The bearer of the transaction charge | [optional] 
-**Metadata** | Pointer to **string** | Stringified JSON object of custom data | [optional] 
-**Queue** | Pointer to **bool** | If you are making a scheduled charge call, it is a good idea to queue them so the processing system does not get overloaded causing transaction processing errors. | [optional] 
+| Name                  | Type                                         | Description                                                                                                                                                        | Notes      |
+| --------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- |
+| **Email**             | **string**                                   | Customer&#39;s email address                                                                                                                                       |
+| **Amount**            | **int32**                                    | Amount in the lower denomination of your currency                                                                                                                  |
+| **AuthorizationCode** | **string**                                   | Valid authorization code to charge                                                                                                                                 |
+| **Reference**         | Pointer to **string**                        | Unique transaction reference. Only -, ., &#x3D; and alphanumeric characters allowed.                                                                               | [optional] |
+| **Currency**          | Pointer to [**Currency**](Currency.md)       |                                                                                                                                                                    | [optional] |
+| **SplitCode**         | Pointer to **string**                        | The split code of the transaction split                                                                                                                            | [optional] |
+| **Split**             | Pointer to [**SplitCreate**](SplitCreate.md) |                                                                                                                                                                    | [optional] |
+| **Subaccount**        | Pointer to **string**                        | The code for the subaccount that owns the payment                                                                                                                  | [optional] |
+| **TransactionCharge** | Pointer to **string**                        | A flat fee to charge the subaccount for a transaction. This overrides the split percentage set when the subaccount was created                                     | [optional] |
+| **Bearer**            | Pointer to **string**                        | The bearer of the transaction charge                                                                                                                               | [optional] |
+| **Metadata**          | Pointer to **string**                        | Stringified JSON object of custom data                                                                                                                             | [optional] |
+| **Queue**             | Pointer to **bool**                          | If you are making a scheduled charge call, it is a good idea to queue them so the processing system does not get overloaded causing transaction processing errors. | [optional] |
 
 ## Methods
 
@@ -55,7 +55,6 @@ and a boolean to check if the value has been set.
 
 SetEmail sets Email field to given value.
 
-
 ### GetAmount
 
 `func (o *TransactionChargeAuthorization) GetAmount() int32`
@@ -75,7 +74,6 @@ and a boolean to check if the value has been set.
 
 SetAmount sets Amount field to given value.
 
-
 ### GetAuthorizationCode
 
 `func (o *TransactionChargeAuthorization) GetAuthorizationCode() string`
@@ -94,7 +92,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionChargeAuthorization) SetAuthorizationCode(v string)`
 
 SetAuthorizationCode sets AuthorizationCode field to given value.
-
 
 ### GetReference
 
@@ -321,7 +318,4 @@ SetQueue sets Queue field to given value.
 
 HasQueue returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -1,18 +1,18 @@
 # VerifyResponseDataPlanObject
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **int** |  | [optional] 
-**name** | **str** |  | [optional] 
-**plan_code** | **str** |  | [optional] 
-**description** | **object** |  | [optional] 
-**amount** | **int** |  | [optional] 
-**interval** | **str** |  | [optional] 
-**send_invoices** | **bool** |  | [optional] 
-**send_sms** | **bool** |  | [optional] 
-**currency** | **str** |  | [optional] 
+
+| Name              | Type       | Description | Notes      |
+| ----------------- | ---------- | ----------- | ---------- |
+| **id**            | **int**    |             | [optional] |
+| **name**          | **str**    |             | [optional] |
+| **plan_code**     | **str**    |             | [optional] |
+| **description**   | **object** |             | [optional] |
+| **amount**        | **int**    |             | [optional] |
+| **interval**      | **str**    |             | [optional] |
+| **send_invoices** | **bool**   |             | [optional] |
+| **send_sms**      | **bool**   |             | [optional] |
+| **currency**      | **str**    |             | [optional] |
 
 ## Example
 
@@ -31,6 +31,5 @@ verify_response_data_plan_object_dict = verify_response_data_plan_object_instanc
 # create an instance of VerifyResponseDataPlanObject from a dict
 verify_response_data_plan_object_form_dict = verify_response_data_plan_object.from_dict(verify_response_data_plan_object_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

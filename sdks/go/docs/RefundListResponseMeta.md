@@ -2,14 +2,14 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Total** | **int32** |  | 
-**Skipped** | **int32** |  | 
-**PerPage** | **string** |  | 
-**Page** | **int32** |  | 
-**PageCount** | **int32** |  | 
-**FailedRefundCount** | **int32** |  | 
+| Name                  | Type       | Description | Notes |
+| --------------------- | ---------- | ----------- | ----- |
+| **Total**             | **int32**  |             |
+| **Skipped**           | **int32**  |             |
+| **PerPage**           | **string** |             |
+| **Page**              | **int32**  |             |
+| **PageCount**         | **int32**  |             |
+| **FailedRefundCount** | **int32**  |             |
 
 ## Methods
 
@@ -49,7 +49,6 @@ and a boolean to check if the value has been set.
 
 SetTotal sets Total field to given value.
 
-
 ### GetSkipped
 
 `func (o *RefundListResponseMeta) GetSkipped() int32`
@@ -68,7 +67,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundListResponseMeta) SetSkipped(v int32)`
 
 SetSkipped sets Skipped field to given value.
-
 
 ### GetPerPage
 
@@ -89,7 +87,6 @@ and a boolean to check if the value has been set.
 
 SetPerPage sets PerPage field to given value.
 
-
 ### GetPage
 
 `func (o *RefundListResponseMeta) GetPage() int32`
@@ -108,7 +105,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundListResponseMeta) SetPage(v int32)`
 
 SetPage sets Page field to given value.
-
 
 ### GetPageCount
 
@@ -129,7 +125,6 @@ and a boolean to check if the value has been set.
 
 SetPageCount sets PageCount field to given value.
 
-
 ### GetFailedRefundCount
 
 `func (o *RefundListResponseMeta) GetFailedRefundCount() int32`
@@ -149,8 +144,4 @@ and a boolean to check if the value has been set.
 
 SetFailedRefundCount sets FailedRefundCount field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

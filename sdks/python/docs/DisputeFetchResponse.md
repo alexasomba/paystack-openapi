@@ -1,12 +1,12 @@
 # DisputeFetchResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**DisputeFetchResponseData**](DisputeFetchResponseData.md) |  | 
+
+| Name        | Type                                                        | Description | Notes |
+| ----------- | ----------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                    |             |
+| **message** | **str**                                                     |             |
+| **data**    | [**DisputeFetchResponseData**](DisputeFetchResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ dispute_fetch_response_dict = dispute_fetch_response_instance.to_dict()
 # create an instance of DisputeFetchResponse from a dict
 dispute_fetch_response_form_dict = dispute_fetch_response.from_dict(dispute_fetch_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

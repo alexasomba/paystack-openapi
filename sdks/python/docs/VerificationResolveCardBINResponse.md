@@ -1,12 +1,12 @@
 # VerificationResolveCardBINResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**VerificationResolveCardBINResponseData**](VerificationResolveCardBINResponseData.md) |  | 
+
+| Name        | Type                                                                                    | Description | Notes |
+| ----------- | --------------------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                                |             |
+| **message** | **str**                                                                                 |             |
+| **data**    | [**VerificationResolveCardBINResponseData**](VerificationResolveCardBINResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ verification_resolve_card_bin_response_dict = verification_resolve_card_bin_resp
 # create an instance of VerificationResolveCardBINResponse from a dict
 verification_resolve_card_bin_response_form_dict = verification_resolve_card_bin_response.from_dict(verification_resolve_card_bin_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

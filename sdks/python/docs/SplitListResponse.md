@@ -1,13 +1,13 @@
 # SplitListResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**List[SplitListResponseArray]**](SplitListResponseArray.md) |  | 
-**meta** | [**SubaccountListResponseMeta**](SubaccountListResponseMeta.md) |  | 
+
+| Name        | Type                                                            | Description | Notes |
+| ----------- | --------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                        |             |
+| **message** | **str**                                                         |             |
+| **data**    | [**List[SplitListResponseArray]**](SplitListResponseArray.md)   |             |
+| **meta**    | [**SubaccountListResponseMeta**](SubaccountListResponseMeta.md) |             |
 
 ## Example
 
@@ -26,6 +26,5 @@ split_list_response_dict = split_list_response_instance.to_dict()
 # create an instance of SplitListResponse from a dict
 split_list_response_form_dict = split_list_response.from_dict(split_list_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

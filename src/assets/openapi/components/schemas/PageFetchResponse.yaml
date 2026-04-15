@@ -14,6 +14,7 @@ properties:
       name:
         type: string
       description:
+        type: string
         nullable: true
       amount:
         type: integer
@@ -22,56 +23,30 @@ properties:
         type: string
       slug:
         type: string
-      custom_fields:
-        nullable: true
-      type:
-        type: string
-      redirect_url:
-        nullable: true
-      success_message:
-        nullable: true
-      collect_phone:
-        type: boolean
       active:
         type: boolean
-      published:
-        type: boolean
-      migrate:
-        type: boolean
-      notification_email:
-        nullable: true
-      metadata:
-        nullable: true
-      split_code:
-        nullable: true
       id:
         type: integer
       createdAt:
         type: string
       updatedAt:
         type: string
+      products:
+        type: array
+        items:
+          $ref: ./PageProductsArray.yaml
     required:
       - integration
       - domain
       - name
-      - description
       - amount
       - currency
       - slug
-      - custom_fields
-      - type
-      - redirect_url
-      - success_message
-      - collect_phone
       - active
-      - published
-      - migrate
-      - notification_email
-      - metadata
-      - split_code
       - id
       - createdAt
       - updatedAt
+      - products
 required:
   - status
   - message

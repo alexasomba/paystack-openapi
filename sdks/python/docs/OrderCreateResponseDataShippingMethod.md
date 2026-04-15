@@ -1,12 +1,12 @@
 # OrderCreateResponseDataShippingMethod
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**region** | **str** |  | 
-**fee** | **int** |  | 
-**currency** | **str** |  | 
+
+| Name         | Type    | Description | Notes |
+| ------------ | ------- | ----------- | ----- |
+| **region**   | **str** |             |
+| **fee**      | **int** |             |
+| **currency** | **str** |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ order_create_response_data_shipping_method_dict = order_create_response_data_shi
 # create an instance of OrderCreateResponseDataShippingMethod from a dict
 order_create_response_data_shipping_method_form_dict = order_create_response_data_shipping_method.from_dict(order_create_response_data_shipping_method_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -3,10 +3,11 @@
 The parameters needed to perform the specified action
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **int** | The invoice or transaction  ID you want to push to the Terminal | [optional] 
-**reference** | **str** | The offline_reference from the Payment Request response | [optional] 
+
+| Name          | Type    | Description                                                    | Notes      |
+| ------------- | ------- | -------------------------------------------------------------- | ---------- |
+| **id**        | **int** | The invoice or transaction ID you want to push to the Terminal | [optional] |
+| **reference** | **str** | The offline_reference from the Payment Request response        | [optional] |
 
 ## Example
 
@@ -25,6 +26,5 @@ terminal_send_event_data_dict = terminal_send_event_data_instance.to_dict()
 # create an instance of TerminalSendEventData from a dict
 terminal_send_event_data_form_dict = terminal_send_event_data.from_dict(terminal_send_event_data_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

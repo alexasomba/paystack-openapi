@@ -2,23 +2,23 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Name** | **string** | Name of page | 
-**Description** | Pointer to **string** | The description of the page | [optional] 
-**Amount** | Pointer to **int32** | Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR | [optional] 
-**Currency** | Pointer to **string** | The transaction currency. Defaults to your integration currency. | [optional] 
-**Slug** | Pointer to **string** | URL slug you would like to be associated with this page. Page will be accessible at &#x60;https://paystack.com/pay/[slug]&#x60; | [optional] 
-**Type** | Pointer to **string** | The type of payment page to create. Defaults to &#x60;payment&#x60; if no type is specified.  | [optional] 
-**Plan** | Pointer to **string** | The ID of the plan to subscribe customers on this payment page to when &#x60;type&#x60; is set to &#x60;subscription&#x60;. | [optional] 
-**FixedAmount** | Pointer to **bool** | Specifies whether to collect a fixed amount on the payment page. If true, &#x60;amount&#x60; must be passed. | [optional] 
-**SplitCode** | Pointer to **string** | The split code of the transaction split. e.g. &#x60;SPL_98WF13Eb3w&#x60; | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | JSON object of custom data | [optional] 
-**RedirectUrl** | Pointer to **string** | If you would like Paystack to redirect to a URL upon successful payment, specify the URL here.  | [optional] 
-**SuccessMessage** | Pointer to **string** | A success message to display to the customer after a successful transaction  | [optional] 
-**NotificationEmail** | Pointer to **string** | An email address that will receive transaction notifications for this payment page  | [optional] 
-**CollectPhone** | Pointer to **bool** | Specify whether to collect phone numbers on the payment page  | [optional] 
-**CustomFields** | Pointer to **[]map[string]interface{}** | If you would like to accept custom fields, specify them here. | [optional] 
+| Name                  | Type                                    | Description                                                                                                                     | Notes      |
+| --------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **Name**              | **string**                              | Name of page                                                                                                                    |
+| **Description**       | Pointer to **string**                   | The description of the page                                                                                                     | [optional] |
+| **Amount**            | Pointer to **int32**                    | Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR                         | [optional] |
+| **Currency**          | Pointer to **string**                   | The transaction currency. Defaults to your integration currency.                                                                | [optional] |
+| **Slug**              | Pointer to **string**                   | URL slug you would like to be associated with this page. Page will be accessible at &#x60;https://paystack.com/pay/[slug]&#x60; | [optional] |
+| **Type**              | Pointer to **string**                   | The type of payment page to create. Defaults to &#x60;payment&#x60; if no type is specified.                                    | [optional] |
+| **Plan**              | Pointer to **string**                   | The ID of the plan to subscribe customers on this payment page to when &#x60;type&#x60; is set to &#x60;subscription&#x60;.     | [optional] |
+| **FixedAmount**       | Pointer to **bool**                     | Specifies whether to collect a fixed amount on the payment page. If true, &#x60;amount&#x60; must be passed.                    | [optional] |
+| **SplitCode**         | Pointer to **string**                   | The split code of the transaction split. e.g. &#x60;SPL_98WF13Eb3w&#x60;                                                        | [optional] |
+| **Metadata**          | Pointer to **map[string]interface{}**   | JSON object of custom data                                                                                                      | [optional] |
+| **RedirectUrl**       | Pointer to **string**                   | If you would like Paystack to redirect to a URL upon successful payment, specify the URL here.                                  | [optional] |
+| **SuccessMessage**    | Pointer to **string**                   | A success message to display to the customer after a successful transaction                                                     | [optional] |
+| **NotificationEmail** | Pointer to **string**                   | An email address that will receive transaction notifications for this payment page                                              | [optional] |
+| **CollectPhone**      | Pointer to **bool**                     | Specify whether to collect phone numbers on the payment page                                                                    | [optional] |
+| **CustomFields**      | Pointer to **[]map[string]interface{}** | If you would like to accept custom fields, specify them here.                                                                   | [optional] |
 
 ## Methods
 
@@ -57,7 +57,6 @@ and a boolean to check if the value has been set.
 `func (o *PageCreate) SetName(v string)`
 
 SetName sets Name field to given value.
-
 
 ### GetDescription
 
@@ -409,7 +408,4 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

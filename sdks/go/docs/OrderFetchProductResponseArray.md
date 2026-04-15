@@ -2,41 +2,41 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**OrderId** | **int32** |  | 
-**Transaction** | **int32** |  | 
-**OrderCode** | **string** |  | 
-**Customer** | **int32** |  | 
-**FirstName** | **string** |  | 
-**LastName** | **string** |  | 
-**CustomerName** | **string** |  | 
-**Phone** | **string** |  | 
-**Email** | **string** |  | 
-**ProductCode** | **string** |  | 
-**ProductId** | **int32** |  | 
-**ProductName** | **string** |  | 
-**Price** | **int32** |  | 
-**QuantitySold** | **int32** |  | 
-**Currency** | **string** |  | 
-**Quantity** | **int32** |  | 
-**VariantId** | **interface{}** |  | 
-**VariantPrice** | **interface{}** |  | 
-**VariantCode** | **interface{}** |  | 
-**Amount** | **int32** |  | 
-**ShippingMethod** | **interface{}** |  | 
-**Status** | **string** |  | 
-**ShippingAddress** | **interface{}** |  | 
-**Refunded** | **bool** |  | 
-**Shipping** | **interface{}** |  | 
-**PaidAt** | **string** |  | 
-**CreatedAt** | **string** |  | 
-**IsShipped** | **bool** |  | 
-**IsViewed** | **int32** |  | 
-**DeliveryNote** | **interface{}** |  | 
-**ShippingFee** | **interface{}** |  | 
-**AmountPaid** | **int32** |  | 
-**StorefrontSlug** | **string** |  | 
+| Name                | Type            | Description | Notes |
+| ------------------- | --------------- | ----------- | ----- |
+| **OrderId**         | **int32**       |             |
+| **Transaction**     | **int32**       |             |
+| **OrderCode**       | **string**      |             |
+| **Customer**        | **int32**       |             |
+| **FirstName**       | **string**      |             |
+| **LastName**        | **string**      |             |
+| **CustomerName**    | **string**      |             |
+| **Phone**           | **string**      |             |
+| **Email**           | **string**      |             |
+| **ProductCode**     | **string**      |             |
+| **ProductId**       | **int32**       |             |
+| **ProductName**     | **string**      |             |
+| **Price**           | **int32**       |             |
+| **QuantitySold**    | **int32**       |             |
+| **Currency**        | **string**      |             |
+| **Quantity**        | **int32**       |             |
+| **VariantId**       | **interface{}** |             |
+| **VariantPrice**    | **interface{}** |             |
+| **VariantCode**     | **interface{}** |             |
+| **Amount**          | **int32**       |             |
+| **ShippingMethod**  | **interface{}** |             |
+| **Status**          | **string**      |             |
+| **ShippingAddress** | **interface{}** |             |
+| **Refunded**        | **bool**        |             |
+| **Shipping**        | **interface{}** |             |
+| **PaidAt**          | **string**      |             |
+| **CreatedAt**       | **string**      |             |
+| **IsShipped**       | **bool**        |             |
+| **IsViewed**        | **int32**       |             |
+| **DeliveryNote**    | **interface{}** |             |
+| **ShippingFee**     | **interface{}** |             |
+| **AmountPaid**      | **int32**       |             |
+| **StorefrontSlug**  | **string**      |             |
 
 ## Methods
 
@@ -76,7 +76,6 @@ and a boolean to check if the value has been set.
 
 SetOrderId sets OrderId field to given value.
 
-
 ### GetTransaction
 
 `func (o *OrderFetchProductResponseArray) GetTransaction() int32`
@@ -95,7 +94,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchProductResponseArray) SetTransaction(v int32)`
 
 SetTransaction sets Transaction field to given value.
-
 
 ### GetOrderCode
 
@@ -116,7 +114,6 @@ and a boolean to check if the value has been set.
 
 SetOrderCode sets OrderCode field to given value.
 
-
 ### GetCustomer
 
 `func (o *OrderFetchProductResponseArray) GetCustomer() int32`
@@ -135,7 +132,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchProductResponseArray) SetCustomer(v int32)`
 
 SetCustomer sets Customer field to given value.
-
 
 ### GetFirstName
 
@@ -156,7 +152,6 @@ and a boolean to check if the value has been set.
 
 SetFirstName sets FirstName field to given value.
 
-
 ### GetLastName
 
 `func (o *OrderFetchProductResponseArray) GetLastName() string`
@@ -175,7 +170,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchProductResponseArray) SetLastName(v string)`
 
 SetLastName sets LastName field to given value.
-
 
 ### GetCustomerName
 
@@ -196,7 +190,6 @@ and a boolean to check if the value has been set.
 
 SetCustomerName sets CustomerName field to given value.
 
-
 ### GetPhone
 
 `func (o *OrderFetchProductResponseArray) GetPhone() string`
@@ -215,7 +208,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchProductResponseArray) SetPhone(v string)`
 
 SetPhone sets Phone field to given value.
-
 
 ### GetEmail
 
@@ -236,7 +228,6 @@ and a boolean to check if the value has been set.
 
 SetEmail sets Email field to given value.
 
-
 ### GetProductCode
 
 `func (o *OrderFetchProductResponseArray) GetProductCode() string`
@@ -255,7 +246,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchProductResponseArray) SetProductCode(v string)`
 
 SetProductCode sets ProductCode field to given value.
-
 
 ### GetProductId
 
@@ -276,7 +266,6 @@ and a boolean to check if the value has been set.
 
 SetProductId sets ProductId field to given value.
 
-
 ### GetProductName
 
 `func (o *OrderFetchProductResponseArray) GetProductName() string`
@@ -295,7 +284,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchProductResponseArray) SetProductName(v string)`
 
 SetProductName sets ProductName field to given value.
-
 
 ### GetPrice
 
@@ -316,7 +304,6 @@ and a boolean to check if the value has been set.
 
 SetPrice sets Price field to given value.
 
-
 ### GetQuantitySold
 
 `func (o *OrderFetchProductResponseArray) GetQuantitySold() int32`
@@ -335,7 +322,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchProductResponseArray) SetQuantitySold(v int32)`
 
 SetQuantitySold sets QuantitySold field to given value.
-
 
 ### GetCurrency
 
@@ -356,7 +342,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetQuantity
 
 `func (o *OrderFetchProductResponseArray) GetQuantity() int32`
@@ -375,7 +360,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchProductResponseArray) SetQuantity(v int32)`
 
 SetQuantity sets Quantity field to given value.
-
 
 ### GetVariantId
 
@@ -396,17 +380,18 @@ and a boolean to check if the value has been set.
 
 SetVariantId sets VariantId field to given value.
 
-
 ### SetVariantIdNil
 
 `func (o *OrderFetchProductResponseArray) SetVariantIdNil(b bool)`
 
- SetVariantIdNil sets the value for VariantId to be an explicit nil
+SetVariantIdNil sets the value for VariantId to be an explicit nil
 
 ### UnsetVariantId
+
 `func (o *OrderFetchProductResponseArray) UnsetVariantId()`
 
 UnsetVariantId ensures that no value is present for VariantId, not even an explicit nil
+
 ### GetVariantPrice
 
 `func (o *OrderFetchProductResponseArray) GetVariantPrice() interface{}`
@@ -426,17 +411,18 @@ and a boolean to check if the value has been set.
 
 SetVariantPrice sets VariantPrice field to given value.
 
-
 ### SetVariantPriceNil
 
 `func (o *OrderFetchProductResponseArray) SetVariantPriceNil(b bool)`
 
- SetVariantPriceNil sets the value for VariantPrice to be an explicit nil
+SetVariantPriceNil sets the value for VariantPrice to be an explicit nil
 
 ### UnsetVariantPrice
+
 `func (o *OrderFetchProductResponseArray) UnsetVariantPrice()`
 
 UnsetVariantPrice ensures that no value is present for VariantPrice, not even an explicit nil
+
 ### GetVariantCode
 
 `func (o *OrderFetchProductResponseArray) GetVariantCode() interface{}`
@@ -456,17 +442,18 @@ and a boolean to check if the value has been set.
 
 SetVariantCode sets VariantCode field to given value.
 
-
 ### SetVariantCodeNil
 
 `func (o *OrderFetchProductResponseArray) SetVariantCodeNil(b bool)`
 
- SetVariantCodeNil sets the value for VariantCode to be an explicit nil
+SetVariantCodeNil sets the value for VariantCode to be an explicit nil
 
 ### UnsetVariantCode
+
 `func (o *OrderFetchProductResponseArray) UnsetVariantCode()`
 
 UnsetVariantCode ensures that no value is present for VariantCode, not even an explicit nil
+
 ### GetAmount
 
 `func (o *OrderFetchProductResponseArray) GetAmount() int32`
@@ -485,7 +472,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchProductResponseArray) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetShippingMethod
 
@@ -506,17 +492,18 @@ and a boolean to check if the value has been set.
 
 SetShippingMethod sets ShippingMethod field to given value.
 
-
 ### SetShippingMethodNil
 
 `func (o *OrderFetchProductResponseArray) SetShippingMethodNil(b bool)`
 
- SetShippingMethodNil sets the value for ShippingMethod to be an explicit nil
+SetShippingMethodNil sets the value for ShippingMethod to be an explicit nil
 
 ### UnsetShippingMethod
+
 `func (o *OrderFetchProductResponseArray) UnsetShippingMethod()`
 
 UnsetShippingMethod ensures that no value is present for ShippingMethod, not even an explicit nil
+
 ### GetStatus
 
 `func (o *OrderFetchProductResponseArray) GetStatus() string`
@@ -535,7 +522,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchProductResponseArray) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
-
 
 ### GetShippingAddress
 
@@ -556,17 +542,18 @@ and a boolean to check if the value has been set.
 
 SetShippingAddress sets ShippingAddress field to given value.
 
-
 ### SetShippingAddressNil
 
 `func (o *OrderFetchProductResponseArray) SetShippingAddressNil(b bool)`
 
- SetShippingAddressNil sets the value for ShippingAddress to be an explicit nil
+SetShippingAddressNil sets the value for ShippingAddress to be an explicit nil
 
 ### UnsetShippingAddress
+
 `func (o *OrderFetchProductResponseArray) UnsetShippingAddress()`
 
 UnsetShippingAddress ensures that no value is present for ShippingAddress, not even an explicit nil
+
 ### GetRefunded
 
 `func (o *OrderFetchProductResponseArray) GetRefunded() bool`
@@ -585,7 +572,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchProductResponseArray) SetRefunded(v bool)`
 
 SetRefunded sets Refunded field to given value.
-
 
 ### GetShipping
 
@@ -606,17 +592,18 @@ and a boolean to check if the value has been set.
 
 SetShipping sets Shipping field to given value.
 
-
 ### SetShippingNil
 
 `func (o *OrderFetchProductResponseArray) SetShippingNil(b bool)`
 
- SetShippingNil sets the value for Shipping to be an explicit nil
+SetShippingNil sets the value for Shipping to be an explicit nil
 
 ### UnsetShipping
+
 `func (o *OrderFetchProductResponseArray) UnsetShipping()`
 
 UnsetShipping ensures that no value is present for Shipping, not even an explicit nil
+
 ### GetPaidAt
 
 `func (o *OrderFetchProductResponseArray) GetPaidAt() string`
@@ -635,7 +622,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchProductResponseArray) SetPaidAt(v string)`
 
 SetPaidAt sets PaidAt field to given value.
-
 
 ### GetCreatedAt
 
@@ -656,7 +642,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-
 ### GetIsShipped
 
 `func (o *OrderFetchProductResponseArray) GetIsShipped() bool`
@@ -675,7 +660,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchProductResponseArray) SetIsShipped(v bool)`
 
 SetIsShipped sets IsShipped field to given value.
-
 
 ### GetIsViewed
 
@@ -696,7 +680,6 @@ and a boolean to check if the value has been set.
 
 SetIsViewed sets IsViewed field to given value.
 
-
 ### GetDeliveryNote
 
 `func (o *OrderFetchProductResponseArray) GetDeliveryNote() interface{}`
@@ -716,17 +699,18 @@ and a boolean to check if the value has been set.
 
 SetDeliveryNote sets DeliveryNote field to given value.
 
-
 ### SetDeliveryNoteNil
 
 `func (o *OrderFetchProductResponseArray) SetDeliveryNoteNil(b bool)`
 
- SetDeliveryNoteNil sets the value for DeliveryNote to be an explicit nil
+SetDeliveryNoteNil sets the value for DeliveryNote to be an explicit nil
 
 ### UnsetDeliveryNote
+
 `func (o *OrderFetchProductResponseArray) UnsetDeliveryNote()`
 
 UnsetDeliveryNote ensures that no value is present for DeliveryNote, not even an explicit nil
+
 ### GetShippingFee
 
 `func (o *OrderFetchProductResponseArray) GetShippingFee() interface{}`
@@ -746,17 +730,18 @@ and a boolean to check if the value has been set.
 
 SetShippingFee sets ShippingFee field to given value.
 
-
 ### SetShippingFeeNil
 
 `func (o *OrderFetchProductResponseArray) SetShippingFeeNil(b bool)`
 
- SetShippingFeeNil sets the value for ShippingFee to be an explicit nil
+SetShippingFeeNil sets the value for ShippingFee to be an explicit nil
 
 ### UnsetShippingFee
+
 `func (o *OrderFetchProductResponseArray) UnsetShippingFee()`
 
 UnsetShippingFee ensures that no value is present for ShippingFee, not even an explicit nil
+
 ### GetAmountPaid
 
 `func (o *OrderFetchProductResponseArray) GetAmountPaid() int32`
@@ -775,7 +760,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchProductResponseArray) SetAmountPaid(v int32)`
 
 SetAmountPaid sets AmountPaid field to given value.
-
 
 ### GetStorefrontSlug
 
@@ -796,8 +780,4 @@ and a boolean to check if the value has been set.
 
 SetStorefrontSlug sets StorefrontSlug field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,9 +2,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Products** | **[]int32** | A list of IDs of products to add to a page. | 
+| Name         | Type        | Description                                 | Notes |
+| ------------ | ----------- | ------------------------------------------- | ----- |
+| **Products** | **[]int32** | A list of IDs of products to add to a page. |
 
 ## Methods
 
@@ -44,8 +44,4 @@ and a boolean to check if the value has been set.
 
 SetProducts sets Products field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

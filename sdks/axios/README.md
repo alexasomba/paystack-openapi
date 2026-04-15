@@ -107,7 +107,7 @@ const paystack = createPaystack({
   retry: {
     retries: 3,
     retryOnStatuses: [408, 429, 503],
-  }
+  },
 });
 ```
 
@@ -118,7 +118,9 @@ The SDK provides utilities for robust error management:
 ```ts
 import { toPaystackApiError, PaystackApiError } from "@alexasomba/paystack-axios";
 
-const result = await paystack.transaction_initialize({ /* ... */ });
+const result = await paystack.transaction_initialize({
+  /* ... */
+});
 const error = toPaystackApiError(result);
 
 if (error) {

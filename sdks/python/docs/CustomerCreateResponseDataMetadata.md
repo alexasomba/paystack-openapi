@@ -1,10 +1,10 @@
 # CustomerCreateResponseDataMetadata
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**calling_code** | **str** |  | [optional] 
+
+| Name             | Type    | Description | Notes      |
+| ---------------- | ------- | ----------- | ---------- |
+| **calling_code** | **str** |             | [optional] |
 
 ## Example
 
@@ -23,6 +23,5 @@ customer_create_response_data_metadata_dict = customer_create_response_data_meta
 # create an instance of CustomerCreateResponseDataMetadata from a dict
 customer_create_response_data_metadata_form_dict = customer_create_response_data_metadata.from_dict(customer_create_response_data_metadata_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

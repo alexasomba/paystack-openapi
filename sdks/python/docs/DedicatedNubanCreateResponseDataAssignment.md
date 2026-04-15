@@ -1,16 +1,16 @@
 # DedicatedNubanCreateResponseDataAssignment
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**integration** | **int** |  | 
-**assignee_id** | **int** |  | 
-**assignee_type** | **str** |  | 
-**expired** | **bool** |  | 
-**account_type** | **str** |  | 
-**assigned_at** | **str** |  | 
-**expired_at** | **object** |  | 
+
+| Name              | Type       | Description | Notes |
+| ----------------- | ---------- | ----------- | ----- |
+| **integration**   | **int**    |             |
+| **assignee_id**   | **int**    |             |
+| **assignee_type** | **str**    |             |
+| **expired**       | **bool**   |             |
+| **account_type**  | **str**    |             |
+| **assigned_at**   | **str**    |             |
+| **expired_at**    | **object** |             |
 
 ## Example
 
@@ -29,6 +29,5 @@ dedicated_nuban_create_response_data_assignment_dict = dedicated_nuban_create_re
 # create an instance of DedicatedNubanCreateResponseDataAssignment from a dict
 dedicated_nuban_create_response_data_assignment_form_dict = dedicated_nuban_create_response_data_assignment.from_dict(dedicated_nuban_create_response_data_assignment_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

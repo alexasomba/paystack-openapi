@@ -9,14 +9,22 @@ properties:
     description: Customer's email address
     type: string
   amount:
-    description: Specified in the lowest denomination of your currency
-    type: integer
+    description: >
+      Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES).
+      For XOF, the amount is the same as the base units (not multiplied by 100).
+    oneOf:
+      - type: integer
+      - type: string
     format: int64
   authorization_code:
     description: Valid authorization code to charge
     type: string
   currency:
-    $ref: ./Currency.yaml
+    description: Specified as NGN or GHS
+    type: string
+    enum:
+      - NGN
+      - GHS
   at_least:
     description: Minimum amount to charge
     type: string
@@ -29,4 +37,4 @@ example:
   email: tap@email.com
   amount: 40510
   authorization_code: AUTH_df1l5ehnym
-  currency: ZAR
+  currency: NGN

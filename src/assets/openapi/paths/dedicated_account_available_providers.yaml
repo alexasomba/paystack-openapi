@@ -5,11 +5,11 @@ get:
   operationId: dedicatedAccount_availableProviders
   description: Get available bank providers for a dedicated virtual account
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/Ok.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

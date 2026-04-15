@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Source** | **string** |  | 
-**Type** | **string** |  | 
-**Identifier** | **interface{}** |  | 
-**EntryPoint** | **string** |  | 
+| Name           | Type            | Description | Notes |
+| -------------- | --------------- | ----------- | ----- |
+| **Source**     | **string**      |             |
+| **Type**       | **string**      |             |
+| **Identifier** | **interface{}** |             |
+| **EntryPoint** | **string**      |             |
 
 ## Methods
 
@@ -47,7 +47,6 @@ and a boolean to check if the value has been set.
 
 SetSource sets Source field to given value.
 
-
 ### GetType
 
 `func (o *TransactionListResponseArraySource) GetType() string`
@@ -66,7 +65,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionListResponseArraySource) SetType(v string)`
 
 SetType sets Type field to given value.
-
 
 ### GetIdentifier
 
@@ -87,17 +85,18 @@ and a boolean to check if the value has been set.
 
 SetIdentifier sets Identifier field to given value.
 
-
 ### SetIdentifierNil
 
 `func (o *TransactionListResponseArraySource) SetIdentifierNil(b bool)`
 
- SetIdentifierNil sets the value for Identifier to be an explicit nil
+SetIdentifierNil sets the value for Identifier to be an explicit nil
 
 ### UnsetIdentifier
+
 `func (o *TransactionListResponseArraySource) UnsetIdentifier()`
 
 UnsetIdentifier ensures that no value is present for Identifier, not even an explicit nil
+
 ### GetEntryPoint
 
 `func (o *TransactionListResponseArraySource) GetEntryPoint() string`
@@ -117,8 +116,4 @@ and a boolean to check if the value has been set.
 
 SetEntryPoint sets EntryPoint field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

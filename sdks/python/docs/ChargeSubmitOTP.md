@@ -1,11 +1,11 @@
 # ChargeSubmitOTP
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**otp** | **str** | Customer&#39;s OTP for ongoing transaction | 
-**reference** | **str** | The reference of the ongoing transaction | 
+
+| Name          | Type    | Description                                | Notes |
+| ------------- | ------- | ------------------------------------------ | ----- |
+| **otp**       | **str** | Customer&#39;s OTP for ongoing transaction |
+| **reference** | **str** | The reference of the ongoing transaction   |
 
 ## Example
 
@@ -24,6 +24,5 @@ charge_submit_otp_dict = charge_submit_otp_instance.to_dict()
 # create an instance of ChargeSubmitOTP from a dict
 charge_submit_otp_form_dict = charge_submit_otp.from_dict(charge_submit_otp_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

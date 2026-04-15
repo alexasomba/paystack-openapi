@@ -3,9 +3,10 @@
 Details of the EFT provider
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**provider** | **str** | The EFT provider | [optional] 
+
+| Name         | Type    | Description      | Notes      |
+| ------------ | ------- | ---------------- | ---------- |
+| **provider** | **str** | The EFT provider | [optional] |
 
 ## Example
 
@@ -24,6 +25,5 @@ eft_dict = eft_instance.to_dict()
 # create an instance of EFT from a dict
 eft_form_dict = eft.from_dict(eft_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -6,35 +6,23 @@ properties:
     type: string
   slug:
     type: string
-  orders_count:
-    type: integer
+  description:
+    type: string
+    nullable: true
   status:
     type: string
-  revenue:
-    nullable: true
   currency:
     type: string
-  products:
-    type: array
-    items: {}
-  contacts:
-    type: array
-    items: {}
-  social_media:
-    type: array
-    items: {}
-  shipping_fees:
-    type: array
-    items: {}
+  createdAt:
+    type: string
+  updatedAt:
+    type: string
 required:
   - id
   - name
   - slug
-  - orders_count
+  - description
   - status
-  - revenue
   - currency
-  - products
-  - contacts
-  - social_media
-  - shipping_fees
+  - createdAt
+  - updatedAt

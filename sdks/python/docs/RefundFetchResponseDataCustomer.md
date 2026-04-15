@@ -1,18 +1,18 @@
 # RefundFetchResponseDataCustomer
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **int** |  | 
-**first_name** | **str** |  | 
-**last_name** | **str** |  | 
-**email** | **str** |  | 
-**customer_code** | **str** |  | 
-**phone** | **str** |  | 
-**metadata** | **str** |  | 
-**risk_action** | **str** |  | 
-**international_format_phone** | **str** |  | 
+
+| Name                           | Type    | Description | Notes |
+| ------------------------------ | ------- | ----------- | ----- |
+| **id**                         | **int** |             |
+| **first_name**                 | **str** |             |
+| **last_name**                  | **str** |             |
+| **email**                      | **str** |             |
+| **customer_code**              | **str** |             |
+| **phone**                      | **str** |             |
+| **metadata**                   | **str** |             |
+| **risk_action**                | **str** |             |
+| **international_format_phone** | **str** |             |
 
 ## Example
 
@@ -31,6 +31,5 @@ refund_fetch_response_data_customer_dict = refund_fetch_response_data_customer_i
 # create an instance of RefundFetchResponseDataCustomer from a dict
 refund_fetch_response_data_customer_form_dict = refund_fetch_response_data_customer.from_dict(refund_fetch_response_data_customer_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

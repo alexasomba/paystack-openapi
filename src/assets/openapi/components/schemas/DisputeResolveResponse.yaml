@@ -11,12 +11,16 @@ properties:
         type: string
       last4:
         type: string
+        nullable: true
       bin:
         type: string
+        nullable: true
       transaction_reference:
+        type: string
         nullable: true
       merchant_transaction_reference:
         type: string
+        nullable: true
       refund_amount:
         type: integer
       status:
@@ -36,11 +40,12 @@ properties:
       integration:
         type: integer
       transaction:
-        type: integer
+        type: object
       created_by:
         type: integer
       evidence:
         type: integer
+        nullable: true
       resolvedAt:
         type: string
       createdAt:
@@ -75,24 +80,20 @@ properties:
       - currency
       - last4
       - bin
-      - transaction_reference
       - merchant_transaction_reference
       - refund_amount
       - status
       - domain
       - resolution
       - category
-      - note
       - attachments
       - id
-      - integration
       - transaction
       - created_by
       - evidence
       - resolvedAt
       - createdAt
       - updatedAt
-      - dueAt
       - message
 required:
   - status

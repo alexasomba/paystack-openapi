@@ -1,15 +1,15 @@
 # TransferBulkResponseArray
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**reference** | **str** |  | 
-**recipient** | **str** |  | 
-**amount** | **int** |  | 
-**transfer_code** | **str** |  | 
-**currency** | **str** |  | 
-**status** | **str** |  | 
+
+| Name              | Type    | Description | Notes |
+| ----------------- | ------- | ----------- | ----- |
+| **reference**     | **str** |             |
+| **recipient**     | **str** |             |
+| **amount**        | **int** |             |
+| **transfer_code** | **str** |             |
+| **currency**      | **str** |             |
+| **status**        | **str** |             |
 
 ## Example
 
@@ -28,6 +28,5 @@ transfer_bulk_response_array_dict = transfer_bulk_response_array_instance.to_dic
 # create an instance of TransferBulkResponseArray from a dict
 transfer_bulk_response_array_form_dict = transfer_bulk_response_array.from_dict(transfer_bulk_response_array_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,36 +2,36 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**VariantsOptions** | **[]interface{}** |  | 
-**Variants** | **[]interface{}** |  | 
-**Name** | **string** |  | 
-**Description** | **string** |  | 
-**Currency** | **string** |  | 
-**Price** | **int32** |  | 
-**Quantity** | **int32** |  | 
-**Type** | **string** |  | 
-**IsShippable** | **bool** |  | 
-**Unlimited** | **bool** |  | 
-**Files** | **[]interface{}** |  | 
-**ShippingFields** | [**ProductListsResponseArrayShippingFields**](ProductListsResponseArrayShippingFields.md) |  | 
-**Integration** | **int32** |  | 
-**Domain** | **string** |  | 
-**Metadata** | [**ProductListsResponseArrayMetadata**](ProductListsResponseArrayMetadata.md) |  | 
-**Slug** | **string** |  | 
-**ProductCode** | **string** |  | 
-**QuantitySold** | **int32** |  | 
-**Active** | **bool** |  | 
-**DeletedAt** | **interface{}** |  | 
-**InStock** | **bool** |  | 
-**MinimumOrderable** | **int32** |  | 
-**MaximumOrderable** | **NullableInt32** |  | 
-**RedirectUrl** | Pointer to **NullableString** |  | [optional] 
-**LowStockAlert** | **bool** |  | 
-**Id** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name                 | Type                                                                                      | Description | Notes      |
+| -------------------- | ----------------------------------------------------------------------------------------- | ----------- | ---------- |
+| **VariantsOptions**  | **[]interface{}**                                                                         |             |
+| **Variants**         | **[]interface{}**                                                                         |             |
+| **Name**             | **string**                                                                                |             |
+| **Description**      | **string**                                                                                |             |
+| **Currency**         | **string**                                                                                |             |
+| **Price**            | **int32**                                                                                 |             |
+| **Quantity**         | **int32**                                                                                 |             |
+| **Type**             | **string**                                                                                |             |
+| **IsShippable**      | **bool**                                                                                  |             |
+| **Unlimited**        | **bool**                                                                                  |             |
+| **Files**            | **[]interface{}**                                                                         |             |
+| **ShippingFields**   | [**ProductListsResponseArrayShippingFields**](ProductListsResponseArrayShippingFields.md) |             |
+| **Integration**      | **int32**                                                                                 |             |
+| **Domain**           | **string**                                                                                |             |
+| **Metadata**         | [**ProductListsResponseArrayMetadata**](ProductListsResponseArrayMetadata.md)             |             |
+| **Slug**             | **string**                                                                                |             |
+| **ProductCode**      | **string**                                                                                |             |
+| **QuantitySold**     | **int32**                                                                                 |             |
+| **Active**           | **bool**                                                                                  |             |
+| **DeletedAt**        | **interface{}**                                                                           |             |
+| **InStock**          | **bool**                                                                                  |             |
+| **MinimumOrderable** | **int32**                                                                                 |             |
+| **MaximumOrderable** | **NullableInt32**                                                                         |             |
+| **RedirectUrl**      | Pointer to **NullableString**                                                             |             | [optional] |
+| **LowStockAlert**    | **bool**                                                                                  |             |
+| **Id**               | **int32**                                                                                 |             |
+| **CreatedAt**        | **string**                                                                                |             |
+| **UpdatedAt**        | **string**                                                                                |             |
 
 ## Methods
 
@@ -71,7 +71,6 @@ and a boolean to check if the value has been set.
 
 SetVariantsOptions sets VariantsOptions field to given value.
 
-
 ### GetVariants
 
 `func (o *ProductCreateResponseData) GetVariants() []interface{}`
@@ -90,7 +89,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductCreateResponseData) SetVariants(v []interface{})`
 
 SetVariants sets Variants field to given value.
-
 
 ### GetName
 
@@ -111,7 +109,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetDescription
 
 `func (o *ProductCreateResponseData) GetDescription() string`
@@ -130,7 +127,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductCreateResponseData) SetDescription(v string)`
 
 SetDescription sets Description field to given value.
-
 
 ### GetCurrency
 
@@ -151,7 +147,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetPrice
 
 `func (o *ProductCreateResponseData) GetPrice() int32`
@@ -170,7 +165,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductCreateResponseData) SetPrice(v int32)`
 
 SetPrice sets Price field to given value.
-
 
 ### GetQuantity
 
@@ -191,7 +185,6 @@ and a boolean to check if the value has been set.
 
 SetQuantity sets Quantity field to given value.
 
-
 ### GetType
 
 `func (o *ProductCreateResponseData) GetType() string`
@@ -210,7 +203,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductCreateResponseData) SetType(v string)`
 
 SetType sets Type field to given value.
-
 
 ### GetIsShippable
 
@@ -231,7 +223,6 @@ and a boolean to check if the value has been set.
 
 SetIsShippable sets IsShippable field to given value.
 
-
 ### GetUnlimited
 
 `func (o *ProductCreateResponseData) GetUnlimited() bool`
@@ -250,7 +241,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductCreateResponseData) SetUnlimited(v bool)`
 
 SetUnlimited sets Unlimited field to given value.
-
 
 ### GetFiles
 
@@ -271,7 +261,6 @@ and a boolean to check if the value has been set.
 
 SetFiles sets Files field to given value.
 
-
 ### GetShippingFields
 
 `func (o *ProductCreateResponseData) GetShippingFields() ProductListsResponseArrayShippingFields`
@@ -290,7 +279,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductCreateResponseData) SetShippingFields(v ProductListsResponseArrayShippingFields)`
 
 SetShippingFields sets ShippingFields field to given value.
-
 
 ### GetIntegration
 
@@ -311,7 +299,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetDomain
 
 `func (o *ProductCreateResponseData) GetDomain() string`
@@ -330,7 +317,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductCreateResponseData) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetMetadata
 
@@ -351,7 +337,6 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
-
 ### GetSlug
 
 `func (o *ProductCreateResponseData) GetSlug() string`
@@ -370,7 +355,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductCreateResponseData) SetSlug(v string)`
 
 SetSlug sets Slug field to given value.
-
 
 ### GetProductCode
 
@@ -391,7 +375,6 @@ and a boolean to check if the value has been set.
 
 SetProductCode sets ProductCode field to given value.
 
-
 ### GetQuantitySold
 
 `func (o *ProductCreateResponseData) GetQuantitySold() int32`
@@ -410,7 +393,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductCreateResponseData) SetQuantitySold(v int32)`
 
 SetQuantitySold sets QuantitySold field to given value.
-
 
 ### GetActive
 
@@ -431,7 +413,6 @@ and a boolean to check if the value has been set.
 
 SetActive sets Active field to given value.
 
-
 ### GetDeletedAt
 
 `func (o *ProductCreateResponseData) GetDeletedAt() interface{}`
@@ -451,17 +432,18 @@ and a boolean to check if the value has been set.
 
 SetDeletedAt sets DeletedAt field to given value.
 
-
 ### SetDeletedAtNil
 
 `func (o *ProductCreateResponseData) SetDeletedAtNil(b bool)`
 
- SetDeletedAtNil sets the value for DeletedAt to be an explicit nil
+SetDeletedAtNil sets the value for DeletedAt to be an explicit nil
 
 ### UnsetDeletedAt
+
 `func (o *ProductCreateResponseData) UnsetDeletedAt()`
 
 UnsetDeletedAt ensures that no value is present for DeletedAt, not even an explicit nil
+
 ### GetInStock
 
 `func (o *ProductCreateResponseData) GetInStock() bool`
@@ -480,7 +462,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductCreateResponseData) SetInStock(v bool)`
 
 SetInStock sets InStock field to given value.
-
 
 ### GetMinimumOrderable
 
@@ -501,7 +482,6 @@ and a boolean to check if the value has been set.
 
 SetMinimumOrderable sets MinimumOrderable field to given value.
 
-
 ### GetMaximumOrderable
 
 `func (o *ProductCreateResponseData) GetMaximumOrderable() int32`
@@ -521,17 +501,18 @@ and a boolean to check if the value has been set.
 
 SetMaximumOrderable sets MaximumOrderable field to given value.
 
-
 ### SetMaximumOrderableNil
 
 `func (o *ProductCreateResponseData) SetMaximumOrderableNil(b bool)`
 
- SetMaximumOrderableNil sets the value for MaximumOrderable to be an explicit nil
+SetMaximumOrderableNil sets the value for MaximumOrderable to be an explicit nil
 
 ### UnsetMaximumOrderable
+
 `func (o *ProductCreateResponseData) UnsetMaximumOrderable()`
 
 UnsetMaximumOrderable ensures that no value is present for MaximumOrderable, not even an explicit nil
+
 ### GetRedirectUrl
 
 `func (o *ProductCreateResponseData) GetRedirectUrl() string`
@@ -561,12 +542,14 @@ HasRedirectUrl returns a boolean if a field has been set.
 
 `func (o *ProductCreateResponseData) SetRedirectUrlNil(b bool)`
 
- SetRedirectUrlNil sets the value for RedirectUrl to be an explicit nil
+SetRedirectUrlNil sets the value for RedirectUrl to be an explicit nil
 
 ### UnsetRedirectUrl
+
 `func (o *ProductCreateResponseData) UnsetRedirectUrl()`
 
 UnsetRedirectUrl ensures that no value is present for RedirectUrl, not even an explicit nil
+
 ### GetLowStockAlert
 
 `func (o *ProductCreateResponseData) GetLowStockAlert() bool`
@@ -585,7 +568,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductCreateResponseData) SetLowStockAlert(v bool)`
 
 SetLowStockAlert sets LowStockAlert field to given value.
-
 
 ### GetId
 
@@ -606,7 +588,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *ProductCreateResponseData) GetCreatedAt() string`
@@ -625,7 +606,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductCreateResponseData) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -646,8 +626,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

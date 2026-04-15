@@ -2,30 +2,30 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**SocialMedia** | **[]interface{}** |  | 
-**Contacts** | [**[]StorefrontContactsArray**](StorefrontContactsArray.md) |  | 
-**Name** | **string** |  | 
-**Slug** | **string** |  | 
-**Currency** | **string** |  | 
-**WelcomeMessage** | **interface{}** |  | 
-**SuccessMessage** | **interface{}** |  | 
-**RedirectUrl** | **interface{}** |  | 
-**Description** | **interface{}** |  | 
-**DeliveryNote** | **string** |  | 
-**BackgroundColor** | **string** |  | 
-**Status** | **string** |  | 
-**Shippable** | **bool** |  | 
-**Integration** | **int32** |  | 
-**Domain** | **string** |  | 
-**DigitalProductExpiry** | **interface{}** |  | 
-**Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
-**Id** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
-**Products** | **[]interface{}** |  | 
-**ShippingFees** | **[]interface{}** |  | 
+| Name                     | Type                                                        | Description | Notes      |
+| ------------------------ | ----------------------------------------------------------- | ----------- | ---------- |
+| **SocialMedia**          | **[]interface{}**                                           |             |
+| **Contacts**             | [**[]StorefrontContactsArray**](StorefrontContactsArray.md) |             |
+| **Name**                 | **string**                                                  |             |
+| **Slug**                 | **string**                                                  |             |
+| **Currency**             | **string**                                                  |             |
+| **WelcomeMessage**       | **interface{}**                                             |             |
+| **SuccessMessage**       | **interface{}**                                             |             |
+| **RedirectUrl**          | **interface{}**                                             |             |
+| **Description**          | **interface{}**                                             |             |
+| **DeliveryNote**         | **string**                                                  |             |
+| **BackgroundColor**      | **string**                                                  |             |
+| **Status**               | **string**                                                  |             |
+| **Shippable**            | **bool**                                                    |             |
+| **Integration**          | **int32**                                                   |             |
+| **Domain**               | **string**                                                  |             |
+| **DigitalProductExpiry** | **interface{}**                                             |             |
+| **Metadata**             | Pointer to **map[string]interface{}**                       |             | [optional] |
+| **Id**                   | **int32**                                                   |             |
+| **CreatedAt**            | **string**                                                  |             |
+| **UpdatedAt**            | **string**                                                  |             |
+| **Products**             | **[]interface{}**                                           |             |
+| **ShippingFees**         | **[]interface{}**                                           |             |
 
 ## Methods
 
@@ -65,7 +65,6 @@ and a boolean to check if the value has been set.
 
 SetSocialMedia sets SocialMedia field to given value.
 
-
 ### GetContacts
 
 `func (o *StorefrontCreateResponseData) GetContacts() []StorefrontContactsArray`
@@ -84,7 +83,6 @@ and a boolean to check if the value has been set.
 `func (o *StorefrontCreateResponseData) SetContacts(v []StorefrontContactsArray)`
 
 SetContacts sets Contacts field to given value.
-
 
 ### GetName
 
@@ -105,7 +103,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetSlug
 
 `func (o *StorefrontCreateResponseData) GetSlug() string`
@@ -124,7 +121,6 @@ and a boolean to check if the value has been set.
 `func (o *StorefrontCreateResponseData) SetSlug(v string)`
 
 SetSlug sets Slug field to given value.
-
 
 ### GetCurrency
 
@@ -145,7 +141,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetWelcomeMessage
 
 `func (o *StorefrontCreateResponseData) GetWelcomeMessage() interface{}`
@@ -165,17 +160,18 @@ and a boolean to check if the value has been set.
 
 SetWelcomeMessage sets WelcomeMessage field to given value.
 
-
 ### SetWelcomeMessageNil
 
 `func (o *StorefrontCreateResponseData) SetWelcomeMessageNil(b bool)`
 
- SetWelcomeMessageNil sets the value for WelcomeMessage to be an explicit nil
+SetWelcomeMessageNil sets the value for WelcomeMessage to be an explicit nil
 
 ### UnsetWelcomeMessage
+
 `func (o *StorefrontCreateResponseData) UnsetWelcomeMessage()`
 
 UnsetWelcomeMessage ensures that no value is present for WelcomeMessage, not even an explicit nil
+
 ### GetSuccessMessage
 
 `func (o *StorefrontCreateResponseData) GetSuccessMessage() interface{}`
@@ -195,17 +191,18 @@ and a boolean to check if the value has been set.
 
 SetSuccessMessage sets SuccessMessage field to given value.
 
-
 ### SetSuccessMessageNil
 
 `func (o *StorefrontCreateResponseData) SetSuccessMessageNil(b bool)`
 
- SetSuccessMessageNil sets the value for SuccessMessage to be an explicit nil
+SetSuccessMessageNil sets the value for SuccessMessage to be an explicit nil
 
 ### UnsetSuccessMessage
+
 `func (o *StorefrontCreateResponseData) UnsetSuccessMessage()`
 
 UnsetSuccessMessage ensures that no value is present for SuccessMessage, not even an explicit nil
+
 ### GetRedirectUrl
 
 `func (o *StorefrontCreateResponseData) GetRedirectUrl() interface{}`
@@ -225,17 +222,18 @@ and a boolean to check if the value has been set.
 
 SetRedirectUrl sets RedirectUrl field to given value.
 
-
 ### SetRedirectUrlNil
 
 `func (o *StorefrontCreateResponseData) SetRedirectUrlNil(b bool)`
 
- SetRedirectUrlNil sets the value for RedirectUrl to be an explicit nil
+SetRedirectUrlNil sets the value for RedirectUrl to be an explicit nil
 
 ### UnsetRedirectUrl
+
 `func (o *StorefrontCreateResponseData) UnsetRedirectUrl()`
 
 UnsetRedirectUrl ensures that no value is present for RedirectUrl, not even an explicit nil
+
 ### GetDescription
 
 `func (o *StorefrontCreateResponseData) GetDescription() interface{}`
@@ -255,17 +253,18 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
-
 ### SetDescriptionNil
 
 `func (o *StorefrontCreateResponseData) SetDescriptionNil(b bool)`
 
- SetDescriptionNil sets the value for Description to be an explicit nil
+SetDescriptionNil sets the value for Description to be an explicit nil
 
 ### UnsetDescription
+
 `func (o *StorefrontCreateResponseData) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
+
 ### GetDeliveryNote
 
 `func (o *StorefrontCreateResponseData) GetDeliveryNote() string`
@@ -284,7 +283,6 @@ and a boolean to check if the value has been set.
 `func (o *StorefrontCreateResponseData) SetDeliveryNote(v string)`
 
 SetDeliveryNote sets DeliveryNote field to given value.
-
 
 ### GetBackgroundColor
 
@@ -305,7 +303,6 @@ and a boolean to check if the value has been set.
 
 SetBackgroundColor sets BackgroundColor field to given value.
 
-
 ### GetStatus
 
 `func (o *StorefrontCreateResponseData) GetStatus() string`
@@ -324,7 +321,6 @@ and a boolean to check if the value has been set.
 `func (o *StorefrontCreateResponseData) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
-
 
 ### GetShippable
 
@@ -345,7 +341,6 @@ and a boolean to check if the value has been set.
 
 SetShippable sets Shippable field to given value.
 
-
 ### GetIntegration
 
 `func (o *StorefrontCreateResponseData) GetIntegration() int32`
@@ -364,7 +359,6 @@ and a boolean to check if the value has been set.
 `func (o *StorefrontCreateResponseData) SetIntegration(v int32)`
 
 SetIntegration sets Integration field to given value.
-
 
 ### GetDomain
 
@@ -385,7 +379,6 @@ and a boolean to check if the value has been set.
 
 SetDomain sets Domain field to given value.
 
-
 ### GetDigitalProductExpiry
 
 `func (o *StorefrontCreateResponseData) GetDigitalProductExpiry() interface{}`
@@ -405,17 +398,18 @@ and a boolean to check if the value has been set.
 
 SetDigitalProductExpiry sets DigitalProductExpiry field to given value.
 
-
 ### SetDigitalProductExpiryNil
 
 `func (o *StorefrontCreateResponseData) SetDigitalProductExpiryNil(b bool)`
 
- SetDigitalProductExpiryNil sets the value for DigitalProductExpiry to be an explicit nil
+SetDigitalProductExpiryNil sets the value for DigitalProductExpiry to be an explicit nil
 
 ### UnsetDigitalProductExpiry
+
 `func (o *StorefrontCreateResponseData) UnsetDigitalProductExpiry()`
 
 UnsetDigitalProductExpiry ensures that no value is present for DigitalProductExpiry, not even an explicit nil
+
 ### GetMetadata
 
 `func (o *StorefrontCreateResponseData) GetMetadata() map[string]interface{}`
@@ -445,12 +439,14 @@ HasMetadata returns a boolean if a field has been set.
 
 `func (o *StorefrontCreateResponseData) SetMetadataNil(b bool)`
 
- SetMetadataNil sets the value for Metadata to be an explicit nil
+SetMetadataNil sets the value for Metadata to be an explicit nil
 
 ### UnsetMetadata
+
 `func (o *StorefrontCreateResponseData) UnsetMetadata()`
 
 UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
+
 ### GetId
 
 `func (o *StorefrontCreateResponseData) GetId() int32`
@@ -469,7 +465,6 @@ and a boolean to check if the value has been set.
 `func (o *StorefrontCreateResponseData) SetId(v int32)`
 
 SetId sets Id field to given value.
-
 
 ### GetCreatedAt
 
@@ -490,7 +485,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-
 ### GetUpdatedAt
 
 `func (o *StorefrontCreateResponseData) GetUpdatedAt() string`
@@ -509,7 +503,6 @@ and a boolean to check if the value has been set.
 `func (o *StorefrontCreateResponseData) SetUpdatedAt(v string)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
-
 
 ### GetProducts
 
@@ -530,7 +523,6 @@ and a boolean to check if the value has been set.
 
 SetProducts sets Products field to given value.
 
-
 ### GetShippingFees
 
 `func (o *StorefrontCreateResponseData) GetShippingFees() []interface{}`
@@ -550,8 +542,4 @@ and a boolean to check if the value has been set.
 
 SetShippingFees sets ShippingFees field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

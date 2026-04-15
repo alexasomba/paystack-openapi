@@ -13,9 +13,9 @@ post:
         schema:
           $ref: ../components/schemas/OrderCreate.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/OrderCreateSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error
@@ -49,11 +49,11 @@ get:
         format: date-time
       description: The end date
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/OrderListSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

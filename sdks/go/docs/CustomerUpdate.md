@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**FirstName** | Pointer to **string** | Customer&#39;s first name | [optional] 
-**LastName** | Pointer to **string** | Customer&#39;s last name | [optional] 
-**Phone** | Pointer to **string** | Customer&#39;s phone number | [optional] 
-**Metadata** | Pointer to **string** | Stringified JSON object of custom data | [optional] 
+| Name          | Type                  | Description                            | Notes      |
+| ------------- | --------------------- | -------------------------------------- | ---------- |
+| **FirstName** | Pointer to **string** | Customer&#39;s first name              | [optional] |
+| **LastName**  | Pointer to **string** | Customer&#39;s last name               | [optional] |
+| **Phone**     | Pointer to **string** | Customer&#39;s phone number            | [optional] |
+| **Metadata**  | Pointer to **string** | Stringified JSON object of custom data | [optional] |
 
 ## Methods
 
@@ -128,7 +128,4 @@ SetMetadata sets Metadata field to given value.
 
 HasMetadata returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -1,13 +1,13 @@
 # OrderValidateResponseDataIntegration
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**key** | **str** |  | 
-**name** | **str** |  | 
-**logo** | **str** |  | 
-**allowed_currencies** | **List[object]** |  | 
+
+| Name                   | Type             | Description | Notes |
+| ---------------------- | ---------------- | ----------- | ----- |
+| **key**                | **str**          |             |
+| **name**               | **str**          |             |
+| **logo**               | **str**          |             |
+| **allowed_currencies** | **List[object]** |             |
 
 ## Example
 
@@ -26,6 +26,5 @@ order_validate_response_data_integration_dict = order_validate_response_data_int
 # create an instance of OrderValidateResponseDataIntegration from a dict
 order_validate_response_data_integration_form_dict = order_validate_response_data_integration.from_dict(order_validate_response_data_integration_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

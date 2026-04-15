@@ -2,21 +2,17 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**BankList**](BankAPI.md#BankList) | **Get** /bank | List Banks
-[**BankResolveAccountNumber**](BankAPI.md#BankResolveAccountNumber) | **Get** /bank/resolve | Resolve Account Number
-[**BankValidateAccountNumber**](BankAPI.md#BankValidateAccountNumber) | **Post** /bank/validate | Validate Bank Account
-
-
+| Method                                                                | HTTP request            | Description            |
+| --------------------------------------------------------------------- | ----------------------- | ---------------------- |
+| [**BankList**](BankAPI.md#BankList)                                   | **Get** /bank           | List Banks             |
+| [**BankResolveAccountNumber**](BankAPI.md#BankResolveAccountNumber)   | **Get** /bank/resolve   | Resolve Account Number |
+| [**BankValidateAccountNumber**](BankAPI.md#BankValidateAccountNumber) | **Post** /bank/validate | Validate Bank Account  |
 
 ## BankList
 
-> MiscellaneousListBanksResponse BankList(ctx).Country(country).Currency(currency).UseCursor(useCursor).PerPage(perPage).Page(page).Next(next).Previous(previous).PayWithBankTransfer(payWithBankTransfer).PayWithBank(payWithBank).EnabledForVerification(enabledForVerification).Gateway(gateway).Type_(type_).IncludeNipSortCode(includeNipSortCode).Execute()
+> MiscellaneousListBanksResponse BankList(ctx).Country(country).Currency(currency).UseCursor(useCursor).PerPage(perPage).Page(page).Next(next).Previous(previous).PayWithBankTransfer(payWithBankTransfer).PayWithBank(payWithBank).EnabledForVerification(enabledForVerification).Gateway(gateway).Type*(type*).IncludeNipSortCode(includeNipSortCode).Execute()
 
 List Banks
-
-
 
 ### Example
 
@@ -59,28 +55,25 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiBankListRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **country** | **string** | The country from which to obtain the list of supported banks | 
- **currency** | **string** | The country from which to obtain the list of supported banks | 
- **useCursor** | **bool** | A flag to indicate if cursor based pagination should be used | 
- **perPage** | **int32** | The number of records to fetch per request | 
- **page** | **int32** | The offset to retrieve data from | 
- **next** | **string** | An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data  | 
- **previous** | **string** | An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data  | 
- **payWithBankTransfer** | **bool** | A flag to filter for available banks a customer can make a transfer to complete a payment | 
- **payWithBank** | **bool** | A flag to filter for banks a customer can pay directly from | 
- **enabledForVerification** | **bool** | A flag to filter the banks that are supported for account verification in South Africa. You need to combine this with either the &#x60;currency&#x60; or &#x60;country&#x60; filter.  | 
- **gateway** | **string** | The type of gateway for a Nigerian bank | 
- **type_** | **string** | Type of financial channel | 
- **includeNipSortCode** | **bool** | A flag that returns Nigerian banks with their NIP institution code.  The returned value can be used in identifying institutions on NIP.  | 
+| Name                       | Type       | Description                                                                                                                                                                          | Notes |
+| -------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----- |
+| **country**                | **string** | The country from which to obtain the list of supported banks                                                                                                                         |
+| **currency**               | **string** | The country from which to obtain the list of supported banks                                                                                                                         |
+| **useCursor**              | **bool**   | A flag to indicate if cursor based pagination should be used                                                                                                                         |
+| **perPage**                | **int32**  | The number of records to fetch per request                                                                                                                                           |
+| **page**                   | **int32**  | The offset to retrieve data from                                                                                                                                                     |
+| **next**                   | **string** | An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data                                                                               |
+| **previous**               | **string** | An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data                                                                           |
+| **payWithBankTransfer**    | **bool**   | A flag to filter for available banks a customer can make a transfer to complete a payment                                                                                            |
+| **payWithBank**            | **bool**   | A flag to filter for banks a customer can pay directly from                                                                                                                          |
+| **enabledForVerification** | **bool**   | A flag to filter the banks that are supported for account verification in South Africa. You need to combine this with either the &#x60;currency&#x60; or &#x60;country&#x60; filter. |
+| **gateway**                | **string** | The type of gateway for a Nigerian bank                                                                                                                                              |
+| **type\_**                 | **string** | Type of financial channel                                                                                                                                                            |
+| **includeNipSortCode**     | **bool**   | A flag that returns Nigerian banks with their NIP institution code. The returned value can be used in identifying institutions on NIP.                                               |
 
 ### Return type
 
@@ -99,14 +92,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## BankResolveAccountNumber
 
 > VerificationResolveAccountNumberResponse BankResolveAccountNumber(ctx).AccountNumber(accountNumber).BankCode(bankCode).Execute()
 
 Resolve Account Number
-
-
 
 ### Example
 
@@ -138,17 +128,14 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiBankResolveAccountNumberRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **accountNumber** | **int32** | The account number of interest | 
- **bankCode** | **int32** | The bank code associated with the account number | 
+| Name              | Type      | Description                                      | Notes |
+| ----------------- | --------- | ------------------------------------------------ | ----- |
+| **accountNumber** | **int32** | The account number of interest                   |
+| **bankCode**      | **int32** | The bank code associated with the account number |
 
 ### Return type
 
@@ -167,14 +154,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## BankValidateAccountNumber
 
 > VerificationValidateAccountResponse BankValidateAccountNumber(ctx).BankValidateRequest(bankValidateRequest).Execute()
 
 Validate Bank Account
-
-
 
 ### Example
 
@@ -205,16 +189,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiBankValidateAccountNumberRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bankValidateRequest** | [**BankValidateRequest**](BankValidateRequest.md) |  | 
+| Name                    | Type                                              | Description | Notes |
+| ----------------------- | ------------------------------------------------- | ----------- | ----- |
+| **bankValidateRequest** | [**BankValidateRequest**](BankValidateRequest.md) |             |
 
 ### Return type
 
@@ -232,4 +213,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

@@ -2,12 +2,14 @@ get:
   tags:
     - Bank
   summary: List Banks
-  description: List banks supported on Paystack
+  description: Get a list of all supported banks and their properties
   operationId: bank_list
   parameters:
     - in: query
       name: country
-      description: The country from which to obtain the list of supported banks
+      description: >-
+        The country from which to obtain the list of supported banks. Accepted
+        values are: ghana, kenya, nigeria, south africa
       schema:
         type: string
         enum:
@@ -18,7 +20,7 @@ get:
       example: nigeria
     - in: query
       name: currency
-      description: The country from which to obtain the list of supported banks
+      description: One of the supported currency
       schema:
         type: string
         enum:
@@ -34,24 +36,24 @@ get:
         type: boolean
     - in: query
       name: perPage
-      description: The number of records to fetch per request
+      description: The number of objects to return per page. Defaults to 50, and limited to 100 records per page.
       schema:
         type: integer
     - name: page
       in: query
-      description: The offset to retrieve data from
+      description: Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
       schema:
         type: integer
     - in: query
       name: next
-      description: | 
+      description: |
         An alphanumeric value returned for every cursor based retrieval, used to
         retrieve the next set of data
       schema:
         type: string
     - in: query
       name: previous
-      description: | 
+      description: |
         An alphanumeric value returned for every cursor based retrieval, used to
         retrieve the previous set of data
       schema:
@@ -68,14 +70,14 @@ get:
         type: boolean
     - in: query
       name: enabled_for_verification
-      description: | 
+      description: |
         A flag to filter the banks that are supported for account verification in South Africa.
         You need to combine this with either the `currency` or `country` filter.
       schema:
         type: boolean
     - in: query
       name: gateway
-      description: The type of gateway for a Nigerian bank
+      description: The gateway type of the bank
       schema:
         type: string
         enum:
@@ -83,11 +85,13 @@ get:
           - digitalbankmandate
     - in: query
       name: type
-      description: Type of financial channel
+      description: >-
+        Type of financial channel. For Ghanaian channels, please use either
+        mobile_money for mobile money channels OR ghipss for bank channels
       schema:
         type: string
         enum:
-          - ghipps
+          - ghipss
           - mobile_money
           - nuban
           - kepss
@@ -95,16 +99,16 @@ get:
     - in: query
       name: include_nip_sort_code
       description: |
-          A flag that returns Nigerian banks with their NIP institution code. 
-          The returned value can be used in identifying institutions on NIP.
+        A flag that returns Nigerian banks with their NIP institution code. 
+        The returned value can be used in identifying institutions on NIP.
       schema:
         type: boolean
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/MiscellaneousListBanksSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

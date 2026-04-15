@@ -2,13 +2,13 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Email** | **string** | Customer&#39;s email address | 
-**Channel** | **string** | direct_debit is the only supported option for now | 
-**CallbackUrl** | Pointer to **string** | Fully qualified url (e.g. https://example.com/) to redirect your customer to | [optional] 
-**Account** | Pointer to [**CustomerAuthorizationInitializeAccount**](CustomerAuthorizationInitializeAccount.md) |  | [optional] 
-**Address** | Pointer to [**CustomerAuthorizationInitializeAddress**](CustomerAuthorizationInitializeAddress.md) |  | [optional] 
+| Name            | Type                                                                                               | Description                                                                  | Notes      |
+| --------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------- |
+| **Email**       | **string**                                                                                         | Customer&#39;s email address                                                 |
+| **Channel**     | **string**                                                                                         | direct_debit is the only supported option for now                            |
+| **CallbackUrl** | Pointer to **string**                                                                              | Fully qualified url (e.g. https://example.com/) to redirect your customer to | [optional] |
+| **Account**     | Pointer to [**CustomerAuthorizationInitializeAccount**](CustomerAuthorizationInitializeAccount.md) |                                                                              | [optional] |
+| **Address**     | Pointer to [**CustomerAuthorizationInitializeAddress**](CustomerAuthorizationInitializeAddress.md) |                                                                              | [optional] |
 
 ## Methods
 
@@ -48,7 +48,6 @@ and a boolean to check if the value has been set.
 
 SetEmail sets Email field to given value.
 
-
 ### GetChannel
 
 `func (o *CustomerAuthorizationInitializeRequest) GetChannel() string`
@@ -67,7 +66,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerAuthorizationInitializeRequest) SetChannel(v string)`
 
 SetChannel sets Channel field to given value.
-
 
 ### GetCallbackUrl
 
@@ -144,7 +142,4 @@ SetAddress sets Address field to given value.
 
 HasAddress returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

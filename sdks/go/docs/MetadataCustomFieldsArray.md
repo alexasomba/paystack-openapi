@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Value** | **string** |  | 
-**DisplayName** | **string** |  | 
-**VariableName** | **string** |  | 
+| Name             | Type       | Description | Notes |
+| ---------------- | ---------- | ----------- | ----- |
+| **Value**        | **string** |             |
+| **DisplayName**  | **string** |             |
+| **VariableName** | **string** |             |
 
 ## Methods
 
@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetValue sets Value field to given value.
 
-
 ### GetDisplayName
 
 `func (o *MetadataCustomFieldsArray) GetDisplayName() string`
@@ -65,7 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *MetadataCustomFieldsArray) SetDisplayName(v string)`
 
 SetDisplayName sets DisplayName field to given value.
-
 
 ### GetVariableName
 
@@ -86,8 +84,4 @@ and a boolean to check if the value has been set.
 
 SetVariableName sets VariableName field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

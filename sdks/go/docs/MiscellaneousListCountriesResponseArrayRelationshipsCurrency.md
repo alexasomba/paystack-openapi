@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Type** | **string** |  | 
-**Data** | **[]string** |  | 
-**SupportedCurrencies** | [**MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrencies**](MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrencies.md) |  | 
+| Name                    | Type                                                                                                                                                                      | Description | Notes |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **Type**                | **string**                                                                                                                                                                |             |
+| **Data**                | **[]string**                                                                                                                                                              |             |
+| **SupportedCurrencies** | [**MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrencies**](MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrencies.md) |             |
 
 ## Methods
 
@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-
 ### GetData
 
 `func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrency) GetData() []string`
@@ -65,7 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrency) SetData(v []string)`
 
 SetData sets Data field to given value.
-
 
 ### GetSupportedCurrencies
 
@@ -86,8 +84,4 @@ and a boolean to check if the value has been set.
 
 SetSupportedCurrencies sets SupportedCurrencies field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

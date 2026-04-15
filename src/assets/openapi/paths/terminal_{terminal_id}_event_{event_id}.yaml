@@ -20,11 +20,11 @@ get:
         type: string
       example: 616d721e8c5cd40a0cdd54a6
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/Ok.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

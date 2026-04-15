@@ -2,17 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Email** | **string** | The email of the customer placing the order | 
-**FirstName** | **string** | The customer&#39;s first name | 
-**LastName** | **string** | The customer&#39;s last name | 
-**Phone** | **string** | The customer&#39;s mobile number | 
-**Currency** | **string** | Currency in which amount is set | 
-**Items** | [**[]OrderItems**](OrderItems.md) |  | 
-**Shipping** | [**OrderShipping**](OrderShipping.md) |  | 
-**IsGift** | Pointer to **bool** | A flag to indicate if the order is for someone else | [optional] 
-**PayForMe** | Pointer to **bool** | A flag to indicate if the someone else should pay for the order | [optional] 
+| Name          | Type                                  | Description                                                     | Notes      |
+| ------------- | ------------------------------------- | --------------------------------------------------------------- | ---------- |
+| **Email**     | **string**                            | The email of the customer placing the order                     |
+| **FirstName** | **string**                            | The customer&#39;s first name                                   |
+| **LastName**  | **string**                            | The customer&#39;s last name                                    |
+| **Phone**     | **string**                            | The customer&#39;s mobile number                                |
+| **Currency**  | **string**                            | Currency in which amount is set                                 |
+| **Items**     | [**[]OrderItems**](OrderItems.md)     |                                                                 |
+| **Shipping**  | [**OrderShipping**](OrderShipping.md) |                                                                 |
+| **IsGift**    | Pointer to **bool**                   | A flag to indicate if the order is for someone else             | [optional] |
+| **PayForMe**  | Pointer to **bool**                   | A flag to indicate if the someone else should pay for the order | [optional] |
 
 ## Methods
 
@@ -52,7 +52,6 @@ and a boolean to check if the value has been set.
 
 SetEmail sets Email field to given value.
 
-
 ### GetFirstName
 
 `func (o *OrderCreate) GetFirstName() string`
@@ -71,7 +70,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderCreate) SetFirstName(v string)`
 
 SetFirstName sets FirstName field to given value.
-
 
 ### GetLastName
 
@@ -92,7 +90,6 @@ and a boolean to check if the value has been set.
 
 SetLastName sets LastName field to given value.
 
-
 ### GetPhone
 
 `func (o *OrderCreate) GetPhone() string`
@@ -111,7 +108,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderCreate) SetPhone(v string)`
 
 SetPhone sets Phone field to given value.
-
 
 ### GetCurrency
 
@@ -132,7 +128,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetItems
 
 `func (o *OrderCreate) GetItems() []OrderItems`
@@ -152,7 +147,6 @@ and a boolean to check if the value has been set.
 
 SetItems sets Items field to given value.
 
-
 ### GetShipping
 
 `func (o *OrderCreate) GetShipping() OrderShipping`
@@ -171,7 +165,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderCreate) SetShipping(v OrderShipping)`
 
 SetShipping sets Shipping field to given value.
-
 
 ### GetIsGift
 
@@ -223,7 +216,4 @@ SetPayForMe sets PayForMe field to given value.
 
 HasPayForMe returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -7,4 +7,4 @@ properties:
     description: Device Serial Number
     type: string
 example:
-  serial_number: '1111150412230003899'
+  serial_number: "1111150412230003899"

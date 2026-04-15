@@ -2,13 +2,13 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Email** | **string** | Customer&#39;s email address | 
-**FirstName** | Pointer to **string** | Customer&#39;s first name | [optional] 
-**LastName** | Pointer to **string** | Customer&#39;s last name | [optional] 
-**Phone** | Pointer to **string** | Customer&#39;s phone number | [optional] 
-**Metadata** | Pointer to **string** | Stringified JSON object of custom data | [optional] 
+| Name          | Type                  | Description                            | Notes      |
+| ------------- | --------------------- | -------------------------------------- | ---------- |
+| **Email**     | **string**            | Customer&#39;s email address           |
+| **FirstName** | Pointer to **string** | Customer&#39;s first name              | [optional] |
+| **LastName**  | Pointer to **string** | Customer&#39;s last name               | [optional] |
+| **Phone**     | Pointer to **string** | Customer&#39;s phone number            | [optional] |
+| **Metadata**  | Pointer to **string** | Stringified JSON object of custom data | [optional] |
 
 ## Methods
 
@@ -47,7 +47,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerCreate) SetEmail(v string)`
 
 SetEmail sets Email field to given value.
-
 
 ### GetFirstName
 
@@ -149,7 +148,4 @@ SetMetadata sets Metadata field to given value.
 
 HasMetadata returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

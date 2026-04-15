@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ReceiverBankAccountNumber** | **interface{}** |  | 
-**ReceiverBank** | **interface{}** |  | 
+| Name                          | Type            | Description | Notes |
+| ----------------------------- | --------------- | ----------- | ----- |
+| **ReceiverBankAccountNumber** | **interface{}** |             |
+| **ReceiverBank**              | **interface{}** |             |
 
 ## Methods
 
@@ -45,17 +45,18 @@ and a boolean to check if the value has been set.
 
 SetReceiverBankAccountNumber sets ReceiverBankAccountNumber field to given value.
 
-
 ### SetReceiverBankAccountNumberNil
 
 `func (o *DisputeFetchResponseDataTransactionAuthorization) SetReceiverBankAccountNumberNil(b bool)`
 
- SetReceiverBankAccountNumberNil sets the value for ReceiverBankAccountNumber to be an explicit nil
+SetReceiverBankAccountNumberNil sets the value for ReceiverBankAccountNumber to be an explicit nil
 
 ### UnsetReceiverBankAccountNumber
+
 `func (o *DisputeFetchResponseDataTransactionAuthorization) UnsetReceiverBankAccountNumber()`
 
 UnsetReceiverBankAccountNumber ensures that no value is present for ReceiverBankAccountNumber, not even an explicit nil
+
 ### GetReceiverBank
 
 `func (o *DisputeFetchResponseDataTransactionAuthorization) GetReceiverBank() interface{}`
@@ -75,18 +76,16 @@ and a boolean to check if the value has been set.
 
 SetReceiverBank sets ReceiverBank field to given value.
 
-
 ### SetReceiverBankNil
 
 `func (o *DisputeFetchResponseDataTransactionAuthorization) SetReceiverBankNil(b bool)`
 
- SetReceiverBankNil sets the value for ReceiverBank to be an explicit nil
+SetReceiverBankNil sets the value for ReceiverBank to be an explicit nil
 
 ### UnsetReceiverBank
+
 `func (o *DisputeFetchResponseDataTransactionAuthorization) UnsetReceiverBank()`
 
 UnsetReceiverBank ensures that no value is present for ReceiverBank, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

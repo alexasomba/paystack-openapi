@@ -2,26 +2,26 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Amount** | **int32** |  | 
-**Currency** | **string** |  | 
-**TransactionDate** | **string** |  | 
-**Status** | **string** |  | 
-**Reference** | **string** |  | 
-**Domain** | **string** |  | 
-**Metadata** | **string** |  | 
-**GatewayResponse** | **string** |  | 
-**Message** | **interface{}** |  | 
-**Channel** | **string** |  | 
-**IpAddress** | **interface{}** |  | 
-**Log** | [**NullableChargeAuthorizationResponseDataLog**](ChargeAuthorizationResponseDataLog.md) |  | 
-**Fees** | **int32** |  | 
-**Authorization** | [**TransactionPartialDebitResponseDataAuthorization**](TransactionPartialDebitResponseDataAuthorization.md) |  | 
-**Customer** | [**TransactionPartialDebitResponseDataCustomer**](TransactionPartialDebitResponseDataCustomer.md) |  | 
-**Plan** | **int32** |  | 
-**RequestedAmount** | **int32** |  | 
-**Id** | **int32** |  | 
+| Name                | Type                                                                                                        | Description | Notes |
+| ------------------- | ----------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **Amount**          | **int32**                                                                                                   |             |
+| **Currency**        | **string**                                                                                                  |             |
+| **TransactionDate** | **string**                                                                                                  |             |
+| **Status**          | **string**                                                                                                  |             |
+| **Reference**       | **string**                                                                                                  |             |
+| **Domain**          | **string**                                                                                                  |             |
+| **Metadata**        | **string**                                                                                                  |             |
+| **GatewayResponse** | **string**                                                                                                  |             |
+| **Message**         | **interface{}**                                                                                             |             |
+| **Channel**         | **string**                                                                                                  |             |
+| **IpAddress**       | **interface{}**                                                                                             |             |
+| **Log**             | [**NullableChargeAuthorizationResponseDataLog**](ChargeAuthorizationResponseDataLog.md)                     |             |
+| **Fees**            | **int32**                                                                                                   |             |
+| **Authorization**   | [**TransactionPartialDebitResponseDataAuthorization**](TransactionPartialDebitResponseDataAuthorization.md) |             |
+| **Customer**        | [**TransactionPartialDebitResponseDataCustomer**](TransactionPartialDebitResponseDataCustomer.md)           |             |
+| **Plan**            | **int32**                                                                                                   |             |
+| **RequestedAmount** | **int32**                                                                                                   |             |
+| **Id**              | **int32**                                                                                                   |             |
 
 ## Methods
 
@@ -61,7 +61,6 @@ and a boolean to check if the value has been set.
 
 SetAmount sets Amount field to given value.
 
-
 ### GetCurrency
 
 `func (o *TransactionPartialDebitResponseData) GetCurrency() string`
@@ -80,7 +79,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionPartialDebitResponseData) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetTransactionDate
 
@@ -101,7 +99,6 @@ and a boolean to check if the value has been set.
 
 SetTransactionDate sets TransactionDate field to given value.
 
-
 ### GetStatus
 
 `func (o *TransactionPartialDebitResponseData) GetStatus() string`
@@ -120,7 +117,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionPartialDebitResponseData) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
-
 
 ### GetReference
 
@@ -141,7 +137,6 @@ and a boolean to check if the value has been set.
 
 SetReference sets Reference field to given value.
 
-
 ### GetDomain
 
 `func (o *TransactionPartialDebitResponseData) GetDomain() string`
@@ -160,7 +155,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionPartialDebitResponseData) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetMetadata
 
@@ -181,7 +175,6 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
-
 ### GetGatewayResponse
 
 `func (o *TransactionPartialDebitResponseData) GetGatewayResponse() string`
@@ -200,7 +193,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionPartialDebitResponseData) SetGatewayResponse(v string)`
 
 SetGatewayResponse sets GatewayResponse field to given value.
-
 
 ### GetMessage
 
@@ -221,17 +213,18 @@ and a boolean to check if the value has been set.
 
 SetMessage sets Message field to given value.
 
-
 ### SetMessageNil
 
 `func (o *TransactionPartialDebitResponseData) SetMessageNil(b bool)`
 
- SetMessageNil sets the value for Message to be an explicit nil
+SetMessageNil sets the value for Message to be an explicit nil
 
 ### UnsetMessage
+
 `func (o *TransactionPartialDebitResponseData) UnsetMessage()`
 
 UnsetMessage ensures that no value is present for Message, not even an explicit nil
+
 ### GetChannel
 
 `func (o *TransactionPartialDebitResponseData) GetChannel() string`
@@ -250,7 +243,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionPartialDebitResponseData) SetChannel(v string)`
 
 SetChannel sets Channel field to given value.
-
 
 ### GetIpAddress
 
@@ -271,17 +263,18 @@ and a boolean to check if the value has been set.
 
 SetIpAddress sets IpAddress field to given value.
 
-
 ### SetIpAddressNil
 
 `func (o *TransactionPartialDebitResponseData) SetIpAddressNil(b bool)`
 
- SetIpAddressNil sets the value for IpAddress to be an explicit nil
+SetIpAddressNil sets the value for IpAddress to be an explicit nil
 
 ### UnsetIpAddress
+
 `func (o *TransactionPartialDebitResponseData) UnsetIpAddress()`
 
 UnsetIpAddress ensures that no value is present for IpAddress, not even an explicit nil
+
 ### GetLog
 
 `func (o *TransactionPartialDebitResponseData) GetLog() ChargeAuthorizationResponseDataLog`
@@ -301,17 +294,18 @@ and a boolean to check if the value has been set.
 
 SetLog sets Log field to given value.
 
-
 ### SetLogNil
 
 `func (o *TransactionPartialDebitResponseData) SetLogNil(b bool)`
 
- SetLogNil sets the value for Log to be an explicit nil
+SetLogNil sets the value for Log to be an explicit nil
 
 ### UnsetLog
+
 `func (o *TransactionPartialDebitResponseData) UnsetLog()`
 
 UnsetLog ensures that no value is present for Log, not even an explicit nil
+
 ### GetFees
 
 `func (o *TransactionPartialDebitResponseData) GetFees() int32`
@@ -330,7 +324,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionPartialDebitResponseData) SetFees(v int32)`
 
 SetFees sets Fees field to given value.
-
 
 ### GetAuthorization
 
@@ -351,7 +344,6 @@ and a boolean to check if the value has been set.
 
 SetAuthorization sets Authorization field to given value.
 
-
 ### GetCustomer
 
 `func (o *TransactionPartialDebitResponseData) GetCustomer() TransactionPartialDebitResponseDataCustomer`
@@ -370,7 +362,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionPartialDebitResponseData) SetCustomer(v TransactionPartialDebitResponseDataCustomer)`
 
 SetCustomer sets Customer field to given value.
-
 
 ### GetPlan
 
@@ -391,7 +382,6 @@ and a boolean to check if the value has been set.
 
 SetPlan sets Plan field to given value.
 
-
 ### GetRequestedAmount
 
 `func (o *TransactionPartialDebitResponseData) GetRequestedAmount() int32`
@@ -410,7 +400,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionPartialDebitResponseData) SetRequestedAmount(v int32)`
 
 SetRequestedAmount sets RequestedAmount field to given value.
-
 
 ### GetId
 
@@ -431,8 +420,4 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -5,8 +5,8 @@ get:
   operationId: bulkCharge_charges
   description: This endpoint retrieves the charges associated with a specified batch code
   parameters:
-    - name: code
-      description: An code for the batch whose charges you want to retrieve
+    - name: id_or_code
+      description: An ID or code for the batch whose charges you want to retrieve.
       in: path
       required: true
       schema:
@@ -24,25 +24,35 @@ get:
         type: integer
     - in: query
       name: status
-      description: Filter by the status of the charges
+      description: "Either one of these values: pending, success or failed"
       schema:
         type: string
         enum:
+          - pending
           - success
           - failed
-          - pending
-          - error
-          - inactive_authorization
+    - in: query
+      name: from
+      description: "A timestamp from which to start listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21"
+      schema:
+        type: string
+        format: date-time
+    - in: query
+      name: to
+      description: "A timestamp at which to stop listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21"
+      schema:
+        type: string
+        format: date-time
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BulkChargeFetchBulkBatchChargesResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

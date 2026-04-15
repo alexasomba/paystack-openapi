@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Name of the transaction split | [optional] 
-**Active** | Pointer to **bool** | Toggle status of split. When true, the split is active, else it&#39;s inactive | [optional] 
-**BearerType** | Pointer to **string** | This allows you specify how the transaction charge should be processed | [optional] 
-**BearerSubaccount** | Pointer to **string** | This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type | [optional] 
+| Name                 | Type                  | Description                                                                                                                                  | Notes      |
+| -------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **Name**             | Pointer to **string** | Name of the transaction split                                                                                                                | [optional] |
+| **Active**           | Pointer to **bool**   | Toggle status of split. When true, the split is active, else it&#39;s inactive                                                               | [optional] |
+| **BearerType**       | Pointer to **string** | This allows you specify how the transaction charge should be processed                                                                       | [optional] |
+| **BearerSubaccount** | Pointer to **string** | This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type | [optional] |
 
 ## Methods
 
@@ -128,7 +128,4 @@ SetBearerSubaccount sets BearerSubaccount field to given value.
 
 HasBearerSubaccount returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

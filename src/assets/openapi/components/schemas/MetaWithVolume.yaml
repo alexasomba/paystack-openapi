@@ -1,0 +1,8 @@
+allOf:
+  - $ref: ./Meta.yaml
+  - type: object
+    properties:
+      total_volume:
+        type: integer
+    required:
+      - total_volume

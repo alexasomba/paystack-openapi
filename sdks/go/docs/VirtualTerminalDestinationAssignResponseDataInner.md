@@ -2,15 +2,15 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Integration** | **int32** |  | 
-**Target** | **string** |  | 
-**Name** | **string** |  | 
-**Type** | **string** |  | 
-**Id** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name            | Type       | Description | Notes |
+| --------------- | ---------- | ----------- | ----- |
+| **Integration** | **int32**  |             |
+| **Target**      | **string** |             |
+| **Name**        | **string** |             |
+| **Type**        | **string** |             |
+| **Id**          | **int32**  |             |
+| **CreatedAt**   | **string** |             |
+| **UpdatedAt**   | **string** |             |
 
 ## Methods
 
@@ -50,7 +50,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetTarget
 
 `func (o *VirtualTerminalDestinationAssignResponseDataInner) GetTarget() string`
@@ -69,7 +68,6 @@ and a boolean to check if the value has been set.
 `func (o *VirtualTerminalDestinationAssignResponseDataInner) SetTarget(v string)`
 
 SetTarget sets Target field to given value.
-
 
 ### GetName
 
@@ -90,7 +88,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetType
 
 `func (o *VirtualTerminalDestinationAssignResponseDataInner) GetType() string`
@@ -109,7 +106,6 @@ and a boolean to check if the value has been set.
 `func (o *VirtualTerminalDestinationAssignResponseDataInner) SetType(v string)`
 
 SetType sets Type field to given value.
-
 
 ### GetId
 
@@ -130,7 +126,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *VirtualTerminalDestinationAssignResponseDataInner) GetCreatedAt() string`
@@ -149,7 +144,6 @@ and a boolean to check if the value has been set.
 `func (o *VirtualTerminalDestinationAssignResponseDataInner) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -170,8 +164,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

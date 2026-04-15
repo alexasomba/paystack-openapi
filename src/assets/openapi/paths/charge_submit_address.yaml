@@ -13,9 +13,13 @@ post:
         schema:
           $ref: ../components/schemas/ChargeSubmitAddress.yaml
   responses:
-    '200':
-      $ref: ../components/responses/Ok.yaml
-    '401':
+    "200":
+      description: ""
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ChargeCheckPendingResponse.yaml
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error

@@ -1,11 +1,11 @@
 # SubscriptionToggle
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**code** | **str** | Subscription code | 
-**token** | **str** | Email token | 
+
+| Name      | Type    | Description       | Notes |
+| --------- | ------- | ----------------- | ----- |
+| **code**  | **str** | Subscription code |
+| **token** | **str** | Email token       |
 
 ## Example
 
@@ -24,6 +24,5 @@ subscription_toggle_dict = subscription_toggle_instance.to_dict()
 # create an instance of SubscriptionToggle from a dict
 subscription_toggle_form_dict = subscription_toggle.from_dict(subscription_toggle_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

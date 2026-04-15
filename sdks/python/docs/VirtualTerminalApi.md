@@ -2,20 +2,20 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**virtual_terminal_add_split_code**](VirtualTerminalApi.md#virtual_terminal_add_split_code) | **PUT** /virtual_terminal/{code}/split_code | Add Split Code to Virtual Terminal
-[**virtual_terminal_create**](VirtualTerminalApi.md#virtual_terminal_create) | **POST** /virtual_terminal | Create Virtual Terminal
-[**virtual_terminal_deactivate**](VirtualTerminalApi.md#virtual_terminal_deactivate) | **PUT** /virtual_terminal/{code}/deactivate | Deactivate Virtual Terminal
-[**virtual_terminal_delete_split_code**](VirtualTerminalApi.md#virtual_terminal_delete_split_code) | **DELETE** /virtual_terminal/{code}/split_code | Remove Split Code from Virtual Terminal
-[**virtual_terminal_destination_assign**](VirtualTerminalApi.md#virtual_terminal_destination_assign) | **POST** /virtual_terminal/{code}/destination/assign | Assign Destination to Virtual Terminal
-[**virtual_terminal_destination_unassign**](VirtualTerminalApi.md#virtual_terminal_destination_unassign) | **POST** /virtual_terminal/{code}/destination/unassign | Unassign Destination from Virtual Terminal
-[**virtual_terminal_fetch**](VirtualTerminalApi.md#virtual_terminal_fetch) | **GET** /virtual_terminal/{code} | Fetch Virtual Terminal
-[**virtual_terminal_list**](VirtualTerminalApi.md#virtual_terminal_list) | **GET** /virtual_terminal | List Virtual Terminals
-[**virtual_terminal_update**](VirtualTerminalApi.md#virtual_terminal_update) | **PUT** /virtual_terminal/{code} | Update Virtual Terminal
-
+| Method                                                                                                   | HTTP request                                           | Description                                |
+| -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------ |
+| [**virtual_terminal_add_split_code**](VirtualTerminalApi.md#virtual_terminal_add_split_code)             | **PUT** /virtual_terminal/{code}/split_code            | Add Split Code to Virtual Terminal         |
+| [**virtual_terminal_create**](VirtualTerminalApi.md#virtual_terminal_create)                             | **POST** /virtual_terminal                             | Create Virtual Terminal                    |
+| [**virtual_terminal_deactivate**](VirtualTerminalApi.md#virtual_terminal_deactivate)                     | **PUT** /virtual_terminal/{code}/deactivate            | Deactivate Virtual Terminal                |
+| [**virtual_terminal_delete_split_code**](VirtualTerminalApi.md#virtual_terminal_delete_split_code)       | **DELETE** /virtual_terminal/{code}/split_code         | Remove Split Code from Virtual Terminal    |
+| [**virtual_terminal_destination_assign**](VirtualTerminalApi.md#virtual_terminal_destination_assign)     | **POST** /virtual_terminal/{code}/destination/assign   | Assign Destination to Virtual Terminal     |
+| [**virtual_terminal_destination_unassign**](VirtualTerminalApi.md#virtual_terminal_destination_unassign) | **POST** /virtual_terminal/{code}/destination/unassign | Unassign Destination from Virtual Terminal |
+| [**virtual_terminal_fetch**](VirtualTerminalApi.md#virtual_terminal_fetch)                               | **GET** /virtual_terminal/{code}                       | Fetch Virtual Terminal                     |
+| [**virtual_terminal_list**](VirtualTerminalApi.md#virtual_terminal_list)                                 | **GET** /virtual_terminal                              | List Virtual Terminals                     |
+| [**virtual_terminal_update**](VirtualTerminalApi.md#virtual_terminal_update)                             | **PUT** /virtual_terminal/{code}                       | Update Virtual Terminal                    |
 
 # **virtual_terminal_add_split_code**
+
 > VirtualTerminalAddSplitCodeResponse virtual_terminal_add_split_code(code, virtual_terminal_add_split_code=virtual_terminal_add_split_code)
 
 Add Split Code to Virtual Terminal
@@ -24,7 +24,8 @@ Add Split Code to Virtual Terminal
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -66,14 +67,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling VirtualTerminalApi->virtual_terminal_add_split_code: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| Code of the Virtual Terminal | 
- **virtual_terminal_add_split_code** | [**VirtualTerminalAddSplitCode**](VirtualTerminalAddSplitCode.md)|  | [optional] 
+| Name                                | Type                                                              | Description                  | Notes      |
+| ----------------------------------- | ----------------------------------------------------------------- | ---------------------------- | ---------- |
+| **code**                            | **str**                                                           | Code of the Virtual Terminal |
+| **virtual_terminal_add_split_code** | [**VirtualTerminalAddSplitCode**](VirtualTerminalAddSplitCode.md) |                              | [optional] |
 
 ### Return type
 
@@ -85,19 +84,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Virtual Terminal Split Assign response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server Error |  -  |
+
+| Status code | Description                            | Response headers |
+| ----------- | -------------------------------------- | ---------------- |
+| **200**     | Virtual Terminal Split Assign response | -                |
+| **401**     | Unauthorized operation                 | -                |
+| **0**       | Server Error                           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **virtual_terminal_create**
+
 > VirtualTerminalCreateResponse virtual_terminal_create(virtual_terminal_create=virtual_terminal_create)
 
 Create Virtual Terminal
@@ -106,7 +107,8 @@ Create a Virtual Terminal on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -147,13 +149,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling VirtualTerminalApi->virtual_terminal_create: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **virtual_terminal_create** | [**VirtualTerminalCreate**](VirtualTerminalCreate.md)|  | [optional] 
+| Name                        | Type                                                  | Description | Notes      |
+| --------------------------- | ----------------------------------------------------- | ----------- | ---------- |
+| **virtual_terminal_create** | [**VirtualTerminalCreate**](VirtualTerminalCreate.md) |             | [optional] |
 
 ### Return type
 
@@ -165,19 +165,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Virtual Terminal Create response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                      | Response headers |
+| ----------- | -------------------------------- | ---------------- |
+| **200**     | Virtual Terminal Create response | -                |
+| **401**     | Unauthorized operation           | -                |
+| **0**       | Server error                     | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **virtual_terminal_deactivate**
+
 > VirtualTerminalDeactivateResponse virtual_terminal_deactivate(code)
 
 Deactivate Virtual Terminal
@@ -186,7 +188,8 @@ Deactivate a Virtual Terminal on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -226,13 +229,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling VirtualTerminalApi->virtual_terminal_deactivate: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| Code of the Virtual Terminal | 
+| Name     | Type    | Description                  | Notes |
+| -------- | ------- | ---------------------------- | ----- |
+| **code** | **str** | Code of the Virtual Terminal |
 
 ### Return type
 
@@ -244,19 +245,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Virtual Terminal Deactivate response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                          | Response headers |
+| ----------- | ------------------------------------ | ---------------- |
+| **200**     | Virtual Terminal Deactivate response | -                |
+| **401**     | Unauthorized operation               | -                |
+| **0**       | Server error                         | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **virtual_terminal_delete_split_code**
+
 > VirtualTerminalDeleteSplitCodeResponse virtual_terminal_delete_split_code(code, virtual_terminal_delete_split_code=virtual_terminal_delete_split_code)
 
 Remove Split Code from Virtual Terminal
@@ -265,7 +268,8 @@ Remove Split Code from Virtual Terminal
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -307,14 +311,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling VirtualTerminalApi->virtual_terminal_delete_split_code: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| Code of the Virtual Terminal | 
- **virtual_terminal_delete_split_code** | [**VirtualTerminalDeleteSplitCode**](VirtualTerminalDeleteSplitCode.md)|  | [optional] 
+| Name                                   | Type                                                                    | Description                  | Notes      |
+| -------------------------------------- | ----------------------------------------------------------------------- | ---------------------------- | ---------- |
+| **code**                               | **str**                                                                 | Code of the Virtual Terminal |
+| **virtual_terminal_delete_split_code** | [**VirtualTerminalDeleteSplitCode**](VirtualTerminalDeleteSplitCode.md) |                              | [optional] |
 
 ### Return type
 
@@ -326,19 +328,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Virtual Terminal Split Remove response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server Error |  -  |
+
+| Status code | Description                            | Response headers |
+| ----------- | -------------------------------------- | ---------------- |
+| **200**     | Virtual Terminal Split Remove response | -                |
+| **401**     | Unauthorized operation                 | -                |
+| **0**       | Server Error                           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **virtual_terminal_destination_assign**
+
 > VirtualTerminalDestinationAssignResponse virtual_terminal_destination_assign(code, virtual_terminal_destination_assign=virtual_terminal_destination_assign)
 
 Assign Destination to Virtual Terminal
@@ -347,7 +351,8 @@ Add a destination (WhatsApp number) to a Virtual Terminal on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -389,14 +394,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling VirtualTerminalApi->virtual_terminal_destination_assign: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| Code of the Virtual Terminal | 
- **virtual_terminal_destination_assign** | [**VirtualTerminalDestinationAssign**](VirtualTerminalDestinationAssign.md)|  | [optional] 
+| Name                                    | Type                                                                        | Description                  | Notes      |
+| --------------------------------------- | --------------------------------------------------------------------------- | ---------------------------- | ---------- |
+| **code**                                | **str**                                                                     | Code of the Virtual Terminal |
+| **virtual_terminal_destination_assign** | [**VirtualTerminalDestinationAssign**](VirtualTerminalDestinationAssign.md) |                              | [optional] |
 
 ### Return type
 
@@ -408,19 +411,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Virtual Terminal Deactivate response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                          | Response headers |
+| ----------- | ------------------------------------ | ---------------- |
+| **200**     | Virtual Terminal Deactivate response | -                |
+| **401**     | Unauthorized operation               | -                |
+| **0**       | Server error                         | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **virtual_terminal_destination_unassign**
+
 > VirtualTerminalDestinationUnassignResponse virtual_terminal_destination_unassign(code, virtual_terminal_destination_unassign=virtual_terminal_destination_unassign)
 
 Unassign Destination from Virtual Terminal
@@ -429,7 +434,8 @@ Unassign a destination (WhatsApp Number) from a Virtual Terminal on your integra
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -471,14 +477,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling VirtualTerminalApi->virtual_terminal_destination_unassign: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| Code of the Virtual Terminal | 
- **virtual_terminal_destination_unassign** | [**VirtualTerminalDestinationUnassign**](VirtualTerminalDestinationUnassign.md)|  | [optional] 
+| Name                                      | Type                                                                            | Description                  | Notes      |
+| ----------------------------------------- | ------------------------------------------------------------------------------- | ---------------------------- | ---------- |
+| **code**                                  | **str**                                                                         | Code of the Virtual Terminal |
+| **virtual_terminal_destination_unassign** | [**VirtualTerminalDestinationUnassign**](VirtualTerminalDestinationUnassign.md) |                              | [optional] |
 
 ### Return type
 
@@ -490,19 +494,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Virtual Terminal unassign response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                        | Response headers |
+| ----------- | ---------------------------------- | ---------------- |
+| **200**     | Virtual Terminal unassign response | -                |
+| **401**     | Unauthorized operation             | -                |
+| **0**       | Server error                       | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **virtual_terminal_fetch**
+
 > VirtualTerminalFetchResponse virtual_terminal_fetch(code)
 
 Fetch Virtual Terminal
@@ -511,7 +517,8 @@ Fetch a Virtual Terminal on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -551,13 +558,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling VirtualTerminalApi->virtual_terminal_fetch: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| Code of the Virtual Terminal | 
+| Name     | Type    | Description                  | Notes |
+| -------- | ------- | ---------------------------- | ----- |
+| **code** | **str** | Code of the Virtual Terminal |
 
 ### Return type
 
@@ -569,19 +574,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Virtual Terminal Fetch response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                     | Response headers |
+| ----------- | ------------------------------- | ---------------- |
+| **200**     | Virtual Terminal Fetch response | -                |
+| **401**     | Unauthorized operation          | -                |
+| **0**       | Server error                    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **virtual_terminal_list**
+
 > VirtualTerminalListResponse virtual_terminal_list(per_page=per_page, page=page)
 
 List Virtual Terminals
@@ -590,7 +597,8 @@ List Virtual Terminals on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -631,14 +639,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling VirtualTerminalApi->virtual_terminal_list: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **per_page** | **int**| The number of records to fetch per request | [optional] 
- **page** | **int**| The offset to retrieve data from | [optional] 
+| Name         | Type    | Description                                | Notes      |
+| ------------ | ------- | ------------------------------------------ | ---------- |
+| **per_page** | **int** | The number of records to fetch per request | [optional] |
+| **page**     | **int** | The offset to retrieve data from           | [optional] |
 
 ### Return type
 
@@ -650,19 +656,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Virtual Terminal Lists response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                     | Response headers |
+| ----------- | ------------------------------- | ---------------- |
+| **200**     | Virtual Terminal Lists response | -                |
+| **401**     | Unauthorized operation          | -                |
+| **0**       | Server error                    | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **virtual_terminal_update**
+
 > VirtualTerminalUpdateResponse virtual_terminal_update(code, virtual_terminal_update=virtual_terminal_update)
 
 Update Virtual Terminal
@@ -671,7 +679,8 @@ Update a Virtual Terminal on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -713,14 +722,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling VirtualTerminalApi->virtual_terminal_update: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| Code of the Virtual Terminal | 
- **virtual_terminal_update** | [**VirtualTerminalUpdate**](VirtualTerminalUpdate.md)|  | [optional] 
+| Name                        | Type                                                  | Description                  | Notes      |
+| --------------------------- | ----------------------------------------------------- | ---------------------------- | ---------- |
+| **code**                    | **str**                                               | Code of the Virtual Terminal |
+| **virtual_terminal_update** | [**VirtualTerminalUpdate**](VirtualTerminalUpdate.md) |                              | [optional] |
 
 ### Return type
 
@@ -732,15 +739,15 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Virtual Terminal Update response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                      | Response headers |
+| ----------- | -------------------------------- | ---------------- |
+| **200**     | Virtual Terminal Update response | -                |
+| **401**     | Unauthorized operation           | -                |
+| **0**       | Server error                     | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

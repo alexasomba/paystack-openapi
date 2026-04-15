@@ -1,23 +1,23 @@
 # OrderCreateResponseDataShipping
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**customer** | **int** |  | 
-**integration** | **int** |  | 
-**domain** | **str** |  | 
-**fees** | **int** |  | 
-**delivery_note** | **object** |  | 
-**street_line** | **str** |  | 
-**city** | **str** |  | 
-**state** | **str** |  | 
-**country** | **str** |  | 
-**is_shipped** | **bool** |  | 
-**delivery_tracking_link** | **object** |  | 
-**id** | **int** |  | 
-**created_at** | **str** |  | 
-**updated_at** | **str** |  | 
+
+| Name                       | Type       | Description | Notes |
+| -------------------------- | ---------- | ----------- | ----- |
+| **customer**               | **int**    |             |
+| **integration**            | **int**    |             |
+| **domain**                 | **str**    |             |
+| **fees**                   | **int**    |             |
+| **delivery_note**          | **object** |             |
+| **street_line**            | **str**    |             |
+| **city**                   | **str**    |             |
+| **state**                  | **str**    |             |
+| **country**                | **str**    |             |
+| **is_shipped**             | **bool**   |             |
+| **delivery_tracking_link** | **object** |             |
+| **id**                     | **int**    |             |
+| **created_at**             | **str**    |             |
+| **updated_at**             | **str**    |             |
 
 ## Example
 
@@ -36,6 +36,5 @@ order_create_response_data_shipping_dict = order_create_response_data_shipping_i
 # create an instance of OrderCreateResponseDataShipping from a dict
 order_create_response_data_shipping_form_dict = order_create_response_data_shipping.from_dict(order_create_response_data_shipping_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

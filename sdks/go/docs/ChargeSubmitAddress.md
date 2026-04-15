@@ -2,13 +2,13 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Address** | **string** | Customer&#39;s address | 
-**City** | **string** | Customer&#39;s city | 
-**State** | **string** | Customer&#39;s state | 
-**ZipCode** | **string** | Customer&#39;s zipcode | 
-**Reference** | **string** | The reference of the ongoing transaction | 
+| Name          | Type       | Description                              | Notes |
+| ------------- | ---------- | ---------------------------------------- | ----- |
+| **Address**   | **string** | Customer&#39;s address                   |
+| **City**      | **string** | Customer&#39;s city                      |
+| **State**     | **string** | Customer&#39;s state                     |
+| **ZipCode**   | **string** | Customer&#39;s zipcode                   |
+| **Reference** | **string** | The reference of the ongoing transaction |
 
 ## Methods
 
@@ -48,7 +48,6 @@ and a boolean to check if the value has been set.
 
 SetAddress sets Address field to given value.
 
-
 ### GetCity
 
 `func (o *ChargeSubmitAddress) GetCity() string`
@@ -67,7 +66,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeSubmitAddress) SetCity(v string)`
 
 SetCity sets City field to given value.
-
 
 ### GetState
 
@@ -88,7 +86,6 @@ and a boolean to check if the value has been set.
 
 SetState sets State field to given value.
 
-
 ### GetZipCode
 
 `func (o *ChargeSubmitAddress) GetZipCode() string`
@@ -107,7 +104,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeSubmitAddress) SetZipCode(v string)`
 
 SetZipCode sets ZipCode field to given value.
-
 
 ### GetReference
 
@@ -128,8 +124,4 @@ and a boolean to check if the value has been set.
 
 SetReference sets Reference field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

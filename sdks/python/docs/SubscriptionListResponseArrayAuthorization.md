@@ -1,22 +1,22 @@
 # SubscriptionListResponseArrayAuthorization
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**authorization_code** | **str** |  | 
-**bin** | **str** |  | 
-**last4** | **str** |  | 
-**exp_month** | **str** |  | 
-**exp_year** | **str** |  | 
-**channel** | **str** |  | 
-**card_type** | **str** |  | 
-**bank** | **str** |  | 
-**country_code** | **str** |  | 
-**brand** | **str** |  | 
-**reusable** | **int** |  | 
-**signature** | **str** |  | 
-**account_name** | **object** |  | 
+
+| Name                   | Type       | Description | Notes |
+| ---------------------- | ---------- | ----------- | ----- |
+| **authorization_code** | **str**    |             |
+| **bin**                | **str**    |             |
+| **last4**              | **str**    |             |
+| **exp_month**          | **str**    |             |
+| **exp_year**           | **str**    |             |
+| **channel**            | **str**    |             |
+| **card_type**          | **str**    |             |
+| **bank**               | **str**    |             |
+| **country_code**       | **str**    |             |
+| **brand**              | **str**    |             |
+| **reusable**           | **int**    |             |
+| **signature**          | **str**    |             |
+| **account_name**       | **object** |             |
 
 ## Example
 
@@ -35,6 +35,5 @@ subscription_list_response_array_authorization_dict = subscription_list_response
 # create an instance of SubscriptionListResponseArrayAuthorization from a dict
 subscription_list_response_array_authorization_form_dict = subscription_list_response_array_authorization.from_dict(subscription_list_response_array_authorization_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

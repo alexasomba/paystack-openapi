@@ -1,10 +1,10 @@
 # RefundCreateResponseDataTransactionCustomer
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**international_format_phone** | **str** |  | 
+
+| Name                           | Type    | Description | Notes |
+| ------------------------------ | ------- | ----------- | ----- |
+| **international_format_phone** | **str** |             |
 
 ## Example
 
@@ -23,6 +23,5 @@ refund_create_response_data_transaction_customer_dict = refund_create_response_d
 # create an instance of RefundCreateResponseDataTransactionCustomer from a dict
 refund_create_response_data_transaction_customer_form_dict = refund_create_response_data_transaction_customer.from_dict(refund_create_response_data_transaction_customer_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

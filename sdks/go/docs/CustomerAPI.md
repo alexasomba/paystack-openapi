@@ -2,30 +2,26 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**CustomerCreate**](CustomerAPI.md#CustomerCreate) | **Post** /customer | Create Customer
-[**CustomerDeactivateAuthorization**](CustomerAPI.md#CustomerDeactivateAuthorization) | **Post** /customer/authorization/deactivate | Deactivate Authorization
-[**CustomerDirectDebitActivationCharge**](CustomerAPI.md#CustomerDirectDebitActivationCharge) | **Put** /customer/{id}/directdebit-activation-charge | Direct Debit Activation Charge
-[**CustomerFetch**](CustomerAPI.md#CustomerFetch) | **Get** /customer/{code} | Fetch Customer
-[**CustomerFetchMandateAuthorizations**](CustomerAPI.md#CustomerFetchMandateAuthorizations) | **Get** /customer/{id}/directdebit-mandate-authorizations | Fetch Mandate Authorizations
-[**CustomerInitializeAuthorization**](CustomerAPI.md#CustomerInitializeAuthorization) | **Post** /customer/authorization/initialize | Initialize Authorization
-[**CustomerInitializeDirectDebit**](CustomerAPI.md#CustomerInitializeDirectDebit) | **Post** /customer/{id}/initialize-direct-debit | Initialize Direct Debit
-[**CustomerList**](CustomerAPI.md#CustomerList) | **Get** /customer | List Customers
-[**CustomerRiskAction**](CustomerAPI.md#CustomerRiskAction) | **Post** /customer/set_risk_action | Set Risk Action
-[**CustomerUpdate**](CustomerAPI.md#CustomerUpdate) | **Put** /customer/{code} | Update Customer
-[**CustomerValidate**](CustomerAPI.md#CustomerValidate) | **Post** /customer/{code}/identification | Validate Customer
-[**CustomerVerifyAuthorization**](CustomerAPI.md#CustomerVerifyAuthorization) | **Get** /customer/authorization/verify/{reference} | Verify Authorization
-
-
+| Method                                                                                        | HTTP request                                              | Description                    |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ------------------------------ |
+| [**CustomerCreate**](CustomerAPI.md#CustomerCreate)                                           | **Post** /customer                                        | Create Customer                |
+| [**CustomerDeactivateAuthorization**](CustomerAPI.md#CustomerDeactivateAuthorization)         | **Post** /customer/authorization/deactivate               | Deactivate Authorization       |
+| [**CustomerDirectDebitActivationCharge**](CustomerAPI.md#CustomerDirectDebitActivationCharge) | **Put** /customer/{id}/directdebit-activation-charge      | Direct Debit Activation Charge |
+| [**CustomerFetch**](CustomerAPI.md#CustomerFetch)                                             | **Get** /customer/{code}                                  | Fetch Customer                 |
+| [**CustomerFetchMandateAuthorizations**](CustomerAPI.md#CustomerFetchMandateAuthorizations)   | **Get** /customer/{id}/directdebit-mandate-authorizations | Fetch Mandate Authorizations   |
+| [**CustomerInitializeAuthorization**](CustomerAPI.md#CustomerInitializeAuthorization)         | **Post** /customer/authorization/initialize               | Initialize Authorization       |
+| [**CustomerInitializeDirectDebit**](CustomerAPI.md#CustomerInitializeDirectDebit)             | **Post** /customer/{id}/initialize-direct-debit           | Initialize Direct Debit        |
+| [**CustomerList**](CustomerAPI.md#CustomerList)                                               | **Get** /customer                                         | List Customers                 |
+| [**CustomerRiskAction**](CustomerAPI.md#CustomerRiskAction)                                   | **Post** /customer/set_risk_action                        | Set Risk Action                |
+| [**CustomerUpdate**](CustomerAPI.md#CustomerUpdate)                                           | **Put** /customer/{code}                                  | Update Customer                |
+| [**CustomerValidate**](CustomerAPI.md#CustomerValidate)                                       | **Post** /customer/{code}/identification                  | Validate Customer              |
+| [**CustomerVerifyAuthorization**](CustomerAPI.md#CustomerVerifyAuthorization)                 | **Get** /customer/authorization/verify/{reference}        | Verify Authorization           |
 
 ## CustomerCreate
 
 > CustomerCreateResponse CustomerCreate(ctx).CustomerCreate(customerCreate).Execute()
 
 Create Customer
-
-
 
 ### Example
 
@@ -56,16 +52,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCustomerCreateRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customerCreate** | [**CustomerCreate**](CustomerCreate.md) |  | 
+| Name               | Type                                    | Description | Notes |
+| ------------------ | --------------------------------------- | ----------- | ----- |
+| **customerCreate** | [**CustomerCreate**](CustomerCreate.md) |             |
 
 ### Return type
 
@@ -84,14 +77,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## CustomerDeactivateAuthorization
 
 > CustomerDeactivateAuthorizationResponse CustomerDeactivateAuthorization(ctx).CustomerDeactivateAuthorization(customerDeactivateAuthorization).Execute()
 
 Deactivate Authorization
-
-
 
 ### Example
 
@@ -122,16 +112,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCustomerDeactivateAuthorizationRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customerDeactivateAuthorization** | [**CustomerDeactivateAuthorization**](CustomerDeactivateAuthorization.md) |  | 
+| Name                                | Type                                                                      | Description | Notes |
+| ----------------------------------- | ------------------------------------------------------------------------- | ----------- | ----- |
+| **customerDeactivateAuthorization** | [**CustomerDeactivateAuthorization**](CustomerDeactivateAuthorization.md) |             |
 
 ### Return type
 
@@ -150,14 +137,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## CustomerDirectDebitActivationCharge
 
 > CustomerDirectDebitActivationChargeResponse CustomerDirectDebitActivationCharge(ctx, id).CustomerDirectDebitActivationChargeRequest(customerDirectDebitActivationChargeRequest).Execute()
 
 Direct Debit Activation Charge
-
-
 
 ### Example
 
@@ -189,21 +173,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The customer ID attached to the authorization | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The customer ID attached to the authorization                               |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCustomerDirectDebitActivationChargeRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **customerDirectDebitActivationChargeRequest** | [**CustomerDirectDebitActivationChargeRequest**](CustomerDirectDebitActivationChargeRequest.md) |  | 
+**customerDirectDebitActivationChargeRequest** | [**CustomerDirectDebitActivationChargeRequest**](CustomerDirectDebitActivationChargeRequest.md) | |
 
 ### Return type
 
@@ -222,14 +204,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## CustomerFetch
 
 > CustomerFetchResponse CustomerFetch(ctx, code).Execute()
 
 Fetch Customer
-
-
 
 ### Example
 
@@ -260,20 +239,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | The code for the customer gotten from the response of the customer creation | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | The code for the customer gotten from the response of the customer creation |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCustomerFetchRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -292,14 +268,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## CustomerFetchMandateAuthorizations
 
 > CustomerFetchMandateAuthorizationsResponse CustomerFetchMandateAuthorizations(ctx, id).Execute()
 
 Fetch Mandate Authorizations
-
-
 
 ### Example
 
@@ -330,20 +303,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The customer ID for the authorizations to fetch | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The customer ID for the authorizations to fetch                             |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCustomerFetchMandateAuthorizationsRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -362,14 +332,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## CustomerInitializeAuthorization
 
 > CustomerAuthorizationInitializeResponse CustomerInitializeAuthorization(ctx).CustomerAuthorizationInitializeRequest(customerAuthorizationInitializeRequest).Execute()
 
 Initialize Authorization
-
-
 
 ### Example
 
@@ -384,7 +351,7 @@ import (
 )
 
 func main() {
-    customerAuthorizationInitializeRequest := *openapiclient.NewCustomerAuthorizationInitializeRequest("ravi@demo.com", "direct_debit") // CustomerAuthorizationInitializeRequest | 
+    customerAuthorizationInitializeRequest := *openapiclient.NewCustomerAuthorizationInitializeRequest("ravi@demo.com", "direct_debit") // CustomerAuthorizationInitializeRequest |
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -400,16 +367,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCustomerInitializeAuthorizationRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customerAuthorizationInitializeRequest** | [**CustomerAuthorizationInitializeRequest**](CustomerAuthorizationInitializeRequest.md) |  | 
+| Name                                       | Type                                                                                    | Description | Notes |
+| ------------------------------------------ | --------------------------------------------------------------------------------------- | ----------- | ----- |
+| **customerAuthorizationInitializeRequest** | [**CustomerAuthorizationInitializeRequest**](CustomerAuthorizationInitializeRequest.md) |             |
 
 ### Return type
 
@@ -428,14 +392,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## CustomerInitializeDirectDebit
 
 > CustomerInitializeDirectDebitResponse CustomerInitializeDirectDebit(ctx, id).CustomerInitializeDirectDebitRequest(customerInitializeDirectDebitRequest).Execute()
 
 Initialize Direct Debit
-
-
 
 ### Example
 
@@ -467,21 +428,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The ID of the customer to initialize the direct debit for | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The ID of the customer to initialize the direct debit for                   |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCustomerInitializeDirectDebitRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **customerInitializeDirectDebitRequest** | [**CustomerInitializeDirectDebitRequest**](CustomerInitializeDirectDebitRequest.md) |  | 
+**customerInitializeDirectDebitRequest** | [**CustomerInitializeDirectDebitRequest**](CustomerInitializeDirectDebitRequest.md) | |
 
 ### Return type
 
@@ -500,14 +459,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## CustomerList
 
 > CustomerListResponse CustomerList(ctx).UseCursor(useCursor).Next(next).Previous(previous).From(from).To(to).PerPage(perPage).Page(page).Execute()
 
 List Customers
-
-
 
 ### Example
 
@@ -545,22 +501,19 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCustomerListRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **useCursor** | **bool** | A flag to indicate if cursor based pagination should be used | 
- **next** | **string** | An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data  | 
- **previous** | **string** | An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data  | 
- **from** | **time.Time** | The start date | 
- **to** | **time.Time** | The end date | 
- **perPage** | **string** | The number of records to fetch per request | 
- **page** | **string** | The offset to retrieve data from | 
+| Name          | Type          | Description                                                                                                | Notes |
+| ------------- | ------------- | ---------------------------------------------------------------------------------------------------------- | ----- |
+| **useCursor** | **bool**      | A flag to indicate if cursor based pagination should be used                                               |
+| **next**      | **string**    | An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data     |
+| **previous**  | **string**    | An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data |
+| **from**      | **time.Time** | The start date                                                                                             |
+| **to**        | **time.Time** | The end date                                                                                               |
+| **perPage**   | **string**    | The number of records to fetch per request                                                                 |
+| **page**      | **string**    | The offset to retrieve data from                                                                           |
 
 ### Return type
 
@@ -579,14 +532,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## CustomerRiskAction
 
 > CustomerWhitelistBlacklistResponse CustomerRiskAction(ctx).CustomerRiskAction(customerRiskAction).Execute()
 
 Set Risk Action
-
-
 
 ### Example
 
@@ -617,16 +567,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCustomerRiskActionRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customerRiskAction** | [**CustomerRiskAction**](CustomerRiskAction.md) |  | 
+| Name                   | Type                                            | Description | Notes |
+| ---------------------- | ----------------------------------------------- | ----------- | ----- |
+| **customerRiskAction** | [**CustomerRiskAction**](CustomerRiskAction.md) |             |
 
 ### Return type
 
@@ -645,14 +592,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## CustomerUpdate
 
 > CustomerUpdateResponse CustomerUpdate(ctx, code).CustomerUpdate(customerUpdate).Execute()
 
 Update Customer
-
-
 
 ### Example
 
@@ -684,21 +628,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | The code for the customer gotten from the response of the customer creation | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | The code for the customer gotten from the response of the customer creation |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCustomerUpdateRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **customerUpdate** | [**CustomerUpdate**](CustomerUpdate.md) |  | 
+**customerUpdate** | [**CustomerUpdate**](CustomerUpdate.md) | |
 
 ### Return type
 
@@ -717,14 +659,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## CustomerValidate
 
 > CustomerValidateResponse CustomerValidate(ctx, code).CustomerValidate(customerValidate).Execute()
 
 Validate Customer
-
-
 
 ### Example
 
@@ -756,21 +695,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | The code for the customer gotten from the response of the customer creation | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | The code for the customer gotten from the response of the customer creation |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCustomerValidateRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **customerValidate** | [**CustomerValidate**](CustomerValidate.md) |  | 
+**customerValidate** | [**CustomerValidate**](CustomerValidate.md) | |
 
 ### Return type
 
@@ -789,14 +726,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## CustomerVerifyAuthorization
 
 > CustomerAuthorizationVerifyResponse CustomerVerifyAuthorization(ctx, reference).Execute()
 
 Verify Authorization
-
-
 
 ### Example
 
@@ -827,20 +761,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | The reference returned in the initialization response | 
+| Name          | Type                | Description                                                                 | Notes |
+| ------------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**       | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **reference** | **string**          | The reference returned in the initialization response                       |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCustomerVerifyAuthorizationRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -858,4 +789,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

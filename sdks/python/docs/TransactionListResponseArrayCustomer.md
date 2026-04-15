@@ -1,17 +1,17 @@
 # TransactionListResponseArrayCustomer
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **int** |  | 
-**first_name** | **str** |  | 
-**last_name** | **str** |  | 
-**email** | **str** |  | 
-**phone** | **str** |  | 
-**metadata** | **object** |  | 
-**customer_code** | **str** |  | 
-**risk_action** | **str** |  | 
+
+| Name              | Type       | Description | Notes |
+| ----------------- | ---------- | ----------- | ----- |
+| **id**            | **int**    |             |
+| **first_name**    | **str**    |             |
+| **last_name**     | **str**    |             |
+| **email**         | **str**    |             |
+| **phone**         | **str**    |             |
+| **metadata**      | **object** |             |
+| **customer_code** | **str**    |             |
+| **risk_action**   | **str**    |             |
 
 ## Example
 
@@ -30,6 +30,5 @@ transaction_list_response_array_customer_dict = transaction_list_response_array_
 # create an instance of TransactionListResponseArrayCustomer from a dict
 transaction_list_response_array_customer_form_dict = transaction_list_response_array_customer.from_dict(transaction_list_response_array_customer_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

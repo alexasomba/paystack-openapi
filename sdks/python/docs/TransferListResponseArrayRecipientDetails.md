@@ -1,14 +1,14 @@
 # TransferListResponseArrayRecipientDetails
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**authorization_code** | **object** |  | 
-**account_number** | **str** |  | 
-**account_name** | **str** |  | 
-**bank_code** | **str** |  | 
-**bank_name** | **str** |  | 
+
+| Name                   | Type       | Description | Notes |
+| ---------------------- | ---------- | ----------- | ----- |
+| **authorization_code** | **object** |             |
+| **account_number**     | **str**    |             |
+| **account_name**       | **str**    |             |
+| **bank_code**          | **str**    |             |
+| **bank_name**          | **str**    |             |
 
 ## Example
 
@@ -27,6 +27,5 @@ transfer_list_response_array_recipient_details_dict = transfer_list_response_arr
 # create an instance of TransferListResponseArrayRecipientDetails from a dict
 transfer_list_response_array_recipient_details_form_dict = transfer_list_response_array_recipient_details.from_dict(transfer_list_response_array_recipient_details_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,18 +2,18 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**BatchCode** | **string** |  | 
-**Reference** | **string** |  | 
-**Id** | **int32** |  | 
-**Integration** | **int32** |  | 
-**Domain** | **string** |  | 
-**Status** | **string** |  | 
-**TotalCharges** | **int32** |  | 
-**PendingCharges** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name               | Type       | Description | Notes |
+| ------------------ | ---------- | ----------- | ----- |
+| **BatchCode**      | **string** |             |
+| **Reference**      | **string** |             |
+| **Id**             | **int32**  |             |
+| **Integration**    | **int32**  |             |
+| **Domain**         | **string** |             |
+| **Status**         | **string** |             |
+| **TotalCharges**   | **int32**  |             |
+| **PendingCharges** | **int32**  |             |
+| **CreatedAt**      | **string** |             |
+| **UpdatedAt**      | **string** |             |
 
 ## Methods
 
@@ -53,7 +53,6 @@ and a boolean to check if the value has been set.
 
 SetBatchCode sets BatchCode field to given value.
 
-
 ### GetReference
 
 `func (o *BulkChargeInitiateResponseData) GetReference() string`
@@ -72,7 +71,6 @@ and a boolean to check if the value has been set.
 `func (o *BulkChargeInitiateResponseData) SetReference(v string)`
 
 SetReference sets Reference field to given value.
-
 
 ### GetId
 
@@ -93,7 +91,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetIntegration
 
 `func (o *BulkChargeInitiateResponseData) GetIntegration() int32`
@@ -112,7 +109,6 @@ and a boolean to check if the value has been set.
 `func (o *BulkChargeInitiateResponseData) SetIntegration(v int32)`
 
 SetIntegration sets Integration field to given value.
-
 
 ### GetDomain
 
@@ -133,7 +129,6 @@ and a boolean to check if the value has been set.
 
 SetDomain sets Domain field to given value.
 
-
 ### GetStatus
 
 `func (o *BulkChargeInitiateResponseData) GetStatus() string`
@@ -152,7 +147,6 @@ and a boolean to check if the value has been set.
 `func (o *BulkChargeInitiateResponseData) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
-
 
 ### GetTotalCharges
 
@@ -173,7 +167,6 @@ and a boolean to check if the value has been set.
 
 SetTotalCharges sets TotalCharges field to given value.
 
-
 ### GetPendingCharges
 
 `func (o *BulkChargeInitiateResponseData) GetPendingCharges() int32`
@@ -192,7 +185,6 @@ and a boolean to check if the value has been set.
 `func (o *BulkChargeInitiateResponseData) SetPendingCharges(v int32)`
 
 SetPendingCharges sets PendingCharges field to given value.
-
 
 ### GetCreatedAt
 
@@ -213,7 +205,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-
 ### GetUpdatedAt
 
 `func (o *BulkChargeInitiateResponseData) GetUpdatedAt() string`
@@ -233,8 +224,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

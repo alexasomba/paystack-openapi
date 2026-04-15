@@ -2,13 +2,13 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**settlements_fetch**](SettlementApi.md#settlements_fetch) | **GET** /settlement | List Settlements
-[**settlements_transaction**](SettlementApi.md#settlements_transaction) | **GET** /settlement/{id}/transactions | Fetch Settlement Transactions
-
+| Method                                                                  | HTTP request                          | Description                   |
+| ----------------------------------------------------------------------- | ------------------------------------- | ----------------------------- |
+| [**settlements_fetch**](SettlementApi.md#settlements_fetch)             | **GET** /settlement                   | List Settlements              |
+| [**settlements_transaction**](SettlementApi.md#settlements_transaction) | **GET** /settlement/{id}/transactions | Fetch Settlement Transactions |
 
 # **settlements_fetch**
+
 > Response settlements_fetch(per_page=per_page, page=page)
 
 List Settlements
@@ -17,7 +17,8 @@ List settlements made to your settlement accounts
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -58,14 +59,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling SettlementApi->settlements_fetch: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **per_page** | **int**| The number of records to fetch per request | [optional] 
- **page** | **int**| The offset to retrieve data from | [optional] 
+| Name         | Type    | Description                                | Notes      |
+| ------------ | ------- | ------------------------------------------ | ---------- |
+| **per_page** | **int** | The number of records to fetch per request | [optional] |
+| **page**     | **int** | The offset to retrieve data from           | [optional] |
 
 ### Return type
 
@@ -77,20 +76,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **settlements_transaction**
+
 > Response settlements_transaction(id)
 
 Fetch Settlement Transactions
@@ -99,7 +100,8 @@ Get the transactions that make up a particular settlement
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -139,13 +141,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling SettlementApi->settlements_transaction: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The settlement ID in which you want to fetch its transactions | 
+| Name   | Type    | Description                                                   | Notes |
+| ------ | ------- | ------------------------------------------------------------- | ----- |
+| **id** | **int** | The settlement ID in which you want to fetch its transactions |
 
 ### Return type
 
@@ -157,16 +157,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

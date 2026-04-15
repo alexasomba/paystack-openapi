@@ -4,8 +4,10 @@ properties:
     type: integer
   refund_amount:
     type: integer
+    nullable: true
   currency:
     type: string
+    nullable: true
   status:
     type: string
   resolution:
@@ -146,6 +148,7 @@ properties:
     nullable: true
   category:
     type: string
+    nullable: true
   customer:
     type: object
     properties:
@@ -163,25 +166,24 @@ properties:
         type: string
         nullable: true
       metadata:
-        type: string
+        type: object
+        nullable: true
       risk_action:
         type: string
       international_format_phone:
         type: string
+        nullable: true
     required:
       - id
-      - first_name
-      - last_name
       - email
       - customer_code
-      - phone
-      - metadata
       - risk_action
-      - international_format_phone
   bin:
     type: string
+    nullable: true
   last4:
     type: string
+    nullable: true
   dueAt:
     nullable: true
   resolvedAt:
@@ -209,19 +211,12 @@ required:
   - refund_amount
   - currency
   - status
-  - resolution
   - domain
   - transaction
-  - transaction_reference
   - category
   - customer
   - bin
   - last4
-  - dueAt
-  - resolvedAt
-  - evidence
-  - attachments
-  - note
   - history
   - messages
   - createdAt

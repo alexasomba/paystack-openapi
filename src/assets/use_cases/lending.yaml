@@ -3,7 +3,7 @@ info:
   title: Create a lending application
   description: |
     The OpenAPI specification for creating a marketplace application using the [Paystack API](https://paystack.com/docs/api/).
-    
+
     ### Prerequisites
 
     1. Sign up on [Paystack](https://paystack.com/signup) to get your secret API key
@@ -23,15 +23,15 @@ servers:
     description: Base API endpoint
 paths:
   /transaction/initialize:
-    $ref: '../openapi/paths/transaction_initialize.yaml'
+    $ref: "../openapi/paths/transaction_initialize.yaml"
   /transaction/charge_authorization:
-    $ref: '../openapi/paths/transaction_charge_authorization.yaml'
+    $ref: "../openapi/paths/transaction_charge_authorization.yaml"
   /transaction/partial_debit:
     $ref: ../openapi/paths/transaction_partial_debit.yaml
   /bank/resolve:
-    $ref: '../openapi/paths/bank_resolve.yaml'
+    $ref: "../openapi/paths/bank_resolve.yaml"
   /transferrecipient:
-    $ref: '../openapi/paths/transferrecipient.yaml'
+    $ref: "../openapi/paths/transferrecipient.yaml"
   /transfer:
     $ref: ../openapi/paths/transfer.yaml
 components:

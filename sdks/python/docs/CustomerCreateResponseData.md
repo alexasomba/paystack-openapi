@@ -1,26 +1,26 @@
 # CustomerCreateResponseData
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**transactions** | **List[object]** |  | 
-**subscriptions** | **List[object]** |  | 
-**authorizations** | **List[object]** |  | 
-**email** | **str** |  | 
-**first_name** | **str** |  | 
-**last_name** | **str** |  | 
-**phone** | **str** |  | 
-**integration** | **int** |  | 
-**domain** | **str** |  | 
-**metadata** | [**BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata**](BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata.md) |  | 
-**customer_code** | **str** |  | 
-**risk_action** | **str** |  | 
-**id** | **int** |  | 
-**created_at** | **str** |  | 
-**updated_at** | **str** |  | 
-**identified** | **bool** |  | 
-**identifications** | **object** |  | 
+
+| Name                | Type                                                                                                                                | Description | Notes |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **transactions**    | **List[object]**                                                                                                                    |             |
+| **subscriptions**   | **List[object]**                                                                                                                    |             |
+| **authorizations**  | **List[object]**                                                                                                                    |             |
+| **email**           | **str**                                                                                                                             |             |
+| **first_name**      | **str**                                                                                                                             |             |
+| **last_name**       | **str**                                                                                                                             |             |
+| **phone**           | **str**                                                                                                                             |             |
+| **integration**     | **int**                                                                                                                             |             |
+| **domain**          | **str**                                                                                                                             |             |
+| **metadata**        | [**BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata**](BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata.md) |             |
+| **customer_code**   | **str**                                                                                                                             |             |
+| **risk_action**     | **str**                                                                                                                             |             |
+| **id**              | **int**                                                                                                                             |             |
+| **created_at**      | **str**                                                                                                                             |             |
+| **updated_at**      | **str**                                                                                                                             |             |
+| **identified**      | **bool**                                                                                                                            |             |
+| **identifications** | **object**                                                                                                                          |             |
 
 ## Example
 
@@ -39,6 +39,5 @@ customer_create_response_data_dict = customer_create_response_data_instance.to_d
 # create an instance of CustomerCreateResponseData from a dict
 customer_create_response_data_form_dict = customer_create_response_data.from_dict(customer_create_response_data_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

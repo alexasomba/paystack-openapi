@@ -31,7 +31,9 @@ properties:
       files:
         type: array
         items: {}
+        nullable: true
       file_path:
+        type: string
         nullable: true
       is_shippable:
         type: boolean
@@ -47,8 +49,6 @@ properties:
             items: {}
         required:
           - delivery_note
-          - shipping_address
-          - shipping_fees
       unlimited:
         type: boolean
       domain:
@@ -56,6 +56,7 @@ properties:
       active:
         type: boolean
       features:
+        type: object
         nullable: true
       in_stock:
         type: boolean
@@ -69,22 +70,31 @@ properties:
       slug:
         type: string
       success_message:
+        type: string
         nullable: true
       redirect_url:
+        type: string
         nullable: true
       split_code:
+        type: string
         nullable: true
       notification_emails:
+        type: array
+        items:
+          type: string
         nullable: true
       minimum_orderable:
         type: integer
       maximum_orderable:
+        type: integer
         nullable: true
       low_stock_alert:
         type: boolean
       stock_threshold:
+        type: integer
         nullable: true
       expires_in:
+        type: integer
         nullable: true
       id:
         type: integer

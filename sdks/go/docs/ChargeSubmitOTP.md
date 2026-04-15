@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Otp** | **string** | Customer&#39;s OTP for ongoing transaction | 
-**Reference** | **string** | The reference of the ongoing transaction | 
+| Name          | Type       | Description                                | Notes |
+| ------------- | ---------- | ------------------------------------------ | ----- |
+| **Otp**       | **string** | Customer&#39;s OTP for ongoing transaction |
+| **Reference** | **string** | The reference of the ongoing transaction   |
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetOtp sets Otp field to given value.
 
-
 ### GetReference
 
 `func (o *ChargeSubmitOTP) GetReference() string`
@@ -65,8 +64,4 @@ and a boolean to check if the value has been set.
 
 SetReference sets Reference field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

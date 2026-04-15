@@ -2,17 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Bin** | **string** |  | 
-**Brand** | **string** |  | 
-**SubBrand** | **string** |  | 
-**CountryCode** | **string** |  | 
-**CountryName** | **string** |  | 
-**CardType** | **string** |  | 
-**Bank** | **string** |  | 
-**Currency** | **string** |  | 
-**LinkedBankId** | **int32** |  | 
+| Name             | Type       | Description | Notes |
+| ---------------- | ---------- | ----------- | ----- |
+| **Bin**          | **string** |             |
+| **Brand**        | **string** |             |
+| **SubBrand**     | **string** |             |
+| **CountryCode**  | **string** |             |
+| **CountryName**  | **string** |             |
+| **CardType**     | **string** |             |
+| **Bank**         | **string** |             |
+| **Currency**     | **string** |             |
+| **LinkedBankId** | **int32**  |             |
 
 ## Methods
 
@@ -52,7 +52,6 @@ and a boolean to check if the value has been set.
 
 SetBin sets Bin field to given value.
 
-
 ### GetBrand
 
 `func (o *VerificationResolveCardBINResponseData) GetBrand() string`
@@ -71,7 +70,6 @@ and a boolean to check if the value has been set.
 `func (o *VerificationResolveCardBINResponseData) SetBrand(v string)`
 
 SetBrand sets Brand field to given value.
-
 
 ### GetSubBrand
 
@@ -92,7 +90,6 @@ and a boolean to check if the value has been set.
 
 SetSubBrand sets SubBrand field to given value.
 
-
 ### GetCountryCode
 
 `func (o *VerificationResolveCardBINResponseData) GetCountryCode() string`
@@ -111,7 +108,6 @@ and a boolean to check if the value has been set.
 `func (o *VerificationResolveCardBINResponseData) SetCountryCode(v string)`
 
 SetCountryCode sets CountryCode field to given value.
-
 
 ### GetCountryName
 
@@ -132,7 +128,6 @@ and a boolean to check if the value has been set.
 
 SetCountryName sets CountryName field to given value.
 
-
 ### GetCardType
 
 `func (o *VerificationResolveCardBINResponseData) GetCardType() string`
@@ -151,7 +146,6 @@ and a boolean to check if the value has been set.
 `func (o *VerificationResolveCardBINResponseData) SetCardType(v string)`
 
 SetCardType sets CardType field to given value.
-
 
 ### GetBank
 
@@ -172,7 +166,6 @@ and a boolean to check if the value has been set.
 
 SetBank sets Bank field to given value.
 
-
 ### GetCurrency
 
 `func (o *VerificationResolveCardBINResponseData) GetCurrency() string`
@@ -191,7 +184,6 @@ and a boolean to check if the value has been set.
 `func (o *VerificationResolveCardBINResponseData) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetLinkedBankId
 
@@ -212,8 +204,4 @@ and a boolean to check if the value has been set.
 
 SetLinkedBankId sets LinkedBankId field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -1,23 +1,23 @@
 # ChargeSubmitPinResponseData
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **str** |  | 
-**amount** | **int** |  | 
-**currency** | **str** |  | 
-**transaction_date** | **str** |  | 
-**reference** | **str** |  | 
-**domain** | **str** |  | 
-**redirect_url** | **str** |  | 
-**metadata** | **object** |  | 
-**gateway_response** | **str** |  | 
-**message** | **str** |  | 
-**channel** | **str** |  | 
-**fees** | **int** |  | 
-**authorization** | [**ChargeSubmitPinResponseDataAuthorization**](ChargeSubmitPinResponseDataAuthorization.md) |  | 
-**customer** | [**ChargeSubmitPinResponseDataCustomer**](ChargeSubmitPinResponseDataCustomer.md) |  | 
+
+| Name                 | Type                                                                                        | Description | Notes |
+| -------------------- | ------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **status**           | **str**                                                                                     |             |
+| **amount**           | **int**                                                                                     |             |
+| **currency**         | **str**                                                                                     |             |
+| **transaction_date** | **str**                                                                                     |             |
+| **reference**        | **str**                                                                                     |             |
+| **domain**           | **str**                                                                                     |             |
+| **redirect_url**     | **str**                                                                                     |             |
+| **metadata**         | **object**                                                                                  |             |
+| **gateway_response** | **str**                                                                                     |             |
+| **message**          | **str**                                                                                     |             |
+| **channel**          | **str**                                                                                     |             |
+| **fees**             | **int**                                                                                     |             |
+| **authorization**    | [**ChargeSubmitPinResponseDataAuthorization**](ChargeSubmitPinResponseDataAuthorization.md) |             |
+| **customer**         | [**ChargeSubmitPinResponseDataCustomer**](ChargeSubmitPinResponseDataCustomer.md)           |             |
 
 ## Example
 
@@ -36,6 +36,5 @@ charge_submit_pin_response_data_dict = charge_submit_pin_response_data_instance.
 # create an instance of ChargeSubmitPinResponseData from a dict
 charge_submit_pin_response_data_form_dict = charge_submit_pin_response_data.from_dict(charge_submit_pin_response_data_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

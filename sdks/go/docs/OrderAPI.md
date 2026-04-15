@@ -2,23 +2,19 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**OrderCreate**](OrderAPI.md#OrderCreate) | **Post** /order | Create Order
-[**OrderFetch**](OrderAPI.md#OrderFetch) | **Get** /order/{id} | Fetch Order
-[**OrderList**](OrderAPI.md#OrderList) | **Get** /order | List Orders
-[**OrderProduct**](OrderAPI.md#OrderProduct) | **Get** /order/product/{id} | Fetch Product Orders
-[**OrderValidate**](OrderAPI.md#OrderValidate) | **Get** /order/{code}/validate | Validate Order
-
-
+| Method                                         | HTTP request                   | Description          |
+| ---------------------------------------------- | ------------------------------ | -------------------- |
+| [**OrderCreate**](OrderAPI.md#OrderCreate)     | **Post** /order                | Create Order         |
+| [**OrderFetch**](OrderAPI.md#OrderFetch)       | **Get** /order/{id}            | Fetch Order          |
+| [**OrderList**](OrderAPI.md#OrderList)         | **Get** /order                 | List Orders          |
+| [**OrderProduct**](OrderAPI.md#OrderProduct)   | **Get** /order/product/{id}    | Fetch Product Orders |
+| [**OrderValidate**](OrderAPI.md#OrderValidate) | **Get** /order/{code}/validate | Validate Order       |
 
 ## OrderCreate
 
 > OrderCreateResponse OrderCreate(ctx).OrderCreate(orderCreate).Execute()
 
 Create Order
-
-
 
 ### Example
 
@@ -49,16 +45,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiOrderCreateRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **orderCreate** | [**OrderCreate**](OrderCreate.md) |  | 
+| Name            | Type                              | Description | Notes |
+| --------------- | --------------------------------- | ----------- | ----- |
+| **orderCreate** | [**OrderCreate**](OrderCreate.md) |             |
 
 ### Return type
 
@@ -77,14 +70,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## OrderFetch
 
 > OrderFetchResponse OrderFetch(ctx, id).Execute()
 
 Fetch Order
-
-
 
 ### Example
 
@@ -115,20 +105,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of the order | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of the order                                          |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiOrderFetchRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -147,14 +134,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## OrderList
 
 > OrderListResponse OrderList(ctx).PerPage(perPage).Page(page).From(from).To(to).Execute()
 
 List Orders
-
-
 
 ### Example
 
@@ -189,19 +173,16 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiOrderListRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **perPage** | **int32** | Number of records to fetch per page | 
- **page** | **int32** | The section to retrieve | 
- **from** | **time.Time** | The start date | 
- **to** | **time.Time** | The end date | 
+| Name        | Type          | Description                         | Notes |
+| ----------- | ------------- | ----------------------------------- | ----- |
+| **perPage** | **int32**     | Number of records to fetch per page |
+| **page**    | **int32**     | The section to retrieve             |
+| **from**    | **time.Time** | The start date                      |
+| **to**      | **time.Time** | The end date                        |
 
 ### Return type
 
@@ -220,14 +201,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## OrderProduct
 
 > OrderFetchProductResponse OrderProduct(ctx, id).Execute()
 
 Fetch Product Orders
-
-
 
 ### Example
 
@@ -258,20 +236,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of the order | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of the order                                          |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiOrderProductRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -290,14 +265,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## OrderValidate
 
 > OrderValidateResponse OrderValidate(ctx, code).Execute()
 
 Validate Order
-
-
 
 ### Example
 
@@ -328,20 +300,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | The unique code of a previously created order | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | The unique code of a previously created order                               |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiOrderValidateRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -359,4 +328,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

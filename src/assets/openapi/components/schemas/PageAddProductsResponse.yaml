@@ -16,8 +16,10 @@ properties:
       name:
         type: string
       description:
+        type: string
         nullable: true
       amount:
+        type: integer
         nullable: true
       currency:
         type: string
@@ -40,10 +42,13 @@ properties:
       migrate:
         type: boolean
       notification_email:
+        type: string
         nullable: true
       metadata:
+        type: object
         nullable: true
       split_code:
+        type: string
         nullable: true
       id:
         type: integer
@@ -60,21 +65,14 @@ properties:
       - plan
       - domain
       - name
-      - description
       - amount
       - currency
       - slug
-      - custom_fields
       - type
-      - redirect_url
-      - success_message
       - collect_phone
       - active
       - published
       - migrate
-      - notification_email
-      - metadata
-      - split_code
       - id
       - createdAt
       - updatedAt

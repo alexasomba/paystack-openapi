@@ -1,8 +1,8 @@
 parameters:
-  - name: code
+  - name: id_or_code
     in: path
     required: true
-    description: The plan code you want to fetch
+    description: The plan ID or code you want to fetch
     schema:
       type: string
     example: "PLN_gx2wn530m0i3w3m"
@@ -13,11 +13,11 @@ get:
   operationId: plan_fetch
   description: Get the details of a payment plan
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/PlanFetchSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error
@@ -36,11 +36,11 @@ put:
         schema:
           $ref: ../components/schemas/PlanUpdate.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/PlanUpdateSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

@@ -1,12 +1,12 @@
 # DedicatedNubanDeactivateResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**DedicatedNubanDeactivateResponseData**](DedicatedNubanDeactivateResponseData.md) |  | 
+
+| Name        | Type                                                                                | Description | Notes |
+| ----------- | ----------------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                            |             |
+| **message** | **str**                                                                             |             |
+| **data**    | [**DedicatedNubanDeactivateResponseData**](DedicatedNubanDeactivateResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ dedicated_nuban_deactivate_response_dict = dedicated_nuban_deactivate_response_i
 # create an instance of DedicatedNubanDeactivateResponse from a dict
 dedicated_nuban_deactivate_response_form_dict = dedicated_nuban_deactivate_response.from_dict(dedicated_nuban_deactivate_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -1,11 +1,11 @@
 # TerminalGetStatusResponseData
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**online** | **bool** |  | 
-**available** | **bool** |  | 
+
+| Name          | Type     | Description | Notes |
+| ------------- | -------- | ----------- | ----- |
+| **online**    | **bool** |             |
+| **available** | **bool** |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ terminal_get_status_response_data_dict = terminal_get_status_response_data_insta
 # create an instance of TerminalGetStatusResponseData from a dict
 terminal_get_status_response_data_form_dict = terminal_get_status_response_data.from_dict(terminal_get_status_response_data_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

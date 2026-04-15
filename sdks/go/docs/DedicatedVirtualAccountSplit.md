@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AccountNumber** | **string** | Valid Dedicated virtual account | 
-**Subaccount** | Pointer to **string** | Subaccount code of the account you want to split the transaction with | [optional] 
-**SplitCode** | Pointer to **string** | Split code consisting of the lists of accounts you want to split the transaction with | [optional] 
+| Name              | Type                  | Description                                                                           | Notes      |
+| ----------------- | --------------------- | ------------------------------------------------------------------------------------- | ---------- |
+| **AccountNumber** | **string**            | Valid Dedicated virtual account                                                       |
+| **Subaccount**    | Pointer to **string** | Subaccount code of the account you want to split the transaction with                 | [optional] |
+| **SplitCode**     | Pointer to **string** | Split code consisting of the lists of accounts you want to split the transaction with | [optional] |
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedVirtualAccountSplit) SetAccountNumber(v string)`
 
 SetAccountNumber sets AccountNumber field to given value.
-
 
 ### GetSubaccount
 
@@ -97,7 +96,4 @@ SetSplitCode sets SplitCode field to given value.
 
 HasSplitCode returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

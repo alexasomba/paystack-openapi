@@ -39,15 +39,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PlanCreate'
+              $ref: "#/components/schemas/PlanCreate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PlanCreate'
+              $ref: "#/components/schemas/PlanCreate"
       responses:
-        '200':
-          $ref: '#/components/responses/PlanCreateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/PlanCreateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -82,7 +82,9 @@ paths:
           name: amount
           schema:
             type: integer
-          description: The amount on the plans to retrieve
+          description: |
+            Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
+            Filter plans by a specific amount.
         - in: query
           name: from
           schema:
@@ -96,12 +98,12 @@ paths:
             format: date-time
           description: The end date
       responses:
-        '200':
-          $ref: '#/components/responses/PlanListSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/PlanListSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /subscription:
@@ -115,15 +117,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SubscriptionCreate'
+              $ref: "#/components/schemas/SubscriptionCreate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/SubscriptionCreate'
+              $ref: "#/components/schemas/SubscriptionCreate"
       responses:
-        '200':
-          $ref: '#/components/responses/SubscriptionCreateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/SubscriptionCreateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -153,7 +155,7 @@ paths:
           name: customer
           schema:
             type: string
-          description: Customer ID
+          description: Customer ID, code, or email
         - in: query
           name: from
           schema:
@@ -167,12 +169,12 @@ paths:
             format: date-time
           description: The end date
       responses:
-        '200':
-          $ref: '#/components/responses/SubscriptionListSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/SubscriptionListSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /transaction/initialize:
@@ -186,21 +188,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransactionInitialize'
+              $ref: "#/components/schemas/TransactionInitialize"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TransactionInitialize'
+              $ref: "#/components/schemas/TransactionInitialize"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransactionInitializeResponse'
-        '400':
-          $ref: '#/components/responses/TransactionInitializeBadRequestResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/TransactionInitializeResponse"
+        "400":
+          $ref: "#/components/responses/TransactionInitializeBadRequestResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /transaction/charge_authorization:
@@ -214,19 +216,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransactionChargeAuthorization'
+              $ref: "#/components/schemas/TransactionChargeAuthorization"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TransactionChargeAuthorization'
+              $ref: "#/components/schemas/TransactionChargeAuthorization"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ChargeAuthorizationResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/ChargeAuthorizationResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
 components:
@@ -316,6 +318,28 @@ components:
         - total_subscriptions
         - active_subscriptions
         - total_subscriptions_revenue
+    Meta:
+      type: object
+      properties:
+        total:
+          type: integer
+        skipped:
+          type: integer
+        perPage:
+          anyOf:
+            - type: integer
+            - type: string
+        page:
+          type: integer
+        pageCount:
+          type: integer
+      required:
+        - total
+        - skipped
+        - perPage
+        - page
+        - pageCount
+      additionalProperties: false
     PlanListResponse:
       type: object
       properties:
@@ -326,27 +350,9 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/PlanListResponseArray'
+            $ref: "#/components/schemas/PlanListResponseArray"
         meta:
-          type: object
-          properties:
-            total:
-              type: integer
-            skipped:
-              type: integer
-            perPage:
-              type: integer
-            page:
-              type: integer
-            pageCount:
-              type: integer
-          required:
-            - total
-            - skipped
-            - perPage
-            - page
-            - pageCount
-          additionalProperties: false
+          $ref: "#/components/schemas/Meta"
       required:
         - status
         - message
@@ -369,7 +375,7 @@ components:
           type: string
           description: A short description of the error
         meta:
-          $ref: '#/components/schemas/ErrorMeta'
+          $ref: "#/components/schemas/ErrorMeta"
         type:
           type: string
           description: A tag to indicate the type of the error
@@ -394,10 +400,8 @@ components:
           description: Name of plan
           type: string
         amount:
-          description: |-
-            Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
-             Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
-             cents, if currency is ZAR, and whole number if currency is XOF
+          description: |
+            Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
           type: integer
         interval:
           description: Payment interval
@@ -687,27 +691,9 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/SubscriptionListResponseArray'
+            $ref: "#/components/schemas/SubscriptionListResponseArray"
         meta:
-          type: object
-          properties:
-            total:
-              type: integer
-            skipped:
-              type: integer
-            perPage:
-              type: integer
-            page:
-              type: integer
-            pageCount:
-              type: integer
-          required:
-            - total
-            - skipped
-            - perPage
-            - page
-            - pageCount
-          additionalProperties: false
+          $ref: "#/components/schemas/Meta"
       required:
         - status
         - message
@@ -867,7 +853,7 @@ components:
           description: A list of object containing subaccount code and number of shares
           type: array
           items:
-            $ref: '#/components/schemas/SplitSubaccounts'
+            $ref: "#/components/schemas/SplitSubaccounts"
         currency:
           description: The transaction currency
           type: string
@@ -907,23 +893,26 @@ components:
           type: string
         amount:
           description: |
-            Amount should be in the smallest unit of the currency (e.g., kobo for NGN, pesewas for GHS, cents for ZAR/USD).
+            Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
 
             Minimum amounts:
-             - NGN: ₦50.00
-             - GHS: ₵0.10
-             - ZAR: R1.00
-             - KES: Ksh 3.00
-             - USD: $2.00
-             - XOF: 1.00
-          type: integer
+             - NGN: ₦50.00 (5000 kobo)
+             - GHS: ₵0.10 (10 pesewas)
+             - ZAR: R1.00 (100 cents)
+             - KES: Ksh 3.00 (300 cents)
+             - USD: $2.00 (200 cents)
+             - XOF: 1.00 (1 XOF)
+          oneOf:
+            - type: integer
+            - type: string
         currency:
-          $ref: '#/components/schemas/Currency'
+          $ref: "#/components/schemas/Currency"
         reference:
           description: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
           type: string
         channels:
-          description: An array of payment channels to control what channels you want to make available to the user to make a payment with
+          description: |
+            An array of payment channels to control what channels you want to make available to the user to make a payment with
           type: array
           items:
             type: string
@@ -935,6 +924,9 @@ components:
               - eft
               - mobile_money
               - bank_transfer
+              - apple_pay
+              - capitec_pay
+              - payattitude
         callback_url:
           description: |
             Fully qualified url, e.g. https://example.com/ to redirect your customers to after a successful payment. Use this to override the callback url provided on the dashboard for this transaction
@@ -951,7 +943,7 @@ components:
           description: The split code of the transaction split
           type: string
         split:
-          $ref: '#/components/schemas/SplitCreate'
+          $ref: "#/components/schemas/SplitCreate"
         subaccount:
           description: The code for the subaccount that owns the payment
           type: string
@@ -959,7 +951,7 @@ components:
           description: |
             A flat fee to charge the subaccount for a transaction. 
             This overrides the split percentage set when the subaccount was created
-          type: string
+          type: integer
         bearer:
           description: The bearer of the transaction charge
           type: string
@@ -971,7 +963,9 @@ components:
           type: string
         metadata:
           description: JSON object of custom data
-          type: object
+          anyOf:
+            - type: string
+            - type: object
       example:
         email: test@demo.com
         amount: 10000
@@ -1011,7 +1005,7 @@ components:
           type: string
           description: A short description of the error
         meta:
-          $ref: '#/components/schemas/ErrorMeta'
+          $ref: "#/components/schemas/ErrorMeta"
         type:
           type: string
           description: A tag to indicate the type of the error
@@ -1044,8 +1038,8 @@ components:
           description: Customer's email address
           type: string
         amount:
-          description: Amount in the lower denomination of your currency
-          type: integer
+          description: |
+            Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
         authorization_code:
           description: Valid authorization code to charge
           type: string
@@ -1053,12 +1047,20 @@ components:
           description: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
           type: string
         currency:
-          $ref: '#/components/schemas/Currency'
+          $ref: "#/components/schemas/Currency"
+        channels:
+          description: Send us 'card' or 'bank' or 'card','bank' as an array to specify what options to show the user paying
+          type: array
+          items:
+            type: string
+            enum:
+              - card
+              - bank
         split_code:
           description: The split code of the transaction split
           type: string
         split:
-          $ref: '#/components/schemas/SplitCreate'
+          $ref: "#/components/schemas/SplitCreate"
         subaccount:
           description: The code for the subaccount that owns the payment
           type: string
@@ -1066,7 +1068,7 @@ components:
           description: |-
             A flat fee to charge the subaccount for a transaction. 
             This overrides the split percentage set when the subaccount was created
-          type: string
+          type: integer
         bearer:
           description: The bearer of the transaction charge
           type: string
@@ -1075,7 +1077,9 @@ components:
             - subaccount
         metadata:
           description: Stringified JSON object of custom data
-          type: string
+          anyOf:
+            - type: string
+            - type: object
         queue:
           description: If you are making a scheduled charge call, it is a good idea to queue them so the processing system does not get overloaded causing transaction processing errors.
           type: boolean
@@ -1277,13 +1281,13 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PlanListResponse'
+            $ref: "#/components/schemas/PlanListResponse"
     Unauthorized:
       description: Unauthorized operation
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
           example:
             status: false
             message: Invalid key
@@ -1292,7 +1296,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
           example:
             status: false
             message: Entity not found
@@ -1301,22 +1305,22 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PlanCreateResponse'
+            $ref: "#/components/schemas/PlanCreateResponse"
     SubscriptionListSuccess:
       description: Subscription List response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SubscriptionListResponse'
+            $ref: "#/components/schemas/SubscriptionListResponse"
     SubscriptionCreateSuccess:
       description: Subscription Create response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SubscriptionCreateResponse'
+            $ref: "#/components/schemas/SubscriptionCreateResponse"
     TransactionInitializeBadRequestResponse:
       description: Responses from the Transaction Initialize endpoint
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransactionInitializeBadRequestModel'
+            $ref: "#/components/schemas/TransactionInitializeBadRequestModel"

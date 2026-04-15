@@ -1,12 +1,12 @@
 # DisputeMessagesArray
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**sender** | **str** |  | 
-**body** | **str** |  | 
-**created_at** | **str** |  | 
+
+| Name           | Type    | Description | Notes |
+| -------------- | ------- | ----------- | ----- |
+| **sender**     | **str** |             |
+| **body**       | **str** |             |
+| **created_at** | **str** |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ dispute_messages_array_dict = dispute_messages_array_instance.to_dict()
 # create an instance of DisputeMessagesArray from a dict
 dispute_messages_array_form_dict = dispute_messages_array.from_dict(dispute_messages_array_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

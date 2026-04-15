@@ -1,14 +1,14 @@
 # CustomerFetchMandateAuthorizationsResponseDataCustomer
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **int** |  | [optional] 
-**customer_code** | **str** |  | [optional] 
-**email** | **str** |  | [optional] 
-**first_name** | **str** |  | [optional] 
-**last_name** | **str** |  | [optional] 
+
+| Name              | Type    | Description | Notes      |
+| ----------------- | ------- | ----------- | ---------- |
+| **id**            | **int** |             | [optional] |
+| **customer_code** | **str** |             | [optional] |
+| **email**         | **str** |             | [optional] |
+| **first_name**    | **str** |             | [optional] |
+| **last_name**     | **str** |             | [optional] |
 
 ## Example
 
@@ -27,6 +27,5 @@ customer_fetch_mandate_authorizations_response_data_customer_dict = customer_fet
 # create an instance of CustomerFetchMandateAuthorizationsResponseDataCustomer from a dict
 customer_fetch_mandate_authorizations_response_data_customer_form_dict = customer_fetch_mandate_authorizations_response_data_customer.from_dict(customer_fetch_mandate_authorizations_response_data_customer_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

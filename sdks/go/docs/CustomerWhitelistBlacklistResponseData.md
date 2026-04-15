@@ -2,25 +2,25 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Transactions** | **[]interface{}** |  | 
-**Subscriptions** | **[]interface{}** |  | 
-**Authorizations** | **[]interface{}** |  | 
-**FirstName** | **string** |  | 
-**LastName** | **string** |  | 
-**Email** | **string** |  | 
-**Phone** | **string** |  | 
-**Metadata** | **map[string]interface{}** |  | 
-**Domain** | **string** |  | 
-**CustomerCode** | **string** |  | 
-**RiskAction** | **string** |  | 
-**Id** | **int32** |  | 
-**Integration** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
-**Identified** | **bool** |  | 
-**Identifications** | **interface{}** |  | 
+| Name                | Type                       | Description | Notes |
+| ------------------- | -------------------------- | ----------- | ----- |
+| **Transactions**    | **[]interface{}**          |             |
+| **Subscriptions**   | **[]interface{}**          |             |
+| **Authorizations**  | **[]interface{}**          |             |
+| **FirstName**       | **string**                 |             |
+| **LastName**        | **string**                 |             |
+| **Email**           | **string**                 |             |
+| **Phone**           | **string**                 |             |
+| **Metadata**        | **map[string]interface{}** |             |
+| **Domain**          | **string**                 |             |
+| **CustomerCode**    | **string**                 |             |
+| **RiskAction**      | **string**                 |             |
+| **Id**              | **int32**                  |             |
+| **Integration**     | **int32**                  |             |
+| **CreatedAt**       | **string**                 |             |
+| **UpdatedAt**       | **string**                 |             |
+| **Identified**      | **bool**                   |             |
+| **Identifications** | **interface{}**            |             |
 
 ## Methods
 
@@ -60,7 +60,6 @@ and a boolean to check if the value has been set.
 
 SetTransactions sets Transactions field to given value.
 
-
 ### GetSubscriptions
 
 `func (o *CustomerWhitelistBlacklistResponseData) GetSubscriptions() []interface{}`
@@ -79,7 +78,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerWhitelistBlacklistResponseData) SetSubscriptions(v []interface{})`
 
 SetSubscriptions sets Subscriptions field to given value.
-
 
 ### GetAuthorizations
 
@@ -100,7 +98,6 @@ and a boolean to check if the value has been set.
 
 SetAuthorizations sets Authorizations field to given value.
 
-
 ### GetFirstName
 
 `func (o *CustomerWhitelistBlacklistResponseData) GetFirstName() string`
@@ -119,7 +116,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerWhitelistBlacklistResponseData) SetFirstName(v string)`
 
 SetFirstName sets FirstName field to given value.
-
 
 ### GetLastName
 
@@ -140,7 +136,6 @@ and a boolean to check if the value has been set.
 
 SetLastName sets LastName field to given value.
 
-
 ### GetEmail
 
 `func (o *CustomerWhitelistBlacklistResponseData) GetEmail() string`
@@ -159,7 +154,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerWhitelistBlacklistResponseData) SetEmail(v string)`
 
 SetEmail sets Email field to given value.
-
 
 ### GetPhone
 
@@ -180,7 +174,6 @@ and a boolean to check if the value has been set.
 
 SetPhone sets Phone field to given value.
 
-
 ### GetMetadata
 
 `func (o *CustomerWhitelistBlacklistResponseData) GetMetadata() map[string]interface{}`
@@ -199,7 +192,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerWhitelistBlacklistResponseData) SetMetadata(v map[string]interface{})`
 
 SetMetadata sets Metadata field to given value.
-
 
 ### GetDomain
 
@@ -220,7 +212,6 @@ and a boolean to check if the value has been set.
 
 SetDomain sets Domain field to given value.
 
-
 ### GetCustomerCode
 
 `func (o *CustomerWhitelistBlacklistResponseData) GetCustomerCode() string`
@@ -239,7 +230,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerWhitelistBlacklistResponseData) SetCustomerCode(v string)`
 
 SetCustomerCode sets CustomerCode field to given value.
-
 
 ### GetRiskAction
 
@@ -260,7 +250,6 @@ and a boolean to check if the value has been set.
 
 SetRiskAction sets RiskAction field to given value.
 
-
 ### GetId
 
 `func (o *CustomerWhitelistBlacklistResponseData) GetId() int32`
@@ -279,7 +268,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerWhitelistBlacklistResponseData) SetId(v int32)`
 
 SetId sets Id field to given value.
-
 
 ### GetIntegration
 
@@ -300,7 +288,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *CustomerWhitelistBlacklistResponseData) GetCreatedAt() string`
@@ -319,7 +306,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerWhitelistBlacklistResponseData) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -340,7 +326,6 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
 ### GetIdentified
 
 `func (o *CustomerWhitelistBlacklistResponseData) GetIdentified() bool`
@@ -359,7 +344,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerWhitelistBlacklistResponseData) SetIdentified(v bool)`
 
 SetIdentified sets Identified field to given value.
-
 
 ### GetIdentifications
 
@@ -380,18 +364,16 @@ and a boolean to check if the value has been set.
 
 SetIdentifications sets Identifications field to given value.
 
-
 ### SetIdentificationsNil
 
 `func (o *CustomerWhitelistBlacklistResponseData) SetIdentificationsNil(b bool)`
 
- SetIdentificationsNil sets the value for Identifications to be an explicit nil
+SetIdentificationsNil sets the value for Identifications to be an explicit nil
 
 ### UnsetIdentifications
+
 `func (o *CustomerWhitelistBlacklistResponseData) UnsetIdentifications()`
 
 UnsetIdentifications ensures that no value is present for Identifications, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

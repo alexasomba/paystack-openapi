@@ -2,17 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**Name** | **string** |  | 
-**PlanCode** | **string** |  | 
-**Description** | **interface{}** |  | 
-**Amount** | **int32** |  | 
-**Interval** | **string** |  | 
-**SendInvoices** | **bool** |  | 
-**SendSms** | **bool** |  | 
-**Currency** | **string** |  | 
+| Name             | Type            | Description | Notes |
+| ---------------- | --------------- | ----------- | ----- |
+| **Id**           | **int32**       |             |
+| **Name**         | **string**      |             |
+| **PlanCode**     | **string**      |             |
+| **Description**  | **interface{}** |             |
+| **Amount**       | **int32**       |             |
+| **Interval**     | **string**      |             |
+| **SendInvoices** | **bool**        |             |
+| **SendSms**      | **bool**        |             |
+| **Currency**     | **string**      |             |
 
 ## Methods
 
@@ -52,7 +52,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetName
 
 `func (o *SubscriptionFetchResponseDataPlan) GetName() string`
@@ -71,7 +70,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionFetchResponseDataPlan) SetName(v string)`
 
 SetName sets Name field to given value.
-
 
 ### GetPlanCode
 
@@ -92,7 +90,6 @@ and a boolean to check if the value has been set.
 
 SetPlanCode sets PlanCode field to given value.
 
-
 ### GetDescription
 
 `func (o *SubscriptionFetchResponseDataPlan) GetDescription() interface{}`
@@ -112,17 +109,18 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
-
 ### SetDescriptionNil
 
 `func (o *SubscriptionFetchResponseDataPlan) SetDescriptionNil(b bool)`
 
- SetDescriptionNil sets the value for Description to be an explicit nil
+SetDescriptionNil sets the value for Description to be an explicit nil
 
 ### UnsetDescription
+
 `func (o *SubscriptionFetchResponseDataPlan) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
+
 ### GetAmount
 
 `func (o *SubscriptionFetchResponseDataPlan) GetAmount() int32`
@@ -141,7 +139,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionFetchResponseDataPlan) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetInterval
 
@@ -162,7 +159,6 @@ and a boolean to check if the value has been set.
 
 SetInterval sets Interval field to given value.
 
-
 ### GetSendInvoices
 
 `func (o *SubscriptionFetchResponseDataPlan) GetSendInvoices() bool`
@@ -181,7 +177,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionFetchResponseDataPlan) SetSendInvoices(v bool)`
 
 SetSendInvoices sets SendInvoices field to given value.
-
 
 ### GetSendSms
 
@@ -202,7 +197,6 @@ and a boolean to check if the value has been set.
 
 SetSendSms sets SendSms field to given value.
 
-
 ### GetCurrency
 
 `func (o *SubscriptionFetchResponseDataPlan) GetCurrency() string`
@@ -222,8 +216,4 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

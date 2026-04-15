@@ -21,9 +21,9 @@ put:
         schema:
           $ref: ../components/schemas/VirtualTerminalAddSplitCode.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/VirtualTerminalAddSplitCodeSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server Error
@@ -42,9 +42,9 @@ delete:
         schema:
           $ref: ../components/schemas/VirtualTerminalDeleteSplitCode.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/VirtualTerminalDeleteSplitCodeSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server Error

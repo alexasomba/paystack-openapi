@@ -2,26 +2,27 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**transferrecipient_bulk**](TransferRecipientApi.md#transferrecipient_bulk) | **POST** /transferrecipient/bulk | Bulk Create Transfer Recipient
-[**transferrecipient_create**](TransferRecipientApi.md#transferrecipient_create) | **POST** /transferrecipient | Create Transfer Recipient
-[**transferrecipient_delete**](TransferRecipientApi.md#transferrecipient_delete) | **DELETE** /transferrecipient/{code} | Delete Transfer Recipient
-[**transferrecipient_fetch**](TransferRecipientApi.md#transferrecipient_fetch) | **GET** /transferrecipient/{code} | Fetch Transfer recipient
-[**transferrecipient_list**](TransferRecipientApi.md#transferrecipient_list) | **GET** /transferrecipient | List Transfer Recipients
-[**transferrecipient_update**](TransferRecipientApi.md#transferrecipient_update) | **PUT** /transferrecipient/{code} | Update Transfer Recipient
-
+| Method                                                                           | HTTP request                         | Description                    |
+| -------------------------------------------------------------------------------- | ------------------------------------ | ------------------------------ |
+| [**transferrecipient_bulk**](TransferRecipientApi.md#transferrecipient_bulk)     | **POST** /transferrecipient/bulk     | Bulk Create Transfer Recipient |
+| [**transferrecipient_create**](TransferRecipientApi.md#transferrecipient_create) | **POST** /transferrecipient          | Create Transfer Recipient      |
+| [**transferrecipient_delete**](TransferRecipientApi.md#transferrecipient_delete) | **DELETE** /transferrecipient/{code} | Delete Transfer Recipient      |
+| [**transferrecipient_fetch**](TransferRecipientApi.md#transferrecipient_fetch)   | **GET** /transferrecipient/{code}    | Fetch Transfer recipient       |
+| [**transferrecipient_list**](TransferRecipientApi.md#transferrecipient_list)     | **GET** /transferrecipient           | List Transfer Recipients       |
+| [**transferrecipient_update**](TransferRecipientApi.md#transferrecipient_update) | **PUT** /transferrecipient/{code}    | Update Transfer Recipient      |
 
 # **transferrecipient_bulk**
+
 > TransferRecipientBulkCreateResponse transferrecipient_bulk(transfer_recipient_bulk=transfer_recipient_bulk)
 
 Bulk Create Transfer Recipient
 
-Create multiple transfer recipients in batches. A duplicate account number will lead to the retrieval of the existing record. 
+Create multiple transfer recipients in batches. A duplicate account number will lead to the retrieval of the existing record.
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -62,13 +63,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TransferRecipientApi->transferrecipient_bulk: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transfer_recipient_bulk** | [**TransferRecipientBulk**](TransferRecipientBulk.md)|  | [optional] 
+| Name                        | Type                                                  | Description | Notes      |
+| --------------------------- | ----------------------------------------------------- | ----------- | ---------- |
+| **transfer_recipient_bulk** | [**TransferRecipientBulk**](TransferRecipientBulk.md) |             | [optional] |
 
 ### Return type
 
@@ -80,19 +79,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Sucessful response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Sucessful response     | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transferrecipient_create**
+
 > TransferRecipientCreateResponse transferrecipient_create(transfer_recipient_create=transfer_recipient_create)
 
 Create Transfer Recipient
@@ -101,7 +102,8 @@ Creates a new recipient. A duplicate account number will lead to the retrieval o
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -142,13 +144,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TransferRecipientApi->transferrecipient_create: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transfer_recipient_create** | [**TransferRecipientCreate**](TransferRecipientCreate.md)|  | [optional] 
+| Name                          | Type                                                      | Description | Notes      |
+| ----------------------------- | --------------------------------------------------------- | ----------- | ---------- |
+| **transfer_recipient_create** | [**TransferRecipientCreate**](TransferRecipientCreate.md) |             | [optional] |
 
 ### Return type
 
@@ -160,19 +160,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **201**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transferrecipient_delete**
+
 > TransferRecipientDeleteResponse transferrecipient_delete(code)
 
 Delete Transfer Recipient
@@ -181,7 +183,8 @@ Delete a transfer recipient (sets the transfer recipient to inactive)
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -221,13 +224,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TransferRecipientApi->transferrecipient_delete: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| Transfer recipient code | 
+| Name     | Type    | Description             | Notes |
+| -------- | ------- | ----------------------- | ----- |
+| **code** | **str** | Transfer recipient code |
 
 ### Return type
 
@@ -239,20 +240,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Successful response    | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transferrecipient_fetch**
+
 > TransferRecipientFetchResponse transferrecipient_fetch(code)
 
 Fetch Transfer recipient
@@ -261,7 +264,8 @@ Fetch the details of a transfer recipient
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -301,13 +305,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TransferRecipientApi->transferrecipient_fetch: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| Transfer recipient code | 
+| Name     | Type    | Description             | Notes |
+| -------- | ------- | ----------------------- | ----- |
+| **code** | **str** | Transfer recipient code |
 
 ### Return type
 
@@ -319,20 +321,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Successful response    | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transferrecipient_list**
+
 > TransferRecipientListResponse transferrecipient_list(use_cursor=use_cursor, next=next, previous=previous, per_page=per_page, page=page)
 
 List Transfer Recipients
@@ -341,7 +345,8 @@ List transfer recipients available on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -385,17 +390,15 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TransferRecipientApi->transferrecipient_list: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **use_cursor** | **bool**| A flag to indicate if cursor based pagination should be used | [optional] 
- **next** | **str**| An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data  | [optional] 
- **previous** | **str**| An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data  | [optional] 
- **per_page** | **int**| The number of records to fetch per request | [optional] 
- **page** | **int**| The offset to retrieve data from | [optional] 
+| Name           | Type     | Description                                                                                                | Notes      |
+| -------------- | -------- | ---------------------------------------------------------------------------------------------------------- | ---------- |
+| **use_cursor** | **bool** | A flag to indicate if cursor based pagination should be used                                               | [optional] |
+| **next**       | **str**  | An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data     | [optional] |
+| **previous**   | **str**  | An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data | [optional] |
+| **per_page**   | **int**  | The number of records to fetch per request                                                                 | [optional] |
+| **page**       | **int**  | The offset to retrieve data from                                                                           | [optional] |
 
 ### Return type
 
@@ -407,20 +410,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transferrecipient_update**
+
 > TransferRecipientUpdateResponse transferrecipient_update(code, transfer_recipient_update=transfer_recipient_update)
 
 Update Transfer Recipient
@@ -429,7 +434,8 @@ Update the details of a transfer recipient
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -471,14 +477,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling TransferRecipientApi->transferrecipient_update: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| Transfer recipient code | 
- **transfer_recipient_update** | [**TransferRecipientUpdate**](TransferRecipientUpdate.md)|  | [optional] 
+| Name                          | Type                                                      | Description             | Notes      |
+| ----------------------------- | --------------------------------------------------------- | ----------------------- | ---------- |
+| **code**                      | **str**                                                   | Transfer recipient code |
+| **transfer_recipient_update** | [**TransferRecipientUpdate**](TransferRecipientUpdate.md) |                         | [optional] |
 
 ### Return type
 
@@ -490,16 +494,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Successful response    | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

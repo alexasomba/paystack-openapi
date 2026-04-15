@@ -8,6 +8,7 @@ properties:
     type: string
   description:
     type: string
+    nullable: true
   domain:
     type: string
   email:
@@ -29,6 +30,8 @@ properties:
   updatedAt:
     type: string
   is_deleted:
+    type: boolean
+  isDeleted:
     type: boolean
   details:
     type: object
@@ -56,14 +59,10 @@ required:
   - active
   - createdAt
   - currency
-  - description
   - domain
-  - email
   - id
-  - integration
   - name
   - recipient_code
   - type
   - updatedAt
-  - is_deleted
   - details

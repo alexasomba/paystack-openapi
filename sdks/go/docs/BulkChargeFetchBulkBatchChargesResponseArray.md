@@ -2,24 +2,24 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Integration** | **int32** |  | 
-**Bulkcharge** | **int32** |  | 
-**Customer** | [**BulkChargeFetchBulkBatchChargesResponseArrayCustomer**](BulkChargeFetchBulkBatchChargesResponseArrayCustomer.md) |  | 
-**Authorization** | [**TransactionPartialDebitResponseDataAuthorization**](TransactionPartialDebitResponseDataAuthorization.md) |  | 
-**Domain** | **string** |  | 
-**Amount** | **int32** |  | 
-**AtLeast** | **int32** |  | 
-**Currency** | **string** |  | 
-**Reference** | **string** |  | 
-**Metadata** | [**TransactionFetchResponseDataMetadata**](TransactionFetchResponseDataMetadata.md) |  | 
-**Status** | **string** |  | 
-**Message** | **string** |  | 
-**AttemptPartialDebit** | **bool** |  | 
-**Id** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name                    | Type                                                                                                                | Description | Notes |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **Integration**         | **int32**                                                                                                           |             |
+| **Bulkcharge**          | **int32**                                                                                                           |             |
+| **Customer**            | [**BulkChargeFetchBulkBatchChargesResponseArrayCustomer**](BulkChargeFetchBulkBatchChargesResponseArrayCustomer.md) |             |
+| **Authorization**       | [**TransactionPartialDebitResponseDataAuthorization**](TransactionPartialDebitResponseDataAuthorization.md)         |             |
+| **Domain**              | **string**                                                                                                          |             |
+| **Amount**              | **int32**                                                                                                           |             |
+| **AtLeast**             | **int32**                                                                                                           |             |
+| **Currency**            | **string**                                                                                                          |             |
+| **Reference**           | **string**                                                                                                          |             |
+| **Metadata**            | [**TransactionFetchResponseDataMetadata**](TransactionFetchResponseDataMetadata.md)                                 |             |
+| **Status**              | **string**                                                                                                          |             |
+| **Message**             | **string**                                                                                                          |             |
+| **AttemptPartialDebit** | **bool**                                                                                                            |             |
+| **Id**                  | **int32**                                                                                                           |             |
+| **CreatedAt**           | **string**                                                                                                          |             |
+| **UpdatedAt**           | **string**                                                                                                          |             |
 
 ## Methods
 
@@ -59,7 +59,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetBulkcharge
 
 `func (o *BulkChargeFetchBulkBatchChargesResponseArray) GetBulkcharge() int32`
@@ -78,7 +77,6 @@ and a boolean to check if the value has been set.
 `func (o *BulkChargeFetchBulkBatchChargesResponseArray) SetBulkcharge(v int32)`
 
 SetBulkcharge sets Bulkcharge field to given value.
-
 
 ### GetCustomer
 
@@ -99,7 +97,6 @@ and a boolean to check if the value has been set.
 
 SetCustomer sets Customer field to given value.
 
-
 ### GetAuthorization
 
 `func (o *BulkChargeFetchBulkBatchChargesResponseArray) GetAuthorization() TransactionPartialDebitResponseDataAuthorization`
@@ -118,7 +115,6 @@ and a boolean to check if the value has been set.
 `func (o *BulkChargeFetchBulkBatchChargesResponseArray) SetAuthorization(v TransactionPartialDebitResponseDataAuthorization)`
 
 SetAuthorization sets Authorization field to given value.
-
 
 ### GetDomain
 
@@ -139,7 +135,6 @@ and a boolean to check if the value has been set.
 
 SetDomain sets Domain field to given value.
 
-
 ### GetAmount
 
 `func (o *BulkChargeFetchBulkBatchChargesResponseArray) GetAmount() int32`
@@ -158,7 +153,6 @@ and a boolean to check if the value has been set.
 `func (o *BulkChargeFetchBulkBatchChargesResponseArray) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetAtLeast
 
@@ -179,7 +173,6 @@ and a boolean to check if the value has been set.
 
 SetAtLeast sets AtLeast field to given value.
 
-
 ### GetCurrency
 
 `func (o *BulkChargeFetchBulkBatchChargesResponseArray) GetCurrency() string`
@@ -198,7 +191,6 @@ and a boolean to check if the value has been set.
 `func (o *BulkChargeFetchBulkBatchChargesResponseArray) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetReference
 
@@ -219,7 +211,6 @@ and a boolean to check if the value has been set.
 
 SetReference sets Reference field to given value.
 
-
 ### GetMetadata
 
 `func (o *BulkChargeFetchBulkBatchChargesResponseArray) GetMetadata() TransactionFetchResponseDataMetadata`
@@ -238,7 +229,6 @@ and a boolean to check if the value has been set.
 `func (o *BulkChargeFetchBulkBatchChargesResponseArray) SetMetadata(v TransactionFetchResponseDataMetadata)`
 
 SetMetadata sets Metadata field to given value.
-
 
 ### GetStatus
 
@@ -259,7 +249,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-
 ### GetMessage
 
 `func (o *BulkChargeFetchBulkBatchChargesResponseArray) GetMessage() string`
@@ -278,7 +267,6 @@ and a boolean to check if the value has been set.
 `func (o *BulkChargeFetchBulkBatchChargesResponseArray) SetMessage(v string)`
 
 SetMessage sets Message field to given value.
-
 
 ### GetAttemptPartialDebit
 
@@ -299,7 +287,6 @@ and a boolean to check if the value has been set.
 
 SetAttemptPartialDebit sets AttemptPartialDebit field to given value.
 
-
 ### GetId
 
 `func (o *BulkChargeFetchBulkBatchChargesResponseArray) GetId() int32`
@@ -318,7 +305,6 @@ and a boolean to check if the value has been set.
 `func (o *BulkChargeFetchBulkBatchChargesResponseArray) SetId(v int32)`
 
 SetId sets Id field to given value.
-
 
 ### GetCreatedAt
 
@@ -339,7 +325,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-
 ### GetUpdatedAt
 
 `func (o *BulkChargeFetchBulkBatchChargesResponseArray) GetUpdatedAt() string`
@@ -359,8 +344,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

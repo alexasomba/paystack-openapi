@@ -35,21 +35,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransactionInitialize'
+              $ref: "#/components/schemas/TransactionInitialize"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TransactionInitialize'
+              $ref: "#/components/schemas/TransactionInitialize"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransactionInitializeResponse'
-        '400':
-          $ref: '#/components/responses/TransactionInitializeBadRequestResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/TransactionInitializeResponse"
+        "400":
+          $ref: "#/components/responses/TransactionInitializeBadRequestResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /transaction/charge_authorization:
@@ -63,19 +63,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransactionChargeAuthorization'
+              $ref: "#/components/schemas/TransactionChargeAuthorization"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TransactionChargeAuthorization'
+              $ref: "#/components/schemas/TransactionChargeAuthorization"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ChargeAuthorizationResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/ChargeAuthorizationResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /transaction/partial_debit:
@@ -89,19 +89,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransactionPartialDebit'
+              $ref: "#/components/schemas/TransactionPartialDebit"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TransactionPartialDebit'
+              $ref: "#/components/schemas/TransactionPartialDebit"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransactionPartialDebitResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/TransactionPartialDebitResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /bank/resolve:
@@ -125,12 +125,12 @@ paths:
             type: integer
           example: 63
       responses:
-        '200':
-          $ref: '#/components/responses/VerificationResolveAccountNumberSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/VerificationResolveAccountNumberSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /transferrecipient:
@@ -144,19 +144,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransferRecipientCreate'
+              $ref: "#/components/schemas/TransferRecipientCreate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TransferRecipientCreate'
+              $ref: "#/components/schemas/TransferRecipientCreate"
       responses:
-        '201':
-          description: ''
+        "201":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransferRecipientCreateResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/TransferRecipientCreateResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -194,16 +194,16 @@ paths:
             type: integer
           description: The offset to retrieve data from
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransferRecipientListResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/TransferRecipientListResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /transfer:
@@ -217,19 +217,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransferInitiate'
+              $ref: "#/components/schemas/TransferInitiate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TransferInitiate'
+              $ref: "#/components/schemas/TransferInitiate"
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransferCreateResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/TransferCreateResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -301,16 +301,16 @@ paths:
               - rejected
               - received
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransferListResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/TransferListResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
 components:
@@ -366,7 +366,7 @@ components:
           description: A list of object containing subaccount code and number of shares
           type: array
           items:
-            $ref: '#/components/schemas/SplitSubaccounts'
+            $ref: "#/components/schemas/SplitSubaccounts"
         currency:
           description: The transaction currency
           type: string
@@ -406,23 +406,26 @@ components:
           type: string
         amount:
           description: |
-            Amount should be in the smallest unit of the currency (e.g., kobo for NGN, pesewas for GHS, cents for ZAR/USD).
+            Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
 
             Minimum amounts:
-             - NGN: ₦50.00
-             - GHS: ₵0.10
-             - ZAR: R1.00
-             - KES: Ksh 3.00
-             - USD: $2.00
-             - XOF: 1.00
-          type: integer
+             - NGN: ₦50.00 (5000 kobo)
+             - GHS: ₵0.10 (10 pesewas)
+             - ZAR: R1.00 (100 cents)
+             - KES: Ksh 3.00 (300 cents)
+             - USD: $2.00 (200 cents)
+             - XOF: 1.00 (1 XOF)
+          oneOf:
+            - type: integer
+            - type: string
         currency:
-          $ref: '#/components/schemas/Currency'
+          $ref: "#/components/schemas/Currency"
         reference:
           description: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
           type: string
         channels:
-          description: An array of payment channels to control what channels you want to make available to the user to make a payment with
+          description: |
+            An array of payment channels to control what channels you want to make available to the user to make a payment with
           type: array
           items:
             type: string
@@ -434,6 +437,9 @@ components:
               - eft
               - mobile_money
               - bank_transfer
+              - apple_pay
+              - capitec_pay
+              - payattitude
         callback_url:
           description: |
             Fully qualified url, e.g. https://example.com/ to redirect your customers to after a successful payment. Use this to override the callback url provided on the dashboard for this transaction
@@ -450,7 +456,7 @@ components:
           description: The split code of the transaction split
           type: string
         split:
-          $ref: '#/components/schemas/SplitCreate'
+          $ref: "#/components/schemas/SplitCreate"
         subaccount:
           description: The code for the subaccount that owns the payment
           type: string
@@ -458,7 +464,7 @@ components:
           description: |
             A flat fee to charge the subaccount for a transaction. 
             This overrides the split percentage set when the subaccount was created
-          type: string
+          type: integer
         bearer:
           description: The bearer of the transaction charge
           type: string
@@ -470,7 +476,9 @@ components:
           type: string
         metadata:
           description: JSON object of custom data
-          type: object
+          anyOf:
+            - type: string
+            - type: object
       example:
         email: test@demo.com
         amount: 10000
@@ -517,7 +525,7 @@ components:
           type: string
           description: A short description of the error
         meta:
-          $ref: '#/components/schemas/ErrorMeta'
+          $ref: "#/components/schemas/ErrorMeta"
         type:
           type: string
           description: A tag to indicate the type of the error
@@ -549,7 +557,7 @@ components:
           type: string
           description: A short description of the error
         meta:
-          $ref: '#/components/schemas/ErrorMeta'
+          $ref: "#/components/schemas/ErrorMeta"
         type:
           type: string
           description: A tag to indicate the type of the error
@@ -574,8 +582,8 @@ components:
           description: Customer's email address
           type: string
         amount:
-          description: Amount in the lower denomination of your currency
-          type: integer
+          description: |
+            Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
         authorization_code:
           description: Valid authorization code to charge
           type: string
@@ -583,12 +591,20 @@ components:
           description: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
           type: string
         currency:
-          $ref: '#/components/schemas/Currency'
+          $ref: "#/components/schemas/Currency"
+        channels:
+          description: Send us 'card' or 'bank' or 'card','bank' as an array to specify what options to show the user paying
+          type: array
+          items:
+            type: string
+            enum:
+              - card
+              - bank
         split_code:
           description: The split code of the transaction split
           type: string
         split:
-          $ref: '#/components/schemas/SplitCreate'
+          $ref: "#/components/schemas/SplitCreate"
         subaccount:
           description: The code for the subaccount that owns the payment
           type: string
@@ -596,7 +612,7 @@ components:
           description: |-
             A flat fee to charge the subaccount for a transaction. 
             This overrides the split percentage set when the subaccount was created
-          type: string
+          type: integer
         bearer:
           description: The bearer of the transaction charge
           type: string
@@ -605,7 +621,9 @@ components:
             - subaccount
         metadata:
           description: Stringified JSON object of custom data
-          type: string
+          anyOf:
+            - type: string
+            - type: object
         queue:
           description: If you are making a scheduled charge call, it is a good idea to queue them so the processing system does not get overloaded causing transaction processing errors.
           type: boolean
@@ -813,14 +831,21 @@ components:
           description: Customer's email address
           type: string
         amount:
-          description: Specified in the lowest denomination of your currency
-          type: integer
+          description: |
+            Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
+          oneOf:
+            - type: integer
+            - type: string
           format: int64
         authorization_code:
           description: Valid authorization code to charge
           type: string
         currency:
-          $ref: '#/components/schemas/Currency'
+          description: Specified as NGN or GHS
+          type: string
+          enum:
+            - NGN
+            - GHS
         at_least:
           description: Minimum amount to charge
           type: string
@@ -831,7 +856,7 @@ components:
         email: tap@email.com
         amount: 40510
         authorization_code: AUTH_df1l5ehnym
-        currency: ZAR
+        currency: NGN
     TransactionPartialDebitResponse:
       type: object
       properties:
@@ -1111,6 +1136,28 @@ components:
         - updatedAt
         - is_deleted
         - details
+    Meta:
+      type: object
+      properties:
+        total:
+          type: integer
+        skipped:
+          type: integer
+        perPage:
+          anyOf:
+            - type: integer
+            - type: string
+        page:
+          type: integer
+        pageCount:
+          type: integer
+      required:
+        - total
+        - skipped
+        - perPage
+        - page
+        - pageCount
+      additionalProperties: false
     TransferRecipientListResponse:
       type: object
       properties:
@@ -1121,27 +1168,9 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/TransferRecipientListResponseArray'
+            $ref: "#/components/schemas/TransferRecipientListResponseArray"
         meta:
-          type: object
-          properties:
-            total:
-              type: integer
-            skipped:
-              type: integer
-            perPage:
-              type: integer
-            page:
-              type: integer
-            pageCount:
-              type: integer
-          required:
-            - total
-            - skipped
-            - perPage
-            - page
-            - pageCount
-          additionalProperties: false
+          $ref: "#/components/schemas/Meta"
       required:
         - status
         - message
@@ -1188,8 +1217,8 @@ components:
       example:
         type: nuban
         name: Smith Taplo
-        account_number: '01000000010'
-        bank_code: '058'
+        account_number: "01000000010"
+        bank_code: "058"
     TransferRecipientCreateResponse:
       type: object
       properties:
@@ -1421,27 +1450,9 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/TransferListResponseArray'
+            $ref: "#/components/schemas/TransferListResponseArray"
         meta:
-          type: object
-          properties:
-            total:
-              type: integer
-            skipped:
-              type: integer
-            perPage:
-              type: integer
-            page:
-              type: integer
-            pageCount:
-              type: integer
-          required:
-            - total
-            - skipped
-            - perPage
-            - page
-            - pageCount
-          additionalProperties: false
+          $ref: "#/components/schemas/Meta"
       required:
         - status
         - message
@@ -1455,7 +1466,8 @@ components:
         - reference
       properties:
         amount:
-          description: Amount to transfer in kobo if currency is NGN and pesewas if currency is GHS.
+          description: |
+            Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
           type: integer
         recipient:
           description: The transfer recipient's code
@@ -1475,7 +1487,7 @@ components:
     TransferInitiate:
       description: Transfer initiation model
       allOf:
-        - $ref: '#/components/schemas/TransferBase'
+        - $ref: "#/components/schemas/TransferBase"
         - type: object
           required:
             - source
@@ -1578,13 +1590,13 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransactionInitializeBadRequestModel'
+            $ref: "#/components/schemas/TransactionInitializeBadRequestModel"
     Unauthorized:
       description: Unauthorized operation
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
           example:
             status: false
             message: Invalid key
@@ -1593,13 +1605,13 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VerificationResolveAccountNumberResponse'
+            $ref: "#/components/schemas/VerificationResolveAccountNumberResponse"
     NotFound:
       description: Entity not found
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
           example:
             status: false
             message: Entity not found

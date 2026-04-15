@@ -2,29 +2,29 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Amount** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**Currency** | **string** |  | 
-**Domain** | **string** |  | 
-**Failures** | **interface{}** |  | 
-**Id** | **int32** |  | 
-**Integration** | **int32** |  | 
-**Reason** | **string** |  | 
-**Reference** | **string** |  | 
-**Source** | **string** |  | 
-**SourceDetails** | **interface{}** |  | 
-**Status** | **string** |  | 
-**TitanCode** | **interface{}** |  | 
-**TransferCode** | **string** |  | 
-**Request** | **int32** |  | 
-**TransferredAt** | **interface{}** |  | 
-**UpdatedAt** | **string** |  | 
-**Recipient** | [**TransferListResponseArrayRecipient**](TransferListResponseArrayRecipient.md) |  | 
-**Session** | [**TransferListResponseArraySession**](TransferListResponseArraySession.md) |  | 
-**FeeCharged** | **int32** |  | 
-**FeesBreakdown** | **NullableInt32** |  | 
+| Name              | Type                                                                            | Description | Notes |
+| ----------------- | ------------------------------------------------------------------------------- | ----------- | ----- |
+| **Amount**        | **int32**                                                                       |             |
+| **CreatedAt**     | **string**                                                                      |             |
+| **Currency**      | **string**                                                                      |             |
+| **Domain**        | **string**                                                                      |             |
+| **Failures**      | **interface{}**                                                                 |             |
+| **Id**            | **int32**                                                                       |             |
+| **Integration**   | **int32**                                                                       |             |
+| **Reason**        | **string**                                                                      |             |
+| **Reference**     | **string**                                                                      |             |
+| **Source**        | **string**                                                                      |             |
+| **SourceDetails** | **interface{}**                                                                 |             |
+| **Status**        | **string**                                                                      |             |
+| **TitanCode**     | **interface{}**                                                                 |             |
+| **TransferCode**  | **string**                                                                      |             |
+| **Request**       | **int32**                                                                       |             |
+| **TransferredAt** | **interface{}**                                                                 |             |
+| **UpdatedAt**     | **string**                                                                      |             |
+| **Recipient**     | [**TransferListResponseArrayRecipient**](TransferListResponseArrayRecipient.md) |             |
+| **Session**       | [**TransferListResponseArraySession**](TransferListResponseArraySession.md)     |             |
+| **FeeCharged**    | **int32**                                                                       |             |
+| **FeesBreakdown** | **NullableInt32**                                                               |             |
 
 ## Methods
 
@@ -64,7 +64,6 @@ and a boolean to check if the value has been set.
 
 SetAmount sets Amount field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *TransferListResponseArray) GetCreatedAt() string`
@@ -83,7 +82,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferListResponseArray) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetCurrency
 
@@ -104,7 +102,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetDomain
 
 `func (o *TransferListResponseArray) GetDomain() string`
@@ -123,7 +120,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferListResponseArray) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetFailures
 
@@ -144,17 +140,18 @@ and a boolean to check if the value has been set.
 
 SetFailures sets Failures field to given value.
 
-
 ### SetFailuresNil
 
 `func (o *TransferListResponseArray) SetFailuresNil(b bool)`
 
- SetFailuresNil sets the value for Failures to be an explicit nil
+SetFailuresNil sets the value for Failures to be an explicit nil
 
 ### UnsetFailures
+
 `func (o *TransferListResponseArray) UnsetFailures()`
 
 UnsetFailures ensures that no value is present for Failures, not even an explicit nil
+
 ### GetId
 
 `func (o *TransferListResponseArray) GetId() int32`
@@ -173,7 +170,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferListResponseArray) SetId(v int32)`
 
 SetId sets Id field to given value.
-
 
 ### GetIntegration
 
@@ -194,7 +190,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetReason
 
 `func (o *TransferListResponseArray) GetReason() string`
@@ -213,7 +208,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferListResponseArray) SetReason(v string)`
 
 SetReason sets Reason field to given value.
-
 
 ### GetReference
 
@@ -234,7 +228,6 @@ and a boolean to check if the value has been set.
 
 SetReference sets Reference field to given value.
 
-
 ### GetSource
 
 `func (o *TransferListResponseArray) GetSource() string`
@@ -253,7 +246,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferListResponseArray) SetSource(v string)`
 
 SetSource sets Source field to given value.
-
 
 ### GetSourceDetails
 
@@ -274,17 +266,18 @@ and a boolean to check if the value has been set.
 
 SetSourceDetails sets SourceDetails field to given value.
 
-
 ### SetSourceDetailsNil
 
 `func (o *TransferListResponseArray) SetSourceDetailsNil(b bool)`
 
- SetSourceDetailsNil sets the value for SourceDetails to be an explicit nil
+SetSourceDetailsNil sets the value for SourceDetails to be an explicit nil
 
 ### UnsetSourceDetails
+
 `func (o *TransferListResponseArray) UnsetSourceDetails()`
 
 UnsetSourceDetails ensures that no value is present for SourceDetails, not even an explicit nil
+
 ### GetStatus
 
 `func (o *TransferListResponseArray) GetStatus() string`
@@ -303,7 +296,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferListResponseArray) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
-
 
 ### GetTitanCode
 
@@ -324,17 +316,18 @@ and a boolean to check if the value has been set.
 
 SetTitanCode sets TitanCode field to given value.
 
-
 ### SetTitanCodeNil
 
 `func (o *TransferListResponseArray) SetTitanCodeNil(b bool)`
 
- SetTitanCodeNil sets the value for TitanCode to be an explicit nil
+SetTitanCodeNil sets the value for TitanCode to be an explicit nil
 
 ### UnsetTitanCode
+
 `func (o *TransferListResponseArray) UnsetTitanCode()`
 
 UnsetTitanCode ensures that no value is present for TitanCode, not even an explicit nil
+
 ### GetTransferCode
 
 `func (o *TransferListResponseArray) GetTransferCode() string`
@@ -353,7 +346,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferListResponseArray) SetTransferCode(v string)`
 
 SetTransferCode sets TransferCode field to given value.
-
 
 ### GetRequest
 
@@ -374,7 +366,6 @@ and a boolean to check if the value has been set.
 
 SetRequest sets Request field to given value.
 
-
 ### GetTransferredAt
 
 `func (o *TransferListResponseArray) GetTransferredAt() interface{}`
@@ -394,17 +385,18 @@ and a boolean to check if the value has been set.
 
 SetTransferredAt sets TransferredAt field to given value.
 
-
 ### SetTransferredAtNil
 
 `func (o *TransferListResponseArray) SetTransferredAtNil(b bool)`
 
- SetTransferredAtNil sets the value for TransferredAt to be an explicit nil
+SetTransferredAtNil sets the value for TransferredAt to be an explicit nil
 
 ### UnsetTransferredAt
+
 `func (o *TransferListResponseArray) UnsetTransferredAt()`
 
 UnsetTransferredAt ensures that no value is present for TransferredAt, not even an explicit nil
+
 ### GetUpdatedAt
 
 `func (o *TransferListResponseArray) GetUpdatedAt() string`
@@ -423,7 +415,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferListResponseArray) SetUpdatedAt(v string)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
-
 
 ### GetRecipient
 
@@ -444,7 +435,6 @@ and a boolean to check if the value has been set.
 
 SetRecipient sets Recipient field to given value.
 
-
 ### GetSession
 
 `func (o *TransferListResponseArray) GetSession() TransferListResponseArraySession`
@@ -463,7 +453,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferListResponseArray) SetSession(v TransferListResponseArraySession)`
 
 SetSession sets Session field to given value.
-
 
 ### GetFeeCharged
 
@@ -484,7 +473,6 @@ and a boolean to check if the value has been set.
 
 SetFeeCharged sets FeeCharged field to given value.
 
-
 ### GetFeesBreakdown
 
 `func (o *TransferListResponseArray) GetFeesBreakdown() int32`
@@ -504,18 +492,16 @@ and a boolean to check if the value has been set.
 
 SetFeesBreakdown sets FeesBreakdown field to given value.
 
-
 ### SetFeesBreakdownNil
 
 `func (o *TransferListResponseArray) SetFeesBreakdownNil(b bool)`
 
- SetFeesBreakdownNil sets the value for FeesBreakdown to be an explicit nil
+SetFeesBreakdownNil sets the value for FeesBreakdown to be an explicit nil
 
 ### UnsetFeesBreakdown
+
 `func (o *TransferListResponseArray) UnsetFeesBreakdown()`
 
 UnsetFeesBreakdown ensures that no value is present for FeesBreakdown, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -33,8 +33,13 @@ properties:
         type: string
       ip_address:
         type: string
+        nullable: true
       metadata:
-        type: object
+        anyOf:
+          - type: string
+          - type: object
+            additionalProperties: true
+        nullable: true
       log:
         type: object
         properties:
@@ -112,6 +117,7 @@ properties:
           signature:
             type: string
           account_name:
+            type: string
             nullable: true
           receiver_bank_account_number:
             type: string
@@ -133,8 +139,6 @@ properties:
           - reusable
           - signature
           - account_name
-          - receiver_bank_account_number
-          - receiver_bank
       customer:
         type: object
         properties:
@@ -170,12 +174,14 @@ properties:
           - phone
           - metadata
           - risk_action
-          - international_format_phone
       plan:
-        type: string
+        anyOf:
+          - type: string
+          - type: object
         nullable: true
       split:
         type: object
+        nullable: true
       order_id:
         type: string
         nullable: true
@@ -184,13 +190,13 @@ properties:
       pos_transaction_data:
         nullable: true
       source:
-        type: string
+        type: object
         nullable: true
       fees_breakdown:
-        type: string
+        type: object
         nullable: true
       connect:
-        type: string
+        type: object
         nullable: true
       transaction_date:
         type: string

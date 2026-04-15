@@ -1,32 +1,32 @@
 # RefundRetryResponseData
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**integration** | **float** |  | 
-**transaction** | **float** |  | 
-**dispute** | **object** |  | 
-**settlement** | **object** |  | 
-**id** | **float** |  | 
-**domain** | **str** |  | 
-**currency** | **str** |  | 
-**amount** | **float** |  | 
-**status** | **str** |  | 
-**refunded_at** | **str** |  | 
-**expected_at** | **str** |  | 
-**channel** | **str** |  | 
-**refunded_by** | **str** |  | 
-**customer_note** | **str** |  | 
-**merchant_note** | **str** |  | 
-**deducted_amount** | **float** |  | 
-**fully_deducted** | **bool** |  | 
-**bank_reference** | **str** |  | 
-**reason** | **str** |  | 
-**customer** | **object** |  | 
-**initiated_by** | **str** |  | 
-**reversed_at** | **str** |  | 
-**session_id** | **str** |  | 
+
+| Name                | Type       | Description | Notes |
+| ------------------- | ---------- | ----------- | ----- |
+| **integration**     | **float**  |             |
+| **transaction**     | **float**  |             |
+| **dispute**         | **object** |             |
+| **settlement**      | **object** |             |
+| **id**              | **float**  |             |
+| **domain**          | **str**    |             |
+| **currency**        | **str**    |             |
+| **amount**          | **float**  |             |
+| **status**          | **str**    |             |
+| **refunded_at**     | **str**    |             |
+| **expected_at**     | **str**    |             |
+| **channel**         | **str**    |             |
+| **refunded_by**     | **str**    |             |
+| **customer_note**   | **str**    |             |
+| **merchant_note**   | **str**    |             |
+| **deducted_amount** | **float**  |             |
+| **fully_deducted**  | **bool**   |             |
+| **bank_reference**  | **str**    |             |
+| **reason**          | **str**    |             |
+| **customer**        | **object** |             |
+| **initiated_by**    | **str**    |             |
+| **reversed_at**     | **str**    |             |
+| **session_id**      | **str**    |             |
 
 ## Example
 
@@ -45,6 +45,5 @@ refund_retry_response_data_dict = refund_retry_response_data_instance.to_dict()
 # create an instance of RefundRetryResponseData from a dict
 refund_retry_response_data_form_dict = refund_retry_response_data.from_dict(refund_retry_response_data_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

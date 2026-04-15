@@ -2,21 +2,21 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AuthorizationCode** | **NullableString** |  | 
-**Bin** | **NullableString** |  | 
-**Last4** | **NullableString** |  | 
-**ExpMonth** | **NullableString** |  | 
-**ExpYear** | **NullableString** |  | 
-**Channel** | **NullableString** |  | 
-**CardType** | **NullableString** |  | 
-**Bank** | **NullableString** |  | 
-**CountryCode** | **NullableString** |  | 
-**Brand** | **NullableString** |  | 
-**Reusable** | **bool** |  | 
-**Signature** | **NullableString** |  | 
-**AccountName** | **NullableString** |  | 
+| Name                  | Type               | Description | Notes |
+| --------------------- | ------------------ | ----------- | ----- |
+| **AuthorizationCode** | **NullableString** |             |
+| **Bin**               | **NullableString** |             |
+| **Last4**             | **NullableString** |             |
+| **ExpMonth**          | **NullableString** |             |
+| **ExpYear**           | **NullableString** |             |
+| **Channel**           | **NullableString** |             |
+| **CardType**          | **NullableString** |             |
+| **Bank**              | **NullableString** |             |
+| **CountryCode**       | **NullableString** |             |
+| **Brand**             | **NullableString** |             |
+| **Reusable**          | **bool**           |             |
+| **Signature**         | **NullableString** |             |
+| **AccountName**       | **NullableString** |             |
 
 ## Methods
 
@@ -56,17 +56,18 @@ and a boolean to check if the value has been set.
 
 SetAuthorizationCode sets AuthorizationCode field to given value.
 
-
 ### SetAuthorizationCodeNil
 
 `func (o *TransactionListResponseArrayAuthorization) SetAuthorizationCodeNil(b bool)`
 
- SetAuthorizationCodeNil sets the value for AuthorizationCode to be an explicit nil
+SetAuthorizationCodeNil sets the value for AuthorizationCode to be an explicit nil
 
 ### UnsetAuthorizationCode
+
 `func (o *TransactionListResponseArrayAuthorization) UnsetAuthorizationCode()`
 
 UnsetAuthorizationCode ensures that no value is present for AuthorizationCode, not even an explicit nil
+
 ### GetBin
 
 `func (o *TransactionListResponseArrayAuthorization) GetBin() string`
@@ -86,17 +87,18 @@ and a boolean to check if the value has been set.
 
 SetBin sets Bin field to given value.
 
-
 ### SetBinNil
 
 `func (o *TransactionListResponseArrayAuthorization) SetBinNil(b bool)`
 
- SetBinNil sets the value for Bin to be an explicit nil
+SetBinNil sets the value for Bin to be an explicit nil
 
 ### UnsetBin
+
 `func (o *TransactionListResponseArrayAuthorization) UnsetBin()`
 
 UnsetBin ensures that no value is present for Bin, not even an explicit nil
+
 ### GetLast4
 
 `func (o *TransactionListResponseArrayAuthorization) GetLast4() string`
@@ -116,17 +118,18 @@ and a boolean to check if the value has been set.
 
 SetLast4 sets Last4 field to given value.
 
-
 ### SetLast4Nil
 
 `func (o *TransactionListResponseArrayAuthorization) SetLast4Nil(b bool)`
 
- SetLast4Nil sets the value for Last4 to be an explicit nil
+SetLast4Nil sets the value for Last4 to be an explicit nil
 
 ### UnsetLast4
+
 `func (o *TransactionListResponseArrayAuthorization) UnsetLast4()`
 
 UnsetLast4 ensures that no value is present for Last4, not even an explicit nil
+
 ### GetExpMonth
 
 `func (o *TransactionListResponseArrayAuthorization) GetExpMonth() string`
@@ -146,17 +149,18 @@ and a boolean to check if the value has been set.
 
 SetExpMonth sets ExpMonth field to given value.
 
-
 ### SetExpMonthNil
 
 `func (o *TransactionListResponseArrayAuthorization) SetExpMonthNil(b bool)`
 
- SetExpMonthNil sets the value for ExpMonth to be an explicit nil
+SetExpMonthNil sets the value for ExpMonth to be an explicit nil
 
 ### UnsetExpMonth
+
 `func (o *TransactionListResponseArrayAuthorization) UnsetExpMonth()`
 
 UnsetExpMonth ensures that no value is present for ExpMonth, not even an explicit nil
+
 ### GetExpYear
 
 `func (o *TransactionListResponseArrayAuthorization) GetExpYear() string`
@@ -176,17 +180,18 @@ and a boolean to check if the value has been set.
 
 SetExpYear sets ExpYear field to given value.
 
-
 ### SetExpYearNil
 
 `func (o *TransactionListResponseArrayAuthorization) SetExpYearNil(b bool)`
 
- SetExpYearNil sets the value for ExpYear to be an explicit nil
+SetExpYearNil sets the value for ExpYear to be an explicit nil
 
 ### UnsetExpYear
+
 `func (o *TransactionListResponseArrayAuthorization) UnsetExpYear()`
 
 UnsetExpYear ensures that no value is present for ExpYear, not even an explicit nil
+
 ### GetChannel
 
 `func (o *TransactionListResponseArrayAuthorization) GetChannel() string`
@@ -206,17 +211,18 @@ and a boolean to check if the value has been set.
 
 SetChannel sets Channel field to given value.
 
-
 ### SetChannelNil
 
 `func (o *TransactionListResponseArrayAuthorization) SetChannelNil(b bool)`
 
- SetChannelNil sets the value for Channel to be an explicit nil
+SetChannelNil sets the value for Channel to be an explicit nil
 
 ### UnsetChannel
+
 `func (o *TransactionListResponseArrayAuthorization) UnsetChannel()`
 
 UnsetChannel ensures that no value is present for Channel, not even an explicit nil
+
 ### GetCardType
 
 `func (o *TransactionListResponseArrayAuthorization) GetCardType() string`
@@ -236,17 +242,18 @@ and a boolean to check if the value has been set.
 
 SetCardType sets CardType field to given value.
 
-
 ### SetCardTypeNil
 
 `func (o *TransactionListResponseArrayAuthorization) SetCardTypeNil(b bool)`
 
- SetCardTypeNil sets the value for CardType to be an explicit nil
+SetCardTypeNil sets the value for CardType to be an explicit nil
 
 ### UnsetCardType
+
 `func (o *TransactionListResponseArrayAuthorization) UnsetCardType()`
 
 UnsetCardType ensures that no value is present for CardType, not even an explicit nil
+
 ### GetBank
 
 `func (o *TransactionListResponseArrayAuthorization) GetBank() string`
@@ -266,17 +273,18 @@ and a boolean to check if the value has been set.
 
 SetBank sets Bank field to given value.
 
-
 ### SetBankNil
 
 `func (o *TransactionListResponseArrayAuthorization) SetBankNil(b bool)`
 
- SetBankNil sets the value for Bank to be an explicit nil
+SetBankNil sets the value for Bank to be an explicit nil
 
 ### UnsetBank
+
 `func (o *TransactionListResponseArrayAuthorization) UnsetBank()`
 
 UnsetBank ensures that no value is present for Bank, not even an explicit nil
+
 ### GetCountryCode
 
 `func (o *TransactionListResponseArrayAuthorization) GetCountryCode() string`
@@ -296,17 +304,18 @@ and a boolean to check if the value has been set.
 
 SetCountryCode sets CountryCode field to given value.
 
-
 ### SetCountryCodeNil
 
 `func (o *TransactionListResponseArrayAuthorization) SetCountryCodeNil(b bool)`
 
- SetCountryCodeNil sets the value for CountryCode to be an explicit nil
+SetCountryCodeNil sets the value for CountryCode to be an explicit nil
 
 ### UnsetCountryCode
+
 `func (o *TransactionListResponseArrayAuthorization) UnsetCountryCode()`
 
 UnsetCountryCode ensures that no value is present for CountryCode, not even an explicit nil
+
 ### GetBrand
 
 `func (o *TransactionListResponseArrayAuthorization) GetBrand() string`
@@ -326,17 +335,18 @@ and a boolean to check if the value has been set.
 
 SetBrand sets Brand field to given value.
 
-
 ### SetBrandNil
 
 `func (o *TransactionListResponseArrayAuthorization) SetBrandNil(b bool)`
 
- SetBrandNil sets the value for Brand to be an explicit nil
+SetBrandNil sets the value for Brand to be an explicit nil
 
 ### UnsetBrand
+
 `func (o *TransactionListResponseArrayAuthorization) UnsetBrand()`
 
 UnsetBrand ensures that no value is present for Brand, not even an explicit nil
+
 ### GetReusable
 
 `func (o *TransactionListResponseArrayAuthorization) GetReusable() bool`
@@ -355,7 +365,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionListResponseArrayAuthorization) SetReusable(v bool)`
 
 SetReusable sets Reusable field to given value.
-
 
 ### GetSignature
 
@@ -376,17 +385,18 @@ and a boolean to check if the value has been set.
 
 SetSignature sets Signature field to given value.
 
-
 ### SetSignatureNil
 
 `func (o *TransactionListResponseArrayAuthorization) SetSignatureNil(b bool)`
 
- SetSignatureNil sets the value for Signature to be an explicit nil
+SetSignatureNil sets the value for Signature to be an explicit nil
 
 ### UnsetSignature
+
 `func (o *TransactionListResponseArrayAuthorization) UnsetSignature()`
 
 UnsetSignature ensures that no value is present for Signature, not even an explicit nil
+
 ### GetAccountName
 
 `func (o *TransactionListResponseArrayAuthorization) GetAccountName() string`
@@ -406,18 +416,16 @@ and a boolean to check if the value has been set.
 
 SetAccountName sets AccountName field to given value.
 
-
 ### SetAccountNameNil
 
 `func (o *TransactionListResponseArrayAuthorization) SetAccountNameNil(b bool)`
 
- SetAccountNameNil sets the value for AccountName to be an explicit nil
+SetAccountNameNil sets the value for AccountName to be an explicit nil
 
 ### UnsetAccountName
+
 `func (o *TransactionListResponseArrayAuthorization) UnsetAccountName()`
 
 UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

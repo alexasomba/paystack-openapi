@@ -21,7 +21,7 @@ properties:
     description: Evidence Id for fraud claims
     type: integer
 example:
-  resolution: 'merchant-accepted'
+  resolution: "merchant-accepted"
   message: Merchant accepted
   refund_amount: 50000
   uploaded_filename: qesp8a4df1xejihd9x5q

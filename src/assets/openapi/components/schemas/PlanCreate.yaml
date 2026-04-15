@@ -8,10 +8,9 @@ properties:
     description: Name of plan
     type: string
   amount:
-    description: >-
-      Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
-       Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
-       cents, if currency is ZAR, and whole number if currency is XOF
+    description: >
+      Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES).
+      For XOF, the amount is the same as the base units (not multiplied by 100).
     type: integer
   interval:
     description: Payment interval

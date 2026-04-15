@@ -2,23 +2,23 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**SubaccountCode** | **string** |  | 
-**BusinessName** | **string** |  | 
-**Description** | **string** |  | 
-**PrimaryContactName** | **string** |  | 
-**PrimaryContactEmail** | **string** |  | 
-**PrimaryContactPhone** | **string** |  | 
-**Metadata** | **string** |  | 
-**PercentageCharge** | **float32** |  | 
-**SettlementBank** | **string** |  | 
-**BankId** | **int32** |  | 
-**AccountNumber** | **string** |  | 
-**Currency** | **string** |  | 
-**Active** | **int32** |  | 
-**IsVerified** | **bool** |  | 
+| Name                    | Type        | Description | Notes |
+| ----------------------- | ----------- | ----------- | ----- |
+| **Id**                  | **int32**   |             |
+| **SubaccountCode**      | **string**  |             |
+| **BusinessName**        | **string**  |             |
+| **Description**         | **string**  |             |
+| **PrimaryContactName**  | **string**  |             |
+| **PrimaryContactEmail** | **string**  |             |
+| **PrimaryContactPhone** | **string**  |             |
+| **Metadata**            | **string**  |             |
+| **PercentageCharge**    | **float32** |             |
+| **SettlementBank**      | **string**  |             |
+| **BankId**              | **int32**   |             |
+| **AccountNumber**       | **string**  |             |
+| **Currency**            | **string**  |             |
+| **Active**              | **int32**   |             |
+| **IsVerified**          | **bool**    |             |
 
 ## Methods
 
@@ -58,7 +58,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetSubaccountCode
 
 `func (o *SubaccountListResponseArray) GetSubaccountCode() string`
@@ -77,7 +76,6 @@ and a boolean to check if the value has been set.
 `func (o *SubaccountListResponseArray) SetSubaccountCode(v string)`
 
 SetSubaccountCode sets SubaccountCode field to given value.
-
 
 ### GetBusinessName
 
@@ -98,7 +96,6 @@ and a boolean to check if the value has been set.
 
 SetBusinessName sets BusinessName field to given value.
 
-
 ### GetDescription
 
 `func (o *SubaccountListResponseArray) GetDescription() string`
@@ -117,7 +114,6 @@ and a boolean to check if the value has been set.
 `func (o *SubaccountListResponseArray) SetDescription(v string)`
 
 SetDescription sets Description field to given value.
-
 
 ### GetPrimaryContactName
 
@@ -138,7 +134,6 @@ and a boolean to check if the value has been set.
 
 SetPrimaryContactName sets PrimaryContactName field to given value.
 
-
 ### GetPrimaryContactEmail
 
 `func (o *SubaccountListResponseArray) GetPrimaryContactEmail() string`
@@ -157,7 +152,6 @@ and a boolean to check if the value has been set.
 `func (o *SubaccountListResponseArray) SetPrimaryContactEmail(v string)`
 
 SetPrimaryContactEmail sets PrimaryContactEmail field to given value.
-
 
 ### GetPrimaryContactPhone
 
@@ -178,7 +172,6 @@ and a boolean to check if the value has been set.
 
 SetPrimaryContactPhone sets PrimaryContactPhone field to given value.
 
-
 ### GetMetadata
 
 `func (o *SubaccountListResponseArray) GetMetadata() string`
@@ -197,7 +190,6 @@ and a boolean to check if the value has been set.
 `func (o *SubaccountListResponseArray) SetMetadata(v string)`
 
 SetMetadata sets Metadata field to given value.
-
 
 ### GetPercentageCharge
 
@@ -218,7 +210,6 @@ and a boolean to check if the value has been set.
 
 SetPercentageCharge sets PercentageCharge field to given value.
 
-
 ### GetSettlementBank
 
 `func (o *SubaccountListResponseArray) GetSettlementBank() string`
@@ -237,7 +228,6 @@ and a boolean to check if the value has been set.
 `func (o *SubaccountListResponseArray) SetSettlementBank(v string)`
 
 SetSettlementBank sets SettlementBank field to given value.
-
 
 ### GetBankId
 
@@ -258,7 +248,6 @@ and a boolean to check if the value has been set.
 
 SetBankId sets BankId field to given value.
 
-
 ### GetAccountNumber
 
 `func (o *SubaccountListResponseArray) GetAccountNumber() string`
@@ -277,7 +266,6 @@ and a boolean to check if the value has been set.
 `func (o *SubaccountListResponseArray) SetAccountNumber(v string)`
 
 SetAccountNumber sets AccountNumber field to given value.
-
 
 ### GetCurrency
 
@@ -298,7 +286,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetActive
 
 `func (o *SubaccountListResponseArray) GetActive() int32`
@@ -317,7 +304,6 @@ and a boolean to check if the value has been set.
 `func (o *SubaccountListResponseArray) SetActive(v int32)`
 
 SetActive sets Active field to given value.
-
 
 ### GetIsVerified
 
@@ -338,8 +324,4 @@ and a boolean to check if the value has been set.
 
 SetIsVerified sets IsVerified field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

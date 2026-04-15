@@ -2,9 +2,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**NextStep** | Pointer to **string** | A summarised solution for the error | [optional] 
+| Name         | Type                  | Description                         | Notes      |
+| ------------ | --------------------- | ----------------------------------- | ---------- |
+| **NextStep** | Pointer to **string** | A summarised solution for the error | [optional] |
 
 ## Methods
 
@@ -50,7 +50,4 @@ SetNextStep sets NextStep field to given value.
 
 HasNextStep returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

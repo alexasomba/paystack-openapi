@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**DeliveryNote** | **string** |  | 
-**ShippingAddress** | **string** |  | 
-**ShippingFees** | **[]interface{}** |  | 
+| Name                | Type              | Description | Notes |
+| ------------------- | ----------------- | ----------- | ----- |
+| **DeliveryNote**    | **string**        |             |
+| **ShippingAddress** | **string**        |             |
+| **ShippingFees**    | **[]interface{}** |             |
 
 ## Methods
 
@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetDeliveryNote sets DeliveryNote field to given value.
 
-
 ### GetShippingAddress
 
 `func (o *ProductListsResponseArrayShippingFields) GetShippingAddress() string`
@@ -65,7 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductListsResponseArrayShippingFields) SetShippingAddress(v string)`
 
 SetShippingAddress sets ShippingAddress field to given value.
-
 
 ### GetShippingFees
 
@@ -86,8 +84,4 @@ and a boolean to check if the value has been set.
 
 SetShippingFees sets ShippingFees field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

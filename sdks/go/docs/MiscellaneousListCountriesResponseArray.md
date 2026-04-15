@@ -2,17 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**ActiveForDashboardOnboarding** | **bool** |  | 
-**Name** | **string** |  | 
-**IsoCode** | **string** |  | 
-**DefaultCurrencyCode** | **string** |  | 
-**IntegrationDefaults** | **map[string]interface{}** |  | 
-**CallingCode** | **string** |  | 
-**PilotMode** | **bool** |  | 
-**Relationships** | [**MiscellaneousListCountriesResponseArrayRelationships**](MiscellaneousListCountriesResponseArrayRelationships.md) |  | 
+| Name                             | Type                                                                                                                | Description | Notes |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **Id**                           | **int32**                                                                                                           |             |
+| **ActiveForDashboardOnboarding** | **bool**                                                                                                            |             |
+| **Name**                         | **string**                                                                                                          |             |
+| **IsoCode**                      | **string**                                                                                                          |             |
+| **DefaultCurrencyCode**          | **string**                                                                                                          |             |
+| **IntegrationDefaults**          | **map[string]interface{}**                                                                                          |             |
+| **CallingCode**                  | **string**                                                                                                          |             |
+| **PilotMode**                    | **bool**                                                                                                            |             |
+| **Relationships**                | [**MiscellaneousListCountriesResponseArrayRelationships**](MiscellaneousListCountriesResponseArrayRelationships.md) |             |
 
 ## Methods
 
@@ -52,7 +52,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetActiveForDashboardOnboarding
 
 `func (o *MiscellaneousListCountriesResponseArray) GetActiveForDashboardOnboarding() bool`
@@ -71,7 +70,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListCountriesResponseArray) SetActiveForDashboardOnboarding(v bool)`
 
 SetActiveForDashboardOnboarding sets ActiveForDashboardOnboarding field to given value.
-
 
 ### GetName
 
@@ -92,7 +90,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetIsoCode
 
 `func (o *MiscellaneousListCountriesResponseArray) GetIsoCode() string`
@@ -111,7 +108,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListCountriesResponseArray) SetIsoCode(v string)`
 
 SetIsoCode sets IsoCode field to given value.
-
 
 ### GetDefaultCurrencyCode
 
@@ -132,7 +128,6 @@ and a boolean to check if the value has been set.
 
 SetDefaultCurrencyCode sets DefaultCurrencyCode field to given value.
 
-
 ### GetIntegrationDefaults
 
 `func (o *MiscellaneousListCountriesResponseArray) GetIntegrationDefaults() map[string]interface{}`
@@ -151,7 +146,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListCountriesResponseArray) SetIntegrationDefaults(v map[string]interface{})`
 
 SetIntegrationDefaults sets IntegrationDefaults field to given value.
-
 
 ### GetCallingCode
 
@@ -172,7 +166,6 @@ and a boolean to check if the value has been set.
 
 SetCallingCode sets CallingCode field to given value.
 
-
 ### GetPilotMode
 
 `func (o *MiscellaneousListCountriesResponseArray) GetPilotMode() bool`
@@ -191,7 +184,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListCountriesResponseArray) SetPilotMode(v bool)`
 
 SetPilotMode sets PilotMode field to given value.
-
 
 ### GetRelationships
 
@@ -212,8 +204,4 @@ and a boolean to check if the value has been set.
 
 SetRelationships sets Relationships field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,6 +4,60 @@ properties:
     type: boolean
   message:
     type: string
+  data:
+    type: object
+    properties:
+      type:
+        type: string
+      name:
+        type: string
+      metadata:
+        type: object
+        nullable: true
+      domain:
+        type: string
+      details:
+        type: object
+        properties:
+          account_number:
+            type: string
+          account_name:
+            type: string
+            nullable: true
+          bank_code:
+            type: string
+          bank_name:
+            type: string
+        required:
+          - account_number
+          - account_name
+          - bank_code
+          - bank_name
+      currency:
+        type: string
+      recipient_code:
+        type: string
+      active:
+        type: boolean
+      id:
+        type: integer
+      createdAt:
+        type: string
+      updatedAt:
+        type: string
+    required:
+      - type
+      - name
+      - metadata
+      - domain
+      - details
+      - currency
+      - recipient_code
+      - active
+      - id
+      - createdAt
+      - updatedAt
 required:
   - status
   - message
+  - data

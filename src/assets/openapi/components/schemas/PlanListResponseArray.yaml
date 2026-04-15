@@ -3,9 +3,8 @@ properties:
   subscriptions:
     type: array
     items: {}
-  pages:
-    type: array
-    items: {}
+  integration:
+    type: integer
   domain:
     type: string
   name:
@@ -32,29 +31,15 @@ properties:
     nullable: true
   currency:
     type: string
-  migrate:
-    type: boolean
-  is_deleted:
-    type: boolean
-  is_archived:
-    type: boolean
   id:
-    type: integer
-  integration:
     type: integer
   createdAt:
     type: string
   updatedAt:
     type: string
-  total_subscriptions:
-    type: integer
-  active_subscriptions:
-    type: integer
-  total_subscriptions_revenue:
-    type: integer
 required:
   - subscriptions
-  - pages
+  - integration
   - domain
   - name
   - plan_code
@@ -68,13 +53,6 @@ required:
   - hosted_page_url
   - hosted_page_summary
   - currency
-  - migrate
-  - is_deleted
-  - is_archived
   - id
-  - integration
   - createdAt
   - updatedAt
-  - total_subscriptions
-  - active_subscriptions
-  - total_subscriptions_revenue

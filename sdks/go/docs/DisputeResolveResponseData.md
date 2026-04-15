@@ -2,30 +2,30 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Currency** | **string** |  | 
-**Last4** | **string** |  | 
-**Bin** | **string** |  | 
-**TransactionReference** | **interface{}** |  | 
-**MerchantTransactionReference** | **string** |  | 
-**RefundAmount** | **int32** |  | 
-**Status** | **string** |  | 
-**Domain** | **string** |  | 
-**Resolution** | **string** |  | 
-**Category** | **string** |  | 
-**Note** | **interface{}** |  | 
-**Attachments** | **string** |  | 
-**Id** | **int32** |  | 
-**Integration** | **int32** |  | 
-**Transaction** | **int32** |  | 
-**CreatedBy** | **int32** |  | 
-**Evidence** | **int32** |  | 
-**ResolvedAt** | **string** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
-**DueAt** | **interface{}** |  | 
-**Message** | [**DisputeResolveResponseDataMessage**](DisputeResolveResponseDataMessage.md) |  | 
+| Name                             | Type                                                                          | Description | Notes |
+| -------------------------------- | ----------------------------------------------------------------------------- | ----------- | ----- |
+| **Currency**                     | **string**                                                                    |             |
+| **Last4**                        | **string**                                                                    |             |
+| **Bin**                          | **string**                                                                    |             |
+| **TransactionReference**         | **interface{}**                                                               |             |
+| **MerchantTransactionReference** | **string**                                                                    |             |
+| **RefundAmount**                 | **int32**                                                                     |             |
+| **Status**                       | **string**                                                                    |             |
+| **Domain**                       | **string**                                                                    |             |
+| **Resolution**                   | **string**                                                                    |             |
+| **Category**                     | **string**                                                                    |             |
+| **Note**                         | **interface{}**                                                               |             |
+| **Attachments**                  | **string**                                                                    |             |
+| **Id**                           | **int32**                                                                     |             |
+| **Integration**                  | **int32**                                                                     |             |
+| **Transaction**                  | **int32**                                                                     |             |
+| **CreatedBy**                    | **int32**                                                                     |             |
+| **Evidence**                     | **int32**                                                                     |             |
+| **ResolvedAt**                   | **string**                                                                    |             |
+| **CreatedAt**                    | **string**                                                                    |             |
+| **UpdatedAt**                    | **string**                                                                    |             |
+| **DueAt**                        | **interface{}**                                                               |             |
+| **Message**                      | [**DisputeResolveResponseDataMessage**](DisputeResolveResponseDataMessage.md) |             |
 
 ## Methods
 
@@ -65,7 +65,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetLast4
 
 `func (o *DisputeResolveResponseData) GetLast4() string`
@@ -84,7 +83,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeResolveResponseData) SetLast4(v string)`
 
 SetLast4 sets Last4 field to given value.
-
 
 ### GetBin
 
@@ -105,7 +103,6 @@ and a boolean to check if the value has been set.
 
 SetBin sets Bin field to given value.
 
-
 ### GetTransactionReference
 
 `func (o *DisputeResolveResponseData) GetTransactionReference() interface{}`
@@ -125,17 +122,18 @@ and a boolean to check if the value has been set.
 
 SetTransactionReference sets TransactionReference field to given value.
 
-
 ### SetTransactionReferenceNil
 
 `func (o *DisputeResolveResponseData) SetTransactionReferenceNil(b bool)`
 
- SetTransactionReferenceNil sets the value for TransactionReference to be an explicit nil
+SetTransactionReferenceNil sets the value for TransactionReference to be an explicit nil
 
 ### UnsetTransactionReference
+
 `func (o *DisputeResolveResponseData) UnsetTransactionReference()`
 
 UnsetTransactionReference ensures that no value is present for TransactionReference, not even an explicit nil
+
 ### GetMerchantTransactionReference
 
 `func (o *DisputeResolveResponseData) GetMerchantTransactionReference() string`
@@ -154,7 +152,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeResolveResponseData) SetMerchantTransactionReference(v string)`
 
 SetMerchantTransactionReference sets MerchantTransactionReference field to given value.
-
 
 ### GetRefundAmount
 
@@ -175,7 +172,6 @@ and a boolean to check if the value has been set.
 
 SetRefundAmount sets RefundAmount field to given value.
 
-
 ### GetStatus
 
 `func (o *DisputeResolveResponseData) GetStatus() string`
@@ -194,7 +190,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeResolveResponseData) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
-
 
 ### GetDomain
 
@@ -215,7 +210,6 @@ and a boolean to check if the value has been set.
 
 SetDomain sets Domain field to given value.
 
-
 ### GetResolution
 
 `func (o *DisputeResolveResponseData) GetResolution() string`
@@ -234,7 +228,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeResolveResponseData) SetResolution(v string)`
 
 SetResolution sets Resolution field to given value.
-
 
 ### GetCategory
 
@@ -255,7 +248,6 @@ and a boolean to check if the value has been set.
 
 SetCategory sets Category field to given value.
 
-
 ### GetNote
 
 `func (o *DisputeResolveResponseData) GetNote() interface{}`
@@ -275,17 +267,18 @@ and a boolean to check if the value has been set.
 
 SetNote sets Note field to given value.
 
-
 ### SetNoteNil
 
 `func (o *DisputeResolveResponseData) SetNoteNil(b bool)`
 
- SetNoteNil sets the value for Note to be an explicit nil
+SetNoteNil sets the value for Note to be an explicit nil
 
 ### UnsetNote
+
 `func (o *DisputeResolveResponseData) UnsetNote()`
 
 UnsetNote ensures that no value is present for Note, not even an explicit nil
+
 ### GetAttachments
 
 `func (o *DisputeResolveResponseData) GetAttachments() string`
@@ -304,7 +297,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeResolveResponseData) SetAttachments(v string)`
 
 SetAttachments sets Attachments field to given value.
-
 
 ### GetId
 
@@ -325,7 +317,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetIntegration
 
 `func (o *DisputeResolveResponseData) GetIntegration() int32`
@@ -344,7 +335,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeResolveResponseData) SetIntegration(v int32)`
 
 SetIntegration sets Integration field to given value.
-
 
 ### GetTransaction
 
@@ -365,7 +355,6 @@ and a boolean to check if the value has been set.
 
 SetTransaction sets Transaction field to given value.
 
-
 ### GetCreatedBy
 
 `func (o *DisputeResolveResponseData) GetCreatedBy() int32`
@@ -384,7 +373,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeResolveResponseData) SetCreatedBy(v int32)`
 
 SetCreatedBy sets CreatedBy field to given value.
-
 
 ### GetEvidence
 
@@ -405,7 +393,6 @@ and a boolean to check if the value has been set.
 
 SetEvidence sets Evidence field to given value.
 
-
 ### GetResolvedAt
 
 `func (o *DisputeResolveResponseData) GetResolvedAt() string`
@@ -424,7 +411,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeResolveResponseData) SetResolvedAt(v string)`
 
 SetResolvedAt sets ResolvedAt field to given value.
-
 
 ### GetCreatedAt
 
@@ -445,7 +431,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-
 ### GetUpdatedAt
 
 `func (o *DisputeResolveResponseData) GetUpdatedAt() string`
@@ -464,7 +449,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeResolveResponseData) SetUpdatedAt(v string)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
-
 
 ### GetDueAt
 
@@ -485,17 +469,18 @@ and a boolean to check if the value has been set.
 
 SetDueAt sets DueAt field to given value.
 
-
 ### SetDueAtNil
 
 `func (o *DisputeResolveResponseData) SetDueAtNil(b bool)`
 
- SetDueAtNil sets the value for DueAt to be an explicit nil
+SetDueAtNil sets the value for DueAt to be an explicit nil
 
 ### UnsetDueAt
+
 `func (o *DisputeResolveResponseData) UnsetDueAt()`
 
 UnsetDueAt ensures that no value is present for DueAt, not even an explicit nil
+
 ### GetMessage
 
 `func (o *DisputeResolveResponseData) GetMessage() DisputeResolveResponseDataMessage`
@@ -515,8 +500,4 @@ and a boolean to check if the value has been set.
 
 SetMessage sets Message field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

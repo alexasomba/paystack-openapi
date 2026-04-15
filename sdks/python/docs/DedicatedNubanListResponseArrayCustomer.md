@@ -1,17 +1,17 @@
 # DedicatedNubanListResponseArrayCustomer
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **int** |  | [optional] 
-**first_name** | **str** |  | [optional] 
-**last_name** | **str** |  | [optional] 
-**email** | **str** |  | [optional] 
-**customer_code** | **str** |  | [optional] 
-**phone** | **str** |  | [optional] 
-**risk_action** | **str** |  | [optional] 
-**international_format_phone** | **str** |  | [optional] 
+
+| Name                           | Type    | Description | Notes      |
+| ------------------------------ | ------- | ----------- | ---------- |
+| **id**                         | **int** |             | [optional] |
+| **first_name**                 | **str** |             | [optional] |
+| **last_name**                  | **str** |             | [optional] |
+| **email**                      | **str** |             | [optional] |
+| **customer_code**              | **str** |             | [optional] |
+| **phone**                      | **str** |             | [optional] |
+| **risk_action**                | **str** |             | [optional] |
+| **international_format_phone** | **str** |             | [optional] |
 
 ## Example
 
@@ -30,6 +30,5 @@ dedicated_nuban_list_response_array_customer_dict = dedicated_nuban_list_respons
 # create an instance of DedicatedNubanListResponseArrayCustomer from a dict
 dedicated_nuban_list_response_array_customer_form_dict = dedicated_nuban_list_response_array_customer.from_dict(dedicated_nuban_list_response_array_customer_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

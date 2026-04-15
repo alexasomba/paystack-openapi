@@ -13,13 +13,13 @@ post:
         schema:
           $ref: ../components/schemas/TransferFinalizeDisableOTP.yaml
   responses:
-    '200':
-      description: 'Successful response'
+    "200":
+      description: "Successful response"
       content:
         application/json:
           schema:
             $ref: ../components/schemas/TransferFinalizeDisablesOtpResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error

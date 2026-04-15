@@ -2,9 +2,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**InternationalFormatPhone** | **interface{}** |  | 
+| Name                         | Type            | Description | Notes |
+| ---------------------------- | --------------- | ----------- | ----- |
+| **InternationalFormatPhone** | **interface{}** |             |
 
 ## Methods
 
@@ -44,18 +44,16 @@ and a boolean to check if the value has been set.
 
 SetInternationalFormatPhone sets InternationalFormatPhone field to given value.
 
-
 ### SetInternationalFormatPhoneNil
 
 `func (o *DisputeFetchResponseDataTransactionCustomer) SetInternationalFormatPhoneNil(b bool)`
 
- SetInternationalFormatPhoneNil sets the value for InternationalFormatPhone to be an explicit nil
+SetInternationalFormatPhoneNil sets the value for InternationalFormatPhone to be an explicit nil
 
 ### UnsetInternationalFormatPhone
+
 `func (o *DisputeFetchResponseDataTransactionCustomer) UnsetInternationalFormatPhone()`
 
 UnsetInternationalFormatPhone ensures that no value is present for InternationalFormatPhone, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

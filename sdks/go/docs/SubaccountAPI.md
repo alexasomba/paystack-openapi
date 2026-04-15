@@ -2,22 +2,18 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**SubaccountCreate**](SubaccountAPI.md#SubaccountCreate) | **Post** /subaccount | Create Subaccount
-[**SubaccountFetch**](SubaccountAPI.md#SubaccountFetch) | **Get** /subaccount/{code} | Fetch Subaccount
-[**SubaccountList**](SubaccountAPI.md#SubaccountList) | **Get** /subaccount | List Subaccounts
-[**SubaccountUpdate**](SubaccountAPI.md#SubaccountUpdate) | **Put** /subaccount/{code} | Update Subaccount
-
-
+| Method                                                    | HTTP request               | Description       |
+| --------------------------------------------------------- | -------------------------- | ----------------- |
+| [**SubaccountCreate**](SubaccountAPI.md#SubaccountCreate) | **Post** /subaccount       | Create Subaccount |
+| [**SubaccountFetch**](SubaccountAPI.md#SubaccountFetch)   | **Get** /subaccount/{code} | Fetch Subaccount  |
+| [**SubaccountList**](SubaccountAPI.md#SubaccountList)     | **Get** /subaccount        | List Subaccounts  |
+| [**SubaccountUpdate**](SubaccountAPI.md#SubaccountUpdate) | **Put** /subaccount/{code} | Update Subaccount |
 
 ## SubaccountCreate
 
 > SubaccountCreateResponse SubaccountCreate(ctx).SubaccountCreate(subaccountCreate).Execute()
 
 Create Subaccount
-
-
 
 ### Example
 
@@ -48,16 +44,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSubaccountCreateRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **subaccountCreate** | [**SubaccountCreate**](SubaccountCreate.md) |  | 
+| Name                 | Type                                        | Description | Notes |
+| -------------------- | ------------------------------------------- | ----------- | ----- |
+| **subaccountCreate** | [**SubaccountCreate**](SubaccountCreate.md) |             |
 
 ### Return type
 
@@ -76,14 +69,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## SubaccountFetch
 
 > SubaccountFetchResponse SubaccountFetch(ctx, code).Execute()
 
 Fetch Subaccount
-
-
 
 ### Example
 
@@ -114,20 +104,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | The subaccount code you want to fetch | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | The subaccount code you want to fetch                                       |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSubaccountFetchRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -146,14 +133,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## SubaccountList
 
 > SubaccountListResponse SubaccountList(ctx).PerPage(perPage).Page(page).Active(active).Execute()
 
 List Subaccounts
-
-
 
 ### Example
 
@@ -186,18 +170,15 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSubaccountListRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **perPage** | **int32** | Number of records to fetch per request | [default to 50]
- **page** | **int32** | The offset to retrieve data from | [default to 1]
- **active** | **bool** | Filter by the state of the subaccounts | 
+| Name        | Type      | Description                            | Notes           |
+| ----------- | --------- | -------------------------------------- | --------------- |
+| **perPage** | **int32** | Number of records to fetch per request | [default to 50] |
+| **page**    | **int32** | The offset to retrieve data from       | [default to 1]  |
+| **active**  | **bool**  | Filter by the state of the subaccounts |
 
 ### Return type
 
@@ -216,14 +197,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## SubaccountUpdate
 
 > SubaccountUpdateResponse SubaccountUpdate(ctx, code).SubaccountUpdate(subaccountUpdate).Execute()
 
 Update Subaccount
-
-
 
 ### Example
 
@@ -255,21 +233,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | The subaccount code you want to fetch | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | The subaccount code you want to fetch                                       |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSubaccountUpdateRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **subaccountUpdate** | [**SubaccountUpdate**](SubaccountUpdate.md) |  | 
+**subaccountUpdate** | [**SubaccountUpdate**](SubaccountUpdate.md) | |
 
 ### Return type
 
@@ -287,4 +263,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

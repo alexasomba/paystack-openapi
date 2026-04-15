@@ -2,14 +2,14 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Status** | Pointer to **bool** | An indicator for the state of the request | [optional] 
-**Message** | Pointer to **string** | A short description of the error | [optional] 
-**Meta** | Pointer to [**ErrorMeta**](ErrorMeta.md) |  | [optional] 
-**Type** | Pointer to **string** | A tag to indicate the type of the error | [optional] 
-**Code** | Pointer to **string** | The error code | [optional] 
-**ErrorCodeMappingNotFound** | Pointer to **bool** | An indicator for error mapping for the request | [optional] 
+| Name                         | Type                                     | Description                                    | Notes      |
+| ---------------------------- | ---------------------------------------- | ---------------------------------------------- | ---------- |
+| **Status**                   | Pointer to **bool**                      | An indicator for the state of the request      | [optional] |
+| **Message**                  | Pointer to **string**                    | A short description of the error               | [optional] |
+| **Meta**                     | Pointer to [**ErrorMeta**](ErrorMeta.md) |                                                | [optional] |
+| **Type**                     | Pointer to **string**                    | A tag to indicate the type of the error        | [optional] |
+| **Code**                     | Pointer to **string**                    | The error code                                 | [optional] |
+| **ErrorCodeMappingNotFound** | Pointer to **bool**                      | An indicator for error mapping for the request | [optional] |
 
 ## Methods
 
@@ -180,7 +180,4 @@ SetErrorCodeMappingNotFound sets ErrorCodeMappingNotFound field to given value.
 
 HasErrorCodeMappingNotFound returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

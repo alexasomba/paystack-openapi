@@ -13,13 +13,13 @@ post:
         schema:
           $ref: ../components/schemas/TransferRecipientCreate.yaml
   responses:
-    '201':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/TransferRecipientCreateResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error
@@ -31,44 +31,37 @@ get:
   operationId: transferrecipient_list
   parameters:
     - in: query
-      name: use_cursor
-      description: A flag to indicate if cursor based pagination should be used
-      schema:
-        type: boolean
-    - in: query
-      name: next
-      description: >
-        An alphanumeric value returned for every cursor based retrieval, used to
-        retrieve the next set of data
-      schema:
-        type: string
-    - in: query
-      name: previous
-      description: >
-        An alphanumeric value returned for every cursor based retrieval, used to
-        retrieve the previous set of data
-      schema:
-        type: string
-    - in: query
-      name: per_page
+      name: perPage
       schema:
         type: integer
-      description: The number of records to fetch per request
+      description: Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
     - in: query
       name: page
       schema:
         type: integer
-      description: The offset to retrieve data from
+      description: Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
+    - in: query
+      name: from
+      description: A timestamp from which to start listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+      schema:
+        type: string
+        format: date-time
+    - in: query
+      name: to
+      description: A timestamp at which to stop listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+      schema:
+        type: string
+        format: date-time
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/TransferRecipientListResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

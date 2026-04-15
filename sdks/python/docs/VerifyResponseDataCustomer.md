@@ -1,18 +1,18 @@
 # VerifyResponseDataCustomer
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **int** |  | 
-**first_name** | **str** |  | 
-**last_name** | **str** |  | 
-**email** | **str** |  | 
-**customer_code** | **str** |  | 
-**phone** | **str** |  | 
-**metadata** | **object** |  | 
-**risk_action** | **str** |  | 
-**international_format_phone** | **str** |  | 
+
+| Name                           | Type       | Description | Notes |
+| ------------------------------ | ---------- | ----------- | ----- |
+| **id**                         | **int**    |             |
+| **first_name**                 | **str**    |             |
+| **last_name**                  | **str**    |             |
+| **email**                      | **str**    |             |
+| **customer_code**              | **str**    |             |
+| **phone**                      | **str**    |             |
+| **metadata**                   | **object** |             |
+| **risk_action**                | **str**    |             |
+| **international_format_phone** | **str**    |             |
 
 ## Example
 
@@ -31,6 +31,5 @@ verify_response_data_customer_dict = verify_response_data_customer_instance.to_d
 # create an instance of VerifyResponseDataCustomer from a dict
 verify_response_data_customer_form_dict = verify_response_data_customer.from_dict(verify_response_data_customer_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

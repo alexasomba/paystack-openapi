@@ -1,20 +1,20 @@
 # VirtualTerminalFetchResponseData
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **int** |  | 
-**code** | **str** |  | 
-**name** | **str** |  | 
-**integration** | **int** |  | 
-**domain** | **str** |  | 
-**payment_methods** | **List[object]** |  | 
-**active** | **bool** |  | 
-**created_at** | **str** |  | 
-**connect_account_id** | **object** |  | 
-**destinations** | [**List[VirtualTerminalFetchResponseDataDestinationsInner]**](VirtualTerminalFetchResponseDataDestinationsInner.md) |  | 
-**currency** | **str** |  | 
+
+| Name                   | Type                                                                                                                | Description | Notes |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **id**                 | **int**                                                                                                             |             |
+| **code**               | **str**                                                                                                             |             |
+| **name**               | **str**                                                                                                             |             |
+| **integration**        | **int**                                                                                                             |             |
+| **domain**             | **str**                                                                                                             |             |
+| **payment_methods**    | **List[object]**                                                                                                    |             |
+| **active**             | **bool**                                                                                                            |             |
+| **created_at**         | **str**                                                                                                             |             |
+| **connect_account_id** | **object**                                                                                                          |             |
+| **destinations**       | [**List[VirtualTerminalFetchResponseDataDestinationsInner]**](VirtualTerminalFetchResponseDataDestinationsInner.md) |             |
+| **currency**           | **str**                                                                                                             |             |
 
 ## Example
 
@@ -33,6 +33,5 @@ virtual_terminal_fetch_response_data_dict = virtual_terminal_fetch_response_data
 # create an instance of VirtualTerminalFetchResponseData from a dict
 virtual_terminal_fetch_response_data_form_dict = virtual_terminal_fetch_response_data.from_dict(virtual_terminal_fetch_response_data_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

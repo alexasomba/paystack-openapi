@@ -1,20 +1,20 @@
 # CustomerFetchMandateAuthorizationsResponseData
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **int** |  | 
-**status** | **str** |  | 
-**mandate_id** | **int** |  | 
-**authorization_id** | **int** |  | 
-**authorization_code** | **str** |  | 
-**integration_id** | **int** |  | 
-**account_number** | **str** |  | 
-**bank_code** | **str** |  | 
-**bank_name** | **str** |  | [optional] 
-**customer** | [**CustomerFetchMandateAuthorizationsResponseDataCustomer**](CustomerFetchMandateAuthorizationsResponseDataCustomer.md) |  | 
-**authorized_at** | **datetime** |  | 
+
+| Name                   | Type                                                                                                                    | Description | Notes      |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------- | ---------- |
+| **id**                 | **int**                                                                                                                 |             |
+| **status**             | **str**                                                                                                                 |             |
+| **mandate_id**         | **int**                                                                                                                 |             |
+| **authorization_id**   | **int**                                                                                                                 |             |
+| **authorization_code** | **str**                                                                                                                 |             |
+| **integration_id**     | **int**                                                                                                                 |             |
+| **account_number**     | **str**                                                                                                                 |             |
+| **bank_code**          | **str**                                                                                                                 |             |
+| **bank_name**          | **str**                                                                                                                 |             | [optional] |
+| **customer**           | [**CustomerFetchMandateAuthorizationsResponseDataCustomer**](CustomerFetchMandateAuthorizationsResponseDataCustomer.md) |             |
+| **authorized_at**      | **datetime**                                                                                                            |             |
 
 ## Example
 
@@ -33,6 +33,5 @@ customer_fetch_mandate_authorizations_response_data_dict = customer_fetch_mandat
 # create an instance of CustomerFetchMandateAuthorizationsResponseData from a dict
 customer_fetch_mandate_authorizations_response_data_form_dict = customer_fetch_mandate_authorizations_response_data.from_dict(customer_fetch_mandate_authorizations_response_data_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

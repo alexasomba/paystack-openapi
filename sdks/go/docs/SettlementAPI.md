@@ -2,20 +2,16 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**SettlementsFetch**](SettlementAPI.md#SettlementsFetch) | **Get** /settlement | List Settlements
-[**SettlementsTransaction**](SettlementAPI.md#SettlementsTransaction) | **Get** /settlement/{id}/transactions | Fetch Settlement Transactions
-
-
+| Method                                                                | HTTP request                          | Description                   |
+| --------------------------------------------------------------------- | ------------------------------------- | ----------------------------- |
+| [**SettlementsFetch**](SettlementAPI.md#SettlementsFetch)             | **Get** /settlement                   | List Settlements              |
+| [**SettlementsTransaction**](SettlementAPI.md#SettlementsTransaction) | **Get** /settlement/{id}/transactions | Fetch Settlement Transactions |
 
 ## SettlementsFetch
 
 > Response SettlementsFetch(ctx).PerPage(perPage).Page(page).Execute()
 
 List Settlements
-
-
 
 ### Example
 
@@ -47,17 +43,14 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSettlementsFetchRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **perPage** | **int32** | The number of records to fetch per request | 
- **page** | **int32** | The offset to retrieve data from | 
+| Name        | Type      | Description                                | Notes |
+| ----------- | --------- | ------------------------------------------ | ----- |
+| **perPage** | **int32** | The number of records to fetch per request |
+| **page**    | **int32** | The offset to retrieve data from           |
 
 ### Return type
 
@@ -76,14 +69,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## SettlementsTransaction
 
 > Response SettlementsTransaction(ctx, id).Execute()
 
 Fetch Settlement Transactions
-
-
 
 ### Example
 
@@ -114,20 +104,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The settlement ID in which you want to fetch its transactions | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The settlement ID in which you want to fetch its transactions               |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSettlementsTransactionRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -145,4 +132,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

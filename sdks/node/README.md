@@ -133,7 +133,9 @@ The SDK provides utilities for robust error management:
 ```ts
 import { toPaystackApiError, PaystackApiError } from "@alexasomba/paystack-node";
 
-const result = await paystack.transaction_initialize({ /* ... */ });
+const result = await paystack.transaction_initialize({
+  /* ... */
+});
 const error = toPaystackApiError(result);
 
 if (error) {

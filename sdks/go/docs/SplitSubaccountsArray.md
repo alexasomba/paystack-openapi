@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Subaccount** | [**SplitSubaccountsArraySubaccount**](SplitSubaccountsArraySubaccount.md) |  | 
-**Share** | **int32** |  | 
+| Name           | Type                                                                      | Description | Notes |
+| -------------- | ------------------------------------------------------------------------- | ----------- | ----- |
+| **Subaccount** | [**SplitSubaccountsArraySubaccount**](SplitSubaccountsArraySubaccount.md) |             |
+| **Share**      | **int32**                                                                 |             |
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetSubaccount sets Subaccount field to given value.
 
-
 ### GetShare
 
 `func (o *SplitSubaccountsArray) GetShare() int32`
@@ -65,8 +64,4 @@ and a boolean to check if the value has been set.
 
 SetShare sets Share field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

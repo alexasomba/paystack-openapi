@@ -2,31 +2,31 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**Integration** | **int32** |  | 
-**Domain** | **string** |  | 
-**Amount** | **int32** |  | 
-**Currency** | **string** |  | 
-**DueDate** | **NullableString** |  | 
-**HasInvoice** | **bool** |  | 
-**InvoiceNumber** | **NullableInt32** |  | 
-**Description** | **NullableString** |  | 
-**PdfUrl** | **NullableString** |  | 
-**LineItems** | [**[]PaymentRequestLineItemsArray**](PaymentRequestLineItemsArray.md) |  | 
-**Tax** | [**[]PaymentRequestTaxArray**](PaymentRequestTaxArray.md) |  | 
-**RequestCode** | **string** |  | 
-**Status** | **string** |  | 
-**Paid** | **bool** |  | 
-**PaidAt** | **interface{}** |  | 
-**Metadata** | **interface{}** |  | 
-**Notifications** | **[]interface{}** |  | 
-**OfflineReference** | **string** |  | 
-**Customer** | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |  | 
-**CreatedAt** | **string** |  | 
-**Discount** | **interface{}** |  | 
-**SplitCode** | **NullableString** |  | 
+| Name                 | Type                                                                                | Description | Notes |
+| -------------------- | ----------------------------------------------------------------------------------- | ----------- | ----- |
+| **Id**               | **int32**                                                                           |             |
+| **Integration**      | **int32**                                                                           |             |
+| **Domain**           | **string**                                                                          |             |
+| **Amount**           | **int32**                                                                           |             |
+| **Currency**         | **string**                                                                          |             |
+| **DueDate**          | **NullableString**                                                                  |             |
+| **HasInvoice**       | **bool**                                                                            |             |
+| **InvoiceNumber**    | **NullableInt32**                                                                   |             |
+| **Description**      | **NullableString**                                                                  |             |
+| **PdfUrl**           | **NullableString**                                                                  |             |
+| **LineItems**        | [**[]PaymentRequestLineItemsArray**](PaymentRequestLineItemsArray.md)               |             |
+| **Tax**              | [**[]PaymentRequestTaxArray**](PaymentRequestTaxArray.md)                           |             |
+| **RequestCode**      | **string**                                                                          |             |
+| **Status**           | **string**                                                                          |             |
+| **Paid**             | **bool**                                                                            |             |
+| **PaidAt**           | **interface{}**                                                                     |             |
+| **Metadata**         | **interface{}**                                                                     |             |
+| **Notifications**    | **[]interface{}**                                                                   |             |
+| **OfflineReference** | **string**                                                                          |             |
+| **Customer**         | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |             |
+| **CreatedAt**        | **string**                                                                          |             |
+| **Discount**         | **interface{}**                                                                     |             |
+| **SplitCode**        | **NullableString**                                                                  |             |
 
 ## Methods
 
@@ -66,7 +66,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetIntegration
 
 `func (o *PaymentRequestListResponseArray) GetIntegration() int32`
@@ -85,7 +84,6 @@ and a boolean to check if the value has been set.
 `func (o *PaymentRequestListResponseArray) SetIntegration(v int32)`
 
 SetIntegration sets Integration field to given value.
-
 
 ### GetDomain
 
@@ -106,7 +104,6 @@ and a boolean to check if the value has been set.
 
 SetDomain sets Domain field to given value.
 
-
 ### GetAmount
 
 `func (o *PaymentRequestListResponseArray) GetAmount() int32`
@@ -125,7 +122,6 @@ and a boolean to check if the value has been set.
 `func (o *PaymentRequestListResponseArray) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetCurrency
 
@@ -146,7 +142,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetDueDate
 
 `func (o *PaymentRequestListResponseArray) GetDueDate() string`
@@ -166,17 +161,18 @@ and a boolean to check if the value has been set.
 
 SetDueDate sets DueDate field to given value.
 
-
 ### SetDueDateNil
 
 `func (o *PaymentRequestListResponseArray) SetDueDateNil(b bool)`
 
- SetDueDateNil sets the value for DueDate to be an explicit nil
+SetDueDateNil sets the value for DueDate to be an explicit nil
 
 ### UnsetDueDate
+
 `func (o *PaymentRequestListResponseArray) UnsetDueDate()`
 
 UnsetDueDate ensures that no value is present for DueDate, not even an explicit nil
+
 ### GetHasInvoice
 
 `func (o *PaymentRequestListResponseArray) GetHasInvoice() bool`
@@ -195,7 +191,6 @@ and a boolean to check if the value has been set.
 `func (o *PaymentRequestListResponseArray) SetHasInvoice(v bool)`
 
 SetHasInvoice sets HasInvoice field to given value.
-
 
 ### GetInvoiceNumber
 
@@ -216,17 +211,18 @@ and a boolean to check if the value has been set.
 
 SetInvoiceNumber sets InvoiceNumber field to given value.
 
-
 ### SetInvoiceNumberNil
 
 `func (o *PaymentRequestListResponseArray) SetInvoiceNumberNil(b bool)`
 
- SetInvoiceNumberNil sets the value for InvoiceNumber to be an explicit nil
+SetInvoiceNumberNil sets the value for InvoiceNumber to be an explicit nil
 
 ### UnsetInvoiceNumber
+
 `func (o *PaymentRequestListResponseArray) UnsetInvoiceNumber()`
 
 UnsetInvoiceNumber ensures that no value is present for InvoiceNumber, not even an explicit nil
+
 ### GetDescription
 
 `func (o *PaymentRequestListResponseArray) GetDescription() string`
@@ -246,17 +242,18 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
-
 ### SetDescriptionNil
 
 `func (o *PaymentRequestListResponseArray) SetDescriptionNil(b bool)`
 
- SetDescriptionNil sets the value for Description to be an explicit nil
+SetDescriptionNil sets the value for Description to be an explicit nil
 
 ### UnsetDescription
+
 `func (o *PaymentRequestListResponseArray) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
+
 ### GetPdfUrl
 
 `func (o *PaymentRequestListResponseArray) GetPdfUrl() string`
@@ -276,17 +273,18 @@ and a boolean to check if the value has been set.
 
 SetPdfUrl sets PdfUrl field to given value.
 
-
 ### SetPdfUrlNil
 
 `func (o *PaymentRequestListResponseArray) SetPdfUrlNil(b bool)`
 
- SetPdfUrlNil sets the value for PdfUrl to be an explicit nil
+SetPdfUrlNil sets the value for PdfUrl to be an explicit nil
 
 ### UnsetPdfUrl
+
 `func (o *PaymentRequestListResponseArray) UnsetPdfUrl()`
 
 UnsetPdfUrl ensures that no value is present for PdfUrl, not even an explicit nil
+
 ### GetLineItems
 
 `func (o *PaymentRequestListResponseArray) GetLineItems() []PaymentRequestLineItemsArray`
@@ -305,7 +303,6 @@ and a boolean to check if the value has been set.
 `func (o *PaymentRequestListResponseArray) SetLineItems(v []PaymentRequestLineItemsArray)`
 
 SetLineItems sets LineItems field to given value.
-
 
 ### GetTax
 
@@ -326,7 +323,6 @@ and a boolean to check if the value has been set.
 
 SetTax sets Tax field to given value.
 
-
 ### GetRequestCode
 
 `func (o *PaymentRequestListResponseArray) GetRequestCode() string`
@@ -345,7 +341,6 @@ and a boolean to check if the value has been set.
 `func (o *PaymentRequestListResponseArray) SetRequestCode(v string)`
 
 SetRequestCode sets RequestCode field to given value.
-
 
 ### GetStatus
 
@@ -366,7 +361,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-
 ### GetPaid
 
 `func (o *PaymentRequestListResponseArray) GetPaid() bool`
@@ -385,7 +379,6 @@ and a boolean to check if the value has been set.
 `func (o *PaymentRequestListResponseArray) SetPaid(v bool)`
 
 SetPaid sets Paid field to given value.
-
 
 ### GetPaidAt
 
@@ -406,17 +399,18 @@ and a boolean to check if the value has been set.
 
 SetPaidAt sets PaidAt field to given value.
 
-
 ### SetPaidAtNil
 
 `func (o *PaymentRequestListResponseArray) SetPaidAtNil(b bool)`
 
- SetPaidAtNil sets the value for PaidAt to be an explicit nil
+SetPaidAtNil sets the value for PaidAt to be an explicit nil
 
 ### UnsetPaidAt
+
 `func (o *PaymentRequestListResponseArray) UnsetPaidAt()`
 
 UnsetPaidAt ensures that no value is present for PaidAt, not even an explicit nil
+
 ### GetMetadata
 
 `func (o *PaymentRequestListResponseArray) GetMetadata() interface{}`
@@ -436,17 +430,18 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
-
 ### SetMetadataNil
 
 `func (o *PaymentRequestListResponseArray) SetMetadataNil(b bool)`
 
- SetMetadataNil sets the value for Metadata to be an explicit nil
+SetMetadataNil sets the value for Metadata to be an explicit nil
 
 ### UnsetMetadata
+
 `func (o *PaymentRequestListResponseArray) UnsetMetadata()`
 
 UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
+
 ### GetNotifications
 
 `func (o *PaymentRequestListResponseArray) GetNotifications() []interface{}`
@@ -465,7 +460,6 @@ and a boolean to check if the value has been set.
 `func (o *PaymentRequestListResponseArray) SetNotifications(v []interface{})`
 
 SetNotifications sets Notifications field to given value.
-
 
 ### GetOfflineReference
 
@@ -486,7 +480,6 @@ and a boolean to check if the value has been set.
 
 SetOfflineReference sets OfflineReference field to given value.
 
-
 ### GetCustomer
 
 `func (o *PaymentRequestListResponseArray) GetCustomer() TransactionFetchResponseDataCustomer`
@@ -505,7 +498,6 @@ and a boolean to check if the value has been set.
 `func (o *PaymentRequestListResponseArray) SetCustomer(v TransactionFetchResponseDataCustomer)`
 
 SetCustomer sets Customer field to given value.
-
 
 ### GetCreatedAt
 
@@ -526,7 +518,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-
 ### GetDiscount
 
 `func (o *PaymentRequestListResponseArray) GetDiscount() interface{}`
@@ -546,17 +537,18 @@ and a boolean to check if the value has been set.
 
 SetDiscount sets Discount field to given value.
 
-
 ### SetDiscountNil
 
 `func (o *PaymentRequestListResponseArray) SetDiscountNil(b bool)`
 
- SetDiscountNil sets the value for Discount to be an explicit nil
+SetDiscountNil sets the value for Discount to be an explicit nil
 
 ### UnsetDiscount
+
 `func (o *PaymentRequestListResponseArray) UnsetDiscount()`
 
 UnsetDiscount ensures that no value is present for Discount, not even an explicit nil
+
 ### GetSplitCode
 
 `func (o *PaymentRequestListResponseArray) GetSplitCode() string`
@@ -576,18 +568,16 @@ and a boolean to check if the value has been set.
 
 SetSplitCode sets SplitCode field to given value.
 
-
 ### SetSplitCodeNil
 
 `func (o *PaymentRequestListResponseArray) SetSplitCodeNil(b bool)`
 
- SetSplitCodeNil sets the value for SplitCode to be an explicit nil
+SetSplitCodeNil sets the value for SplitCode to be an explicit nil
 
 ### UnsetSplitCode
+
 `func (o *PaymentRequestListResponseArray) UnsetSplitCode()`
 
 UnsetSplitCode ensures that no value is present for SplitCode, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,21 +2,21 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AuthorizationCode** | **string** |  | 
-**Bin** | **NullableString** |  | 
-**Last4** | **string** |  | 
-**ExpMonth** | **string** |  | 
-**ExpYear** | **string** |  | 
-**Channel** | **string** |  | 
-**CardType** | **NullableString** |  | 
-**Bank** | **string** |  | 
-**CountryCode** | **string** |  | 
-**Brand** | **string** |  | 
-**Reusable** | **int32** |  | 
-**Signature** | **NullableString** |  | 
-**AccountName** | **interface{}** |  | 
+| Name                  | Type               | Description | Notes |
+| --------------------- | ------------------ | ----------- | ----- |
+| **AuthorizationCode** | **string**         |             |
+| **Bin**               | **NullableString** |             |
+| **Last4**             | **string**         |             |
+| **ExpMonth**          | **string**         |             |
+| **ExpYear**           | **string**         |             |
+| **Channel**           | **string**         |             |
+| **CardType**          | **NullableString** |             |
+| **Bank**              | **string**         |             |
+| **CountryCode**       | **string**         |             |
+| **Brand**             | **string**         |             |
+| **Reusable**          | **int32**          |             |
+| **Signature**         | **NullableString** |             |
+| **AccountName**       | **interface{}**    |             |
 
 ## Methods
 
@@ -56,7 +56,6 @@ and a boolean to check if the value has been set.
 
 SetAuthorizationCode sets AuthorizationCode field to given value.
 
-
 ### GetBin
 
 `func (o *SubscriptionListResponseArrayAuthorization) GetBin() string`
@@ -76,17 +75,18 @@ and a boolean to check if the value has been set.
 
 SetBin sets Bin field to given value.
 
-
 ### SetBinNil
 
 `func (o *SubscriptionListResponseArrayAuthorization) SetBinNil(b bool)`
 
- SetBinNil sets the value for Bin to be an explicit nil
+SetBinNil sets the value for Bin to be an explicit nil
 
 ### UnsetBin
+
 `func (o *SubscriptionListResponseArrayAuthorization) UnsetBin()`
 
 UnsetBin ensures that no value is present for Bin, not even an explicit nil
+
 ### GetLast4
 
 `func (o *SubscriptionListResponseArrayAuthorization) GetLast4() string`
@@ -105,7 +105,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArrayAuthorization) SetLast4(v string)`
 
 SetLast4 sets Last4 field to given value.
-
 
 ### GetExpMonth
 
@@ -126,7 +125,6 @@ and a boolean to check if the value has been set.
 
 SetExpMonth sets ExpMonth field to given value.
 
-
 ### GetExpYear
 
 `func (o *SubscriptionListResponseArrayAuthorization) GetExpYear() string`
@@ -145,7 +143,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArrayAuthorization) SetExpYear(v string)`
 
 SetExpYear sets ExpYear field to given value.
-
 
 ### GetChannel
 
@@ -166,7 +163,6 @@ and a boolean to check if the value has been set.
 
 SetChannel sets Channel field to given value.
 
-
 ### GetCardType
 
 `func (o *SubscriptionListResponseArrayAuthorization) GetCardType() string`
@@ -186,17 +182,18 @@ and a boolean to check if the value has been set.
 
 SetCardType sets CardType field to given value.
 
-
 ### SetCardTypeNil
 
 `func (o *SubscriptionListResponseArrayAuthorization) SetCardTypeNil(b bool)`
 
- SetCardTypeNil sets the value for CardType to be an explicit nil
+SetCardTypeNil sets the value for CardType to be an explicit nil
 
 ### UnsetCardType
+
 `func (o *SubscriptionListResponseArrayAuthorization) UnsetCardType()`
 
 UnsetCardType ensures that no value is present for CardType, not even an explicit nil
+
 ### GetBank
 
 `func (o *SubscriptionListResponseArrayAuthorization) GetBank() string`
@@ -215,7 +212,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArrayAuthorization) SetBank(v string)`
 
 SetBank sets Bank field to given value.
-
 
 ### GetCountryCode
 
@@ -236,7 +232,6 @@ and a boolean to check if the value has been set.
 
 SetCountryCode sets CountryCode field to given value.
 
-
 ### GetBrand
 
 `func (o *SubscriptionListResponseArrayAuthorization) GetBrand() string`
@@ -255,7 +250,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArrayAuthorization) SetBrand(v string)`
 
 SetBrand sets Brand field to given value.
-
 
 ### GetReusable
 
@@ -276,7 +270,6 @@ and a boolean to check if the value has been set.
 
 SetReusable sets Reusable field to given value.
 
-
 ### GetSignature
 
 `func (o *SubscriptionListResponseArrayAuthorization) GetSignature() string`
@@ -296,17 +289,18 @@ and a boolean to check if the value has been set.
 
 SetSignature sets Signature field to given value.
 
-
 ### SetSignatureNil
 
 `func (o *SubscriptionListResponseArrayAuthorization) SetSignatureNil(b bool)`
 
- SetSignatureNil sets the value for Signature to be an explicit nil
+SetSignatureNil sets the value for Signature to be an explicit nil
 
 ### UnsetSignature
+
 `func (o *SubscriptionListResponseArrayAuthorization) UnsetSignature()`
 
 UnsetSignature ensures that no value is present for Signature, not even an explicit nil
+
 ### GetAccountName
 
 `func (o *SubscriptionListResponseArrayAuthorization) GetAccountName() interface{}`
@@ -326,18 +320,16 @@ and a boolean to check if the value has been set.
 
 SetAccountName sets AccountName field to given value.
 
-
 ### SetAccountNameNil
 
 `func (o *SubscriptionListResponseArrayAuthorization) SetAccountNameNil(b bool)`
 
- SetAccountNameNil sets the value for AccountName to be an explicit nil
+SetAccountNameNil sets the value for AccountName to be an explicit nil
 
 ### UnsetAccountName
+
 `func (o *SubscriptionListResponseArrayAuthorization) UnsetAccountName()`
 
 UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

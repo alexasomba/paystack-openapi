@@ -2,9 +2,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Timeout** | **int32** | Time in seconds before a transaction becomes invalid | 
+| Name        | Type      | Description                                          | Notes |
+| ----------- | --------- | ---------------------------------------------------- | ----- |
+| **Timeout** | **int32** | Time in seconds before a transaction becomes invalid |
 
 ## Methods
 
@@ -44,8 +44,4 @@ and a boolean to check if the value has been set.
 
 SetTimeout sets Timeout field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -43,8 +43,6 @@ properties:
               international_format_phone:
                 type: string
                 nullable: true
-            required:
-              - international_format_phone
           plan:
             type: object
           subaccount:

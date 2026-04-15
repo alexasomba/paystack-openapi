@@ -2,29 +2,29 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**RefundAmount** | **int32** |  | 
-**Currency** | **string** |  | 
-**Status** | **string** |  | 
-**Resolution** | **interface{}** |  | 
-**Domain** | **string** |  | 
-**Transaction** | [**DisputeFetchResponseDataTransaction**](DisputeFetchResponseDataTransaction.md) |  | 
-**TransactionReference** | **interface{}** |  | 
-**Category** | **string** |  | 
-**Customer** | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |  | 
-**Bin** | **string** |  | 
-**Last4** | **string** |  | 
-**DueAt** | **interface{}** |  | 
-**ResolvedAt** | **interface{}** |  | 
-**Evidence** | **interface{}** |  | 
-**Attachments** | **interface{}** |  | 
-**Note** | **interface{}** |  | 
-**History** | [**[]DisputeHistoryArray**](DisputeHistoryArray.md) |  | 
-**Messages** | [**[]DisputeMessagesArray**](DisputeMessagesArray.md) |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name                     | Type                                                                                | Description | Notes |
+| ------------------------ | ----------------------------------------------------------------------------------- | ----------- | ----- |
+| **Id**                   | **int32**                                                                           |             |
+| **RefundAmount**         | **int32**                                                                           |             |
+| **Currency**             | **string**                                                                          |             |
+| **Status**               | **string**                                                                          |             |
+| **Resolution**           | **interface{}**                                                                     |             |
+| **Domain**               | **string**                                                                          |             |
+| **Transaction**          | [**DisputeFetchResponseDataTransaction**](DisputeFetchResponseDataTransaction.md)   |             |
+| **TransactionReference** | **interface{}**                                                                     |             |
+| **Category**             | **string**                                                                          |             |
+| **Customer**             | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |             |
+| **Bin**                  | **string**                                                                          |             |
+| **Last4**                | **string**                                                                          |             |
+| **DueAt**                | **interface{}**                                                                     |             |
+| **ResolvedAt**           | **interface{}**                                                                     |             |
+| **Evidence**             | **interface{}**                                                                     |             |
+| **Attachments**          | **interface{}**                                                                     |             |
+| **Note**                 | **interface{}**                                                                     |             |
+| **History**              | [**[]DisputeHistoryArray**](DisputeHistoryArray.md)                                 |             |
+| **Messages**             | [**[]DisputeMessagesArray**](DisputeMessagesArray.md)                               |             |
+| **CreatedAt**            | **string**                                                                          |             |
+| **UpdatedAt**            | **string**                                                                          |             |
 
 ## Methods
 
@@ -64,7 +64,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetRefundAmount
 
 `func (o *DisputeFetchResponseData) GetRefundAmount() int32`
@@ -83,7 +82,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeFetchResponseData) SetRefundAmount(v int32)`
 
 SetRefundAmount sets RefundAmount field to given value.
-
 
 ### GetCurrency
 
@@ -104,7 +102,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetStatus
 
 `func (o *DisputeFetchResponseData) GetStatus() string`
@@ -123,7 +120,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeFetchResponseData) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
-
 
 ### GetResolution
 
@@ -144,17 +140,18 @@ and a boolean to check if the value has been set.
 
 SetResolution sets Resolution field to given value.
 
-
 ### SetResolutionNil
 
 `func (o *DisputeFetchResponseData) SetResolutionNil(b bool)`
 
- SetResolutionNil sets the value for Resolution to be an explicit nil
+SetResolutionNil sets the value for Resolution to be an explicit nil
 
 ### UnsetResolution
+
 `func (o *DisputeFetchResponseData) UnsetResolution()`
 
 UnsetResolution ensures that no value is present for Resolution, not even an explicit nil
+
 ### GetDomain
 
 `func (o *DisputeFetchResponseData) GetDomain() string`
@@ -173,7 +170,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeFetchResponseData) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetTransaction
 
@@ -194,7 +190,6 @@ and a boolean to check if the value has been set.
 
 SetTransaction sets Transaction field to given value.
 
-
 ### GetTransactionReference
 
 `func (o *DisputeFetchResponseData) GetTransactionReference() interface{}`
@@ -214,17 +209,18 @@ and a boolean to check if the value has been set.
 
 SetTransactionReference sets TransactionReference field to given value.
 
-
 ### SetTransactionReferenceNil
 
 `func (o *DisputeFetchResponseData) SetTransactionReferenceNil(b bool)`
 
- SetTransactionReferenceNil sets the value for TransactionReference to be an explicit nil
+SetTransactionReferenceNil sets the value for TransactionReference to be an explicit nil
 
 ### UnsetTransactionReference
+
 `func (o *DisputeFetchResponseData) UnsetTransactionReference()`
 
 UnsetTransactionReference ensures that no value is present for TransactionReference, not even an explicit nil
+
 ### GetCategory
 
 `func (o *DisputeFetchResponseData) GetCategory() string`
@@ -243,7 +239,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeFetchResponseData) SetCategory(v string)`
 
 SetCategory sets Category field to given value.
-
 
 ### GetCustomer
 
@@ -264,7 +259,6 @@ and a boolean to check if the value has been set.
 
 SetCustomer sets Customer field to given value.
 
-
 ### GetBin
 
 `func (o *DisputeFetchResponseData) GetBin() string`
@@ -283,7 +277,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeFetchResponseData) SetBin(v string)`
 
 SetBin sets Bin field to given value.
-
 
 ### GetLast4
 
@@ -304,7 +297,6 @@ and a boolean to check if the value has been set.
 
 SetLast4 sets Last4 field to given value.
 
-
 ### GetDueAt
 
 `func (o *DisputeFetchResponseData) GetDueAt() interface{}`
@@ -324,17 +316,18 @@ and a boolean to check if the value has been set.
 
 SetDueAt sets DueAt field to given value.
 
-
 ### SetDueAtNil
 
 `func (o *DisputeFetchResponseData) SetDueAtNil(b bool)`
 
- SetDueAtNil sets the value for DueAt to be an explicit nil
+SetDueAtNil sets the value for DueAt to be an explicit nil
 
 ### UnsetDueAt
+
 `func (o *DisputeFetchResponseData) UnsetDueAt()`
 
 UnsetDueAt ensures that no value is present for DueAt, not even an explicit nil
+
 ### GetResolvedAt
 
 `func (o *DisputeFetchResponseData) GetResolvedAt() interface{}`
@@ -354,17 +347,18 @@ and a boolean to check if the value has been set.
 
 SetResolvedAt sets ResolvedAt field to given value.
 
-
 ### SetResolvedAtNil
 
 `func (o *DisputeFetchResponseData) SetResolvedAtNil(b bool)`
 
- SetResolvedAtNil sets the value for ResolvedAt to be an explicit nil
+SetResolvedAtNil sets the value for ResolvedAt to be an explicit nil
 
 ### UnsetResolvedAt
+
 `func (o *DisputeFetchResponseData) UnsetResolvedAt()`
 
 UnsetResolvedAt ensures that no value is present for ResolvedAt, not even an explicit nil
+
 ### GetEvidence
 
 `func (o *DisputeFetchResponseData) GetEvidence() interface{}`
@@ -384,17 +378,18 @@ and a boolean to check if the value has been set.
 
 SetEvidence sets Evidence field to given value.
 
-
 ### SetEvidenceNil
 
 `func (o *DisputeFetchResponseData) SetEvidenceNil(b bool)`
 
- SetEvidenceNil sets the value for Evidence to be an explicit nil
+SetEvidenceNil sets the value for Evidence to be an explicit nil
 
 ### UnsetEvidence
+
 `func (o *DisputeFetchResponseData) UnsetEvidence()`
 
 UnsetEvidence ensures that no value is present for Evidence, not even an explicit nil
+
 ### GetAttachments
 
 `func (o *DisputeFetchResponseData) GetAttachments() interface{}`
@@ -414,17 +409,18 @@ and a boolean to check if the value has been set.
 
 SetAttachments sets Attachments field to given value.
 
-
 ### SetAttachmentsNil
 
 `func (o *DisputeFetchResponseData) SetAttachmentsNil(b bool)`
 
- SetAttachmentsNil sets the value for Attachments to be an explicit nil
+SetAttachmentsNil sets the value for Attachments to be an explicit nil
 
 ### UnsetAttachments
+
 `func (o *DisputeFetchResponseData) UnsetAttachments()`
 
 UnsetAttachments ensures that no value is present for Attachments, not even an explicit nil
+
 ### GetNote
 
 `func (o *DisputeFetchResponseData) GetNote() interface{}`
@@ -444,17 +440,18 @@ and a boolean to check if the value has been set.
 
 SetNote sets Note field to given value.
 
-
 ### SetNoteNil
 
 `func (o *DisputeFetchResponseData) SetNoteNil(b bool)`
 
- SetNoteNil sets the value for Note to be an explicit nil
+SetNoteNil sets the value for Note to be an explicit nil
 
 ### UnsetNote
+
 `func (o *DisputeFetchResponseData) UnsetNote()`
 
 UnsetNote ensures that no value is present for Note, not even an explicit nil
+
 ### GetHistory
 
 `func (o *DisputeFetchResponseData) GetHistory() []DisputeHistoryArray`
@@ -473,7 +470,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeFetchResponseData) SetHistory(v []DisputeHistoryArray)`
 
 SetHistory sets History field to given value.
-
 
 ### GetMessages
 
@@ -494,7 +490,6 @@ and a boolean to check if the value has been set.
 
 SetMessages sets Messages field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *DisputeFetchResponseData) GetCreatedAt() string`
@@ -513,7 +508,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeFetchResponseData) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -534,8 +528,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -13,11 +13,11 @@ get:
   description: Get the details of a previously created Storefront
   operationId: storefront_fetch
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/StorefrontFetchSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error
@@ -36,11 +36,11 @@ put:
         schema:
           $ref: ../components/schemas/StorefrontUpdate.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/StorefrontUpdateSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error
@@ -51,11 +51,11 @@ delete:
   description: Delete a previously created Storefront
   operationId: storefront_delete
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/StorefrontDeleteSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

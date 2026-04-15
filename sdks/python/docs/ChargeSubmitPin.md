@@ -1,11 +1,11 @@
 # ChargeSubmitPin
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**pin** | **str** | Customer&#39;s PIN for the ongoing transaction | 
-**reference** | **str** | Transaction reference that requires the PIN | 
+
+| Name          | Type    | Description                                    | Notes |
+| ------------- | ------- | ---------------------------------------------- | ----- |
+| **pin**       | **str** | Customer&#39;s PIN for the ongoing transaction |
+| **reference** | **str** | Transaction reference that requires the PIN    |
 
 ## Example
 
@@ -24,6 +24,5 @@ charge_submit_pin_dict = charge_submit_pin_instance.to_dict()
 # create an instance of ChargeSubmitPin from a dict
 charge_submit_pin_form_dict = charge_submit_pin.from_dict(charge_submit_pin_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

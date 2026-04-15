@@ -16,9 +16,9 @@ post:
         schema:
           $ref: ../components/schemas/CustomerAuthorizationInitializeRequest.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/CustomerAuthorizationInitializeSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error

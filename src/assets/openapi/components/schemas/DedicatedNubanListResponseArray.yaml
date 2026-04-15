@@ -15,11 +15,21 @@ properties:
         type: string
       phone:
         type: string
+        nullable: true
       risk_action:
         type: string
       international_format_phone:
         type: string
         nullable: true
+    required:
+      - id
+      - first_name
+      - last_name
+      - email
+      - customer_code
+      - phone
+      - risk_action
+      - international_format_phone
   bank:
     type: object
     properties:
@@ -46,12 +56,14 @@ properties:
   currency:
     type: string
   split_config:
-    type: object
-    properties:
-      subaccount:
-        type: string
-    required:
-      - subaccount
+    anyOf:
+      - type: string
+      - type: object
+        properties:
+          subaccount:
+            type: string
+        required:
+          - subaccount
     nullable: true
   active:
     type: boolean

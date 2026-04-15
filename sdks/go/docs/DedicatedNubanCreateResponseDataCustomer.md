@@ -2,17 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**FirstName** | **string** |  | 
-**LastName** | **string** |  | 
-**Email** | **string** |  | 
-**CustomerCode** | **string** |  | 
-**Phone** | **string** |  | 
-**Metadata** | **map[string]interface{}** |  | 
-**RiskAction** | **string** |  | 
-**InternationalFormatPhone** | **NullableString** |  | 
+| Name                         | Type                       | Description | Notes |
+| ---------------------------- | -------------------------- | ----------- | ----- |
+| **Id**                       | **int32**                  |             |
+| **FirstName**                | **string**                 |             |
+| **LastName**                 | **string**                 |             |
+| **Email**                    | **string**                 |             |
+| **CustomerCode**             | **string**                 |             |
+| **Phone**                    | **string**                 |             |
+| **Metadata**                 | **map[string]interface{}** |             |
+| **RiskAction**               | **string**                 |             |
+| **InternationalFormatPhone** | **NullableString**         |             |
 
 ## Methods
 
@@ -52,7 +52,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetFirstName
 
 `func (o *DedicatedNubanCreateResponseDataCustomer) GetFirstName() string`
@@ -71,7 +70,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedNubanCreateResponseDataCustomer) SetFirstName(v string)`
 
 SetFirstName sets FirstName field to given value.
-
 
 ### GetLastName
 
@@ -92,7 +90,6 @@ and a boolean to check if the value has been set.
 
 SetLastName sets LastName field to given value.
 
-
 ### GetEmail
 
 `func (o *DedicatedNubanCreateResponseDataCustomer) GetEmail() string`
@@ -111,7 +108,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedNubanCreateResponseDataCustomer) SetEmail(v string)`
 
 SetEmail sets Email field to given value.
-
 
 ### GetCustomerCode
 
@@ -132,7 +128,6 @@ and a boolean to check if the value has been set.
 
 SetCustomerCode sets CustomerCode field to given value.
 
-
 ### GetPhone
 
 `func (o *DedicatedNubanCreateResponseDataCustomer) GetPhone() string`
@@ -151,7 +146,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedNubanCreateResponseDataCustomer) SetPhone(v string)`
 
 SetPhone sets Phone field to given value.
-
 
 ### GetMetadata
 
@@ -172,7 +166,6 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
-
 ### GetRiskAction
 
 `func (o *DedicatedNubanCreateResponseDataCustomer) GetRiskAction() string`
@@ -191,7 +184,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedNubanCreateResponseDataCustomer) SetRiskAction(v string)`
 
 SetRiskAction sets RiskAction field to given value.
-
 
 ### GetInternationalFormatPhone
 
@@ -212,18 +204,16 @@ and a boolean to check if the value has been set.
 
 SetInternationalFormatPhone sets InternationalFormatPhone field to given value.
 
-
 ### SetInternationalFormatPhoneNil
 
 `func (o *DedicatedNubanCreateResponseDataCustomer) SetInternationalFormatPhoneNil(b bool)`
 
- SetInternationalFormatPhoneNil sets the value for InternationalFormatPhone to be an explicit nil
+SetInternationalFormatPhoneNil sets the value for InternationalFormatPhone to be an explicit nil
 
 ### UnsetInternationalFormatPhone
+
 `func (o *DedicatedNubanCreateResponseDataCustomer) UnsetInternationalFormatPhone()`
 
 UnsetInternationalFormatPhone ensures that no value is present for InternationalFormatPhone, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

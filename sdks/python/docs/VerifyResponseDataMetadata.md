@@ -1,9 +1,9 @@
 # VerifyResponseDataMetadata
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ## Example
 
@@ -22,6 +22,5 @@ verify_response_data_metadata_dict = verify_response_data_metadata_instance.to_d
 # create an instance of VerifyResponseDataMetadata from a dict
 verify_response_data_metadata_form_dict = verify_response_data_metadata.from_dict(verify_response_data_metadata_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

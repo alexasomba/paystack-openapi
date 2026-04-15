@@ -2,25 +2,25 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Amount** | **int32** |  | 
-**Currency** | **string** |  | 
-**TransactionDate** | **string** |  | 
-**Status** | **string** |  | 
-**Reference** | **string** |  | 
-**Domain** | **string** |  | 
-**Metadata** | **string** |  | 
-**GatewayResponse** | **string** |  | 
-**Message** | **NullableString** |  | 
-**Channel** | **string** |  | 
-**IpAddress** | **interface{}** |  | 
-**Log** | [**NullableChargeAuthorizationResponseDataLog**](ChargeAuthorizationResponseDataLog.md) |  | 
-**Fees** | **NullableInt32** |  | 
-**Authorization** | [**ChargeAuthorizationResponseDataAuthorization**](ChargeAuthorizationResponseDataAuthorization.md) |  | 
-**Customer** | [**ChargeAuthorizationResponseDataCustomer**](ChargeAuthorizationResponseDataCustomer.md) |  | 
-**Plan** | **interface{}** |  | 
-**Id** | **int32** |  | 
+| Name                | Type                                                                                                | Description | Notes |
+| ------------------- | --------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **Amount**          | **int32**                                                                                           |             |
+| **Currency**        | **string**                                                                                          |             |
+| **TransactionDate** | **string**                                                                                          |             |
+| **Status**          | **string**                                                                                          |             |
+| **Reference**       | **string**                                                                                          |             |
+| **Domain**          | **string**                                                                                          |             |
+| **Metadata**        | **string**                                                                                          |             |
+| **GatewayResponse** | **string**                                                                                          |             |
+| **Message**         | **NullableString**                                                                                  |             |
+| **Channel**         | **string**                                                                                          |             |
+| **IpAddress**       | **interface{}**                                                                                     |             |
+| **Log**             | [**NullableChargeAuthorizationResponseDataLog**](ChargeAuthorizationResponseDataLog.md)             |             |
+| **Fees**            | **NullableInt32**                                                                                   |             |
+| **Authorization**   | [**ChargeAuthorizationResponseDataAuthorization**](ChargeAuthorizationResponseDataAuthorization.md) |             |
+| **Customer**        | [**ChargeAuthorizationResponseDataCustomer**](ChargeAuthorizationResponseDataCustomer.md)           |             |
+| **Plan**            | **interface{}**                                                                                     |             |
+| **Id**              | **int32**                                                                                           |             |
 
 ## Methods
 
@@ -60,7 +60,6 @@ and a boolean to check if the value has been set.
 
 SetAmount sets Amount field to given value.
 
-
 ### GetCurrency
 
 `func (o *ChargeAuthorizationResponseData) GetCurrency() string`
@@ -79,7 +78,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeAuthorizationResponseData) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetTransactionDate
 
@@ -100,7 +98,6 @@ and a boolean to check if the value has been set.
 
 SetTransactionDate sets TransactionDate field to given value.
 
-
 ### GetStatus
 
 `func (o *ChargeAuthorizationResponseData) GetStatus() string`
@@ -119,7 +116,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeAuthorizationResponseData) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
-
 
 ### GetReference
 
@@ -140,7 +136,6 @@ and a boolean to check if the value has been set.
 
 SetReference sets Reference field to given value.
 
-
 ### GetDomain
 
 `func (o *ChargeAuthorizationResponseData) GetDomain() string`
@@ -159,7 +154,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeAuthorizationResponseData) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetMetadata
 
@@ -180,7 +174,6 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
-
 ### GetGatewayResponse
 
 `func (o *ChargeAuthorizationResponseData) GetGatewayResponse() string`
@@ -199,7 +192,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeAuthorizationResponseData) SetGatewayResponse(v string)`
 
 SetGatewayResponse sets GatewayResponse field to given value.
-
 
 ### GetMessage
 
@@ -220,17 +212,18 @@ and a boolean to check if the value has been set.
 
 SetMessage sets Message field to given value.
 
-
 ### SetMessageNil
 
 `func (o *ChargeAuthorizationResponseData) SetMessageNil(b bool)`
 
- SetMessageNil sets the value for Message to be an explicit nil
+SetMessageNil sets the value for Message to be an explicit nil
 
 ### UnsetMessage
+
 `func (o *ChargeAuthorizationResponseData) UnsetMessage()`
 
 UnsetMessage ensures that no value is present for Message, not even an explicit nil
+
 ### GetChannel
 
 `func (o *ChargeAuthorizationResponseData) GetChannel() string`
@@ -249,7 +242,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeAuthorizationResponseData) SetChannel(v string)`
 
 SetChannel sets Channel field to given value.
-
 
 ### GetIpAddress
 
@@ -270,17 +262,18 @@ and a boolean to check if the value has been set.
 
 SetIpAddress sets IpAddress field to given value.
 
-
 ### SetIpAddressNil
 
 `func (o *ChargeAuthorizationResponseData) SetIpAddressNil(b bool)`
 
- SetIpAddressNil sets the value for IpAddress to be an explicit nil
+SetIpAddressNil sets the value for IpAddress to be an explicit nil
 
 ### UnsetIpAddress
+
 `func (o *ChargeAuthorizationResponseData) UnsetIpAddress()`
 
 UnsetIpAddress ensures that no value is present for IpAddress, not even an explicit nil
+
 ### GetLog
 
 `func (o *ChargeAuthorizationResponseData) GetLog() ChargeAuthorizationResponseDataLog`
@@ -300,17 +293,18 @@ and a boolean to check if the value has been set.
 
 SetLog sets Log field to given value.
 
-
 ### SetLogNil
 
 `func (o *ChargeAuthorizationResponseData) SetLogNil(b bool)`
 
- SetLogNil sets the value for Log to be an explicit nil
+SetLogNil sets the value for Log to be an explicit nil
 
 ### UnsetLog
+
 `func (o *ChargeAuthorizationResponseData) UnsetLog()`
 
 UnsetLog ensures that no value is present for Log, not even an explicit nil
+
 ### GetFees
 
 `func (o *ChargeAuthorizationResponseData) GetFees() int32`
@@ -330,17 +324,18 @@ and a boolean to check if the value has been set.
 
 SetFees sets Fees field to given value.
 
-
 ### SetFeesNil
 
 `func (o *ChargeAuthorizationResponseData) SetFeesNil(b bool)`
 
- SetFeesNil sets the value for Fees to be an explicit nil
+SetFeesNil sets the value for Fees to be an explicit nil
 
 ### UnsetFees
+
 `func (o *ChargeAuthorizationResponseData) UnsetFees()`
 
 UnsetFees ensures that no value is present for Fees, not even an explicit nil
+
 ### GetAuthorization
 
 `func (o *ChargeAuthorizationResponseData) GetAuthorization() ChargeAuthorizationResponseDataAuthorization`
@@ -359,7 +354,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeAuthorizationResponseData) SetAuthorization(v ChargeAuthorizationResponseDataAuthorization)`
 
 SetAuthorization sets Authorization field to given value.
-
 
 ### GetCustomer
 
@@ -380,7 +374,6 @@ and a boolean to check if the value has been set.
 
 SetCustomer sets Customer field to given value.
 
-
 ### GetPlan
 
 `func (o *ChargeAuthorizationResponseData) GetPlan() interface{}`
@@ -400,17 +393,18 @@ and a boolean to check if the value has been set.
 
 SetPlan sets Plan field to given value.
 
-
 ### SetPlanNil
 
 `func (o *ChargeAuthorizationResponseData) SetPlanNil(b bool)`
 
- SetPlanNil sets the value for Plan to be an explicit nil
+SetPlanNil sets the value for Plan to be an explicit nil
 
 ### UnsetPlan
+
 `func (o *ChargeAuthorizationResponseData) UnsetPlan()`
 
 UnsetPlan ensures that no value is present for Plan, not even an explicit nil
+
 ### GetId
 
 `func (o *ChargeAuthorizationResponseData) GetId() int32`
@@ -430,8 +424,4 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

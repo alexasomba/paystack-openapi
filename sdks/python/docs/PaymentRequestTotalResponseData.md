@@ -1,12 +1,12 @@
 # PaymentRequestTotalResponseData
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**pending** | [**List[PaymentRequestPendingArray]**](PaymentRequestPendingArray.md) |  | 
-**successful** | [**List[PaymentRequestSuccessfulArray]**](PaymentRequestSuccessfulArray.md) |  | 
-**total** | [**List[PaymentRequestTotalArray]**](PaymentRequestTotalArray.md) |  | 
+
+| Name           | Type                                                                        | Description | Notes |
+| -------------- | --------------------------------------------------------------------------- | ----------- | ----- |
+| **pending**    | [**List[PaymentRequestPendingArray]**](PaymentRequestPendingArray.md)       |             |
+| **successful** | [**List[PaymentRequestSuccessfulArray]**](PaymentRequestSuccessfulArray.md) |             |
+| **total**      | [**List[PaymentRequestTotalArray]**](PaymentRequestTotalArray.md)           |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ payment_request_total_response_data_dict = payment_request_total_response_data_i
 # create an instance of PaymentRequestTotalResponseData from a dict
 payment_request_total_response_data_form_dict = payment_request_total_response_data.from_dict(payment_request_total_response_data_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

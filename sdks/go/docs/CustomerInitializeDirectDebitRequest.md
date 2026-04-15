@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Account** | [**CustomerInitializeDirectDebitAccount**](CustomerInitializeDirectDebitAccount.md) |  | 
-**Address** | [**CustomerInitializeDirectDebitAddress**](CustomerInitializeDirectDebitAddress.md) |  | 
+| Name        | Type                                                                                | Description | Notes |
+| ----------- | ----------------------------------------------------------------------------------- | ----------- | ----- |
+| **Account** | [**CustomerInitializeDirectDebitAccount**](CustomerInitializeDirectDebitAccount.md) |             |
+| **Address** | [**CustomerInitializeDirectDebitAddress**](CustomerInitializeDirectDebitAddress.md) |             |
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetAccount sets Account field to given value.
 
-
 ### GetAddress
 
 `func (o *CustomerInitializeDirectDebitRequest) GetAddress() CustomerInitializeDirectDebitAddress`
@@ -65,8 +64,4 @@ and a boolean to check if the value has been set.
 
 SetAddress sets Address field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

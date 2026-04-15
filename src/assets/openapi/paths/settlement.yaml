@@ -6,23 +6,54 @@ get:
   operationId: settlements_fetch
   parameters:
     - name: perPage
-      description: The number of records to fetch per request
+      description: Number of records to fetch per page
       in: query
       schema:
         type: integer
       example: 50
     - name: page
-      description: The offset to retrieve data from
+      description: The section to retrieve
       in: query
       schema:
         type: integer
       example: 2
+    - name: from
+      description: The start date
+      in: query
+      schema:
+        type: string
+        format: date-time
+    - name: to
+      description: The end date
+      in: query
+      schema:
+        type: string
+        format: date-time
+    - name: status
+      description: Filter by status
+      in: query
+      schema:
+        type: string
+        enum:
+          - success
+          - failed
+          - processing
+          - pending
+    - name: subaccount
+      description: Filter by subaccount ID. Set to `none` to return only main account settlements.
+      in: query
+      schema:
+        type: string
   responses:
-    '200':
-      $ref: ../components/responses/Ok.yaml
-    '401':
+    "200":
+      description: ""
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/SettlementListResponse.yaml
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

@@ -2,23 +2,23 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Email** | **string** | Customer&#39;s email address | 
-**Amount** | **int32** | Amount should be in smallest denomination of the currency.  | 
-**Currency** | Pointer to [**Currency**](Currency.md) |  | [optional] 
-**Reference** | Pointer to **string** | Unique transaction reference. Only -, ., &#x3D; and alphanumeric characters allowed. | [optional] 
-**Channels** | Pointer to **[]string** | An array of payment channels to control what channels you want to make available to the user to make a payment with | [optional] 
-**CallbackUrl** | Pointer to **string** | Fully qualified url, e.g. https://example.com/ to redirect your customers to after a successful payment. Use this to override the callback url provided on the dashboard for this transaction  | [optional] 
-**Plan** | Pointer to **string** | If transaction is to create a subscription to a predefined plan, provide plan code here.  This would invalidate the value provided in amount  | [optional] 
-**InvoiceLimit** | Pointer to **int32** | Number of times to charge customer during subscription to plan | [optional] 
-**SplitCode** | Pointer to **string** | The split code of the transaction split | [optional] 
-**Split** | Pointer to [**SplitCreate**](SplitCreate.md) |  | [optional] 
-**Subaccount** | Pointer to **string** | The code for the subaccount that owns the payment | [optional] 
-**TransactionCharge** | Pointer to **string** | A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created  | [optional] 
-**Bearer** | Pointer to **string** | The bearer of the transaction charge | [optional] 
-**Label** | Pointer to **string** | Used to replace the email address shown on the Checkout | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | JSON object of custom data | [optional] 
+| Name                  | Type                                         | Description                                                                                                                                                                                   | Notes      |
+| --------------------- | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **Email**             | **string**                                   | Customer&#39;s email address                                                                                                                                                                  |
+| **Amount**            | **int32**                                    | Amount should be in smallest denomination of the currency.                                                                                                                                    |
+| **Currency**          | Pointer to [**Currency**](Currency.md)       |                                                                                                                                                                                               | [optional] |
+| **Reference**         | Pointer to **string**                        | Unique transaction reference. Only -, ., &#x3D; and alphanumeric characters allowed.                                                                                                          | [optional] |
+| **Channels**          | Pointer to **[]string**                      | An array of payment channels to control what channels you want to make available to the user to make a payment with                                                                           | [optional] |
+| **CallbackUrl**       | Pointer to **string**                        | Fully qualified url, e.g. https://example.com/ to redirect your customers to after a successful payment. Use this to override the callback url provided on the dashboard for this transaction | [optional] |
+| **Plan**              | Pointer to **string**                        | If transaction is to create a subscription to a predefined plan, provide plan code here. This would invalidate the value provided in amount                                                   | [optional] |
+| **InvoiceLimit**      | Pointer to **int32**                         | Number of times to charge customer during subscription to plan                                                                                                                                | [optional] |
+| **SplitCode**         | Pointer to **string**                        | The split code of the transaction split                                                                                                                                                       | [optional] |
+| **Split**             | Pointer to [**SplitCreate**](SplitCreate.md) |                                                                                                                                                                                               | [optional] |
+| **Subaccount**        | Pointer to **string**                        | The code for the subaccount that owns the payment                                                                                                                                             | [optional] |
+| **TransactionCharge** | Pointer to **string**                        | A flat fee to charge the subaccount for a transaction. This overrides the split percentage set when the subaccount was created                                                                | [optional] |
+| **Bearer**            | Pointer to **string**                        | The bearer of the transaction charge                                                                                                                                                          | [optional] |
+| **Label**             | Pointer to **string**                        | Used to replace the email address shown on the Checkout                                                                                                                                       | [optional] |
+| **Metadata**          | Pointer to **map[string]interface{}**        | JSON object of custom data                                                                                                                                                                    | [optional] |
 
 ## Methods
 
@@ -58,7 +58,6 @@ and a boolean to check if the value has been set.
 
 SetEmail sets Email field to given value.
 
-
 ### GetAmount
 
 `func (o *TransactionInitialize) GetAmount() int32`
@@ -77,7 +76,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionInitialize) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetCurrency
 
@@ -404,7 +402,4 @@ SetMetadata sets Metadata field to given value.
 
 HasMetadata returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

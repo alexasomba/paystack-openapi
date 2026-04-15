@@ -2,16 +2,16 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Name** | **string** | Name of product | 
-**Description** | **string** | The description of the product | 
-**Price** | **int32** | Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR  | 
-**Currency** | **string** | Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD  | 
-**Unlimited** | Pointer to **bool** | Set to true if the product has unlimited stock. Leave as false if the product has limited stock  | [optional] 
-**Quantity** | Pointer to **int32** | Number of products in stock. Use if limited is true | [optional] 
-**SplitCode** | Pointer to **string** | The split code if sharing the transaction with partners | [optional] 
-**Metadata** | Pointer to **string** | Stringified JSON object of custom data | [optional] 
+| Name            | Type                  | Description                                                                                            | Notes      |
+| --------------- | --------------------- | ------------------------------------------------------------------------------------------------------ | ---------- |
+| **Name**        | **string**            | Name of product                                                                                        |
+| **Description** | **string**            | The description of the product                                                                         |
+| **Price**       | **int32**             | Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR |
+| **Currency**    | **string**            | Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD                               |
+| **Unlimited**   | Pointer to **bool**   | Set to true if the product has unlimited stock. Leave as false if the product has limited stock        | [optional] |
+| **Quantity**    | Pointer to **int32**  | Number of products in stock. Use if limited is true                                                    | [optional] |
+| **SplitCode**   | Pointer to **string** | The split code if sharing the transaction with partners                                                | [optional] |
+| **Metadata**    | Pointer to **string** | Stringified JSON object of custom data                                                                 | [optional] |
 
 ## Methods
 
@@ -51,7 +51,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetDescription
 
 `func (o *ProductCreate) GetDescription() string`
@@ -70,7 +69,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductCreate) SetDescription(v string)`
 
 SetDescription sets Description field to given value.
-
 
 ### GetPrice
 
@@ -91,7 +89,6 @@ and a boolean to check if the value has been set.
 
 SetPrice sets Price field to given value.
 
-
 ### GetCurrency
 
 `func (o *ProductCreate) GetCurrency() string`
@@ -110,7 +107,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductCreate) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetUnlimited
 
@@ -212,7 +208,4 @@ SetMetadata sets Metadata field to given value.
 
 HasMetadata returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ExactMatch** | **bool** |  | 
-**Pattern** | **string** |  | 
+| Name           | Type       | Description | Notes |
+| -------------- | ---------- | ----------- | ----- |
+| **ExactMatch** | **bool**   |             |
+| **Pattern**    | **string** |             |
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetExactMatch sets ExactMatch field to given value.
 
-
 ### GetPattern
 
 `func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern) GetPattern() string`
@@ -65,8 +64,4 @@ and a boolean to check if the value has been set.
 
 SetPattern sets Pattern field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

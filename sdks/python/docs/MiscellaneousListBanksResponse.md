@@ -1,12 +1,12 @@
 # MiscellaneousListBanksResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**List[MiscellaneousListBanksResponseArray]**](MiscellaneousListBanksResponseArray.md) |  | 
+
+| Name        | Type                                                                                    | Description | Notes |
+| ----------- | --------------------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                                |             |
+| **message** | **str**                                                                                 |             |
+| **data**    | [**List[MiscellaneousListBanksResponseArray]**](MiscellaneousListBanksResponseArray.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ miscellaneous_list_banks_response_dict = miscellaneous_list_banks_response_insta
 # create an instance of MiscellaneousListBanksResponse from a dict
 miscellaneous_list_banks_response_form_dict = miscellaneous_list_banks_response.from_dict(miscellaneous_list_banks_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

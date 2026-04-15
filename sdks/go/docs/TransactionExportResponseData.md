@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Path** | **string** |  | 
-**ExpiresAt** | **string** |  | 
+| Name          | Type       | Description | Notes |
+| ------------- | ---------- | ----------- | ----- |
+| **Path**      | **string** |             |
+| **ExpiresAt** | **string** |             |
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetPath sets Path field to given value.
 
-
 ### GetExpiresAt
 
 `func (o *TransactionExportResponseData) GetExpiresAt() string`
@@ -65,8 +64,4 @@ and a boolean to check if the value has been set.
 
 SetExpiresAt sets ExpiresAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

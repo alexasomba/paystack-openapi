@@ -11,12 +11,9 @@ properties:
         type: string
       account_name:
         type: string
-      bank_id:
-        type: integer
     required:
       - account_number
       - account_name
-      - bank_id
 required:
   - status
   - message

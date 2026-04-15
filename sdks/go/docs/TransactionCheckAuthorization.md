@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Email** | **string** | Customer&#39;s email address | 
-**Amount** | **int32** | Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR | 
-**AuthorizationCode** | Pointer to **string** | Valid authorization code to charge | [optional] 
-**Currency** | Pointer to **string** | The transaction currency | [optional] 
+| Name                  | Type                  | Description                                                                                           | Notes      |
+| --------------------- | --------------------- | ----------------------------------------------------------------------------------------------------- | ---------- |
+| **Email**             | **string**            | Customer&#39;s email address                                                                          |
+| **Amount**            | **int32**             | Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR |
+| **AuthorizationCode** | Pointer to **string** | Valid authorization code to charge                                                                    | [optional] |
+| **Currency**          | Pointer to **string** | The transaction currency                                                                              | [optional] |
 
 ## Methods
 
@@ -47,7 +47,6 @@ and a boolean to check if the value has been set.
 
 SetEmail sets Email field to given value.
 
-
 ### GetAmount
 
 `func (o *TransactionCheckAuthorization) GetAmount() int32`
@@ -66,7 +65,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionCheckAuthorization) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetAuthorizationCode
 
@@ -118,7 +116,4 @@ SetCurrency sets Currency field to given value.
 
 HasCurrency returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

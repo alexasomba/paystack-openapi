@@ -12,12 +12,40 @@ get:
       schema:
         type: integer
       example: 8610870
+    - name: perPage
+      description: Number of records to fetch per page
+      in: query
+      schema:
+        type: integer
+      example: 50
+    - name: page
+      description: The section to retrieve
+      in: query
+      schema:
+        type: integer
+      example: 2
+    - name: from
+      description: The start date
+      in: query
+      schema:
+        type: string
+        format: date-time
+    - name: to
+      description: The end date
+      in: query
+      schema:
+        type: string
+        format: date-time
   responses:
-    '200':
-      $ref: ../components/responses/Ok.yaml
-    '401':
+    "200":
+      description: ""
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/SettlementTransactionsResponse.yaml
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

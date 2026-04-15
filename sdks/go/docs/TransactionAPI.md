@@ -2,30 +2,26 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**TransactionChargeAuthorization**](TransactionAPI.md#TransactionChargeAuthorization) | **Post** /transaction/charge_authorization | Charge Authorization
-[**TransactionCheckAuthorization**](TransactionAPI.md#TransactionCheckAuthorization) | **Post** /transaction/check_authorization | Check Authorization
-[**TransactionEvent**](TransactionAPI.md#TransactionEvent) | **Get** /transaction/{id}/event | Get Transaction Event
-[**TransactionExport**](TransactionAPI.md#TransactionExport) | **Get** /transaction/export | Export Transactions
-[**TransactionFetch**](TransactionAPI.md#TransactionFetch) | **Get** /transaction/{id} | Fetch Transaction
-[**TransactionInitialize**](TransactionAPI.md#TransactionInitialize) | **Post** /transaction/initialize | Initialize Transaction
-[**TransactionList**](TransactionAPI.md#TransactionList) | **Get** /transaction | List Transactions
-[**TransactionPartialDebit**](TransactionAPI.md#TransactionPartialDebit) | **Post** /transaction/partial_debit | Partial Debit
-[**TransactionSession**](TransactionAPI.md#TransactionSession) | **Get** /transaction/{id}/session | Get Transaction Session
-[**TransactionTimeline**](TransactionAPI.md#TransactionTimeline) | **Get** /transaction/timeline/{id} | Fetch Transaction Timeline
-[**TransactionTotals**](TransactionAPI.md#TransactionTotals) | **Get** /transaction/totals | Transaction Totals
-[**TransactionVerify**](TransactionAPI.md#TransactionVerify) | **Get** /transaction/verify/{reference} | Verify Transaction
-
-
+| Method                                                                                 | HTTP request                               | Description                |
+| -------------------------------------------------------------------------------------- | ------------------------------------------ | -------------------------- |
+| [**TransactionChargeAuthorization**](TransactionAPI.md#TransactionChargeAuthorization) | **Post** /transaction/charge_authorization | Charge Authorization       |
+| [**TransactionCheckAuthorization**](TransactionAPI.md#TransactionCheckAuthorization)   | **Post** /transaction/check_authorization  | Check Authorization        |
+| [**TransactionEvent**](TransactionAPI.md#TransactionEvent)                             | **Get** /transaction/{id}/event            | Get Transaction Event      |
+| [**TransactionExport**](TransactionAPI.md#TransactionExport)                           | **Get** /transaction/export                | Export Transactions        |
+| [**TransactionFetch**](TransactionAPI.md#TransactionFetch)                             | **Get** /transaction/{id}                  | Fetch Transaction          |
+| [**TransactionInitialize**](TransactionAPI.md#TransactionInitialize)                   | **Post** /transaction/initialize           | Initialize Transaction     |
+| [**TransactionList**](TransactionAPI.md#TransactionList)                               | **Get** /transaction                       | List Transactions          |
+| [**TransactionPartialDebit**](TransactionAPI.md#TransactionPartialDebit)               | **Post** /transaction/partial_debit        | Partial Debit              |
+| [**TransactionSession**](TransactionAPI.md#TransactionSession)                         | **Get** /transaction/{id}/session          | Get Transaction Session    |
+| [**TransactionTimeline**](TransactionAPI.md#TransactionTimeline)                       | **Get** /transaction/timeline/{id}         | Fetch Transaction Timeline |
+| [**TransactionTotals**](TransactionAPI.md#TransactionTotals)                           | **Get** /transaction/totals                | Transaction Totals         |
+| [**TransactionVerify**](TransactionAPI.md#TransactionVerify)                           | **Get** /transaction/verify/{reference}    | Verify Transaction         |
 
 ## TransactionChargeAuthorization
 
 > ChargeAuthorizationResponse TransactionChargeAuthorization(ctx).TransactionChargeAuthorization(transactionChargeAuthorization).Execute()
 
 Charge Authorization
-
-
 
 ### Example
 
@@ -56,16 +52,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransactionChargeAuthorizationRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transactionChargeAuthorization** | [**TransactionChargeAuthorization**](TransactionChargeAuthorization.md) |  | 
+| Name                               | Type                                                                    | Description | Notes |
+| ---------------------------------- | ----------------------------------------------------------------------- | ----------- | ----- |
+| **transactionChargeAuthorization** | [**TransactionChargeAuthorization**](TransactionChargeAuthorization.md) |             |
 
 ### Return type
 
@@ -84,14 +77,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransactionCheckAuthorization
 
 > Response TransactionCheckAuthorization(ctx).Email(email).Amount(amount).AuthorizationCode(authorizationCode).Currency(currency).Execute()
 
 Check Authorization
-
-
 
 ### Example
 
@@ -125,19 +115,16 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransactionCheckAuthorizationRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **string** | Customer&#39;s email address | 
- **amount** | **int32** | Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR | 
- **authorizationCode** | **string** | Valid authorization code to charge | 
- **currency** | **string** | The transaction currency | 
+| Name                  | Type       | Description                                                                                           | Notes |
+| --------------------- | ---------- | ----------------------------------------------------------------------------------------------------- | ----- |
+| **email**             | **string** | Customer&#39;s email address                                                                          |
+| **amount**            | **int32**  | Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR |
+| **authorizationCode** | **string** | Valid authorization code to charge                                                                    |
+| **currency**          | **string** | The transaction currency                                                                              |
 
 ### Return type
 
@@ -156,14 +143,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransactionEvent
 
 > Response TransactionEvent(ctx, id).Execute()
 
 Get Transaction Event
-
-
 
 ### Example
 
@@ -194,20 +178,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64** | The ID of the transaction | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int64**           | The ID of the transaction                                                   |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransactionEventRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -226,14 +207,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransactionExport
 
 > TransactionExportResponse TransactionExport(ctx).From(from).To(to).Status(status).Customer(customer).SubaccountCode(subaccountCode).Settlement(settlement).Execute()
 
 Export Transactions
-
-
 
 ### Example
 
@@ -270,21 +248,18 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransactionExportRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **from** | **time.Time** | The start date | 
- **to** | **time.Time** | The end date | 
- **status** | **string** | Filter by the status of the transaction | 
- **customer** | **float32** | Filter by customer ID | 
- **subaccountCode** | **string** | Filter by subaccount code | 
- **settlement** | **int64** | Filter by the settlement ID | 
+| Name               | Type          | Description                             | Notes |
+| ------------------ | ------------- | --------------------------------------- | ----- |
+| **from**           | **time.Time** | The start date                          |
+| **to**             | **time.Time** | The end date                            |
+| **status**         | **string**    | Filter by the status of the transaction |
+| **customer**       | **float32**   | Filter by customer ID                   |
+| **subaccountCode** | **string**    | Filter by subaccount code               |
+| **settlement**     | **int64**     | Filter by the settlement ID             |
 
 ### Return type
 
@@ -303,14 +278,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransactionFetch
 
 > TransactionFetchResponse TransactionFetch(ctx, id).Execute()
 
 Fetch Transaction
-
-
 
 ### Example
 
@@ -341,20 +313,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64** | The ID of the transaction to fetch | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int64**           | The ID of the transaction to fetch                                          |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransactionFetchRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -373,14 +342,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransactionInitialize
 
 > TransactionInitializeResponse TransactionInitialize(ctx).TransactionInitialize(transactionInitialize).Execute()
 
 Initialize Transaction
-
-
 
 ### Example
 
@@ -411,16 +377,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransactionInitializeRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transactionInitialize** | [**TransactionInitialize**](TransactionInitialize.md) |  | 
+| Name                      | Type                                                  | Description | Notes |
+| ------------------------- | ----------------------------------------------------- | ----------- | ----- |
+| **transactionInitialize** | [**TransactionInitialize**](TransactionInitialize.md) |             |
 
 ### Return type
 
@@ -439,14 +402,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransactionList
 
 > TransactionListResponse TransactionList(ctx).UseCursor(useCursor).Next(next).Previous(previous).PerPage(perPage).Page(page).From(from).To(to).Status(status).Source(source).TerminalId(terminalId).VirtualAccountNumber(virtualAccountNumber).CustomerCode(customerCode).Amount(amount).Settlement(settlement).Channel(channel).SubaccountCode(subaccountCode).SplitCode(splitCode).Execute()
 
 List Transactions
-
-
 
 ### Example
 
@@ -494,32 +454,29 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransactionListRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **useCursor** | **bool** | A flag to indicate if cursor based pagination should be used | 
- **next** | **string** | An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data  | 
- **previous** | **string** | An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data  | 
- **perPage** | **int32** | The number of records to fetch per request | 
- **page** | **int32** | The offset to retrieve data from | 
- **from** | **time.Time** | The start date | 
- **to** | **time.Time** | The end date | 
- **status** | **string** | Filter transaction by status | 
- **source** | **string** | The origin of the payment | 
- **terminalId** | **string** | Filter transactions by a terminal ID | 
- **virtualAccountNumber** | **string** | Filter transactions by a virtual account number | 
- **customerCode** | **string** | Filter transactions by a customer code | 
- **amount** | **int64** | Filter transactions by a specific amount | 
- **settlement** | **int64** | The settlement ID to filter for settled transactions | 
- **channel** | **string** | The payment method the customer used to complete the transaction | 
- **subaccountCode** | **string** | Filter transaction by subaccount code | 
- **splitCode** | **string** | Filter transaction by split code | 
+| Name                     | Type          | Description                                                                                                | Notes |
+| ------------------------ | ------------- | ---------------------------------------------------------------------------------------------------------- | ----- |
+| **useCursor**            | **bool**      | A flag to indicate if cursor based pagination should be used                                               |
+| **next**                 | **string**    | An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data     |
+| **previous**             | **string**    | An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data |
+| **perPage**              | **int32**     | The number of records to fetch per request                                                                 |
+| **page**                 | **int32**     | The offset to retrieve data from                                                                           |
+| **from**                 | **time.Time** | The start date                                                                                             |
+| **to**                   | **time.Time** | The end date                                                                                               |
+| **status**               | **string**    | Filter transaction by status                                                                               |
+| **source**               | **string**    | The origin of the payment                                                                                  |
+| **terminalId**           | **string**    | Filter transactions by a terminal ID                                                                       |
+| **virtualAccountNumber** | **string**    | Filter transactions by a virtual account number                                                            |
+| **customerCode**         | **string**    | Filter transactions by a customer code                                                                     |
+| **amount**               | **int64**     | Filter transactions by a specific amount                                                                   |
+| **settlement**           | **int64**     | The settlement ID to filter for settled transactions                                                       |
+| **channel**              | **string**    | The payment method the customer used to complete the transaction                                           |
+| **subaccountCode**       | **string**    | Filter transaction by subaccount code                                                                      |
+| **splitCode**            | **string**    | Filter transaction by split code                                                                           |
 
 ### Return type
 
@@ -538,14 +495,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransactionPartialDebit
 
 > TransactionPartialDebitResponse TransactionPartialDebit(ctx).TransactionPartialDebit(transactionPartialDebit).Execute()
 
 Partial Debit
-
-
 
 ### Example
 
@@ -576,16 +530,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransactionPartialDebitRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transactionPartialDebit** | [**TransactionPartialDebit**](TransactionPartialDebit.md) |  | 
+| Name                        | Type                                                      | Description | Notes |
+| --------------------------- | --------------------------------------------------------- | ----------- | ----- |
+| **transactionPartialDebit** | [**TransactionPartialDebit**](TransactionPartialDebit.md) |             |
 
 ### Return type
 
@@ -604,14 +555,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransactionSession
 
 > Response TransactionSession(ctx, id).Execute()
 
 Get Transaction Session
-
-
 
 ### Example
 
@@ -642,20 +590,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64** | The ID of the transaction | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int64**           | The ID of the transaction                                                   |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransactionSessionRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -674,14 +619,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransactionTimeline
 
 > TransactionTimelineResponse TransactionTimeline(ctx, id).Execute()
 
 Fetch Transaction Timeline
-
-
 
 ### Example
 
@@ -712,20 +654,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64** | The ID of the transaction to fetch | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int64**           | The ID of the transaction to fetch                                          |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransactionTimelineRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -744,14 +683,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransactionTotals
 
 > TransactionTotalsResponse TransactionTotals(ctx).From(from).To(to).Execute()
 
 Transaction Totals
-
-
 
 ### Example
 
@@ -784,17 +720,14 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransactionTotalsRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **from** | **time.Time** | The start date | 
- **to** | **time.Time** | The end date | 
+| Name     | Type          | Description    | Notes |
+| -------- | ------------- | -------------- | ----- |
+| **from** | **time.Time** | The start date |
+| **to**   | **time.Time** | The end date   |
 
 ### Return type
 
@@ -813,14 +746,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransactionVerify
 
 > VerifyResponse TransactionVerify(ctx, reference).Execute()
 
 Verify Transaction
-
-
 
 ### Example
 
@@ -851,20 +781,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | The transaction reference to verify | 
+| Name          | Type                | Description                                                                 | Notes |
+| ------------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**       | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **reference** | **string**          | The transaction reference to verify                                         |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransactionVerifyRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -882,4 +809,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

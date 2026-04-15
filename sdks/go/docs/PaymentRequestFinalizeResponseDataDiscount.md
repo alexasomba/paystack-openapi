@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Type** | **string** |  | 
-**Amount** | **int32** |  | 
+| Name       | Type       | Description | Notes |
+| ---------- | ---------- | ----------- | ----- |
+| **Type**   | **string** |             |
+| **Amount** | **int32**  |             |
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-
 ### GetAmount
 
 `func (o *PaymentRequestFinalizeResponseDataDiscount) GetAmount() int32`
@@ -65,8 +64,4 @@ and a boolean to check if the value has been set.
 
 SetAmount sets Amount field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

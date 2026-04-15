@@ -3,7 +3,7 @@ info:
   title: Create a wallet app
   description: |
     The OpenAPI specification for creating a wallet application using the [Paystack API](https://paystack.com/docs/api/).
-    
+
     ### Prerequisites
 
     1. Sign up on [Paystack](https://paystack.com/signup) to get your secret API key
@@ -30,9 +30,9 @@ servers:
     description: Base API endpoint
 paths:
   /transaction/initialize:
-    $ref: '../openapi/paths/transaction_initialize.yaml'
+    $ref: "../openapi/paths/transaction_initialize.yaml"
   /transaction/charge_authorization:
-    $ref: '../openapi/paths/transaction_charge_authorization.yaml'
+    $ref: "../openapi/paths/transaction_charge_authorization.yaml"
   /customer:
     $ref: ../openapi/paths/customer.yaml
   /customer/{code}/identification:
@@ -40,7 +40,7 @@ paths:
   /dedicated_account:
     $ref: ../openapi/paths/dedicated_account.yaml
   /transferrecipient:
-    $ref: '../openapi/paths/transferrecipient.yaml'
+    $ref: "../openapi/paths/transferrecipient.yaml"
   /transfer:
     $ref: ../openapi/paths/transfer.yaml
 components:

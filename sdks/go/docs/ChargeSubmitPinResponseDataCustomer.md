@@ -2,14 +2,14 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**FirstName** | **NullableString** |  | 
-**LastName** | **NullableString** |  | 
-**Email** | **string** |  | 
-**CustomerCode** | **string** |  | 
-**Phone** | **NullableString** |  | 
-**RiskAction** | **string** |  | 
+| Name             | Type               | Description | Notes |
+| ---------------- | ------------------ | ----------- | ----- |
+| **FirstName**    | **NullableString** |             |
+| **LastName**     | **NullableString** |             |
+| **Email**        | **string**         |             |
+| **CustomerCode** | **string**         |             |
+| **Phone**        | **NullableString** |             |
+| **RiskAction**   | **string**         |             |
 
 ## Methods
 
@@ -49,17 +49,18 @@ and a boolean to check if the value has been set.
 
 SetFirstName sets FirstName field to given value.
 
-
 ### SetFirstNameNil
 
 `func (o *ChargeSubmitPinResponseDataCustomer) SetFirstNameNil(b bool)`
 
- SetFirstNameNil sets the value for FirstName to be an explicit nil
+SetFirstNameNil sets the value for FirstName to be an explicit nil
 
 ### UnsetFirstName
+
 `func (o *ChargeSubmitPinResponseDataCustomer) UnsetFirstName()`
 
 UnsetFirstName ensures that no value is present for FirstName, not even an explicit nil
+
 ### GetLastName
 
 `func (o *ChargeSubmitPinResponseDataCustomer) GetLastName() string`
@@ -79,17 +80,18 @@ and a boolean to check if the value has been set.
 
 SetLastName sets LastName field to given value.
 
-
 ### SetLastNameNil
 
 `func (o *ChargeSubmitPinResponseDataCustomer) SetLastNameNil(b bool)`
 
- SetLastNameNil sets the value for LastName to be an explicit nil
+SetLastNameNil sets the value for LastName to be an explicit nil
 
 ### UnsetLastName
+
 `func (o *ChargeSubmitPinResponseDataCustomer) UnsetLastName()`
 
 UnsetLastName ensures that no value is present for LastName, not even an explicit nil
+
 ### GetEmail
 
 `func (o *ChargeSubmitPinResponseDataCustomer) GetEmail() string`
@@ -108,7 +110,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeSubmitPinResponseDataCustomer) SetEmail(v string)`
 
 SetEmail sets Email field to given value.
-
 
 ### GetCustomerCode
 
@@ -129,7 +130,6 @@ and a boolean to check if the value has been set.
 
 SetCustomerCode sets CustomerCode field to given value.
 
-
 ### GetPhone
 
 `func (o *ChargeSubmitPinResponseDataCustomer) GetPhone() string`
@@ -149,17 +149,18 @@ and a boolean to check if the value has been set.
 
 SetPhone sets Phone field to given value.
 
-
 ### SetPhoneNil
 
 `func (o *ChargeSubmitPinResponseDataCustomer) SetPhoneNil(b bool)`
 
- SetPhoneNil sets the value for Phone to be an explicit nil
+SetPhoneNil sets the value for Phone to be an explicit nil
 
 ### UnsetPhone
+
 `func (o *ChargeSubmitPinResponseDataCustomer) UnsetPhone()`
 
 UnsetPhone ensures that no value is present for Phone, not even an explicit nil
+
 ### GetRiskAction
 
 `func (o *ChargeSubmitPinResponseDataCustomer) GetRiskAction() string`
@@ -179,8 +180,4 @@ and a boolean to check if the value has been set.
 
 SetRiskAction sets RiskAction field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

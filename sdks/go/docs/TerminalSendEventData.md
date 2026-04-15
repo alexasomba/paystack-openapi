@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | Pointer to **int64** | The invoice or transaction  ID you want to push to the Terminal | [optional] 
-**Reference** | Pointer to **string** | The offline_reference from the Payment Request response | [optional] 
+| Name          | Type                  | Description                                                    | Notes      |
+| ------------- | --------------------- | -------------------------------------------------------------- | ---------- |
+| **Id**        | Pointer to **int64**  | The invoice or transaction ID you want to push to the Terminal | [optional] |
+| **Reference** | Pointer to **string** | The offline_reference from the Payment Request response        | [optional] |
 
 ## Methods
 
@@ -76,7 +76,4 @@ SetReference sets Reference field to given value.
 
 HasReference returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

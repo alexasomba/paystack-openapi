@@ -2,9 +2,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**DomainName** | **string** | The domain or subdomain for your application | 
+| Name           | Type       | Description                                  | Notes |
+| -------------- | ---------- | -------------------------------------------- | ----- |
+| **DomainName** | **string** | The domain or subdomain for your application |
 
 ## Methods
 
@@ -44,8 +44,4 @@ and a boolean to check if the value has been set.
 
 SetDomainName sets DomainName field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

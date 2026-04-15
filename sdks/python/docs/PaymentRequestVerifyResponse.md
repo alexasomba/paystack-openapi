@@ -1,12 +1,12 @@
 # PaymentRequestVerifyResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**PaymentRequestVerifyResponseData**](PaymentRequestVerifyResponseData.md) |  | 
+
+| Name        | Type                                                                        | Description | Notes |
+| ----------- | --------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                    |             |
+| **message** | **str**                                                                     |             |
+| **data**    | [**PaymentRequestVerifyResponseData**](PaymentRequestVerifyResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ payment_request_verify_response_dict = payment_request_verify_response_instance.
 # create an instance of PaymentRequestVerifyResponse from a dict
 payment_request_verify_response_form_dict = payment_request_verify_response.from_dict(payment_request_verify_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

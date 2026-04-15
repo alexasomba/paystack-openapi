@@ -1,12 +1,12 @@
 # ChargeSubmitPinResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**ChargeSubmitPinResponseData**](ChargeSubmitPinResponseData.md) |  | 
+
+| Name        | Type                                                              | Description | Notes |
+| ----------- | ----------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                          |             |
+| **message** | **str**                                                           |             |
+| **data**    | [**ChargeSubmitPinResponseData**](ChargeSubmitPinResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ charge_submit_pin_response_dict = charge_submit_pin_response_instance.to_dict()
 # create an instance of ChargeSubmitPinResponse from a dict
 charge_submit_pin_response_form_dict = charge_submit_pin_response.from_dict(charge_submit_pin_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

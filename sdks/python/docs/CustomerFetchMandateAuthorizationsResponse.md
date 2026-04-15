@@ -1,13 +1,13 @@
 # CustomerFetchMandateAuthorizationsResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**List[CustomerFetchMandateAuthorizationsResponseData]**](CustomerFetchMandateAuthorizationsResponseData.md) |  | 
-**meta** | [**CustomerFetchMandateAuthorizationsResponseMeta**](CustomerFetchMandateAuthorizationsResponseMeta.md) |  | 
+
+| Name        | Type                                                                                                          | Description | Notes |
+| ----------- | ------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                                                      |             |
+| **message** | **str**                                                                                                       |             |
+| **data**    | [**List[CustomerFetchMandateAuthorizationsResponseData]**](CustomerFetchMandateAuthorizationsResponseData.md) |             |
+| **meta**    | [**CustomerFetchMandateAuthorizationsResponseMeta**](CustomerFetchMandateAuthorizationsResponseMeta.md)       |             |
 
 ## Example
 
@@ -26,6 +26,5 @@ customer_fetch_mandate_authorizations_response_dict = customer_fetch_mandate_aut
 # create an instance of CustomerFetchMandateAuthorizationsResponse from a dict
 customer_fetch_mandate_authorizations_response_form_dict = customer_fetch_mandate_authorizations_response.from_dict(customer_fetch_mandate_authorizations_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

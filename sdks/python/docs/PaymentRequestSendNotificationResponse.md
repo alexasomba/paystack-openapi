@@ -1,11 +1,11 @@
 # PaymentRequestSendNotificationResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
+
+| Name        | Type     | Description | Notes |
+| ----------- | -------- | ----------- | ----- |
+| **status**  | **bool** |             |
+| **message** | **str**  |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ payment_request_send_notification_response_dict = payment_request_send_notificat
 # create an instance of PaymentRequestSendNotificationResponse from a dict
 payment_request_send_notification_response_form_dict = payment_request_send_notification_response.from_dict(payment_request_send_notification_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

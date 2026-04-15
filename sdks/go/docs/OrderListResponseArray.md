@@ -2,34 +2,34 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**OrderCode** | **string** |  | 
-**Integration** | **int32** |  | 
-**Domain** | **string** |  | 
-**Currency** | **string** |  | 
-**Amount** | **int32** |  | 
-**Transaction** | **int32** |  | 
-**Page** | **interface{}** |  | 
-**Customer** | **int32** |  | 
-**CustomerName** | **string** |  | 
-**Status** | **string** |  | 
-**ShippingAddress** | **interface{}** |  | 
-**Metadata** | **string** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
-**Email** | **string** |  | 
-**PaidAt** | **string** |  | 
-**Shipping** | **interface{}** |  | 
-**ShippingFees** | **int32** |  | 
-**Refunded** | **bool** |  | 
-**IsViewed** | **bool** |  | 
-**RefundedAmount** | **interface{}** |  | 
-**DiscountAmount** | **interface{}** |  | 
-**Discounts** | **interface{}** |  | 
-**Items** | [**[]OrderItemsArray**](OrderItemsArray.md) |  | 
-**FullyRefunded** | **bool** |  | 
+| Name                | Type                                        | Description | Notes |
+| ------------------- | ------------------------------------------- | ----------- | ----- |
+| **Id**              | **int32**                                   |             |
+| **OrderCode**       | **string**                                  |             |
+| **Integration**     | **int32**                                   |             |
+| **Domain**          | **string**                                  |             |
+| **Currency**        | **string**                                  |             |
+| **Amount**          | **int32**                                   |             |
+| **Transaction**     | **int32**                                   |             |
+| **Page**            | **interface{}**                             |             |
+| **Customer**        | **int32**                                   |             |
+| **CustomerName**    | **string**                                  |             |
+| **Status**          | **string**                                  |             |
+| **ShippingAddress** | **interface{}**                             |             |
+| **Metadata**        | **string**                                  |             |
+| **CreatedAt**       | **string**                                  |             |
+| **UpdatedAt**       | **string**                                  |             |
+| **Email**           | **string**                                  |             |
+| **PaidAt**          | **string**                                  |             |
+| **Shipping**        | **interface{}**                             |             |
+| **ShippingFees**    | **int32**                                   |             |
+| **Refunded**        | **bool**                                    |             |
+| **IsViewed**        | **bool**                                    |             |
+| **RefundedAmount**  | **interface{}**                             |             |
+| **DiscountAmount**  | **interface{}**                             |             |
+| **Discounts**       | **interface{}**                             |             |
+| **Items**           | [**[]OrderItemsArray**](OrderItemsArray.md) |             |
+| **FullyRefunded**   | **bool**                                    |             |
 
 ## Methods
 
@@ -69,7 +69,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetOrderCode
 
 `func (o *OrderListResponseArray) GetOrderCode() string`
@@ -88,7 +87,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderListResponseArray) SetOrderCode(v string)`
 
 SetOrderCode sets OrderCode field to given value.
-
 
 ### GetIntegration
 
@@ -109,7 +107,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetDomain
 
 `func (o *OrderListResponseArray) GetDomain() string`
@@ -128,7 +125,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderListResponseArray) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetCurrency
 
@@ -149,7 +145,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetAmount
 
 `func (o *OrderListResponseArray) GetAmount() int32`
@@ -168,7 +163,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderListResponseArray) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetTransaction
 
@@ -189,7 +183,6 @@ and a boolean to check if the value has been set.
 
 SetTransaction sets Transaction field to given value.
 
-
 ### GetPage
 
 `func (o *OrderListResponseArray) GetPage() interface{}`
@@ -209,17 +202,18 @@ and a boolean to check if the value has been set.
 
 SetPage sets Page field to given value.
 
-
 ### SetPageNil
 
 `func (o *OrderListResponseArray) SetPageNil(b bool)`
 
- SetPageNil sets the value for Page to be an explicit nil
+SetPageNil sets the value for Page to be an explicit nil
 
 ### UnsetPage
+
 `func (o *OrderListResponseArray) UnsetPage()`
 
 UnsetPage ensures that no value is present for Page, not even an explicit nil
+
 ### GetCustomer
 
 `func (o *OrderListResponseArray) GetCustomer() int32`
@@ -238,7 +232,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderListResponseArray) SetCustomer(v int32)`
 
 SetCustomer sets Customer field to given value.
-
 
 ### GetCustomerName
 
@@ -259,7 +252,6 @@ and a boolean to check if the value has been set.
 
 SetCustomerName sets CustomerName field to given value.
 
-
 ### GetStatus
 
 `func (o *OrderListResponseArray) GetStatus() string`
@@ -278,7 +270,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderListResponseArray) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
-
 
 ### GetShippingAddress
 
@@ -299,17 +290,18 @@ and a boolean to check if the value has been set.
 
 SetShippingAddress sets ShippingAddress field to given value.
 
-
 ### SetShippingAddressNil
 
 `func (o *OrderListResponseArray) SetShippingAddressNil(b bool)`
 
- SetShippingAddressNil sets the value for ShippingAddress to be an explicit nil
+SetShippingAddressNil sets the value for ShippingAddress to be an explicit nil
 
 ### UnsetShippingAddress
+
 `func (o *OrderListResponseArray) UnsetShippingAddress()`
 
 UnsetShippingAddress ensures that no value is present for ShippingAddress, not even an explicit nil
+
 ### GetMetadata
 
 `func (o *OrderListResponseArray) GetMetadata() string`
@@ -328,7 +320,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderListResponseArray) SetMetadata(v string)`
 
 SetMetadata sets Metadata field to given value.
-
 
 ### GetCreatedAt
 
@@ -349,7 +340,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-
 ### GetUpdatedAt
 
 `func (o *OrderListResponseArray) GetUpdatedAt() string`
@@ -368,7 +358,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderListResponseArray) SetUpdatedAt(v string)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
-
 
 ### GetEmail
 
@@ -389,7 +378,6 @@ and a boolean to check if the value has been set.
 
 SetEmail sets Email field to given value.
 
-
 ### GetPaidAt
 
 `func (o *OrderListResponseArray) GetPaidAt() string`
@@ -408,7 +396,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderListResponseArray) SetPaidAt(v string)`
 
 SetPaidAt sets PaidAt field to given value.
-
 
 ### GetShipping
 
@@ -429,17 +416,18 @@ and a boolean to check if the value has been set.
 
 SetShipping sets Shipping field to given value.
 
-
 ### SetShippingNil
 
 `func (o *OrderListResponseArray) SetShippingNil(b bool)`
 
- SetShippingNil sets the value for Shipping to be an explicit nil
+SetShippingNil sets the value for Shipping to be an explicit nil
 
 ### UnsetShipping
+
 `func (o *OrderListResponseArray) UnsetShipping()`
 
 UnsetShipping ensures that no value is present for Shipping, not even an explicit nil
+
 ### GetShippingFees
 
 `func (o *OrderListResponseArray) GetShippingFees() int32`
@@ -458,7 +446,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderListResponseArray) SetShippingFees(v int32)`
 
 SetShippingFees sets ShippingFees field to given value.
-
 
 ### GetRefunded
 
@@ -479,7 +466,6 @@ and a boolean to check if the value has been set.
 
 SetRefunded sets Refunded field to given value.
 
-
 ### GetIsViewed
 
 `func (o *OrderListResponseArray) GetIsViewed() bool`
@@ -498,7 +484,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderListResponseArray) SetIsViewed(v bool)`
 
 SetIsViewed sets IsViewed field to given value.
-
 
 ### GetRefundedAmount
 
@@ -519,17 +504,18 @@ and a boolean to check if the value has been set.
 
 SetRefundedAmount sets RefundedAmount field to given value.
 
-
 ### SetRefundedAmountNil
 
 `func (o *OrderListResponseArray) SetRefundedAmountNil(b bool)`
 
- SetRefundedAmountNil sets the value for RefundedAmount to be an explicit nil
+SetRefundedAmountNil sets the value for RefundedAmount to be an explicit nil
 
 ### UnsetRefundedAmount
+
 `func (o *OrderListResponseArray) UnsetRefundedAmount()`
 
 UnsetRefundedAmount ensures that no value is present for RefundedAmount, not even an explicit nil
+
 ### GetDiscountAmount
 
 `func (o *OrderListResponseArray) GetDiscountAmount() interface{}`
@@ -549,17 +535,18 @@ and a boolean to check if the value has been set.
 
 SetDiscountAmount sets DiscountAmount field to given value.
 
-
 ### SetDiscountAmountNil
 
 `func (o *OrderListResponseArray) SetDiscountAmountNil(b bool)`
 
- SetDiscountAmountNil sets the value for DiscountAmount to be an explicit nil
+SetDiscountAmountNil sets the value for DiscountAmount to be an explicit nil
 
 ### UnsetDiscountAmount
+
 `func (o *OrderListResponseArray) UnsetDiscountAmount()`
 
 UnsetDiscountAmount ensures that no value is present for DiscountAmount, not even an explicit nil
+
 ### GetDiscounts
 
 `func (o *OrderListResponseArray) GetDiscounts() interface{}`
@@ -579,17 +566,18 @@ and a boolean to check if the value has been set.
 
 SetDiscounts sets Discounts field to given value.
 
-
 ### SetDiscountsNil
 
 `func (o *OrderListResponseArray) SetDiscountsNil(b bool)`
 
- SetDiscountsNil sets the value for Discounts to be an explicit nil
+SetDiscountsNil sets the value for Discounts to be an explicit nil
 
 ### UnsetDiscounts
+
 `func (o *OrderListResponseArray) UnsetDiscounts()`
 
 UnsetDiscounts ensures that no value is present for Discounts, not even an explicit nil
+
 ### GetItems
 
 `func (o *OrderListResponseArray) GetItems() []OrderItemsArray`
@@ -608,7 +596,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderListResponseArray) SetItems(v []OrderItemsArray)`
 
 SetItems sets Items field to given value.
-
 
 ### GetFullyRefunded
 
@@ -629,8 +616,4 @@ and a boolean to check if the value has been set.
 
 SetFullyRefunded sets FullyRefunded field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

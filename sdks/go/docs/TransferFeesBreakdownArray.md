@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Amount** | **string** |  | 
-**Formula** | **interface{}** |  | 
-**Type** | **string** |  | 
+| Name        | Type            | Description | Notes |
+| ----------- | --------------- | ----------- | ----- |
+| **Amount**  | **string**      |             |
+| **Formula** | **interface{}** |             |
+| **Type**    | **string**      |             |
 
 ## Methods
 
@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetAmount sets Amount field to given value.
 
-
 ### GetFormula
 
 `func (o *TransferFeesBreakdownArray) GetFormula() interface{}`
@@ -66,17 +65,18 @@ and a boolean to check if the value has been set.
 
 SetFormula sets Formula field to given value.
 
-
 ### SetFormulaNil
 
 `func (o *TransferFeesBreakdownArray) SetFormulaNil(b bool)`
 
- SetFormulaNil sets the value for Formula to be an explicit nil
+SetFormulaNil sets the value for Formula to be an explicit nil
 
 ### UnsetFormula
+
 `func (o *TransferFeesBreakdownArray) UnsetFormula()`
 
 UnsetFormula ensures that no value is present for Formula, not even an explicit nil
+
 ### GetType
 
 `func (o *TransferFeesBreakdownArray) GetType() string`
@@ -96,8 +96,4 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

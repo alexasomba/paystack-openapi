@@ -1,24 +1,24 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import { spawnSync } from 'node:child_process';
-import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
+import fs from "node:fs/promises";
+import path from "node:path";
+import { spawnSync } from "node:child_process";
+import { parse as parseYaml, stringify as stringifyYaml } from "yaml";
 
 const repoRoot = path.resolve(process.cwd());
-const sdkSpecPath = path.join(repoRoot, 'src/assets/sdk/paystack.yaml');
-const sdkOverridesPath = path.join(repoRoot, 'src/assets/sdk/overrides.yaml');
-const bundledSpecPath = path.join(repoRoot, 'dist/paystack.yaml');
+const sdkSpecPath = path.join(repoRoot, "src/assets/sdk/paystack.yaml");
+const sdkOverridesPath = path.join(repoRoot, "src/assets/sdk/overrides.yaml");
+const bundledSpecPath = path.join(repoRoot, "dist/paystack.yaml");
 
 const targets = [
-  'sdks/node/openapi.yaml',
-  'sdks/axios/openapi.yaml',
-  'sdks/browser/openapi.yaml',
-  'sdks/python/openapi.yaml',
-  'sdks/php/openapi.yaml',
-  'sdks/go/openapi.yaml',
+  "sdks/node/openapi.yaml",
+  "sdks/axios/openapi.yaml",
+  "sdks/browser/openapi.yaml",
+  "sdks/python/openapi.yaml",
+  "sdks/php/openapi.yaml",
+  "sdks/go/openapi.yaml",
 ].map((p) => path.join(repoRoot, p));
 
 function isPlainObject(value) {
-  return !!value && typeof value === 'object' && !Array.isArray(value);
+  return !!value && typeof value === "object" && !Array.isArray(value);
 }
 
 // Deep-merge helper where `base` wins on conflicts.
@@ -76,16 +76,7 @@ function mergePaths(mainPaths, sdkPaths) {
 
     // Method-level merge: preserve bundled (main) path metadata but let
     // the SDK spec override any overlapping operations to keep operationIds stable.
-    const methodKeys = [
-      'get',
-      'put',
-      'post',
-      'delete',
-      'options',
-      'head',
-      'patch',
-      'trace',
-    ];
+    const methodKeys = ["get", "put", "post", "delete", "options", "head", "patch", "trace"];
 
     for (const method of methodKeys) {
       if (sdkPathItem[method]) {
@@ -102,7 +93,7 @@ function mergePaths(mainPaths, sdkPaths) {
 }
 
 function collectOperationLocations(spec) {
-  const methods = ['get', 'put', 'post', 'delete', 'options', 'head', 'patch', 'trace'];
+  const methods = ["get", "put", "post", "delete", "options", "head", "patch", "trace"];
   const locations = new Set();
   for (const [route, item] of Object.entries(spec?.paths ?? {})) {
     for (const method of methods) {
@@ -116,23 +107,23 @@ function collectOperationLocations(spec) {
 
 function sanitizeOperationIdSuffix(value) {
   return String(value)
-    .replace(/[{}]/g, '')
-    .replace(/[^a-zA-Z0-9]+/g, '_')
-    .replace(/^_+|_+$/g, '')
+    .replace(/[{}]/g, "")
+    .replace(/[^a-zA-Z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "")
     .slice(0, 80);
 }
 
 function dedupeOperationIds(mergedSpec, sdkSpec) {
-  const methods = ['get', 'put', 'post', 'delete', 'options', 'head', 'patch', 'trace'];
+  const methods = ["get", "put", "post", "delete", "options", "head", "patch", "trace"];
   const sdkLocations = collectOperationLocations(sdkSpec);
 
   // Friendly overrides for known collisions between legacy SDK paths and the bundled spec.
   const overrides = new Map([
-    ['GET /transaction/timeline/{id}', 'transaction_timeline_by_id'],
-    ['POST /customer/authorization/deactivate', 'customer_authorization_deactivate'],
-    ['GET /dedicated_account/{id}', 'dedicated_account_fetch_by_id'],
-    ['DELETE /dedicated_account/{id}', 'dedicated_account_deactivate_by_id'],
-    ['GET /settlement/{id}/transactions', 'settlement_transactions'],
+    ["GET /transaction/timeline/{id}", "transaction_timeline_by_id"],
+    ["POST /customer/authorization/deactivate", "customer_authorization_deactivate"],
+    ["GET /dedicated_account/{id}", "dedicated_account_fetch_by_id"],
+    ["DELETE /dedicated_account/{id}", "dedicated_account_deactivate_by_id"],
+    ["GET /settlement/{id}/transactions", "settlement_transactions"],
   ]);
 
   const groups = new Map();
@@ -181,7 +172,7 @@ function dedupeOperationIds(mergedSpec, sdkSpec) {
 }
 
 function isObjectSchema(schema) {
-  return isPlainObject(schema) && schema.type === 'object' && isPlainObject(schema.properties);
+  return isPlainObject(schema) && schema.type === "object" && isPlainObject(schema.properties);
 }
 
 function removeFromRequired(schema, propertyName) {
@@ -218,9 +209,9 @@ function sanitizeSdkSpecForGenerators(spec) {
   // in the merged spec (including inline schemas).
 
   const pairs = [
-    ['paid_at', 'paidAt'],
-    ['created_at', 'createdAt'],
-    ['updated_at', 'updatedAt'],
+    ["paid_at", "paidAt"],
+    ["created_at", "createdAt"],
+    ["updated_at", "updatedAt"],
   ];
 
   const visit = (node) => {
@@ -244,11 +235,11 @@ function sanitizeSdkSpecForGenerators(spec) {
 }
 
 function runBundleMainIfNeeded() {
-  if (process.env.PAYSTACK_SDK_SPEC_SKIP_BUNDLE === '1') return;
+  if (process.env.PAYSTACK_SDK_SPEC_SKIP_BUNDLE === "1") return;
 
-  const result = spawnSync('pnpm', ['bundle:main'], {
+  const result = spawnSync("pnpm", ["bundle:main"], {
     cwd: repoRoot,
-    stdio: 'inherit',
+    stdio: "inherit",
   });
 
   if (result.status !== 0) {
@@ -258,12 +249,12 @@ function runBundleMainIfNeeded() {
 
 runBundleMainIfNeeded();
 
-const bundledText = await fs.readFile(bundledSpecPath, 'utf8');
-let sdkOverridesText = '';
+const bundledText = await fs.readFile(bundledSpecPath, "utf8");
+let sdkOverridesText = "";
 try {
-  sdkOverridesText = await fs.readFile(sdkOverridesPath, 'utf8');
+  sdkOverridesText = await fs.readFile(sdkOverridesPath, "utf8");
 } catch {
-  sdkOverridesText = '';
+  sdkOverridesText = "";
 }
 
 const bundledSpec = parseYaml(bundledText);
@@ -276,7 +267,10 @@ const sdkSpec = sdkOverridesText.trim() ? parseYaml(sdkOverridesText) : {};
 const mergedSpec = structuredClone(bundledSpec);
 mergedSpec.tags = mergeTags(bundledSpec?.tags, sdkSpec?.tags);
 mergedSpec.paths = mergePaths(bundledSpec?.paths, sdkSpec?.paths);
-mergedSpec.components = deepMergePreferBase(bundledSpec?.components ?? {}, sdkSpec?.components ?? {});
+mergedSpec.components = deepMergePreferBase(
+  bundledSpec?.components ?? {},
+  sdkSpec?.components ?? {},
+);
 
 dedupeOperationIds(mergedSpec, sdkSpec);
 
@@ -286,12 +280,12 @@ const mergedYaml = `${stringifyYaml(mergedSpec)}\n`;
 
 // Keep the SDK spec file in sync with what we ship into each SDK folder.
 await fs.mkdir(path.dirname(sdkSpecPath), { recursive: true });
-await fs.writeFile(sdkSpecPath, mergedYaml, 'utf8');
+await fs.writeFile(sdkSpecPath, mergedYaml, "utf8");
 
 await Promise.all(
   targets.map(async (target) => {
     await fs.mkdir(path.dirname(target), { recursive: true });
-    await fs.writeFile(target, mergedYaml, 'utf8');
+    await fs.writeFile(target, mergedYaml, "utf8");
   }),
 );
 

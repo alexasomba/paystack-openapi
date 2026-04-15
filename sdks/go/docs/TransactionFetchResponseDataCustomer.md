@@ -2,17 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**FirstName** | **string** |  | 
-**LastName** | **string** |  | 
-**Email** | **string** |  | 
-**CustomerCode** | **string** |  | 
-**Phone** | **string** |  | 
-**Metadata** | **map[string]interface{}** |  | 
-**RiskAction** | **string** |  | 
-**InternationalFormatPhone** | **string** |  | 
+| Name                         | Type                       | Description | Notes |
+| ---------------------------- | -------------------------- | ----------- | ----- |
+| **Id**                       | **int32**                  |             |
+| **FirstName**                | **string**                 |             |
+| **LastName**                 | **string**                 |             |
+| **Email**                    | **string**                 |             |
+| **CustomerCode**             | **string**                 |             |
+| **Phone**                    | **string**                 |             |
+| **Metadata**                 | **map[string]interface{}** |             |
+| **RiskAction**               | **string**                 |             |
+| **InternationalFormatPhone** | **string**                 |             |
 
 ## Methods
 
@@ -52,7 +52,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetFirstName
 
 `func (o *TransactionFetchResponseDataCustomer) GetFirstName() string`
@@ -71,7 +70,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionFetchResponseDataCustomer) SetFirstName(v string)`
 
 SetFirstName sets FirstName field to given value.
-
 
 ### GetLastName
 
@@ -92,7 +90,6 @@ and a boolean to check if the value has been set.
 
 SetLastName sets LastName field to given value.
 
-
 ### GetEmail
 
 `func (o *TransactionFetchResponseDataCustomer) GetEmail() string`
@@ -111,7 +108,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionFetchResponseDataCustomer) SetEmail(v string)`
 
 SetEmail sets Email field to given value.
-
 
 ### GetCustomerCode
 
@@ -132,7 +128,6 @@ and a boolean to check if the value has been set.
 
 SetCustomerCode sets CustomerCode field to given value.
 
-
 ### GetPhone
 
 `func (o *TransactionFetchResponseDataCustomer) GetPhone() string`
@@ -151,7 +146,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionFetchResponseDataCustomer) SetPhone(v string)`
 
 SetPhone sets Phone field to given value.
-
 
 ### GetMetadata
 
@@ -172,7 +166,6 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
-
 ### GetRiskAction
 
 `func (o *TransactionFetchResponseDataCustomer) GetRiskAction() string`
@@ -191,7 +184,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionFetchResponseDataCustomer) SetRiskAction(v string)`
 
 SetRiskAction sets RiskAction field to given value.
-
 
 ### GetInternationalFormatPhone
 
@@ -212,8 +204,4 @@ and a boolean to check if the value has been set.
 
 SetInternationalFormatPhone sets InternationalFormatPhone field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

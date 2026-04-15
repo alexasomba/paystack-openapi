@@ -1,11 +1,11 @@
 # DirectDebitActivationChargeResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
+
+| Name        | Type     | Description | Notes |
+| ----------- | -------- | ----------- | ----- |
+| **status**  | **bool** |             |
+| **message** | **str**  |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ direct_debit_activation_charge_response_dict = direct_debit_activation_charge_re
 # create an instance of DirectDebitActivationChargeResponse from a dict
 direct_debit_activation_charge_response_form_dict = direct_debit_activation_charge_response.from_dict(direct_debit_activation_charge_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

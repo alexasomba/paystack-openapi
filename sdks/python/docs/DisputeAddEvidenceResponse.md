@@ -1,12 +1,12 @@
 # DisputeAddEvidenceResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**DisputeAddEvidenceResponseData**](DisputeAddEvidenceResponseData.md) |  | 
+
+| Name        | Type                                                                    | Description | Notes |
+| ----------- | ----------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                |             |
+| **message** | **str**                                                                 |             |
+| **data**    | [**DisputeAddEvidenceResponseData**](DisputeAddEvidenceResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ dispute_add_evidence_response_dict = dispute_add_evidence_response_instance.to_d
 # create an instance of DisputeAddEvidenceResponse from a dict
 dispute_add_evidence_response_form_dict = dispute_add_evidence_response.from_dict(dispute_add_evidence_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

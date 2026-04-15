@@ -2,38 +2,38 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Discounts** | **[]interface{}** |  | 
-**OrderCode** | **string** |  | 
-**Domain** | **string** |  | 
-**Currency** | **string** |  | 
-**Amount** | **int32** |  | 
-**Email** | **string** |  | 
-**Status** | **string** |  | 
-**Refunded** | **bool** |  | 
-**PaidAt** | **string** |  | 
-**ShippingAddress** | **interface{}** |  | 
-**Metadata** | **map[string]interface{}** |  | 
-**ShippingFees** | **int32** |  | 
-**ShippingMethod** | **interface{}** |  | 
-**IsViewed** | **bool** |  | 
-**ExpirationDate** | **string** |  | 
-**PayForMe** | **bool** |  | 
-**Id** | **int32** |  | 
-**Integration** | **int32** |  | 
-**Page** | **interface{}** |  | 
-**Customer** | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |  | 
-**Shipping** | **interface{}** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
-**Transaction** | **int32** |  | 
-**IsGift** | **bool** |  | 
-**Payer** | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |  | 
-**FullyRefunded** | **bool** |  | 
-**RefundedAmount** | **int32** |  | 
-**Items** | [**[]OrderItemsArray**](OrderItemsArray.md) |  | 
-**DiscountAmount** | **interface{}** |  | 
+| Name                | Type                                                                                | Description | Notes |
+| ------------------- | ----------------------------------------------------------------------------------- | ----------- | ----- |
+| **Discounts**       | **[]interface{}**                                                                   |             |
+| **OrderCode**       | **string**                                                                          |             |
+| **Domain**          | **string**                                                                          |             |
+| **Currency**        | **string**                                                                          |             |
+| **Amount**          | **int32**                                                                           |             |
+| **Email**           | **string**                                                                          |             |
+| **Status**          | **string**                                                                          |             |
+| **Refunded**        | **bool**                                                                            |             |
+| **PaidAt**          | **string**                                                                          |             |
+| **ShippingAddress** | **interface{}**                                                                     |             |
+| **Metadata**        | **map[string]interface{}**                                                          |             |
+| **ShippingFees**    | **int32**                                                                           |             |
+| **ShippingMethod**  | **interface{}**                                                                     |             |
+| **IsViewed**        | **bool**                                                                            |             |
+| **ExpirationDate**  | **string**                                                                          |             |
+| **PayForMe**        | **bool**                                                                            |             |
+| **Id**              | **int32**                                                                           |             |
+| **Integration**     | **int32**                                                                           |             |
+| **Page**            | **interface{}**                                                                     |             |
+| **Customer**        | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |             |
+| **Shipping**        | **interface{}**                                                                     |             |
+| **CreatedAt**       | **string**                                                                          |             |
+| **UpdatedAt**       | **string**                                                                          |             |
+| **Transaction**     | **int32**                                                                           |             |
+| **IsGift**          | **bool**                                                                            |             |
+| **Payer**           | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |             |
+| **FullyRefunded**   | **bool**                                                                            |             |
+| **RefundedAmount**  | **int32**                                                                           |             |
+| **Items**           | [**[]OrderItemsArray**](OrderItemsArray.md)                                         |             |
+| **DiscountAmount**  | **interface{}**                                                                     |             |
 
 ## Methods
 
@@ -73,7 +73,6 @@ and a boolean to check if the value has been set.
 
 SetDiscounts sets Discounts field to given value.
 
-
 ### GetOrderCode
 
 `func (o *OrderFetchResponseData) GetOrderCode() string`
@@ -92,7 +91,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchResponseData) SetOrderCode(v string)`
 
 SetOrderCode sets OrderCode field to given value.
-
 
 ### GetDomain
 
@@ -113,7 +111,6 @@ and a boolean to check if the value has been set.
 
 SetDomain sets Domain field to given value.
 
-
 ### GetCurrency
 
 `func (o *OrderFetchResponseData) GetCurrency() string`
@@ -132,7 +129,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchResponseData) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetAmount
 
@@ -153,7 +149,6 @@ and a boolean to check if the value has been set.
 
 SetAmount sets Amount field to given value.
 
-
 ### GetEmail
 
 `func (o *OrderFetchResponseData) GetEmail() string`
@@ -172,7 +167,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchResponseData) SetEmail(v string)`
 
 SetEmail sets Email field to given value.
-
 
 ### GetStatus
 
@@ -193,7 +187,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-
 ### GetRefunded
 
 `func (o *OrderFetchResponseData) GetRefunded() bool`
@@ -212,7 +205,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchResponseData) SetRefunded(v bool)`
 
 SetRefunded sets Refunded field to given value.
-
 
 ### GetPaidAt
 
@@ -233,7 +225,6 @@ and a boolean to check if the value has been set.
 
 SetPaidAt sets PaidAt field to given value.
 
-
 ### GetShippingAddress
 
 `func (o *OrderFetchResponseData) GetShippingAddress() interface{}`
@@ -253,17 +244,18 @@ and a boolean to check if the value has been set.
 
 SetShippingAddress sets ShippingAddress field to given value.
 
-
 ### SetShippingAddressNil
 
 `func (o *OrderFetchResponseData) SetShippingAddressNil(b bool)`
 
- SetShippingAddressNil sets the value for ShippingAddress to be an explicit nil
+SetShippingAddressNil sets the value for ShippingAddress to be an explicit nil
 
 ### UnsetShippingAddress
+
 `func (o *OrderFetchResponseData) UnsetShippingAddress()`
 
 UnsetShippingAddress ensures that no value is present for ShippingAddress, not even an explicit nil
+
 ### GetMetadata
 
 `func (o *OrderFetchResponseData) GetMetadata() map[string]interface{}`
@@ -282,7 +274,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchResponseData) SetMetadata(v map[string]interface{})`
 
 SetMetadata sets Metadata field to given value.
-
 
 ### GetShippingFees
 
@@ -303,7 +294,6 @@ and a boolean to check if the value has been set.
 
 SetShippingFees sets ShippingFees field to given value.
 
-
 ### GetShippingMethod
 
 `func (o *OrderFetchResponseData) GetShippingMethod() interface{}`
@@ -323,17 +313,18 @@ and a boolean to check if the value has been set.
 
 SetShippingMethod sets ShippingMethod field to given value.
 
-
 ### SetShippingMethodNil
 
 `func (o *OrderFetchResponseData) SetShippingMethodNil(b bool)`
 
- SetShippingMethodNil sets the value for ShippingMethod to be an explicit nil
+SetShippingMethodNil sets the value for ShippingMethod to be an explicit nil
 
 ### UnsetShippingMethod
+
 `func (o *OrderFetchResponseData) UnsetShippingMethod()`
 
 UnsetShippingMethod ensures that no value is present for ShippingMethod, not even an explicit nil
+
 ### GetIsViewed
 
 `func (o *OrderFetchResponseData) GetIsViewed() bool`
@@ -352,7 +343,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchResponseData) SetIsViewed(v bool)`
 
 SetIsViewed sets IsViewed field to given value.
-
 
 ### GetExpirationDate
 
@@ -373,7 +363,6 @@ and a boolean to check if the value has been set.
 
 SetExpirationDate sets ExpirationDate field to given value.
 
-
 ### GetPayForMe
 
 `func (o *OrderFetchResponseData) GetPayForMe() bool`
@@ -392,7 +381,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchResponseData) SetPayForMe(v bool)`
 
 SetPayForMe sets PayForMe field to given value.
-
 
 ### GetId
 
@@ -413,7 +401,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetIntegration
 
 `func (o *OrderFetchResponseData) GetIntegration() int32`
@@ -432,7 +419,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchResponseData) SetIntegration(v int32)`
 
 SetIntegration sets Integration field to given value.
-
 
 ### GetPage
 
@@ -453,17 +439,18 @@ and a boolean to check if the value has been set.
 
 SetPage sets Page field to given value.
 
-
 ### SetPageNil
 
 `func (o *OrderFetchResponseData) SetPageNil(b bool)`
 
- SetPageNil sets the value for Page to be an explicit nil
+SetPageNil sets the value for Page to be an explicit nil
 
 ### UnsetPage
+
 `func (o *OrderFetchResponseData) UnsetPage()`
 
 UnsetPage ensures that no value is present for Page, not even an explicit nil
+
 ### GetCustomer
 
 `func (o *OrderFetchResponseData) GetCustomer() TransactionFetchResponseDataCustomer`
@@ -482,7 +469,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchResponseData) SetCustomer(v TransactionFetchResponseDataCustomer)`
 
 SetCustomer sets Customer field to given value.
-
 
 ### GetShipping
 
@@ -503,17 +489,18 @@ and a boolean to check if the value has been set.
 
 SetShipping sets Shipping field to given value.
 
-
 ### SetShippingNil
 
 `func (o *OrderFetchResponseData) SetShippingNil(b bool)`
 
- SetShippingNil sets the value for Shipping to be an explicit nil
+SetShippingNil sets the value for Shipping to be an explicit nil
 
 ### UnsetShipping
+
 `func (o *OrderFetchResponseData) UnsetShipping()`
 
 UnsetShipping ensures that no value is present for Shipping, not even an explicit nil
+
 ### GetCreatedAt
 
 `func (o *OrderFetchResponseData) GetCreatedAt() string`
@@ -532,7 +519,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchResponseData) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -553,7 +539,6 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
 ### GetTransaction
 
 `func (o *OrderFetchResponseData) GetTransaction() int32`
@@ -572,7 +557,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchResponseData) SetTransaction(v int32)`
 
 SetTransaction sets Transaction field to given value.
-
 
 ### GetIsGift
 
@@ -593,7 +577,6 @@ and a boolean to check if the value has been set.
 
 SetIsGift sets IsGift field to given value.
 
-
 ### GetPayer
 
 `func (o *OrderFetchResponseData) GetPayer() TransactionFetchResponseDataCustomer`
@@ -612,7 +595,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchResponseData) SetPayer(v TransactionFetchResponseDataCustomer)`
 
 SetPayer sets Payer field to given value.
-
 
 ### GetFullyRefunded
 
@@ -633,7 +615,6 @@ and a boolean to check if the value has been set.
 
 SetFullyRefunded sets FullyRefunded field to given value.
 
-
 ### GetRefundedAmount
 
 `func (o *OrderFetchResponseData) GetRefundedAmount() int32`
@@ -652,7 +633,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchResponseData) SetRefundedAmount(v int32)`
 
 SetRefundedAmount sets RefundedAmount field to given value.
-
 
 ### GetItems
 
@@ -673,7 +653,6 @@ and a boolean to check if the value has been set.
 
 SetItems sets Items field to given value.
 
-
 ### GetDiscountAmount
 
 `func (o *OrderFetchResponseData) GetDiscountAmount() interface{}`
@@ -693,18 +672,16 @@ and a boolean to check if the value has been set.
 
 SetDiscountAmount sets DiscountAmount field to given value.
 
-
 ### SetDiscountAmountNil
 
 `func (o *OrderFetchResponseData) SetDiscountAmountNil(b bool)`
 
- SetDiscountAmountNil sets the value for DiscountAmount to be an explicit nil
+SetDiscountAmountNil sets the value for DiscountAmount to be an explicit nil
 
 ### UnsetDiscountAmount
+
 `func (o *OrderFetchResponseData) UnsetDiscountAmount()`
 
 UnsetDiscountAmount ensures that no value is present for DiscountAmount, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

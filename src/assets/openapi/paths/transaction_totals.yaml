@@ -6,29 +6,39 @@ get:
   description: Get the total amount of all transactions
   parameters:
     - in: query
+      name: perPage
+      schema:
+        type: integer
+      description: Number of records to fetch per page
+    - in: query
+      name: page
+      schema:
+        type: integer
+      description: The section to retrieve
+    - in: query
       description: The start date
       name: from
       schema:
         type: string
         format: date-time
-      example: '2024-06-01T00:00:01Z'
+      example: "2024-06-01T00:00:01Z"
     - in: query
       name: to
       description: The end date
       schema:
         type: string
         format: date-time
-      example: '2024-06-30T13:36:54Z'
+      example: "2024-06-30T13:36:54Z"
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/TransactionTotalsResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

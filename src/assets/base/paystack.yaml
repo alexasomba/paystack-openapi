@@ -984,12 +984,12 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VirtualTerminalCreate'
+              $ref: "#/components/schemas/VirtualTerminalCreate"
       responses:
-        '200':
-          $ref: '#/components/responses/VirtualTerminalCreateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/VirtualTerminalCreateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -1007,10 +1007,10 @@ paths:
           schema:
             type: integer
       responses:
-        '200':
-          $ref: '#/components/responses/VirtualTerminalListSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/VirtualTerminalListSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /virtual_terminal/{code}:
@@ -1026,10 +1026,10 @@ paths:
       summary: Fetch Virtual Terminal
       operationId: virtualTerminal_fetch
       responses:
-        '200':
-          $ref: '#/components/responses/VirtualTerminalFetchSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/VirtualTerminalFetchSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     put:
@@ -1041,12 +1041,12 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VirtualTerminalUpdate'
+              $ref: "#/components/schemas/VirtualTerminalUpdate"
       responses:
-        '200':
-          $ref: '#/components/responses/VirtualTerminalUpdateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/VirtualTerminalUpdateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /virtual_terminal/{code}/deactivate:
@@ -1062,10 +1062,10 @@ paths:
       summary: Deactivate Virtual Terminal
       operationId: virtualTerminal_deactivate
       responses:
-        '200':
-          $ref: '#/components/responses/VirtualTerminalDeactivateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/VirtualTerminalDeactivateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /virtual_terminal/{code}/destination/assign:
@@ -1084,15 +1084,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VirtualTerminalDestinationAssign'
+              $ref: "#/components/schemas/VirtualTerminalDestinationAssign"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/VirtualTerminalDestinationAssign'
+              $ref: "#/components/schemas/VirtualTerminalDestinationAssign"
       responses:
-        '200':
-          $ref: '#/components/responses/VirtualTerminalDestinationAssignSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/VirtualTerminalDestinationAssignSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /virtual_terminal/{code}/destination/unassign:
@@ -1111,15 +1111,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VirtualTerminalDestinationUnassign'
+              $ref: "#/components/schemas/VirtualTerminalDestinationUnassign"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/VirtualTerminalDestinationUnassign'
+              $ref: "#/components/schemas/VirtualTerminalDestinationUnassign"
       responses:
-        '200':
-          $ref: '#/components/responses/VirtualTerminalDestinationUnassignSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/VirtualTerminalDestinationUnassignSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /virtual_terminal/{code}/split_code:
@@ -1138,15 +1138,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VirtualTerminalAddSplitCode'
+              $ref: "#/components/schemas/VirtualTerminalAddSplitCode"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/VirtualTerminalAddSplitCode'
+              $ref: "#/components/schemas/VirtualTerminalAddSplitCode"
       responses:
-        '200':
-          $ref: '#/components/responses/VirtualTerminalAddSplitCodeSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/VirtualTerminalAddSplitCodeSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server Error
     delete:
@@ -1158,15 +1158,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VirtualTerminalDeleteSplitCode'
+              $ref: "#/components/schemas/VirtualTerminalDeleteSplitCode"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/VirtualTerminalDeleteSplitCode'
+              $ref: "#/components/schemas/VirtualTerminalDeleteSplitCode"
       responses:
-        '200':
-          $ref: '#/components/responses/VirtualTerminalDeleteSplitCodeSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/VirtualTerminalDeleteSplitCodeSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server Error
   /customer:
@@ -1402,15 +1402,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CustomerAuthorizationInitializeRequest'
+              $ref: "#/components/schemas/CustomerAuthorizationInitializeRequest"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/CustomerAuthorizationInitializeRequest'
+              $ref: "#/components/schemas/CustomerAuthorizationInitializeRequest"
       responses:
-        '200':
-          $ref: '#/components/responses/CustomerAuthorizationInitializeSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/CustomerAuthorizationInitializeSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /customer/authorization/verify/{reference}:
@@ -1428,12 +1428,12 @@ paths:
           schema:
             type: string
       responses:
-        '200':
-          $ref: '#/components/responses/CustomerAuthorizationVerifySuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/CustomerAuthorizationVerifySuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /customer/{id}/initialize-direct-debit:
@@ -1454,15 +1454,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CustomerInitializeDirectDebitRequest'
+              $ref: "#/components/schemas/CustomerInitializeDirectDebitRequest"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/CustomerInitializeDirectDebitRequest'
+              $ref: "#/components/schemas/CustomerInitializeDirectDebitRequest"
       responses:
-        '200':
-          $ref: '#/components/responses/CustomerInitializeDirectDebitSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/CustomerInitializeDirectDebitSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /customer/{id}/directdebit-activation-charge:
@@ -1483,15 +1483,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CustomerDirectDebitActivationChargeRequest'
+              $ref: "#/components/schemas/CustomerDirectDebitActivationChargeRequest"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/CustomerDirectDebitActivationChargeRequest'
+              $ref: "#/components/schemas/CustomerDirectDebitActivationChargeRequest"
       responses:
-        '200':
-          $ref: '#/components/responses/CustomerDirectDebitActivationChargeSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/CustomerDirectDebitActivationChargeSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /customer/{id}/directdebit-mandate-authorizations:
@@ -1509,10 +1509,10 @@ paths:
             type: string
             description: The customer ID for the authorizations to fetch
       responses:
-        '200':
-          $ref: '#/components/responses/CustomerFetchMandateAuthorizationsSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/CustomerFetchMandateAuthorizationsSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /directdebit/activation-charge:
@@ -1527,12 +1527,12 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DirectDebitActivationChargeRequest'
+              $ref: "#/components/schemas/DirectDebitActivationChargeRequest"
       responses:
-        '200':
-          $ref: '#/components/responses/DirectDebitActivationChargeSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/DirectDebitActivationChargeSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /directdebit/mandate-authorizations:
@@ -1563,10 +1563,10 @@ paths:
           schema:
             type: integer
       responses:
-        '200':
-          $ref: '#/components/responses/CustomerFetchMandateAuthorizationsSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/CustomerFetchMandateAuthorizationsSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /dedicated_account:
@@ -1852,8 +1852,7 @@ paths:
       tags:
         - Apple Pay
       summary: Unregister Domain
-      description:
-        Unregister a top-level domain or subdomain previously used for your
+      description: Unregister a top-level domain or subdomain previously used for your
         Apple Pay integration.
       operationId: applePay_unregisterDomain
       requestBody:
@@ -2936,8 +2935,7 @@ paths:
           name: currency
           schema:
             type: string
-          description:
-            If your integration supports more than one currency, choose the one
+          description: If your integration supports more than one currency, choose the one
             to filter
         - in: query
           name: from
@@ -4246,8 +4244,7 @@ paths:
             type: integer
         - in: query
           name: status
-          description:
-            Dispute Status. Acceptable values are awaiting-merchant-feedback,
+          description: Dispute Status. Acceptable values are awaiting-merchant-feedback,
             awaiting-bank-feedback, pending, resolved
           schema:
             type: string
@@ -4674,8 +4671,7 @@ components:
             - ZAR
             - USD
         bearer_type:
-          description:
-            This allows you specify how the transaction charge should be
+          description: This allows you specify how the transaction charge should be
             processed
           type: string
           enum:
@@ -4684,8 +4680,7 @@ components:
             - all-proportional
             - all
         bearer_subaccount:
-          description:
-            This is the subaccount code of the customer or partner that would
+          description: This is the subaccount code of the customer or partner that would
             bear the transaction charge if you specified subaccount as the
             bearer type
           type: string
@@ -4713,13 +4708,11 @@ components:
         currency:
           $ref: "#/components/schemas/Currency"
         reference:
-          description:
-            Unique transaction reference. Only -, ., = and alphanumeric
+          description: Unique transaction reference. Only -, ., = and alphanumeric
             characters allowed.
           type: string
         channels:
-          description:
-            An array of payment channels to control what channels you want to
+          description: An array of payment channels to control what channels you want to
             make available to the user to make a payment with
           type: array
           items:
@@ -4861,8 +4854,7 @@ components:
           description: Valid authorization code to charge
           type: string
         reference:
-          description:
-            Unique transaction reference. Only -, ., = and alphanumeric
+          description: Unique transaction reference. Only -, ., = and alphanumeric
             characters allowed.
           type: string
         currency:
@@ -4892,8 +4884,7 @@ components:
           description: Stringified JSON object of custom data
           type: string
         queue:
-          description:
-            If you are making a scheduled charge call, it is a good idea to
+          description: If you are making a scheduled charge call, it is a good idea to
             queue them so the processing system does not get overloaded causing
             transaction processing errors.
           type: boolean
@@ -4925,8 +4916,7 @@ components:
           description: Minimum amount to charge
           type: string
         reference:
-          description:
-            Unique transaction reference. Only -, ., = and alphanumeric
+          description: Unique transaction reference. Only -, ., = and alphanumeric
             characters allowed.
           type: string
       example:
@@ -5206,13 +5196,11 @@ components:
           description: Name of the transaction split
           type: string
         active:
-          description:
-            Toggle status of split. When true, the split is active, else it's
+          description: Toggle status of split. When true, the split is active, else it's
             inactive
           type: boolean
         bearer_type:
-          description:
-            This allows you specify how the transaction charge should be
+          description: This allows you specify how the transaction charge should be
             processed
           type: string
           enum:
@@ -5221,8 +5209,7 @@ components:
             - all-proportional
             - all
         bearer_subaccount:
-          description:
-            This is the subaccount code of the customer or partner that would
+          description: This is the subaccount code of the customer or partner that would
             bear the transaction charge if you specified subaccount as the
             bearer type
           type: string
@@ -5600,14 +5587,14 @@ components:
           type: array
           description: Array of objects containing recipients for payment notifications for the Virtual Terminal.
           items:
-              type: object
-              properties:
-                target: 
-                  type: string
-                  description: The WhatsApp number to receive payment notifications
-                name:
-                  type: string
-                  description: The name of the associated WhatsApp number
+            type: object
+            properties:
+              target:
+                type: string
+                description: The WhatsApp number to receive payment notifications
+              name:
+                type: string
+                description: The name of the associated WhatsApp number
         split_code:
           type: string
           description: Split code to associate with the virtual terminal
@@ -5686,7 +5673,7 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/VirtualTerminalListResponseArray'
+            $ref: "#/components/schemas/VirtualTerminalListResponseArray"
         meta:
           type: object
           properties:
@@ -5875,23 +5862,23 @@ components:
     VirtualTerminalDestinationAssign:
       type: object
       required:
-        - destinations      
+        - destinations
       properties:
         destinations:
           type: array
           description: Array of objects containing recipients for payment notifications for the Virtual Terminal.
           items:
-              type: object
-              properties:
-                target: 
-                  type: string
-                  description: The WhatsApp number to receive payment notifications
-                name:
-                  type: string
-                  description: The name of the associated WhatsApp number
+            type: object
+            properties:
+              target:
+                type: string
+                description: The WhatsApp number to receive payment notifications
+              name:
+                type: string
+                description: The name of the associated WhatsApp number
           required:
-          - target
-          - name
+            - target
+            - name
       example:
         destinations:
           - target: "+2548012345678"
@@ -5952,10 +5939,10 @@ components:
     VirtualTerminalDestinationUnassignResponse:
       type: object
       properties:
-          status:
-            type: boolean
-          message:
-            type: string
+        status:
+          type: boolean
+        message:
+          type: string
       required:
         - status
         - message
@@ -6008,7 +5995,7 @@ components:
             subaccounts:
               type: array
               items:
-                $ref: '#/components/schemas/SplitSubaccountsArray'
+                $ref: "#/components/schemas/SplitSubaccountsArray"
             total_subaccounts:
               type: integer
           required:
@@ -6021,7 +6008,7 @@ components:
             - split_code
             - active
             - bearer_type
-            - bearer_subaccount 
+            - bearer_subaccount
             - createdAt
             - updatedAt
             - is_dynamic
@@ -6399,8 +6386,7 @@ components:
           description: Customer's code, or email address
           type: string
         risk_action:
-          description:
-            This determines the fraud rules that should be applied to the
+          description: This determines the fraud rules that should be applied to the
             customer
           type: string
           default: default
@@ -6529,8 +6515,7 @@ components:
           description: Customer's Bank Verification Number
           type: string
         bank_code:
-          description:
-            You can get the list of bank codes by calling the List Banks
+          description: You can get the list of bank codes by calling the List Banks
             endpoint (https://api.paystack.co/bank).
           type: string
         account_number:
@@ -6644,16 +6629,14 @@ components:
           description: Customer ID or code
           type: string
         preferred_bank:
-          description:
-            The bank slug for preferred bank. To get a list of available banks,
+          description: The bank slug for preferred bank. To get a list of available banks,
             use the List Providers endpoint
           type: string
         subaccount:
           description: Subaccount code of the account you want to split the transaction with
           type: string
         split_code:
-          description:
-            Split code consisting of the lists of accounts you want to split
+          description: Split code consisting of the lists of accounts you want to split
             the transaction with
           type: string
     DedicatedNubanCreateResponse:
@@ -6816,8 +6799,7 @@ components:
           description: Subaccount code of the account you want to split the transaction with
           type: string
         split_code:
-          description:
-            Split code consisting of the lists of accounts you want to split
+          description: Split code consisting of the lists of accounts you want to split
             the transaction with
           type: string
     DedicatedNubanDeactivateResponse:
@@ -6908,8 +6890,7 @@ components:
           description: Subaccount code of the account you want to split the transaction with
           type: string
         split_code:
-          description:
-            Split code consisting of the lists of accounts you want to split
+          description: Split code consisting of the lists of accounts you want to split
             the transaction with
           type: string
     ApplePayParam:
@@ -7031,8 +7012,7 @@ components:
           description: Name of business for subaccount
           type: string
         settlement_bank:
-          description:
-            Bank code for the bank. You can get the list of Bank Codes by
+          description: Bank code for the bank. You can get the list of Bank Codes by
             calling the List Banks endpoint.
           type: string
         account_number:
@@ -7238,8 +7218,7 @@ components:
           description: Name of business for subaccount
           type: string
         settlement_bank:
-          description:
-            Bank code for the bank. You can get the list of Bank Codes by
+          description: Bank code for the bank. You can get the list of Bank Codes by
             calling the List Banks endpoint.
           type: string
         account_number:
@@ -7482,8 +7461,7 @@ components:
           description: Name of plan
           type: string
         amount:
-          description:
-            Amount should be in kobo if currency is NGN, pesewas, if currency
+          description: Amount should be in kobo if currency is NGN, pesewas, if currency
             is GHS, and cents, if currency is ZAR
           type: integer
         interval:
@@ -7497,13 +7475,11 @@ components:
           description: Set to false if you don't want invoices to be sent to your customers
           type: boolean
         send_sms:
-          description:
-            Set to false if you don't want text messages to be sent to your
+          description: Set to false if you don't want text messages to be sent to your
             customers
           type: boolean
         currency:
-          description:
-            Currency in which amount is set. Allowed values are NGN, GHS, ZAR
+          description: Currency in which amount is set. Allowed values are NGN, GHS, ZAR
             or USD
           type: string
         invoice_limit:
@@ -7684,8 +7660,7 @@ components:
           description: Name of plan
           type: string
         amount:
-          description:
-            Amount should be in kobo if currency is NGN, pesewas, if currency
+          description: Amount should be in kobo if currency is NGN, pesewas, if currency
             is GHS, and cents, if currency is ZAR
           type: integer
         interval:
@@ -7699,13 +7674,11 @@ components:
           description: Set to false if you don't want invoices to be sent to your customers
           type: boolean
         send_sms:
-          description:
-            Set to false if you don't want text messages to be sent to your
+          description: Set to false if you don't want text messages to be sent to your
             customers
           type: boolean
         currency:
-          description:
-            Currency in which amount is set. Allowed values are NGN, GHS, ZAR
+          description: Currency in which amount is set. Allowed values are NGN, GHS, ZAR
             or USD
           type: string
         invoice_limit:
@@ -9502,8 +9475,7 @@ components:
           description: The customer's mobile number
           type: string
         currency:
-          description:
-            Currency in which amount is set. Allowed values are NGN, GHS, ZAR
+          description: Currency in which amount is set. Allowed values are NGN, GHS, ZAR
             or USD
           type: string
         items:
@@ -10228,8 +10200,7 @@ components:
           description: The description of the page
           type: string
         amount:
-          description:
-            Amount should be in kobo if currency is NGN, pesewas, if currency
+          description: Amount should be in kobo if currency is NGN, pesewas, if currency
             is GHS, and cents, if currency is ZAR
           type: integer
         currency:
@@ -10242,8 +10213,7 @@ components:
             - KES
             - USD
         slug:
-          description:
-            URL slug you would like to be associated with this page. Page will
+          description: URL slug you would like to be associated with this page. Page will
             be accessible at `https://paystack.com/pay/[slug]`
           type: string
         type:
@@ -10257,13 +10227,11 @@ components:
             - product
             - plan
         plan:
-          description:
-            The ID of the plan to subscribe customers on this payment page to
+          description: The ID of the plan to subscribe customers on this payment page to
             when `type` is set to `subscription`.
           type: string
         fixed_amount:
-          description:
-            Specifies whether to collect a fixed amount on the payment page. If
+          description: Specifies whether to collect a fixed amount on the payment page. If
             true, `amount` must be passed.
           type: boolean
         split_code:
@@ -10439,8 +10407,7 @@ components:
           description: The description of the page
           type: string
         amount:
-          description:
-            Amount should be in kobo if currency is NGN, pesewas, if currency
+          description: Amount should be in kobo if currency is NGN, pesewas, if currency
             is GHS, and cents, if currency is ZAR
           type: integer
         active:
@@ -10871,8 +10838,7 @@ components:
             The endpoint will throw a friendly warning if neither is available.
           type: integer
         currency:
-          description:
-            Specify the currency of the invoice. Allowed values are NGN, GHS,
+          description: Specify the currency of the invoice. Allowed values are NGN, GHS,
             ZAR and USD. Defaults to NGN
           type: string
         due_date:
@@ -10893,15 +10859,13 @@ components:
           items:
             type: object
         send_notification:
-          description:
-            Indicates whether Paystack sends an email notification to customer.
+          description: Indicates whether Paystack sends an email notification to customer.
             Defaults to true
           type: boolean
           items:
             type: object
         draft:
-          description:
-            Indicate if request should be saved as draft. Defaults to false and
+          description: Indicate if request should be saved as draft. Defaults to false and
             overrides send_notification
           type: boolean
           items:
@@ -11026,8 +10990,7 @@ components:
             The endpoint will throw a friendly warning if neither is available.
           type: integer
         currency:
-          description:
-            Specify the currency of the invoice. Allowed values are NGN, GHS,
+          description: Specify the currency of the invoice. Allowed values are NGN, GHS,
             ZAR and USD. Defaults to NGN
           type: string
         due_date:
@@ -11048,15 +11011,13 @@ components:
           items:
             type: object
         send_notification:
-          description:
-            Indicates whether Paystack sends an email notification to customer.
+          description: Indicates whether Paystack sends an email notification to customer.
             Defaults to true
           type: boolean
           items:
             type: object
         draft:
-          description:
-            Indicate if request should be saved as draft. Defaults to false and
+          description: Indicate if request should be saved as draft. Defaults to false and
             overrides send_notification
           type: boolean
           items:
@@ -11700,8 +11661,7 @@ components:
           description: Recipient's bank account number
           type: string
         bank_code:
-          description:
-            Recipient's bank code. You can get the list of Bank Codes by
+          description: Recipient's bank code. You can get the list of Bank Codes by
             calling the List Banks endpoint
           type: string
         description:
@@ -12169,8 +12129,7 @@ components:
         - reference
       properties:
         amount:
-          description:
-            Amount to transfer in kobo if currency is NGN and pesewas if
+          description: Amount to transfer in kobo if currency is NGN and pesewas if
             currency is GHS.
           type: integer
         recipient:
@@ -12850,8 +12809,7 @@ components:
           description: Customer's email address
           type: string
         amount:
-          description:
-            Amount should be in kobo if currency is NGN, pesewas, if currency
+          description: Amount should be in kobo if currency is NGN, pesewas, if currency
             is GHS, and cents, if currency is ZAR
           type: string
         authorization_code:
@@ -12861,8 +12819,7 @@ components:
           description: 4-digit PIN (send with a non-reusable authorization code)
           type: string
         reference:
-          description:
-            Unique transaction reference. Only -, .`, = and alphanumeric
+          description: Unique transaction reference. Only -, .`, = and alphanumeric
             characters allowed.
           type: string
         birthday:
@@ -12895,8 +12852,7 @@ components:
           description: Customer's phone number
           type: string
         provider:
-          description:
-            The telco provider of customer's phone number. This can be fetched
+          description: The telco provider of customer's phone number. This can be fetched
             from the List Bank endpoint
           type: string
     USSD:
@@ -13819,13 +13775,11 @@ components:
           description: Amount to charge on the authorization
           type: integer
         reference:
-          description:
-            Unique reference containing only -, .`, = and alphanumeric
+          description: Unique reference containing only -, .`, = and alphanumeric
             characters.
           type: string
         attempt_partial_debit:
-          description:
-            A flag to indicate if you want us to try recouping lower amounts
+          description: A flag to indicate if you want us to try recouping lower amounts
             when the customer has insufficient fund
           type: boolean
         at_least:
@@ -15125,13 +15079,11 @@ components:
         - refund_amount
       properties:
         refund_amount:
-          description:
-            The amount to refund, in kobo if currency is NGN, pesewas, if
+          description: The amount to refund, in kobo if currency is NGN, pesewas, if
             currency is GHS, and cents, if currency is ZAR
           type: string
         uploaded_filename:
-          description:
-            Filename of attachment returned via response from the Dispute
+          description: Filename of attachment returned via response from the Dispute
             upload URL
           type: string
     DisputeUpdateResponse:
@@ -15699,13 +15651,11 @@ components:
           description: Reason for resolving
           type: string
         refund_amount:
-          description:
-            The amount to refund, in kobo if currency is NGN, pesewas, if
+          description: The amount to refund, in kobo if currency is NGN, pesewas, if
             currency is GHS, and cents, if currency is ZAR
           type: string
         uploaded_filename:
-          description:
-            Filename of attachment returned via response from the Dispute
+          description: Filename of attachment returned via response from the Dispute
             upload URL
           type: string
         evidence:
@@ -16000,8 +15950,7 @@ components:
             - personal
             - business
         bank_code:
-          description:
-            The bank code of the customer’s bank. You can fetch the bank codes
+          description: The bank code of the customer’s bank. You can fetch the bank codes
             by using our List Banks endpoint
           type: string
         country_code:
@@ -23871,55 +23820,55 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VirtualTerminalCreateResponse'
+            $ref: "#/components/schemas/VirtualTerminalCreateResponse"
     VirtualTerminalListSuccess:
       description: Virtual Terminal Lists response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VirtualTerminalListResponse'
+            $ref: "#/components/schemas/VirtualTerminalListResponse"
     VirtualTerminalFetchSuccess:
       description: Virtual Terminal Fetch response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VirtualTerminalFetchResponse'
+            $ref: "#/components/schemas/VirtualTerminalFetchResponse"
     VirtualTerminalUpdateSuccess:
       description: Virtual Terminal Update response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VirtualTerminalUpdateResponse'
+            $ref: "#/components/schemas/VirtualTerminalUpdateResponse"
     VirtualTerminalDeactivateSuccess:
       description: Virtual Terminal Deactivate response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VirtualTerminalDeactivateResponse'
+            $ref: "#/components/schemas/VirtualTerminalDeactivateResponse"
     VirtualTerminalDestinationAssignSuccess:
       description: Virtual Terminal Deactivate response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VirtualTerminalDestinationAssignResponse'
+            $ref: "#/components/schemas/VirtualTerminalDestinationAssignResponse"
     VirtualTerminalDestinationUnassignSuccess:
       description: Virtual Terminal unassign response
       content:
         application/json:
-          schema: 
-            $ref: '#/components/schemas/VirtualTerminalDestinationUnassignResponse'
+          schema:
+            $ref: "#/components/schemas/VirtualTerminalDestinationUnassignResponse"
     VirtualTerminalAddSplitCodeSuccess:
       description: Virtual Terminal Split Assign response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VirtualTerminalAddSplitCodeResponse' 
+            $ref: "#/components/schemas/VirtualTerminalAddSplitCodeResponse"
     VirtualTerminalDeleteSplitCodeSuccess:
       description: Virtual Terminal Split Remove response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VirtualTerminalDeleteSplitCodeResponse'
+            $ref: "#/components/schemas/VirtualTerminalDeleteSplitCodeResponse"
     CustomerListSuccess:
       description: Customer List response
       content:
@@ -24513,31 +24462,31 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CustomerInitializeDirectDebitResponse'
+            $ref: "#/components/schemas/CustomerInitializeDirectDebitResponse"
     CustomerDirectDebitActivationChargeSuccess:
       description: Customer Direct Debit Activation Charge response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CustomerDirectDebitActivationChargeResponse'
+            $ref: "#/components/schemas/CustomerDirectDebitActivationChargeResponse"
     CustomerFetchMandateAuthorizationsSuccess:
       description: Customer Fetch Mandate Authorizations response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CustomerFetchMandateAuthorizationsResponse'
+            $ref: "#/components/schemas/CustomerFetchMandateAuthorizationsResponse"
     CustomerAuthorizationVerifySuccess:
       description: Customer Authorization Verify response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CustomerAuthorizationVerifyResponse'
+            $ref: "#/components/schemas/CustomerAuthorizationVerifyResponse"
     CustomerAuthorizationInitializeSuccess:
       description: Customer Authorization Initialize response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CustomerAuthorizationInitializeResponse'
+            $ref: "#/components/schemas/CustomerAuthorizationInitializeResponse"
     DirectDebitActivationChargeSuccess:
       description: Direct Debit Activation Charge response
       content:

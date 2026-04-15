@@ -2,21 +2,21 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Name** | **string** |  | 
-**Integration** | **int32** |  | 
-**Domain** | **string** |  | 
-**Slug** | **string** |  | 
-**Currency** | **string** |  | 
-**Type** | **string** |  | 
-**CollectPhone** | **bool** |  | 
-**Active** | **bool** |  | 
-**Published** | **bool** |  | 
-**Migrate** | **bool** |  | 
-**Id** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name             | Type       | Description | Notes |
+| ---------------- | ---------- | ----------- | ----- |
+| **Name**         | **string** |             |
+| **Integration**  | **int32**  |             |
+| **Domain**       | **string** |             |
+| **Slug**         | **string** |             |
+| **Currency**     | **string** |             |
+| **Type**         | **string** |             |
+| **CollectPhone** | **bool**   |             |
+| **Active**       | **bool**   |             |
+| **Published**    | **bool**   |             |
+| **Migrate**      | **bool**   |             |
+| **Id**           | **int32**  |             |
+| **CreatedAt**    | **string** |             |
+| **UpdatedAt**    | **string** |             |
 
 ## Methods
 
@@ -56,7 +56,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetIntegration
 
 `func (o *PageCreateResponseData) GetIntegration() int32`
@@ -75,7 +74,6 @@ and a boolean to check if the value has been set.
 `func (o *PageCreateResponseData) SetIntegration(v int32)`
 
 SetIntegration sets Integration field to given value.
-
 
 ### GetDomain
 
@@ -96,7 +94,6 @@ and a boolean to check if the value has been set.
 
 SetDomain sets Domain field to given value.
 
-
 ### GetSlug
 
 `func (o *PageCreateResponseData) GetSlug() string`
@@ -115,7 +112,6 @@ and a boolean to check if the value has been set.
 `func (o *PageCreateResponseData) SetSlug(v string)`
 
 SetSlug sets Slug field to given value.
-
 
 ### GetCurrency
 
@@ -136,7 +132,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetType
 
 `func (o *PageCreateResponseData) GetType() string`
@@ -155,7 +150,6 @@ and a boolean to check if the value has been set.
 `func (o *PageCreateResponseData) SetType(v string)`
 
 SetType sets Type field to given value.
-
 
 ### GetCollectPhone
 
@@ -176,7 +170,6 @@ and a boolean to check if the value has been set.
 
 SetCollectPhone sets CollectPhone field to given value.
 
-
 ### GetActive
 
 `func (o *PageCreateResponseData) GetActive() bool`
@@ -195,7 +188,6 @@ and a boolean to check if the value has been set.
 `func (o *PageCreateResponseData) SetActive(v bool)`
 
 SetActive sets Active field to given value.
-
 
 ### GetPublished
 
@@ -216,7 +208,6 @@ and a boolean to check if the value has been set.
 
 SetPublished sets Published field to given value.
 
-
 ### GetMigrate
 
 `func (o *PageCreateResponseData) GetMigrate() bool`
@@ -235,7 +226,6 @@ and a boolean to check if the value has been set.
 `func (o *PageCreateResponseData) SetMigrate(v bool)`
 
 SetMigrate sets Migrate field to given value.
-
 
 ### GetId
 
@@ -256,7 +246,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *PageCreateResponseData) GetCreatedAt() string`
@@ -275,7 +264,6 @@ and a boolean to check if the value has been set.
 `func (o *PageCreateResponseData) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -296,8 +284,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

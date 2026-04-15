@@ -13,15 +13,15 @@ post:
         schema:
           $ref: ../components/schemas/TransactionInitialize.yaml
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/TransactionInitializeResponse.yaml
-    '400':
+    "400":
       $ref: ../components/responses/TransactionInitializeBadRequestResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error

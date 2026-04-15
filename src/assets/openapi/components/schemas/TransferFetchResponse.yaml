@@ -16,6 +16,7 @@ properties:
       domain:
         type: string
       failures:
+        type: object
         nullable: true
       id:
         type: integer
@@ -28,16 +29,19 @@ properties:
       source:
         type: string
       source_details:
+        type: object
         nullable: true
       status:
         type: string
       titan_code:
+        type: string
         nullable: true
       transfer_code:
         type: string
       request:
         type: integer
       transferred_at:
+        type: string
         nullable: true
       updatedAt:
         type: string
@@ -52,10 +56,12 @@ properties:
             type: string
           description:
             type: string
+            nullable: true
           domain:
             type: string
           email:
             type: string
+            nullable: true
           id:
             type: integer
           integration:
@@ -72,6 +78,8 @@ properties:
           updatedAt:
             type: string
           is_deleted:
+            type: boolean
+          isDeleted:
             type: boolean
           details:
             type: object
@@ -97,23 +105,22 @@ properties:
           - active
           - createdAt
           - currency
-          - description
           - domain
-          - email
           - id
           - integration
           - name
           - recipient_code
           - type
           - updatedAt
-          - is_deleted
           - details
       session:
         type: object
         properties:
           provider:
+            type: string
             nullable: true
           id:
+            type: string
             nullable: true
         required:
           - provider

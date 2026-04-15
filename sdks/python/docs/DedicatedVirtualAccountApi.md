@@ -2,20 +2,20 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**dedicated_account_add_split**](DedicatedVirtualAccountApi.md#dedicated_account_add_split) | **POST** /dedicated_account/split | Split Dedicated Account Transaction
-[**dedicated_account_assign**](DedicatedVirtualAccountApi.md#dedicated_account_assign) | **POST** /dedicated_account/assign | Assign Dedicated Account
-[**dedicated_account_available_providers**](DedicatedVirtualAccountApi.md#dedicated_account_available_providers) | **GET** /dedicated_account/available_providers | Fetch Bank Providers
-[**dedicated_account_create**](DedicatedVirtualAccountApi.md#dedicated_account_create) | **POST** /dedicated_account | Create Dedicated Account
-[**dedicated_account_deactivate**](DedicatedVirtualAccountApi.md#dedicated_account_deactivate) | **DELETE** /dedicated_account/{id} | Deactivate Dedicated Account
-[**dedicated_account_fetch**](DedicatedVirtualAccountApi.md#dedicated_account_fetch) | **GET** /dedicated_account/{id} | Fetch Dedicated Account
-[**dedicated_account_list**](DedicatedVirtualAccountApi.md#dedicated_account_list) | **GET** /dedicated_account | List Dedicated Accounts
-[**dedicated_account_remove_split**](DedicatedVirtualAccountApi.md#dedicated_account_remove_split) | **DELETE** /dedicated_account/split | Remove Split from Dedicated Account
-[**dedicated_account_requery**](DedicatedVirtualAccountApi.md#dedicated_account_requery) | **GET** /dedicated_account/requery | Requery Dedicated Account
-
+| Method                                                                                                           | HTTP request                                   | Description                         |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ----------------------------------- |
+| [**dedicated_account_add_split**](DedicatedVirtualAccountApi.md#dedicated_account_add_split)                     | **POST** /dedicated_account/split              | Split Dedicated Account Transaction |
+| [**dedicated_account_assign**](DedicatedVirtualAccountApi.md#dedicated_account_assign)                           | **POST** /dedicated_account/assign             | Assign Dedicated Account            |
+| [**dedicated_account_available_providers**](DedicatedVirtualAccountApi.md#dedicated_account_available_providers) | **GET** /dedicated_account/available_providers | Fetch Bank Providers                |
+| [**dedicated_account_create**](DedicatedVirtualAccountApi.md#dedicated_account_create)                           | **POST** /dedicated_account                    | Create Dedicated Account            |
+| [**dedicated_account_deactivate**](DedicatedVirtualAccountApi.md#dedicated_account_deactivate)                   | **DELETE** /dedicated_account/{id}             | Deactivate Dedicated Account        |
+| [**dedicated_account_fetch**](DedicatedVirtualAccountApi.md#dedicated_account_fetch)                             | **GET** /dedicated_account/{id}                | Fetch Dedicated Account             |
+| [**dedicated_account_list**](DedicatedVirtualAccountApi.md#dedicated_account_list)                               | **GET** /dedicated_account                     | List Dedicated Accounts             |
+| [**dedicated_account_remove_split**](DedicatedVirtualAccountApi.md#dedicated_account_remove_split)               | **DELETE** /dedicated_account/split            | Remove Split from Dedicated Account |
+| [**dedicated_account_requery**](DedicatedVirtualAccountApi.md#dedicated_account_requery)                         | **GET** /dedicated_account/requery             | Requery Dedicated Account           |
 
 # **dedicated_account_add_split**
+
 > Response dedicated_account_add_split(dedicated_virtual_account_split=dedicated_virtual_account_split)
 
 Split Dedicated Account Transaction
@@ -24,7 +24,8 @@ Split a dedicated virtual account transaction with one or more accounts
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -65,13 +66,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling DedicatedVirtualAccountApi->dedicated_account_add_split: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **dedicated_virtual_account_split** | [**DedicatedVirtualAccountSplit**](DedicatedVirtualAccountSplit.md)|  | [optional] 
+| Name                                | Type                                                                | Description | Notes      |
+| ----------------------------------- | ------------------------------------------------------------------- | ----------- | ---------- |
+| **dedicated_virtual_account_split** | [**DedicatedVirtualAccountSplit**](DedicatedVirtualAccountSplit.md) |             | [optional] |
 
 ### Return type
 
@@ -83,19 +82,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dedicated_account_assign**
+
 > Response dedicated_account_assign(dedicated_virtual_account_assign=dedicated_virtual_account_assign)
 
 Assign Dedicated Account
@@ -104,7 +105,8 @@ With this endpoint, you can create a customer, validate the customer, and assign
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -145,13 +147,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling DedicatedVirtualAccountApi->dedicated_account_assign: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **dedicated_virtual_account_assign** | [**DedicatedVirtualAccountAssign**](DedicatedVirtualAccountAssign.md)|  | [optional] 
+| Name                                 | Type                                                                  | Description | Notes      |
+| ------------------------------------ | --------------------------------------------------------------------- | ----------- | ---------- |
+| **dedicated_virtual_account_assign** | [**DedicatedVirtualAccountAssign**](DedicatedVirtualAccountAssign.md) |             | [optional] |
 
 ### Return type
 
@@ -163,19 +163,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dedicated_account_available_providers**
+
 > Response dedicated_account_available_providers()
 
 Fetch Bank Providers
@@ -184,7 +186,8 @@ Get available bank providers for a dedicated virtual account
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -223,9 +226,8 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling DedicatedVirtualAccountApi->dedicated_account_available_providers: %s\n" % e)
 ```
 
-
-
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -238,20 +240,22 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dedicated_account_create**
+
 > DedicatedNubanCreateResponse dedicated_account_create(dedicated_virtual_account_create=dedicated_virtual_account_create)
 
 Create Dedicated Account
@@ -260,7 +264,8 @@ Create a dedicated virtual account for an existing customer
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -301,13 +306,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling DedicatedVirtualAccountApi->dedicated_account_create: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **dedicated_virtual_account_create** | [**DedicatedVirtualAccountCreate**](DedicatedVirtualAccountCreate.md)|  | [optional] 
+| Name                                 | Type                                                                  | Description | Notes      |
+| ------------------------------------ | --------------------------------------------------------------------- | ----------- | ---------- |
+| **dedicated_virtual_account_create** | [**DedicatedVirtualAccountCreate**](DedicatedVirtualAccountCreate.md) |             | [optional] |
 
 ### Return type
 
@@ -319,19 +322,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dedicated_account_deactivate**
+
 > DedicatedNubanDeactivateResponse dedicated_account_deactivate(id)
 
 Deactivate Dedicated Account
@@ -340,7 +345,8 @@ Deactivate a dedicated virtual account on your integration.
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -380,13 +386,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling DedicatedVirtualAccountApi->dedicated_account_deactivate: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**| ID of dedicated virtual account | 
+| Name   | Type    | Description                     | Notes |
+| ------ | ------- | ------------------------------- | ----- |
+| **id** | **str** | ID of dedicated virtual account |
 
 ### Return type
 
@@ -398,20 +402,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dedicated_account_fetch**
+
 > DedicatedNubanFetchResponse dedicated_account_fetch(id)
 
 Fetch Dedicated Account
@@ -420,7 +426,8 @@ Get details of a dedicated virtual account on your integration.
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -460,13 +467,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling DedicatedVirtualAccountApi->dedicated_account_fetch: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**| ID of dedicated virtual account | 
+| Name   | Type    | Description                     | Notes |
+| ------ | ------- | ------------------------------- | ----- |
+| **id** | **str** | ID of dedicated virtual account |
 
 ### Return type
 
@@ -478,20 +483,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dedicated_account_list**
+
 > DedicatedNubanListResponse dedicated_account_list(active=active, customer=customer, currency=currency, provider_slug=provider_slug, bank_id=bank_id, per_page=per_page, page=page)
 
 List Dedicated Accounts
@@ -500,7 +507,8 @@ List dedicated virtual accounts available on your integration.
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -546,19 +554,17 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling DedicatedVirtualAccountApi->dedicated_account_list: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **active** | **bool**| Status of the dedicated virtual account | [optional] 
- **customer** | **int**| The customer&#39;s ID | [optional] 
- **currency** | **str**| The currency of the dedicated virtual account | [optional] 
- **provider_slug** | **str**| The bank&#39;s slug in lowercase, without spaces | [optional] 
- **bank_id** | **str**| The bank&#39;s ID | [optional] 
- **per_page** | **int**| The number of records to fetch per request | [optional] [default to 50]
- **page** | **int**| The offset to retrieve data from | [optional] [default to 1]
+| Name              | Type     | Description                                      | Notes                      |
+| ----------------- | -------- | ------------------------------------------------ | -------------------------- |
+| **active**        | **bool** | Status of the dedicated virtual account          | [optional]                 |
+| **customer**      | **int**  | The customer&#39;s ID                            | [optional]                 |
+| **currency**      | **str**  | The currency of the dedicated virtual account    | [optional]                 |
+| **provider_slug** | **str**  | The bank&#39;s slug in lowercase, without spaces | [optional]                 |
+| **bank_id**       | **str**  | The bank&#39;s ID                                | [optional]                 |
+| **per_page**      | **int**  | The number of records to fetch per request       | [optional] [default to 50] |
+| **page**          | **int**  | The offset to retrieve data from                 | [optional] [default to 1]  |
 
 ### Return type
 
@@ -570,20 +576,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dedicated_account_remove_split**
+
 > Response dedicated_account_remove_split(dedicated_virtual_account_remove_split=dedicated_virtual_account_remove_split)
 
 Remove Split from Dedicated Account
@@ -592,7 +600,8 @@ If you've previously set up split payment for transactions on a dedicated virtua
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -633,13 +642,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling DedicatedVirtualAccountApi->dedicated_account_remove_split: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **dedicated_virtual_account_remove_split** | [**DedicatedVirtualAccountRemoveSplit**](DedicatedVirtualAccountRemoveSplit.md)|  | [optional] 
+| Name                                       | Type                                                                            | Description | Notes      |
+| ------------------------------------------ | ------------------------------------------------------------------------------- | ----------- | ---------- |
+| **dedicated_virtual_account_remove_split** | [**DedicatedVirtualAccountRemoveSplit**](DedicatedVirtualAccountRemoveSplit.md) |             | [optional] |
 
 ### Return type
 
@@ -651,20 +658,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dedicated_account_requery**
+
 > Response dedicated_account_requery(account_number=account_number, provider_slug=provider_slug, var_date=var_date)
 
 Requery Dedicated Account
@@ -673,7 +682,8 @@ Requery Dedicated Virtual Account for new transactions
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -715,15 +725,13 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling DedicatedVirtualAccountApi->dedicated_account_requery: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **account_number** | **str**| Virtual account number to requery | [optional] 
- **provider_slug** | **str**| The bank&#39;s slug in lowercase, without spaces. | [optional] 
- **var_date** | **datetime**| The day the transfer was made | [optional] 
+| Name               | Type         | Description                                       | Notes      |
+| ------------------ | ------------ | ------------------------------------------------- | ---------- |
+| **account_number** | **str**      | Virtual account number to requery                 | [optional] |
+| **provider_slug**  | **str**      | The bank&#39;s slug in lowercase, without spaces. | [optional] |
+| **var_date**       | **datetime** | The day the transfer was made                     | [optional] |
 
 ### Return type
 
@@ -735,16 +743,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

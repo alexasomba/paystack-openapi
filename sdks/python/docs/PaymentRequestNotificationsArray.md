@@ -1,11 +1,11 @@
 # PaymentRequestNotificationsArray
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**sent_at** | **str** |  | 
-**channel** | **str** |  | 
+
+| Name        | Type    | Description | Notes |
+| ----------- | ------- | ----------- | ----- |
+| **sent_at** | **str** |             |
+| **channel** | **str** |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ payment_request_notifications_array_dict = payment_request_notifications_array_i
 # create an instance of PaymentRequestNotificationsArray from a dict
 payment_request_notifications_array_form_dict = payment_request_notifications_array.from_dict(payment_request_notifications_array_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

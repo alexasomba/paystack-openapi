@@ -2,17 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**FirstName** | **string** | Customer&#39;s first name | 
-**MiddleName** | Pointer to **string** | Customer&#39;s middle name | [optional] 
-**LastName** | **string** | Customer&#39;s last name | 
-**Type** | **string** | Predefined types of identification. | [default to "bank_account"]
-**Value** | Pointer to **string** | Customer&#39;s identification number. | [optional] 
-**Country** | **string** | Two-letter country code of identification issuer | 
-**Bvn** | **string** | Customer&#39;s Bank Verification Number | 
-**BankCode** | **string** | You can get the list of bank codes by calling the List Banks endpoint (https://api.paystack.co/bank). | 
-**AccountNumber** | **string** | Customer&#39;s bank account number. | 
+| Name              | Type                  | Description                                                                                           | Notes                       |
+| ----------------- | --------------------- | ----------------------------------------------------------------------------------------------------- | --------------------------- |
+| **FirstName**     | **string**            | Customer&#39;s first name                                                                             |
+| **MiddleName**    | Pointer to **string** | Customer&#39;s middle name                                                                            | [optional]                  |
+| **LastName**      | **string**            | Customer&#39;s last name                                                                              |
+| **Type**          | **string**            | Predefined types of identification.                                                                   | [default to "bank_account"] |
+| **Value**         | Pointer to **string** | Customer&#39;s identification number.                                                                 | [optional]                  |
+| **Country**       | **string**            | Two-letter country code of identification issuer                                                      |
+| **Bvn**           | **string**            | Customer&#39;s Bank Verification Number                                                               |
+| **BankCode**      | **string**            | You can get the list of bank codes by calling the List Banks endpoint (https://api.paystack.co/bank). |
+| **AccountNumber** | **string**            | Customer&#39;s bank account number.                                                                   |
 
 ## Methods
 
@@ -51,7 +51,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerValidate) SetFirstName(v string)`
 
 SetFirstName sets FirstName field to given value.
-
 
 ### GetMiddleName
 
@@ -97,7 +96,6 @@ and a boolean to check if the value has been set.
 
 SetLastName sets LastName field to given value.
 
-
 ### GetType
 
 `func (o *CustomerValidate) GetType() string`
@@ -116,7 +114,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerValidate) SetType(v string)`
 
 SetType sets Type field to given value.
-
 
 ### GetValue
 
@@ -162,7 +159,6 @@ and a boolean to check if the value has been set.
 
 SetCountry sets Country field to given value.
 
-
 ### GetBvn
 
 `func (o *CustomerValidate) GetBvn() string`
@@ -181,7 +177,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerValidate) SetBvn(v string)`
 
 SetBvn sets Bvn field to given value.
-
 
 ### GetBankCode
 
@@ -202,7 +197,6 @@ and a boolean to check if the value has been set.
 
 SetBankCode sets BankCode field to given value.
 
-
 ### GetAccountNumber
 
 `func (o *CustomerValidate) GetAccountNumber() string`
@@ -222,8 +216,4 @@ and a boolean to check if the value has been set.
 
 SetAccountNumber sets AccountNumber field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -8,31 +8,7 @@ properties:
     type: array
     items:
       $ref: ./RefundListResponseArray.yaml
-  meta:
-    type: object
-    properties:
-      total:
-        type: integer
-      skipped:
-        type: integer
-      perPage:
-        type: string
-      page:
-        type: integer
-      pageCount:
-        type: integer
-      failedRefundCount:
-        type: integer
-    required:
-      - total
-      - skipped
-      - perPage
-      - page
-      - pageCount
-      - failedRefundCount
-    additionalProperties: false
 required:
   - status
   - message
   - data
-  - meta

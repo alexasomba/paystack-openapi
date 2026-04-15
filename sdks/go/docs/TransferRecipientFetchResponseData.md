@@ -2,25 +2,25 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Integration** | **int32** |  | 
-**Domain** | **string** |  | 
-**Type** | **string** |  | 
-**Currency** | **string** |  | 
-**Name** | **string** |  | 
-**Details** | [**TransferRecipientFetchResponseDataDetails**](TransferRecipientFetchResponseDataDetails.md) |  | 
-**Description** | **string** |  | 
-**Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
-**RecipientCode** | **string** |  | 
-**Active** | **bool** |  | 
-**RecipientAccount** | **string** |  | 
-**InstitutionCode** | **string** |  | 
-**Email** | **string** |  | 
-**Id** | **int32** |  | 
-**IsDeleted** | **bool** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name                 | Type                                                                                          | Description | Notes      |
+| -------------------- | --------------------------------------------------------------------------------------------- | ----------- | ---------- |
+| **Integration**      | **int32**                                                                                     |             |
+| **Domain**           | **string**                                                                                    |             |
+| **Type**             | **string**                                                                                    |             |
+| **Currency**         | **string**                                                                                    |             |
+| **Name**             | **string**                                                                                    |             |
+| **Details**          | [**TransferRecipientFetchResponseDataDetails**](TransferRecipientFetchResponseDataDetails.md) |             |
+| **Description**      | **string**                                                                                    |             |
+| **Metadata**         | Pointer to **map[string]interface{}**                                                         |             | [optional] |
+| **RecipientCode**    | **string**                                                                                    |             |
+| **Active**           | **bool**                                                                                      |             |
+| **RecipientAccount** | **string**                                                                                    |             |
+| **InstitutionCode**  | **string**                                                                                    |             |
+| **Email**            | **string**                                                                                    |             |
+| **Id**               | **int32**                                                                                     |             |
+| **IsDeleted**        | **bool**                                                                                      |             |
+| **CreatedAt**        | **string**                                                                                    |             |
+| **UpdatedAt**        | **string**                                                                                    |             |
 
 ## Methods
 
@@ -60,7 +60,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetDomain
 
 `func (o *TransferRecipientFetchResponseData) GetDomain() string`
@@ -79,7 +78,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferRecipientFetchResponseData) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetType
 
@@ -100,7 +98,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-
 ### GetCurrency
 
 `func (o *TransferRecipientFetchResponseData) GetCurrency() string`
@@ -119,7 +116,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferRecipientFetchResponseData) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetName
 
@@ -140,7 +136,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetDetails
 
 `func (o *TransferRecipientFetchResponseData) GetDetails() TransferRecipientFetchResponseDataDetails`
@@ -160,7 +155,6 @@ and a boolean to check if the value has been set.
 
 SetDetails sets Details field to given value.
 
-
 ### GetDescription
 
 `func (o *TransferRecipientFetchResponseData) GetDescription() string`
@@ -179,7 +173,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferRecipientFetchResponseData) SetDescription(v string)`
 
 SetDescription sets Description field to given value.
-
 
 ### GetMetadata
 
@@ -210,12 +203,14 @@ HasMetadata returns a boolean if a field has been set.
 
 `func (o *TransferRecipientFetchResponseData) SetMetadataNil(b bool)`
 
- SetMetadataNil sets the value for Metadata to be an explicit nil
+SetMetadataNil sets the value for Metadata to be an explicit nil
 
 ### UnsetMetadata
+
 `func (o *TransferRecipientFetchResponseData) UnsetMetadata()`
 
 UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
+
 ### GetRecipientCode
 
 `func (o *TransferRecipientFetchResponseData) GetRecipientCode() string`
@@ -234,7 +229,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferRecipientFetchResponseData) SetRecipientCode(v string)`
 
 SetRecipientCode sets RecipientCode field to given value.
-
 
 ### GetActive
 
@@ -255,7 +249,6 @@ and a boolean to check if the value has been set.
 
 SetActive sets Active field to given value.
 
-
 ### GetRecipientAccount
 
 `func (o *TransferRecipientFetchResponseData) GetRecipientAccount() string`
@@ -274,7 +267,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferRecipientFetchResponseData) SetRecipientAccount(v string)`
 
 SetRecipientAccount sets RecipientAccount field to given value.
-
 
 ### GetInstitutionCode
 
@@ -295,7 +287,6 @@ and a boolean to check if the value has been set.
 
 SetInstitutionCode sets InstitutionCode field to given value.
 
-
 ### GetEmail
 
 `func (o *TransferRecipientFetchResponseData) GetEmail() string`
@@ -314,7 +305,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferRecipientFetchResponseData) SetEmail(v string)`
 
 SetEmail sets Email field to given value.
-
 
 ### GetId
 
@@ -335,7 +325,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetIsDeleted
 
 `func (o *TransferRecipientFetchResponseData) GetIsDeleted() bool`
@@ -354,7 +343,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferRecipientFetchResponseData) SetIsDeleted(v bool)`
 
 SetIsDeleted sets IsDeleted field to given value.
-
 
 ### GetCreatedAt
 
@@ -375,7 +363,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-
 ### GetUpdatedAt
 
 `func (o *TransferRecipientFetchResponseData) GetUpdatedAt() string`
@@ -395,8 +382,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,19 +2,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**SubaccountCode** | **string** |  | 
-**BusinessName** | **string** |  | 
-**Description** | **string** |  | 
-**PrimaryContactName** | **string** |  | 
-**PrimaryContactEmail** | **string** |  | 
-**PrimaryContactPhone** | **string** |  | 
-**Metadata** | **string** |  | 
-**SettlementBank** | **string** |  | 
-**Currency** | **string** |  | 
-**AccountNumber** | **string** |  | 
+| Name                    | Type       | Description | Notes |
+| ----------------------- | ---------- | ----------- | ----- |
+| **Id**                  | **int32**  |             |
+| **SubaccountCode**      | **string** |             |
+| **BusinessName**        | **string** |             |
+| **Description**         | **string** |             |
+| **PrimaryContactName**  | **string** |             |
+| **PrimaryContactEmail** | **string** |             |
+| **PrimaryContactPhone** | **string** |             |
+| **Metadata**            | **string** |             |
+| **SettlementBank**      | **string** |             |
+| **Currency**            | **string** |             |
+| **AccountNumber**       | **string** |             |
 
 ## Methods
 
@@ -54,7 +54,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetSubaccountCode
 
 `func (o *SplitSubaccountsArraySubaccount) GetSubaccountCode() string`
@@ -73,7 +72,6 @@ and a boolean to check if the value has been set.
 `func (o *SplitSubaccountsArraySubaccount) SetSubaccountCode(v string)`
 
 SetSubaccountCode sets SubaccountCode field to given value.
-
 
 ### GetBusinessName
 
@@ -94,7 +92,6 @@ and a boolean to check if the value has been set.
 
 SetBusinessName sets BusinessName field to given value.
 
-
 ### GetDescription
 
 `func (o *SplitSubaccountsArraySubaccount) GetDescription() string`
@@ -113,7 +110,6 @@ and a boolean to check if the value has been set.
 `func (o *SplitSubaccountsArraySubaccount) SetDescription(v string)`
 
 SetDescription sets Description field to given value.
-
 
 ### GetPrimaryContactName
 
@@ -134,7 +130,6 @@ and a boolean to check if the value has been set.
 
 SetPrimaryContactName sets PrimaryContactName field to given value.
 
-
 ### GetPrimaryContactEmail
 
 `func (o *SplitSubaccountsArraySubaccount) GetPrimaryContactEmail() string`
@@ -153,7 +148,6 @@ and a boolean to check if the value has been set.
 `func (o *SplitSubaccountsArraySubaccount) SetPrimaryContactEmail(v string)`
 
 SetPrimaryContactEmail sets PrimaryContactEmail field to given value.
-
 
 ### GetPrimaryContactPhone
 
@@ -174,7 +168,6 @@ and a boolean to check if the value has been set.
 
 SetPrimaryContactPhone sets PrimaryContactPhone field to given value.
 
-
 ### GetMetadata
 
 `func (o *SplitSubaccountsArraySubaccount) GetMetadata() string`
@@ -193,7 +186,6 @@ and a boolean to check if the value has been set.
 `func (o *SplitSubaccountsArraySubaccount) SetMetadata(v string)`
 
 SetMetadata sets Metadata field to given value.
-
 
 ### GetSettlementBank
 
@@ -214,7 +206,6 @@ and a boolean to check if the value has been set.
 
 SetSettlementBank sets SettlementBank field to given value.
 
-
 ### GetCurrency
 
 `func (o *SplitSubaccountsArraySubaccount) GetCurrency() string`
@@ -233,7 +224,6 @@ and a boolean to check if the value has been set.
 `func (o *SplitSubaccountsArraySubaccount) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetAccountNumber
 
@@ -254,8 +244,4 @@ and a boolean to check if the value has been set.
 
 SetAccountNumber sets AccountNumber field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

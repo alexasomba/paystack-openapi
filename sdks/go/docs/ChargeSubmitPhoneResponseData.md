@@ -2,23 +2,23 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Status** | **string** |  | 
-**Amount** | **int32** |  | 
-**Currency** | **string** |  | 
-**TransactionDate** | **string** |  | 
-**Reference** | **string** |  | 
-**Domain** | **string** |  | 
-**RedirectUrl** | **NullableString** |  | 
-**Metadata** | **map[string]interface{}** |  | 
-**GatewayResponse** | **string** |  | 
-**Message** | **NullableString** |  | 
-**Channel** | **string** |  | 
-**Fees** | **NullableInt32** |  | 
-**Authorization** | [**ChargeSubmitPinResponseDataAuthorization**](ChargeSubmitPinResponseDataAuthorization.md) |  | 
-**Customer** | [**ChargeSubmitPinResponseDataCustomer**](ChargeSubmitPinResponseDataCustomer.md) |  | 
-**DisplayText** | **string** |  | 
+| Name                | Type                                                                                        | Description | Notes |
+| ------------------- | ------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **Status**          | **string**                                                                                  |             |
+| **Amount**          | **int32**                                                                                   |             |
+| **Currency**        | **string**                                                                                  |             |
+| **TransactionDate** | **string**                                                                                  |             |
+| **Reference**       | **string**                                                                                  |             |
+| **Domain**          | **string**                                                                                  |             |
+| **RedirectUrl**     | **NullableString**                                                                          |             |
+| **Metadata**        | **map[string]interface{}**                                                                  |             |
+| **GatewayResponse** | **string**                                                                                  |             |
+| **Message**         | **NullableString**                                                                          |             |
+| **Channel**         | **string**                                                                                  |             |
+| **Fees**            | **NullableInt32**                                                                           |             |
+| **Authorization**   | [**ChargeSubmitPinResponseDataAuthorization**](ChargeSubmitPinResponseDataAuthorization.md) |             |
+| **Customer**        | [**ChargeSubmitPinResponseDataCustomer**](ChargeSubmitPinResponseDataCustomer.md)           |             |
+| **DisplayText**     | **string**                                                                                  |             |
 
 ## Methods
 
@@ -58,7 +58,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-
 ### GetAmount
 
 `func (o *ChargeSubmitPhoneResponseData) GetAmount() int32`
@@ -77,7 +76,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeSubmitPhoneResponseData) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetCurrency
 
@@ -98,7 +96,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetTransactionDate
 
 `func (o *ChargeSubmitPhoneResponseData) GetTransactionDate() string`
@@ -117,7 +114,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeSubmitPhoneResponseData) SetTransactionDate(v string)`
 
 SetTransactionDate sets TransactionDate field to given value.
-
 
 ### GetReference
 
@@ -138,7 +134,6 @@ and a boolean to check if the value has been set.
 
 SetReference sets Reference field to given value.
 
-
 ### GetDomain
 
 `func (o *ChargeSubmitPhoneResponseData) GetDomain() string`
@@ -157,7 +152,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeSubmitPhoneResponseData) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetRedirectUrl
 
@@ -178,17 +172,18 @@ and a boolean to check if the value has been set.
 
 SetRedirectUrl sets RedirectUrl field to given value.
 
-
 ### SetRedirectUrlNil
 
 `func (o *ChargeSubmitPhoneResponseData) SetRedirectUrlNil(b bool)`
 
- SetRedirectUrlNil sets the value for RedirectUrl to be an explicit nil
+SetRedirectUrlNil sets the value for RedirectUrl to be an explicit nil
 
 ### UnsetRedirectUrl
+
 `func (o *ChargeSubmitPhoneResponseData) UnsetRedirectUrl()`
 
 UnsetRedirectUrl ensures that no value is present for RedirectUrl, not even an explicit nil
+
 ### GetMetadata
 
 `func (o *ChargeSubmitPhoneResponseData) GetMetadata() map[string]interface{}`
@@ -207,7 +202,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeSubmitPhoneResponseData) SetMetadata(v map[string]interface{})`
 
 SetMetadata sets Metadata field to given value.
-
 
 ### GetGatewayResponse
 
@@ -228,7 +222,6 @@ and a boolean to check if the value has been set.
 
 SetGatewayResponse sets GatewayResponse field to given value.
 
-
 ### GetMessage
 
 `func (o *ChargeSubmitPhoneResponseData) GetMessage() string`
@@ -248,17 +241,18 @@ and a boolean to check if the value has been set.
 
 SetMessage sets Message field to given value.
 
-
 ### SetMessageNil
 
 `func (o *ChargeSubmitPhoneResponseData) SetMessageNil(b bool)`
 
- SetMessageNil sets the value for Message to be an explicit nil
+SetMessageNil sets the value for Message to be an explicit nil
 
 ### UnsetMessage
+
 `func (o *ChargeSubmitPhoneResponseData) UnsetMessage()`
 
 UnsetMessage ensures that no value is present for Message, not even an explicit nil
+
 ### GetChannel
 
 `func (o *ChargeSubmitPhoneResponseData) GetChannel() string`
@@ -277,7 +271,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeSubmitPhoneResponseData) SetChannel(v string)`
 
 SetChannel sets Channel field to given value.
-
 
 ### GetFees
 
@@ -298,17 +291,18 @@ and a boolean to check if the value has been set.
 
 SetFees sets Fees field to given value.
 
-
 ### SetFeesNil
 
 `func (o *ChargeSubmitPhoneResponseData) SetFeesNil(b bool)`
 
- SetFeesNil sets the value for Fees to be an explicit nil
+SetFeesNil sets the value for Fees to be an explicit nil
 
 ### UnsetFees
+
 `func (o *ChargeSubmitPhoneResponseData) UnsetFees()`
 
 UnsetFees ensures that no value is present for Fees, not even an explicit nil
+
 ### GetAuthorization
 
 `func (o *ChargeSubmitPhoneResponseData) GetAuthorization() ChargeSubmitPinResponseDataAuthorization`
@@ -327,7 +321,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeSubmitPhoneResponseData) SetAuthorization(v ChargeSubmitPinResponseDataAuthorization)`
 
 SetAuthorization sets Authorization field to given value.
-
 
 ### GetCustomer
 
@@ -348,7 +341,6 @@ and a boolean to check if the value has been set.
 
 SetCustomer sets Customer field to given value.
 
-
 ### GetDisplayText
 
 `func (o *ChargeSubmitPhoneResponseData) GetDisplayText() string`
@@ -368,8 +360,4 @@ and a boolean to check if the value has been set.
 
 SetDisplayText sets DisplayText field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

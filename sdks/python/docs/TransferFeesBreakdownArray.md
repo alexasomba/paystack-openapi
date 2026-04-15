@@ -1,12 +1,12 @@
 # TransferFeesBreakdownArray
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**amount** | **str** |  | 
-**formula** | **object** |  | 
-**type** | **str** |  | 
+
+| Name        | Type       | Description | Notes |
+| ----------- | ---------- | ----------- | ----- |
+| **amount**  | **str**    |             |
+| **formula** | **object** |             |
+| **type**    | **str**    |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ transfer_fees_breakdown_array_dict = transfer_fees_breakdown_array_instance.to_d
 # create an instance of TransferFeesBreakdownArray from a dict
 transfer_fees_breakdown_array_form_dict = transfer_fees_breakdown_array.from_dict(transfer_fees_breakdown_array_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

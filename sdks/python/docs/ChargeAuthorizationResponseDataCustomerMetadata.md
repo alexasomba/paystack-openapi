@@ -1,10 +1,10 @@
 # ChargeAuthorizationResponseDataCustomerMetadata
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**calling_code** | **str** |  | [optional] 
+
+| Name             | Type    | Description | Notes      |
+| ---------------- | ------- | ----------- | ---------- |
+| **calling_code** | **str** |             | [optional] |
 
 ## Example
 
@@ -23,6 +23,5 @@ charge_authorization_response_data_customer_metadata_dict = charge_authorization
 # create an instance of ChargeAuthorizationResponseDataCustomerMetadata from a dict
 charge_authorization_response_data_customer_metadata_form_dict = charge_authorization_response_data_customer_metadata.from_dict(charge_authorization_response_data_customer_metadata_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Status** | Pointer to **bool** | An indicator | [optional] 
-**Message** | Pointer to **string** | A short description of the response | [optional] 
+| Name        | Type                  | Description                         | Notes      |
+| ----------- | --------------------- | ----------------------------------- | ---------- |
+| **Status**  | Pointer to **bool**   | An indicator                        | [optional] |
+| **Message** | Pointer to **string** | A short description of the response | [optional] |
 
 ## Methods
 
@@ -76,7 +76,4 @@ SetMessage sets Message field to given value.
 
 HasMessage returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

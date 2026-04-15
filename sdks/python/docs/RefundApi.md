@@ -2,15 +2,15 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**refund_create**](RefundApi.md#refund_create) | **POST** /refund | Create Refund
-[**refund_fetch**](RefundApi.md#refund_fetch) | **GET** /refund/{id} | Fetch Refund
-[**refund_list**](RefundApi.md#refund_list) | **GET** /refund | List Refunds
-[**refund_retry**](RefundApi.md#refund_retry) | **POST** /refund/retry_with_customer_details/{id} | Retry Refund
-
+| Method                                          | HTTP request                                      | Description   |
+| ----------------------------------------------- | ------------------------------------------------- | ------------- |
+| [**refund_create**](RefundApi.md#refund_create) | **POST** /refund                                  | Create Refund |
+| [**refund_fetch**](RefundApi.md#refund_fetch)   | **GET** /refund/{id}                              | Fetch Refund  |
+| [**refund_list**](RefundApi.md#refund_list)     | **GET** /refund                                   | List Refunds  |
+| [**refund_retry**](RefundApi.md#refund_retry)   | **POST** /refund/retry_with_customer_details/{id} | Retry Refund  |
 
 # **refund_create**
+
 > RefundCreateResponse refund_create(refund_create=refund_create)
 
 Create Refund
@@ -19,7 +19,8 @@ Initiate a refund for a previously completed transaction
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -60,13 +61,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling RefundApi->refund_create: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **refund_create** | [**RefundCreate**](RefundCreate.md)|  | [optional] 
+| Name              | Type                                | Description | Notes      |
+| ----------------- | ----------------------------------- | ----------- | ---------- |
+| **refund_create** | [**RefundCreate**](RefundCreate.md) |             | [optional] |
 
 ### Return type
 
@@ -78,19 +77,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Refund Create response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Refund Create response | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **refund_fetch**
+
 > RefundFetchResponse refund_fetch(id)
 
 Fetch Refund
@@ -99,7 +100,8 @@ Get a previously created refund
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -139,13 +141,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling RefundApi->refund_fetch: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The identifier of the refund | 
+| Name   | Type    | Description                  | Notes |
+| ------ | ------- | ---------------------------- | ----- |
+| **id** | **int** | The identifier of the refund |
 
 ### Return type
 
@@ -157,20 +157,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Refund Fetch response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Refund Fetch response  | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **refund_list**
+
 > RefundListResponse refund_list(per_page=per_page, page=page, var_from=var_from, to=to)
 
 List Refunds
@@ -179,7 +181,8 @@ List previously created refunds
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -222,16 +225,14 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling RefundApi->refund_list: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **per_page** | **int**| Number of records to fetch per page | [optional] [default to 50]
- **page** | **int**| The section to retrieve | [optional] 
- **var_from** | **datetime**| The start date | [optional] 
- **to** | **datetime**| The end date | [optional] 
+| Name         | Type         | Description                         | Notes                      |
+| ------------ | ------------ | ----------------------------------- | -------------------------- |
+| **per_page** | **int**      | Number of records to fetch per page | [optional] [default to 50] |
+| **page**     | **int**      | The section to retrieve             | [optional]                 |
+| **var_from** | **datetime** | The start date                      | [optional]                 |
+| **to**       | **datetime** | The end date                        | [optional]                 |
 
 ### Return type
 
@@ -243,20 +244,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Refund List response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Refund List response   | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **refund_retry**
+
 > RefundRetryResponse refund_retry(id, refund_retry=refund_retry)
 
 Retry Refund
@@ -265,7 +268,8 @@ Retry a refund with a `needs-attention` status by providing the bank account det
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -307,14 +311,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling RefundApi->refund_retry: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The identifier of the refund | 
- **refund_retry** | [**RefundRetry**](RefundRetry.md)|  | [optional] 
+| Name             | Type                              | Description                  | Notes      |
+| ---------------- | --------------------------------- | ---------------------------- | ---------- |
+| **id**           | **int**                           | The identifier of the refund |
+| **refund_retry** | [**RefundRetry**](RefundRetry.md) |                              | [optional] |
 
 ### Return type
 
@@ -326,15 +328,15 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Refund Create response |  -  |
-**422** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Refund Create response | -                |
+| **422**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

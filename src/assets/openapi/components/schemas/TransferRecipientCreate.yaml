@@ -8,7 +8,7 @@ properties:
   type:
     description: Recipient Type
     type: string
-    enum: 
+    enum:
       - nuban
       - ghipss
       - mobile_money
@@ -37,8 +37,8 @@ properties:
   metadata:
     description: JSON object of custom data
     type: object
-example: 
+example:
   type: nuban
   name: Smith Taplo
-  account_number: '01000000010'
-  bank_code: '058'
+  account_number: "01000000010"
+  bank_code: "058"

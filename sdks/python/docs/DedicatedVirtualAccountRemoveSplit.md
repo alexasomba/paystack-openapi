@@ -1,10 +1,10 @@
 # DedicatedVirtualAccountRemoveSplit
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**account_number** | **str** | Valid Dedicated virtual account | 
+
+| Name               | Type    | Description                     | Notes |
+| ------------------ | ------- | ------------------------------- | ----- |
+| **account_number** | **str** | Valid Dedicated virtual account |
 
 ## Example
 
@@ -23,6 +23,5 @@ dedicated_virtual_account_remove_split_dict = dedicated_virtual_account_remove_s
 # create an instance of DedicatedVirtualAccountRemoveSplit from a dict
 dedicated_virtual_account_remove_split_form_dict = dedicated_virtual_account_remove_split.from_dict(dedicated_virtual_account_remove_split_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

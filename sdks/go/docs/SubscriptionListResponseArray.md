@@ -2,29 +2,29 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**Domain** | **string** |  | 
-**Status** | **string** |  | 
-**Start** | **int32** |  | 
-**Quantity** | **int32** |  | 
-**SubscriptionCode** | **string** |  | 
-**EmailToken** | **string** |  | 
-**Amount** | **int32** |  | 
-**CronExpression** | **NullableString** |  | 
-**NextPaymentDate** | **NullableString** |  | 
-**OpenInvoice** | **interface{}** |  | 
-**CreatedAt** | **string** |  | 
-**Integration** | **int32** |  | 
-**Plan** | [**SubscriptionListResponseArrayPlan**](SubscriptionListResponseArrayPlan.md) |  | 
-**Authorization** | [**SubscriptionListResponseArrayAuthorization**](SubscriptionListResponseArrayAuthorization.md) |  | 
-**Customer** | [**SubscriptionListResponseArrayCustomer**](SubscriptionListResponseArrayCustomer.md) |  | 
-**InvoiceLimit** | **int32** |  | 
-**SplitCode** | **interface{}** |  | 
-**PaymentsCount** | **int32** |  | 
-**MostRecentInvoice** | **interface{}** |  | 
-**Metadata** | **map[string]interface{}** |  | 
+| Name                  | Type                                                                                            | Description | Notes |
+| --------------------- | ----------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **Id**                | **int32**                                                                                       |             |
+| **Domain**            | **string**                                                                                      |             |
+| **Status**            | **string**                                                                                      |             |
+| **Start**             | **int32**                                                                                       |             |
+| **Quantity**          | **int32**                                                                                       |             |
+| **SubscriptionCode**  | **string**                                                                                      |             |
+| **EmailToken**        | **string**                                                                                      |             |
+| **Amount**            | **int32**                                                                                       |             |
+| **CronExpression**    | **NullableString**                                                                              |             |
+| **NextPaymentDate**   | **NullableString**                                                                              |             |
+| **OpenInvoice**       | **interface{}**                                                                                 |             |
+| **CreatedAt**         | **string**                                                                                      |             |
+| **Integration**       | **int32**                                                                                       |             |
+| **Plan**              | [**SubscriptionListResponseArrayPlan**](SubscriptionListResponseArrayPlan.md)                   |             |
+| **Authorization**     | [**SubscriptionListResponseArrayAuthorization**](SubscriptionListResponseArrayAuthorization.md) |             |
+| **Customer**          | [**SubscriptionListResponseArrayCustomer**](SubscriptionListResponseArrayCustomer.md)           |             |
+| **InvoiceLimit**      | **int32**                                                                                       |             |
+| **SplitCode**         | **interface{}**                                                                                 |             |
+| **PaymentsCount**     | **int32**                                                                                       |             |
+| **MostRecentInvoice** | **interface{}**                                                                                 |             |
+| **Metadata**          | **map[string]interface{}**                                                                      |             |
 
 ## Methods
 
@@ -64,7 +64,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetDomain
 
 `func (o *SubscriptionListResponseArray) GetDomain() string`
@@ -83,7 +82,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArray) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetStatus
 
@@ -104,7 +102,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-
 ### GetStart
 
 `func (o *SubscriptionListResponseArray) GetStart() int32`
@@ -123,7 +120,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArray) SetStart(v int32)`
 
 SetStart sets Start field to given value.
-
 
 ### GetQuantity
 
@@ -144,7 +140,6 @@ and a boolean to check if the value has been set.
 
 SetQuantity sets Quantity field to given value.
 
-
 ### GetSubscriptionCode
 
 `func (o *SubscriptionListResponseArray) GetSubscriptionCode() string`
@@ -163,7 +158,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArray) SetSubscriptionCode(v string)`
 
 SetSubscriptionCode sets SubscriptionCode field to given value.
-
 
 ### GetEmailToken
 
@@ -184,7 +178,6 @@ and a boolean to check if the value has been set.
 
 SetEmailToken sets EmailToken field to given value.
 
-
 ### GetAmount
 
 `func (o *SubscriptionListResponseArray) GetAmount() int32`
@@ -203,7 +196,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArray) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetCronExpression
 
@@ -224,17 +216,18 @@ and a boolean to check if the value has been set.
 
 SetCronExpression sets CronExpression field to given value.
 
-
 ### SetCronExpressionNil
 
 `func (o *SubscriptionListResponseArray) SetCronExpressionNil(b bool)`
 
- SetCronExpressionNil sets the value for CronExpression to be an explicit nil
+SetCronExpressionNil sets the value for CronExpression to be an explicit nil
 
 ### UnsetCronExpression
+
 `func (o *SubscriptionListResponseArray) UnsetCronExpression()`
 
 UnsetCronExpression ensures that no value is present for CronExpression, not even an explicit nil
+
 ### GetNextPaymentDate
 
 `func (o *SubscriptionListResponseArray) GetNextPaymentDate() string`
@@ -254,17 +247,18 @@ and a boolean to check if the value has been set.
 
 SetNextPaymentDate sets NextPaymentDate field to given value.
 
-
 ### SetNextPaymentDateNil
 
 `func (o *SubscriptionListResponseArray) SetNextPaymentDateNil(b bool)`
 
- SetNextPaymentDateNil sets the value for NextPaymentDate to be an explicit nil
+SetNextPaymentDateNil sets the value for NextPaymentDate to be an explicit nil
 
 ### UnsetNextPaymentDate
+
 `func (o *SubscriptionListResponseArray) UnsetNextPaymentDate()`
 
 UnsetNextPaymentDate ensures that no value is present for NextPaymentDate, not even an explicit nil
+
 ### GetOpenInvoice
 
 `func (o *SubscriptionListResponseArray) GetOpenInvoice() interface{}`
@@ -284,17 +278,18 @@ and a boolean to check if the value has been set.
 
 SetOpenInvoice sets OpenInvoice field to given value.
 
-
 ### SetOpenInvoiceNil
 
 `func (o *SubscriptionListResponseArray) SetOpenInvoiceNil(b bool)`
 
- SetOpenInvoiceNil sets the value for OpenInvoice to be an explicit nil
+SetOpenInvoiceNil sets the value for OpenInvoice to be an explicit nil
 
 ### UnsetOpenInvoice
+
 `func (o *SubscriptionListResponseArray) UnsetOpenInvoice()`
 
 UnsetOpenInvoice ensures that no value is present for OpenInvoice, not even an explicit nil
+
 ### GetCreatedAt
 
 `func (o *SubscriptionListResponseArray) GetCreatedAt() string`
@@ -313,7 +308,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArray) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetIntegration
 
@@ -334,7 +328,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetPlan
 
 `func (o *SubscriptionListResponseArray) GetPlan() SubscriptionListResponseArrayPlan`
@@ -353,7 +346,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArray) SetPlan(v SubscriptionListResponseArrayPlan)`
 
 SetPlan sets Plan field to given value.
-
 
 ### GetAuthorization
 
@@ -374,7 +366,6 @@ and a boolean to check if the value has been set.
 
 SetAuthorization sets Authorization field to given value.
 
-
 ### GetCustomer
 
 `func (o *SubscriptionListResponseArray) GetCustomer() SubscriptionListResponseArrayCustomer`
@@ -393,7 +384,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArray) SetCustomer(v SubscriptionListResponseArrayCustomer)`
 
 SetCustomer sets Customer field to given value.
-
 
 ### GetInvoiceLimit
 
@@ -414,7 +404,6 @@ and a boolean to check if the value has been set.
 
 SetInvoiceLimit sets InvoiceLimit field to given value.
 
-
 ### GetSplitCode
 
 `func (o *SubscriptionListResponseArray) GetSplitCode() interface{}`
@@ -434,17 +423,18 @@ and a boolean to check if the value has been set.
 
 SetSplitCode sets SplitCode field to given value.
 
-
 ### SetSplitCodeNil
 
 `func (o *SubscriptionListResponseArray) SetSplitCodeNil(b bool)`
 
- SetSplitCodeNil sets the value for SplitCode to be an explicit nil
+SetSplitCodeNil sets the value for SplitCode to be an explicit nil
 
 ### UnsetSplitCode
+
 `func (o *SubscriptionListResponseArray) UnsetSplitCode()`
 
 UnsetSplitCode ensures that no value is present for SplitCode, not even an explicit nil
+
 ### GetPaymentsCount
 
 `func (o *SubscriptionListResponseArray) GetPaymentsCount() int32`
@@ -463,7 +453,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArray) SetPaymentsCount(v int32)`
 
 SetPaymentsCount sets PaymentsCount field to given value.
-
 
 ### GetMostRecentInvoice
 
@@ -484,17 +473,18 @@ and a boolean to check if the value has been set.
 
 SetMostRecentInvoice sets MostRecentInvoice field to given value.
 
-
 ### SetMostRecentInvoiceNil
 
 `func (o *SubscriptionListResponseArray) SetMostRecentInvoiceNil(b bool)`
 
- SetMostRecentInvoiceNil sets the value for MostRecentInvoice to be an explicit nil
+SetMostRecentInvoiceNil sets the value for MostRecentInvoice to be an explicit nil
 
 ### UnsetMostRecentInvoice
+
 `func (o *SubscriptionListResponseArray) UnsetMostRecentInvoice()`
 
 UnsetMostRecentInvoice ensures that no value is present for MostRecentInvoice, not even an explicit nil
+
 ### GetMetadata
 
 `func (o *SubscriptionListResponseArray) GetMetadata() map[string]interface{}`
@@ -514,18 +504,16 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
-
 ### SetMetadataNil
 
 `func (o *SubscriptionListResponseArray) SetMetadataNil(b bool)`
 
- SetMetadataNil sets the value for Metadata to be an explicit nil
+SetMetadataNil sets the value for Metadata to be an explicit nil
 
 ### UnsetMetadata
+
 `func (o *SubscriptionListResponseArray) UnsetMetadata()`
 
 UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

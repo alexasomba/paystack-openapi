@@ -1,12 +1,12 @@
 # VirtualTerminalCreateResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**VirtualTerminalCreateResponseData**](VirtualTerminalCreateResponseData.md) |  | 
+
+| Name        | Type                                                                          | Description | Notes |
+| ----------- | ----------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                      |             |
+| **message** | **str**                                                                       |             |
+| **data**    | [**VirtualTerminalCreateResponseData**](VirtualTerminalCreateResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ virtual_terminal_create_response_dict = virtual_terminal_create_response_instanc
 # create an instance of VirtualTerminalCreateResponse from a dict
 virtual_terminal_create_response_form_dict = virtual_terminal_create_response.from_dict(virtual_terminal_create_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

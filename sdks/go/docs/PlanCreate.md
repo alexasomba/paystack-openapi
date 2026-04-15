@@ -2,16 +2,16 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Name** | **string** | Name of plan | 
-**Amount** | **int32** | Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR | 
-**Interval** | **string** | Payment interval | 
-**Description** | Pointer to **string** | A description for this plan | [optional] 
-**SendInvoices** | Pointer to **bool** | Set to false if you don&#39;t want invoices to be sent to your customers | [optional] 
-**SendSms** | Pointer to **bool** | Set to false if you don&#39;t want text messages to be sent to your customers | [optional] 
-**Currency** | Pointer to **string** | Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD | [optional] 
-**InvoiceLimit** | Pointer to **int32** | Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing. | [optional] 
+| Name             | Type                  | Description                                                                                                                       | Notes      |
+| ---------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **Name**         | **string**            | Name of plan                                                                                                                      |
+| **Amount**       | **int32**             | Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR                           |
+| **Interval**     | **string**            | Payment interval                                                                                                                  |
+| **Description**  | Pointer to **string** | A description for this plan                                                                                                       | [optional] |
+| **SendInvoices** | Pointer to **bool**   | Set to false if you don&#39;t want invoices to be sent to your customers                                                          | [optional] |
+| **SendSms**      | Pointer to **bool**   | Set to false if you don&#39;t want text messages to be sent to your customers                                                     | [optional] |
+| **Currency**     | Pointer to **string** | Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD                                                          | [optional] |
+| **InvoiceLimit** | Pointer to **int32**  | Number of invoices to raise during subscription to this plan. Can be overridden by specifying an invoice_limit while subscribing. | [optional] |
 
 ## Methods
 
@@ -51,7 +51,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetAmount
 
 `func (o *PlanCreate) GetAmount() int32`
@@ -71,7 +70,6 @@ and a boolean to check if the value has been set.
 
 SetAmount sets Amount field to given value.
 
-
 ### GetInterval
 
 `func (o *PlanCreate) GetInterval() string`
@@ -90,7 +88,6 @@ and a boolean to check if the value has been set.
 `func (o *PlanCreate) SetInterval(v string)`
 
 SetInterval sets Interval field to given value.
-
 
 ### GetDescription
 
@@ -217,7 +214,4 @@ SetInvoiceLimit sets InvoiceLimit field to given value.
 
 HasInvoiceLimit returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,13 +2,13 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Resolution** | **string** | Dispute resolution. Accepted values, merchant-accepted, declined | 
-**Message** | **string** | Reason for resolving | 
-**RefundAmount** | **int32** | The amount to refund, in the subunit of your integration currency | 
-**UploadedFilename** | **string** | Filename of attachment returned via response from the Dispute upload URL | 
-**Evidence** | Pointer to **int32** | Evidence Id for fraud claims | [optional] 
+| Name                 | Type                 | Description                                                              | Notes      |
+| -------------------- | -------------------- | ------------------------------------------------------------------------ | ---------- |
+| **Resolution**       | **string**           | Dispute resolution. Accepted values, merchant-accepted, declined         |
+| **Message**          | **string**           | Reason for resolving                                                     |
+| **RefundAmount**     | **int32**            | The amount to refund, in the subunit of your integration currency        |
+| **UploadedFilename** | **string**           | Filename of attachment returned via response from the Dispute upload URL |
+| **Evidence**         | Pointer to **int32** | Evidence Id for fraud claims                                             | [optional] |
 
 ## Methods
 
@@ -48,7 +48,6 @@ and a boolean to check if the value has been set.
 
 SetResolution sets Resolution field to given value.
 
-
 ### GetMessage
 
 `func (o *DisputeResolve) GetMessage() string`
@@ -67,7 +66,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeResolve) SetMessage(v string)`
 
 SetMessage sets Message field to given value.
-
 
 ### GetRefundAmount
 
@@ -88,7 +86,6 @@ and a boolean to check if the value has been set.
 
 SetRefundAmount sets RefundAmount field to given value.
 
-
 ### GetUploadedFilename
 
 `func (o *DisputeResolve) GetUploadedFilename() string`
@@ -107,7 +104,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeResolve) SetUploadedFilename(v string)`
 
 SetUploadedFilename sets UploadedFilename field to given value.
-
 
 ### GetEvidence
 
@@ -134,7 +130,4 @@ SetEvidence sets Evidence field to given value.
 
 HasEvidence returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

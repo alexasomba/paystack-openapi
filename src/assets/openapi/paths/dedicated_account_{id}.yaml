@@ -12,15 +12,15 @@ get:
   operationId: dedicatedAccount_fetch
   description: Get details of a dedicated virtual account on your integration.
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/DedicatedNubanFetchResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error
@@ -31,15 +31,15 @@ delete:
   operationId: dedicatedAccount_deactivate
   description: Deactivate a dedicated virtual account on your integration.
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/DedicatedNubanDeactivateResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

@@ -2,32 +2,32 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Discounts** | **[]interface{}** |  | 
-**Currency** | **string** |  | 
-**ShippingAddress** | **interface{}** |  | 
-**Integration** | **int32** |  | 
-**Domain** | **string** |  | 
-**Email** | **string** |  | 
-**Customer** | **int32** |  | 
-**Amount** | **int32** |  | 
-**PayForMe** | **bool** |  | 
-**Shipping** | [**NullableOrderCreateResponseDataShipping**](OrderCreateResponseDataShipping.md) |  | 
-**ShippingFees** | **int32** |  | 
-**ShippingMethod** | Pointer to [**OrderCreateResponseDataShippingMethod**](OrderCreateResponseDataShippingMethod.md) |  | [optional] 
-**Metadata** | **map[string]interface{}** |  | 
-**OrderCode** | **string** |  | 
-**Status** | **string** |  | 
-**Refunded** | **bool** |  | 
-**IsViewed** | **bool** |  | 
-**ExpirationDate** | **interface{}** |  | 
-**Id** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
-**Items** | **[]interface{}** |  | 
-**PayForMeCode** | **string** |  | 
-**DiscountAmount** | **int32** |  | 
+| Name                | Type                                                                                             | Description | Notes      |
+| ------------------- | ------------------------------------------------------------------------------------------------ | ----------- | ---------- |
+| **Discounts**       | **[]interface{}**                                                                                |             |
+| **Currency**        | **string**                                                                                       |             |
+| **ShippingAddress** | **interface{}**                                                                                  |             |
+| **Integration**     | **int32**                                                                                        |             |
+| **Domain**          | **string**                                                                                       |             |
+| **Email**           | **string**                                                                                       |             |
+| **Customer**        | **int32**                                                                                        |             |
+| **Amount**          | **int32**                                                                                        |             |
+| **PayForMe**        | **bool**                                                                                         |             |
+| **Shipping**        | [**NullableOrderCreateResponseDataShipping**](OrderCreateResponseDataShipping.md)                |             |
+| **ShippingFees**    | **int32**                                                                                        |             |
+| **ShippingMethod**  | Pointer to [**OrderCreateResponseDataShippingMethod**](OrderCreateResponseDataShippingMethod.md) |             | [optional] |
+| **Metadata**        | **map[string]interface{}**                                                                       |             |
+| **OrderCode**       | **string**                                                                                       |             |
+| **Status**          | **string**                                                                                       |             |
+| **Refunded**        | **bool**                                                                                         |             |
+| **IsViewed**        | **bool**                                                                                         |             |
+| **ExpirationDate**  | **interface{}**                                                                                  |             |
+| **Id**              | **int32**                                                                                        |             |
+| **CreatedAt**       | **string**                                                                                       |             |
+| **UpdatedAt**       | **string**                                                                                       |             |
+| **Items**           | **[]interface{}**                                                                                |             |
+| **PayForMeCode**    | **string**                                                                                       |             |
+| **DiscountAmount**  | **int32**                                                                                        |             |
 
 ## Methods
 
@@ -67,7 +67,6 @@ and a boolean to check if the value has been set.
 
 SetDiscounts sets Discounts field to given value.
 
-
 ### GetCurrency
 
 `func (o *OrderCreateResponseData) GetCurrency() string`
@@ -86,7 +85,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderCreateResponseData) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetShippingAddress
 
@@ -107,17 +105,18 @@ and a boolean to check if the value has been set.
 
 SetShippingAddress sets ShippingAddress field to given value.
 
-
 ### SetShippingAddressNil
 
 `func (o *OrderCreateResponseData) SetShippingAddressNil(b bool)`
 
- SetShippingAddressNil sets the value for ShippingAddress to be an explicit nil
+SetShippingAddressNil sets the value for ShippingAddress to be an explicit nil
 
 ### UnsetShippingAddress
+
 `func (o *OrderCreateResponseData) UnsetShippingAddress()`
 
 UnsetShippingAddress ensures that no value is present for ShippingAddress, not even an explicit nil
+
 ### GetIntegration
 
 `func (o *OrderCreateResponseData) GetIntegration() int32`
@@ -136,7 +135,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderCreateResponseData) SetIntegration(v int32)`
 
 SetIntegration sets Integration field to given value.
-
 
 ### GetDomain
 
@@ -157,7 +155,6 @@ and a boolean to check if the value has been set.
 
 SetDomain sets Domain field to given value.
 
-
 ### GetEmail
 
 `func (o *OrderCreateResponseData) GetEmail() string`
@@ -176,7 +173,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderCreateResponseData) SetEmail(v string)`
 
 SetEmail sets Email field to given value.
-
 
 ### GetCustomer
 
@@ -197,7 +193,6 @@ and a boolean to check if the value has been set.
 
 SetCustomer sets Customer field to given value.
 
-
 ### GetAmount
 
 `func (o *OrderCreateResponseData) GetAmount() int32`
@@ -216,7 +211,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderCreateResponseData) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetPayForMe
 
@@ -237,7 +231,6 @@ and a boolean to check if the value has been set.
 
 SetPayForMe sets PayForMe field to given value.
 
-
 ### GetShipping
 
 `func (o *OrderCreateResponseData) GetShipping() OrderCreateResponseDataShipping`
@@ -257,17 +250,18 @@ and a boolean to check if the value has been set.
 
 SetShipping sets Shipping field to given value.
 
-
 ### SetShippingNil
 
 `func (o *OrderCreateResponseData) SetShippingNil(b bool)`
 
- SetShippingNil sets the value for Shipping to be an explicit nil
+SetShippingNil sets the value for Shipping to be an explicit nil
 
 ### UnsetShipping
+
 `func (o *OrderCreateResponseData) UnsetShipping()`
 
 UnsetShipping ensures that no value is present for Shipping, not even an explicit nil
+
 ### GetShippingFees
 
 `func (o *OrderCreateResponseData) GetShippingFees() int32`
@@ -286,7 +280,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderCreateResponseData) SetShippingFees(v int32)`
 
 SetShippingFees sets ShippingFees field to given value.
-
 
 ### GetShippingMethod
 
@@ -332,7 +325,6 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
-
 ### GetOrderCode
 
 `func (o *OrderCreateResponseData) GetOrderCode() string`
@@ -351,7 +343,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderCreateResponseData) SetOrderCode(v string)`
 
 SetOrderCode sets OrderCode field to given value.
-
 
 ### GetStatus
 
@@ -372,7 +363,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-
 ### GetRefunded
 
 `func (o *OrderCreateResponseData) GetRefunded() bool`
@@ -391,7 +381,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderCreateResponseData) SetRefunded(v bool)`
 
 SetRefunded sets Refunded field to given value.
-
 
 ### GetIsViewed
 
@@ -412,7 +401,6 @@ and a boolean to check if the value has been set.
 
 SetIsViewed sets IsViewed field to given value.
 
-
 ### GetExpirationDate
 
 `func (o *OrderCreateResponseData) GetExpirationDate() interface{}`
@@ -432,17 +420,18 @@ and a boolean to check if the value has been set.
 
 SetExpirationDate sets ExpirationDate field to given value.
 
-
 ### SetExpirationDateNil
 
 `func (o *OrderCreateResponseData) SetExpirationDateNil(b bool)`
 
- SetExpirationDateNil sets the value for ExpirationDate to be an explicit nil
+SetExpirationDateNil sets the value for ExpirationDate to be an explicit nil
 
 ### UnsetExpirationDate
+
 `func (o *OrderCreateResponseData) UnsetExpirationDate()`
 
 UnsetExpirationDate ensures that no value is present for ExpirationDate, not even an explicit nil
+
 ### GetId
 
 `func (o *OrderCreateResponseData) GetId() int32`
@@ -461,7 +450,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderCreateResponseData) SetId(v int32)`
 
 SetId sets Id field to given value.
-
 
 ### GetCreatedAt
 
@@ -482,7 +470,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-
 ### GetUpdatedAt
 
 `func (o *OrderCreateResponseData) GetUpdatedAt() string`
@@ -501,7 +488,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderCreateResponseData) SetUpdatedAt(v string)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
-
 
 ### GetItems
 
@@ -522,7 +508,6 @@ and a boolean to check if the value has been set.
 
 SetItems sets Items field to given value.
 
-
 ### GetPayForMeCode
 
 `func (o *OrderCreateResponseData) GetPayForMeCode() string`
@@ -541,7 +526,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderCreateResponseData) SetPayForMeCode(v string)`
 
 SetPayForMeCode sets PayForMeCode field to given value.
-
 
 ### GetDiscountAmount
 
@@ -562,8 +546,4 @@ and a boolean to check if the value has been set.
 
 SetDiscountAmount sets DiscountAmount field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

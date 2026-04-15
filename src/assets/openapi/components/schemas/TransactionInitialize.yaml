@@ -9,17 +9,20 @@ properties:
     type: string
   amount:
     description: >
-      Amount should be in the smallest unit of the currency (e.g., kobo for NGN, pesewas for GHS, cents for ZAR/USD).
+      Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES).
+      For XOF, the amount is the same as the base units (not multiplied by 100).
 
 
       Minimum amounts:
-       - NGN: ₦50.00
-       - GHS: ₵0.10
-       - ZAR: R1.00
-       - KES: Ksh 3.00
-       - USD: $2.00
-       - XOF: 1.00
-    type: integer
+       - NGN: ₦50.00 (5000 kobo)
+       - GHS: ₵0.10 (10 pesewas)
+       - ZAR: R1.00 (100 cents)
+       - KES: Ksh 3.00 (300 cents)
+       - USD: $2.00 (200 cents)
+       - XOF: 1.00 (1 XOF)
+    oneOf:
+      - type: integer
+      - type: string
   currency:
     $ref: ./Currency.yaml
   reference:
@@ -28,7 +31,7 @@ properties:
       allowed.
     type: string
   channels:
-    description: >-
+    description: >
       An array of payment channels to control what channels you want to make
       available to the user to make a payment with
     type: array
@@ -42,6 +45,9 @@ properties:
         - eft
         - mobile_money
         - bank_transfer
+        - apple_pay
+        - capitec_pay
+        - payattitude
   callback_url:
     description: >
       Fully qualified url, e.g. https://example.com/ to redirect your customers
@@ -70,7 +76,7 @@ properties:
     description: |
       A flat fee to charge the subaccount for a transaction. 
       This overrides the split percentage set when the subaccount was created
-    type: string
+    type: integer
   bearer:
     description: The bearer of the transaction charge
     type: string
@@ -82,7 +88,9 @@ properties:
     type: string
   metadata:
     description: JSON object of custom data
-    type: object
+    anyOf:
+      - type: string
+      - type: object
 example:
   email: test@demo.com
   amount: 10000

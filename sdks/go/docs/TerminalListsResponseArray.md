@@ -2,17 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**SerialNumber** | **NullableString** |  | 
-**DeviceMake** | **NullableString** |  | 
-**TerminalId** | **string** |  | 
-**Integration** | **int32** |  | 
-**Domain** | **string** |  | 
-**Name** | **NullableString** |  | 
-**Address** | **NullableString** |  | 
-**Status** | **string** |  | 
+| Name             | Type               | Description | Notes |
+| ---------------- | ------------------ | ----------- | ----- |
+| **Id**           | **int32**          |             |
+| **SerialNumber** | **NullableString** |             |
+| **DeviceMake**   | **NullableString** |             |
+| **TerminalId**   | **string**         |             |
+| **Integration**  | **int32**          |             |
+| **Domain**       | **string**         |             |
+| **Name**         | **NullableString** |             |
+| **Address**      | **NullableString** |             |
+| **Status**       | **string**         |             |
 
 ## Methods
 
@@ -52,7 +52,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetSerialNumber
 
 `func (o *TerminalListsResponseArray) GetSerialNumber() string`
@@ -72,17 +71,18 @@ and a boolean to check if the value has been set.
 
 SetSerialNumber sets SerialNumber field to given value.
 
-
 ### SetSerialNumberNil
 
 `func (o *TerminalListsResponseArray) SetSerialNumberNil(b bool)`
 
- SetSerialNumberNil sets the value for SerialNumber to be an explicit nil
+SetSerialNumberNil sets the value for SerialNumber to be an explicit nil
 
 ### UnsetSerialNumber
+
 `func (o *TerminalListsResponseArray) UnsetSerialNumber()`
 
 UnsetSerialNumber ensures that no value is present for SerialNumber, not even an explicit nil
+
 ### GetDeviceMake
 
 `func (o *TerminalListsResponseArray) GetDeviceMake() string`
@@ -102,17 +102,18 @@ and a boolean to check if the value has been set.
 
 SetDeviceMake sets DeviceMake field to given value.
 
-
 ### SetDeviceMakeNil
 
 `func (o *TerminalListsResponseArray) SetDeviceMakeNil(b bool)`
 
- SetDeviceMakeNil sets the value for DeviceMake to be an explicit nil
+SetDeviceMakeNil sets the value for DeviceMake to be an explicit nil
 
 ### UnsetDeviceMake
+
 `func (o *TerminalListsResponseArray) UnsetDeviceMake()`
 
 UnsetDeviceMake ensures that no value is present for DeviceMake, not even an explicit nil
+
 ### GetTerminalId
 
 `func (o *TerminalListsResponseArray) GetTerminalId() string`
@@ -131,7 +132,6 @@ and a boolean to check if the value has been set.
 `func (o *TerminalListsResponseArray) SetTerminalId(v string)`
 
 SetTerminalId sets TerminalId field to given value.
-
 
 ### GetIntegration
 
@@ -152,7 +152,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetDomain
 
 `func (o *TerminalListsResponseArray) GetDomain() string`
@@ -171,7 +170,6 @@ and a boolean to check if the value has been set.
 `func (o *TerminalListsResponseArray) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetName
 
@@ -192,17 +190,18 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### SetNameNil
 
 `func (o *TerminalListsResponseArray) SetNameNil(b bool)`
 
- SetNameNil sets the value for Name to be an explicit nil
+SetNameNil sets the value for Name to be an explicit nil
 
 ### UnsetName
+
 `func (o *TerminalListsResponseArray) UnsetName()`
 
 UnsetName ensures that no value is present for Name, not even an explicit nil
+
 ### GetAddress
 
 `func (o *TerminalListsResponseArray) GetAddress() string`
@@ -222,17 +221,18 @@ and a boolean to check if the value has been set.
 
 SetAddress sets Address field to given value.
 
-
 ### SetAddressNil
 
 `func (o *TerminalListsResponseArray) SetAddressNil(b bool)`
 
- SetAddressNil sets the value for Address to be an explicit nil
+SetAddressNil sets the value for Address to be an explicit nil
 
 ### UnsetAddress
+
 `func (o *TerminalListsResponseArray) UnsetAddress()`
 
 UnsetAddress ensures that no value is present for Address, not even an explicit nil
+
 ### GetStatus
 
 `func (o *TerminalListsResponseArray) GetStatus() string`
@@ -252,8 +252,4 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

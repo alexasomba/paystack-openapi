@@ -13,11 +13,11 @@ get:
   description: Fetch all orders for a particular product
   operationId: order_product
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/OrderFetchProductSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

@@ -1,10 +1,10 @@
 # DisputeFetchResponseDataTransactionCustomer
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**international_format_phone** | **object** |  | 
+
+| Name                           | Type       | Description | Notes |
+| ------------------------------ | ---------- | ----------- | ----- |
+| **international_format_phone** | **object** |             |
 
 ## Example
 
@@ -23,6 +23,5 @@ dispute_fetch_response_data_transaction_customer_dict = dispute_fetch_response_d
 # create an instance of DisputeFetchResponseDataTransactionCustomer from a dict
 dispute_fetch_response_data_transaction_customer_form_dict = dispute_fetch_response_data_transaction_customer.from_dict(dispute_fetch_response_data_transaction_customer_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

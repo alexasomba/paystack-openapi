@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Subaccount** | Pointer to **string** | Subaccount code of the customer or partner | [optional] 
-**Share** | Pointer to **int32** | The percentage or flat quota of the customer or partner | [optional] 
+| Name           | Type                  | Description                                             | Notes      |
+| -------------- | --------------------- | ------------------------------------------------------- | ---------- |
+| **Subaccount** | Pointer to **string** | Subaccount code of the customer or partner              | [optional] |
+| **Share**      | Pointer to **int32**  | The percentage or flat quota of the customer or partner | [optional] |
 
 ## Methods
 
@@ -76,7 +76,4 @@ SetShare sets Share field to given value.
 
 HasShare returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

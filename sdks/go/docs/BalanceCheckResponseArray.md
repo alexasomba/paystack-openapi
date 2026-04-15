@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Currency** | **string** |  | 
-**Balance** | **int32** |  | 
+| Name         | Type       | Description | Notes |
+| ------------ | ---------- | ----------- | ----- |
+| **Currency** | **string** |             |
+| **Balance**  | **int32**  |             |
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetBalance
 
 `func (o *BalanceCheckResponseArray) GetBalance() int32`
@@ -65,8 +64,4 @@ and a boolean to check if the value has been set.
 
 SetBalance sets Balance field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

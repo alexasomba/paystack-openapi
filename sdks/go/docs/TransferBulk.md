@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Source** | **string** | The source of funds for the transfer. | [default to "balance"]
-**Currency** | Pointer to **string** | Specify the currency of the transfer. | [optional] [default to "NGN"]
-**Transfers** | [**[]TransferBase**](TransferBase.md) | A list of transfer object | 
+| Name          | Type                                  | Description                           | Notes                         |
+| ------------- | ------------------------------------- | ------------------------------------- | ----------------------------- |
+| **Source**    | **string**                            | The source of funds for the transfer. | [default to "balance"]        |
+| **Currency**  | Pointer to **string**                 | Specify the currency of the transfer. | [optional] [default to "NGN"] |
+| **Transfers** | [**[]TransferBase**](TransferBase.md) | A list of transfer object             |
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferBulk) SetSource(v string)`
 
 SetSource sets Source field to given value.
-
 
 ### GetCurrency
 
@@ -91,8 +90,4 @@ and a boolean to check if the value has been set.
 
 SetTransfers sets Transfers field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

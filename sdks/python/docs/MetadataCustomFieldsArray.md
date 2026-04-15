@@ -1,12 +1,12 @@
 # MetadataCustomFieldsArray
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**value** | **str** |  | 
-**display_name** | **str** |  | 
-**variable_name** | **str** |  | 
+
+| Name              | Type    | Description | Notes |
+| ----------------- | ------- | ----------- | ----- |
+| **value**         | **str** |             |
+| **display_name**  | **str** |             |
+| **variable_name** | **str** |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ metadata_custom_fields_array_dict = metadata_custom_fields_array_instance.to_dic
 # create an instance of MetadataCustomFieldsArray from a dict
 metadata_custom_fields_array_form_dict = metadata_custom_fields_array.from_dict(metadata_custom_fields_array_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

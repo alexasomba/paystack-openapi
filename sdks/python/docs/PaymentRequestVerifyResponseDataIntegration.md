@@ -1,13 +1,13 @@
 # PaymentRequestVerifyResponseDataIntegration
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**key** | **str** |  | 
-**name** | **str** |  | 
-**logo** | **str** |  | 
-**allowed_currencies** | **List[str]** |  | 
+
+| Name                   | Type          | Description | Notes |
+| ---------------------- | ------------- | ----------- | ----- |
+| **key**                | **str**       |             |
+| **name**               | **str**       |             |
+| **logo**               | **str**       |             |
+| **allowed_currencies** | **List[str]** |             |
 
 ## Example
 
@@ -26,6 +26,5 @@ payment_request_verify_response_data_integration_dict = payment_request_verify_r
 # create an instance of PaymentRequestVerifyResponseDataIntegration from a dict
 payment_request_verify_response_data_integration_form_dict = payment_request_verify_response_data_integration.from_dict(payment_request_verify_response_data_integration_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

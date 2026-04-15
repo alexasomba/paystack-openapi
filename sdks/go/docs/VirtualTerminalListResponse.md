@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Status** | Pointer to **bool** |  | [optional] 
-**Message** | Pointer to **string** |  | [optional] 
-**Data** | Pointer to [**[]VirtualTerminalListResponseArray**](VirtualTerminalListResponseArray.md) |  | [optional] 
-**Meta** | Pointer to [**VirtualTerminalListResponseMeta**](VirtualTerminalListResponseMeta.md) |  | [optional] 
+| Name        | Type                                                                                     | Description | Notes      |
+| ----------- | ---------------------------------------------------------------------------------------- | ----------- | ---------- |
+| **Status**  | Pointer to **bool**                                                                      |             | [optional] |
+| **Message** | Pointer to **string**                                                                    |             | [optional] |
+| **Data**    | Pointer to [**[]VirtualTerminalListResponseArray**](VirtualTerminalListResponseArray.md) |             | [optional] |
+| **Meta**    | Pointer to [**VirtualTerminalListResponseMeta**](VirtualTerminalListResponseMeta.md)     |             | [optional] |
 
 ## Methods
 
@@ -128,7 +128,4 @@ SetMeta sets Meta field to given value.
 
 HasMeta returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

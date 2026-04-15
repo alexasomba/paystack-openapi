@@ -37,6 +37,7 @@ properties:
           - bank_name
       description:
         type: string
+        nullable: true
       metadata:
         type: object
         nullable: true
@@ -46,33 +47,32 @@ properties:
         type: boolean
       recipient_account:
         type: string
+        nullable: true
       institution_code:
         type: string
+        nullable: true
       email:
         type: string
+        nullable: true
       id:
         type: integer
       isDeleted:
+        type: boolean
+      is_deleted:
         type: boolean
       createdAt:
         type: string
       updatedAt:
         type: string
     required:
-      - integration
       - domain
       - type
       - currency
       - name
       - details
-      - description
       - recipient_code
       - active
-      - recipient_account
-      - institution_code
-      - email
       - id
-      - isDeleted
       - createdAt
       - updatedAt
 required:

@@ -2,29 +2,25 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**TransferBulk**](TransferAPI.md#TransferBulk) | **Post** /transfer/bulk | Initiate Bulk Transfer
-[**TransferDisableOtp**](TransferAPI.md#TransferDisableOtp) | **Post** /transfer/disable_otp | Disable OTP for Transfers
-[**TransferDisableOtpFinalize**](TransferAPI.md#TransferDisableOtpFinalize) | **Post** /transfer/disable_otp_finalize | Finalize Disabling OTP for Transfers
-[**TransferEnableOtp**](TransferAPI.md#TransferEnableOtp) | **Post** /transfer/enable_otp | Enable OTP requirement for Transfers
-[**TransferExportTransfer**](TransferAPI.md#TransferExportTransfer) | **Get** /transfer/export | Export Transfers
-[**TransferFetch**](TransferAPI.md#TransferFetch) | **Get** /transfer/{code} | Fetch Transfer
-[**TransferFinalize**](TransferAPI.md#TransferFinalize) | **Post** /transfer/finalize_transfer | Finalize Transfer
-[**TransferInitiate**](TransferAPI.md#TransferInitiate) | **Post** /transfer | Initiate Transfer
-[**TransferList**](TransferAPI.md#TransferList) | **Get** /transfer | List Transfers
-[**TransferResendOtp**](TransferAPI.md#TransferResendOtp) | **Post** /transfer/resend_otp | Resend OTP for Transfer
-[**TransferVerify**](TransferAPI.md#TransferVerify) | **Get** /transfer/verify/{reference} | Verify Transfer
-
-
+| Method                                                                      | HTTP request                            | Description                          |
+| --------------------------------------------------------------------------- | --------------------------------------- | ------------------------------------ |
+| [**TransferBulk**](TransferAPI.md#TransferBulk)                             | **Post** /transfer/bulk                 | Initiate Bulk Transfer               |
+| [**TransferDisableOtp**](TransferAPI.md#TransferDisableOtp)                 | **Post** /transfer/disable_otp          | Disable OTP for Transfers            |
+| [**TransferDisableOtpFinalize**](TransferAPI.md#TransferDisableOtpFinalize) | **Post** /transfer/disable_otp_finalize | Finalize Disabling OTP for Transfers |
+| [**TransferEnableOtp**](TransferAPI.md#TransferEnableOtp)                   | **Post** /transfer/enable_otp           | Enable OTP requirement for Transfers |
+| [**TransferExportTransfer**](TransferAPI.md#TransferExportTransfer)         | **Get** /transfer/export                | Export Transfers                     |
+| [**TransferFetch**](TransferAPI.md#TransferFetch)                           | **Get** /transfer/{code}                | Fetch Transfer                       |
+| [**TransferFinalize**](TransferAPI.md#TransferFinalize)                     | **Post** /transfer/finalize_transfer    | Finalize Transfer                    |
+| [**TransferInitiate**](TransferAPI.md#TransferInitiate)                     | **Post** /transfer                      | Initiate Transfer                    |
+| [**TransferList**](TransferAPI.md#TransferList)                             | **Get** /transfer                       | List Transfers                       |
+| [**TransferResendOtp**](TransferAPI.md#TransferResendOtp)                   | **Post** /transfer/resend_otp           | Resend OTP for Transfer              |
+| [**TransferVerify**](TransferAPI.md#TransferVerify)                         | **Get** /transfer/verify/{reference}    | Verify Transfer                      |
 
 ## TransferBulk
 
 > TransferBulkResponse TransferBulk(ctx).TransferBulk(transferBulk).Execute()
 
 Initiate Bulk Transfer
-
-
 
 ### Example
 
@@ -55,16 +51,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransferBulkRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transferBulk** | [**TransferBulk**](TransferBulk.md) |  | 
+| Name             | Type                                | Description | Notes |
+| ---------------- | ----------------------------------- | ----------- | ----- |
+| **transferBulk** | [**TransferBulk**](TransferBulk.md) |             |
 
 ### Return type
 
@@ -83,14 +76,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransferDisableOtp
 
 > TransferDisablesOtpResponse TransferDisableOtp(ctx).Execute()
 
 Disable OTP for Transfers
-
-
 
 ### Example
 
@@ -126,7 +116,6 @@ This endpoint does not need any parameter.
 
 Other parameters are passed through a pointer to a apiTransferDisableOtpRequest struct via the builder pattern
 
-
 ### Return type
 
 [**TransferDisablesOtpResponse**](TransferDisablesOtpResponse.md)
@@ -144,14 +133,11 @@ Other parameters are passed through a pointer to a apiTransferDisableOtpRequest 
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransferDisableOtpFinalize
 
 > TransferFinalizeDisablesOtpResponse TransferDisableOtpFinalize(ctx).TransferFinalizeDisableOTP(transferFinalizeDisableOTP).Execute()
 
 Finalize Disabling OTP for Transfers
-
-
 
 ### Example
 
@@ -182,16 +168,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransferDisableOtpFinalizeRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transferFinalizeDisableOTP** | [**TransferFinalizeDisableOTP**](TransferFinalizeDisableOTP.md) |  | 
+| Name                           | Type                                                            | Description | Notes |
+| ------------------------------ | --------------------------------------------------------------- | ----------- | ----- |
+| **transferFinalizeDisableOTP** | [**TransferFinalizeDisableOTP**](TransferFinalizeDisableOTP.md) |             |
 
 ### Return type
 
@@ -210,14 +193,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransferEnableOtp
 
 > TransferEnablesOtpResponse TransferEnableOtp(ctx).Execute()
 
 Enable OTP requirement for Transfers
-
-
 
 ### Example
 
@@ -253,7 +233,6 @@ This endpoint does not need any parameter.
 
 Other parameters are passed through a pointer to a apiTransferEnableOtpRequest struct via the builder pattern
 
-
 ### Return type
 
 [**TransferEnablesOtpResponse**](TransferEnablesOtpResponse.md)
@@ -271,14 +250,11 @@ Other parameters are passed through a pointer to a apiTransferEnableOtpRequest s
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransferExportTransfer
 
 > Response TransferExportTransfer(ctx).Recipient(recipient).Status(status).From(from).To(to).Execute()
 
 Export Transfers
-
-
 
 ### Example
 
@@ -313,19 +289,16 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransferExportTransferRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **recipient** | **string** | Export transfer by the recipient code | 
- **status** | **string** | Export transfer by status | [default to &quot;pending&quot;]
- **from** | **time.Time** | The start date | 
- **to** | **time.Time** | The end date | 
+| Name          | Type          | Description                           | Notes                            |
+| ------------- | ------------- | ------------------------------------- | -------------------------------- |
+| **recipient** | **string**    | Export transfer by the recipient code |
+| **status**    | **string**    | Export transfer by status             | [default to &quot;pending&quot;] |
+| **from**      | **time.Time** | The start date                        |
+| **to**        | **time.Time** | The end date                          |
 
 ### Return type
 
@@ -344,14 +317,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransferFetch
 
 > TransferFetchResponse TransferFetch(ctx, code).Execute()
 
 Fetch Transfer
-
-
 
 ### Example
 
@@ -382,20 +352,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | Transfer code | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | Transfer code                                                               |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransferFetchRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -414,14 +381,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransferFinalize
 
 > Response TransferFinalize(ctx).TransferFinalize(transferFinalize).Execute()
 
 Finalize Transfer
-
-
 
 ### Example
 
@@ -452,16 +416,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransferFinalizeRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transferFinalize** | [**TransferFinalize**](TransferFinalize.md) |  | 
+| Name                 | Type                                        | Description | Notes |
+| -------------------- | ------------------------------------------- | ----------- | ----- |
+| **transferFinalize** | [**TransferFinalize**](TransferFinalize.md) |             |
 
 ### Return type
 
@@ -480,14 +441,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransferInitiate
 
 > TransferCreateResponse TransferInitiate(ctx).TransferInitiate(transferInitiate).Execute()
 
 Initiate Transfer
-
-
 
 ### Example
 
@@ -518,16 +476,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransferInitiateRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transferInitiate** | [**TransferInitiate**](TransferInitiate.md) |  | 
+| Name                 | Type                                        | Description | Notes |
+| -------------------- | ------------------------------------------- | ----------- | ----- |
+| **transferInitiate** | [**TransferInitiate**](TransferInitiate.md) |             |
 
 ### Return type
 
@@ -546,14 +501,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransferList
 
 > TransferListResponse TransferList(ctx).UseCursor(useCursor).Next(next).Previous(previous).PerPage(perPage).Page(page).From(from).To(to).Recipient(recipient).Status(status).Execute()
 
 List Transfers
-
-
 
 ### Example
 
@@ -593,24 +545,21 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransferListRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **useCursor** | **bool** | A flag to indicate if cursor based pagination should be used | 
- **next** | **string** | An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data  | 
- **previous** | **string** | An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data  | 
- **perPage** | **int32** | The number of records to fetch per request | 
- **page** | **int32** | The offset to retrieve data from | 
- **from** | **time.Time** | The start date | 
- **to** | **time.Time** | The end date | 
- **recipient** | **string** | Filter transfer by the recipient code | 
- **status** | **string** | Filter transfer by status | [default to &quot;pending&quot;]
+| Name          | Type          | Description                                                                                                | Notes                            |
+| ------------- | ------------- | ---------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| **useCursor** | **bool**      | A flag to indicate if cursor based pagination should be used                                               |
+| **next**      | **string**    | An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data     |
+| **previous**  | **string**    | An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data |
+| **perPage**   | **int32**     | The number of records to fetch per request                                                                 |
+| **page**      | **int32**     | The offset to retrieve data from                                                                           |
+| **from**      | **time.Time** | The start date                                                                                             |
+| **to**        | **time.Time** | The end date                                                                                               |
+| **recipient** | **string**    | Filter transfer by the recipient code                                                                      |
+| **status**    | **string**    | Filter transfer by status                                                                                  | [default to &quot;pending&quot;] |
 
 ### Return type
 
@@ -629,14 +578,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransferResendOtp
 
 > TransferResendsOtpResponse TransferResendOtp(ctx).TransferResendOTP(transferResendOTP).Execute()
 
 Resend OTP for Transfer
-
-
 
 ### Example
 
@@ -667,16 +613,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransferResendOtpRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transferResendOTP** | [**TransferResendOTP**](TransferResendOTP.md) |  | 
+| Name                  | Type                                          | Description | Notes |
+| --------------------- | --------------------------------------------- | ----------- | ----- |
+| **transferResendOTP** | [**TransferResendOTP**](TransferResendOTP.md) |             |
 
 ### Return type
 
@@ -695,14 +638,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## TransferVerify
 
 > TransferVerifyResponse TransferVerify(ctx, reference).Execute()
 
 Verify Transfer
-
-
 
 ### Example
 
@@ -733,20 +673,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Transfer reference | 
+| Name          | Type                | Description                                                                 | Notes |
+| ------------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**       | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **reference** | **string**          | Transfer reference                                                          |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTransferVerifyRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -764,4 +701,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

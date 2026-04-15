@@ -1,11 +1,11 @@
 # TransferFinalizeDisablesOtpResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
+
+| Name        | Type     | Description | Notes |
+| ----------- | -------- | ----------- | ----- |
+| **status**  | **bool** |             |
+| **message** | **str**  |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ transfer_finalize_disables_otp_response_dict = transfer_finalize_disables_otp_re
 # create an instance of TransferFinalizeDisablesOtpResponse from a dict
 transfer_finalize_disables_otp_response_form_dict = transfer_finalize_disables_otp_response.from_dict(transfer_finalize_disables_otp_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

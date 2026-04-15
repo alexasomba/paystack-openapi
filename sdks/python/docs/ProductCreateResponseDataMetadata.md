@@ -1,10 +1,10 @@
 # ProductCreateResponseDataMetadata
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**background_color** | **str** |  | 
+
+| Name                 | Type    | Description | Notes |
+| -------------------- | ------- | ----------- | ----- |
+| **background_color** | **str** |             |
 
 ## Example
 
@@ -23,6 +23,5 @@ product_create_response_data_metadata_dict = product_create_response_data_metada
 # create an instance of ProductCreateResponseDataMetadata from a dict
 product_create_response_data_metadata_form_dict = product_create_response_data_metadata.from_dict(product_create_response_data_metadata_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

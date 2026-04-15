@@ -1,12 +1,12 @@
 # OrderValidateResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**OrderValidateResponseData**](OrderValidateResponseData.md) |  | 
+
+| Name        | Type                                                          | Description | Notes |
+| ----------- | ------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                      |             |
+| **message** | **str**                                                       |             |
+| **data**    | [**OrderValidateResponseData**](OrderValidateResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ order_validate_response_dict = order_validate_response_instance.to_dict()
 # create an instance of OrderValidateResponse from a dict
 order_validate_response_form_dict = order_validate_response.from_dict(order_validate_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

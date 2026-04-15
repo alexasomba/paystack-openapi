@@ -1,12 +1,12 @@
 # TransferCreateResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**TransferCreateResponseData**](TransferCreateResponseData.md) |  | 
+
+| Name        | Type                                                            | Description | Notes |
+| ----------- | --------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                        |             |
+| **message** | **str**                                                         |             |
+| **data**    | [**TransferCreateResponseData**](TransferCreateResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ transfer_create_response_dict = transfer_create_response_instance.to_dict()
 # create an instance of TransferCreateResponse from a dict
 transfer_create_response_form_dict = transfer_create_response.from_dict(transfer_create_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

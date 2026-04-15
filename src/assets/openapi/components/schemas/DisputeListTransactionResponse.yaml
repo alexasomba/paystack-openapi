@@ -17,16 +17,21 @@ properties:
           $ref: ./DisputeMessagesArray.yaml
       currency:
         type: string
+        nullable: true
       last4:
         type: string
+        nullable: true
       bin:
         type: string
+        nullable: true
       transaction_reference:
         nullable: true
       merchant_transaction_reference:
         type: string
+        nullable: true
       refund_amount:
         type: integer
+        nullable: true
       status:
         type: string
       domain:
@@ -35,6 +40,7 @@ properties:
         nullable: true
       category:
         type: string
+        nullable: true
       note:
         nullable: true
       attachments:
@@ -138,16 +144,12 @@ properties:
                 nullable: true
               receiver_bank:
                 nullable: true
-            required:
-              - receiver_bank_account_number
-              - receiver_bank
           customer:
             type: object
             properties:
               international_format_phone:
+                type: string
                 nullable: true
-            required:
-              - international_format_phone
           plan:
             type: object
           subaccount:
@@ -195,6 +197,7 @@ properties:
           - connect
       created_by:
         type: integer
+        nullable: true
       evidence:
         nullable: true
       resolvedAt:
@@ -211,24 +214,17 @@ properties:
       - currency
       - last4
       - bin
-      - transaction_reference
       - merchant_transaction_reference
       - refund_amount
       - status
       - domain
-      - resolution
       - category
-      - note
-      - attachments
       - id
       - integration
       - transaction
       - created_by
-      - evidence
-      - resolvedAt
       - createdAt
       - updatedAt
-      - dueAt
 required:
   - status
   - message

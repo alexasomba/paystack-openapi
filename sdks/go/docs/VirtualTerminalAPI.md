@@ -2,27 +2,23 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**VirtualTerminalAddSplitCode**](VirtualTerminalAPI.md#VirtualTerminalAddSplitCode) | **Put** /virtual_terminal/{code}/split_code | Add Split Code to Virtual Terminal
-[**VirtualTerminalCreate**](VirtualTerminalAPI.md#VirtualTerminalCreate) | **Post** /virtual_terminal | Create Virtual Terminal
-[**VirtualTerminalDeactivate**](VirtualTerminalAPI.md#VirtualTerminalDeactivate) | **Put** /virtual_terminal/{code}/deactivate | Deactivate Virtual Terminal
-[**VirtualTerminalDeleteSplitCode**](VirtualTerminalAPI.md#VirtualTerminalDeleteSplitCode) | **Delete** /virtual_terminal/{code}/split_code | Remove Split Code from Virtual Terminal
-[**VirtualTerminalDestinationAssign**](VirtualTerminalAPI.md#VirtualTerminalDestinationAssign) | **Post** /virtual_terminal/{code}/destination/assign | Assign Destination to Virtual Terminal
-[**VirtualTerminalDestinationUnassign**](VirtualTerminalAPI.md#VirtualTerminalDestinationUnassign) | **Post** /virtual_terminal/{code}/destination/unassign | Unassign Destination from Virtual Terminal
-[**VirtualTerminalFetch**](VirtualTerminalAPI.md#VirtualTerminalFetch) | **Get** /virtual_terminal/{code} | Fetch Virtual Terminal
-[**VirtualTerminalList**](VirtualTerminalAPI.md#VirtualTerminalList) | **Get** /virtual_terminal | List Virtual Terminals
-[**VirtualTerminalUpdate**](VirtualTerminalAPI.md#VirtualTerminalUpdate) | **Put** /virtual_terminal/{code} | Update Virtual Terminal
-
-
+| Method                                                                                             | HTTP request                                           | Description                                |
+| -------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------ |
+| [**VirtualTerminalAddSplitCode**](VirtualTerminalAPI.md#VirtualTerminalAddSplitCode)               | **Put** /virtual_terminal/{code}/split_code            | Add Split Code to Virtual Terminal         |
+| [**VirtualTerminalCreate**](VirtualTerminalAPI.md#VirtualTerminalCreate)                           | **Post** /virtual_terminal                             | Create Virtual Terminal                    |
+| [**VirtualTerminalDeactivate**](VirtualTerminalAPI.md#VirtualTerminalDeactivate)                   | **Put** /virtual_terminal/{code}/deactivate            | Deactivate Virtual Terminal                |
+| [**VirtualTerminalDeleteSplitCode**](VirtualTerminalAPI.md#VirtualTerminalDeleteSplitCode)         | **Delete** /virtual_terminal/{code}/split_code         | Remove Split Code from Virtual Terminal    |
+| [**VirtualTerminalDestinationAssign**](VirtualTerminalAPI.md#VirtualTerminalDestinationAssign)     | **Post** /virtual_terminal/{code}/destination/assign   | Assign Destination to Virtual Terminal     |
+| [**VirtualTerminalDestinationUnassign**](VirtualTerminalAPI.md#VirtualTerminalDestinationUnassign) | **Post** /virtual_terminal/{code}/destination/unassign | Unassign Destination from Virtual Terminal |
+| [**VirtualTerminalFetch**](VirtualTerminalAPI.md#VirtualTerminalFetch)                             | **Get** /virtual_terminal/{code}                       | Fetch Virtual Terminal                     |
+| [**VirtualTerminalList**](VirtualTerminalAPI.md#VirtualTerminalList)                               | **Get** /virtual_terminal                              | List Virtual Terminals                     |
+| [**VirtualTerminalUpdate**](VirtualTerminalAPI.md#VirtualTerminalUpdate)                           | **Put** /virtual_terminal/{code}                       | Update Virtual Terminal                    |
 
 ## VirtualTerminalAddSplitCode
 
 > VirtualTerminalAddSplitCodeResponse VirtualTerminalAddSplitCode(ctx, code).VirtualTerminalAddSplitCode(virtualTerminalAddSplitCode).Execute()
 
 Add Split Code to Virtual Terminal
-
-
 
 ### Example
 
@@ -54,21 +50,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | Code of the Virtual Terminal | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | Code of the Virtual Terminal                                                |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiVirtualTerminalAddSplitCodeRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **virtualTerminalAddSplitCode** | [**VirtualTerminalAddSplitCode**](VirtualTerminalAddSplitCode.md) |  | 
+**virtualTerminalAddSplitCode** | [**VirtualTerminalAddSplitCode**](VirtualTerminalAddSplitCode.md) | |
 
 ### Return type
 
@@ -87,14 +81,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## VirtualTerminalCreate
 
 > VirtualTerminalCreateResponse VirtualTerminalCreate(ctx).VirtualTerminalCreate(virtualTerminalCreate).Execute()
 
 Create Virtual Terminal
-
-
 
 ### Example
 
@@ -125,16 +116,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiVirtualTerminalCreateRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **virtualTerminalCreate** | [**VirtualTerminalCreate**](VirtualTerminalCreate.md) |  | 
+| Name                      | Type                                                  | Description | Notes |
+| ------------------------- | ----------------------------------------------------- | ----------- | ----- |
+| **virtualTerminalCreate** | [**VirtualTerminalCreate**](VirtualTerminalCreate.md) |             |
 
 ### Return type
 
@@ -153,14 +141,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## VirtualTerminalDeactivate
 
 > VirtualTerminalDeactivateResponse VirtualTerminalDeactivate(ctx, code).Execute()
 
 Deactivate Virtual Terminal
-
-
 
 ### Example
 
@@ -191,20 +176,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | Code of the Virtual Terminal | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | Code of the Virtual Terminal                                                |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiVirtualTerminalDeactivateRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -223,14 +205,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## VirtualTerminalDeleteSplitCode
 
 > VirtualTerminalDeleteSplitCodeResponse VirtualTerminalDeleteSplitCode(ctx, code).VirtualTerminalDeleteSplitCode(virtualTerminalDeleteSplitCode).Execute()
 
 Remove Split Code from Virtual Terminal
-
-
 
 ### Example
 
@@ -262,21 +241,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | Code of the Virtual Terminal | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | Code of the Virtual Terminal                                                |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiVirtualTerminalDeleteSplitCodeRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **virtualTerminalDeleteSplitCode** | [**VirtualTerminalDeleteSplitCode**](VirtualTerminalDeleteSplitCode.md) |  | 
+**virtualTerminalDeleteSplitCode** | [**VirtualTerminalDeleteSplitCode**](VirtualTerminalDeleteSplitCode.md) | |
 
 ### Return type
 
@@ -295,14 +272,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## VirtualTerminalDestinationAssign
 
 > VirtualTerminalDestinationAssignResponse VirtualTerminalDestinationAssign(ctx, code).VirtualTerminalDestinationAssign(virtualTerminalDestinationAssign).Execute()
 
 Assign Destination to Virtual Terminal
-
-
 
 ### Example
 
@@ -334,21 +308,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | Code of the Virtual Terminal | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | Code of the Virtual Terminal                                                |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiVirtualTerminalDestinationAssignRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **virtualTerminalDestinationAssign** | [**VirtualTerminalDestinationAssign**](VirtualTerminalDestinationAssign.md) |  | 
+**virtualTerminalDestinationAssign** | [**VirtualTerminalDestinationAssign**](VirtualTerminalDestinationAssign.md) | |
 
 ### Return type
 
@@ -367,14 +339,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## VirtualTerminalDestinationUnassign
 
 > VirtualTerminalDestinationUnassignResponse VirtualTerminalDestinationUnassign(ctx, code).VirtualTerminalDestinationUnassign(virtualTerminalDestinationUnassign).Execute()
 
 Unassign Destination from Virtual Terminal
-
-
 
 ### Example
 
@@ -406,21 +375,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | Code of the Virtual Terminal | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | Code of the Virtual Terminal                                                |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiVirtualTerminalDestinationUnassignRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **virtualTerminalDestinationUnassign** | [**VirtualTerminalDestinationUnassign**](VirtualTerminalDestinationUnassign.md) |  | 
+**virtualTerminalDestinationUnassign** | [**VirtualTerminalDestinationUnassign**](VirtualTerminalDestinationUnassign.md) | |
 
 ### Return type
 
@@ -439,14 +406,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## VirtualTerminalFetch
 
 > VirtualTerminalFetchResponse VirtualTerminalFetch(ctx, code).Execute()
 
 Fetch Virtual Terminal
-
-
 
 ### Example
 
@@ -477,20 +441,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | Code of the Virtual Terminal | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | Code of the Virtual Terminal                                                |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiVirtualTerminalFetchRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -509,14 +470,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## VirtualTerminalList
 
 > VirtualTerminalListResponse VirtualTerminalList(ctx).PerPage(perPage).Page(page).Execute()
 
 List Virtual Terminals
-
-
 
 ### Example
 
@@ -548,17 +506,14 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiVirtualTerminalListRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **perPage** | **int32** | The number of records to fetch per request | 
- **page** | **int32** | The offset to retrieve data from | 
+| Name        | Type      | Description                                | Notes |
+| ----------- | --------- | ------------------------------------------ | ----- |
+| **perPage** | **int32** | The number of records to fetch per request |
+| **page**    | **int32** | The offset to retrieve data from           |
 
 ### Return type
 
@@ -577,14 +532,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## VirtualTerminalUpdate
 
 > VirtualTerminalUpdateResponse VirtualTerminalUpdate(ctx, code).VirtualTerminalUpdate(virtualTerminalUpdate).Execute()
 
 Update Virtual Terminal
-
-
 
 ### Example
 
@@ -616,21 +568,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**code** | **string** | Code of the Virtual Terminal | 
+| Name     | Type                | Description                                                                 | Notes |
+| -------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx**  | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **code** | **string**          | Code of the Virtual Terminal                                                |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiVirtualTerminalUpdateRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **virtualTerminalUpdate** | [**VirtualTerminalUpdate**](VirtualTerminalUpdate.md) |  | 
+**virtualTerminalUpdate** | [**VirtualTerminalUpdate**](VirtualTerminalUpdate.md) | |
 
 ### Return type
 
@@ -648,4 +598,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

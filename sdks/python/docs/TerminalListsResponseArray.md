@@ -1,18 +1,18 @@
 # TerminalListsResponseArray
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **int** |  | 
-**serial_number** | **str** |  | 
-**device_make** | **str** |  | 
-**terminal_id** | **str** |  | 
-**integration** | **int** |  | 
-**domain** | **str** |  | 
-**name** | **str** |  | 
-**address** | **str** |  | 
-**status** | **str** |  | 
+
+| Name              | Type    | Description | Notes |
+| ----------------- | ------- | ----------- | ----- |
+| **id**            | **int** |             |
+| **serial_number** | **str** |             |
+| **device_make**   | **str** |             |
+| **terminal_id**   | **str** |             |
+| **integration**   | **int** |             |
+| **domain**        | **str** |             |
+| **name**          | **str** |             |
+| **address**       | **str** |             |
+| **status**        | **str** |             |
 
 ## Example
 
@@ -31,6 +31,5 @@ terminal_lists_response_array_dict = terminal_lists_response_array_instance.to_d
 # create an instance of TerminalListsResponseArray from a dict
 terminal_lists_response_array_form_dict = terminal_lists_response_array.from_dict(terminal_lists_response_array_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

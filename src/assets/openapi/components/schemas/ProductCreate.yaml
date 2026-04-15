@@ -12,10 +12,9 @@ properties:
     description: The description of the product
     type: string
   price:
-    description: |
-      Price should be in kobo if currency is NGN, pesewas, if currency is GHS,
-      Price should be in kobo if currency is NGN, pesewas, if currency is GHS,
-      cents, if currency is ZAR, and whole number if currency is XOF
+    description: >
+      Price should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES).
+      For XOF, the price is the same as the base units (not multiplied by 100).
     type: integer
   currency:
     description: |

@@ -2,13 +2,13 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AuthorizationCode** | **NullableString** |  | 
-**AccountNumber** | **NullableString** |  | 
-**AccountName** | **NullableString** |  | 
-**BankCode** | **string** |  | 
-**BankName** | **string** |  | 
+| Name                  | Type               | Description | Notes |
+| --------------------- | ------------------ | ----------- | ----- |
+| **AuthorizationCode** | **NullableString** |             |
+| **AccountNumber**     | **NullableString** |             |
+| **AccountName**       | **NullableString** |             |
+| **BankCode**          | **string**         |             |
+| **BankName**          | **string**         |             |
 
 ## Methods
 
@@ -48,17 +48,18 @@ and a boolean to check if the value has been set.
 
 SetAuthorizationCode sets AuthorizationCode field to given value.
 
-
 ### SetAuthorizationCodeNil
 
 `func (o *TransferRecipientListResponseArrayDetails) SetAuthorizationCodeNil(b bool)`
 
- SetAuthorizationCodeNil sets the value for AuthorizationCode to be an explicit nil
+SetAuthorizationCodeNil sets the value for AuthorizationCode to be an explicit nil
 
 ### UnsetAuthorizationCode
+
 `func (o *TransferRecipientListResponseArrayDetails) UnsetAuthorizationCode()`
 
 UnsetAuthorizationCode ensures that no value is present for AuthorizationCode, not even an explicit nil
+
 ### GetAccountNumber
 
 `func (o *TransferRecipientListResponseArrayDetails) GetAccountNumber() string`
@@ -78,17 +79,18 @@ and a boolean to check if the value has been set.
 
 SetAccountNumber sets AccountNumber field to given value.
 
-
 ### SetAccountNumberNil
 
 `func (o *TransferRecipientListResponseArrayDetails) SetAccountNumberNil(b bool)`
 
- SetAccountNumberNil sets the value for AccountNumber to be an explicit nil
+SetAccountNumberNil sets the value for AccountNumber to be an explicit nil
 
 ### UnsetAccountNumber
+
 `func (o *TransferRecipientListResponseArrayDetails) UnsetAccountNumber()`
 
 UnsetAccountNumber ensures that no value is present for AccountNumber, not even an explicit nil
+
 ### GetAccountName
 
 `func (o *TransferRecipientListResponseArrayDetails) GetAccountName() string`
@@ -108,17 +110,18 @@ and a boolean to check if the value has been set.
 
 SetAccountName sets AccountName field to given value.
 
-
 ### SetAccountNameNil
 
 `func (o *TransferRecipientListResponseArrayDetails) SetAccountNameNil(b bool)`
 
- SetAccountNameNil sets the value for AccountName to be an explicit nil
+SetAccountNameNil sets the value for AccountName to be an explicit nil
 
 ### UnsetAccountName
+
 `func (o *TransferRecipientListResponseArrayDetails) UnsetAccountName()`
 
 UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
+
 ### GetBankCode
 
 `func (o *TransferRecipientListResponseArrayDetails) GetBankCode() string`
@@ -137,7 +140,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferRecipientListResponseArrayDetails) SetBankCode(v string)`
 
 SetBankCode sets BankCode field to given value.
-
 
 ### GetBankName
 
@@ -158,8 +160,4 @@ and a boolean to check if the value has been set.
 
 SetBankName sets BankName field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

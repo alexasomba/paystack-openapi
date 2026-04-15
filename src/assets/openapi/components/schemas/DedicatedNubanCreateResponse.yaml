@@ -78,8 +78,10 @@ properties:
             type: string
           phone:
             type: string
+            nullable: true
           metadata:
             type: object
+            nullable: true
           risk_action:
             type: string
           international_format_phone:
@@ -94,7 +96,6 @@ properties:
           - phone
           - metadata
           - risk_action
-          - international_format_phone
     required:
       - bank
       - account_name

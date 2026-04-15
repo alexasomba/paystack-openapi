@@ -2,9 +2,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Currency** | **interface{}** |  | 
+| Name         | Type            | Description | Notes |
+| ------------ | --------------- | ----------- | ----- |
+| **Currency** | **interface{}** |             |
 
 ## Methods
 
@@ -44,18 +44,16 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### SetCurrencyNil
 
 `func (o *RefundCreateResponseDataTransactionSubaccount) SetCurrencyNil(b bool)`
 
- SetCurrencyNil sets the value for Currency to be an explicit nil
+SetCurrencyNil sets the value for Currency to be an explicit nil
 
 ### UnsetCurrency
+
 `func (o *RefundCreateResponseDataTransactionSubaccount) UnsetCurrency()`
 
 UnsetCurrency ensures that no value is present for Currency, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

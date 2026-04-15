@@ -2,24 +2,24 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Transaction** | [**RefundCreateResponseDataTransaction**](RefundCreateResponseDataTransaction.md) |  | 
-**Integration** | **int32** |  | 
-**DeductedAmount** | **int32** |  | 
-**Channel** | **interface{}** |  | 
-**MerchantNote** | **string** |  | 
-**CustomerNote** | **string** |  | 
-**Status** | **string** |  | 
-**RefundedBy** | **string** |  | 
-**ExpectedAt** | **string** |  | 
-**Currency** | **string** |  | 
-**Domain** | **string** |  | 
-**Amount** | **int32** |  | 
-**FullyDeducted** | **bool** |  | 
-**Id** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name               | Type                                                                              | Description | Notes |
+| ------------------ | --------------------------------------------------------------------------------- | ----------- | ----- |
+| **Transaction**    | [**RefundCreateResponseDataTransaction**](RefundCreateResponseDataTransaction.md) |             |
+| **Integration**    | **int32**                                                                         |             |
+| **DeductedAmount** | **int32**                                                                         |             |
+| **Channel**        | **interface{}**                                                                   |             |
+| **MerchantNote**   | **string**                                                                        |             |
+| **CustomerNote**   | **string**                                                                        |             |
+| **Status**         | **string**                                                                        |             |
+| **RefundedBy**     | **string**                                                                        |             |
+| **ExpectedAt**     | **string**                                                                        |             |
+| **Currency**       | **string**                                                                        |             |
+| **Domain**         | **string**                                                                        |             |
+| **Amount**         | **int32**                                                                         |             |
+| **FullyDeducted**  | **bool**                                                                          |             |
+| **Id**             | **int32**                                                                         |             |
+| **CreatedAt**      | **string**                                                                        |             |
+| **UpdatedAt**      | **string**                                                                        |             |
 
 ## Methods
 
@@ -59,7 +59,6 @@ and a boolean to check if the value has been set.
 
 SetTransaction sets Transaction field to given value.
 
-
 ### GetIntegration
 
 `func (o *RefundCreateResponseData) GetIntegration() int32`
@@ -78,7 +77,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundCreateResponseData) SetIntegration(v int32)`
 
 SetIntegration sets Integration field to given value.
-
 
 ### GetDeductedAmount
 
@@ -99,7 +97,6 @@ and a boolean to check if the value has been set.
 
 SetDeductedAmount sets DeductedAmount field to given value.
 
-
 ### GetChannel
 
 `func (o *RefundCreateResponseData) GetChannel() interface{}`
@@ -119,17 +116,18 @@ and a boolean to check if the value has been set.
 
 SetChannel sets Channel field to given value.
 
-
 ### SetChannelNil
 
 `func (o *RefundCreateResponseData) SetChannelNil(b bool)`
 
- SetChannelNil sets the value for Channel to be an explicit nil
+SetChannelNil sets the value for Channel to be an explicit nil
 
 ### UnsetChannel
+
 `func (o *RefundCreateResponseData) UnsetChannel()`
 
 UnsetChannel ensures that no value is present for Channel, not even an explicit nil
+
 ### GetMerchantNote
 
 `func (o *RefundCreateResponseData) GetMerchantNote() string`
@@ -148,7 +146,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundCreateResponseData) SetMerchantNote(v string)`
 
 SetMerchantNote sets MerchantNote field to given value.
-
 
 ### GetCustomerNote
 
@@ -169,7 +166,6 @@ and a boolean to check if the value has been set.
 
 SetCustomerNote sets CustomerNote field to given value.
 
-
 ### GetStatus
 
 `func (o *RefundCreateResponseData) GetStatus() string`
@@ -188,7 +184,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundCreateResponseData) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
-
 
 ### GetRefundedBy
 
@@ -209,7 +204,6 @@ and a boolean to check if the value has been set.
 
 SetRefundedBy sets RefundedBy field to given value.
 
-
 ### GetExpectedAt
 
 `func (o *RefundCreateResponseData) GetExpectedAt() string`
@@ -228,7 +222,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundCreateResponseData) SetExpectedAt(v string)`
 
 SetExpectedAt sets ExpectedAt field to given value.
-
 
 ### GetCurrency
 
@@ -249,7 +242,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetDomain
 
 `func (o *RefundCreateResponseData) GetDomain() string`
@@ -268,7 +260,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundCreateResponseData) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetAmount
 
@@ -289,7 +280,6 @@ and a boolean to check if the value has been set.
 
 SetAmount sets Amount field to given value.
 
-
 ### GetFullyDeducted
 
 `func (o *RefundCreateResponseData) GetFullyDeducted() bool`
@@ -308,7 +298,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundCreateResponseData) SetFullyDeducted(v bool)`
 
 SetFullyDeducted sets FullyDeducted field to given value.
-
 
 ### GetId
 
@@ -329,7 +318,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *RefundCreateResponseData) GetCreatedAt() string`
@@ -348,7 +336,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundCreateResponseData) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -369,8 +356,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

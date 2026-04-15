@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AccountNumber** | **string** |  | 
-**AccountName** | **string** |  | 
-**BankId** | **int32** |  | 
+| Name              | Type       | Description | Notes |
+| ----------------- | ---------- | ----------- | ----- |
+| **AccountNumber** | **string** |             |
+| **AccountName**   | **string** |             |
+| **BankId**        | **int32**  |             |
 
 ## Methods
 
@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetAccountNumber sets AccountNumber field to given value.
 
-
 ### GetAccountName
 
 `func (o *VerificationResolveAccountNumberResponseData) GetAccountName() string`
@@ -65,7 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *VerificationResolveAccountNumberResponseData) SetAccountName(v string)`
 
 SetAccountName sets AccountName field to given value.
-
 
 ### GetBankId
 
@@ -86,8 +84,4 @@ and a boolean to check if the value has been set.
 
 SetBankId sets BankId field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

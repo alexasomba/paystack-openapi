@@ -12,11 +12,11 @@ get:
         type: string
       example: CA
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/MiscellaneousListStatesSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

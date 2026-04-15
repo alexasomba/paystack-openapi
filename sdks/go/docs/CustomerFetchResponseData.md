@@ -2,29 +2,29 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Transactions** | **[]interface{}** |  | 
-**Subscriptions** | **[]interface{}** |  | 
-**Authorizations** | **[]interface{}** |  | 
-**FirstName** | **string** |  | 
-**LastName** | **string** |  | 
-**Email** | **string** |  | 
-**Phone** | **string** |  | 
-**Metadata** | [**BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata**](BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata.md) |  | 
-**Domain** | **string** |  | 
-**CustomerCode** | **string** |  | 
-**RiskAction** | **string** |  | 
-**Id** | **int32** |  | 
-**Integration** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
-**TotalTransactions** | **int32** |  | 
-**TotalTransactionValue** | **[]interface{}** |  | 
-**DedicatedAccount** | **interface{}** |  | 
-**DedicatedAccounts** | **[]interface{}** |  | 
-**Identified** | **bool** |  | 
-**Identifications** | **interface{}** |  | 
+| Name                      | Type                                                                                                                                | Description | Notes |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **Transactions**          | **[]interface{}**                                                                                                                   |             |
+| **Subscriptions**         | **[]interface{}**                                                                                                                   |             |
+| **Authorizations**        | **[]interface{}**                                                                                                                   |             |
+| **FirstName**             | **string**                                                                                                                          |             |
+| **LastName**              | **string**                                                                                                                          |             |
+| **Email**                 | **string**                                                                                                                          |             |
+| **Phone**                 | **string**                                                                                                                          |             |
+| **Metadata**              | [**BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata**](BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata.md) |             |
+| **Domain**                | **string**                                                                                                                          |             |
+| **CustomerCode**          | **string**                                                                                                                          |             |
+| **RiskAction**            | **string**                                                                                                                          |             |
+| **Id**                    | **int32**                                                                                                                           |             |
+| **Integration**           | **int32**                                                                                                                           |             |
+| **CreatedAt**             | **string**                                                                                                                          |             |
+| **UpdatedAt**             | **string**                                                                                                                          |             |
+| **TotalTransactions**     | **int32**                                                                                                                           |             |
+| **TotalTransactionValue** | **[]interface{}**                                                                                                                   |             |
+| **DedicatedAccount**      | **interface{}**                                                                                                                     |             |
+| **DedicatedAccounts**     | **[]interface{}**                                                                                                                   |             |
+| **Identified**            | **bool**                                                                                                                            |             |
+| **Identifications**       | **interface{}**                                                                                                                     |             |
 
 ## Methods
 
@@ -64,7 +64,6 @@ and a boolean to check if the value has been set.
 
 SetTransactions sets Transactions field to given value.
 
-
 ### GetSubscriptions
 
 `func (o *CustomerFetchResponseData) GetSubscriptions() []interface{}`
@@ -83,7 +82,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerFetchResponseData) SetSubscriptions(v []interface{})`
 
 SetSubscriptions sets Subscriptions field to given value.
-
 
 ### GetAuthorizations
 
@@ -104,7 +102,6 @@ and a boolean to check if the value has been set.
 
 SetAuthorizations sets Authorizations field to given value.
 
-
 ### GetFirstName
 
 `func (o *CustomerFetchResponseData) GetFirstName() string`
@@ -123,7 +120,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerFetchResponseData) SetFirstName(v string)`
 
 SetFirstName sets FirstName field to given value.
-
 
 ### GetLastName
 
@@ -144,7 +140,6 @@ and a boolean to check if the value has been set.
 
 SetLastName sets LastName field to given value.
 
-
 ### GetEmail
 
 `func (o *CustomerFetchResponseData) GetEmail() string`
@@ -163,7 +158,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerFetchResponseData) SetEmail(v string)`
 
 SetEmail sets Email field to given value.
-
 
 ### GetPhone
 
@@ -184,7 +178,6 @@ and a boolean to check if the value has been set.
 
 SetPhone sets Phone field to given value.
 
-
 ### GetMetadata
 
 `func (o *CustomerFetchResponseData) GetMetadata() BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata`
@@ -203,7 +196,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerFetchResponseData) SetMetadata(v BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata)`
 
 SetMetadata sets Metadata field to given value.
-
 
 ### GetDomain
 
@@ -224,7 +216,6 @@ and a boolean to check if the value has been set.
 
 SetDomain sets Domain field to given value.
 
-
 ### GetCustomerCode
 
 `func (o *CustomerFetchResponseData) GetCustomerCode() string`
@@ -243,7 +234,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerFetchResponseData) SetCustomerCode(v string)`
 
 SetCustomerCode sets CustomerCode field to given value.
-
 
 ### GetRiskAction
 
@@ -264,7 +254,6 @@ and a boolean to check if the value has been set.
 
 SetRiskAction sets RiskAction field to given value.
 
-
 ### GetId
 
 `func (o *CustomerFetchResponseData) GetId() int32`
@@ -283,7 +272,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerFetchResponseData) SetId(v int32)`
 
 SetId sets Id field to given value.
-
 
 ### GetIntegration
 
@@ -304,7 +292,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *CustomerFetchResponseData) GetCreatedAt() string`
@@ -323,7 +310,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerFetchResponseData) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -344,7 +330,6 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
 ### GetTotalTransactions
 
 `func (o *CustomerFetchResponseData) GetTotalTransactions() int32`
@@ -363,7 +348,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerFetchResponseData) SetTotalTransactions(v int32)`
 
 SetTotalTransactions sets TotalTransactions field to given value.
-
 
 ### GetTotalTransactionValue
 
@@ -384,7 +368,6 @@ and a boolean to check if the value has been set.
 
 SetTotalTransactionValue sets TotalTransactionValue field to given value.
 
-
 ### GetDedicatedAccount
 
 `func (o *CustomerFetchResponseData) GetDedicatedAccount() interface{}`
@@ -404,17 +387,18 @@ and a boolean to check if the value has been set.
 
 SetDedicatedAccount sets DedicatedAccount field to given value.
 
-
 ### SetDedicatedAccountNil
 
 `func (o *CustomerFetchResponseData) SetDedicatedAccountNil(b bool)`
 
- SetDedicatedAccountNil sets the value for DedicatedAccount to be an explicit nil
+SetDedicatedAccountNil sets the value for DedicatedAccount to be an explicit nil
 
 ### UnsetDedicatedAccount
+
 `func (o *CustomerFetchResponseData) UnsetDedicatedAccount()`
 
 UnsetDedicatedAccount ensures that no value is present for DedicatedAccount, not even an explicit nil
+
 ### GetDedicatedAccounts
 
 `func (o *CustomerFetchResponseData) GetDedicatedAccounts() []interface{}`
@@ -434,17 +418,18 @@ and a boolean to check if the value has been set.
 
 SetDedicatedAccounts sets DedicatedAccounts field to given value.
 
-
 ### SetDedicatedAccountsNil
 
 `func (o *CustomerFetchResponseData) SetDedicatedAccountsNil(b bool)`
 
- SetDedicatedAccountsNil sets the value for DedicatedAccounts to be an explicit nil
+SetDedicatedAccountsNil sets the value for DedicatedAccounts to be an explicit nil
 
 ### UnsetDedicatedAccounts
+
 `func (o *CustomerFetchResponseData) UnsetDedicatedAccounts()`
 
 UnsetDedicatedAccounts ensures that no value is present for DedicatedAccounts, not even an explicit nil
+
 ### GetIdentified
 
 `func (o *CustomerFetchResponseData) GetIdentified() bool`
@@ -463,7 +448,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerFetchResponseData) SetIdentified(v bool)`
 
 SetIdentified sets Identified field to given value.
-
 
 ### GetIdentifications
 
@@ -484,18 +468,16 @@ and a boolean to check if the value has been set.
 
 SetIdentifications sets Identifications field to given value.
 
-
 ### SetIdentificationsNil
 
 `func (o *CustomerFetchResponseData) SetIdentificationsNil(b bool)`
 
- SetIdentificationsNil sets the value for Identifications to be an explicit nil
+SetIdentificationsNil sets the value for Identifications to be an explicit nil
 
 ### UnsetIdentifications
+
 `func (o *CustomerFetchResponseData) UnsetIdentifications()`
 
 UnsetIdentifications ensures that no value is present for Identifications, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

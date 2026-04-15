@@ -1,12 +1,12 @@
 # StorefrontCreateResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**StorefrontCreateResponseData**](StorefrontCreateResponseData.md) |  | 
+
+| Name        | Type                                                                | Description | Notes |
+| ----------- | ------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                            |             |
+| **message** | **str**                                                             |             |
+| **data**    | [**StorefrontCreateResponseData**](StorefrontCreateResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ storefront_create_response_dict = storefront_create_response_instance.to_dict()
 # create an instance of StorefrontCreateResponse from a dict
 storefront_create_response_form_dict = storefront_create_response.from_dict(storefront_create_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

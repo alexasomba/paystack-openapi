@@ -1,12 +1,12 @@
 # TransactionFetchResponseDataSource
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**type** | **str** |  | 
-**source** | **str** |  | 
-**identifier** | **object** |  | 
+
+| Name           | Type       | Description | Notes |
+| -------------- | ---------- | ----------- | ----- |
+| **type**       | **str**    |             |
+| **source**     | **str**    |             |
+| **identifier** | **object** |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ transaction_fetch_response_data_source_dict = transaction_fetch_response_data_so
 # create an instance of TransactionFetchResponseDataSource from a dict
 transaction_fetch_response_data_source_form_dict = transaction_fetch_response_data_source.from_dict(transaction_fetch_response_data_source_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

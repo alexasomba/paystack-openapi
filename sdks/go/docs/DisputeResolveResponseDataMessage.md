@@ -2,14 +2,14 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Dispute** | **int32** |  | 
-**Sender** | **string** |  | 
-**Body** | **string** |  | 
-**Id** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name          | Type       | Description | Notes |
+| ------------- | ---------- | ----------- | ----- |
+| **Dispute**   | **int32**  |             |
+| **Sender**    | **string** |             |
+| **Body**      | **string** |             |
+| **Id**        | **int32**  |             |
+| **CreatedAt** | **string** |             |
+| **UpdatedAt** | **string** |             |
 
 ## Methods
 
@@ -49,7 +49,6 @@ and a boolean to check if the value has been set.
 
 SetDispute sets Dispute field to given value.
 
-
 ### GetSender
 
 `func (o *DisputeResolveResponseDataMessage) GetSender() string`
@@ -68,7 +67,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeResolveResponseDataMessage) SetSender(v string)`
 
 SetSender sets Sender field to given value.
-
 
 ### GetBody
 
@@ -89,7 +87,6 @@ and a boolean to check if the value has been set.
 
 SetBody sets Body field to given value.
 
-
 ### GetId
 
 `func (o *DisputeResolveResponseDataMessage) GetId() int32`
@@ -108,7 +105,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeResolveResponseDataMessage) SetId(v int32)`
 
 SetId sets Id field to given value.
-
 
 ### GetCreatedAt
 
@@ -129,7 +125,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-
 ### GetUpdatedAt
 
 `func (o *DisputeResolveResponseDataMessage) GetUpdatedAt() string`
@@ -149,8 +144,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

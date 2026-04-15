@@ -2,13 +2,13 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**directdebit_list_mandate_authorizations**](DirectDebitApi.md#directdebit_list_mandate_authorizations) | **GET** /directdebit/mandate-authorizations | List Mandate Authorizations
-[**directdebit_trigger_activation_charge**](DirectDebitApi.md#directdebit_trigger_activation_charge) | **PUT** /directdebit/activation-charge | Trigger Activation Charge
-
+| Method                                                                                                   | HTTP request                                | Description                 |
+| -------------------------------------------------------------------------------------------------------- | ------------------------------------------- | --------------------------- |
+| [**directdebit_list_mandate_authorizations**](DirectDebitApi.md#directdebit_list_mandate_authorizations) | **GET** /directdebit/mandate-authorizations | List Mandate Authorizations |
+| [**directdebit_trigger_activation_charge**](DirectDebitApi.md#directdebit_trigger_activation_charge)     | **PUT** /directdebit/activation-charge      | Trigger Activation Charge   |
 
 # **directdebit_list_mandate_authorizations**
+
 > CustomerFetchMandateAuthorizationsResponse directdebit_list_mandate_authorizations(cursor=cursor, status=status, per_page=per_page)
 
 List Mandate Authorizations
@@ -17,7 +17,8 @@ Get a list of all the direct debit mandates on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -59,15 +60,13 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling DirectDebitApi->directdebit_list_mandate_authorizations: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cursor** | **str**| The cursor value of the next set of authorizations to fetch. You can get this from the meta object of the response | [optional] 
- **status** | **str**| Filter by the authorization status | [optional] 
- **per_page** | **int**| The number of authorizations to fetch per request | [optional] 
+| Name         | Type    | Description                                                                                                        | Notes      |
+| ------------ | ------- | ------------------------------------------------------------------------------------------------------------------ | ---------- |
+| **cursor**   | **str** | The cursor value of the next set of authorizations to fetch. You can get this from the meta object of the response | [optional] |
+| **status**   | **str** | Filter by the authorization status                                                                                 | [optional] |
+| **per_page** | **int** | The number of authorizations to fetch per request                                                                  | [optional] |
 
 ### Return type
 
@@ -79,19 +78,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Customer Fetch Mandate Authorizations response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                                    | Response headers |
+| ----------- | ---------------------------------------------- | ---------------- |
+| **200**     | Customer Fetch Mandate Authorizations response | -                |
+| **401**     | Unauthorized operation                         | -                |
+| **0**       | Server error                                   | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **directdebit_trigger_activation_charge**
+
 > DirectDebitActivationChargeResponse directdebit_trigger_activation_charge(direct_debit_activation_charge_request)
 
 Trigger Activation Charge
@@ -100,7 +101,8 @@ Trigger activation charge for specified customers
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -130,7 +132,7 @@ configuration = alexasomba_paystack.Configuration(
 with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.DirectDebitApi(api_client)
-    direct_debit_activation_charge_request = alexasomba_paystack.DirectDebitActivationChargeRequest() # DirectDebitActivationChargeRequest | 
+    direct_debit_activation_charge_request = alexasomba_paystack.DirectDebitActivationChargeRequest() # DirectDebitActivationChargeRequest |
 
     try:
         # Trigger Activation Charge
@@ -141,13 +143,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling DirectDebitApi->directdebit_trigger_activation_charge: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **direct_debit_activation_charge_request** | [**DirectDebitActivationChargeRequest**](DirectDebitActivationChargeRequest.md)|  | 
+| Name                                       | Type                                                                            | Description | Notes |
+| ------------------------------------------ | ------------------------------------------------------------------------------- | ----------- | ----- |
+| **direct_debit_activation_charge_request** | [**DirectDebitActivationChargeRequest**](DirectDebitActivationChargeRequest.md) |             |
 
 ### Return type
 
@@ -159,15 +159,15 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Direct Debit Activation Charge response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                             | Response headers |
+| ----------- | --------------------------------------- | ---------------- |
+| **200**     | Direct Debit Activation Charge response | -                |
+| **401**     | Unauthorized operation                  | -                |
+| **0**       | Server error                            | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

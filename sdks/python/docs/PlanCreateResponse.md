@@ -1,12 +1,12 @@
 # PlanCreateResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**PlanCreateResponseData**](PlanCreateResponseData.md) |  | 
+
+| Name        | Type                                                    | Description | Notes |
+| ----------- | ------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                |             |
+| **message** | **str**                                                 |             |
+| **data**    | [**PlanCreateResponseData**](PlanCreateResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ plan_create_response_dict = plan_create_response_instance.to_dict()
 # create an instance of PlanCreateResponse from a dict
 plan_create_response_form_dict = plan_create_response.from_dict(plan_create_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

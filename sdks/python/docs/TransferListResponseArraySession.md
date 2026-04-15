@@ -1,11 +1,11 @@
 # TransferListResponseArraySession
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**provider** | **object** |  | 
-**id** | **object** |  | 
+
+| Name         | Type       | Description | Notes |
+| ------------ | ---------- | ----------- | ----- |
+| **provider** | **object** |             |
+| **id**       | **object** |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ transfer_list_response_array_session_dict = transfer_list_response_array_session
 # create an instance of TransferListResponseArraySession from a dict
 transfer_list_response_array_session_form_dict = transfer_list_response_array_session.from_dict(transfer_list_response_array_session_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

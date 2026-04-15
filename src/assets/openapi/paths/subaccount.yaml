@@ -13,13 +13,13 @@ post:
         schema:
           $ref: ../components/schemas/SubaccountCreate.yaml
   responses:
-    '201':
-      description: ''
+    "201":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/SubaccountCreateResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error
@@ -43,20 +43,27 @@ get:
         type: integer
         default: 1
     - in: query
-      name: active
-      description: Filter by the state of the subaccounts
+      name: from
+      description: A timestamp from which to start listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
       schema:
-        type: boolean
+        type: string
+        format: date-time
+    - in: query
+      name: to
+      description: A timestamp at which to stop listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+      schema:
+        type: string
+        format: date-time
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/SubaccountListResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

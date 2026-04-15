@@ -1,12 +1,12 @@
 # DedicatedNubanCreateResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**DedicatedNubanCreateResponseData**](DedicatedNubanCreateResponseData.md) |  | 
+
+| Name        | Type                                                                        | Description | Notes |
+| ----------- | --------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                    |             |
+| **message** | **str**                                                                     |             |
+| **data**    | [**DedicatedNubanCreateResponseData**](DedicatedNubanCreateResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ dedicated_nuban_create_response_dict = dedicated_nuban_create_response_instance.
 # create an instance of DedicatedNubanCreateResponse from a dict
 dedicated_nuban_create_response_form_dict = dedicated_nuban_create_response.from_dict(dedicated_nuban_create_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

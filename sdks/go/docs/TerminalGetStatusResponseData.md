@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Online** | **bool** |  | 
-**Available** | **bool** |  | 
+| Name          | Type     | Description | Notes |
+| ------------- | -------- | ----------- | ----- |
+| **Online**    | **bool** |             |
+| **Available** | **bool** |             |
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetOnline sets Online field to given value.
 
-
 ### GetAvailable
 
 `func (o *TerminalGetStatusResponseData) GetAvailable() bool`
@@ -65,8 +64,4 @@ and a boolean to check if the value has been set.
 
 SetAvailable sets Available field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

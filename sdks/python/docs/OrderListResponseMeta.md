@@ -1,15 +1,15 @@
 # OrderListResponseMeta
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**total** | **int** |  | 
-**revenue** | **object** |  | 
-**skipped** | **int** |  | 
-**per_page** | **int** |  | 
-**page** | **int** |  | 
-**page_count** | **int** |  | 
+
+| Name           | Type       | Description | Notes |
+| -------------- | ---------- | ----------- | ----- |
+| **total**      | **int**    |             |
+| **revenue**    | **object** |             |
+| **skipped**    | **int**    |             |
+| **per_page**   | **int**    |             |
+| **page**       | **int**    |             |
+| **page_count** | **int**    |             |
 
 ## Example
 
@@ -28,6 +28,5 @@ order_list_response_meta_dict = order_list_response_meta_instance.to_dict()
 # create an instance of OrderListResponseMeta from a dict
 order_list_response_meta_form_dict = order_list_response_meta.from_dict(order_list_response_meta_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

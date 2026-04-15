@@ -5,31 +5,47 @@ required:
 properties:
   name:
     type: string
-    description: The name of the virtual terminal
+    description: Name of the Virtual Terminal
   destinations:
     type: array
     description: >-
-      Array of objects containing recipients for payment notifications for the
-      Virtual Terminal.
+      An array of objects containing the notification recipients for payments to
+      the Virtual Terminal. Each object includes a target parameter for the
+      Whatsapp phone number to send notifications to, and a name parameter for
+      a descriptive label.
     items:
       type: object
       properties:
         target:
           type: string
-          description: The WhatsApp number to receive payment notifications
+          description: The Whatsapp phone number to send notifications to
         name:
           type: string
-          description: The name of the associated WhatsApp number
-  split_code:
-    type: string
-    description: Split code to associate with the virtual terminal
+          description: A descriptive label for the destination
   metadata:
     type: object
-    description: Additional custom data as key-value pairs
+    description: Stringified JSON object of custom data. Kindly check the Metadata page for more information
+  currency:
+    type: string
+    description: The transaction currency for the Virtual Terminal. Defaults to your integration currency
+  custom_fields:
+    type: array
+    description: >-
+      An array of objects representing custom fields to display on the form.
+      Each object contains a display_name parameter, representing what will be
+      displayed on the Virtual Terminal page, and variable_name parameter for
+      referencing the custom field programmatically
+    items:
+      type: object
+      properties:
+        display_name:
+          type: string
+        variable_name:
+          type: string
 example:
   name: Sample Terminal
   destinations:
-    - target: '+2548012345678'
+    - target: "+2548012345678"
       name: John Doe
-    - target: '+2548098765432'
+    - target: "+2548098765432"
       name: Jane Smith

@@ -2,24 +2,20 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**SplitAddSubaccount**](SplitAPI.md#SplitAddSubaccount) | **Post** /split/{id}/subaccount/add | Add Subaccount to Split
-[**SplitCreate**](SplitAPI.md#SplitCreate) | **Post** /split | Create Split
-[**SplitFetch**](SplitAPI.md#SplitFetch) | **Get** /split/{id} | Fetch Split
-[**SplitList**](SplitAPI.md#SplitList) | **Get** /split | List Splits
-[**SplitRemoveSubaccount**](SplitAPI.md#SplitRemoveSubaccount) | **Post** /split/{id}/subaccount/remove | Remove Subaccount from split
-[**SplitUpdate**](SplitAPI.md#SplitUpdate) | **Put** /split/{id} | Update Split
-
-
+| Method                                                         | HTTP request                           | Description                  |
+| -------------------------------------------------------------- | -------------------------------------- | ---------------------------- |
+| [**SplitAddSubaccount**](SplitAPI.md#SplitAddSubaccount)       | **Post** /split/{id}/subaccount/add    | Add Subaccount to Split      |
+| [**SplitCreate**](SplitAPI.md#SplitCreate)                     | **Post** /split                        | Create Split                 |
+| [**SplitFetch**](SplitAPI.md#SplitFetch)                       | **Get** /split/{id}                    | Fetch Split                  |
+| [**SplitList**](SplitAPI.md#SplitList)                         | **Get** /split                         | List Splits                  |
+| [**SplitRemoveSubaccount**](SplitAPI.md#SplitRemoveSubaccount) | **Post** /split/{id}/subaccount/remove | Remove Subaccount from split |
+| [**SplitUpdate**](SplitAPI.md#SplitUpdate)                     | **Put** /split/{id}                    | Update Split                 |
 
 ## SplitAddSubaccount
 
 > SplitAddUpdateSubaccountResponse SplitAddSubaccount(ctx, id).SplitSubaccounts(splitSubaccounts).Execute()
 
 Add Subaccount to Split
-
-
 
 ### Example
 
@@ -51,21 +47,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The ID of the split configuration to fetch | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The ID of the split configuration to fetch                                  |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSplitAddSubaccountRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **splitSubaccounts** | [**SplitSubaccounts**](SplitSubaccounts.md) |  | 
+**splitSubaccounts** | [**SplitSubaccounts**](SplitSubaccounts.md) | |
 
 ### Return type
 
@@ -84,14 +78,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## SplitCreate
 
 > SplitCreateResponse SplitCreate(ctx).SplitCreate(splitCreate).Execute()
 
 Create Split
-
-
 
 ### Example
 
@@ -122,16 +113,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSplitCreateRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **splitCreate** | [**SplitCreate**](SplitCreate.md) |  | 
+| Name            | Type                              | Description | Notes |
+| --------------- | --------------------------------- | ----------- | ----- |
+| **splitCreate** | [**SplitCreate**](SplitCreate.md) |             |
 
 ### Return type
 
@@ -150,14 +138,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## SplitFetch
 
 > SplitFetchResponse SplitFetch(ctx, id).Execute()
 
 Fetch Split
-
-
 
 ### Example
 
@@ -188,20 +173,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The ID of the split configuration to fetch | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The ID of the split configuration to fetch                                  |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSplitFetchRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -220,14 +202,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## SplitList
 
 > SplitListResponse SplitList(ctx).SubaccountCode(subaccountCode).Name(name).Active(active).PerPage(perPage).Page(page).From(from).To(to).Execute()
 
 List Splits
-
-
 
 ### Example
 
@@ -265,22 +244,19 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSplitListRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **subaccountCode** | **string** | Filter by subaccount code | 
- **name** | **string** | The name of the split | 
- **active** | **bool** | The status of the split | 
- **perPage** | **int32** | The number of records to fetch per request | 
- **page** | **int32** | The offset to retrieve data from | 
- **from** | **time.Time** | The start date | 
- **to** | **time.Time** | The end date | 
+| Name               | Type          | Description                                | Notes |
+| ------------------ | ------------- | ------------------------------------------ | ----- |
+| **subaccountCode** | **string**    | Filter by subaccount code                  |
+| **name**           | **string**    | The name of the split                      |
+| **active**         | **bool**      | The status of the split                    |
+| **perPage**        | **int32**     | The number of records to fetch per request |
+| **page**           | **int32**     | The offset to retrieve data from           |
+| **from**           | **time.Time** | The start date                             |
+| **to**             | **time.Time** | The end date                               |
 
 ### Return type
 
@@ -299,14 +275,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## SplitRemoveSubaccount
 
 > SplitRemoveSubaccountResponse SplitRemoveSubaccount(ctx, id).SplitSubaccounts(splitSubaccounts).Execute()
 
 Remove Subaccount from split
-
-
 
 ### Example
 
@@ -338,21 +311,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The ID of the split configuration to fetch | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The ID of the split configuration to fetch                                  |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSplitRemoveSubaccountRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **splitSubaccounts** | [**SplitSubaccounts**](SplitSubaccounts.md) |  | 
+**splitSubaccounts** | [**SplitSubaccounts**](SplitSubaccounts.md) | |
 
 ### Return type
 
@@ -371,14 +342,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## SplitUpdate
 
 > SplitUpdateResponse SplitUpdate(ctx, id).SplitUpdate(splitUpdate).Execute()
 
 Update Split
-
-
 
 ### Example
 
@@ -393,7 +361,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | 
+    id := "id_example" // string |
     splitUpdate := *openapiclient.NewSplitUpdate() // SplitUpdate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -410,21 +378,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **string**          |                                                                             |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSplitUpdateRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **splitUpdate** | [**SplitUpdate**](SplitUpdate.md) |  | 
+**splitUpdate** | [**SplitUpdate**](SplitUpdate.md) | |
 
 ### Return type
 
@@ -442,4 +408,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

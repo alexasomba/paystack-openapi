@@ -1,21 +1,21 @@
 # CustomerListResponseArray
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**integration** | **int** |  | 
-**first_name** | **str** |  | 
-**last_name** | **str** |  | 
-**email** | **str** |  | 
-**phone** | **str** |  | 
-**metadata** | **object** |  | 
-**domain** | **str** |  | 
-**customer_code** | **str** |  | 
-**risk_action** | **str** |  | 
-**id** | **int** |  | 
-**created_at** | **str** |  | 
-**updated_at** | **str** |  | 
+
+| Name              | Type       | Description | Notes |
+| ----------------- | ---------- | ----------- | ----- |
+| **integration**   | **int**    |             |
+| **first_name**    | **str**    |             |
+| **last_name**     | **str**    |             |
+| **email**         | **str**    |             |
+| **phone**         | **str**    |             |
+| **metadata**      | **object** |             |
+| **domain**        | **str**    |             |
+| **customer_code** | **str**    |             |
+| **risk_action**   | **str**    |             |
+| **id**            | **int**    |             |
+| **created_at**    | **str**    |             |
+| **updated_at**    | **str**    |             |
 
 ## Example
 
@@ -34,6 +34,5 @@ customer_list_response_array_dict = customer_list_response_array_instance.to_dic
 # create an instance of CustomerListResponseArray from a dict
 customer_list_response_array_form_dict = customer_list_response_array.from_dict(customer_list_response_array_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -1,11 +1,11 @@
 # PaymentRequestFinalizeResponseDataDiscount
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**type** | **str** |  | 
-**amount** | **int** |  | 
+
+| Name       | Type    | Description | Notes |
+| ---------- | ------- | ----------- | ----- |
+| **type**   | **str** |             |
+| **amount** | **int** |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ payment_request_finalize_response_data_discount_dict = payment_request_finalize_
 # create an instance of PaymentRequestFinalizeResponseDataDiscount from a dict
 payment_request_finalize_response_data_discount_form_dict = payment_request_finalize_response_data_discount.from_dict(payment_request_finalize_response_data_discount_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

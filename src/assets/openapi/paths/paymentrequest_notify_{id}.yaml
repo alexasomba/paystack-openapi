@@ -13,9 +13,9 @@ post:
   description: Trigger an email reminder to a customer for a previously created payment request
   operationId: paymentRequest_notify
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/PaymentRequestSendNotificationSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error

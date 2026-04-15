@@ -2,34 +2,34 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**Domain** | **string** |  | 
-**Status** | **string** |  | 
-**Reference** | **string** |  | 
-**Amount** | **int32** |  | 
-**Message** | **interface{}** |  | 
-**GatewayResponse** | **string** |  | 
-**PaidAt** | Pointer to **NullableString** |  | [optional] 
-**CreatedAt** | Pointer to **string** |  | [optional] 
-**Channel** | **string** |  | 
-**Currency** | **string** |  | 
-**IpAddress** | **string** |  | 
-**Metadata** | [**TransactionFetchResponseDataMetadata**](TransactionFetchResponseDataMetadata.md) |  | 
-**Log** | [**NullableChargeAuthorizationResponseDataLog**](ChargeAuthorizationResponseDataLog.md) |  | 
-**Fees** | **int32** |  | 
-**FeesSplit** | **NullableInt32** |  | 
-**Authorization** | **map[string]interface{}** |  | 
-**Customer** | **interface{}** |  | 
-**Plan** | **map[string]interface{}** |  | 
-**Subaccount** | **map[string]interface{}** |  | 
-**Split** | **map[string]interface{}** |  | 
-**OrderId** | **interface{}** |  | 
-**PosTransactionData** | **interface{}** |  | 
-**Source** | **interface{}** |  | 
-**FeesBreakdown** | **interface{}** |  | 
-**Connect** | **interface{}** |  | 
+| Name                   | Type                                                                                    | Description | Notes      |
+| ---------------------- | --------------------------------------------------------------------------------------- | ----------- | ---------- |
+| **Id**                 | **int32**                                                                               |             |
+| **Domain**             | **string**                                                                              |             |
+| **Status**             | **string**                                                                              |             |
+| **Reference**          | **string**                                                                              |             |
+| **Amount**             | **int32**                                                                               |             |
+| **Message**            | **interface{}**                                                                         |             |
+| **GatewayResponse**    | **string**                                                                              |             |
+| **PaidAt**             | Pointer to **NullableString**                                                           |             | [optional] |
+| **CreatedAt**          | Pointer to **string**                                                                   |             | [optional] |
+| **Channel**            | **string**                                                                              |             |
+| **Currency**           | **string**                                                                              |             |
+| **IpAddress**          | **string**                                                                              |             |
+| **Metadata**           | [**TransactionFetchResponseDataMetadata**](TransactionFetchResponseDataMetadata.md)     |             |
+| **Log**                | [**NullableChargeAuthorizationResponseDataLog**](ChargeAuthorizationResponseDataLog.md) |             |
+| **Fees**               | **int32**                                                                               |             |
+| **FeesSplit**          | **NullableInt32**                                                                       |             |
+| **Authorization**      | **map[string]interface{}**                                                              |             |
+| **Customer**           | **interface{}**                                                                         |             |
+| **Plan**               | **map[string]interface{}**                                                              |             |
+| **Subaccount**         | **map[string]interface{}**                                                              |             |
+| **Split**              | **map[string]interface{}**                                                              |             |
+| **OrderId**            | **interface{}**                                                                         |             |
+| **PosTransactionData** | **interface{}**                                                                         |             |
+| **Source**             | **interface{}**                                                                         |             |
+| **FeesBreakdown**      | **interface{}**                                                                         |             |
+| **Connect**            | **interface{}**                                                                         |             |
 
 ## Methods
 
@@ -69,7 +69,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetDomain
 
 `func (o *DisputeListResponseArrayTransaction) GetDomain() string`
@@ -88,7 +87,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeListResponseArrayTransaction) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetStatus
 
@@ -109,7 +107,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-
 ### GetReference
 
 `func (o *DisputeListResponseArrayTransaction) GetReference() string`
@@ -128,7 +125,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeListResponseArrayTransaction) SetReference(v string)`
 
 SetReference sets Reference field to given value.
-
 
 ### GetAmount
 
@@ -149,7 +145,6 @@ and a boolean to check if the value has been set.
 
 SetAmount sets Amount field to given value.
 
-
 ### GetMessage
 
 `func (o *DisputeListResponseArrayTransaction) GetMessage() interface{}`
@@ -169,17 +164,18 @@ and a boolean to check if the value has been set.
 
 SetMessage sets Message field to given value.
 
-
 ### SetMessageNil
 
 `func (o *DisputeListResponseArrayTransaction) SetMessageNil(b bool)`
 
- SetMessageNil sets the value for Message to be an explicit nil
+SetMessageNil sets the value for Message to be an explicit nil
 
 ### UnsetMessage
+
 `func (o *DisputeListResponseArrayTransaction) UnsetMessage()`
 
 UnsetMessage ensures that no value is present for Message, not even an explicit nil
+
 ### GetGatewayResponse
 
 `func (o *DisputeListResponseArrayTransaction) GetGatewayResponse() string`
@@ -198,7 +194,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeListResponseArrayTransaction) SetGatewayResponse(v string)`
 
 SetGatewayResponse sets GatewayResponse field to given value.
-
 
 ### GetPaidAt
 
@@ -229,12 +224,14 @@ HasPaidAt returns a boolean if a field has been set.
 
 `func (o *DisputeListResponseArrayTransaction) SetPaidAtNil(b bool)`
 
- SetPaidAtNil sets the value for PaidAt to be an explicit nil
+SetPaidAtNil sets the value for PaidAt to be an explicit nil
 
 ### UnsetPaidAt
+
 `func (o *DisputeListResponseArrayTransaction) UnsetPaidAt()`
 
 UnsetPaidAt ensures that no value is present for PaidAt, not even an explicit nil
+
 ### GetCreatedAt
 
 `func (o *DisputeListResponseArrayTransaction) GetCreatedAt() string`
@@ -279,7 +276,6 @@ and a boolean to check if the value has been set.
 
 SetChannel sets Channel field to given value.
 
-
 ### GetCurrency
 
 `func (o *DisputeListResponseArrayTransaction) GetCurrency() string`
@@ -298,7 +294,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeListResponseArrayTransaction) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetIpAddress
 
@@ -319,7 +314,6 @@ and a boolean to check if the value has been set.
 
 SetIpAddress sets IpAddress field to given value.
 
-
 ### GetMetadata
 
 `func (o *DisputeListResponseArrayTransaction) GetMetadata() TransactionFetchResponseDataMetadata`
@@ -338,7 +332,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeListResponseArrayTransaction) SetMetadata(v TransactionFetchResponseDataMetadata)`
 
 SetMetadata sets Metadata field to given value.
-
 
 ### GetLog
 
@@ -359,17 +352,18 @@ and a boolean to check if the value has been set.
 
 SetLog sets Log field to given value.
 
-
 ### SetLogNil
 
 `func (o *DisputeListResponseArrayTransaction) SetLogNil(b bool)`
 
- SetLogNil sets the value for Log to be an explicit nil
+SetLogNil sets the value for Log to be an explicit nil
 
 ### UnsetLog
+
 `func (o *DisputeListResponseArrayTransaction) UnsetLog()`
 
 UnsetLog ensures that no value is present for Log, not even an explicit nil
+
 ### GetFees
 
 `func (o *DisputeListResponseArrayTransaction) GetFees() int32`
@@ -388,7 +382,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeListResponseArrayTransaction) SetFees(v int32)`
 
 SetFees sets Fees field to given value.
-
 
 ### GetFeesSplit
 
@@ -409,17 +402,18 @@ and a boolean to check if the value has been set.
 
 SetFeesSplit sets FeesSplit field to given value.
 
-
 ### SetFeesSplitNil
 
 `func (o *DisputeListResponseArrayTransaction) SetFeesSplitNil(b bool)`
 
- SetFeesSplitNil sets the value for FeesSplit to be an explicit nil
+SetFeesSplitNil sets the value for FeesSplit to be an explicit nil
 
 ### UnsetFeesSplit
+
 `func (o *DisputeListResponseArrayTransaction) UnsetFeesSplit()`
 
 UnsetFeesSplit ensures that no value is present for FeesSplit, not even an explicit nil
+
 ### GetAuthorization
 
 `func (o *DisputeListResponseArrayTransaction) GetAuthorization() map[string]interface{}`
@@ -438,7 +432,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeListResponseArrayTransaction) SetAuthorization(v map[string]interface{})`
 
 SetAuthorization sets Authorization field to given value.
-
 
 ### GetCustomer
 
@@ -459,17 +452,18 @@ and a boolean to check if the value has been set.
 
 SetCustomer sets Customer field to given value.
 
-
 ### SetCustomerNil
 
 `func (o *DisputeListResponseArrayTransaction) SetCustomerNil(b bool)`
 
- SetCustomerNil sets the value for Customer to be an explicit nil
+SetCustomerNil sets the value for Customer to be an explicit nil
 
 ### UnsetCustomer
+
 `func (o *DisputeListResponseArrayTransaction) UnsetCustomer()`
 
 UnsetCustomer ensures that no value is present for Customer, not even an explicit nil
+
 ### GetPlan
 
 `func (o *DisputeListResponseArrayTransaction) GetPlan() map[string]interface{}`
@@ -488,7 +482,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeListResponseArrayTransaction) SetPlan(v map[string]interface{})`
 
 SetPlan sets Plan field to given value.
-
 
 ### GetSubaccount
 
@@ -509,7 +502,6 @@ and a boolean to check if the value has been set.
 
 SetSubaccount sets Subaccount field to given value.
 
-
 ### GetSplit
 
 `func (o *DisputeListResponseArrayTransaction) GetSplit() map[string]interface{}`
@@ -528,7 +520,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeListResponseArrayTransaction) SetSplit(v map[string]interface{})`
 
 SetSplit sets Split field to given value.
-
 
 ### GetOrderId
 
@@ -549,17 +540,18 @@ and a boolean to check if the value has been set.
 
 SetOrderId sets OrderId field to given value.
 
-
 ### SetOrderIdNil
 
 `func (o *DisputeListResponseArrayTransaction) SetOrderIdNil(b bool)`
 
- SetOrderIdNil sets the value for OrderId to be an explicit nil
+SetOrderIdNil sets the value for OrderId to be an explicit nil
 
 ### UnsetOrderId
+
 `func (o *DisputeListResponseArrayTransaction) UnsetOrderId()`
 
 UnsetOrderId ensures that no value is present for OrderId, not even an explicit nil
+
 ### GetPosTransactionData
 
 `func (o *DisputeListResponseArrayTransaction) GetPosTransactionData() interface{}`
@@ -579,17 +571,18 @@ and a boolean to check if the value has been set.
 
 SetPosTransactionData sets PosTransactionData field to given value.
 
-
 ### SetPosTransactionDataNil
 
 `func (o *DisputeListResponseArrayTransaction) SetPosTransactionDataNil(b bool)`
 
- SetPosTransactionDataNil sets the value for PosTransactionData to be an explicit nil
+SetPosTransactionDataNil sets the value for PosTransactionData to be an explicit nil
 
 ### UnsetPosTransactionData
+
 `func (o *DisputeListResponseArrayTransaction) UnsetPosTransactionData()`
 
 UnsetPosTransactionData ensures that no value is present for PosTransactionData, not even an explicit nil
+
 ### GetSource
 
 `func (o *DisputeListResponseArrayTransaction) GetSource() interface{}`
@@ -609,17 +602,18 @@ and a boolean to check if the value has been set.
 
 SetSource sets Source field to given value.
 
-
 ### SetSourceNil
 
 `func (o *DisputeListResponseArrayTransaction) SetSourceNil(b bool)`
 
- SetSourceNil sets the value for Source to be an explicit nil
+SetSourceNil sets the value for Source to be an explicit nil
 
 ### UnsetSource
+
 `func (o *DisputeListResponseArrayTransaction) UnsetSource()`
 
 UnsetSource ensures that no value is present for Source, not even an explicit nil
+
 ### GetFeesBreakdown
 
 `func (o *DisputeListResponseArrayTransaction) GetFeesBreakdown() interface{}`
@@ -639,17 +633,18 @@ and a boolean to check if the value has been set.
 
 SetFeesBreakdown sets FeesBreakdown field to given value.
 
-
 ### SetFeesBreakdownNil
 
 `func (o *DisputeListResponseArrayTransaction) SetFeesBreakdownNil(b bool)`
 
- SetFeesBreakdownNil sets the value for FeesBreakdown to be an explicit nil
+SetFeesBreakdownNil sets the value for FeesBreakdown to be an explicit nil
 
 ### UnsetFeesBreakdown
+
 `func (o *DisputeListResponseArrayTransaction) UnsetFeesBreakdown()`
 
 UnsetFeesBreakdown ensures that no value is present for FeesBreakdown, not even an explicit nil
+
 ### GetConnect
 
 `func (o *DisputeListResponseArrayTransaction) GetConnect() interface{}`
@@ -669,18 +664,16 @@ and a boolean to check if the value has been set.
 
 SetConnect sets Connect field to given value.
 
-
 ### SetConnectNil
 
 `func (o *DisputeListResponseArrayTransaction) SetConnectNil(b bool)`
 
- SetConnectNil sets the value for Connect to be an explicit nil
+SetConnectNil sets the value for Connect to be an explicit nil
 
 ### UnsetConnect
+
 `func (o *DisputeListResponseArrayTransaction) UnsetConnect()`
 
 UnsetConnect ensures that no value is present for Connect, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

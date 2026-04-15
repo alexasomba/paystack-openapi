@@ -27,6 +27,5 @@ properties:
 example:
   customer_email: customer@email.com
   customer_name: Mensah King
-  customer_phone: '08012345678'
+  customer_phone: "08012345678"
   service_details: claim for buying cups
-

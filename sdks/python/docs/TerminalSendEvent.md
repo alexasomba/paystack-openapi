@@ -1,12 +1,12 @@
 # TerminalSendEvent
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**type** | **str** | The type of event to push | [optional] 
-**action** | **str** | The action the Terminal needs to perform. For the invoice type, the action can either be process or view.  For the transaction type, the action can either be process or print.  | [optional] 
-**data** | [**TerminalSendEventData**](TerminalSendEventData.md) |  | [optional] 
+
+| Name       | Type                                                  | Description                                                                                                                                                                    | Notes      |
+| ---------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- |
+| **type**   | **str**                                               | The type of event to push                                                                                                                                                      | [optional] |
+| **action** | **str**                                               | The action the Terminal needs to perform. For the invoice type, the action can either be process or view. For the transaction type, the action can either be process or print. | [optional] |
+| **data**   | [**TerminalSendEventData**](TerminalSendEventData.md) |                                                                                                                                                                                | [optional] |
 
 ## Example
 
@@ -25,6 +25,5 @@ terminal_send_event_dict = terminal_send_event_instance.to_dict()
 # create an instance of TerminalSendEvent from a dict
 terminal_send_event_form_dict = terminal_send_event.from_dict(terminal_send_event_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

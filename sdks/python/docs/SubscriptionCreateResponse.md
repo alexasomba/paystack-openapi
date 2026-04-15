@@ -1,12 +1,12 @@
 # SubscriptionCreateResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**SubscriptionCreateResponseData**](SubscriptionCreateResponseData.md) |  | 
+
+| Name        | Type                                                                    | Description | Notes |
+| ----------- | ----------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                |             |
+| **message** | **str**                                                                 |             |
+| **data**    | [**SubscriptionCreateResponseData**](SubscriptionCreateResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ subscription_create_response_dict = subscription_create_response_instance.to_dic
 # create an instance of SubscriptionCreateResponse from a dict
 subscription_create_response_form_dict = subscription_create_response.from_dict(subscription_create_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

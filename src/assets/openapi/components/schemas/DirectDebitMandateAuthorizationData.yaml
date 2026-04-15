@@ -20,10 +20,10 @@ properties:
     example: 463433
   account_number:
     type: string
-    example: '0123456789'
+    example: "0123456789"
   bank_code:
     type: string
-    example: '058'
+    example: "058"
   bank_name:
     type: string
     example: Guaranty Trust Bank
@@ -32,7 +32,7 @@ properties:
   authorized_at:
     type: string
     format: date-time
-    example: '2025-06-23T12:47:10.632Z'
+    example: "2025-06-23T12:47:10.632Z"
 required:
   - id
   - status

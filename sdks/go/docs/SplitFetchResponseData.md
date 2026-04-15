@@ -2,23 +2,23 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**Name** | **string** |  | 
-**Type** | **string** |  | 
-**Currency** | **string** |  | 
-**Integration** | **int32** |  | 
-**Domain** | **string** |  | 
-**SplitCode** | **string** |  | 
-**Active** | **bool** |  | 
-**BearerType** | **string** |  | 
-**BearerSubaccount** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
-**IsDynamic** | **bool** |  | 
-**Subaccounts** | [**[]SplitSubaccountsArray**](SplitSubaccountsArray.md) |  | 
-**TotalSubaccounts** | **int32** |  | 
+| Name                 | Type                                                    | Description | Notes |
+| -------------------- | ------------------------------------------------------- | ----------- | ----- |
+| **Id**               | **int32**                                               |             |
+| **Name**             | **string**                                              |             |
+| **Type**             | **string**                                              |             |
+| **Currency**         | **string**                                              |             |
+| **Integration**      | **int32**                                               |             |
+| **Domain**           | **string**                                              |             |
+| **SplitCode**        | **string**                                              |             |
+| **Active**           | **bool**                                                |             |
+| **BearerType**       | **string**                                              |             |
+| **BearerSubaccount** | **int32**                                               |             |
+| **CreatedAt**        | **string**                                              |             |
+| **UpdatedAt**        | **string**                                              |             |
+| **IsDynamic**        | **bool**                                                |             |
+| **Subaccounts**      | [**[]SplitSubaccountsArray**](SplitSubaccountsArray.md) |             |
+| **TotalSubaccounts** | **int32**                                               |             |
 
 ## Methods
 
@@ -58,7 +58,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetName
 
 `func (o *SplitFetchResponseData) GetName() string`
@@ -77,7 +76,6 @@ and a boolean to check if the value has been set.
 `func (o *SplitFetchResponseData) SetName(v string)`
 
 SetName sets Name field to given value.
-
 
 ### GetType
 
@@ -98,7 +96,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-
 ### GetCurrency
 
 `func (o *SplitFetchResponseData) GetCurrency() string`
@@ -117,7 +114,6 @@ and a boolean to check if the value has been set.
 `func (o *SplitFetchResponseData) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetIntegration
 
@@ -138,7 +134,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetDomain
 
 `func (o *SplitFetchResponseData) GetDomain() string`
@@ -157,7 +152,6 @@ and a boolean to check if the value has been set.
 `func (o *SplitFetchResponseData) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetSplitCode
 
@@ -178,7 +172,6 @@ and a boolean to check if the value has been set.
 
 SetSplitCode sets SplitCode field to given value.
 
-
 ### GetActive
 
 `func (o *SplitFetchResponseData) GetActive() bool`
@@ -197,7 +190,6 @@ and a boolean to check if the value has been set.
 `func (o *SplitFetchResponseData) SetActive(v bool)`
 
 SetActive sets Active field to given value.
-
 
 ### GetBearerType
 
@@ -218,7 +210,6 @@ and a boolean to check if the value has been set.
 
 SetBearerType sets BearerType field to given value.
 
-
 ### GetBearerSubaccount
 
 `func (o *SplitFetchResponseData) GetBearerSubaccount() int32`
@@ -237,7 +228,6 @@ and a boolean to check if the value has been set.
 `func (o *SplitFetchResponseData) SetBearerSubaccount(v int32)`
 
 SetBearerSubaccount sets BearerSubaccount field to given value.
-
 
 ### GetCreatedAt
 
@@ -258,7 +248,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-
 ### GetUpdatedAt
 
 `func (o *SplitFetchResponseData) GetUpdatedAt() string`
@@ -277,7 +266,6 @@ and a boolean to check if the value has been set.
 `func (o *SplitFetchResponseData) SetUpdatedAt(v string)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
-
 
 ### GetIsDynamic
 
@@ -298,7 +286,6 @@ and a boolean to check if the value has been set.
 
 SetIsDynamic sets IsDynamic field to given value.
 
-
 ### GetSubaccounts
 
 `func (o *SplitFetchResponseData) GetSubaccounts() []SplitSubaccountsArray`
@@ -317,7 +304,6 @@ and a boolean to check if the value has been set.
 `func (o *SplitFetchResponseData) SetSubaccounts(v []SplitSubaccountsArray)`
 
 SetSubaccounts sets Subaccounts field to given value.
-
 
 ### GetTotalSubaccounts
 
@@ -338,8 +324,4 @@ and a boolean to check if the value has been set.
 
 SetTotalSubaccounts sets TotalSubaccounts field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

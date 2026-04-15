@@ -2,13 +2,13 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Transaction** | **string** | The reference of a previosuly completed transaction | 
-**Amount** | Pointer to **int32** | Amount to be refunded to the customer. It cannot be more than the original transaction amount | [optional] 
-**Currency** | Pointer to **string** | Three-letter ISO currency | [optional] 
-**CustomerNote** | Pointer to **string** | Customer reason | [optional] 
-**MerchantNote** | Pointer to **string** | Merchant reason | [optional] 
+| Name             | Type                  | Description                                                                                   | Notes      |
+| ---------------- | --------------------- | --------------------------------------------------------------------------------------------- | ---------- |
+| **Transaction**  | **string**            | The reference of a previosuly completed transaction                                           |
+| **Amount**       | Pointer to **int32**  | Amount to be refunded to the customer. It cannot be more than the original transaction amount | [optional] |
+| **Currency**     | Pointer to **string** | Three-letter ISO currency                                                                     | [optional] |
+| **CustomerNote** | Pointer to **string** | Customer reason                                                                               | [optional] |
+| **MerchantNote** | Pointer to **string** | Merchant reason                                                                               | [optional] |
 
 ## Methods
 
@@ -47,7 +47,6 @@ and a boolean to check if the value has been set.
 `func (o *RefundCreate) SetTransaction(v string)`
 
 SetTransaction sets Transaction field to given value.
-
 
 ### GetAmount
 
@@ -149,7 +148,4 @@ SetMerchantNote sets MerchantNote field to given value.
 
 HasMerchantNote returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

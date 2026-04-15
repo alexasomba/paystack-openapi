@@ -9,25 +9,7 @@ properties:
     items:
       $ref: ./SplitListResponseArray.yaml
   meta:
-    type: object
-    properties:
-      total:
-        type: integer
-      skipped:
-        type: integer
-      perPage:
-        type: integer
-      page:
-        type: integer
-      pageCount:
-        type: integer
-    required:
-      - total
-      - skipped
-      - perPage
-      - page
-      - pageCount
-    additionalProperties: false
+    $ref: ./Meta.yaml
 required:
   - status
   - message

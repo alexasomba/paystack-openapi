@@ -1,8 +1,8 @@
 parameters:
-  - name: code
+  - name: id_or_code
     in: path
     required: true
-    description: The subscription code for the subscription you want to fetch
+    description: The subscription ID or code you want to fetch
     schema:
       type: string
     example: "SUB_5co81xgmwg78x3d"
@@ -13,11 +13,11 @@ get:
   description: Get details of a customer's subscription
   operationId: subscription_fetch
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/SubscriptionFetchSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

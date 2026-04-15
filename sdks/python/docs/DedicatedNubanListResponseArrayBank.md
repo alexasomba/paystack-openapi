@@ -1,12 +1,12 @@
 # DedicatedNubanListResponseArrayBank
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**id** | **int** |  | 
-**slug** | **str** |  | 
+
+| Name     | Type    | Description | Notes |
+| -------- | ------- | ----------- | ----- |
+| **name** | **str** |             |
+| **id**   | **int** |             |
+| **slug** | **str** |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ dedicated_nuban_list_response_array_bank_dict = dedicated_nuban_list_response_ar
 # create an instance of DedicatedNubanListResponseArrayBank from a dict
 dedicated_nuban_list_response_array_bank_form_dict = dedicated_nuban_list_response_array_bank.from_dict(dedicated_nuban_list_response_array_bank_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

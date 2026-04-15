@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Customer** | **string** | Customer&#39;s email address or customer code | 
-**Plan** | **string** | Plan code | 
-**Authorization** | Pointer to **string** | If customer has multiple authorizations, you can set the desired authorization you wish to use for this subscription here.  If this is not supplied, the customer&#39;s most recent authorization would be used | [optional] 
-**StartDate** | Pointer to **time.Time** | Set the date for the first debit. (ISO 8601 format) e.g. 2017-05-16T00:30:13+01:00 | [optional] 
+| Name              | Type                     | Description                                                                                                                                                                                                    | Notes      |
+| ----------------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **Customer**      | **string**               | Customer&#39;s email address or customer code                                                                                                                                                                  |
+| **Plan**          | **string**               | Plan code                                                                                                                                                                                                      |
+| **Authorization** | Pointer to **string**    | If customer has multiple authorizations, you can set the desired authorization you wish to use for this subscription here. If this is not supplied, the customer&#39;s most recent authorization would be used | [optional] |
+| **StartDate**     | Pointer to **time.Time** | Set the date for the first debit. (ISO 8601 format) e.g. 2017-05-16T00:30:13+01:00                                                                                                                             | [optional] |
 
 ## Methods
 
@@ -47,7 +47,6 @@ and a boolean to check if the value has been set.
 
 SetCustomer sets Customer field to given value.
 
-
 ### GetPlan
 
 `func (o *SubscriptionCreate) GetPlan() string`
@@ -66,7 +65,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionCreate) SetPlan(v string)`
 
 SetPlan sets Plan field to given value.
-
 
 ### GetAuthorization
 
@@ -118,7 +116,4 @@ SetStartDate sets StartDate field to given value.
 
 HasStartDate returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

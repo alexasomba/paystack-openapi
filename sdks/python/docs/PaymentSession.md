@@ -1,10 +1,10 @@
 # PaymentSession
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**timeout** | **int** | Time in seconds before a transaction becomes invalid | 
+
+| Name        | Type    | Description                                          | Notes |
+| ----------- | ------- | ---------------------------------------------------- | ----- |
+| **timeout** | **int** | Time in seconds before a transaction becomes invalid |
 
 ## Example
 
@@ -23,6 +23,5 @@ payment_session_dict = payment_session_instance.to_dict()
 # create an instance of PaymentSession from a dict
 payment_session_form_dict = payment_session.from_dict(payment_session_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

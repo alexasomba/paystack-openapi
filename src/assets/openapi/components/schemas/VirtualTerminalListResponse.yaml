@@ -9,17 +9,9 @@ properties:
     items:
       $ref: ./VirtualTerminalListResponseArray.yaml
   meta:
-    type: object
-    properties:
-      total:
-        type: integer
-      skipped:
-        type: integer
-      perPage:
-        anyOf:
-          - type: string
-          - type: integer
-      page:
-        type: integer
-      pageCount:
-        type: integer
+    $ref: ./CursorMeta.yaml
+required:
+  - status
+  - message
+  - data
+  - meta

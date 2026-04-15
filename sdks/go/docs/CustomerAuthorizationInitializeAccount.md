@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Number** | **string** | The customer&#39;s account number | 
-**BankCode** | **string** | The code representing the customer&#39;s bank | 
+| Name         | Type       | Description                                   | Notes |
+| ------------ | ---------- | --------------------------------------------- | ----- |
+| **Number**   | **string** | The customer&#39;s account number             |
+| **BankCode** | **string** | The code representing the customer&#39;s bank |
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetNumber sets Number field to given value.
 
-
 ### GetBankCode
 
 `func (o *CustomerAuthorizationInitializeAccount) GetBankCode() string`
@@ -65,8 +64,4 @@ and a boolean to check if the value has been set.
 
 SetBankCode sets BankCode field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

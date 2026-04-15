@@ -1,12 +1,12 @@
 # TransactionTimelineResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | **object** |  | 
+
+| Name        | Type       | Description | Notes |
+| ----------- | ---------- | ----------- | ----- |
+| **status**  | **bool**   |             |
+| **message** | **str**    |             |
+| **data**    | **object** |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ transaction_timeline_response_dict = transaction_timeline_response_instance.to_d
 # create an instance of TransactionTimelineResponse from a dict
 transaction_timeline_response_form_dict = transaction_timeline_response.from_dict(transaction_timeline_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

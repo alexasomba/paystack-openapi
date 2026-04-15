@@ -1,11 +1,11 @@
 # PageCheckSlugAvailabilityResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
+
+| Name        | Type     | Description | Notes |
+| ----------- | -------- | ----------- | ----- |
+| **status**  | **bool** |             |
+| **message** | **str**  |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ page_check_slug_availability_response_dict = page_check_slug_availability_respon
 # create an instance of PageCheckSlugAvailabilityResponse from a dict
 page_check_slug_availability_response_form_dict = page_check_slug_availability_response.from_dict(page_check_slug_availability_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -1,12 +1,12 @@
 # TransferBulkResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**List[TransferBulkResponseArray]**](TransferBulkResponseArray.md) |  | 
+
+| Name        | Type                                                                | Description | Notes |
+| ----------- | ------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                            |             |
+| **message** | **str**                                                             |             |
+| **data**    | [**List[TransferBulkResponseArray]**](TransferBulkResponseArray.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ transfer_bulk_response_dict = transfer_bulk_response_instance.to_dict()
 # create an instance of TransferBulkResponse from a dict
 transfer_bulk_response_form_dict = transfer_bulk_response.from_dict(transfer_bulk_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

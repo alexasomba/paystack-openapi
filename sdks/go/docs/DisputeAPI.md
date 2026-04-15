@@ -2,26 +2,22 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**DisputeDownload**](DisputeAPI.md#DisputeDownload) | **Get** /dispute/export | Export Disputes
-[**DisputeEvidence**](DisputeAPI.md#DisputeEvidence) | **Post** /dispute/{id}/evidence | Add Evidence
-[**DisputeFetch**](DisputeAPI.md#DisputeFetch) | **Get** /dispute/{id} | Fetch Dispute
-[**DisputeList**](DisputeAPI.md#DisputeList) | **Get** /dispute | List Disputes
-[**DisputeResolve**](DisputeAPI.md#DisputeResolve) | **Put** /dispute/{id}/resolve | Resolve Dispute
-[**DisputeTransaction**](DisputeAPI.md#DisputeTransaction) | **Get** /dispute/transaction/{id} | List Transaction Disputes
-[**DisputeUpdate**](DisputeAPI.md#DisputeUpdate) | **Put** /dispute/{id} | Update Dispute
-[**DisputeUploadUrl**](DisputeAPI.md#DisputeUploadUrl) | **Get** /dispute/{id}/upload_url | Fetch Upload URL
-
-
+| Method                                                     | HTTP request                      | Description               |
+| ---------------------------------------------------------- | --------------------------------- | ------------------------- |
+| [**DisputeDownload**](DisputeAPI.md#DisputeDownload)       | **Get** /dispute/export           | Export Disputes           |
+| [**DisputeEvidence**](DisputeAPI.md#DisputeEvidence)       | **Post** /dispute/{id}/evidence   | Add Evidence              |
+| [**DisputeFetch**](DisputeAPI.md#DisputeFetch)             | **Get** /dispute/{id}             | Fetch Dispute             |
+| [**DisputeList**](DisputeAPI.md#DisputeList)               | **Get** /dispute                  | List Disputes             |
+| [**DisputeResolve**](DisputeAPI.md#DisputeResolve)         | **Put** /dispute/{id}/resolve     | Resolve Dispute           |
+| [**DisputeTransaction**](DisputeAPI.md#DisputeTransaction) | **Get** /dispute/transaction/{id} | List Transaction Disputes |
+| [**DisputeUpdate**](DisputeAPI.md#DisputeUpdate)           | **Put** /dispute/{id}             | Update Dispute            |
+| [**DisputeUploadUrl**](DisputeAPI.md#DisputeUploadUrl)     | **Get** /dispute/{id}/upload_url  | Fetch Upload URL          |
 
 ## DisputeDownload
 
 > DisputeExportResponse DisputeDownload(ctx).PerPage(perPage).Page(page).Status(status).From(from).To(to).Execute()
 
 Export Disputes
-
-
 
 ### Example
 
@@ -57,20 +53,17 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDisputeDownloadRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **perPage** | **int32** | Number of records to fetch per page | 
- **page** | **int32** | The section to retrieve | 
- **status** | **string** |  | 
- **from** | **time.Time** | The start date | 
- **to** | **time.Time** | The end date | 
+| Name        | Type          | Description                         | Notes |
+| ----------- | ------------- | ----------------------------------- | ----- |
+| **perPage** | **int32**     | Number of records to fetch per page |
+| **page**    | **int32**     | The section to retrieve             |
+| **status**  | **string**    |                                     |
+| **from**    | **time.Time** | The start date                      |
+| **to**      | **time.Time** | The end date                        |
 
 ### Return type
 
@@ -89,14 +82,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## DisputeEvidence
 
 > DisputeAddEvidenceResponse DisputeEvidence(ctx, id).DisputeEvidence(disputeEvidence).Execute()
 
 Add Evidence
-
-
 
 ### Example
 
@@ -128,21 +118,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of the dispute | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of the dispute                                        |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDisputeEvidenceRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **disputeEvidence** | [**DisputeEvidence**](DisputeEvidence.md) |  | 
+**disputeEvidence** | [**DisputeEvidence**](DisputeEvidence.md) | |
 
 ### Return type
 
@@ -161,14 +149,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## DisputeFetch
 
 > DisputeFetchResponse DisputeFetch(ctx, id).Execute()
 
 Fetch Dispute
-
-
 
 ### Example
 
@@ -199,20 +184,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of the dispute | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of the dispute                                        |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDisputeFetchRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -231,14 +213,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## DisputeList
 
 > DisputeListResponse DisputeList(ctx).PerPage(perPage).Page(page).Status(status).Transaction(transaction).From(from).To(to).Execute()
 
 List Disputes
-
-
 
 ### Example
 
@@ -275,21 +254,18 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDisputeListRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **perPage** | **int32** | Number of records to fetch per page | 
- **page** | **int32** | The section to retrieve | 
- **status** | **string** | Dispute status | 
- **transaction** | **string** | Transaction ID | 
- **from** | **time.Time** | The start date | 
- **to** | **time.Time** | The end date | 
+| Name            | Type          | Description                         | Notes |
+| --------------- | ------------- | ----------------------------------- | ----- |
+| **perPage**     | **int32**     | Number of records to fetch per page |
+| **page**        | **int32**     | The section to retrieve             |
+| **status**      | **string**    | Dispute status                      |
+| **transaction** | **string**    | Transaction ID                      |
+| **from**        | **time.Time** | The start date                      |
+| **to**          | **time.Time** | The end date                        |
 
 ### Return type
 
@@ -308,14 +284,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## DisputeResolve
 
 > DisputeResolveResponse DisputeResolve(ctx, id).DisputeResolve(disputeResolve).Execute()
 
 Resolve Dispute
-
-
 
 ### Example
 
@@ -347,21 +320,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of the dispute | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of the dispute                                        |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDisputeResolveRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **disputeResolve** | [**DisputeResolve**](DisputeResolve.md) |  | 
+**disputeResolve** | [**DisputeResolve**](DisputeResolve.md) | |
 
 ### Return type
 
@@ -380,14 +351,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## DisputeTransaction
 
 > DisputeListTransactionResponse DisputeTransaction(ctx, id).Execute()
 
 List Transaction Disputes
-
-
 
 ### Example
 
@@ -418,20 +386,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of the transaction | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of the transaction                                    |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDisputeTransactionRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -450,14 +415,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## DisputeUpdate
 
 > DisputeUpdateResponse DisputeUpdate(ctx, id).DisputeUpdate(disputeUpdate).Execute()
 
 Update Dispute
-
-
 
 ### Example
 
@@ -489,21 +451,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of the dispute | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of the dispute                                        |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDisputeUpdateRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **disputeUpdate** | [**DisputeUpdate**](DisputeUpdate.md) |  | 
+**disputeUpdate** | [**DisputeUpdate**](DisputeUpdate.md) | |
 
 ### Return type
 
@@ -522,14 +482,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## DisputeUploadUrl
 
 > DisputeUploadURLResponse DisputeUploadUrl(ctx, id).Execute()
 
 Fetch Upload URL
-
-
 
 ### Example
 
@@ -560,20 +517,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of the dispute | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of the dispute                                        |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDisputeUploadUrlRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -591,4 +545,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

@@ -1,6 +1,6 @@
 parameters:
-  - name: code
-    description: Transfer code
+  - name: id_or_code
+    description: The transfer ID or code you want to fetch
     in: path
     required: true
     schema:
@@ -13,15 +13,15 @@ get:
   description: Get details of a transfer on your integration
   operationId: transfer_fetch
   responses:
-    '200':
-      description: 'Succesful operation'
+    "200":
+      description: "Succesful operation"
       content:
         application/json:
           schema:
             $ref: ../components/schemas/TransferFetchResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

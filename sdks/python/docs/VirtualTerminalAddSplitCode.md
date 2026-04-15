@@ -1,10 +1,10 @@
 # VirtualTerminalAddSplitCode
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**split_code** | **str** | The split code to assign to the virtual terminal | 
+
+| Name           | Type    | Description                                      | Notes |
+| -------------- | ------- | ------------------------------------------------ | ----- |
+| **split_code** | **str** | The split code to assign to the virtual terminal |
 
 ## Example
 
@@ -23,6 +23,5 @@ virtual_terminal_add_split_code_dict = virtual_terminal_add_split_code_instance.
 # create an instance of VirtualTerminalAddSplitCode from a dict
 virtual_terminal_add_split_code_form_dict = virtual_terminal_add_split_code.from_dict(virtual_terminal_add_split_code_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

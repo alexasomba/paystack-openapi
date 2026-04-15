@@ -2,28 +2,28 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Transfersessionid** | **[]interface{}** |  | 
-**Transfertrials** | **[]interface{}** |  | 
-**Domain** | **string** |  | 
-**Amount** | **int32** |  | 
-**Currency** | **string** |  | 
-**Reference** | **string** |  | 
-**Source** | **string** |  | 
-**SourceDetails** | **interface{}** |  | 
-**Reason** | **string** |  | 
-**Status** | **string** |  | 
-**Failures** | **interface{}** |  | 
-**TransferCode** | **string** |  | 
-**TitanCode** | **interface{}** |  | 
-**TransferredAt** | **interface{}** |  | 
-**Id** | **int32** |  | 
-**Integration** | **int32** |  | 
-**Request** | **int32** |  | 
-**Recipient** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name                  | Type              | Description | Notes |
+| --------------------- | ----------------- | ----------- | ----- |
+| **Transfersessionid** | **[]interface{}** |             |
+| **Transfertrials**    | **[]interface{}** |             |
+| **Domain**            | **string**        |             |
+| **Amount**            | **int32**         |             |
+| **Currency**          | **string**        |             |
+| **Reference**         | **string**        |             |
+| **Source**            | **string**        |             |
+| **SourceDetails**     | **interface{}**   |             |
+| **Reason**            | **string**        |             |
+| **Status**            | **string**        |             |
+| **Failures**          | **interface{}**   |             |
+| **TransferCode**      | **string**        |             |
+| **TitanCode**         | **interface{}**   |             |
+| **TransferredAt**     | **interface{}**   |             |
+| **Id**                | **int32**         |             |
+| **Integration**       | **int32**         |             |
+| **Request**           | **int32**         |             |
+| **Recipient**         | **int32**         |             |
+| **CreatedAt**         | **string**        |             |
+| **UpdatedAt**         | **string**        |             |
 
 ## Methods
 
@@ -63,7 +63,6 @@ and a boolean to check if the value has been set.
 
 SetTransfersessionid sets Transfersessionid field to given value.
 
-
 ### GetTransfertrials
 
 `func (o *TransferCreateResponseData) GetTransfertrials() []interface{}`
@@ -82,7 +81,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferCreateResponseData) SetTransfertrials(v []interface{})`
 
 SetTransfertrials sets Transfertrials field to given value.
-
 
 ### GetDomain
 
@@ -103,7 +101,6 @@ and a boolean to check if the value has been set.
 
 SetDomain sets Domain field to given value.
 
-
 ### GetAmount
 
 `func (o *TransferCreateResponseData) GetAmount() int32`
@@ -122,7 +119,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferCreateResponseData) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetCurrency
 
@@ -143,7 +139,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetReference
 
 `func (o *TransferCreateResponseData) GetReference() string`
@@ -162,7 +157,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferCreateResponseData) SetReference(v string)`
 
 SetReference sets Reference field to given value.
-
 
 ### GetSource
 
@@ -183,7 +177,6 @@ and a boolean to check if the value has been set.
 
 SetSource sets Source field to given value.
 
-
 ### GetSourceDetails
 
 `func (o *TransferCreateResponseData) GetSourceDetails() interface{}`
@@ -203,17 +196,18 @@ and a boolean to check if the value has been set.
 
 SetSourceDetails sets SourceDetails field to given value.
 
-
 ### SetSourceDetailsNil
 
 `func (o *TransferCreateResponseData) SetSourceDetailsNil(b bool)`
 
- SetSourceDetailsNil sets the value for SourceDetails to be an explicit nil
+SetSourceDetailsNil sets the value for SourceDetails to be an explicit nil
 
 ### UnsetSourceDetails
+
 `func (o *TransferCreateResponseData) UnsetSourceDetails()`
 
 UnsetSourceDetails ensures that no value is present for SourceDetails, not even an explicit nil
+
 ### GetReason
 
 `func (o *TransferCreateResponseData) GetReason() string`
@@ -232,7 +226,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferCreateResponseData) SetReason(v string)`
 
 SetReason sets Reason field to given value.
-
 
 ### GetStatus
 
@@ -253,7 +246,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-
 ### GetFailures
 
 `func (o *TransferCreateResponseData) GetFailures() interface{}`
@@ -273,17 +265,18 @@ and a boolean to check if the value has been set.
 
 SetFailures sets Failures field to given value.
 
-
 ### SetFailuresNil
 
 `func (o *TransferCreateResponseData) SetFailuresNil(b bool)`
 
- SetFailuresNil sets the value for Failures to be an explicit nil
+SetFailuresNil sets the value for Failures to be an explicit nil
 
 ### UnsetFailures
+
 `func (o *TransferCreateResponseData) UnsetFailures()`
 
 UnsetFailures ensures that no value is present for Failures, not even an explicit nil
+
 ### GetTransferCode
 
 `func (o *TransferCreateResponseData) GetTransferCode() string`
@@ -302,7 +295,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferCreateResponseData) SetTransferCode(v string)`
 
 SetTransferCode sets TransferCode field to given value.
-
 
 ### GetTitanCode
 
@@ -323,17 +315,18 @@ and a boolean to check if the value has been set.
 
 SetTitanCode sets TitanCode field to given value.
 
-
 ### SetTitanCodeNil
 
 `func (o *TransferCreateResponseData) SetTitanCodeNil(b bool)`
 
- SetTitanCodeNil sets the value for TitanCode to be an explicit nil
+SetTitanCodeNil sets the value for TitanCode to be an explicit nil
 
 ### UnsetTitanCode
+
 `func (o *TransferCreateResponseData) UnsetTitanCode()`
 
 UnsetTitanCode ensures that no value is present for TitanCode, not even an explicit nil
+
 ### GetTransferredAt
 
 `func (o *TransferCreateResponseData) GetTransferredAt() interface{}`
@@ -353,17 +346,18 @@ and a boolean to check if the value has been set.
 
 SetTransferredAt sets TransferredAt field to given value.
 
-
 ### SetTransferredAtNil
 
 `func (o *TransferCreateResponseData) SetTransferredAtNil(b bool)`
 
- SetTransferredAtNil sets the value for TransferredAt to be an explicit nil
+SetTransferredAtNil sets the value for TransferredAt to be an explicit nil
 
 ### UnsetTransferredAt
+
 `func (o *TransferCreateResponseData) UnsetTransferredAt()`
 
 UnsetTransferredAt ensures that no value is present for TransferredAt, not even an explicit nil
+
 ### GetId
 
 `func (o *TransferCreateResponseData) GetId() int32`
@@ -382,7 +376,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferCreateResponseData) SetId(v int32)`
 
 SetId sets Id field to given value.
-
 
 ### GetIntegration
 
@@ -403,7 +396,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetRequest
 
 `func (o *TransferCreateResponseData) GetRequest() int32`
@@ -422,7 +414,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferCreateResponseData) SetRequest(v int32)`
 
 SetRequest sets Request field to given value.
-
 
 ### GetRecipient
 
@@ -443,7 +434,6 @@ and a boolean to check if the value has been set.
 
 SetRecipient sets Recipient field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *TransferCreateResponseData) GetCreatedAt() string`
@@ -462,7 +452,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferCreateResponseData) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -483,8 +472,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

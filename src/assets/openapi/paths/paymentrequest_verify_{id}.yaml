@@ -13,11 +13,11 @@ get:
   description: Verify the status of a previously created payment request
   operationId: paymentRequest_verify
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/PaymentRequestVerifySuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

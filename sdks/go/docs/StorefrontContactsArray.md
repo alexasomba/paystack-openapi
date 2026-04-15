@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Value** | **string** |  | 
-**Id** | **int32** |  | 
-**TypeName** | **interface{}** |  | 
-**Type** | **int32** |  | 
+| Name         | Type            | Description | Notes |
+| ------------ | --------------- | ----------- | ----- |
+| **Value**    | **string**      |             |
+| **Id**       | **int32**       |             |
+| **TypeName** | **interface{}** |             |
+| **Type**     | **int32**       |             |
 
 ## Methods
 
@@ -47,7 +47,6 @@ and a boolean to check if the value has been set.
 
 SetValue sets Value field to given value.
 
-
 ### GetId
 
 `func (o *StorefrontContactsArray) GetId() int32`
@@ -66,7 +65,6 @@ and a boolean to check if the value has been set.
 `func (o *StorefrontContactsArray) SetId(v int32)`
 
 SetId sets Id field to given value.
-
 
 ### GetTypeName
 
@@ -87,17 +85,18 @@ and a boolean to check if the value has been set.
 
 SetTypeName sets TypeName field to given value.
 
-
 ### SetTypeNameNil
 
 `func (o *StorefrontContactsArray) SetTypeNameNil(b bool)`
 
- SetTypeNameNil sets the value for TypeName to be an explicit nil
+SetTypeNameNil sets the value for TypeName to be an explicit nil
 
 ### UnsetTypeName
+
 `func (o *StorefrontContactsArray) UnsetTypeName()`
 
 UnsetTypeName ensures that no value is present for TypeName, not even an explicit nil
+
 ### GetType
 
 `func (o *StorefrontContactsArray) GetType() int32`
@@ -117,8 +116,4 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

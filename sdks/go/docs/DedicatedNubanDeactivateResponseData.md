@@ -2,19 +2,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Bank** | [**DedicatedNubanListResponseArrayBank**](DedicatedNubanListResponseArrayBank.md) |  | 
-**AccountName** | **string** |  | 
-**AccountNumber** | **string** |  | 
-**Assigned** | **bool** |  | 
-**Currency** | **string** |  | 
-**Metadata** | **interface{}** |  | 
-**Active** | **bool** |  | 
-**Id** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
-**Assignment** | [**DedicatedNubanDeactivateResponseDataAssignment**](DedicatedNubanDeactivateResponseDataAssignment.md) |  | 
+| Name              | Type                                                                                                    | Description | Notes |
+| ----------------- | ------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **Bank**          | [**DedicatedNubanListResponseArrayBank**](DedicatedNubanListResponseArrayBank.md)                       |             |
+| **AccountName**   | **string**                                                                                              |             |
+| **AccountNumber** | **string**                                                                                              |             |
+| **Assigned**      | **bool**                                                                                                |             |
+| **Currency**      | **string**                                                                                              |             |
+| **Metadata**      | **interface{}**                                                                                         |             |
+| **Active**        | **bool**                                                                                                |             |
+| **Id**            | **int32**                                                                                               |             |
+| **CreatedAt**     | **string**                                                                                              |             |
+| **UpdatedAt**     | **string**                                                                                              |             |
+| **Assignment**    | [**DedicatedNubanDeactivateResponseDataAssignment**](DedicatedNubanDeactivateResponseDataAssignment.md) |             |
 
 ## Methods
 
@@ -54,7 +54,6 @@ and a boolean to check if the value has been set.
 
 SetBank sets Bank field to given value.
 
-
 ### GetAccountName
 
 `func (o *DedicatedNubanDeactivateResponseData) GetAccountName() string`
@@ -73,7 +72,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedNubanDeactivateResponseData) SetAccountName(v string)`
 
 SetAccountName sets AccountName field to given value.
-
 
 ### GetAccountNumber
 
@@ -94,7 +92,6 @@ and a boolean to check if the value has been set.
 
 SetAccountNumber sets AccountNumber field to given value.
 
-
 ### GetAssigned
 
 `func (o *DedicatedNubanDeactivateResponseData) GetAssigned() bool`
@@ -113,7 +110,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedNubanDeactivateResponseData) SetAssigned(v bool)`
 
 SetAssigned sets Assigned field to given value.
-
 
 ### GetCurrency
 
@@ -134,7 +130,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetMetadata
 
 `func (o *DedicatedNubanDeactivateResponseData) GetMetadata() interface{}`
@@ -154,17 +149,18 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
-
 ### SetMetadataNil
 
 `func (o *DedicatedNubanDeactivateResponseData) SetMetadataNil(b bool)`
 
- SetMetadataNil sets the value for Metadata to be an explicit nil
+SetMetadataNil sets the value for Metadata to be an explicit nil
 
 ### UnsetMetadata
+
 `func (o *DedicatedNubanDeactivateResponseData) UnsetMetadata()`
 
 UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
+
 ### GetActive
 
 `func (o *DedicatedNubanDeactivateResponseData) GetActive() bool`
@@ -183,7 +179,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedNubanDeactivateResponseData) SetActive(v bool)`
 
 SetActive sets Active field to given value.
-
 
 ### GetId
 
@@ -204,7 +199,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *DedicatedNubanDeactivateResponseData) GetCreatedAt() string`
@@ -223,7 +217,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedNubanDeactivateResponseData) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -244,7 +237,6 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
 ### GetAssignment
 
 `func (o *DedicatedNubanDeactivateResponseData) GetAssignment() DedicatedNubanDeactivateResponseDataAssignment`
@@ -264,8 +256,4 @@ and a boolean to check if the value has been set.
 
 SetAssignment sets Assignment field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

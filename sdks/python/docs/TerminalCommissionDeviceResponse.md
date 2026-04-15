@@ -1,11 +1,11 @@
 # TerminalCommissionDeviceResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
+
+| Name        | Type     | Description | Notes |
+| ----------- | -------- | ----------- | ----- |
+| **status**  | **bool** |             |
+| **message** | **str**  |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ terminal_commission_device_response_dict = terminal_commission_device_response_i
 # create an instance of TerminalCommissionDeviceResponse from a dict
 terminal_commission_device_response_form_dict = terminal_commission_device_response.from_dict(terminal_commission_device_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

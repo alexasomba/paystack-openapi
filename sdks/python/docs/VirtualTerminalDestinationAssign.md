@@ -1,10 +1,10 @@
 # VirtualTerminalDestinationAssign
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**destinations** | [**List[VirtualTerminalCreateDestinationsInner]**](VirtualTerminalCreateDestinationsInner.md) | Array of objects containing recipients for payment notifications for the Virtual Terminal. | 
+
+| Name             | Type                                                                                          | Description                                                                                | Notes |
+| ---------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ----- |
+| **destinations** | [**List[VirtualTerminalCreateDestinationsInner]**](VirtualTerminalCreateDestinationsInner.md) | Array of objects containing recipients for payment notifications for the Virtual Terminal. |
 
 ## Example
 
@@ -23,6 +23,5 @@ virtual_terminal_destination_assign_dict = virtual_terminal_destination_assign_i
 # create an instance of VirtualTerminalDestinationAssign from a dict
 virtual_terminal_destination_assign_form_dict = virtual_terminal_destination_assign.from_dict(virtual_terminal_destination_assign_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

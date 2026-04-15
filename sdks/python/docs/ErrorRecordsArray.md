@@ -1,16 +1,16 @@
 # ErrorRecordsArray
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**type** | **str** |  | 
-**name** | **str** |  | 
-**description** | **str** |  | 
-**account_number** | **str** |  | 
-**bank_code** | **str** |  | 
-**currency** | **str** |  | 
-**email** | **str** |  | 
+
+| Name               | Type    | Description | Notes |
+| ------------------ | ------- | ----------- | ----- |
+| **type**           | **str** |             |
+| **name**           | **str** |             |
+| **description**    | **str** |             |
+| **account_number** | **str** |             |
+| **bank_code**      | **str** |             |
+| **currency**       | **str** |             |
+| **email**          | **str** |             |
 
 ## Example
 
@@ -29,6 +29,5 @@ error_records_array_dict = error_records_array_instance.to_dict()
 # create an instance of ErrorRecordsArray from a dict
 error_records_array_form_dict = error_records_array.from_dict(error_records_array_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

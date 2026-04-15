@@ -13,11 +13,11 @@ get:
   description: Verify the availability of a slug before using it for your Storefront
   operationId: storefront_verifySlug
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/Ok.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

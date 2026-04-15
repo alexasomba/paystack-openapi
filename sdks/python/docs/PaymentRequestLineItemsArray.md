@@ -1,12 +1,12 @@
 # PaymentRequestLineItemsArray
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**amount** | **int** |  | 
-**quantity** | **int** |  | 
+
+| Name         | Type    | Description | Notes |
+| ------------ | ------- | ----------- | ----- |
+| **name**     | **str** |             |
+| **amount**   | **int** |             |
+| **quantity** | **int** |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ payment_request_line_items_array_dict = payment_request_line_items_array_instanc
 # create an instance of PaymentRequestLineItemsArray from a dict
 payment_request_line_items_array_form_dict = payment_request_line_items_array.from_dict(payment_request_line_items_array_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**SignedUrl** | **string** |  | 
-**FileName** | **string** |  | 
+| Name          | Type       | Description | Notes |
+| ------------- | ---------- | ----------- | ----- |
+| **SignedUrl** | **string** |             |
+| **FileName**  | **string** |             |
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetSignedUrl sets SignedUrl field to given value.
 
-
 ### GetFileName
 
 `func (o *DisputeUploadURLResponseData) GetFileName() string`
@@ -65,8 +64,4 @@ and a boolean to check if the value has been set.
 
 SetFileName sets FileName field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -1,11 +1,11 @@
 # MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**type** | **str** |  | 
-**data** | **List[object]** |  | 
+
+| Name     | Type             | Description | Notes |
+| -------- | ---------------- | ----------- | ----- |
+| **type** | **str**          |             |
+| **data** | **List[object]** |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ miscellaneous_list_countries_response_array_relationships_integration_feature_di
 # create an instance of MiscellaneousListCountriesResponseArrayRelationshipsIntegrationFeature from a dict
 miscellaneous_list_countries_response_array_relationships_integration_feature_form_dict = miscellaneous_list_countries_response_array_relationships_integration_feature.from_dict(miscellaneous_list_countries_response_array_relationships_integration_feature_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

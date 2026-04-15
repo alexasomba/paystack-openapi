@@ -2,14 +2,14 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**bank_list**](BankApi.md#bank_list) | **GET** /bank | List Banks
-[**bank_resolve_account_number**](BankApi.md#bank_resolve_account_number) | **GET** /bank/resolve | Resolve Account Number
-[**bank_validate_account_number**](BankApi.md#bank_validate_account_number) | **POST** /bank/validate | Validate Bank Account
-
+| Method                                                                      | HTTP request            | Description            |
+| --------------------------------------------------------------------------- | ----------------------- | ---------------------- |
+| [**bank_list**](BankApi.md#bank_list)                                       | **GET** /bank           | List Banks             |
+| [**bank_resolve_account_number**](BankApi.md#bank_resolve_account_number)   | **GET** /bank/resolve   | Resolve Account Number |
+| [**bank_validate_account_number**](BankApi.md#bank_validate_account_number) | **POST** /bank/validate | Validate Bank Account  |
 
 # **bank_list**
+
 > MiscellaneousListBanksResponse bank_list(country=country, currency=currency, use_cursor=use_cursor, per_page=per_page, page=page, next=next, previous=previous, pay_with_bank_transfer=pay_with_bank_transfer, pay_with_bank=pay_with_bank, enabled_for_verification=enabled_for_verification, gateway=gateway, type=type, include_nip_sort_code=include_nip_sort_code)
 
 List Banks
@@ -18,7 +18,8 @@ List banks supported on Paystack
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -70,25 +71,23 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling BankApi->bank_list: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **country** | **str**| The country from which to obtain the list of supported banks | [optional] 
- **currency** | **str**| The country from which to obtain the list of supported banks | [optional] 
- **use_cursor** | **bool**| A flag to indicate if cursor based pagination should be used | [optional] 
- **per_page** | **int**| The number of records to fetch per request | [optional] 
- **page** | **int**| The offset to retrieve data from | [optional] 
- **next** | **str**| An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data  | [optional] 
- **previous** | **str**| An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data  | [optional] 
- **pay_with_bank_transfer** | **bool**| A flag to filter for available banks a customer can make a transfer to complete a payment | [optional] 
- **pay_with_bank** | **bool**| A flag to filter for banks a customer can pay directly from | [optional] 
- **enabled_for_verification** | **bool**| A flag to filter the banks that are supported for account verification in South Africa. You need to combine this with either the &#x60;currency&#x60; or &#x60;country&#x60; filter.  | [optional] 
- **gateway** | **str**| The type of gateway for a Nigerian bank | [optional] 
- **type** | **str**| Type of financial channel | [optional] 
- **include_nip_sort_code** | **bool**| A flag that returns Nigerian banks with their NIP institution code.  The returned value can be used in identifying institutions on NIP.  | [optional] 
+| Name                         | Type     | Description                                                                                                                                                                          | Notes      |
+| ---------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- |
+| **country**                  | **str**  | The country from which to obtain the list of supported banks                                                                                                                         | [optional] |
+| **currency**                 | **str**  | The country from which to obtain the list of supported banks                                                                                                                         | [optional] |
+| **use_cursor**               | **bool** | A flag to indicate if cursor based pagination should be used                                                                                                                         | [optional] |
+| **per_page**                 | **int**  | The number of records to fetch per request                                                                                                                                           | [optional] |
+| **page**                     | **int**  | The offset to retrieve data from                                                                                                                                                     | [optional] |
+| **next**                     | **str**  | An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data                                                                               | [optional] |
+| **previous**                 | **str**  | An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data                                                                           | [optional] |
+| **pay_with_bank_transfer**   | **bool** | A flag to filter for available banks a customer can make a transfer to complete a payment                                                                                            | [optional] |
+| **pay_with_bank**            | **bool** | A flag to filter for banks a customer can pay directly from                                                                                                                          | [optional] |
+| **enabled_for_verification** | **bool** | A flag to filter the banks that are supported for account verification in South Africa. You need to combine this with either the &#x60;currency&#x60; or &#x60;country&#x60; filter. | [optional] |
+| **gateway**                  | **str**  | The type of gateway for a Nigerian bank                                                                                                                                              | [optional] |
+| **type**                     | **str**  | Type of financial channel                                                                                                                                                            | [optional] |
+| **include_nip_sort_code**    | **bool** | A flag that returns Nigerian banks with their NIP institution code. The returned value can be used in identifying institutions on NIP.                                               | [optional] |
 
 ### Return type
 
@@ -100,20 +99,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Miscellaneous List Banks response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                       | Response headers |
+| ----------- | --------------------------------- | ---------------- |
+| **200**     | Miscellaneous List Banks response | -                |
+| **401**     | Unauthorized operation            | -                |
+| **404**     | Entity not found                  | -                |
+| **0**       | Server error                      | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **bank_resolve_account_number**
+
 > VerificationResolveAccountNumberResponse bank_resolve_account_number(account_number=account_number, bank_code=bank_code)
 
 Resolve Account Number
@@ -122,7 +123,8 @@ Resolve an account number to confirm the name associated with it
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -163,14 +165,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling BankApi->bank_resolve_account_number: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **account_number** | **int**| The account number of interest | [optional] 
- **bank_code** | **int**| The bank code associated with the account number | [optional] 
+| Name               | Type    | Description                                      | Notes      |
+| ------------------ | ------- | ------------------------------------------------ | ---------- |
+| **account_number** | **int** | The account number of interest                   | [optional] |
+| **bank_code**      | **int** | The bank code associated with the account number | [optional] |
 
 ### Return type
 
@@ -182,20 +182,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Verification Resolve Account Number response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                                  | Response headers |
+| ----------- | -------------------------------------------- | ---------------- |
+| **200**     | Verification Resolve Account Number response | -                |
+| **401**     | Unauthorized operation                       | -                |
+| **404**     | Entity not found                             | -                |
+| **0**       | Server error                                 | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **bank_validate_account_number**
+
 > VerificationValidateAccountResponse bank_validate_account_number(bank_validate_request=bank_validate_request)
 
 Validate Bank Account
@@ -204,7 +206,8 @@ Confirm the authenticity of a customer's account number before sending money
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -245,13 +248,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling BankApi->bank_validate_account_number: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bank_validate_request** | [**BankValidateRequest**](BankValidateRequest.md)|  | [optional] 
+| Name                      | Type                                              | Description | Notes      |
+| ------------------------- | ------------------------------------------------- | ----------- | ---------- |
+| **bank_validate_request** | [**BankValidateRequest**](BankValidateRequest.md) |             | [optional] |
 
 ### Return type
 
@@ -263,15 +264,15 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Verification Validate Account response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                            | Response headers |
+| ----------- | -------------------------------------- | ---------------- |
+| **200**     | Verification Validate Account response | -                |
+| **401**     | Unauthorized operation                 | -                |
+| **0**       | Server error                           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

@@ -2,16 +2,16 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**FirstName** | **NullableString** |  | 
-**LastName** | **NullableString** |  | 
-**Email** | **string** |  | 
-**Phone** | **NullableString** |  | 
-**Metadata** | **map[string]interface{}** |  | 
-**CustomerCode** | **string** |  | 
-**RiskAction** | **string** |  | 
+| Name             | Type                       | Description | Notes |
+| ---------------- | -------------------------- | ----------- | ----- |
+| **Id**           | **int32**                  |             |
+| **FirstName**    | **NullableString**         |             |
+| **LastName**     | **NullableString**         |             |
+| **Email**        | **string**                 |             |
+| **Phone**        | **NullableString**         |             |
+| **Metadata**     | **map[string]interface{}** |             |
+| **CustomerCode** | **string**                 |             |
+| **RiskAction**   | **string**                 |             |
 
 ## Methods
 
@@ -51,7 +51,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetFirstName
 
 `func (o *TransactionListResponseArrayCustomer) GetFirstName() string`
@@ -71,17 +70,18 @@ and a boolean to check if the value has been set.
 
 SetFirstName sets FirstName field to given value.
 
-
 ### SetFirstNameNil
 
 `func (o *TransactionListResponseArrayCustomer) SetFirstNameNil(b bool)`
 
- SetFirstNameNil sets the value for FirstName to be an explicit nil
+SetFirstNameNil sets the value for FirstName to be an explicit nil
 
 ### UnsetFirstName
+
 `func (o *TransactionListResponseArrayCustomer) UnsetFirstName()`
 
 UnsetFirstName ensures that no value is present for FirstName, not even an explicit nil
+
 ### GetLastName
 
 `func (o *TransactionListResponseArrayCustomer) GetLastName() string`
@@ -101,17 +101,18 @@ and a boolean to check if the value has been set.
 
 SetLastName sets LastName field to given value.
 
-
 ### SetLastNameNil
 
 `func (o *TransactionListResponseArrayCustomer) SetLastNameNil(b bool)`
 
- SetLastNameNil sets the value for LastName to be an explicit nil
+SetLastNameNil sets the value for LastName to be an explicit nil
 
 ### UnsetLastName
+
 `func (o *TransactionListResponseArrayCustomer) UnsetLastName()`
 
 UnsetLastName ensures that no value is present for LastName, not even an explicit nil
+
 ### GetEmail
 
 `func (o *TransactionListResponseArrayCustomer) GetEmail() string`
@@ -130,7 +131,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionListResponseArrayCustomer) SetEmail(v string)`
 
 SetEmail sets Email field to given value.
-
 
 ### GetPhone
 
@@ -151,17 +151,18 @@ and a boolean to check if the value has been set.
 
 SetPhone sets Phone field to given value.
 
-
 ### SetPhoneNil
 
 `func (o *TransactionListResponseArrayCustomer) SetPhoneNil(b bool)`
 
- SetPhoneNil sets the value for Phone to be an explicit nil
+SetPhoneNil sets the value for Phone to be an explicit nil
 
 ### UnsetPhone
+
 `func (o *TransactionListResponseArrayCustomer) UnsetPhone()`
 
 UnsetPhone ensures that no value is present for Phone, not even an explicit nil
+
 ### GetMetadata
 
 `func (o *TransactionListResponseArrayCustomer) GetMetadata() map[string]interface{}`
@@ -181,17 +182,18 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
-
 ### SetMetadataNil
 
 `func (o *TransactionListResponseArrayCustomer) SetMetadataNil(b bool)`
 
- SetMetadataNil sets the value for Metadata to be an explicit nil
+SetMetadataNil sets the value for Metadata to be an explicit nil
 
 ### UnsetMetadata
+
 `func (o *TransactionListResponseArrayCustomer) UnsetMetadata()`
 
 UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
+
 ### GetCustomerCode
 
 `func (o *TransactionListResponseArrayCustomer) GetCustomerCode() string`
@@ -210,7 +212,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionListResponseArrayCustomer) SetCustomerCode(v string)`
 
 SetCustomerCode sets CustomerCode field to given value.
-
 
 ### GetRiskAction
 
@@ -231,8 +232,4 @@ and a boolean to check if the value has been set.
 
 SetRiskAction sets RiskAction field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

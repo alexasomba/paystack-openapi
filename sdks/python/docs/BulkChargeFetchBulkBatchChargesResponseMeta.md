@@ -1,14 +1,14 @@
 # BulkChargeFetchBulkBatchChargesResponseMeta
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**per_page** | **str** |  | 
-**total** | **int** |  | 
-**skipped** | **int** |  | 
-**page** | **int** |  | 
-**page_count** | **int** |  | 
+
+| Name           | Type    | Description | Notes |
+| -------------- | ------- | ----------- | ----- |
+| **per_page**   | **str** |             |
+| **total**      | **int** |             |
+| **skipped**    | **int** |             |
+| **page**       | **int** |             |
+| **page_count** | **int** |             |
 
 ## Example
 
@@ -27,6 +27,5 @@ bulk_charge_fetch_bulk_batch_charges_response_meta_dict = bulk_charge_fetch_bulk
 # create an instance of BulkChargeFetchBulkBatchChargesResponseMeta from a dict
 bulk_charge_fetch_bulk_batch_charges_response_meta_form_dict = bulk_charge_fetch_bulk_batch_charges_response_meta.from_dict(bulk_charge_fetch_bulk_batch_charges_response_meta_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

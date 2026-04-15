@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Type** | **string** |  | 
-**Message** | **string** |  | 
-**Time** | **int32** |  | 
+| Name        | Type       | Description | Notes |
+| ----------- | ---------- | ----------- | ----- |
+| **Type**    | **string** |             |
+| **Message** | **string** |             |
+| **Time**    | **int32**  |             |
 
 ## Methods
 
@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-
 ### GetMessage
 
 `func (o *VerifyResponseDataLogHistoryInner) GetMessage() string`
@@ -65,7 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *VerifyResponseDataLogHistoryInner) SetMessage(v string)`
 
 SetMessage sets Message field to given value.
-
 
 ### GetTime
 
@@ -86,8 +84,4 @@ and a boolean to check if the value has been set.
 
 SetTime sets Time field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

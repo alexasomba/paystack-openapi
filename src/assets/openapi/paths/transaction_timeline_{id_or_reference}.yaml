@@ -6,24 +6,23 @@ get:
   description: >-
     Fetch the steps taken from the initiation to the completion of a transaction
   parameters:
-    - name: id
+    - name: id_or_reference
       in: path
       required: true
-      description: The ID of the transaction to fetch
+      description: The ID or the reference of the transaction
       schema:
-        type: integer
-        format: int64
-      example: 3936799950
+        type: string
+      example: "3936799950"
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/TransactionTimelineResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

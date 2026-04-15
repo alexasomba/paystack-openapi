@@ -1,18 +1,18 @@
 # SubscriptionFetchResponseDataPlan
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **int** |  | 
-**name** | **str** |  | 
-**plan_code** | **str** |  | 
-**description** | **object** |  | 
-**amount** | **int** |  | 
-**interval** | **str** |  | 
-**send_invoices** | **bool** |  | 
-**send_sms** | **bool** |  | 
-**currency** | **str** |  | 
+
+| Name              | Type       | Description | Notes |
+| ----------------- | ---------- | ----------- | ----- |
+| **id**            | **int**    |             |
+| **name**          | **str**    |             |
+| **plan_code**     | **str**    |             |
+| **description**   | **object** |             |
+| **amount**        | **int**    |             |
+| **interval**      | **str**    |             |
+| **send_invoices** | **bool**   |             |
+| **send_sms**      | **bool**   |             |
+| **currency**      | **str**    |             |
 
 ## Example
 
@@ -31,6 +31,5 @@ subscription_fetch_response_data_plan_dict = subscription_fetch_response_data_pl
 # create an instance of SubscriptionFetchResponseDataPlan from a dict
 subscription_fetch_response_data_plan_form_dict = subscription_fetch_response_data_plan.from_dict(subscription_fetch_response_data_plan_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

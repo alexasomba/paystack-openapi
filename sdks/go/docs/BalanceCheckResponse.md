@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Status** | **bool** |  | 
-**Message** | **string** |  | 
-**Data** | [**[]BalanceCheckResponseArray**](BalanceCheckResponseArray.md) |  | 
+| Name        | Type                                                            | Description | Notes |
+| ----------- | --------------------------------------------------------------- | ----------- | ----- |
+| **Status**  | **bool**                                                        |             |
+| **Message** | **string**                                                      |             |
+| **Data**    | [**[]BalanceCheckResponseArray**](BalanceCheckResponseArray.md) |             |
 
 ## Methods
 
@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-
 ### GetMessage
 
 `func (o *BalanceCheckResponse) GetMessage() string`
@@ -65,7 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *BalanceCheckResponse) SetMessage(v string)`
 
 SetMessage sets Message field to given value.
-
 
 ### GetData
 
@@ -86,8 +84,4 @@ and a boolean to check if the value has been set.
 
 SetData sets Data field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

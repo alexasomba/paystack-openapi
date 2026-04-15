@@ -8,10 +8,12 @@ properties:
     description: Customer's card authorization code
     type: string
   amount:
-    description: Amount to charge on the authorization
+    description: >
+      Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES).
+      For XOF, the amount is the same as the base units (not multiplied by 100).
     type: integer
   reference:
-    description: | 
+    description: |
       A unique identifier containing lowercase letters `(a-z)`, digits `(0-9)` and these symbols: dash (`-`), underscore(`_`)
     type: string
   attempt_partial_debit:
@@ -20,12 +22,16 @@ properties:
       customer has insufficient fund
     type: boolean
   at_least:
-    description: Minimum amount to charge if the attempt_partial_debit flag is set
+    description: >
+      Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES).
+      For XOF, the amount is the same as the base units (not multiplied by 100).
+
+      Minimum amount to charge if the attempt_partial_debit flag is set.
     type: integer
   metadata:
     description: JSON object of custom data
     type: object
-example: 
+example:
   authorization: "AUTH_ncx8hews93"
   amount: 250000
   reference: "dam1266638dhhd"

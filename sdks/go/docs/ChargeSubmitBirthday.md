@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Birthday** | **string** | Customer&#39;s birthday in the format YYYY-MM-DD e.g 2016-09-21 | 
-**Reference** | **string** | The reference of the ongoing transaction | 
+| Name          | Type       | Description                                                     | Notes |
+| ------------- | ---------- | --------------------------------------------------------------- | ----- |
+| **Birthday**  | **string** | Customer&#39;s birthday in the format YYYY-MM-DD e.g 2016-09-21 |
+| **Reference** | **string** | The reference of the ongoing transaction                        |
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetBirthday sets Birthday field to given value.
 
-
 ### GetReference
 
 `func (o *ChargeSubmitBirthday) GetReference() string`
@@ -65,8 +64,4 @@ and a boolean to check if the value has been set.
 
 SetReference sets Reference field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

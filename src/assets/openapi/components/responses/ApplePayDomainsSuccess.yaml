@@ -1,0 +1,5 @@
+description: Apple Pay registered domains retrieved
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/ApplePayDomainsResponse.yaml

@@ -13,11 +13,11 @@ get:
   description: Get the details of a Terminal
   operationId: terminal_fetch
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/TerminalGetSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error
@@ -36,11 +36,11 @@ put:
         schema:
           $ref: ../components/schemas/TerminalUpate.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/TerminalUpdateSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

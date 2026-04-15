@@ -1,12 +1,12 @@
 # CustomerFetchResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**CustomerFetchResponseData**](CustomerFetchResponseData.md) |  | 
+
+| Name        | Type                                                          | Description | Notes |
+| ----------- | ------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                      |             |
+| **message** | **str**                                                       |             |
+| **data**    | [**CustomerFetchResponseData**](CustomerFetchResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ customer_fetch_response_dict = customer_fetch_response_instance.to_dict()
 # create an instance of CustomerFetchResponse from a dict
 customer_fetch_response_form_dict = customer_fetch_response.from_dict(customer_fetch_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

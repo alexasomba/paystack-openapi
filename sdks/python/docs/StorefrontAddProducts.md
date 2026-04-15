@@ -1,10 +1,10 @@
 # StorefrontAddProducts
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**products** | **List[int]** | An array of product IDs | 
+
+| Name         | Type          | Description             | Notes |
+| ------------ | ------------- | ----------------------- | ----- |
+| **products** | **List[int]** | An array of product IDs |
 
 ## Example
 
@@ -23,6 +23,5 @@ storefront_add_products_dict = storefront_add_products_instance.to_dict()
 # create an instance of StorefrontAddProducts from a dict
 storefront_add_products_form_dict = storefront_add_products.from_dict(storefront_add_products_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

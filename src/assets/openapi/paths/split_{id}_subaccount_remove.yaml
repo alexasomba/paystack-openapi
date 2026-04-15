@@ -8,26 +8,26 @@ post:
     content:
       application/json:
         schema:
-          $ref: ../components/schemas/SplitSubaccounts.yaml
+          $ref: ../components/schemas/SplitSubaccountRemove.yaml
       application/x-www-form-urlencoded:
         schema:
-          $ref: ../components/schemas/SplitSubaccounts.yaml
+          $ref: ../components/schemas/SplitSubaccountRemove.yaml
   parameters:
     - name: id
       in: path
       description: The ID of the split configuration to fetch
       required: true
       schema:
-        type: integer
-      example: 4896895
+        type: string
+      example: "4896895"
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/SplitRemoveSubaccountResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error

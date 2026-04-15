@@ -27,5 +27,5 @@ properties:
     type: string
 example:
   name: Obi and Sons
-  slug: 'obi_and_sons'
+  slug: "obi_and_sons"
   currency: NGN

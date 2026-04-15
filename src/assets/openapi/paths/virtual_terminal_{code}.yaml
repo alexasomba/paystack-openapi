@@ -13,9 +13,9 @@ get:
   description: Fetch a Virtual Terminal on your integration
   operationId: virtualTerminal_fetch
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/VirtualTerminalFetchSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error
@@ -31,9 +31,9 @@ put:
         schema:
           $ref: ../components/schemas/VirtualTerminalUpdate.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/VirtualTerminalUpdateSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error

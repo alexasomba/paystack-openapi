@@ -2,24 +2,24 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Currency** | **string** |  | 
-**Name** | **string** |  | 
-**Amount** | **int32** |  | 
-**Interval** | **string** |  | 
-**Integration** | **int32** |  | 
-**Domain** | **string** |  | 
-**PlanCode** | **string** |  | 
-**InvoiceLimit** | **int32** |  | 
-**SendInvoices** | **bool** |  | 
-**SendSms** | **bool** |  | 
-**HostedPage** | **bool** |  | 
-**Migrate** | **bool** |  | 
-**IsArchived** | **bool** |  | 
-**Id** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name             | Type       | Description | Notes |
+| ---------------- | ---------- | ----------- | ----- |
+| **Currency**     | **string** |             |
+| **Name**         | **string** |             |
+| **Amount**       | **int32**  |             |
+| **Interval**     | **string** |             |
+| **Integration**  | **int32**  |             |
+| **Domain**       | **string** |             |
+| **PlanCode**     | **string** |             |
+| **InvoiceLimit** | **int32**  |             |
+| **SendInvoices** | **bool**   |             |
+| **SendSms**      | **bool**   |             |
+| **HostedPage**   | **bool**   |             |
+| **Migrate**      | **bool**   |             |
+| **IsArchived**   | **bool**   |             |
+| **Id**           | **int32**  |             |
+| **CreatedAt**    | **string** |             |
+| **UpdatedAt**    | **string** |             |
 
 ## Methods
 
@@ -59,7 +59,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetName
 
 `func (o *PlanCreateResponseData) GetName() string`
@@ -78,7 +77,6 @@ and a boolean to check if the value has been set.
 `func (o *PlanCreateResponseData) SetName(v string)`
 
 SetName sets Name field to given value.
-
 
 ### GetAmount
 
@@ -99,7 +97,6 @@ and a boolean to check if the value has been set.
 
 SetAmount sets Amount field to given value.
 
-
 ### GetInterval
 
 `func (o *PlanCreateResponseData) GetInterval() string`
@@ -118,7 +115,6 @@ and a boolean to check if the value has been set.
 `func (o *PlanCreateResponseData) SetInterval(v string)`
 
 SetInterval sets Interval field to given value.
-
 
 ### GetIntegration
 
@@ -139,7 +135,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetDomain
 
 `func (o *PlanCreateResponseData) GetDomain() string`
@@ -158,7 +153,6 @@ and a boolean to check if the value has been set.
 `func (o *PlanCreateResponseData) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetPlanCode
 
@@ -179,7 +173,6 @@ and a boolean to check if the value has been set.
 
 SetPlanCode sets PlanCode field to given value.
 
-
 ### GetInvoiceLimit
 
 `func (o *PlanCreateResponseData) GetInvoiceLimit() int32`
@@ -198,7 +191,6 @@ and a boolean to check if the value has been set.
 `func (o *PlanCreateResponseData) SetInvoiceLimit(v int32)`
 
 SetInvoiceLimit sets InvoiceLimit field to given value.
-
 
 ### GetSendInvoices
 
@@ -219,7 +211,6 @@ and a boolean to check if the value has been set.
 
 SetSendInvoices sets SendInvoices field to given value.
 
-
 ### GetSendSms
 
 `func (o *PlanCreateResponseData) GetSendSms() bool`
@@ -238,7 +229,6 @@ and a boolean to check if the value has been set.
 `func (o *PlanCreateResponseData) SetSendSms(v bool)`
 
 SetSendSms sets SendSms field to given value.
-
 
 ### GetHostedPage
 
@@ -259,7 +249,6 @@ and a boolean to check if the value has been set.
 
 SetHostedPage sets HostedPage field to given value.
 
-
 ### GetMigrate
 
 `func (o *PlanCreateResponseData) GetMigrate() bool`
@@ -278,7 +267,6 @@ and a boolean to check if the value has been set.
 `func (o *PlanCreateResponseData) SetMigrate(v bool)`
 
 SetMigrate sets Migrate field to given value.
-
 
 ### GetIsArchived
 
@@ -299,7 +287,6 @@ and a boolean to check if the value has been set.
 
 SetIsArchived sets IsArchived field to given value.
 
-
 ### GetId
 
 `func (o *PlanCreateResponseData) GetId() int32`
@@ -318,7 +305,6 @@ and a boolean to check if the value has been set.
 `func (o *PlanCreateResponseData) SetId(v int32)`
 
 SetId sets Id field to given value.
-
 
 ### GetCreatedAt
 
@@ -339,7 +325,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-
 ### GetUpdatedAt
 
 `func (o *PlanCreateResponseData) GetUpdatedAt() string`
@@ -359,8 +344,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

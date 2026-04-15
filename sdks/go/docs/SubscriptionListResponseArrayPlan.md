@@ -2,21 +2,21 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**Domain** | **string** |  | 
-**Name** | **string** |  | 
-**PlanCode** | **string** |  | 
-**Description** | **interface{}** |  | 
-**Amount** | **int32** |  | 
-**Interval** | **string** |  | 
-**SendInvoices** | **bool** |  | 
-**SendSms** | **bool** |  | 
-**Currency** | **string** |  | 
-**Integration** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name             | Type            | Description | Notes |
+| ---------------- | --------------- | ----------- | ----- |
+| **Id**           | **int32**       |             |
+| **Domain**       | **string**      |             |
+| **Name**         | **string**      |             |
+| **PlanCode**     | **string**      |             |
+| **Description**  | **interface{}** |             |
+| **Amount**       | **int32**       |             |
+| **Interval**     | **string**      |             |
+| **SendInvoices** | **bool**        |             |
+| **SendSms**      | **bool**        |             |
+| **Currency**     | **string**      |             |
+| **Integration**  | **int32**       |             |
+| **CreatedAt**    | **string**      |             |
+| **UpdatedAt**    | **string**      |             |
 
 ## Methods
 
@@ -56,7 +56,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetDomain
 
 `func (o *SubscriptionListResponseArrayPlan) GetDomain() string`
@@ -75,7 +74,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArrayPlan) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetName
 
@@ -96,7 +94,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetPlanCode
 
 `func (o *SubscriptionListResponseArrayPlan) GetPlanCode() string`
@@ -115,7 +112,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArrayPlan) SetPlanCode(v string)`
 
 SetPlanCode sets PlanCode field to given value.
-
 
 ### GetDescription
 
@@ -136,17 +132,18 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
-
 ### SetDescriptionNil
 
 `func (o *SubscriptionListResponseArrayPlan) SetDescriptionNil(b bool)`
 
- SetDescriptionNil sets the value for Description to be an explicit nil
+SetDescriptionNil sets the value for Description to be an explicit nil
 
 ### UnsetDescription
+
 `func (o *SubscriptionListResponseArrayPlan) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
+
 ### GetAmount
 
 `func (o *SubscriptionListResponseArrayPlan) GetAmount() int32`
@@ -165,7 +162,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArrayPlan) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetInterval
 
@@ -186,7 +182,6 @@ and a boolean to check if the value has been set.
 
 SetInterval sets Interval field to given value.
 
-
 ### GetSendInvoices
 
 `func (o *SubscriptionListResponseArrayPlan) GetSendInvoices() bool`
@@ -205,7 +200,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArrayPlan) SetSendInvoices(v bool)`
 
 SetSendInvoices sets SendInvoices field to given value.
-
 
 ### GetSendSms
 
@@ -226,7 +220,6 @@ and a boolean to check if the value has been set.
 
 SetSendSms sets SendSms field to given value.
 
-
 ### GetCurrency
 
 `func (o *SubscriptionListResponseArrayPlan) GetCurrency() string`
@@ -245,7 +238,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArrayPlan) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetIntegration
 
@@ -266,7 +258,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *SubscriptionListResponseArrayPlan) GetCreatedAt() string`
@@ -285,7 +276,6 @@ and a boolean to check if the value has been set.
 `func (o *SubscriptionListResponseArrayPlan) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -306,8 +296,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

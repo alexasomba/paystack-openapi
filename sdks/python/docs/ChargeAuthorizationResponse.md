@@ -1,12 +1,12 @@
 # ChargeAuthorizationResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**ChargeAuthorizationResponseData**](ChargeAuthorizationResponseData.md) |  | 
+
+| Name        | Type                                                                      | Description | Notes |
+| ----------- | ------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                  |             |
+| **message** | **str**                                                                   |             |
+| **data**    | [**ChargeAuthorizationResponseData**](ChargeAuthorizationResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ charge_authorization_response_dict = charge_authorization_response_instance.to_d
 # create an instance of ChargeAuthorizationResponse from a dict
 charge_authorization_response_form_dict = charge_authorization_response.from_dict(charge_authorization_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

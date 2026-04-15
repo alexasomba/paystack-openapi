@@ -36,19 +36,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SubaccountCreate'
+              $ref: "#/components/schemas/SubaccountCreate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/SubaccountCreate'
+              $ref: "#/components/schemas/SubaccountCreate"
       responses:
-        '201':
-          description: ''
+        "201":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubaccountCreateResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/SubaccountCreateResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -76,16 +76,16 @@ paths:
           schema:
             type: boolean
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubaccountListResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/SubaccountListResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /split:
@@ -99,19 +99,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SplitCreate'
+              $ref: "#/components/schemas/SplitCreate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/SplitCreate'
+              $ref: "#/components/schemas/SplitCreate"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SplitCreateResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/SplitCreateResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -137,11 +137,22 @@ paths:
           in: query
           schema:
             type: boolean
+        - name: sort_by
+          description: Sort by name, defaults to createdAt date
+          in: query
+          schema:
+            type: string
+        - in: query
+          name: perPage
+          schema:
+            type: integer
+          description: Number of splits per page
         - in: query
           name: per_page
           schema:
             type: integer
           description: The number of records to fetch per request
+          deprecated: true
         - in: query
           name: page
           schema:
@@ -160,16 +171,16 @@ paths:
             type: string
             format: date-time
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SplitListResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/SplitListResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
   /transaction/initialize:
@@ -183,21 +194,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransactionInitialize'
+              $ref: "#/components/schemas/TransactionInitialize"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TransactionInitialize'
+              $ref: "#/components/schemas/TransactionInitialize"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransactionInitializeResponse'
-        '400':
-          $ref: '#/components/responses/TransactionInitializeBadRequestResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/TransactionInitializeResponse"
+        "400":
+          $ref: "#/components/responses/TransactionInitializeBadRequestResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /refund:
@@ -211,15 +222,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RefundCreate'
+              $ref: "#/components/schemas/RefundCreate"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/RefundCreate'
+              $ref: "#/components/schemas/RefundCreate"
       responses:
-        '200':
-          $ref: '#/components/responses/RefundCreateSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        "200":
+          $ref: "#/components/responses/RefundCreateSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
     get:
@@ -254,12 +265,12 @@ paths:
             format: date-time
           description: The end date
       responses:
-        '200':
-          $ref: '#/components/responses/RefundListSuccess'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "200":
+          $ref: "#/components/responses/RefundListSuccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
         default:
           description: Server error
 components:
@@ -317,6 +328,28 @@ components:
         - currency
         - active
         - is_verified
+    Meta:
+      type: object
+      properties:
+        total:
+          type: integer
+        skipped:
+          type: integer
+        perPage:
+          anyOf:
+            - type: integer
+            - type: string
+        page:
+          type: integer
+        pageCount:
+          type: integer
+      required:
+        - total
+        - skipped
+        - perPage
+        - page
+        - pageCount
+      additionalProperties: false
     SubaccountListResponse:
       type: object
       properties:
@@ -327,27 +360,9 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/SubaccountListResponseArray'
+            $ref: "#/components/schemas/SubaccountListResponseArray"
         meta:
-          type: object
-          properties:
-            total:
-              type: integer
-            skipped:
-              type: integer
-            perPage:
-              type: integer
-            page:
-              type: integer
-            pageCount:
-              type: integer
-          required:
-            - total
-            - skipped
-            - perPage
-            - page
-            - pageCount
-          additionalProperties: false
+          $ref: "#/components/schemas/Meta"
       required:
         - status
         - message
@@ -370,7 +385,7 @@ components:
           type: string
           description: A short description of the error
         meta:
-          $ref: '#/components/schemas/ErrorMeta'
+          $ref: "#/components/schemas/ErrorMeta"
         type:
           type: string
           description: A tag to indicate the type of the error
@@ -422,8 +437,8 @@ components:
           type: string
       example:
         business_name: Oasis
-        account_number: '0123456047'
-        settlement_bank: '058'
+        account_number: "0123456047"
+        settlement_bank: "058"
         percentage_charge: 30
     SubaccountCreateResponse:
       type: object
@@ -590,7 +605,7 @@ components:
         subaccounts:
           type: array
           items:
-            $ref: '#/components/schemas/SplitSubaccountsArray'
+            $ref: "#/components/schemas/SplitSubaccountsArray"
         total_subaccounts:
           type: integer
       required:
@@ -619,27 +634,9 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/SplitListResponseArray'
+            $ref: "#/components/schemas/SplitListResponseArray"
         meta:
-          type: object
-          properties:
-            total:
-              type: integer
-            skipped:
-              type: integer
-            perPage:
-              type: integer
-            page:
-              type: integer
-            pageCount:
-              type: integer
-          required:
-            - total
-            - skipped
-            - perPage
-            - page
-            - pageCount
-          additionalProperties: false
+          $ref: "#/components/schemas/Meta"
       required:
         - status
         - message
@@ -680,7 +677,7 @@ components:
           description: A list of object containing subaccount code and number of shares
           type: array
           items:
-            $ref: '#/components/schemas/SplitSubaccounts'
+            $ref: "#/components/schemas/SplitSubaccounts"
         currency:
           description: The transaction currency
           type: string
@@ -747,7 +744,7 @@ components:
             subaccounts:
               type: array
               items:
-                $ref: '#/components/schemas/SplitSubaccountsArray'
+                $ref: "#/components/schemas/SplitSubaccountsArray"
             total_subaccounts:
               type: integer
           required:
@@ -792,23 +789,26 @@ components:
           type: string
         amount:
           description: |
-            Amount should be in the smallest unit of the currency (e.g., kobo for NGN, pesewas for GHS, cents for ZAR/USD).
+            Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
 
             Minimum amounts:
-             - NGN: ₦50.00
-             - GHS: ₵0.10
-             - ZAR: R1.00
-             - KES: Ksh 3.00
-             - USD: $2.00
-             - XOF: 1.00
-          type: integer
+             - NGN: ₦50.00 (5000 kobo)
+             - GHS: ₵0.10 (10 pesewas)
+             - ZAR: R1.00 (100 cents)
+             - KES: Ksh 3.00 (300 cents)
+             - USD: $2.00 (200 cents)
+             - XOF: 1.00 (1 XOF)
+          oneOf:
+            - type: integer
+            - type: string
         currency:
-          $ref: '#/components/schemas/Currency'
+          $ref: "#/components/schemas/Currency"
         reference:
           description: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
           type: string
         channels:
-          description: An array of payment channels to control what channels you want to make available to the user to make a payment with
+          description: |
+            An array of payment channels to control what channels you want to make available to the user to make a payment with
           type: array
           items:
             type: string
@@ -820,6 +820,9 @@ components:
               - eft
               - mobile_money
               - bank_transfer
+              - apple_pay
+              - capitec_pay
+              - payattitude
         callback_url:
           description: |
             Fully qualified url, e.g. https://example.com/ to redirect your customers to after a successful payment. Use this to override the callback url provided on the dashboard for this transaction
@@ -836,7 +839,7 @@ components:
           description: The split code of the transaction split
           type: string
         split:
-          $ref: '#/components/schemas/SplitCreate'
+          $ref: "#/components/schemas/SplitCreate"
         subaccount:
           description: The code for the subaccount that owns the payment
           type: string
@@ -844,7 +847,7 @@ components:
           description: |
             A flat fee to charge the subaccount for a transaction. 
             This overrides the split percentage set when the subaccount was created
-          type: string
+          type: integer
         bearer:
           description: The bearer of the transaction charge
           type: string
@@ -856,7 +859,9 @@ components:
           type: string
         metadata:
           description: JSON object of custom data
-          type: object
+          anyOf:
+            - type: string
+            - type: object
       example:
         email: test@demo.com
         amount: 10000
@@ -896,7 +901,7 @@ components:
           type: string
           description: A short description of the error
         meta:
-          $ref: '#/components/schemas/ErrorMeta'
+          $ref: "#/components/schemas/ErrorMeta"
         type:
           type: string
           description: A tag to indicate the type of the error
@@ -1040,30 +1045,16 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/RefundListResponseArray'
+            $ref: "#/components/schemas/RefundListResponseArray"
         meta:
-          type: object
-          properties:
-            total:
-              type: integer
-            skipped:
-              type: integer
-            perPage:
-              type: string
-            page:
-              type: integer
-            pageCount:
-              type: integer
-            failedRefundCount:
-              type: integer
-          required:
-            - total
-            - skipped
-            - perPage
-            - page
-            - pageCount
-            - failedRefundCount
-          additionalProperties: false
+          allOf:
+            - $ref: "#/components/schemas/Meta"
+            - type: object
+              properties:
+                failedRefundCount:
+                  type: integer
+              required:
+                - failedRefundCount
       required:
         - status
         - message
@@ -1078,7 +1069,9 @@ components:
           description: The reference of a previosuly completed transaction
           type: string
         amount:
-          description: Amount to be refunded to the customer. It cannot be more than the original transaction amount
+          description: |
+            Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
+            Amount to be refunded to the customer. It cannot be more than the original transaction amount.
           type: integer
         currency:
           description: Three-letter ISO currency
@@ -1239,7 +1232,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
           example:
             status: false
             message: Invalid key
@@ -1248,7 +1241,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
           example:
             status: false
             message: Entity not found
@@ -1257,16 +1250,16 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransactionInitializeBadRequestModel'
+            $ref: "#/components/schemas/TransactionInitializeBadRequestModel"
     RefundListSuccess:
       description: Refund List response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/RefundListResponse'
+            $ref: "#/components/schemas/RefundListResponse"
     RefundCreateSuccess:
       description: Refund Create response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/RefundCreateResponse'
+            $ref: "#/components/schemas/RefundCreateResponse"

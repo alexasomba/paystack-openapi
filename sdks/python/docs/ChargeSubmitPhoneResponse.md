@@ -1,12 +1,12 @@
 # ChargeSubmitPhoneResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**ChargeSubmitPhoneResponseData**](ChargeSubmitPhoneResponseData.md) |  | 
+
+| Name        | Type                                                                  | Description | Notes |
+| ----------- | --------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                              |             |
+| **message** | **str**                                                               |             |
+| **data**    | [**ChargeSubmitPhoneResponseData**](ChargeSubmitPhoneResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ charge_submit_phone_response_dict = charge_submit_phone_response_instance.to_dic
 # create an instance of ChargeSubmitPhoneResponse from a dict
 charge_submit_phone_response_form_dict = charge_submit_phone_response.from_dict(charge_submit_phone_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

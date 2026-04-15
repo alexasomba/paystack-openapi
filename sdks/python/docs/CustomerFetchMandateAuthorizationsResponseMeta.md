@@ -1,13 +1,13 @@
 # CustomerFetchMandateAuthorizationsResponseMeta
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**per_page** | **int** |  | 
-**next** | **str** |  | [optional] 
-**count** | **int** |  | 
-**total** | **int** |  | 
+
+| Name         | Type    | Description | Notes      |
+| ------------ | ------- | ----------- | ---------- |
+| **per_page** | **int** |             |
+| **next**     | **str** |             | [optional] |
+| **count**    | **int** |             |
+| **total**    | **int** |             |
 
 ## Example
 
@@ -26,6 +26,5 @@ customer_fetch_mandate_authorizations_response_meta_dict = customer_fetch_mandat
 # create an instance of CustomerFetchMandateAuthorizationsResponseMeta from a dict
 customer_fetch_mandate_authorizations_response_meta_form_dict = customer_fetch_mandate_authorizations_response_meta.from_dict(customer_fetch_mandate_authorizations_response_meta_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

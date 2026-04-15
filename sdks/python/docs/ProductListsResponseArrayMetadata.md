@@ -1,10 +1,10 @@
 # ProductListsResponseArrayMetadata
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**background_color** | **str** |  | 
+
+| Name                 | Type    | Description | Notes |
+| -------------------- | ------- | ----------- | ----- |
+| **background_color** | **str** |             |
 
 ## Example
 
@@ -23,6 +23,5 @@ product_lists_response_array_metadata_dict = product_lists_response_array_metada
 # create an instance of ProductListsResponseArrayMetadata from a dict
 product_lists_response_array_metadata_form_dict = product_lists_response_array_metadata.from_dict(product_lists_response_array_metadata_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

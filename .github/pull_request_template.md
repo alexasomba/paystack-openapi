@@ -1,7 +1,6 @@
 ---
 name: Pull Request
 about: Create a PR for a new feature or bug fix
-
 ---
 
 ## Type of change
@@ -12,8 +11,9 @@ about: Create a PR for a new feature or bug fix
 - [ ] Documentation update
 
 ## What issue does this change solve?
+
 A clear and concise description of what the solution is.
 
-
 # Additional context
+
 Add any other context or screenshots about the change.

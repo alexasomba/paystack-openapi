@@ -13,9 +13,9 @@ post:
         schema:
           $ref: ../components/schemas/StorefrontCreate.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/StorefrontCreateSuccess.yaml
-    '400':
+    "400":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error
@@ -47,11 +47,11 @@ get:
           - inactive
       example: active
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/StorefrontListSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

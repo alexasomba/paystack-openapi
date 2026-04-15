@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Target** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**CreatedAt** | Pointer to **string** |  | [optional] 
+| Name          | Type                  | Description | Notes      |
+| ------------- | --------------------- | ----------- | ---------- |
+| **Target**    | Pointer to **string** |             | [optional] |
+| **Type**      | Pointer to **string** |             | [optional] |
+| **Name**      | Pointer to **string** |             | [optional] |
+| **CreatedAt** | Pointer to **string** |             | [optional] |
 
 ## Methods
 
@@ -128,7 +128,4 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

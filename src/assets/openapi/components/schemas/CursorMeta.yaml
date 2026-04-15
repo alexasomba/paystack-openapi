@@ -1,0 +1,15 @@
+type: object
+properties:
+  next:
+    type: string
+    nullable: true
+  previous:
+    type: string
+    nullable: true
+  perPage:
+    type: integer
+required:
+  - next
+  - previous
+  - perPage
+additionalProperties: false

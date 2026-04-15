@@ -2,17 +2,17 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**split_add_subaccount**](SplitApi.md#split_add_subaccount) | **POST** /split/{id}/subaccount/add | Add Subaccount to Split
-[**split_create**](SplitApi.md#split_create) | **POST** /split | Create Split
-[**split_fetch**](SplitApi.md#split_fetch) | **GET** /split/{id} | Fetch Split
-[**split_list**](SplitApi.md#split_list) | **GET** /split | List Splits
-[**split_remove_subaccount**](SplitApi.md#split_remove_subaccount) | **POST** /split/{id}/subaccount/remove | Remove Subaccount from split
-[**split_update**](SplitApi.md#split_update) | **PUT** /split/{id} | Update Split
-
+| Method                                                             | HTTP request                           | Description                  |
+| ------------------------------------------------------------------ | -------------------------------------- | ---------------------------- |
+| [**split_add_subaccount**](SplitApi.md#split_add_subaccount)       | **POST** /split/{id}/subaccount/add    | Add Subaccount to Split      |
+| [**split_create**](SplitApi.md#split_create)                       | **POST** /split                        | Create Split                 |
+| [**split_fetch**](SplitApi.md#split_fetch)                         | **GET** /split/{id}                    | Fetch Split                  |
+| [**split_list**](SplitApi.md#split_list)                           | **GET** /split                         | List Splits                  |
+| [**split_remove_subaccount**](SplitApi.md#split_remove_subaccount) | **POST** /split/{id}/subaccount/remove | Remove Subaccount from split |
+| [**split_update**](SplitApi.md#split_update)                       | **PUT** /split/{id}                    | Update Split                 |
 
 # **split_add_subaccount**
+
 > SplitAddUpdateSubaccountResponse split_add_subaccount(id, split_subaccounts=split_subaccounts)
 
 Add Subaccount to Split
@@ -21,7 +21,8 @@ Add a subaccount to a split configuration, or update the share of an existing su
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -63,14 +64,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling SplitApi->split_add_subaccount: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The ID of the split configuration to fetch | 
- **split_subaccounts** | [**SplitSubaccounts**](SplitSubaccounts.md)|  | [optional] 
+| Name                  | Type                                        | Description                                | Notes      |
+| --------------------- | ------------------------------------------- | ------------------------------------------ | ---------- |
+| **id**                | **int**                                     | The ID of the split configuration to fetch |
+| **split_subaccounts** | [**SplitSubaccounts**](SplitSubaccounts.md) |                                            | [optional] |
 
 ### Return type
 
@@ -82,19 +81,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **split_create**
+
 > SplitCreateResponse split_create(split_create=split_create)
 
 Create Split
@@ -103,7 +104,8 @@ Create a split configuration for transactions
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -144,13 +146,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling SplitApi->split_create: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **split_create** | [**SplitCreate**](SplitCreate.md)|  | [optional] 
+| Name             | Type                              | Description | Notes      |
+| ---------------- | --------------------------------- | ----------- | ---------- |
+| **split_create** | [**SplitCreate**](SplitCreate.md) |             | [optional] |
 
 ### Return type
 
@@ -162,19 +162,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **split_fetch**
+
 > SplitFetchResponse split_fetch(id)
 
 Fetch Split
@@ -183,7 +185,8 @@ Get details of a split configuration for a transaction
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -223,13 +226,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling SplitApi->split_fetch: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The ID of the split configuration to fetch | 
+| Name   | Type    | Description                                | Notes |
+| ------ | ------- | ------------------------------------------ | ----- |
+| **id** | **int** | The ID of the split configuration to fetch |
 
 ### Return type
 
@@ -241,20 +242,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **split_list**
+
 > SplitListResponse split_list(subaccount_code=subaccount_code, name=name, active=active, per_page=per_page, page=page, var_from=var_from, to=to)
 
 List Splits
@@ -263,7 +266,8 @@ List the transaction splits available on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -309,19 +313,17 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling SplitApi->split_list: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **subaccount_code** | **str**| Filter by subaccount code | [optional] 
- **name** | **str**| The name of the split | [optional] 
- **active** | **bool**| The status of the split | [optional] 
- **per_page** | **int**| The number of records to fetch per request | [optional] 
- **page** | **int**| The offset to retrieve data from | [optional] 
- **var_from** | **datetime**| The start date | [optional] 
- **to** | **datetime**| The end date | [optional] 
+| Name                | Type         | Description                                | Notes      |
+| ------------------- | ------------ | ------------------------------------------ | ---------- |
+| **subaccount_code** | **str**      | Filter by subaccount code                  | [optional] |
+| **name**            | **str**      | The name of the split                      | [optional] |
+| **active**          | **bool**     | The status of the split                    | [optional] |
+| **per_page**        | **int**      | The number of records to fetch per request | [optional] |
+| **page**            | **int**      | The offset to retrieve data from           | [optional] |
+| **var_from**        | **datetime** | The start date                             | [optional] |
+| **to**              | **datetime** | The end date                               | [optional] |
 
 ### Return type
 
@@ -333,20 +335,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **split_remove_subaccount**
+
 > SplitRemoveSubaccountResponse split_remove_subaccount(id, split_subaccounts=split_subaccounts)
 
 Remove Subaccount from split
@@ -355,7 +359,8 @@ Remove a subaccount from a split configuration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -397,14 +402,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling SplitApi->split_remove_subaccount: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The ID of the split configuration to fetch | 
- **split_subaccounts** | [**SplitSubaccounts**](SplitSubaccounts.md)|  | [optional] 
+| Name                  | Type                                        | Description                                | Notes      |
+| --------------------- | ------------------------------------------- | ------------------------------------------ | ---------- |
+| **id**                | **int**                                     | The ID of the split configuration to fetch |
+| **split_subaccounts** | [**SplitSubaccounts**](SplitSubaccounts.md) |                                            | [optional] |
 
 ### Return type
 
@@ -416,19 +419,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **split_update**
+
 > SplitUpdateResponse split_update(id, split_update=split_update)
 
 Update Split
@@ -437,7 +442,8 @@ Update a split configuration for transactions
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -467,7 +473,7 @@ configuration = alexasomba_paystack.Configuration(
 with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.SplitApi(api_client)
-    id = 'id_example' # str | 
+    id = 'id_example' # str |
     split_update = alexasomba_paystack.SplitUpdate() # SplitUpdate |  (optional)
 
     try:
@@ -479,14 +485,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling SplitApi->split_update: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
- **split_update** | [**SplitUpdate**](SplitUpdate.md)|  | [optional] 
+| Name             | Type                              | Description | Notes      |
+| ---------------- | --------------------------------- | ----------- | ---------- |
+| **id**           | **str**                           |             |
+| **split_update** | [**SplitUpdate**](SplitUpdate.md) |             | [optional] |
 
 ### Return type
 
@@ -498,16 +502,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     |                        | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

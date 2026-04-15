@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Code** | **string** | Subscription code | 
-**Token** | **string** | Email token | 
+| Name      | Type       | Description       | Notes |
+| --------- | ---------- | ----------------- | ----- |
+| **Code**  | **string** | Subscription code |
+| **Token** | **string** | Email token       |
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetCode sets Code field to given value.
 
-
 ### GetToken
 
 `func (o *SubscriptionToggle) GetToken() string`
@@ -65,8 +64,4 @@ and a boolean to check if the value has been set.
 
 SetToken sets Token field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

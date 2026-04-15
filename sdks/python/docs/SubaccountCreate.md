@@ -1,18 +1,18 @@
 # SubaccountCreate
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**business_name** | **str** | Name of business for subaccount | 
-**settlement_bank** | **str** | Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint. | 
-**account_number** | **str** | Bank account number | 
-**percentage_charge** | **float** | Customer&#39;s phone number | 
-**description** | **str** | A description for this subaccount | [optional] 
-**primary_contact_email** | **str** | A contact email for the subaccount | [optional] 
-**primary_contact_name** | **str** | The name of the contact person for this subaccount | [optional] 
-**primary_contact_phone** | **str** | A phone number to call for this subaccount | [optional] 
-**metadata** | **str** | Stringified JSON object of custom data | [optional] 
+
+| Name                      | Type      | Description                                                                                    | Notes      |
+| ------------------------- | --------- | ---------------------------------------------------------------------------------------------- | ---------- |
+| **business_name**         | **str**   | Name of business for subaccount                                                                |
+| **settlement_bank**       | **str**   | Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint. |
+| **account_number**        | **str**   | Bank account number                                                                            |
+| **percentage_charge**     | **float** | Customer&#39;s phone number                                                                    |
+| **description**           | **str**   | A description for this subaccount                                                              | [optional] |
+| **primary_contact_email** | **str**   | A contact email for the subaccount                                                             | [optional] |
+| **primary_contact_name**  | **str**   | The name of the contact person for this subaccount                                             | [optional] |
+| **primary_contact_phone** | **str**   | A phone number to call for this subaccount                                                     | [optional] |
+| **metadata**              | **str**   | Stringified JSON object of custom data                                                         | [optional] |
 
 ## Example
 
@@ -31,6 +31,5 @@ subaccount_create_dict = subaccount_create_instance.to_dict()
 # create an instance of SubaccountCreate from a dict
 subaccount_create_form_dict = subaccount_create.from_dict(subaccount_create_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

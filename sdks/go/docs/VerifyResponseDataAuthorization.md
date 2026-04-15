@@ -2,23 +2,23 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AuthorizationCode** | Pointer to **string** |  | [optional] 
-**Bin** | Pointer to **interface{}** |  | [optional] 
-**Last4** | Pointer to **string** |  | [optional] 
-**ExpMonth** | Pointer to **string** |  | [optional] 
-**ExpYear** | Pointer to **string** |  | [optional] 
-**Channel** | Pointer to **string** |  | [optional] 
-**CardType** | Pointer to **string** |  | [optional] 
-**Bank** | Pointer to **string** |  | [optional] 
-**CountryCode** | Pointer to **string** |  | [optional] 
-**Brand** | Pointer to **string** |  | [optional] 
-**Reusable** | Pointer to **bool** |  | [optional] 
-**Signature** | Pointer to **string** |  | [optional] 
-**AccountName** | Pointer to **interface{}** |  | [optional] 
-**ReceiverBankAccountNumber** | Pointer to **interface{}** |  | [optional] 
-**ReceiverBank** | Pointer to **interface{}** |  | [optional] 
+| Name                          | Type                       | Description | Notes      |
+| ----------------------------- | -------------------------- | ----------- | ---------- |
+| **AuthorizationCode**         | Pointer to **string**      |             | [optional] |
+| **Bin**                       | Pointer to **interface{}** |             | [optional] |
+| **Last4**                     | Pointer to **string**      |             | [optional] |
+| **ExpMonth**                  | Pointer to **string**      |             | [optional] |
+| **ExpYear**                   | Pointer to **string**      |             | [optional] |
+| **Channel**                   | Pointer to **string**      |             | [optional] |
+| **CardType**                  | Pointer to **string**      |             | [optional] |
+| **Bank**                      | Pointer to **string**      |             | [optional] |
+| **CountryCode**               | Pointer to **string**      |             | [optional] |
+| **Brand**                     | Pointer to **string**      |             | [optional] |
+| **Reusable**                  | Pointer to **bool**        |             | [optional] |
+| **Signature**                 | Pointer to **string**      |             | [optional] |
+| **AccountName**               | Pointer to **interface{}** |             | [optional] |
+| **ReceiverBankAccountNumber** | Pointer to **interface{}** |             | [optional] |
+| **ReceiverBank**              | Pointer to **interface{}** |             | [optional] |
 
 ## Methods
 
@@ -93,12 +93,14 @@ HasBin returns a boolean if a field has been set.
 
 `func (o *VerifyResponseDataAuthorization) SetBinNil(b bool)`
 
- SetBinNil sets the value for Bin to be an explicit nil
+SetBinNil sets the value for Bin to be an explicit nil
 
 ### UnsetBin
+
 `func (o *VerifyResponseDataAuthorization) UnsetBin()`
 
 UnsetBin ensures that no value is present for Bin, not even an explicit nil
+
 ### GetLast4
 
 `func (o *VerifyResponseDataAuthorization) GetLast4() string`
@@ -378,12 +380,14 @@ HasAccountName returns a boolean if a field has been set.
 
 `func (o *VerifyResponseDataAuthorization) SetAccountNameNil(b bool)`
 
- SetAccountNameNil sets the value for AccountName to be an explicit nil
+SetAccountNameNil sets the value for AccountName to be an explicit nil
 
 ### UnsetAccountName
+
 `func (o *VerifyResponseDataAuthorization) UnsetAccountName()`
 
 UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
+
 ### GetReceiverBankAccountNumber
 
 `func (o *VerifyResponseDataAuthorization) GetReceiverBankAccountNumber() interface{}`
@@ -413,12 +417,14 @@ HasReceiverBankAccountNumber returns a boolean if a field has been set.
 
 `func (o *VerifyResponseDataAuthorization) SetReceiverBankAccountNumberNil(b bool)`
 
- SetReceiverBankAccountNumberNil sets the value for ReceiverBankAccountNumber to be an explicit nil
+SetReceiverBankAccountNumberNil sets the value for ReceiverBankAccountNumber to be an explicit nil
 
 ### UnsetReceiverBankAccountNumber
+
 `func (o *VerifyResponseDataAuthorization) UnsetReceiverBankAccountNumber()`
 
 UnsetReceiverBankAccountNumber ensures that no value is present for ReceiverBankAccountNumber, not even an explicit nil
+
 ### GetReceiverBank
 
 `func (o *VerifyResponseDataAuthorization) GetReceiverBank() interface{}`
@@ -448,13 +454,12 @@ HasReceiverBank returns a boolean if a field has been set.
 
 `func (o *VerifyResponseDataAuthorization) SetReceiverBankNil(b bool)`
 
- SetReceiverBankNil sets the value for ReceiverBank to be an explicit nil
+SetReceiverBankNil sets the value for ReceiverBank to be an explicit nil
 
 ### UnsetReceiverBank
+
 `func (o *VerifyResponseDataAuthorization) UnsetReceiverBank()`
 
 UnsetReceiverBank ensures that no value is present for ReceiverBank, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,22 +2,18 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**RefundCreate**](RefundAPI.md#RefundCreate) | **Post** /refund | Create Refund
-[**RefundFetch**](RefundAPI.md#RefundFetch) | **Get** /refund/{id} | Fetch Refund
-[**RefundList**](RefundAPI.md#RefundList) | **Get** /refund | List Refunds
-[**RefundRetry**](RefundAPI.md#RefundRetry) | **Post** /refund/retry_with_customer_details/{id} | Retry Refund
-
-
+| Method                                        | HTTP request                                      | Description   |
+| --------------------------------------------- | ------------------------------------------------- | ------------- |
+| [**RefundCreate**](RefundAPI.md#RefundCreate) | **Post** /refund                                  | Create Refund |
+| [**RefundFetch**](RefundAPI.md#RefundFetch)   | **Get** /refund/{id}                              | Fetch Refund  |
+| [**RefundList**](RefundAPI.md#RefundList)     | **Get** /refund                                   | List Refunds  |
+| [**RefundRetry**](RefundAPI.md#RefundRetry)   | **Post** /refund/retry_with_customer_details/{id} | Retry Refund  |
 
 ## RefundCreate
 
 > RefundCreateResponse RefundCreate(ctx).RefundCreate(refundCreate).Execute()
 
 Create Refund
-
-
 
 ### Example
 
@@ -48,16 +44,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiRefundCreateRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **refundCreate** | [**RefundCreate**](RefundCreate.md) |  | 
+| Name             | Type                                | Description | Notes |
+| ---------------- | ----------------------------------- | ----------- | ----- |
+| **refundCreate** | [**RefundCreate**](RefundCreate.md) |             |
 
 ### Return type
 
@@ -76,14 +69,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## RefundFetch
 
 > RefundFetchResponse RefundFetch(ctx, id).Execute()
 
 Fetch Refund
-
-
 
 ### Example
 
@@ -114,20 +104,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The identifier of the refund | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The identifier of the refund                                                |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiRefundFetchRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -146,14 +133,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## RefundList
 
 > RefundListResponse RefundList(ctx).PerPage(perPage).Page(page).From(from).To(to).Execute()
 
 List Refunds
-
-
 
 ### Example
 
@@ -188,19 +172,16 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiRefundListRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **perPage** | **int32** | Number of records to fetch per page | [default to 50]
- **page** | **int32** | The section to retrieve | 
- **from** | **time.Time** | The start date | 
- **to** | **time.Time** | The end date | 
+| Name        | Type          | Description                         | Notes           |
+| ----------- | ------------- | ----------------------------------- | --------------- |
+| **perPage** | **int32**     | Number of records to fetch per page | [default to 50] |
+| **page**    | **int32**     | The section to retrieve             |
+| **from**    | **time.Time** | The start date                      |
+| **to**      | **time.Time** | The end date                        |
 
 ### Return type
 
@@ -219,14 +200,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## RefundRetry
 
 > RefundRetryResponse RefundRetry(ctx, id).RefundRetry(refundRetry).Execute()
 
 Retry Refund
-
-
 
 ### Example
 
@@ -258,21 +236,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The identifier of the refund | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The identifier of the refund                                                |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiRefundRetryRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **refundRetry** | [**RefundRetry**](RefundRetry.md) |  | 
+**refundRetry** | [**RefundRetry**](RefundRetry.md) | |
 
 ### Return type
 
@@ -290,4 +266,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

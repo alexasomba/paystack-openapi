@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Sender** | **string** |  | 
-**Body** | **string** |  | 
-**CreatedAt** | **string** |  | 
+| Name          | Type       | Description | Notes |
+| ------------- | ---------- | ----------- | ----- |
+| **Sender**    | **string** |             |
+| **Body**      | **string** |             |
+| **CreatedAt** | **string** |             |
 
 ## Methods
 
@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetSender sets Sender field to given value.
 
-
 ### GetBody
 
 `func (o *DisputeMessagesArray) GetBody() string`
@@ -65,7 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *DisputeMessagesArray) SetBody(v string)`
 
 SetBody sets Body field to given value.
-
 
 ### GetCreatedAt
 
@@ -86,8 +84,4 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

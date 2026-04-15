@@ -2,16 +2,16 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | Pointer to **int32** |  | [optional] 
-**FirstName** | Pointer to **string** |  | [optional] 
-**LastName** | Pointer to **string** |  | [optional] 
-**Email** | Pointer to **string** |  | [optional] 
-**CustomerCode** | Pointer to **string** |  | [optional] 
-**Phone** | Pointer to **string** |  | [optional] 
-**RiskAction** | Pointer to **string** |  | [optional] 
-**InternationalFormatPhone** | Pointer to **NullableString** |  | [optional] 
+| Name                         | Type                          | Description | Notes      |
+| ---------------------------- | ----------------------------- | ----------- | ---------- |
+| **Id**                       | Pointer to **int32**          |             | [optional] |
+| **FirstName**                | Pointer to **string**         |             | [optional] |
+| **LastName**                 | Pointer to **string**         |             | [optional] |
+| **Email**                    | Pointer to **string**         |             | [optional] |
+| **CustomerCode**             | Pointer to **string**         |             | [optional] |
+| **Phone**                    | Pointer to **string**         |             | [optional] |
+| **RiskAction**               | Pointer to **string**         |             | [optional] |
+| **InternationalFormatPhone** | Pointer to **NullableString** |             | [optional] |
 
 ## Methods
 
@@ -236,13 +236,12 @@ HasInternationalFormatPhone returns a boolean if a field has been set.
 
 `func (o *DedicatedNubanListResponseArrayCustomer) SetInternationalFormatPhoneNil(b bool)`
 
- SetInternationalFormatPhoneNil sets the value for InternationalFormatPhone to be an explicit nil
+SetInternationalFormatPhoneNil sets the value for InternationalFormatPhone to be an explicit nil
 
 ### UnsetInternationalFormatPhone
+
 `func (o *DedicatedNubanListResponseArrayCustomer) UnsetInternationalFormatPhone()`
 
 UnsetInternationalFormatPhone ensures that no value is present for InternationalFormatPhone, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

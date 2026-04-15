@@ -1,12 +1,12 @@
 # MiscellaneousListStatesResponseArray
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**slug** | **str** |  | 
-**abbreviation** | **str** |  | 
+
+| Name             | Type    | Description | Notes |
+| ---------------- | ------- | ----------- | ----- |
+| **name**         | **str** |             |
+| **slug**         | **str** |             |
+| **abbreviation** | **str** |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ miscellaneous_list_states_response_array_dict = miscellaneous_list_states_respon
 # create an instance of MiscellaneousListStatesResponseArray from a dict
 miscellaneous_list_states_response_array_form_dict = miscellaneous_list_states_response_array.from_dict(miscellaneous_list_states_response_array_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

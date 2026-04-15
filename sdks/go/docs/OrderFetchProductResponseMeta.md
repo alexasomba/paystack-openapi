@@ -2,14 +2,14 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**QuantitySold** | **int32** |  | 
-**Revenue** | **int32** |  | 
-**Total** | **int32** |  | 
-**Skipped** | **int32** |  | 
-**PerPage** | **int32** |  | 
-**PageCount** | **int32** |  | 
+| Name             | Type      | Description | Notes |
+| ---------------- | --------- | ----------- | ----- |
+| **QuantitySold** | **int32** |             |
+| **Revenue**      | **int32** |             |
+| **Total**        | **int32** |             |
+| **Skipped**      | **int32** |             |
+| **PerPage**      | **int32** |             |
+| **PageCount**    | **int32** |             |
 
 ## Methods
 
@@ -49,7 +49,6 @@ and a boolean to check if the value has been set.
 
 SetQuantitySold sets QuantitySold field to given value.
 
-
 ### GetRevenue
 
 `func (o *OrderFetchProductResponseMeta) GetRevenue() int32`
@@ -68,7 +67,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchProductResponseMeta) SetRevenue(v int32)`
 
 SetRevenue sets Revenue field to given value.
-
 
 ### GetTotal
 
@@ -89,7 +87,6 @@ and a boolean to check if the value has been set.
 
 SetTotal sets Total field to given value.
 
-
 ### GetSkipped
 
 `func (o *OrderFetchProductResponseMeta) GetSkipped() int32`
@@ -108,7 +105,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderFetchProductResponseMeta) SetSkipped(v int32)`
 
 SetSkipped sets Skipped field to given value.
-
 
 ### GetPerPage
 
@@ -129,7 +125,6 @@ and a boolean to check if the value has been set.
 
 SetPerPage sets PerPage field to given value.
 
-
 ### GetPageCount
 
 `func (o *OrderFetchProductResponseMeta) GetPageCount() int32`
@@ -149,8 +144,4 @@ and a boolean to check if the value has been set.
 
 SetPageCount sets PageCount field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

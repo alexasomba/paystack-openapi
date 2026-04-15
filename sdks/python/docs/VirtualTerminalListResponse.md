@@ -1,13 +1,13 @@
 # VirtualTerminalListResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | [optional] 
-**message** | **str** |  | [optional] 
-**data** | [**List[VirtualTerminalListResponseArray]**](VirtualTerminalListResponseArray.md) |  | [optional] 
-**meta** | [**VirtualTerminalListResponseMeta**](VirtualTerminalListResponseMeta.md) |  | [optional] 
+
+| Name        | Type                                                                              | Description | Notes      |
+| ----------- | --------------------------------------------------------------------------------- | ----------- | ---------- |
+| **status**  | **bool**                                                                          |             | [optional] |
+| **message** | **str**                                                                           |             | [optional] |
+| **data**    | [**List[VirtualTerminalListResponseArray]**](VirtualTerminalListResponseArray.md) |             | [optional] |
+| **meta**    | [**VirtualTerminalListResponseMeta**](VirtualTerminalListResponseMeta.md)         |             | [optional] |
 
 ## Example
 
@@ -26,6 +26,5 @@ virtual_terminal_list_response_dict = virtual_terminal_list_response_instance.to
 # create an instance of VirtualTerminalListResponse from a dict
 virtual_terminal_list_response_form_dict = virtual_terminal_list_response.from_dict(virtual_terminal_list_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

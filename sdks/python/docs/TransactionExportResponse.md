@@ -1,12 +1,12 @@
 # TransactionExportResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**TransactionExportResponseData**](TransactionExportResponseData.md) |  | 
+
+| Name        | Type                                                                  | Description | Notes |
+| ----------- | --------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                              |             |
+| **message** | **str**                                                               |             |
+| **data**    | [**TransactionExportResponseData**](TransactionExportResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ transaction_export_response_dict = transaction_export_response_instance.to_dict(
 # create an instance of TransactionExportResponse from a dict
 transaction_export_response_form_dict = transaction_export_response.from_dict(transaction_export_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

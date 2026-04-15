@@ -1,12 +1,12 @@
 # BalanceCheckResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**List[BalanceCheckResponseArray]**](BalanceCheckResponseArray.md) |  | 
+
+| Name        | Type                                                                | Description | Notes |
+| ----------- | ------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                            |             |
+| **message** | **str**                                                             |             |
+| **data**    | [**List[BalanceCheckResponseArray]**](BalanceCheckResponseArray.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ balance_check_response_dict = balance_check_response_instance.to_dict()
 # create an instance of BalanceCheckResponse from a dict
 balance_check_response_form_dict = balance_check_response.from_dict(balance_check_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

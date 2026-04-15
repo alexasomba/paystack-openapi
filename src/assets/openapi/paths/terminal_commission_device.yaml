@@ -13,9 +13,9 @@ post:
         schema:
           $ref: ../components/schemas/TerminalActivationToggle.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/TerminalCommissionDeviceSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error

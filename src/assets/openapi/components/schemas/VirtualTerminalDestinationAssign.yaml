@@ -21,7 +21,7 @@ properties:
       - name
 example:
   destinations:
-    - target: '+2548012345678'
+    - target: "+2548012345678"
       name: John Doe
-    - target: '+2548098765432'
+    - target: "+2548098765432"
       name: Jane Smith

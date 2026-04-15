@@ -20,30 +20,15 @@ properties:
       quantity:
         type: integer
       quantity_sold:
-        type: integer
+        nullable: true
       type:
         type: string
-      files:
-        type: array
-        items: {}
+      image_path:
+        type: string
       file_path:
-        nullable: true
+        type: string
       is_shippable:
         type: boolean
-      shipping_fields:
-        type: object
-        properties:
-          delivery_note:
-            type: string
-          shipping_address:
-            type: string
-          shipping_fees:
-            type: array
-            items: {}
-        required:
-          - delivery_note
-          - shipping_address
-          - shipping_fees
       unlimited:
         type: boolean
       domain:
@@ -55,31 +40,6 @@ properties:
       in_stock:
         type: boolean
       metadata:
-        type: object
-        properties:
-          background_color:
-            type: string
-        required:
-          - background_color
-      slug:
-        type: string
-      success_message:
-        nullable: true
-      redirect_url:
-        nullable: true
-      split_code:
-        nullable: true
-      notification_emails:
-        nullable: true
-      minimum_orderable:
-        type: integer
-      maximum_orderable:
-        nullable: true
-      low_stock_alert:
-        type: boolean
-      stock_threshold:
-        nullable: true
-      expires_in:
         nullable: true
       id:
         type: integer
@@ -98,26 +58,15 @@ properties:
       - quantity
       - quantity_sold
       - type
-      - files
+      - image_path
       - file_path
       - is_shippable
-      - shipping_fields
       - unlimited
       - domain
       - active
       - features
       - in_stock
       - metadata
-      - slug
-      - success_message
-      - redirect_url
-      - split_code
-      - notification_emails
-      - minimum_orderable
-      - maximum_orderable
-      - low_stock_alert
-      - stock_threshold
-      - expires_in
       - id
       - integration
       - createdAt

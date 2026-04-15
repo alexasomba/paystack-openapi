@@ -13,11 +13,11 @@ get:
   description: Fetch a transaction dispute
   operationId: dispute_fetch
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/DisputeFetchSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error
@@ -36,11 +36,11 @@ put:
         schema:
           $ref: ../components/schemas/DisputeUpdate.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/DisputeUpdateSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

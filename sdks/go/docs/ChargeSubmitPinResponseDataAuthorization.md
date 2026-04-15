@@ -2,20 +2,20 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AuthorizationCode** | **NullableString** |  | 
-**Bin** | **string** |  | 
-**Last4** | **string** |  | 
-**ExpMonth** | **string** |  | 
-**ExpYear** | **string** |  | 
-**Channel** | **string** |  | 
-**CardType** | **string** |  | 
-**Bank** | **string** |  | 
-**CountryCode** | **string** |  | 
-**Brand** | **string** |  | 
-**Reusable** | **bool** |  | 
-**Signature** | **string** |  | 
+| Name                  | Type               | Description | Notes |
+| --------------------- | ------------------ | ----------- | ----- |
+| **AuthorizationCode** | **NullableString** |             |
+| **Bin**               | **string**         |             |
+| **Last4**             | **string**         |             |
+| **ExpMonth**          | **string**         |             |
+| **ExpYear**           | **string**         |             |
+| **Channel**           | **string**         |             |
+| **CardType**          | **string**         |             |
+| **Bank**              | **string**         |             |
+| **CountryCode**       | **string**         |             |
+| **Brand**             | **string**         |             |
+| **Reusable**          | **bool**           |             |
+| **Signature**         | **string**         |             |
 
 ## Methods
 
@@ -55,17 +55,18 @@ and a boolean to check if the value has been set.
 
 SetAuthorizationCode sets AuthorizationCode field to given value.
 
-
 ### SetAuthorizationCodeNil
 
 `func (o *ChargeSubmitPinResponseDataAuthorization) SetAuthorizationCodeNil(b bool)`
 
- SetAuthorizationCodeNil sets the value for AuthorizationCode to be an explicit nil
+SetAuthorizationCodeNil sets the value for AuthorizationCode to be an explicit nil
 
 ### UnsetAuthorizationCode
+
 `func (o *ChargeSubmitPinResponseDataAuthorization) UnsetAuthorizationCode()`
 
 UnsetAuthorizationCode ensures that no value is present for AuthorizationCode, not even an explicit nil
+
 ### GetBin
 
 `func (o *ChargeSubmitPinResponseDataAuthorization) GetBin() string`
@@ -84,7 +85,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeSubmitPinResponseDataAuthorization) SetBin(v string)`
 
 SetBin sets Bin field to given value.
-
 
 ### GetLast4
 
@@ -105,7 +105,6 @@ and a boolean to check if the value has been set.
 
 SetLast4 sets Last4 field to given value.
 
-
 ### GetExpMonth
 
 `func (o *ChargeSubmitPinResponseDataAuthorization) GetExpMonth() string`
@@ -124,7 +123,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeSubmitPinResponseDataAuthorization) SetExpMonth(v string)`
 
 SetExpMonth sets ExpMonth field to given value.
-
 
 ### GetExpYear
 
@@ -145,7 +143,6 @@ and a boolean to check if the value has been set.
 
 SetExpYear sets ExpYear field to given value.
 
-
 ### GetChannel
 
 `func (o *ChargeSubmitPinResponseDataAuthorization) GetChannel() string`
@@ -164,7 +161,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeSubmitPinResponseDataAuthorization) SetChannel(v string)`
 
 SetChannel sets Channel field to given value.
-
 
 ### GetCardType
 
@@ -185,7 +181,6 @@ and a boolean to check if the value has been set.
 
 SetCardType sets CardType field to given value.
 
-
 ### GetBank
 
 `func (o *ChargeSubmitPinResponseDataAuthorization) GetBank() string`
@@ -204,7 +199,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeSubmitPinResponseDataAuthorization) SetBank(v string)`
 
 SetBank sets Bank field to given value.
-
 
 ### GetCountryCode
 
@@ -225,7 +219,6 @@ and a boolean to check if the value has been set.
 
 SetCountryCode sets CountryCode field to given value.
 
-
 ### GetBrand
 
 `func (o *ChargeSubmitPinResponseDataAuthorization) GetBrand() string`
@@ -244,7 +237,6 @@ and a boolean to check if the value has been set.
 `func (o *ChargeSubmitPinResponseDataAuthorization) SetBrand(v string)`
 
 SetBrand sets Brand field to given value.
-
 
 ### GetReusable
 
@@ -265,7 +257,6 @@ and a boolean to check if the value has been set.
 
 SetReusable sets Reusable field to given value.
 
-
 ### GetSignature
 
 `func (o *ChargeSubmitPinResponseDataAuthorization) GetSignature() string`
@@ -285,8 +276,4 @@ and a boolean to check if the value has been set.
 
 SetSignature sets Signature field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

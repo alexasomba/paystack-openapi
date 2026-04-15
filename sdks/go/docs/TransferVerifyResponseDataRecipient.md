@@ -2,23 +2,23 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Active** | **bool** |  | 
-**CreatedAt** | **string** |  | 
-**Currency** | **string** |  | 
-**Description** | **string** |  | 
-**Domain** | **string** |  | 
-**Email** | **string** |  | 
-**Id** | **int32** |  | 
-**Integration** | **int32** |  | 
-**Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
-**Name** | **string** |  | 
-**RecipientCode** | **string** |  | 
-**Type** | **string** |  | 
-**UpdatedAt** | **string** |  | 
-**IsDeleted** | **bool** |  | 
-**Details** | [**TransferVerifyResponseDataRecipientDetails**](TransferVerifyResponseDataRecipientDetails.md) |  | 
+| Name              | Type                                                                                            | Description | Notes      |
+| ----------------- | ----------------------------------------------------------------------------------------------- | ----------- | ---------- |
+| **Active**        | **bool**                                                                                        |             |
+| **CreatedAt**     | **string**                                                                                      |             |
+| **Currency**      | **string**                                                                                      |             |
+| **Description**   | **string**                                                                                      |             |
+| **Domain**        | **string**                                                                                      |             |
+| **Email**         | **string**                                                                                      |             |
+| **Id**            | **int32**                                                                                       |             |
+| **Integration**   | **int32**                                                                                       |             |
+| **Metadata**      | Pointer to **map[string]interface{}**                                                           |             | [optional] |
+| **Name**          | **string**                                                                                      |             |
+| **RecipientCode** | **string**                                                                                      |             |
+| **Type**          | **string**                                                                                      |             |
+| **UpdatedAt**     | **string**                                                                                      |             |
+| **IsDeleted**     | **bool**                                                                                        |             |
+| **Details**       | [**TransferVerifyResponseDataRecipientDetails**](TransferVerifyResponseDataRecipientDetails.md) |             |
 
 ## Methods
 
@@ -58,7 +58,6 @@ and a boolean to check if the value has been set.
 
 SetActive sets Active field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *TransferVerifyResponseDataRecipient) GetCreatedAt() string`
@@ -77,7 +76,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferVerifyResponseDataRecipient) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetCurrency
 
@@ -98,7 +96,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetDescription
 
 `func (o *TransferVerifyResponseDataRecipient) GetDescription() string`
@@ -117,7 +114,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferVerifyResponseDataRecipient) SetDescription(v string)`
 
 SetDescription sets Description field to given value.
-
 
 ### GetDomain
 
@@ -138,7 +134,6 @@ and a boolean to check if the value has been set.
 
 SetDomain sets Domain field to given value.
 
-
 ### GetEmail
 
 `func (o *TransferVerifyResponseDataRecipient) GetEmail() string`
@@ -157,7 +152,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferVerifyResponseDataRecipient) SetEmail(v string)`
 
 SetEmail sets Email field to given value.
-
 
 ### GetId
 
@@ -178,7 +172,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetIntegration
 
 `func (o *TransferVerifyResponseDataRecipient) GetIntegration() int32`
@@ -197,7 +190,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferVerifyResponseDataRecipient) SetIntegration(v int32)`
 
 SetIntegration sets Integration field to given value.
-
 
 ### GetMetadata
 
@@ -228,12 +220,14 @@ HasMetadata returns a boolean if a field has been set.
 
 `func (o *TransferVerifyResponseDataRecipient) SetMetadataNil(b bool)`
 
- SetMetadataNil sets the value for Metadata to be an explicit nil
+SetMetadataNil sets the value for Metadata to be an explicit nil
 
 ### UnsetMetadata
+
 `func (o *TransferVerifyResponseDataRecipient) UnsetMetadata()`
 
 UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
+
 ### GetName
 
 `func (o *TransferVerifyResponseDataRecipient) GetName() string`
@@ -252,7 +246,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferVerifyResponseDataRecipient) SetName(v string)`
 
 SetName sets Name field to given value.
-
 
 ### GetRecipientCode
 
@@ -273,7 +266,6 @@ and a boolean to check if the value has been set.
 
 SetRecipientCode sets RecipientCode field to given value.
 
-
 ### GetType
 
 `func (o *TransferVerifyResponseDataRecipient) GetType() string`
@@ -292,7 +284,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferVerifyResponseDataRecipient) SetType(v string)`
 
 SetType sets Type field to given value.
-
 
 ### GetUpdatedAt
 
@@ -313,7 +304,6 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
 ### GetIsDeleted
 
 `func (o *TransferVerifyResponseDataRecipient) GetIsDeleted() bool`
@@ -332,7 +322,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferVerifyResponseDataRecipient) SetIsDeleted(v bool)`
 
 SetIsDeleted sets IsDeleted field to given value.
-
 
 ### GetDetails
 
@@ -353,8 +342,4 @@ and a boolean to check if the value has been set.
 
 SetDetails sets Details field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

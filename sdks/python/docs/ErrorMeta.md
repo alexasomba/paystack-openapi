@@ -3,9 +3,10 @@
 Extra details to help with a resolution of the error
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**next_step** | **str** | A summarised solution for the error | [optional] 
+
+| Name          | Type    | Description                         | Notes      |
+| ------------- | ------- | ----------------------------------- | ---------- |
+| **next_step** | **str** | A summarised solution for the error | [optional] |
 
 ## Example
 
@@ -24,6 +25,5 @@ error_meta_dict = error_meta_instance.to_dict()
 # create an instance of ErrorMeta from a dict
 error_meta_form_dict = error_meta.from_dict(error_meta_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

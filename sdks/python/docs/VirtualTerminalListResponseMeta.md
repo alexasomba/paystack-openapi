@@ -1,14 +1,14 @@
 # VirtualTerminalListResponseMeta
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**total** | **int** |  | [optional] 
-**skipped** | **int** |  | [optional] 
-**per_page** | [**TransactionListResponseMetaPerPage**](TransactionListResponseMetaPerPage.md) |  | [optional] 
-**page** | **int** |  | [optional] 
-**page_count** | **int** |  | [optional] 
+
+| Name           | Type                                                                            | Description | Notes      |
+| -------------- | ------------------------------------------------------------------------------- | ----------- | ---------- |
+| **total**      | **int**                                                                         |             | [optional] |
+| **skipped**    | **int**                                                                         |             | [optional] |
+| **per_page**   | [**TransactionListResponseMetaPerPage**](TransactionListResponseMetaPerPage.md) |             | [optional] |
+| **page**       | **int**                                                                         |             | [optional] |
+| **page_count** | **int**                                                                         |             | [optional] |
 
 ## Example
 
@@ -27,6 +27,5 @@ virtual_terminal_list_response_meta_dict = virtual_terminal_list_response_meta_i
 # create an instance of VirtualTerminalListResponseMeta from a dict
 virtual_terminal_list_response_meta_form_dict = virtual_terminal_list_response_meta.from_dict(virtual_terminal_list_response_meta_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

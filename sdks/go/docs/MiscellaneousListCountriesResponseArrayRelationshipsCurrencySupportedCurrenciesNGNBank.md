@@ -2,17 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**BankType** | **string** |  | 
-**BranchCode** | **bool** |  | 
-**BranchCodeType** | **string** |  | 
-**AccountName** | **bool** |  | 
-**AccountVerificationRequired** | **bool** |  | 
-**AccountNumberLabel** | **string** |  | 
-**AccountNumberPattern** | [**MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern**](MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern.md) |  | 
-**Documents** | **[]interface{}** |  | 
-**ShowAccountNumberTooltip** | **bool** |  | 
+| Name                            | Type                                                                                                                                                                                                                            | Description | Notes |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **BankType**                    | **string**                                                                                                                                                                                                                      |             |
+| **BranchCode**                  | **bool**                                                                                                                                                                                                                        |             |
+| **BranchCodeType**              | **string**                                                                                                                                                                                                                      |             |
+| **AccountName**                 | **bool**                                                                                                                                                                                                                        |             |
+| **AccountVerificationRequired** | **bool**                                                                                                                                                                                                                        |             |
+| **AccountNumberLabel**          | **string**                                                                                                                                                                                                                      |             |
+| **AccountNumberPattern**        | [**MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern**](MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBankAccountNumberPattern.md) |             |
+| **Documents**                   | **[]interface{}**                                                                                                                                                                                                               |             |
+| **ShowAccountNumberTooltip**    | **bool**                                                                                                                                                                                                                        |             |
 
 ## Methods
 
@@ -52,7 +52,6 @@ and a boolean to check if the value has been set.
 
 SetBankType sets BankType field to given value.
 
-
 ### GetBranchCode
 
 `func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank) GetBranchCode() bool`
@@ -71,7 +70,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank) SetBranchCode(v bool)`
 
 SetBranchCode sets BranchCode field to given value.
-
 
 ### GetBranchCodeType
 
@@ -92,7 +90,6 @@ and a boolean to check if the value has been set.
 
 SetBranchCodeType sets BranchCodeType field to given value.
 
-
 ### GetAccountName
 
 `func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank) GetAccountName() bool`
@@ -111,7 +108,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank) SetAccountName(v bool)`
 
 SetAccountName sets AccountName field to given value.
-
 
 ### GetAccountVerificationRequired
 
@@ -132,7 +128,6 @@ and a boolean to check if the value has been set.
 
 SetAccountVerificationRequired sets AccountVerificationRequired field to given value.
 
-
 ### GetAccountNumberLabel
 
 `func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank) GetAccountNumberLabel() string`
@@ -151,7 +146,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank) SetAccountNumberLabel(v string)`
 
 SetAccountNumberLabel sets AccountNumberLabel field to given value.
-
 
 ### GetAccountNumberPattern
 
@@ -172,7 +166,6 @@ and a boolean to check if the value has been set.
 
 SetAccountNumberPattern sets AccountNumberPattern field to given value.
 
-
 ### GetDocuments
 
 `func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank) GetDocuments() []interface{}`
@@ -191,7 +184,6 @@ and a boolean to check if the value has been set.
 `func (o *MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesNGNBank) SetDocuments(v []interface{})`
 
 SetDocuments sets Documents field to given value.
-
 
 ### GetShowAccountNumberTooltip
 
@@ -212,8 +204,4 @@ and a boolean to check if the value has been set.
 
 SetShowAccountNumberTooltip sets ShowAccountNumberTooltip field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

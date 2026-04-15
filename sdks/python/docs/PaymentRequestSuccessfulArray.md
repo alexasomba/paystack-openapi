@@ -1,11 +1,11 @@
 # PaymentRequestSuccessfulArray
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**currency** | **str** |  | 
-**amount** | **int** |  | 
+
+| Name         | Type    | Description | Notes |
+| ------------ | ------- | ----------- | ----- |
+| **currency** | **str** |             |
+| **amount**   | **int** |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ payment_request_successful_array_dict = payment_request_successful_array_instanc
 # create an instance of PaymentRequestSuccessfulArray from a dict
 payment_request_successful_array_form_dict = payment_request_successful_array.from_dict(payment_request_successful_array_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -18,17 +18,19 @@ properties:
         items: {}
       first_name:
         type: string
+        nullable: true
       last_name:
         type: string
+        nullable: true
       email:
         type: string
       phone:
         type: string
+        nullable: true
       metadata:
         type: object
-        properties:
-          calling_code:
-            type: string
+        additionalProperties: true
+        nullable: true
       domain:
         type: string
       customer_code:
@@ -78,10 +80,11 @@ properties:
       - integration
       - createdAt
       - updatedAt
+      - created_at
+      - updated_at
       - total_transactions
       - total_transaction_value
       - dedicated_account
-      - dedicated_accounts
       - identified
       - identifications
 required:

@@ -2,26 +2,27 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**page_add_products**](PageApi.md#page_add_products) | **POST** /page/{id}/product | Add Products
-[**page_check_slug_availability**](PageApi.md#page_check_slug_availability) | **GET** /page/check_slug_availability/{slug} | Check Slug Availability
-[**page_create**](PageApi.md#page_create) | **POST** /page | Create Page
-[**page_fetch**](PageApi.md#page_fetch) | **GET** /page/{id} | Fetch Page
-[**page_list**](PageApi.md#page_list) | **GET** /page | List Pages
-[**page_update**](PageApi.md#page_update) | **PUT** /page/{id} | Update Page
-
+| Method                                                                      | HTTP request                                 | Description             |
+| --------------------------------------------------------------------------- | -------------------------------------------- | ----------------------- |
+| [**page_add_products**](PageApi.md#page_add_products)                       | **POST** /page/{id}/product                  | Add Products            |
+| [**page_check_slug_availability**](PageApi.md#page_check_slug_availability) | **GET** /page/check_slug_availability/{slug} | Check Slug Availability |
+| [**page_create**](PageApi.md#page_create)                                   | **POST** /page                               | Create Page             |
+| [**page_fetch**](PageApi.md#page_fetch)                                     | **GET** /page/{id}                           | Fetch Page              |
+| [**page_list**](PageApi.md#page_list)                                       | **GET** /page                                | List Pages              |
+| [**page_update**](PageApi.md#page_update)                                   | **PUT** /page/{id}                           | Update Page             |
 
 # **page_add_products**
+
 > PageAddProductsResponse page_add_products(id, page_product=page_product)
 
 Add Products
 
-Add products to a previously created payment page. You can only add products to pages that was created with a `product` type. 
+Add products to a previously created payment page. You can only add products to pages that was created with a `product` type.
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -51,7 +52,7 @@ configuration = alexasomba_paystack.Configuration(
 with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.PageApi(api_client)
-    id = 'id_example' # str | 
+    id = 'id_example' # str |
     page_product = alexasomba_paystack.PageProduct() # PageProduct |  (optional)
 
     try:
@@ -63,14 +64,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling PageApi->page_add_products: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
- **page_product** | [**PageProduct**](PageProduct.md)|  | [optional] 
+| Name             | Type                              | Description | Notes      |
+| ---------------- | --------------------------------- | ----------- | ---------- |
+| **id**           | **str**                           |             |
+| **page_product** | [**PageProduct**](PageProduct.md) |             | [optional] |
 
 ### Return type
 
@@ -82,19 +81,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Page Add Products response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                | Response headers |
+| ----------- | -------------------------- | ---------------- |
+| **200**     | Page Add Products response | -                |
+| **401**     | Unauthorized operation     | -                |
+| **0**       | Server error               | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **page_check_slug_availability**
+
 > PageCheckSlugAvailabilityResponse page_check_slug_availability(slug)
 
 Check Slug Availability
@@ -103,7 +104,8 @@ Check if a custom slug is available for use when creating a payment page
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -143,13 +145,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling PageApi->page_check_slug_availability: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **slug** | **str**| The custom slug to check | 
+| Name     | Type    | Description              | Notes |
+| -------- | ------- | ------------------------ | ----- |
+| **slug** | **str** | The custom slug to check |
 
 ### Return type
 
@@ -161,20 +161,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Page Check Slug Availability response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                           | Response headers |
+| ----------- | ------------------------------------- | ---------------- |
+| **200**     | Page Check Slug Availability response | -                |
+| **401**     | Unauthorized operation                | -                |
+| **404**     | Entity not found                      | -                |
+| **0**       | Server error                          | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **page_create**
+
 > PageCreateResponse page_create(page_create=page_create)
 
 Create Page
@@ -183,7 +185,8 @@ Create a webpage to receive payments
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -224,13 +227,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling PageApi->page_create: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page_create** | [**PageCreate**](PageCreate.md)|  | [optional] 
+| Name            | Type                            | Description | Notes      |
+| --------------- | ------------------------------- | ----------- | ---------- |
+| **page_create** | [**PageCreate**](PageCreate.md) |             | [optional] |
 
 ### Return type
 
@@ -242,19 +243,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Page Create response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Page Create response   | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **page_fetch**
+
 > PageFetchResponse page_fetch(id)
 
 Fetch Page
@@ -263,7 +266,8 @@ Get a previously created payment page
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -303,13 +307,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling PageApi->page_fetch: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of a payment page | 
+| Name   | Type    | Description                             | Notes |
+| ------ | ------- | --------------------------------------- | ----- |
+| **id** | **int** | The unique identifier of a payment page |
 
 ### Return type
 
@@ -321,20 +323,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Page Fetch response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Page Fetch response    | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **page_list**
+
 > PageListResponse page_list(per_page=per_page, page=page, var_from=var_from, to=to)
 
 List Pages
@@ -343,7 +347,8 @@ List all previously created payment pages
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -386,16 +391,14 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling PageApi->page_list: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **per_page** | **int**| Number of records to fetch per page | [optional] [default to 50]
- **page** | **int**| The section to retrieve | [optional] 
- **var_from** | **datetime**| The start date | [optional] 
- **to** | **datetime**| The end date | [optional] 
+| Name         | Type         | Description                         | Notes                      |
+| ------------ | ------------ | ----------------------------------- | -------------------------- |
+| **per_page** | **int**      | Number of records to fetch per page | [optional] [default to 50] |
+| **page**     | **int**      | The section to retrieve             | [optional]                 |
+| **var_from** | **datetime** | The start date                      | [optional]                 |
+| **to**       | **datetime** | The end date                        | [optional]                 |
 
 ### Return type
 
@@ -407,20 +410,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Page List response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Page List response     | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **page_update**
+
 > PageUpdateResponse page_update(id, page_update=page_update)
 
 Update Page
@@ -429,7 +434,8 @@ Update a previously created payment page
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -471,14 +477,12 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling PageApi->page_update: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| The unique identifier of a payment page | 
- **page_update** | [**PageUpdate**](PageUpdate.md)|  | [optional] 
+| Name            | Type                            | Description                             | Notes      |
+| --------------- | ------------------------------- | --------------------------------------- | ---------- |
+| **id**          | **int**                         | The unique identifier of a payment page |
+| **page_update** | [**PageUpdate**](PageUpdate.md) |                                         | [optional] |
 
 ### Return type
 
@@ -490,16 +494,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Page Update response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Page Update response   | -                |
+| **401**     | Unauthorized operation | -                |
+| **404**     | Entity not found       | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

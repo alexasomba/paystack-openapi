@@ -2,19 +2,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Customer** | [**DedicatedNubanListResponseArrayCustomer**](DedicatedNubanListResponseArrayCustomer.md) |  | 
-**Bank** | [**DedicatedNubanListResponseArrayBank**](DedicatedNubanListResponseArrayBank.md) |  | 
-**Id** | **int32** |  | 
-**AccountName** | **string** |  | 
-**AccountNumber** | **string** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
-**Currency** | **string** |  | 
-**SplitConfig** | [**NullableDedicatedNubanListResponseArraySplitConfig**](DedicatedNubanListResponseArraySplitConfig.md) |  | 
-**Active** | **bool** |  | 
-**Assigned** | **bool** |  | 
+| Name              | Type                                                                                                    | Description | Notes |
+| ----------------- | ------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **Customer**      | [**DedicatedNubanListResponseArrayCustomer**](DedicatedNubanListResponseArrayCustomer.md)               |             |
+| **Bank**          | [**DedicatedNubanListResponseArrayBank**](DedicatedNubanListResponseArrayBank.md)                       |             |
+| **Id**            | **int32**                                                                                               |             |
+| **AccountName**   | **string**                                                                                              |             |
+| **AccountNumber** | **string**                                                                                              |             |
+| **CreatedAt**     | **string**                                                                                              |             |
+| **UpdatedAt**     | **string**                                                                                              |             |
+| **Currency**      | **string**                                                                                              |             |
+| **SplitConfig**   | [**NullableDedicatedNubanListResponseArraySplitConfig**](DedicatedNubanListResponseArraySplitConfig.md) |             |
+| **Active**        | **bool**                                                                                                |             |
+| **Assigned**      | **bool**                                                                                                |             |
 
 ## Methods
 
@@ -54,7 +54,6 @@ and a boolean to check if the value has been set.
 
 SetCustomer sets Customer field to given value.
 
-
 ### GetBank
 
 `func (o *DedicatedNubanListResponseArray) GetBank() DedicatedNubanListResponseArrayBank`
@@ -73,7 +72,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedNubanListResponseArray) SetBank(v DedicatedNubanListResponseArrayBank)`
 
 SetBank sets Bank field to given value.
-
 
 ### GetId
 
@@ -94,7 +92,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetAccountName
 
 `func (o *DedicatedNubanListResponseArray) GetAccountName() string`
@@ -113,7 +110,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedNubanListResponseArray) SetAccountName(v string)`
 
 SetAccountName sets AccountName field to given value.
-
 
 ### GetAccountNumber
 
@@ -134,7 +130,6 @@ and a boolean to check if the value has been set.
 
 SetAccountNumber sets AccountNumber field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *DedicatedNubanListResponseArray) GetCreatedAt() string`
@@ -153,7 +148,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedNubanListResponseArray) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -174,7 +168,6 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
 ### GetCurrency
 
 `func (o *DedicatedNubanListResponseArray) GetCurrency() string`
@@ -193,7 +186,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedNubanListResponseArray) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetSplitConfig
 
@@ -214,17 +206,18 @@ and a boolean to check if the value has been set.
 
 SetSplitConfig sets SplitConfig field to given value.
 
-
 ### SetSplitConfigNil
 
 `func (o *DedicatedNubanListResponseArray) SetSplitConfigNil(b bool)`
 
- SetSplitConfigNil sets the value for SplitConfig to be an explicit nil
+SetSplitConfigNil sets the value for SplitConfig to be an explicit nil
 
 ### UnsetSplitConfig
+
 `func (o *DedicatedNubanListResponseArray) UnsetSplitConfig()`
 
 UnsetSplitConfig ensures that no value is present for SplitConfig, not even an explicit nil
+
 ### GetActive
 
 `func (o *DedicatedNubanListResponseArray) GetActive() bool`
@@ -243,7 +236,6 @@ and a boolean to check if the value has been set.
 `func (o *DedicatedNubanListResponseArray) SetActive(v bool)`
 
 SetActive sets Active field to given value.
-
 
 ### GetAssigned
 
@@ -264,8 +256,4 @@ and a boolean to check if the value has been set.
 
 SetAssigned sets Assigned field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

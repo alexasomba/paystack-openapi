@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | The type of event to push | [optional] 
-**Action** | Pointer to **string** | The action the Terminal needs to perform. For the invoice type, the action can either be process or view.  For the transaction type, the action can either be process or print.  | [optional] 
-**Data** | Pointer to [**TerminalSendEventData**](TerminalSendEventData.md) |  | [optional] 
+| Name       | Type                                                             | Description                                                                                                                                                                    | Notes      |
+| ---------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- |
+| **Type**   | Pointer to **string**                                            | The type of event to push                                                                                                                                                      | [optional] |
+| **Action** | Pointer to **string**                                            | The action the Terminal needs to perform. For the invoice type, the action can either be process or view. For the transaction type, the action can either be process or print. | [optional] |
+| **Data**   | Pointer to [**TerminalSendEventData**](TerminalSendEventData.md) |                                                                                                                                                                                | [optional] |
 
 ## Methods
 
@@ -102,7 +102,4 @@ SetData sets Data field to given value.
 
 HasData returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

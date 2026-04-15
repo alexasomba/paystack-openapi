@@ -9,20 +9,20 @@ get:
       description: The account number of interest
       in: query
       schema:
-        type: integer
-      example: 22728151
+        type: string
+      example: "0022728151"
     - name: bank_code
       description: The bank code associated with the account number
       in: query
       schema:
-        type: integer
-      example: 63
+        type: string
+      example: "063"
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/VerificationResolveAccountNumberSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

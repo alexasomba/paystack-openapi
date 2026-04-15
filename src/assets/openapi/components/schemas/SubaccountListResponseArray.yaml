@@ -8,14 +8,18 @@ properties:
     type: string
   description:
     type: string
+    nullable: true
   primary_contact_name:
     type: string
+    nullable: true
   primary_contact_email:
     type: string
+    nullable: true
   primary_contact_phone:
     type: string
+    nullable: true
   metadata:
-    type: string
+    nullable: true
   percentage_charge:
     type: number
   settlement_bank:
@@ -28,8 +32,6 @@ properties:
     type: string
   active:
     type: integer
-  is_verified:
-    type: boolean
 required:
   - id
   - subaccount_code
@@ -45,4 +47,3 @@ required:
   - account_number
   - currency
   - active
-  - is_verified

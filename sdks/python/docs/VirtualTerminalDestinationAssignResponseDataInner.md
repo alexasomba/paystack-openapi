@@ -1,16 +1,16 @@
 # VirtualTerminalDestinationAssignResponseDataInner
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**integration** | **int** |  | 
-**target** | **str** |  | 
-**name** | **str** |  | 
-**type** | **str** |  | 
-**id** | **int** |  | 
-**created_at** | **str** |  | 
-**updated_at** | **str** |  | 
+
+| Name            | Type    | Description | Notes |
+| --------------- | ------- | ----------- | ----- |
+| **integration** | **int** |             |
+| **target**      | **str** |             |
+| **name**        | **str** |             |
+| **type**        | **str** |             |
+| **id**          | **int** |             |
+| **created_at**  | **str** |             |
+| **updated_at**  | **str** |             |
 
 ## Example
 
@@ -29,6 +29,5 @@ virtual_terminal_destination_assign_response_data_inner_dict = virtual_terminal_
 # create an instance of VirtualTerminalDestinationAssignResponseDataInner from a dict
 virtual_terminal_destination_assign_response_data_inner_form_dict = virtual_terminal_destination_assign_response_data_inner.from_dict(virtual_terminal_destination_assign_response_data_inner_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

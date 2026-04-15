@@ -2,29 +2,29 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Integration** | **int32** |  | 
-**Domain** | **string** |  | 
-**Name** | **string** |  | 
-**Description** | **interface{}** |  | 
-**Amount** | **NullableInt32** |  | 
-**Currency** | **string** |  | 
-**Slug** | **string** |  | 
-**CustomFields** | **interface{}** |  | 
-**Type** | **string** |  | 
-**RedirectUrl** | **interface{}** |  | 
-**SuccessMessage** | **interface{}** |  | 
-**CollectPhone** | **bool** |  | 
-**Active** | **bool** |  | 
-**Published** | **bool** |  | 
-**Migrate** | **bool** |  | 
-**NotificationEmail** | **interface{}** |  | 
-**Metadata** | **interface{}** |  | 
-**SplitCode** | **interface{}** |  | 
-**Id** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name                  | Type              | Description | Notes |
+| --------------------- | ----------------- | ----------- | ----- |
+| **Integration**       | **int32**         |             |
+| **Domain**            | **string**        |             |
+| **Name**              | **string**        |             |
+| **Description**       | **interface{}**   |             |
+| **Amount**            | **NullableInt32** |             |
+| **Currency**          | **string**        |             |
+| **Slug**              | **string**        |             |
+| **CustomFields**      | **interface{}**   |             |
+| **Type**              | **string**        |             |
+| **RedirectUrl**       | **interface{}**   |             |
+| **SuccessMessage**    | **interface{}**   |             |
+| **CollectPhone**      | **bool**          |             |
+| **Active**            | **bool**          |             |
+| **Published**         | **bool**          |             |
+| **Migrate**           | **bool**          |             |
+| **NotificationEmail** | **interface{}**   |             |
+| **Metadata**          | **interface{}**   |             |
+| **SplitCode**         | **interface{}**   |             |
+| **Id**                | **int32**         |             |
+| **CreatedAt**         | **string**        |             |
+| **UpdatedAt**         | **string**        |             |
 
 ## Methods
 
@@ -64,7 +64,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetDomain
 
 `func (o *PageFetchResponseData) GetDomain() string`
@@ -83,7 +82,6 @@ and a boolean to check if the value has been set.
 `func (o *PageFetchResponseData) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetName
 
@@ -104,7 +102,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetDescription
 
 `func (o *PageFetchResponseData) GetDescription() interface{}`
@@ -124,17 +121,18 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
-
 ### SetDescriptionNil
 
 `func (o *PageFetchResponseData) SetDescriptionNil(b bool)`
 
- SetDescriptionNil sets the value for Description to be an explicit nil
+SetDescriptionNil sets the value for Description to be an explicit nil
 
 ### UnsetDescription
+
 `func (o *PageFetchResponseData) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
+
 ### GetAmount
 
 `func (o *PageFetchResponseData) GetAmount() int32`
@@ -154,17 +152,18 @@ and a boolean to check if the value has been set.
 
 SetAmount sets Amount field to given value.
 
-
 ### SetAmountNil
 
 `func (o *PageFetchResponseData) SetAmountNil(b bool)`
 
- SetAmountNil sets the value for Amount to be an explicit nil
+SetAmountNil sets the value for Amount to be an explicit nil
 
 ### UnsetAmount
+
 `func (o *PageFetchResponseData) UnsetAmount()`
 
 UnsetAmount ensures that no value is present for Amount, not even an explicit nil
+
 ### GetCurrency
 
 `func (o *PageFetchResponseData) GetCurrency() string`
@@ -183,7 +182,6 @@ and a boolean to check if the value has been set.
 `func (o *PageFetchResponseData) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetSlug
 
@@ -204,7 +202,6 @@ and a boolean to check if the value has been set.
 
 SetSlug sets Slug field to given value.
 
-
 ### GetCustomFields
 
 `func (o *PageFetchResponseData) GetCustomFields() interface{}`
@@ -224,17 +221,18 @@ and a boolean to check if the value has been set.
 
 SetCustomFields sets CustomFields field to given value.
 
-
 ### SetCustomFieldsNil
 
 `func (o *PageFetchResponseData) SetCustomFieldsNil(b bool)`
 
- SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
 
 ### UnsetCustomFields
+
 `func (o *PageFetchResponseData) UnsetCustomFields()`
 
 UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
+
 ### GetType
 
 `func (o *PageFetchResponseData) GetType() string`
@@ -253,7 +251,6 @@ and a boolean to check if the value has been set.
 `func (o *PageFetchResponseData) SetType(v string)`
 
 SetType sets Type field to given value.
-
 
 ### GetRedirectUrl
 
@@ -274,17 +271,18 @@ and a boolean to check if the value has been set.
 
 SetRedirectUrl sets RedirectUrl field to given value.
 
-
 ### SetRedirectUrlNil
 
 `func (o *PageFetchResponseData) SetRedirectUrlNil(b bool)`
 
- SetRedirectUrlNil sets the value for RedirectUrl to be an explicit nil
+SetRedirectUrlNil sets the value for RedirectUrl to be an explicit nil
 
 ### UnsetRedirectUrl
+
 `func (o *PageFetchResponseData) UnsetRedirectUrl()`
 
 UnsetRedirectUrl ensures that no value is present for RedirectUrl, not even an explicit nil
+
 ### GetSuccessMessage
 
 `func (o *PageFetchResponseData) GetSuccessMessage() interface{}`
@@ -304,17 +302,18 @@ and a boolean to check if the value has been set.
 
 SetSuccessMessage sets SuccessMessage field to given value.
 
-
 ### SetSuccessMessageNil
 
 `func (o *PageFetchResponseData) SetSuccessMessageNil(b bool)`
 
- SetSuccessMessageNil sets the value for SuccessMessage to be an explicit nil
+SetSuccessMessageNil sets the value for SuccessMessage to be an explicit nil
 
 ### UnsetSuccessMessage
+
 `func (o *PageFetchResponseData) UnsetSuccessMessage()`
 
 UnsetSuccessMessage ensures that no value is present for SuccessMessage, not even an explicit nil
+
 ### GetCollectPhone
 
 `func (o *PageFetchResponseData) GetCollectPhone() bool`
@@ -333,7 +332,6 @@ and a boolean to check if the value has been set.
 `func (o *PageFetchResponseData) SetCollectPhone(v bool)`
 
 SetCollectPhone sets CollectPhone field to given value.
-
 
 ### GetActive
 
@@ -354,7 +352,6 @@ and a boolean to check if the value has been set.
 
 SetActive sets Active field to given value.
 
-
 ### GetPublished
 
 `func (o *PageFetchResponseData) GetPublished() bool`
@@ -373,7 +370,6 @@ and a boolean to check if the value has been set.
 `func (o *PageFetchResponseData) SetPublished(v bool)`
 
 SetPublished sets Published field to given value.
-
 
 ### GetMigrate
 
@@ -394,7 +390,6 @@ and a boolean to check if the value has been set.
 
 SetMigrate sets Migrate field to given value.
 
-
 ### GetNotificationEmail
 
 `func (o *PageFetchResponseData) GetNotificationEmail() interface{}`
@@ -414,17 +409,18 @@ and a boolean to check if the value has been set.
 
 SetNotificationEmail sets NotificationEmail field to given value.
 
-
 ### SetNotificationEmailNil
 
 `func (o *PageFetchResponseData) SetNotificationEmailNil(b bool)`
 
- SetNotificationEmailNil sets the value for NotificationEmail to be an explicit nil
+SetNotificationEmailNil sets the value for NotificationEmail to be an explicit nil
 
 ### UnsetNotificationEmail
+
 `func (o *PageFetchResponseData) UnsetNotificationEmail()`
 
 UnsetNotificationEmail ensures that no value is present for NotificationEmail, not even an explicit nil
+
 ### GetMetadata
 
 `func (o *PageFetchResponseData) GetMetadata() interface{}`
@@ -444,17 +440,18 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
-
 ### SetMetadataNil
 
 `func (o *PageFetchResponseData) SetMetadataNil(b bool)`
 
- SetMetadataNil sets the value for Metadata to be an explicit nil
+SetMetadataNil sets the value for Metadata to be an explicit nil
 
 ### UnsetMetadata
+
 `func (o *PageFetchResponseData) UnsetMetadata()`
 
 UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
+
 ### GetSplitCode
 
 `func (o *PageFetchResponseData) GetSplitCode() interface{}`
@@ -474,17 +471,18 @@ and a boolean to check if the value has been set.
 
 SetSplitCode sets SplitCode field to given value.
 
-
 ### SetSplitCodeNil
 
 `func (o *PageFetchResponseData) SetSplitCodeNil(b bool)`
 
- SetSplitCodeNil sets the value for SplitCode to be an explicit nil
+SetSplitCodeNil sets the value for SplitCode to be an explicit nil
 
 ### UnsetSplitCode
+
 `func (o *PageFetchResponseData) UnsetSplitCode()`
 
 UnsetSplitCode ensures that no value is present for SplitCode, not even an explicit nil
+
 ### GetId
 
 `func (o *PageFetchResponseData) GetId() int32`
@@ -503,7 +501,6 @@ and a boolean to check if the value has been set.
 `func (o *PageFetchResponseData) SetId(v int32)`
 
 SetId sets Id field to given value.
-
 
 ### GetCreatedAt
 
@@ -524,7 +521,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-
 ### GetUpdatedAt
 
 `func (o *PageFetchResponseData) GetUpdatedAt() string`
@@ -544,8 +540,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

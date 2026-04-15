@@ -2,19 +2,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Integration** | **int32** |  | 
-**Domain** | **string** |  | 
-**Balance** | **int32** |  | 
-**Currency** | **string** |  | 
-**Difference** | **int32** |  | 
-**Reason** | **string** |  | 
-**ModelResponsible** | **string** |  | 
-**ModelRow** | **int32** |  | 
-**Id** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name                 | Type       | Description | Notes |
+| -------------------- | ---------- | ----------- | ----- |
+| **Integration**      | **int32**  |             |
+| **Domain**           | **string** |             |
+| **Balance**          | **int32**  |             |
+| **Currency**         | **string** |             |
+| **Difference**       | **int32**  |             |
+| **Reason**           | **string** |             |
+| **ModelResponsible** | **string** |             |
+| **ModelRow**         | **int32**  |             |
+| **Id**               | **int32**  |             |
+| **CreatedAt**        | **string** |             |
+| **UpdatedAt**        | **string** |             |
 
 ## Methods
 
@@ -54,7 +54,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetDomain
 
 `func (o *BalanceFetchLedgerResponseArray) GetDomain() string`
@@ -73,7 +72,6 @@ and a boolean to check if the value has been set.
 `func (o *BalanceFetchLedgerResponseArray) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetBalance
 
@@ -94,7 +92,6 @@ and a boolean to check if the value has been set.
 
 SetBalance sets Balance field to given value.
 
-
 ### GetCurrency
 
 `func (o *BalanceFetchLedgerResponseArray) GetCurrency() string`
@@ -113,7 +110,6 @@ and a boolean to check if the value has been set.
 `func (o *BalanceFetchLedgerResponseArray) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetDifference
 
@@ -134,7 +130,6 @@ and a boolean to check if the value has been set.
 
 SetDifference sets Difference field to given value.
 
-
 ### GetReason
 
 `func (o *BalanceFetchLedgerResponseArray) GetReason() string`
@@ -153,7 +148,6 @@ and a boolean to check if the value has been set.
 `func (o *BalanceFetchLedgerResponseArray) SetReason(v string)`
 
 SetReason sets Reason field to given value.
-
 
 ### GetModelResponsible
 
@@ -174,7 +168,6 @@ and a boolean to check if the value has been set.
 
 SetModelResponsible sets ModelResponsible field to given value.
 
-
 ### GetModelRow
 
 `func (o *BalanceFetchLedgerResponseArray) GetModelRow() int32`
@@ -193,7 +186,6 @@ and a boolean to check if the value has been set.
 `func (o *BalanceFetchLedgerResponseArray) SetModelRow(v int32)`
 
 SetModelRow sets ModelRow field to given value.
-
 
 ### GetId
 
@@ -214,7 +206,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *BalanceFetchLedgerResponseArray) GetCreatedAt() string`
@@ -233,7 +224,6 @@ and a boolean to check if the value has been set.
 `func (o *BalanceFetchLedgerResponseArray) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -254,8 +244,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -1,12 +1,12 @@
 # PaymentRequestUpdateResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**PaymentRequestUpdateResponseData**](PaymentRequestUpdateResponseData.md) |  | 
+
+| Name        | Type                                                                        | Description | Notes |
+| ----------- | --------------------------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                                    |             |
+| **message** | **str**                                                                     |             |
+| **data**    | [**PaymentRequestUpdateResponseData**](PaymentRequestUpdateResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ payment_request_update_response_dict = payment_request_update_response_instance.
 # create an instance of PaymentRequestUpdateResponse from a dict
 payment_request_update_response_form_dict = payment_request_update_response.from_dict(payment_request_update_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ExpMonth** | **interface{}** |  | 
-**ExpYear** | **interface{}** |  | 
-**AccountName** | **interface{}** |  | 
+| Name            | Type            | Description | Notes |
+| --------------- | --------------- | ----------- | ----- |
+| **ExpMonth**    | **interface{}** |             |
+| **ExpYear**     | **interface{}** |             |
+| **AccountName** | **interface{}** |             |
 
 ## Methods
 
@@ -46,17 +46,18 @@ and a boolean to check if the value has been set.
 
 SetExpMonth sets ExpMonth field to given value.
 
-
 ### SetExpMonthNil
 
 `func (o *RefundCreateResponseDataTransactionAuthorization) SetExpMonthNil(b bool)`
 
- SetExpMonthNil sets the value for ExpMonth to be an explicit nil
+SetExpMonthNil sets the value for ExpMonth to be an explicit nil
 
 ### UnsetExpMonth
+
 `func (o *RefundCreateResponseDataTransactionAuthorization) UnsetExpMonth()`
 
 UnsetExpMonth ensures that no value is present for ExpMonth, not even an explicit nil
+
 ### GetExpYear
 
 `func (o *RefundCreateResponseDataTransactionAuthorization) GetExpYear() interface{}`
@@ -76,17 +77,18 @@ and a boolean to check if the value has been set.
 
 SetExpYear sets ExpYear field to given value.
 
-
 ### SetExpYearNil
 
 `func (o *RefundCreateResponseDataTransactionAuthorization) SetExpYearNil(b bool)`
 
- SetExpYearNil sets the value for ExpYear to be an explicit nil
+SetExpYearNil sets the value for ExpYear to be an explicit nil
 
 ### UnsetExpYear
+
 `func (o *RefundCreateResponseDataTransactionAuthorization) UnsetExpYear()`
 
 UnsetExpYear ensures that no value is present for ExpYear, not even an explicit nil
+
 ### GetAccountName
 
 `func (o *RefundCreateResponseDataTransactionAuthorization) GetAccountName() interface{}`
@@ -106,18 +108,16 @@ and a boolean to check if the value has been set.
 
 SetAccountName sets AccountName field to given value.
 
-
 ### SetAccountNameNil
 
 `func (o *RefundCreateResponseDataTransactionAuthorization) SetAccountNameNil(b bool)`
 
- SetAccountNameNil sets the value for AccountName to be an explicit nil
+SetAccountNameNil sets the value for AccountName to be an explicit nil
 
 ### UnsetAccountName
+
 `func (o *RefundCreateResponseDataTransactionAuthorization) UnsetAccountName()`
 
 UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

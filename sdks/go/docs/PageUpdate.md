@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Name of page | [optional] 
-**Description** | Pointer to **string** | The description of the page | [optional] 
-**Amount** | Pointer to **int32** | Amount should be in the subunit of the currency | [optional] 
-**Active** | Pointer to **bool** | Set to false to deactivate page url | [optional] 
+| Name            | Type                  | Description                                     | Notes      |
+| --------------- | --------------------- | ----------------------------------------------- | ---------- |
+| **Name**        | Pointer to **string** | Name of page                                    | [optional] |
+| **Description** | Pointer to **string** | The description of the page                     | [optional] |
+| **Amount**      | Pointer to **int32**  | Amount should be in the subunit of the currency | [optional] |
+| **Active**      | Pointer to **bool**   | Set to false to deactivate page url             | [optional] |
 
 ## Methods
 
@@ -128,7 +128,4 @@ SetActive sets Active field to given value.
 
 HasActive returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -7,19 +7,29 @@ get:
   description: Download transactions that occurred on your integration for a specific timeframe
   parameters:
     - in: query
+      name: perPage
+      schema:
+        type: integer
+      description: Number of records to fetch per page
+    - in: query
+      name: page
+      schema:
+        type: integer
+      description: The section to retrieve
+    - in: query
       name: from
       description: The start date
       schema:
         type: string
         format: date-time
-      example: '2024-06-01T00:00:01Z'
+      example: "2024-06-01T00:00:01Z"
     - in: query
       name: to
       description: The end date
       schema:
         type: string
         format: date-time
-      example: '2024-06-30T13:36:54Z'
+      example: "2024-06-30T13:36:54Z"
     - in: query
       name: status
       description: Filter by the status of the transaction
@@ -36,14 +46,27 @@ get:
       name: customer
       description: Filter by customer ID
       schema:
-        type: number
+        type: integer
       example: 123172416
     - in: query
-      name: subaccount_code
-      description: Filter by subaccount code
+      name: currency
+      description: Specify the transaction currency to export
       schema:
         type: string
-      example: ACCT_dskvlw3y3dMukmt
+    - in: query
+      name: amount
+      description: >
+        Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES).
+        For XOF, the amount is the same as the base units (not multiplied by 100).
+
+        Filter transactions by amount.
+      schema:
+        type: integer
+    - in: query
+      name: settled
+      description: Set to true to export only settled transactions. false for pending transactions. Leave undefined to export all transactions
+      schema:
+        type: boolean
     - in: query
       name: settlement
       description: Filter by the settlement ID
@@ -51,16 +74,28 @@ get:
         type: integer
         format: int64
       example: 5687910
+    - in: query
+      name: payment_page
+      description: Specify a payment page's id to export only transactions conducted on said page
+      schema:
+        type: integer
+    - in: query
+      name: subaccount_code
+      description: Filter by subaccount code
+      schema:
+        type: string
+      example: ACCT_dskvlw3y3dMukmt
+      deprecated: true
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/TransactionExportResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

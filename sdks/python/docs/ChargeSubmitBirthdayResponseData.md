@@ -1,11 +1,11 @@
 # ChargeSubmitBirthdayResponseData
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **str** |  | 
-**display_text** | **str** |  | 
+
+| Name             | Type    | Description | Notes |
+| ---------------- | ------- | ----------- | ----- |
+| **status**       | **str** |             |
+| **display_text** | **str** |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ charge_submit_birthday_response_data_dict = charge_submit_birthday_response_data
 # create an instance of ChargeSubmitBirthdayResponseData from a dict
 charge_submit_birthday_response_data_form_dict = charge_submit_birthday_response_data.from_dict(charge_submit_birthday_response_data_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

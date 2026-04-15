@@ -2,18 +2,18 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**BusinessName** | Pointer to **string** | Name of business for subaccount | [optional] 
-**SettlementBank** | Pointer to **string** | Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint. | [optional] 
-**AccountNumber** | Pointer to **string** | Bank account number | [optional] 
-**Active** | Pointer to **bool** | Activate or deactivate a subaccount | [optional] 
-**PercentageCharge** | Pointer to **float32** | Customer&#39;s phone number | [optional] 
-**Description** | Pointer to **string** | A description for this subaccount | [optional] 
-**PrimaryContactEmail** | Pointer to **string** | A contact email for the subaccount | [optional] 
-**PrimaryContactName** | Pointer to **string** | The name of the contact person for this subaccount | [optional] 
-**PrimaryContactPhone** | Pointer to **string** | A phone number to call for this subaccount | [optional] 
-**Metadata** | Pointer to **string** | Stringified JSON object of custom data | [optional] 
+| Name                    | Type                   | Description                                                                                    | Notes      |
+| ----------------------- | ---------------------- | ---------------------------------------------------------------------------------------------- | ---------- |
+| **BusinessName**        | Pointer to **string**  | Name of business for subaccount                                                                | [optional] |
+| **SettlementBank**      | Pointer to **string**  | Bank code for the bank. You can get the list of Bank Codes by calling the List Banks endpoint. | [optional] |
+| **AccountNumber**       | Pointer to **string**  | Bank account number                                                                            | [optional] |
+| **Active**              | Pointer to **bool**    | Activate or deactivate a subaccount                                                            | [optional] |
+| **PercentageCharge**    | Pointer to **float32** | Customer&#39;s phone number                                                                    | [optional] |
+| **Description**         | Pointer to **string**  | A description for this subaccount                                                              | [optional] |
+| **PrimaryContactEmail** | Pointer to **string**  | A contact email for the subaccount                                                             | [optional] |
+| **PrimaryContactName**  | Pointer to **string**  | The name of the contact person for this subaccount                                             | [optional] |
+| **PrimaryContactPhone** | Pointer to **string**  | A phone number to call for this subaccount                                                     | [optional] |
+| **Metadata**            | Pointer to **string**  | Stringified JSON object of custom data                                                         | [optional] |
 
 ## Methods
 
@@ -284,7 +284,4 @@ SetMetadata sets Metadata field to given value.
 
 HasMetadata returns a boolean if a field has been set.
 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

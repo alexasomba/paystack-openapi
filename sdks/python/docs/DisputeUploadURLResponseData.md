@@ -1,11 +1,11 @@
 # DisputeUploadURLResponseData
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**signed_url** | **str** |  | 
-**file_name** | **str** |  | 
+
+| Name           | Type    | Description | Notes |
+| -------------- | ------- | ----------- | ----- |
+| **signed_url** | **str** |             |
+| **file_name**  | **str** |             |
 
 ## Example
 
@@ -24,6 +24,5 @@ dispute_upload_url_response_data_dict = dispute_upload_url_response_data_instanc
 # create an instance of DisputeUploadURLResponseData from a dict
 dispute_upload_url_response_data_form_dict = dispute_upload_url_response_data.from_dict(dispute_upload_url_response_data_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

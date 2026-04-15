@@ -2,18 +2,18 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**subscription_create**](SubscriptionApi.md#subscription_create) | **POST** /subscription | Create Subscription
-[**subscription_disable**](SubscriptionApi.md#subscription_disable) | **POST** /subscription/disable | Disable Subscription
-[**subscription_enable**](SubscriptionApi.md#subscription_enable) | **POST** /subscription/enable | Enable Subscription
-[**subscription_fetch**](SubscriptionApi.md#subscription_fetch) | **GET** /subscription/{code} | Fetch Subscription
-[**subscription_list**](SubscriptionApi.md#subscription_list) | **GET** /subscription | List Subscriptions
-[**subscription_manage_email**](SubscriptionApi.md#subscription_manage_email) | **POST** /subscription/{code}/manage/email | Send Update Subscription Link
-[**subscription_manage_link**](SubscriptionApi.md#subscription_manage_link) | **GET** /subscription/{code}/manage/link | Generate Update Subscription Link
-
+| Method                                                                        | HTTP request                               | Description                       |
+| ----------------------------------------------------------------------------- | ------------------------------------------ | --------------------------------- |
+| [**subscription_create**](SubscriptionApi.md#subscription_create)             | **POST** /subscription                     | Create Subscription               |
+| [**subscription_disable**](SubscriptionApi.md#subscription_disable)           | **POST** /subscription/disable             | Disable Subscription              |
+| [**subscription_enable**](SubscriptionApi.md#subscription_enable)             | **POST** /subscription/enable              | Enable Subscription               |
+| [**subscription_fetch**](SubscriptionApi.md#subscription_fetch)               | **GET** /subscription/{code}               | Fetch Subscription                |
+| [**subscription_list**](SubscriptionApi.md#subscription_list)                 | **GET** /subscription                      | List Subscriptions                |
+| [**subscription_manage_email**](SubscriptionApi.md#subscription_manage_email) | **POST** /subscription/{code}/manage/email | Send Update Subscription Link     |
+| [**subscription_manage_link**](SubscriptionApi.md#subscription_manage_link)   | **GET** /subscription/{code}/manage/link   | Generate Update Subscription Link |
 
 # **subscription_create**
+
 > SubscriptionCreateResponse subscription_create(subscription_create=subscription_create)
 
 Create Subscription
@@ -22,7 +22,8 @@ Create a subscription a customer
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -63,13 +64,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling SubscriptionApi->subscription_create: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **subscription_create** | [**SubscriptionCreate**](SubscriptionCreate.md)|  | [optional] 
+| Name                    | Type                                            | Description | Notes      |
+| ----------------------- | ----------------------------------------------- | ----------- | ---------- |
+| **subscription_create** | [**SubscriptionCreate**](SubscriptionCreate.md) |             | [optional] |
 
 ### Return type
 
@@ -81,19 +80,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Subscription Create response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                  | Response headers |
+| ----------- | ---------------------------- | ---------------- |
+| **200**     | Subscription Create response | -                |
+| **401**     | Unauthorized operation       | -                |
+| **0**       | Server error                 | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **subscription_disable**
+
 > SubscriptionDisableResponse subscription_disable(subscription_toggle=subscription_toggle)
 
 Disable Subscription
@@ -102,7 +103,8 @@ Disable a subscription on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -143,13 +145,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling SubscriptionApi->subscription_disable: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **subscription_toggle** | [**SubscriptionToggle**](SubscriptionToggle.md)|  | [optional] 
+| Name                    | Type                                            | Description | Notes      |
+| ----------------------- | ----------------------------------------------- | ----------- | ---------- |
+| **subscription_toggle** | [**SubscriptionToggle**](SubscriptionToggle.md) |             | [optional] |
 
 ### Return type
 
@@ -161,19 +161,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Subscription Disable response |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                   | Response headers |
+| ----------- | ----------------------------- | ---------------- |
+| **200**     | Subscription Disable response | -                |
+| **401**     | Unauthorized operation        | -                |
+| **0**       | Server error                  | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **subscription_enable**
+
 > Response subscription_enable(subscription_toggle=subscription_toggle)
 
 Enable Subscription
@@ -182,7 +184,8 @@ Enable a subscription on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -223,13 +226,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling SubscriptionApi->subscription_enable: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **subscription_toggle** | [**SubscriptionToggle**](SubscriptionToggle.md)|  | [optional] 
+| Name                    | Type                                            | Description | Notes      |
+| ----------------------- | ----------------------------------------------- | ----------- | ---------- |
+| **subscription_toggle** | [**SubscriptionToggle**](SubscriptionToggle.md) |             | [optional] |
 
 ### Return type
 
@@ -241,19 +242,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **subscription_fetch**
+
 > SubscriptionFetchResponse subscription_fetch(code)
 
 Fetch Subscription
@@ -262,7 +265,8 @@ Get details of a customer's subscription
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -302,13 +306,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling SubscriptionApi->subscription_fetch: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| The subscription code for the subscription you want to fetch | 
+| Name     | Type    | Description                                                  | Notes |
+| -------- | ------- | ------------------------------------------------------------ | ----- |
+| **code** | **str** | The subscription code for the subscription you want to fetch |
 
 ### Return type
 
@@ -320,20 +322,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Subscription Fetch response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                 | Response headers |
+| ----------- | --------------------------- | ---------------- |
+| **200**     | Subscription Fetch response | -                |
+| **401**     | Unauthorized operation      | -                |
+| **404**     | Entity not found            | -                |
+| **0**       | Server error                | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **subscription_list**
+
 > SubscriptionListResponse subscription_list(per_page=per_page, page=page, plan=plan, customer=customer, var_from=var_from, to=to)
 
 List Subscriptions
@@ -342,7 +346,8 @@ List all subscriptions available on your integration
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -387,18 +392,16 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling SubscriptionApi->subscription_list: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **per_page** | **int**| Number of records to fetch per page | [optional] 
- **page** | **int**| The section to retrieve | [optional] 
- **plan** | **int**| Plan ID | [optional] 
- **customer** | **str**| Customer ID | [optional] 
- **var_from** | **datetime**| The start date | [optional] 
- **to** | **datetime**| The end date | [optional] 
+| Name         | Type         | Description                         | Notes      |
+| ------------ | ------------ | ----------------------------------- | ---------- |
+| **per_page** | **int**      | Number of records to fetch per page | [optional] |
+| **page**     | **int**      | The section to retrieve             | [optional] |
+| **plan**     | **int**      | Plan ID                             | [optional] |
+| **customer** | **str**      | Customer ID                         | [optional] |
+| **var_from** | **datetime** | The start date                      | [optional] |
+| **to**       | **datetime** | The end date                        | [optional] |
 
 ### Return type
 
@@ -410,20 +413,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Subscription List response |  -  |
-**401** | Unauthorized operation |  -  |
-**404** | Entity not found |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description                | Response headers |
+| ----------- | -------------------------- | ---------------- |
+| **200**     | Subscription List response | -                |
+| **401**     | Unauthorized operation     | -                |
+| **404**     | Entity not found           | -                |
+| **0**       | Server error               | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **subscription_manage_email**
+
 > Response subscription_manage_email(code)
 
 Send Update Subscription Link
@@ -432,7 +437,8 @@ Email a customer a link for updating the card on their subscription
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -472,13 +478,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling SubscriptionApi->subscription_manage_email: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| Subscription code | 
+| Name     | Type    | Description       | Notes |
+| -------- | ------- | ----------------- | ----- |
+| **code** | **str** | Subscription code |
 
 ### Return type
 
@@ -490,19 +494,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **subscription_manage_link**
+
 > Response subscription_manage_link(code)
 
 Generate Update Subscription Link
@@ -511,7 +517,8 @@ Generate a link for updating the card on a subscription
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+- Bearer Authentication (bearerAuth):
+
 ```python
 import time
 import os
@@ -551,13 +558,11 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
         print("Exception when calling SubscriptionApi->subscription_manage_link: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| Subscription code | 
+| Name     | Type    | Description       | Notes |
+| -------- | ------- | ----------------- | ----- |
+| **code** | **str** | Subscription code |
 
 ### Return type
 
@@ -569,15 +574,15 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Request successful |  -  |
-**401** | Unauthorized operation |  -  |
-**0** | Server error |  -  |
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **200**     | Request successful     | -                |
+| **401**     | Unauthorized operation | -                |
+| **0**       | Server error           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

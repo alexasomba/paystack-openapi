@@ -1,10 +1,10 @@
 # TransferRecipientBulk
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**batch** | [**List[TransferRecipientCreate]**](TransferRecipientCreate.md) | A list of transfer recipient object. | 
+
+| Name      | Type                                                            | Description                          | Notes |
+| --------- | --------------------------------------------------------------- | ------------------------------------ | ----- |
+| **batch** | [**List[TransferRecipientCreate]**](TransferRecipientCreate.md) | A list of transfer recipient object. |
 
 ## Example
 
@@ -23,6 +23,5 @@ transfer_recipient_bulk_dict = transfer_recipient_bulk_instance.to_dict()
 # create an instance of TransferRecipientBulk from a dict
 transfer_recipient_bulk_form_dict = transfer_recipient_bulk.from_dict(transfer_recipient_bulk_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

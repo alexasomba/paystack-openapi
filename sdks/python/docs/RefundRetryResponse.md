@@ -1,12 +1,12 @@
 # RefundRetryResponse
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **bool** |  | 
-**message** | **str** |  | 
-**data** | [**RefundRetryResponseData**](RefundRetryResponseData.md) |  | 
+
+| Name        | Type                                                      | Description | Notes |
+| ----------- | --------------------------------------------------------- | ----------- | ----- |
+| **status**  | **bool**                                                  |             |
+| **message** | **str**                                                   |             |
+| **data**    | [**RefundRetryResponseData**](RefundRetryResponseData.md) |             |
 
 ## Example
 
@@ -25,6 +25,5 @@ refund_retry_response_dict = refund_retry_response_instance.to_dict()
 # create an instance of RefundRetryResponse from a dict
 refund_retry_response_form_dict = refund_retry_response.from_dict(refund_retry_response_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,32 +2,32 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**OrderCode** | **string** |  | 
-**Domain** | **string** |  | 
-**Currency** | **string** |  | 
-**Amount** | **int32** |  | 
-**Email** | **string** |  | 
-**Status** | **string** |  | 
-**Refunded** | **bool** |  | 
-**PaidAt** | **interface{}** |  | 
-**ShippingAddress** | **interface{}** |  | 
-**Metadata** | **interface{}** |  | 
-**ShippingFees** | **int32** |  | 
-**ShippingMethod** | **interface{}** |  | 
-**IsViewed** | **bool** |  | 
-**ExpirationDate** | **string** |  | 
-**PayForMe** | **bool** |  | 
-**Id** | **int32** |  | 
-**Integration** | [**OrderValidateResponseDataIntegration**](OrderValidateResponseDataIntegration.md) |  | 
-**Transaction** | **interface{}** |  | 
-**Page** | **interface{}** |  | 
-**Customer** | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |  | 
-**Shipping** | **interface{}** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
-**Payer** | **interface{}** |  | 
+| Name                | Type                                                                                | Description | Notes |
+| ------------------- | ----------------------------------------------------------------------------------- | ----------- | ----- |
+| **OrderCode**       | **string**                                                                          |             |
+| **Domain**          | **string**                                                                          |             |
+| **Currency**        | **string**                                                                          |             |
+| **Amount**          | **int32**                                                                           |             |
+| **Email**           | **string**                                                                          |             |
+| **Status**          | **string**                                                                          |             |
+| **Refunded**        | **bool**                                                                            |             |
+| **PaidAt**          | **interface{}**                                                                     |             |
+| **ShippingAddress** | **interface{}**                                                                     |             |
+| **Metadata**        | **interface{}**                                                                     |             |
+| **ShippingFees**    | **int32**                                                                           |             |
+| **ShippingMethod**  | **interface{}**                                                                     |             |
+| **IsViewed**        | **bool**                                                                            |             |
+| **ExpirationDate**  | **string**                                                                          |             |
+| **PayForMe**        | **bool**                                                                            |             |
+| **Id**              | **int32**                                                                           |             |
+| **Integration**     | [**OrderValidateResponseDataIntegration**](OrderValidateResponseDataIntegration.md) |             |
+| **Transaction**     | **interface{}**                                                                     |             |
+| **Page**            | **interface{}**                                                                     |             |
+| **Customer**        | [**TransactionFetchResponseDataCustomer**](TransactionFetchResponseDataCustomer.md) |             |
+| **Shipping**        | **interface{}**                                                                     |             |
+| **CreatedAt**       | **string**                                                                          |             |
+| **UpdatedAt**       | **string**                                                                          |             |
+| **Payer**           | **interface{}**                                                                     |             |
 
 ## Methods
 
@@ -67,7 +67,6 @@ and a boolean to check if the value has been set.
 
 SetOrderCode sets OrderCode field to given value.
 
-
 ### GetDomain
 
 `func (o *OrderValidateResponseData) GetDomain() string`
@@ -86,7 +85,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderValidateResponseData) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetCurrency
 
@@ -107,7 +105,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetAmount
 
 `func (o *OrderValidateResponseData) GetAmount() int32`
@@ -126,7 +123,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderValidateResponseData) SetAmount(v int32)`
 
 SetAmount sets Amount field to given value.
-
 
 ### GetEmail
 
@@ -147,7 +143,6 @@ and a boolean to check if the value has been set.
 
 SetEmail sets Email field to given value.
 
-
 ### GetStatus
 
 `func (o *OrderValidateResponseData) GetStatus() string`
@@ -166,7 +161,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderValidateResponseData) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
-
 
 ### GetRefunded
 
@@ -187,7 +181,6 @@ and a boolean to check if the value has been set.
 
 SetRefunded sets Refunded field to given value.
 
-
 ### GetPaidAt
 
 `func (o *OrderValidateResponseData) GetPaidAt() interface{}`
@@ -207,17 +200,18 @@ and a boolean to check if the value has been set.
 
 SetPaidAt sets PaidAt field to given value.
 
-
 ### SetPaidAtNil
 
 `func (o *OrderValidateResponseData) SetPaidAtNil(b bool)`
 
- SetPaidAtNil sets the value for PaidAt to be an explicit nil
+SetPaidAtNil sets the value for PaidAt to be an explicit nil
 
 ### UnsetPaidAt
+
 `func (o *OrderValidateResponseData) UnsetPaidAt()`
 
 UnsetPaidAt ensures that no value is present for PaidAt, not even an explicit nil
+
 ### GetShippingAddress
 
 `func (o *OrderValidateResponseData) GetShippingAddress() interface{}`
@@ -237,17 +231,18 @@ and a boolean to check if the value has been set.
 
 SetShippingAddress sets ShippingAddress field to given value.
 
-
 ### SetShippingAddressNil
 
 `func (o *OrderValidateResponseData) SetShippingAddressNil(b bool)`
 
- SetShippingAddressNil sets the value for ShippingAddress to be an explicit nil
+SetShippingAddressNil sets the value for ShippingAddress to be an explicit nil
 
 ### UnsetShippingAddress
+
 `func (o *OrderValidateResponseData) UnsetShippingAddress()`
 
 UnsetShippingAddress ensures that no value is present for ShippingAddress, not even an explicit nil
+
 ### GetMetadata
 
 `func (o *OrderValidateResponseData) GetMetadata() interface{}`
@@ -267,17 +262,18 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
-
 ### SetMetadataNil
 
 `func (o *OrderValidateResponseData) SetMetadataNil(b bool)`
 
- SetMetadataNil sets the value for Metadata to be an explicit nil
+SetMetadataNil sets the value for Metadata to be an explicit nil
 
 ### UnsetMetadata
+
 `func (o *OrderValidateResponseData) UnsetMetadata()`
 
 UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
+
 ### GetShippingFees
 
 `func (o *OrderValidateResponseData) GetShippingFees() int32`
@@ -296,7 +292,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderValidateResponseData) SetShippingFees(v int32)`
 
 SetShippingFees sets ShippingFees field to given value.
-
 
 ### GetShippingMethod
 
@@ -317,17 +312,18 @@ and a boolean to check if the value has been set.
 
 SetShippingMethod sets ShippingMethod field to given value.
 
-
 ### SetShippingMethodNil
 
 `func (o *OrderValidateResponseData) SetShippingMethodNil(b bool)`
 
- SetShippingMethodNil sets the value for ShippingMethod to be an explicit nil
+SetShippingMethodNil sets the value for ShippingMethod to be an explicit nil
 
 ### UnsetShippingMethod
+
 `func (o *OrderValidateResponseData) UnsetShippingMethod()`
 
 UnsetShippingMethod ensures that no value is present for ShippingMethod, not even an explicit nil
+
 ### GetIsViewed
 
 `func (o *OrderValidateResponseData) GetIsViewed() bool`
@@ -346,7 +342,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderValidateResponseData) SetIsViewed(v bool)`
 
 SetIsViewed sets IsViewed field to given value.
-
 
 ### GetExpirationDate
 
@@ -367,7 +362,6 @@ and a boolean to check if the value has been set.
 
 SetExpirationDate sets ExpirationDate field to given value.
 
-
 ### GetPayForMe
 
 `func (o *OrderValidateResponseData) GetPayForMe() bool`
@@ -386,7 +380,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderValidateResponseData) SetPayForMe(v bool)`
 
 SetPayForMe sets PayForMe field to given value.
-
 
 ### GetId
 
@@ -407,7 +400,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetIntegration
 
 `func (o *OrderValidateResponseData) GetIntegration() OrderValidateResponseDataIntegration`
@@ -426,7 +418,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderValidateResponseData) SetIntegration(v OrderValidateResponseDataIntegration)`
 
 SetIntegration sets Integration field to given value.
-
 
 ### GetTransaction
 
@@ -447,17 +438,18 @@ and a boolean to check if the value has been set.
 
 SetTransaction sets Transaction field to given value.
 
-
 ### SetTransactionNil
 
 `func (o *OrderValidateResponseData) SetTransactionNil(b bool)`
 
- SetTransactionNil sets the value for Transaction to be an explicit nil
+SetTransactionNil sets the value for Transaction to be an explicit nil
 
 ### UnsetTransaction
+
 `func (o *OrderValidateResponseData) UnsetTransaction()`
 
 UnsetTransaction ensures that no value is present for Transaction, not even an explicit nil
+
 ### GetPage
 
 `func (o *OrderValidateResponseData) GetPage() interface{}`
@@ -477,17 +469,18 @@ and a boolean to check if the value has been set.
 
 SetPage sets Page field to given value.
 
-
 ### SetPageNil
 
 `func (o *OrderValidateResponseData) SetPageNil(b bool)`
 
- SetPageNil sets the value for Page to be an explicit nil
+SetPageNil sets the value for Page to be an explicit nil
 
 ### UnsetPage
+
 `func (o *OrderValidateResponseData) UnsetPage()`
 
 UnsetPage ensures that no value is present for Page, not even an explicit nil
+
 ### GetCustomer
 
 `func (o *OrderValidateResponseData) GetCustomer() TransactionFetchResponseDataCustomer`
@@ -506,7 +499,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderValidateResponseData) SetCustomer(v TransactionFetchResponseDataCustomer)`
 
 SetCustomer sets Customer field to given value.
-
 
 ### GetShipping
 
@@ -527,17 +519,18 @@ and a boolean to check if the value has been set.
 
 SetShipping sets Shipping field to given value.
 
-
 ### SetShippingNil
 
 `func (o *OrderValidateResponseData) SetShippingNil(b bool)`
 
- SetShippingNil sets the value for Shipping to be an explicit nil
+SetShippingNil sets the value for Shipping to be an explicit nil
 
 ### UnsetShipping
+
 `func (o *OrderValidateResponseData) UnsetShipping()`
 
 UnsetShipping ensures that no value is present for Shipping, not even an explicit nil
+
 ### GetCreatedAt
 
 `func (o *OrderValidateResponseData) GetCreatedAt() string`
@@ -556,7 +549,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderValidateResponseData) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -577,7 +569,6 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
 ### GetPayer
 
 `func (o *OrderValidateResponseData) GetPayer() interface{}`
@@ -597,18 +588,16 @@ and a boolean to check if the value has been set.
 
 SetPayer sets Payer field to given value.
 
-
 ### SetPayerNil
 
 `func (o *OrderValidateResponseData) SetPayerNil(b bool)`
 
- SetPayerNil sets the value for Payer to be an explicit nil
+SetPayerNil sets the value for Payer to be an explicit nil
 
 ### UnsetPayer
+
 `func (o *OrderValidateResponseData) UnsetPayer()`
 
 UnsetPayer ensures that no value is present for Payer, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

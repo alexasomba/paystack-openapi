@@ -18,14 +18,18 @@ properties:
         type: string
       description:
         type: string
+        nullable: true
       primary_contact_name:
         type: string
+        nullable: true
       primary_contact_email:
         type: string
+        nullable: true
       primary_contact_phone:
         type: string
+        nullable: true
       metadata:
-        type: string
+        nullable: true
       percentage_charge:
         type: number
       is_verified:
@@ -60,11 +64,6 @@ properties:
       - domain
       - subaccount_code
       - business_name
-      - description
-      - primary_contact_name
-      - primary_contact_email
-      - primary_contact_phone
-      - metadata
       - percentage_charge
       - is_verified
       - settlement_bank

@@ -1,10 +1,10 @@
 # CustomerDeactivateAuthorization
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**authorization_code** | **str** | Authorization code to be deactivated | 
+
+| Name                   | Type    | Description                          | Notes |
+| ---------------------- | ------- | ------------------------------------ | ----- |
+| **authorization_code** | **str** | Authorization code to be deactivated |
 
 ## Example
 
@@ -23,6 +23,5 @@ customer_deactivate_authorization_dict = customer_deactivate_authorization_insta
 # create an instance of CustomerDeactivateAuthorization from a dict
 customer_deactivate_authorization_form_dict = customer_deactivate_authorization.from_dict(customer_deactivate_authorization_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

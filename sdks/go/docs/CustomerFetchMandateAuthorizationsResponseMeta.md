@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**PerPage** | **int32** |  | 
-**Next** | Pointer to **NullableString** |  | [optional] 
-**Count** | **int32** |  | 
-**Total** | **int32** |  | 
+| Name        | Type                          | Description | Notes      |
+| ----------- | ----------------------------- | ----------- | ---------- |
+| **PerPage** | **int32**                     |             |
+| **Next**    | Pointer to **NullableString** |             | [optional] |
+| **Count**   | **int32**                     |             |
+| **Total**   | **int32**                     |             |
 
 ## Methods
 
@@ -47,7 +47,6 @@ and a boolean to check if the value has been set.
 
 SetPerPage sets PerPage field to given value.
 
-
 ### GetNext
 
 `func (o *CustomerFetchMandateAuthorizationsResponseMeta) GetNext() string`
@@ -77,12 +76,14 @@ HasNext returns a boolean if a field has been set.
 
 `func (o *CustomerFetchMandateAuthorizationsResponseMeta) SetNextNil(b bool)`
 
- SetNextNil sets the value for Next to be an explicit nil
+SetNextNil sets the value for Next to be an explicit nil
 
 ### UnsetNext
+
 `func (o *CustomerFetchMandateAuthorizationsResponseMeta) UnsetNext()`
 
 UnsetNext ensures that no value is present for Next, not even an explicit nil
+
 ### GetCount
 
 `func (o *CustomerFetchMandateAuthorizationsResponseMeta) GetCount() int32`
@@ -101,7 +102,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerFetchMandateAuthorizationsResponseMeta) SetCount(v int32)`
 
 SetCount sets Count field to given value.
-
 
 ### GetTotal
 
@@ -122,8 +122,4 @@ and a boolean to check if the value has been set.
 
 SetTotal sets Total field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

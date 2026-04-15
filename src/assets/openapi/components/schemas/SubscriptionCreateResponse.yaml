@@ -24,36 +24,44 @@ properties:
       amount:
         type: integer
       authorization:
-        type: integer
-      invoice_limit:
-        type: integer
-      split_code:
-        nullable: true
+        type: object
+        properties:
+          authorization_code:
+            type: string
+          bin:
+            type: string
+          last4:
+            type: string
+          exp_month:
+            type: string
+          exp_year:
+            type: string
+          channel:
+            type: string
+          card_type:
+            type: string
+          bank:
+            type: string
+          country_code:
+            type: string
+          brand:
+            type: string
+          reusable:
+            type: boolean
+          signature:
+            type: string
+          account_name:
+            nullable: true
       subscription_code:
         type: string
       email_token:
         type: string
       id:
         type: integer
-      cancelledAt:
-        nullable: true
       createdAt:
         type: string
       updatedAt:
         type: string
-      cron_expression:
-        type: string
-      next_payment_date:
-        type: string
-      easy_cron_id:
-        type: string
-        nullable: true
-      open_invoice:
-        type: string
-        nullable: true
-      metadata:
-        type: object
-        nullable: true
     required:
       - customer
       - plan
@@ -64,19 +72,11 @@ properties:
       - quantity
       - amount
       - authorization
-      - invoice_limit
-      - split_code
       - subscription_code
       - email_token
       - id
-      - cancelledAt
       - createdAt
       - updatedAt
-      - cron_expression
-      - next_payment_date
-      - easy_cron_id
-      - open_invoice
-      - metadata
 required:
   - status
   - message

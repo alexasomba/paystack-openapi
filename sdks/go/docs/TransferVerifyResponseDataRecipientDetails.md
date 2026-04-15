@@ -2,13 +2,13 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AuthorizationCode** | **interface{}** |  | 
-**AccountNumber** | **string** |  | 
-**AccountName** | **string** |  | 
-**BankCode** | **string** |  | 
-**BankName** | **string** |  | 
+| Name                  | Type            | Description | Notes |
+| --------------------- | --------------- | ----------- | ----- |
+| **AuthorizationCode** | **interface{}** |             |
+| **AccountNumber**     | **string**      |             |
+| **AccountName**       | **string**      |             |
+| **BankCode**          | **string**      |             |
+| **BankName**          | **string**      |             |
 
 ## Methods
 
@@ -48,17 +48,18 @@ and a boolean to check if the value has been set.
 
 SetAuthorizationCode sets AuthorizationCode field to given value.
 
-
 ### SetAuthorizationCodeNil
 
 `func (o *TransferVerifyResponseDataRecipientDetails) SetAuthorizationCodeNil(b bool)`
 
- SetAuthorizationCodeNil sets the value for AuthorizationCode to be an explicit nil
+SetAuthorizationCodeNil sets the value for AuthorizationCode to be an explicit nil
 
 ### UnsetAuthorizationCode
+
 `func (o *TransferVerifyResponseDataRecipientDetails) UnsetAuthorizationCode()`
 
 UnsetAuthorizationCode ensures that no value is present for AuthorizationCode, not even an explicit nil
+
 ### GetAccountNumber
 
 `func (o *TransferVerifyResponseDataRecipientDetails) GetAccountNumber() string`
@@ -77,7 +78,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferVerifyResponseDataRecipientDetails) SetAccountNumber(v string)`
 
 SetAccountNumber sets AccountNumber field to given value.
-
 
 ### GetAccountName
 
@@ -98,7 +98,6 @@ and a boolean to check if the value has been set.
 
 SetAccountName sets AccountName field to given value.
 
-
 ### GetBankCode
 
 `func (o *TransferVerifyResponseDataRecipientDetails) GetBankCode() string`
@@ -117,7 +116,6 @@ and a boolean to check if the value has been set.
 `func (o *TransferVerifyResponseDataRecipientDetails) SetBankCode(v string)`
 
 SetBankCode sets BankCode field to given value.
-
 
 ### GetBankName
 
@@ -138,8 +136,4 @@ and a boolean to check if the value has been set.
 
 SetBankName sets BankName field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

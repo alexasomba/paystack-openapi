@@ -1,18 +1,18 @@
 # ChargeAuthorizationResponseDataCustomer
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **int** |  | 
-**first_name** | **str** |  | 
-**last_name** | **str** |  | 
-**email** | **str** |  | 
-**customer_code** | **str** |  | 
-**phone** | **str** |  | 
-**metadata** | [**ChargeAuthorizationResponseDataCustomerMetadata**](ChargeAuthorizationResponseDataCustomerMetadata.md) |  | 
-**risk_action** | **str** |  | 
-**international_format_phone** | **str** |  | 
+
+| Name                           | Type                                                                                                      | Description | Notes |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **id**                         | **int**                                                                                                   |             |
+| **first_name**                 | **str**                                                                                                   |             |
+| **last_name**                  | **str**                                                                                                   |             |
+| **email**                      | **str**                                                                                                   |             |
+| **customer_code**              | **str**                                                                                                   |             |
+| **phone**                      | **str**                                                                                                   |             |
+| **metadata**                   | [**ChargeAuthorizationResponseDataCustomerMetadata**](ChargeAuthorizationResponseDataCustomerMetadata.md) |             |
+| **risk_action**                | **str**                                                                                                   |             |
+| **international_format_phone** | **str**                                                                                                   |             |
 
 ## Example
 
@@ -31,6 +31,5 @@ charge_authorization_response_data_customer_dict = charge_authorization_response
 # create an instance of ChargeAuthorizationResponseDataCustomer from a dict
 charge_authorization_response_data_customer_form_dict = charge_authorization_response_data_customer.from_dict(charge_authorization_response_data_customer_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

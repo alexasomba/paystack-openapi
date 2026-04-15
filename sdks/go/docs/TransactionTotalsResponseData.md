@@ -2,13 +2,13 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**TotalTransactions** | **int32** |  | 
-**TotalVolume** | **int32** |  | 
-**TotalVolumeByCurrency** | [**[]TransactionTotalVolumeByCurrencyArray**](TransactionTotalVolumeByCurrencyArray.md) |  | 
-**PendingTransfers** | **int32** |  | 
-**PendingTransfersByCurrency** | [**[]TransactionPendingTransfersByCurrencyArray**](TransactionPendingTransfersByCurrencyArray.md) |  | 
+| Name                           | Type                                                                                              | Description | Notes |
+| ------------------------------ | ------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **TotalTransactions**          | **int32**                                                                                         |             |
+| **TotalVolume**                | **int32**                                                                                         |             |
+| **TotalVolumeByCurrency**      | [**[]TransactionTotalVolumeByCurrencyArray**](TransactionTotalVolumeByCurrencyArray.md)           |             |
+| **PendingTransfers**           | **int32**                                                                                         |             |
+| **PendingTransfersByCurrency** | [**[]TransactionPendingTransfersByCurrencyArray**](TransactionPendingTransfersByCurrencyArray.md) |             |
 
 ## Methods
 
@@ -48,7 +48,6 @@ and a boolean to check if the value has been set.
 
 SetTotalTransactions sets TotalTransactions field to given value.
 
-
 ### GetTotalVolume
 
 `func (o *TransactionTotalsResponseData) GetTotalVolume() int32`
@@ -67,7 +66,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionTotalsResponseData) SetTotalVolume(v int32)`
 
 SetTotalVolume sets TotalVolume field to given value.
-
 
 ### GetTotalVolumeByCurrency
 
@@ -88,7 +86,6 @@ and a boolean to check if the value has been set.
 
 SetTotalVolumeByCurrency sets TotalVolumeByCurrency field to given value.
 
-
 ### GetPendingTransfers
 
 `func (o *TransactionTotalsResponseData) GetPendingTransfers() int32`
@@ -107,7 +104,6 @@ and a boolean to check if the value has been set.
 `func (o *TransactionTotalsResponseData) SetPendingTransfers(v int32)`
 
 SetPendingTransfers sets PendingTransfers field to given value.
-
 
 ### GetPendingTransfersByCurrency
 
@@ -128,8 +124,4 @@ and a boolean to check if the value has been set.
 
 SetPendingTransfersByCurrency sets PendingTransfersByCurrency field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,32 +2,32 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Integration** | **int32** |  | 
-**AccountName** | Pointer to **NullableString** |  | [optional] 
-**Bank** | **int32** |  | 
-**ManagedByIntegration** | **int32** |  | 
-**Domain** | **string** |  | 
-**SubaccountCode** | **string** |  | 
-**BusinessName** | **string** |  | 
-**Description** | **string** |  | 
-**PrimaryContactName** | **string** |  | 
-**PrimaryContactEmail** | **string** |  | 
-**PrimaryContactPhone** | **string** |  | 
-**Metadata** | **string** |  | 
-**PercentageCharge** | **float32** |  | 
-**IsVerified** | **bool** |  | 
-**SettlementBank** | **string** |  | 
-**AccountNumber** | **string** |  | 
-**SettlementSchedule** | **string** |  | 
-**Active** | **bool** |  | 
-**Migrate** | **bool** |  | 
-**Currency** | **string** |  | 
-**Product** | **string** |  | 
-**Id** | **int32** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
+| Name                     | Type                          | Description | Notes      |
+| ------------------------ | ----------------------------- | ----------- | ---------- |
+| **Integration**          | **int32**                     |             |
+| **AccountName**          | Pointer to **NullableString** |             | [optional] |
+| **Bank**                 | **int32**                     |             |
+| **ManagedByIntegration** | **int32**                     |             |
+| **Domain**               | **string**                    |             |
+| **SubaccountCode**       | **string**                    |             |
+| **BusinessName**         | **string**                    |             |
+| **Description**          | **string**                    |             |
+| **PrimaryContactName**   | **string**                    |             |
+| **PrimaryContactEmail**  | **string**                    |             |
+| **PrimaryContactPhone**  | **string**                    |             |
+| **Metadata**             | **string**                    |             |
+| **PercentageCharge**     | **float32**                   |             |
+| **IsVerified**           | **bool**                      |             |
+| **SettlementBank**       | **string**                    |             |
+| **AccountNumber**        | **string**                    |             |
+| **SettlementSchedule**   | **string**                    |             |
+| **Active**               | **bool**                      |             |
+| **Migrate**              | **bool**                      |             |
+| **Currency**             | **string**                    |             |
+| **Product**              | **string**                    |             |
+| **Id**                   | **int32**                     |             |
+| **CreatedAt**            | **string**                    |             |
+| **UpdatedAt**            | **string**                    |             |
 
 ## Methods
 
@@ -67,7 +67,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetAccountName
 
 `func (o *SubaccountFetchResponseData) GetAccountName() string`
@@ -97,12 +96,14 @@ HasAccountName returns a boolean if a field has been set.
 
 `func (o *SubaccountFetchResponseData) SetAccountNameNil(b bool)`
 
- SetAccountNameNil sets the value for AccountName to be an explicit nil
+SetAccountNameNil sets the value for AccountName to be an explicit nil
 
 ### UnsetAccountName
+
 `func (o *SubaccountFetchResponseData) UnsetAccountName()`
 
 UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
+
 ### GetBank
 
 `func (o *SubaccountFetchResponseData) GetBank() int32`
@@ -121,7 +122,6 @@ and a boolean to check if the value has been set.
 `func (o *SubaccountFetchResponseData) SetBank(v int32)`
 
 SetBank sets Bank field to given value.
-
 
 ### GetManagedByIntegration
 
@@ -142,7 +142,6 @@ and a boolean to check if the value has been set.
 
 SetManagedByIntegration sets ManagedByIntegration field to given value.
 
-
 ### GetDomain
 
 `func (o *SubaccountFetchResponseData) GetDomain() string`
@@ -161,7 +160,6 @@ and a boolean to check if the value has been set.
 `func (o *SubaccountFetchResponseData) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetSubaccountCode
 
@@ -182,7 +180,6 @@ and a boolean to check if the value has been set.
 
 SetSubaccountCode sets SubaccountCode field to given value.
 
-
 ### GetBusinessName
 
 `func (o *SubaccountFetchResponseData) GetBusinessName() string`
@@ -201,7 +198,6 @@ and a boolean to check if the value has been set.
 `func (o *SubaccountFetchResponseData) SetBusinessName(v string)`
 
 SetBusinessName sets BusinessName field to given value.
-
 
 ### GetDescription
 
@@ -222,7 +218,6 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
-
 ### GetPrimaryContactName
 
 `func (o *SubaccountFetchResponseData) GetPrimaryContactName() string`
@@ -241,7 +236,6 @@ and a boolean to check if the value has been set.
 `func (o *SubaccountFetchResponseData) SetPrimaryContactName(v string)`
 
 SetPrimaryContactName sets PrimaryContactName field to given value.
-
 
 ### GetPrimaryContactEmail
 
@@ -262,7 +256,6 @@ and a boolean to check if the value has been set.
 
 SetPrimaryContactEmail sets PrimaryContactEmail field to given value.
 
-
 ### GetPrimaryContactPhone
 
 `func (o *SubaccountFetchResponseData) GetPrimaryContactPhone() string`
@@ -281,7 +274,6 @@ and a boolean to check if the value has been set.
 `func (o *SubaccountFetchResponseData) SetPrimaryContactPhone(v string)`
 
 SetPrimaryContactPhone sets PrimaryContactPhone field to given value.
-
 
 ### GetMetadata
 
@@ -302,7 +294,6 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
-
 ### GetPercentageCharge
 
 `func (o *SubaccountFetchResponseData) GetPercentageCharge() float32`
@@ -321,7 +312,6 @@ and a boolean to check if the value has been set.
 `func (o *SubaccountFetchResponseData) SetPercentageCharge(v float32)`
 
 SetPercentageCharge sets PercentageCharge field to given value.
-
 
 ### GetIsVerified
 
@@ -342,7 +332,6 @@ and a boolean to check if the value has been set.
 
 SetIsVerified sets IsVerified field to given value.
 
-
 ### GetSettlementBank
 
 `func (o *SubaccountFetchResponseData) GetSettlementBank() string`
@@ -361,7 +350,6 @@ and a boolean to check if the value has been set.
 `func (o *SubaccountFetchResponseData) SetSettlementBank(v string)`
 
 SetSettlementBank sets SettlementBank field to given value.
-
 
 ### GetAccountNumber
 
@@ -382,7 +370,6 @@ and a boolean to check if the value has been set.
 
 SetAccountNumber sets AccountNumber field to given value.
 
-
 ### GetSettlementSchedule
 
 `func (o *SubaccountFetchResponseData) GetSettlementSchedule() string`
@@ -401,7 +388,6 @@ and a boolean to check if the value has been set.
 `func (o *SubaccountFetchResponseData) SetSettlementSchedule(v string)`
 
 SetSettlementSchedule sets SettlementSchedule field to given value.
-
 
 ### GetActive
 
@@ -422,7 +408,6 @@ and a boolean to check if the value has been set.
 
 SetActive sets Active field to given value.
 
-
 ### GetMigrate
 
 `func (o *SubaccountFetchResponseData) GetMigrate() bool`
@@ -441,7 +426,6 @@ and a boolean to check if the value has been set.
 `func (o *SubaccountFetchResponseData) SetMigrate(v bool)`
 
 SetMigrate sets Migrate field to given value.
-
 
 ### GetCurrency
 
@@ -462,7 +446,6 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
-
 ### GetProduct
 
 `func (o *SubaccountFetchResponseData) GetProduct() string`
@@ -481,7 +464,6 @@ and a boolean to check if the value has been set.
 `func (o *SubaccountFetchResponseData) SetProduct(v string)`
 
 SetProduct sets Product field to given value.
-
 
 ### GetId
 
@@ -502,7 +484,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *SubaccountFetchResponseData) GetCreatedAt() string`
@@ -521,7 +502,6 @@ and a boolean to check if the value has been set.
 `func (o *SubaccountFetchResponseData) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -542,8 +522,4 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

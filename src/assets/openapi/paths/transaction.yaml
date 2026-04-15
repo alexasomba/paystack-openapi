@@ -3,7 +3,7 @@ get:
     - Transaction
   summary: List Transactions
   operationId: transaction_list
-  description: List transactions that has occurred on your integration
+  description: List transactions carried out on your integration
   parameters:
     - in: query
       name: use_cursor
@@ -26,24 +26,24 @@ get:
       schema:
         type: string
     - in: query
-      name: per_page
+      name: perPage
       schema:
         type: integer
-      description: The number of records to fetch per request
+      description: Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
     - in: query
       name: page
       schema:
         type: integer
-      description: The offset to retrieve data from
+      description: Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
     - in: query
       name: from
-      description: The start date
+      description: A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
       schema:
         type: string
         format: date-time
     - in: query
       name: to
-      description: The end date
+      description: A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
       schema:
         type: string
         format: date-time
@@ -68,8 +68,8 @@ get:
           - pos
           - virtualTerminal
     - in: query
-      name: terminal_id
-      description: Filter transactions by a terminal ID
+      name: terminalid
+      description: The Terminal ID for the transactions you want to retrieve
       schema:
         type: string
     - in: query
@@ -78,13 +78,17 @@ get:
       schema:
         type: string
     - in: query
-      name: customer_code
-      description: Filter transactions by a customer code
+      name: customer
+      description: Specify an ID for the customer whose transactions you want to retrieve
       schema:
-        type: string
+        type: integer
     - in: query
       name: amount
-      description: Filter transactions by a specific amount
+      description: >
+        Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES).
+        For XOF, the amount is the same as the base units (not multiplied by 100).
+
+        Filter transactions by a specific amount.
       schema:
         type: integer
         format: int64
@@ -117,15 +121,15 @@ get:
       schema:
         type: string
   responses:
-    '200':
-      description: ''
+    "200":
+      description: ""
       content:
         application/json:
           schema:
             $ref: ../components/schemas/TransactionListResponse.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error

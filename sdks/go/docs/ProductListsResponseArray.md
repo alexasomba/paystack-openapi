@@ -2,38 +2,38 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**Name** | **string** |  | 
-**Description** | **string** |  | 
-**ProductCode** | **string** |  | 
-**Slug** | **string** |  | 
-**Currency** | **string** |  | 
-**Price** | **int32** |  | 
-**Quantity** | **int32** |  | 
-**QuantitySold** | **int32** |  | 
-**Active** | **bool** |  | 
-**Domain** | **string** |  | 
-**Type** | **string** |  | 
-**InStock** | **bool** |  | 
-**Unlimited** | **bool** |  | 
-**Metadata** | [**ProductListsResponseArrayMetadata**](ProductListsResponseArrayMetadata.md) |  | 
-**Files** | **[]interface{}** |  | 
-**SuccessMessage** | **interface{}** |  | 
-**RedirectUrl** | **interface{}** |  | 
-**SplitCode** | **interface{}** |  | 
-**NotificationEmails** | **interface{}** |  | 
-**MinimumOrderable** | **int32** |  | 
-**MaximumOrderable** | **interface{}** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
-**DigitalAssets** | **[]interface{}** |  | 
-**VariantOptions** | **[]interface{}** |  | 
-**IsShippable** | **bool** |  | 
-**ShippingFields** | [**ProductListsResponseArrayShippingFields**](ProductListsResponseArrayShippingFields.md) |  | 
-**Integration** | **int32** |  | 
-**LowStockAlert** | **int32** |  | 
+| Name                   | Type                                                                                      | Description | Notes |
+| ---------------------- | ----------------------------------------------------------------------------------------- | ----------- | ----- |
+| **Id**                 | **int32**                                                                                 |             |
+| **Name**               | **string**                                                                                |             |
+| **Description**        | **string**                                                                                |             |
+| **ProductCode**        | **string**                                                                                |             |
+| **Slug**               | **string**                                                                                |             |
+| **Currency**           | **string**                                                                                |             |
+| **Price**              | **int32**                                                                                 |             |
+| **Quantity**           | **int32**                                                                                 |             |
+| **QuantitySold**       | **int32**                                                                                 |             |
+| **Active**             | **bool**                                                                                  |             |
+| **Domain**             | **string**                                                                                |             |
+| **Type**               | **string**                                                                                |             |
+| **InStock**            | **bool**                                                                                  |             |
+| **Unlimited**          | **bool**                                                                                  |             |
+| **Metadata**           | [**ProductListsResponseArrayMetadata**](ProductListsResponseArrayMetadata.md)             |             |
+| **Files**              | **[]interface{}**                                                                         |             |
+| **SuccessMessage**     | **interface{}**                                                                           |             |
+| **RedirectUrl**        | **interface{}**                                                                           |             |
+| **SplitCode**          | **interface{}**                                                                           |             |
+| **NotificationEmails** | **interface{}**                                                                           |             |
+| **MinimumOrderable**   | **int32**                                                                                 |             |
+| **MaximumOrderable**   | **interface{}**                                                                           |             |
+| **CreatedAt**          | **string**                                                                                |             |
+| **UpdatedAt**          | **string**                                                                                |             |
+| **DigitalAssets**      | **[]interface{}**                                                                         |             |
+| **VariantOptions**     | **[]interface{}**                                                                         |             |
+| **IsShippable**        | **bool**                                                                                  |             |
+| **ShippingFields**     | [**ProductListsResponseArrayShippingFields**](ProductListsResponseArrayShippingFields.md) |             |
+| **Integration**        | **int32**                                                                                 |             |
+| **LowStockAlert**      | **int32**                                                                                 |             |
 
 ## Methods
 
@@ -73,7 +73,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetName
 
 `func (o *ProductListsResponseArray) GetName() string`
@@ -92,7 +91,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductListsResponseArray) SetName(v string)`
 
 SetName sets Name field to given value.
-
 
 ### GetDescription
 
@@ -113,7 +111,6 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
-
 ### GetProductCode
 
 `func (o *ProductListsResponseArray) GetProductCode() string`
@@ -132,7 +129,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductListsResponseArray) SetProductCode(v string)`
 
 SetProductCode sets ProductCode field to given value.
-
 
 ### GetSlug
 
@@ -153,7 +149,6 @@ and a boolean to check if the value has been set.
 
 SetSlug sets Slug field to given value.
 
-
 ### GetCurrency
 
 `func (o *ProductListsResponseArray) GetCurrency() string`
@@ -172,7 +167,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductListsResponseArray) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetPrice
 
@@ -193,7 +187,6 @@ and a boolean to check if the value has been set.
 
 SetPrice sets Price field to given value.
 
-
 ### GetQuantity
 
 `func (o *ProductListsResponseArray) GetQuantity() int32`
@@ -212,7 +205,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductListsResponseArray) SetQuantity(v int32)`
 
 SetQuantity sets Quantity field to given value.
-
 
 ### GetQuantitySold
 
@@ -233,7 +225,6 @@ and a boolean to check if the value has been set.
 
 SetQuantitySold sets QuantitySold field to given value.
 
-
 ### GetActive
 
 `func (o *ProductListsResponseArray) GetActive() bool`
@@ -252,7 +243,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductListsResponseArray) SetActive(v bool)`
 
 SetActive sets Active field to given value.
-
 
 ### GetDomain
 
@@ -273,7 +263,6 @@ and a boolean to check if the value has been set.
 
 SetDomain sets Domain field to given value.
 
-
 ### GetType
 
 `func (o *ProductListsResponseArray) GetType() string`
@@ -292,7 +281,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductListsResponseArray) SetType(v string)`
 
 SetType sets Type field to given value.
-
 
 ### GetInStock
 
@@ -313,7 +301,6 @@ and a boolean to check if the value has been set.
 
 SetInStock sets InStock field to given value.
 
-
 ### GetUnlimited
 
 `func (o *ProductListsResponseArray) GetUnlimited() bool`
@@ -332,7 +319,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductListsResponseArray) SetUnlimited(v bool)`
 
 SetUnlimited sets Unlimited field to given value.
-
 
 ### GetMetadata
 
@@ -353,7 +339,6 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
-
 ### GetFiles
 
 `func (o *ProductListsResponseArray) GetFiles() []interface{}`
@@ -372,7 +357,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductListsResponseArray) SetFiles(v []interface{})`
 
 SetFiles sets Files field to given value.
-
 
 ### GetSuccessMessage
 
@@ -393,17 +377,18 @@ and a boolean to check if the value has been set.
 
 SetSuccessMessage sets SuccessMessage field to given value.
 
-
 ### SetSuccessMessageNil
 
 `func (o *ProductListsResponseArray) SetSuccessMessageNil(b bool)`
 
- SetSuccessMessageNil sets the value for SuccessMessage to be an explicit nil
+SetSuccessMessageNil sets the value for SuccessMessage to be an explicit nil
 
 ### UnsetSuccessMessage
+
 `func (o *ProductListsResponseArray) UnsetSuccessMessage()`
 
 UnsetSuccessMessage ensures that no value is present for SuccessMessage, not even an explicit nil
+
 ### GetRedirectUrl
 
 `func (o *ProductListsResponseArray) GetRedirectUrl() interface{}`
@@ -423,17 +408,18 @@ and a boolean to check if the value has been set.
 
 SetRedirectUrl sets RedirectUrl field to given value.
 
-
 ### SetRedirectUrlNil
 
 `func (o *ProductListsResponseArray) SetRedirectUrlNil(b bool)`
 
- SetRedirectUrlNil sets the value for RedirectUrl to be an explicit nil
+SetRedirectUrlNil sets the value for RedirectUrl to be an explicit nil
 
 ### UnsetRedirectUrl
+
 `func (o *ProductListsResponseArray) UnsetRedirectUrl()`
 
 UnsetRedirectUrl ensures that no value is present for RedirectUrl, not even an explicit nil
+
 ### GetSplitCode
 
 `func (o *ProductListsResponseArray) GetSplitCode() interface{}`
@@ -453,17 +439,18 @@ and a boolean to check if the value has been set.
 
 SetSplitCode sets SplitCode field to given value.
 
-
 ### SetSplitCodeNil
 
 `func (o *ProductListsResponseArray) SetSplitCodeNil(b bool)`
 
- SetSplitCodeNil sets the value for SplitCode to be an explicit nil
+SetSplitCodeNil sets the value for SplitCode to be an explicit nil
 
 ### UnsetSplitCode
+
 `func (o *ProductListsResponseArray) UnsetSplitCode()`
 
 UnsetSplitCode ensures that no value is present for SplitCode, not even an explicit nil
+
 ### GetNotificationEmails
 
 `func (o *ProductListsResponseArray) GetNotificationEmails() interface{}`
@@ -483,17 +470,18 @@ and a boolean to check if the value has been set.
 
 SetNotificationEmails sets NotificationEmails field to given value.
 
-
 ### SetNotificationEmailsNil
 
 `func (o *ProductListsResponseArray) SetNotificationEmailsNil(b bool)`
 
- SetNotificationEmailsNil sets the value for NotificationEmails to be an explicit nil
+SetNotificationEmailsNil sets the value for NotificationEmails to be an explicit nil
 
 ### UnsetNotificationEmails
+
 `func (o *ProductListsResponseArray) UnsetNotificationEmails()`
 
 UnsetNotificationEmails ensures that no value is present for NotificationEmails, not even an explicit nil
+
 ### GetMinimumOrderable
 
 `func (o *ProductListsResponseArray) GetMinimumOrderable() int32`
@@ -512,7 +500,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductListsResponseArray) SetMinimumOrderable(v int32)`
 
 SetMinimumOrderable sets MinimumOrderable field to given value.
-
 
 ### GetMaximumOrderable
 
@@ -533,17 +520,18 @@ and a boolean to check if the value has been set.
 
 SetMaximumOrderable sets MaximumOrderable field to given value.
 
-
 ### SetMaximumOrderableNil
 
 `func (o *ProductListsResponseArray) SetMaximumOrderableNil(b bool)`
 
- SetMaximumOrderableNil sets the value for MaximumOrderable to be an explicit nil
+SetMaximumOrderableNil sets the value for MaximumOrderable to be an explicit nil
 
 ### UnsetMaximumOrderable
+
 `func (o *ProductListsResponseArray) UnsetMaximumOrderable()`
 
 UnsetMaximumOrderable ensures that no value is present for MaximumOrderable, not even an explicit nil
+
 ### GetCreatedAt
 
 `func (o *ProductListsResponseArray) GetCreatedAt() string`
@@ -562,7 +550,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductListsResponseArray) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -583,7 +570,6 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
 ### GetDigitalAssets
 
 `func (o *ProductListsResponseArray) GetDigitalAssets() []interface{}`
@@ -602,7 +588,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductListsResponseArray) SetDigitalAssets(v []interface{})`
 
 SetDigitalAssets sets DigitalAssets field to given value.
-
 
 ### GetVariantOptions
 
@@ -623,7 +608,6 @@ and a boolean to check if the value has been set.
 
 SetVariantOptions sets VariantOptions field to given value.
 
-
 ### GetIsShippable
 
 `func (o *ProductListsResponseArray) GetIsShippable() bool`
@@ -642,7 +626,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductListsResponseArray) SetIsShippable(v bool)`
 
 SetIsShippable sets IsShippable field to given value.
-
 
 ### GetShippingFields
 
@@ -663,7 +646,6 @@ and a boolean to check if the value has been set.
 
 SetShippingFields sets ShippingFields field to given value.
 
-
 ### GetIntegration
 
 `func (o *ProductListsResponseArray) GetIntegration() int32`
@@ -682,7 +664,6 @@ and a boolean to check if the value has been set.
 `func (o *ProductListsResponseArray) SetIntegration(v int32)`
 
 SetIntegration sets Integration field to given value.
-
 
 ### GetLowStockAlert
 
@@ -703,8 +684,4 @@ and a boolean to check if the value has been set.
 
 SetLowStockAlert sets LowStockAlert field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

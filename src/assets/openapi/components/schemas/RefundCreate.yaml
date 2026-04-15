@@ -6,8 +6,11 @@ properties:
     description: The reference of a previosuly completed transaction
     type: string
   amount:
-    description: >-
-      Amount to be refunded to the customer. It cannot be more than the original transaction amount
+    description: >
+      Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES).
+      For XOF, the amount is the same as the base units (not multiplied by 100).
+
+      Amount to be refunded to the customer. It cannot be more than the original transaction amount.
     type: integer
   currency:
     description: Three-letter ISO currency

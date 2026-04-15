@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Status** | **bool** |  | 
-**Message** | **string** |  | 
-**Data** | [**[]BulkChargeListResponseArray**](BulkChargeListResponseArray.md) |  | 
-**Meta** | [**BulkChargeListResponseMeta**](BulkChargeListResponseMeta.md) |  | 
+| Name        | Type                                                                | Description | Notes |
+| ----------- | ------------------------------------------------------------------- | ----------- | ----- |
+| **Status**  | **bool**                                                            |             |
+| **Message** | **string**                                                          |             |
+| **Data**    | [**[]BulkChargeListResponseArray**](BulkChargeListResponseArray.md) |             |
+| **Meta**    | [**BulkChargeListResponseMeta**](BulkChargeListResponseMeta.md)     |             |
 
 ## Methods
 
@@ -47,7 +47,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-
 ### GetMessage
 
 `func (o *BulkChargeListResponse) GetMessage() string`
@@ -66,7 +65,6 @@ and a boolean to check if the value has been set.
 `func (o *BulkChargeListResponse) SetMessage(v string)`
 
 SetMessage sets Message field to given value.
-
 
 ### GetData
 
@@ -87,7 +85,6 @@ and a boolean to check if the value has been set.
 
 SetData sets Data field to given value.
 
-
 ### GetMeta
 
 `func (o *BulkChargeListResponse) GetMeta() BulkChargeListResponseMeta`
@@ -107,8 +104,4 @@ and a boolean to check if the value has been set.
 
 SetMeta sets Meta field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

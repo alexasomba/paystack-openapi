@@ -16,6 +16,7 @@ properties:
       reference:
         type: string
       receipt_number:
+        type: string
         nullable: true
       amount:
         type: integer
@@ -34,15 +35,13 @@ properties:
         type: string
       ip_address:
         type: string
+        nullable: true
       metadata:
-        type: object
-        properties:
-          custom_fields:
-            type: array
-            items:
-              $ref: ./MetadataCustomFieldsArray.yaml
-        required:
-          - custom_fields
+        anyOf:
+          - type: string
+          - type: object
+            additionalProperties: true
+        nullable: true
       log:
         type: object
         properties:
@@ -119,10 +118,13 @@ properties:
           signature:
             type: string
           account_name:
+            type: string
             nullable: true
           receiver_bank_account_number:
+            type: string
             nullable: true
           receiver_bank:
+            type: string
             nullable: true
         required:
           - authorization_code
@@ -138,8 +140,6 @@ properties:
           - reusable
           - signature
           - account_name
-          - receiver_bank_account_number
-          - receiver_bank
       customer:
         type: object
         properties:
@@ -147,20 +147,25 @@ properties:
             type: integer
           first_name:
             type: string
+            nullable: true
           last_name:
             type: string
+            nullable: true
           email:
             type: string
           customer_code:
             type: string
           phone:
             type: string
+            nullable: true
           metadata:
             type: object
+            nullable: true
           risk_action:
             type: string
           international_format_phone:
             type: string
+            nullable: true
         required:
           - id
           - first_name
@@ -170,11 +175,11 @@ properties:
           - phone
           - metadata
           - risk_action
-          - international_format_phone
       plan:
         nullable: true
       split:
         type: object
+        nullable: true
       order_id:
         nullable: true
       requested_amount:
@@ -182,10 +187,13 @@ properties:
       pos_transaction_data:
         nullable: true
       source:
+        type: object
         nullable: true
       fees_breakdown:
+        type: object
         nullable: true
       connect:
+        type: object
         nullable: true
       transaction_date:
         type: string
@@ -198,32 +206,19 @@ properties:
       - domain
       - status
       - reference
-      - receipt_number
       - amount
       - message
       - gateway_response
-      - paid_at
-      - created_at
       - channel
       - currency
       - ip_address
       - metadata
       - log
       - fees
-      - fees_split
       - authorization
       - customer
       - plan
-      - split
-      - order_id
-      - requested_amount
-      - pos_transaction_data
-      - source
-      - fees_breakdown
-      - connect
       - transaction_date
-      - plan_object
-      - subaccount
 required:
   - status
   - message

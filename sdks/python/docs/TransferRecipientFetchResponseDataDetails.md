@@ -1,13 +1,13 @@
 # TransferRecipientFetchResponseDataDetails
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**account_number** | **str** |  | 
-**account_name** | **str** |  | 
-**bank_code** | **str** |  | 
-**bank_name** | **str** |  | 
+
+| Name               | Type    | Description | Notes |
+| ------------------ | ------- | ----------- | ----- |
+| **account_number** | **str** |             |
+| **account_name**   | **str** |             |
+| **bank_code**      | **str** |             |
+| **bank_name**      | **str** |             |
 
 ## Example
 
@@ -26,6 +26,5 @@ transfer_recipient_fetch_response_data_details_dict = transfer_recipient_fetch_r
 # create an instance of TransferRecipientFetchResponseDataDetails from a dict
 transfer_recipient_fetch_response_data_details_form_dict = transfer_recipient_fetch_response_data_details.from_dict(transfer_recipient_fetch_response_data_details_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

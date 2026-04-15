@@ -10,9 +10,9 @@ post:
         schema:
           $ref: ../components/schemas/VirtualTerminalCreate.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/VirtualTerminalCreateSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error
@@ -23,21 +23,39 @@ get:
   description: List Virtual Terminals on your integration
   operationId: virtualTerminal_list
   parameters:
+    - name: status
+      in: query
+      description: Filter by status ('active' or 'inactive')
+      schema:
+        type: string
+        enum:
+          - active
+          - inactive
     - name: perPage
       in: query
-      description: The number of records to fetch per request
+      description: Number of records per page
       schema:
         type: integer
-      example: 75
-    - name: page
+      example: 50
+    - name: search
       in: query
-      description: The offset to retrieve data from
+      description: Search query string
       schema:
-        type: integer
+        type: string
+    - name: next
+      in: query
+      description: Cursor for next page
+      schema:
+        type: string
+    - name: previous
+      in: query
+      description: Cursor for previous page
+      schema:
+        type: string
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/VirtualTerminalListSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error

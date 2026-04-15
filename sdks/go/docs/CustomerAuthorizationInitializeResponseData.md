@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**RedirectUrl** | **string** |  | 
-**AccessCode** | **string** |  | 
-**Reference** | **string** |  | 
+| Name            | Type       | Description | Notes |
+| --------------- | ---------- | ----------- | ----- |
+| **RedirectUrl** | **string** |             |
+| **AccessCode**  | **string** |             |
+| **Reference**   | **string** |             |
 
 ## Methods
 
@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetRedirectUrl sets RedirectUrl field to given value.
 
-
 ### GetAccessCode
 
 `func (o *CustomerAuthorizationInitializeResponseData) GetAccessCode() string`
@@ -65,7 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *CustomerAuthorizationInitializeResponseData) SetAccessCode(v string)`
 
 SetAccessCode sets AccessCode field to given value.
-
 
 ### GetReference
 
@@ -86,8 +84,4 @@ and a boolean to check if the value has been set.
 
 SetReference sets Reference field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -2,23 +2,23 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
-**Name** | **string** |  | 
-**Type** | **string** |  | 
-**Currency** | **string** |  | 
-**Integration** | **int32** |  | 
-**Domain** | **string** |  | 
-**SplitCode** | **string** |  | 
-**Active** | **bool** |  | 
-**BearerType** | **string** |  | 
-**BearerSubaccount** | **interface{}** |  | 
-**CreatedAt** | **string** |  | 
-**UpdatedAt** | **string** |  | 
-**IsDynamic** | **bool** |  | 
-**Subaccounts** | [**[]SplitSubaccountsArray**](SplitSubaccountsArray.md) |  | 
-**TotalSubaccounts** | **int32** |  | 
+| Name                 | Type                                                    | Description | Notes |
+| -------------------- | ------------------------------------------------------- | ----------- | ----- |
+| **Id**               | **int32**                                               |             |
+| **Name**             | **string**                                              |             |
+| **Type**             | **string**                                              |             |
+| **Currency**         | **string**                                              |             |
+| **Integration**      | **int32**                                               |             |
+| **Domain**           | **string**                                              |             |
+| **SplitCode**        | **string**                                              |             |
+| **Active**           | **bool**                                                |             |
+| **BearerType**       | **string**                                              |             |
+| **BearerSubaccount** | **interface{}**                                         |             |
+| **CreatedAt**        | **string**                                              |             |
+| **UpdatedAt**        | **string**                                              |             |
+| **IsDynamic**        | **bool**                                                |             |
+| **Subaccounts**      | [**[]SplitSubaccountsArray**](SplitSubaccountsArray.md) |             |
+| **TotalSubaccounts** | **int32**                                               |             |
 
 ## Methods
 
@@ -58,7 +58,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetName
 
 `func (o *VirtualTerminalAddSplitCodeResponseData) GetName() string`
@@ -77,7 +76,6 @@ and a boolean to check if the value has been set.
 `func (o *VirtualTerminalAddSplitCodeResponseData) SetName(v string)`
 
 SetName sets Name field to given value.
-
 
 ### GetType
 
@@ -98,7 +96,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-
 ### GetCurrency
 
 `func (o *VirtualTerminalAddSplitCodeResponseData) GetCurrency() string`
@@ -117,7 +114,6 @@ and a boolean to check if the value has been set.
 `func (o *VirtualTerminalAddSplitCodeResponseData) SetCurrency(v string)`
 
 SetCurrency sets Currency field to given value.
-
 
 ### GetIntegration
 
@@ -138,7 +134,6 @@ and a boolean to check if the value has been set.
 
 SetIntegration sets Integration field to given value.
 
-
 ### GetDomain
 
 `func (o *VirtualTerminalAddSplitCodeResponseData) GetDomain() string`
@@ -157,7 +152,6 @@ and a boolean to check if the value has been set.
 `func (o *VirtualTerminalAddSplitCodeResponseData) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
-
 
 ### GetSplitCode
 
@@ -178,7 +172,6 @@ and a boolean to check if the value has been set.
 
 SetSplitCode sets SplitCode field to given value.
 
-
 ### GetActive
 
 `func (o *VirtualTerminalAddSplitCodeResponseData) GetActive() bool`
@@ -197,7 +190,6 @@ and a boolean to check if the value has been set.
 `func (o *VirtualTerminalAddSplitCodeResponseData) SetActive(v bool)`
 
 SetActive sets Active field to given value.
-
 
 ### GetBearerType
 
@@ -218,7 +210,6 @@ and a boolean to check if the value has been set.
 
 SetBearerType sets BearerType field to given value.
 
-
 ### GetBearerSubaccount
 
 `func (o *VirtualTerminalAddSplitCodeResponseData) GetBearerSubaccount() interface{}`
@@ -238,17 +229,18 @@ and a boolean to check if the value has been set.
 
 SetBearerSubaccount sets BearerSubaccount field to given value.
 
-
 ### SetBearerSubaccountNil
 
 `func (o *VirtualTerminalAddSplitCodeResponseData) SetBearerSubaccountNil(b bool)`
 
- SetBearerSubaccountNil sets the value for BearerSubaccount to be an explicit nil
+SetBearerSubaccountNil sets the value for BearerSubaccount to be an explicit nil
 
 ### UnsetBearerSubaccount
+
 `func (o *VirtualTerminalAddSplitCodeResponseData) UnsetBearerSubaccount()`
 
 UnsetBearerSubaccount ensures that no value is present for BearerSubaccount, not even an explicit nil
+
 ### GetCreatedAt
 
 `func (o *VirtualTerminalAddSplitCodeResponseData) GetCreatedAt() string`
@@ -267,7 +259,6 @@ and a boolean to check if the value has been set.
 `func (o *VirtualTerminalAddSplitCodeResponseData) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetUpdatedAt
 
@@ -288,7 +279,6 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-
 ### GetIsDynamic
 
 `func (o *VirtualTerminalAddSplitCodeResponseData) GetIsDynamic() bool`
@@ -307,7 +297,6 @@ and a boolean to check if the value has been set.
 `func (o *VirtualTerminalAddSplitCodeResponseData) SetIsDynamic(v bool)`
 
 SetIsDynamic sets IsDynamic field to given value.
-
 
 ### GetSubaccounts
 
@@ -328,7 +317,6 @@ and a boolean to check if the value has been set.
 
 SetSubaccounts sets Subaccounts field to given value.
 
-
 ### GetTotalSubaccounts
 
 `func (o *VirtualTerminalAddSplitCodeResponseData) GetTotalSubaccounts() int32`
@@ -348,8 +336,4 @@ and a boolean to check if the value has been set.
 
 SetTotalSubaccounts sets TotalSubaccounts field to given value.
 
-
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

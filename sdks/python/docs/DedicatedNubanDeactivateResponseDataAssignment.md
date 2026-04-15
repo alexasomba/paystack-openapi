@@ -1,14 +1,14 @@
 # DedicatedNubanDeactivateResponseDataAssignment
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**assignee_id** | **int** |  | 
-**assignee_type** | **str** |  | 
-**assigned_at** | **str** |  | 
-**integration** | **int** |  | 
-**account_type** | **str** |  | 
+
+| Name              | Type    | Description | Notes |
+| ----------------- | ------- | ----------- | ----- |
+| **assignee_id**   | **int** |             |
+| **assignee_type** | **str** |             |
+| **assigned_at**   | **str** |             |
+| **integration**   | **int** |             |
+| **account_type**  | **str** |             |
 
 ## Example
 
@@ -27,6 +27,5 @@ dedicated_nuban_deactivate_response_data_assignment_dict = dedicated_nuban_deact
 # create an instance of DedicatedNubanDeactivateResponseDataAssignment from a dict
 dedicated_nuban_deactivate_response_data_assignment_form_dict = dedicated_nuban_deactivate_response_data_assignment.from_dict(dedicated_nuban_deactivate_response_data_assignment_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

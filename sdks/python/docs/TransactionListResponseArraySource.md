@@ -1,13 +1,13 @@
 # TransactionListResponseArraySource
 
-
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**source** | **str** |  | 
-**type** | **str** |  | 
-**identifier** | **object** |  | 
-**entry_point** | **str** |  | 
+
+| Name            | Type       | Description | Notes |
+| --------------- | ---------- | ----------- | ----- |
+| **source**      | **str**    |             |
+| **type**        | **str**    |             |
+| **identifier**  | **object** |             |
+| **entry_point** | **str**    |             |
 
 ## Example
 
@@ -26,6 +26,5 @@ transaction_list_response_array_source_dict = transaction_list_response_array_so
 # create an instance of TransactionListResponseArraySource from a dict
 transaction_list_response_array_source_form_dict = transaction_list_response_array_source.from_dict(transaction_list_response_array_source_dict)
 ```
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

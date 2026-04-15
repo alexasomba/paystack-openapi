@@ -2,27 +2,23 @@
 
 All URIs are relative to *https://api.paystack.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**PaymentRequestArchive**](PaymentRequestAPI.md#PaymentRequestArchive) | **Post** /paymentrequest/archive/{id} | Archive Payment Request
-[**PaymentRequestCreate**](PaymentRequestAPI.md#PaymentRequestCreate) | **Post** /paymentrequest | Create Payment Request
-[**PaymentRequestFetch**](PaymentRequestAPI.md#PaymentRequestFetch) | **Get** /paymentrequest/{id} | Fetch Payment Request
-[**PaymentRequestFinalize**](PaymentRequestAPI.md#PaymentRequestFinalize) | **Post** /paymentrequest/finalize/{id} | Finalize Payment Request
-[**PaymentRequestList**](PaymentRequestAPI.md#PaymentRequestList) | **Get** /paymentrequest | List Payment Request
-[**PaymentRequestNotify**](PaymentRequestAPI.md#PaymentRequestNotify) | **Post** /paymentrequest/notify/{id} | Send Notification
-[**PaymentRequestTotals**](PaymentRequestAPI.md#PaymentRequestTotals) | **Get** /paymentrequest/totals | Payment Request Total
-[**PaymentRequestUpdate**](PaymentRequestAPI.md#PaymentRequestUpdate) | **Put** /paymentrequest/{id} | Update Payment Request
-[**PaymentRequestVerify**](PaymentRequestAPI.md#PaymentRequestVerify) | **Get** /paymentrequest/verify/{id} | Verify Payment Request
-
-
+| Method                                                                    | HTTP request                           | Description              |
+| ------------------------------------------------------------------------- | -------------------------------------- | ------------------------ |
+| [**PaymentRequestArchive**](PaymentRequestAPI.md#PaymentRequestArchive)   | **Post** /paymentrequest/archive/{id}  | Archive Payment Request  |
+| [**PaymentRequestCreate**](PaymentRequestAPI.md#PaymentRequestCreate)     | **Post** /paymentrequest               | Create Payment Request   |
+| [**PaymentRequestFetch**](PaymentRequestAPI.md#PaymentRequestFetch)       | **Get** /paymentrequest/{id}           | Fetch Payment Request    |
+| [**PaymentRequestFinalize**](PaymentRequestAPI.md#PaymentRequestFinalize) | **Post** /paymentrequest/finalize/{id} | Finalize Payment Request |
+| [**PaymentRequestList**](PaymentRequestAPI.md#PaymentRequestList)         | **Get** /paymentrequest                | List Payment Request     |
+| [**PaymentRequestNotify**](PaymentRequestAPI.md#PaymentRequestNotify)     | **Post** /paymentrequest/notify/{id}   | Send Notification        |
+| [**PaymentRequestTotals**](PaymentRequestAPI.md#PaymentRequestTotals)     | **Get** /paymentrequest/totals         | Payment Request Total    |
+| [**PaymentRequestUpdate**](PaymentRequestAPI.md#PaymentRequestUpdate)     | **Put** /paymentrequest/{id}           | Update Payment Request   |
+| [**PaymentRequestVerify**](PaymentRequestAPI.md#PaymentRequestVerify)     | **Get** /paymentrequest/verify/{id}    | Verify Payment Request   |
 
 ## PaymentRequestArchive
 
 > PaymentRequestArchiveResponse PaymentRequestArchive(ctx, id).Execute()
 
 Archive Payment Request
-
-
 
 ### Example
 
@@ -53,20 +49,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of a previously created payment request | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of a previously created payment request               |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPaymentRequestArchiveRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -85,14 +78,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## PaymentRequestCreate
 
 > PaymentRequestCreateResponse PaymentRequestCreate(ctx).PaymentRequestCreate(paymentRequestCreate).Execute()
 
 Create Payment Request
-
-
 
 ### Example
 
@@ -123,16 +113,13 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPaymentRequestCreateRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **paymentRequestCreate** | [**PaymentRequestCreate**](PaymentRequestCreate.md) |  | 
+| Name                     | Type                                                | Description | Notes |
+| ------------------------ | --------------------------------------------------- | ----------- | ----- |
+| **paymentRequestCreate** | [**PaymentRequestCreate**](PaymentRequestCreate.md) |             |
 
 ### Return type
 
@@ -151,14 +138,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## PaymentRequestFetch
 
 > PaymentRequestListResponse PaymentRequestFetch(ctx, id).Execute()
 
 Fetch Payment Request
-
-
 
 ### Example
 
@@ -189,20 +173,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of a previously created payment request | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of a previously created payment request               |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPaymentRequestFetchRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -221,14 +202,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## PaymentRequestFinalize
 
 > PaymentRequestFinalizeResponse PaymentRequestFinalize(ctx, id).Execute()
 
 Finalize Payment Request
-
-
 
 ### Example
 
@@ -259,20 +237,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of a draft payment request | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of a draft payment request                            |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPaymentRequestFinalizeRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -291,14 +266,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## PaymentRequestList
 
 > PaymentRequestListResponse PaymentRequestList(ctx).PerPage(perPage).Page(page).Customer(customer).Status(status).Currency(currency).From(from).To(to).Execute()
 
 List Payment Request
-
-
 
 ### Example
 
@@ -336,22 +308,19 @@ func main() {
 
 ### Path Parameters
 
-
-
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPaymentRequestListRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **perPage** | **int32** | Number of records to fetch per page | 
- **page** | **int32** | The section to retrieve | 
- **customer** | **string** | Customer ID | 
- **status** | **string** | Invoice status to filter | 
- **currency** | **string** | If your integration supports more than one currency, choose the one to filter | 
- **from** | **time.Time** | The start date | 
- **to** | **time.Time** | The end date | 
+| Name         | Type          | Description                                                                   | Notes |
+| ------------ | ------------- | ----------------------------------------------------------------------------- | ----- |
+| **perPage**  | **int32**     | Number of records to fetch per page                                           |
+| **page**     | **int32**     | The section to retrieve                                                       |
+| **customer** | **string**    | Customer ID                                                                   |
+| **status**   | **string**    | Invoice status to filter                                                      |
+| **currency** | **string**    | If your integration supports more than one currency, choose the one to filter |
+| **from**     | **time.Time** | The start date                                                                |
+| **to**       | **time.Time** | The end date                                                                  |
 
 ### Return type
 
@@ -370,14 +339,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## PaymentRequestNotify
 
 > PaymentRequestSendNotificationResponse PaymentRequestNotify(ctx, id).Execute()
 
 Send Notification
-
-
 
 ### Example
 
@@ -408,20 +374,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of a previously created payment request | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of a previously created payment request               |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPaymentRequestNotifyRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -440,14 +403,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## PaymentRequestTotals
 
 > PaymentRequestTotalResponse PaymentRequestTotals(ctx).Execute()
 
 Payment Request Total
-
-
 
 ### Example
 
@@ -483,7 +443,6 @@ This endpoint does not need any parameter.
 
 Other parameters are passed through a pointer to a apiPaymentRequestTotalsRequest struct via the builder pattern
 
-
 ### Return type
 
 [**PaymentRequestTotalResponse**](PaymentRequestTotalResponse.md)
@@ -501,14 +460,11 @@ Other parameters are passed through a pointer to a apiPaymentRequestTotalsReques
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## PaymentRequestUpdate
 
 > PaymentRequestUpdateResponse PaymentRequestUpdate(ctx, id).PaymentRequestUpdate(paymentRequestUpdate).Execute()
 
 Update Payment Request
-
-
 
 ### Example
 
@@ -540,21 +496,19 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of a previously created payment request | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of a previously created payment request               |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPaymentRequestUpdateRequest struct via the builder pattern
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **paymentRequestUpdate** | [**PaymentRequestUpdate**](PaymentRequestUpdate.md) |  | 
+**paymentRequestUpdate** | [**PaymentRequestUpdate**](PaymentRequestUpdate.md) | |
 
 ### Return type
 
@@ -573,14 +527,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
 ## PaymentRequestVerify
 
 > PaymentRequestVerifyResponse PaymentRequestVerify(ctx, id).Execute()
 
 Verify Payment Request
-
-
 
 ### Example
 
@@ -611,20 +562,17 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The unique identifier of a previously created payment request | 
+| Name    | Type                | Description                                                                 | Notes |
+| ------- | ------------------- | --------------------------------------------------------------------------- | ----- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |
+| **id**  | **int32**           | The unique identifier of a previously created payment request               |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPaymentRequestVerifyRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
 ### Return type
 
@@ -642,4 +590,3 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

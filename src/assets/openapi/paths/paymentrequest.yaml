@@ -13,9 +13,9 @@ post:
         schema:
           $ref: ../components/schemas/PaymentRequestCreate.yaml
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/PaymentRequestCreateSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
     default:
       description: Server error
@@ -45,7 +45,7 @@ get:
       name: status
       schema:
         type: string
-        enum: 
+        enum:
           - draft
           - pending
           - success
@@ -72,11 +72,11 @@ get:
         format: date-time
       description: The end date
   responses:
-    '200':
+    "200":
       $ref: ../components/responses/PaymentRequestListSuccess.yaml
-    '401':
+    "401":
       $ref: ../components/responses/Unauthorized.yaml
-    '404':
+    "404":
       $ref: ../components/responses/NotFound.yaml
     default:
       description: Server error
