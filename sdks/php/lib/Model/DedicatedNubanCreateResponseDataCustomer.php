@@ -99,8 +99,8 @@ class DedicatedNubanCreateResponseDataCustomer implements ModelInterface, ArrayA
         'last_name' => false,
         'email' => false,
         'customer_code' => false,
-        'phone' => false,
-        'metadata' => false,
+        'phone' => true,
+        'metadata' => true,
         'risk_action' => false,
         'international_format_phone' => true
     ];
@@ -346,17 +346,14 @@ class DedicatedNubanCreateResponseDataCustomer implements ModelInterface, ArrayA
         if ($this->container['customer_code'] === null) {
             $invalidProperties[] = "'customer_code' can't be null";
         }
-        if ($this->container['phone'] === null) {
+        if ($this->container['phone'] === null && !$this->isNullableSetToNull('phone')) {
             $invalidProperties[] = "'phone' can't be null";
         }
-        if ($this->container['metadata'] === null) {
+        if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
             $invalidProperties[] = "'metadata' can't be null";
         }
         if ($this->container['risk_action'] === null) {
             $invalidProperties[] = "'risk_action' can't be null";
-        }
-        if ($this->container['international_format_phone'] === null && !$this->isNullableSetToNull('international_format_phone')) {
-            $invalidProperties[] = "'international_format_phone' can't be null";
         }
         return $invalidProperties;
     }
@@ -511,7 +508,7 @@ class DedicatedNubanCreateResponseDataCustomer implements ModelInterface, ArrayA
     /**
      * Gets phone
      *
-     * @return string
+     * @return string|null
      */
     public function getPhone()
     {
@@ -521,14 +518,21 @@ class DedicatedNubanCreateResponseDataCustomer implements ModelInterface, ArrayA
     /**
      * Sets phone
      *
-     * @param string $phone phone
+     * @param string|null $phone phone
      *
      * @return self
      */
     public function setPhone($phone)
     {
         if (is_null($phone)) {
-            throw new \InvalidArgumentException('non-nullable phone cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'phone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('phone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['phone'] = $phone;
 
@@ -538,7 +542,7 @@ class DedicatedNubanCreateResponseDataCustomer implements ModelInterface, ArrayA
     /**
      * Gets metadata
      *
-     * @return object
+     * @return object|null
      */
     public function getMetadata()
     {
@@ -548,14 +552,21 @@ class DedicatedNubanCreateResponseDataCustomer implements ModelInterface, ArrayA
     /**
      * Sets metadata
      *
-     * @param object $metadata metadata
+     * @param object|null $metadata metadata
      *
      * @return self
      */
     public function setMetadata($metadata)
     {
         if (is_null($metadata)) {
-            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['metadata'] = $metadata;
 

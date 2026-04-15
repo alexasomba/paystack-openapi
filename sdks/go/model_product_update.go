@@ -24,7 +24,7 @@ type ProductUpdate struct {
 	Name *string `json:"name,omitempty"`
 	// The description of the product
 	Description *string `json:"description,omitempty"`
-	// Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR 
+	// Price should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the price is the same as the base units (not multiplied by 100). 
 	Price *int32 `json:"price,omitempty"`
 	// Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD 
 	Currency *string `json:"currency,omitempty"`

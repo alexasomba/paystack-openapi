@@ -20,8 +20,8 @@ import json
 
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from alexasomba_paystack.models.order_validate_response_data_customer import OrderValidateResponseDataCustomer
 from alexasomba_paystack.models.order_validate_response_data_integration import OrderValidateResponseDataIntegration
-from alexasomba_paystack.models.transaction_fetch_response_data_customer import TransactionFetchResponseDataCustomer
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -48,7 +48,7 @@ class OrderValidateResponseData(BaseModel):
     integration: OrderValidateResponseDataIntegration
     transaction: Optional[Any]
     page: Optional[Any]
-    customer: TransactionFetchResponseDataCustomer
+    customer: OrderValidateResponseDataCustomer
     shipping: Optional[Any]
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
@@ -171,7 +171,7 @@ class OrderValidateResponseData(BaseModel):
             "integration": OrderValidateResponseDataIntegration.from_dict(obj["integration"]) if obj.get("integration") is not None else None,
             "transaction": obj.get("transaction"),
             "page": obj.get("page"),
-            "customer": TransactionFetchResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
+            "customer": OrderValidateResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
             "shipping": obj.get("shipping"),
             "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),

@@ -19,7 +19,8 @@ import re  # noqa: F401
 import json
 
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
+from alexasomba_paystack.models.subscription_create_response_data_authorization import SubscriptionCreateResponseDataAuthorization
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -35,21 +36,13 @@ class SubscriptionCreateResponseData(BaseModel):
     status: StrictStr
     quantity: StrictInt
     amount: StrictInt
-    authorization: StrictInt
-    invoice_limit: StrictInt
-    split_code: Optional[Any]
+    authorization: SubscriptionCreateResponseDataAuthorization
     subscription_code: StrictStr
     email_token: StrictStr
     id: StrictInt
-    cancelled_at: Optional[Any] = Field(alias="cancelledAt")
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    cron_expression: StrictStr
-    next_payment_date: StrictStr
-    easy_cron_id: Optional[StrictStr]
-    open_invoice: Optional[StrictStr]
-    metadata: Optional[Dict[str, Any]]
-    __properties: ClassVar[List[str]] = ["customer", "plan", "integration", "domain", "start", "status", "quantity", "amount", "authorization", "invoice_limit", "split_code", "subscription_code", "email_token", "id", "cancelledAt", "createdAt", "updatedAt", "cron_expression", "next_payment_date", "easy_cron_id", "open_invoice", "metadata"]
+    __properties: ClassVar[List[str]] = ["customer", "plan", "integration", "domain", "start", "status", "quantity", "amount", "authorization", "subscription_code", "email_token", "id", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,31 +83,9 @@ class SubscriptionCreateResponseData(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if split_code (nullable) is None
-        # and model_fields_set contains the field
-        if self.split_code is None and "split_code" in self.model_fields_set:
-            _dict['split_code'] = None
-
-        # set to None if cancelled_at (nullable) is None
-        # and model_fields_set contains the field
-        if self.cancelled_at is None and "cancelled_at" in self.model_fields_set:
-            _dict['cancelledAt'] = None
-
-        # set to None if easy_cron_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.easy_cron_id is None and "easy_cron_id" in self.model_fields_set:
-            _dict['easy_cron_id'] = None
-
-        # set to None if open_invoice (nullable) is None
-        # and model_fields_set contains the field
-        if self.open_invoice is None and "open_invoice" in self.model_fields_set:
-            _dict['open_invoice'] = None
-
-        # set to None if metadata (nullable) is None
-        # and model_fields_set contains the field
-        if self.metadata is None and "metadata" in self.model_fields_set:
-            _dict['metadata'] = None
-
+        # override the default output from pydantic by calling `to_dict()` of authorization
+        if self.authorization:
+            _dict['authorization'] = self.authorization.to_dict()
         return _dict
 
     @classmethod
@@ -135,20 +106,12 @@ class SubscriptionCreateResponseData(BaseModel):
             "status": obj.get("status"),
             "quantity": obj.get("quantity"),
             "amount": obj.get("amount"),
-            "authorization": obj.get("authorization"),
-            "invoice_limit": obj.get("invoice_limit"),
-            "split_code": obj.get("split_code"),
+            "authorization": SubscriptionCreateResponseDataAuthorization.from_dict(obj["authorization"]) if obj.get("authorization") is not None else None,
             "subscription_code": obj.get("subscription_code"),
             "email_token": obj.get("email_token"),
             "id": obj.get("id"),
-            "cancelledAt": obj.get("cancelledAt"),
             "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
-            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
-            "cron_expression": obj.get("cron_expression"),
-            "next_payment_date": obj.get("next_payment_date"),
-            "easy_cron_id": obj.get("easy_cron_id"),
-            "open_invoice": obj.get("open_invoice"),
-            "metadata": obj.get("metadata")
+            "updatedAt": obj.get("updatedAt")
         })
         return _obj
 

@@ -18,7 +18,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from datetime import datetime
-from pydantic import Field, StrictInt
+from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
 from alexasomba_paystack.models.refund_create import RefundCreate
@@ -594,6 +594,8 @@ class RefundApi:
     @validate_call
     def refund_list(
         self,
+        transaction: Annotated[Optional[StrictStr], Field(description="The transaction ID of the refunded transaction")] = None,
+        currency: Annotated[Optional[StrictStr], Field(description="Any of the supported currency")] = None,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
@@ -615,6 +617,10 @@ class RefundApi:
 
         List previously created refunds
 
+        :param transaction: The transaction ID of the refunded transaction
+        :type transaction: str
+        :param currency: Any of the supported currency
+        :type currency: str
         :param per_page: Number of records to fetch per page
         :type per_page: int
         :param page: The section to retrieve
@@ -646,6 +652,8 @@ class RefundApi:
         """ # noqa: E501
 
         _param = self._refund_list_serialize(
+            transaction=transaction,
+            currency=currency,
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -675,6 +683,8 @@ class RefundApi:
     @validate_call
     def refund_list_with_http_info(
         self,
+        transaction: Annotated[Optional[StrictStr], Field(description="The transaction ID of the refunded transaction")] = None,
+        currency: Annotated[Optional[StrictStr], Field(description="Any of the supported currency")] = None,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
@@ -696,6 +706,10 @@ class RefundApi:
 
         List previously created refunds
 
+        :param transaction: The transaction ID of the refunded transaction
+        :type transaction: str
+        :param currency: Any of the supported currency
+        :type currency: str
         :param per_page: Number of records to fetch per page
         :type per_page: int
         :param page: The section to retrieve
@@ -727,6 +741,8 @@ class RefundApi:
         """ # noqa: E501
 
         _param = self._refund_list_serialize(
+            transaction=transaction,
+            currency=currency,
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -756,6 +772,8 @@ class RefundApi:
     @validate_call
     def refund_list_without_preload_content(
         self,
+        transaction: Annotated[Optional[StrictStr], Field(description="The transaction ID of the refunded transaction")] = None,
+        currency: Annotated[Optional[StrictStr], Field(description="Any of the supported currency")] = None,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
@@ -777,6 +795,10 @@ class RefundApi:
 
         List previously created refunds
 
+        :param transaction: The transaction ID of the refunded transaction
+        :type transaction: str
+        :param currency: Any of the supported currency
+        :type currency: str
         :param per_page: Number of records to fetch per page
         :type per_page: int
         :param page: The section to retrieve
@@ -808,6 +830,8 @@ class RefundApi:
         """ # noqa: E501
 
         _param = self._refund_list_serialize(
+            transaction=transaction,
+            currency=currency,
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -832,6 +856,8 @@ class RefundApi:
 
     def _refund_list_serialize(
         self,
+        transaction,
+        currency,
         per_page,
         page,
         var_from,
@@ -858,6 +884,14 @@ class RefundApi:
 
         # process the path parameters
         # process the query parameters
+        if transaction is not None:
+            
+            _query_params.append(('transaction', transaction))
+            
+        if currency is not None:
+            
+            _query_params.append(('currency', currency))
+            
         if per_page is not None:
             
             _query_params.append(('perPage', per_page))

@@ -659,7 +659,7 @@ func (r ApiTerminalListRequest) Previous(previous string) ApiTerminalListRequest
 	return r
 }
 
-// Specify how many records you want to retrieve per page
+// Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
 func (r ApiTerminalListRequest) PerPage(perPage int32) ApiTerminalListRequest {
 	r.perPage = &perPage
 	return r
@@ -712,10 +712,10 @@ func (a *TerminalAPIService) TerminalListExecute(r ApiTerminalListRequest) (*Ter
 		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "form", "")
 	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
 	} else {
 		var defaultValue int32 = 50
-		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", defaultValue, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", defaultValue, "form", "")
 		r.perPage = &defaultValue
 	}
 	// to determine the Content-Type header

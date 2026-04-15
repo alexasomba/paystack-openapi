@@ -58,7 +58,7 @@ class VirtualTerminalDestinationAssign implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'destinations' => '\Alexasomba\Paystack\Model\VirtualTerminalCreateDestinationsInner[]'
+        'destinations' => '\Alexasomba\Paystack\Model\VirtualTerminalDestinationAssignDestinationsInner[]'
     ];
 
     /**
@@ -296,7 +296,7 @@ class VirtualTerminalDestinationAssign implements ModelInterface, ArrayAccess, \
     /**
      * Gets destinations
      *
-     * @return \Alexasomba\Paystack\Model\VirtualTerminalCreateDestinationsInner[]
+     * @return \Alexasomba\Paystack\Model\VirtualTerminalDestinationAssignDestinationsInner[]
      */
     public function getDestinations()
     {
@@ -306,7 +306,7 @@ class VirtualTerminalDestinationAssign implements ModelInterface, ArrayAccess, \
     /**
      * Sets destinations
      *
-     * @param \Alexasomba\Paystack\Model\VirtualTerminalCreateDestinationsInner[] $destinations Array of objects containing recipients for payment notifications for the Virtual Terminal.
+     * @param \Alexasomba\Paystack\Model\VirtualTerminalDestinationAssignDestinationsInner[] $destinations Array of objects containing recipients for payment notifications for the Virtual Terminal.
      *
      * @return self
      */

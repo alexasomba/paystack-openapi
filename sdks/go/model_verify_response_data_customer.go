@@ -22,15 +22,15 @@ var _ MappedNullable = &VerifyResponseDataCustomer{}
 
 // VerifyResponseDataCustomer struct for VerifyResponseDataCustomer
 type VerifyResponseDataCustomer struct {
-	Id int32 `json:"id"`
+	Id int64 `json:"id"`
 	FirstName NullableString `json:"first_name"`
 	LastName NullableString `json:"last_name"`
 	Email string `json:"email"`
 	CustomerCode string `json:"customer_code"`
 	Phone NullableString `json:"phone"`
-	Metadata interface{} `json:"metadata"`
+	Metadata map[string]interface{} `json:"metadata"`
 	RiskAction string `json:"risk_action"`
-	InternationalFormatPhone NullableString `json:"international_format_phone"`
+	InternationalFormatPhone NullableString `json:"international_format_phone,omitempty"`
 }
 
 type _VerifyResponseDataCustomer VerifyResponseDataCustomer
@@ -39,7 +39,7 @@ type _VerifyResponseDataCustomer VerifyResponseDataCustomer
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVerifyResponseDataCustomer(id int32, firstName NullableString, lastName NullableString, email string, customerCode string, phone NullableString, metadata interface{}, riskAction string, internationalFormatPhone NullableString) *VerifyResponseDataCustomer {
+func NewVerifyResponseDataCustomer(id int64, firstName NullableString, lastName NullableString, email string, customerCode string, phone NullableString, metadata map[string]interface{}, riskAction string) *VerifyResponseDataCustomer {
 	this := VerifyResponseDataCustomer{}
 	this.Id = id
 	this.FirstName = firstName
@@ -49,7 +49,6 @@ func NewVerifyResponseDataCustomer(id int32, firstName NullableString, lastName 
 	this.Phone = phone
 	this.Metadata = metadata
 	this.RiskAction = riskAction
-	this.InternationalFormatPhone = internationalFormatPhone
 	return &this
 }
 
@@ -62,9 +61,9 @@ func NewVerifyResponseDataCustomerWithDefaults() *VerifyResponseDataCustomer {
 }
 
 // GetId returns the Id field value
-func (o *VerifyResponseDataCustomer) GetId() int32 {
+func (o *VerifyResponseDataCustomer) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -73,7 +72,7 @@ func (o *VerifyResponseDataCustomer) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *VerifyResponseDataCustomer) GetIdOk() (*int32, bool) {
+func (o *VerifyResponseDataCustomer) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -81,7 +80,7 @@ func (o *VerifyResponseDataCustomer) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *VerifyResponseDataCustomer) SetId(v int32) {
+func (o *VerifyResponseDataCustomer) SetId(v int64) {
 	o.Id = v
 }
 
@@ -212,10 +211,10 @@ func (o *VerifyResponseDataCustomer) SetPhone(v string) {
 }
 
 // GetMetadata returns the Metadata field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *VerifyResponseDataCustomer) GetMetadata() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *VerifyResponseDataCustomer) GetMetadata() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -225,15 +224,15 @@ func (o *VerifyResponseDataCustomer) GetMetadata() interface{} {
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VerifyResponseDataCustomer) GetMetadataOk() (*interface{}, bool) {
+func (o *VerifyResponseDataCustomer) GetMetadataOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Metadata) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Metadata, true
+	return o.Metadata, true
 }
 
 // SetMetadata sets field value
-func (o *VerifyResponseDataCustomer) SetMetadata(v interface{}) {
+func (o *VerifyResponseDataCustomer) SetMetadata(v map[string]interface{}) {
 	o.Metadata = v
 }
 
@@ -261,18 +260,16 @@ func (o *VerifyResponseDataCustomer) SetRiskAction(v string) {
 	o.RiskAction = v
 }
 
-// GetInternationalFormatPhone returns the InternationalFormatPhone field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetInternationalFormatPhone returns the InternationalFormatPhone field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VerifyResponseDataCustomer) GetInternationalFormatPhone() string {
-	if o == nil || o.InternationalFormatPhone.Get() == nil {
+	if o == nil || IsNil(o.InternationalFormatPhone.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.InternationalFormatPhone.Get()
 }
 
-// GetInternationalFormatPhoneOk returns a tuple with the InternationalFormatPhone field value
+// GetInternationalFormatPhoneOk returns a tuple with the InternationalFormatPhone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VerifyResponseDataCustomer) GetInternationalFormatPhoneOk() (*string, bool) {
@@ -282,9 +279,27 @@ func (o *VerifyResponseDataCustomer) GetInternationalFormatPhoneOk() (*string, b
 	return o.InternationalFormatPhone.Get(), o.InternationalFormatPhone.IsSet()
 }
 
-// SetInternationalFormatPhone sets field value
+// HasInternationalFormatPhone returns a boolean if a field has been set.
+func (o *VerifyResponseDataCustomer) HasInternationalFormatPhone() bool {
+	if o != nil && o.InternationalFormatPhone.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInternationalFormatPhone gets a reference to the given NullableString and assigns it to the InternationalFormatPhone field.
 func (o *VerifyResponseDataCustomer) SetInternationalFormatPhone(v string) {
 	o.InternationalFormatPhone.Set(&v)
+}
+// SetInternationalFormatPhoneNil sets the value for InternationalFormatPhone to be an explicit nil
+func (o *VerifyResponseDataCustomer) SetInternationalFormatPhoneNil() {
+	o.InternationalFormatPhone.Set(nil)
+}
+
+// UnsetInternationalFormatPhone ensures that no value is present for InternationalFormatPhone, not even an explicit nil
+func (o *VerifyResponseDataCustomer) UnsetInternationalFormatPhone() {
+	o.InternationalFormatPhone.Unset()
 }
 
 func (o VerifyResponseDataCustomer) MarshalJSON() ([]byte, error) {
@@ -307,7 +322,9 @@ func (o VerifyResponseDataCustomer) ToMap() (map[string]interface{}, error) {
 		toSerialize["metadata"] = o.Metadata
 	}
 	toSerialize["risk_action"] = o.RiskAction
-	toSerialize["international_format_phone"] = o.InternationalFormatPhone.Get()
+	if o.InternationalFormatPhone.IsSet() {
+		toSerialize["international_format_phone"] = o.InternationalFormatPhone.Get()
+	}
 	return toSerialize, nil
 }
 
@@ -324,7 +341,6 @@ func (o *VerifyResponseDataCustomer) UnmarshalJSON(data []byte) (err error) {
 		"phone",
 		"metadata",
 		"risk_action",
-		"international_format_phone",
 	}
 
 	allProperties := make(map[string]interface{})

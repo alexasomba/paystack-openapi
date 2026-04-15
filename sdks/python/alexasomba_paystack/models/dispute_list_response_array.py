@@ -21,9 +21,9 @@ import json
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.dispute_history_array import DisputeHistoryArray
+from alexasomba_paystack.models.dispute_list_response_array_customer import DisputeListResponseArrayCustomer
 from alexasomba_paystack.models.dispute_list_response_array_transaction import DisputeListResponseArrayTransaction
 from alexasomba_paystack.models.dispute_messages_array import DisputeMessagesArray
-from alexasomba_paystack.models.subscription_list_response_array_customer import SubscriptionListResponseArrayCustomer
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,22 +32,22 @@ class DisputeListResponseArray(BaseModel):
     DisputeListResponseArray
     """ # noqa: E501
     id: StrictInt
-    refund_amount: StrictInt
-    currency: StrictStr
+    refund_amount: Optional[StrictInt]
+    currency: Optional[StrictStr]
     status: StrictStr
-    resolution: Optional[Any]
+    resolution: Optional[Any] = None
     domain: StrictStr
     transaction: DisputeListResponseArrayTransaction
-    transaction_reference: Optional[Any]
-    category: StrictStr
-    customer: SubscriptionListResponseArrayCustomer
-    bin: StrictStr
-    last4: StrictStr
-    due_at: Optional[Any] = Field(alias="dueAt")
-    resolved_at: Optional[Any] = Field(alias="resolvedAt")
-    evidence: Optional[Any]
-    attachments: Optional[Any]
-    note: Optional[Any]
+    transaction_reference: Optional[Any] = None
+    category: Optional[StrictStr]
+    customer: DisputeListResponseArrayCustomer
+    bin: Optional[StrictStr]
+    last4: Optional[StrictStr]
+    due_at: Optional[Any] = Field(default=None, alias="dueAt")
+    resolved_at: Optional[Any] = Field(default=None, alias="resolvedAt")
+    evidence: Optional[Any] = None
+    attachments: Optional[Any] = None
+    note: Optional[Any] = None
     history: List[DisputeHistoryArray]
     messages: List[DisputeMessagesArray]
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
@@ -113,6 +113,16 @@ class DisputeListResponseArray(BaseModel):
                 if _item_messages:
                     _items.append(_item_messages.to_dict())
             _dict['messages'] = _items
+        # set to None if refund_amount (nullable) is None
+        # and model_fields_set contains the field
+        if self.refund_amount is None and "refund_amount" in self.model_fields_set:
+            _dict['refund_amount'] = None
+
+        # set to None if currency (nullable) is None
+        # and model_fields_set contains the field
+        if self.currency is None and "currency" in self.model_fields_set:
+            _dict['currency'] = None
+
         # set to None if resolution (nullable) is None
         # and model_fields_set contains the field
         if self.resolution is None and "resolution" in self.model_fields_set:
@@ -122,6 +132,21 @@ class DisputeListResponseArray(BaseModel):
         # and model_fields_set contains the field
         if self.transaction_reference is None and "transaction_reference" in self.model_fields_set:
             _dict['transaction_reference'] = None
+
+        # set to None if category (nullable) is None
+        # and model_fields_set contains the field
+        if self.category is None and "category" in self.model_fields_set:
+            _dict['category'] = None
+
+        # set to None if bin (nullable) is None
+        # and model_fields_set contains the field
+        if self.bin is None and "bin" in self.model_fields_set:
+            _dict['bin'] = None
+
+        # set to None if last4 (nullable) is None
+        # and model_fields_set contains the field
+        if self.last4 is None and "last4" in self.model_fields_set:
+            _dict['last4'] = None
 
         # set to None if due_at (nullable) is None
         # and model_fields_set contains the field
@@ -169,7 +194,7 @@ class DisputeListResponseArray(BaseModel):
             "transaction": DisputeListResponseArrayTransaction.from_dict(obj["transaction"]) if obj.get("transaction") is not None else None,
             "transaction_reference": obj.get("transaction_reference"),
             "category": obj.get("category"),
-            "customer": SubscriptionListResponseArrayCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
+            "customer": DisputeListResponseArrayCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
             "bin": obj.get("bin"),
             "last4": obj.get("last4"),
             "dueAt": obj.get("dueAt"),

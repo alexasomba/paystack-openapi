@@ -357,7 +357,7 @@ class TransactionCheckAuthorization implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets amount
      *
-     * @param int $amount Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR
+     * @param int $amount Amount should be in kobo if currency is NGN, pesewas if currency is GHS, cents if currency is ZAR, and whole number if currency is XOF
      *
      * @return self
      */

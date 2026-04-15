@@ -31,19 +31,20 @@ class TransferRecipientCreateResponseData(BaseModel):
     active: StrictBool
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     currency: StrictStr
-    description: StrictStr
+    description: Optional[StrictStr] = None
     domain: StrictStr
-    email: StrictStr
+    email: Optional[StrictStr] = None
     id: StrictInt
-    integration: StrictInt
+    integration: Optional[StrictInt] = None
     metadata: Optional[Dict[str, Any]] = None
     name: StrictStr
     recipient_code: StrictStr
     type: StrictStr
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    is_deleted: StrictBool
+    is_deleted: Optional[StrictBool] = None
+    is_deleted: Optional[StrictBool] = Field(default=None, alias="isDeleted")
     details: TransferRecipientListResponseArrayDetails
-    __properties: ClassVar[List[str]] = ["active", "createdAt", "currency", "description", "domain", "email", "id", "integration", "metadata", "name", "recipient_code", "type", "updatedAt", "is_deleted", "details"]
+    __properties: ClassVar[List[str]] = ["active", "createdAt", "currency", "description", "domain", "email", "id", "integration", "metadata", "name", "recipient_code", "type", "updatedAt", "is_deleted", "isDeleted", "details"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,6 +88,16 @@ class TransferRecipientCreateResponseData(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of details
         if self.details:
             _dict['details'] = self.details.to_dict()
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
+        # set to None if email (nullable) is None
+        # and model_fields_set contains the field
+        if self.email is None and "email" in self.model_fields_set:
+            _dict['email'] = None
+
         # set to None if metadata (nullable) is None
         # and model_fields_set contains the field
         if self.metadata is None and "metadata" in self.model_fields_set:
@@ -118,6 +129,7 @@ class TransferRecipientCreateResponseData(BaseModel):
             "type": obj.get("type"),
             "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "is_deleted": obj.get("is_deleted"),
+            "isDeleted": obj.get("isDeleted"),
             "details": TransferRecipientListResponseArrayDetails.from_dict(obj["details"]) if obj.get("details") is not None else None
         })
         return _obj

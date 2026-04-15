@@ -418,7 +418,7 @@ class ProductCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets price
      *
-     * @param int $price Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
+     * @param int $price Price should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the price is the same as the base units (not multiplied by 100).
      *
      * @return self
      */
@@ -445,7 +445,7 @@ class ProductCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency
      *
-     * @param string $currency Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD
+     * @param string $currency Currency in which price is set. Allowed values are: NGN, GHS, ZAR, USD or XOF
      *
      * @return self
      */

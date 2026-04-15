@@ -58,20 +58,22 @@ class CustomerUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
+        'integration' => 'int',
         'first_name' => 'string',
         'last_name' => 'string',
         'email' => 'string',
         'phone' => 'string',
         'metadata' => 'object',
+        'identified' => 'bool',
+        'identifications' => 'mixed',
         'domain' => 'string',
         'customer_code' => 'string',
-        'risk_action' => 'string',
         'id' => 'int',
-        'integration' => 'int',
+        'transactions' => 'mixed[]',
+        'subscriptions' => 'mixed[]',
+        'authorizations' => 'mixed[]',
         'created_at' => 'string',
-        'updated_at' => 'string',
-        'identified' => 'bool',
-        'identifications' => 'mixed'
+        'updated_at' => 'string'
     ];
 
     /**
@@ -82,20 +84,22 @@ class CustomerUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'integration' => null,
         'first_name' => null,
         'last_name' => null,
         'email' => null,
         'phone' => null,
         'metadata' => null,
+        'identified' => null,
+        'identifications' => null,
         'domain' => null,
         'customer_code' => null,
-        'risk_action' => null,
         'id' => null,
-        'integration' => null,
+        'transactions' => null,
+        'subscriptions' => null,
+        'authorizations' => null,
         'created_at' => null,
-        'updated_at' => null,
-        'identified' => null,
-        'identifications' => null
+        'updated_at' => null
     ];
 
     /**
@@ -104,20 +108,22 @@ class CustomerUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'integration' => false,
         'first_name' => false,
         'last_name' => false,
         'email' => false,
-        'phone' => false,
-        'metadata' => false,
+        'phone' => true,
+        'metadata' => true,
+        'identified' => false,
+        'identifications' => true,
         'domain' => false,
         'customer_code' => false,
-        'risk_action' => false,
         'id' => false,
-        'integration' => false,
+        'transactions' => false,
+        'subscriptions' => false,
+        'authorizations' => false,
         'created_at' => false,
-        'updated_at' => false,
-        'identified' => false,
-        'identifications' => true
+        'updated_at' => false
     ];
 
     /**
@@ -206,20 +212,22 @@ class CustomerUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
+        'integration' => 'integration',
         'first_name' => 'first_name',
         'last_name' => 'last_name',
         'email' => 'email',
         'phone' => 'phone',
         'metadata' => 'metadata',
+        'identified' => 'identified',
+        'identifications' => 'identifications',
         'domain' => 'domain',
         'customer_code' => 'customer_code',
-        'risk_action' => 'risk_action',
         'id' => 'id',
-        'integration' => 'integration',
+        'transactions' => 'transactions',
+        'subscriptions' => 'subscriptions',
+        'authorizations' => 'authorizations',
         'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'identified' => 'identified',
-        'identifications' => 'identifications'
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -228,20 +236,22 @@ class CustomerUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
+        'integration' => 'setIntegration',
         'first_name' => 'setFirstName',
         'last_name' => 'setLastName',
         'email' => 'setEmail',
         'phone' => 'setPhone',
         'metadata' => 'setMetadata',
+        'identified' => 'setIdentified',
+        'identifications' => 'setIdentifications',
         'domain' => 'setDomain',
         'customer_code' => 'setCustomerCode',
-        'risk_action' => 'setRiskAction',
         'id' => 'setId',
-        'integration' => 'setIntegration',
+        'transactions' => 'setTransactions',
+        'subscriptions' => 'setSubscriptions',
+        'authorizations' => 'setAuthorizations',
         'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'identified' => 'setIdentified',
-        'identifications' => 'setIdentifications'
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -250,20 +260,22 @@ class CustomerUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
+        'integration' => 'getIntegration',
         'first_name' => 'getFirstName',
         'last_name' => 'getLastName',
         'email' => 'getEmail',
         'phone' => 'getPhone',
         'metadata' => 'getMetadata',
+        'identified' => 'getIdentified',
+        'identifications' => 'getIdentifications',
         'domain' => 'getDomain',
         'customer_code' => 'getCustomerCode',
-        'risk_action' => 'getRiskAction',
         'id' => 'getId',
-        'integration' => 'getIntegration',
+        'transactions' => 'getTransactions',
+        'subscriptions' => 'getSubscriptions',
+        'authorizations' => 'getAuthorizations',
         'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'identified' => 'getIdentified',
-        'identifications' => 'getIdentifications'
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -323,20 +335,22 @@ class CustomerUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('integration', $data ?? [], null);
         $this->setIfExists('first_name', $data ?? [], null);
         $this->setIfExists('last_name', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('phone', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
-        $this->setIfExists('domain', $data ?? [], null);
-        $this->setIfExists('customer_code', $data ?? [], null);
-        $this->setIfExists('risk_action', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('integration', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
         $this->setIfExists('identified', $data ?? [], null);
         $this->setIfExists('identifications', $data ?? [], null);
+        $this->setIfExists('domain', $data ?? [], null);
+        $this->setIfExists('customer_code', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('transactions', $data ?? [], null);
+        $this->setIfExists('subscriptions', $data ?? [], null);
+        $this->setIfExists('authorizations', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('updated_at', $data ?? [], null);
     }
 
     /**
@@ -366,6 +380,9 @@ class CustomerUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
+        if ($this->container['integration'] === null) {
+            $invalidProperties[] = "'integration' can't be null";
+        }
         if ($this->container['first_name'] === null) {
             $invalidProperties[] = "'first_name' can't be null";
         }
@@ -375,11 +392,17 @@ class CustomerUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['email'] === null) {
             $invalidProperties[] = "'email' can't be null";
         }
-        if ($this->container['phone'] === null) {
+        if ($this->container['phone'] === null && !$this->isNullableSetToNull('phone')) {
             $invalidProperties[] = "'phone' can't be null";
         }
-        if ($this->container['metadata'] === null) {
+        if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
             $invalidProperties[] = "'metadata' can't be null";
+        }
+        if ($this->container['identified'] === null) {
+            $invalidProperties[] = "'identified' can't be null";
+        }
+        if ($this->container['identifications'] === null && !$this->isNullableSetToNull('identifications')) {
+            $invalidProperties[] = "'identifications' can't be null";
         }
         if ($this->container['domain'] === null) {
             $invalidProperties[] = "'domain' can't be null";
@@ -387,26 +410,23 @@ class CustomerUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['customer_code'] === null) {
             $invalidProperties[] = "'customer_code' can't be null";
         }
-        if ($this->container['risk_action'] === null) {
-            $invalidProperties[] = "'risk_action' can't be null";
-        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['integration'] === null) {
-            $invalidProperties[] = "'integration' can't be null";
+        if ($this->container['transactions'] === null) {
+            $invalidProperties[] = "'transactions' can't be null";
+        }
+        if ($this->container['subscriptions'] === null) {
+            $invalidProperties[] = "'subscriptions' can't be null";
+        }
+        if ($this->container['authorizations'] === null) {
+            $invalidProperties[] = "'authorizations' can't be null";
         }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
-        }
-        if ($this->container['identified'] === null) {
-            $invalidProperties[] = "'identified' can't be null";
-        }
-        if ($this->container['identifications'] === null && !$this->isNullableSetToNull('identifications')) {
-            $invalidProperties[] = "'identifications' can't be null";
         }
         return $invalidProperties;
     }
@@ -422,6 +442,33 @@ class CustomerUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSe
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets integration
+     *
+     * @return int
+     */
+    public function getIntegration()
+    {
+        return $this->container['integration'];
+    }
+
+    /**
+     * Sets integration
+     *
+     * @param int $integration integration
+     *
+     * @return self
+     */
+    public function setIntegration($integration)
+    {
+        if (is_null($integration)) {
+            throw new \InvalidArgumentException('non-nullable integration cannot be null');
+        }
+        $this->container['integration'] = $integration;
+
+        return $this;
+    }
 
     /**
      * Gets first_name
@@ -507,7 +554,7 @@ class CustomerUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets phone
      *
-     * @return string
+     * @return string|null
      */
     public function getPhone()
     {
@@ -517,14 +564,21 @@ class CustomerUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets phone
      *
-     * @param string $phone phone
+     * @param string|null $phone phone
      *
      * @return self
      */
     public function setPhone($phone)
     {
         if (is_null($phone)) {
-            throw new \InvalidArgumentException('non-nullable phone cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'phone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('phone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['phone'] = $phone;
 
@@ -534,7 +588,7 @@ class CustomerUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets metadata
      *
-     * @return object
+     * @return object|null
      */
     public function getMetadata()
     {
@@ -544,205 +598,23 @@ class CustomerUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets metadata
      *
-     * @param object $metadata metadata
+     * @param object|null $metadata metadata
      *
      * @return self
      */
     public function setMetadata($metadata)
     {
         if (is_null($metadata)) {
-            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['metadata'] = $metadata;
-
-        return $this;
-    }
-
-    /**
-     * Gets domain
-     *
-     * @return string
-     */
-    public function getDomain()
-    {
-        return $this->container['domain'];
-    }
-
-    /**
-     * Sets domain
-     *
-     * @param string $domain domain
-     *
-     * @return self
-     */
-    public function setDomain($domain)
-    {
-        if (is_null($domain)) {
-            throw new \InvalidArgumentException('non-nullable domain cannot be null');
-        }
-        $this->container['domain'] = $domain;
-
-        return $this;
-    }
-
-    /**
-     * Gets customer_code
-     *
-     * @return string
-     */
-    public function getCustomerCode()
-    {
-        return $this->container['customer_code'];
-    }
-
-    /**
-     * Sets customer_code
-     *
-     * @param string $customer_code customer_code
-     *
-     * @return self
-     */
-    public function setCustomerCode($customer_code)
-    {
-        if (is_null($customer_code)) {
-            throw new \InvalidArgumentException('non-nullable customer_code cannot be null');
-        }
-        $this->container['customer_code'] = $customer_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets risk_action
-     *
-     * @return string
-     */
-    public function getRiskAction()
-    {
-        return $this->container['risk_action'];
-    }
-
-    /**
-     * Sets risk_action
-     *
-     * @param string $risk_action risk_action
-     *
-     * @return self
-     */
-    public function setRiskAction($risk_action)
-    {
-        if (is_null($risk_action)) {
-            throw new \InvalidArgumentException('non-nullable risk_action cannot be null');
-        }
-        $this->container['risk_action'] = $risk_action;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets integration
-     *
-     * @return int
-     */
-    public function getIntegration()
-    {
-        return $this->container['integration'];
-    }
-
-    /**
-     * Sets integration
-     *
-     * @param int $integration integration
-     *
-     * @return self
-     */
-    public function setIntegration($integration)
-    {
-        if (is_null($integration)) {
-            throw new \InvalidArgumentException('non-nullable integration cannot be null');
-        }
-        $this->container['integration'] = $integration;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return string
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param string $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return string
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param string $updated_at updated_at
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
-        }
-        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }
@@ -804,6 +676,222 @@ class CustomerUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSe
             }
         }
         $this->container['identifications'] = $identifications;
+
+        return $this;
+    }
+
+    /**
+     * Gets domain
+     *
+     * @return string
+     */
+    public function getDomain()
+    {
+        return $this->container['domain'];
+    }
+
+    /**
+     * Sets domain
+     *
+     * @param string $domain domain
+     *
+     * @return self
+     */
+    public function setDomain($domain)
+    {
+        if (is_null($domain)) {
+            throw new \InvalidArgumentException('non-nullable domain cannot be null');
+        }
+        $this->container['domain'] = $domain;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_code
+     *
+     * @return string
+     */
+    public function getCustomerCode()
+    {
+        return $this->container['customer_code'];
+    }
+
+    /**
+     * Sets customer_code
+     *
+     * @param string $customer_code customer_code
+     *
+     * @return self
+     */
+    public function setCustomerCode($customer_code)
+    {
+        if (is_null($customer_code)) {
+            throw new \InvalidArgumentException('non-nullable customer_code cannot be null');
+        }
+        $this->container['customer_code'] = $customer_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets transactions
+     *
+     * @return mixed[]
+     */
+    public function getTransactions()
+    {
+        return $this->container['transactions'];
+    }
+
+    /**
+     * Sets transactions
+     *
+     * @param mixed[] $transactions transactions
+     *
+     * @return self
+     */
+    public function setTransactions($transactions)
+    {
+        if (is_null($transactions)) {
+            throw new \InvalidArgumentException('non-nullable transactions cannot be null');
+        }
+        $this->container['transactions'] = $transactions;
+
+        return $this;
+    }
+
+    /**
+     * Gets subscriptions
+     *
+     * @return mixed[]
+     */
+    public function getSubscriptions()
+    {
+        return $this->container['subscriptions'];
+    }
+
+    /**
+     * Sets subscriptions
+     *
+     * @param mixed[] $subscriptions subscriptions
+     *
+     * @return self
+     */
+    public function setSubscriptions($subscriptions)
+    {
+        if (is_null($subscriptions)) {
+            throw new \InvalidArgumentException('non-nullable subscriptions cannot be null');
+        }
+        $this->container['subscriptions'] = $subscriptions;
+
+        return $this;
+    }
+
+    /**
+     * Gets authorizations
+     *
+     * @return mixed[]
+     */
+    public function getAuthorizations()
+    {
+        return $this->container['authorizations'];
+    }
+
+    /**
+     * Sets authorizations
+     *
+     * @param mixed[] $authorizations authorizations
+     *
+     * @return self
+     */
+    public function setAuthorizations($authorizations)
+    {
+        if (is_null($authorizations)) {
+            throw new \InvalidArgumentException('non-nullable authorizations cannot be null');
+        }
+        $this->container['authorizations'] = $authorizations;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param string $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return string
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param string $updated_at updated_at
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        if (is_null($updated_at)) {
+            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        }
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

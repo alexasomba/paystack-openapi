@@ -34,7 +34,7 @@ type TransactionListResponseArray struct {
 	Channel string `json:"channel"`
 	Currency string `json:"currency"`
 	IpAddress NullableString `json:"ip_address"`
-	Metadata map[string]interface{} `json:"metadata"`
+	Metadata NullableTransactionListResponseArrayMetadata `json:"metadata"`
 	Log NullableChargeAuthorizationResponseDataLog `json:"log"`
 	Fees NullableInt32 `json:"fees"`
 	FeesSplit NullableInt32 `json:"fees_split"`
@@ -56,7 +56,7 @@ type _TransactionListResponseArray TransactionListResponseArray
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransactionListResponseArray(id int32, domain string, status string, reference string, amount int32, message interface{}, gatewayResponse string, paidAt NullableString, createdAt string, channel string, currency string, ipAddress NullableString, metadata map[string]interface{}, log NullableChargeAuthorizationResponseDataLog, fees NullableInt32, feesSplit NullableInt32, customer TransactionListResponseArrayCustomer, authorization TransactionListResponseArrayAuthorization, plan map[string]interface{}, split map[string]interface{}, subaccount map[string]interface{}, orderId interface{}, requestedAmount int32, source NullableTransactionListResponseArraySource, connect map[string]interface{}, posTransactionData interface{}) *TransactionListResponseArray {
+func NewTransactionListResponseArray(id int32, domain string, status string, reference string, amount int32, message interface{}, gatewayResponse string, paidAt NullableString, createdAt string, channel string, currency string, ipAddress NullableString, metadata NullableTransactionListResponseArrayMetadata, log NullableChargeAuthorizationResponseDataLog, fees NullableInt32, feesSplit NullableInt32, customer TransactionListResponseArrayCustomer, authorization TransactionListResponseArrayAuthorization, plan map[string]interface{}, split map[string]interface{}, subaccount map[string]interface{}, orderId interface{}, requestedAmount int32, source NullableTransactionListResponseArraySource, connect map[string]interface{}, posTransactionData interface{}) *TransactionListResponseArray {
 	this := TransactionListResponseArray{}
 	this.Id = id
 	this.Domain = domain
@@ -390,29 +390,29 @@ func (o *TransactionListResponseArray) SetIpAddress(v string) {
 }
 
 // GetMetadata returns the Metadata field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *TransactionListResponseArray) GetMetadata() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
+// If the value is explicit nil, the zero value for TransactionListResponseArrayMetadata will be returned
+func (o *TransactionListResponseArray) GetMetadata() TransactionListResponseArrayMetadata {
+	if o == nil || o.Metadata.Get() == nil {
+		var ret TransactionListResponseArrayMetadata
 		return ret
 	}
 
-	return o.Metadata
+	return *o.Metadata.Get()
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransactionListResponseArray) GetMetadataOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Metadata) {
-		return map[string]interface{}{}, false
+func (o *TransactionListResponseArray) GetMetadataOk() (*TransactionListResponseArrayMetadata, bool) {
+	if o == nil {
+		return nil, false
 	}
-	return o.Metadata, true
+	return o.Metadata.Get(), o.Metadata.IsSet()
 }
 
 // SetMetadata sets field value
-func (o *TransactionListResponseArray) SetMetadata(v map[string]interface{}) {
-	o.Metadata = v
+func (o *TransactionListResponseArray) SetMetadata(v TransactionListResponseArrayMetadata) {
+	o.Metadata.Set(&v)
 }
 
 // GetLog returns the Log field value
@@ -765,9 +765,7 @@ func (o TransactionListResponseArray) ToMap() (map[string]interface{}, error) {
 	toSerialize["channel"] = o.Channel
 	toSerialize["currency"] = o.Currency
 	toSerialize["ip_address"] = o.IpAddress.Get()
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
-	}
+	toSerialize["metadata"] = o.Metadata.Get()
 	toSerialize["log"] = o.Log.Get()
 	toSerialize["fees"] = o.Fees.Get()
 	toSerialize["fees_split"] = o.FeesSplit.Get()

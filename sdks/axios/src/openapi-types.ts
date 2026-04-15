@@ -113,7 +113,7 @@ export interface paths {
     };
     /**
      * List Transactions
-     * @description List transactions that has occurred on your integration
+     * @description List transactions carried out on your integration
      */
     get: operations["transaction_list"];
     put?: never;
@@ -184,7 +184,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/transaction/timeline/{id}": {
+  "/transaction/timeline/{id_or_reference}": {
     parameters: {
       query?: never;
       header?: never;
@@ -408,16 +408,16 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/bulkcharge/{code}": {
+  "/bulkcharge/{id_or_code}": {
     parameters: {
       query?: never;
       header?: never;
       path: {
         /**
-         * @description The code for the charge whose batches you want to retrieve
+         * @description An ID or code for the charge whose batches you want to retrieve.
          * @example BCH_180tl7oq7cayggh
          */
-        code: string;
+        id_or_code: string;
       };
       cookie?: never;
     };
@@ -435,7 +435,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/bulkcharge/{code}/charges": {
+  "/bulkcharge/{id_or_code}/charges": {
     parameters: {
       query?: never;
       header?: never;
@@ -519,16 +519,16 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/subaccount/{code}": {
+  "/subaccount/{id_or_code}": {
     parameters: {
       query?: never;
       header?: never;
       path: {
         /**
-         * @description The subaccount code you want to fetch
+         * @description The subaccount ID or code you want to fetch
          * @example ACCT_6uujpqtzmnufzkw
          */
-        code: string;
+        id_or_code: string;
       };
       cookie?: never;
     };
@@ -958,7 +958,7 @@ export interface paths {
     };
     /**
      * List Customers
-     * @description List customers on your integration
+     * @description List customers available on your integration
      */
     get: operations["customer_list"];
     put?: never;
@@ -973,16 +973,16 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/customer/{code}": {
+  "/customer/{email_or_code}": {
     parameters: {
       query?: never;
       header?: never;
       path: {
         /**
-         * @description The code for the customer gotten from the response of the customer creation
+         * @description An email or customer code for the customer you want to fetch
          * @example CUS_c6wqvwmvwopw4ms
          */
-        code: string;
+        email_or_code: string;
       };
       cookie?: never;
     };
@@ -1023,16 +1023,16 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/customer/{code}/identification": {
+  "/customer/{customer_code}/identification": {
     parameters: {
       query?: never;
       header?: never;
       path: {
         /**
-         * @description The code for the customer gotten from the response of the customer creation
+         * @description Customer code
          * @example CUS_c6wqvwmvwopw4ms
          */
-        code: string;
+        customer_code: string;
       };
       cookie?: never;
     };
@@ -1418,16 +1418,16 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/plan/{code}": {
+  "/plan/{id_or_code}": {
     parameters: {
       query?: never;
       header?: never;
       path: {
         /**
-         * @description The plan code you want to fetch
+         * @description The plan ID or code you want to fetch
          * @example PLN_gx2wn530m0i3w3m
          */
-        code: string;
+        id_or_code: string;
       };
       cookie?: never;
     };
@@ -1472,16 +1472,16 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/subscription/{code}": {
+  "/subscription/{id_or_code}": {
     parameters: {
       query?: never;
       header?: never;
       path: {
         /**
-         * @description The subscription code for the subscription you want to fetch
+         * @description The subscription ID or code you want to fetch
          * @example SUB_5co81xgmwg78x3d
          */
-        code: string;
+        id_or_code: string;
       };
       cookie?: never;
     };
@@ -1622,16 +1622,16 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/transferrecipient/{code}": {
+  "/transferrecipient/{id_or_code}": {
     parameters: {
       query?: never;
       header?: never;
       path: {
         /**
-         * @description Transfer recipient code
+         * @description An ID or code for the recipient whose details you want to receive.
          * @example RCP_5ap8rcimmcj8lbi
          */
-        code: string;
+        id_or_code: string;
       };
       cookie?: never;
     };
@@ -1722,16 +1722,16 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/transfer/{code}": {
+  "/transfer/{id_or_code}": {
     parameters: {
       query?: never;
       header?: never;
       path: {
         /**
-         * @description Transfer code
+         * @description The transfer ID or code you want to fetch
          * @example TRF_1ptvuv321ahaa7q
          */
-        code: string;
+        id_or_code: string;
       };
       cookie?: never;
     };
@@ -1934,16 +1934,16 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/paymentrequest/{id}": {
+  "/paymentrequest/{id_or_code}": {
     parameters: {
       query?: never;
       header?: never;
       path: {
         /**
-         * @description The unique identifier of a previously created payment request
+         * @description The payment request ID or code you want to fetch
          * @example 18823736
          */
-        id: number;
+        id_or_code: string;
       };
       cookie?: never;
     };
@@ -2459,16 +2459,16 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/page/{id}": {
+  "/page/{id_or_slug}": {
     parameters: {
       query?: never;
       header?: never;
       path: {
         /**
-         * @description The unique identifier of a payment page
+         * @description The page ID or slug you want to fetch
          * @example 1891222
          */
-        id: number;
+        id_or_slug: string;
       };
       cookie?: never;
     };
@@ -2825,7 +2825,7 @@ export interface paths {
     };
     /**
      * List Banks
-     * @description List banks supported on Paystack
+     * @description Get a list of all supported banks and their properties
      */
     get: operations["bank_list"];
     put?: never;
@@ -3006,22 +3006,33 @@ export interface components {
       /** @description Customer's email address */
       email: string;
       /**
-       * @description Amount should be in the smallest unit of the currency (e.g., kobo for NGN, pesewas for GHS, cents for ZAR/USD).
+       * @description Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
        *
        *     Minimum amounts:
-       *      - NGN: ₦50.00
-       *      - GHS: ₵0.10
-       *      - ZAR: R1.00
-       *      - KES: Ksh 3.00
-       *      - USD: $2.00
-       *      - XOF: 1.00
+       *      - NGN: ₦50.00 (5000 kobo)
+       *      - GHS: ₵0.10 (10 pesewas)
+       *      - ZAR: R1.00 (100 cents)
+       *      - KES: Ksh 3.00 (300 cents)
+       *      - USD: $2.00 (200 cents)
+       *      - XOF: 1.00 (1 XOF)
        */
-      amount: number;
+      amount: number | string;
       currency?: components["schemas"]["Currency"];
       /** @description Unique transaction reference. Only -, ., = and alphanumeric characters allowed. */
       reference?: string;
       /** @description An array of payment channels to control what channels you want to make available to the user to make a payment with */
-      channels?: ("card" | "bank" | "ussd" | "qr" | "eft" | "mobile_money" | "bank_transfer")[];
+      channels?: (
+        | "card"
+        | "bank"
+        | "ussd"
+        | "qr"
+        | "eft"
+        | "mobile_money"
+        | "bank_transfer"
+        | "apple_pay"
+        | "capitec_pay"
+        | "payattitude"
+      )[];
       /** @description Fully qualified url, e.g. https://example.com/ to redirect your customers to after a successful payment. Use this to override the callback url provided on the dashboard for this transaction */
       callback_url?: string;
       /**
@@ -3040,7 +3051,7 @@ export interface components {
        * @description A flat fee to charge the subaccount for a transaction.
        *     This overrides the split percentage set when the subaccount was created
        */
-      transaction_charge?: string;
+      transaction_charge?: number;
       /**
        * @description The bearer of the transaction charge
        * @enum {string}
@@ -3049,7 +3060,7 @@ export interface components {
       /** @description Used to replace the email address shown on the Checkout */
       label?: string;
       /** @description JSON object of custom data */
-      metadata?: Record<string, never>;
+      metadata?: string | Record<string, never>;
     };
     TransactionInitializeResponse: {
       status: boolean;
@@ -3120,13 +3131,15 @@ export interface components {
     TransactionChargeAuthorization: {
       /** @description Customer's email address */
       email: string;
-      /** @description Amount in the lower denomination of your currency */
-      amount: number;
+      /** @description Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). */
+      amount: unknown;
       /** @description Valid authorization code to charge */
       authorization_code: string;
       /** @description Unique transaction reference. Only -, ., = and alphanumeric characters allowed. */
       reference?: string;
       currency?: components["schemas"]["Currency"];
+      /** @description Send us 'card' or 'bank' or 'card','bank' as an array to specify what options to show the user paying */
+      channels?: ("card" | "bank")[];
       /** @description The split code of the transaction split */
       split_code?: string;
       split?: components["schemas"]["SplitCreate"];
@@ -3136,14 +3149,14 @@ export interface components {
        * @description A flat fee to charge the subaccount for a transaction.
        *     This overrides the split percentage set when the subaccount was created
        */
-      transaction_charge?: string;
+      transaction_charge?: number;
       /**
        * @description The bearer of the transaction charge
        * @enum {string}
        */
       bearer?: "account" | "subaccount";
       /** @description Stringified JSON object of custom data */
-      metadata?: string;
+      metadata?: string | Record<string, never>;
       /** @description If you are making a scheduled charge call, it is a good idea to queue them so the processing system does not get overloaded causing transaction processing errors. */
       queue?: boolean;
     };
@@ -3157,7 +3170,14 @@ export interface components {
         status: string;
         reference: string;
         domain: string;
-        metadata: string;
+        metadata:
+          | (
+              | string
+              | {
+                  [key: string]: unknown;
+                }
+            )
+          | null;
         gateway_response: string;
         message: string | null;
         channel: string;
@@ -3190,7 +3210,7 @@ export interface components {
           brand: string;
           reusable: boolean;
           signature: string;
-          account_name: unknown;
+          account_name: string | null;
         };
         customer: {
           id: number;
@@ -3200,10 +3220,10 @@ export interface components {
           customer_code: string;
           phone: string | null;
           metadata: {
-            calling_code?: string;
+            [key: string]: unknown;
           } | null;
           risk_action: string;
-          international_format_phone: string | null;
+          international_format_phone?: string | null;
         };
         plan: unknown;
         id: number;
@@ -3214,7 +3234,7 @@ export interface components {
      *       "email": "tap@email.com",
      *       "amount": 40510,
      *       "authorization_code": "AUTH_df1l5ehnym",
-     *       "currency": "ZAR"
+     *       "currency": "NGN"
      *     }
      */
     TransactionPartialDebit: {
@@ -3222,12 +3242,16 @@ export interface components {
       email: string;
       /**
        * Format: int64
-       * @description Specified in the lowest denomination of your currency
+       * @description Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
        */
-      amount: number;
+      amount: number | string;
       /** @description Valid authorization code to charge */
       authorization_code: string;
-      currency: components["schemas"]["Currency"];
+      /**
+       * @description Specified as NGN or GHS
+       * @enum {string}
+       */
+      currency: "NGN" | "GHS";
       /** @description Minimum amount to charge */
       at_least?: string;
       /** @description Unique transaction reference. Only -, ., = and alphanumeric characters allowed. */
@@ -3243,7 +3267,7 @@ export interface components {
         status: string;
         reference: string;
         domain: string;
-        metadata: string;
+        metadata: (string | Record<string, never>) | null;
         gateway_response: string;
         message: unknown;
         channel: string;
@@ -3276,7 +3300,7 @@ export interface components {
           brand: string;
           reusable: boolean;
           signature: string;
-          account_name: unknown;
+          account_name: string | null;
         };
         customer: {
           id: number;
@@ -3287,7 +3311,7 @@ export interface components {
           phone: string | null;
           metadata: Record<string, never> | null;
           risk_action: string;
-          international_format_phone: string | null;
+          international_format_phone?: string | null;
         };
         plan: number;
         requested_amount: number;
@@ -3316,6 +3340,7 @@ export interface components {
       status: boolean;
       message: string;
       data: {
+        /** Format: int64 */
         id: number;
         domain: string;
         status: string;
@@ -3326,8 +3351,8 @@ export interface components {
         gateway_response: string;
         channel: string;
         currency: string;
-        ip_address: string;
-        metadata: string | Record<string, never>;
+        ip_address: string | null;
+        metadata: (string | Record<string, never>) | null;
         log: {
           start_time: number;
           time_spent: number;
@@ -3346,7 +3371,7 @@ export interface components {
         fees_split: unknown;
         authorization: {
           authorization_code?: string;
-          bin?: unknown;
+          bin?: string | null;
           last4?: string;
           exp_month?: string;
           exp_year?: string;
@@ -3357,23 +3382,24 @@ export interface components {
           brand?: string;
           reusable?: boolean;
           signature?: string;
-          account_name?: unknown;
-          receiver_bank_account_number?: unknown;
-          receiver_bank?: unknown;
+          account_name?: string | null;
+          receiver_bank_account_number?: string | null;
+          receiver_bank?: string | null;
         };
         customer: {
+          /** Format: int64 */
           id: number;
           first_name: string | null;
           last_name: string | null;
           email: string;
           customer_code: string;
           phone: string | null;
-          metadata: unknown;
+          metadata: Record<string, never> | null;
           risk_action: string;
-          international_format_phone: string | null;
+          international_format_phone?: string | null;
         };
-        plan: string | null;
-        split: Record<string, never>;
+        plan: (string | Record<string, never>) | null;
+        split: Record<string, never> | null;
         order_id: unknown;
         paidAt: string | null;
         createdAt: string;
@@ -3394,7 +3420,7 @@ export interface components {
           send_sms?: boolean;
           currency?: string;
         } & ((unknown & unknown) | (unknown & unknown));
-        subaccount: Record<string, never>;
+        subaccount: Record<string, never> | null;
       };
     };
     TransactionListResponseArray: {
@@ -3410,7 +3436,14 @@ export interface components {
       channel: string;
       currency: string;
       ip_address: string | null;
-      metadata: Record<string, never> | null;
+      metadata:
+        | (
+            | string
+            | {
+                [key: string]: unknown;
+              }
+          )
+        | null;
       log: {
         start_time: number;
         time_spent: number;
@@ -3458,31 +3491,34 @@ export interface components {
       order_id: unknown;
       requested_amount: number;
       source: {
-        source: string;
-        type: string;
-        identifier: unknown;
-        entry_point: string;
+        source?: string;
+        type?: string;
+        identifier?: string | null;
+        entry_point?: string;
       } | null;
       connect: Record<string, never> | null;
       pos_transaction_data: unknown;
+    };
+    Meta: {
+      total: number;
+      skipped: number;
+      perPage: number | string;
+      page: number;
+      pageCount: number;
+    };
+    MetaWithVolume: components["schemas"]["Meta"] & {
+      total_volume: number;
+    };
+    CursorMeta: {
+      next: string | null;
+      previous: string | null;
+      perPage: number;
     };
     TransactionListResponse: {
       status: boolean;
       message: string;
       data: components["schemas"]["TransactionListResponseArray"][];
-      meta: {
-        total: number;
-        total_volume: number;
-        skipped: number;
-        perPage: string | number;
-        page: number;
-        pageCount: number;
-      };
-    };
-    MetadataCustomFieldsArray: {
-      value: string;
-      display_name: string;
-      variable_name: string;
+      meta: components["schemas"]["MetaWithVolume"] | components["schemas"]["CursorMeta"];
     };
     TransactionFetchResponse: {
       status: boolean;
@@ -3501,10 +3537,15 @@ export interface components {
         created_at: string;
         channel: string;
         currency: string;
-        ip_address: string;
-        metadata: {
-          custom_fields: components["schemas"]["MetadataCustomFieldsArray"][];
-        };
+        ip_address: string | null;
+        metadata:
+          | (
+              | string
+              | {
+                  [key: string]: unknown;
+                }
+            )
+          | null;
         log: {
           start_time: number;
           time_spent: number;
@@ -3534,32 +3575,32 @@ export interface components {
           brand: string;
           reusable: boolean;
           signature: string;
-          account_name: unknown;
-          receiver_bank_account_number: unknown;
-          receiver_bank: unknown;
+          account_name: string | null;
+          receiver_bank_account_number?: string | null;
+          receiver_bank?: string | null;
         };
         customer: {
           id: number;
-          first_name: string;
-          last_name: string;
+          first_name: string | null;
+          last_name: string | null;
           email: string;
           customer_code: string;
-          phone: string;
-          metadata: Record<string, never>;
+          phone: string | null;
+          metadata: Record<string, never> | null;
           risk_action: string;
-          international_format_phone: string;
+          international_format_phone?: string | null;
         };
-        plan: Record<string, never>;
-        subaccount: Record<string, never>;
-        split: Record<string, never>;
+        plan: Record<string, never> | null;
+        subaccount: Record<string, never> | null;
+        split: Record<string, never> | null;
         order_id: unknown;
         requested_amount: number;
         pos_transaction_data: unknown;
         source: {
-          type: string;
-          source: string;
-          identifier: unknown;
-        };
+          type?: string;
+          source?: string;
+          identifier?: string | null;
+        } | null;
         fees_breakdown: unknown;
         connect: unknown;
       };
@@ -3606,7 +3647,7 @@ export interface components {
     ChargeCreate: {
       /** @description Customer's email address */
       email: string;
-      /** @description Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR */
+      /** @description Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). */
       amount: number;
       /** @description An authorization code to charge. */
       authorization_code?: string;
@@ -3662,18 +3703,23 @@ export interface components {
         domain: string;
         status: string;
         reference: string;
-        receipt_number: unknown;
+        receipt_number?: string | null;
         amount: number;
         message: string | null;
         gateway_response: string;
-        paid_at: string;
-        created_at: string;
+        paid_at?: string;
+        created_at?: string;
         channel: string;
         currency: string;
-        ip_address: string;
-        metadata: {
-          custom_fields: components["schemas"]["MetadataCustomFieldsArray"][];
-        };
+        ip_address: string | null;
+        metadata:
+          | (
+              | string
+              | {
+                  [key: string]: unknown;
+                }
+            )
+          | null;
         log: {
           start_time: number;
           time_spent: number;
@@ -3689,7 +3735,7 @@ export interface components {
           }[];
         } | null;
         fees: number;
-        fees_split: number | null;
+        fees_split?: number | null;
         authorization: {
           authorization_code: string;
           bin: string;
@@ -3703,32 +3749,32 @@ export interface components {
           brand: string;
           reusable: boolean;
           signature: string;
-          account_name: unknown;
-          receiver_bank_account_number: unknown;
-          receiver_bank: unknown;
+          account_name: string | null;
+          receiver_bank_account_number?: string | null;
+          receiver_bank?: string | null;
         };
         customer: {
           id: number;
-          first_name: string;
-          last_name: string;
+          first_name: string | null;
+          last_name: string | null;
           email: string;
           customer_code: string;
-          phone: string;
-          metadata: Record<string, never>;
+          phone: string | null;
+          metadata: Record<string, never> | null;
           risk_action: string;
-          international_format_phone: string;
+          international_format_phone?: string | null;
         };
         plan: unknown;
-        split: Record<string, never>;
-        order_id: unknown;
-        requested_amount: number;
-        pos_transaction_data: unknown;
-        source: unknown;
-        fees_breakdown: unknown;
-        connect: unknown;
+        split?: Record<string, never> | null;
+        order_id?: unknown;
+        requested_amount?: number;
+        pos_transaction_data?: unknown;
+        source?: Record<string, never> | null;
+        fees_breakdown?: Record<string, never> | null;
+        connect?: Record<string, never> | null;
         transaction_date: string;
-        plan_object: Record<string, never>;
-        subaccount: Record<string, never>;
+        plan_object?: Record<string, never>;
+        subaccount?: Record<string, never>;
       };
     };
     /**
@@ -3747,40 +3793,59 @@ export interface components {
       status: boolean;
       message: string;
       data: {
-        status: string;
-        amount: number;
-        currency: string;
-        transaction_date: string;
-        reference: string;
+        id: number;
         domain: string;
-        redirect_url: string | null;
-        metadata: Record<string, never>;
+        status: string;
+        reference: string;
+        amount: number;
+        message?: string | null;
         gateway_response: string;
-        message: string | null;
         channel: string;
+        currency: string;
+        ip_address: string | null;
+        metadata: Record<string, never> | null;
+        log: unknown;
         fees: number | null;
+        fees_split: unknown;
         authorization: {
-          authorization_code: string | null;
-          bin: string;
-          last4: string;
-          exp_month: string;
-          exp_year: string;
-          channel: string;
-          card_type: string;
-          bank: string;
-          country_code: string;
-          brand: string;
-          reusable: boolean;
-          signature: string;
+          authorization_code?: string | null;
+          bin?: string;
+          last4?: string;
+          exp_month?: string;
+          exp_year?: string;
+          channel?: string;
+          card_type?: string;
+          bank?: string;
+          country_code?: string;
+          brand?: string;
+          reusable?: boolean;
+          signature?: unknown;
+          account_name?: unknown;
         };
         customer: {
-          first_name: string | null;
-          last_name: string | null;
+          id: number;
+          first_name?: string | null;
+          last_name?: string | null;
           email: string;
           customer_code: string;
-          phone: string | null;
+          phone?: string | null;
+          metadata?: unknown;
           risk_action: string;
+          international_format_phone?: string | null;
         };
+        plan: Record<string, never> | null;
+        split: Record<string, never> | null;
+        order_id: string | null;
+        paidAt: string | null;
+        createdAt: string;
+        requested_amount: number;
+        pos_transaction_data: unknown;
+        source: unknown;
+        fees_breakdown: Record<string, never> | null;
+        connect: Record<string, never> | null;
+        transaction_date: string;
+        plan_object: Record<string, never>;
+        subaccount: Record<string, never>;
       };
     };
     /**
@@ -3799,40 +3864,59 @@ export interface components {
       status: boolean;
       message: string;
       data: {
-        status: string;
-        amount: number;
-        currency: string;
-        transaction_date: string;
-        reference: string;
+        id: number;
         domain: string;
-        redirect_url: string | null;
-        metadata: Record<string, never>;
+        status: string;
+        reference: string;
+        amount: number;
+        message?: string | null;
         gateway_response: string;
-        message: string | null;
         channel: string;
+        currency: string;
+        ip_address: string | null;
+        metadata: Record<string, never> | null;
+        log: unknown;
         fees: number | null;
+        fees_split: unknown;
         authorization: {
-          authorization_code: string | null;
-          bin: string;
-          last4: string;
-          exp_month: string;
-          exp_year: string;
-          channel: string;
-          card_type: string;
-          bank: string;
-          country_code: string;
-          brand: string;
-          reusable: boolean;
-          signature: string;
+          authorization_code?: string | null;
+          bin?: string;
+          last4?: string;
+          exp_month?: string;
+          exp_year?: string;
+          channel?: string;
+          card_type?: string;
+          bank?: string;
+          country_code?: string;
+          brand?: string;
+          reusable?: boolean;
+          signature?: unknown;
+          account_name?: unknown;
         };
         customer: {
-          first_name: string | null;
-          last_name: string | null;
+          id: number;
+          first_name?: string | null;
+          last_name?: string | null;
           email: string;
           customer_code: string;
-          phone: string | null;
+          phone?: string | null;
+          metadata?: unknown;
           risk_action: string;
+          international_format_phone?: string | null;
         };
+        plan: Record<string, never> | null;
+        split: Record<string, never> | null;
+        order_id: string | null;
+        paidAt: string | null;
+        createdAt: string;
+        requested_amount: number;
+        pos_transaction_data: unknown;
+        source: unknown;
+        fees_breakdown: Record<string, never> | null;
+        connect: Record<string, never> | null;
+        transaction_date: string;
+        plan_object: Record<string, never>;
+        subaccount: Record<string, never>;
       };
     };
     /**
@@ -3851,41 +3935,59 @@ export interface components {
       status: boolean;
       message: string;
       data: {
-        status: string;
-        amount: number;
-        currency: string;
-        transaction_date: string;
-        reference: string;
+        id: number;
         domain: string;
-        redirect_url: string | null;
-        metadata: Record<string, never>;
+        status: string;
+        reference: string;
+        amount: number;
+        message?: string | null;
         gateway_response: string;
-        message: string | null;
         channel: string;
+        currency: string;
+        ip_address: string | null;
+        metadata: Record<string, never> | null;
+        log: unknown;
         fees: number | null;
+        fees_split: unknown;
         authorization: {
-          authorization_code: string | null;
-          bin: string;
-          last4: string;
-          exp_month: string;
-          exp_year: string;
-          channel: string;
-          card_type: string;
-          bank: string;
-          country_code: string;
-          brand: string;
-          reusable: boolean;
-          signature: string;
+          authorization_code?: string | null;
+          bin?: string;
+          last4?: string;
+          exp_month?: string;
+          exp_year?: string;
+          channel?: string;
+          card_type?: string;
+          bank?: string;
+          country_code?: string;
+          brand?: string;
+          reusable?: boolean;
+          signature?: unknown;
+          account_name?: unknown;
         };
         customer: {
-          first_name: string | null;
-          last_name: string | null;
+          id: number;
+          first_name?: string | null;
+          last_name?: string | null;
           email: string;
           customer_code: string;
-          phone: string | null;
+          phone?: string | null;
+          metadata?: unknown;
           risk_action: string;
+          international_format_phone?: string | null;
         };
-        display_text: string;
+        plan: Record<string, never> | null;
+        split: Record<string, never> | null;
+        order_id: string | null;
+        paidAt: string | null;
+        createdAt: string;
+        requested_amount: number;
+        pos_transaction_data: unknown;
+        source: unknown;
+        fees_breakdown: Record<string, never> | null;
+        connect: Record<string, never> | null;
+        transaction_date: string;
+        plan_object: Record<string, never>;
+        subaccount: Record<string, never>;
       };
     };
     /**
@@ -3907,8 +4009,59 @@ export interface components {
       status: boolean;
       message: string;
       data: {
+        id: number;
+        domain: string;
         status: string;
-        display_text: string;
+        reference: string;
+        amount: number;
+        message?: string | null;
+        gateway_response: string;
+        channel: string;
+        currency: string;
+        ip_address: string | null;
+        metadata: Record<string, never> | null;
+        log: unknown;
+        fees: number | null;
+        fees_split: unknown;
+        authorization: {
+          authorization_code?: string | null;
+          bin?: string;
+          last4?: string;
+          exp_month?: string;
+          exp_year?: string;
+          channel?: string;
+          card_type?: string;
+          bank?: string;
+          country_code?: string;
+          brand?: string;
+          reusable?: boolean;
+          signature?: unknown;
+          account_name?: unknown;
+        };
+        customer: {
+          id: number;
+          first_name?: string | null;
+          last_name?: string | null;
+          email: string;
+          customer_code: string;
+          phone?: string | null;
+          metadata?: unknown;
+          risk_action: string;
+          international_format_phone?: string | null;
+        };
+        plan: Record<string, never> | null;
+        split: Record<string, never> | null;
+        order_id: string | null;
+        paidAt: string | null;
+        createdAt: string;
+        requested_amount: number;
+        pos_transaction_data: unknown;
+        source: unknown;
+        fees_breakdown: Record<string, never> | null;
+        connect: Record<string, never> | null;
+        transaction_date: string;
+        plan_object: Record<string, never>;
+        subaccount: Record<string, never>;
       };
     };
     /**
@@ -3936,49 +4089,65 @@ export interface components {
       status: boolean;
       message: string;
       data: {
-        status: string;
-        amount: number;
-        currency: string;
-        transaction_date: string;
-        reference: string;
+        id: number;
         domain: string;
-        redirect_url: string | null;
-        metadata: Record<string, never>;
+        status: string;
+        reference: string;
+        amount: number;
+        message?: string | null;
         gateway_response: string;
-        message: string | null;
         channel: string;
+        currency: string;
+        ip_address: string | null;
+        metadata: Record<string, never> | null;
+        log: unknown;
         fees: number | null;
+        fees_split: unknown;
         authorization: {
-          authorization_code: string | null;
-          bin: string;
-          last4: string;
-          exp_month: string;
-          exp_year: string;
-          channel: string;
-          card_type: string;
-          bank: string;
-          country_code: string;
-          brand: string;
-          reusable: boolean;
-          signature: string;
+          authorization_code?: string | null;
+          bin?: string;
+          last4?: string;
+          exp_month?: string;
+          exp_year?: string;
+          channel?: string;
+          card_type?: string;
+          bank?: string;
+          country_code?: string;
+          brand?: string;
+          reusable?: boolean;
+          signature?: unknown;
+          account_name?: unknown;
         };
         customer: {
-          first_name: string | null;
-          last_name: string | null;
+          id: number;
+          first_name?: string | null;
+          last_name?: string | null;
           email: string;
           customer_code: string;
-          phone: string | null;
+          phone?: string | null;
+          metadata?: unknown;
           risk_action: string;
+          international_format_phone?: string | null;
         };
+        plan: Record<string, never> | null;
+        split: Record<string, never> | null;
+        order_id: string | null;
+        paidAt: string | null;
+        createdAt: string;
+        requested_amount: number;
+        pos_transaction_data: unknown;
+        source: unknown;
+        fees_breakdown: Record<string, never> | null;
+        connect: Record<string, never> | null;
+        transaction_date: string;
+        plan_object: Record<string, never>;
+        subaccount: Record<string, never>;
       };
     };
     BulkChargeListResponseArray: {
-      integration: number;
       domain: string;
       batch_code: string;
       status: string;
-      easy_cron_id: unknown;
-      reference: string;
       id: number;
       createdAt: string;
       updatedAt: string;
@@ -3987,13 +4156,7 @@ export interface components {
       status: boolean;
       message: string;
       data: components["schemas"]["BulkChargeListResponseArray"][];
-      meta: {
-        total: number;
-        skipped: number;
-        perPage: number | string;
-        page: number;
-        pageCount: number;
-      };
+      meta: components["schemas"]["Meta"];
     };
     /**
      * @description A list of charge object
@@ -4006,13 +4169,16 @@ export interface components {
     BulkChargeInitiate: {
       /** @description Customer's card authorization code */
       authorization: string;
-      /** @description Amount to charge on the authorization */
+      /** @description Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). */
       amount: number;
       /** @description A unique identifier containing lowercase letters `(a-z)`, digits `(0-9)` and these symbols: dash (`-`), underscore(`_`) */
       reference?: string;
       /** @description A flag to indicate if you want us to try recouping lower amounts when the customer has insufficient fund */
       attempt_partial_debit?: boolean;
-      /** @description Minimum amount to charge if the attempt_partial_debit flag is set */
+      /**
+       * @description Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
+       *     Minimum amount to charge if the attempt_partial_debit flag is set.
+       */
       at_least?: number;
       /** @description JSON object of custom data */
       metadata?: Record<string, never>;
@@ -4038,9 +4204,7 @@ export interface components {
       message: string;
       data: {
         batch_code: string;
-        reference: string;
         id: number;
-        integration: number;
         domain: string;
         status: string;
         total_charges: number;
@@ -4048,6 +4212,11 @@ export interface components {
         createdAt: string;
         updatedAt: string;
       };
+    };
+    MetadataCustomFieldsArray: {
+      value: string;
+      display_name: string;
+      variable_name: string;
     };
     BulkChargeFetchBulkBatchChargesResponseArray: {
       integration: number;
@@ -4119,30 +4288,23 @@ export interface components {
       id: number;
       subaccount_code: string;
       business_name: string;
-      description: string;
-      primary_contact_name: string;
-      primary_contact_email: string;
-      primary_contact_phone: string;
-      metadata: string;
+      description: string | null;
+      primary_contact_name: string | null;
+      primary_contact_email: string | null;
+      primary_contact_phone: string | null;
+      metadata: unknown;
       percentage_charge: number;
       settlement_bank: string;
       bank_id: number;
       account_number: string;
       currency: string;
       active: number;
-      is_verified: boolean;
     };
     SubaccountListResponse: {
       status: boolean;
       message: string;
       data: components["schemas"]["SubaccountListResponseArray"][];
-      meta: {
-        total: number;
-        skipped: number;
-        perPage: number;
-        page: number;
-        pageCount: number;
-      };
+      meta: components["schemas"]["Meta"];
     };
     /**
      * @example {
@@ -4181,11 +4343,11 @@ export interface components {
       data: {
         business_name: string;
         account_name?: string | null;
-        description: string;
-        primary_contact_name: string;
-        primary_contact_email: string;
-        primary_contact_phone: string;
-        metadata: string;
+        description?: string | null;
+        primary_contact_name?: string | null;
+        primary_contact_email?: string | null;
+        primary_contact_phone?: string | null;
+        metadata?: unknown;
         account_number: string;
         percentage_charge: number;
         settlement_bank: string;
@@ -4194,7 +4356,7 @@ export interface components {
         integration: number;
         domain: string;
         product: string;
-        managed_by_integration: number;
+        managed_by_integration?: number;
         subaccount_code: string;
         is_verified: boolean;
         settlement_schedule: string;
@@ -4210,17 +4372,17 @@ export interface components {
       message: string;
       data: {
         integration: number;
-        account_name?: string | null;
+        account_name: string | null;
         bank: number;
         managed_by_integration: number;
         domain: string;
         subaccount_code: string;
         business_name: string;
-        description: string;
-        primary_contact_name: string;
-        primary_contact_email: string;
-        primary_contact_phone: string;
-        metadata: string;
+        description: string | null;
+        primary_contact_name: string | null;
+        primary_contact_email: string | null;
+        primary_contact_phone: string | null;
+        metadata: Record<string, never> | null;
         percentage_charge: number;
         is_verified: boolean;
         settlement_bank: string;
@@ -4273,11 +4435,11 @@ export interface components {
         subaccount_code: string;
         account_name?: string | null;
         business_name: string;
-        description: string;
-        primary_contact_name: string;
-        primary_contact_email: string;
-        primary_contact_phone: string;
-        metadata: string;
+        description?: string | null;
+        primary_contact_name?: string | null;
+        primary_contact_email?: string | null;
+        primary_contact_phone?: string | null;
+        metadata?: unknown;
         percentage_charge: number;
         is_verified: boolean;
         settlement_bank: string;
@@ -4332,13 +4494,7 @@ export interface components {
       status: boolean;
       message: string;
       data: components["schemas"]["SplitListResponseArray"][];
-      meta: {
-        total: number;
-        skipped: number;
-        perPage: number;
-        page: number;
-        pageCount: number;
-      };
+      meta: components["schemas"]["Meta"];
     };
     SplitCreateResponse: {
       status: boolean;
@@ -4437,6 +4593,15 @@ export interface components {
         total_subaccounts: number;
       };
     };
+    /**
+     * @example {
+     *       "subaccount": "ACCT_eg4sob4590pq9vb"
+     *     }
+     */
+    SplitSubaccountRemove: {
+      /** @description This is the sub account code */
+      subaccount: string;
+    };
     SplitRemoveSubaccountResponse: {
       status: boolean;
       message: string;
@@ -4504,11 +4669,7 @@ export interface components {
       status: boolean;
       message: string;
       data: components["schemas"]["TerminalListsResponseArray"][];
-      meta: {
-        next: string | null;
-        previous: string | null;
-        perPage: number;
-      };
+      meta: components["schemas"]["CursorMeta"];
     };
     TerminalGetResponse: {
       status: boolean;
@@ -4572,16 +4733,10 @@ export interface components {
       currency: string;
     };
     VirtualTerminalListResponse: {
-      status?: boolean;
-      message?: string;
-      data?: components["schemas"]["VirtualTerminalListResponseArray"][];
-      meta?: {
-        total?: number;
-        skipped?: number;
-        perPage?: string | number;
-        page?: number;
-        pageCount?: number;
-      };
+      status: boolean;
+      message: string;
+      data: components["schemas"]["VirtualTerminalListResponseArray"][];
+      meta: components["schemas"]["CursorMeta"];
     };
     /**
      * @example {
@@ -4599,19 +4754,24 @@ export interface components {
      *     }
      */
     VirtualTerminalCreate: {
-      /** @description The name of the virtual terminal */
+      /** @description Name of the Virtual Terminal */
       name: string;
-      /** @description Array of objects containing recipients for payment notifications for the Virtual Terminal. */
+      /** @description An array of objects containing the notification recipients for payments to the Virtual Terminal. Each object includes a target parameter for the Whatsapp phone number to send notifications to, and a name parameter for a descriptive label. */
       destinations: {
-        /** @description The WhatsApp number to receive payment notifications */
+        /** @description The Whatsapp phone number to send notifications to */
         target?: string;
-        /** @description The name of the associated WhatsApp number */
+        /** @description A descriptive label for the destination */
         name?: string;
       }[];
-      /** @description Split code to associate with the virtual terminal */
-      split_code?: string;
-      /** @description Additional custom data as key-value pairs */
+      /** @description Stringified JSON object of custom data. Kindly check the Metadata page for more information */
       metadata?: Record<string, never>;
+      /** @description The transaction currency for the Virtual Terminal. Defaults to your integration currency */
+      currency?: string;
+      /** @description An array of objects representing custom fields to display on the form. Each object contains a display_name parameter, representing what will be displayed on the Virtual Terminal page, and variable_name parameter for referencing the custom field programmatically */
+      custom_fields?: {
+        display_name?: string;
+        variable_name?: string;
+      }[];
     };
     VirtualTerminalCreateResponse: {
       status: boolean;
@@ -4803,13 +4963,7 @@ export interface components {
       status: boolean;
       message: string;
       data: components["schemas"]["CustomerListResponseArray"][];
-      meta: {
-        total: number;
-        skipped: number;
-        perPage: string | number;
-        page: number;
-        pageCount: number;
-      };
+      meta: components["schemas"]["Meta"] | components["schemas"]["CursorMeta"];
     };
     /**
      * @example {
@@ -4834,25 +4988,15 @@ export interface components {
       status: boolean;
       message: string;
       data: {
-        transactions: unknown[];
-        subscriptions: unknown[];
-        authorizations: unknown[];
         email: string;
-        first_name: string;
-        last_name: string;
-        phone: string;
         integration: number;
         domain: string;
-        metadata: {
-          calling_code?: string;
-        };
         customer_code: string;
-        risk_action: string;
         id: number;
-        createdAt: string;
-        updatedAt: string;
         identified: boolean;
         identifications: unknown;
+        createdAt: string;
+        updatedAt: string;
       };
     };
     CustomerFetchResponse: {
@@ -4862,13 +5006,13 @@ export interface components {
         transactions: unknown[];
         subscriptions: unknown[];
         authorizations: unknown[];
-        first_name: string;
-        last_name: string;
+        first_name: string | null;
+        last_name: string | null;
         email: string;
-        phone: string;
+        phone: string | null;
         metadata: {
-          calling_code?: string;
-        };
+          [key: string]: unknown;
+        } | null;
         domain: string;
         customer_code: string;
         risk_action: string;
@@ -4879,7 +5023,7 @@ export interface components {
         total_transactions: number;
         total_transaction_value: unknown[];
         dedicated_account: unknown;
-        dedicated_accounts: unknown[] | null;
+        dedicated_accounts?: unknown[] | null;
         identified: boolean;
         identifications: unknown;
       };
@@ -4904,20 +5048,22 @@ export interface components {
       status: boolean;
       message: string;
       data: {
+        integration: number;
         first_name: string;
         last_name: string;
         email: string;
-        phone: string;
-        metadata: Record<string, never>;
-        domain: string;
-        customer_code: string;
-        risk_action: string;
-        id: number;
-        integration: number;
-        createdAt: string;
-        updatedAt: string;
+        phone: string | null;
+        metadata: Record<string, never> | null;
         identified: boolean;
         identifications: unknown;
+        domain: string;
+        customer_code: string;
+        id: number;
+        transactions: unknown[];
+        subscriptions: unknown[];
+        authorizations: unknown[];
+        createdAt: string;
+        updatedAt: string;
       };
     };
     /**
@@ -4943,11 +5089,11 @@ export interface components {
         transactions: unknown[];
         subscriptions: unknown[];
         authorizations: unknown[];
-        first_name: string;
-        last_name: string;
+        first_name: string | null;
+        last_name: string | null;
         email: string;
-        phone: string;
-        metadata: Record<string, never>;
+        phone: string | null;
+        metadata: Record<string, never> | null;
         domain: string;
         customer_code: string;
         risk_action: string;
@@ -5232,14 +5378,14 @@ export interface components {
     };
     DedicatedNubanListResponseArray: {
       customer: {
-        id?: number;
-        first_name?: string;
-        last_name?: string;
-        email?: string;
-        customer_code?: string;
-        phone?: string;
-        risk_action?: string;
-        international_format_phone?: string | null;
+        id: number;
+        first_name: string;
+        last_name: string;
+        email: string;
+        customer_code: string;
+        phone: string | null;
+        risk_action: string;
+        international_format_phone: string | null;
       };
       bank: {
         name: string;
@@ -5252,9 +5398,14 @@ export interface components {
       created_at: string;
       updated_at: string;
       currency: string;
-      split_config: {
-        subaccount: string;
-      } | null;
+      split_config:
+        | (
+            | string
+            | {
+                subaccount: string;
+              }
+          )
+        | null;
       active: boolean;
       assigned: boolean;
     };
@@ -5262,13 +5413,7 @@ export interface components {
       status: boolean;
       message: string;
       data: components["schemas"]["DedicatedNubanListResponseArray"][];
-      meta: {
-        total: number;
-        skipped: number;
-        perPage: number;
-        page: number;
-        pageCount: number;
-      };
+      meta: components["schemas"]["Meta"];
     };
     /**
      * @example {
@@ -5319,10 +5464,10 @@ export interface components {
           last_name: string;
           email: string;
           customer_code: string;
-          phone: string;
-          metadata: Record<string, never>;
+          phone: string | null;
+          metadata: Record<string, never> | null;
           risk_action: string;
-          international_format_phone: string | null;
+          international_format_phone?: string | null;
         };
       };
     };
@@ -5376,10 +5521,10 @@ export interface components {
           last_name: string;
           email: string;
           customer_code: string;
-          phone: string;
-          metadata: Record<string, never>;
+          phone: string | null;
+          metadata: Record<string, never> | null;
           risk_action: string;
-          international_format_phone: string | null;
+          international_format_phone?: string | null;
         };
         bank: {
           name: string;
@@ -5392,7 +5537,7 @@ export interface components {
         created_at: string;
         updated_at: string;
         currency: string;
-        split_config: unknown;
+        split_config: (string | Record<string, never>) | null;
         active: boolean;
         assigned: boolean;
       };
@@ -5447,6 +5592,13 @@ export interface components {
       /** @description Valid Dedicated virtual account */
       account_number: string;
     };
+    ApplePayDomainsResponse: {
+      status: boolean;
+      message: string;
+      data: {
+        domainNames: string[];
+      };
+    };
     /**
      * @example {
      *       "domainName": "example.com"
@@ -5470,7 +5622,7 @@ export interface components {
     };
     PlanListResponseArray: {
       subscriptions: unknown[];
-      pages: unknown[];
+      integration: number;
       domain: string;
       name: string;
       plan_code: string;
@@ -5484,28 +5636,15 @@ export interface components {
       hosted_page_url: unknown;
       hosted_page_summary: unknown;
       currency: string;
-      migrate: boolean;
-      is_deleted: boolean;
-      is_archived: boolean;
       id: number;
-      integration: number;
       createdAt: string;
       updatedAt: string;
-      total_subscriptions: number;
-      active_subscriptions: number;
-      total_subscriptions_revenue: number;
     };
     PlanListResponse: {
       status: boolean;
       message: string;
       data: components["schemas"]["PlanListResponseArray"][];
-      meta: {
-        total: number;
-        skipped: number;
-        perPage: number;
-        page: number;
-        pageCount: number;
-      };
+      meta: components["schemas"]["Meta"];
     };
     /**
      * @example {
@@ -5517,11 +5656,7 @@ export interface components {
     PlanCreate: {
       /** @description Name of plan */
       name: string;
-      /**
-       * @description Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
-       *      Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
-       *      cents, if currency is ZAR, and whole number if currency is XOF
-       */
+      /** @description Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). */
       amount: number;
       /**
        * @description Payment interval
@@ -5553,12 +5688,9 @@ export interface components {
         integration: number;
         domain: string;
         plan_code: string;
-        invoice_limit: number;
         send_invoices: boolean;
         send_sms: boolean;
         hosted_page: boolean;
-        migrate: boolean;
-        is_archived: boolean;
         id: number;
         createdAt: string;
         updatedAt: string;
@@ -5569,33 +5701,23 @@ export interface components {
       message: string;
       data: {
         subscriptions: unknown[];
-        pages: unknown[];
+        integration: number;
         domain: string;
         name: string;
         plan_code: string;
         description: unknown;
         amount: number;
         interval: string;
-        invoice_limit: number;
+        invoice_limit?: number | null;
         send_invoices: boolean;
         send_sms: boolean;
         hosted_page: boolean;
         hosted_page_url: unknown;
         hosted_page_summary: unknown;
         currency: string;
-        migrate: boolean;
-        is_deleted: boolean;
-        is_archived: boolean;
         id: number;
-        integration: number;
         createdAt: string;
         updatedAt: string;
-        pages_count: number;
-        subscribers_count: number;
-        subscriptions_count: number;
-        active_subscriptions_count: number | null;
-        total_revenue: number;
-        subscribers: unknown[];
       };
     };
     /**
@@ -5680,33 +5802,25 @@ export interface components {
         account_name: unknown;
       };
       customer: {
-        id: number;
         first_name: string;
         last_name: string;
         email: string;
+        phone: string;
+        metadata: unknown;
+        domain: string;
         customer_code: string;
-        phone: string | null;
-        metadata: string;
         risk_action: string;
-        international_format_phone: string;
+        id: number;
+        integration: number;
+        createdAt: string;
+        updatedAt: string;
       };
-      invoice_limit: number;
-      split_code: unknown;
-      payments_count: number;
-      most_recent_invoice: unknown;
-      metadata: Record<string, never> | null;
     };
     SubscriptionListResponse: {
       status: boolean;
       message: string;
       data: components["schemas"]["SubscriptionListResponseArray"][];
-      meta: {
-        total: number;
-        skipped: number;
-        perPage: number;
-        page: number;
-        pageCount: number;
-      };
+      meta: components["schemas"]["Meta"];
     };
     /**
      * @example {
@@ -5742,20 +5856,26 @@ export interface components {
         status: string;
         quantity: number;
         amount: number;
-        authorization: number;
-        invoice_limit: number;
-        split_code: unknown;
+        authorization: {
+          authorization_code?: string;
+          bin?: string;
+          last4?: string;
+          exp_month?: string;
+          exp_year?: string;
+          channel?: string;
+          card_type?: string;
+          bank?: string;
+          country_code?: string;
+          brand?: string;
+          reusable?: boolean;
+          signature?: string;
+          account_name?: unknown;
+        };
         subscription_code: string;
         email_token: string;
         id: number;
-        cancelledAt: unknown;
         createdAt: string;
         updatedAt: string;
-        cron_expression: string;
-        next_payment_date: string;
-        easy_cron_id: string | null;
-        open_invoice: string | null;
-        metadata: Record<string, never> | null;
       };
     };
     SubscriptionFetchResponse: {
@@ -5772,10 +5892,11 @@ export interface components {
         next_payment_date: string;
         open_invoice: unknown;
         createdAt: string;
-        cancelledAt: unknown;
         integration: number;
         plan: {
+          domain: string;
           id: number;
+          integration: number;
           name: string;
           plan_code: string;
           description: unknown;
@@ -5783,7 +5904,12 @@ export interface components {
           interval: string;
           send_invoices: boolean;
           send_sms: boolean;
+          hosted_page: boolean;
+          hosted_page_url: unknown;
+          hosted_page_summary: unknown;
           currency: string;
+          createdAt: string;
+          updatedAt: string;
         };
         authorization: {
           authorization_code: string;
@@ -5801,23 +5927,23 @@ export interface components {
           account_name: unknown;
         };
         customer: {
+          domain: string;
           id: number;
+          integration: number;
           first_name: string;
           last_name: string;
           email: string;
           customer_code: string;
-          phone: string;
+          phone: string | null;
           metadata: Record<string, never>;
-          risk_action: string;
-          international_format_phone: string;
+          createdAt: string;
+          updatedAt: string;
+          risk_action?: string;
+          international_format_phone?: string | null;
         };
+        start: number;
+        quantity: number;
         invoices: unknown[];
-        invoices_history: unknown[];
-        invoice_limit: number;
-        split_code: unknown;
-        most_recent_invoice: unknown;
-        payments_count: number;
-        metadata: Record<string, never> | null;
       };
     };
     /**
@@ -5840,17 +5966,18 @@ export interface components {
       active: boolean;
       createdAt: string;
       currency: string;
-      description: string;
+      description?: string | null;
       domain: string;
-      email: string | null;
+      email?: string | null;
       id: number;
-      integration: number;
+      integration?: number;
       metadata?: Record<string, never> | null;
       name: string;
       recipient_code: string;
       type: string;
       updatedAt: string;
-      is_deleted: boolean;
+      is_deleted?: boolean;
+      isDeleted?: boolean;
       details: {
         authorization_code: string | null;
         account_number: string | null;
@@ -5863,13 +5990,7 @@ export interface components {
       status: boolean;
       message: string;
       data: components["schemas"]["TransferRecipientListResponseArray"][];
-      meta: {
-        total: number;
-        skipped: number;
-        perPage: number;
-        page: number;
-        pageCount: number;
-      };
+      meta: components["schemas"]["Meta"];
     };
     /**
      * @example {
@@ -5907,17 +6028,18 @@ export interface components {
         active: boolean;
         createdAt: string;
         currency: string;
-        description: string;
+        description?: string | null;
         domain: string;
-        email: string;
+        email?: string | null;
         id: number;
-        integration: number;
+        integration?: number;
         metadata?: Record<string, never> | null;
         name: string;
         recipient_code: string;
         type: string;
         updatedAt: string;
-        is_deleted: boolean;
+        is_deleted?: boolean;
+        isDeleted?: boolean;
         details: {
           authorization_code: string | null;
           account_number: string | null;
@@ -5956,7 +6078,7 @@ export interface components {
       status: boolean;
       message: string;
       data: {
-        integration: number;
+        integration?: number;
         domain: string;
         type: string;
         currency: string;
@@ -5967,15 +6089,16 @@ export interface components {
           bank_code: string;
           bank_name: string;
         };
-        description: string;
+        description?: string | null;
         metadata?: Record<string, never> | null;
         recipient_code: string;
         active: boolean;
-        recipient_account: string;
-        institution_code: string;
-        email: string;
+        recipient_account?: string | null;
+        institution_code?: string | null;
+        email?: string | null;
         id: number;
-        isDeleted: boolean;
+        isDeleted?: boolean;
+        is_deleted?: boolean;
         createdAt: string;
         updatedAt: string;
       };
@@ -5989,6 +6112,24 @@ export interface components {
     TransferRecipientUpdateResponse: {
       status: boolean;
       message: string;
+      data: {
+        type: string;
+        name: string;
+        metadata: Record<string, never> | null;
+        domain: string;
+        details: {
+          account_number: string;
+          account_name: string | null;
+          bank_code: string;
+          bank_name: string;
+        };
+        currency: string;
+        recipient_code: string;
+        active: boolean;
+        id: number;
+        createdAt: string;
+        updatedAt: string;
+      };
     };
     TransferRecipientDeleteResponse: {
       status: boolean;
@@ -6005,20 +6146,18 @@ export interface components {
       reason: string;
       reference: string;
       source: string;
-      source_details: unknown;
+      source_details: Record<string, never> | null;
       status: string;
-      titan_code: unknown;
+      titan_code: string | null;
       transfer_code: string;
-      request: number;
-      transferred_at: unknown;
       updatedAt: string;
       recipient: {
         active: boolean;
         createdAt: string;
         currency: string;
-        description: string;
+        description?: string | null;
         domain: string;
-        email: string;
+        email?: string | null;
         id: number;
         integration: number;
         metadata?: Record<string, never> | null;
@@ -6026,7 +6165,8 @@ export interface components {
         recipient_code: string;
         type: string;
         updatedAt: string;
-        is_deleted: boolean;
+        is_deleted?: boolean;
+        isDeleted?: boolean;
         details: {
           authorization_code: unknown;
           account_number: string;
@@ -6035,24 +6175,12 @@ export interface components {
           bank_name: string;
         };
       };
-      session: {
-        provider: unknown;
-        id: unknown;
-      };
-      fee_charged: number;
-      fees_breakdown: number | null;
     };
     TransferListResponse: {
       status: boolean;
       message: string;
       data: components["schemas"]["TransferListResponseArray"][];
-      meta: {
-        total: number;
-        skipped: number;
-        perPage: number;
-        page: number;
-        pageCount: number;
-      };
+      meta: components["schemas"]["Meta"];
     };
     /**
      * @example {
@@ -6062,7 +6190,7 @@ export interface components {
      *     }
      */
     TransferBase: {
-      /** @description Amount to transfer in kobo if currency is NGN and pesewas if currency is GHS. */
+      /** @description Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). */
       amount: number;
       /** @description The transfer recipient's code */
       recipient: string;
@@ -6176,26 +6304,26 @@ export interface components {
         createdAt: string;
         currency: string;
         domain: string;
-        failures: unknown;
+        failures: Record<string, never> | null;
         id: number;
         integration: number;
         reason: string;
         reference: string;
         source: string;
-        source_details: unknown;
+        source_details: Record<string, never> | null;
         status: string;
-        titan_code: unknown;
+        titan_code: string | null;
         transfer_code: string;
         request: number;
-        transferred_at: unknown;
+        transferred_at: string | null;
         updatedAt: string;
         recipient: {
           active: boolean;
           createdAt: string;
           currency: string;
-          description: string;
+          description?: string | null;
           domain: string;
-          email: string;
+          email?: string | null;
           id: number;
           integration: number;
           metadata?: Record<string, never> | null;
@@ -6203,7 +6331,8 @@ export interface components {
           recipient_code: string;
           type: string;
           updatedAt: string;
-          is_deleted: boolean;
+          is_deleted?: boolean;
+          isDeleted?: boolean;
           details: {
             authorization_code: unknown;
             account_number: string;
@@ -6213,8 +6342,8 @@ export interface components {
           };
         };
         session: {
-          provider: unknown;
-          id: unknown;
+          provider: string | null;
+          id: string | null;
         };
         fee_charged: number;
         fees_breakdown: components["schemas"]["TransferFeesBreakdownArray"][] | null;
@@ -6229,25 +6358,25 @@ export interface components {
         createdAt: string;
         currency: string;
         domain: string;
-        failures: unknown;
+        failures: Record<string, never> | null;
         id: number;
         integration: number;
         reason: string;
         reference: string;
         source: string;
-        source_details: unknown;
+        source_details: Record<string, never> | null;
         status: string;
-        titan_code: unknown;
+        titan_code: string | null;
         transfer_code: string;
-        transferred_at: unknown;
+        transferred_at: string | null;
         updatedAt: string;
         recipient: {
           active: boolean;
           createdAt: string;
           currency: string;
-          description: string;
+          description?: string | null;
           domain: string;
-          email: string;
+          email?: string | null;
           id: number;
           integration: number;
           metadata?: Record<string, never> | null;
@@ -6255,7 +6384,8 @@ export interface components {
           recipient_code: string;
           type: string;
           updatedAt: string;
-          is_deleted: boolean;
+          is_deleted?: boolean;
+          isDeleted?: boolean;
           details: {
             authorization_code: unknown;
             account_number: string;
@@ -6265,8 +6395,8 @@ export interface components {
           };
         };
         session: {
-          provider: unknown;
-          id: unknown;
+          provider: string | null;
+          id: string | null;
         };
         gateway_response: string | null;
       };
@@ -6371,8 +6501,8 @@ export interface components {
       request_code: string;
       status: string;
       paid: boolean;
-      paid_at: unknown;
-      metadata: unknown;
+      paid_at: string | null;
+      metadata: Record<string, never> | null;
       notifications: unknown[];
       offline_reference: string;
       customer: {
@@ -6381,13 +6511,13 @@ export interface components {
         last_name: string;
         email: string;
         customer_code: string;
-        phone: string;
-        metadata: Record<string, never>;
+        phone: string | null;
+        metadata: Record<string, never> | null;
         risk_action: string;
-        international_format_phone: string;
+        international_format_phone?: string | null;
       };
       created_at: string;
-      discount: unknown;
+      discount: Record<string, never> | null;
       split_code: string | null;
     };
     PaymentRequestListResponse: {
@@ -6467,6 +6597,56 @@ export interface components {
         split_code: string | null;
       };
     };
+    PaymentRequestNotificationsArray: {
+      sent_at: string;
+      channel: string;
+    };
+    PaymentRequestViewResponse: {
+      status: boolean;
+      message: string;
+      data: {
+        domain: string;
+        request_code: string;
+        description: string | null;
+        line_items: components["schemas"]["PaymentRequestLineItemsArray"][];
+        tax: components["schemas"]["PaymentRequestTaxArray"][];
+        amount: number;
+        discount: number | null;
+        currency: string;
+        due_date: string | null;
+        status: string;
+        paid: boolean;
+        paid_at: string | null;
+        metadata: Record<string, never> | null;
+        has_invoice: boolean;
+        invoice_number: number | null;
+        offline_reference: string;
+        pdf_url: string | null;
+        notifications: components["schemas"]["PaymentRequestNotificationsArray"][];
+        archived: boolean;
+        source: string;
+        payment_method: string | null;
+        note: string | null;
+        amount_paid: number | null;
+        split_code: string | null;
+        id: number;
+        integration: number;
+        customer: {
+          first_name: string;
+          last_name: string;
+          email: string;
+          phone: string | null;
+          metadata: Record<string, never> | null;
+          customer_code: string;
+          risk_action: string;
+          id: number;
+          international_format_phone?: string | null;
+        };
+        createdAt: string;
+        updatedAt: string;
+        pending_amount: number;
+      };
+    };
     /**
      * @example {
      *       "amount": 15000
@@ -6504,31 +6684,26 @@ export interface components {
       /** @description The split code of the transaction split. */
       split_code?: string;
     };
-    PaymentRequestNotificationsArray: {
-      sent_at: string;
-      channel: string;
-    };
     PaymentRequestUpdateResponse: {
       status: boolean;
       message: string;
       data: {
         id: number;
-        integration: number;
         domain: string;
         amount: number;
         currency: string;
         due_date: string | null;
         has_invoice: boolean;
         invoice_number: number | null;
-        description: unknown;
+        description: string | null;
         pdf_url: string | null;
         line_items: unknown[];
         tax: unknown[];
         request_code: string;
         status: string;
         paid: boolean;
-        paid_at: unknown;
-        metadata: unknown;
+        paid_at: string | null;
+        metadata: Record<string, never> | null;
         notifications: components["schemas"]["PaymentRequestNotificationsArray"][];
         offline_reference: string;
         customer: {
@@ -6537,16 +6712,14 @@ export interface components {
           last_name: string;
           email: string;
           customer_code: string;
-          phone: string;
-          metadata: {
-            calling_code?: string;
-          };
+          phone: string | null;
+          metadata: Record<string, never> | null;
           risk_action: string;
-          international_format_phone: string;
+          international_format_phone?: string | null;
         };
         created_at: string;
-        discount: unknown;
-        split_code: unknown;
+        discount?: Record<string, never> | null;
+        split_code?: string | null;
       };
     };
     PaymentRequestVerifyResponse: {
@@ -6566,15 +6739,15 @@ export interface components {
         due_date: string | null;
         has_invoice: boolean;
         invoice_number: number | null;
-        description: unknown;
+        description: string | null;
         pdf_url: string | null;
         line_items: unknown[];
         tax: unknown[];
         request_code: string;
         status: string;
         paid: boolean;
-        paid_at: unknown;
-        metadata: unknown;
+        paid_at: string | null;
+        metadata: Record<string, never> | null;
         notifications: components["schemas"]["PaymentRequestNotificationsArray"][];
         offline_reference: string;
         customer: {
@@ -6583,16 +6756,14 @@ export interface components {
           last_name: string;
           email: string;
           customer_code: string;
-          phone: string;
-          metadata: {
-            calling_code?: string;
-          };
+          phone: string | null;
+          metadata: Record<string, never> | null;
           risk_action: string;
-          international_format_phone: string;
+          international_format_phone?: string | null;
         };
         created_at: string;
-        discount: unknown;
-        split_code: unknown;
+        discount?: Record<string, never> | null;
+        split_code?: string | null;
         pending_amount: number;
       };
     };
@@ -6626,7 +6797,6 @@ export interface components {
       message: string;
       data: {
         id: number;
-        integration: number;
         domain: string;
         amount: number;
         currency: string;
@@ -6634,14 +6804,14 @@ export interface components {
         has_invoice: boolean;
         invoice_number: number | null;
         description: string | null;
-        pdf_url: unknown;
+        pdf_url: string | null;
         line_items: components["schemas"]["PaymentRequestLineItemsArray"][];
         tax: components["schemas"]["PaymentRequestTaxArray"][];
         request_code: string;
         status: string;
         paid: boolean;
-        paid_at: unknown;
-        metadata: unknown;
+        paid_at: string | null;
+        metadata: Record<string, never> | null;
         notifications: unknown[];
         offline_reference: string;
         customer: {
@@ -6650,19 +6820,17 @@ export interface components {
           last_name: string;
           email: string;
           customer_code: string;
-          phone: string;
-          metadata: {
-            calling_code?: string;
-          };
+          phone: string | null;
+          metadata: Record<string, never> | null;
           risk_action: string;
-          international_format_phone: string;
+          international_format_phone?: string | null;
         };
         created_at: string;
-        discount: {
+        discount?: {
           type: string;
           amount: number;
         } | null;
-        split_code: unknown;
+        split_code?: string | null;
         pending_amount: number;
       };
     };
@@ -6689,12 +6857,12 @@ export interface components {
         background_color: string;
       };
       files: unknown[];
-      success_message: unknown;
-      redirect_url: unknown;
-      split_code: unknown;
-      notification_emails: unknown;
+      success_message: string | null;
+      redirect_url: string | null;
+      split_code: string | null;
+      notification_emails: string[] | null;
       minimum_orderable: number;
-      maximum_orderable: unknown;
+      maximum_orderable: number | null;
       createdAt: string;
       updatedAt: string;
       digital_assets: unknown[];
@@ -6702,8 +6870,8 @@ export interface components {
       is_shippable: boolean;
       shipping_fields: {
         delivery_note: string;
-        shipping_address: string;
-        shipping_fees: unknown[];
+        shipping_address?: string;
+        shipping_fees?: unknown[];
       };
       integration: number;
       low_stock_alert: number;
@@ -6712,13 +6880,7 @@ export interface components {
       status: boolean;
       message: string;
       data: components["schemas"]["ProductListsResponseArray"][];
-      meta: {
-        total: number;
-        skipped: number;
-        perPage: string;
-        page: number;
-        pageCount: number;
-      };
+      meta: components["schemas"]["Meta"];
     };
     /**
      * @example {
@@ -6733,11 +6895,7 @@ export interface components {
       name: string;
       /** @description The description of the product */
       description: string;
-      /**
-       * @description Price should be in kobo if currency is NGN, pesewas, if currency is GHS,
-       *     Price should be in kobo if currency is NGN, pesewas, if currency is GHS,
-       *     cents, if currency is ZAR, and whole number if currency is XOF
-       */
+      /** @description Price should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the price is the same as the base units (not multiplied by 100). */
       price: number;
       /** @description Currency in which price is set. Allowed values are: NGN, GHS, ZAR, USD or XOF */
       currency: string;
@@ -6757,22 +6915,13 @@ export interface components {
       status: boolean;
       message: string;
       data: {
-        variants_options: unknown[];
-        variants: unknown[];
         name: string;
         description: string;
         currency: string;
         price: number;
         quantity: number;
-        type: string;
         is_shippable: boolean;
         unlimited: boolean;
-        files: unknown[];
-        shipping_fields: {
-          delivery_note: string;
-          shipping_address: string;
-          shipping_fees: unknown[];
-        };
         integration: number;
         domain: string;
         metadata: {
@@ -6781,12 +6930,14 @@ export interface components {
         slug: string;
         product_code: string;
         quantity_sold: number;
+        type: string;
+        shipping_fields: {
+          delivery_note: string;
+        };
         active: boolean;
-        deleted_at: unknown;
         in_stock: boolean;
         minimum_orderable: number;
-        maximum_orderable: number | null;
-        redirect_url?: string | null;
+        maximum_orderable: unknown;
         low_stock_alert: boolean;
         id: number;
         createdAt: string;
@@ -6807,32 +6958,32 @@ export interface components {
         quantity: number;
         quantity_sold: unknown;
         type: string;
-        files: unknown[];
-        file_path: unknown;
+        files: unknown[] | null;
+        file_path: string | null;
         is_shippable: boolean;
         shipping_fields: {
           delivery_note: string;
-          shipping_address: string;
-          shipping_fees: unknown[];
+          shipping_address?: string;
+          shipping_fees?: unknown[];
         };
         unlimited: boolean;
         domain: string;
         active: boolean;
-        features: unknown;
+        features: Record<string, never> | null;
         in_stock: boolean;
         metadata: {
           background_color: string;
         };
         slug: string;
-        success_message: unknown;
-        redirect_url: unknown;
-        split_code: unknown;
-        notification_emails: unknown;
+        success_message: string | null;
+        redirect_url: string | null;
+        split_code: string | null;
+        notification_emails: string[] | null;
         minimum_orderable: number;
-        maximum_orderable: unknown;
+        maximum_orderable: number | null;
         low_stock_alert: boolean;
-        stock_threshold: unknown;
-        expires_in: unknown;
+        stock_threshold: number | null;
+        expires_in: number | null;
         id: number;
         createdAt: string;
         updatedAt: string;
@@ -6851,10 +7002,7 @@ export interface components {
       name?: string;
       /** @description The description of the product */
       description?: string;
-      /**
-       * @description Price should be in kobo if currency is NGN, pesewas, if currency is GHS,
-       *     and cents, if currency is ZAR
-       */
+      /** @description Price should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the price is the same as the base units (not multiplied by 100). */
       price?: number;
       /** @description Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD */
       currency?: string;
@@ -6880,34 +7028,17 @@ export interface components {
         price: number;
         currency: string;
         quantity: number;
-        quantity_sold: number;
+        quantity_sold: unknown;
         type: string;
-        files: unknown[];
-        file_path: unknown;
+        image_path: string;
+        file_path: string;
         is_shippable: boolean;
-        shipping_fields: {
-          delivery_note: string;
-          shipping_address: string;
-          shipping_fees: unknown[];
-        };
         unlimited: boolean;
         domain: string;
         active: boolean;
         features: unknown;
         in_stock: boolean;
-        metadata: {
-          background_color: string;
-        };
-        slug: string;
-        success_message: unknown;
-        redirect_url: unknown;
-        split_code: unknown;
-        notification_emails: unknown;
-        minimum_orderable: number;
-        maximum_orderable: unknown;
-        low_stock_alert: boolean;
-        stock_threshold: unknown;
-        expires_in: unknown;
+        metadata: unknown;
         id: number;
         integration: number;
         createdAt: string;
@@ -6922,26 +7053,17 @@ export interface components {
       id: number;
       name: string;
       slug: string;
-      orders_count: number;
+      description: string | null;
       status: string;
-      revenue: unknown;
       currency: string;
-      products: unknown[];
-      contacts: unknown[];
-      social_media: unknown[];
-      shipping_fees: unknown[];
+      createdAt: string;
+      updatedAt: string;
     };
     StorefrontListResponse: {
       status: boolean;
       message: string;
       data: components["schemas"]["StorefrontListResponseArray"][];
-      meta: {
-        total: number;
-        skipped: number;
-        perPage: number;
-        page: number;
-        pageCount: number;
-      };
+      meta: components["schemas"]["Meta"];
     };
     /**
      * @example {
@@ -6963,74 +7085,32 @@ export interface components {
       /** @description The description of the storefront */
       description?: string;
     };
-    StorefrontContactsArray: {
-      value: string;
-      id: number;
-      type_name: unknown;
-      type: number;
-    };
     StorefrontCreateResponse: {
       status: boolean;
       message: string;
       data: {
-        social_media: unknown[];
-        contacts: components["schemas"]["StorefrontContactsArray"][];
+        id: number;
         name: string;
         slug: string;
-        currency: string;
-        welcome_message: unknown;
-        success_message: unknown;
-        redirect_url: unknown;
-        description: unknown;
-        delivery_note: string;
-        background_color: string;
+        description: string | null;
         status: string;
-        shippable: boolean;
-        integration: number;
-        domain: string;
-        digital_product_expiry: unknown;
-        metadata?: Record<string, never> | null;
-        id: number;
+        currency: string;
         createdAt: string;
         updatedAt: string;
-        products: unknown[];
-        shipping_fees: unknown[];
       };
     };
     StorefrontFetchResponse: {
       status: boolean;
       message: string;
       data: {
-        social_media: unknown[];
-        contacts: components["schemas"]["StorefrontContactsArray"][];
+        id: number;
         name: string;
         slug: string;
-        currency: string;
-        welcome_message: unknown;
-        success_message: unknown;
-        redirect_url: unknown;
-        description: unknown;
-        delivery_note: string;
-        background_color: string;
+        description: string | null;
         status: string;
-        shippable: boolean;
-        integration: number;
-        domain: string;
-        digital_product_expiry: unknown;
-        metadata?: Record<string, never> | null;
-        id: number;
+        currency: string;
         createdAt: string;
         updatedAt: string;
-        products: unknown[];
-        shipping_fees: unknown[];
-      };
-      meta: {
-        product_count: number;
-        total: number;
-        skipped: number;
-        perPage: number;
-        page: number;
-        pageCount: number;
       };
     };
     /**
@@ -7069,69 +7149,22 @@ export interface components {
       /** @description An array of product IDs */
       products: number[];
     };
-    OrderItemsArray: {
-      order_item_id: number;
-      orderId: number;
-      type: string;
-      item: number;
-      current_total_items_price: number;
-      files: string;
-      order: number;
-      amount: number;
-      quantity: number;
-      createdAt: string;
-      name: string;
-      product_level_type: string;
-      product_id: number;
-      product_success_message: unknown;
-      product_redirect_url: unknown;
-      "IFNULL(p1.expires_in, p2.expires_in)": unknown;
-      product_quantity_sold: number;
-      product_notification_emails: unknown;
-      "IFNULL(p1.metadata, p2.metadata)": string;
-      storefront_redirect_url: unknown;
-      storefront_success_message: unknown;
-    };
     OrderListResponseArray: {
       id: number;
-      order_code: string;
-      integration: number;
-      domain: string;
-      currency: string;
+      code: string;
       amount: number;
-      transaction: number;
-      page: unknown;
-      customer: number;
-      customer_name: string;
+      currency: string;
       status: string;
-      shipping_address: unknown;
-      metadata: string;
-      created_at: string;
-      updated_at: string;
-      email: string;
-      paid_at: string;
-      shipping: unknown;
-      shipping_fees: number;
-      refunded: boolean;
-      is_viewed: boolean;
-      refunded_amount: unknown;
-      discount_amount: unknown;
-      discounts: unknown;
-      items: components["schemas"]["OrderItemsArray"][];
-      fully_refunded: boolean;
+      customer: {
+        email: string;
+      };
+      createdAt: string;
     };
     OrderListResponse: {
       status: boolean;
       message: string;
       data: components["schemas"]["OrderListResponseArray"][];
-      meta: {
-        total: number;
-        revenue: Record<string, never>;
-        skipped: number;
-        perPage: number;
-        page: number;
-        pageCount: number;
-      };
+      meta: components["schemas"]["Meta"];
     };
     /**
      * @description The collection of items that make up the order
@@ -7149,7 +7182,7 @@ export interface components {
       type: string;
       /** @description The number of items to get */
       quantity: number;
-      /** @description The cost of the item */
+      /** @description Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). */
       amount: number;
     };
     /**
@@ -7171,7 +7204,7 @@ export interface components {
       state: string;
       /** @description The country of the delivery address */
       country: string;
-      /** @description The cost of delivery */
+      /** @description Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). */
       shipping_fee: number;
       /** @description Extra details to be aware of for the delivery */
       delivery_note?: string;
@@ -7274,56 +7307,24 @@ export interface components {
       status: boolean;
       message: string;
       data: {
-        discounts: unknown[];
-        order_code: string;
-        domain: string;
-        currency: string;
-        amount: number;
-        email: string;
-        status: string;
-        refunded: boolean;
-        paid_at: string;
-        shipping_address: unknown;
-        metadata: Record<string, never>;
-        shipping_fees: number;
-        shipping_method: unknown;
-        is_viewed: boolean;
-        expiration_date: string;
-        pay_for_me: boolean;
         id: number;
-        integration: number;
-        page: unknown;
+        code: string;
+        amount: number;
+        currency: string;
+        status: string;
         customer: {
           id: number;
-          first_name: string;
-          last_name: string;
           email: string;
-          customer_code: string;
-          phone: string;
-          metadata: Record<string, never>;
-          risk_action: string;
-          international_format_phone: string;
         };
-        shipping: unknown;
+        line_items: {
+          product: {
+            id: number;
+            name: string;
+          };
+          quantity: number;
+          amount: number;
+        }[];
         createdAt: string;
-        updatedAt: string;
-        transaction: number;
-        is_gift: boolean;
-        payer: {
-          id: number;
-          first_name: string;
-          last_name: string;
-          email: string;
-          customer_code: string;
-          phone: string;
-          metadata: Record<string, never>;
-          risk_action: string;
-          international_format_phone: string;
-        };
-        fully_refunded: boolean;
-        refunded_amount: number;
-        items: components["schemas"]["OrderItemsArray"][];
-        discount_amount: unknown;
       };
     };
     OrderFetchProductResponseArray: {
@@ -7447,13 +7448,7 @@ export interface components {
       status: boolean;
       message: string;
       data: components["schemas"]["PageListResponseArray"][];
-      meta: {
-        total: number;
-        skipped: number;
-        perPage: number;
-        page: number;
-        pageCount: number;
-      };
+      meta: components["schemas"]["Meta"];
     };
     /**
      * @example {
@@ -7466,7 +7461,7 @@ export interface components {
       name: string;
       /** @description The description of the page */
       description?: string;
-      /** @description Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, cents, if currency is ZAR, and whole number if currency is XOF */
+      /** @description Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). */
       amount?: number;
       /**
        * @description The transaction currency. Defaults to your integration currency.
@@ -7504,6 +7499,9 @@ export interface components {
       message: string;
       data: {
         name: string;
+        description?: string | null;
+        amount: number | null;
+        split_code?: string | null;
         integration: number;
         domain: string;
         slug: string;
@@ -7518,6 +7516,23 @@ export interface components {
         updatedAt: string;
       };
     };
+    PageProductsArray: {
+      product_id: number;
+      name: string;
+      description: string;
+      product_code: string;
+      page: number;
+      price: number;
+      currency: string;
+      quantity: number;
+      type: string;
+      features: unknown;
+      is_shippable: number;
+      domain: string;
+      integration: number;
+      active: number;
+      in_stock: number;
+    };
     PageFetchResponse: {
       status: boolean;
       message: string;
@@ -7525,24 +7540,15 @@ export interface components {
         integration: number;
         domain: string;
         name: string;
-        description: unknown;
+        description?: string | null;
         amount: number | null;
         currency: string;
         slug: string;
-        custom_fields: unknown;
-        type: string;
-        redirect_url: unknown;
-        success_message: unknown;
-        collect_phone: boolean;
         active: boolean;
-        published: boolean;
-        migrate: boolean;
-        notification_email: unknown;
-        metadata: unknown;
-        split_code: unknown;
         id: number;
         createdAt: string;
         updatedAt: string;
+        products: components["schemas"]["PageProductsArray"][];
       };
     };
     /**
@@ -7566,24 +7572,13 @@ export interface components {
       data: {
         domain: string;
         name: string;
-        description: unknown;
-        amount: unknown;
+        description?: string | null;
+        amount: number | null;
         currency: string;
         slug: string;
-        custom_fields: unknown;
-        type: string;
-        redirect_url: unknown;
-        success_message: unknown;
-        collect_phone: boolean;
         active: boolean;
-        published: boolean;
-        migrate: boolean;
-        notification_email: unknown;
-        metadata: unknown;
-        split_code: unknown;
         id: number;
         integration: number;
-        plan: unknown;
         createdAt: string;
         updatedAt: string;
       };
@@ -7604,23 +7599,6 @@ export interface components {
       /** @description A list of IDs of products to add to a page. */
       products: number[];
     };
-    PageProductsArray: {
-      product_id: number;
-      name: string;
-      description: string;
-      product_code: string;
-      page: number;
-      price: number;
-      currency: string;
-      quantity: number;
-      type: string;
-      features: unknown;
-      is_shippable: number;
-      domain: string;
-      integration: number;
-      active: number;
-      in_stock: number;
-    };
     PageAddProductsResponse: {
       status: boolean;
       message: string;
@@ -7629,26 +7607,57 @@ export interface components {
         plan: unknown;
         domain: string;
         name: string;
-        description: unknown;
-        amount: unknown;
+        description?: string | null;
+        amount: number | null;
         currency: string;
         slug: string;
-        custom_fields: unknown;
+        custom_fields?: unknown;
         type: string;
-        redirect_url: unknown;
-        success_message: unknown;
+        redirect_url?: unknown;
+        success_message?: unknown;
         collect_phone: boolean;
         active: boolean;
         published: boolean;
         migrate: boolean;
-        notification_email: unknown;
-        metadata: unknown;
-        split_code: unknown;
+        notification_email?: string | null;
+        metadata?: Record<string, never> | null;
+        split_code?: string | null;
         id: number;
         createdAt: string;
         updatedAt: string;
         products: components["schemas"]["PageProductsArray"][];
       };
+    };
+    SettlementListResponseArray: {
+      id: number;
+      domain: string;
+      status: string;
+      currency: string;
+      integration: number;
+      total_amount: number;
+      effective_amount: number;
+      total_fees: number;
+      total_processed: number;
+      deductions: number | null;
+      /** Format: date-time */
+      settlement_date: string;
+      settled_by: string | null;
+      /** Format: date-time */
+      createdAt: string;
+      /** Format: date-time */
+      updatedAt: string;
+    };
+    SettlementListResponse: {
+      status: boolean;
+      message: string;
+      data: components["schemas"]["SettlementListResponseArray"][];
+      meta: components["schemas"]["Meta"];
+    };
+    SettlementTransactionsResponse: {
+      status: boolean;
+      message: string;
+      data: components["schemas"]["TransactionListResponseArray"][];
+      meta: components["schemas"]["MetaWithVolume"];
     };
     ControlPanelFetchPaymentSessionTimeoutResponse: {
       status: boolean;
@@ -7672,55 +7681,30 @@ export interface components {
       };
     };
     RefundListResponseArray: {
-      integration: number;
-      transaction: number;
-      dispute: unknown;
-      settlement: unknown;
       id: number;
+      integration: number;
       domain: string;
-      currency: string;
+      transaction: number;
+      dispute: number | null;
       amount: number;
-      status: string;
-      refunded_at: unknown;
+      deducted_amount: number | null;
+      currency: string;
+      channel: string;
+      settlement: number | null;
       refunded_by: string;
+      refunded_at: string | null;
+      expected_at: string;
       customer_note: string;
       merchant_note: string;
-      deducted_amount: number;
-      fully_deducted: number;
-      createdAt: string;
-      bank_reference: unknown;
-      transaction_reference: string;
-      reason: string;
-      customer: {
-        id: number;
-        first_name: string;
-        last_name: string;
-        email: string;
-        customer_code: string;
-        phone: string | null;
-        metadata: string;
-        risk_action: string;
-        international_format_phone: string;
-      };
-      refund_type: string;
-      transaction_amount: number;
-      initiated_by: string;
-      refund_channel: string;
-      session_id: unknown;
-      collect_account_number: boolean;
+      fully_deducted: number | null;
+      created_at: string;
+      updated_at: string;
+      status: string;
     };
     RefundListResponse: {
       status: boolean;
       message: string;
       data: components["schemas"]["RefundListResponseArray"][];
-      meta: {
-        total: number;
-        skipped: number;
-        perPage: string;
-        page: number;
-        pageCount: number;
-        failedRefundCount: number;
-      };
     };
     /**
      * @example {
@@ -7730,7 +7714,10 @@ export interface components {
     RefundCreate: {
       /** @description The reference of a previosuly completed transaction */
       transaction: string;
-      /** @description Amount to be refunded to the customer. It cannot be more than the original transaction amount */
+      /**
+       * @description Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
+       *     Amount to be refunded to the customer. It cannot be more than the original transaction amount.
+       */
       amount?: number;
       /**
        * @description Three-letter ISO currency
@@ -7760,7 +7747,7 @@ export interface components {
             account_name: unknown;
           };
           customer: {
-            international_format_phone: string | null;
+            international_format_phone?: string | null;
           };
           plan: Record<string, never>;
           subaccount: {
@@ -7844,40 +7831,23 @@ export interface components {
       data: {
         integration: number;
         transaction: number;
-        dispute: unknown;
-        settlement: unknown;
-        id: number;
+        dispute: number | null;
+        settlement: number | null;
         domain: string;
-        currency: string;
         amount: number;
+        deducted_amount: number;
+        fully_deducted: boolean;
+        currency: string;
+        channel: string;
         status: string;
-        refunded_at: unknown;
         refunded_by: string;
+        refunded_at: string;
+        expected_at: string;
         customer_note: string;
         merchant_note: string;
-        deducted_amount: number;
-        fully_deducted: number;
+        id: number;
         createdAt: string;
-        bank_reference: unknown;
-        transaction_reference: string;
-        reason: string;
-        customer: {
-          id: number;
-          first_name: string;
-          last_name: string;
-          email: string;
-          customer_code: string;
-          phone: string;
-          metadata: string;
-          risk_action: string;
-          international_format_phone: string;
-        };
-        refund_type: string;
-        transaction_amount: number;
-        initiated_by: string;
-        refund_channel: string;
-        session_id: unknown;
-        collect_account_number: boolean;
+        updatedAt: string;
       };
     };
     DisputeHistoryArray: {
@@ -7892,10 +7862,10 @@ export interface components {
     };
     DisputeListResponseArray: {
       id: number;
-      refund_amount: number;
-      currency: string;
+      refund_amount: number | null;
+      currency: string | null;
       status: string;
-      resolution: unknown;
+      resolution?: unknown;
       domain: string;
       transaction: {
         id: number;
@@ -7940,26 +7910,26 @@ export interface components {
         fees_breakdown: unknown;
         connect: unknown;
       };
-      transaction_reference: unknown;
-      category: string;
+      transaction_reference?: unknown;
+      category: string | null;
       customer: {
         id: number;
-        first_name: string;
-        last_name: string;
+        first_name?: string;
+        last_name?: string;
         email: string;
         customer_code: string;
-        phone: string | null;
-        metadata: string;
+        phone?: string | null;
+        metadata?: Record<string, never> | null;
         risk_action: string;
-        international_format_phone: string;
+        international_format_phone?: string | null;
       };
-      bin: string;
-      last4: string;
-      dueAt: unknown;
-      resolvedAt: unknown;
-      evidence: unknown;
-      attachments: unknown;
-      note: unknown;
+      bin: string | null;
+      last4: string | null;
+      dueAt?: unknown;
+      resolvedAt?: unknown;
+      evidence?: unknown;
+      attachments?: unknown;
+      note?: unknown;
       history: components["schemas"]["DisputeHistoryArray"][];
       messages: components["schemas"]["DisputeMessagesArray"][];
       createdAt: string;
@@ -7969,23 +7939,17 @@ export interface components {
       status: boolean;
       message: string;
       data: components["schemas"]["DisputeListResponseArray"][];
-      meta: {
-        total: number;
-        skipped: number;
-        perPage: number;
-        page: number;
-        pageCount: number;
-      };
+      meta: components["schemas"]["Meta"];
     };
     DisputeFetchResponse: {
       status: boolean;
       message: string;
       data: {
         id: number;
-        refund_amount: number;
-        currency: string;
+        refund_amount: number | null;
+        currency: string | null;
         status: string;
-        resolution: unknown;
+        resolution?: unknown;
         domain: string;
         transaction: {
           id: number;
@@ -8021,11 +7985,11 @@ export interface components {
           fees: number;
           fees_split: number | null;
           authorization: {
-            receiver_bank_account_number: unknown;
-            receiver_bank: unknown;
+            receiver_bank_account_number?: unknown;
+            receiver_bank?: unknown;
           };
           customer: {
-            international_format_phone: unknown;
+            international_format_phone?: string | null;
           };
           plan: Record<string, never>;
           subaccount: Record<string, never>;
@@ -8037,26 +8001,26 @@ export interface components {
           fees_breakdown: unknown;
           connect: unknown;
         };
-        transaction_reference: unknown;
-        category: string;
+        transaction_reference?: unknown;
+        category: string | null;
         customer: {
           id: number;
-          first_name: string;
-          last_name: string;
+          first_name?: string | null;
+          last_name?: string | null;
           email: string;
           customer_code: string;
-          phone: string;
-          metadata: Record<string, never>;
+          phone?: string | null;
+          metadata?: Record<string, never> | null;
           risk_action: string;
-          international_format_phone: string;
+          international_format_phone?: string | null;
         };
-        bin: string;
-        last4: string;
-        dueAt: unknown;
-        resolvedAt: unknown;
-        evidence: unknown;
-        attachments: unknown;
-        note: unknown;
+        bin: string | null;
+        last4: string | null;
+        dueAt?: unknown;
+        resolvedAt?: unknown;
+        evidence?: unknown;
+        attachments?: unknown;
+        note?: unknown;
         history: components["schemas"]["DisputeHistoryArray"][];
         messages: components["schemas"]["DisputeMessagesArray"][];
         createdAt: string;
@@ -8079,10 +8043,10 @@ export interface components {
       message: string;
       data: {
         id: number;
-        refund_amount: number;
-        currency: string;
+        refund_amount: number | null;
+        currency: string | null;
         status: string;
-        resolution: unknown;
+        resolution?: unknown;
         domain: string;
         transaction: {
           id: number;
@@ -8118,11 +8082,11 @@ export interface components {
           fees: number;
           fees_split: number | null;
           authorization: {
-            receiver_bank_account_number: unknown;
-            receiver_bank: unknown;
+            receiver_bank_account_number?: unknown;
+            receiver_bank?: unknown;
           };
           customer: {
-            international_format_phone: unknown;
+            international_format_phone?: string | null;
           };
           plan: Record<string, never>;
           subaccount: Record<string, never>;
@@ -8134,26 +8098,26 @@ export interface components {
           fees_breakdown: unknown;
           connect: unknown;
         };
-        transaction_reference: unknown;
-        category: string;
+        transaction_reference?: unknown;
+        category: string | null;
         customer: {
           id: number;
-          first_name: string;
-          last_name: string;
+          first_name?: string | null;
+          last_name?: string | null;
           email: string;
           customer_code: string;
-          phone: string;
-          metadata: Record<string, never>;
+          phone?: string | null;
+          metadata?: Record<string, never> | null;
           risk_action: string;
-          international_format_phone: string;
+          international_format_phone?: string | null;
         };
-        bin: string;
-        last4: string;
-        dueAt: unknown;
-        resolvedAt: unknown;
-        evidence: unknown;
-        attachments: unknown;
-        note: unknown;
+        bin: string | null;
+        last4: string | null;
+        dueAt?: unknown;
+        resolvedAt?: unknown;
+        evidence?: unknown;
+        attachments?: unknown;
+        note?: unknown;
         history: components["schemas"]["DisputeHistoryArray"][];
         messages: components["schemas"]["DisputeMessagesArray"][];
         createdAt: string;
@@ -8182,18 +8146,18 @@ export interface components {
       data: {
         history: components["schemas"]["DisputeHistoryArray"][];
         messages: components["schemas"]["DisputeMessagesArray"][];
-        currency: string;
-        last4: string;
-        bin: string;
-        transaction_reference: unknown;
-        merchant_transaction_reference: string;
-        refund_amount: number;
+        currency: string | null;
+        last4: string | null;
+        bin: string | null;
+        transaction_reference?: unknown;
+        merchant_transaction_reference: string | null;
+        refund_amount: number | null;
         status: string;
         domain: string;
-        resolution: unknown;
-        category: string;
-        note: unknown;
-        attachments: unknown;
+        resolution?: unknown;
+        category: string | null;
+        note?: unknown;
+        attachments?: unknown;
         id: number;
         integration: number;
         transaction: {
@@ -8230,11 +8194,11 @@ export interface components {
           fees: number;
           fees_split: number | null;
           authorization: {
-            receiver_bank_account_number: unknown;
-            receiver_bank: unknown;
+            receiver_bank_account_number?: unknown;
+            receiver_bank?: unknown;
           };
           customer: {
-            international_format_phone: unknown;
+            international_format_phone?: string | null;
           };
           plan: Record<string, never>;
           subaccount: Record<string, never>;
@@ -8246,12 +8210,12 @@ export interface components {
           fees_breakdown: unknown;
           connect: Record<string, never> | null;
         };
-        created_by: number;
-        evidence: unknown;
-        resolvedAt: unknown;
+        created_by: number | null;
+        evidence?: unknown;
+        resolvedAt?: unknown;
         createdAt: string;
         updatedAt: string;
-        dueAt: unknown;
+        dueAt?: unknown;
       };
     };
     /**
@@ -8279,26 +8243,26 @@ export interface components {
       message: string;
       data: {
         currency: string;
-        last4: string;
-        bin: string;
-        transaction_reference: unknown;
-        merchant_transaction_reference: string;
+        last4: string | null;
+        bin: string | null;
+        transaction_reference?: string | null;
+        merchant_transaction_reference: string | null;
         refund_amount: number;
         status: string;
         domain: string;
         resolution: string;
         category: string;
-        note: unknown;
+        note?: unknown;
         attachments: string;
         id: number;
-        integration: number;
-        transaction: number;
+        integration?: number;
+        transaction: Record<string, never>;
         created_by: number;
-        evidence: number;
+        evidence: number | null;
         resolvedAt: string;
         createdAt: string;
         updatedAt: string;
-        dueAt: unknown;
+        dueAt?: unknown;
         message: {
           dispute: number;
           sender: string;
@@ -8379,7 +8343,6 @@ export interface components {
       data: {
         account_number: string;
         account_name: string;
-        bank_id: number;
       };
     };
     /**
@@ -8439,7 +8402,6 @@ export interface components {
         country_name: string;
         card_type: string;
         bank: string;
-        currency: string;
         linked_bank_id: number;
       };
     };
@@ -8760,6 +8722,15 @@ export interface components {
         "application/json": components["schemas"]["DirectDebitActivationChargeResponse"];
       };
     };
+    /** @description Apple Pay registered domains retrieved */
+    ApplePayDomainsSuccess: {
+      headers: {
+        [name: string]: unknown;
+      };
+      content: {
+        "application/json": components["schemas"]["ApplePayDomainsResponse"];
+      };
+    };
     /** @description Responses from the Transaction Initialize endpoint */
     ApplePayOkResponse: {
       headers: {
@@ -8857,6 +8828,15 @@ export interface components {
       };
       content: {
         "application/json": components["schemas"]["PaymentRequestCreateResponse"];
+      };
+    };
+    /** @description Payment Request fetch response */
+    PaymentRequestViewSuccess: {
+      headers: {
+        [name: string]: unknown;
+      };
+      content: {
+        "application/json": components["schemas"]["PaymentRequestViewResponse"];
       };
     };
     /** @description Payment Request Update response */
@@ -9440,25 +9420,28 @@ export interface operations {
         next?: string;
         /** @description An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data */
         previous?: string;
-        /** @description The number of records to fetch per request */
-        per_page?: number;
-        /** @description The offset to retrieve data from */
+        /** @description Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. */
+        perPage?: number;
+        /** @description Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. */
         page?: number;
-        /** @description The start date */
+        /** @description A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 */
         from?: string;
-        /** @description The end date */
+        /** @description A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 */
         to?: string;
         /** @description Filter transaction by status */
         status?: "success" | "failed" | "abandoned" | "reversed";
         /** @description The origin of the payment */
         source?: "merchantApi" | "checkout" | "pos" | "virtualTerminal";
-        /** @description Filter transactions by a terminal ID */
-        terminal_id?: string;
+        /** @description The Terminal ID for the transactions you want to retrieve */
+        terminalid?: string;
         /** @description Filter transactions by a virtual account number */
         virtual_account_number?: string;
-        /** @description Filter transactions by a customer code */
-        customer_code?: string;
-        /** @description Filter transactions by a specific amount */
+        /** @description Specify an ID for the customer whose transactions you want to retrieve */
+        customer?: number;
+        /**
+         * @description Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
+         *     Filter transactions by a specific amount.
+         */
         amount?: number;
         /** @description The settlement ID to filter for settled transactions */
         settlement?: number;
@@ -9582,10 +9565,10 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description The ID of the transaction to fetch
+         * @description The ID or the reference of the transaction
          * @example 3936799950
          */
-        id: number;
+        id_or_reference: string;
       };
       cookie?: never;
     };
@@ -9613,6 +9596,10 @@ export interface operations {
   transaction_totals: {
     parameters: {
       query?: {
+        /** @description Number of records to fetch per page */
+        perPage?: number;
+        /** @description The section to retrieve */
+        page?: number;
         /**
          * @description The start date
          * @example 2024-06-01T00:00:01Z
@@ -9652,6 +9639,10 @@ export interface operations {
   transaction_export: {
     parameters: {
       query?: {
+        /** @description Number of records to fetch per page */
+        perPage?: number;
+        /** @description The section to retrieve */
+        page?: number;
         /**
          * @description The start date
          * @example 2024-06-01T00:00:01Z
@@ -9672,16 +9663,28 @@ export interface operations {
          * @example 123172416
          */
         customer?: number;
+        /** @description Specify the transaction currency to export */
+        currency?: string;
         /**
-         * @description Filter by subaccount code
-         * @example ACCT_dskvlw3y3dMukmt
+         * @description Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
+         *     Filter transactions by amount.
          */
-        subaccount_code?: string;
+        amount?: number;
+        /** @description Set to true to export only settled transactions. false for pending transactions. Leave undefined to export all transactions */
+        settled?: boolean;
         /**
          * @description Filter by the settlement ID
          * @example 5687910
          */
         settlement?: number;
+        /** @description Specify a payment page's id to export only transactions conducted on said page */
+        payment_page?: number;
+        /**
+         * @deprecated
+         * @description Filter by subaccount code
+         * @example ACCT_dskvlw3y3dMukmt
+         */
+        subaccount_code?: string;
       };
       header?: never;
       path?: never;
@@ -9898,7 +9901,14 @@ export interface operations {
       };
     };
     responses: {
-      200: components["responses"]["Ok"];
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ChargeCheckPendingResponse"];
+        };
+      };
       401: components["responses"]["Unauthorized"];
       /** @description Server error */
       default: {
@@ -9950,8 +9960,10 @@ export interface operations {
         perPage?: number;
         /** @description The offset to retrieve data from */
         page?: number;
-        /** @description Filter by the status of the charges */
-        status?: "active" | "paused" | "complete";
+        /** @description A timestamp from which to start listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 */
+        from?: string;
+        /** @description A timestamp at which to stop listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 */
+        to?: string;
       };
       header?: never;
       path?: never;
@@ -10016,10 +10028,10 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description The code for the charge whose batches you want to retrieve
+         * @description An ID or code for the charge whose batches you want to retrieve.
          * @example BCH_180tl7oq7cayggh
          */
-        code: string;
+        id_or_code: string;
       };
       cookie?: never;
     };
@@ -10051,16 +10063,20 @@ export interface operations {
         perPage?: number;
         /** @description The offset to retrieve data from */
         page?: number;
-        /** @description Filter by the status of the charges */
-        status?: "success" | "failed" | "pending" | "error" | "inactive_authorization";
+        /** @description Either one of these values: pending, success or failed */
+        status?: "pending" | "success" | "failed";
+        /** @description A timestamp from which to start listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 */
+        from?: string;
+        /** @description A timestamp at which to stop listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 */
+        to?: string;
       };
       header?: never;
       path: {
         /**
-         * @description An code for the batch whose charges you want to retrieve
+         * @description An ID or code for the batch whose charges you want to retrieve.
          * @example BCH_180tl7oq7cayggh
          */
-        code: string;
+        id_or_code: string;
       };
       cookie?: never;
     };
@@ -10160,8 +10176,10 @@ export interface operations {
         perPage?: number;
         /** @description The offset to retrieve data from */
         page?: number;
-        /** @description Filter by the state of the subaccounts */
-        active?: boolean;
+        /** @description A timestamp from which to start listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 */
+        from?: string;
+        /** @description A timestamp at which to stop listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 */
+        to?: string;
       };
       header?: never;
       path?: never;
@@ -10226,10 +10244,10 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description The subaccount code you want to fetch
+         * @description The subaccount ID or code you want to fetch
          * @example ACCT_6uujpqtzmnufzkw
          */
-        code: string;
+        id_or_code: string;
       };
       cookie?: never;
     };
@@ -10260,10 +10278,10 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description The subaccount code you want to fetch
+         * @description The subaccount ID or code you want to fetch
          * @example ACCT_6uujpqtzmnufzkw
          */
-        code: string;
+        id_or_code: string;
       };
       cookie?: never;
     };
@@ -10305,13 +10323,15 @@ export interface operations {
         name?: string;
         /** @description The status of the split */
         active?: boolean;
-        /** @description The number of records to fetch per request */
-        per_page?: number;
-        /** @description The offset to retrieve data from */
+        /** @description Sort by name, defaults to createdAt date */
+        sort_by?: string;
+        /** @description Number of splits per page. If not specified, we use a default value of 50. */
+        perPage?: number;
+        /** @description Page number to view. If not specified, we use a default value of 1. */
         page?: number;
-        /** @description The start date */
+        /** @description A timestamp from which to start listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21 */
         from?: string;
-        /** @description The end date */
+        /** @description A timestamp at which to stop listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21 */
         to?: string;
       };
       header?: never;
@@ -10380,7 +10400,7 @@ export interface operations {
          * @description The ID of the split configuration to fetch
          * @example 4896895
          */
-        id: number;
+        id: string;
       };
       cookie?: never;
     };
@@ -10449,7 +10469,7 @@ export interface operations {
          * @description The ID of the split configuration to fetch
          * @example 4896895
          */
-        id: number;
+        id: string;
       };
       cookie?: never;
     };
@@ -10487,14 +10507,14 @@ export interface operations {
          * @description The ID of the split configuration to fetch
          * @example 4896895
          */
-        id: number;
+        id: string;
       };
       cookie?: never;
     };
     requestBody?: {
       content: {
-        "application/json": components["schemas"]["SplitSubaccounts"];
-        "application/x-www-form-urlencoded": components["schemas"]["SplitSubaccounts"];
+        "application/json": components["schemas"]["SplitSubaccountRemove"];
+        "application/x-www-form-urlencoded": components["schemas"]["SplitSubaccountRemove"];
       };
     };
     responses: {
@@ -10613,8 +10633,8 @@ export interface operations {
         next?: string;
         /** @description A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request */
         previous?: string;
-        /** @description Specify how many records you want to retrieve per page */
-        per_page?: number;
+        /** @description Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. */
+        perPage?: number;
       };
       header?: never;
       path?: never;
@@ -10746,13 +10766,19 @@ export interface operations {
   virtualTerminal_list: {
     parameters: {
       query?: {
+        /** @description Filter by status ('active' or 'inactive') */
+        status?: "active" | "inactive";
         /**
-         * @description The number of records to fetch per request
-         * @example 75
+         * @description Number of records per page
+         * @example 50
          */
         perPage?: number;
-        /** @description The offset to retrieve data from */
-        page?: number;
+        /** @description Search query string */
+        search?: string;
+        /** @description Cursor for next page */
+        next?: string;
+        /** @description Cursor for previous page */
+        previous?: string;
       };
       header?: never;
       path?: never;
@@ -11010,14 +11036,14 @@ export interface operations {
         next?: string;
         /** @description An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data */
         previous?: string;
-        /** @description The start date */
+        /** @description A timestamp from which to start listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 */
         from?: string;
-        /** @description The end date */
+        /** @description A timestamp at which to stop listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 */
         to?: string;
-        /** @description The number of records to fetch per request */
-        perPage?: string;
-        /** @description The offset to retrieve data from */
-        page?: string;
+        /** @description Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. */
+        perPage?: number;
+        /** @description Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. */
+        page?: number;
       };
       header?: never;
       path?: never;
@@ -11082,10 +11108,10 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description The code for the customer gotten from the response of the customer creation
+         * @description An email or customer code for the customer you want to fetch
          * @example CUS_c6wqvwmvwopw4ms
          */
-        code: string;
+        email_or_code: string;
       };
       cookie?: never;
     };
@@ -11116,10 +11142,10 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description The code for the customer gotten from the response of the customer creation
+         * @description An email or customer code for the customer you want to fetch
          * @example CUS_c6wqvwmvwopw4ms
          */
-        code: string;
+        email_or_code: string;
       };
       cookie?: never;
     };
@@ -11187,10 +11213,10 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description The code for the customer gotten from the response of the customer creation
+         * @description Customer code
          * @example CUS_c6wqvwmvwopw4ms
          */
-        code: string;
+        customer_code: string;
       };
       cookie?: never;
     };
@@ -11726,13 +11752,13 @@ export interface operations {
     parameters: {
       query?: {
         /**
-         * @description A flag to indicate if cursor based pagination should be used
+         * @description Flag to enable cursor pagination on the endpoint
          * @example true
          */
         use_cursor?: boolean;
-        /** @description An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data */
+        /** @description A cursor that indicates your place in the list. It can be used to fetch the next page of the list */
         next?: string;
-        /** @description An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data */
+        /** @description A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request */
         previous?: string;
       };
       header?: never;
@@ -11741,7 +11767,7 @@ export interface operations {
     };
     requestBody?: never;
     responses: {
-      200: components["responses"]["Ok"];
+      200: components["responses"]["ApplePayDomainsSuccess"];
       401: components["responses"]["Unauthorized"];
       404: components["responses"]["NotFound"];
       /** @description Server error */
@@ -11811,14 +11837,15 @@ export interface operations {
         perPage?: number;
         /** @description The section to retrieve */
         page?: number;
+        /** @description Filter list by plans with specified status */
+        status?: string;
         /** @description Specify interval of the plan */
-        interval?: "daily" | "weekly" | "monthly" | "biannually" | "annually";
-        /** @description The amount on the plans to retrieve */
+        interval?: "daily" | "weekly" | "monthly" | "quarterly" | "biannually" | "annually";
+        /**
+         * @description Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
+         *     Filter plans by a specific amount.
+         */
         amount?: number;
-        /** @description The start date */
-        from?: string;
-        /** @description The end date */
-        to?: string;
       };
       header?: never;
       path?: never;
@@ -11869,10 +11896,10 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description The plan code you want to fetch
+         * @description The plan ID or code you want to fetch
          * @example PLN_gx2wn530m0i3w3m
          */
-        code: string;
+        id_or_code: string;
       };
       cookie?: never;
     };
@@ -11896,10 +11923,10 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description The plan code you want to fetch
+         * @description The plan ID or code you want to fetch
          * @example PLN_gx2wn530m0i3w3m
          */
-        code: string;
+        id_or_code: string;
       };
       cookie?: never;
     };
@@ -11934,12 +11961,8 @@ export interface operations {
          * @example 2697466
          */
         plan?: number;
-        /** @description Customer ID */
-        customer?: string;
-        /** @description The start date */
-        from?: string;
-        /** @description The end date */
-        to?: string;
+        /** @description Filter by Customer ID */
+        customer?: number;
       };
       header?: never;
       path?: never;
@@ -11990,10 +12013,10 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description The subscription code for the subscription you want to fetch
+         * @description The subscription ID or code you want to fetch
          * @example SUB_5co81xgmwg78x3d
          */
-        code: string;
+        id_or_code: string;
       };
       cookie?: never;
     };
@@ -12116,16 +12139,14 @@ export interface operations {
   transferrecipient_list: {
     parameters: {
       query?: {
-        /** @description A flag to indicate if cursor based pagination should be used */
-        use_cursor?: boolean;
-        /** @description An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data */
-        next?: string;
-        /** @description An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data */
-        previous?: string;
-        /** @description The number of records to fetch per request */
-        per_page?: number;
-        /** @description The offset to retrieve data from */
+        /** @description Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. */
+        perPage?: number;
+        /** @description Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. */
         page?: number;
+        /** @description A timestamp from which to start listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 */
+        from?: string;
+        /** @description A timestamp at which to stop listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 */
+        to?: string;
       };
       header?: never;
       path?: never;
@@ -12166,7 +12187,7 @@ export interface operations {
       };
     };
     responses: {
-      201: {
+      200: {
         headers: {
           [name: string]: unknown;
         };
@@ -12223,10 +12244,10 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description Transfer recipient code
+         * @description An ID or code for the recipient whose details you want to receive.
          * @example RCP_5ap8rcimmcj8lbi
          */
-        code: string;
+        id_or_code: string;
       };
       cookie?: never;
     };
@@ -12258,10 +12279,10 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description Transfer recipient code
+         * @description An ID or code for the recipient whose details you want to receive.
          * @example RCP_5ap8rcimmcj8lbi
          */
-        code: string;
+        id_or_code: string;
       };
       cookie?: never;
     };
@@ -12298,10 +12319,10 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description Transfer recipient code
+         * @description An ID or code for the recipient whose details you want to receive.
          * @example RCP_5ap8rcimmcj8lbi
          */
-        code: string;
+        id_or_code: string;
       };
       cookie?: never;
     };
@@ -12330,36 +12351,16 @@ export interface operations {
   transfer_list: {
     parameters: {
       query?: {
-        /**
-         * @description A flag to indicate if cursor based pagination should be used
-         * @example true
-         */
-        use_cursor?: boolean;
-        /** @description An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data */
-        next?: string;
-        /** @description An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data */
-        previous?: string;
-        /** @description The number of records to fetch per request */
-        per_page?: number;
-        /** @description The offset to retrieve data from */
+        /** @description Specify how many records you want to retrieve per page. If not specify we use a default value of 50. */
+        perPage?: number;
+        /** @description Specify exactly what transfer you want to page. If not specify we use a default value of 1. */
         page?: number;
-        /** @description The start date */
+        /** @description A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 */
         from?: string;
-        /** @description The end date */
+        /** @description A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 */
         to?: string;
-        /** @description Filter transfer by the recipient code */
-        recipient?: string;
-        /** @description Filter transfer by status */
-        status?:
-          | "pending"
-          | "success"
-          | "failed"
-          | "otp"
-          | "abandoned"
-          | "reversed"
-          | "blocked"
-          | "rejected"
-          | "received";
+        /** @description Filter by the recipient ID */
+        recipient?: number;
       };
       header?: never;
       path?: never;
@@ -12482,10 +12483,10 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description Transfer code
+         * @description The transfer ID or code you want to fetch
          * @example TRF_1ptvuv321ahaa7q
          */
-        code: string;
+        id_or_code: string;
       };
       cookie?: never;
     };
@@ -12843,16 +12844,16 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description The unique identifier of a previously created payment request
+         * @description The payment request ID or code you want to fetch
          * @example 18823736
          */
-        id: number;
+        id_or_code: string;
       };
       cookie?: never;
     };
     requestBody?: never;
     responses: {
-      200: components["responses"]["PaymentRequestListSuccess"];
+      200: components["responses"]["PaymentRequestViewSuccess"];
       401: components["responses"]["Unauthorized"];
       404: components["responses"]["NotFound"];
       /** @description Server error */
@@ -12870,10 +12871,10 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description The unique identifier of a previously created payment request
+         * @description The payment request ID or code you want to fetch
          * @example 18823736
          */
-        id: number;
+        id_or_code: string;
       };
       cookie?: never;
     };
@@ -13673,10 +13674,10 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description The unique identifier of a payment page
+         * @description The page ID or slug you want to fetch
          * @example 1891222
          */
-        id: number;
+        id_or_slug: string;
       };
       cookie?: never;
     };
@@ -13700,10 +13701,10 @@ export interface operations {
       header?: never;
       path: {
         /**
-         * @description The unique identifier of a payment page
+         * @description The page ID or slug you want to fetch
          * @example 1891222
          */
-        id: number;
+        id_or_slug: string;
       };
       cookie?: never;
     };
@@ -13784,15 +13785,23 @@ export interface operations {
     parameters: {
       query?: {
         /**
-         * @description The number of records to fetch per request
+         * @description Number of records to fetch per page
          * @example 50
          */
         perPage?: number;
         /**
-         * @description The offset to retrieve data from
+         * @description The section to retrieve
          * @example 2
          */
         page?: number;
+        /** @description The start date */
+        from?: string;
+        /** @description The end date */
+        to?: string;
+        /** @description Filter by status */
+        status?: "success" | "failed" | "processing" | "pending";
+        /** @description Filter by subaccount ID. Set to `none` to return only main account settlements. */
+        subaccount?: string;
       };
       header?: never;
       path?: never;
@@ -13800,7 +13809,14 @@ export interface operations {
     };
     requestBody?: never;
     responses: {
-      200: components["responses"]["Ok"];
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SettlementListResponse"];
+        };
+      };
       401: components["responses"]["Unauthorized"];
       404: components["responses"]["NotFound"];
       /** @description Server error */
@@ -13814,7 +13830,22 @@ export interface operations {
   };
   settlements_transaction: {
     parameters: {
-      query?: never;
+      query?: {
+        /**
+         * @description Number of records to fetch per page
+         * @example 50
+         */
+        perPage?: number;
+        /**
+         * @description The section to retrieve
+         * @example 2
+         */
+        page?: number;
+        /** @description The start date */
+        from?: string;
+        /** @description The end date */
+        to?: string;
+      };
       header?: never;
       path: {
         /**
@@ -13827,7 +13858,14 @@ export interface operations {
     };
     requestBody?: never;
     responses: {
-      200: components["responses"]["Ok"];
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SettlementTransactionsResponse"];
+        };
+      };
       401: components["responses"]["Unauthorized"];
       404: components["responses"]["NotFound"];
       /** @description Server error */
@@ -13902,6 +13940,10 @@ export interface operations {
   refund_list: {
     parameters: {
       query?: {
+        /** @description The transaction ID of the refunded transaction */
+        transaction?: string;
+        /** @description Any of the supported currency */
+        currency?: string;
         /**
          * @description Number of records to fetch per page
          * @example 10
@@ -14264,20 +14306,20 @@ export interface operations {
     parameters: {
       query?: {
         /**
-         * @description The country from which to obtain the list of supported banks
+         * @description The country from which to obtain the list of supported banks. Accepted values are: ghana, kenya, nigeria, south africa
          * @example nigeria
          */
         country?: "ghana" | "kenya" | "nigeria" | "south africa";
         /**
-         * @description The country from which to obtain the list of supported banks
+         * @description One of the supported currency
          * @example NGN
          */
         currency?: "GHS" | "KES" | "NGN" | "ZAR";
         /** @description A flag to indicate if cursor based pagination should be used */
         use_cursor?: boolean;
-        /** @description The number of records to fetch per request */
+        /** @description The number of objects to return per page. Defaults to 50, and limited to 100 records per page. */
         perPage?: number;
-        /** @description The offset to retrieve data from */
+        /** @description Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. */
         page?: number;
         /**
          * @description An alphanumeric value returned for every cursor based retrieval, used to
@@ -14298,10 +14340,10 @@ export interface operations {
          *     You need to combine this with either the `currency` or `country` filter.
          */
         enabled_for_verification?: boolean;
-        /** @description The type of gateway for a Nigerian bank */
+        /** @description The gateway type of the bank */
         gateway?: "emandate" | "digitalbankmandate";
-        /** @description Type of financial channel */
-        type?: "ghipps" | "mobile_money" | "nuban" | "kepss" | "basa";
+        /** @description Type of financial channel. For Ghanaian channels, please use either mobile_money for mobile money channels OR ghipss for bank channels */
+        type?: "ghipss" | "mobile_money" | "nuban" | "kepss" | "basa";
         /**
          * @description A flag that returns Nigerian banks with their NIP institution code.
          *     The returned value can be used in identifying institutions on NIP.
@@ -14331,14 +14373,14 @@ export interface operations {
       query?: {
         /**
          * @description The account number of interest
-         * @example 22728151
+         * @example 0022728151
          */
-        account_number?: number;
+        account_number?: string;
         /**
          * @description The bank code associated with the account number
-         * @example 63
+         * @example 063
          */
-        bank_code?: number;
+        bank_code?: string;
       };
       header?: never;
       path?: never;
@@ -14392,7 +14434,7 @@ export interface operations {
          * @description The card bank identification number
          * @example 539983
          */
-        bin: number;
+        bin: string;
       };
       cookie?: never;
     };

@@ -60,7 +60,7 @@ class TransactionListResponseArraySource implements ModelInterface, ArrayAccess,
     protected static $openAPITypes = [
         'source' => 'string',
         'type' => 'string',
-        'identifier' => 'mixed',
+        'identifier' => 'string',
         'entry_point' => 'string'
     ];
 
@@ -296,18 +296,6 @@ class TransactionListResponseArraySource implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        if ($this->container['source'] === null) {
-            $invalidProperties[] = "'source' can't be null";
-        }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        if ($this->container['identifier'] === null && !$this->isNullableSetToNull('identifier')) {
-            $invalidProperties[] = "'identifier' can't be null";
-        }
-        if ($this->container['entry_point'] === null) {
-            $invalidProperties[] = "'entry_point' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -326,7 +314,7 @@ class TransactionListResponseArraySource implements ModelInterface, ArrayAccess,
     /**
      * Gets source
      *
-     * @return string
+     * @return string|null
      */
     public function getSource()
     {
@@ -336,7 +324,7 @@ class TransactionListResponseArraySource implements ModelInterface, ArrayAccess,
     /**
      * Sets source
      *
-     * @param string $source source
+     * @param string|null $source source
      *
      * @return self
      */
@@ -353,7 +341,7 @@ class TransactionListResponseArraySource implements ModelInterface, ArrayAccess,
     /**
      * Gets type
      *
-     * @return string
+     * @return string|null
      */
     public function getType()
     {
@@ -363,7 +351,7 @@ class TransactionListResponseArraySource implements ModelInterface, ArrayAccess,
     /**
      * Sets type
      *
-     * @param string $type type
+     * @param string|null $type type
      *
      * @return self
      */
@@ -380,7 +368,7 @@ class TransactionListResponseArraySource implements ModelInterface, ArrayAccess,
     /**
      * Gets identifier
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getIdentifier()
     {
@@ -390,7 +378,7 @@ class TransactionListResponseArraySource implements ModelInterface, ArrayAccess,
     /**
      * Sets identifier
      *
-     * @param mixed|null $identifier identifier
+     * @param string|null $identifier identifier
      *
      * @return self
      */
@@ -414,7 +402,7 @@ class TransactionListResponseArraySource implements ModelInterface, ArrayAccess,
     /**
      * Gets entry_point
      *
-     * @return string
+     * @return string|null
      */
     public function getEntryPoint()
     {
@@ -424,7 +412,7 @@ class TransactionListResponseArraySource implements ModelInterface, ArrayAccess,
     /**
      * Sets entry_point
      *
-     * @param string $entry_point entry_point
+     * @param string|null $entry_point entry_point
      *
      * @return self
      */

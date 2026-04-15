@@ -22,15 +22,18 @@ var _ MappedNullable = &SubscriptionListResponseArrayCustomer{}
 
 // SubscriptionListResponseArrayCustomer struct for SubscriptionListResponseArrayCustomer
 type SubscriptionListResponseArrayCustomer struct {
-	Id int32 `json:"id"`
 	FirstName string `json:"first_name"`
 	LastName string `json:"last_name"`
 	Email string `json:"email"`
+	Phone string `json:"phone"`
+	Metadata interface{} `json:"metadata"`
+	Domain string `json:"domain"`
 	CustomerCode string `json:"customer_code"`
-	Phone NullableString `json:"phone"`
-	Metadata string `json:"metadata"`
 	RiskAction string `json:"risk_action"`
-	InternationalFormatPhone string `json:"international_format_phone"`
+	Id int32 `json:"id"`
+	Integration int32 `json:"integration"`
+	CreatedAt string `json:"createdAt"`
+	UpdatedAt string `json:"updatedAt"`
 }
 
 type _SubscriptionListResponseArrayCustomer SubscriptionListResponseArrayCustomer
@@ -39,17 +42,20 @@ type _SubscriptionListResponseArrayCustomer SubscriptionListResponseArrayCustome
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSubscriptionListResponseArrayCustomer(id int32, firstName string, lastName string, email string, customerCode string, phone NullableString, metadata string, riskAction string, internationalFormatPhone string) *SubscriptionListResponseArrayCustomer {
+func NewSubscriptionListResponseArrayCustomer(firstName string, lastName string, email string, phone string, metadata interface{}, domain string, customerCode string, riskAction string, id int32, integration int32, createdAt string, updatedAt string) *SubscriptionListResponseArrayCustomer {
 	this := SubscriptionListResponseArrayCustomer{}
-	this.Id = id
 	this.FirstName = firstName
 	this.LastName = lastName
 	this.Email = email
-	this.CustomerCode = customerCode
 	this.Phone = phone
 	this.Metadata = metadata
+	this.Domain = domain
+	this.CustomerCode = customerCode
 	this.RiskAction = riskAction
-	this.InternationalFormatPhone = internationalFormatPhone
+	this.Id = id
+	this.Integration = integration
+	this.CreatedAt = createdAt
+	this.UpdatedAt = updatedAt
 	return &this
 }
 
@@ -59,30 +65,6 @@ func NewSubscriptionListResponseArrayCustomer(id int32, firstName string, lastNa
 func NewSubscriptionListResponseArrayCustomerWithDefaults() *SubscriptionListResponseArrayCustomer {
 	this := SubscriptionListResponseArrayCustomer{}
 	return &this
-}
-
-// GetId returns the Id field value
-func (o *SubscriptionListResponseArrayCustomer) GetId() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *SubscriptionListResponseArrayCustomer) GetIdOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *SubscriptionListResponseArrayCustomer) SetId(v int32) {
-	o.Id = v
 }
 
 // GetFirstName returns the FirstName field value
@@ -157,6 +139,80 @@ func (o *SubscriptionListResponseArrayCustomer) SetEmail(v string) {
 	o.Email = v
 }
 
+// GetPhone returns the Phone field value
+func (o *SubscriptionListResponseArrayCustomer) GetPhone() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Phone
+}
+
+// GetPhoneOk returns a tuple with the Phone field value
+// and a boolean to check if the value has been set.
+func (o *SubscriptionListResponseArrayCustomer) GetPhoneOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Phone, true
+}
+
+// SetPhone sets field value
+func (o *SubscriptionListResponseArrayCustomer) SetPhone(v string) {
+	o.Phone = v
+}
+
+// GetMetadata returns the Metadata field value
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *SubscriptionListResponseArrayCustomer) GetMetadata() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+
+	return o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SubscriptionListResponseArrayCustomer) GetMetadataOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Metadata) {
+		return nil, false
+	}
+	return &o.Metadata, true
+}
+
+// SetMetadata sets field value
+func (o *SubscriptionListResponseArrayCustomer) SetMetadata(v interface{}) {
+	o.Metadata = v
+}
+
+// GetDomain returns the Domain field value
+func (o *SubscriptionListResponseArrayCustomer) GetDomain() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Domain
+}
+
+// GetDomainOk returns a tuple with the Domain field value
+// and a boolean to check if the value has been set.
+func (o *SubscriptionListResponseArrayCustomer) GetDomainOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Domain, true
+}
+
+// SetDomain sets field value
+func (o *SubscriptionListResponseArrayCustomer) SetDomain(v string) {
+	o.Domain = v
+}
+
 // GetCustomerCode returns the CustomerCode field value
 func (o *SubscriptionListResponseArrayCustomer) GetCustomerCode() string {
 	if o == nil {
@@ -179,56 +235,6 @@ func (o *SubscriptionListResponseArrayCustomer) GetCustomerCodeOk() (*string, bo
 // SetCustomerCode sets field value
 func (o *SubscriptionListResponseArrayCustomer) SetCustomerCode(v string) {
 	o.CustomerCode = v
-}
-
-// GetPhone returns the Phone field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *SubscriptionListResponseArrayCustomer) GetPhone() string {
-	if o == nil || o.Phone.Get() == nil {
-		var ret string
-		return ret
-	}
-
-	return *o.Phone.Get()
-}
-
-// GetPhoneOk returns a tuple with the Phone field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubscriptionListResponseArrayCustomer) GetPhoneOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Phone.Get(), o.Phone.IsSet()
-}
-
-// SetPhone sets field value
-func (o *SubscriptionListResponseArrayCustomer) SetPhone(v string) {
-	o.Phone.Set(&v)
-}
-
-// GetMetadata returns the Metadata field value
-func (o *SubscriptionListResponseArrayCustomer) GetMetadata() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Metadata
-}
-
-// GetMetadataOk returns a tuple with the Metadata field value
-// and a boolean to check if the value has been set.
-func (o *SubscriptionListResponseArrayCustomer) GetMetadataOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Metadata, true
-}
-
-// SetMetadata sets field value
-func (o *SubscriptionListResponseArrayCustomer) SetMetadata(v string) {
-	o.Metadata = v
 }
 
 // GetRiskAction returns the RiskAction field value
@@ -255,28 +261,100 @@ func (o *SubscriptionListResponseArrayCustomer) SetRiskAction(v string) {
 	o.RiskAction = v
 }
 
-// GetInternationalFormatPhone returns the InternationalFormatPhone field value
-func (o *SubscriptionListResponseArrayCustomer) GetInternationalFormatPhone() string {
+// GetId returns the Id field value
+func (o *SubscriptionListResponseArrayCustomer) GetId() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *SubscriptionListResponseArrayCustomer) GetIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *SubscriptionListResponseArrayCustomer) SetId(v int32) {
+	o.Id = v
+}
+
+// GetIntegration returns the Integration field value
+func (o *SubscriptionListResponseArrayCustomer) GetIntegration() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Integration
+}
+
+// GetIntegrationOk returns a tuple with the Integration field value
+// and a boolean to check if the value has been set.
+func (o *SubscriptionListResponseArrayCustomer) GetIntegrationOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Integration, true
+}
+
+// SetIntegration sets field value
+func (o *SubscriptionListResponseArrayCustomer) SetIntegration(v int32) {
+	o.Integration = v
+}
+
+// GetCreatedAt returns the CreatedAt field value
+func (o *SubscriptionListResponseArrayCustomer) GetCreatedAt() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.InternationalFormatPhone
+	return o.CreatedAt
 }
 
-// GetInternationalFormatPhoneOk returns a tuple with the InternationalFormatPhone field value
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-func (o *SubscriptionListResponseArrayCustomer) GetInternationalFormatPhoneOk() (*string, bool) {
+func (o *SubscriptionListResponseArrayCustomer) GetCreatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.InternationalFormatPhone, true
+	return &o.CreatedAt, true
 }
 
-// SetInternationalFormatPhone sets field value
-func (o *SubscriptionListResponseArrayCustomer) SetInternationalFormatPhone(v string) {
-	o.InternationalFormatPhone = v
+// SetCreatedAt sets field value
+func (o *SubscriptionListResponseArrayCustomer) SetCreatedAt(v string) {
+	o.CreatedAt = v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value
+func (o *SubscriptionListResponseArrayCustomer) GetUpdatedAt() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
+// and a boolean to check if the value has been set.
+func (o *SubscriptionListResponseArrayCustomer) GetUpdatedAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UpdatedAt, true
+}
+
+// SetUpdatedAt sets field value
+func (o *SubscriptionListResponseArrayCustomer) SetUpdatedAt(v string) {
+	o.UpdatedAt = v
 }
 
 func (o SubscriptionListResponseArrayCustomer) MarshalJSON() ([]byte, error) {
@@ -289,15 +367,20 @@ func (o SubscriptionListResponseArrayCustomer) MarshalJSON() ([]byte, error) {
 
 func (o SubscriptionListResponseArrayCustomer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
 	toSerialize["first_name"] = o.FirstName
 	toSerialize["last_name"] = o.LastName
 	toSerialize["email"] = o.Email
+	toSerialize["phone"] = o.Phone
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
+	}
+	toSerialize["domain"] = o.Domain
 	toSerialize["customer_code"] = o.CustomerCode
-	toSerialize["phone"] = o.Phone.Get()
-	toSerialize["metadata"] = o.Metadata
 	toSerialize["risk_action"] = o.RiskAction
-	toSerialize["international_format_phone"] = o.InternationalFormatPhone
+	toSerialize["id"] = o.Id
+	toSerialize["integration"] = o.Integration
+	toSerialize["createdAt"] = o.CreatedAt
+	toSerialize["updatedAt"] = o.UpdatedAt
 	return toSerialize, nil
 }
 
@@ -306,15 +389,18 @@ func (o *SubscriptionListResponseArrayCustomer) UnmarshalJSON(data []byte) (err 
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"id",
 		"first_name",
 		"last_name",
 		"email",
-		"customer_code",
 		"phone",
 		"metadata",
+		"domain",
+		"customer_code",
 		"risk_action",
-		"international_format_phone",
+		"id",
+		"integration",
+		"createdAt",
+		"updatedAt",
 	}
 
 	allProperties := make(map[string]interface{})

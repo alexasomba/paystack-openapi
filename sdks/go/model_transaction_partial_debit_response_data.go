@@ -28,7 +28,7 @@ type TransactionPartialDebitResponseData struct {
 	Status string `json:"status"`
 	Reference string `json:"reference"`
 	Domain string `json:"domain"`
-	Metadata string `json:"metadata"`
+	Metadata NullableTransactionPartialDebitResponseDataMetadata `json:"metadata"`
 	GatewayResponse string `json:"gateway_response"`
 	Message interface{} `json:"message"`
 	Channel string `json:"channel"`
@@ -48,7 +48,7 @@ type _TransactionPartialDebitResponseData TransactionPartialDebitResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransactionPartialDebitResponseData(amount int32, currency string, transactionDate string, status string, reference string, domain string, metadata string, gatewayResponse string, message interface{}, channel string, ipAddress interface{}, log NullableChargeAuthorizationResponseDataLog, fees int32, authorization TransactionPartialDebitResponseDataAuthorization, customer TransactionPartialDebitResponseDataCustomer, plan int32, requestedAmount int32, id int32) *TransactionPartialDebitResponseData {
+func NewTransactionPartialDebitResponseData(amount int32, currency string, transactionDate string, status string, reference string, domain string, metadata NullableTransactionPartialDebitResponseDataMetadata, gatewayResponse string, message interface{}, channel string, ipAddress interface{}, log NullableChargeAuthorizationResponseDataLog, fees int32, authorization TransactionPartialDebitResponseDataAuthorization, customer TransactionPartialDebitResponseDataCustomer, plan int32, requestedAmount int32, id int32) *TransactionPartialDebitResponseData {
 	this := TransactionPartialDebitResponseData{}
 	this.Amount = amount
 	this.Currency = currency
@@ -224,27 +224,29 @@ func (o *TransactionPartialDebitResponseData) SetDomain(v string) {
 }
 
 // GetMetadata returns the Metadata field value
-func (o *TransactionPartialDebitResponseData) GetMetadata() string {
-	if o == nil {
-		var ret string
+// If the value is explicit nil, the zero value for TransactionPartialDebitResponseDataMetadata will be returned
+func (o *TransactionPartialDebitResponseData) GetMetadata() TransactionPartialDebitResponseDataMetadata {
+	if o == nil || o.Metadata.Get() == nil {
+		var ret TransactionPartialDebitResponseDataMetadata
 		return ret
 	}
 
-	return o.Metadata
+	return *o.Metadata.Get()
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
-func (o *TransactionPartialDebitResponseData) GetMetadataOk() (*string, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TransactionPartialDebitResponseData) GetMetadataOk() (*TransactionPartialDebitResponseDataMetadata, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Metadata, true
+	return o.Metadata.Get(), o.Metadata.IsSet()
 }
 
 // SetMetadata sets field value
-func (o *TransactionPartialDebitResponseData) SetMetadata(v string) {
-	o.Metadata = v
+func (o *TransactionPartialDebitResponseData) SetMetadata(v TransactionPartialDebitResponseDataMetadata) {
+	o.Metadata.Set(&v)
 }
 
 // GetGatewayResponse returns the GatewayResponse field value
@@ -533,7 +535,7 @@ func (o TransactionPartialDebitResponseData) ToMap() (map[string]interface{}, er
 	toSerialize["status"] = o.Status
 	toSerialize["reference"] = o.Reference
 	toSerialize["domain"] = o.Domain
-	toSerialize["metadata"] = o.Metadata
+	toSerialize["metadata"] = o.Metadata.Get()
 	toSerialize["gateway_response"] = o.GatewayResponse
 	if o.Message != nil {
 		toSerialize["message"] = o.Message

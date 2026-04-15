@@ -18,8 +18,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from datetime import datetime
-from pydantic import Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
-from typing import Optional, Union
+from pydantic import Field, StrictBool, StrictInt, StrictStr, field_validator
+from typing import Optional
 from typing_extensions import Annotated
 from alexasomba_paystack.models.charge_authorization_response import ChargeAuthorizationResponse
 from alexasomba_paystack.models.response import Response
@@ -335,7 +335,7 @@ class TransactionApi:
     def transaction_check_authorization(
         self,
         email: Annotated[StrictStr, Field(description="Customer's email address")],
-        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR")],
+        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas if currency is GHS, cents if currency is ZAR, and whole number if currency is XOF")],
         authorization_code: Annotated[Optional[StrictStr], Field(description="Valid authorization code to charge")] = None,
         currency: Annotated[Optional[StrictStr], Field(description="The transaction currency")] = None,
         _request_timeout: Union[
@@ -357,7 +357,7 @@ class TransactionApi:
 
         :param email: Customer's email address (required)
         :type email: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR (required)
+        :param amount: Amount should be in kobo if currency is NGN, pesewas if currency is GHS, cents if currency is ZAR, and whole number if currency is XOF (required)
         :type amount: int
         :param authorization_code: Valid authorization code to charge
         :type authorization_code: str
@@ -415,7 +415,7 @@ class TransactionApi:
     def transaction_check_authorization_with_http_info(
         self,
         email: Annotated[StrictStr, Field(description="Customer's email address")],
-        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR")],
+        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas if currency is GHS, cents if currency is ZAR, and whole number if currency is XOF")],
         authorization_code: Annotated[Optional[StrictStr], Field(description="Valid authorization code to charge")] = None,
         currency: Annotated[Optional[StrictStr], Field(description="The transaction currency")] = None,
         _request_timeout: Union[
@@ -437,7 +437,7 @@ class TransactionApi:
 
         :param email: Customer's email address (required)
         :type email: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR (required)
+        :param amount: Amount should be in kobo if currency is NGN, pesewas if currency is GHS, cents if currency is ZAR, and whole number if currency is XOF (required)
         :type amount: int
         :param authorization_code: Valid authorization code to charge
         :type authorization_code: str
@@ -495,7 +495,7 @@ class TransactionApi:
     def transaction_check_authorization_without_preload_content(
         self,
         email: Annotated[StrictStr, Field(description="Customer's email address")],
-        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR")],
+        amount: Annotated[StrictInt, Field(description="Amount should be in kobo if currency is NGN, pesewas if currency is GHS, cents if currency is ZAR, and whole number if currency is XOF")],
         authorization_code: Annotated[Optional[StrictStr], Field(description="Valid authorization code to charge")] = None,
         currency: Annotated[Optional[StrictStr], Field(description="The transaction currency")] = None,
         _request_timeout: Union[
@@ -517,7 +517,7 @@ class TransactionApi:
 
         :param email: Customer's email address (required)
         :type email: str
-        :param amount: Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR (required)
+        :param amount: Amount should be in kobo if currency is NGN, pesewas if currency is GHS, cents if currency is ZAR, and whole number if currency is XOF (required)
         :type amount: int
         :param authorization_code: Valid authorization code to charge
         :type authorization_code: str
@@ -924,12 +924,18 @@ class TransactionApi:
     @validate_call
     def transaction_export(
         self,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter by the status of the transaction")] = None,
-        customer: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Filter by customer ID")] = None,
-        subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter by subaccount code")] = None,
+        customer: Annotated[Optional[StrictInt], Field(description="Filter by customer ID")] = None,
+        currency: Annotated[Optional[StrictStr], Field(description="Specify the transaction currency to export")] = None,
+        amount: Annotated[Optional[StrictInt], Field(description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by amount. ")] = None,
+        settled: Annotated[Optional[StrictBool], Field(description="Set to true to export only settled transactions. false for pending transactions. Leave undefined to export all transactions")] = None,
         settlement: Annotated[Optional[StrictInt], Field(description="Filter by the settlement ID")] = None,
+        payment_page: Annotated[Optional[StrictInt], Field(description="Specify a payment page's id to export only transactions conducted on said page")] = None,
+        subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter by subaccount code")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -947,6 +953,10 @@ class TransactionApi:
 
         Download transactions that occurred on your integration for a specific timeframe
 
+        :param per_page: Number of records to fetch per page
+        :type per_page: int
+        :param page: The section to retrieve
+        :type page: int
         :param var_from: The start date
         :type var_from: datetime
         :param to: The end date
@@ -954,11 +964,19 @@ class TransactionApi:
         :param status: Filter by the status of the transaction
         :type status: str
         :param customer: Filter by customer ID
-        :type customer: float
-        :param subaccount_code: Filter by subaccount code
-        :type subaccount_code: str
+        :type customer: int
+        :param currency: Specify the transaction currency to export
+        :type currency: str
+        :param amount: Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by amount. 
+        :type amount: int
+        :param settled: Set to true to export only settled transactions. false for pending transactions. Leave undefined to export all transactions
+        :type settled: bool
         :param settlement: Filter by the settlement ID
         :type settlement: int
+        :param payment_page: Specify a payment page's id to export only transactions conducted on said page
+        :type payment_page: int
+        :param subaccount_code: Filter by subaccount code
+        :type subaccount_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -982,12 +1000,18 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_export_serialize(
+            per_page=per_page,
+            page=page,
             var_from=var_from,
             to=to,
             status=status,
             customer=customer,
-            subaccount_code=subaccount_code,
+            currency=currency,
+            amount=amount,
+            settled=settled,
             settlement=settlement,
+            payment_page=payment_page,
+            subaccount_code=subaccount_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1013,12 +1037,18 @@ class TransactionApi:
     @validate_call
     def transaction_export_with_http_info(
         self,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter by the status of the transaction")] = None,
-        customer: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Filter by customer ID")] = None,
-        subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter by subaccount code")] = None,
+        customer: Annotated[Optional[StrictInt], Field(description="Filter by customer ID")] = None,
+        currency: Annotated[Optional[StrictStr], Field(description="Specify the transaction currency to export")] = None,
+        amount: Annotated[Optional[StrictInt], Field(description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by amount. ")] = None,
+        settled: Annotated[Optional[StrictBool], Field(description="Set to true to export only settled transactions. false for pending transactions. Leave undefined to export all transactions")] = None,
         settlement: Annotated[Optional[StrictInt], Field(description="Filter by the settlement ID")] = None,
+        payment_page: Annotated[Optional[StrictInt], Field(description="Specify a payment page's id to export only transactions conducted on said page")] = None,
+        subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter by subaccount code")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1036,6 +1066,10 @@ class TransactionApi:
 
         Download transactions that occurred on your integration for a specific timeframe
 
+        :param per_page: Number of records to fetch per page
+        :type per_page: int
+        :param page: The section to retrieve
+        :type page: int
         :param var_from: The start date
         :type var_from: datetime
         :param to: The end date
@@ -1043,11 +1077,19 @@ class TransactionApi:
         :param status: Filter by the status of the transaction
         :type status: str
         :param customer: Filter by customer ID
-        :type customer: float
-        :param subaccount_code: Filter by subaccount code
-        :type subaccount_code: str
+        :type customer: int
+        :param currency: Specify the transaction currency to export
+        :type currency: str
+        :param amount: Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by amount. 
+        :type amount: int
+        :param settled: Set to true to export only settled transactions. false for pending transactions. Leave undefined to export all transactions
+        :type settled: bool
         :param settlement: Filter by the settlement ID
         :type settlement: int
+        :param payment_page: Specify a payment page's id to export only transactions conducted on said page
+        :type payment_page: int
+        :param subaccount_code: Filter by subaccount code
+        :type subaccount_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1071,12 +1113,18 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_export_serialize(
+            per_page=per_page,
+            page=page,
             var_from=var_from,
             to=to,
             status=status,
             customer=customer,
-            subaccount_code=subaccount_code,
+            currency=currency,
+            amount=amount,
+            settled=settled,
             settlement=settlement,
+            payment_page=payment_page,
+            subaccount_code=subaccount_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1102,12 +1150,18 @@ class TransactionApi:
     @validate_call
     def transaction_export_without_preload_content(
         self,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter by the status of the transaction")] = None,
-        customer: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Filter by customer ID")] = None,
-        subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter by subaccount code")] = None,
+        customer: Annotated[Optional[StrictInt], Field(description="Filter by customer ID")] = None,
+        currency: Annotated[Optional[StrictStr], Field(description="Specify the transaction currency to export")] = None,
+        amount: Annotated[Optional[StrictInt], Field(description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by amount. ")] = None,
+        settled: Annotated[Optional[StrictBool], Field(description="Set to true to export only settled transactions. false for pending transactions. Leave undefined to export all transactions")] = None,
         settlement: Annotated[Optional[StrictInt], Field(description="Filter by the settlement ID")] = None,
+        payment_page: Annotated[Optional[StrictInt], Field(description="Specify a payment page's id to export only transactions conducted on said page")] = None,
+        subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter by subaccount code")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1125,6 +1179,10 @@ class TransactionApi:
 
         Download transactions that occurred on your integration for a specific timeframe
 
+        :param per_page: Number of records to fetch per page
+        :type per_page: int
+        :param page: The section to retrieve
+        :type page: int
         :param var_from: The start date
         :type var_from: datetime
         :param to: The end date
@@ -1132,11 +1190,19 @@ class TransactionApi:
         :param status: Filter by the status of the transaction
         :type status: str
         :param customer: Filter by customer ID
-        :type customer: float
-        :param subaccount_code: Filter by subaccount code
-        :type subaccount_code: str
+        :type customer: int
+        :param currency: Specify the transaction currency to export
+        :type currency: str
+        :param amount: Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by amount. 
+        :type amount: int
+        :param settled: Set to true to export only settled transactions. false for pending transactions. Leave undefined to export all transactions
+        :type settled: bool
         :param settlement: Filter by the settlement ID
         :type settlement: int
+        :param payment_page: Specify a payment page's id to export only transactions conducted on said page
+        :type payment_page: int
+        :param subaccount_code: Filter by subaccount code
+        :type subaccount_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1160,12 +1226,18 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_export_serialize(
+            per_page=per_page,
+            page=page,
             var_from=var_from,
             to=to,
             status=status,
             customer=customer,
-            subaccount_code=subaccount_code,
+            currency=currency,
+            amount=amount,
+            settled=settled,
             settlement=settlement,
+            payment_page=payment_page,
+            subaccount_code=subaccount_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1186,12 +1258,18 @@ class TransactionApi:
 
     def _transaction_export_serialize(
         self,
+        per_page,
+        page,
         var_from,
         to,
         status,
         customer,
-        subaccount_code,
+        currency,
+        amount,
+        settled,
         settlement,
+        payment_page,
+        subaccount_code,
         _request_auth,
         _content_type,
         _headers,
@@ -1214,6 +1292,14 @@ class TransactionApi:
 
         # process the path parameters
         # process the query parameters
+        if per_page is not None:
+            
+            _query_params.append(('perPage', per_page))
+            
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
         if var_from is not None:
             if isinstance(var_from, datetime):
                 _query_params.append(
@@ -1248,13 +1334,29 @@ class TransactionApi:
             
             _query_params.append(('customer', customer))
             
-        if subaccount_code is not None:
+        if currency is not None:
             
-            _query_params.append(('subaccount_code', subaccount_code))
+            _query_params.append(('currency', currency))
+            
+        if amount is not None:
+            
+            _query_params.append(('amount', amount))
+            
+        if settled is not None:
+            
+            _query_params.append(('settled', settled))
             
         if settlement is not None:
             
             _query_params.append(('settlement', settlement))
+            
+        if payment_page is not None:
+            
+            _query_params.append(('payment_page', payment_page))
+            
+        if subaccount_code is not None:
+            
+            _query_params.append(('subaccount_code', subaccount_code))
             
         # process the header parameters
         # process the form parameters
@@ -1847,16 +1949,16 @@ class TransactionApi:
         use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
         next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
         previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter transaction by status")] = None,
         source: Annotated[Optional[StrictStr], Field(description="The origin of the payment")] = None,
-        terminal_id: Annotated[Optional[StrictStr], Field(description="Filter transactions by a terminal ID")] = None,
+        terminalid: Annotated[Optional[StrictStr], Field(description="The Terminal ID for the transactions you want to retrieve")] = None,
         virtual_account_number: Annotated[Optional[StrictStr], Field(description="Filter transactions by a virtual account number")] = None,
-        customer_code: Annotated[Optional[StrictStr], Field(description="Filter transactions by a customer code")] = None,
-        amount: Annotated[Optional[StrictInt], Field(description="Filter transactions by a specific amount")] = None,
+        customer: Annotated[Optional[StrictInt], Field(description="Specify an ID for the customer whose transactions you want to retrieve")] = None,
+        amount: Annotated[Optional[StrictInt], Field(description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. ")] = None,
         settlement: Annotated[Optional[StrictInt], Field(description="The settlement ID to filter for settled transactions")] = None,
         channel: Annotated[Optional[StrictStr], Field(description="The payment method the customer used to complete the transaction")] = None,
         subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter transaction by subaccount code")] = None,
@@ -1876,7 +1978,7 @@ class TransactionApi:
     ) -> TransactionListResponse:
         """List Transactions
 
-        List transactions that has occurred on your integration
+        List transactions carried out on your integration
 
         :param use_cursor: A flag to indicate if cursor based pagination should be used
         :type use_cursor: bool
@@ -1884,25 +1986,25 @@ class TransactionApi:
         :type next: str
         :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
         :type previous: str
-        :param per_page: The number of records to fetch per request
+        :param per_page: Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
         :type per_page: int
-        :param page: The offset to retrieve data from
+        :param page: Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
         :type page: int
-        :param var_from: The start date
+        :param var_from: A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
         :type var_from: datetime
-        :param to: The end date
+        :param to: A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
         :type to: datetime
         :param status: Filter transaction by status
         :type status: str
         :param source: The origin of the payment
         :type source: str
-        :param terminal_id: Filter transactions by a terminal ID
-        :type terminal_id: str
+        :param terminalid: The Terminal ID for the transactions you want to retrieve
+        :type terminalid: str
         :param virtual_account_number: Filter transactions by a virtual account number
         :type virtual_account_number: str
-        :param customer_code: Filter transactions by a customer code
-        :type customer_code: str
-        :param amount: Filter transactions by a specific amount
+        :param customer: Specify an ID for the customer whose transactions you want to retrieve
+        :type customer: int
+        :param amount: Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. 
         :type amount: int
         :param settlement: The settlement ID to filter for settled transactions
         :type settlement: int
@@ -1944,9 +2046,9 @@ class TransactionApi:
             to=to,
             status=status,
             source=source,
-            terminal_id=terminal_id,
+            terminalid=terminalid,
             virtual_account_number=virtual_account_number,
-            customer_code=customer_code,
+            customer=customer,
             amount=amount,
             settlement=settlement,
             channel=channel,
@@ -1980,16 +2082,16 @@ class TransactionApi:
         use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
         next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
         previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter transaction by status")] = None,
         source: Annotated[Optional[StrictStr], Field(description="The origin of the payment")] = None,
-        terminal_id: Annotated[Optional[StrictStr], Field(description="Filter transactions by a terminal ID")] = None,
+        terminalid: Annotated[Optional[StrictStr], Field(description="The Terminal ID for the transactions you want to retrieve")] = None,
         virtual_account_number: Annotated[Optional[StrictStr], Field(description="Filter transactions by a virtual account number")] = None,
-        customer_code: Annotated[Optional[StrictStr], Field(description="Filter transactions by a customer code")] = None,
-        amount: Annotated[Optional[StrictInt], Field(description="Filter transactions by a specific amount")] = None,
+        customer: Annotated[Optional[StrictInt], Field(description="Specify an ID for the customer whose transactions you want to retrieve")] = None,
+        amount: Annotated[Optional[StrictInt], Field(description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. ")] = None,
         settlement: Annotated[Optional[StrictInt], Field(description="The settlement ID to filter for settled transactions")] = None,
         channel: Annotated[Optional[StrictStr], Field(description="The payment method the customer used to complete the transaction")] = None,
         subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter transaction by subaccount code")] = None,
@@ -2009,7 +2111,7 @@ class TransactionApi:
     ) -> ApiResponse[TransactionListResponse]:
         """List Transactions
 
-        List transactions that has occurred on your integration
+        List transactions carried out on your integration
 
         :param use_cursor: A flag to indicate if cursor based pagination should be used
         :type use_cursor: bool
@@ -2017,25 +2119,25 @@ class TransactionApi:
         :type next: str
         :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
         :type previous: str
-        :param per_page: The number of records to fetch per request
+        :param per_page: Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
         :type per_page: int
-        :param page: The offset to retrieve data from
+        :param page: Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
         :type page: int
-        :param var_from: The start date
+        :param var_from: A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
         :type var_from: datetime
-        :param to: The end date
+        :param to: A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
         :type to: datetime
         :param status: Filter transaction by status
         :type status: str
         :param source: The origin of the payment
         :type source: str
-        :param terminal_id: Filter transactions by a terminal ID
-        :type terminal_id: str
+        :param terminalid: The Terminal ID for the transactions you want to retrieve
+        :type terminalid: str
         :param virtual_account_number: Filter transactions by a virtual account number
         :type virtual_account_number: str
-        :param customer_code: Filter transactions by a customer code
-        :type customer_code: str
-        :param amount: Filter transactions by a specific amount
+        :param customer: Specify an ID for the customer whose transactions you want to retrieve
+        :type customer: int
+        :param amount: Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. 
         :type amount: int
         :param settlement: The settlement ID to filter for settled transactions
         :type settlement: int
@@ -2077,9 +2179,9 @@ class TransactionApi:
             to=to,
             status=status,
             source=source,
-            terminal_id=terminal_id,
+            terminalid=terminalid,
             virtual_account_number=virtual_account_number,
-            customer_code=customer_code,
+            customer=customer,
             amount=amount,
             settlement=settlement,
             channel=channel,
@@ -2113,16 +2215,16 @@ class TransactionApi:
         use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
         next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
         previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter transaction by status")] = None,
         source: Annotated[Optional[StrictStr], Field(description="The origin of the payment")] = None,
-        terminal_id: Annotated[Optional[StrictStr], Field(description="Filter transactions by a terminal ID")] = None,
+        terminalid: Annotated[Optional[StrictStr], Field(description="The Terminal ID for the transactions you want to retrieve")] = None,
         virtual_account_number: Annotated[Optional[StrictStr], Field(description="Filter transactions by a virtual account number")] = None,
-        customer_code: Annotated[Optional[StrictStr], Field(description="Filter transactions by a customer code")] = None,
-        amount: Annotated[Optional[StrictInt], Field(description="Filter transactions by a specific amount")] = None,
+        customer: Annotated[Optional[StrictInt], Field(description="Specify an ID for the customer whose transactions you want to retrieve")] = None,
+        amount: Annotated[Optional[StrictInt], Field(description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. ")] = None,
         settlement: Annotated[Optional[StrictInt], Field(description="The settlement ID to filter for settled transactions")] = None,
         channel: Annotated[Optional[StrictStr], Field(description="The payment method the customer used to complete the transaction")] = None,
         subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter transaction by subaccount code")] = None,
@@ -2142,7 +2244,7 @@ class TransactionApi:
     ) -> RESTResponseType:
         """List Transactions
 
-        List transactions that has occurred on your integration
+        List transactions carried out on your integration
 
         :param use_cursor: A flag to indicate if cursor based pagination should be used
         :type use_cursor: bool
@@ -2150,25 +2252,25 @@ class TransactionApi:
         :type next: str
         :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
         :type previous: str
-        :param per_page: The number of records to fetch per request
+        :param per_page: Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
         :type per_page: int
-        :param page: The offset to retrieve data from
+        :param page: Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
         :type page: int
-        :param var_from: The start date
+        :param var_from: A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
         :type var_from: datetime
-        :param to: The end date
+        :param to: A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
         :type to: datetime
         :param status: Filter transaction by status
         :type status: str
         :param source: The origin of the payment
         :type source: str
-        :param terminal_id: Filter transactions by a terminal ID
-        :type terminal_id: str
+        :param terminalid: The Terminal ID for the transactions you want to retrieve
+        :type terminalid: str
         :param virtual_account_number: Filter transactions by a virtual account number
         :type virtual_account_number: str
-        :param customer_code: Filter transactions by a customer code
-        :type customer_code: str
-        :param amount: Filter transactions by a specific amount
+        :param customer: Specify an ID for the customer whose transactions you want to retrieve
+        :type customer: int
+        :param amount: Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. 
         :type amount: int
         :param settlement: The settlement ID to filter for settled transactions
         :type settlement: int
@@ -2210,9 +2312,9 @@ class TransactionApi:
             to=to,
             status=status,
             source=source,
-            terminal_id=terminal_id,
+            terminalid=terminalid,
             virtual_account_number=virtual_account_number,
-            customer_code=customer_code,
+            customer=customer,
             amount=amount,
             settlement=settlement,
             channel=channel,
@@ -2247,9 +2349,9 @@ class TransactionApi:
         to,
         status,
         source,
-        terminal_id,
+        terminalid,
         virtual_account_number,
-        customer_code,
+        customer,
         amount,
         settlement,
         channel,
@@ -2291,7 +2393,7 @@ class TransactionApi:
             
         if per_page is not None:
             
-            _query_params.append(('per_page', per_page))
+            _query_params.append(('perPage', per_page))
             
         if page is not None:
             
@@ -2331,17 +2433,17 @@ class TransactionApi:
             
             _query_params.append(('source', source))
             
-        if terminal_id is not None:
+        if terminalid is not None:
             
-            _query_params.append(('terminal_id', terminal_id))
+            _query_params.append(('terminalid', terminalid))
             
         if virtual_account_number is not None:
             
             _query_params.append(('virtual_account_number', virtual_account_number))
             
-        if customer_code is not None:
+        if customer is not None:
             
-            _query_params.append(('customer_code', customer_code))
+            _query_params.append(('customer', customer))
             
         if amount is not None:
             
@@ -2948,7 +3050,7 @@ class TransactionApi:
     @validate_call
     def transaction_timeline(
         self,
-        id: Annotated[StrictInt, Field(description="The ID of the transaction to fetch")],
+        id_or_reference: Annotated[StrictStr, Field(description="The ID or the reference of the transaction")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2966,8 +3068,8 @@ class TransactionApi:
 
         Fetch the steps taken from the initiation to the completion of a transaction
 
-        :param id: The ID of the transaction to fetch (required)
-        :type id: int
+        :param id_or_reference: The ID or the reference of the transaction (required)
+        :type id_or_reference: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2991,7 +3093,7 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_timeline_serialize(
-            id=id,
+            id_or_reference=id_or_reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3017,7 +3119,7 @@ class TransactionApi:
     @validate_call
     def transaction_timeline_with_http_info(
         self,
-        id: Annotated[StrictInt, Field(description="The ID of the transaction to fetch")],
+        id_or_reference: Annotated[StrictStr, Field(description="The ID or the reference of the transaction")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3035,8 +3137,8 @@ class TransactionApi:
 
         Fetch the steps taken from the initiation to the completion of a transaction
 
-        :param id: The ID of the transaction to fetch (required)
-        :type id: int
+        :param id_or_reference: The ID or the reference of the transaction (required)
+        :type id_or_reference: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3060,7 +3162,7 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_timeline_serialize(
-            id=id,
+            id_or_reference=id_or_reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3086,7 +3188,7 @@ class TransactionApi:
     @validate_call
     def transaction_timeline_without_preload_content(
         self,
-        id: Annotated[StrictInt, Field(description="The ID of the transaction to fetch")],
+        id_or_reference: Annotated[StrictStr, Field(description="The ID or the reference of the transaction")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3104,8 +3206,8 @@ class TransactionApi:
 
         Fetch the steps taken from the initiation to the completion of a transaction
 
-        :param id: The ID of the transaction to fetch (required)
-        :type id: int
+        :param id_or_reference: The ID or the reference of the transaction (required)
+        :type id_or_reference: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3129,7 +3231,7 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_timeline_serialize(
-            id=id,
+            id_or_reference=id_or_reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3150,7 +3252,7 @@ class TransactionApi:
 
     def _transaction_timeline_serialize(
         self,
-        id,
+        id_or_reference,
         _request_auth,
         _content_type,
         _headers,
@@ -3172,8 +3274,8 @@ class TransactionApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if id_or_reference is not None:
+            _path_params['id_or_reference'] = id_or_reference
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -3196,7 +3298,7 @@ class TransactionApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/transaction/timeline/{id}',
+            resource_path='/transaction/timeline/{id_or_reference}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3215,6 +3317,8 @@ class TransactionApi:
     @validate_call
     def transaction_totals(
         self,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
         _request_timeout: Union[
@@ -3234,6 +3338,10 @@ class TransactionApi:
 
         Get the total amount of all transactions
 
+        :param per_page: Number of records to fetch per page
+        :type per_page: int
+        :param page: The section to retrieve
+        :type page: int
         :param var_from: The start date
         :type var_from: datetime
         :param to: The end date
@@ -3261,6 +3369,8 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_totals_serialize(
+            per_page=per_page,
+            page=page,
             var_from=var_from,
             to=to,
             _request_auth=_request_auth,
@@ -3288,6 +3398,8 @@ class TransactionApi:
     @validate_call
     def transaction_totals_with_http_info(
         self,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
         _request_timeout: Union[
@@ -3307,6 +3419,10 @@ class TransactionApi:
 
         Get the total amount of all transactions
 
+        :param per_page: Number of records to fetch per page
+        :type per_page: int
+        :param page: The section to retrieve
+        :type page: int
         :param var_from: The start date
         :type var_from: datetime
         :param to: The end date
@@ -3334,6 +3450,8 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_totals_serialize(
+            per_page=per_page,
+            page=page,
             var_from=var_from,
             to=to,
             _request_auth=_request_auth,
@@ -3361,6 +3479,8 @@ class TransactionApi:
     @validate_call
     def transaction_totals_without_preload_content(
         self,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
         var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
         to: Annotated[Optional[datetime], Field(description="The end date")] = None,
         _request_timeout: Union[
@@ -3380,6 +3500,10 @@ class TransactionApi:
 
         Get the total amount of all transactions
 
+        :param per_page: Number of records to fetch per page
+        :type per_page: int
+        :param page: The section to retrieve
+        :type page: int
         :param var_from: The start date
         :type var_from: datetime
         :param to: The end date
@@ -3407,6 +3531,8 @@ class TransactionApi:
         """ # noqa: E501
 
         _param = self._transaction_totals_serialize(
+            per_page=per_page,
+            page=page,
             var_from=var_from,
             to=to,
             _request_auth=_request_auth,
@@ -3429,6 +3555,8 @@ class TransactionApi:
 
     def _transaction_totals_serialize(
         self,
+        per_page,
+        page,
         var_from,
         to,
         _request_auth,
@@ -3453,6 +3581,14 @@ class TransactionApi:
 
         # process the path parameters
         # process the query parameters
+        if per_page is not None:
+            
+            _query_params.append(('perPage', per_page))
+            
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
         if var_from is not None:
             if isinstance(var_from, datetime):
                 _query_params.append(

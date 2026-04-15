@@ -134,17 +134,21 @@ class SettlementApi
      *
      * List Settlements
      *
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
+     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  \DateTime|null $from The start date (optional)
+     * @param  \DateTime|null $to The end date (optional)
+     * @param  string|null $status Filter by status (optional)
+     * @param  string|null $subaccount Filter by subaccount ID. Set to &#x60;none&#x60; to return only main account settlements. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['settlementsFetch'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\SettlementListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function settlementsFetch($per_page = null, $page = null, string $contentType = self::contentTypes['settlementsFetch'][0])
+    public function settlementsFetch($per_page = null, $page = null, $from = null, $to = null, $status = null, $subaccount = null, string $contentType = self::contentTypes['settlementsFetch'][0])
     {
-        list($response) = $this->settlementsFetchWithHttpInfo($per_page, $page, $contentType);
+        list($response) = $this->settlementsFetchWithHttpInfo($per_page, $page, $from, $to, $status, $subaccount, $contentType);
         return $response;
     }
 
@@ -153,17 +157,21 @@ class SettlementApi
      *
      * List Settlements
      *
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
+     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  \DateTime|null $from The start date (optional)
+     * @param  \DateTime|null $to The end date (optional)
+     * @param  string|null $status Filter by status (optional)
+     * @param  string|null $subaccount Filter by subaccount ID. Set to &#x60;none&#x60; to return only main account settlements. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['settlementsFetch'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\SettlementListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function settlementsFetchWithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['settlementsFetch'][0])
+    public function settlementsFetchWithHttpInfo($per_page = null, $page = null, $from = null, $to = null, $status = null, $subaccount = null, string $contentType = self::contentTypes['settlementsFetch'][0])
     {
-        $request = $this->settlementsFetchRequest($per_page, $page, $contentType);
+        $request = $this->settlementsFetchRequest($per_page, $page, $from, $to, $status, $subaccount, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -191,7 +199,7 @@ class SettlementApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\SettlementListResponse',
                         $request,
                         $response,
                     );
@@ -225,7 +233,7 @@ class SettlementApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\Paystack\Model\Response',
+                '\Alexasomba\Paystack\Model\SettlementListResponse',
                 $request,
                 $response,
             );
@@ -234,7 +242,7 @@ class SettlementApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\SettlementListResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -267,16 +275,20 @@ class SettlementApi
      *
      * List Settlements
      *
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
+     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  \DateTime|null $from The start date (optional)
+     * @param  \DateTime|null $to The end date (optional)
+     * @param  string|null $status Filter by status (optional)
+     * @param  string|null $subaccount Filter by subaccount ID. Set to &#x60;none&#x60; to return only main account settlements. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['settlementsFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function settlementsFetchAsync($per_page = null, $page = null, string $contentType = self::contentTypes['settlementsFetch'][0])
+    public function settlementsFetchAsync($per_page = null, $page = null, $from = null, $to = null, $status = null, $subaccount = null, string $contentType = self::contentTypes['settlementsFetch'][0])
     {
-        return $this->settlementsFetchAsyncWithHttpInfo($per_page, $page, $contentType)
+        return $this->settlementsFetchAsyncWithHttpInfo($per_page, $page, $from, $to, $status, $subaccount, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -289,17 +301,21 @@ class SettlementApi
      *
      * List Settlements
      *
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
+     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  \DateTime|null $from The start date (optional)
+     * @param  \DateTime|null $to The end date (optional)
+     * @param  string|null $status Filter by status (optional)
+     * @param  string|null $subaccount Filter by subaccount ID. Set to &#x60;none&#x60; to return only main account settlements. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['settlementsFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function settlementsFetchAsyncWithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['settlementsFetch'][0])
+    public function settlementsFetchAsyncWithHttpInfo($per_page = null, $page = null, $from = null, $to = null, $status = null, $subaccount = null, string $contentType = self::contentTypes['settlementsFetch'][0])
     {
-        $returnType = '\Alexasomba\Paystack\Model\Response';
-        $request = $this->settlementsFetchRequest($per_page, $page, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\SettlementListResponse';
+        $request = $this->settlementsFetchRequest($per_page, $page, $from, $to, $status, $subaccount, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -340,15 +356,23 @@ class SettlementApi
     /**
      * Create request for operation 'settlementsFetch'
      *
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
+     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  \DateTime|null $from The start date (optional)
+     * @param  \DateTime|null $to The end date (optional)
+     * @param  string|null $status Filter by status (optional)
+     * @param  string|null $subaccount Filter by subaccount ID. Set to &#x60;none&#x60; to return only main account settlements. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['settlementsFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function settlementsFetchRequest($per_page = null, $page = null, string $contentType = self::contentTypes['settlementsFetch'][0])
+    public function settlementsFetchRequest($per_page = null, $page = null, $from = null, $to = null, $status = null, $subaccount = null, string $contentType = self::contentTypes['settlementsFetch'][0])
     {
+
+
+
+
 
 
 
@@ -374,6 +398,42 @@ class SettlementApi
             $page,
             'page', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from,
+            'from', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to,
+            'to', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $status,
+            'status', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $subaccount,
+            'subaccount', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -445,15 +505,19 @@ class SettlementApi
      * Fetch Settlement Transactions
      *
      * @param  int $id The settlement ID in which you want to fetch its transactions (required)
+     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  \DateTime|null $from The start date (optional)
+     * @param  \DateTime|null $to The end date (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['settlementsTransaction'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\SettlementTransactionsResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function settlementsTransaction($id, string $contentType = self::contentTypes['settlementsTransaction'][0])
+    public function settlementsTransaction($id, $per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['settlementsTransaction'][0])
     {
-        list($response) = $this->settlementsTransactionWithHttpInfo($id, $contentType);
+        list($response) = $this->settlementsTransactionWithHttpInfo($id, $per_page, $page, $from, $to, $contentType);
         return $response;
     }
 
@@ -463,15 +527,19 @@ class SettlementApi
      * Fetch Settlement Transactions
      *
      * @param  int $id The settlement ID in which you want to fetch its transactions (required)
+     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  \DateTime|null $from The start date (optional)
+     * @param  \DateTime|null $to The end date (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['settlementsTransaction'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\SettlementTransactionsResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function settlementsTransactionWithHttpInfo($id, string $contentType = self::contentTypes['settlementsTransaction'][0])
+    public function settlementsTransactionWithHttpInfo($id, $per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['settlementsTransaction'][0])
     {
-        $request = $this->settlementsTransactionRequest($id, $contentType);
+        $request = $this->settlementsTransactionRequest($id, $per_page, $page, $from, $to, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -499,7 +567,7 @@ class SettlementApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\SettlementTransactionsResponse',
                         $request,
                         $response,
                     );
@@ -533,7 +601,7 @@ class SettlementApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\Paystack\Model\Response',
+                '\Alexasomba\Paystack\Model\SettlementTransactionsResponse',
                 $request,
                 $response,
             );
@@ -542,7 +610,7 @@ class SettlementApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\SettlementTransactionsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -576,14 +644,18 @@ class SettlementApi
      * Fetch Settlement Transactions
      *
      * @param  int $id The settlement ID in which you want to fetch its transactions (required)
+     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  \DateTime|null $from The start date (optional)
+     * @param  \DateTime|null $to The end date (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['settlementsTransaction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function settlementsTransactionAsync($id, string $contentType = self::contentTypes['settlementsTransaction'][0])
+    public function settlementsTransactionAsync($id, $per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['settlementsTransaction'][0])
     {
-        return $this->settlementsTransactionAsyncWithHttpInfo($id, $contentType)
+        return $this->settlementsTransactionAsyncWithHttpInfo($id, $per_page, $page, $from, $to, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -597,15 +669,19 @@ class SettlementApi
      * Fetch Settlement Transactions
      *
      * @param  int $id The settlement ID in which you want to fetch its transactions (required)
+     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  \DateTime|null $from The start date (optional)
+     * @param  \DateTime|null $to The end date (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['settlementsTransaction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function settlementsTransactionAsyncWithHttpInfo($id, string $contentType = self::contentTypes['settlementsTransaction'][0])
+    public function settlementsTransactionAsyncWithHttpInfo($id, $per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['settlementsTransaction'][0])
     {
-        $returnType = '\Alexasomba\Paystack\Model\Response';
-        $request = $this->settlementsTransactionRequest($id, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\SettlementTransactionsResponse';
+        $request = $this->settlementsTransactionRequest($id, $per_page, $page, $from, $to, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -647,12 +723,16 @@ class SettlementApi
      * Create request for operation 'settlementsTransaction'
      *
      * @param  int $id The settlement ID in which you want to fetch its transactions (required)
+     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  \DateTime|null $from The start date (optional)
+     * @param  \DateTime|null $to The end date (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['settlementsTransaction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function settlementsTransactionRequest($id, string $contentType = self::contentTypes['settlementsTransaction'][0])
+    public function settlementsTransactionRequest($id, $per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['settlementsTransaction'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -663,6 +743,10 @@ class SettlementApi
         }
 
 
+
+
+
+
         $resourcePath = '/settlement/{id}/transactions';
         $formParams = [];
         $queryParams = [];
@@ -670,6 +754,42 @@ class SettlementApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $per_page,
+            'perPage', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page,
+            'page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from,
+            'from', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to,
+            'to', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params

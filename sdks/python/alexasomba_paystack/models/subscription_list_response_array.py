@@ -46,12 +46,7 @@ class SubscriptionListResponseArray(BaseModel):
     plan: SubscriptionListResponseArrayPlan
     authorization: SubscriptionListResponseArrayAuthorization
     customer: SubscriptionListResponseArrayCustomer
-    invoice_limit: StrictInt
-    split_code: Optional[Any]
-    payments_count: StrictInt
-    most_recent_invoice: Optional[Any]
-    metadata: Optional[Dict[str, Any]]
-    __properties: ClassVar[List[str]] = ["id", "domain", "status", "start", "quantity", "subscription_code", "email_token", "amount", "cron_expression", "next_payment_date", "open_invoice", "createdAt", "integration", "plan", "authorization", "customer", "invoice_limit", "split_code", "payments_count", "most_recent_invoice", "metadata"]
+    __properties: ClassVar[List[str]] = ["id", "domain", "status", "start", "quantity", "subscription_code", "email_token", "amount", "cron_expression", "next_payment_date", "open_invoice", "createdAt", "integration", "plan", "authorization", "customer"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -116,21 +111,6 @@ class SubscriptionListResponseArray(BaseModel):
         if self.open_invoice is None and "open_invoice" in self.model_fields_set:
             _dict['open_invoice'] = None
 
-        # set to None if split_code (nullable) is None
-        # and model_fields_set contains the field
-        if self.split_code is None and "split_code" in self.model_fields_set:
-            _dict['split_code'] = None
-
-        # set to None if most_recent_invoice (nullable) is None
-        # and model_fields_set contains the field
-        if self.most_recent_invoice is None and "most_recent_invoice" in self.model_fields_set:
-            _dict['most_recent_invoice'] = None
-
-        # set to None if metadata (nullable) is None
-        # and model_fields_set contains the field
-        if self.metadata is None and "metadata" in self.model_fields_set:
-            _dict['metadata'] = None
-
         return _dict
 
     @classmethod
@@ -158,12 +138,7 @@ class SubscriptionListResponseArray(BaseModel):
             "integration": obj.get("integration"),
             "plan": SubscriptionListResponseArrayPlan.from_dict(obj["plan"]) if obj.get("plan") is not None else None,
             "authorization": SubscriptionListResponseArrayAuthorization.from_dict(obj["authorization"]) if obj.get("authorization") is not None else None,
-            "customer": SubscriptionListResponseArrayCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
-            "invoice_limit": obj.get("invoice_limit"),
-            "split_code": obj.get("split_code"),
-            "payments_count": obj.get("payments_count"),
-            "most_recent_invoice": obj.get("most_recent_invoice"),
-            "metadata": obj.get("metadata")
+            "customer": SubscriptionListResponseArrayCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None
         })
         return _obj
 

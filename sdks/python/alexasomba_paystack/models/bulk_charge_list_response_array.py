@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,16 +27,13 @@ class BulkChargeListResponseArray(BaseModel):
     """
     BulkChargeListResponseArray
     """ # noqa: E501
-    integration: StrictInt
     domain: StrictStr
     batch_code: StrictStr
     status: StrictStr
-    easy_cron_id: Optional[Any]
-    reference: StrictStr
     id: StrictInt
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    __properties: ClassVar[List[str]] = ["integration", "domain", "batch_code", "status", "easy_cron_id", "reference", "id", "createdAt", "updatedAt"]
+    __properties: ClassVar[List[str]] = ["domain", "batch_code", "status", "id", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -77,11 +74,6 @@ class BulkChargeListResponseArray(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if easy_cron_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.easy_cron_id is None and "easy_cron_id" in self.model_fields_set:
-            _dict['easy_cron_id'] = None
-
         return _dict
 
     @classmethod
@@ -94,12 +86,9 @@ class BulkChargeListResponseArray(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "integration": obj.get("integration"),
             "domain": obj.get("domain"),
             "batch_code": obj.get("batch_code"),
             "status": obj.get("status"),
-            "easy_cron_id": obj.get("easy_cron_id"),
-            "reference": obj.get("reference"),
             "id": obj.get("id"),
             "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt")

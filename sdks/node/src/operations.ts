@@ -69,16 +69,16 @@ export function bank_validateAccountNumber(
 
 export function bulkCharge_charges(
   client: PaystackClient,
-  ...init: InitArg<MaybeOptionalInit<paths["/bulkcharge/{code}/charges"], "get">>
+  ...init: InitArg<MaybeOptionalInit<paths["/bulkcharge/{id_or_code}/charges"], "get">>
 ) {
-  return client.GET("/bulkcharge/{code}/charges", ...init);
+  return client.GET("/bulkcharge/{id_or_code}/charges", ...init);
 }
 
 export function bulkCharge_fetch(
   client: PaystackClient,
-  ...init: InitArg<MaybeOptionalInit<paths["/bulkcharge/{code}"], "get">>
+  ...init: InitArg<MaybeOptionalInit<paths["/bulkcharge/{id_or_code}"], "get">>
 ) {
-  return client.GET("/bulkcharge/{code}", ...init);
+  return client.GET("/bulkcharge/{id_or_code}", ...init);
 }
 
 export function bulkCharge_initiate(
@@ -181,9 +181,9 @@ export function customer_directDebitActivationCharge(
 
 export function customer_fetch(
   client: PaystackClient,
-  ...init: InitArg<MaybeOptionalInit<paths["/customer/{code}"], "get">>
+  ...init: InitArg<MaybeOptionalInit<paths["/customer/{email_or_code}"], "get">>
 ) {
-  return client.GET("/customer/{code}", ...init);
+  return client.GET("/customer/{email_or_code}", ...init);
 }
 
 export function customer_fetchMandateAuthorizations(
@@ -225,16 +225,16 @@ export function customer_riskAction(
 
 export function customer_update(
   client: PaystackClient,
-  ...init: InitArg<MaybeOptionalInit<paths["/customer/{code}"], "put">>
+  ...init: InitArg<MaybeOptionalInit<paths["/customer/{email_or_code}"], "put">>
 ) {
-  return client.PUT("/customer/{code}", ...init);
+  return client.PUT("/customer/{email_or_code}", ...init);
 }
 
 export function customer_validate(
   client: PaystackClient,
-  ...init: InitArg<MaybeOptionalInit<paths["/customer/{code}/identification"], "post">>
+  ...init: InitArg<MaybeOptionalInit<paths["/customer/{customer_code}/identification"], "post">>
 ) {
-  return client.POST("/customer/{code}/identification", ...init);
+  return client.POST("/customer/{customer_code}/identification", ...init);
 }
 
 export function customer_verifyAuthorization(
@@ -470,9 +470,9 @@ export function page_create(
 
 export function page_fetch(
   client: PaystackClient,
-  ...init: InitArg<MaybeOptionalInit<paths["/page/{id}"], "get">>
+  ...init: InitArg<MaybeOptionalInit<paths["/page/{id_or_slug}"], "get">>
 ) {
-  return client.GET("/page/{id}", ...init);
+  return client.GET("/page/{id_or_slug}", ...init);
 }
 
 export function page_list(
@@ -484,9 +484,9 @@ export function page_list(
 
 export function page_update(
   client: PaystackClient,
-  ...init: InitArg<MaybeOptionalInit<paths["/page/{id}"], "put">>
+  ...init: InitArg<MaybeOptionalInit<paths["/page/{id_or_slug}"], "put">>
 ) {
-  return client.PUT("/page/{id}", ...init);
+  return client.PUT("/page/{id_or_slug}", ...init);
 }
 
 export function paymentRequest_archive(
@@ -505,9 +505,9 @@ export function paymentRequest_create(
 
 export function paymentRequest_fetch(
   client: PaystackClient,
-  ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/{id}"], "get">>
+  ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/{id_or_code}"], "get">>
 ) {
-  return client.GET("/paymentrequest/{id}", ...init);
+  return client.GET("/paymentrequest/{id_or_code}", ...init);
 }
 
 export function paymentRequest_finalize(
@@ -540,9 +540,9 @@ export function paymentRequest_totals(
 
 export function paymentRequest_update(
   client: PaystackClient,
-  ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/{id}"], "put">>
+  ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/{id_or_code}"], "put">>
 ) {
-  return client.PUT("/paymentrequest/{id}", ...init);
+  return client.PUT("/paymentrequest/{id_or_code}", ...init);
 }
 
 export function paymentRequest_verify(
@@ -561,9 +561,9 @@ export function plan_create(
 
 export function plan_fetch(
   client: PaystackClient,
-  ...init: InitArg<MaybeOptionalInit<paths["/plan/{code}"], "get">>
+  ...init: InitArg<MaybeOptionalInit<paths["/plan/{id_or_code}"], "get">>
 ) {
-  return client.GET("/plan/{code}", ...init);
+  return client.GET("/plan/{id_or_code}", ...init);
 }
 
 export function plan_list(
@@ -575,9 +575,9 @@ export function plan_list(
 
 export function plan_update(
   client: PaystackClient,
-  ...init: InitArg<MaybeOptionalInit<paths["/plan/{code}"], "put">>
+  ...init: InitArg<MaybeOptionalInit<paths["/plan/{id_or_code}"], "put">>
 ) {
-  return client.PUT("/plan/{code}", ...init);
+  return client.PUT("/plan/{id_or_code}", ...init);
 }
 
 export function product_create(
@@ -785,9 +785,9 @@ export function subaccount_create(
 
 export function subaccount_fetch(
   client: PaystackClient,
-  ...init: InitArg<MaybeOptionalInit<paths["/subaccount/{code}"], "get">>
+  ...init: InitArg<MaybeOptionalInit<paths["/subaccount/{id_or_code}"], "get">>
 ) {
-  return client.GET("/subaccount/{code}", ...init);
+  return client.GET("/subaccount/{id_or_code}", ...init);
 }
 
 export function subaccount_list(
@@ -799,9 +799,9 @@ export function subaccount_list(
 
 export function subaccount_update(
   client: PaystackClient,
-  ...init: InitArg<MaybeOptionalInit<paths["/subaccount/{code}"], "put">>
+  ...init: InitArg<MaybeOptionalInit<paths["/subaccount/{id_or_code}"], "put">>
 ) {
-  return client.PUT("/subaccount/{code}", ...init);
+  return client.PUT("/subaccount/{id_or_code}", ...init);
 }
 
 export function subscription_create(
@@ -827,9 +827,9 @@ export function subscription_enable(
 
 export function subscription_fetch(
   client: PaystackClient,
-  ...init: InitArg<MaybeOptionalInit<paths["/subscription/{code}"], "get">>
+  ...init: InitArg<MaybeOptionalInit<paths["/subscription/{id_or_code}"], "get">>
 ) {
-  return client.GET("/subscription/{code}", ...init);
+  return client.GET("/subscription/{id_or_code}", ...init);
 }
 
 export function subscription_list(
@@ -974,9 +974,9 @@ export function transaction_session(
 
 export function transaction_timeline(
   client: PaystackClient,
-  ...init: InitArg<MaybeOptionalInit<paths["/transaction/timeline/{id}"], "get">>
+  ...init: InitArg<MaybeOptionalInit<paths["/transaction/timeline/{id_or_reference}"], "get">>
 ) {
-  return client.GET("/transaction/timeline/{id}", ...init);
+  return client.GET("/transaction/timeline/{id_or_reference}", ...init);
 }
 
 export function transaction_totals(
@@ -1030,9 +1030,9 @@ export function transfer_exportTransfer(
 
 export function transfer_fetch(
   client: PaystackClient,
-  ...init: InitArg<MaybeOptionalInit<paths["/transfer/{code}"], "get">>
+  ...init: InitArg<MaybeOptionalInit<paths["/transfer/{id_or_code}"], "get">>
 ) {
-  return client.GET("/transfer/{code}", ...init);
+  return client.GET("/transfer/{id_or_code}", ...init);
 }
 
 export function transfer_finalize(
@@ -1086,16 +1086,16 @@ export function transferrecipient_create(
 
 export function transferrecipient_delete(
   client: PaystackClient,
-  ...init: InitArg<MaybeOptionalInit<paths["/transferrecipient/{code}"], "delete">>
+  ...init: InitArg<MaybeOptionalInit<paths["/transferrecipient/{id_or_code}"], "delete">>
 ) {
-  return client.DELETE("/transferrecipient/{code}", ...init);
+  return client.DELETE("/transferrecipient/{id_or_code}", ...init);
 }
 
 export function transferrecipient_fetch(
   client: PaystackClient,
-  ...init: InitArg<MaybeOptionalInit<paths["/transferrecipient/{code}"], "get">>
+  ...init: InitArg<MaybeOptionalInit<paths["/transferrecipient/{id_or_code}"], "get">>
 ) {
-  return client.GET("/transferrecipient/{code}", ...init);
+  return client.GET("/transferrecipient/{id_or_code}", ...init);
 }
 
 export function transferrecipient_list(
@@ -1107,9 +1107,9 @@ export function transferrecipient_list(
 
 export function transferrecipient_update(
   client: PaystackClient,
-  ...init: InitArg<MaybeOptionalInit<paths["/transferrecipient/{code}"], "put">>
+  ...init: InitArg<MaybeOptionalInit<paths["/transferrecipient/{id_or_code}"], "put">>
 ) {
-  return client.PUT("/transferrecipient/{code}", ...init);
+  return client.PUT("/transferrecipient/{id_or_code}", ...init);
 }
 
 export function virtualTerminal_addSplitCode(
@@ -1200,10 +1200,11 @@ export function bindOperations(client: PaystackClient) {
       ...init: InitArg<MaybeOptionalInit<paths["/bank/validate"], "post">>
     ) => bank_validateAccountNumber(client, ...init),
     bulkCharge_charges: (
-      ...init: InitArg<MaybeOptionalInit<paths["/bulkcharge/{code}/charges"], "get">>
+      ...init: InitArg<MaybeOptionalInit<paths["/bulkcharge/{id_or_code}/charges"], "get">>
     ) => bulkCharge_charges(client, ...init),
-    bulkCharge_fetch: (...init: InitArg<MaybeOptionalInit<paths["/bulkcharge/{code}"], "get">>) =>
-      bulkCharge_fetch(client, ...init),
+    bulkCharge_fetch: (
+      ...init: InitArg<MaybeOptionalInit<paths["/bulkcharge/{id_or_code}"], "get">>
+    ) => bulkCharge_fetch(client, ...init),
     bulkCharge_initiate: (...init: InitArg<MaybeOptionalInit<paths["/bulkcharge"], "post">>) =>
       bulkCharge_initiate(client, ...init),
     bulkCharge_list: (...init: InitArg<MaybeOptionalInit<paths["/bulkcharge"], "get">>) =>
@@ -1241,8 +1242,9 @@ export function bindOperations(client: PaystackClient) {
         MaybeOptionalInit<paths["/customer/{id}/directdebit-activation-charge"], "put">
       >
     ) => customer_directDebitActivationCharge(client, ...init),
-    customer_fetch: (...init: InitArg<MaybeOptionalInit<paths["/customer/{code}"], "get">>) =>
-      customer_fetch(client, ...init),
+    customer_fetch: (
+      ...init: InitArg<MaybeOptionalInit<paths["/customer/{email_or_code}"], "get">>
+    ) => customer_fetch(client, ...init),
     customer_fetchMandateAuthorizations: (
       ...init: InitArg<
         MaybeOptionalInit<paths["/customer/{id}/directdebit-mandate-authorizations"], "get">
@@ -1259,10 +1261,11 @@ export function bindOperations(client: PaystackClient) {
     customer_riskAction: (
       ...init: InitArg<MaybeOptionalInit<paths["/customer/set_risk_action"], "post">>
     ) => customer_riskAction(client, ...init),
-    customer_update: (...init: InitArg<MaybeOptionalInit<paths["/customer/{code}"], "put">>) =>
-      customer_update(client, ...init),
+    customer_update: (
+      ...init: InitArg<MaybeOptionalInit<paths["/customer/{email_or_code}"], "put">>
+    ) => customer_update(client, ...init),
     customer_validate: (
-      ...init: InitArg<MaybeOptionalInit<paths["/customer/{code}/identification"], "post">>
+      ...init: InitArg<MaybeOptionalInit<paths["/customer/{customer_code}/identification"], "post">>
     ) => customer_validate(client, ...init),
     customer_verifyAuthorization: (
       ...init: InitArg<
@@ -1352,11 +1355,11 @@ export function bindOperations(client: PaystackClient) {
     ) => page_checkSlugAvailability(client, ...init),
     page_create: (...init: InitArg<MaybeOptionalInit<paths["/page"], "post">>) =>
       page_create(client, ...init),
-    page_fetch: (...init: InitArg<MaybeOptionalInit<paths["/page/{id}"], "get">>) =>
+    page_fetch: (...init: InitArg<MaybeOptionalInit<paths["/page/{id_or_slug}"], "get">>) =>
       page_fetch(client, ...init),
     page_list: (...init: InitArg<MaybeOptionalInit<paths["/page"], "get">>) =>
       page_list(client, ...init),
-    page_update: (...init: InitArg<MaybeOptionalInit<paths["/page/{id}"], "put">>) =>
+    page_update: (...init: InitArg<MaybeOptionalInit<paths["/page/{id_or_slug}"], "put">>) =>
       page_update(client, ...init),
     paymentRequest_archive: (
       ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/archive/{id}"], "post">>
@@ -1365,7 +1368,7 @@ export function bindOperations(client: PaystackClient) {
       ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest"], "post">>
     ) => paymentRequest_create(client, ...init),
     paymentRequest_fetch: (
-      ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/{id}"], "get">>
+      ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/{id_or_code}"], "get">>
     ) => paymentRequest_fetch(client, ...init),
     paymentRequest_finalize: (
       ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/finalize/{id}"], "post">>
@@ -1379,18 +1382,18 @@ export function bindOperations(client: PaystackClient) {
       ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/totals"], "get">>
     ) => paymentRequest_totals(client, ...init),
     paymentRequest_update: (
-      ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/{id}"], "put">>
+      ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/{id_or_code}"], "put">>
     ) => paymentRequest_update(client, ...init),
     paymentRequest_verify: (
       ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/verify/{id}"], "get">>
     ) => paymentRequest_verify(client, ...init),
     plan_create: (...init: InitArg<MaybeOptionalInit<paths["/plan"], "post">>) =>
       plan_create(client, ...init),
-    plan_fetch: (...init: InitArg<MaybeOptionalInit<paths["/plan/{code}"], "get">>) =>
+    plan_fetch: (...init: InitArg<MaybeOptionalInit<paths["/plan/{id_or_code}"], "get">>) =>
       plan_fetch(client, ...init),
     plan_list: (...init: InitArg<MaybeOptionalInit<paths["/plan"], "get">>) =>
       plan_list(client, ...init),
-    plan_update: (...init: InitArg<MaybeOptionalInit<paths["/plan/{code}"], "put">>) =>
+    plan_update: (...init: InitArg<MaybeOptionalInit<paths["/plan/{id_or_code}"], "put">>) =>
       plan_update(client, ...init),
     product_create: (...init: InitArg<MaybeOptionalInit<paths["/product"], "post">>) =>
       product_create(client, ...init),
@@ -1460,12 +1463,14 @@ export function bindOperations(client: PaystackClient) {
     ) => storefront_verifySlug(client, ...init),
     subaccount_create: (...init: InitArg<MaybeOptionalInit<paths["/subaccount"], "post">>) =>
       subaccount_create(client, ...init),
-    subaccount_fetch: (...init: InitArg<MaybeOptionalInit<paths["/subaccount/{code}"], "get">>) =>
-      subaccount_fetch(client, ...init),
+    subaccount_fetch: (
+      ...init: InitArg<MaybeOptionalInit<paths["/subaccount/{id_or_code}"], "get">>
+    ) => subaccount_fetch(client, ...init),
     subaccount_list: (...init: InitArg<MaybeOptionalInit<paths["/subaccount"], "get">>) =>
       subaccount_list(client, ...init),
-    subaccount_update: (...init: InitArg<MaybeOptionalInit<paths["/subaccount/{code}"], "put">>) =>
-      subaccount_update(client, ...init),
+    subaccount_update: (
+      ...init: InitArg<MaybeOptionalInit<paths["/subaccount/{id_or_code}"], "put">>
+    ) => subaccount_update(client, ...init),
     subscription_create: (...init: InitArg<MaybeOptionalInit<paths["/subscription"], "post">>) =>
       subscription_create(client, ...init),
     subscription_disable: (
@@ -1475,7 +1480,7 @@ export function bindOperations(client: PaystackClient) {
       ...init: InitArg<MaybeOptionalInit<paths["/subscription/enable"], "post">>
     ) => subscription_enable(client, ...init),
     subscription_fetch: (
-      ...init: InitArg<MaybeOptionalInit<paths["/subscription/{code}"], "get">>
+      ...init: InitArg<MaybeOptionalInit<paths["/subscription/{id_or_code}"], "get">>
     ) => subscription_fetch(client, ...init),
     subscription_list: (...init: InitArg<MaybeOptionalInit<paths["/subscription"], "get">>) =>
       subscription_list(client, ...init),
@@ -1534,7 +1539,7 @@ export function bindOperations(client: PaystackClient) {
       ...init: InitArg<MaybeOptionalInit<paths["/transaction/{id}/session"], "get">>
     ) => transaction_session(client, ...init),
     transaction_timeline: (
-      ...init: InitArg<MaybeOptionalInit<paths["/transaction/timeline/{id}"], "get">>
+      ...init: InitArg<MaybeOptionalInit<paths["/transaction/timeline/{id_or_reference}"], "get">>
     ) => transaction_timeline(client, ...init),
     transaction_totals: (
       ...init: InitArg<MaybeOptionalInit<paths["/transaction/totals"], "get">>
@@ -1556,7 +1561,7 @@ export function bindOperations(client: PaystackClient) {
     transfer_exportTransfer: (
       ...init: InitArg<MaybeOptionalInit<paths["/transfer/export"], "get">>
     ) => transfer_exportTransfer(client, ...init),
-    transfer_fetch: (...init: InitArg<MaybeOptionalInit<paths["/transfer/{code}"], "get">>) =>
+    transfer_fetch: (...init: InitArg<MaybeOptionalInit<paths["/transfer/{id_or_code}"], "get">>) =>
       transfer_fetch(client, ...init),
     transfer_finalize: (
       ...init: InitArg<MaybeOptionalInit<paths["/transfer/finalize_transfer"], "post">>
@@ -1578,16 +1583,16 @@ export function bindOperations(client: PaystackClient) {
       ...init: InitArg<MaybeOptionalInit<paths["/transferrecipient"], "post">>
     ) => transferrecipient_create(client, ...init),
     transferrecipient_delete: (
-      ...init: InitArg<MaybeOptionalInit<paths["/transferrecipient/{code}"], "delete">>
+      ...init: InitArg<MaybeOptionalInit<paths["/transferrecipient/{id_or_code}"], "delete">>
     ) => transferrecipient_delete(client, ...init),
     transferrecipient_fetch: (
-      ...init: InitArg<MaybeOptionalInit<paths["/transferrecipient/{code}"], "get">>
+      ...init: InitArg<MaybeOptionalInit<paths["/transferrecipient/{id_or_code}"], "get">>
     ) => transferrecipient_fetch(client, ...init),
     transferrecipient_list: (
       ...init: InitArg<MaybeOptionalInit<paths["/transferrecipient"], "get">>
     ) => transferrecipient_list(client, ...init),
     transferrecipient_update: (
-      ...init: InitArg<MaybeOptionalInit<paths["/transferrecipient/{code}"], "put">>
+      ...init: InitArg<MaybeOptionalInit<paths["/transferrecipient/{id_or_code}"], "put">>
     ) => transferrecipient_update(client, ...init),
     virtualTerminal_addSplitCode: (
       ...init: InitArg<MaybeOptionalInit<paths["/virtual_terminal/{code}/split_code"], "put">>

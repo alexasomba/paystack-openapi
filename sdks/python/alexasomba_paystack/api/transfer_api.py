@@ -18,7 +18,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from datetime import datetime
-from pydantic import Field, StrictBool, StrictInt, StrictStr, field_validator
+from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
 from alexasomba_paystack.models.response import Response
@@ -1450,7 +1450,7 @@ class TransferApi:
     @validate_call
     def transfer_fetch(
         self,
-        code: Annotated[StrictStr, Field(description="Transfer code")],
+        id_or_code: Annotated[StrictStr, Field(description="The transfer ID or code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1468,8 +1468,8 @@ class TransferApi:
 
         Get details of a transfer on your integration
 
-        :param code: Transfer code (required)
-        :type code: str
+        :param id_or_code: The transfer ID or code you want to fetch (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1493,7 +1493,7 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_fetch_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1519,7 +1519,7 @@ class TransferApi:
     @validate_call
     def transfer_fetch_with_http_info(
         self,
-        code: Annotated[StrictStr, Field(description="Transfer code")],
+        id_or_code: Annotated[StrictStr, Field(description="The transfer ID or code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1537,8 +1537,8 @@ class TransferApi:
 
         Get details of a transfer on your integration
 
-        :param code: Transfer code (required)
-        :type code: str
+        :param id_or_code: The transfer ID or code you want to fetch (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1562,7 +1562,7 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_fetch_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1588,7 +1588,7 @@ class TransferApi:
     @validate_call
     def transfer_fetch_without_preload_content(
         self,
-        code: Annotated[StrictStr, Field(description="Transfer code")],
+        id_or_code: Annotated[StrictStr, Field(description="The transfer ID or code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1606,8 +1606,8 @@ class TransferApi:
 
         Get details of a transfer on your integration
 
-        :param code: Transfer code (required)
-        :type code: str
+        :param id_or_code: The transfer ID or code you want to fetch (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1631,7 +1631,7 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_fetch_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1652,7 +1652,7 @@ class TransferApi:
 
     def _transfer_fetch_serialize(
         self,
-        code,
+        id_or_code,
         _request_auth,
         _content_type,
         _headers,
@@ -1674,8 +1674,8 @@ class TransferApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if code is not None:
-            _path_params['code'] = code
+        if id_or_code is not None:
+            _path_params['id_or_code'] = id_or_code
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -1698,7 +1698,7 @@ class TransferApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/transfer/{code}',
+            resource_path='/transfer/{id_or_code}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2273,15 +2273,11 @@ class TransferApi:
     @validate_call
     def transfer_list(
         self,
-        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
-        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
-        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
-        recipient: Annotated[Optional[StrictStr], Field(description="Filter transfer by the recipient code")] = None,
-        status: Annotated[Optional[StrictStr], Field(description="Filter transfer by status")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specify we use a default value of 50.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Specify exactly what transfer you want to page. If not specify we use a default value of 1.")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        recipient: Annotated[Optional[StrictInt], Field(description="Filter by the recipient ID")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2299,24 +2295,16 @@ class TransferApi:
 
         List the transfers made on your integration
 
-        :param use_cursor: A flag to indicate if cursor based pagination should be used
-        :type use_cursor: bool
-        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
-        :type next: str
-        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
-        :type previous: str
-        :param per_page: The number of records to fetch per request
+        :param per_page: Specify how many records you want to retrieve per page. If not specify we use a default value of 50.
         :type per_page: int
-        :param page: The offset to retrieve data from
+        :param page: Specify exactly what transfer you want to page. If not specify we use a default value of 1.
         :type page: int
-        :param var_from: The start date
+        :param var_from: A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
         :type var_from: datetime
-        :param to: The end date
+        :param to: A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
         :type to: datetime
-        :param recipient: Filter transfer by the recipient code
-        :type recipient: str
-        :param status: Filter transfer by status
-        :type status: str
+        :param recipient: Filter by the recipient ID
+        :type recipient: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2340,15 +2328,11 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_list_serialize(
-            use_cursor=use_cursor,
-            next=next,
-            previous=previous,
             per_page=per_page,
             page=page,
             var_from=var_from,
             to=to,
             recipient=recipient,
-            status=status,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2374,15 +2358,11 @@ class TransferApi:
     @validate_call
     def transfer_list_with_http_info(
         self,
-        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
-        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
-        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
-        recipient: Annotated[Optional[StrictStr], Field(description="Filter transfer by the recipient code")] = None,
-        status: Annotated[Optional[StrictStr], Field(description="Filter transfer by status")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specify we use a default value of 50.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Specify exactly what transfer you want to page. If not specify we use a default value of 1.")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        recipient: Annotated[Optional[StrictInt], Field(description="Filter by the recipient ID")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2400,24 +2380,16 @@ class TransferApi:
 
         List the transfers made on your integration
 
-        :param use_cursor: A flag to indicate if cursor based pagination should be used
-        :type use_cursor: bool
-        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
-        :type next: str
-        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
-        :type previous: str
-        :param per_page: The number of records to fetch per request
+        :param per_page: Specify how many records you want to retrieve per page. If not specify we use a default value of 50.
         :type per_page: int
-        :param page: The offset to retrieve data from
+        :param page: Specify exactly what transfer you want to page. If not specify we use a default value of 1.
         :type page: int
-        :param var_from: The start date
+        :param var_from: A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
         :type var_from: datetime
-        :param to: The end date
+        :param to: A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
         :type to: datetime
-        :param recipient: Filter transfer by the recipient code
-        :type recipient: str
-        :param status: Filter transfer by status
-        :type status: str
+        :param recipient: Filter by the recipient ID
+        :type recipient: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2441,15 +2413,11 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_list_serialize(
-            use_cursor=use_cursor,
-            next=next,
-            previous=previous,
             per_page=per_page,
             page=page,
             var_from=var_from,
             to=to,
             recipient=recipient,
-            status=status,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2475,15 +2443,11 @@ class TransferApi:
     @validate_call
     def transfer_list_without_preload_content(
         self,
-        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
-        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
-        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
-        recipient: Annotated[Optional[StrictStr], Field(description="Filter transfer by the recipient code")] = None,
-        status: Annotated[Optional[StrictStr], Field(description="Filter transfer by status")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specify we use a default value of 50.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Specify exactly what transfer you want to page. If not specify we use a default value of 1.")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        recipient: Annotated[Optional[StrictInt], Field(description="Filter by the recipient ID")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2501,24 +2465,16 @@ class TransferApi:
 
         List the transfers made on your integration
 
-        :param use_cursor: A flag to indicate if cursor based pagination should be used
-        :type use_cursor: bool
-        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
-        :type next: str
-        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
-        :type previous: str
-        :param per_page: The number of records to fetch per request
+        :param per_page: Specify how many records you want to retrieve per page. If not specify we use a default value of 50.
         :type per_page: int
-        :param page: The offset to retrieve data from
+        :param page: Specify exactly what transfer you want to page. If not specify we use a default value of 1.
         :type page: int
-        :param var_from: The start date
+        :param var_from: A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
         :type var_from: datetime
-        :param to: The end date
+        :param to: A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
         :type to: datetime
-        :param recipient: Filter transfer by the recipient code
-        :type recipient: str
-        :param status: Filter transfer by status
-        :type status: str
+        :param recipient: Filter by the recipient ID
+        :type recipient: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2542,15 +2498,11 @@ class TransferApi:
         """ # noqa: E501
 
         _param = self._transfer_list_serialize(
-            use_cursor=use_cursor,
-            next=next,
-            previous=previous,
             per_page=per_page,
             page=page,
             var_from=var_from,
             to=to,
             recipient=recipient,
-            status=status,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2571,15 +2523,11 @@ class TransferApi:
 
     def _transfer_list_serialize(
         self,
-        use_cursor,
-        next,
-        previous,
         per_page,
         page,
         var_from,
         to,
         recipient,
-        status,
         _request_auth,
         _content_type,
         _headers,
@@ -2602,21 +2550,9 @@ class TransferApi:
 
         # process the path parameters
         # process the query parameters
-        if use_cursor is not None:
-            
-            _query_params.append(('use_cursor', use_cursor))
-            
-        if next is not None:
-            
-            _query_params.append(('next', next))
-            
-        if previous is not None:
-            
-            _query_params.append(('previous', previous))
-            
         if per_page is not None:
             
-            _query_params.append(('per_page', per_page))
+            _query_params.append(('perPage', per_page))
             
         if page is not None:
             
@@ -2651,10 +2587,6 @@ class TransferApi:
         if recipient is not None:
             
             _query_params.append(('recipient', recipient))
-            
-        if status is not None:
-            
-            _query_params.append(('status', status))
             
         # process the header parameters
         # process the form parameters

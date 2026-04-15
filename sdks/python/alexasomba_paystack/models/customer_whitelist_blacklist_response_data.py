@@ -30,11 +30,11 @@ class CustomerWhitelistBlacklistResponseData(BaseModel):
     transactions: List[Any]
     subscriptions: List[Any]
     authorizations: List[Any]
-    first_name: StrictStr
-    last_name: StrictStr
+    first_name: Optional[StrictStr]
+    last_name: Optional[StrictStr]
     email: StrictStr
-    phone: StrictStr
-    metadata: Dict[str, Any]
+    phone: Optional[StrictStr]
+    metadata: Optional[Dict[str, Any]]
     domain: StrictStr
     customer_code: StrictStr
     risk_action: StrictStr
@@ -85,6 +85,26 @@ class CustomerWhitelistBlacklistResponseData(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if first_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.first_name is None and "first_name" in self.model_fields_set:
+            _dict['first_name'] = None
+
+        # set to None if last_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.last_name is None and "last_name" in self.model_fields_set:
+            _dict['last_name'] = None
+
+        # set to None if phone (nullable) is None
+        # and model_fields_set contains the field
+        if self.phone is None and "phone" in self.model_fields_set:
+            _dict['phone'] = None
+
+        # set to None if metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
+
         # set to None if identifications (nullable) is None
         # and model_fields_set contains the field
         if self.identifications is None and "identifications" in self.model_fields_set:

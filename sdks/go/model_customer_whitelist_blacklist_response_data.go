@@ -25,10 +25,10 @@ type CustomerWhitelistBlacklistResponseData struct {
 	Transactions []interface{} `json:"transactions"`
 	Subscriptions []interface{} `json:"subscriptions"`
 	Authorizations []interface{} `json:"authorizations"`
-	FirstName string `json:"first_name"`
-	LastName string `json:"last_name"`
+	FirstName NullableString `json:"first_name"`
+	LastName NullableString `json:"last_name"`
 	Email string `json:"email"`
-	Phone string `json:"phone"`
+	Phone NullableString `json:"phone"`
 	Metadata map[string]interface{} `json:"metadata"`
 	Domain string `json:"domain"`
 	CustomerCode string `json:"customer_code"`
@@ -47,7 +47,7 @@ type _CustomerWhitelistBlacklistResponseData CustomerWhitelistBlacklistResponseD
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomerWhitelistBlacklistResponseData(transactions []interface{}, subscriptions []interface{}, authorizations []interface{}, firstName string, lastName string, email string, phone string, metadata map[string]interface{}, domain string, customerCode string, riskAction string, id int32, integration int32, createdAt string, updatedAt string, identified bool, identifications interface{}) *CustomerWhitelistBlacklistResponseData {
+func NewCustomerWhitelistBlacklistResponseData(transactions []interface{}, subscriptions []interface{}, authorizations []interface{}, firstName NullableString, lastName NullableString, email string, phone NullableString, metadata map[string]interface{}, domain string, customerCode string, riskAction string, id int32, integration int32, createdAt string, updatedAt string, identified bool, identifications interface{}) *CustomerWhitelistBlacklistResponseData {
 	this := CustomerWhitelistBlacklistResponseData{}
 	this.Transactions = transactions
 	this.Subscriptions = subscriptions
@@ -150,51 +150,55 @@ func (o *CustomerWhitelistBlacklistResponseData) SetAuthorizations(v []interface
 }
 
 // GetFirstName returns the FirstName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CustomerWhitelistBlacklistResponseData) GetFirstName() string {
-	if o == nil {
+	if o == nil || o.FirstName.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.FirstName
+	return *o.FirstName.Get()
 }
 
 // GetFirstNameOk returns a tuple with the FirstName field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerWhitelistBlacklistResponseData) GetFirstNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.FirstName, true
+	return o.FirstName.Get(), o.FirstName.IsSet()
 }
 
 // SetFirstName sets field value
 func (o *CustomerWhitelistBlacklistResponseData) SetFirstName(v string) {
-	o.FirstName = v
+	o.FirstName.Set(&v)
 }
 
 // GetLastName returns the LastName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CustomerWhitelistBlacklistResponseData) GetLastName() string {
-	if o == nil {
+	if o == nil || o.LastName.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.LastName
+	return *o.LastName.Get()
 }
 
 // GetLastNameOk returns a tuple with the LastName field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerWhitelistBlacklistResponseData) GetLastNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.LastName, true
+	return o.LastName.Get(), o.LastName.IsSet()
 }
 
 // SetLastName sets field value
 func (o *CustomerWhitelistBlacklistResponseData) SetLastName(v string) {
-	o.LastName = v
+	o.LastName.Set(&v)
 }
 
 // GetEmail returns the Email field value
@@ -222,30 +226,33 @@ func (o *CustomerWhitelistBlacklistResponseData) SetEmail(v string) {
 }
 
 // GetPhone returns the Phone field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CustomerWhitelistBlacklistResponseData) GetPhone() string {
-	if o == nil {
+	if o == nil || o.Phone.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Phone
+	return *o.Phone.Get()
 }
 
 // GetPhoneOk returns a tuple with the Phone field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerWhitelistBlacklistResponseData) GetPhoneOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Phone, true
+	return o.Phone.Get(), o.Phone.IsSet()
 }
 
 // SetPhone sets field value
 func (o *CustomerWhitelistBlacklistResponseData) SetPhone(v string) {
-	o.Phone = v
+	o.Phone.Set(&v)
 }
 
 // GetMetadata returns the Metadata field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *CustomerWhitelistBlacklistResponseData) GetMetadata() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -257,8 +264,9 @@ func (o *CustomerWhitelistBlacklistResponseData) GetMetadata() map[string]interf
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerWhitelistBlacklistResponseData) GetMetadataOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Metadata) {
 		return map[string]interface{}{}, false
 	}
 	return o.Metadata, true
@@ -500,11 +508,13 @@ func (o CustomerWhitelistBlacklistResponseData) ToMap() (map[string]interface{},
 	toSerialize["transactions"] = o.Transactions
 	toSerialize["subscriptions"] = o.Subscriptions
 	toSerialize["authorizations"] = o.Authorizations
-	toSerialize["first_name"] = o.FirstName
-	toSerialize["last_name"] = o.LastName
+	toSerialize["first_name"] = o.FirstName.Get()
+	toSerialize["last_name"] = o.LastName.Get()
 	toSerialize["email"] = o.Email
-	toSerialize["phone"] = o.Phone
-	toSerialize["metadata"] = o.Metadata
+	toSerialize["phone"] = o.Phone.Get()
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
+	}
 	toSerialize["domain"] = o.Domain
 	toSerialize["customer_code"] = o.CustomerCode
 	toSerialize["risk_action"] = o.RiskAction

@@ -28,12 +28,12 @@ class PlanUpdate(BaseModel):
     PlanUpdate
     """ # noqa: E501
     name: Optional[StrictStr] = Field(default=None, description="Name of plan")
-    amount: Optional[StrictInt] = Field(default=None, description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")
+    amount: Optional[StrictInt] = Field(default=None, description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,  Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,  cents, if currency is ZAR, and whole number if currency is XOF")
     interval: Optional[StrictStr] = Field(default=None, description="Payment interval")
     description: Optional[StrictBool] = Field(default=None, description="A description for this plan")
     send_invoices: Optional[StrictBool] = Field(default=None, description="Set to false if you don't want invoices to be sent to your customers")
     send_sms: Optional[StrictBool] = Field(default=None, description="Set to false if you don't want text messages to be sent to your customers")
-    currency: Optional[StrictStr] = Field(default=None, description="Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD")
+    currency: Optional[StrictStr] = Field(default=None, description="Currency in which amount is set. Allowed values are NGN, GHS, ZAR, USD or XOF")
     invoice_limit: Optional[StrictInt] = Field(default=None, description="Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing.")
     __properties: ClassVar[List[str]] = ["name", "amount", "interval", "description", "send_invoices", "send_sms", "currency", "invoice_limit"]
 

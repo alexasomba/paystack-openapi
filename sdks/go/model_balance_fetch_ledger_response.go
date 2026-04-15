@@ -25,7 +25,7 @@ type BalanceFetchLedgerResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
 	Data []BalanceFetchLedgerResponseArray `json:"data"`
-	Meta SubaccountListResponseMeta `json:"meta"`
+	Meta BalanceFetchLedgerResponseMeta `json:"meta"`
 }
 
 type _BalanceFetchLedgerResponse BalanceFetchLedgerResponse
@@ -34,7 +34,7 @@ type _BalanceFetchLedgerResponse BalanceFetchLedgerResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBalanceFetchLedgerResponse(status bool, message string, data []BalanceFetchLedgerResponseArray, meta SubaccountListResponseMeta) *BalanceFetchLedgerResponse {
+func NewBalanceFetchLedgerResponse(status bool, message string, data []BalanceFetchLedgerResponseArray, meta BalanceFetchLedgerResponseMeta) *BalanceFetchLedgerResponse {
 	this := BalanceFetchLedgerResponse{}
 	this.Status = status
 	this.Message = message
@@ -124,9 +124,9 @@ func (o *BalanceFetchLedgerResponse) SetData(v []BalanceFetchLedgerResponseArray
 }
 
 // GetMeta returns the Meta field value
-func (o *BalanceFetchLedgerResponse) GetMeta() SubaccountListResponseMeta {
+func (o *BalanceFetchLedgerResponse) GetMeta() BalanceFetchLedgerResponseMeta {
 	if o == nil {
-		var ret SubaccountListResponseMeta
+		var ret BalanceFetchLedgerResponseMeta
 		return ret
 	}
 
@@ -135,7 +135,7 @@ func (o *BalanceFetchLedgerResponse) GetMeta() SubaccountListResponseMeta {
 
 // GetMetaOk returns a tuple with the Meta field value
 // and a boolean to check if the value has been set.
-func (o *BalanceFetchLedgerResponse) GetMetaOk() (*SubaccountListResponseMeta, bool) {
+func (o *BalanceFetchLedgerResponse) GetMetaOk() (*BalanceFetchLedgerResponseMeta, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -143,7 +143,7 @@ func (o *BalanceFetchLedgerResponse) GetMetaOk() (*SubaccountListResponseMeta, b
 }
 
 // SetMeta sets field value
-func (o *BalanceFetchLedgerResponse) SetMeta(v SubaccountListResponseMeta) {
+func (o *BalanceFetchLedgerResponse) SetMeta(v BalanceFetchLedgerResponseMeta) {
 	o.Meta = v
 }
 

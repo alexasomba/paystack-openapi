@@ -22,6 +22,8 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_v
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.currency import Currency
 from alexasomba_paystack.models.split_create import SplitCreate
+from alexasomba_paystack.models.transaction_initialize_amount import TransactionInitializeAmount
+from alexasomba_paystack.models.transaction_initialize_metadata import TransactionInitializeMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,20 +32,20 @@ class TransactionInitialize(BaseModel):
     Initialize a transaction
     """ # noqa: E501
     email: StrictStr = Field(description="Customer's email address")
-    amount: StrictInt = Field(description="Amount should be in smallest denomination of the currency. ")
+    amount: TransactionInitializeAmount
     currency: Optional[Currency] = None
     reference: Optional[StrictStr] = Field(default=None, description="Unique transaction reference. Only -, ., = and alphanumeric characters allowed.")
-    channels: Optional[List[StrictStr]] = Field(default=None, description="An array of payment channels to control what channels you want to make available to the user to make a payment with")
+    channels: Optional[List[StrictStr]] = Field(default=None, description="An array of payment channels to control what channels you want to make available to the user to make a payment with ")
     callback_url: Optional[StrictStr] = Field(default=None, description="Fully qualified url, e.g. https://example.com/ to redirect your customers to after a successful payment. Use this to override the callback url provided on the dashboard for this transaction ")
     plan: Optional[StrictStr] = Field(default=None, description="If transaction is to create a subscription to a predefined plan, provide plan code here.  This would invalidate the value provided in amount ")
     invoice_limit: Optional[StrictInt] = Field(default=None, description="Number of times to charge customer during subscription to plan")
     split_code: Optional[StrictStr] = Field(default=None, description="The split code of the transaction split")
     split: Optional[SplitCreate] = None
     subaccount: Optional[StrictStr] = Field(default=None, description="The code for the subaccount that owns the payment")
-    transaction_charge: Optional[StrictStr] = Field(default=None, description="A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created ")
+    transaction_charge: Optional[StrictInt] = Field(default=None, description="A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created ")
     bearer: Optional[StrictStr] = Field(default=None, description="The bearer of the transaction charge")
     label: Optional[StrictStr] = Field(default=None, description="Used to replace the email address shown on the Checkout")
-    metadata: Optional[Dict[str, Any]] = Field(default=None, description="JSON object of custom data")
+    metadata: Optional[TransactionInitializeMetadata] = None
     __properties: ClassVar[List[str]] = ["email", "amount", "currency", "reference", "channels", "callback_url", "plan", "invoice_limit", "split_code", "split", "subaccount", "transaction_charge", "bearer", "label", "metadata"]
 
     @field_validator('channels')
@@ -53,8 +55,8 @@ class TransactionInitialize(BaseModel):
             return value
 
         for i in value:
-            if i not in set(['card', 'bank', 'ussd', 'qr', 'eft', 'mobile_money', 'bank_transfer']):
-                raise ValueError("each list item must be one of ('card', 'bank', 'ussd', 'qr', 'eft', 'mobile_money', 'bank_transfer')")
+            if i not in set(['card', 'bank', 'ussd', 'qr', 'eft', 'mobile_money', 'bank_transfer', 'apple_pay', 'capitec_pay', 'payattitude']):
+                raise ValueError("each list item must be one of ('card', 'bank', 'ussd', 'qr', 'eft', 'mobile_money', 'bank_transfer', 'apple_pay', 'capitec_pay', 'payattitude')")
         return value
 
     @field_validator('bearer')
@@ -106,9 +108,15 @@ class TransactionInitialize(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of amount
+        if self.amount:
+            _dict['amount'] = self.amount.to_dict()
         # override the default output from pydantic by calling `to_dict()` of split
         if self.split:
             _dict['split'] = self.split.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of metadata
+        if self.metadata:
+            _dict['metadata'] = self.metadata.to_dict()
         return _dict
 
     @classmethod
@@ -122,7 +130,7 @@ class TransactionInitialize(BaseModel):
 
         _obj = cls.model_validate({
             "email": obj.get("email"),
-            "amount": obj.get("amount"),
+            "amount": TransactionInitializeAmount.from_dict(obj["amount"]) if obj.get("amount") is not None else None,
             "currency": obj.get("currency"),
             "reference": obj.get("reference"),
             "channels": obj.get("channels"),
@@ -135,7 +143,7 @@ class TransactionInitialize(BaseModel):
             "transaction_charge": obj.get("transaction_charge"),
             "bearer": obj.get("bearer"),
             "label": obj.get("label"),
-            "metadata": obj.get("metadata")
+            "metadata": TransactionInitializeMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None
         })
         return _obj
 

@@ -66,21 +66,21 @@ class PaymentRequestVerifyResponseData implements ModelInterface, ArrayAccess, \
         'due_date' => 'string',
         'has_invoice' => 'bool',
         'invoice_number' => 'int',
-        'description' => 'mixed',
+        'description' => 'string',
         'pdf_url' => 'string',
         'line_items' => 'mixed[]',
         'tax' => 'mixed[]',
         'request_code' => 'string',
         'status' => 'string',
         'paid' => 'bool',
-        'paid_at' => 'mixed',
-        'metadata' => 'mixed',
+        'paid_at' => 'string',
+        'metadata' => 'object',
         'notifications' => '\Alexasomba\Paystack\Model\PaymentRequestNotificationsArray[]',
         'offline_reference' => 'string',
-        'customer' => '\Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayCustomer',
+        'customer' => '\Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataCustomer',
         'created_at' => 'string',
-        'discount' => 'mixed',
-        'split_code' => 'mixed',
+        'discount' => 'object',
+        'split_code' => 'string',
         'pending_amount' => 'int'
     ];
 
@@ -499,12 +499,6 @@ class PaymentRequestVerifyResponseData implements ModelInterface, ArrayAccess, \
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
         }
-        if ($this->container['discount'] === null && !$this->isNullableSetToNull('discount')) {
-            $invalidProperties[] = "'discount' can't be null";
-        }
-        if ($this->container['split_code'] === null && !$this->isNullableSetToNull('split_code')) {
-            $invalidProperties[] = "'split_code' can't be null";
-        }
         if ($this->container['pending_amount'] === null) {
             $invalidProperties[] = "'pending_amount' can't be null";
         }
@@ -756,7 +750,7 @@ class PaymentRequestVerifyResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Gets description
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getDescription()
     {
@@ -766,7 +760,7 @@ class PaymentRequestVerifyResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Sets description
      *
-     * @param mixed|null $description description
+     * @param string|null $description description
      *
      * @return self
      */
@@ -959,7 +953,7 @@ class PaymentRequestVerifyResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Gets paid_at
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getPaidAt()
     {
@@ -969,7 +963,7 @@ class PaymentRequestVerifyResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Sets paid_at
      *
-     * @param mixed|null $paid_at paid_at
+     * @param string|null $paid_at paid_at
      *
      * @return self
      */
@@ -993,7 +987,7 @@ class PaymentRequestVerifyResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Gets metadata
      *
-     * @return mixed|null
+     * @return object|null
      */
     public function getMetadata()
     {
@@ -1003,7 +997,7 @@ class PaymentRequestVerifyResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Sets metadata
      *
-     * @param mixed|null $metadata metadata
+     * @param object|null $metadata metadata
      *
      * @return self
      */
@@ -1081,7 +1075,7 @@ class PaymentRequestVerifyResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Gets customer
      *
-     * @return \Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayCustomer
+     * @return \Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataCustomer
      */
     public function getCustomer()
     {
@@ -1091,7 +1085,7 @@ class PaymentRequestVerifyResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Sets customer
      *
-     * @param \Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataCustomer $customer customer
      *
      * @return self
      */
@@ -1135,7 +1129,7 @@ class PaymentRequestVerifyResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Gets discount
      *
-     * @return mixed|null
+     * @return object|null
      */
     public function getDiscount()
     {
@@ -1145,7 +1139,7 @@ class PaymentRequestVerifyResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Sets discount
      *
-     * @param mixed|null $discount discount
+     * @param object|null $discount discount
      *
      * @return self
      */
@@ -1169,7 +1163,7 @@ class PaymentRequestVerifyResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Gets split_code
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getSplitCode()
     {
@@ -1179,7 +1173,7 @@ class PaymentRequestVerifyResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Sets split_code
      *
-     * @param mixed|null $split_code split_code
+     * @param string|null $split_code split_code
      *
      * @return self
      */

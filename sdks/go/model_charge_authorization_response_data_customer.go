@@ -28,9 +28,9 @@ type ChargeAuthorizationResponseDataCustomer struct {
 	Email string `json:"email"`
 	CustomerCode string `json:"customer_code"`
 	Phone NullableString `json:"phone"`
-	Metadata NullableChargeAuthorizationResponseDataCustomerMetadata `json:"metadata"`
+	Metadata map[string]interface{} `json:"metadata"`
 	RiskAction string `json:"risk_action"`
-	InternationalFormatPhone NullableString `json:"international_format_phone"`
+	InternationalFormatPhone NullableString `json:"international_format_phone,omitempty"`
 }
 
 type _ChargeAuthorizationResponseDataCustomer ChargeAuthorizationResponseDataCustomer
@@ -39,7 +39,7 @@ type _ChargeAuthorizationResponseDataCustomer ChargeAuthorizationResponseDataCus
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChargeAuthorizationResponseDataCustomer(id int32, firstName NullableString, lastName NullableString, email string, customerCode string, phone NullableString, metadata NullableChargeAuthorizationResponseDataCustomerMetadata, riskAction string, internationalFormatPhone NullableString) *ChargeAuthorizationResponseDataCustomer {
+func NewChargeAuthorizationResponseDataCustomer(id int32, firstName NullableString, lastName NullableString, email string, customerCode string, phone NullableString, metadata map[string]interface{}, riskAction string) *ChargeAuthorizationResponseDataCustomer {
 	this := ChargeAuthorizationResponseDataCustomer{}
 	this.Id = id
 	this.FirstName = firstName
@@ -49,7 +49,6 @@ func NewChargeAuthorizationResponseDataCustomer(id int32, firstName NullableStri
 	this.Phone = phone
 	this.Metadata = metadata
 	this.RiskAction = riskAction
-	this.InternationalFormatPhone = internationalFormatPhone
 	return &this
 }
 
@@ -212,29 +211,29 @@ func (o *ChargeAuthorizationResponseDataCustomer) SetPhone(v string) {
 }
 
 // GetMetadata returns the Metadata field value
-// If the value is explicit nil, the zero value for ChargeAuthorizationResponseDataCustomerMetadata will be returned
-func (o *ChargeAuthorizationResponseDataCustomer) GetMetadata() ChargeAuthorizationResponseDataCustomerMetadata {
-	if o == nil || o.Metadata.Get() == nil {
-		var ret ChargeAuthorizationResponseDataCustomerMetadata
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *ChargeAuthorizationResponseDataCustomer) GetMetadata() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
 		return ret
 	}
 
-	return *o.Metadata.Get()
+	return o.Metadata
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ChargeAuthorizationResponseDataCustomer) GetMetadataOk() (*ChargeAuthorizationResponseDataCustomerMetadata, bool) {
-	if o == nil {
-		return nil, false
+func (o *ChargeAuthorizationResponseDataCustomer) GetMetadataOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Metadata) {
+		return map[string]interface{}{}, false
 	}
-	return o.Metadata.Get(), o.Metadata.IsSet()
+	return o.Metadata, true
 }
 
 // SetMetadata sets field value
-func (o *ChargeAuthorizationResponseDataCustomer) SetMetadata(v ChargeAuthorizationResponseDataCustomerMetadata) {
-	o.Metadata.Set(&v)
+func (o *ChargeAuthorizationResponseDataCustomer) SetMetadata(v map[string]interface{}) {
+	o.Metadata = v
 }
 
 // GetRiskAction returns the RiskAction field value
@@ -261,18 +260,16 @@ func (o *ChargeAuthorizationResponseDataCustomer) SetRiskAction(v string) {
 	o.RiskAction = v
 }
 
-// GetInternationalFormatPhone returns the InternationalFormatPhone field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetInternationalFormatPhone returns the InternationalFormatPhone field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ChargeAuthorizationResponseDataCustomer) GetInternationalFormatPhone() string {
-	if o == nil || o.InternationalFormatPhone.Get() == nil {
+	if o == nil || IsNil(o.InternationalFormatPhone.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.InternationalFormatPhone.Get()
 }
 
-// GetInternationalFormatPhoneOk returns a tuple with the InternationalFormatPhone field value
+// GetInternationalFormatPhoneOk returns a tuple with the InternationalFormatPhone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ChargeAuthorizationResponseDataCustomer) GetInternationalFormatPhoneOk() (*string, bool) {
@@ -282,9 +279,27 @@ func (o *ChargeAuthorizationResponseDataCustomer) GetInternationalFormatPhoneOk(
 	return o.InternationalFormatPhone.Get(), o.InternationalFormatPhone.IsSet()
 }
 
-// SetInternationalFormatPhone sets field value
+// HasInternationalFormatPhone returns a boolean if a field has been set.
+func (o *ChargeAuthorizationResponseDataCustomer) HasInternationalFormatPhone() bool {
+	if o != nil && o.InternationalFormatPhone.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInternationalFormatPhone gets a reference to the given NullableString and assigns it to the InternationalFormatPhone field.
 func (o *ChargeAuthorizationResponseDataCustomer) SetInternationalFormatPhone(v string) {
 	o.InternationalFormatPhone.Set(&v)
+}
+// SetInternationalFormatPhoneNil sets the value for InternationalFormatPhone to be an explicit nil
+func (o *ChargeAuthorizationResponseDataCustomer) SetInternationalFormatPhoneNil() {
+	o.InternationalFormatPhone.Set(nil)
+}
+
+// UnsetInternationalFormatPhone ensures that no value is present for InternationalFormatPhone, not even an explicit nil
+func (o *ChargeAuthorizationResponseDataCustomer) UnsetInternationalFormatPhone() {
+	o.InternationalFormatPhone.Unset()
 }
 
 func (o ChargeAuthorizationResponseDataCustomer) MarshalJSON() ([]byte, error) {
@@ -303,9 +318,13 @@ func (o ChargeAuthorizationResponseDataCustomer) ToMap() (map[string]interface{}
 	toSerialize["email"] = o.Email
 	toSerialize["customer_code"] = o.CustomerCode
 	toSerialize["phone"] = o.Phone.Get()
-	toSerialize["metadata"] = o.Metadata.Get()
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
+	}
 	toSerialize["risk_action"] = o.RiskAction
-	toSerialize["international_format_phone"] = o.InternationalFormatPhone.Get()
+	if o.InternationalFormatPhone.IsSet() {
+		toSerialize["international_format_phone"] = o.InternationalFormatPhone.Get()
+	}
 	return toSerialize, nil
 }
 
@@ -322,7 +341,6 @@ func (o *ChargeAuthorizationResponseDataCustomer) UnmarshalJSON(data []byte) (er
 		"phone",
 		"metadata",
 		"risk_action",
-		"international_format_phone",
 	}
 
 	allProperties := make(map[string]interface{})

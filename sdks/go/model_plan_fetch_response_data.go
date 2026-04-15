@@ -23,33 +23,23 @@ var _ MappedNullable = &PlanFetchResponseData{}
 // PlanFetchResponseData struct for PlanFetchResponseData
 type PlanFetchResponseData struct {
 	Subscriptions []interface{} `json:"subscriptions"`
-	Pages []interface{} `json:"pages"`
+	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
 	Name string `json:"name"`
 	PlanCode string `json:"plan_code"`
 	Description interface{} `json:"description"`
 	Amount int32 `json:"amount"`
 	Interval string `json:"interval"`
-	InvoiceLimit int32 `json:"invoice_limit"`
+	InvoiceLimit NullableInt32 `json:"invoice_limit,omitempty"`
 	SendInvoices bool `json:"send_invoices"`
 	SendSms bool `json:"send_sms"`
 	HostedPage bool `json:"hosted_page"`
 	HostedPageUrl interface{} `json:"hosted_page_url"`
 	HostedPageSummary interface{} `json:"hosted_page_summary"`
 	Currency string `json:"currency"`
-	Migrate bool `json:"migrate"`
-	IsDeleted bool `json:"is_deleted"`
-	IsArchived bool `json:"is_archived"`
 	Id int32 `json:"id"`
-	Integration int32 `json:"integration"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
-	PagesCount int32 `json:"pages_count"`
-	SubscribersCount int32 `json:"subscribers_count"`
-	SubscriptionsCount int32 `json:"subscriptions_count"`
-	ActiveSubscriptionsCount NullableInt32 `json:"active_subscriptions_count"`
-	TotalRevenue int32 `json:"total_revenue"`
-	Subscribers []interface{} `json:"subscribers"`
 }
 
 type _PlanFetchResponseData PlanFetchResponseData
@@ -58,36 +48,25 @@ type _PlanFetchResponseData PlanFetchResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlanFetchResponseData(subscriptions []interface{}, pages []interface{}, domain string, name string, planCode string, description interface{}, amount int32, interval string, invoiceLimit int32, sendInvoices bool, sendSms bool, hostedPage bool, hostedPageUrl interface{}, hostedPageSummary interface{}, currency string, migrate bool, isDeleted bool, isArchived bool, id int32, integration int32, createdAt string, updatedAt string, pagesCount int32, subscribersCount int32, subscriptionsCount int32, activeSubscriptionsCount NullableInt32, totalRevenue int32, subscribers []interface{}) *PlanFetchResponseData {
+func NewPlanFetchResponseData(subscriptions []interface{}, integration int32, domain string, name string, planCode string, description interface{}, amount int32, interval string, sendInvoices bool, sendSms bool, hostedPage bool, hostedPageUrl interface{}, hostedPageSummary interface{}, currency string, id int32, createdAt string, updatedAt string) *PlanFetchResponseData {
 	this := PlanFetchResponseData{}
 	this.Subscriptions = subscriptions
-	this.Pages = pages
+	this.Integration = integration
 	this.Domain = domain
 	this.Name = name
 	this.PlanCode = planCode
 	this.Description = description
 	this.Amount = amount
 	this.Interval = interval
-	this.InvoiceLimit = invoiceLimit
 	this.SendInvoices = sendInvoices
 	this.SendSms = sendSms
 	this.HostedPage = hostedPage
 	this.HostedPageUrl = hostedPageUrl
 	this.HostedPageSummary = hostedPageSummary
 	this.Currency = currency
-	this.Migrate = migrate
-	this.IsDeleted = isDeleted
-	this.IsArchived = isArchived
 	this.Id = id
-	this.Integration = integration
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
-	this.PagesCount = pagesCount
-	this.SubscribersCount = subscribersCount
-	this.SubscriptionsCount = subscriptionsCount
-	this.ActiveSubscriptionsCount = activeSubscriptionsCount
-	this.TotalRevenue = totalRevenue
-	this.Subscribers = subscribers
 	return &this
 }
 
@@ -123,28 +102,28 @@ func (o *PlanFetchResponseData) SetSubscriptions(v []interface{}) {
 	o.Subscriptions = v
 }
 
-// GetPages returns the Pages field value
-func (o *PlanFetchResponseData) GetPages() []interface{} {
+// GetIntegration returns the Integration field value
+func (o *PlanFetchResponseData) GetIntegration() int32 {
 	if o == nil {
-		var ret []interface{}
+		var ret int32
 		return ret
 	}
 
-	return o.Pages
+	return o.Integration
 }
 
-// GetPagesOk returns a tuple with the Pages field value
+// GetIntegrationOk returns a tuple with the Integration field value
 // and a boolean to check if the value has been set.
-func (o *PlanFetchResponseData) GetPagesOk() ([]interface{}, bool) {
+func (o *PlanFetchResponseData) GetIntegrationOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Pages, true
+	return &o.Integration, true
 }
 
-// SetPages sets field value
-func (o *PlanFetchResponseData) SetPages(v []interface{}) {
-	o.Pages = v
+// SetIntegration sets field value
+func (o *PlanFetchResponseData) SetIntegration(v int32) {
+	o.Integration = v
 }
 
 // GetDomain returns the Domain field value
@@ -293,28 +272,46 @@ func (o *PlanFetchResponseData) SetInterval(v string) {
 	o.Interval = v
 }
 
-// GetInvoiceLimit returns the InvoiceLimit field value
+// GetInvoiceLimit returns the InvoiceLimit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PlanFetchResponseData) GetInvoiceLimit() int32 {
-	if o == nil {
+	if o == nil || IsNil(o.InvoiceLimit.Get()) {
 		var ret int32
 		return ret
 	}
-
-	return o.InvoiceLimit
+	return *o.InvoiceLimit.Get()
 }
 
-// GetInvoiceLimitOk returns a tuple with the InvoiceLimit field value
+// GetInvoiceLimitOk returns a tuple with the InvoiceLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PlanFetchResponseData) GetInvoiceLimitOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.InvoiceLimit, true
+	return o.InvoiceLimit.Get(), o.InvoiceLimit.IsSet()
 }
 
-// SetInvoiceLimit sets field value
+// HasInvoiceLimit returns a boolean if a field has been set.
+func (o *PlanFetchResponseData) HasInvoiceLimit() bool {
+	if o != nil && o.InvoiceLimit.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInvoiceLimit gets a reference to the given NullableInt32 and assigns it to the InvoiceLimit field.
 func (o *PlanFetchResponseData) SetInvoiceLimit(v int32) {
-	o.InvoiceLimit = v
+	o.InvoiceLimit.Set(&v)
+}
+// SetInvoiceLimitNil sets the value for InvoiceLimit to be an explicit nil
+func (o *PlanFetchResponseData) SetInvoiceLimitNil() {
+	o.InvoiceLimit.Set(nil)
+}
+
+// UnsetInvoiceLimit ensures that no value is present for InvoiceLimit, not even an explicit nil
+func (o *PlanFetchResponseData) UnsetInvoiceLimit() {
+	o.InvoiceLimit.Unset()
 }
 
 // GetSendInvoices returns the SendInvoices field value
@@ -465,78 +462,6 @@ func (o *PlanFetchResponseData) SetCurrency(v string) {
 	o.Currency = v
 }
 
-// GetMigrate returns the Migrate field value
-func (o *PlanFetchResponseData) GetMigrate() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.Migrate
-}
-
-// GetMigrateOk returns a tuple with the Migrate field value
-// and a boolean to check if the value has been set.
-func (o *PlanFetchResponseData) GetMigrateOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Migrate, true
-}
-
-// SetMigrate sets field value
-func (o *PlanFetchResponseData) SetMigrate(v bool) {
-	o.Migrate = v
-}
-
-// GetIsDeleted returns the IsDeleted field value
-func (o *PlanFetchResponseData) GetIsDeleted() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.IsDeleted
-}
-
-// GetIsDeletedOk returns a tuple with the IsDeleted field value
-// and a boolean to check if the value has been set.
-func (o *PlanFetchResponseData) GetIsDeletedOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IsDeleted, true
-}
-
-// SetIsDeleted sets field value
-func (o *PlanFetchResponseData) SetIsDeleted(v bool) {
-	o.IsDeleted = v
-}
-
-// GetIsArchived returns the IsArchived field value
-func (o *PlanFetchResponseData) GetIsArchived() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.IsArchived
-}
-
-// GetIsArchivedOk returns a tuple with the IsArchived field value
-// and a boolean to check if the value has been set.
-func (o *PlanFetchResponseData) GetIsArchivedOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IsArchived, true
-}
-
-// SetIsArchived sets field value
-func (o *PlanFetchResponseData) SetIsArchived(v bool) {
-	o.IsArchived = v
-}
-
 // GetId returns the Id field value
 func (o *PlanFetchResponseData) GetId() int32 {
 	if o == nil {
@@ -559,30 +484,6 @@ func (o *PlanFetchResponseData) GetIdOk() (*int32, bool) {
 // SetId sets field value
 func (o *PlanFetchResponseData) SetId(v int32) {
 	o.Id = v
-}
-
-// GetIntegration returns the Integration field value
-func (o *PlanFetchResponseData) GetIntegration() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Integration
-}
-
-// GetIntegrationOk returns a tuple with the Integration field value
-// and a boolean to check if the value has been set.
-func (o *PlanFetchResponseData) GetIntegrationOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Integration, true
-}
-
-// SetIntegration sets field value
-func (o *PlanFetchResponseData) SetIntegration(v int32) {
-	o.Integration = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -633,152 +534,6 @@ func (o *PlanFetchResponseData) SetUpdatedAt(v string) {
 	o.UpdatedAt = v
 }
 
-// GetPagesCount returns the PagesCount field value
-func (o *PlanFetchResponseData) GetPagesCount() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.PagesCount
-}
-
-// GetPagesCountOk returns a tuple with the PagesCount field value
-// and a boolean to check if the value has been set.
-func (o *PlanFetchResponseData) GetPagesCountOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.PagesCount, true
-}
-
-// SetPagesCount sets field value
-func (o *PlanFetchResponseData) SetPagesCount(v int32) {
-	o.PagesCount = v
-}
-
-// GetSubscribersCount returns the SubscribersCount field value
-func (o *PlanFetchResponseData) GetSubscribersCount() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.SubscribersCount
-}
-
-// GetSubscribersCountOk returns a tuple with the SubscribersCount field value
-// and a boolean to check if the value has been set.
-func (o *PlanFetchResponseData) GetSubscribersCountOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SubscribersCount, true
-}
-
-// SetSubscribersCount sets field value
-func (o *PlanFetchResponseData) SetSubscribersCount(v int32) {
-	o.SubscribersCount = v
-}
-
-// GetSubscriptionsCount returns the SubscriptionsCount field value
-func (o *PlanFetchResponseData) GetSubscriptionsCount() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.SubscriptionsCount
-}
-
-// GetSubscriptionsCountOk returns a tuple with the SubscriptionsCount field value
-// and a boolean to check if the value has been set.
-func (o *PlanFetchResponseData) GetSubscriptionsCountOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SubscriptionsCount, true
-}
-
-// SetSubscriptionsCount sets field value
-func (o *PlanFetchResponseData) SetSubscriptionsCount(v int32) {
-	o.SubscriptionsCount = v
-}
-
-// GetActiveSubscriptionsCount returns the ActiveSubscriptionsCount field value
-// If the value is explicit nil, the zero value for int32 will be returned
-func (o *PlanFetchResponseData) GetActiveSubscriptionsCount() int32 {
-	if o == nil || o.ActiveSubscriptionsCount.Get() == nil {
-		var ret int32
-		return ret
-	}
-
-	return *o.ActiveSubscriptionsCount.Get()
-}
-
-// GetActiveSubscriptionsCountOk returns a tuple with the ActiveSubscriptionsCount field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PlanFetchResponseData) GetActiveSubscriptionsCountOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ActiveSubscriptionsCount.Get(), o.ActiveSubscriptionsCount.IsSet()
-}
-
-// SetActiveSubscriptionsCount sets field value
-func (o *PlanFetchResponseData) SetActiveSubscriptionsCount(v int32) {
-	o.ActiveSubscriptionsCount.Set(&v)
-}
-
-// GetTotalRevenue returns the TotalRevenue field value
-func (o *PlanFetchResponseData) GetTotalRevenue() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.TotalRevenue
-}
-
-// GetTotalRevenueOk returns a tuple with the TotalRevenue field value
-// and a boolean to check if the value has been set.
-func (o *PlanFetchResponseData) GetTotalRevenueOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TotalRevenue, true
-}
-
-// SetTotalRevenue sets field value
-func (o *PlanFetchResponseData) SetTotalRevenue(v int32) {
-	o.TotalRevenue = v
-}
-
-// GetSubscribers returns the Subscribers field value
-func (o *PlanFetchResponseData) GetSubscribers() []interface{} {
-	if o == nil {
-		var ret []interface{}
-		return ret
-	}
-
-	return o.Subscribers
-}
-
-// GetSubscribersOk returns a tuple with the Subscribers field value
-// and a boolean to check if the value has been set.
-func (o *PlanFetchResponseData) GetSubscribersOk() ([]interface{}, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Subscribers, true
-}
-
-// SetSubscribers sets field value
-func (o *PlanFetchResponseData) SetSubscribers(v []interface{}) {
-	o.Subscribers = v
-}
-
 func (o PlanFetchResponseData) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -790,7 +545,7 @@ func (o PlanFetchResponseData) MarshalJSON() ([]byte, error) {
 func (o PlanFetchResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["subscriptions"] = o.Subscriptions
-	toSerialize["pages"] = o.Pages
+	toSerialize["integration"] = o.Integration
 	toSerialize["domain"] = o.Domain
 	toSerialize["name"] = o.Name
 	toSerialize["plan_code"] = o.PlanCode
@@ -799,7 +554,9 @@ func (o PlanFetchResponseData) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["amount"] = o.Amount
 	toSerialize["interval"] = o.Interval
-	toSerialize["invoice_limit"] = o.InvoiceLimit
+	if o.InvoiceLimit.IsSet() {
+		toSerialize["invoice_limit"] = o.InvoiceLimit.Get()
+	}
 	toSerialize["send_invoices"] = o.SendInvoices
 	toSerialize["send_sms"] = o.SendSms
 	toSerialize["hosted_page"] = o.HostedPage
@@ -810,19 +567,9 @@ func (o PlanFetchResponseData) ToMap() (map[string]interface{}, error) {
 		toSerialize["hosted_page_summary"] = o.HostedPageSummary
 	}
 	toSerialize["currency"] = o.Currency
-	toSerialize["migrate"] = o.Migrate
-	toSerialize["is_deleted"] = o.IsDeleted
-	toSerialize["is_archived"] = o.IsArchived
 	toSerialize["id"] = o.Id
-	toSerialize["integration"] = o.Integration
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["updatedAt"] = o.UpdatedAt
-	toSerialize["pages_count"] = o.PagesCount
-	toSerialize["subscribers_count"] = o.SubscribersCount
-	toSerialize["subscriptions_count"] = o.SubscriptionsCount
-	toSerialize["active_subscriptions_count"] = o.ActiveSubscriptionsCount.Get()
-	toSerialize["total_revenue"] = o.TotalRevenue
-	toSerialize["subscribers"] = o.Subscribers
 	return toSerialize, nil
 }
 
@@ -832,33 +579,22 @@ func (o *PlanFetchResponseData) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"subscriptions",
-		"pages",
+		"integration",
 		"domain",
 		"name",
 		"plan_code",
 		"description",
 		"amount",
 		"interval",
-		"invoice_limit",
 		"send_invoices",
 		"send_sms",
 		"hosted_page",
 		"hosted_page_url",
 		"hosted_page_summary",
 		"currency",
-		"migrate",
-		"is_deleted",
-		"is_archived",
 		"id",
-		"integration",
 		"createdAt",
 		"updatedAt",
-		"pages_count",
-		"subscribers_count",
-		"subscriptions_count",
-		"active_subscriptions_count",
-		"total_revenue",
-		"subscribers",
 	}
 
 	allProperties := make(map[string]interface{})

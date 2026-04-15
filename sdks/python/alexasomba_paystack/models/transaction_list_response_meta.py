@@ -14,89 +14,125 @@
 
 
 from __future__ import annotations
-import pprint
-import re  # noqa: F401
 import json
+import pprint
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
+from typing import Any, List, Optional
+from alexasomba_paystack.models.cursor_meta import CursorMeta
+from alexasomba_paystack.models.meta_with_volume import MetaWithVolume
+from pydantic import StrictStr, Field
+from typing import Union, List, Set, Optional, Dict
+from typing_extensions import Literal, Self
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
-from typing import Any, ClassVar, Dict, List, Union
-from alexasomba_paystack.models.transaction_list_response_meta_per_page import TransactionListResponseMetaPerPage
-from typing import Optional, Set
-from typing_extensions import Self
+TRANSACTIONLISTRESPONSEMETA_ONE_OF_SCHEMAS = ["CursorMeta", "MetaWithVolume"]
 
 class TransactionListResponseMeta(BaseModel):
     """
     TransactionListResponseMeta
-    """ # noqa: E501
-    total: StrictInt
-    total_volume: Union[StrictFloat, StrictInt]
-    skipped: StrictInt
-    per_page: TransactionListResponseMetaPerPage = Field(alias="perPage")
-    page: StrictInt
-    page_count: StrictInt = Field(alias="pageCount")
-    __properties: ClassVar[List[str]] = ["total", "total_volume", "skipped", "perPage", "page", "pageCount"]
+    """
+    # data type: MetaWithVolume
+    oneof_schema_1_validator: Optional[MetaWithVolume] = None
+    # data type: CursorMeta
+    oneof_schema_2_validator: Optional[CursorMeta] = None
+    actual_instance: Optional[Union[CursorMeta, MetaWithVolume]] = None
+    one_of_schemas: Set[str] = { "CursorMeta", "MetaWithVolume" }
 
     model_config = ConfigDict(
-        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
 
 
-    def to_str(self) -> str:
-        """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+    def __init__(self, *args, **kwargs) -> None:
+        if args:
+            if len(args) > 1:
+                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
+            if kwargs:
+                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
+            super().__init__(actual_instance=args[0])
+        else:
+            super().__init__(**kwargs)
+
+    @field_validator('actual_instance')
+    def actual_instance_must_validate_oneof(cls, v):
+        instance = TransactionListResponseMeta.model_construct()
+        error_messages = []
+        match = 0
+        # validate data type: MetaWithVolume
+        if not isinstance(v, MetaWithVolume):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `MetaWithVolume`")
+        else:
+            match += 1
+        # validate data type: CursorMeta
+        if not isinstance(v, CursorMeta):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `CursorMeta`")
+        else:
+            match += 1
+        if match > 1:
+            # more than 1 match
+            raise ValueError("Multiple matches found when setting `actual_instance` in TransactionListResponseMeta with oneOf schemas: CursorMeta, MetaWithVolume. Details: " + ", ".join(error_messages))
+        elif match == 0:
+            # no match
+            raise ValueError("No match found when setting `actual_instance` in TransactionListResponseMeta with oneOf schemas: CursorMeta, MetaWithVolume. Details: " + ", ".join(error_messages))
+        else:
+            return v
+
+    @classmethod
+    def from_dict(cls, obj: Union[str, Dict[str, Any]]) -> Self:
+        return cls.from_json(json.dumps(obj))
+
+    @classmethod
+    def from_json(cls, json_str: str) -> Self:
+        """Returns the object represented by the json string"""
+        instance = cls.model_construct()
+        error_messages = []
+        match = 0
+
+        # deserialize data into MetaWithVolume
+        try:
+            instance.actual_instance = MetaWithVolume.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into CursorMeta
+        try:
+            instance.actual_instance = CursorMeta.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+
+        if match > 1:
+            # more than 1 match
+            raise ValueError("Multiple matches found when deserializing the JSON string into TransactionListResponseMeta with oneOf schemas: CursorMeta, MetaWithVolume. Details: " + ", ".join(error_messages))
+        elif match == 0:
+            # no match
+            raise ValueError("No match found when deserializing the JSON string into TransactionListResponseMeta with oneOf schemas: CursorMeta, MetaWithVolume. Details: " + ", ".join(error_messages))
+        else:
+            return instance
 
     def to_json(self) -> str:
-        """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        """Returns the JSON representation of the actual instance"""
+        if self.actual_instance is None:
+            return "null"
 
-    @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of TransactionListResponseMeta from a JSON string"""
-        return cls.from_dict(json.loads(json_str))
+        if hasattr(self.actual_instance, "to_json") and callable(self.actual_instance.to_json):
+            return self.actual_instance.to_json()
+        else:
+            return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
-        # override the default output from pydantic by calling `to_dict()` of per_page
-        if self.per_page:
-            _dict['perPage'] = self.per_page.to_dict()
-        return _dict
-
-    @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of TransactionListResponseMeta from a dict"""
-        if obj is None:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], CursorMeta, MetaWithVolume]]:
+        """Returns the dict representation of the actual instance"""
+        if self.actual_instance is None:
             return None
 
-        if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+        if hasattr(self.actual_instance, "to_dict") and callable(self.actual_instance.to_dict):
+            return self.actual_instance.to_dict()
+        else:
+            # primitive type
+            return self.actual_instance
 
-        _obj = cls.model_validate({
-            "total": obj.get("total"),
-            "total_volume": obj.get("total_volume"),
-            "skipped": obj.get("skipped"),
-            "perPage": TransactionListResponseMetaPerPage.from_dict(obj["perPage"]) if obj.get("perPage") is not None else None,
-            "page": obj.get("page"),
-            "pageCount": obj.get("pageCount")
-        })
-        return _obj
+    def to_str(self) -> str:
+        """Returns the string representation of the actual instance"""
+        return pprint.pformat(self.model_dump())
 
 

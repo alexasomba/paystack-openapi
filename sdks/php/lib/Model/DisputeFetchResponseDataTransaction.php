@@ -71,12 +71,12 @@ class DisputeFetchResponseDataTransaction implements ModelInterface, ArrayAccess
         'channel' => 'string',
         'currency' => 'string',
         'ip_address' => 'string',
-        'metadata' => '\Alexasomba\Paystack\Model\TransactionFetchResponseDataMetadata',
+        'metadata' => '\Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayMetadata',
         'log' => '\Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataLog',
         'fees' => 'int',
         'fees_split' => 'int',
         'authorization' => '\Alexasomba\Paystack\Model\DisputeFetchResponseDataTransactionAuthorization',
-        'customer' => '\Alexasomba\Paystack\Model\DisputeFetchResponseDataTransactionCustomer',
+        'customer' => '\Alexasomba\Paystack\Model\RefundCreateResponseDataTransactionCustomer',
         'plan' => 'object',
         'subaccount' => 'object',
         'split' => 'object',
@@ -928,7 +928,7 @@ class DisputeFetchResponseDataTransaction implements ModelInterface, ArrayAccess
     /**
      * Gets metadata
      *
-     * @return \Alexasomba\Paystack\Model\TransactionFetchResponseDataMetadata
+     * @return \Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayMetadata
      */
     public function getMetadata()
     {
@@ -938,7 +938,7 @@ class DisputeFetchResponseDataTransaction implements ModelInterface, ArrayAccess
     /**
      * Sets metadata
      *
-     * @param \Alexasomba\Paystack\Model\TransactionFetchResponseDataMetadata $metadata metadata
+     * @param \Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayMetadata $metadata metadata
      *
      * @return self
      */
@@ -1077,7 +1077,7 @@ class DisputeFetchResponseDataTransaction implements ModelInterface, ArrayAccess
     /**
      * Gets customer
      *
-     * @return \Alexasomba\Paystack\Model\DisputeFetchResponseDataTransactionCustomer
+     * @return \Alexasomba\Paystack\Model\RefundCreateResponseDataTransactionCustomer
      */
     public function getCustomer()
     {
@@ -1087,7 +1087,7 @@ class DisputeFetchResponseDataTransaction implements ModelInterface, ArrayAccess
     /**
      * Sets customer
      *
-     * @param \Alexasomba\Paystack\Model\DisputeFetchResponseDataTransactionCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\RefundCreateResponseDataTransactionCustomer $customer customer
      *
      * @return self
      */

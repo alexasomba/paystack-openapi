@@ -32,6 +32,7 @@ class Currency(str, Enum):
     NGN = 'NGN'
     ZAR = 'ZAR'
     USD = 'USD'
+    XOF = 'XOF'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

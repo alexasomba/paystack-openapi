@@ -30,7 +30,7 @@ class OrderItems(BaseModel):
     item: StrictInt = Field(description="The product ID of the item")
     type: StrictStr = Field(description="The type of the item. `product` is currently the acceptable value")
     quantity: StrictInt = Field(description="The number of items to get")
-    amount: StrictInt = Field(description="The cost of the item")
+    amount: StrictInt = Field(description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). ")
     __properties: ClassVar[List[str]] = ["item", "type", "quantity", "amount"]
 
     model_config = ConfigDict(

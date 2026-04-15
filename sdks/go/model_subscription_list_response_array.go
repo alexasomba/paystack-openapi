@@ -38,11 +38,6 @@ type SubscriptionListResponseArray struct {
 	Plan SubscriptionListResponseArrayPlan `json:"plan"`
 	Authorization SubscriptionListResponseArrayAuthorization `json:"authorization"`
 	Customer SubscriptionListResponseArrayCustomer `json:"customer"`
-	InvoiceLimit int32 `json:"invoice_limit"`
-	SplitCode interface{} `json:"split_code"`
-	PaymentsCount int32 `json:"payments_count"`
-	MostRecentInvoice interface{} `json:"most_recent_invoice"`
-	Metadata map[string]interface{} `json:"metadata"`
 }
 
 type _SubscriptionListResponseArray SubscriptionListResponseArray
@@ -51,7 +46,7 @@ type _SubscriptionListResponseArray SubscriptionListResponseArray
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSubscriptionListResponseArray(id int32, domain string, status string, start int32, quantity int32, subscriptionCode string, emailToken string, amount int32, cronExpression NullableString, nextPaymentDate NullableString, openInvoice interface{}, createdAt string, integration int32, plan SubscriptionListResponseArrayPlan, authorization SubscriptionListResponseArrayAuthorization, customer SubscriptionListResponseArrayCustomer, invoiceLimit int32, splitCode interface{}, paymentsCount int32, mostRecentInvoice interface{}, metadata map[string]interface{}) *SubscriptionListResponseArray {
+func NewSubscriptionListResponseArray(id int32, domain string, status string, start int32, quantity int32, subscriptionCode string, emailToken string, amount int32, cronExpression NullableString, nextPaymentDate NullableString, openInvoice interface{}, createdAt string, integration int32, plan SubscriptionListResponseArrayPlan, authorization SubscriptionListResponseArrayAuthorization, customer SubscriptionListResponseArrayCustomer) *SubscriptionListResponseArray {
 	this := SubscriptionListResponseArray{}
 	this.Id = id
 	this.Domain = domain
@@ -69,11 +64,6 @@ func NewSubscriptionListResponseArray(id int32, domain string, status string, st
 	this.Plan = plan
 	this.Authorization = authorization
 	this.Customer = customer
-	this.InvoiceLimit = invoiceLimit
-	this.SplitCode = splitCode
-	this.PaymentsCount = paymentsCount
-	this.MostRecentInvoice = mostRecentInvoice
-	this.Metadata = metadata
 	return &this
 }
 
@@ -475,132 +465,6 @@ func (o *SubscriptionListResponseArray) SetCustomer(v SubscriptionListResponseAr
 	o.Customer = v
 }
 
-// GetInvoiceLimit returns the InvoiceLimit field value
-func (o *SubscriptionListResponseArray) GetInvoiceLimit() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.InvoiceLimit
-}
-
-// GetInvoiceLimitOk returns a tuple with the InvoiceLimit field value
-// and a boolean to check if the value has been set.
-func (o *SubscriptionListResponseArray) GetInvoiceLimitOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.InvoiceLimit, true
-}
-
-// SetInvoiceLimit sets field value
-func (o *SubscriptionListResponseArray) SetInvoiceLimit(v int32) {
-	o.InvoiceLimit = v
-}
-
-// GetSplitCode returns the SplitCode field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *SubscriptionListResponseArray) GetSplitCode() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.SplitCode
-}
-
-// GetSplitCodeOk returns a tuple with the SplitCode field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubscriptionListResponseArray) GetSplitCodeOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.SplitCode) {
-		return nil, false
-	}
-	return &o.SplitCode, true
-}
-
-// SetSplitCode sets field value
-func (o *SubscriptionListResponseArray) SetSplitCode(v interface{}) {
-	o.SplitCode = v
-}
-
-// GetPaymentsCount returns the PaymentsCount field value
-func (o *SubscriptionListResponseArray) GetPaymentsCount() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.PaymentsCount
-}
-
-// GetPaymentsCountOk returns a tuple with the PaymentsCount field value
-// and a boolean to check if the value has been set.
-func (o *SubscriptionListResponseArray) GetPaymentsCountOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.PaymentsCount, true
-}
-
-// SetPaymentsCount sets field value
-func (o *SubscriptionListResponseArray) SetPaymentsCount(v int32) {
-	o.PaymentsCount = v
-}
-
-// GetMostRecentInvoice returns the MostRecentInvoice field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *SubscriptionListResponseArray) GetMostRecentInvoice() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.MostRecentInvoice
-}
-
-// GetMostRecentInvoiceOk returns a tuple with the MostRecentInvoice field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubscriptionListResponseArray) GetMostRecentInvoiceOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.MostRecentInvoice) {
-		return nil, false
-	}
-	return &o.MostRecentInvoice, true
-}
-
-// SetMostRecentInvoice sets field value
-func (o *SubscriptionListResponseArray) SetMostRecentInvoice(v interface{}) {
-	o.MostRecentInvoice = v
-}
-
-// GetMetadata returns the Metadata field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *SubscriptionListResponseArray) GetMetadata() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-
-	return o.Metadata
-}
-
-// GetMetadataOk returns a tuple with the Metadata field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubscriptionListResponseArray) GetMetadataOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Metadata) {
-		return map[string]interface{}{}, false
-	}
-	return o.Metadata, true
-}
-
-// SetMetadata sets field value
-func (o *SubscriptionListResponseArray) SetMetadata(v map[string]interface{}) {
-	o.Metadata = v
-}
-
 func (o SubscriptionListResponseArray) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -629,17 +493,6 @@ func (o SubscriptionListResponseArray) ToMap() (map[string]interface{}, error) {
 	toSerialize["plan"] = o.Plan
 	toSerialize["authorization"] = o.Authorization
 	toSerialize["customer"] = o.Customer
-	toSerialize["invoice_limit"] = o.InvoiceLimit
-	if o.SplitCode != nil {
-		toSerialize["split_code"] = o.SplitCode
-	}
-	toSerialize["payments_count"] = o.PaymentsCount
-	if o.MostRecentInvoice != nil {
-		toSerialize["most_recent_invoice"] = o.MostRecentInvoice
-	}
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
-	}
 	return toSerialize, nil
 }
 
@@ -664,11 +517,6 @@ func (o *SubscriptionListResponseArray) UnmarshalJSON(data []byte) (err error) {
 		"plan",
 		"authorization",
 		"customer",
-		"invoice_limit",
-		"split_code",
-		"payments_count",
-		"most_recent_invoice",
-		"metadata",
 	}
 
 	allProperties := make(map[string]interface{})

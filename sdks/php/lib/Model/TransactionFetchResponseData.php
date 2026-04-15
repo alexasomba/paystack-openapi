@@ -72,12 +72,12 @@ class TransactionFetchResponseData implements ModelInterface, ArrayAccess, \Json
         'channel' => 'string',
         'currency' => 'string',
         'ip_address' => 'string',
-        'metadata' => '\Alexasomba\Paystack\Model\TransactionFetchResponseDataMetadata',
+        'metadata' => '\Alexasomba\Paystack\Model\TransactionListResponseArrayMetadata',
         'log' => '\Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataLog',
         'fees' => 'int',
         'fees_split' => 'int',
         'authorization' => '\Alexasomba\Paystack\Model\TransactionFetchResponseDataAuthorization',
-        'customer' => '\Alexasomba\Paystack\Model\TransactionFetchResponseDataCustomer',
+        'customer' => '\Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataCustomer',
         'plan' => 'object',
         'subaccount' => 'object',
         'split' => 'object',
@@ -147,20 +147,20 @@ class TransactionFetchResponseData implements ModelInterface, ArrayAccess, \Json
         'created_at' => false,
         'channel' => false,
         'currency' => false,
-        'ip_address' => false,
-        'metadata' => false,
+        'ip_address' => true,
+        'metadata' => true,
         'log' => true,
         'fees' => false,
         'fees_split' => true,
         'authorization' => false,
         'customer' => false,
-        'plan' => false,
-        'subaccount' => false,
-        'split' => false,
+        'plan' => true,
+        'subaccount' => true,
+        'split' => true,
         'order_id' => true,
         'requested_amount' => false,
         'pos_transaction_data' => true,
-        'source' => false,
+        'source' => true,
         'fees_breakdown' => true,
         'connect' => true
     ];
@@ -510,10 +510,10 @@ class TransactionFetchResponseData implements ModelInterface, ArrayAccess, \Json
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
         }
-        if ($this->container['ip_address'] === null) {
+        if ($this->container['ip_address'] === null && !$this->isNullableSetToNull('ip_address')) {
             $invalidProperties[] = "'ip_address' can't be null";
         }
-        if ($this->container['metadata'] === null) {
+        if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
             $invalidProperties[] = "'metadata' can't be null";
         }
         if ($this->container['log'] === null && !$this->isNullableSetToNull('log')) {
@@ -531,13 +531,13 @@ class TransactionFetchResponseData implements ModelInterface, ArrayAccess, \Json
         if ($this->container['customer'] === null) {
             $invalidProperties[] = "'customer' can't be null";
         }
-        if ($this->container['plan'] === null) {
+        if ($this->container['plan'] === null && !$this->isNullableSetToNull('plan')) {
             $invalidProperties[] = "'plan' can't be null";
         }
-        if ($this->container['subaccount'] === null) {
+        if ($this->container['subaccount'] === null && !$this->isNullableSetToNull('subaccount')) {
             $invalidProperties[] = "'subaccount' can't be null";
         }
-        if ($this->container['split'] === null) {
+        if ($this->container['split'] === null && !$this->isNullableSetToNull('split')) {
             $invalidProperties[] = "'split' can't be null";
         }
         if ($this->container['order_id'] === null && !$this->isNullableSetToNull('order_id')) {
@@ -549,7 +549,7 @@ class TransactionFetchResponseData implements ModelInterface, ArrayAccess, \Json
         if ($this->container['pos_transaction_data'] === null && !$this->isNullableSetToNull('pos_transaction_data')) {
             $invalidProperties[] = "'pos_transaction_data' can't be null";
         }
-        if ($this->container['source'] === null) {
+        if ($this->container['source'] === null && !$this->isNullableSetToNull('source')) {
             $invalidProperties[] = "'source' can't be null";
         }
         if ($this->container['fees_breakdown'] === null && !$this->isNullableSetToNull('fees_breakdown')) {
@@ -948,7 +948,7 @@ class TransactionFetchResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets ip_address
      *
-     * @return string
+     * @return string|null
      */
     public function getIpAddress()
     {
@@ -958,14 +958,21 @@ class TransactionFetchResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets ip_address
      *
-     * @param string $ip_address ip_address
+     * @param string|null $ip_address ip_address
      *
      * @return self
      */
     public function setIpAddress($ip_address)
     {
         if (is_null($ip_address)) {
-            throw new \InvalidArgumentException('non-nullable ip_address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ip_address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ip_address', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ip_address'] = $ip_address;
 
@@ -975,7 +982,7 @@ class TransactionFetchResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets metadata
      *
-     * @return \Alexasomba\Paystack\Model\TransactionFetchResponseDataMetadata
+     * @return \Alexasomba\Paystack\Model\TransactionListResponseArrayMetadata|null
      */
     public function getMetadata()
     {
@@ -985,14 +992,21 @@ class TransactionFetchResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets metadata
      *
-     * @param \Alexasomba\Paystack\Model\TransactionFetchResponseDataMetadata $metadata metadata
+     * @param \Alexasomba\Paystack\Model\TransactionListResponseArrayMetadata|null $metadata metadata
      *
      * @return self
      */
     public function setMetadata($metadata)
     {
         if (is_null($metadata)) {
-            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['metadata'] = $metadata;
 
@@ -1124,7 +1138,7 @@ class TransactionFetchResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets customer
      *
-     * @return \Alexasomba\Paystack\Model\TransactionFetchResponseDataCustomer
+     * @return \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataCustomer
      */
     public function getCustomer()
     {
@@ -1134,7 +1148,7 @@ class TransactionFetchResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets customer
      *
-     * @param \Alexasomba\Paystack\Model\TransactionFetchResponseDataCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataCustomer $customer customer
      *
      * @return self
      */
@@ -1151,7 +1165,7 @@ class TransactionFetchResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets plan
      *
-     * @return object
+     * @return object|null
      */
     public function getPlan()
     {
@@ -1161,14 +1175,21 @@ class TransactionFetchResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets plan
      *
-     * @param object $plan plan
+     * @param object|null $plan plan
      *
      * @return self
      */
     public function setPlan($plan)
     {
         if (is_null($plan)) {
-            throw new \InvalidArgumentException('non-nullable plan cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'plan');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('plan', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['plan'] = $plan;
 
@@ -1178,7 +1199,7 @@ class TransactionFetchResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets subaccount
      *
-     * @return object
+     * @return object|null
      */
     public function getSubaccount()
     {
@@ -1188,14 +1209,21 @@ class TransactionFetchResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets subaccount
      *
-     * @param object $subaccount subaccount
+     * @param object|null $subaccount subaccount
      *
      * @return self
      */
     public function setSubaccount($subaccount)
     {
         if (is_null($subaccount)) {
-            throw new \InvalidArgumentException('non-nullable subaccount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'subaccount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('subaccount', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['subaccount'] = $subaccount;
 
@@ -1205,7 +1233,7 @@ class TransactionFetchResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets split
      *
-     * @return object
+     * @return object|null
      */
     public function getSplit()
     {
@@ -1215,14 +1243,21 @@ class TransactionFetchResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets split
      *
-     * @param object $split split
+     * @param object|null $split split
      *
      * @return self
      */
     public function setSplit($split)
     {
         if (is_null($split)) {
-            throw new \InvalidArgumentException('non-nullable split cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'split');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('split', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['split'] = $split;
 
@@ -1327,7 +1362,7 @@ class TransactionFetchResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets source
      *
-     * @return \Alexasomba\Paystack\Model\TransactionFetchResponseDataSource
+     * @return \Alexasomba\Paystack\Model\TransactionFetchResponseDataSource|null
      */
     public function getSource()
     {
@@ -1337,14 +1372,21 @@ class TransactionFetchResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets source
      *
-     * @param \Alexasomba\Paystack\Model\TransactionFetchResponseDataSource $source source
+     * @param \Alexasomba\Paystack\Model\TransactionFetchResponseDataSource|null $source source
      *
      * @return self
      */
     public function setSource($source)
     {
         if (is_null($source)) {
-            throw new \InvalidArgumentException('non-nullable source cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'source');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('source', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['source'] = $source;
 

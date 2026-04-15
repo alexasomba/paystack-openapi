@@ -712,7 +712,7 @@ class MiscellaneousApi
      *
      * Resolve Card BIN
      *
-     * @param  int $bin The card bank identification number (required)
+     * @param  string $bin The card bank identification number (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['miscellaneousResolveCardBin'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
@@ -730,7 +730,7 @@ class MiscellaneousApi
      *
      * Resolve Card BIN
      *
-     * @param  int $bin The card bank identification number (required)
+     * @param  string $bin The card bank identification number (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['miscellaneousResolveCardBin'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
@@ -843,7 +843,7 @@ class MiscellaneousApi
      *
      * Resolve Card BIN
      *
-     * @param  int $bin The card bank identification number (required)
+     * @param  string $bin The card bank identification number (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['miscellaneousResolveCardBin'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -864,7 +864,7 @@ class MiscellaneousApi
      *
      * Resolve Card BIN
      *
-     * @param  int $bin The card bank identification number (required)
+     * @param  string $bin The card bank identification number (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['miscellaneousResolveCardBin'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -914,7 +914,7 @@ class MiscellaneousApi
     /**
      * Create request for operation 'miscellaneousResolveCardBin'
      *
-     * @param  int $bin The card bank identification number (required)
+     * @param  string $bin The card bank identification number (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['miscellaneousResolveCardBin'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

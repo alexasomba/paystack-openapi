@@ -23,6 +23,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.charge_authorization_response_data_log import ChargeAuthorizationResponseDataLog
 from alexasomba_paystack.models.transaction_list_response_array_authorization import TransactionListResponseArrayAuthorization
 from alexasomba_paystack.models.transaction_list_response_array_customer import TransactionListResponseArrayCustomer
+from alexasomba_paystack.models.transaction_list_response_array_metadata import TransactionListResponseArrayMetadata
 from alexasomba_paystack.models.transaction_list_response_array_source import TransactionListResponseArraySource
 from typing import Optional, Set
 from typing_extensions import Self
@@ -43,7 +44,7 @@ class TransactionListResponseArray(BaseModel):
     channel: StrictStr
     currency: StrictStr
     ip_address: Optional[StrictStr]
-    metadata: Optional[Dict[str, Any]]
+    metadata: Optional[TransactionListResponseArrayMetadata]
     log: Optional[ChargeAuthorizationResponseDataLog]
     fees: Optional[StrictInt]
     fees_split: Optional[StrictInt]
@@ -98,6 +99,9 @@ class TransactionListResponseArray(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of metadata
+        if self.metadata:
+            _dict['metadata'] = self.metadata.to_dict()
         # override the default output from pydantic by calling `to_dict()` of log
         if self.log:
             _dict['log'] = self.log.to_dict()
@@ -189,7 +193,7 @@ class TransactionListResponseArray(BaseModel):
             "channel": obj.get("channel"),
             "currency": obj.get("currency"),
             "ip_address": obj.get("ip_address"),
-            "metadata": obj.get("metadata"),
+            "metadata": TransactionListResponseArrayMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
             "log": ChargeAuthorizationResponseDataLog.from_dict(obj["log"]) if obj.get("log") is not None else None,
             "fees": obj.get("fees"),
             "fees_split": obj.get("fees_split"),

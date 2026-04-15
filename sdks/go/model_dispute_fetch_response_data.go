@@ -23,22 +23,22 @@ var _ MappedNullable = &DisputeFetchResponseData{}
 // DisputeFetchResponseData struct for DisputeFetchResponseData
 type DisputeFetchResponseData struct {
 	Id int32 `json:"id"`
-	RefundAmount int32 `json:"refund_amount"`
-	Currency string `json:"currency"`
+	RefundAmount NullableInt32 `json:"refund_amount"`
+	Currency NullableString `json:"currency"`
 	Status string `json:"status"`
-	Resolution interface{} `json:"resolution"`
+	Resolution interface{} `json:"resolution,omitempty"`
 	Domain string `json:"domain"`
 	Transaction DisputeFetchResponseDataTransaction `json:"transaction"`
-	TransactionReference interface{} `json:"transaction_reference"`
-	Category string `json:"category"`
-	Customer TransactionFetchResponseDataCustomer `json:"customer"`
-	Bin string `json:"bin"`
-	Last4 string `json:"last4"`
-	DueAt interface{} `json:"dueAt"`
-	ResolvedAt interface{} `json:"resolvedAt"`
-	Evidence interface{} `json:"evidence"`
-	Attachments interface{} `json:"attachments"`
-	Note interface{} `json:"note"`
+	TransactionReference interface{} `json:"transaction_reference,omitempty"`
+	Category NullableString `json:"category"`
+	Customer DisputeFetchResponseDataCustomer `json:"customer"`
+	Bin NullableString `json:"bin"`
+	Last4 NullableString `json:"last4"`
+	DueAt interface{} `json:"dueAt,omitempty"`
+	ResolvedAt interface{} `json:"resolvedAt,omitempty"`
+	Evidence interface{} `json:"evidence,omitempty"`
+	Attachments interface{} `json:"attachments,omitempty"`
+	Note interface{} `json:"note,omitempty"`
 	History []DisputeHistoryArray `json:"history"`
 	Messages []DisputeMessagesArray `json:"messages"`
 	CreatedAt string `json:"createdAt"`
@@ -51,25 +51,18 @@ type _DisputeFetchResponseData DisputeFetchResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDisputeFetchResponseData(id int32, refundAmount int32, currency string, status string, resolution interface{}, domain string, transaction DisputeFetchResponseDataTransaction, transactionReference interface{}, category string, customer TransactionFetchResponseDataCustomer, bin string, last4 string, dueAt interface{}, resolvedAt interface{}, evidence interface{}, attachments interface{}, note interface{}, history []DisputeHistoryArray, messages []DisputeMessagesArray, createdAt string, updatedAt string) *DisputeFetchResponseData {
+func NewDisputeFetchResponseData(id int32, refundAmount NullableInt32, currency NullableString, status string, domain string, transaction DisputeFetchResponseDataTransaction, category NullableString, customer DisputeFetchResponseDataCustomer, bin NullableString, last4 NullableString, history []DisputeHistoryArray, messages []DisputeMessagesArray, createdAt string, updatedAt string) *DisputeFetchResponseData {
 	this := DisputeFetchResponseData{}
 	this.Id = id
 	this.RefundAmount = refundAmount
 	this.Currency = currency
 	this.Status = status
-	this.Resolution = resolution
 	this.Domain = domain
 	this.Transaction = transaction
-	this.TransactionReference = transactionReference
 	this.Category = category
 	this.Customer = customer
 	this.Bin = bin
 	this.Last4 = last4
-	this.DueAt = dueAt
-	this.ResolvedAt = resolvedAt
-	this.Evidence = evidence
-	this.Attachments = attachments
-	this.Note = note
 	this.History = history
 	this.Messages = messages
 	this.CreatedAt = createdAt
@@ -110,51 +103,55 @@ func (o *DisputeFetchResponseData) SetId(v int32) {
 }
 
 // GetRefundAmount returns the RefundAmount field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *DisputeFetchResponseData) GetRefundAmount() int32 {
-	if o == nil {
+	if o == nil || o.RefundAmount.Get() == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.RefundAmount
+	return *o.RefundAmount.Get()
 }
 
 // GetRefundAmountOk returns a tuple with the RefundAmount field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DisputeFetchResponseData) GetRefundAmountOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.RefundAmount, true
+	return o.RefundAmount.Get(), o.RefundAmount.IsSet()
 }
 
 // SetRefundAmount sets field value
 func (o *DisputeFetchResponseData) SetRefundAmount(v int32) {
-	o.RefundAmount = v
+	o.RefundAmount.Set(&v)
 }
 
 // GetCurrency returns the Currency field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *DisputeFetchResponseData) GetCurrency() string {
-	if o == nil {
+	if o == nil || o.Currency.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Currency
+	return *o.Currency.Get()
 }
 
 // GetCurrencyOk returns a tuple with the Currency field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DisputeFetchResponseData) GetCurrencyOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Currency, true
+	return o.Currency.Get(), o.Currency.IsSet()
 }
 
 // SetCurrency sets field value
 func (o *DisputeFetchResponseData) SetCurrency(v string) {
-	o.Currency = v
+	o.Currency.Set(&v)
 }
 
 // GetStatus returns the Status field value
@@ -181,18 +178,16 @@ func (o *DisputeFetchResponseData) SetStatus(v string) {
 	o.Status = v
 }
 
-// GetResolution returns the Resolution field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetResolution returns the Resolution field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DisputeFetchResponseData) GetResolution() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.Resolution
 }
 
-// GetResolutionOk returns a tuple with the Resolution field value
+// GetResolutionOk returns a tuple with the Resolution field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DisputeFetchResponseData) GetResolutionOk() (*interface{}, bool) {
@@ -202,7 +197,16 @@ func (o *DisputeFetchResponseData) GetResolutionOk() (*interface{}, bool) {
 	return &o.Resolution, true
 }
 
-// SetResolution sets field value
+// HasResolution returns a boolean if a field has been set.
+func (o *DisputeFetchResponseData) HasResolution() bool {
+	if o != nil && !IsNil(o.Resolution) {
+		return true
+	}
+
+	return false
+}
+
+// SetResolution gets a reference to the given interface{} and assigns it to the Resolution field.
 func (o *DisputeFetchResponseData) SetResolution(v interface{}) {
 	o.Resolution = v
 }
@@ -255,18 +259,16 @@ func (o *DisputeFetchResponseData) SetTransaction(v DisputeFetchResponseDataTran
 	o.Transaction = v
 }
 
-// GetTransactionReference returns the TransactionReference field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetTransactionReference returns the TransactionReference field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DisputeFetchResponseData) GetTransactionReference() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.TransactionReference
 }
 
-// GetTransactionReferenceOk returns a tuple with the TransactionReference field value
+// GetTransactionReferenceOk returns a tuple with the TransactionReference field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DisputeFetchResponseData) GetTransactionReferenceOk() (*interface{}, bool) {
@@ -276,39 +278,50 @@ func (o *DisputeFetchResponseData) GetTransactionReferenceOk() (*interface{}, bo
 	return &o.TransactionReference, true
 }
 
-// SetTransactionReference sets field value
+// HasTransactionReference returns a boolean if a field has been set.
+func (o *DisputeFetchResponseData) HasTransactionReference() bool {
+	if o != nil && !IsNil(o.TransactionReference) {
+		return true
+	}
+
+	return false
+}
+
+// SetTransactionReference gets a reference to the given interface{} and assigns it to the TransactionReference field.
 func (o *DisputeFetchResponseData) SetTransactionReference(v interface{}) {
 	o.TransactionReference = v
 }
 
 // GetCategory returns the Category field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *DisputeFetchResponseData) GetCategory() string {
-	if o == nil {
+	if o == nil || o.Category.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Category
+	return *o.Category.Get()
 }
 
 // GetCategoryOk returns a tuple with the Category field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DisputeFetchResponseData) GetCategoryOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Category, true
+	return o.Category.Get(), o.Category.IsSet()
 }
 
 // SetCategory sets field value
 func (o *DisputeFetchResponseData) SetCategory(v string) {
-	o.Category = v
+	o.Category.Set(&v)
 }
 
 // GetCustomer returns the Customer field value
-func (o *DisputeFetchResponseData) GetCustomer() TransactionFetchResponseDataCustomer {
+func (o *DisputeFetchResponseData) GetCustomer() DisputeFetchResponseDataCustomer {
 	if o == nil {
-		var ret TransactionFetchResponseDataCustomer
+		var ret DisputeFetchResponseDataCustomer
 		return ret
 	}
 
@@ -317,7 +330,7 @@ func (o *DisputeFetchResponseData) GetCustomer() TransactionFetchResponseDataCus
 
 // GetCustomerOk returns a tuple with the Customer field value
 // and a boolean to check if the value has been set.
-func (o *DisputeFetchResponseData) GetCustomerOk() (*TransactionFetchResponseDataCustomer, bool) {
+func (o *DisputeFetchResponseData) GetCustomerOk() (*DisputeFetchResponseDataCustomer, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -325,70 +338,72 @@ func (o *DisputeFetchResponseData) GetCustomerOk() (*TransactionFetchResponseDat
 }
 
 // SetCustomer sets field value
-func (o *DisputeFetchResponseData) SetCustomer(v TransactionFetchResponseDataCustomer) {
+func (o *DisputeFetchResponseData) SetCustomer(v DisputeFetchResponseDataCustomer) {
 	o.Customer = v
 }
 
 // GetBin returns the Bin field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *DisputeFetchResponseData) GetBin() string {
-	if o == nil {
+	if o == nil || o.Bin.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Bin
+	return *o.Bin.Get()
 }
 
 // GetBinOk returns a tuple with the Bin field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DisputeFetchResponseData) GetBinOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Bin, true
+	return o.Bin.Get(), o.Bin.IsSet()
 }
 
 // SetBin sets field value
 func (o *DisputeFetchResponseData) SetBin(v string) {
-	o.Bin = v
+	o.Bin.Set(&v)
 }
 
 // GetLast4 returns the Last4 field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *DisputeFetchResponseData) GetLast4() string {
-	if o == nil {
+	if o == nil || o.Last4.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Last4
+	return *o.Last4.Get()
 }
 
 // GetLast4Ok returns a tuple with the Last4 field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DisputeFetchResponseData) GetLast4Ok() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Last4, true
+	return o.Last4.Get(), o.Last4.IsSet()
 }
 
 // SetLast4 sets field value
 func (o *DisputeFetchResponseData) SetLast4(v string) {
-	o.Last4 = v
+	o.Last4.Set(&v)
 }
 
-// GetDueAt returns the DueAt field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetDueAt returns the DueAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DisputeFetchResponseData) GetDueAt() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.DueAt
 }
 
-// GetDueAtOk returns a tuple with the DueAt field value
+// GetDueAtOk returns a tuple with the DueAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DisputeFetchResponseData) GetDueAtOk() (*interface{}, bool) {
@@ -398,23 +413,30 @@ func (o *DisputeFetchResponseData) GetDueAtOk() (*interface{}, bool) {
 	return &o.DueAt, true
 }
 
-// SetDueAt sets field value
+// HasDueAt returns a boolean if a field has been set.
+func (o *DisputeFetchResponseData) HasDueAt() bool {
+	if o != nil && !IsNil(o.DueAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetDueAt gets a reference to the given interface{} and assigns it to the DueAt field.
 func (o *DisputeFetchResponseData) SetDueAt(v interface{}) {
 	o.DueAt = v
 }
 
-// GetResolvedAt returns the ResolvedAt field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetResolvedAt returns the ResolvedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DisputeFetchResponseData) GetResolvedAt() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.ResolvedAt
 }
 
-// GetResolvedAtOk returns a tuple with the ResolvedAt field value
+// GetResolvedAtOk returns a tuple with the ResolvedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DisputeFetchResponseData) GetResolvedAtOk() (*interface{}, bool) {
@@ -424,23 +446,30 @@ func (o *DisputeFetchResponseData) GetResolvedAtOk() (*interface{}, bool) {
 	return &o.ResolvedAt, true
 }
 
-// SetResolvedAt sets field value
+// HasResolvedAt returns a boolean if a field has been set.
+func (o *DisputeFetchResponseData) HasResolvedAt() bool {
+	if o != nil && !IsNil(o.ResolvedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetResolvedAt gets a reference to the given interface{} and assigns it to the ResolvedAt field.
 func (o *DisputeFetchResponseData) SetResolvedAt(v interface{}) {
 	o.ResolvedAt = v
 }
 
-// GetEvidence returns the Evidence field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetEvidence returns the Evidence field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DisputeFetchResponseData) GetEvidence() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.Evidence
 }
 
-// GetEvidenceOk returns a tuple with the Evidence field value
+// GetEvidenceOk returns a tuple with the Evidence field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DisputeFetchResponseData) GetEvidenceOk() (*interface{}, bool) {
@@ -450,23 +479,30 @@ func (o *DisputeFetchResponseData) GetEvidenceOk() (*interface{}, bool) {
 	return &o.Evidence, true
 }
 
-// SetEvidence sets field value
+// HasEvidence returns a boolean if a field has been set.
+func (o *DisputeFetchResponseData) HasEvidence() bool {
+	if o != nil && !IsNil(o.Evidence) {
+		return true
+	}
+
+	return false
+}
+
+// SetEvidence gets a reference to the given interface{} and assigns it to the Evidence field.
 func (o *DisputeFetchResponseData) SetEvidence(v interface{}) {
 	o.Evidence = v
 }
 
-// GetAttachments returns the Attachments field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetAttachments returns the Attachments field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DisputeFetchResponseData) GetAttachments() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.Attachments
 }
 
-// GetAttachmentsOk returns a tuple with the Attachments field value
+// GetAttachmentsOk returns a tuple with the Attachments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DisputeFetchResponseData) GetAttachmentsOk() (*interface{}, bool) {
@@ -476,23 +512,30 @@ func (o *DisputeFetchResponseData) GetAttachmentsOk() (*interface{}, bool) {
 	return &o.Attachments, true
 }
 
-// SetAttachments sets field value
+// HasAttachments returns a boolean if a field has been set.
+func (o *DisputeFetchResponseData) HasAttachments() bool {
+	if o != nil && !IsNil(o.Attachments) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttachments gets a reference to the given interface{} and assigns it to the Attachments field.
 func (o *DisputeFetchResponseData) SetAttachments(v interface{}) {
 	o.Attachments = v
 }
 
-// GetNote returns the Note field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetNote returns the Note field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DisputeFetchResponseData) GetNote() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.Note
 }
 
-// GetNoteOk returns a tuple with the Note field value
+// GetNoteOk returns a tuple with the Note field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DisputeFetchResponseData) GetNoteOk() (*interface{}, bool) {
@@ -502,7 +545,16 @@ func (o *DisputeFetchResponseData) GetNoteOk() (*interface{}, bool) {
 	return &o.Note, true
 }
 
-// SetNote sets field value
+// HasNote returns a boolean if a field has been set.
+func (o *DisputeFetchResponseData) HasNote() bool {
+	if o != nil && !IsNil(o.Note) {
+		return true
+	}
+
+	return false
+}
+
+// SetNote gets a reference to the given interface{} and assigns it to the Note field.
 func (o *DisputeFetchResponseData) SetNote(v interface{}) {
 	o.Note = v
 }
@@ -614,8 +666,8 @@ func (o DisputeFetchResponseData) MarshalJSON() ([]byte, error) {
 func (o DisputeFetchResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["refund_amount"] = o.RefundAmount
-	toSerialize["currency"] = o.Currency
+	toSerialize["refund_amount"] = o.RefundAmount.Get()
+	toSerialize["currency"] = o.Currency.Get()
 	toSerialize["status"] = o.Status
 	if o.Resolution != nil {
 		toSerialize["resolution"] = o.Resolution
@@ -625,10 +677,10 @@ func (o DisputeFetchResponseData) ToMap() (map[string]interface{}, error) {
 	if o.TransactionReference != nil {
 		toSerialize["transaction_reference"] = o.TransactionReference
 	}
-	toSerialize["category"] = o.Category
+	toSerialize["category"] = o.Category.Get()
 	toSerialize["customer"] = o.Customer
-	toSerialize["bin"] = o.Bin
-	toSerialize["last4"] = o.Last4
+	toSerialize["bin"] = o.Bin.Get()
+	toSerialize["last4"] = o.Last4.Get()
 	if o.DueAt != nil {
 		toSerialize["dueAt"] = o.DueAt
 	}
@@ -660,19 +712,12 @@ func (o *DisputeFetchResponseData) UnmarshalJSON(data []byte) (err error) {
 		"refund_amount",
 		"currency",
 		"status",
-		"resolution",
 		"domain",
 		"transaction",
-		"transaction_reference",
 		"category",
 		"customer",
 		"bin",
 		"last4",
-		"dueAt",
-		"resolvedAt",
-		"evidence",
-		"attachments",
-		"note",
 		"history",
 		"messages",
 		"createdAt",

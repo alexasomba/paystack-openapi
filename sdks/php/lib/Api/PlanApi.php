@@ -421,16 +421,16 @@ class PlanApi
      *
      * Fetch Plan
      *
-     * @param  string $code The plan code you want to fetch (required)
+     * @param  string $id_or_code The plan ID or code you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planFetch'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\PlanFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function planFetch($code, string $contentType = self::contentTypes['planFetch'][0])
+    public function planFetch($id_or_code, string $contentType = self::contentTypes['planFetch'][0])
     {
-        list($response) = $this->planFetchWithHttpInfo($code, $contentType);
+        list($response) = $this->planFetchWithHttpInfo($id_or_code, $contentType);
         return $response;
     }
 
@@ -439,16 +439,16 @@ class PlanApi
      *
      * Fetch Plan
      *
-     * @param  string $code The plan code you want to fetch (required)
+     * @param  string $id_or_code The plan ID or code you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planFetch'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\PlanFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function planFetchWithHttpInfo($code, string $contentType = self::contentTypes['planFetch'][0])
+    public function planFetchWithHttpInfo($id_or_code, string $contentType = self::contentTypes['planFetch'][0])
     {
-        $request = $this->planFetchRequest($code, $contentType);
+        $request = $this->planFetchRequest($id_or_code, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -552,15 +552,15 @@ class PlanApi
      *
      * Fetch Plan
      *
-     * @param  string $code The plan code you want to fetch (required)
+     * @param  string $id_or_code The plan ID or code you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function planFetchAsync($code, string $contentType = self::contentTypes['planFetch'][0])
+    public function planFetchAsync($id_or_code, string $contentType = self::contentTypes['planFetch'][0])
     {
-        return $this->planFetchAsyncWithHttpInfo($code, $contentType)
+        return $this->planFetchAsyncWithHttpInfo($id_or_code, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -573,16 +573,16 @@ class PlanApi
      *
      * Fetch Plan
      *
-     * @param  string $code The plan code you want to fetch (required)
+     * @param  string $id_or_code The plan ID or code you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function planFetchAsyncWithHttpInfo($code, string $contentType = self::contentTypes['planFetch'][0])
+    public function planFetchAsyncWithHttpInfo($id_or_code, string $contentType = self::contentTypes['planFetch'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\PlanFetchResponse';
-        $request = $this->planFetchRequest($code, $contentType);
+        $request = $this->planFetchRequest($id_or_code, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -623,24 +623,24 @@ class PlanApi
     /**
      * Create request for operation 'planFetch'
      *
-     * @param  string $code The plan code you want to fetch (required)
+     * @param  string $id_or_code The plan ID or code you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function planFetchRequest($code, string $contentType = self::contentTypes['planFetch'][0])
+    public function planFetchRequest($id_or_code, string $contentType = self::contentTypes['planFetch'][0])
     {
 
-        // verify the required parameter 'code' is set
-        if ($code === null || (is_array($code) && count($code) === 0)) {
+        // verify the required parameter 'id_or_code' is set
+        if ($id_or_code === null || (is_array($id_or_code) && count($id_or_code) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $code when calling planFetch'
+                'Missing the required parameter $id_or_code when calling planFetch'
             );
         }
 
 
-        $resourcePath = '/plan/{code}';
+        $resourcePath = '/plan/{id_or_code}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -650,10 +650,10 @@ class PlanApi
 
 
         // path params
-        if ($code !== null) {
+        if ($id_or_code !== null) {
             $resourcePath = str_replace(
-                '{' . 'code' . '}',
-                ObjectSerializer::toPathValue($code),
+                '{' . 'id_or_code' . '}',
+                ObjectSerializer::toPathValue($id_or_code),
                 $resourcePath
             );
         }
@@ -723,19 +723,18 @@ class PlanApi
      *
      * @param  int|null $per_page Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
+     * @param  string|null $status Filter list by plans with specified status (optional)
      * @param  string|null $interval Specify interval of the plan (optional)
-     * @param  int|null $amount The amount on the plans to retrieve (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planList'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\PlanListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function planList($per_page = null, $page = null, $interval = null, $amount = null, $from = null, $to = null, string $contentType = self::contentTypes['planList'][0])
+    public function planList($per_page = null, $page = null, $status = null, $interval = null, $amount = null, string $contentType = self::contentTypes['planList'][0])
     {
-        list($response) = $this->planListWithHttpInfo($per_page, $page, $interval, $amount, $from, $to, $contentType);
+        list($response) = $this->planListWithHttpInfo($per_page, $page, $status, $interval, $amount, $contentType);
         return $response;
     }
 
@@ -746,19 +745,18 @@ class PlanApi
      *
      * @param  int|null $per_page Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
+     * @param  string|null $status Filter list by plans with specified status (optional)
      * @param  string|null $interval Specify interval of the plan (optional)
-     * @param  int|null $amount The amount on the plans to retrieve (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planList'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\PlanListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function planListWithHttpInfo($per_page = null, $page = null, $interval = null, $amount = null, $from = null, $to = null, string $contentType = self::contentTypes['planList'][0])
+    public function planListWithHttpInfo($per_page = null, $page = null, $status = null, $interval = null, $amount = null, string $contentType = self::contentTypes['planList'][0])
     {
-        $request = $this->planListRequest($per_page, $page, $interval, $amount, $from, $to, $contentType);
+        $request = $this->planListRequest($per_page, $page, $status, $interval, $amount, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -864,18 +862,17 @@ class PlanApi
      *
      * @param  int|null $per_page Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
+     * @param  string|null $status Filter list by plans with specified status (optional)
      * @param  string|null $interval Specify interval of the plan (optional)
-     * @param  int|null $amount The amount on the plans to retrieve (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function planListAsync($per_page = null, $page = null, $interval = null, $amount = null, $from = null, $to = null, string $contentType = self::contentTypes['planList'][0])
+    public function planListAsync($per_page = null, $page = null, $status = null, $interval = null, $amount = null, string $contentType = self::contentTypes['planList'][0])
     {
-        return $this->planListAsyncWithHttpInfo($per_page, $page, $interval, $amount, $from, $to, $contentType)
+        return $this->planListAsyncWithHttpInfo($per_page, $page, $status, $interval, $amount, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -890,19 +887,18 @@ class PlanApi
      *
      * @param  int|null $per_page Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
+     * @param  string|null $status Filter list by plans with specified status (optional)
      * @param  string|null $interval Specify interval of the plan (optional)
-     * @param  int|null $amount The amount on the plans to retrieve (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function planListAsyncWithHttpInfo($per_page = null, $page = null, $interval = null, $amount = null, $from = null, $to = null, string $contentType = self::contentTypes['planList'][0])
+    public function planListAsyncWithHttpInfo($per_page = null, $page = null, $status = null, $interval = null, $amount = null, string $contentType = self::contentTypes['planList'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\PlanListResponse';
-        $request = $this->planListRequest($per_page, $page, $interval, $amount, $from, $to, $contentType);
+        $request = $this->planListRequest($per_page, $page, $status, $interval, $amount, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -945,18 +941,16 @@ class PlanApi
      *
      * @param  int|null $per_page Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
+     * @param  string|null $status Filter list by plans with specified status (optional)
      * @param  string|null $interval Specify interval of the plan (optional)
-     * @param  int|null $amount The amount on the plans to retrieve (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function planListRequest($per_page = null, $page = null, $interval = null, $amount = null, $from = null, $to = null, string $contentType = self::contentTypes['planList'][0])
+    public function planListRequest($per_page = null, $page = null, $status = null, $interval = null, $amount = null, string $contentType = self::contentTypes['planList'][0])
     {
-
 
 
 
@@ -991,6 +985,15 @@ class PlanApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $status,
+            'status', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $interval,
             'interval', // param base name
             'string', // openApiType
@@ -1003,24 +1006,6 @@ class PlanApi
             $amount,
             'amount', // param base name
             'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $from,
-            'from', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $to,
-            'to', // param base name
-            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1091,7 +1076,7 @@ class PlanApi
      *
      * Update Plan
      *
-     * @param  string $code The plan code you want to fetch (required)
+     * @param  string $id_or_code The plan ID or code you want to fetch (required)
      * @param  \Alexasomba\Paystack\Model\PlanUpdate|null $plan_update plan_update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planUpdate'] to see the possible values for this operation
      *
@@ -1099,9 +1084,9 @@ class PlanApi
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\PlanUpdateResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function planUpdate($code, $plan_update = null, string $contentType = self::contentTypes['planUpdate'][0])
+    public function planUpdate($id_or_code, $plan_update = null, string $contentType = self::contentTypes['planUpdate'][0])
     {
-        list($response) = $this->planUpdateWithHttpInfo($code, $plan_update, $contentType);
+        list($response) = $this->planUpdateWithHttpInfo($id_or_code, $plan_update, $contentType);
         return $response;
     }
 
@@ -1110,7 +1095,7 @@ class PlanApi
      *
      * Update Plan
      *
-     * @param  string $code The plan code you want to fetch (required)
+     * @param  string $id_or_code The plan ID or code you want to fetch (required)
      * @param  \Alexasomba\Paystack\Model\PlanUpdate|null $plan_update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planUpdate'] to see the possible values for this operation
      *
@@ -1118,9 +1103,9 @@ class PlanApi
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\PlanUpdateResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function planUpdateWithHttpInfo($code, $plan_update = null, string $contentType = self::contentTypes['planUpdate'][0])
+    public function planUpdateWithHttpInfo($id_or_code, $plan_update = null, string $contentType = self::contentTypes['planUpdate'][0])
     {
-        $request = $this->planUpdateRequest($code, $plan_update, $contentType);
+        $request = $this->planUpdateRequest($id_or_code, $plan_update, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1224,16 +1209,16 @@ class PlanApi
      *
      * Update Plan
      *
-     * @param  string $code The plan code you want to fetch (required)
+     * @param  string $id_or_code The plan ID or code you want to fetch (required)
      * @param  \Alexasomba\Paystack\Model\PlanUpdate|null $plan_update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planUpdate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function planUpdateAsync($code, $plan_update = null, string $contentType = self::contentTypes['planUpdate'][0])
+    public function planUpdateAsync($id_or_code, $plan_update = null, string $contentType = self::contentTypes['planUpdate'][0])
     {
-        return $this->planUpdateAsyncWithHttpInfo($code, $plan_update, $contentType)
+        return $this->planUpdateAsyncWithHttpInfo($id_or_code, $plan_update, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1246,17 +1231,17 @@ class PlanApi
      *
      * Update Plan
      *
-     * @param  string $code The plan code you want to fetch (required)
+     * @param  string $id_or_code The plan ID or code you want to fetch (required)
      * @param  \Alexasomba\Paystack\Model\PlanUpdate|null $plan_update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planUpdate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function planUpdateAsyncWithHttpInfo($code, $plan_update = null, string $contentType = self::contentTypes['planUpdate'][0])
+    public function planUpdateAsyncWithHttpInfo($id_or_code, $plan_update = null, string $contentType = self::contentTypes['planUpdate'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\PlanUpdateResponse';
-        $request = $this->planUpdateRequest($code, $plan_update, $contentType);
+        $request = $this->planUpdateRequest($id_or_code, $plan_update, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1297,26 +1282,26 @@ class PlanApi
     /**
      * Create request for operation 'planUpdate'
      *
-     * @param  string $code The plan code you want to fetch (required)
+     * @param  string $id_or_code The plan ID or code you want to fetch (required)
      * @param  \Alexasomba\Paystack\Model\PlanUpdate|null $plan_update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planUpdate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function planUpdateRequest($code, $plan_update = null, string $contentType = self::contentTypes['planUpdate'][0])
+    public function planUpdateRequest($id_or_code, $plan_update = null, string $contentType = self::contentTypes['planUpdate'][0])
     {
 
-        // verify the required parameter 'code' is set
-        if ($code === null || (is_array($code) && count($code) === 0)) {
+        // verify the required parameter 'id_or_code' is set
+        if ($id_or_code === null || (is_array($id_or_code) && count($id_or_code) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $code when calling planUpdate'
+                'Missing the required parameter $id_or_code when calling planUpdate'
             );
         }
 
 
 
-        $resourcePath = '/plan/{code}';
+        $resourcePath = '/plan/{id_or_code}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1326,10 +1311,10 @@ class PlanApi
 
 
         // path params
-        if ($code !== null) {
+        if ($id_or_code !== null) {
             $resourcePath = str_replace(
-                '{' . 'code' . '}',
-                ObjectSerializer::toPathValue($code),
+                '{' . 'id_or_code' . '}',
+                ObjectSerializer::toPathValue($id_or_code),
                 $resourcePath
             );
         }

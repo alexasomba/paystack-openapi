@@ -418,7 +418,7 @@ class PlanCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amount
      *
-     * @param int $amount Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
+     * @param int $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
      *
      * @return self
      */
@@ -563,7 +563,7 @@ class PlanCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency
      *
-     * @param string|null $currency Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD
+     * @param string|null $currency Currency in which amount is set. Allowed values are NGN, GHS, ZAR, USD or XOF
      *
      * @return self
      */

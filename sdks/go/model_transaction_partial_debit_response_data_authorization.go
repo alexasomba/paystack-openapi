@@ -34,7 +34,7 @@ type TransactionPartialDebitResponseDataAuthorization struct {
 	Brand string `json:"brand"`
 	Reusable bool `json:"reusable"`
 	Signature string `json:"signature"`
-	AccountName interface{} `json:"account_name"`
+	AccountName NullableString `json:"account_name"`
 }
 
 type _TransactionPartialDebitResponseDataAuthorization TransactionPartialDebitResponseDataAuthorization
@@ -43,7 +43,7 @@ type _TransactionPartialDebitResponseDataAuthorization TransactionPartialDebitRe
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransactionPartialDebitResponseDataAuthorization(authorizationCode string, bin string, last4 string, expMonth string, expYear string, channel string, cardType string, bank string, countryCode string, brand string, reusable bool, signature string, accountName interface{}) *TransactionPartialDebitResponseDataAuthorization {
+func NewTransactionPartialDebitResponseDataAuthorization(authorizationCode string, bin string, last4 string, expMonth string, expYear string, channel string, cardType string, bank string, countryCode string, brand string, reusable bool, signature string, accountName NullableString) *TransactionPartialDebitResponseDataAuthorization {
 	this := TransactionPartialDebitResponseDataAuthorization{}
 	this.AuthorizationCode = authorizationCode
 	this.Bin = bin
@@ -358,29 +358,29 @@ func (o *TransactionPartialDebitResponseDataAuthorization) SetSignature(v string
 }
 
 // GetAccountName returns the AccountName field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransactionPartialDebitResponseDataAuthorization) GetAccountName() interface{} {
-	if o == nil {
-		var ret interface{}
+// If the value is explicit nil, the zero value for string will be returned
+func (o *TransactionPartialDebitResponseDataAuthorization) GetAccountName() string {
+	if o == nil || o.AccountName.Get() == nil {
+		var ret string
 		return ret
 	}
 
-	return o.AccountName
+	return *o.AccountName.Get()
 }
 
 // GetAccountNameOk returns a tuple with the AccountName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransactionPartialDebitResponseDataAuthorization) GetAccountNameOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.AccountName) {
+func (o *TransactionPartialDebitResponseDataAuthorization) GetAccountNameOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.AccountName, true
+	return o.AccountName.Get(), o.AccountName.IsSet()
 }
 
 // SetAccountName sets field value
-func (o *TransactionPartialDebitResponseDataAuthorization) SetAccountName(v interface{}) {
-	o.AccountName = v
+func (o *TransactionPartialDebitResponseDataAuthorization) SetAccountName(v string) {
+	o.AccountName.Set(&v)
 }
 
 func (o TransactionPartialDebitResponseDataAuthorization) MarshalJSON() ([]byte, error) {
@@ -405,9 +405,7 @@ func (o TransactionPartialDebitResponseDataAuthorization) ToMap() (map[string]in
 	toSerialize["brand"] = o.Brand
 	toSerialize["reusable"] = o.Reusable
 	toSerialize["signature"] = o.Signature
-	if o.AccountName != nil {
-		toSerialize["account_name"] = o.AccountName
-	}
+	toSerialize["account_name"] = o.AccountName.Get()
 	return toSerialize, nil
 }
 

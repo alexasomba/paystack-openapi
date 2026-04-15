@@ -31,7 +31,7 @@ class OrderShipping(BaseModel):
     city: StrictStr = Field(description="The city of the delivery address")
     state: StrictStr = Field(description="The state of the delivery address")
     country: StrictStr = Field(description="The country of the delivery address")
-    shipping_fee: StrictInt = Field(description="The cost of delivery")
+    shipping_fee: StrictInt = Field(description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). ")
     delivery_note: Optional[StrictStr] = Field(default=None, description="Extra details to be aware of for the delivery")
     __properties: ClassVar[List[str]] = ["street_line", "city", "state", "country", "shipping_fee", "delivery_note"]
 

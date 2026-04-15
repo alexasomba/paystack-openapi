@@ -292,12 +292,6 @@ class ProductListsResponseArrayShippingFields implements ModelInterface, ArrayAc
         if ($this->container['delivery_note'] === null) {
             $invalidProperties[] = "'delivery_note' can't be null";
         }
-        if ($this->container['shipping_address'] === null) {
-            $invalidProperties[] = "'shipping_address' can't be null";
-        }
-        if ($this->container['shipping_fees'] === null) {
-            $invalidProperties[] = "'shipping_fees' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -343,7 +337,7 @@ class ProductListsResponseArrayShippingFields implements ModelInterface, ArrayAc
     /**
      * Gets shipping_address
      *
-     * @return string
+     * @return string|null
      */
     public function getShippingAddress()
     {
@@ -353,7 +347,7 @@ class ProductListsResponseArrayShippingFields implements ModelInterface, ArrayAc
     /**
      * Sets shipping_address
      *
-     * @param string $shipping_address shipping_address
+     * @param string|null $shipping_address shipping_address
      *
      * @return self
      */
@@ -370,7 +364,7 @@ class ProductListsResponseArrayShippingFields implements ModelInterface, ArrayAc
     /**
      * Gets shipping_fees
      *
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getShippingFees()
     {
@@ -380,7 +374,7 @@ class ProductListsResponseArrayShippingFields implements ModelInterface, ArrayAc
     /**
      * Sets shipping_fees
      *
-     * @param mixed[] $shipping_fees shipping_fees
+     * @param mixed[]|null $shipping_fees shipping_fees
      *
      * @return self
      */

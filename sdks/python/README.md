@@ -140,9 +140,9 @@ configuration = alexasomba_paystack.Configuration(
 with alexasomba_paystack.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alexasomba_paystack.ApplePayApi(api_client)
-    use_cursor = true # bool | A flag to indicate if cursor based pagination should be used (optional)
-    next = 'next_example' # str | An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data  (optional)
-    previous = 'previous_example' # str | An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data  (optional)
+    use_cursor = true # bool | Flag to enable cursor pagination on the endpoint (optional)
+    next = 'next_example' # str | A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
+    previous = 'previous_example' # str | A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
 
     try:
         # List Domains
@@ -168,8 +168,8 @@ All URIs are relative to *https://api.paystack.co*
 | _BankApi_                    | [**bank_list**](docs/BankApi.md#bank_list)                                                                            | **GET** /bank                                             | List Banks                                 |
 | _BankApi_                    | [**bank_resolve_account_number**](docs/BankApi.md#bank_resolve_account_number)                                        | **GET** /bank/resolve                                     | Resolve Account Number                     |
 | _BankApi_                    | [**bank_validate_account_number**](docs/BankApi.md#bank_validate_account_number)                                      | **POST** /bank/validate                                   | Validate Bank Account                      |
-| _BulkChargeApi_              | [**bulk_charge_charges**](docs/BulkChargeApi.md#bulk_charge_charges)                                                  | **GET** /bulkcharge/{code}/charges                        | List Charges in a Batch                    |
-| _BulkChargeApi_              | [**bulk_charge_fetch**](docs/BulkChargeApi.md#bulk_charge_fetch)                                                      | **GET** /bulkcharge/{code}                                | Fetch Bulk Charge Batch                    |
+| _BulkChargeApi_              | [**bulk_charge_charges**](docs/BulkChargeApi.md#bulk_charge_charges)                                                  | **GET** /bulkcharge/{id_or_code}/charges                  | List Charges in a Batch                    |
+| _BulkChargeApi_              | [**bulk_charge_fetch**](docs/BulkChargeApi.md#bulk_charge_fetch)                                                      | **GET** /bulkcharge/{id_or_code}                          | Fetch Bulk Charge Batch                    |
 | _BulkChargeApi_              | [**bulk_charge_initiate**](docs/BulkChargeApi.md#bulk_charge_initiate)                                                | **POST** /bulkcharge                                      | Initiate Bulk Charge                       |
 | _BulkChargeApi_              | [**bulk_charge_list**](docs/BulkChargeApi.md#bulk_charge_list)                                                        | **GET** /bulkcharge                                       | List Bulk Charge Batches                   |
 | _BulkChargeApi_              | [**bulk_charge_pause**](docs/BulkChargeApi.md#bulk_charge_pause)                                                      | **GET** /bulkcharge/pause/{code}                          | Pause Bulk Charge Batch                    |
@@ -184,14 +184,14 @@ All URIs are relative to *https://api.paystack.co*
 | _CustomerApi_                | [**customer_create**](docs/CustomerApi.md#customer_create)                                                            | **POST** /customer                                        | Create Customer                            |
 | _CustomerApi_                | [**customer_deactivate_authorization**](docs/CustomerApi.md#customer_deactivate_authorization)                        | **POST** /customer/authorization/deactivate               | Deactivate Authorization                   |
 | _CustomerApi_                | [**customer_direct_debit_activation_charge**](docs/CustomerApi.md#customer_direct_debit_activation_charge)            | **PUT** /customer/{id}/directdebit-activation-charge      | Direct Debit Activation Charge             |
-| _CustomerApi_                | [**customer_fetch**](docs/CustomerApi.md#customer_fetch)                                                              | **GET** /customer/{code}                                  | Fetch Customer                             |
+| _CustomerApi_                | [**customer_fetch**](docs/CustomerApi.md#customer_fetch)                                                              | **GET** /customer/{email_or_code}                         | Fetch Customer                             |
 | _CustomerApi_                | [**customer_fetch_mandate_authorizations**](docs/CustomerApi.md#customer_fetch_mandate_authorizations)                | **GET** /customer/{id}/directdebit-mandate-authorizations | Fetch Mandate Authorizations               |
 | _CustomerApi_                | [**customer_initialize_authorization**](docs/CustomerApi.md#customer_initialize_authorization)                        | **POST** /customer/authorization/initialize               | Initialize Authorization                   |
 | _CustomerApi_                | [**customer_initialize_direct_debit**](docs/CustomerApi.md#customer_initialize_direct_debit)                          | **POST** /customer/{id}/initialize-direct-debit           | Initialize Direct Debit                    |
 | _CustomerApi_                | [**customer_list**](docs/CustomerApi.md#customer_list)                                                                | **GET** /customer                                         | List Customers                             |
 | _CustomerApi_                | [**customer_risk_action**](docs/CustomerApi.md#customer_risk_action)                                                  | **POST** /customer/set_risk_action                        | Set Risk Action                            |
-| _CustomerApi_                | [**customer_update**](docs/CustomerApi.md#customer_update)                                                            | **PUT** /customer/{code}                                  | Update Customer                            |
-| _CustomerApi_                | [**customer_validate**](docs/CustomerApi.md#customer_validate)                                                        | **POST** /customer/{code}/identification                  | Validate Customer                          |
+| _CustomerApi_                | [**customer_update**](docs/CustomerApi.md#customer_update)                                                            | **PUT** /customer/{email_or_code}                         | Update Customer                            |
+| _CustomerApi_                | [**customer_validate**](docs/CustomerApi.md#customer_validate)                                                        | **POST** /customer/{customer_code}/identification         | Validate Customer                          |
 | _CustomerApi_                | [**customer_verify_authorization**](docs/CustomerApi.md#customer_verify_authorization)                                | **GET** /customer/authorization/verify/{reference}        | Verify Authorization                       |
 | _DedicatedVirtualAccountApi_ | [**dedicated_account_add_split**](docs/DedicatedVirtualAccountApi.md#dedicated_account_add_split)                     | **POST** /dedicated_account/split                         | Split Dedicated Account Transaction        |
 | _DedicatedVirtualAccountApi_ | [**dedicated_account_assign**](docs/DedicatedVirtualAccountApi.md#dedicated_account_assign)                           | **POST** /dedicated_account/assign                        | Assign Dedicated Account                   |
@@ -225,22 +225,22 @@ All URIs are relative to *https://api.paystack.co*
 | _PageApi_                    | [**page_add_products**](docs/PageApi.md#page_add_products)                                                            | **POST** /page/{id}/product                               | Add Products                               |
 | _PageApi_                    | [**page_check_slug_availability**](docs/PageApi.md#page_check_slug_availability)                                      | **GET** /page/check_slug_availability/{slug}              | Check Slug Availability                    |
 | _PageApi_                    | [**page_create**](docs/PageApi.md#page_create)                                                                        | **POST** /page                                            | Create Page                                |
-| _PageApi_                    | [**page_fetch**](docs/PageApi.md#page_fetch)                                                                          | **GET** /page/{id}                                        | Fetch Page                                 |
+| _PageApi_                    | [**page_fetch**](docs/PageApi.md#page_fetch)                                                                          | **GET** /page/{id_or_slug}                                | Fetch Page                                 |
 | _PageApi_                    | [**page_list**](docs/PageApi.md#page_list)                                                                            | **GET** /page                                             | List Pages                                 |
-| _PageApi_                    | [**page_update**](docs/PageApi.md#page_update)                                                                        | **PUT** /page/{id}                                        | Update Page                                |
+| _PageApi_                    | [**page_update**](docs/PageApi.md#page_update)                                                                        | **PUT** /page/{id_or_slug}                                | Update Page                                |
 | _PaymentRequestApi_          | [**payment_request_archive**](docs/PaymentRequestApi.md#payment_request_archive)                                      | **POST** /paymentrequest/archive/{id}                     | Archive Payment Request                    |
 | _PaymentRequestApi_          | [**payment_request_create**](docs/PaymentRequestApi.md#payment_request_create)                                        | **POST** /paymentrequest                                  | Create Payment Request                     |
-| _PaymentRequestApi_          | [**payment_request_fetch**](docs/PaymentRequestApi.md#payment_request_fetch)                                          | **GET** /paymentrequest/{id}                              | Fetch Payment Request                      |
+| _PaymentRequestApi_          | [**payment_request_fetch**](docs/PaymentRequestApi.md#payment_request_fetch)                                          | **GET** /paymentrequest/{id_or_code}                      | Fetch Payment Request                      |
 | _PaymentRequestApi_          | [**payment_request_finalize**](docs/PaymentRequestApi.md#payment_request_finalize)                                    | **POST** /paymentrequest/finalize/{id}                    | Finalize Payment Request                   |
 | _PaymentRequestApi_          | [**payment_request_list**](docs/PaymentRequestApi.md#payment_request_list)                                            | **GET** /paymentrequest                                   | List Payment Request                       |
 | _PaymentRequestApi_          | [**payment_request_notify**](docs/PaymentRequestApi.md#payment_request_notify)                                        | **POST** /paymentrequest/notify/{id}                      | Send Notification                          |
 | _PaymentRequestApi_          | [**payment_request_totals**](docs/PaymentRequestApi.md#payment_request_totals)                                        | **GET** /paymentrequest/totals                            | Payment Request Total                      |
-| _PaymentRequestApi_          | [**payment_request_update**](docs/PaymentRequestApi.md#payment_request_update)                                        | **PUT** /paymentrequest/{id}                              | Update Payment Request                     |
+| _PaymentRequestApi_          | [**payment_request_update**](docs/PaymentRequestApi.md#payment_request_update)                                        | **PUT** /paymentrequest/{id_or_code}                      | Update Payment Request                     |
 | _PaymentRequestApi_          | [**payment_request_verify**](docs/PaymentRequestApi.md#payment_request_verify)                                        | **GET** /paymentrequest/verify/{id}                       | Verify Payment Request                     |
 | _PlanApi_                    | [**plan_create**](docs/PlanApi.md#plan_create)                                                                        | **POST** /plan                                            | Create Plan                                |
-| _PlanApi_                    | [**plan_fetch**](docs/PlanApi.md#plan_fetch)                                                                          | **GET** /plan/{code}                                      | Fetch Plan                                 |
+| _PlanApi_                    | [**plan_fetch**](docs/PlanApi.md#plan_fetch)                                                                          | **GET** /plan/{id_or_code}                                | Fetch Plan                                 |
 | _PlanApi_                    | [**plan_list**](docs/PlanApi.md#plan_list)                                                                            | **GET** /plan                                             | List Plans                                 |
-| _PlanApi_                    | [**plan_update**](docs/PlanApi.md#plan_update)                                                                        | **PUT** /plan/{code}                                      | Update Plan                                |
+| _PlanApi_                    | [**plan_update**](docs/PlanApi.md#plan_update)                                                                        | **PUT** /plan/{id_or_code}                                | Update Plan                                |
 | _ProductApi_                 | [**product_create**](docs/ProductApi.md#product_create)                                                               | **POST** /product                                         | Create Product                             |
 | _ProductApi_                 | [**product_delete**](docs/ProductApi.md#product_delete)                                                               | **DELETE** /product/{id}                                  | Delete Product                             |
 | _ProductApi_                 | [**product_fetch**](docs/ProductApi.md#product_fetch)                                                                 | **GET** /product/{id}                                     | Fetch Product                              |
@@ -270,13 +270,13 @@ All URIs are relative to *https://api.paystack.co*
 | _StorefrontApi_              | [**storefront_update**](docs/StorefrontApi.md#storefront_update)                                                      | **PUT** /storefront/{id}                                  | Update Storefront                          |
 | _StorefrontApi_              | [**storefront_verify_slug**](docs/StorefrontApi.md#storefront_verify_slug)                                            | **GET** /storefront/verify/{slug}                         | Verify Storefront Slug                     |
 | _SubaccountApi_              | [**subaccount_create**](docs/SubaccountApi.md#subaccount_create)                                                      | **POST** /subaccount                                      | Create Subaccount                          |
-| _SubaccountApi_              | [**subaccount_fetch**](docs/SubaccountApi.md#subaccount_fetch)                                                        | **GET** /subaccount/{code}                                | Fetch Subaccount                           |
+| _SubaccountApi_              | [**subaccount_fetch**](docs/SubaccountApi.md#subaccount_fetch)                                                        | **GET** /subaccount/{id_or_code}                          | Fetch Subaccount                           |
 | _SubaccountApi_              | [**subaccount_list**](docs/SubaccountApi.md#subaccount_list)                                                          | **GET** /subaccount                                       | List Subaccounts                           |
-| _SubaccountApi_              | [**subaccount_update**](docs/SubaccountApi.md#subaccount_update)                                                      | **PUT** /subaccount/{code}                                | Update Subaccount                          |
+| _SubaccountApi_              | [**subaccount_update**](docs/SubaccountApi.md#subaccount_update)                                                      | **PUT** /subaccount/{id_or_code}                          | Update Subaccount                          |
 | _SubscriptionApi_            | [**subscription_create**](docs/SubscriptionApi.md#subscription_create)                                                | **POST** /subscription                                    | Create Subscription                        |
 | _SubscriptionApi_            | [**subscription_disable**](docs/SubscriptionApi.md#subscription_disable)                                              | **POST** /subscription/disable                            | Disable Subscription                       |
 | _SubscriptionApi_            | [**subscription_enable**](docs/SubscriptionApi.md#subscription_enable)                                                | **POST** /subscription/enable                             | Enable Subscription                        |
-| _SubscriptionApi_            | [**subscription_fetch**](docs/SubscriptionApi.md#subscription_fetch)                                                  | **GET** /subscription/{code}                              | Fetch Subscription                         |
+| _SubscriptionApi_            | [**subscription_fetch**](docs/SubscriptionApi.md#subscription_fetch)                                                  | **GET** /subscription/{id_or_code}                        | Fetch Subscription                         |
 | _SubscriptionApi_            | [**subscription_list**](docs/SubscriptionApi.md#subscription_list)                                                    | **GET** /subscription                                     | List Subscriptions                         |
 | _SubscriptionApi_            | [**subscription_manage_email**](docs/SubscriptionApi.md#subscription_manage_email)                                    | **POST** /subscription/{code}/manage/email                | Send Update Subscription Link              |
 | _SubscriptionApi_            | [**subscription_manage_link**](docs/SubscriptionApi.md#subscription_manage_link)                                      | **GET** /subscription/{code}/manage/link                  | Generate Update Subscription Link          |
@@ -297,7 +297,7 @@ All URIs are relative to *https://api.paystack.co*
 | _TransactionApi_             | [**transaction_list**](docs/TransactionApi.md#transaction_list)                                                       | **GET** /transaction                                      | List Transactions                          |
 | _TransactionApi_             | [**transaction_partial_debit**](docs/TransactionApi.md#transaction_partial_debit)                                     | **POST** /transaction/partial_debit                       | Partial Debit                              |
 | _TransactionApi_             | [**transaction_session**](docs/TransactionApi.md#transaction_session)                                                 | **GET** /transaction/{id}/session                         | Get Transaction Session                    |
-| _TransactionApi_             | [**transaction_timeline**](docs/TransactionApi.md#transaction_timeline)                                               | **GET** /transaction/timeline/{id}                        | Fetch Transaction Timeline                 |
+| _TransactionApi_             | [**transaction_timeline**](docs/TransactionApi.md#transaction_timeline)                                               | **GET** /transaction/timeline/{id_or_reference}           | Fetch Transaction Timeline                 |
 | _TransactionApi_             | [**transaction_totals**](docs/TransactionApi.md#transaction_totals)                                                   | **GET** /transaction/totals                               | Transaction Totals                         |
 | _TransactionApi_             | [**transaction_verify**](docs/TransactionApi.md#transaction_verify)                                                   | **GET** /transaction/verify/{reference}                   | Verify Transaction                         |
 | _TransferApi_                | [**transfer_bulk**](docs/TransferApi.md#transfer_bulk)                                                                | **POST** /transfer/bulk                                   | Initiate Bulk Transfer                     |
@@ -305,7 +305,7 @@ All URIs are relative to *https://api.paystack.co*
 | _TransferApi_                | [**transfer_disable_otp_finalize**](docs/TransferApi.md#transfer_disable_otp_finalize)                                | **POST** /transfer/disable_otp_finalize                   | Finalize Disabling OTP for Transfers       |
 | _TransferApi_                | [**transfer_enable_otp**](docs/TransferApi.md#transfer_enable_otp)                                                    | **POST** /transfer/enable_otp                             | Enable OTP requirement for Transfers       |
 | _TransferApi_                | [**transfer_export_transfer**](docs/TransferApi.md#transfer_export_transfer)                                          | **GET** /transfer/export                                  | Export Transfers                           |
-| _TransferApi_                | [**transfer_fetch**](docs/TransferApi.md#transfer_fetch)                                                              | **GET** /transfer/{code}                                  | Fetch Transfer                             |
+| _TransferApi_                | [**transfer_fetch**](docs/TransferApi.md#transfer_fetch)                                                              | **GET** /transfer/{id_or_code}                            | Fetch Transfer                             |
 | _TransferApi_                | [**transfer_finalize**](docs/TransferApi.md#transfer_finalize)                                                        | **POST** /transfer/finalize_transfer                      | Finalize Transfer                          |
 | _TransferApi_                | [**transfer_initiate**](docs/TransferApi.md#transfer_initiate)                                                        | **POST** /transfer                                        | Initiate Transfer                          |
 | _TransferApi_                | [**transfer_list**](docs/TransferApi.md#transfer_list)                                                                | **GET** /transfer                                         | List Transfers                             |
@@ -313,10 +313,10 @@ All URIs are relative to *https://api.paystack.co*
 | _TransferApi_                | [**transfer_verify**](docs/TransferApi.md#transfer_verify)                                                            | **GET** /transfer/verify/{reference}                      | Verify Transfer                            |
 | _TransferRecipientApi_       | [**transferrecipient_bulk**](docs/TransferRecipientApi.md#transferrecipient_bulk)                                     | **POST** /transferrecipient/bulk                          | Bulk Create Transfer Recipient             |
 | _TransferRecipientApi_       | [**transferrecipient_create**](docs/TransferRecipientApi.md#transferrecipient_create)                                 | **POST** /transferrecipient                               | Create Transfer Recipient                  |
-| _TransferRecipientApi_       | [**transferrecipient_delete**](docs/TransferRecipientApi.md#transferrecipient_delete)                                 | **DELETE** /transferrecipient/{code}                      | Delete Transfer Recipient                  |
-| _TransferRecipientApi_       | [**transferrecipient_fetch**](docs/TransferRecipientApi.md#transferrecipient_fetch)                                   | **GET** /transferrecipient/{code}                         | Fetch Transfer recipient                   |
+| _TransferRecipientApi_       | [**transferrecipient_delete**](docs/TransferRecipientApi.md#transferrecipient_delete)                                 | **DELETE** /transferrecipient/{id_or_code}                | Delete Transfer Recipient                  |
+| _TransferRecipientApi_       | [**transferrecipient_fetch**](docs/TransferRecipientApi.md#transferrecipient_fetch)                                   | **GET** /transferrecipient/{id_or_code}                   | Fetch Transfer recipient                   |
 | _TransferRecipientApi_       | [**transferrecipient_list**](docs/TransferRecipientApi.md#transferrecipient_list)                                     | **GET** /transferrecipient                                | List Transfer Recipients                   |
-| _TransferRecipientApi_       | [**transferrecipient_update**](docs/TransferRecipientApi.md#transferrecipient_update)                                 | **PUT** /transferrecipient/{code}                         | Update Transfer Recipient                  |
+| _TransferRecipientApi_       | [**transferrecipient_update**](docs/TransferRecipientApi.md#transferrecipient_update)                                 | **PUT** /transferrecipient/{id_or_code}                   | Update Transfer Recipient                  |
 | _VirtualTerminalApi_         | [**virtual_terminal_add_split_code**](docs/VirtualTerminalApi.md#virtual_terminal_add_split_code)                     | **PUT** /virtual_terminal/{code}/split_code               | Add Split Code to Virtual Terminal         |
 | _VirtualTerminalApi_         | [**virtual_terminal_create**](docs/VirtualTerminalApi.md#virtual_terminal_create)                                     | **POST** /virtual_terminal                                | Create Virtual Terminal                    |
 | _VirtualTerminalApi_         | [**virtual_terminal_deactivate**](docs/VirtualTerminalApi.md#virtual_terminal_deactivate)                             | **PUT** /virtual_terminal/{code}/deactivate               | Deactivate Virtual Terminal                |
@@ -330,35 +330,39 @@ All URIs are relative to *https://api.paystack.co*
 ## Documentation For Models
 
 - [ApplePayCreateOkModel](docs/ApplePayCreateOkModel.md)
+- [ApplePayDomainsResponse](docs/ApplePayDomainsResponse.md)
+- [ApplePayDomainsResponseData](docs/ApplePayDomainsResponseData.md)
 - [ApplePayParam](docs/ApplePayParam.md)
 - [BalanceCheckResponse](docs/BalanceCheckResponse.md)
 - [BalanceCheckResponseArray](docs/BalanceCheckResponseArray.md)
 - [BalanceFetchLedgerResponse](docs/BalanceFetchLedgerResponse.md)
 - [BalanceFetchLedgerResponseArray](docs/BalanceFetchLedgerResponseArray.md)
+- [BalanceFetchLedgerResponseMeta](docs/BalanceFetchLedgerResponseMeta.md)
 - [Bank](docs/Bank.md)
 - [BankValidateRequest](docs/BankValidateRequest.md)
 - [BulkChargeFetchBulkBatchChargesResponse](docs/BulkChargeFetchBulkBatchChargesResponse.md)
 - [BulkChargeFetchBulkBatchChargesResponseArray](docs/BulkChargeFetchBulkBatchChargesResponseArray.md)
+- [BulkChargeFetchBulkBatchChargesResponseArrayAuthorization](docs/BulkChargeFetchBulkBatchChargesResponseArrayAuthorization.md)
 - [BulkChargeFetchBulkBatchChargesResponseArrayCustomer](docs/BulkChargeFetchBulkBatchChargesResponseArrayCustomer.md)
 - [BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata](docs/BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata.md)
+- [BulkChargeFetchBulkBatchChargesResponseArrayMetadata](docs/BulkChargeFetchBulkBatchChargesResponseArrayMetadata.md)
 - [BulkChargeFetchBulkBatchChargesResponseMeta](docs/BulkChargeFetchBulkBatchChargesResponseMeta.md)
 - [BulkChargeFetchResponse](docs/BulkChargeFetchResponse.md)
+- [BulkChargeFetchResponseData](docs/BulkChargeFetchResponseData.md)
 - [BulkChargeInitiate](docs/BulkChargeInitiate.md)
 - [BulkChargeInitiateResponse](docs/BulkChargeInitiateResponse.md)
 - [BulkChargeInitiateResponseData](docs/BulkChargeInitiateResponseData.md)
 - [BulkChargeListResponse](docs/BulkChargeListResponse.md)
 - [BulkChargeListResponseArray](docs/BulkChargeListResponseArray.md)
-- [BulkChargeListResponseMeta](docs/BulkChargeListResponseMeta.md)
-- [BulkChargeListResponseMetaPerPage](docs/BulkChargeListResponseMetaPerPage.md)
 - [BulkChargePauseResponse](docs/BulkChargePauseResponse.md)
 - [BulkChargeResumeResponse](docs/BulkChargeResumeResponse.md)
 - [ChargeAuthorizationResponse](docs/ChargeAuthorizationResponse.md)
 - [ChargeAuthorizationResponseData](docs/ChargeAuthorizationResponseData.md)
 - [ChargeAuthorizationResponseDataAuthorization](docs/ChargeAuthorizationResponseDataAuthorization.md)
 - [ChargeAuthorizationResponseDataCustomer](docs/ChargeAuthorizationResponseDataCustomer.md)
-- [ChargeAuthorizationResponseDataCustomerMetadata](docs/ChargeAuthorizationResponseDataCustomerMetadata.md)
 - [ChargeAuthorizationResponseDataLog](docs/ChargeAuthorizationResponseDataLog.md)
 - [ChargeAuthorizationResponseDataLogHistoryInner](docs/ChargeAuthorizationResponseDataLogHistoryInner.md)
+- [ChargeAuthorizationResponseDataMetadata](docs/ChargeAuthorizationResponseDataMetadata.md)
 - [ChargeCheckPendingResponse](docs/ChargeCheckPendingResponse.md)
 - [ChargeCreate](docs/ChargeCreate.md)
 - [ChargeCreateRequest](docs/ChargeCreateRequest.md)
@@ -367,12 +371,10 @@ All URIs are relative to *https://api.paystack.co*
 - [ChargeSubmitAddress](docs/ChargeSubmitAddress.md)
 - [ChargeSubmitBirthday](docs/ChargeSubmitBirthday.md)
 - [ChargeSubmitBirthdayResponse](docs/ChargeSubmitBirthdayResponse.md)
-- [ChargeSubmitBirthdayResponseData](docs/ChargeSubmitBirthdayResponseData.md)
 - [ChargeSubmitOTP](docs/ChargeSubmitOTP.md)
 - [ChargeSubmitOtpResponse](docs/ChargeSubmitOtpResponse.md)
 - [ChargeSubmitPhone](docs/ChargeSubmitPhone.md)
 - [ChargeSubmitPhoneResponse](docs/ChargeSubmitPhoneResponse.md)
-- [ChargeSubmitPhoneResponseData](docs/ChargeSubmitPhoneResponseData.md)
 - [ChargeSubmitPin](docs/ChargeSubmitPin.md)
 - [ChargeSubmitPinResponse](docs/ChargeSubmitPinResponse.md)
 - [ChargeSubmitPinResponseData](docs/ChargeSubmitPinResponseData.md)
@@ -382,6 +384,7 @@ All URIs are relative to *https://api.paystack.co*
 - [ControlPanelFetchPaymentSessionTimeoutResponseData](docs/ControlPanelFetchPaymentSessionTimeoutResponseData.md)
 - [ControlPanelUpdatePaymentSessionTimeoutResponse](docs/ControlPanelUpdatePaymentSessionTimeoutResponse.md)
 - [Currency](docs/Currency.md)
+- [CursorMeta](docs/CursorMeta.md)
 - [CustomerAuthorizationInitializeAccount](docs/CustomerAuthorizationInitializeAccount.md)
 - [CustomerAuthorizationInitializeAddress](docs/CustomerAuthorizationInitializeAddress.md)
 - [CustomerAuthorizationInitializeRequest](docs/CustomerAuthorizationInitializeRequest.md)
@@ -433,6 +436,7 @@ All URIs are relative to *https://api.paystack.co*
 - [DedicatedNubanListResponseArrayBank](docs/DedicatedNubanListResponseArrayBank.md)
 - [DedicatedNubanListResponseArrayCustomer](docs/DedicatedNubanListResponseArrayCustomer.md)
 - [DedicatedNubanListResponseArraySplitConfig](docs/DedicatedNubanListResponseArraySplitConfig.md)
+- [DedicatedNubanListResponseArraySplitConfigAnyOf](docs/DedicatedNubanListResponseArraySplitConfigAnyOf.md)
 - [DedicatedVirtualAccountAssign](docs/DedicatedVirtualAccountAssign.md)
 - [DedicatedVirtualAccountCreate](docs/DedicatedVirtualAccountCreate.md)
 - [DedicatedVirtualAccountRemoveSplit](docs/DedicatedVirtualAccountRemoveSplit.md)
@@ -445,12 +449,13 @@ All URIs are relative to *https://api.paystack.co*
 - [DisputeExportResponse](docs/DisputeExportResponse.md)
 - [DisputeFetchResponse](docs/DisputeFetchResponse.md)
 - [DisputeFetchResponseData](docs/DisputeFetchResponseData.md)
+- [DisputeFetchResponseDataCustomer](docs/DisputeFetchResponseDataCustomer.md)
 - [DisputeFetchResponseDataTransaction](docs/DisputeFetchResponseDataTransaction.md)
 - [DisputeFetchResponseDataTransactionAuthorization](docs/DisputeFetchResponseDataTransactionAuthorization.md)
-- [DisputeFetchResponseDataTransactionCustomer](docs/DisputeFetchResponseDataTransactionCustomer.md)
 - [DisputeHistoryArray](docs/DisputeHistoryArray.md)
 - [DisputeListResponse](docs/DisputeListResponse.md)
 - [DisputeListResponseArray](docs/DisputeListResponseArray.md)
+- [DisputeListResponseArrayCustomer](docs/DisputeListResponseArrayCustomer.md)
 - [DisputeListResponseArrayTransaction](docs/DisputeListResponseArrayTransaction.md)
 - [DisputeListTransactionResponse](docs/DisputeListTransactionResponse.md)
 - [DisputeListTransactionResponseData](docs/DisputeListTransactionResponseData.md)
@@ -468,6 +473,9 @@ All URIs are relative to *https://api.paystack.co*
 - [Error](docs/Error.md)
 - [ErrorMeta](docs/ErrorMeta.md)
 - [ErrorRecordsArray](docs/ErrorRecordsArray.md)
+- [Meta](docs/Meta.md)
+- [MetaPerPage](docs/MetaPerPage.md)
+- [MetaWithVolume](docs/MetaWithVolume.md)
 - [MetadataCustomFieldsArray](docs/MetadataCustomFieldsArray.md)
 - [MiscellaneousListBanksResponse](docs/MiscellaneousListBanksResponse.md)
 - [MiscellaneousListBanksResponseArray](docs/MiscellaneousListBanksResponseArray.md)
@@ -496,14 +504,17 @@ All URIs are relative to *https://api.paystack.co*
 - [OrderFetchProductResponseMeta](docs/OrderFetchProductResponseMeta.md)
 - [OrderFetchResponse](docs/OrderFetchResponse.md)
 - [OrderFetchResponseData](docs/OrderFetchResponseData.md)
+- [OrderFetchResponseDataCustomer](docs/OrderFetchResponseDataCustomer.md)
+- [OrderFetchResponseDataLineItemsInner](docs/OrderFetchResponseDataLineItemsInner.md)
+- [OrderFetchResponseDataLineItemsInnerProduct](docs/OrderFetchResponseDataLineItemsInnerProduct.md)
 - [OrderItems](docs/OrderItems.md)
-- [OrderItemsArray](docs/OrderItemsArray.md)
 - [OrderListResponse](docs/OrderListResponse.md)
 - [OrderListResponseArray](docs/OrderListResponseArray.md)
-- [OrderListResponseMeta](docs/OrderListResponseMeta.md)
+- [OrderListResponseArrayCustomer](docs/OrderListResponseArrayCustomer.md)
 - [OrderShipping](docs/OrderShipping.md)
 - [OrderValidateResponse](docs/OrderValidateResponse.md)
 - [OrderValidateResponseData](docs/OrderValidateResponseData.md)
+- [OrderValidateResponseDataCustomer](docs/OrderValidateResponseDataCustomer.md)
 - [OrderValidateResponseDataIntegration](docs/OrderValidateResponseDataIntegration.md)
 - [PageAddProductsResponse](docs/PageAddProductsResponse.md)
 - [PageAddProductsResponseData](docs/PageAddProductsResponseData.md)
@@ -530,6 +541,7 @@ All URIs are relative to *https://api.paystack.co*
 - [PaymentRequestLineItemsArray](docs/PaymentRequestLineItemsArray.md)
 - [PaymentRequestListResponse](docs/PaymentRequestListResponse.md)
 - [PaymentRequestListResponseArray](docs/PaymentRequestListResponseArray.md)
+- [PaymentRequestListResponseMeta](docs/PaymentRequestListResponseMeta.md)
 - [PaymentRequestNotificationsArray](docs/PaymentRequestNotificationsArray.md)
 - [PaymentRequestPendingArray](docs/PaymentRequestPendingArray.md)
 - [PaymentRequestSendNotificationResponse](docs/PaymentRequestSendNotificationResponse.md)
@@ -544,6 +556,9 @@ All URIs are relative to *https://api.paystack.co*
 - [PaymentRequestVerifyResponse](docs/PaymentRequestVerifyResponse.md)
 - [PaymentRequestVerifyResponseData](docs/PaymentRequestVerifyResponseData.md)
 - [PaymentRequestVerifyResponseDataIntegration](docs/PaymentRequestVerifyResponseDataIntegration.md)
+- [PaymentRequestViewResponse](docs/PaymentRequestViewResponse.md)
+- [PaymentRequestViewResponseData](docs/PaymentRequestViewResponseData.md)
+- [PaymentRequestViewResponseDataCustomer](docs/PaymentRequestViewResponseDataCustomer.md)
 - [PaymentSession](docs/PaymentSession.md)
 - [PlanCreate](docs/PlanCreate.md)
 - [PlanCreateResponse](docs/PlanCreateResponse.md)
@@ -557,6 +572,7 @@ All URIs are relative to *https://api.paystack.co*
 - [ProductCreate](docs/ProductCreate.md)
 - [ProductCreateResponse](docs/ProductCreateResponse.md)
 - [ProductCreateResponseData](docs/ProductCreateResponseData.md)
+- [ProductCreateResponseDataShippingFields](docs/ProductCreateResponseDataShippingFields.md)
 - [ProductDeleteResponse](docs/ProductDeleteResponse.md)
 - [ProductFetchResponse](docs/ProductFetchResponse.md)
 - [ProductFetchResponseData](docs/ProductFetchResponseData.md)
@@ -564,7 +580,6 @@ All URIs are relative to *https://api.paystack.co*
 - [ProductListsResponseArray](docs/ProductListsResponseArray.md)
 - [ProductListsResponseArrayMetadata](docs/ProductListsResponseArrayMetadata.md)
 - [ProductListsResponseArrayShippingFields](docs/ProductListsResponseArrayShippingFields.md)
-- [ProductListsResponseMeta](docs/ProductListsResponseMeta.md)
 - [ProductUpdate](docs/ProductUpdate.md)
 - [ProductUpdateResponse](docs/ProductUpdateResponse.md)
 - [ProductUpdateResponseData](docs/ProductUpdateResponseData.md)
@@ -577,15 +592,16 @@ All URIs are relative to *https://api.paystack.co*
 - [RefundCreateResponseDataTransactionSubaccount](docs/RefundCreateResponseDataTransactionSubaccount.md)
 - [RefundFetchResponse](docs/RefundFetchResponse.md)
 - [RefundFetchResponseData](docs/RefundFetchResponseData.md)
-- [RefundFetchResponseDataCustomer](docs/RefundFetchResponseDataCustomer.md)
 - [RefundListResponse](docs/RefundListResponse.md)
 - [RefundListResponseArray](docs/RefundListResponseArray.md)
-- [RefundListResponseMeta](docs/RefundListResponseMeta.md)
 - [RefundRetry](docs/RefundRetry.md)
 - [RefundRetryAccountDetails](docs/RefundRetryAccountDetails.md)
 - [RefundRetryResponse](docs/RefundRetryResponse.md)
 - [RefundRetryResponseData](docs/RefundRetryResponseData.md)
 - [Response](docs/Response.md)
+- [SettlementListResponse](docs/SettlementListResponse.md)
+- [SettlementListResponseArray](docs/SettlementListResponseArray.md)
+- [SettlementTransactionsResponse](docs/SettlementTransactionsResponse.md)
 - [SplitAddUpdateSubaccountResponse](docs/SplitAddUpdateSubaccountResponse.md)
 - [SplitCreate](docs/SplitCreate.md)
 - [SplitCreateResponse](docs/SplitCreateResponse.md)
@@ -595,19 +611,18 @@ All URIs are relative to *https://api.paystack.co*
 - [SplitListResponse](docs/SplitListResponse.md)
 - [SplitListResponseArray](docs/SplitListResponseArray.md)
 - [SplitRemoveSubaccountResponse](docs/SplitRemoveSubaccountResponse.md)
+- [SplitSubaccountRemove](docs/SplitSubaccountRemove.md)
 - [SplitSubaccounts](docs/SplitSubaccounts.md)
 - [SplitSubaccountsArray](docs/SplitSubaccountsArray.md)
 - [SplitSubaccountsArraySubaccount](docs/SplitSubaccountsArraySubaccount.md)
 - [SplitUpdate](docs/SplitUpdate.md)
 - [SplitUpdateResponse](docs/SplitUpdateResponse.md)
 - [StorefrontAddProducts](docs/StorefrontAddProducts.md)
-- [StorefrontContactsArray](docs/StorefrontContactsArray.md)
 - [StorefrontCreate](docs/StorefrontCreate.md)
 - [StorefrontCreateResponse](docs/StorefrontCreateResponse.md)
 - [StorefrontCreateResponseData](docs/StorefrontCreateResponseData.md)
 - [StorefrontDeleteResponse](docs/StorefrontDeleteResponse.md)
 - [StorefrontFetchResponse](docs/StorefrontFetchResponse.md)
-- [StorefrontFetchResponseMeta](docs/StorefrontFetchResponseMeta.md)
 - [StorefrontListResponse](docs/StorefrontListResponse.md)
 - [StorefrontListResponseArray](docs/StorefrontListResponseArray.md)
 - [StorefrontUpdate](docs/StorefrontUpdate.md)
@@ -619,16 +634,17 @@ All URIs are relative to *https://api.paystack.co*
 - [SubaccountFetchResponseData](docs/SubaccountFetchResponseData.md)
 - [SubaccountListResponse](docs/SubaccountListResponse.md)
 - [SubaccountListResponseArray](docs/SubaccountListResponseArray.md)
-- [SubaccountListResponseMeta](docs/SubaccountListResponseMeta.md)
 - [SubaccountUpdate](docs/SubaccountUpdate.md)
 - [SubaccountUpdateResponse](docs/SubaccountUpdateResponse.md)
 - [SubaccountUpdateResponseData](docs/SubaccountUpdateResponseData.md)
 - [SubscriptionCreate](docs/SubscriptionCreate.md)
 - [SubscriptionCreateResponse](docs/SubscriptionCreateResponse.md)
 - [SubscriptionCreateResponseData](docs/SubscriptionCreateResponseData.md)
+- [SubscriptionCreateResponseDataAuthorization](docs/SubscriptionCreateResponseDataAuthorization.md)
 - [SubscriptionDisableResponse](docs/SubscriptionDisableResponse.md)
 - [SubscriptionFetchResponse](docs/SubscriptionFetchResponse.md)
 - [SubscriptionFetchResponseData](docs/SubscriptionFetchResponseData.md)
+- [SubscriptionFetchResponseDataCustomer](docs/SubscriptionFetchResponseDataCustomer.md)
 - [SubscriptionFetchResponseDataPlan](docs/SubscriptionFetchResponseDataPlan.md)
 - [SubscriptionListResponse](docs/SubscriptionListResponse.md)
 - [SubscriptionListResponseArray](docs/SubscriptionListResponseArray.md)
@@ -645,37 +661,39 @@ All URIs are relative to *https://api.paystack.co*
 - [TerminalGetStatusResponseData](docs/TerminalGetStatusResponseData.md)
 - [TerminalListsResponse](docs/TerminalListsResponse.md)
 - [TerminalListsResponseArray](docs/TerminalListsResponseArray.md)
-- [TerminalListsResponseMeta](docs/TerminalListsResponseMeta.md)
 - [TerminalSendEvent](docs/TerminalSendEvent.md)
 - [TerminalSendEventData](docs/TerminalSendEventData.md)
 - [TerminalUpate](docs/TerminalUpate.md)
 - [TerminalUpdateResponse](docs/TerminalUpdateResponse.md)
 - [TransactionChargeAuthorization](docs/TransactionChargeAuthorization.md)
+- [TransactionChargeAuthorizationMetadata](docs/TransactionChargeAuthorizationMetadata.md)
 - [TransactionCheckAuthorization](docs/TransactionCheckAuthorization.md)
 - [TransactionExportResponse](docs/TransactionExportResponse.md)
 - [TransactionExportResponseData](docs/TransactionExportResponseData.md)
 - [TransactionFetchResponse](docs/TransactionFetchResponse.md)
 - [TransactionFetchResponseData](docs/TransactionFetchResponseData.md)
 - [TransactionFetchResponseDataAuthorization](docs/TransactionFetchResponseDataAuthorization.md)
-- [TransactionFetchResponseDataCustomer](docs/TransactionFetchResponseDataCustomer.md)
-- [TransactionFetchResponseDataMetadata](docs/TransactionFetchResponseDataMetadata.md)
 - [TransactionFetchResponseDataSource](docs/TransactionFetchResponseDataSource.md)
 - [TransactionInitialize](docs/TransactionInitialize.md)
+- [TransactionInitializeAmount](docs/TransactionInitializeAmount.md)
 - [TransactionInitializeBadRequestModel](docs/TransactionInitializeBadRequestModel.md)
+- [TransactionInitializeMetadata](docs/TransactionInitializeMetadata.md)
 - [TransactionInitializeResponse](docs/TransactionInitializeResponse.md)
 - [TransactionInitializeResponseData](docs/TransactionInitializeResponseData.md)
 - [TransactionListResponse](docs/TransactionListResponse.md)
 - [TransactionListResponseArray](docs/TransactionListResponseArray.md)
 - [TransactionListResponseArrayAuthorization](docs/TransactionListResponseArrayAuthorization.md)
 - [TransactionListResponseArrayCustomer](docs/TransactionListResponseArrayCustomer.md)
+- [TransactionListResponseArrayMetadata](docs/TransactionListResponseArrayMetadata.md)
 - [TransactionListResponseArraySource](docs/TransactionListResponseArraySource.md)
 - [TransactionListResponseMeta](docs/TransactionListResponseMeta.md)
-- [TransactionListResponseMetaPerPage](docs/TransactionListResponseMetaPerPage.md)
 - [TransactionPartialDebit](docs/TransactionPartialDebit.md)
+- [TransactionPartialDebitAmount](docs/TransactionPartialDebitAmount.md)
 - [TransactionPartialDebitResponse](docs/TransactionPartialDebitResponse.md)
 - [TransactionPartialDebitResponseData](docs/TransactionPartialDebitResponseData.md)
 - [TransactionPartialDebitResponseDataAuthorization](docs/TransactionPartialDebitResponseDataAuthorization.md)
 - [TransactionPartialDebitResponseDataCustomer](docs/TransactionPartialDebitResponseDataCustomer.md)
+- [TransactionPartialDebitResponseDataMetadata](docs/TransactionPartialDebitResponseDataMetadata.md)
 - [TransactionPendingTransfersByCurrencyArray](docs/TransactionPendingTransfersByCurrencyArray.md)
 - [TransactionTimelineResponse](docs/TransactionTimelineResponse.md)
 - [TransactionTotalVolumeByCurrencyArray](docs/TransactionTotalVolumeByCurrencyArray.md)
@@ -692,6 +710,7 @@ All URIs are relative to *https://api.paystack.co*
 - [TransferFeesBreakdownArray](docs/TransferFeesBreakdownArray.md)
 - [TransferFetchResponse](docs/TransferFetchResponse.md)
 - [TransferFetchResponseData](docs/TransferFetchResponseData.md)
+- [TransferFetchResponseDataSession](docs/TransferFetchResponseDataSession.md)
 - [TransferFinalize](docs/TransferFinalize.md)
 - [TransferFinalizeDisableOTP](docs/TransferFinalizeDisableOTP.md)
 - [TransferFinalizeDisablesOtpResponse](docs/TransferFinalizeDisablesOtpResponse.md)
@@ -700,7 +719,6 @@ All URIs are relative to *https://api.paystack.co*
 - [TransferListResponseArray](docs/TransferListResponseArray.md)
 - [TransferListResponseArrayRecipient](docs/TransferListResponseArrayRecipient.md)
 - [TransferListResponseArrayRecipientDetails](docs/TransferListResponseArrayRecipientDetails.md)
-- [TransferListResponseArraySession](docs/TransferListResponseArraySession.md)
 - [TransferRecipientBulk](docs/TransferRecipientBulk.md)
 - [TransferRecipientBulkCreateResponse](docs/TransferRecipientBulkCreateResponse.md)
 - [TransferRecipientBulkCreateResponseData](docs/TransferRecipientBulkCreateResponseData.md)
@@ -717,6 +735,8 @@ All URIs are relative to *https://api.paystack.co*
 - [TransferRecipientListResponseArrayDetails](docs/TransferRecipientListResponseArrayDetails.md)
 - [TransferRecipientUpdate](docs/TransferRecipientUpdate.md)
 - [TransferRecipientUpdateResponse](docs/TransferRecipientUpdateResponse.md)
+- [TransferRecipientUpdateResponseData](docs/TransferRecipientUpdateResponseData.md)
+- [TransferRecipientUpdateResponseDataDetails](docs/TransferRecipientUpdateResponseDataDetails.md)
 - [TransferResendOTP](docs/TransferResendOTP.md)
 - [TransferResendsOtpResponse](docs/TransferResendsOtpResponse.md)
 - [TransferVerifyResponse](docs/TransferVerifyResponse.md)
@@ -736,12 +756,12 @@ All URIs are relative to *https://api.paystack.co*
 - [VerifyResponseDataCustomer](docs/VerifyResponseDataCustomer.md)
 - [VerifyResponseDataLog](docs/VerifyResponseDataLog.md)
 - [VerifyResponseDataLogHistoryInner](docs/VerifyResponseDataLogHistoryInner.md)
-- [VerifyResponseDataMetadata](docs/VerifyResponseDataMetadata.md)
 - [VerifyResponseDataPlanObject](docs/VerifyResponseDataPlanObject.md)
 - [VirtualTerminalAddSplitCode](docs/VirtualTerminalAddSplitCode.md)
 - [VirtualTerminalAddSplitCodeResponse](docs/VirtualTerminalAddSplitCodeResponse.md)
 - [VirtualTerminalAddSplitCodeResponseData](docs/VirtualTerminalAddSplitCodeResponseData.md)
 - [VirtualTerminalCreate](docs/VirtualTerminalCreate.md)
+- [VirtualTerminalCreateCustomFieldsInner](docs/VirtualTerminalCreateCustomFieldsInner.md)
 - [VirtualTerminalCreateDestinationsInner](docs/VirtualTerminalCreateDestinationsInner.md)
 - [VirtualTerminalCreateResponse](docs/VirtualTerminalCreateResponse.md)
 - [VirtualTerminalCreateResponseData](docs/VirtualTerminalCreateResponseData.md)
@@ -750,6 +770,7 @@ All URIs are relative to *https://api.paystack.co*
 - [VirtualTerminalDeleteSplitCode](docs/VirtualTerminalDeleteSplitCode.md)
 - [VirtualTerminalDeleteSplitCodeResponse](docs/VirtualTerminalDeleteSplitCodeResponse.md)
 - [VirtualTerminalDestinationAssign](docs/VirtualTerminalDestinationAssign.md)
+- [VirtualTerminalDestinationAssignDestinationsInner](docs/VirtualTerminalDestinationAssignDestinationsInner.md)
 - [VirtualTerminalDestinationAssignResponse](docs/VirtualTerminalDestinationAssignResponse.md)
 - [VirtualTerminalDestinationAssignResponseDataInner](docs/VirtualTerminalDestinationAssignResponseDataInner.md)
 - [VirtualTerminalDestinationUnassign](docs/VirtualTerminalDestinationUnassign.md)
@@ -759,7 +780,6 @@ All URIs are relative to *https://api.paystack.co*
 - [VirtualTerminalFetchResponseDataDestinationsInner](docs/VirtualTerminalFetchResponseDataDestinationsInner.md)
 - [VirtualTerminalListResponse](docs/VirtualTerminalListResponse.md)
 - [VirtualTerminalListResponseArray](docs/VirtualTerminalListResponseArray.md)
-- [VirtualTerminalListResponseMeta](docs/VirtualTerminalListResponseMeta.md)
 - [VirtualTerminalUpdate](docs/VirtualTerminalUpdate.md)
 - [VirtualTerminalUpdateResponse](docs/VirtualTerminalUpdateResponse.md)
 

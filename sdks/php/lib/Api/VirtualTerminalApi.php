@@ -2206,17 +2206,20 @@ class VirtualTerminalApi
      *
      * List Virtual Terminals
      *
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
+     * @param  string|null $status Filter by status (&#39;active&#39; or &#39;inactive&#39;) (optional)
+     * @param  int|null $per_page Number of records per page (optional)
+     * @param  string|null $search Search query string (optional)
+     * @param  string|null $next Cursor for next page (optional)
+     * @param  string|null $previous Cursor for previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['virtualTerminalList'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\VirtualTerminalListResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function virtualTerminalList($per_page = null, $page = null, string $contentType = self::contentTypes['virtualTerminalList'][0])
+    public function virtualTerminalList($status = null, $per_page = null, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['virtualTerminalList'][0])
     {
-        list($response) = $this->virtualTerminalListWithHttpInfo($per_page, $page, $contentType);
+        list($response) = $this->virtualTerminalListWithHttpInfo($status, $per_page, $search, $next, $previous, $contentType);
         return $response;
     }
 
@@ -2225,17 +2228,20 @@ class VirtualTerminalApi
      *
      * List Virtual Terminals
      *
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
+     * @param  string|null $status Filter by status (&#39;active&#39; or &#39;inactive&#39;) (optional)
+     * @param  int|null $per_page Number of records per page (optional)
+     * @param  string|null $search Search query string (optional)
+     * @param  string|null $next Cursor for next page (optional)
+     * @param  string|null $previous Cursor for previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['virtualTerminalList'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\VirtualTerminalListResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function virtualTerminalListWithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['virtualTerminalList'][0])
+    public function virtualTerminalListWithHttpInfo($status = null, $per_page = null, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['virtualTerminalList'][0])
     {
-        $request = $this->virtualTerminalListRequest($per_page, $page, $contentType);
+        $request = $this->virtualTerminalListRequest($status, $per_page, $search, $next, $previous, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2325,16 +2331,19 @@ class VirtualTerminalApi
      *
      * List Virtual Terminals
      *
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
+     * @param  string|null $status Filter by status (&#39;active&#39; or &#39;inactive&#39;) (optional)
+     * @param  int|null $per_page Number of records per page (optional)
+     * @param  string|null $search Search query string (optional)
+     * @param  string|null $next Cursor for next page (optional)
+     * @param  string|null $previous Cursor for previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['virtualTerminalList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function virtualTerminalListAsync($per_page = null, $page = null, string $contentType = self::contentTypes['virtualTerminalList'][0])
+    public function virtualTerminalListAsync($status = null, $per_page = null, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['virtualTerminalList'][0])
     {
-        return $this->virtualTerminalListAsyncWithHttpInfo($per_page, $page, $contentType)
+        return $this->virtualTerminalListAsyncWithHttpInfo($status, $per_page, $search, $next, $previous, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2347,17 +2356,20 @@ class VirtualTerminalApi
      *
      * List Virtual Terminals
      *
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
+     * @param  string|null $status Filter by status (&#39;active&#39; or &#39;inactive&#39;) (optional)
+     * @param  int|null $per_page Number of records per page (optional)
+     * @param  string|null $search Search query string (optional)
+     * @param  string|null $next Cursor for next page (optional)
+     * @param  string|null $previous Cursor for previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['virtualTerminalList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function virtualTerminalListAsyncWithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['virtualTerminalList'][0])
+    public function virtualTerminalListAsyncWithHttpInfo($status = null, $per_page = null, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['virtualTerminalList'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\VirtualTerminalListResponse';
-        $request = $this->virtualTerminalListRequest($per_page, $page, $contentType);
+        $request = $this->virtualTerminalListRequest($status, $per_page, $search, $next, $previous, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2398,15 +2410,21 @@ class VirtualTerminalApi
     /**
      * Create request for operation 'virtualTerminalList'
      *
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
+     * @param  string|null $status Filter by status (&#39;active&#39; or &#39;inactive&#39;) (optional)
+     * @param  int|null $per_page Number of records per page (optional)
+     * @param  string|null $search Search query string (optional)
+     * @param  string|null $next Cursor for next page (optional)
+     * @param  string|null $previous Cursor for previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['virtualTerminalList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function virtualTerminalListRequest($per_page = null, $page = null, string $contentType = self::contentTypes['virtualTerminalList'][0])
+    public function virtualTerminalListRequest($status = null, $per_page = null, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['virtualTerminalList'][0])
     {
+
+
+
 
 
 
@@ -2420,6 +2438,15 @@ class VirtualTerminalApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $status,
+            'status', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $per_page,
             'perPage', // param base name
             'integer', // openApiType
@@ -2429,9 +2456,27 @@ class VirtualTerminalApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page,
-            'page', // param base name
-            'integer', // openApiType
+            $search,
+            'search', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $next,
+            'next', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $previous,
+            'previous', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required

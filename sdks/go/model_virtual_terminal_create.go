@@ -22,14 +22,16 @@ var _ MappedNullable = &VirtualTerminalCreate{}
 
 // VirtualTerminalCreate struct for VirtualTerminalCreate
 type VirtualTerminalCreate struct {
-	// The name of the virtual terminal
+	// Name of the Virtual Terminal
 	Name string `json:"name"`
-	// Array of objects containing recipients for payment notifications for the Virtual Terminal.
+	// An array of objects containing the notification recipients for payments to the Virtual Terminal. Each object includes a target parameter for the Whatsapp phone number to send notifications to, and a name parameter for a descriptive label.
 	Destinations []VirtualTerminalCreateDestinationsInner `json:"destinations"`
-	// Split code to associate with the virtual terminal
-	SplitCode *string `json:"split_code,omitempty"`
-	// Additional custom data as key-value pairs
+	// Stringified JSON object of custom data. Kindly check the Metadata page for more information
 	Metadata map[string]interface{} `json:"metadata,omitempty"`
+	// The transaction currency for the Virtual Terminal. Defaults to your integration currency
+	Currency *string `json:"currency,omitempty"`
+	// An array of objects representing custom fields to display on the form. Each object contains a display_name parameter, representing what will be displayed on the Virtual Terminal page, and variable_name parameter for referencing the custom field programmatically
+	CustomFields []VirtualTerminalCreateCustomFieldsInner `json:"custom_fields,omitempty"`
 }
 
 type _VirtualTerminalCreate VirtualTerminalCreate
@@ -101,38 +103,6 @@ func (o *VirtualTerminalCreate) SetDestinations(v []VirtualTerminalCreateDestina
 	o.Destinations = v
 }
 
-// GetSplitCode returns the SplitCode field value if set, zero value otherwise.
-func (o *VirtualTerminalCreate) GetSplitCode() string {
-	if o == nil || IsNil(o.SplitCode) {
-		var ret string
-		return ret
-	}
-	return *o.SplitCode
-}
-
-// GetSplitCodeOk returns a tuple with the SplitCode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VirtualTerminalCreate) GetSplitCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.SplitCode) {
-		return nil, false
-	}
-	return o.SplitCode, true
-}
-
-// HasSplitCode returns a boolean if a field has been set.
-func (o *VirtualTerminalCreate) HasSplitCode() bool {
-	if o != nil && !IsNil(o.SplitCode) {
-		return true
-	}
-
-	return false
-}
-
-// SetSplitCode gets a reference to the given string and assigns it to the SplitCode field.
-func (o *VirtualTerminalCreate) SetSplitCode(v string) {
-	o.SplitCode = &v
-}
-
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *VirtualTerminalCreate) GetMetadata() map[string]interface{} {
 	if o == nil || IsNil(o.Metadata) {
@@ -165,6 +135,70 @@ func (o *VirtualTerminalCreate) SetMetadata(v map[string]interface{}) {
 	o.Metadata = v
 }
 
+// GetCurrency returns the Currency field value if set, zero value otherwise.
+func (o *VirtualTerminalCreate) GetCurrency() string {
+	if o == nil || IsNil(o.Currency) {
+		var ret string
+		return ret
+	}
+	return *o.Currency
+}
+
+// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VirtualTerminalCreate) GetCurrencyOk() (*string, bool) {
+	if o == nil || IsNil(o.Currency) {
+		return nil, false
+	}
+	return o.Currency, true
+}
+
+// HasCurrency returns a boolean if a field has been set.
+func (o *VirtualTerminalCreate) HasCurrency() bool {
+	if o != nil && !IsNil(o.Currency) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrency gets a reference to the given string and assigns it to the Currency field.
+func (o *VirtualTerminalCreate) SetCurrency(v string) {
+	o.Currency = &v
+}
+
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+func (o *VirtualTerminalCreate) GetCustomFields() []VirtualTerminalCreateCustomFieldsInner {
+	if o == nil || IsNil(o.CustomFields) {
+		var ret []VirtualTerminalCreateCustomFieldsInner
+		return ret
+	}
+	return o.CustomFields
+}
+
+// GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VirtualTerminalCreate) GetCustomFieldsOk() ([]VirtualTerminalCreateCustomFieldsInner, bool) {
+	if o == nil || IsNil(o.CustomFields) {
+		return nil, false
+	}
+	return o.CustomFields, true
+}
+
+// HasCustomFields returns a boolean if a field has been set.
+func (o *VirtualTerminalCreate) HasCustomFields() bool {
+	if o != nil && !IsNil(o.CustomFields) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomFields gets a reference to the given []VirtualTerminalCreateCustomFieldsInner and assigns it to the CustomFields field.
+func (o *VirtualTerminalCreate) SetCustomFields(v []VirtualTerminalCreateCustomFieldsInner) {
+	o.CustomFields = v
+}
+
 func (o VirtualTerminalCreate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -177,11 +211,14 @@ func (o VirtualTerminalCreate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["destinations"] = o.Destinations
-	if !IsNil(o.SplitCode) {
-		toSerialize["split_code"] = o.SplitCode
-	}
 	if !IsNil(o.Metadata) {
 		toSerialize["metadata"] = o.Metadata
+	}
+	if !IsNil(o.Currency) {
+		toSerialize["currency"] = o.Currency
+	}
+	if !IsNil(o.CustomFields) {
+		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil
 }

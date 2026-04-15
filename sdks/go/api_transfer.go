@@ -656,7 +656,7 @@ func (a *TransferAPIService) TransferExportTransferExecute(r ApiTransferExportTr
 type ApiTransferFetchRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
-	code string
+	idOrCode string
 }
 
 func (r ApiTransferFetchRequest) Execute() (*TransferFetchResponse, *http.Response, error) {
@@ -669,14 +669,14 @@ TransferFetch Fetch Transfer
 Get details of a transfer on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code Transfer code
+ @param idOrCode The transfer ID or code you want to fetch
  @return ApiTransferFetchRequest
 */
-func (a *TransferAPIService) TransferFetch(ctx context.Context, code string) ApiTransferFetchRequest {
+func (a *TransferAPIService) TransferFetch(ctx context.Context, idOrCode string) ApiTransferFetchRequest {
 	return ApiTransferFetchRequest{
 		ApiService: a,
 		ctx: ctx,
-		code: code,
+		idOrCode: idOrCode,
 	}
 }
 
@@ -695,8 +695,8 @@ func (a *TransferAPIService) TransferFetchExecute(r ApiTransferFetchRequest) (*T
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/transfer/{code}"
-	localVarPath = strings.Replace(localVarPath, "{"+"code"+"}", url.PathEscape(parameterValueToString(r.code, "code")), -1)
+	localVarPath := localBasePath + "/transfer/{id_or_code}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id_or_code"+"}", url.PathEscape(parameterValueToString(r.idOrCode, "idOrCode")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1017,68 +1017,40 @@ func (a *TransferAPIService) TransferInitiateExecute(r ApiTransferInitiateReques
 type ApiTransferListRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
-	useCursor *bool
-	next *string
-	previous *string
 	perPage *int32
 	page *int32
 	from *time.Time
 	to *time.Time
-	recipient *string
-	status *string
+	recipient *int32
 }
 
-// A flag to indicate if cursor based pagination should be used
-func (r ApiTransferListRequest) UseCursor(useCursor bool) ApiTransferListRequest {
-	r.useCursor = &useCursor
-	return r
-}
-
-// An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
-func (r ApiTransferListRequest) Next(next string) ApiTransferListRequest {
-	r.next = &next
-	return r
-}
-
-// An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
-func (r ApiTransferListRequest) Previous(previous string) ApiTransferListRequest {
-	r.previous = &previous
-	return r
-}
-
-// The number of records to fetch per request
+// Specify how many records you want to retrieve per page. If not specify we use a default value of 50.
 func (r ApiTransferListRequest) PerPage(perPage int32) ApiTransferListRequest {
 	r.perPage = &perPage
 	return r
 }
 
-// The offset to retrieve data from
+// Specify exactly what transfer you want to page. If not specify we use a default value of 1.
 func (r ApiTransferListRequest) Page(page int32) ApiTransferListRequest {
 	r.page = &page
 	return r
 }
 
-// The start date
+// A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
 func (r ApiTransferListRequest) From(from time.Time) ApiTransferListRequest {
 	r.from = &from
 	return r
 }
 
-// The end date
+// A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
 func (r ApiTransferListRequest) To(to time.Time) ApiTransferListRequest {
 	r.to = &to
 	return r
 }
 
-// Filter transfer by the recipient code
-func (r ApiTransferListRequest) Recipient(recipient string) ApiTransferListRequest {
+// Filter by the recipient ID
+func (r ApiTransferListRequest) Recipient(recipient int32) ApiTransferListRequest {
 	r.recipient = &recipient
-	return r
-}
-
-// Filter transfer by status
-func (r ApiTransferListRequest) Status(status string) ApiTransferListRequest {
-	r.status = &status
 	return r
 }
 
@@ -1122,17 +1094,8 @@ func (a *TransferAPIService) TransferListExecute(r ApiTransferListRequest) (*Tra
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.useCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "use_cursor", r.useCursor, "form", "")
-	}
-	if r.next != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "form", "")
-	}
-	if r.previous != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "form", "")
-	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
 	}
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
@@ -1145,13 +1108,6 @@ func (a *TransferAPIService) TransferListExecute(r ApiTransferListRequest) (*Tra
 	}
 	if r.recipient != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "recipient", r.recipient, "form", "")
-	}
-	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
-	} else {
-		var defaultValue string = "pending"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", defaultValue, "form", "")
-		r.status = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

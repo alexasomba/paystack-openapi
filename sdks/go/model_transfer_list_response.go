@@ -25,7 +25,7 @@ type TransferListResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
 	Data []TransferListResponseArray `json:"data"`
-	Meta SubaccountListResponseMeta `json:"meta"`
+	Meta Meta `json:"meta"`
 }
 
 type _TransferListResponse TransferListResponse
@@ -34,7 +34,7 @@ type _TransferListResponse TransferListResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferListResponse(status bool, message string, data []TransferListResponseArray, meta SubaccountListResponseMeta) *TransferListResponse {
+func NewTransferListResponse(status bool, message string, data []TransferListResponseArray, meta Meta) *TransferListResponse {
 	this := TransferListResponse{}
 	this.Status = status
 	this.Message = message
@@ -124,9 +124,9 @@ func (o *TransferListResponse) SetData(v []TransferListResponseArray) {
 }
 
 // GetMeta returns the Meta field value
-func (o *TransferListResponse) GetMeta() SubaccountListResponseMeta {
+func (o *TransferListResponse) GetMeta() Meta {
 	if o == nil {
-		var ret SubaccountListResponseMeta
+		var ret Meta
 		return ret
 	}
 
@@ -135,7 +135,7 @@ func (o *TransferListResponse) GetMeta() SubaccountListResponseMeta {
 
 // GetMetaOk returns a tuple with the Meta field value
 // and a boolean to check if the value has been set.
-func (o *TransferListResponse) GetMetaOk() (*SubaccountListResponseMeta, bool) {
+func (o *TransferListResponse) GetMetaOk() (*Meta, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -143,7 +143,7 @@ func (o *TransferListResponse) GetMetaOk() (*SubaccountListResponseMeta, bool) {
 }
 
 // SetMeta sets field value
-func (o *TransferListResponse) SetMeta(v SubaccountListResponseMeta) {
+func (o *TransferListResponse) SetMeta(v Meta) {
 	o.Meta = v
 }
 

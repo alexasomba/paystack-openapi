@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,8 +28,8 @@ class ProductListsResponseArrayShippingFields(BaseModel):
     ProductListsResponseArrayShippingFields
     """ # noqa: E501
     delivery_note: StrictStr
-    shipping_address: StrictStr
-    shipping_fees: List[Any]
+    shipping_address: Optional[StrictStr] = None
+    shipping_fees: Optional[List[Any]] = None
     __properties: ClassVar[List[str]] = ["delivery_note", "shipping_address", "shipping_fees"]
 
     model_config = ConfigDict(

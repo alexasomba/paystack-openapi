@@ -62,21 +62,21 @@ class TransferFetchResponseData implements ModelInterface, ArrayAccess, \JsonSer
         'created_at' => 'string',
         'currency' => 'string',
         'domain' => 'string',
-        'failures' => 'mixed',
+        'failures' => 'object',
         'id' => 'int',
         'integration' => 'int',
         'reason' => 'string',
         'reference' => 'string',
         'source' => 'string',
-        'source_details' => 'mixed',
+        'source_details' => 'object',
         'status' => 'string',
-        'titan_code' => 'mixed',
+        'titan_code' => 'string',
         'transfer_code' => 'string',
         'request' => 'int',
-        'transferred_at' => 'mixed',
+        'transferred_at' => 'string',
         'updated_at' => 'string',
         'recipient' => '\Alexasomba\Paystack\Model\TransferListResponseArrayRecipient',
-        'session' => '\Alexasomba\Paystack\Model\TransferListResponseArraySession',
+        'session' => '\Alexasomba\Paystack\Model\TransferFetchResponseDataSession',
         'fee_charged' => 'int',
         'fees_breakdown' => '\Alexasomba\Paystack\Model\TransferFeesBreakdownArray[]',
         'gateway_response' => 'string'
@@ -614,7 +614,7 @@ class TransferFetchResponseData implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets failures
      *
-     * @return mixed|null
+     * @return object|null
      */
     public function getFailures()
     {
@@ -624,7 +624,7 @@ class TransferFetchResponseData implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets failures
      *
-     * @param mixed|null $failures failures
+     * @param object|null $failures failures
      *
      * @return self
      */
@@ -783,7 +783,7 @@ class TransferFetchResponseData implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets source_details
      *
-     * @return mixed|null
+     * @return object|null
      */
     public function getSourceDetails()
     {
@@ -793,7 +793,7 @@ class TransferFetchResponseData implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets source_details
      *
-     * @param mixed|null $source_details source_details
+     * @param object|null $source_details source_details
      *
      * @return self
      */
@@ -844,7 +844,7 @@ class TransferFetchResponseData implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets titan_code
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getTitanCode()
     {
@@ -854,7 +854,7 @@ class TransferFetchResponseData implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets titan_code
      *
-     * @param mixed|null $titan_code titan_code
+     * @param string|null $titan_code titan_code
      *
      * @return self
      */
@@ -932,7 +932,7 @@ class TransferFetchResponseData implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets transferred_at
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getTransferredAt()
     {
@@ -942,7 +942,7 @@ class TransferFetchResponseData implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets transferred_at
      *
-     * @param mixed|null $transferred_at transferred_at
+     * @param string|null $transferred_at transferred_at
      *
      * @return self
      */
@@ -1020,7 +1020,7 @@ class TransferFetchResponseData implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets session
      *
-     * @return \Alexasomba\Paystack\Model\TransferListResponseArraySession
+     * @return \Alexasomba\Paystack\Model\TransferFetchResponseDataSession
      */
     public function getSession()
     {
@@ -1030,7 +1030,7 @@ class TransferFetchResponseData implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets session
      *
-     * @param \Alexasomba\Paystack\Model\TransferListResponseArraySession $session session
+     * @param \Alexasomba\Paystack\Model\TransferFetchResponseDataSession $session session
      *
      * @return self
      */

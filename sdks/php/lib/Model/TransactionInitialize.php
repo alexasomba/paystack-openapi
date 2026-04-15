@@ -60,7 +60,7 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPITypes = [
         'email' => 'string',
-        'amount' => 'int',
+        'amount' => '\Alexasomba\Paystack\Model\TransactionInitializeAmount',
         'currency' => '\Alexasomba\Paystack\Model\Currency',
         'reference' => 'string',
         'channels' => 'string[]',
@@ -70,10 +70,10 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
         'split_code' => 'string',
         'split' => '\Alexasomba\Paystack\Model\SplitCreate',
         'subaccount' => 'string',
-        'transaction_charge' => 'string',
+        'transaction_charge' => 'int',
         'bearer' => 'string',
         'label' => 'string',
-        'metadata' => 'object'
+        'metadata' => '\Alexasomba\Paystack\Model\TransactionInitializeMetadata'
     ];
 
     /**
@@ -321,6 +321,9 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
     public const CHANNELS_EFT = 'eft';
     public const CHANNELS_MOBILE_MONEY = 'mobile_money';
     public const CHANNELS_BANK_TRANSFER = 'bank_transfer';
+    public const CHANNELS_APPLE_PAY = 'apple_pay';
+    public const CHANNELS_CAPITEC_PAY = 'capitec_pay';
+    public const CHANNELS_PAYATTITUDE = 'payattitude';
     public const BEARER_ACCOUNT = 'account';
     public const BEARER_SUBACCOUNT = 'subaccount';
 
@@ -339,6 +342,9 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
             self::CHANNELS_EFT,
             self::CHANNELS_MOBILE_MONEY,
             self::CHANNELS_BANK_TRANSFER,
+            self::CHANNELS_APPLE_PAY,
+            self::CHANNELS_CAPITEC_PAY,
+            self::CHANNELS_PAYATTITUDE,
         ];
     }
 
@@ -474,7 +480,7 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets amount
      *
-     * @return int
+     * @return \Alexasomba\Paystack\Model\TransactionInitializeAmount
      */
     public function getAmount()
     {
@@ -484,7 +490,7 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets amount
      *
-     * @param int $amount Amount should be in smallest denomination of the currency.
+     * @param \Alexasomba\Paystack\Model\TransactionInitializeAmount $amount amount
      *
      * @return self
      */
@@ -753,7 +759,7 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets transaction_charge
      *
-     * @return string|null
+     * @return int|null
      */
     public function getTransactionCharge()
     {
@@ -763,7 +769,7 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets transaction_charge
      *
-     * @param string|null $transaction_charge A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created
+     * @param int|null $transaction_charge A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created
      *
      * @return self
      */
@@ -844,7 +850,7 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets metadata
      *
-     * @return object|null
+     * @return \Alexasomba\Paystack\Model\TransactionInitializeMetadata|null
      */
     public function getMetadata()
     {
@@ -854,7 +860,7 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets metadata
      *
-     * @param object|null $metadata JSON object of custom data
+     * @param \Alexasomba\Paystack\Model\TransactionInitializeMetadata|null $metadata metadata
      *
      * @return self
      */

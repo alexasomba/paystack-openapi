@@ -60,24 +60,13 @@ class PageUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $openAPITypes = [
         'domain' => 'string',
         'name' => 'string',
-        'description' => 'mixed',
-        'amount' => 'mixed',
+        'description' => 'string',
+        'amount' => 'int',
         'currency' => 'string',
         'slug' => 'string',
-        'custom_fields' => 'mixed',
-        'type' => 'string',
-        'redirect_url' => 'mixed',
-        'success_message' => 'mixed',
-        'collect_phone' => 'bool',
         'active' => 'bool',
-        'published' => 'bool',
-        'migrate' => 'bool',
-        'notification_email' => 'mixed',
-        'metadata' => 'mixed',
-        'split_code' => 'mixed',
         'id' => 'int',
         'integration' => 'int',
-        'plan' => 'mixed',
         'created_at' => 'string',
         'updated_at' => 'string'
     ];
@@ -96,20 +85,9 @@ class PageUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'amount' => null,
         'currency' => null,
         'slug' => null,
-        'custom_fields' => null,
-        'type' => null,
-        'redirect_url' => null,
-        'success_message' => null,
-        'collect_phone' => null,
         'active' => null,
-        'published' => null,
-        'migrate' => null,
-        'notification_email' => null,
-        'metadata' => null,
-        'split_code' => null,
         'id' => null,
         'integration' => null,
-        'plan' => null,
         'created_at' => null,
         'updated_at' => null
     ];
@@ -126,20 +104,9 @@ class PageUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'amount' => true,
         'currency' => false,
         'slug' => false,
-        'custom_fields' => true,
-        'type' => false,
-        'redirect_url' => true,
-        'success_message' => true,
-        'collect_phone' => false,
         'active' => false,
-        'published' => false,
-        'migrate' => false,
-        'notification_email' => true,
-        'metadata' => true,
-        'split_code' => true,
         'id' => false,
         'integration' => false,
-        'plan' => true,
         'created_at' => false,
         'updated_at' => false
     ];
@@ -236,20 +203,9 @@ class PageUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'amount' => 'amount',
         'currency' => 'currency',
         'slug' => 'slug',
-        'custom_fields' => 'custom_fields',
-        'type' => 'type',
-        'redirect_url' => 'redirect_url',
-        'success_message' => 'success_message',
-        'collect_phone' => 'collect_phone',
         'active' => 'active',
-        'published' => 'published',
-        'migrate' => 'migrate',
-        'notification_email' => 'notification_email',
-        'metadata' => 'metadata',
-        'split_code' => 'split_code',
         'id' => 'id',
         'integration' => 'integration',
-        'plan' => 'plan',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt'
     ];
@@ -266,20 +222,9 @@ class PageUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'amount' => 'setAmount',
         'currency' => 'setCurrency',
         'slug' => 'setSlug',
-        'custom_fields' => 'setCustomFields',
-        'type' => 'setType',
-        'redirect_url' => 'setRedirectUrl',
-        'success_message' => 'setSuccessMessage',
-        'collect_phone' => 'setCollectPhone',
         'active' => 'setActive',
-        'published' => 'setPublished',
-        'migrate' => 'setMigrate',
-        'notification_email' => 'setNotificationEmail',
-        'metadata' => 'setMetadata',
-        'split_code' => 'setSplitCode',
         'id' => 'setId',
         'integration' => 'setIntegration',
-        'plan' => 'setPlan',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
     ];
@@ -296,20 +241,9 @@ class PageUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'amount' => 'getAmount',
         'currency' => 'getCurrency',
         'slug' => 'getSlug',
-        'custom_fields' => 'getCustomFields',
-        'type' => 'getType',
-        'redirect_url' => 'getRedirectUrl',
-        'success_message' => 'getSuccessMessage',
-        'collect_phone' => 'getCollectPhone',
         'active' => 'getActive',
-        'published' => 'getPublished',
-        'migrate' => 'getMigrate',
-        'notification_email' => 'getNotificationEmail',
-        'metadata' => 'getMetadata',
-        'split_code' => 'getSplitCode',
         'id' => 'getId',
         'integration' => 'getIntegration',
-        'plan' => 'getPlan',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
     ];
@@ -377,20 +311,9 @@ class PageUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('slug', $data ?? [], null);
-        $this->setIfExists('custom_fields', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('redirect_url', $data ?? [], null);
-        $this->setIfExists('success_message', $data ?? [], null);
-        $this->setIfExists('collect_phone', $data ?? [], null);
         $this->setIfExists('active', $data ?? [], null);
-        $this->setIfExists('published', $data ?? [], null);
-        $this->setIfExists('migrate', $data ?? [], null);
-        $this->setIfExists('notification_email', $data ?? [], null);
-        $this->setIfExists('metadata', $data ?? [], null);
-        $this->setIfExists('split_code', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('integration', $data ?? [], null);
-        $this->setIfExists('plan', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
     }
@@ -428,9 +351,6 @@ class PageUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['description'] === null && !$this->isNullableSetToNull('description')) {
-            $invalidProperties[] = "'description' can't be null";
-        }
         if ($this->container['amount'] === null && !$this->isNullableSetToNull('amount')) {
             $invalidProperties[] = "'amount' can't be null";
         }
@@ -440,47 +360,14 @@ class PageUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['slug'] === null) {
             $invalidProperties[] = "'slug' can't be null";
         }
-        if ($this->container['custom_fields'] === null && !$this->isNullableSetToNull('custom_fields')) {
-            $invalidProperties[] = "'custom_fields' can't be null";
-        }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        if ($this->container['redirect_url'] === null && !$this->isNullableSetToNull('redirect_url')) {
-            $invalidProperties[] = "'redirect_url' can't be null";
-        }
-        if ($this->container['success_message'] === null && !$this->isNullableSetToNull('success_message')) {
-            $invalidProperties[] = "'success_message' can't be null";
-        }
-        if ($this->container['collect_phone'] === null) {
-            $invalidProperties[] = "'collect_phone' can't be null";
-        }
         if ($this->container['active'] === null) {
             $invalidProperties[] = "'active' can't be null";
-        }
-        if ($this->container['published'] === null) {
-            $invalidProperties[] = "'published' can't be null";
-        }
-        if ($this->container['migrate'] === null) {
-            $invalidProperties[] = "'migrate' can't be null";
-        }
-        if ($this->container['notification_email'] === null && !$this->isNullableSetToNull('notification_email')) {
-            $invalidProperties[] = "'notification_email' can't be null";
-        }
-        if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
-            $invalidProperties[] = "'metadata' can't be null";
-        }
-        if ($this->container['split_code'] === null && !$this->isNullableSetToNull('split_code')) {
-            $invalidProperties[] = "'split_code' can't be null";
         }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['integration'] === null) {
             $invalidProperties[] = "'integration' can't be null";
-        }
-        if ($this->container['plan'] === null && !$this->isNullableSetToNull('plan')) {
-            $invalidProperties[] = "'plan' can't be null";
         }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
@@ -560,7 +447,7 @@ class PageUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets description
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getDescription()
     {
@@ -570,7 +457,7 @@ class PageUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets description
      *
-     * @param mixed|null $description description
+     * @param string|null $description description
      *
      * @return self
      */
@@ -594,7 +481,7 @@ class PageUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets amount
      *
-     * @return mixed|null
+     * @return int|null
      */
     public function getAmount()
     {
@@ -604,7 +491,7 @@ class PageUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets amount
      *
-     * @param mixed|null $amount amount
+     * @param int|null $amount amount
      *
      * @return self
      */
@@ -680,162 +567,6 @@ class PageUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets custom_fields
-     *
-     * @return mixed|null
-     */
-    public function getCustomFields()
-    {
-        return $this->container['custom_fields'];
-    }
-
-    /**
-     * Sets custom_fields
-     *
-     * @param mixed|null $custom_fields custom_fields
-     *
-     * @return self
-     */
-    public function setCustomFields($custom_fields)
-    {
-        if (is_null($custom_fields)) {
-            array_push($this->openAPINullablesSetToNull, 'custom_fields');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('custom_fields', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['custom_fields'] = $custom_fields;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets redirect_url
-     *
-     * @return mixed|null
-     */
-    public function getRedirectUrl()
-    {
-        return $this->container['redirect_url'];
-    }
-
-    /**
-     * Sets redirect_url
-     *
-     * @param mixed|null $redirect_url redirect_url
-     *
-     * @return self
-     */
-    public function setRedirectUrl($redirect_url)
-    {
-        if (is_null($redirect_url)) {
-            array_push($this->openAPINullablesSetToNull, 'redirect_url');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('redirect_url', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['redirect_url'] = $redirect_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets success_message
-     *
-     * @return mixed|null
-     */
-    public function getSuccessMessage()
-    {
-        return $this->container['success_message'];
-    }
-
-    /**
-     * Sets success_message
-     *
-     * @param mixed|null $success_message success_message
-     *
-     * @return self
-     */
-    public function setSuccessMessage($success_message)
-    {
-        if (is_null($success_message)) {
-            array_push($this->openAPINullablesSetToNull, 'success_message');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('success_message', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['success_message'] = $success_message;
-
-        return $this;
-    }
-
-    /**
-     * Gets collect_phone
-     *
-     * @return bool
-     */
-    public function getCollectPhone()
-    {
-        return $this->container['collect_phone'];
-    }
-
-    /**
-     * Sets collect_phone
-     *
-     * @param bool $collect_phone collect_phone
-     *
-     * @return self
-     */
-    public function setCollectPhone($collect_phone)
-    {
-        if (is_null($collect_phone)) {
-            throw new \InvalidArgumentException('non-nullable collect_phone cannot be null');
-        }
-        $this->container['collect_phone'] = $collect_phone;
-
-        return $this;
-    }
-
-    /**
      * Gets active
      *
      * @return bool
@@ -858,162 +589,6 @@ class PageUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable active cannot be null');
         }
         $this->container['active'] = $active;
-
-        return $this;
-    }
-
-    /**
-     * Gets published
-     *
-     * @return bool
-     */
-    public function getPublished()
-    {
-        return $this->container['published'];
-    }
-
-    /**
-     * Sets published
-     *
-     * @param bool $published published
-     *
-     * @return self
-     */
-    public function setPublished($published)
-    {
-        if (is_null($published)) {
-            throw new \InvalidArgumentException('non-nullable published cannot be null');
-        }
-        $this->container['published'] = $published;
-
-        return $this;
-    }
-
-    /**
-     * Gets migrate
-     *
-     * @return bool
-     */
-    public function getMigrate()
-    {
-        return $this->container['migrate'];
-    }
-
-    /**
-     * Sets migrate
-     *
-     * @param bool $migrate migrate
-     *
-     * @return self
-     */
-    public function setMigrate($migrate)
-    {
-        if (is_null($migrate)) {
-            throw new \InvalidArgumentException('non-nullable migrate cannot be null');
-        }
-        $this->container['migrate'] = $migrate;
-
-        return $this;
-    }
-
-    /**
-     * Gets notification_email
-     *
-     * @return mixed|null
-     */
-    public function getNotificationEmail()
-    {
-        return $this->container['notification_email'];
-    }
-
-    /**
-     * Sets notification_email
-     *
-     * @param mixed|null $notification_email notification_email
-     *
-     * @return self
-     */
-    public function setNotificationEmail($notification_email)
-    {
-        if (is_null($notification_email)) {
-            array_push($this->openAPINullablesSetToNull, 'notification_email');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('notification_email', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['notification_email'] = $notification_email;
-
-        return $this;
-    }
-
-    /**
-     * Gets metadata
-     *
-     * @return mixed|null
-     */
-    public function getMetadata()
-    {
-        return $this->container['metadata'];
-    }
-
-    /**
-     * Sets metadata
-     *
-     * @param mixed|null $metadata metadata
-     *
-     * @return self
-     */
-    public function setMetadata($metadata)
-    {
-        if (is_null($metadata)) {
-            array_push($this->openAPINullablesSetToNull, 'metadata');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('metadata', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['metadata'] = $metadata;
-
-        return $this;
-    }
-
-    /**
-     * Gets split_code
-     *
-     * @return mixed|null
-     */
-    public function getSplitCode()
-    {
-        return $this->container['split_code'];
-    }
-
-    /**
-     * Sets split_code
-     *
-     * @param mixed|null $split_code split_code
-     *
-     * @return self
-     */
-    public function setSplitCode($split_code)
-    {
-        if (is_null($split_code)) {
-            array_push($this->openAPINullablesSetToNull, 'split_code');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('split_code', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['split_code'] = $split_code;
 
         return $this;
     }
@@ -1068,40 +643,6 @@ class PageUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable integration cannot be null');
         }
         $this->container['integration'] = $integration;
-
-        return $this;
-    }
-
-    /**
-     * Gets plan
-     *
-     * @return mixed|null
-     */
-    public function getPlan()
-    {
-        return $this->container['plan'];
-    }
-
-    /**
-     * Sets plan
-     *
-     * @param mixed|null $plan plan
-     *
-     * @return self
-     */
-    public function setPlan($plan)
-    {
-        if (is_null($plan)) {
-            array_push($this->openAPINullablesSetToNull, 'plan');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('plan', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['plan'] = $plan;
 
         return $this;
     }

@@ -721,6 +721,8 @@ class RefundApi
      *
      * List Refunds
      *
+     * @param  string|null $transaction The transaction ID of the refunded transaction (optional)
+     * @param  string|null $currency Any of the supported currency (optional)
      * @param  int|null $per_page Number of records to fetch per page (optional, default to 50)
      * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
@@ -731,9 +733,9 @@ class RefundApi
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\RefundListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function refundList($per_page = 50, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['refundList'][0])
+    public function refundList($transaction = null, $currency = null, $per_page = 50, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['refundList'][0])
     {
-        list($response) = $this->refundListWithHttpInfo($per_page, $page, $from, $to, $contentType);
+        list($response) = $this->refundListWithHttpInfo($transaction, $currency, $per_page, $page, $from, $to, $contentType);
         return $response;
     }
 
@@ -742,6 +744,8 @@ class RefundApi
      *
      * List Refunds
      *
+     * @param  string|null $transaction The transaction ID of the refunded transaction (optional)
+     * @param  string|null $currency Any of the supported currency (optional)
      * @param  int|null $per_page Number of records to fetch per page (optional, default to 50)
      * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
@@ -752,9 +756,9 @@ class RefundApi
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\RefundListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function refundListWithHttpInfo($per_page = 50, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['refundList'][0])
+    public function refundListWithHttpInfo($transaction = null, $currency = null, $per_page = 50, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['refundList'][0])
     {
-        $request = $this->refundListRequest($per_page, $page, $from, $to, $contentType);
+        $request = $this->refundListRequest($transaction, $currency, $per_page, $page, $from, $to, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -858,6 +862,8 @@ class RefundApi
      *
      * List Refunds
      *
+     * @param  string|null $transaction The transaction ID of the refunded transaction (optional)
+     * @param  string|null $currency Any of the supported currency (optional)
      * @param  int|null $per_page Number of records to fetch per page (optional, default to 50)
      * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
@@ -867,9 +873,9 @@ class RefundApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function refundListAsync($per_page = 50, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['refundList'][0])
+    public function refundListAsync($transaction = null, $currency = null, $per_page = 50, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['refundList'][0])
     {
-        return $this->refundListAsyncWithHttpInfo($per_page, $page, $from, $to, $contentType)
+        return $this->refundListAsyncWithHttpInfo($transaction, $currency, $per_page, $page, $from, $to, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -882,6 +888,8 @@ class RefundApi
      *
      * List Refunds
      *
+     * @param  string|null $transaction The transaction ID of the refunded transaction (optional)
+     * @param  string|null $currency Any of the supported currency (optional)
      * @param  int|null $per_page Number of records to fetch per page (optional, default to 50)
      * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
@@ -891,10 +899,10 @@ class RefundApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function refundListAsyncWithHttpInfo($per_page = 50, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['refundList'][0])
+    public function refundListAsyncWithHttpInfo($transaction = null, $currency = null, $per_page = 50, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['refundList'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\RefundListResponse';
-        $request = $this->refundListRequest($per_page, $page, $from, $to, $contentType);
+        $request = $this->refundListRequest($transaction, $currency, $per_page, $page, $from, $to, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -935,6 +943,8 @@ class RefundApi
     /**
      * Create request for operation 'refundList'
      *
+     * @param  string|null $transaction The transaction ID of the refunded transaction (optional)
+     * @param  string|null $currency Any of the supported currency (optional)
      * @param  int|null $per_page Number of records to fetch per page (optional, default to 50)
      * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
@@ -944,8 +954,10 @@ class RefundApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function refundListRequest($per_page = 50, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['refundList'][0])
+    public function refundListRequest($transaction = null, $currency = null, $per_page = 50, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['refundList'][0])
     {
+
+
 
 
 
@@ -959,6 +971,24 @@ class RefundApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $transaction,
+            'transaction', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $currency,
+            'currency', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $per_page,

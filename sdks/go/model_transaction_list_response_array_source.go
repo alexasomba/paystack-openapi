@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the TransactionListResponseArraySource type satisfies the MappedNullable interface at compile time
@@ -22,24 +20,18 @@ var _ MappedNullable = &TransactionListResponseArraySource{}
 
 // TransactionListResponseArraySource struct for TransactionListResponseArraySource
 type TransactionListResponseArraySource struct {
-	Source string `json:"source"`
-	Type string `json:"type"`
-	Identifier interface{} `json:"identifier"`
-	EntryPoint string `json:"entry_point"`
+	Source *string `json:"source,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Identifier NullableString `json:"identifier,omitempty"`
+	EntryPoint *string `json:"entry_point,omitempty"`
 }
-
-type _TransactionListResponseArraySource TransactionListResponseArraySource
 
 // NewTransactionListResponseArraySource instantiates a new TransactionListResponseArraySource object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransactionListResponseArraySource(source string, type_ string, identifier interface{}, entryPoint string) *TransactionListResponseArraySource {
+func NewTransactionListResponseArraySource() *TransactionListResponseArraySource {
 	this := TransactionListResponseArraySource{}
-	this.Source = source
-	this.Type = type_
-	this.Identifier = identifier
-	this.EntryPoint = entryPoint
 	return &this
 }
 
@@ -51,102 +43,142 @@ func NewTransactionListResponseArraySourceWithDefaults() *TransactionListRespons
 	return &this
 }
 
-// GetSource returns the Source field value
+// GetSource returns the Source field value if set, zero value otherwise.
 func (o *TransactionListResponseArraySource) GetSource() string {
-	if o == nil {
+	if o == nil || IsNil(o.Source) {
 		var ret string
 		return ret
 	}
-
-	return o.Source
+	return *o.Source
 }
 
-// GetSourceOk returns a tuple with the Source field value
+// GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionListResponseArraySource) GetSourceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
-	return &o.Source, true
+	return o.Source, true
 }
 
-// SetSource sets field value
+// HasSource returns a boolean if a field has been set.
+func (o *TransactionListResponseArraySource) HasSource() bool {
+	if o != nil && !IsNil(o.Source) {
+		return true
+	}
+
+	return false
+}
+
+// SetSource gets a reference to the given string and assigns it to the Source field.
 func (o *TransactionListResponseArraySource) SetSource(v string) {
-	o.Source = v
+	o.Source = &v
 }
 
-// GetType returns the Type field value
+// GetType returns the Type field value if set, zero value otherwise.
 func (o *TransactionListResponseArraySource) GetType() string {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
-
-	return o.Type
+	return *o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionListResponseArraySource) GetTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.Type, true
 }
 
-// SetType sets field value
+// HasType returns a boolean if a field has been set.
+func (o *TransactionListResponseArraySource) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
 func (o *TransactionListResponseArraySource) SetType(v string) {
-	o.Type = v
+	o.Type = &v
 }
 
-// GetIdentifier returns the Identifier field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransactionListResponseArraySource) GetIdentifier() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.Identifier
-}
-
-// GetIdentifierOk returns a tuple with the Identifier field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransactionListResponseArraySource) GetIdentifierOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Identifier) {
-		return nil, false
-	}
-	return &o.Identifier, true
-}
-
-// SetIdentifier sets field value
-func (o *TransactionListResponseArraySource) SetIdentifier(v interface{}) {
-	o.Identifier = v
-}
-
-// GetEntryPoint returns the EntryPoint field value
-func (o *TransactionListResponseArraySource) GetEntryPoint() string {
-	if o == nil {
+// GetIdentifier returns the Identifier field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TransactionListResponseArraySource) GetIdentifier() string {
+	if o == nil || IsNil(o.Identifier.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.EntryPoint
+	return *o.Identifier.Get()
 }
 
-// GetEntryPointOk returns a tuple with the EntryPoint field value
+// GetIdentifierOk returns a tuple with the Identifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TransactionListResponseArraySource) GetEntryPointOk() (*string, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TransactionListResponseArraySource) GetIdentifierOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.EntryPoint, true
+	return o.Identifier.Get(), o.Identifier.IsSet()
 }
 
-// SetEntryPoint sets field value
+// HasIdentifier returns a boolean if a field has been set.
+func (o *TransactionListResponseArraySource) HasIdentifier() bool {
+	if o != nil && o.Identifier.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentifier gets a reference to the given NullableString and assigns it to the Identifier field.
+func (o *TransactionListResponseArraySource) SetIdentifier(v string) {
+	o.Identifier.Set(&v)
+}
+// SetIdentifierNil sets the value for Identifier to be an explicit nil
+func (o *TransactionListResponseArraySource) SetIdentifierNil() {
+	o.Identifier.Set(nil)
+}
+
+// UnsetIdentifier ensures that no value is present for Identifier, not even an explicit nil
+func (o *TransactionListResponseArraySource) UnsetIdentifier() {
+	o.Identifier.Unset()
+}
+
+// GetEntryPoint returns the EntryPoint field value if set, zero value otherwise.
+func (o *TransactionListResponseArraySource) GetEntryPoint() string {
+	if o == nil || IsNil(o.EntryPoint) {
+		var ret string
+		return ret
+	}
+	return *o.EntryPoint
+}
+
+// GetEntryPointOk returns a tuple with the EntryPoint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransactionListResponseArraySource) GetEntryPointOk() (*string, bool) {
+	if o == nil || IsNil(o.EntryPoint) {
+		return nil, false
+	}
+	return o.EntryPoint, true
+}
+
+// HasEntryPoint returns a boolean if a field has been set.
+func (o *TransactionListResponseArraySource) HasEntryPoint() bool {
+	if o != nil && !IsNil(o.EntryPoint) {
+		return true
+	}
+
+	return false
+}
+
+// SetEntryPoint gets a reference to the given string and assigns it to the EntryPoint field.
 func (o *TransactionListResponseArraySource) SetEntryPoint(v string) {
-	o.EntryPoint = v
+	o.EntryPoint = &v
 }
 
 func (o TransactionListResponseArraySource) MarshalJSON() ([]byte, error) {
@@ -159,53 +191,19 @@ func (o TransactionListResponseArraySource) MarshalJSON() ([]byte, error) {
 
 func (o TransactionListResponseArraySource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["source"] = o.Source
-	toSerialize["type"] = o.Type
-	if o.Identifier != nil {
-		toSerialize["identifier"] = o.Identifier
+	if !IsNil(o.Source) {
+		toSerialize["source"] = o.Source
 	}
-	toSerialize["entry_point"] = o.EntryPoint
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if o.Identifier.IsSet() {
+		toSerialize["identifier"] = o.Identifier.Get()
+	}
+	if !IsNil(o.EntryPoint) {
+		toSerialize["entry_point"] = o.EntryPoint
+	}
 	return toSerialize, nil
-}
-
-func (o *TransactionListResponseArraySource) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"source",
-		"type",
-		"identifier",
-		"entry_point",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varTransactionListResponseArraySource := _TransactionListResponseArraySource{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransactionListResponseArraySource)
-
-	if err != nil {
-		return err
-	}
-
-	*o = TransactionListResponseArraySource(varTransactionListResponseArraySource)
-
-	return err
 }
 
 type NullableTransactionListResponseArraySource struct {

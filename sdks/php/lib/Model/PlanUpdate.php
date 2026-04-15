@@ -409,7 +409,7 @@ class PlanUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amount
      *
-     * @param int|null $amount Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
+     * @param int|null $amount Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,  Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,  cents, if currency is ZAR, and whole number if currency is XOF
      *
      * @return self
      */
@@ -554,7 +554,7 @@ class PlanUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency
      *
-     * @param string|null $currency Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD
+     * @param string|null $currency Currency in which amount is set. Allowed values are NGN, GHS, ZAR, USD or XOF
      *
      * @return self
      */

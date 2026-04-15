@@ -24,12 +24,11 @@ var _ MappedNullable = &TransactionInitialize{}
 type TransactionInitialize struct {
 	// Customer's email address
 	Email string `json:"email"`
-	// Amount should be in smallest denomination of the currency. 
-	Amount int32 `json:"amount"`
+	Amount TransactionInitializeAmount `json:"amount"`
 	Currency *Currency `json:"currency,omitempty"`
 	// Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
 	Reference *string `json:"reference,omitempty"`
-	// An array of payment channels to control what channels you want to make available to the user to make a payment with
+	// An array of payment channels to control what channels you want to make available to the user to make a payment with 
 	Channels []string `json:"channels,omitempty"`
 	// Fully qualified url, e.g. https://example.com/ to redirect your customers to after a successful payment. Use this to override the callback url provided on the dashboard for this transaction 
 	CallbackUrl *string `json:"callback_url,omitempty"`
@@ -43,13 +42,12 @@ type TransactionInitialize struct {
 	// The code for the subaccount that owns the payment
 	Subaccount *string `json:"subaccount,omitempty"`
 	// A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created 
-	TransactionCharge *string `json:"transaction_charge,omitempty"`
+	TransactionCharge *int32 `json:"transaction_charge,omitempty"`
 	// The bearer of the transaction charge
 	Bearer *string `json:"bearer,omitempty"`
 	// Used to replace the email address shown on the Checkout
 	Label *string `json:"label,omitempty"`
-	// JSON object of custom data
-	Metadata map[string]interface{} `json:"metadata,omitempty"`
+	Metadata *TransactionInitializeMetadata `json:"metadata,omitempty"`
 }
 
 type _TransactionInitialize TransactionInitialize
@@ -58,7 +56,7 @@ type _TransactionInitialize TransactionInitialize
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransactionInitialize(email string, amount int32) *TransactionInitialize {
+func NewTransactionInitialize(email string, amount TransactionInitializeAmount) *TransactionInitialize {
 	this := TransactionInitialize{}
 	this.Email = email
 	this.Amount = amount
@@ -98,9 +96,9 @@ func (o *TransactionInitialize) SetEmail(v string) {
 }
 
 // GetAmount returns the Amount field value
-func (o *TransactionInitialize) GetAmount() int32 {
+func (o *TransactionInitialize) GetAmount() TransactionInitializeAmount {
 	if o == nil {
-		var ret int32
+		var ret TransactionInitializeAmount
 		return ret
 	}
 
@@ -109,7 +107,7 @@ func (o *TransactionInitialize) GetAmount() int32 {
 
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
-func (o *TransactionInitialize) GetAmountOk() (*int32, bool) {
+func (o *TransactionInitialize) GetAmountOk() (*TransactionInitializeAmount, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -117,7 +115,7 @@ func (o *TransactionInitialize) GetAmountOk() (*int32, bool) {
 }
 
 // SetAmount sets field value
-func (o *TransactionInitialize) SetAmount(v int32) {
+func (o *TransactionInitialize) SetAmount(v TransactionInitializeAmount) {
 	o.Amount = v
 }
 
@@ -410,9 +408,9 @@ func (o *TransactionInitialize) SetSubaccount(v string) {
 }
 
 // GetTransactionCharge returns the TransactionCharge field value if set, zero value otherwise.
-func (o *TransactionInitialize) GetTransactionCharge() string {
+func (o *TransactionInitialize) GetTransactionCharge() int32 {
 	if o == nil || IsNil(o.TransactionCharge) {
-		var ret string
+		var ret int32
 		return ret
 	}
 	return *o.TransactionCharge
@@ -420,7 +418,7 @@ func (o *TransactionInitialize) GetTransactionCharge() string {
 
 // GetTransactionChargeOk returns a tuple with the TransactionCharge field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TransactionInitialize) GetTransactionChargeOk() (*string, bool) {
+func (o *TransactionInitialize) GetTransactionChargeOk() (*int32, bool) {
 	if o == nil || IsNil(o.TransactionCharge) {
 		return nil, false
 	}
@@ -436,8 +434,8 @@ func (o *TransactionInitialize) HasTransactionCharge() bool {
 	return false
 }
 
-// SetTransactionCharge gets a reference to the given string and assigns it to the TransactionCharge field.
-func (o *TransactionInitialize) SetTransactionCharge(v string) {
+// SetTransactionCharge gets a reference to the given int32 and assigns it to the TransactionCharge field.
+func (o *TransactionInitialize) SetTransactionCharge(v int32) {
 	o.TransactionCharge = &v
 }
 
@@ -506,19 +504,19 @@ func (o *TransactionInitialize) SetLabel(v string) {
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *TransactionInitialize) GetMetadata() map[string]interface{} {
+func (o *TransactionInitialize) GetMetadata() TransactionInitializeMetadata {
 	if o == nil || IsNil(o.Metadata) {
-		var ret map[string]interface{}
+		var ret TransactionInitializeMetadata
 		return ret
 	}
-	return o.Metadata
+	return *o.Metadata
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TransactionInitialize) GetMetadataOk() (map[string]interface{}, bool) {
+func (o *TransactionInitialize) GetMetadataOk() (*TransactionInitializeMetadata, bool) {
 	if o == nil || IsNil(o.Metadata) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Metadata, true
 }
@@ -532,9 +530,9 @@ func (o *TransactionInitialize) HasMetadata() bool {
 	return false
 }
 
-// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
-func (o *TransactionInitialize) SetMetadata(v map[string]interface{}) {
-	o.Metadata = v
+// SetMetadata gets a reference to the given TransactionInitializeMetadata and assigns it to the Metadata field.
+func (o *TransactionInitialize) SetMetadata(v TransactionInitializeMetadata) {
+	o.Metadata = &v
 }
 
 func (o TransactionInitialize) MarshalJSON() ([]byte, error) {

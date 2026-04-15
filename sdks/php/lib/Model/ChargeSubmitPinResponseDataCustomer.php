@@ -58,12 +58,15 @@ class ChargeSubmitPinResponseDataCustomer implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'int',
         'first_name' => 'string',
         'last_name' => 'string',
         'email' => 'string',
         'customer_code' => 'string',
         'phone' => 'string',
-        'risk_action' => 'string'
+        'metadata' => 'mixed',
+        'risk_action' => 'string',
+        'international_format_phone' => 'string'
     ];
 
     /**
@@ -74,12 +77,15 @@ class ChargeSubmitPinResponseDataCustomer implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => null,
         'first_name' => null,
         'last_name' => null,
         'email' => null,
         'customer_code' => null,
         'phone' => null,
-        'risk_action' => null
+        'metadata' => null,
+        'risk_action' => null,
+        'international_format_phone' => null
     ];
 
     /**
@@ -88,12 +94,15 @@ class ChargeSubmitPinResponseDataCustomer implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'id' => false,
         'first_name' => true,
         'last_name' => true,
         'email' => false,
         'customer_code' => false,
         'phone' => true,
-        'risk_action' => false
+        'metadata' => true,
+        'risk_action' => false,
+        'international_format_phone' => true
     ];
 
     /**
@@ -182,12 +191,15 @@ class ChargeSubmitPinResponseDataCustomer implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'first_name' => 'first_name',
         'last_name' => 'last_name',
         'email' => 'email',
         'customer_code' => 'customer_code',
         'phone' => 'phone',
-        'risk_action' => 'risk_action'
+        'metadata' => 'metadata',
+        'risk_action' => 'risk_action',
+        'international_format_phone' => 'international_format_phone'
     ];
 
     /**
@@ -196,12 +208,15 @@ class ChargeSubmitPinResponseDataCustomer implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'first_name' => 'setFirstName',
         'last_name' => 'setLastName',
         'email' => 'setEmail',
         'customer_code' => 'setCustomerCode',
         'phone' => 'setPhone',
-        'risk_action' => 'setRiskAction'
+        'metadata' => 'setMetadata',
+        'risk_action' => 'setRiskAction',
+        'international_format_phone' => 'setInternationalFormatPhone'
     ];
 
     /**
@@ -210,12 +225,15 @@ class ChargeSubmitPinResponseDataCustomer implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'first_name' => 'getFirstName',
         'last_name' => 'getLastName',
         'email' => 'getEmail',
         'customer_code' => 'getCustomerCode',
         'phone' => 'getPhone',
-        'risk_action' => 'getRiskAction'
+        'metadata' => 'getMetadata',
+        'risk_action' => 'getRiskAction',
+        'international_format_phone' => 'getInternationalFormatPhone'
     ];
 
     /**
@@ -275,12 +293,15 @@ class ChargeSubmitPinResponseDataCustomer implements ModelInterface, ArrayAccess
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('first_name', $data ?? [], null);
         $this->setIfExists('last_name', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('customer_code', $data ?? [], null);
         $this->setIfExists('phone', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('risk_action', $data ?? [], null);
+        $this->setIfExists('international_format_phone', $data ?? [], null);
     }
 
     /**
@@ -310,20 +331,14 @@ class ChargeSubmitPinResponseDataCustomer implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['first_name'] === null && !$this->isNullableSetToNull('first_name')) {
-            $invalidProperties[] = "'first_name' can't be null";
-        }
-        if ($this->container['last_name'] === null && !$this->isNullableSetToNull('last_name')) {
-            $invalidProperties[] = "'last_name' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['email'] === null) {
             $invalidProperties[] = "'email' can't be null";
         }
         if ($this->container['customer_code'] === null) {
             $invalidProperties[] = "'customer_code' can't be null";
-        }
-        if ($this->container['phone'] === null && !$this->isNullableSetToNull('phone')) {
-            $invalidProperties[] = "'phone' can't be null";
         }
         if ($this->container['risk_action'] === null) {
             $invalidProperties[] = "'risk_action' can't be null";
@@ -342,6 +357,33 @@ class ChargeSubmitPinResponseDataCustomer implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
 
     /**
      * Gets first_name
@@ -500,6 +542,40 @@ class ChargeSubmitPinResponseDataCustomer implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets metadata
+     *
+     * @return mixed|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param mixed|null $metadata metadata
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            array_push($this->openAPINullablesSetToNull, 'metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
      * Gets risk_action
      *
      * @return string
@@ -522,6 +598,40 @@ class ChargeSubmitPinResponseDataCustomer implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable risk_action cannot be null');
         }
         $this->container['risk_action'] = $risk_action;
+
+        return $this;
+    }
+
+    /**
+     * Gets international_format_phone
+     *
+     * @return string|null
+     */
+    public function getInternationalFormatPhone()
+    {
+        return $this->container['international_format_phone'];
+    }
+
+    /**
+     * Sets international_format_phone
+     *
+     * @param string|null $international_format_phone international_format_phone
+     *
+     * @return self
+     */
+    public function setInternationalFormatPhone($international_format_phone)
+    {
+        if (is_null($international_format_phone)) {
+            array_push($this->openAPINullablesSetToNull, 'international_format_phone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('international_format_phone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['international_format_phone'] = $international_format_phone;
 
         return $this;
     }

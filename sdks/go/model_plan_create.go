@@ -24,7 +24,7 @@ var _ MappedNullable = &PlanCreate{}
 type PlanCreate struct {
 	// Name of plan
 	Name string `json:"name"`
-	// Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
+	// Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). 
 	Amount int32 `json:"amount"`
 	// Payment interval
 	Interval string `json:"interval"`
@@ -34,7 +34,7 @@ type PlanCreate struct {
 	SendInvoices *bool `json:"send_invoices,omitempty"`
 	// Set to false if you don't want text messages to be sent to your customers
 	SendSms *bool `json:"send_sms,omitempty"`
-	// Currency in which amount is set. Allowed values are NGN, GHS, ZAR or USD
+	// Currency in which amount is set. Allowed values are NGN, GHS, ZAR, USD or XOF
 	Currency *string `json:"currency,omitempty"`
 	// Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing.
 	InvoiceLimit *int32 `json:"invoice_limit,omitempty"`

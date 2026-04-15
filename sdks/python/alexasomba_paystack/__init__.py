@@ -56,35 +56,39 @@ __all__ = [
     "ApiAttributeError",
     "ApiException",
     "ApplePayCreateOkModel",
+    "ApplePayDomainsResponse",
+    "ApplePayDomainsResponseData",
     "ApplePayParam",
     "BalanceCheckResponse",
     "BalanceCheckResponseArray",
     "BalanceFetchLedgerResponse",
     "BalanceFetchLedgerResponseArray",
+    "BalanceFetchLedgerResponseMeta",
     "Bank",
     "BankValidateRequest",
     "BulkChargeFetchBulkBatchChargesResponse",
     "BulkChargeFetchBulkBatchChargesResponseArray",
+    "BulkChargeFetchBulkBatchChargesResponseArrayAuthorization",
     "BulkChargeFetchBulkBatchChargesResponseArrayCustomer",
     "BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata",
+    "BulkChargeFetchBulkBatchChargesResponseArrayMetadata",
     "BulkChargeFetchBulkBatchChargesResponseMeta",
     "BulkChargeFetchResponse",
+    "BulkChargeFetchResponseData",
     "BulkChargeInitiate",
     "BulkChargeInitiateResponse",
     "BulkChargeInitiateResponseData",
     "BulkChargeListResponse",
     "BulkChargeListResponseArray",
-    "BulkChargeListResponseMeta",
-    "BulkChargeListResponseMetaPerPage",
     "BulkChargePauseResponse",
     "BulkChargeResumeResponse",
     "ChargeAuthorizationResponse",
     "ChargeAuthorizationResponseData",
     "ChargeAuthorizationResponseDataAuthorization",
     "ChargeAuthorizationResponseDataCustomer",
-    "ChargeAuthorizationResponseDataCustomerMetadata",
     "ChargeAuthorizationResponseDataLog",
     "ChargeAuthorizationResponseDataLogHistoryInner",
+    "ChargeAuthorizationResponseDataMetadata",
     "ChargeCheckPendingResponse",
     "ChargeCreate",
     "ChargeCreateRequest",
@@ -93,12 +97,10 @@ __all__ = [
     "ChargeSubmitAddress",
     "ChargeSubmitBirthday",
     "ChargeSubmitBirthdayResponse",
-    "ChargeSubmitBirthdayResponseData",
     "ChargeSubmitOTP",
     "ChargeSubmitOtpResponse",
     "ChargeSubmitPhone",
     "ChargeSubmitPhoneResponse",
-    "ChargeSubmitPhoneResponseData",
     "ChargeSubmitPin",
     "ChargeSubmitPinResponse",
     "ChargeSubmitPinResponseData",
@@ -108,6 +110,7 @@ __all__ = [
     "ControlPanelFetchPaymentSessionTimeoutResponseData",
     "ControlPanelUpdatePaymentSessionTimeoutResponse",
     "Currency",
+    "CursorMeta",
     "CustomerAuthorizationInitializeAccount",
     "CustomerAuthorizationInitializeAddress",
     "CustomerAuthorizationInitializeRequest",
@@ -159,6 +162,7 @@ __all__ = [
     "DedicatedNubanListResponseArrayBank",
     "DedicatedNubanListResponseArrayCustomer",
     "DedicatedNubanListResponseArraySplitConfig",
+    "DedicatedNubanListResponseArraySplitConfigAnyOf",
     "DedicatedVirtualAccountAssign",
     "DedicatedVirtualAccountCreate",
     "DedicatedVirtualAccountRemoveSplit",
@@ -171,12 +175,13 @@ __all__ = [
     "DisputeExportResponse",
     "DisputeFetchResponse",
     "DisputeFetchResponseData",
+    "DisputeFetchResponseDataCustomer",
     "DisputeFetchResponseDataTransaction",
     "DisputeFetchResponseDataTransactionAuthorization",
-    "DisputeFetchResponseDataTransactionCustomer",
     "DisputeHistoryArray",
     "DisputeListResponse",
     "DisputeListResponseArray",
+    "DisputeListResponseArrayCustomer",
     "DisputeListResponseArrayTransaction",
     "DisputeListTransactionResponse",
     "DisputeListTransactionResponseData",
@@ -194,6 +199,9 @@ __all__ = [
     "Error",
     "ErrorMeta",
     "ErrorRecordsArray",
+    "Meta",
+    "MetaPerPage",
+    "MetaWithVolume",
     "MetadataCustomFieldsArray",
     "MiscellaneousListBanksResponse",
     "MiscellaneousListBanksResponseArray",
@@ -222,14 +230,17 @@ __all__ = [
     "OrderFetchProductResponseMeta",
     "OrderFetchResponse",
     "OrderFetchResponseData",
+    "OrderFetchResponseDataCustomer",
+    "OrderFetchResponseDataLineItemsInner",
+    "OrderFetchResponseDataLineItemsInnerProduct",
     "OrderItems",
-    "OrderItemsArray",
     "OrderListResponse",
     "OrderListResponseArray",
-    "OrderListResponseMeta",
+    "OrderListResponseArrayCustomer",
     "OrderShipping",
     "OrderValidateResponse",
     "OrderValidateResponseData",
+    "OrderValidateResponseDataCustomer",
     "OrderValidateResponseDataIntegration",
     "PageAddProductsResponse",
     "PageAddProductsResponseData",
@@ -256,6 +267,7 @@ __all__ = [
     "PaymentRequestLineItemsArray",
     "PaymentRequestListResponse",
     "PaymentRequestListResponseArray",
+    "PaymentRequestListResponseMeta",
     "PaymentRequestNotificationsArray",
     "PaymentRequestPendingArray",
     "PaymentRequestSendNotificationResponse",
@@ -270,6 +282,9 @@ __all__ = [
     "PaymentRequestVerifyResponse",
     "PaymentRequestVerifyResponseData",
     "PaymentRequestVerifyResponseDataIntegration",
+    "PaymentRequestViewResponse",
+    "PaymentRequestViewResponseData",
+    "PaymentRequestViewResponseDataCustomer",
     "PaymentSession",
     "PlanCreate",
     "PlanCreateResponse",
@@ -283,6 +298,7 @@ __all__ = [
     "ProductCreate",
     "ProductCreateResponse",
     "ProductCreateResponseData",
+    "ProductCreateResponseDataShippingFields",
     "ProductDeleteResponse",
     "ProductFetchResponse",
     "ProductFetchResponseData",
@@ -290,7 +306,6 @@ __all__ = [
     "ProductListsResponseArray",
     "ProductListsResponseArrayMetadata",
     "ProductListsResponseArrayShippingFields",
-    "ProductListsResponseMeta",
     "ProductUpdate",
     "ProductUpdateResponse",
     "ProductUpdateResponseData",
@@ -303,15 +318,16 @@ __all__ = [
     "RefundCreateResponseDataTransactionSubaccount",
     "RefundFetchResponse",
     "RefundFetchResponseData",
-    "RefundFetchResponseDataCustomer",
     "RefundListResponse",
     "RefundListResponseArray",
-    "RefundListResponseMeta",
     "RefundRetry",
     "RefundRetryAccountDetails",
     "RefundRetryResponse",
     "RefundRetryResponseData",
     "Response",
+    "SettlementListResponse",
+    "SettlementListResponseArray",
+    "SettlementTransactionsResponse",
     "SplitAddUpdateSubaccountResponse",
     "SplitCreate",
     "SplitCreateResponse",
@@ -321,19 +337,18 @@ __all__ = [
     "SplitListResponse",
     "SplitListResponseArray",
     "SplitRemoveSubaccountResponse",
+    "SplitSubaccountRemove",
     "SplitSubaccounts",
     "SplitSubaccountsArray",
     "SplitSubaccountsArraySubaccount",
     "SplitUpdate",
     "SplitUpdateResponse",
     "StorefrontAddProducts",
-    "StorefrontContactsArray",
     "StorefrontCreate",
     "StorefrontCreateResponse",
     "StorefrontCreateResponseData",
     "StorefrontDeleteResponse",
     "StorefrontFetchResponse",
-    "StorefrontFetchResponseMeta",
     "StorefrontListResponse",
     "StorefrontListResponseArray",
     "StorefrontUpdate",
@@ -345,16 +360,17 @@ __all__ = [
     "SubaccountFetchResponseData",
     "SubaccountListResponse",
     "SubaccountListResponseArray",
-    "SubaccountListResponseMeta",
     "SubaccountUpdate",
     "SubaccountUpdateResponse",
     "SubaccountUpdateResponseData",
     "SubscriptionCreate",
     "SubscriptionCreateResponse",
     "SubscriptionCreateResponseData",
+    "SubscriptionCreateResponseDataAuthorization",
     "SubscriptionDisableResponse",
     "SubscriptionFetchResponse",
     "SubscriptionFetchResponseData",
+    "SubscriptionFetchResponseDataCustomer",
     "SubscriptionFetchResponseDataPlan",
     "SubscriptionListResponse",
     "SubscriptionListResponseArray",
@@ -371,37 +387,39 @@ __all__ = [
     "TerminalGetStatusResponseData",
     "TerminalListsResponse",
     "TerminalListsResponseArray",
-    "TerminalListsResponseMeta",
     "TerminalSendEvent",
     "TerminalSendEventData",
     "TerminalUpate",
     "TerminalUpdateResponse",
     "TransactionChargeAuthorization",
+    "TransactionChargeAuthorizationMetadata",
     "TransactionCheckAuthorization",
     "TransactionExportResponse",
     "TransactionExportResponseData",
     "TransactionFetchResponse",
     "TransactionFetchResponseData",
     "TransactionFetchResponseDataAuthorization",
-    "TransactionFetchResponseDataCustomer",
-    "TransactionFetchResponseDataMetadata",
     "TransactionFetchResponseDataSource",
     "TransactionInitialize",
+    "TransactionInitializeAmount",
     "TransactionInitializeBadRequestModel",
+    "TransactionInitializeMetadata",
     "TransactionInitializeResponse",
     "TransactionInitializeResponseData",
     "TransactionListResponse",
     "TransactionListResponseArray",
     "TransactionListResponseArrayAuthorization",
     "TransactionListResponseArrayCustomer",
+    "TransactionListResponseArrayMetadata",
     "TransactionListResponseArraySource",
     "TransactionListResponseMeta",
-    "TransactionListResponseMetaPerPage",
     "TransactionPartialDebit",
+    "TransactionPartialDebitAmount",
     "TransactionPartialDebitResponse",
     "TransactionPartialDebitResponseData",
     "TransactionPartialDebitResponseDataAuthorization",
     "TransactionPartialDebitResponseDataCustomer",
+    "TransactionPartialDebitResponseDataMetadata",
     "TransactionPendingTransfersByCurrencyArray",
     "TransactionTimelineResponse",
     "TransactionTotalVolumeByCurrencyArray",
@@ -418,6 +436,7 @@ __all__ = [
     "TransferFeesBreakdownArray",
     "TransferFetchResponse",
     "TransferFetchResponseData",
+    "TransferFetchResponseDataSession",
     "TransferFinalize",
     "TransferFinalizeDisableOTP",
     "TransferFinalizeDisablesOtpResponse",
@@ -426,7 +445,6 @@ __all__ = [
     "TransferListResponseArray",
     "TransferListResponseArrayRecipient",
     "TransferListResponseArrayRecipientDetails",
-    "TransferListResponseArraySession",
     "TransferRecipientBulk",
     "TransferRecipientBulkCreateResponse",
     "TransferRecipientBulkCreateResponseData",
@@ -443,6 +461,8 @@ __all__ = [
     "TransferRecipientListResponseArrayDetails",
     "TransferRecipientUpdate",
     "TransferRecipientUpdateResponse",
+    "TransferRecipientUpdateResponseData",
+    "TransferRecipientUpdateResponseDataDetails",
     "TransferResendOTP",
     "TransferResendsOtpResponse",
     "TransferVerifyResponse",
@@ -462,12 +482,12 @@ __all__ = [
     "VerifyResponseDataCustomer",
     "VerifyResponseDataLog",
     "VerifyResponseDataLogHistoryInner",
-    "VerifyResponseDataMetadata",
     "VerifyResponseDataPlanObject",
     "VirtualTerminalAddSplitCode",
     "VirtualTerminalAddSplitCodeResponse",
     "VirtualTerminalAddSplitCodeResponseData",
     "VirtualTerminalCreate",
+    "VirtualTerminalCreateCustomFieldsInner",
     "VirtualTerminalCreateDestinationsInner",
     "VirtualTerminalCreateResponse",
     "VirtualTerminalCreateResponseData",
@@ -476,6 +496,7 @@ __all__ = [
     "VirtualTerminalDeleteSplitCode",
     "VirtualTerminalDeleteSplitCodeResponse",
     "VirtualTerminalDestinationAssign",
+    "VirtualTerminalDestinationAssignDestinationsInner",
     "VirtualTerminalDestinationAssignResponse",
     "VirtualTerminalDestinationAssignResponseDataInner",
     "VirtualTerminalDestinationUnassign",
@@ -485,7 +506,6 @@ __all__ = [
     "VirtualTerminalFetchResponseDataDestinationsInner",
     "VirtualTerminalListResponse",
     "VirtualTerminalListResponseArray",
-    "VirtualTerminalListResponseMeta",
     "VirtualTerminalUpdate",
     "VirtualTerminalUpdateResponse",
 ]
@@ -532,35 +552,39 @@ from alexasomba_paystack.exceptions import ApiException as ApiException
 
 # import models into sdk package
 from alexasomba_paystack.models.apple_pay_create_ok_model import ApplePayCreateOkModel as ApplePayCreateOkModel
+from alexasomba_paystack.models.apple_pay_domains_response import ApplePayDomainsResponse as ApplePayDomainsResponse
+from alexasomba_paystack.models.apple_pay_domains_response_data import ApplePayDomainsResponseData as ApplePayDomainsResponseData
 from alexasomba_paystack.models.apple_pay_param import ApplePayParam as ApplePayParam
 from alexasomba_paystack.models.balance_check_response import BalanceCheckResponse as BalanceCheckResponse
 from alexasomba_paystack.models.balance_check_response_array import BalanceCheckResponseArray as BalanceCheckResponseArray
 from alexasomba_paystack.models.balance_fetch_ledger_response import BalanceFetchLedgerResponse as BalanceFetchLedgerResponse
 from alexasomba_paystack.models.balance_fetch_ledger_response_array import BalanceFetchLedgerResponseArray as BalanceFetchLedgerResponseArray
+from alexasomba_paystack.models.balance_fetch_ledger_response_meta import BalanceFetchLedgerResponseMeta as BalanceFetchLedgerResponseMeta
 from alexasomba_paystack.models.bank import Bank as Bank
 from alexasomba_paystack.models.bank_validate_request import BankValidateRequest as BankValidateRequest
 from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response import BulkChargeFetchBulkBatchChargesResponse as BulkChargeFetchBulkBatchChargesResponse
 from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array import BulkChargeFetchBulkBatchChargesResponseArray as BulkChargeFetchBulkBatchChargesResponseArray
+from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_authorization import BulkChargeFetchBulkBatchChargesResponseArrayAuthorization as BulkChargeFetchBulkBatchChargesResponseArrayAuthorization
 from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_customer import BulkChargeFetchBulkBatchChargesResponseArrayCustomer as BulkChargeFetchBulkBatchChargesResponseArrayCustomer
 from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_customer_metadata import BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata as BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata
+from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_metadata import BulkChargeFetchBulkBatchChargesResponseArrayMetadata as BulkChargeFetchBulkBatchChargesResponseArrayMetadata
 from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_meta import BulkChargeFetchBulkBatchChargesResponseMeta as BulkChargeFetchBulkBatchChargesResponseMeta
 from alexasomba_paystack.models.bulk_charge_fetch_response import BulkChargeFetchResponse as BulkChargeFetchResponse
+from alexasomba_paystack.models.bulk_charge_fetch_response_data import BulkChargeFetchResponseData as BulkChargeFetchResponseData
 from alexasomba_paystack.models.bulk_charge_initiate import BulkChargeInitiate as BulkChargeInitiate
 from alexasomba_paystack.models.bulk_charge_initiate_response import BulkChargeInitiateResponse as BulkChargeInitiateResponse
 from alexasomba_paystack.models.bulk_charge_initiate_response_data import BulkChargeInitiateResponseData as BulkChargeInitiateResponseData
 from alexasomba_paystack.models.bulk_charge_list_response import BulkChargeListResponse as BulkChargeListResponse
 from alexasomba_paystack.models.bulk_charge_list_response_array import BulkChargeListResponseArray as BulkChargeListResponseArray
-from alexasomba_paystack.models.bulk_charge_list_response_meta import BulkChargeListResponseMeta as BulkChargeListResponseMeta
-from alexasomba_paystack.models.bulk_charge_list_response_meta_per_page import BulkChargeListResponseMetaPerPage as BulkChargeListResponseMetaPerPage
 from alexasomba_paystack.models.bulk_charge_pause_response import BulkChargePauseResponse as BulkChargePauseResponse
 from alexasomba_paystack.models.bulk_charge_resume_response import BulkChargeResumeResponse as BulkChargeResumeResponse
 from alexasomba_paystack.models.charge_authorization_response import ChargeAuthorizationResponse as ChargeAuthorizationResponse
 from alexasomba_paystack.models.charge_authorization_response_data import ChargeAuthorizationResponseData as ChargeAuthorizationResponseData
 from alexasomba_paystack.models.charge_authorization_response_data_authorization import ChargeAuthorizationResponseDataAuthorization as ChargeAuthorizationResponseDataAuthorization
 from alexasomba_paystack.models.charge_authorization_response_data_customer import ChargeAuthorizationResponseDataCustomer as ChargeAuthorizationResponseDataCustomer
-from alexasomba_paystack.models.charge_authorization_response_data_customer_metadata import ChargeAuthorizationResponseDataCustomerMetadata as ChargeAuthorizationResponseDataCustomerMetadata
 from alexasomba_paystack.models.charge_authorization_response_data_log import ChargeAuthorizationResponseDataLog as ChargeAuthorizationResponseDataLog
 from alexasomba_paystack.models.charge_authorization_response_data_log_history_inner import ChargeAuthorizationResponseDataLogHistoryInner as ChargeAuthorizationResponseDataLogHistoryInner
+from alexasomba_paystack.models.charge_authorization_response_data_metadata import ChargeAuthorizationResponseDataMetadata as ChargeAuthorizationResponseDataMetadata
 from alexasomba_paystack.models.charge_check_pending_response import ChargeCheckPendingResponse as ChargeCheckPendingResponse
 from alexasomba_paystack.models.charge_create import ChargeCreate as ChargeCreate
 from alexasomba_paystack.models.charge_create_request import ChargeCreateRequest as ChargeCreateRequest
@@ -569,12 +593,10 @@ from alexasomba_paystack.models.charge_create_response_data import ChargeCreateR
 from alexasomba_paystack.models.charge_submit_address import ChargeSubmitAddress as ChargeSubmitAddress
 from alexasomba_paystack.models.charge_submit_birthday import ChargeSubmitBirthday as ChargeSubmitBirthday
 from alexasomba_paystack.models.charge_submit_birthday_response import ChargeSubmitBirthdayResponse as ChargeSubmitBirthdayResponse
-from alexasomba_paystack.models.charge_submit_birthday_response_data import ChargeSubmitBirthdayResponseData as ChargeSubmitBirthdayResponseData
 from alexasomba_paystack.models.charge_submit_otp import ChargeSubmitOTP as ChargeSubmitOTP
 from alexasomba_paystack.models.charge_submit_otp_response import ChargeSubmitOtpResponse as ChargeSubmitOtpResponse
 from alexasomba_paystack.models.charge_submit_phone import ChargeSubmitPhone as ChargeSubmitPhone
 from alexasomba_paystack.models.charge_submit_phone_response import ChargeSubmitPhoneResponse as ChargeSubmitPhoneResponse
-from alexasomba_paystack.models.charge_submit_phone_response_data import ChargeSubmitPhoneResponseData as ChargeSubmitPhoneResponseData
 from alexasomba_paystack.models.charge_submit_pin import ChargeSubmitPin as ChargeSubmitPin
 from alexasomba_paystack.models.charge_submit_pin_response import ChargeSubmitPinResponse as ChargeSubmitPinResponse
 from alexasomba_paystack.models.charge_submit_pin_response_data import ChargeSubmitPinResponseData as ChargeSubmitPinResponseData
@@ -584,6 +606,7 @@ from alexasomba_paystack.models.control_panel_fetch_payment_session_timeout_resp
 from alexasomba_paystack.models.control_panel_fetch_payment_session_timeout_response_data import ControlPanelFetchPaymentSessionTimeoutResponseData as ControlPanelFetchPaymentSessionTimeoutResponseData
 from alexasomba_paystack.models.control_panel_update_payment_session_timeout_response import ControlPanelUpdatePaymentSessionTimeoutResponse as ControlPanelUpdatePaymentSessionTimeoutResponse
 from alexasomba_paystack.models.currency import Currency as Currency
+from alexasomba_paystack.models.cursor_meta import CursorMeta as CursorMeta
 from alexasomba_paystack.models.customer_authorization_initialize_account import CustomerAuthorizationInitializeAccount as CustomerAuthorizationInitializeAccount
 from alexasomba_paystack.models.customer_authorization_initialize_address import CustomerAuthorizationInitializeAddress as CustomerAuthorizationInitializeAddress
 from alexasomba_paystack.models.customer_authorization_initialize_request import CustomerAuthorizationInitializeRequest as CustomerAuthorizationInitializeRequest
@@ -635,6 +658,7 @@ from alexasomba_paystack.models.dedicated_nuban_list_response_array import Dedic
 from alexasomba_paystack.models.dedicated_nuban_list_response_array_bank import DedicatedNubanListResponseArrayBank as DedicatedNubanListResponseArrayBank
 from alexasomba_paystack.models.dedicated_nuban_list_response_array_customer import DedicatedNubanListResponseArrayCustomer as DedicatedNubanListResponseArrayCustomer
 from alexasomba_paystack.models.dedicated_nuban_list_response_array_split_config import DedicatedNubanListResponseArraySplitConfig as DedicatedNubanListResponseArraySplitConfig
+from alexasomba_paystack.models.dedicated_nuban_list_response_array_split_config_any_of import DedicatedNubanListResponseArraySplitConfigAnyOf as DedicatedNubanListResponseArraySplitConfigAnyOf
 from alexasomba_paystack.models.dedicated_virtual_account_assign import DedicatedVirtualAccountAssign as DedicatedVirtualAccountAssign
 from alexasomba_paystack.models.dedicated_virtual_account_create import DedicatedVirtualAccountCreate as DedicatedVirtualAccountCreate
 from alexasomba_paystack.models.dedicated_virtual_account_remove_split import DedicatedVirtualAccountRemoveSplit as DedicatedVirtualAccountRemoveSplit
@@ -647,12 +671,13 @@ from alexasomba_paystack.models.dispute_evidence import DisputeEvidence as Dispu
 from alexasomba_paystack.models.dispute_export_response import DisputeExportResponse as DisputeExportResponse
 from alexasomba_paystack.models.dispute_fetch_response import DisputeFetchResponse as DisputeFetchResponse
 from alexasomba_paystack.models.dispute_fetch_response_data import DisputeFetchResponseData as DisputeFetchResponseData
+from alexasomba_paystack.models.dispute_fetch_response_data_customer import DisputeFetchResponseDataCustomer as DisputeFetchResponseDataCustomer
 from alexasomba_paystack.models.dispute_fetch_response_data_transaction import DisputeFetchResponseDataTransaction as DisputeFetchResponseDataTransaction
 from alexasomba_paystack.models.dispute_fetch_response_data_transaction_authorization import DisputeFetchResponseDataTransactionAuthorization as DisputeFetchResponseDataTransactionAuthorization
-from alexasomba_paystack.models.dispute_fetch_response_data_transaction_customer import DisputeFetchResponseDataTransactionCustomer as DisputeFetchResponseDataTransactionCustomer
 from alexasomba_paystack.models.dispute_history_array import DisputeHistoryArray as DisputeHistoryArray
 from alexasomba_paystack.models.dispute_list_response import DisputeListResponse as DisputeListResponse
 from alexasomba_paystack.models.dispute_list_response_array import DisputeListResponseArray as DisputeListResponseArray
+from alexasomba_paystack.models.dispute_list_response_array_customer import DisputeListResponseArrayCustomer as DisputeListResponseArrayCustomer
 from alexasomba_paystack.models.dispute_list_response_array_transaction import DisputeListResponseArrayTransaction as DisputeListResponseArrayTransaction
 from alexasomba_paystack.models.dispute_list_transaction_response import DisputeListTransactionResponse as DisputeListTransactionResponse
 from alexasomba_paystack.models.dispute_list_transaction_response_data import DisputeListTransactionResponseData as DisputeListTransactionResponseData
@@ -670,6 +695,9 @@ from alexasomba_paystack.models.eft import EFT as EFT
 from alexasomba_paystack.models.error import Error as Error
 from alexasomba_paystack.models.error_meta import ErrorMeta as ErrorMeta
 from alexasomba_paystack.models.error_records_array import ErrorRecordsArray as ErrorRecordsArray
+from alexasomba_paystack.models.meta import Meta as Meta
+from alexasomba_paystack.models.meta_per_page import MetaPerPage as MetaPerPage
+from alexasomba_paystack.models.meta_with_volume import MetaWithVolume as MetaWithVolume
 from alexasomba_paystack.models.metadata_custom_fields_array import MetadataCustomFieldsArray as MetadataCustomFieldsArray
 from alexasomba_paystack.models.miscellaneous_list_banks_response import MiscellaneousListBanksResponse as MiscellaneousListBanksResponse
 from alexasomba_paystack.models.miscellaneous_list_banks_response_array import MiscellaneousListBanksResponseArray as MiscellaneousListBanksResponseArray
@@ -698,14 +726,17 @@ from alexasomba_paystack.models.order_fetch_product_response_array import OrderF
 from alexasomba_paystack.models.order_fetch_product_response_meta import OrderFetchProductResponseMeta as OrderFetchProductResponseMeta
 from alexasomba_paystack.models.order_fetch_response import OrderFetchResponse as OrderFetchResponse
 from alexasomba_paystack.models.order_fetch_response_data import OrderFetchResponseData as OrderFetchResponseData
+from alexasomba_paystack.models.order_fetch_response_data_customer import OrderFetchResponseDataCustomer as OrderFetchResponseDataCustomer
+from alexasomba_paystack.models.order_fetch_response_data_line_items_inner import OrderFetchResponseDataLineItemsInner as OrderFetchResponseDataLineItemsInner
+from alexasomba_paystack.models.order_fetch_response_data_line_items_inner_product import OrderFetchResponseDataLineItemsInnerProduct as OrderFetchResponseDataLineItemsInnerProduct
 from alexasomba_paystack.models.order_items import OrderItems as OrderItems
-from alexasomba_paystack.models.order_items_array import OrderItemsArray as OrderItemsArray
 from alexasomba_paystack.models.order_list_response import OrderListResponse as OrderListResponse
 from alexasomba_paystack.models.order_list_response_array import OrderListResponseArray as OrderListResponseArray
-from alexasomba_paystack.models.order_list_response_meta import OrderListResponseMeta as OrderListResponseMeta
+from alexasomba_paystack.models.order_list_response_array_customer import OrderListResponseArrayCustomer as OrderListResponseArrayCustomer
 from alexasomba_paystack.models.order_shipping import OrderShipping as OrderShipping
 from alexasomba_paystack.models.order_validate_response import OrderValidateResponse as OrderValidateResponse
 from alexasomba_paystack.models.order_validate_response_data import OrderValidateResponseData as OrderValidateResponseData
+from alexasomba_paystack.models.order_validate_response_data_customer import OrderValidateResponseDataCustomer as OrderValidateResponseDataCustomer
 from alexasomba_paystack.models.order_validate_response_data_integration import OrderValidateResponseDataIntegration as OrderValidateResponseDataIntegration
 from alexasomba_paystack.models.page_add_products_response import PageAddProductsResponse as PageAddProductsResponse
 from alexasomba_paystack.models.page_add_products_response_data import PageAddProductsResponseData as PageAddProductsResponseData
@@ -732,6 +763,7 @@ from alexasomba_paystack.models.payment_request_finalize_response_data_discount 
 from alexasomba_paystack.models.payment_request_line_items_array import PaymentRequestLineItemsArray as PaymentRequestLineItemsArray
 from alexasomba_paystack.models.payment_request_list_response import PaymentRequestListResponse as PaymentRequestListResponse
 from alexasomba_paystack.models.payment_request_list_response_array import PaymentRequestListResponseArray as PaymentRequestListResponseArray
+from alexasomba_paystack.models.payment_request_list_response_meta import PaymentRequestListResponseMeta as PaymentRequestListResponseMeta
 from alexasomba_paystack.models.payment_request_notifications_array import PaymentRequestNotificationsArray as PaymentRequestNotificationsArray
 from alexasomba_paystack.models.payment_request_pending_array import PaymentRequestPendingArray as PaymentRequestPendingArray
 from alexasomba_paystack.models.payment_request_send_notification_response import PaymentRequestSendNotificationResponse as PaymentRequestSendNotificationResponse
@@ -746,6 +778,9 @@ from alexasomba_paystack.models.payment_request_update_response_data import Paym
 from alexasomba_paystack.models.payment_request_verify_response import PaymentRequestVerifyResponse as PaymentRequestVerifyResponse
 from alexasomba_paystack.models.payment_request_verify_response_data import PaymentRequestVerifyResponseData as PaymentRequestVerifyResponseData
 from alexasomba_paystack.models.payment_request_verify_response_data_integration import PaymentRequestVerifyResponseDataIntegration as PaymentRequestVerifyResponseDataIntegration
+from alexasomba_paystack.models.payment_request_view_response import PaymentRequestViewResponse as PaymentRequestViewResponse
+from alexasomba_paystack.models.payment_request_view_response_data import PaymentRequestViewResponseData as PaymentRequestViewResponseData
+from alexasomba_paystack.models.payment_request_view_response_data_customer import PaymentRequestViewResponseDataCustomer as PaymentRequestViewResponseDataCustomer
 from alexasomba_paystack.models.payment_session import PaymentSession as PaymentSession
 from alexasomba_paystack.models.plan_create import PlanCreate as PlanCreate
 from alexasomba_paystack.models.plan_create_response import PlanCreateResponse as PlanCreateResponse
@@ -759,6 +794,7 @@ from alexasomba_paystack.models.plan_update_response import PlanUpdateResponse a
 from alexasomba_paystack.models.product_create import ProductCreate as ProductCreate
 from alexasomba_paystack.models.product_create_response import ProductCreateResponse as ProductCreateResponse
 from alexasomba_paystack.models.product_create_response_data import ProductCreateResponseData as ProductCreateResponseData
+from alexasomba_paystack.models.product_create_response_data_shipping_fields import ProductCreateResponseDataShippingFields as ProductCreateResponseDataShippingFields
 from alexasomba_paystack.models.product_delete_response import ProductDeleteResponse as ProductDeleteResponse
 from alexasomba_paystack.models.product_fetch_response import ProductFetchResponse as ProductFetchResponse
 from alexasomba_paystack.models.product_fetch_response_data import ProductFetchResponseData as ProductFetchResponseData
@@ -766,7 +802,6 @@ from alexasomba_paystack.models.product_lists_response import ProductListsRespon
 from alexasomba_paystack.models.product_lists_response_array import ProductListsResponseArray as ProductListsResponseArray
 from alexasomba_paystack.models.product_lists_response_array_metadata import ProductListsResponseArrayMetadata as ProductListsResponseArrayMetadata
 from alexasomba_paystack.models.product_lists_response_array_shipping_fields import ProductListsResponseArrayShippingFields as ProductListsResponseArrayShippingFields
-from alexasomba_paystack.models.product_lists_response_meta import ProductListsResponseMeta as ProductListsResponseMeta
 from alexasomba_paystack.models.product_update import ProductUpdate as ProductUpdate
 from alexasomba_paystack.models.product_update_response import ProductUpdateResponse as ProductUpdateResponse
 from alexasomba_paystack.models.product_update_response_data import ProductUpdateResponseData as ProductUpdateResponseData
@@ -779,15 +814,16 @@ from alexasomba_paystack.models.refund_create_response_data_transaction_customer
 from alexasomba_paystack.models.refund_create_response_data_transaction_subaccount import RefundCreateResponseDataTransactionSubaccount as RefundCreateResponseDataTransactionSubaccount
 from alexasomba_paystack.models.refund_fetch_response import RefundFetchResponse as RefundFetchResponse
 from alexasomba_paystack.models.refund_fetch_response_data import RefundFetchResponseData as RefundFetchResponseData
-from alexasomba_paystack.models.refund_fetch_response_data_customer import RefundFetchResponseDataCustomer as RefundFetchResponseDataCustomer
 from alexasomba_paystack.models.refund_list_response import RefundListResponse as RefundListResponse
 from alexasomba_paystack.models.refund_list_response_array import RefundListResponseArray as RefundListResponseArray
-from alexasomba_paystack.models.refund_list_response_meta import RefundListResponseMeta as RefundListResponseMeta
 from alexasomba_paystack.models.refund_retry import RefundRetry as RefundRetry
 from alexasomba_paystack.models.refund_retry_account_details import RefundRetryAccountDetails as RefundRetryAccountDetails
 from alexasomba_paystack.models.refund_retry_response import RefundRetryResponse as RefundRetryResponse
 from alexasomba_paystack.models.refund_retry_response_data import RefundRetryResponseData as RefundRetryResponseData
 from alexasomba_paystack.models.response import Response as Response
+from alexasomba_paystack.models.settlement_list_response import SettlementListResponse as SettlementListResponse
+from alexasomba_paystack.models.settlement_list_response_array import SettlementListResponseArray as SettlementListResponseArray
+from alexasomba_paystack.models.settlement_transactions_response import SettlementTransactionsResponse as SettlementTransactionsResponse
 from alexasomba_paystack.models.split_add_update_subaccount_response import SplitAddUpdateSubaccountResponse as SplitAddUpdateSubaccountResponse
 from alexasomba_paystack.models.split_create import SplitCreate as SplitCreate
 from alexasomba_paystack.models.split_create_response import SplitCreateResponse as SplitCreateResponse
@@ -797,19 +833,18 @@ from alexasomba_paystack.models.split_fetch_response_data import SplitFetchRespo
 from alexasomba_paystack.models.split_list_response import SplitListResponse as SplitListResponse
 from alexasomba_paystack.models.split_list_response_array import SplitListResponseArray as SplitListResponseArray
 from alexasomba_paystack.models.split_remove_subaccount_response import SplitRemoveSubaccountResponse as SplitRemoveSubaccountResponse
+from alexasomba_paystack.models.split_subaccount_remove import SplitSubaccountRemove as SplitSubaccountRemove
 from alexasomba_paystack.models.split_subaccounts import SplitSubaccounts as SplitSubaccounts
 from alexasomba_paystack.models.split_subaccounts_array import SplitSubaccountsArray as SplitSubaccountsArray
 from alexasomba_paystack.models.split_subaccounts_array_subaccount import SplitSubaccountsArraySubaccount as SplitSubaccountsArraySubaccount
 from alexasomba_paystack.models.split_update import SplitUpdate as SplitUpdate
 from alexasomba_paystack.models.split_update_response import SplitUpdateResponse as SplitUpdateResponse
 from alexasomba_paystack.models.storefront_add_products import StorefrontAddProducts as StorefrontAddProducts
-from alexasomba_paystack.models.storefront_contacts_array import StorefrontContactsArray as StorefrontContactsArray
 from alexasomba_paystack.models.storefront_create import StorefrontCreate as StorefrontCreate
 from alexasomba_paystack.models.storefront_create_response import StorefrontCreateResponse as StorefrontCreateResponse
 from alexasomba_paystack.models.storefront_create_response_data import StorefrontCreateResponseData as StorefrontCreateResponseData
 from alexasomba_paystack.models.storefront_delete_response import StorefrontDeleteResponse as StorefrontDeleteResponse
 from alexasomba_paystack.models.storefront_fetch_response import StorefrontFetchResponse as StorefrontFetchResponse
-from alexasomba_paystack.models.storefront_fetch_response_meta import StorefrontFetchResponseMeta as StorefrontFetchResponseMeta
 from alexasomba_paystack.models.storefront_list_response import StorefrontListResponse as StorefrontListResponse
 from alexasomba_paystack.models.storefront_list_response_array import StorefrontListResponseArray as StorefrontListResponseArray
 from alexasomba_paystack.models.storefront_update import StorefrontUpdate as StorefrontUpdate
@@ -821,16 +856,17 @@ from alexasomba_paystack.models.subaccount_fetch_response import SubaccountFetch
 from alexasomba_paystack.models.subaccount_fetch_response_data import SubaccountFetchResponseData as SubaccountFetchResponseData
 from alexasomba_paystack.models.subaccount_list_response import SubaccountListResponse as SubaccountListResponse
 from alexasomba_paystack.models.subaccount_list_response_array import SubaccountListResponseArray as SubaccountListResponseArray
-from alexasomba_paystack.models.subaccount_list_response_meta import SubaccountListResponseMeta as SubaccountListResponseMeta
 from alexasomba_paystack.models.subaccount_update import SubaccountUpdate as SubaccountUpdate
 from alexasomba_paystack.models.subaccount_update_response import SubaccountUpdateResponse as SubaccountUpdateResponse
 from alexasomba_paystack.models.subaccount_update_response_data import SubaccountUpdateResponseData as SubaccountUpdateResponseData
 from alexasomba_paystack.models.subscription_create import SubscriptionCreate as SubscriptionCreate
 from alexasomba_paystack.models.subscription_create_response import SubscriptionCreateResponse as SubscriptionCreateResponse
 from alexasomba_paystack.models.subscription_create_response_data import SubscriptionCreateResponseData as SubscriptionCreateResponseData
+from alexasomba_paystack.models.subscription_create_response_data_authorization import SubscriptionCreateResponseDataAuthorization as SubscriptionCreateResponseDataAuthorization
 from alexasomba_paystack.models.subscription_disable_response import SubscriptionDisableResponse as SubscriptionDisableResponse
 from alexasomba_paystack.models.subscription_fetch_response import SubscriptionFetchResponse as SubscriptionFetchResponse
 from alexasomba_paystack.models.subscription_fetch_response_data import SubscriptionFetchResponseData as SubscriptionFetchResponseData
+from alexasomba_paystack.models.subscription_fetch_response_data_customer import SubscriptionFetchResponseDataCustomer as SubscriptionFetchResponseDataCustomer
 from alexasomba_paystack.models.subscription_fetch_response_data_plan import SubscriptionFetchResponseDataPlan as SubscriptionFetchResponseDataPlan
 from alexasomba_paystack.models.subscription_list_response import SubscriptionListResponse as SubscriptionListResponse
 from alexasomba_paystack.models.subscription_list_response_array import SubscriptionListResponseArray as SubscriptionListResponseArray
@@ -847,37 +883,39 @@ from alexasomba_paystack.models.terminal_get_status_response import TerminalGetS
 from alexasomba_paystack.models.terminal_get_status_response_data import TerminalGetStatusResponseData as TerminalGetStatusResponseData
 from alexasomba_paystack.models.terminal_lists_response import TerminalListsResponse as TerminalListsResponse
 from alexasomba_paystack.models.terminal_lists_response_array import TerminalListsResponseArray as TerminalListsResponseArray
-from alexasomba_paystack.models.terminal_lists_response_meta import TerminalListsResponseMeta as TerminalListsResponseMeta
 from alexasomba_paystack.models.terminal_send_event import TerminalSendEvent as TerminalSendEvent
 from alexasomba_paystack.models.terminal_send_event_data import TerminalSendEventData as TerminalSendEventData
 from alexasomba_paystack.models.terminal_upate import TerminalUpate as TerminalUpate
 from alexasomba_paystack.models.terminal_update_response import TerminalUpdateResponse as TerminalUpdateResponse
 from alexasomba_paystack.models.transaction_charge_authorization import TransactionChargeAuthorization as TransactionChargeAuthorization
+from alexasomba_paystack.models.transaction_charge_authorization_metadata import TransactionChargeAuthorizationMetadata as TransactionChargeAuthorizationMetadata
 from alexasomba_paystack.models.transaction_check_authorization import TransactionCheckAuthorization as TransactionCheckAuthorization
 from alexasomba_paystack.models.transaction_export_response import TransactionExportResponse as TransactionExportResponse
 from alexasomba_paystack.models.transaction_export_response_data import TransactionExportResponseData as TransactionExportResponseData
 from alexasomba_paystack.models.transaction_fetch_response import TransactionFetchResponse as TransactionFetchResponse
 from alexasomba_paystack.models.transaction_fetch_response_data import TransactionFetchResponseData as TransactionFetchResponseData
 from alexasomba_paystack.models.transaction_fetch_response_data_authorization import TransactionFetchResponseDataAuthorization as TransactionFetchResponseDataAuthorization
-from alexasomba_paystack.models.transaction_fetch_response_data_customer import TransactionFetchResponseDataCustomer as TransactionFetchResponseDataCustomer
-from alexasomba_paystack.models.transaction_fetch_response_data_metadata import TransactionFetchResponseDataMetadata as TransactionFetchResponseDataMetadata
 from alexasomba_paystack.models.transaction_fetch_response_data_source import TransactionFetchResponseDataSource as TransactionFetchResponseDataSource
 from alexasomba_paystack.models.transaction_initialize import TransactionInitialize as TransactionInitialize
+from alexasomba_paystack.models.transaction_initialize_amount import TransactionInitializeAmount as TransactionInitializeAmount
 from alexasomba_paystack.models.transaction_initialize_bad_request_model import TransactionInitializeBadRequestModel as TransactionInitializeBadRequestModel
+from alexasomba_paystack.models.transaction_initialize_metadata import TransactionInitializeMetadata as TransactionInitializeMetadata
 from alexasomba_paystack.models.transaction_initialize_response import TransactionInitializeResponse as TransactionInitializeResponse
 from alexasomba_paystack.models.transaction_initialize_response_data import TransactionInitializeResponseData as TransactionInitializeResponseData
 from alexasomba_paystack.models.transaction_list_response import TransactionListResponse as TransactionListResponse
 from alexasomba_paystack.models.transaction_list_response_array import TransactionListResponseArray as TransactionListResponseArray
 from alexasomba_paystack.models.transaction_list_response_array_authorization import TransactionListResponseArrayAuthorization as TransactionListResponseArrayAuthorization
 from alexasomba_paystack.models.transaction_list_response_array_customer import TransactionListResponseArrayCustomer as TransactionListResponseArrayCustomer
+from alexasomba_paystack.models.transaction_list_response_array_metadata import TransactionListResponseArrayMetadata as TransactionListResponseArrayMetadata
 from alexasomba_paystack.models.transaction_list_response_array_source import TransactionListResponseArraySource as TransactionListResponseArraySource
 from alexasomba_paystack.models.transaction_list_response_meta import TransactionListResponseMeta as TransactionListResponseMeta
-from alexasomba_paystack.models.transaction_list_response_meta_per_page import TransactionListResponseMetaPerPage as TransactionListResponseMetaPerPage
 from alexasomba_paystack.models.transaction_partial_debit import TransactionPartialDebit as TransactionPartialDebit
+from alexasomba_paystack.models.transaction_partial_debit_amount import TransactionPartialDebitAmount as TransactionPartialDebitAmount
 from alexasomba_paystack.models.transaction_partial_debit_response import TransactionPartialDebitResponse as TransactionPartialDebitResponse
 from alexasomba_paystack.models.transaction_partial_debit_response_data import TransactionPartialDebitResponseData as TransactionPartialDebitResponseData
 from alexasomba_paystack.models.transaction_partial_debit_response_data_authorization import TransactionPartialDebitResponseDataAuthorization as TransactionPartialDebitResponseDataAuthorization
 from alexasomba_paystack.models.transaction_partial_debit_response_data_customer import TransactionPartialDebitResponseDataCustomer as TransactionPartialDebitResponseDataCustomer
+from alexasomba_paystack.models.transaction_partial_debit_response_data_metadata import TransactionPartialDebitResponseDataMetadata as TransactionPartialDebitResponseDataMetadata
 from alexasomba_paystack.models.transaction_pending_transfers_by_currency_array import TransactionPendingTransfersByCurrencyArray as TransactionPendingTransfersByCurrencyArray
 from alexasomba_paystack.models.transaction_timeline_response import TransactionTimelineResponse as TransactionTimelineResponse
 from alexasomba_paystack.models.transaction_total_volume_by_currency_array import TransactionTotalVolumeByCurrencyArray as TransactionTotalVolumeByCurrencyArray
@@ -894,6 +932,7 @@ from alexasomba_paystack.models.transfer_enables_otp_response import TransferEna
 from alexasomba_paystack.models.transfer_fees_breakdown_array import TransferFeesBreakdownArray as TransferFeesBreakdownArray
 from alexasomba_paystack.models.transfer_fetch_response import TransferFetchResponse as TransferFetchResponse
 from alexasomba_paystack.models.transfer_fetch_response_data import TransferFetchResponseData as TransferFetchResponseData
+from alexasomba_paystack.models.transfer_fetch_response_data_session import TransferFetchResponseDataSession as TransferFetchResponseDataSession
 from alexasomba_paystack.models.transfer_finalize import TransferFinalize as TransferFinalize
 from alexasomba_paystack.models.transfer_finalize_disable_otp import TransferFinalizeDisableOTP as TransferFinalizeDisableOTP
 from alexasomba_paystack.models.transfer_finalize_disables_otp_response import TransferFinalizeDisablesOtpResponse as TransferFinalizeDisablesOtpResponse
@@ -902,7 +941,6 @@ from alexasomba_paystack.models.transfer_list_response import TransferListRespon
 from alexasomba_paystack.models.transfer_list_response_array import TransferListResponseArray as TransferListResponseArray
 from alexasomba_paystack.models.transfer_list_response_array_recipient import TransferListResponseArrayRecipient as TransferListResponseArrayRecipient
 from alexasomba_paystack.models.transfer_list_response_array_recipient_details import TransferListResponseArrayRecipientDetails as TransferListResponseArrayRecipientDetails
-from alexasomba_paystack.models.transfer_list_response_array_session import TransferListResponseArraySession as TransferListResponseArraySession
 from alexasomba_paystack.models.transfer_recipient_bulk import TransferRecipientBulk as TransferRecipientBulk
 from alexasomba_paystack.models.transfer_recipient_bulk_create_response import TransferRecipientBulkCreateResponse as TransferRecipientBulkCreateResponse
 from alexasomba_paystack.models.transfer_recipient_bulk_create_response_data import TransferRecipientBulkCreateResponseData as TransferRecipientBulkCreateResponseData
@@ -919,6 +957,8 @@ from alexasomba_paystack.models.transfer_recipient_list_response_array import Tr
 from alexasomba_paystack.models.transfer_recipient_list_response_array_details import TransferRecipientListResponseArrayDetails as TransferRecipientListResponseArrayDetails
 from alexasomba_paystack.models.transfer_recipient_update import TransferRecipientUpdate as TransferRecipientUpdate
 from alexasomba_paystack.models.transfer_recipient_update_response import TransferRecipientUpdateResponse as TransferRecipientUpdateResponse
+from alexasomba_paystack.models.transfer_recipient_update_response_data import TransferRecipientUpdateResponseData as TransferRecipientUpdateResponseData
+from alexasomba_paystack.models.transfer_recipient_update_response_data_details import TransferRecipientUpdateResponseDataDetails as TransferRecipientUpdateResponseDataDetails
 from alexasomba_paystack.models.transfer_resend_otp import TransferResendOTP as TransferResendOTP
 from alexasomba_paystack.models.transfer_resends_otp_response import TransferResendsOtpResponse as TransferResendsOtpResponse
 from alexasomba_paystack.models.transfer_verify_response import TransferVerifyResponse as TransferVerifyResponse
@@ -938,12 +978,12 @@ from alexasomba_paystack.models.verify_response_data_authorization import Verify
 from alexasomba_paystack.models.verify_response_data_customer import VerifyResponseDataCustomer as VerifyResponseDataCustomer
 from alexasomba_paystack.models.verify_response_data_log import VerifyResponseDataLog as VerifyResponseDataLog
 from alexasomba_paystack.models.verify_response_data_log_history_inner import VerifyResponseDataLogHistoryInner as VerifyResponseDataLogHistoryInner
-from alexasomba_paystack.models.verify_response_data_metadata import VerifyResponseDataMetadata as VerifyResponseDataMetadata
 from alexasomba_paystack.models.verify_response_data_plan_object import VerifyResponseDataPlanObject as VerifyResponseDataPlanObject
 from alexasomba_paystack.models.virtual_terminal_add_split_code import VirtualTerminalAddSplitCode as VirtualTerminalAddSplitCode
 from alexasomba_paystack.models.virtual_terminal_add_split_code_response import VirtualTerminalAddSplitCodeResponse as VirtualTerminalAddSplitCodeResponse
 from alexasomba_paystack.models.virtual_terminal_add_split_code_response_data import VirtualTerminalAddSplitCodeResponseData as VirtualTerminalAddSplitCodeResponseData
 from alexasomba_paystack.models.virtual_terminal_create import VirtualTerminalCreate as VirtualTerminalCreate
+from alexasomba_paystack.models.virtual_terminal_create_custom_fields_inner import VirtualTerminalCreateCustomFieldsInner as VirtualTerminalCreateCustomFieldsInner
 from alexasomba_paystack.models.virtual_terminal_create_destinations_inner import VirtualTerminalCreateDestinationsInner as VirtualTerminalCreateDestinationsInner
 from alexasomba_paystack.models.virtual_terminal_create_response import VirtualTerminalCreateResponse as VirtualTerminalCreateResponse
 from alexasomba_paystack.models.virtual_terminal_create_response_data import VirtualTerminalCreateResponseData as VirtualTerminalCreateResponseData
@@ -952,6 +992,7 @@ from alexasomba_paystack.models.virtual_terminal_deactivate_response import Virt
 from alexasomba_paystack.models.virtual_terminal_delete_split_code import VirtualTerminalDeleteSplitCode as VirtualTerminalDeleteSplitCode
 from alexasomba_paystack.models.virtual_terminal_delete_split_code_response import VirtualTerminalDeleteSplitCodeResponse as VirtualTerminalDeleteSplitCodeResponse
 from alexasomba_paystack.models.virtual_terminal_destination_assign import VirtualTerminalDestinationAssign as VirtualTerminalDestinationAssign
+from alexasomba_paystack.models.virtual_terminal_destination_assign_destinations_inner import VirtualTerminalDestinationAssignDestinationsInner as VirtualTerminalDestinationAssignDestinationsInner
 from alexasomba_paystack.models.virtual_terminal_destination_assign_response import VirtualTerminalDestinationAssignResponse as VirtualTerminalDestinationAssignResponse
 from alexasomba_paystack.models.virtual_terminal_destination_assign_response_data_inner import VirtualTerminalDestinationAssignResponseDataInner as VirtualTerminalDestinationAssignResponseDataInner
 from alexasomba_paystack.models.virtual_terminal_destination_unassign import VirtualTerminalDestinationUnassign as VirtualTerminalDestinationUnassign
@@ -961,7 +1002,6 @@ from alexasomba_paystack.models.virtual_terminal_fetch_response_data import Virt
 from alexasomba_paystack.models.virtual_terminal_fetch_response_data_destinations_inner import VirtualTerminalFetchResponseDataDestinationsInner as VirtualTerminalFetchResponseDataDestinationsInner
 from alexasomba_paystack.models.virtual_terminal_list_response import VirtualTerminalListResponse as VirtualTerminalListResponse
 from alexasomba_paystack.models.virtual_terminal_list_response_array import VirtualTerminalListResponseArray as VirtualTerminalListResponseArray
-from alexasomba_paystack.models.virtual_terminal_list_response_meta import VirtualTerminalListResponseMeta as VirtualTerminalListResponseMeta
 from alexasomba_paystack.models.virtual_terminal_update import VirtualTerminalUpdate as VirtualTerminalUpdate
 from alexasomba_paystack.models.virtual_terminal_update_response import VirtualTerminalUpdateResponse as VirtualTerminalUpdateResponse
 

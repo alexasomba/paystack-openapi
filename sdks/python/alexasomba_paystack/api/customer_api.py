@@ -912,7 +912,7 @@ class CustomerApi:
     @validate_call
     def customer_fetch(
         self,
-        code: Annotated[StrictStr, Field(description="The code for the customer gotten from the response of the customer creation")],
+        email_or_code: Annotated[StrictStr, Field(description="An email or customer code for the customer you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -930,8 +930,8 @@ class CustomerApi:
 
         Get details of a customer on your integration.
 
-        :param code: The code for the customer gotten from the response of the customer creation (required)
-        :type code: str
+        :param email_or_code: An email or customer code for the customer you want to fetch (required)
+        :type email_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -955,7 +955,7 @@ class CustomerApi:
         """ # noqa: E501
 
         _param = self._customer_fetch_serialize(
-            code=code,
+            email_or_code=email_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -981,7 +981,7 @@ class CustomerApi:
     @validate_call
     def customer_fetch_with_http_info(
         self,
-        code: Annotated[StrictStr, Field(description="The code for the customer gotten from the response of the customer creation")],
+        email_or_code: Annotated[StrictStr, Field(description="An email or customer code for the customer you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -999,8 +999,8 @@ class CustomerApi:
 
         Get details of a customer on your integration.
 
-        :param code: The code for the customer gotten from the response of the customer creation (required)
-        :type code: str
+        :param email_or_code: An email or customer code for the customer you want to fetch (required)
+        :type email_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1024,7 +1024,7 @@ class CustomerApi:
         """ # noqa: E501
 
         _param = self._customer_fetch_serialize(
-            code=code,
+            email_or_code=email_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1050,7 +1050,7 @@ class CustomerApi:
     @validate_call
     def customer_fetch_without_preload_content(
         self,
-        code: Annotated[StrictStr, Field(description="The code for the customer gotten from the response of the customer creation")],
+        email_or_code: Annotated[StrictStr, Field(description="An email or customer code for the customer you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1068,8 +1068,8 @@ class CustomerApi:
 
         Get details of a customer on your integration.
 
-        :param code: The code for the customer gotten from the response of the customer creation (required)
-        :type code: str
+        :param email_or_code: An email or customer code for the customer you want to fetch (required)
+        :type email_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1093,7 +1093,7 @@ class CustomerApi:
         """ # noqa: E501
 
         _param = self._customer_fetch_serialize(
-            code=code,
+            email_or_code=email_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1114,7 +1114,7 @@ class CustomerApi:
 
     def _customer_fetch_serialize(
         self,
-        code,
+        email_or_code,
         _request_auth,
         _content_type,
         _headers,
@@ -1136,8 +1136,8 @@ class CustomerApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if code is not None:
-            _path_params['code'] = code
+        if email_or_code is not None:
+            _path_params['email_or_code'] = email_or_code
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -1160,7 +1160,7 @@ class CustomerApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/customer/{code}',
+            resource_path='/customer/{email_or_code}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2017,10 +2017,10 @@ class CustomerApi:
         use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
         next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
         previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
-        per_page: Annotated[Optional[StrictStr], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictStr], Field(description="The offset to retrieve data from")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2036,7 +2036,7 @@ class CustomerApi:
     ) -> CustomerListResponse:
         """List Customers
 
-        List customers on your integration
+        List customers available on your integration
 
         :param use_cursor: A flag to indicate if cursor based pagination should be used
         :type use_cursor: bool
@@ -2044,14 +2044,14 @@ class CustomerApi:
         :type next: str
         :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
         :type previous: str
-        :param var_from: The start date
+        :param var_from: A timestamp from which to start listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
         :type var_from: datetime
-        :param to: The end date
+        :param to: A timestamp at which to stop listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
         :type to: datetime
-        :param per_page: The number of records to fetch per request
-        :type per_page: str
-        :param page: The offset to retrieve data from
-        :type page: str
+        :param per_page: Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
+        :type per_page: int
+        :param page: Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2110,10 +2110,10 @@ class CustomerApi:
         use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
         next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
         previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
-        per_page: Annotated[Optional[StrictStr], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictStr], Field(description="The offset to retrieve data from")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2129,7 +2129,7 @@ class CustomerApi:
     ) -> ApiResponse[CustomerListResponse]:
         """List Customers
 
-        List customers on your integration
+        List customers available on your integration
 
         :param use_cursor: A flag to indicate if cursor based pagination should be used
         :type use_cursor: bool
@@ -2137,14 +2137,14 @@ class CustomerApi:
         :type next: str
         :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
         :type previous: str
-        :param var_from: The start date
+        :param var_from: A timestamp from which to start listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
         :type var_from: datetime
-        :param to: The end date
+        :param to: A timestamp at which to stop listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
         :type to: datetime
-        :param per_page: The number of records to fetch per request
-        :type per_page: str
-        :param page: The offset to retrieve data from
-        :type page: str
+        :param per_page: Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
+        :type per_page: int
+        :param page: Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2203,10 +2203,10 @@ class CustomerApi:
         use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
         next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
         previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
-        per_page: Annotated[Optional[StrictStr], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictStr], Field(description="The offset to retrieve data from")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2222,7 +2222,7 @@ class CustomerApi:
     ) -> RESTResponseType:
         """List Customers
 
-        List customers on your integration
+        List customers available on your integration
 
         :param use_cursor: A flag to indicate if cursor based pagination should be used
         :type use_cursor: bool
@@ -2230,14 +2230,14 @@ class CustomerApi:
         :type next: str
         :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
         :type previous: str
-        :param var_from: The start date
+        :param var_from: A timestamp from which to start listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
         :type var_from: datetime
-        :param to: The end date
+        :param to: A timestamp at which to stop listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
         :type to: datetime
-        :param per_page: The number of records to fetch per request
-        :type per_page: str
-        :param page: The offset to retrieve data from
-        :type page: str
+        :param per_page: Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
+        :type per_page: int
+        :param page: Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2681,7 +2681,7 @@ class CustomerApi:
     @validate_call
     def customer_update(
         self,
-        code: Annotated[StrictStr, Field(description="The code for the customer gotten from the response of the customer creation")],
+        email_or_code: Annotated[StrictStr, Field(description="An email or customer code for the customer you want to fetch")],
         customer_update: Optional[CustomerUpdate] = None,
         _request_timeout: Union[
             None,
@@ -2700,8 +2700,8 @@ class CustomerApi:
 
         Update a customer's details on your integration
 
-        :param code: The code for the customer gotten from the response of the customer creation (required)
-        :type code: str
+        :param email_or_code: An email or customer code for the customer you want to fetch (required)
+        :type email_or_code: str
         :param customer_update:
         :type customer_update: CustomerUpdate
         :param _request_timeout: timeout setting for this request. If one
@@ -2727,7 +2727,7 @@ class CustomerApi:
         """ # noqa: E501
 
         _param = self._customer_update_serialize(
-            code=code,
+            email_or_code=email_or_code,
             customer_update=customer_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2754,7 +2754,7 @@ class CustomerApi:
     @validate_call
     def customer_update_with_http_info(
         self,
-        code: Annotated[StrictStr, Field(description="The code for the customer gotten from the response of the customer creation")],
+        email_or_code: Annotated[StrictStr, Field(description="An email or customer code for the customer you want to fetch")],
         customer_update: Optional[CustomerUpdate] = None,
         _request_timeout: Union[
             None,
@@ -2773,8 +2773,8 @@ class CustomerApi:
 
         Update a customer's details on your integration
 
-        :param code: The code for the customer gotten from the response of the customer creation (required)
-        :type code: str
+        :param email_or_code: An email or customer code for the customer you want to fetch (required)
+        :type email_or_code: str
         :param customer_update:
         :type customer_update: CustomerUpdate
         :param _request_timeout: timeout setting for this request. If one
@@ -2800,7 +2800,7 @@ class CustomerApi:
         """ # noqa: E501
 
         _param = self._customer_update_serialize(
-            code=code,
+            email_or_code=email_or_code,
             customer_update=customer_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2827,7 +2827,7 @@ class CustomerApi:
     @validate_call
     def customer_update_without_preload_content(
         self,
-        code: Annotated[StrictStr, Field(description="The code for the customer gotten from the response of the customer creation")],
+        email_or_code: Annotated[StrictStr, Field(description="An email or customer code for the customer you want to fetch")],
         customer_update: Optional[CustomerUpdate] = None,
         _request_timeout: Union[
             None,
@@ -2846,8 +2846,8 @@ class CustomerApi:
 
         Update a customer's details on your integration
 
-        :param code: The code for the customer gotten from the response of the customer creation (required)
-        :type code: str
+        :param email_or_code: An email or customer code for the customer you want to fetch (required)
+        :type email_or_code: str
         :param customer_update:
         :type customer_update: CustomerUpdate
         :param _request_timeout: timeout setting for this request. If one
@@ -2873,7 +2873,7 @@ class CustomerApi:
         """ # noqa: E501
 
         _param = self._customer_update_serialize(
-            code=code,
+            email_or_code=email_or_code,
             customer_update=customer_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2895,7 +2895,7 @@ class CustomerApi:
 
     def _customer_update_serialize(
         self,
-        code,
+        email_or_code,
         customer_update,
         _request_auth,
         _content_type,
@@ -2918,8 +2918,8 @@ class CustomerApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if code is not None:
-            _path_params['code'] = code
+        if email_or_code is not None:
+            _path_params['email_or_code'] = email_or_code
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -2958,7 +2958,7 @@ class CustomerApi:
 
         return self.api_client.param_serialize(
             method='PUT',
-            resource_path='/customer/{code}',
+            resource_path='/customer/{email_or_code}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2977,7 +2977,7 @@ class CustomerApi:
     @validate_call
     def customer_validate(
         self,
-        code: Annotated[StrictStr, Field(description="The code for the customer gotten from the response of the customer creation")],
+        customer_code: Annotated[StrictStr, Field(description="Customer code")],
         customer_validate: Optional[CustomerValidate] = None,
         _request_timeout: Union[
             None,
@@ -2996,8 +2996,8 @@ class CustomerApi:
 
         Validate a customer's identity
 
-        :param code: The code for the customer gotten from the response of the customer creation (required)
-        :type code: str
+        :param customer_code: Customer code (required)
+        :type customer_code: str
         :param customer_validate:
         :type customer_validate: CustomerValidate
         :param _request_timeout: timeout setting for this request. If one
@@ -3023,7 +3023,7 @@ class CustomerApi:
         """ # noqa: E501
 
         _param = self._customer_validate_serialize(
-            code=code,
+            customer_code=customer_code,
             customer_validate=customer_validate,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3049,7 +3049,7 @@ class CustomerApi:
     @validate_call
     def customer_validate_with_http_info(
         self,
-        code: Annotated[StrictStr, Field(description="The code for the customer gotten from the response of the customer creation")],
+        customer_code: Annotated[StrictStr, Field(description="Customer code")],
         customer_validate: Optional[CustomerValidate] = None,
         _request_timeout: Union[
             None,
@@ -3068,8 +3068,8 @@ class CustomerApi:
 
         Validate a customer's identity
 
-        :param code: The code for the customer gotten from the response of the customer creation (required)
-        :type code: str
+        :param customer_code: Customer code (required)
+        :type customer_code: str
         :param customer_validate:
         :type customer_validate: CustomerValidate
         :param _request_timeout: timeout setting for this request. If one
@@ -3095,7 +3095,7 @@ class CustomerApi:
         """ # noqa: E501
 
         _param = self._customer_validate_serialize(
-            code=code,
+            customer_code=customer_code,
             customer_validate=customer_validate,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3121,7 +3121,7 @@ class CustomerApi:
     @validate_call
     def customer_validate_without_preload_content(
         self,
-        code: Annotated[StrictStr, Field(description="The code for the customer gotten from the response of the customer creation")],
+        customer_code: Annotated[StrictStr, Field(description="Customer code")],
         customer_validate: Optional[CustomerValidate] = None,
         _request_timeout: Union[
             None,
@@ -3140,8 +3140,8 @@ class CustomerApi:
 
         Validate a customer's identity
 
-        :param code: The code for the customer gotten from the response of the customer creation (required)
-        :type code: str
+        :param customer_code: Customer code (required)
+        :type customer_code: str
         :param customer_validate:
         :type customer_validate: CustomerValidate
         :param _request_timeout: timeout setting for this request. If one
@@ -3167,7 +3167,7 @@ class CustomerApi:
         """ # noqa: E501
 
         _param = self._customer_validate_serialize(
-            code=code,
+            customer_code=customer_code,
             customer_validate=customer_validate,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3188,7 +3188,7 @@ class CustomerApi:
 
     def _customer_validate_serialize(
         self,
-        code,
+        customer_code,
         customer_validate,
         _request_auth,
         _content_type,
@@ -3211,8 +3211,8 @@ class CustomerApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if code is not None:
-            _path_params['code'] = code
+        if customer_code is not None:
+            _path_params['customer_code'] = customer_code
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -3251,7 +3251,7 @@ class CustomerApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/customer/{code}/identification',
+            resource_path='/customer/{customer_code}/identification',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

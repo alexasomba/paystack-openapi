@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.dedicated_nuban_create_response_data_customer import DedicatedNubanCreateResponseDataCustomer
 from alexasomba_paystack.models.dedicated_nuban_list_response_array_bank import DedicatedNubanListResponseArrayBank
+from alexasomba_paystack.models.transaction_partial_debit_response_data_metadata import TransactionPartialDebitResponseDataMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -37,7 +38,7 @@ class DedicatedNubanFetchResponseData(BaseModel):
     created_at: StrictStr
     updated_at: StrictStr
     currency: StrictStr
-    split_config: Optional[Any]
+    split_config: Optional[TransactionPartialDebitResponseDataMetadata]
     active: StrictBool
     assigned: StrictBool
     __properties: ClassVar[List[str]] = ["customer", "bank", "id", "account_name", "account_number", "created_at", "updated_at", "currency", "split_config", "active", "assigned"]
@@ -87,6 +88,9 @@ class DedicatedNubanFetchResponseData(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of bank
         if self.bank:
             _dict['bank'] = self.bank.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of split_config
+        if self.split_config:
+            _dict['split_config'] = self.split_config.to_dict()
         # set to None if split_config (nullable) is None
         # and model_fields_set contains the field
         if self.split_config is None and "split_config" in self.model_fields_set:
@@ -112,7 +116,7 @@ class DedicatedNubanFetchResponseData(BaseModel):
             "created_at": obj.get("created_at"),
             "updated_at": obj.get("updated_at"),
             "currency": obj.get("currency"),
-            "split_config": obj.get("split_config"),
+            "split_config": TransactionPartialDebitResponseDataMetadata.from_dict(obj["split_config"]) if obj.get("split_config") is not None else None,
             "active": obj.get("active"),
             "assigned": obj.get("assigned")
         })

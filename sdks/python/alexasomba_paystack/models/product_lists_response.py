@@ -20,8 +20,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List
+from alexasomba_paystack.models.meta import Meta
 from alexasomba_paystack.models.product_lists_response_array import ProductListsResponseArray
-from alexasomba_paystack.models.product_lists_response_meta import ProductListsResponseMeta
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,7 +32,7 @@ class ProductListsResponse(BaseModel):
     status: StrictBool
     message: StrictStr
     data: List[ProductListsResponseArray]
-    meta: ProductListsResponseMeta
+    meta: Meta
     __properties: ClassVar[List[str]] = ["status", "message", "data", "meta"]
 
     model_config = ConfigDict(
@@ -99,7 +99,7 @@ class ProductListsResponse(BaseModel):
             "status": obj.get("status"),
             "message": obj.get("message"),
             "data": [ProductListsResponseArray.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
-            "meta": ProductListsResponseMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+            "meta": Meta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
         })
         return _obj
 

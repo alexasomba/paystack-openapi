@@ -890,7 +890,7 @@ class PageApi:
     @validate_call
     def page_fetch(
         self,
-        id: Annotated[StrictInt, Field(description="The unique identifier of a payment page")],
+        id_or_slug: Annotated[StrictStr, Field(description="The page ID or slug you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -908,8 +908,8 @@ class PageApi:
 
         Get a previously created payment page
 
-        :param id: The unique identifier of a payment page (required)
-        :type id: int
+        :param id_or_slug: The page ID or slug you want to fetch (required)
+        :type id_or_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -933,7 +933,7 @@ class PageApi:
         """ # noqa: E501
 
         _param = self._page_fetch_serialize(
-            id=id,
+            id_or_slug=id_or_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -959,7 +959,7 @@ class PageApi:
     @validate_call
     def page_fetch_with_http_info(
         self,
-        id: Annotated[StrictInt, Field(description="The unique identifier of a payment page")],
+        id_or_slug: Annotated[StrictStr, Field(description="The page ID or slug you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -977,8 +977,8 @@ class PageApi:
 
         Get a previously created payment page
 
-        :param id: The unique identifier of a payment page (required)
-        :type id: int
+        :param id_or_slug: The page ID or slug you want to fetch (required)
+        :type id_or_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1002,7 +1002,7 @@ class PageApi:
         """ # noqa: E501
 
         _param = self._page_fetch_serialize(
-            id=id,
+            id_or_slug=id_or_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1028,7 +1028,7 @@ class PageApi:
     @validate_call
     def page_fetch_without_preload_content(
         self,
-        id: Annotated[StrictInt, Field(description="The unique identifier of a payment page")],
+        id_or_slug: Annotated[StrictStr, Field(description="The page ID or slug you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1046,8 +1046,8 @@ class PageApi:
 
         Get a previously created payment page
 
-        :param id: The unique identifier of a payment page (required)
-        :type id: int
+        :param id_or_slug: The page ID or slug you want to fetch (required)
+        :type id_or_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1071,7 +1071,7 @@ class PageApi:
         """ # noqa: E501
 
         _param = self._page_fetch_serialize(
-            id=id,
+            id_or_slug=id_or_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1092,7 +1092,7 @@ class PageApi:
 
     def _page_fetch_serialize(
         self,
-        id,
+        id_or_slug,
         _request_auth,
         _content_type,
         _headers,
@@ -1114,8 +1114,8 @@ class PageApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if id_or_slug is not None:
+            _path_params['id_or_slug'] = id_or_slug
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -1138,7 +1138,7 @@ class PageApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/page/{id}',
+            resource_path='/page/{id_or_slug}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1495,7 +1495,7 @@ class PageApi:
     @validate_call
     def page_update(
         self,
-        id: Annotated[StrictInt, Field(description="The unique identifier of a payment page")],
+        id_or_slug: Annotated[StrictStr, Field(description="The page ID or slug you want to fetch")],
         page_update: Optional[PageUpdate] = None,
         _request_timeout: Union[
             None,
@@ -1514,8 +1514,8 @@ class PageApi:
 
         Update a previously created payment page
 
-        :param id: The unique identifier of a payment page (required)
-        :type id: int
+        :param id_or_slug: The page ID or slug you want to fetch (required)
+        :type id_or_slug: str
         :param page_update:
         :type page_update: PageUpdate
         :param _request_timeout: timeout setting for this request. If one
@@ -1541,7 +1541,7 @@ class PageApi:
         """ # noqa: E501
 
         _param = self._page_update_serialize(
-            id=id,
+            id_or_slug=id_or_slug,
             page_update=page_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1568,7 +1568,7 @@ class PageApi:
     @validate_call
     def page_update_with_http_info(
         self,
-        id: Annotated[StrictInt, Field(description="The unique identifier of a payment page")],
+        id_or_slug: Annotated[StrictStr, Field(description="The page ID or slug you want to fetch")],
         page_update: Optional[PageUpdate] = None,
         _request_timeout: Union[
             None,
@@ -1587,8 +1587,8 @@ class PageApi:
 
         Update a previously created payment page
 
-        :param id: The unique identifier of a payment page (required)
-        :type id: int
+        :param id_or_slug: The page ID or slug you want to fetch (required)
+        :type id_or_slug: str
         :param page_update:
         :type page_update: PageUpdate
         :param _request_timeout: timeout setting for this request. If one
@@ -1614,7 +1614,7 @@ class PageApi:
         """ # noqa: E501
 
         _param = self._page_update_serialize(
-            id=id,
+            id_or_slug=id_or_slug,
             page_update=page_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1641,7 +1641,7 @@ class PageApi:
     @validate_call
     def page_update_without_preload_content(
         self,
-        id: Annotated[StrictInt, Field(description="The unique identifier of a payment page")],
+        id_or_slug: Annotated[StrictStr, Field(description="The page ID or slug you want to fetch")],
         page_update: Optional[PageUpdate] = None,
         _request_timeout: Union[
             None,
@@ -1660,8 +1660,8 @@ class PageApi:
 
         Update a previously created payment page
 
-        :param id: The unique identifier of a payment page (required)
-        :type id: int
+        :param id_or_slug: The page ID or slug you want to fetch (required)
+        :type id_or_slug: str
         :param page_update:
         :type page_update: PageUpdate
         :param _request_timeout: timeout setting for this request. If one
@@ -1687,7 +1687,7 @@ class PageApi:
         """ # noqa: E501
 
         _param = self._page_update_serialize(
-            id=id,
+            id_or_slug=id_or_slug,
             page_update=page_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1709,7 +1709,7 @@ class PageApi:
 
     def _page_update_serialize(
         self,
-        id,
+        id_or_slug,
         page_update,
         _request_auth,
         _content_type,
@@ -1732,8 +1732,8 @@ class PageApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if id_or_slug is not None:
+            _path_params['id_or_slug'] = id_or_slug
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -1772,7 +1772,7 @@ class PageApi:
 
         return self.api_client.param_serialize(
             method='PUT',
-            resource_path='/page/{id}',
+            resource_path='/page/{id_or_slug}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

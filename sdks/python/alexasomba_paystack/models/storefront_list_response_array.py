@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,15 +30,12 @@ class StorefrontListResponseArray(BaseModel):
     id: StrictInt
     name: StrictStr
     slug: StrictStr
-    orders_count: StrictInt
+    description: Optional[StrictStr]
     status: StrictStr
-    revenue: Optional[Any]
     currency: StrictStr
-    products: List[Any]
-    contacts: List[Any]
-    social_media: List[Any]
-    shipping_fees: List[Any]
-    __properties: ClassVar[List[str]] = ["id", "name", "slug", "orders_count", "status", "revenue", "currency", "products", "contacts", "social_media", "shipping_fees"]
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
+    __properties: ClassVar[List[str]] = ["id", "name", "slug", "description", "status", "currency", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -79,10 +76,10 @@ class StorefrontListResponseArray(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if revenue (nullable) is None
+        # set to None if description (nullable) is None
         # and model_fields_set contains the field
-        if self.revenue is None and "revenue" in self.model_fields_set:
-            _dict['revenue'] = None
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
 
         return _dict
 
@@ -99,14 +96,11 @@ class StorefrontListResponseArray(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "slug": obj.get("slug"),
-            "orders_count": obj.get("orders_count"),
+            "description": obj.get("description"),
             "status": obj.get("status"),
-            "revenue": obj.get("revenue"),
             "currency": obj.get("currency"),
-            "products": obj.get("products"),
-            "contacts": obj.get("contacts"),
-            "social_media": obj.get("social_media"),
-            "shipping_fees": obj.get("shipping_fees")
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updatedAt": obj.get("updatedAt")
         })
         return _obj
 

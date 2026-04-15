@@ -64,7 +64,7 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
         'status' => 'string',
         'reference' => 'string',
         'domain' => 'string',
-        'metadata' => 'string',
+        'metadata' => '\Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataMetadata',
         'gateway_response' => 'string',
         'message' => 'string',
         'channel' => 'string',
@@ -116,7 +116,7 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
         'status' => false,
         'reference' => false,
         'domain' => false,
-        'metadata' => false,
+        'metadata' => true,
         'gateway_response' => false,
         'message' => true,
         'channel' => false,
@@ -405,7 +405,7 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
         if ($this->container['domain'] === null) {
             $invalidProperties[] = "'domain' can't be null";
         }
-        if ($this->container['metadata'] === null) {
+        if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
             $invalidProperties[] = "'metadata' can't be null";
         }
         if ($this->container['gateway_response'] === null) {
@@ -618,7 +618,7 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Gets metadata
      *
-     * @return string
+     * @return \Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataMetadata|null
      */
     public function getMetadata()
     {
@@ -628,14 +628,21 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Sets metadata
      *
-     * @param string $metadata metadata
+     * @param \Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataMetadata|null $metadata metadata
      *
      * @return self
      */
     public function setMetadata($metadata)
     {
         if (is_null($metadata)) {
-            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['metadata'] = $metadata;
 

@@ -17,6 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from datetime import datetime
 from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
@@ -49,10 +50,12 @@ class BulkChargeApi:
     @validate_call
     def bulk_charge_charges(
         self,
-        code: Annotated[StrictStr, Field(description="An code for the batch whose charges you want to retrieve")],
+        id_or_code: Annotated[StrictStr, Field(description="An ID or code for the batch whose charges you want to retrieve.")],
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
-        status: Annotated[Optional[StrictStr], Field(description="Filter by the status of the charges")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Either one of these values: pending, success or failed")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -70,14 +73,18 @@ class BulkChargeApi:
 
         This endpoint retrieves the charges associated with a specified batch code
 
-        :param code: An code for the batch whose charges you want to retrieve (required)
-        :type code: str
+        :param id_or_code: An ID or code for the batch whose charges you want to retrieve. (required)
+        :type id_or_code: str
         :param per_page: Number of records to fetch per page
         :type per_page: int
         :param page: The offset to retrieve data from
         :type page: int
-        :param status: Filter by the status of the charges
+        :param status: Either one of these values: pending, success or failed
         :type status: str
+        :param var_from: A timestamp from which to start listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type var_from: datetime
+        :param to: A timestamp at which to stop listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -101,10 +108,12 @@ class BulkChargeApi:
         """ # noqa: E501
 
         _param = self._bulk_charge_charges_serialize(
-            code=code,
+            id_or_code=id_or_code,
             per_page=per_page,
             page=page,
             status=status,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -130,10 +139,12 @@ class BulkChargeApi:
     @validate_call
     def bulk_charge_charges_with_http_info(
         self,
-        code: Annotated[StrictStr, Field(description="An code for the batch whose charges you want to retrieve")],
+        id_or_code: Annotated[StrictStr, Field(description="An ID or code for the batch whose charges you want to retrieve.")],
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
-        status: Annotated[Optional[StrictStr], Field(description="Filter by the status of the charges")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Either one of these values: pending, success or failed")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -151,14 +162,18 @@ class BulkChargeApi:
 
         This endpoint retrieves the charges associated with a specified batch code
 
-        :param code: An code for the batch whose charges you want to retrieve (required)
-        :type code: str
+        :param id_or_code: An ID or code for the batch whose charges you want to retrieve. (required)
+        :type id_or_code: str
         :param per_page: Number of records to fetch per page
         :type per_page: int
         :param page: The offset to retrieve data from
         :type page: int
-        :param status: Filter by the status of the charges
+        :param status: Either one of these values: pending, success or failed
         :type status: str
+        :param var_from: A timestamp from which to start listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type var_from: datetime
+        :param to: A timestamp at which to stop listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -182,10 +197,12 @@ class BulkChargeApi:
         """ # noqa: E501
 
         _param = self._bulk_charge_charges_serialize(
-            code=code,
+            id_or_code=id_or_code,
             per_page=per_page,
             page=page,
             status=status,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -211,10 +228,12 @@ class BulkChargeApi:
     @validate_call
     def bulk_charge_charges_without_preload_content(
         self,
-        code: Annotated[StrictStr, Field(description="An code for the batch whose charges you want to retrieve")],
+        id_or_code: Annotated[StrictStr, Field(description="An ID or code for the batch whose charges you want to retrieve.")],
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
-        status: Annotated[Optional[StrictStr], Field(description="Filter by the status of the charges")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Either one of these values: pending, success or failed")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -232,14 +251,18 @@ class BulkChargeApi:
 
         This endpoint retrieves the charges associated with a specified batch code
 
-        :param code: An code for the batch whose charges you want to retrieve (required)
-        :type code: str
+        :param id_or_code: An ID or code for the batch whose charges you want to retrieve. (required)
+        :type id_or_code: str
         :param per_page: Number of records to fetch per page
         :type per_page: int
         :param page: The offset to retrieve data from
         :type page: int
-        :param status: Filter by the status of the charges
+        :param status: Either one of these values: pending, success or failed
         :type status: str
+        :param var_from: A timestamp from which to start listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type var_from: datetime
+        :param to: A timestamp at which to stop listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -263,10 +286,12 @@ class BulkChargeApi:
         """ # noqa: E501
 
         _param = self._bulk_charge_charges_serialize(
-            code=code,
+            id_or_code=id_or_code,
             per_page=per_page,
             page=page,
             status=status,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -287,10 +312,12 @@ class BulkChargeApi:
 
     def _bulk_charge_charges_serialize(
         self,
-        code,
+        id_or_code,
         per_page,
         page,
         status,
+        var_from,
+        to,
         _request_auth,
         _content_type,
         _headers,
@@ -312,8 +339,8 @@ class BulkChargeApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if code is not None:
-            _path_params['code'] = code
+        if id_or_code is not None:
+            _path_params['id_or_code'] = id_or_code
         # process the query parameters
         if per_page is not None:
             
@@ -326,6 +353,32 @@ class BulkChargeApi:
         if status is not None:
             
             _query_params.append(('status', status))
+            
+        if var_from is not None:
+            if isinstance(var_from, datetime):
+                _query_params.append(
+                    (
+                        'from',
+                        var_from.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('from', var_from))
+            
+        if to is not None:
+            if isinstance(to, datetime):
+                _query_params.append(
+                    (
+                        'to',
+                        to.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('to', to))
             
         # process the header parameters
         # process the form parameters
@@ -348,7 +401,7 @@ class BulkChargeApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/bulkcharge/{code}/charges',
+            resource_path='/bulkcharge/{id_or_code}/charges',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -367,7 +420,7 @@ class BulkChargeApi:
     @validate_call
     def bulk_charge_fetch(
         self,
-        code: Annotated[StrictStr, Field(description="The code for the charge whose batches you want to retrieve")],
+        id_or_code: Annotated[StrictStr, Field(description="An ID or code for the charge whose batches you want to retrieve.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -385,8 +438,8 @@ class BulkChargeApi:
 
         This endpoint retrieves a specific batch code. It also returns useful information on its progress by  way of the `total_charges` and `pending_charges` attributes. 
 
-        :param code: The code for the charge whose batches you want to retrieve (required)
-        :type code: str
+        :param id_or_code: An ID or code for the charge whose batches you want to retrieve. (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -410,7 +463,7 @@ class BulkChargeApi:
         """ # noqa: E501
 
         _param = self._bulk_charge_fetch_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -436,7 +489,7 @@ class BulkChargeApi:
     @validate_call
     def bulk_charge_fetch_with_http_info(
         self,
-        code: Annotated[StrictStr, Field(description="The code for the charge whose batches you want to retrieve")],
+        id_or_code: Annotated[StrictStr, Field(description="An ID or code for the charge whose batches you want to retrieve.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -454,8 +507,8 @@ class BulkChargeApi:
 
         This endpoint retrieves a specific batch code. It also returns useful information on its progress by  way of the `total_charges` and `pending_charges` attributes. 
 
-        :param code: The code for the charge whose batches you want to retrieve (required)
-        :type code: str
+        :param id_or_code: An ID or code for the charge whose batches you want to retrieve. (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -479,7 +532,7 @@ class BulkChargeApi:
         """ # noqa: E501
 
         _param = self._bulk_charge_fetch_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -505,7 +558,7 @@ class BulkChargeApi:
     @validate_call
     def bulk_charge_fetch_without_preload_content(
         self,
-        code: Annotated[StrictStr, Field(description="The code for the charge whose batches you want to retrieve")],
+        id_or_code: Annotated[StrictStr, Field(description="An ID or code for the charge whose batches you want to retrieve.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -523,8 +576,8 @@ class BulkChargeApi:
 
         This endpoint retrieves a specific batch code. It also returns useful information on its progress by  way of the `total_charges` and `pending_charges` attributes. 
 
-        :param code: The code for the charge whose batches you want to retrieve (required)
-        :type code: str
+        :param id_or_code: An ID or code for the charge whose batches you want to retrieve. (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -548,7 +601,7 @@ class BulkChargeApi:
         """ # noqa: E501
 
         _param = self._bulk_charge_fetch_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -569,7 +622,7 @@ class BulkChargeApi:
 
     def _bulk_charge_fetch_serialize(
         self,
-        code,
+        id_or_code,
         _request_auth,
         _content_type,
         _headers,
@@ -591,8 +644,8 @@ class BulkChargeApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if code is not None:
-            _path_params['code'] = code
+        if id_or_code is not None:
+            _path_params['id_or_code'] = id_or_code
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -615,7 +668,7 @@ class BulkChargeApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/bulkcharge/{code}',
+            resource_path='/bulkcharge/{id_or_code}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -915,7 +968,8 @@ class BulkChargeApi:
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
-        status: Annotated[Optional[StrictStr], Field(description="Filter by the status of the charges")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -937,8 +991,10 @@ class BulkChargeApi:
         :type per_page: int
         :param page: The offset to retrieve data from
         :type page: int
-        :param status: Filter by the status of the charges
-        :type status: str
+        :param var_from: A timestamp from which to start listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type var_from: datetime
+        :param to: A timestamp at which to stop listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -964,7 +1020,8 @@ class BulkChargeApi:
         _param = self._bulk_charge_list_serialize(
             per_page=per_page,
             page=page,
-            status=status,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -992,7 +1049,8 @@ class BulkChargeApi:
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
-        status: Annotated[Optional[StrictStr], Field(description="Filter by the status of the charges")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1014,8 +1072,10 @@ class BulkChargeApi:
         :type per_page: int
         :param page: The offset to retrieve data from
         :type page: int
-        :param status: Filter by the status of the charges
-        :type status: str
+        :param var_from: A timestamp from which to start listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type var_from: datetime
+        :param to: A timestamp at which to stop listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1041,7 +1101,8 @@ class BulkChargeApi:
         _param = self._bulk_charge_list_serialize(
             per_page=per_page,
             page=page,
-            status=status,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1069,7 +1130,8 @@ class BulkChargeApi:
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
-        status: Annotated[Optional[StrictStr], Field(description="Filter by the status of the charges")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1091,8 +1153,10 @@ class BulkChargeApi:
         :type per_page: int
         :param page: The offset to retrieve data from
         :type page: int
-        :param status: Filter by the status of the charges
-        :type status: str
+        :param var_from: A timestamp from which to start listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type var_from: datetime
+        :param to: A timestamp at which to stop listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1118,7 +1182,8 @@ class BulkChargeApi:
         _param = self._bulk_charge_list_serialize(
             per_page=per_page,
             page=page,
-            status=status,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1141,7 +1206,8 @@ class BulkChargeApi:
         self,
         per_page,
         page,
-        status,
+        var_from,
+        to,
         _request_auth,
         _content_type,
         _headers,
@@ -1172,9 +1238,31 @@ class BulkChargeApi:
             
             _query_params.append(('page', page))
             
-        if status is not None:
+        if var_from is not None:
+            if isinstance(var_from, datetime):
+                _query_params.append(
+                    (
+                        'from',
+                        var_from.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('from', var_from))
             
-            _query_params.append(('status', status))
+        if to is not None:
+            if isinstance(to, datetime):
+                _query_params.append(
+                    (
+                        'to',
+                        to.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('to', to))
             
         # process the header parameters
         # process the form parameters

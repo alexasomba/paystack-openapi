@@ -73,13 +73,13 @@ class PaymentRequestListResponseArray implements ModelInterface, ArrayAccess, \J
         'request_code' => 'string',
         'status' => 'string',
         'paid' => 'bool',
-        'paid_at' => 'mixed',
-        'metadata' => 'mixed',
+        'paid_at' => 'string',
+        'metadata' => 'object',
         'notifications' => 'mixed[]',
         'offline_reference' => 'string',
-        'customer' => '\Alexasomba\Paystack\Model\TransactionFetchResponseDataCustomer',
+        'customer' => '\Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataCustomer',
         'created_at' => 'string',
-        'discount' => 'mixed',
+        'discount' => 'object',
         'split_code' => 'string'
     ];
 
@@ -949,7 +949,7 @@ class PaymentRequestListResponseArray implements ModelInterface, ArrayAccess, \J
     /**
      * Gets paid_at
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getPaidAt()
     {
@@ -959,7 +959,7 @@ class PaymentRequestListResponseArray implements ModelInterface, ArrayAccess, \J
     /**
      * Sets paid_at
      *
-     * @param mixed|null $paid_at paid_at
+     * @param string|null $paid_at paid_at
      *
      * @return self
      */
@@ -983,7 +983,7 @@ class PaymentRequestListResponseArray implements ModelInterface, ArrayAccess, \J
     /**
      * Gets metadata
      *
-     * @return mixed|null
+     * @return object|null
      */
     public function getMetadata()
     {
@@ -993,7 +993,7 @@ class PaymentRequestListResponseArray implements ModelInterface, ArrayAccess, \J
     /**
      * Sets metadata
      *
-     * @param mixed|null $metadata metadata
+     * @param object|null $metadata metadata
      *
      * @return self
      */
@@ -1071,7 +1071,7 @@ class PaymentRequestListResponseArray implements ModelInterface, ArrayAccess, \J
     /**
      * Gets customer
      *
-     * @return \Alexasomba\Paystack\Model\TransactionFetchResponseDataCustomer
+     * @return \Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataCustomer
      */
     public function getCustomer()
     {
@@ -1081,7 +1081,7 @@ class PaymentRequestListResponseArray implements ModelInterface, ArrayAccess, \J
     /**
      * Sets customer
      *
-     * @param \Alexasomba\Paystack\Model\TransactionFetchResponseDataCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataCustomer $customer customer
      *
      * @return self
      */
@@ -1125,7 +1125,7 @@ class PaymentRequestListResponseArray implements ModelInterface, ArrayAccess, \J
     /**
      * Gets discount
      *
-     * @return mixed|null
+     * @return object|null
      */
     public function getDiscount()
     {
@@ -1135,7 +1135,7 @@ class PaymentRequestListResponseArray implements ModelInterface, ArrayAccess, \J
     /**
      * Sets discount
      *
-     * @param mixed|null $discount discount
+     * @param object|null $discount discount
      *
      * @return self
      */

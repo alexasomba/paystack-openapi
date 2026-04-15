@@ -28,34 +28,24 @@ class PlanFetchResponseData(BaseModel):
     PlanFetchResponseData
     """ # noqa: E501
     subscriptions: List[Any]
-    pages: List[Any]
+    integration: StrictInt
     domain: StrictStr
     name: StrictStr
     plan_code: StrictStr
     description: Optional[Any]
     amount: StrictInt
     interval: StrictStr
-    invoice_limit: StrictInt
+    invoice_limit: Optional[StrictInt] = None
     send_invoices: StrictBool
     send_sms: StrictBool
     hosted_page: StrictBool
     hosted_page_url: Optional[Any]
     hosted_page_summary: Optional[Any]
     currency: StrictStr
-    migrate: StrictBool
-    is_deleted: StrictBool
-    is_archived: StrictBool
     id: StrictInt
-    integration: StrictInt
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    pages_count: StrictInt
-    subscribers_count: StrictInt
-    subscriptions_count: StrictInt
-    active_subscriptions_count: Optional[StrictInt]
-    total_revenue: StrictInt
-    subscribers: List[Any]
-    __properties: ClassVar[List[str]] = ["subscriptions", "pages", "domain", "name", "plan_code", "description", "amount", "interval", "invoice_limit", "send_invoices", "send_sms", "hosted_page", "hosted_page_url", "hosted_page_summary", "currency", "migrate", "is_deleted", "is_archived", "id", "integration", "createdAt", "updatedAt", "pages_count", "subscribers_count", "subscriptions_count", "active_subscriptions_count", "total_revenue", "subscribers"]
+    __properties: ClassVar[List[str]] = ["subscriptions", "integration", "domain", "name", "plan_code", "description", "amount", "interval", "invoice_limit", "send_invoices", "send_sms", "hosted_page", "hosted_page_url", "hosted_page_summary", "currency", "id", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -101,6 +91,11 @@ class PlanFetchResponseData(BaseModel):
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
+        # set to None if invoice_limit (nullable) is None
+        # and model_fields_set contains the field
+        if self.invoice_limit is None and "invoice_limit" in self.model_fields_set:
+            _dict['invoice_limit'] = None
+
         # set to None if hosted_page_url (nullable) is None
         # and model_fields_set contains the field
         if self.hosted_page_url is None and "hosted_page_url" in self.model_fields_set:
@@ -110,11 +105,6 @@ class PlanFetchResponseData(BaseModel):
         # and model_fields_set contains the field
         if self.hosted_page_summary is None and "hosted_page_summary" in self.model_fields_set:
             _dict['hosted_page_summary'] = None
-
-        # set to None if active_subscriptions_count (nullable) is None
-        # and model_fields_set contains the field
-        if self.active_subscriptions_count is None and "active_subscriptions_count" in self.model_fields_set:
-            _dict['active_subscriptions_count'] = None
 
         return _dict
 
@@ -129,7 +119,7 @@ class PlanFetchResponseData(BaseModel):
 
         _obj = cls.model_validate({
             "subscriptions": obj.get("subscriptions"),
-            "pages": obj.get("pages"),
+            "integration": obj.get("integration"),
             "domain": obj.get("domain"),
             "name": obj.get("name"),
             "plan_code": obj.get("plan_code"),
@@ -143,19 +133,9 @@ class PlanFetchResponseData(BaseModel):
             "hosted_page_url": obj.get("hosted_page_url"),
             "hosted_page_summary": obj.get("hosted_page_summary"),
             "currency": obj.get("currency"),
-            "migrate": obj.get("migrate"),
-            "is_deleted": obj.get("is_deleted"),
-            "is_archived": obj.get("is_archived"),
             "id": obj.get("id"),
-            "integration": obj.get("integration"),
             "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
-            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
-            "pages_count": obj.get("pages_count"),
-            "subscribers_count": obj.get("subscribers_count"),
-            "subscriptions_count": obj.get("subscriptions_count"),
-            "active_subscriptions_count": obj.get("active_subscriptions_count"),
-            "total_revenue": obj.get("total_revenue"),
-            "subscribers": obj.get("subscribers")
+            "updatedAt": obj.get("updatedAt")
         })
         return _obj
 

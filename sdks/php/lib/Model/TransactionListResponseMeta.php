@@ -59,11 +59,13 @@ class TransactionListResponseMeta implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'total' => 'int',
-        'total_volume' => 'float',
         'skipped' => 'int',
-        'per_page' => '\Alexasomba\Paystack\Model\TransactionListResponseMetaPerPage',
+        'per_page' => 'int',
         'page' => 'int',
-        'page_count' => 'int'
+        'page_count' => 'int',
+        'total_volume' => 'int',
+        'next' => 'string',
+        'previous' => 'string'
     ];
 
     /**
@@ -75,11 +77,13 @@ class TransactionListResponseMeta implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPIFormats = [
         'total' => null,
-        'total_volume' => null,
         'skipped' => null,
         'per_page' => null,
         'page' => null,
-        'page_count' => null
+        'page_count' => null,
+        'total_volume' => null,
+        'next' => null,
+        'previous' => null
     ];
 
     /**
@@ -89,11 +93,13 @@ class TransactionListResponseMeta implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPINullables = [
         'total' => false,
-        'total_volume' => false,
         'skipped' => false,
         'per_page' => false,
         'page' => false,
-        'page_count' => false
+        'page_count' => false,
+        'total_volume' => false,
+        'next' => true,
+        'previous' => true
     ];
 
     /**
@@ -183,11 +189,13 @@ class TransactionListResponseMeta implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $attributeMap = [
         'total' => 'total',
-        'total_volume' => 'total_volume',
         'skipped' => 'skipped',
         'per_page' => 'perPage',
         'page' => 'page',
-        'page_count' => 'pageCount'
+        'page_count' => 'pageCount',
+        'total_volume' => 'total_volume',
+        'next' => 'next',
+        'previous' => 'previous'
     ];
 
     /**
@@ -197,11 +205,13 @@ class TransactionListResponseMeta implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $setters = [
         'total' => 'setTotal',
-        'total_volume' => 'setTotalVolume',
         'skipped' => 'setSkipped',
         'per_page' => 'setPerPage',
         'page' => 'setPage',
-        'page_count' => 'setPageCount'
+        'page_count' => 'setPageCount',
+        'total_volume' => 'setTotalVolume',
+        'next' => 'setNext',
+        'previous' => 'setPrevious'
     ];
 
     /**
@@ -211,11 +221,13 @@ class TransactionListResponseMeta implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $getters = [
         'total' => 'getTotal',
-        'total_volume' => 'getTotalVolume',
         'skipped' => 'getSkipped',
         'per_page' => 'getPerPage',
         'page' => 'getPage',
-        'page_count' => 'getPageCount'
+        'page_count' => 'getPageCount',
+        'total_volume' => 'getTotalVolume',
+        'next' => 'getNext',
+        'previous' => 'getPrevious'
     ];
 
     /**
@@ -276,11 +288,13 @@ class TransactionListResponseMeta implements ModelInterface, ArrayAccess, \JsonS
     public function __construct(?array $data = null)
     {
         $this->setIfExists('total', $data ?? [], null);
-        $this->setIfExists('total_volume', $data ?? [], null);
         $this->setIfExists('skipped', $data ?? [], null);
         $this->setIfExists('per_page', $data ?? [], null);
         $this->setIfExists('page', $data ?? [], null);
         $this->setIfExists('page_count', $data ?? [], null);
+        $this->setIfExists('total_volume', $data ?? [], null);
+        $this->setIfExists('next', $data ?? [], null);
+        $this->setIfExists('previous', $data ?? [], null);
     }
 
     /**
@@ -313,9 +327,6 @@ class TransactionListResponseMeta implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['total'] === null) {
             $invalidProperties[] = "'total' can't be null";
         }
-        if ($this->container['total_volume'] === null) {
-            $invalidProperties[] = "'total_volume' can't be null";
-        }
         if ($this->container['skipped'] === null) {
             $invalidProperties[] = "'skipped' can't be null";
         }
@@ -327,6 +338,15 @@ class TransactionListResponseMeta implements ModelInterface, ArrayAccess, \JsonS
         }
         if ($this->container['page_count'] === null) {
             $invalidProperties[] = "'page_count' can't be null";
+        }
+        if ($this->container['total_volume'] === null) {
+            $invalidProperties[] = "'total_volume' can't be null";
+        }
+        if ($this->container['next'] === null && !$this->isNullableSetToNull('next')) {
+            $invalidProperties[] = "'next' can't be null";
+        }
+        if ($this->container['previous'] === null && !$this->isNullableSetToNull('previous')) {
+            $invalidProperties[] = "'previous' can't be null";
         }
         return $invalidProperties;
     }
@@ -371,33 +391,6 @@ class TransactionListResponseMeta implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets total_volume
-     *
-     * @return float
-     */
-    public function getTotalVolume()
-    {
-        return $this->container['total_volume'];
-    }
-
-    /**
-     * Sets total_volume
-     *
-     * @param float $total_volume total_volume
-     *
-     * @return self
-     */
-    public function setTotalVolume($total_volume)
-    {
-        if (is_null($total_volume)) {
-            throw new \InvalidArgumentException('non-nullable total_volume cannot be null');
-        }
-        $this->container['total_volume'] = $total_volume;
-
-        return $this;
-    }
-
-    /**
      * Gets skipped
      *
      * @return int
@@ -427,7 +420,7 @@ class TransactionListResponseMeta implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets per_page
      *
-     * @return \Alexasomba\Paystack\Model\TransactionListResponseMetaPerPage
+     * @return int
      */
     public function getPerPage()
     {
@@ -437,7 +430,7 @@ class TransactionListResponseMeta implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets per_page
      *
-     * @param \Alexasomba\Paystack\Model\TransactionListResponseMetaPerPage $per_page per_page
+     * @param int $per_page per_page
      *
      * @return self
      */
@@ -501,6 +494,101 @@ class TransactionListResponseMeta implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable page_count cannot be null');
         }
         $this->container['page_count'] = $page_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_volume
+     *
+     * @return int
+     */
+    public function getTotalVolume()
+    {
+        return $this->container['total_volume'];
+    }
+
+    /**
+     * Sets total_volume
+     *
+     * @param int $total_volume total_volume
+     *
+     * @return self
+     */
+    public function setTotalVolume($total_volume)
+    {
+        if (is_null($total_volume)) {
+            throw new \InvalidArgumentException('non-nullable total_volume cannot be null');
+        }
+        $this->container['total_volume'] = $total_volume;
+
+        return $this;
+    }
+
+    /**
+     * Gets next
+     *
+     * @return string|null
+     */
+    public function getNext()
+    {
+        return $this->container['next'];
+    }
+
+    /**
+     * Sets next
+     *
+     * @param string|null $next next
+     *
+     * @return self
+     */
+    public function setNext($next)
+    {
+        if (is_null($next)) {
+            array_push($this->openAPINullablesSetToNull, 'next');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['next'] = $next;
+
+        return $this;
+    }
+
+    /**
+     * Gets previous
+     *
+     * @return string|null
+     */
+    public function getPrevious()
+    {
+        return $this->container['previous'];
+    }
+
+    /**
+     * Sets previous
+     *
+     * @param string|null $previous previous
+     *
+     * @return self
+     */
+    public function setPrevious($previous)
+    {
+        if (is_null($previous)) {
+            array_push($this->openAPINullablesSetToNull, 'previous');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('previous', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['previous'] = $previous;
 
         return $this;
     }

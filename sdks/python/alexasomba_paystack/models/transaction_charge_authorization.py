@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, Strict
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.currency import Currency
 from alexasomba_paystack.models.split_create import SplitCreate
+from alexasomba_paystack.models.transaction_charge_authorization_metadata import TransactionChargeAuthorizationMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,18 +31,30 @@ class TransactionChargeAuthorization(BaseModel):
     TransactionChargeAuthorization
     """ # noqa: E501
     email: StrictStr = Field(description="Customer's email address")
-    amount: StrictInt = Field(description="Amount in the lower denomination of your currency")
+    amount: Optional[Any] = Field(description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). ")
     authorization_code: StrictStr = Field(description="Valid authorization code to charge")
     reference: Optional[StrictStr] = Field(default=None, description="Unique transaction reference. Only -, ., = and alphanumeric characters allowed.")
     currency: Optional[Currency] = None
+    channels: Optional[List[StrictStr]] = Field(default=None, description="Send us 'card' or 'bank' or 'card','bank' as an array to specify what options to show the user paying")
     split_code: Optional[StrictStr] = Field(default=None, description="The split code of the transaction split")
     split: Optional[SplitCreate] = None
     subaccount: Optional[StrictStr] = Field(default=None, description="The code for the subaccount that owns the payment")
-    transaction_charge: Optional[StrictStr] = Field(default=None, description="A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created")
+    transaction_charge: Optional[StrictInt] = Field(default=None, description="A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created")
     bearer: Optional[StrictStr] = Field(default=None, description="The bearer of the transaction charge")
-    metadata: Optional[StrictStr] = Field(default=None, description="Stringified JSON object of custom data")
+    metadata: Optional[TransactionChargeAuthorizationMetadata] = None
     queue: Optional[StrictBool] = Field(default=None, description="If you are making a scheduled charge call, it is a good idea to queue them so the processing system does not get overloaded causing transaction processing errors.")
-    __properties: ClassVar[List[str]] = ["email", "amount", "authorization_code", "reference", "currency", "split_code", "split", "subaccount", "transaction_charge", "bearer", "metadata", "queue"]
+    __properties: ClassVar[List[str]] = ["email", "amount", "authorization_code", "reference", "currency", "channels", "split_code", "split", "subaccount", "transaction_charge", "bearer", "metadata", "queue"]
+
+    @field_validator('channels')
+    def channels_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        for i in value:
+            if i not in set(['card', 'bank']):
+                raise ValueError("each list item must be one of ('card', 'bank')")
+        return value
 
     @field_validator('bearer')
     def bearer_validate_enum(cls, value):
@@ -95,6 +108,14 @@ class TransactionChargeAuthorization(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of split
         if self.split:
             _dict['split'] = self.split.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of metadata
+        if self.metadata:
+            _dict['metadata'] = self.metadata.to_dict()
+        # set to None if amount (nullable) is None
+        # and model_fields_set contains the field
+        if self.amount is None and "amount" in self.model_fields_set:
+            _dict['amount'] = None
+
         return _dict
 
     @classmethod
@@ -112,12 +133,13 @@ class TransactionChargeAuthorization(BaseModel):
             "authorization_code": obj.get("authorization_code"),
             "reference": obj.get("reference"),
             "currency": obj.get("currency"),
+            "channels": obj.get("channels"),
             "split_code": obj.get("split_code"),
             "split": SplitCreate.from_dict(obj["split"]) if obj.get("split") is not None else None,
             "subaccount": obj.get("subaccount"),
             "transaction_charge": obj.get("transaction_charge"),
             "bearer": obj.get("bearer"),
-            "metadata": obj.get("metadata"),
+            "metadata": TransactionChargeAuthorizationMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
             "queue": obj.get("queue")
         })
         return _obj

@@ -21,7 +21,7 @@ import json
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List
 from alexasomba_paystack.models.bulk_charge_list_response_array import BulkChargeListResponseArray
-from alexasomba_paystack.models.bulk_charge_list_response_meta import BulkChargeListResponseMeta
+from alexasomba_paystack.models.meta import Meta
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,7 +32,7 @@ class BulkChargeListResponse(BaseModel):
     status: StrictBool
     message: StrictStr
     data: List[BulkChargeListResponseArray]
-    meta: BulkChargeListResponseMeta
+    meta: Meta
     __properties: ClassVar[List[str]] = ["status", "message", "data", "meta"]
 
     model_config = ConfigDict(
@@ -99,7 +99,7 @@ class BulkChargeListResponse(BaseModel):
             "status": obj.get("status"),
             "message": obj.get("message"),
             "data": [BulkChargeListResponseArray.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
-            "meta": BulkChargeListResponseMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+            "meta": Meta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
         })
         return _obj
 

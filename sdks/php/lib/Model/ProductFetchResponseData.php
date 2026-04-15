@@ -69,25 +69,25 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
         'quantity_sold' => 'mixed',
         'type' => 'string',
         'files' => 'mixed[]',
-        'file_path' => 'mixed',
+        'file_path' => 'string',
         'is_shippable' => 'bool',
         'shipping_fields' => '\Alexasomba\Paystack\Model\ProductListsResponseArrayShippingFields',
         'unlimited' => 'bool',
         'domain' => 'string',
         'active' => 'bool',
-        'features' => 'mixed',
+        'features' => 'object',
         'in_stock' => 'bool',
         'metadata' => '\Alexasomba\Paystack\Model\ProductListsResponseArrayMetadata',
         'slug' => 'string',
-        'success_message' => 'mixed',
-        'redirect_url' => 'mixed',
-        'split_code' => 'mixed',
-        'notification_emails' => 'mixed',
+        'success_message' => 'string',
+        'redirect_url' => 'string',
+        'split_code' => 'string',
+        'notification_emails' => 'string[]',
         'minimum_orderable' => 'int',
-        'maximum_orderable' => 'mixed',
+        'maximum_orderable' => 'int',
         'low_stock_alert' => 'bool',
-        'stock_threshold' => 'mixed',
-        'expires_in' => 'mixed',
+        'stock_threshold' => 'int',
+        'expires_in' => 'int',
         'id' => 'int',
         'created_at' => 'string',
         'updated_at' => 'string'
@@ -152,7 +152,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
         'quantity' => false,
         'quantity_sold' => true,
         'type' => false,
-        'files' => false,
+        'files' => true,
         'file_path' => true,
         'is_shippable' => false,
         'shipping_fields' => false,
@@ -529,7 +529,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['files'] === null) {
+        if ($this->container['files'] === null && !$this->isNullableSetToNull('files')) {
             $invalidProperties[] = "'files' can't be null";
         }
         if ($this->container['file_path'] === null && !$this->isNullableSetToNull('file_path')) {
@@ -893,7 +893,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets files
      *
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getFiles()
     {
@@ -903,14 +903,21 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets files
      *
-     * @param mixed[] $files files
+     * @param mixed[]|null $files files
      *
      * @return self
      */
     public function setFiles($files)
     {
         if (is_null($files)) {
-            throw new \InvalidArgumentException('non-nullable files cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'files');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('files', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['files'] = $files;
 
@@ -920,7 +927,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets file_path
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getFilePath()
     {
@@ -930,7 +937,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets file_path
      *
-     * @param mixed|null $file_path file_path
+     * @param string|null $file_path file_path
      *
      * @return self
      */
@@ -1089,7 +1096,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets features
      *
-     * @return mixed|null
+     * @return object|null
      */
     public function getFeatures()
     {
@@ -1099,7 +1106,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets features
      *
-     * @param mixed|null $features features
+     * @param object|null $features features
      *
      * @return self
      */
@@ -1204,7 +1211,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets success_message
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getSuccessMessage()
     {
@@ -1214,7 +1221,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets success_message
      *
-     * @param mixed|null $success_message success_message
+     * @param string|null $success_message success_message
      *
      * @return self
      */
@@ -1238,7 +1245,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets redirect_url
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getRedirectUrl()
     {
@@ -1248,7 +1255,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets redirect_url
      *
-     * @param mixed|null $redirect_url redirect_url
+     * @param string|null $redirect_url redirect_url
      *
      * @return self
      */
@@ -1272,7 +1279,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets split_code
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getSplitCode()
     {
@@ -1282,7 +1289,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets split_code
      *
-     * @param mixed|null $split_code split_code
+     * @param string|null $split_code split_code
      *
      * @return self
      */
@@ -1306,7 +1313,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets notification_emails
      *
-     * @return mixed|null
+     * @return string[]|null
      */
     public function getNotificationEmails()
     {
@@ -1316,7 +1323,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets notification_emails
      *
-     * @param mixed|null $notification_emails notification_emails
+     * @param string[]|null $notification_emails notification_emails
      *
      * @return self
      */
@@ -1367,7 +1374,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets maximum_orderable
      *
-     * @return mixed|null
+     * @return int|null
      */
     public function getMaximumOrderable()
     {
@@ -1377,7 +1384,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets maximum_orderable
      *
-     * @param mixed|null $maximum_orderable maximum_orderable
+     * @param int|null $maximum_orderable maximum_orderable
      *
      * @return self
      */
@@ -1428,7 +1435,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets stock_threshold
      *
-     * @return mixed|null
+     * @return int|null
      */
     public function getStockThreshold()
     {
@@ -1438,7 +1445,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets stock_threshold
      *
-     * @param mixed|null $stock_threshold stock_threshold
+     * @param int|null $stock_threshold stock_threshold
      *
      * @return self
      */
@@ -1462,7 +1469,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets expires_in
      *
-     * @return mixed|null
+     * @return int|null
      */
     public function getExpiresIn()
     {
@@ -1472,7 +1479,7 @@ class ProductFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets expires_in
      *
-     * @param mixed|null $expires_in expires_in
+     * @param int|null $expires_in expires_in
      *
      * @return self
      */

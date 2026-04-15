@@ -17,7 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr
+from pydantic import Field, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
 from alexasomba_paystack.models.miscellaneous_list_countries_response import MiscellaneousListCountriesResponse
@@ -566,7 +566,7 @@ class MiscellaneousApi:
     @validate_call
     def miscellaneous_resolve_card_bin(
         self,
-        bin: Annotated[StrictInt, Field(description="The card bank identification number")],
+        bin: Annotated[StrictStr, Field(description="The card bank identification number")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -585,7 +585,7 @@ class MiscellaneousApi:
         Get the details of a card BIN
 
         :param bin: The card bank identification number (required)
-        :type bin: int
+        :type bin: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -635,7 +635,7 @@ class MiscellaneousApi:
     @validate_call
     def miscellaneous_resolve_card_bin_with_http_info(
         self,
-        bin: Annotated[StrictInt, Field(description="The card bank identification number")],
+        bin: Annotated[StrictStr, Field(description="The card bank identification number")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -654,7 +654,7 @@ class MiscellaneousApi:
         Get the details of a card BIN
 
         :param bin: The card bank identification number (required)
-        :type bin: int
+        :type bin: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -704,7 +704,7 @@ class MiscellaneousApi:
     @validate_call
     def miscellaneous_resolve_card_bin_without_preload_content(
         self,
-        bin: Annotated[StrictInt, Field(description="The card bank identification number")],
+        bin: Annotated[StrictStr, Field(description="The card bank identification number")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -723,7 +723,7 @@ class MiscellaneousApi:
         Get the details of a card BIN
 
         :param bin: The card bank identification number (required)
-        :type bin: int
+        :type bin: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of

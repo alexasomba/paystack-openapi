@@ -29,27 +29,16 @@ class PageUpdateResponseData(BaseModel):
     """ # noqa: E501
     domain: StrictStr
     name: StrictStr
-    description: Optional[Any]
-    amount: Optional[Any]
+    description: Optional[StrictStr] = None
+    amount: Optional[StrictInt]
     currency: StrictStr
     slug: StrictStr
-    custom_fields: Optional[Any]
-    type: StrictStr
-    redirect_url: Optional[Any]
-    success_message: Optional[Any]
-    collect_phone: StrictBool
     active: StrictBool
-    published: StrictBool
-    migrate: StrictBool
-    notification_email: Optional[Any]
-    metadata: Optional[Any]
-    split_code: Optional[Any]
     id: StrictInt
     integration: StrictInt
-    plan: Optional[Any]
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    __properties: ClassVar[List[str]] = ["domain", "name", "description", "amount", "currency", "slug", "custom_fields", "type", "redirect_url", "success_message", "collect_phone", "active", "published", "migrate", "notification_email", "metadata", "split_code", "id", "integration", "plan", "createdAt", "updatedAt"]
+    __properties: ClassVar[List[str]] = ["domain", "name", "description", "amount", "currency", "slug", "active", "id", "integration", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -100,41 +89,6 @@ class PageUpdateResponseData(BaseModel):
         if self.amount is None and "amount" in self.model_fields_set:
             _dict['amount'] = None
 
-        # set to None if custom_fields (nullable) is None
-        # and model_fields_set contains the field
-        if self.custom_fields is None and "custom_fields" in self.model_fields_set:
-            _dict['custom_fields'] = None
-
-        # set to None if redirect_url (nullable) is None
-        # and model_fields_set contains the field
-        if self.redirect_url is None and "redirect_url" in self.model_fields_set:
-            _dict['redirect_url'] = None
-
-        # set to None if success_message (nullable) is None
-        # and model_fields_set contains the field
-        if self.success_message is None and "success_message" in self.model_fields_set:
-            _dict['success_message'] = None
-
-        # set to None if notification_email (nullable) is None
-        # and model_fields_set contains the field
-        if self.notification_email is None and "notification_email" in self.model_fields_set:
-            _dict['notification_email'] = None
-
-        # set to None if metadata (nullable) is None
-        # and model_fields_set contains the field
-        if self.metadata is None and "metadata" in self.model_fields_set:
-            _dict['metadata'] = None
-
-        # set to None if split_code (nullable) is None
-        # and model_fields_set contains the field
-        if self.split_code is None and "split_code" in self.model_fields_set:
-            _dict['split_code'] = None
-
-        # set to None if plan (nullable) is None
-        # and model_fields_set contains the field
-        if self.plan is None and "plan" in self.model_fields_set:
-            _dict['plan'] = None
-
         return _dict
 
     @classmethod
@@ -153,20 +107,9 @@ class PageUpdateResponseData(BaseModel):
             "amount": obj.get("amount"),
             "currency": obj.get("currency"),
             "slug": obj.get("slug"),
-            "custom_fields": obj.get("custom_fields"),
-            "type": obj.get("type"),
-            "redirect_url": obj.get("redirect_url"),
-            "success_message": obj.get("success_message"),
-            "collect_phone": obj.get("collect_phone"),
             "active": obj.get("active"),
-            "published": obj.get("published"),
-            "migrate": obj.get("migrate"),
-            "notification_email": obj.get("notification_email"),
-            "metadata": obj.get("metadata"),
-            "split_code": obj.get("split_code"),
             "id": obj.get("id"),
             "integration": obj.get("integration"),
-            "plan": obj.get("plan"),
             "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt")
         })

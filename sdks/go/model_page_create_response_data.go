@@ -23,6 +23,9 @@ var _ MappedNullable = &PageCreateResponseData{}
 // PageCreateResponseData struct for PageCreateResponseData
 type PageCreateResponseData struct {
 	Name string `json:"name"`
+	Description NullableString `json:"description,omitempty"`
+	Amount NullableInt32 `json:"amount"`
+	SplitCode NullableString `json:"split_code,omitempty"`
 	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
 	Slug string `json:"slug"`
@@ -43,9 +46,10 @@ type _PageCreateResponseData PageCreateResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPageCreateResponseData(name string, integration int32, domain string, slug string, currency string, type_ string, collectPhone bool, active bool, published bool, migrate bool, id int32, createdAt string, updatedAt string) *PageCreateResponseData {
+func NewPageCreateResponseData(name string, amount NullableInt32, integration int32, domain string, slug string, currency string, type_ string, collectPhone bool, active bool, published bool, migrate bool, id int32, createdAt string, updatedAt string) *PageCreateResponseData {
 	this := PageCreateResponseData{}
 	this.Name = name
+	this.Amount = amount
 	this.Integration = integration
 	this.Domain = domain
 	this.Slug = slug
@@ -91,6 +95,116 @@ func (o *PageCreateResponseData) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *PageCreateResponseData) SetName(v string) {
 	o.Name = v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PageCreateResponseData) GetDescription() string {
+	if o == nil || IsNil(o.Description.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Description.Get()
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PageCreateResponseData) GetDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Description.Get(), o.Description.IsSet()
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *PageCreateResponseData) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+func (o *PageCreateResponseData) SetDescription(v string) {
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *PageCreateResponseData) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *PageCreateResponseData) UnsetDescription() {
+	o.Description.Unset()
+}
+
+// GetAmount returns the Amount field value
+// If the value is explicit nil, the zero value for int32 will be returned
+func (o *PageCreateResponseData) GetAmount() int32 {
+	if o == nil || o.Amount.Get() == nil {
+		var ret int32
+		return ret
+	}
+
+	return *o.Amount.Get()
+}
+
+// GetAmountOk returns a tuple with the Amount field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PageCreateResponseData) GetAmountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Amount.Get(), o.Amount.IsSet()
+}
+
+// SetAmount sets field value
+func (o *PageCreateResponseData) SetAmount(v int32) {
+	o.Amount.Set(&v)
+}
+
+// GetSplitCode returns the SplitCode field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PageCreateResponseData) GetSplitCode() string {
+	if o == nil || IsNil(o.SplitCode.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.SplitCode.Get()
+}
+
+// GetSplitCodeOk returns a tuple with the SplitCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PageCreateResponseData) GetSplitCodeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SplitCode.Get(), o.SplitCode.IsSet()
+}
+
+// HasSplitCode returns a boolean if a field has been set.
+func (o *PageCreateResponseData) HasSplitCode() bool {
+	if o != nil && o.SplitCode.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSplitCode gets a reference to the given NullableString and assigns it to the SplitCode field.
+func (o *PageCreateResponseData) SetSplitCode(v string) {
+	o.SplitCode.Set(&v)
+}
+// SetSplitCodeNil sets the value for SplitCode to be an explicit nil
+func (o *PageCreateResponseData) SetSplitCodeNil() {
+	o.SplitCode.Set(nil)
+}
+
+// UnsetSplitCode ensures that no value is present for SplitCode, not even an explicit nil
+func (o *PageCreateResponseData) UnsetSplitCode() {
+	o.SplitCode.Unset()
 }
 
 // GetIntegration returns the Integration field value
@@ -392,6 +506,13 @@ func (o PageCreateResponseData) MarshalJSON() ([]byte, error) {
 func (o PageCreateResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
+	}
+	toSerialize["amount"] = o.Amount.Get()
+	if o.SplitCode.IsSet() {
+		toSerialize["split_code"] = o.SplitCode.Get()
+	}
 	toSerialize["integration"] = o.Integration
 	toSerialize["domain"] = o.Domain
 	toSerialize["slug"] = o.Slug
@@ -413,6 +534,7 @@ func (o *PageCreateResponseData) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
+		"amount",
 		"integration",
 		"domain",
 		"slug",

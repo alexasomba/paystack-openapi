@@ -22,20 +22,35 @@ var _ MappedNullable = &ChargeSubmitPinResponseData{}
 
 // ChargeSubmitPinResponseData struct for ChargeSubmitPinResponseData
 type ChargeSubmitPinResponseData struct {
-	Status string `json:"status"`
-	Amount int32 `json:"amount"`
-	Currency string `json:"currency"`
-	TransactionDate string `json:"transaction_date"`
-	Reference string `json:"reference"`
+	Id int32 `json:"id"`
 	Domain string `json:"domain"`
-	RedirectUrl NullableString `json:"redirect_url"`
-	Metadata map[string]interface{} `json:"metadata"`
+	Status string `json:"status"`
+	Reference string `json:"reference"`
+	Amount int32 `json:"amount"`
+	Message NullableString `json:"message,omitempty"`
 	GatewayResponse string `json:"gateway_response"`
-	Message NullableString `json:"message"`
 	Channel string `json:"channel"`
+	Currency string `json:"currency"`
+	IpAddress NullableString `json:"ip_address"`
+	Metadata map[string]interface{} `json:"metadata"`
+	Log interface{} `json:"log"`
 	Fees NullableInt32 `json:"fees"`
+	FeesSplit interface{} `json:"fees_split"`
 	Authorization ChargeSubmitPinResponseDataAuthorization `json:"authorization"`
 	Customer ChargeSubmitPinResponseDataCustomer `json:"customer"`
+	Plan map[string]interface{} `json:"plan"`
+	Split map[string]interface{} `json:"split"`
+	OrderId NullableString `json:"order_id"`
+	PaidAt NullableString `json:"paidAt"`
+	CreatedAt string `json:"createdAt"`
+	RequestedAmount int32 `json:"requested_amount"`
+	PosTransactionData interface{} `json:"pos_transaction_data"`
+	Source interface{} `json:"source"`
+	FeesBreakdown map[string]interface{} `json:"fees_breakdown"`
+	Connect map[string]interface{} `json:"connect"`
+	TransactionDate string `json:"transaction_date"`
+	PlanObject map[string]interface{} `json:"plan_object"`
+	Subaccount map[string]interface{} `json:"subaccount"`
 }
 
 type _ChargeSubmitPinResponseData ChargeSubmitPinResponseData
@@ -44,22 +59,36 @@ type _ChargeSubmitPinResponseData ChargeSubmitPinResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChargeSubmitPinResponseData(status string, amount int32, currency string, transactionDate string, reference string, domain string, redirectUrl NullableString, metadata map[string]interface{}, gatewayResponse string, message NullableString, channel string, fees NullableInt32, authorization ChargeSubmitPinResponseDataAuthorization, customer ChargeSubmitPinResponseDataCustomer) *ChargeSubmitPinResponseData {
+func NewChargeSubmitPinResponseData(id int32, domain string, status string, reference string, amount int32, gatewayResponse string, channel string, currency string, ipAddress NullableString, metadata map[string]interface{}, log interface{}, fees NullableInt32, feesSplit interface{}, authorization ChargeSubmitPinResponseDataAuthorization, customer ChargeSubmitPinResponseDataCustomer, plan map[string]interface{}, split map[string]interface{}, orderId NullableString, paidAt NullableString, createdAt string, requestedAmount int32, posTransactionData interface{}, source interface{}, feesBreakdown map[string]interface{}, connect map[string]interface{}, transactionDate string, planObject map[string]interface{}, subaccount map[string]interface{}) *ChargeSubmitPinResponseData {
 	this := ChargeSubmitPinResponseData{}
-	this.Status = status
-	this.Amount = amount
-	this.Currency = currency
-	this.TransactionDate = transactionDate
-	this.Reference = reference
+	this.Id = id
 	this.Domain = domain
-	this.RedirectUrl = redirectUrl
-	this.Metadata = metadata
+	this.Status = status
+	this.Reference = reference
+	this.Amount = amount
 	this.GatewayResponse = gatewayResponse
-	this.Message = message
 	this.Channel = channel
+	this.Currency = currency
+	this.IpAddress = ipAddress
+	this.Metadata = metadata
+	this.Log = log
 	this.Fees = fees
+	this.FeesSplit = feesSplit
 	this.Authorization = authorization
 	this.Customer = customer
+	this.Plan = plan
+	this.Split = split
+	this.OrderId = orderId
+	this.PaidAt = paidAt
+	this.CreatedAt = createdAt
+	this.RequestedAmount = requestedAmount
+	this.PosTransactionData = posTransactionData
+	this.Source = source
+	this.FeesBreakdown = feesBreakdown
+	this.Connect = connect
+	this.TransactionDate = transactionDate
+	this.PlanObject = planObject
+	this.Subaccount = subaccount
 	return &this
 }
 
@@ -71,124 +100,28 @@ func NewChargeSubmitPinResponseDataWithDefaults() *ChargeSubmitPinResponseData {
 	return &this
 }
 
-// GetStatus returns the Status field value
-func (o *ChargeSubmitPinResponseData) GetStatus() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value
-// and a boolean to check if the value has been set.
-func (o *ChargeSubmitPinResponseData) GetStatusOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Status, true
-}
-
-// SetStatus sets field value
-func (o *ChargeSubmitPinResponseData) SetStatus(v string) {
-	o.Status = v
-}
-
-// GetAmount returns the Amount field value
-func (o *ChargeSubmitPinResponseData) GetAmount() int32 {
+// GetId returns the Id field value
+func (o *ChargeSubmitPinResponseData) GetId() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.Amount
+	return o.Id
 }
 
-// GetAmountOk returns a tuple with the Amount field value
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *ChargeSubmitPinResponseData) GetAmountOk() (*int32, bool) {
+func (o *ChargeSubmitPinResponseData) GetIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Amount, true
+	return &o.Id, true
 }
 
-// SetAmount sets field value
-func (o *ChargeSubmitPinResponseData) SetAmount(v int32) {
-	o.Amount = v
-}
-
-// GetCurrency returns the Currency field value
-func (o *ChargeSubmitPinResponseData) GetCurrency() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Currency
-}
-
-// GetCurrencyOk returns a tuple with the Currency field value
-// and a boolean to check if the value has been set.
-func (o *ChargeSubmitPinResponseData) GetCurrencyOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Currency, true
-}
-
-// SetCurrency sets field value
-func (o *ChargeSubmitPinResponseData) SetCurrency(v string) {
-	o.Currency = v
-}
-
-// GetTransactionDate returns the TransactionDate field value
-func (o *ChargeSubmitPinResponseData) GetTransactionDate() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.TransactionDate
-}
-
-// GetTransactionDateOk returns a tuple with the TransactionDate field value
-// and a boolean to check if the value has been set.
-func (o *ChargeSubmitPinResponseData) GetTransactionDateOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TransactionDate, true
-}
-
-// SetTransactionDate sets field value
-func (o *ChargeSubmitPinResponseData) SetTransactionDate(v string) {
-	o.TransactionDate = v
-}
-
-// GetReference returns the Reference field value
-func (o *ChargeSubmitPinResponseData) GetReference() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Reference
-}
-
-// GetReferenceOk returns a tuple with the Reference field value
-// and a boolean to check if the value has been set.
-func (o *ChargeSubmitPinResponseData) GetReferenceOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Reference, true
-}
-
-// SetReference sets field value
-func (o *ChargeSubmitPinResponseData) SetReference(v string) {
-	o.Reference = v
+// SetId sets field value
+func (o *ChargeSubmitPinResponseData) SetId(v int32) {
+	o.Id = v
 }
 
 // GetDomain returns the Domain field value
@@ -215,54 +148,118 @@ func (o *ChargeSubmitPinResponseData) SetDomain(v string) {
 	o.Domain = v
 }
 
-// GetRedirectUrl returns the RedirectUrl field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *ChargeSubmitPinResponseData) GetRedirectUrl() string {
-	if o == nil || o.RedirectUrl.Get() == nil {
+// GetStatus returns the Status field value
+func (o *ChargeSubmitPinResponseData) GetStatus() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.RedirectUrl.Get()
+	return o.Status
 }
 
-// GetRedirectUrlOk returns a tuple with the RedirectUrl field value
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ChargeSubmitPinResponseData) GetRedirectUrlOk() (*string, bool) {
+func (o *ChargeSubmitPinResponseData) GetStatusOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.RedirectUrl.Get(), o.RedirectUrl.IsSet()
+	return &o.Status, true
 }
 
-// SetRedirectUrl sets field value
-func (o *ChargeSubmitPinResponseData) SetRedirectUrl(v string) {
-	o.RedirectUrl.Set(&v)
+// SetStatus sets field value
+func (o *ChargeSubmitPinResponseData) SetStatus(v string) {
+	o.Status = v
 }
 
-// GetMetadata returns the Metadata field value
-func (o *ChargeSubmitPinResponseData) GetMetadata() map[string]interface{} {
+// GetReference returns the Reference field value
+func (o *ChargeSubmitPinResponseData) GetReference() string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
 
-	return o.Metadata
+	return o.Reference
 }
 
-// GetMetadataOk returns a tuple with the Metadata field value
+// GetReferenceOk returns a tuple with the Reference field value
 // and a boolean to check if the value has been set.
-func (o *ChargeSubmitPinResponseData) GetMetadataOk() (map[string]interface{}, bool) {
+func (o *ChargeSubmitPinResponseData) GetReferenceOk() (*string, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Metadata, true
+	return &o.Reference, true
 }
 
-// SetMetadata sets field value
-func (o *ChargeSubmitPinResponseData) SetMetadata(v map[string]interface{}) {
-	o.Metadata = v
+// SetReference sets field value
+func (o *ChargeSubmitPinResponseData) SetReference(v string) {
+	o.Reference = v
+}
+
+// GetAmount returns the Amount field value
+func (o *ChargeSubmitPinResponseData) GetAmount() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Amount
+}
+
+// GetAmountOk returns a tuple with the Amount field value
+// and a boolean to check if the value has been set.
+func (o *ChargeSubmitPinResponseData) GetAmountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Amount, true
+}
+
+// SetAmount sets field value
+func (o *ChargeSubmitPinResponseData) SetAmount(v int32) {
+	o.Amount = v
+}
+
+// GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ChargeSubmitPinResponseData) GetMessage() string {
+	if o == nil || IsNil(o.Message.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Message.Get()
+}
+
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ChargeSubmitPinResponseData) GetMessageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Message.Get(), o.Message.IsSet()
+}
+
+// HasMessage returns a boolean if a field has been set.
+func (o *ChargeSubmitPinResponseData) HasMessage() bool {
+	if o != nil && o.Message.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMessage gets a reference to the given NullableString and assigns it to the Message field.
+func (o *ChargeSubmitPinResponseData) SetMessage(v string) {
+	o.Message.Set(&v)
+}
+// SetMessageNil sets the value for Message to be an explicit nil
+func (o *ChargeSubmitPinResponseData) SetMessageNil() {
+	o.Message.Set(nil)
+}
+
+// UnsetMessage ensures that no value is present for Message, not even an explicit nil
+func (o *ChargeSubmitPinResponseData) UnsetMessage() {
+	o.Message.Unset()
 }
 
 // GetGatewayResponse returns the GatewayResponse field value
@@ -289,32 +286,6 @@ func (o *ChargeSubmitPinResponseData) SetGatewayResponse(v string) {
 	o.GatewayResponse = v
 }
 
-// GetMessage returns the Message field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *ChargeSubmitPinResponseData) GetMessage() string {
-	if o == nil || o.Message.Get() == nil {
-		var ret string
-		return ret
-	}
-
-	return *o.Message.Get()
-}
-
-// GetMessageOk returns a tuple with the Message field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ChargeSubmitPinResponseData) GetMessageOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Message.Get(), o.Message.IsSet()
-}
-
-// SetMessage sets field value
-func (o *ChargeSubmitPinResponseData) SetMessage(v string) {
-	o.Message.Set(&v)
-}
-
 // GetChannel returns the Channel field value
 func (o *ChargeSubmitPinResponseData) GetChannel() string {
 	if o == nil {
@@ -337,6 +308,108 @@ func (o *ChargeSubmitPinResponseData) GetChannelOk() (*string, bool) {
 // SetChannel sets field value
 func (o *ChargeSubmitPinResponseData) SetChannel(v string) {
 	o.Channel = v
+}
+
+// GetCurrency returns the Currency field value
+func (o *ChargeSubmitPinResponseData) GetCurrency() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Currency
+}
+
+// GetCurrencyOk returns a tuple with the Currency field value
+// and a boolean to check if the value has been set.
+func (o *ChargeSubmitPinResponseData) GetCurrencyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Currency, true
+}
+
+// SetCurrency sets field value
+func (o *ChargeSubmitPinResponseData) SetCurrency(v string) {
+	o.Currency = v
+}
+
+// GetIpAddress returns the IpAddress field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *ChargeSubmitPinResponseData) GetIpAddress() string {
+	if o == nil || o.IpAddress.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.IpAddress.Get()
+}
+
+// GetIpAddressOk returns a tuple with the IpAddress field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ChargeSubmitPinResponseData) GetIpAddressOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IpAddress.Get(), o.IpAddress.IsSet()
+}
+
+// SetIpAddress sets field value
+func (o *ChargeSubmitPinResponseData) SetIpAddress(v string) {
+	o.IpAddress.Set(&v)
+}
+
+// GetMetadata returns the Metadata field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *ChargeSubmitPinResponseData) GetMetadata() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ChargeSubmitPinResponseData) GetMetadataOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Metadata) {
+		return map[string]interface{}{}, false
+	}
+	return o.Metadata, true
+}
+
+// SetMetadata sets field value
+func (o *ChargeSubmitPinResponseData) SetMetadata(v map[string]interface{}) {
+	o.Metadata = v
+}
+
+// GetLog returns the Log field value
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ChargeSubmitPinResponseData) GetLog() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+
+	return o.Log
+}
+
+// GetLogOk returns a tuple with the Log field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ChargeSubmitPinResponseData) GetLogOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Log) {
+		return nil, false
+	}
+	return &o.Log, true
+}
+
+// SetLog sets field value
+func (o *ChargeSubmitPinResponseData) SetLog(v interface{}) {
+	o.Log = v
 }
 
 // GetFees returns the Fees field value
@@ -363,6 +436,32 @@ func (o *ChargeSubmitPinResponseData) GetFeesOk() (*int32, bool) {
 // SetFees sets field value
 func (o *ChargeSubmitPinResponseData) SetFees(v int32) {
 	o.Fees.Set(&v)
+}
+
+// GetFeesSplit returns the FeesSplit field value
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ChargeSubmitPinResponseData) GetFeesSplit() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+
+	return o.FeesSplit
+}
+
+// GetFeesSplitOk returns a tuple with the FeesSplit field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ChargeSubmitPinResponseData) GetFeesSplitOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.FeesSplit) {
+		return nil, false
+	}
+	return &o.FeesSplit, true
+}
+
+// SetFeesSplit sets field value
+func (o *ChargeSubmitPinResponseData) SetFeesSplit(v interface{}) {
+	o.FeesSplit = v
 }
 
 // GetAuthorization returns the Authorization field value
@@ -413,6 +512,334 @@ func (o *ChargeSubmitPinResponseData) SetCustomer(v ChargeSubmitPinResponseDataC
 	o.Customer = v
 }
 
+// GetPlan returns the Plan field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *ChargeSubmitPinResponseData) GetPlan() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Plan
+}
+
+// GetPlanOk returns a tuple with the Plan field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ChargeSubmitPinResponseData) GetPlanOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Plan) {
+		return map[string]interface{}{}, false
+	}
+	return o.Plan, true
+}
+
+// SetPlan sets field value
+func (o *ChargeSubmitPinResponseData) SetPlan(v map[string]interface{}) {
+	o.Plan = v
+}
+
+// GetSplit returns the Split field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *ChargeSubmitPinResponseData) GetSplit() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Split
+}
+
+// GetSplitOk returns a tuple with the Split field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ChargeSubmitPinResponseData) GetSplitOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Split) {
+		return map[string]interface{}{}, false
+	}
+	return o.Split, true
+}
+
+// SetSplit sets field value
+func (o *ChargeSubmitPinResponseData) SetSplit(v map[string]interface{}) {
+	o.Split = v
+}
+
+// GetOrderId returns the OrderId field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *ChargeSubmitPinResponseData) GetOrderId() string {
+	if o == nil || o.OrderId.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.OrderId.Get()
+}
+
+// GetOrderIdOk returns a tuple with the OrderId field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ChargeSubmitPinResponseData) GetOrderIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OrderId.Get(), o.OrderId.IsSet()
+}
+
+// SetOrderId sets field value
+func (o *ChargeSubmitPinResponseData) SetOrderId(v string) {
+	o.OrderId.Set(&v)
+}
+
+// GetPaidAt returns the PaidAt field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *ChargeSubmitPinResponseData) GetPaidAt() string {
+	if o == nil || o.PaidAt.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.PaidAt.Get()
+}
+
+// GetPaidAtOk returns a tuple with the PaidAt field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ChargeSubmitPinResponseData) GetPaidAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PaidAt.Get(), o.PaidAt.IsSet()
+}
+
+// SetPaidAt sets field value
+func (o *ChargeSubmitPinResponseData) SetPaidAt(v string) {
+	o.PaidAt.Set(&v)
+}
+
+// GetCreatedAt returns the CreatedAt field value
+func (o *ChargeSubmitPinResponseData) GetCreatedAt() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// and a boolean to check if the value has been set.
+func (o *ChargeSubmitPinResponseData) GetCreatedAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CreatedAt, true
+}
+
+// SetCreatedAt sets field value
+func (o *ChargeSubmitPinResponseData) SetCreatedAt(v string) {
+	o.CreatedAt = v
+}
+
+// GetRequestedAmount returns the RequestedAmount field value
+func (o *ChargeSubmitPinResponseData) GetRequestedAmount() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.RequestedAmount
+}
+
+// GetRequestedAmountOk returns a tuple with the RequestedAmount field value
+// and a boolean to check if the value has been set.
+func (o *ChargeSubmitPinResponseData) GetRequestedAmountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RequestedAmount, true
+}
+
+// SetRequestedAmount sets field value
+func (o *ChargeSubmitPinResponseData) SetRequestedAmount(v int32) {
+	o.RequestedAmount = v
+}
+
+// GetPosTransactionData returns the PosTransactionData field value
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ChargeSubmitPinResponseData) GetPosTransactionData() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+
+	return o.PosTransactionData
+}
+
+// GetPosTransactionDataOk returns a tuple with the PosTransactionData field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ChargeSubmitPinResponseData) GetPosTransactionDataOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.PosTransactionData) {
+		return nil, false
+	}
+	return &o.PosTransactionData, true
+}
+
+// SetPosTransactionData sets field value
+func (o *ChargeSubmitPinResponseData) SetPosTransactionData(v interface{}) {
+	o.PosTransactionData = v
+}
+
+// GetSource returns the Source field value
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ChargeSubmitPinResponseData) GetSource() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+
+	return o.Source
+}
+
+// GetSourceOk returns a tuple with the Source field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ChargeSubmitPinResponseData) GetSourceOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Source) {
+		return nil, false
+	}
+	return &o.Source, true
+}
+
+// SetSource sets field value
+func (o *ChargeSubmitPinResponseData) SetSource(v interface{}) {
+	o.Source = v
+}
+
+// GetFeesBreakdown returns the FeesBreakdown field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *ChargeSubmitPinResponseData) GetFeesBreakdown() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.FeesBreakdown
+}
+
+// GetFeesBreakdownOk returns a tuple with the FeesBreakdown field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ChargeSubmitPinResponseData) GetFeesBreakdownOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.FeesBreakdown) {
+		return map[string]interface{}{}, false
+	}
+	return o.FeesBreakdown, true
+}
+
+// SetFeesBreakdown sets field value
+func (o *ChargeSubmitPinResponseData) SetFeesBreakdown(v map[string]interface{}) {
+	o.FeesBreakdown = v
+}
+
+// GetConnect returns the Connect field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *ChargeSubmitPinResponseData) GetConnect() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Connect
+}
+
+// GetConnectOk returns a tuple with the Connect field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ChargeSubmitPinResponseData) GetConnectOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Connect) {
+		return map[string]interface{}{}, false
+	}
+	return o.Connect, true
+}
+
+// SetConnect sets field value
+func (o *ChargeSubmitPinResponseData) SetConnect(v map[string]interface{}) {
+	o.Connect = v
+}
+
+// GetTransactionDate returns the TransactionDate field value
+func (o *ChargeSubmitPinResponseData) GetTransactionDate() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.TransactionDate
+}
+
+// GetTransactionDateOk returns a tuple with the TransactionDate field value
+// and a boolean to check if the value has been set.
+func (o *ChargeSubmitPinResponseData) GetTransactionDateOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.TransactionDate, true
+}
+
+// SetTransactionDate sets field value
+func (o *ChargeSubmitPinResponseData) SetTransactionDate(v string) {
+	o.TransactionDate = v
+}
+
+// GetPlanObject returns the PlanObject field value
+func (o *ChargeSubmitPinResponseData) GetPlanObject() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.PlanObject
+}
+
+// GetPlanObjectOk returns a tuple with the PlanObject field value
+// and a boolean to check if the value has been set.
+func (o *ChargeSubmitPinResponseData) GetPlanObjectOk() (map[string]interface{}, bool) {
+	if o == nil {
+		return map[string]interface{}{}, false
+	}
+	return o.PlanObject, true
+}
+
+// SetPlanObject sets field value
+func (o *ChargeSubmitPinResponseData) SetPlanObject(v map[string]interface{}) {
+	o.PlanObject = v
+}
+
+// GetSubaccount returns the Subaccount field value
+func (o *ChargeSubmitPinResponseData) GetSubaccount() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Subaccount
+}
+
+// GetSubaccountOk returns a tuple with the Subaccount field value
+// and a boolean to check if the value has been set.
+func (o *ChargeSubmitPinResponseData) GetSubaccountOk() (map[string]interface{}, bool) {
+	if o == nil {
+		return map[string]interface{}{}, false
+	}
+	return o.Subaccount, true
+}
+
+// SetSubaccount sets field value
+func (o *ChargeSubmitPinResponseData) SetSubaccount(v map[string]interface{}) {
+	o.Subaccount = v
+}
+
 func (o ChargeSubmitPinResponseData) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -423,20 +850,55 @@ func (o ChargeSubmitPinResponseData) MarshalJSON() ([]byte, error) {
 
 func (o ChargeSubmitPinResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["status"] = o.Status
-	toSerialize["amount"] = o.Amount
-	toSerialize["currency"] = o.Currency
-	toSerialize["transaction_date"] = o.TransactionDate
-	toSerialize["reference"] = o.Reference
+	toSerialize["id"] = o.Id
 	toSerialize["domain"] = o.Domain
-	toSerialize["redirect_url"] = o.RedirectUrl.Get()
-	toSerialize["metadata"] = o.Metadata
+	toSerialize["status"] = o.Status
+	toSerialize["reference"] = o.Reference
+	toSerialize["amount"] = o.Amount
+	if o.Message.IsSet() {
+		toSerialize["message"] = o.Message.Get()
+	}
 	toSerialize["gateway_response"] = o.GatewayResponse
-	toSerialize["message"] = o.Message.Get()
 	toSerialize["channel"] = o.Channel
+	toSerialize["currency"] = o.Currency
+	toSerialize["ip_address"] = o.IpAddress.Get()
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
+	}
+	if o.Log != nil {
+		toSerialize["log"] = o.Log
+	}
 	toSerialize["fees"] = o.Fees.Get()
+	if o.FeesSplit != nil {
+		toSerialize["fees_split"] = o.FeesSplit
+	}
 	toSerialize["authorization"] = o.Authorization
 	toSerialize["customer"] = o.Customer
+	if o.Plan != nil {
+		toSerialize["plan"] = o.Plan
+	}
+	if o.Split != nil {
+		toSerialize["split"] = o.Split
+	}
+	toSerialize["order_id"] = o.OrderId.Get()
+	toSerialize["paidAt"] = o.PaidAt.Get()
+	toSerialize["createdAt"] = o.CreatedAt
+	toSerialize["requested_amount"] = o.RequestedAmount
+	if o.PosTransactionData != nil {
+		toSerialize["pos_transaction_data"] = o.PosTransactionData
+	}
+	if o.Source != nil {
+		toSerialize["source"] = o.Source
+	}
+	if o.FeesBreakdown != nil {
+		toSerialize["fees_breakdown"] = o.FeesBreakdown
+	}
+	if o.Connect != nil {
+		toSerialize["connect"] = o.Connect
+	}
+	toSerialize["transaction_date"] = o.TransactionDate
+	toSerialize["plan_object"] = o.PlanObject
+	toSerialize["subaccount"] = o.Subaccount
 	return toSerialize, nil
 }
 
@@ -445,20 +907,34 @@ func (o *ChargeSubmitPinResponseData) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"status",
-		"amount",
-		"currency",
-		"transaction_date",
-		"reference",
+		"id",
 		"domain",
-		"redirect_url",
-		"metadata",
+		"status",
+		"reference",
+		"amount",
 		"gateway_response",
-		"message",
 		"channel",
+		"currency",
+		"ip_address",
+		"metadata",
+		"log",
 		"fees",
+		"fees_split",
 		"authorization",
 		"customer",
+		"plan",
+		"split",
+		"order_id",
+		"paidAt",
+		"createdAt",
+		"requested_amount",
+		"pos_transaction_data",
+		"source",
+		"fees_breakdown",
+		"connect",
+		"transaction_date",
+		"plan_object",
+		"subaccount",
 	}
 
 	allProperties := make(map[string]interface{})

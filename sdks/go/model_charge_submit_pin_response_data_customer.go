@@ -22,12 +22,15 @@ var _ MappedNullable = &ChargeSubmitPinResponseDataCustomer{}
 
 // ChargeSubmitPinResponseDataCustomer struct for ChargeSubmitPinResponseDataCustomer
 type ChargeSubmitPinResponseDataCustomer struct {
-	FirstName NullableString `json:"first_name"`
-	LastName NullableString `json:"last_name"`
+	Id int32 `json:"id"`
+	FirstName NullableString `json:"first_name,omitempty"`
+	LastName NullableString `json:"last_name,omitempty"`
 	Email string `json:"email"`
 	CustomerCode string `json:"customer_code"`
-	Phone NullableString `json:"phone"`
+	Phone NullableString `json:"phone,omitempty"`
+	Metadata interface{} `json:"metadata,omitempty"`
 	RiskAction string `json:"risk_action"`
+	InternationalFormatPhone NullableString `json:"international_format_phone,omitempty"`
 }
 
 type _ChargeSubmitPinResponseDataCustomer ChargeSubmitPinResponseDataCustomer
@@ -36,13 +39,11 @@ type _ChargeSubmitPinResponseDataCustomer ChargeSubmitPinResponseDataCustomer
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChargeSubmitPinResponseDataCustomer(firstName NullableString, lastName NullableString, email string, customerCode string, phone NullableString, riskAction string) *ChargeSubmitPinResponseDataCustomer {
+func NewChargeSubmitPinResponseDataCustomer(id int32, email string, customerCode string, riskAction string) *ChargeSubmitPinResponseDataCustomer {
 	this := ChargeSubmitPinResponseDataCustomer{}
-	this.FirstName = firstName
-	this.LastName = lastName
+	this.Id = id
 	this.Email = email
 	this.CustomerCode = customerCode
-	this.Phone = phone
 	this.RiskAction = riskAction
 	return &this
 }
@@ -55,18 +56,40 @@ func NewChargeSubmitPinResponseDataCustomerWithDefaults() *ChargeSubmitPinRespon
 	return &this
 }
 
-// GetFirstName returns the FirstName field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *ChargeSubmitPinResponseDataCustomer) GetFirstName() string {
-	if o == nil || o.FirstName.Get() == nil {
-		var ret string
+// GetId returns the Id field value
+func (o *ChargeSubmitPinResponseDataCustomer) GetId() int32 {
+	if o == nil {
+		var ret int32
 		return ret
 	}
 
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *ChargeSubmitPinResponseDataCustomer) GetIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *ChargeSubmitPinResponseDataCustomer) SetId(v int32) {
+	o.Id = v
+}
+
+// GetFirstName returns the FirstName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ChargeSubmitPinResponseDataCustomer) GetFirstName() string {
+	if o == nil || IsNil(o.FirstName.Get()) {
+		var ret string
+		return ret
+	}
 	return *o.FirstName.Get()
 }
 
-// GetFirstNameOk returns a tuple with the FirstName field value
+// GetFirstNameOk returns a tuple with the FirstName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ChargeSubmitPinResponseDataCustomer) GetFirstNameOk() (*string, bool) {
@@ -76,23 +99,39 @@ func (o *ChargeSubmitPinResponseDataCustomer) GetFirstNameOk() (*string, bool) {
 	return o.FirstName.Get(), o.FirstName.IsSet()
 }
 
-// SetFirstName sets field value
+// HasFirstName returns a boolean if a field has been set.
+func (o *ChargeSubmitPinResponseDataCustomer) HasFirstName() bool {
+	if o != nil && o.FirstName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFirstName gets a reference to the given NullableString and assigns it to the FirstName field.
 func (o *ChargeSubmitPinResponseDataCustomer) SetFirstName(v string) {
 	o.FirstName.Set(&v)
 }
+// SetFirstNameNil sets the value for FirstName to be an explicit nil
+func (o *ChargeSubmitPinResponseDataCustomer) SetFirstNameNil() {
+	o.FirstName.Set(nil)
+}
 
-// GetLastName returns the LastName field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetFirstName ensures that no value is present for FirstName, not even an explicit nil
+func (o *ChargeSubmitPinResponseDataCustomer) UnsetFirstName() {
+	o.FirstName.Unset()
+}
+
+// GetLastName returns the LastName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ChargeSubmitPinResponseDataCustomer) GetLastName() string {
-	if o == nil || o.LastName.Get() == nil {
+	if o == nil || IsNil(o.LastName.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.LastName.Get()
 }
 
-// GetLastNameOk returns a tuple with the LastName field value
+// GetLastNameOk returns a tuple with the LastName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ChargeSubmitPinResponseDataCustomer) GetLastNameOk() (*string, bool) {
@@ -102,9 +141,27 @@ func (o *ChargeSubmitPinResponseDataCustomer) GetLastNameOk() (*string, bool) {
 	return o.LastName.Get(), o.LastName.IsSet()
 }
 
-// SetLastName sets field value
+// HasLastName returns a boolean if a field has been set.
+func (o *ChargeSubmitPinResponseDataCustomer) HasLastName() bool {
+	if o != nil && o.LastName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastName gets a reference to the given NullableString and assigns it to the LastName field.
 func (o *ChargeSubmitPinResponseDataCustomer) SetLastName(v string) {
 	o.LastName.Set(&v)
+}
+// SetLastNameNil sets the value for LastName to be an explicit nil
+func (o *ChargeSubmitPinResponseDataCustomer) SetLastNameNil() {
+	o.LastName.Set(nil)
+}
+
+// UnsetLastName ensures that no value is present for LastName, not even an explicit nil
+func (o *ChargeSubmitPinResponseDataCustomer) UnsetLastName() {
+	o.LastName.Unset()
 }
 
 // GetEmail returns the Email field value
@@ -155,18 +212,16 @@ func (o *ChargeSubmitPinResponseDataCustomer) SetCustomerCode(v string) {
 	o.CustomerCode = v
 }
 
-// GetPhone returns the Phone field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetPhone returns the Phone field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ChargeSubmitPinResponseDataCustomer) GetPhone() string {
-	if o == nil || o.Phone.Get() == nil {
+	if o == nil || IsNil(o.Phone.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.Phone.Get()
 }
 
-// GetPhoneOk returns a tuple with the Phone field value
+// GetPhoneOk returns a tuple with the Phone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ChargeSubmitPinResponseDataCustomer) GetPhoneOk() (*string, bool) {
@@ -176,9 +231,60 @@ func (o *ChargeSubmitPinResponseDataCustomer) GetPhoneOk() (*string, bool) {
 	return o.Phone.Get(), o.Phone.IsSet()
 }
 
-// SetPhone sets field value
+// HasPhone returns a boolean if a field has been set.
+func (o *ChargeSubmitPinResponseDataCustomer) HasPhone() bool {
+	if o != nil && o.Phone.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPhone gets a reference to the given NullableString and assigns it to the Phone field.
 func (o *ChargeSubmitPinResponseDataCustomer) SetPhone(v string) {
 	o.Phone.Set(&v)
+}
+// SetPhoneNil sets the value for Phone to be an explicit nil
+func (o *ChargeSubmitPinResponseDataCustomer) SetPhoneNil() {
+	o.Phone.Set(nil)
+}
+
+// UnsetPhone ensures that no value is present for Phone, not even an explicit nil
+func (o *ChargeSubmitPinResponseDataCustomer) UnsetPhone() {
+	o.Phone.Unset()
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ChargeSubmitPinResponseDataCustomer) GetMetadata() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+	return o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ChargeSubmitPinResponseDataCustomer) GetMetadataOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Metadata) {
+		return nil, false
+	}
+	return &o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *ChargeSubmitPinResponseDataCustomer) HasMetadata() bool {
+	if o != nil && !IsNil(o.Metadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given interface{} and assigns it to the Metadata field.
+func (o *ChargeSubmitPinResponseDataCustomer) SetMetadata(v interface{}) {
+	o.Metadata = v
 }
 
 // GetRiskAction returns the RiskAction field value
@@ -205,6 +311,48 @@ func (o *ChargeSubmitPinResponseDataCustomer) SetRiskAction(v string) {
 	o.RiskAction = v
 }
 
+// GetInternationalFormatPhone returns the InternationalFormatPhone field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ChargeSubmitPinResponseDataCustomer) GetInternationalFormatPhone() string {
+	if o == nil || IsNil(o.InternationalFormatPhone.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.InternationalFormatPhone.Get()
+}
+
+// GetInternationalFormatPhoneOk returns a tuple with the InternationalFormatPhone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ChargeSubmitPinResponseDataCustomer) GetInternationalFormatPhoneOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.InternationalFormatPhone.Get(), o.InternationalFormatPhone.IsSet()
+}
+
+// HasInternationalFormatPhone returns a boolean if a field has been set.
+func (o *ChargeSubmitPinResponseDataCustomer) HasInternationalFormatPhone() bool {
+	if o != nil && o.InternationalFormatPhone.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInternationalFormatPhone gets a reference to the given NullableString and assigns it to the InternationalFormatPhone field.
+func (o *ChargeSubmitPinResponseDataCustomer) SetInternationalFormatPhone(v string) {
+	o.InternationalFormatPhone.Set(&v)
+}
+// SetInternationalFormatPhoneNil sets the value for InternationalFormatPhone to be an explicit nil
+func (o *ChargeSubmitPinResponseDataCustomer) SetInternationalFormatPhoneNil() {
+	o.InternationalFormatPhone.Set(nil)
+}
+
+// UnsetInternationalFormatPhone ensures that no value is present for InternationalFormatPhone, not even an explicit nil
+func (o *ChargeSubmitPinResponseDataCustomer) UnsetInternationalFormatPhone() {
+	o.InternationalFormatPhone.Unset()
+}
+
 func (o ChargeSubmitPinResponseDataCustomer) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -215,12 +363,25 @@ func (o ChargeSubmitPinResponseDataCustomer) MarshalJSON() ([]byte, error) {
 
 func (o ChargeSubmitPinResponseDataCustomer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["first_name"] = o.FirstName.Get()
-	toSerialize["last_name"] = o.LastName.Get()
+	toSerialize["id"] = o.Id
+	if o.FirstName.IsSet() {
+		toSerialize["first_name"] = o.FirstName.Get()
+	}
+	if o.LastName.IsSet() {
+		toSerialize["last_name"] = o.LastName.Get()
+	}
 	toSerialize["email"] = o.Email
 	toSerialize["customer_code"] = o.CustomerCode
-	toSerialize["phone"] = o.Phone.Get()
+	if o.Phone.IsSet() {
+		toSerialize["phone"] = o.Phone.Get()
+	}
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
+	}
 	toSerialize["risk_action"] = o.RiskAction
+	if o.InternationalFormatPhone.IsSet() {
+		toSerialize["international_format_phone"] = o.InternationalFormatPhone.Get()
+	}
 	return toSerialize, nil
 }
 
@@ -229,11 +390,9 @@ func (o *ChargeSubmitPinResponseDataCustomer) UnmarshalJSON(data []byte) (err er
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"first_name",
-		"last_name",
+		"id",
 		"email",
 		"customer_code",
-		"phone",
 		"risk_action",
 	}
 

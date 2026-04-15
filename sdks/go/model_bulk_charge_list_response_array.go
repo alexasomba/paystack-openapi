@@ -22,12 +22,9 @@ var _ MappedNullable = &BulkChargeListResponseArray{}
 
 // BulkChargeListResponseArray struct for BulkChargeListResponseArray
 type BulkChargeListResponseArray struct {
-	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
 	BatchCode string `json:"batch_code"`
 	Status string `json:"status"`
-	EasyCronId interface{} `json:"easy_cron_id"`
-	Reference string `json:"reference"`
 	Id int32 `json:"id"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
@@ -39,14 +36,11 @@ type _BulkChargeListResponseArray BulkChargeListResponseArray
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBulkChargeListResponseArray(integration int32, domain string, batchCode string, status string, easyCronId interface{}, reference string, id int32, createdAt string, updatedAt string) *BulkChargeListResponseArray {
+func NewBulkChargeListResponseArray(domain string, batchCode string, status string, id int32, createdAt string, updatedAt string) *BulkChargeListResponseArray {
 	this := BulkChargeListResponseArray{}
-	this.Integration = integration
 	this.Domain = domain
 	this.BatchCode = batchCode
 	this.Status = status
-	this.EasyCronId = easyCronId
-	this.Reference = reference
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
@@ -59,30 +53,6 @@ func NewBulkChargeListResponseArray(integration int32, domain string, batchCode 
 func NewBulkChargeListResponseArrayWithDefaults() *BulkChargeListResponseArray {
 	this := BulkChargeListResponseArray{}
 	return &this
-}
-
-// GetIntegration returns the Integration field value
-func (o *BulkChargeListResponseArray) GetIntegration() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Integration
-}
-
-// GetIntegrationOk returns a tuple with the Integration field value
-// and a boolean to check if the value has been set.
-func (o *BulkChargeListResponseArray) GetIntegrationOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Integration, true
-}
-
-// SetIntegration sets field value
-func (o *BulkChargeListResponseArray) SetIntegration(v int32) {
-	o.Integration = v
 }
 
 // GetDomain returns the Domain field value
@@ -155,56 +125,6 @@ func (o *BulkChargeListResponseArray) GetStatusOk() (*string, bool) {
 // SetStatus sets field value
 func (o *BulkChargeListResponseArray) SetStatus(v string) {
 	o.Status = v
-}
-
-// GetEasyCronId returns the EasyCronId field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *BulkChargeListResponseArray) GetEasyCronId() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.EasyCronId
-}
-
-// GetEasyCronIdOk returns a tuple with the EasyCronId field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *BulkChargeListResponseArray) GetEasyCronIdOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.EasyCronId) {
-		return nil, false
-	}
-	return &o.EasyCronId, true
-}
-
-// SetEasyCronId sets field value
-func (o *BulkChargeListResponseArray) SetEasyCronId(v interface{}) {
-	o.EasyCronId = v
-}
-
-// GetReference returns the Reference field value
-func (o *BulkChargeListResponseArray) GetReference() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Reference
-}
-
-// GetReferenceOk returns a tuple with the Reference field value
-// and a boolean to check if the value has been set.
-func (o *BulkChargeListResponseArray) GetReferenceOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Reference, true
-}
-
-// SetReference sets field value
-func (o *BulkChargeListResponseArray) SetReference(v string) {
-	o.Reference = v
 }
 
 // GetId returns the Id field value
@@ -289,14 +209,9 @@ func (o BulkChargeListResponseArray) MarshalJSON() ([]byte, error) {
 
 func (o BulkChargeListResponseArray) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["integration"] = o.Integration
 	toSerialize["domain"] = o.Domain
 	toSerialize["batch_code"] = o.BatchCode
 	toSerialize["status"] = o.Status
-	if o.EasyCronId != nil {
-		toSerialize["easy_cron_id"] = o.EasyCronId
-	}
-	toSerialize["reference"] = o.Reference
 	toSerialize["id"] = o.Id
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["updatedAt"] = o.UpdatedAt
@@ -308,12 +223,9 @@ func (o *BulkChargeListResponseArray) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"integration",
 		"domain",
 		"batch_code",
 		"status",
-		"easy_cron_id",
-		"reference",
 		"id",
 		"createdAt",
 		"updatedAt",

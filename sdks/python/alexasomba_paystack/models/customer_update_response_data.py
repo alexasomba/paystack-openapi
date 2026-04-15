@@ -27,21 +27,23 @@ class CustomerUpdateResponseData(BaseModel):
     """
     CustomerUpdateResponseData
     """ # noqa: E501
+    integration: StrictInt
     first_name: StrictStr
     last_name: StrictStr
     email: StrictStr
-    phone: StrictStr
-    metadata: Dict[str, Any]
-    domain: StrictStr
-    customer_code: StrictStr
-    risk_action: StrictStr
-    id: StrictInt
-    integration: StrictInt
-    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
-    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
+    phone: Optional[StrictStr]
+    metadata: Optional[Dict[str, Any]]
     identified: StrictBool
     identifications: Optional[Any]
-    __properties: ClassVar[List[str]] = ["first_name", "last_name", "email", "phone", "metadata", "domain", "customer_code", "risk_action", "id", "integration", "createdAt", "updatedAt", "identified", "identifications"]
+    domain: StrictStr
+    customer_code: StrictStr
+    id: StrictInt
+    transactions: List[Any]
+    subscriptions: List[Any]
+    authorizations: List[Any]
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
+    __properties: ClassVar[List[str]] = ["integration", "first_name", "last_name", "email", "phone", "metadata", "identified", "identifications", "domain", "customer_code", "id", "transactions", "subscriptions", "authorizations", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,6 +84,16 @@ class CustomerUpdateResponseData(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if phone (nullable) is None
+        # and model_fields_set contains the field
+        if self.phone is None and "phone" in self.model_fields_set:
+            _dict['phone'] = None
+
+        # set to None if metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
+
         # set to None if identifications (nullable) is None
         # and model_fields_set contains the field
         if self.identifications is None and "identifications" in self.model_fields_set:
@@ -99,20 +111,22 @@ class CustomerUpdateResponseData(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "integration": obj.get("integration"),
             "first_name": obj.get("first_name"),
             "last_name": obj.get("last_name"),
             "email": obj.get("email"),
             "phone": obj.get("phone"),
             "metadata": obj.get("metadata"),
+            "identified": obj.get("identified"),
+            "identifications": obj.get("identifications"),
             "domain": obj.get("domain"),
             "customer_code": obj.get("customer_code"),
-            "risk_action": obj.get("risk_action"),
             "id": obj.get("id"),
-            "integration": obj.get("integration"),
+            "transactions": obj.get("transactions"),
+            "subscriptions": obj.get("subscriptions"),
+            "authorizations": obj.get("authorizations"),
             "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
-            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
-            "identified": obj.get("identified"),
-            "identifications": obj.get("identifications")
+            "updatedAt": obj.get("updatedAt")
         })
         return _obj
 

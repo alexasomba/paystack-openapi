@@ -139,14 +139,14 @@ class ApplePayApi
      *
      * List Domains
      *
-     * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
-     * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
-     * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
+     * @param  bool|null $use_cursor Flag to enable cursor pagination on the endpoint (optional)
+     * @param  string|null $next A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
+     * @param  string|null $previous A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applePayListDomain'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\ApplePayDomainsResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
     public function applePayListDomain($use_cursor = null, $next = null, $previous = null, string $contentType = self::contentTypes['applePayListDomain'][0])
     {
@@ -159,14 +159,14 @@ class ApplePayApi
      *
      * List Domains
      *
-     * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
-     * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
-     * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
+     * @param  bool|null $use_cursor Flag to enable cursor pagination on the endpoint (optional)
+     * @param  string|null $next A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
+     * @param  string|null $previous A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applePayListDomain'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\ApplePayDomainsResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function applePayListDomainWithHttpInfo($use_cursor = null, $next = null, $previous = null, string $contentType = self::contentTypes['applePayListDomain'][0])
     {
@@ -198,7 +198,7 @@ class ApplePayApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\ApplePayDomainsResponse',
                         $request,
                         $response,
                     );
@@ -232,7 +232,7 @@ class ApplePayApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\Paystack\Model\Response',
+                '\Alexasomba\Paystack\Model\ApplePayDomainsResponse',
                 $request,
                 $response,
             );
@@ -241,7 +241,7 @@ class ApplePayApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\ApplePayDomainsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -274,9 +274,9 @@ class ApplePayApi
      *
      * List Domains
      *
-     * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
-     * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
-     * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
+     * @param  bool|null $use_cursor Flag to enable cursor pagination on the endpoint (optional)
+     * @param  string|null $next A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
+     * @param  string|null $previous A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applePayListDomain'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -297,9 +297,9 @@ class ApplePayApi
      *
      * List Domains
      *
-     * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
-     * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
-     * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
+     * @param  bool|null $use_cursor Flag to enable cursor pagination on the endpoint (optional)
+     * @param  string|null $next A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
+     * @param  string|null $previous A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applePayListDomain'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -307,7 +307,7 @@ class ApplePayApi
      */
     public function applePayListDomainAsyncWithHttpInfo($use_cursor = null, $next = null, $previous = null, string $contentType = self::contentTypes['applePayListDomain'][0])
     {
-        $returnType = '\Alexasomba\Paystack\Model\Response';
+        $returnType = '\Alexasomba\Paystack\Model\ApplePayDomainsResponse';
         $request = $this->applePayListDomainRequest($use_cursor, $next, $previous, $contentType);
 
         return $this->client
@@ -349,9 +349,9 @@ class ApplePayApi
     /**
      * Create request for operation 'applePayListDomain'
      *
-     * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
-     * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
-     * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
+     * @param  bool|null $use_cursor Flag to enable cursor pagination on the endpoint (optional)
+     * @param  string|null $next A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
+     * @param  string|null $previous A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applePayListDomain'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

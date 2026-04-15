@@ -32,18 +32,13 @@ type SubscriptionFetchResponseData struct {
 	NextPaymentDate string `json:"next_payment_date"`
 	OpenInvoice interface{} `json:"open_invoice"`
 	CreatedAt string `json:"createdAt"`
-	CancelledAt interface{} `json:"cancelledAt"`
 	Integration int32 `json:"integration"`
 	Plan SubscriptionFetchResponseDataPlan `json:"plan"`
-	Authorization TransactionPartialDebitResponseDataAuthorization `json:"authorization"`
-	Customer TransactionFetchResponseDataCustomer `json:"customer"`
+	Authorization BulkChargeFetchBulkBatchChargesResponseArrayAuthorization `json:"authorization"`
+	Customer SubscriptionFetchResponseDataCustomer `json:"customer"`
+	Start int32 `json:"start"`
+	Quantity int32 `json:"quantity"`
 	Invoices []interface{} `json:"invoices"`
-	InvoicesHistory []interface{} `json:"invoices_history"`
-	InvoiceLimit int32 `json:"invoice_limit"`
-	SplitCode interface{} `json:"split_code"`
-	MostRecentInvoice interface{} `json:"most_recent_invoice"`
-	PaymentsCount int32 `json:"payments_count"`
-	Metadata map[string]interface{} `json:"metadata"`
 }
 
 type _SubscriptionFetchResponseData SubscriptionFetchResponseData
@@ -52,7 +47,7 @@ type _SubscriptionFetchResponseData SubscriptionFetchResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSubscriptionFetchResponseData(id int32, domain string, status string, subscriptionCode string, emailToken string, amount int32, cronExpression string, nextPaymentDate string, openInvoice interface{}, createdAt string, cancelledAt interface{}, integration int32, plan SubscriptionFetchResponseDataPlan, authorization TransactionPartialDebitResponseDataAuthorization, customer TransactionFetchResponseDataCustomer, invoices []interface{}, invoicesHistory []interface{}, invoiceLimit int32, splitCode interface{}, mostRecentInvoice interface{}, paymentsCount int32, metadata map[string]interface{}) *SubscriptionFetchResponseData {
+func NewSubscriptionFetchResponseData(id int32, domain string, status string, subscriptionCode string, emailToken string, amount int32, cronExpression string, nextPaymentDate string, openInvoice interface{}, createdAt string, integration int32, plan SubscriptionFetchResponseDataPlan, authorization BulkChargeFetchBulkBatchChargesResponseArrayAuthorization, customer SubscriptionFetchResponseDataCustomer, start int32, quantity int32, invoices []interface{}) *SubscriptionFetchResponseData {
 	this := SubscriptionFetchResponseData{}
 	this.Id = id
 	this.Domain = domain
@@ -64,18 +59,13 @@ func NewSubscriptionFetchResponseData(id int32, domain string, status string, su
 	this.NextPaymentDate = nextPaymentDate
 	this.OpenInvoice = openInvoice
 	this.CreatedAt = createdAt
-	this.CancelledAt = cancelledAt
 	this.Integration = integration
 	this.Plan = plan
 	this.Authorization = authorization
 	this.Customer = customer
+	this.Start = start
+	this.Quantity = quantity
 	this.Invoices = invoices
-	this.InvoicesHistory = invoicesHistory
-	this.InvoiceLimit = invoiceLimit
-	this.SplitCode = splitCode
-	this.MostRecentInvoice = mostRecentInvoice
-	this.PaymentsCount = paymentsCount
-	this.Metadata = metadata
 	return &this
 }
 
@@ -329,32 +319,6 @@ func (o *SubscriptionFetchResponseData) SetCreatedAt(v string) {
 	o.CreatedAt = v
 }
 
-// GetCancelledAt returns the CancelledAt field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *SubscriptionFetchResponseData) GetCancelledAt() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.CancelledAt
-}
-
-// GetCancelledAtOk returns a tuple with the CancelledAt field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubscriptionFetchResponseData) GetCancelledAtOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.CancelledAt) {
-		return nil, false
-	}
-	return &o.CancelledAt, true
-}
-
-// SetCancelledAt sets field value
-func (o *SubscriptionFetchResponseData) SetCancelledAt(v interface{}) {
-	o.CancelledAt = v
-}
-
 // GetIntegration returns the Integration field value
 func (o *SubscriptionFetchResponseData) GetIntegration() int32 {
 	if o == nil {
@@ -404,9 +368,9 @@ func (o *SubscriptionFetchResponseData) SetPlan(v SubscriptionFetchResponseDataP
 }
 
 // GetAuthorization returns the Authorization field value
-func (o *SubscriptionFetchResponseData) GetAuthorization() TransactionPartialDebitResponseDataAuthorization {
+func (o *SubscriptionFetchResponseData) GetAuthorization() BulkChargeFetchBulkBatchChargesResponseArrayAuthorization {
 	if o == nil {
-		var ret TransactionPartialDebitResponseDataAuthorization
+		var ret BulkChargeFetchBulkBatchChargesResponseArrayAuthorization
 		return ret
 	}
 
@@ -415,7 +379,7 @@ func (o *SubscriptionFetchResponseData) GetAuthorization() TransactionPartialDeb
 
 // GetAuthorizationOk returns a tuple with the Authorization field value
 // and a boolean to check if the value has been set.
-func (o *SubscriptionFetchResponseData) GetAuthorizationOk() (*TransactionPartialDebitResponseDataAuthorization, bool) {
+func (o *SubscriptionFetchResponseData) GetAuthorizationOk() (*BulkChargeFetchBulkBatchChargesResponseArrayAuthorization, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -423,14 +387,14 @@ func (o *SubscriptionFetchResponseData) GetAuthorizationOk() (*TransactionPartia
 }
 
 // SetAuthorization sets field value
-func (o *SubscriptionFetchResponseData) SetAuthorization(v TransactionPartialDebitResponseDataAuthorization) {
+func (o *SubscriptionFetchResponseData) SetAuthorization(v BulkChargeFetchBulkBatchChargesResponseArrayAuthorization) {
 	o.Authorization = v
 }
 
 // GetCustomer returns the Customer field value
-func (o *SubscriptionFetchResponseData) GetCustomer() TransactionFetchResponseDataCustomer {
+func (o *SubscriptionFetchResponseData) GetCustomer() SubscriptionFetchResponseDataCustomer {
 	if o == nil {
-		var ret TransactionFetchResponseDataCustomer
+		var ret SubscriptionFetchResponseDataCustomer
 		return ret
 	}
 
@@ -439,7 +403,7 @@ func (o *SubscriptionFetchResponseData) GetCustomer() TransactionFetchResponseDa
 
 // GetCustomerOk returns a tuple with the Customer field value
 // and a boolean to check if the value has been set.
-func (o *SubscriptionFetchResponseData) GetCustomerOk() (*TransactionFetchResponseDataCustomer, bool) {
+func (o *SubscriptionFetchResponseData) GetCustomerOk() (*SubscriptionFetchResponseDataCustomer, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -447,8 +411,56 @@ func (o *SubscriptionFetchResponseData) GetCustomerOk() (*TransactionFetchRespon
 }
 
 // SetCustomer sets field value
-func (o *SubscriptionFetchResponseData) SetCustomer(v TransactionFetchResponseDataCustomer) {
+func (o *SubscriptionFetchResponseData) SetCustomer(v SubscriptionFetchResponseDataCustomer) {
 	o.Customer = v
+}
+
+// GetStart returns the Start field value
+func (o *SubscriptionFetchResponseData) GetStart() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Start
+}
+
+// GetStartOk returns a tuple with the Start field value
+// and a boolean to check if the value has been set.
+func (o *SubscriptionFetchResponseData) GetStartOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Start, true
+}
+
+// SetStart sets field value
+func (o *SubscriptionFetchResponseData) SetStart(v int32) {
+	o.Start = v
+}
+
+// GetQuantity returns the Quantity field value
+func (o *SubscriptionFetchResponseData) GetQuantity() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Quantity
+}
+
+// GetQuantityOk returns a tuple with the Quantity field value
+// and a boolean to check if the value has been set.
+func (o *SubscriptionFetchResponseData) GetQuantityOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Quantity, true
+}
+
+// SetQuantity sets field value
+func (o *SubscriptionFetchResponseData) SetQuantity(v int32) {
+	o.Quantity = v
 }
 
 // GetInvoices returns the Invoices field value
@@ -475,156 +487,6 @@ func (o *SubscriptionFetchResponseData) SetInvoices(v []interface{}) {
 	o.Invoices = v
 }
 
-// GetInvoicesHistory returns the InvoicesHistory field value
-func (o *SubscriptionFetchResponseData) GetInvoicesHistory() []interface{} {
-	if o == nil {
-		var ret []interface{}
-		return ret
-	}
-
-	return o.InvoicesHistory
-}
-
-// GetInvoicesHistoryOk returns a tuple with the InvoicesHistory field value
-// and a boolean to check if the value has been set.
-func (o *SubscriptionFetchResponseData) GetInvoicesHistoryOk() ([]interface{}, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.InvoicesHistory, true
-}
-
-// SetInvoicesHistory sets field value
-func (o *SubscriptionFetchResponseData) SetInvoicesHistory(v []interface{}) {
-	o.InvoicesHistory = v
-}
-
-// GetInvoiceLimit returns the InvoiceLimit field value
-func (o *SubscriptionFetchResponseData) GetInvoiceLimit() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.InvoiceLimit
-}
-
-// GetInvoiceLimitOk returns a tuple with the InvoiceLimit field value
-// and a boolean to check if the value has been set.
-func (o *SubscriptionFetchResponseData) GetInvoiceLimitOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.InvoiceLimit, true
-}
-
-// SetInvoiceLimit sets field value
-func (o *SubscriptionFetchResponseData) SetInvoiceLimit(v int32) {
-	o.InvoiceLimit = v
-}
-
-// GetSplitCode returns the SplitCode field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *SubscriptionFetchResponseData) GetSplitCode() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.SplitCode
-}
-
-// GetSplitCodeOk returns a tuple with the SplitCode field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubscriptionFetchResponseData) GetSplitCodeOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.SplitCode) {
-		return nil, false
-	}
-	return &o.SplitCode, true
-}
-
-// SetSplitCode sets field value
-func (o *SubscriptionFetchResponseData) SetSplitCode(v interface{}) {
-	o.SplitCode = v
-}
-
-// GetMostRecentInvoice returns the MostRecentInvoice field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *SubscriptionFetchResponseData) GetMostRecentInvoice() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.MostRecentInvoice
-}
-
-// GetMostRecentInvoiceOk returns a tuple with the MostRecentInvoice field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubscriptionFetchResponseData) GetMostRecentInvoiceOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.MostRecentInvoice) {
-		return nil, false
-	}
-	return &o.MostRecentInvoice, true
-}
-
-// SetMostRecentInvoice sets field value
-func (o *SubscriptionFetchResponseData) SetMostRecentInvoice(v interface{}) {
-	o.MostRecentInvoice = v
-}
-
-// GetPaymentsCount returns the PaymentsCount field value
-func (o *SubscriptionFetchResponseData) GetPaymentsCount() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.PaymentsCount
-}
-
-// GetPaymentsCountOk returns a tuple with the PaymentsCount field value
-// and a boolean to check if the value has been set.
-func (o *SubscriptionFetchResponseData) GetPaymentsCountOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.PaymentsCount, true
-}
-
-// SetPaymentsCount sets field value
-func (o *SubscriptionFetchResponseData) SetPaymentsCount(v int32) {
-	o.PaymentsCount = v
-}
-
-// GetMetadata returns the Metadata field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *SubscriptionFetchResponseData) GetMetadata() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-
-	return o.Metadata
-}
-
-// GetMetadataOk returns a tuple with the Metadata field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubscriptionFetchResponseData) GetMetadataOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Metadata) {
-		return map[string]interface{}{}, false
-	}
-	return o.Metadata, true
-}
-
-// SetMetadata sets field value
-func (o *SubscriptionFetchResponseData) SetMetadata(v map[string]interface{}) {
-	o.Metadata = v
-}
-
 func (o SubscriptionFetchResponseData) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -647,26 +509,13 @@ func (o SubscriptionFetchResponseData) ToMap() (map[string]interface{}, error) {
 		toSerialize["open_invoice"] = o.OpenInvoice
 	}
 	toSerialize["createdAt"] = o.CreatedAt
-	if o.CancelledAt != nil {
-		toSerialize["cancelledAt"] = o.CancelledAt
-	}
 	toSerialize["integration"] = o.Integration
 	toSerialize["plan"] = o.Plan
 	toSerialize["authorization"] = o.Authorization
 	toSerialize["customer"] = o.Customer
+	toSerialize["start"] = o.Start
+	toSerialize["quantity"] = o.Quantity
 	toSerialize["invoices"] = o.Invoices
-	toSerialize["invoices_history"] = o.InvoicesHistory
-	toSerialize["invoice_limit"] = o.InvoiceLimit
-	if o.SplitCode != nil {
-		toSerialize["split_code"] = o.SplitCode
-	}
-	if o.MostRecentInvoice != nil {
-		toSerialize["most_recent_invoice"] = o.MostRecentInvoice
-	}
-	toSerialize["payments_count"] = o.PaymentsCount
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
-	}
 	return toSerialize, nil
 }
 
@@ -685,18 +534,13 @@ func (o *SubscriptionFetchResponseData) UnmarshalJSON(data []byte) (err error) {
 		"next_payment_date",
 		"open_invoice",
 		"createdAt",
-		"cancelledAt",
 		"integration",
 		"plan",
 		"authorization",
 		"customer",
+		"start",
+		"quantity",
 		"invoices",
-		"invoices_history",
-		"invoice_limit",
-		"split_code",
-		"most_recent_invoice",
-		"payments_count",
-		"metadata",
 	}
 
 	allProperties := make(map[string]interface{})

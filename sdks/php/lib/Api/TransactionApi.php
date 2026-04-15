@@ -448,7 +448,7 @@ class TransactionApi
      * Check Authorization
      *
      * @param  string $email Customer&#39;s email address (required)
-     * @param  int $amount Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR (required)
+     * @param  int $amount Amount should be in kobo if currency is NGN, pesewas if currency is GHS, cents if currency is ZAR, and whole number if currency is XOF (required)
      * @param  string|null $authorization_code Valid authorization code to charge (optional)
      * @param  string|null $currency The transaction currency (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionCheckAuthorization'] to see the possible values for this operation
@@ -469,7 +469,7 @@ class TransactionApi
      * Check Authorization
      *
      * @param  string $email Customer&#39;s email address (required)
-     * @param  int $amount Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR (required)
+     * @param  int $amount Amount should be in kobo if currency is NGN, pesewas if currency is GHS, cents if currency is ZAR, and whole number if currency is XOF (required)
      * @param  string|null $authorization_code Valid authorization code to charge (optional)
      * @param  string|null $currency The transaction currency (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionCheckAuthorization'] to see the possible values for this operation
@@ -571,7 +571,7 @@ class TransactionApi
      * Check Authorization
      *
      * @param  string $email Customer&#39;s email address (required)
-     * @param  int $amount Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR (required)
+     * @param  int $amount Amount should be in kobo if currency is NGN, pesewas if currency is GHS, cents if currency is ZAR, and whole number if currency is XOF (required)
      * @param  string|null $authorization_code Valid authorization code to charge (optional)
      * @param  string|null $currency The transaction currency (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionCheckAuthorization'] to see the possible values for this operation
@@ -595,7 +595,7 @@ class TransactionApi
      * Check Authorization
      *
      * @param  string $email Customer&#39;s email address (required)
-     * @param  int $amount Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR (required)
+     * @param  int $amount Amount should be in kobo if currency is NGN, pesewas if currency is GHS, cents if currency is ZAR, and whole number if currency is XOF (required)
      * @param  string|null $authorization_code Valid authorization code to charge (optional)
      * @param  string|null $currency The transaction currency (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionCheckAuthorization'] to see the possible values for this operation
@@ -648,7 +648,7 @@ class TransactionApi
      * Create request for operation 'transactionCheckAuthorization'
      *
      * @param  string $email Customer&#39;s email address (required)
-     * @param  int $amount Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR (required)
+     * @param  int $amount Amount should be in kobo if currency is NGN, pesewas if currency is GHS, cents if currency is ZAR, and whole number if currency is XOF (required)
      * @param  string|null $authorization_code Valid authorization code to charge (optional)
      * @param  string|null $currency The transaction currency (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionCheckAuthorization'] to see the possible values for this operation
@@ -1061,21 +1061,27 @@ class TransactionApi
      *
      * Export Transactions
      *
+     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
      * @param  string|null $status Filter by the status of the transaction (optional)
-     * @param  float|null $customer Filter by customer ID (optional)
-     * @param  string|null $subaccount_code Filter by subaccount code (optional)
+     * @param  int|null $customer Filter by customer ID (optional)
+     * @param  string|null $currency Specify the transaction currency to export (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by amount. (optional)
+     * @param  bool|null $settled Set to true to export only settled transactions. false for pending transactions. Leave undefined to export all transactions (optional)
      * @param  int|null $settlement Filter by the settlement ID (optional)
+     * @param  int|null $payment_page Specify a payment page&#39;s id to export only transactions conducted on said page (optional)
+     * @param  string|null $subaccount_code Filter by subaccount code (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionExport'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\TransactionExportResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function transactionExport($from = null, $to = null, $status = null, $customer = null, $subaccount_code = null, $settlement = null, string $contentType = self::contentTypes['transactionExport'][0])
+    public function transactionExport($per_page = null, $page = null, $from = null, $to = null, $status = null, $customer = null, $currency = null, $amount = null, $settled = null, $settlement = null, $payment_page = null, $subaccount_code = null, string $contentType = self::contentTypes['transactionExport'][0])
     {
-        list($response) = $this->transactionExportWithHttpInfo($from, $to, $status, $customer, $subaccount_code, $settlement, $contentType);
+        list($response) = $this->transactionExportWithHttpInfo($per_page, $page, $from, $to, $status, $customer, $currency, $amount, $settled, $settlement, $payment_page, $subaccount_code, $contentType);
         return $response;
     }
 
@@ -1084,21 +1090,27 @@ class TransactionApi
      *
      * Export Transactions
      *
+     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
      * @param  string|null $status Filter by the status of the transaction (optional)
-     * @param  float|null $customer Filter by customer ID (optional)
-     * @param  string|null $subaccount_code Filter by subaccount code (optional)
+     * @param  int|null $customer Filter by customer ID (optional)
+     * @param  string|null $currency Specify the transaction currency to export (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by amount. (optional)
+     * @param  bool|null $settled Set to true to export only settled transactions. false for pending transactions. Leave undefined to export all transactions (optional)
      * @param  int|null $settlement Filter by the settlement ID (optional)
+     * @param  int|null $payment_page Specify a payment page&#39;s id to export only transactions conducted on said page (optional)
+     * @param  string|null $subaccount_code Filter by subaccount code (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionExport'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\TransactionExportResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transactionExportWithHttpInfo($from = null, $to = null, $status = null, $customer = null, $subaccount_code = null, $settlement = null, string $contentType = self::contentTypes['transactionExport'][0])
+    public function transactionExportWithHttpInfo($per_page = null, $page = null, $from = null, $to = null, $status = null, $customer = null, $currency = null, $amount = null, $settled = null, $settlement = null, $payment_page = null, $subaccount_code = null, string $contentType = self::contentTypes['transactionExport'][0])
     {
-        $request = $this->transactionExportRequest($from, $to, $status, $customer, $subaccount_code, $settlement, $contentType);
+        $request = $this->transactionExportRequest($per_page, $page, $from, $to, $status, $customer, $currency, $amount, $settled, $settlement, $payment_page, $subaccount_code, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1202,20 +1214,26 @@ class TransactionApi
      *
      * Export Transactions
      *
+     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
      * @param  string|null $status Filter by the status of the transaction (optional)
-     * @param  float|null $customer Filter by customer ID (optional)
-     * @param  string|null $subaccount_code Filter by subaccount code (optional)
+     * @param  int|null $customer Filter by customer ID (optional)
+     * @param  string|null $currency Specify the transaction currency to export (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by amount. (optional)
+     * @param  bool|null $settled Set to true to export only settled transactions. false for pending transactions. Leave undefined to export all transactions (optional)
      * @param  int|null $settlement Filter by the settlement ID (optional)
+     * @param  int|null $payment_page Specify a payment page&#39;s id to export only transactions conducted on said page (optional)
+     * @param  string|null $subaccount_code Filter by subaccount code (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionExport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionExportAsync($from = null, $to = null, $status = null, $customer = null, $subaccount_code = null, $settlement = null, string $contentType = self::contentTypes['transactionExport'][0])
+    public function transactionExportAsync($per_page = null, $page = null, $from = null, $to = null, $status = null, $customer = null, $currency = null, $amount = null, $settled = null, $settlement = null, $payment_page = null, $subaccount_code = null, string $contentType = self::contentTypes['transactionExport'][0])
     {
-        return $this->transactionExportAsyncWithHttpInfo($from, $to, $status, $customer, $subaccount_code, $settlement, $contentType)
+        return $this->transactionExportAsyncWithHttpInfo($per_page, $page, $from, $to, $status, $customer, $currency, $amount, $settled, $settlement, $payment_page, $subaccount_code, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1228,21 +1246,27 @@ class TransactionApi
      *
      * Export Transactions
      *
+     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
      * @param  string|null $status Filter by the status of the transaction (optional)
-     * @param  float|null $customer Filter by customer ID (optional)
-     * @param  string|null $subaccount_code Filter by subaccount code (optional)
+     * @param  int|null $customer Filter by customer ID (optional)
+     * @param  string|null $currency Specify the transaction currency to export (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by amount. (optional)
+     * @param  bool|null $settled Set to true to export only settled transactions. false for pending transactions. Leave undefined to export all transactions (optional)
      * @param  int|null $settlement Filter by the settlement ID (optional)
+     * @param  int|null $payment_page Specify a payment page&#39;s id to export only transactions conducted on said page (optional)
+     * @param  string|null $subaccount_code Filter by subaccount code (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionExport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionExportAsyncWithHttpInfo($from = null, $to = null, $status = null, $customer = null, $subaccount_code = null, $settlement = null, string $contentType = self::contentTypes['transactionExport'][0])
+    public function transactionExportAsyncWithHttpInfo($per_page = null, $page = null, $from = null, $to = null, $status = null, $customer = null, $currency = null, $amount = null, $settled = null, $settlement = null, $payment_page = null, $subaccount_code = null, string $contentType = self::contentTypes['transactionExport'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\TransactionExportResponse';
-        $request = $this->transactionExportRequest($from, $to, $status, $customer, $subaccount_code, $settlement, $contentType);
+        $request = $this->transactionExportRequest($per_page, $page, $from, $to, $status, $customer, $currency, $amount, $settled, $settlement, $payment_page, $subaccount_code, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1283,19 +1307,31 @@ class TransactionApi
     /**
      * Create request for operation 'transactionExport'
      *
+     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
      * @param  string|null $status Filter by the status of the transaction (optional)
-     * @param  float|null $customer Filter by customer ID (optional)
-     * @param  string|null $subaccount_code Filter by subaccount code (optional)
+     * @param  int|null $customer Filter by customer ID (optional)
+     * @param  string|null $currency Specify the transaction currency to export (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by amount. (optional)
+     * @param  bool|null $settled Set to true to export only settled transactions. false for pending transactions. Leave undefined to export all transactions (optional)
      * @param  int|null $settlement Filter by the settlement ID (optional)
+     * @param  int|null $payment_page Specify a payment page&#39;s id to export only transactions conducted on said page (optional)
+     * @param  string|null $subaccount_code Filter by subaccount code (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionExport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transactionExportRequest($from = null, $to = null, $status = null, $customer = null, $subaccount_code = null, $settlement = null, string $contentType = self::contentTypes['transactionExport'][0])
+    public function transactionExportRequest($per_page = null, $page = null, $from = null, $to = null, $status = null, $customer = null, $currency = null, $amount = null, $settled = null, $settlement = null, $payment_page = null, $subaccount_code = null, string $contentType = self::contentTypes['transactionExport'][0])
     {
+
+
+
+
+
+
 
 
 
@@ -1311,6 +1347,24 @@ class TransactionApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $per_page,
+            'perPage', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page,
+            'page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $from,
@@ -1342,16 +1396,34 @@ class TransactionApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $customer,
             'customer', // param base name
-            'number', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $subaccount_code,
-            'subaccount_code', // param base name
+            $currency,
+            'currency', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $amount,
+            'amount', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $settled,
+            'settled', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1361,6 +1433,24 @@ class TransactionApi
             $settlement,
             'settlement', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $payment_page,
+            'payment_page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $subaccount_code,
+            'subaccount_code', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -2027,16 +2117,16 @@ class TransactionApi
      * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
      * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
      * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
+     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
      * @param  string|null $status Filter transaction by status (optional)
      * @param  string|null $source The origin of the payment (optional)
-     * @param  string|null $terminal_id Filter transactions by a terminal ID (optional)
+     * @param  string|null $terminalid The Terminal ID for the transactions you want to retrieve (optional)
      * @param  string|null $virtual_account_number Filter transactions by a virtual account number (optional)
-     * @param  string|null $customer_code Filter transactions by a customer code (optional)
-     * @param  int|null $amount Filter transactions by a specific amount (optional)
+     * @param  int|null $customer Specify an ID for the customer whose transactions you want to retrieve (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. (optional)
      * @param  int|null $settlement The settlement ID to filter for settled transactions (optional)
      * @param  string|null $channel The payment method the customer used to complete the transaction (optional)
      * @param  string|null $subaccount_code Filter transaction by subaccount code (optional)
@@ -2047,9 +2137,9 @@ class TransactionApi
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\TransactionListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function transactionList($use_cursor = null, $next = null, $previous = null, $per_page = null, $page = null, $from = null, $to = null, $status = null, $source = null, $terminal_id = null, $virtual_account_number = null, $customer_code = null, $amount = null, $settlement = null, $channel = null, $subaccount_code = null, $split_code = null, string $contentType = self::contentTypes['transactionList'][0])
+    public function transactionList($use_cursor = null, $next = null, $previous = null, $per_page = null, $page = null, $from = null, $to = null, $status = null, $source = null, $terminalid = null, $virtual_account_number = null, $customer = null, $amount = null, $settlement = null, $channel = null, $subaccount_code = null, $split_code = null, string $contentType = self::contentTypes['transactionList'][0])
     {
-        list($response) = $this->transactionListWithHttpInfo($use_cursor, $next, $previous, $per_page, $page, $from, $to, $status, $source, $terminal_id, $virtual_account_number, $customer_code, $amount, $settlement, $channel, $subaccount_code, $split_code, $contentType);
+        list($response) = $this->transactionListWithHttpInfo($use_cursor, $next, $previous, $per_page, $page, $from, $to, $status, $source, $terminalid, $virtual_account_number, $customer, $amount, $settlement, $channel, $subaccount_code, $split_code, $contentType);
         return $response;
     }
 
@@ -2061,16 +2151,16 @@ class TransactionApi
      * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
      * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
      * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
+     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
      * @param  string|null $status Filter transaction by status (optional)
      * @param  string|null $source The origin of the payment (optional)
-     * @param  string|null $terminal_id Filter transactions by a terminal ID (optional)
+     * @param  string|null $terminalid The Terminal ID for the transactions you want to retrieve (optional)
      * @param  string|null $virtual_account_number Filter transactions by a virtual account number (optional)
-     * @param  string|null $customer_code Filter transactions by a customer code (optional)
-     * @param  int|null $amount Filter transactions by a specific amount (optional)
+     * @param  int|null $customer Specify an ID for the customer whose transactions you want to retrieve (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. (optional)
      * @param  int|null $settlement The settlement ID to filter for settled transactions (optional)
      * @param  string|null $channel The payment method the customer used to complete the transaction (optional)
      * @param  string|null $subaccount_code Filter transaction by subaccount code (optional)
@@ -2081,9 +2171,9 @@ class TransactionApi
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\TransactionListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transactionListWithHttpInfo($use_cursor = null, $next = null, $previous = null, $per_page = null, $page = null, $from = null, $to = null, $status = null, $source = null, $terminal_id = null, $virtual_account_number = null, $customer_code = null, $amount = null, $settlement = null, $channel = null, $subaccount_code = null, $split_code = null, string $contentType = self::contentTypes['transactionList'][0])
+    public function transactionListWithHttpInfo($use_cursor = null, $next = null, $previous = null, $per_page = null, $page = null, $from = null, $to = null, $status = null, $source = null, $terminalid = null, $virtual_account_number = null, $customer = null, $amount = null, $settlement = null, $channel = null, $subaccount_code = null, $split_code = null, string $contentType = self::contentTypes['transactionList'][0])
     {
-        $request = $this->transactionListRequest($use_cursor, $next, $previous, $per_page, $page, $from, $to, $status, $source, $terminal_id, $virtual_account_number, $customer_code, $amount, $settlement, $channel, $subaccount_code, $split_code, $contentType);
+        $request = $this->transactionListRequest($use_cursor, $next, $previous, $per_page, $page, $from, $to, $status, $source, $terminalid, $virtual_account_number, $customer, $amount, $settlement, $channel, $subaccount_code, $split_code, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2190,16 +2280,16 @@ class TransactionApi
      * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
      * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
      * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
+     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
      * @param  string|null $status Filter transaction by status (optional)
      * @param  string|null $source The origin of the payment (optional)
-     * @param  string|null $terminal_id Filter transactions by a terminal ID (optional)
+     * @param  string|null $terminalid The Terminal ID for the transactions you want to retrieve (optional)
      * @param  string|null $virtual_account_number Filter transactions by a virtual account number (optional)
-     * @param  string|null $customer_code Filter transactions by a customer code (optional)
-     * @param  int|null $amount Filter transactions by a specific amount (optional)
+     * @param  int|null $customer Specify an ID for the customer whose transactions you want to retrieve (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. (optional)
      * @param  int|null $settlement The settlement ID to filter for settled transactions (optional)
      * @param  string|null $channel The payment method the customer used to complete the transaction (optional)
      * @param  string|null $subaccount_code Filter transaction by subaccount code (optional)
@@ -2209,9 +2299,9 @@ class TransactionApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionListAsync($use_cursor = null, $next = null, $previous = null, $per_page = null, $page = null, $from = null, $to = null, $status = null, $source = null, $terminal_id = null, $virtual_account_number = null, $customer_code = null, $amount = null, $settlement = null, $channel = null, $subaccount_code = null, $split_code = null, string $contentType = self::contentTypes['transactionList'][0])
+    public function transactionListAsync($use_cursor = null, $next = null, $previous = null, $per_page = null, $page = null, $from = null, $to = null, $status = null, $source = null, $terminalid = null, $virtual_account_number = null, $customer = null, $amount = null, $settlement = null, $channel = null, $subaccount_code = null, $split_code = null, string $contentType = self::contentTypes['transactionList'][0])
     {
-        return $this->transactionListAsyncWithHttpInfo($use_cursor, $next, $previous, $per_page, $page, $from, $to, $status, $source, $terminal_id, $virtual_account_number, $customer_code, $amount, $settlement, $channel, $subaccount_code, $split_code, $contentType)
+        return $this->transactionListAsyncWithHttpInfo($use_cursor, $next, $previous, $per_page, $page, $from, $to, $status, $source, $terminalid, $virtual_account_number, $customer, $amount, $settlement, $channel, $subaccount_code, $split_code, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2227,16 +2317,16 @@ class TransactionApi
      * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
      * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
      * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
+     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
      * @param  string|null $status Filter transaction by status (optional)
      * @param  string|null $source The origin of the payment (optional)
-     * @param  string|null $terminal_id Filter transactions by a terminal ID (optional)
+     * @param  string|null $terminalid The Terminal ID for the transactions you want to retrieve (optional)
      * @param  string|null $virtual_account_number Filter transactions by a virtual account number (optional)
-     * @param  string|null $customer_code Filter transactions by a customer code (optional)
-     * @param  int|null $amount Filter transactions by a specific amount (optional)
+     * @param  int|null $customer Specify an ID for the customer whose transactions you want to retrieve (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. (optional)
      * @param  int|null $settlement The settlement ID to filter for settled transactions (optional)
      * @param  string|null $channel The payment method the customer used to complete the transaction (optional)
      * @param  string|null $subaccount_code Filter transaction by subaccount code (optional)
@@ -2246,10 +2336,10 @@ class TransactionApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionListAsyncWithHttpInfo($use_cursor = null, $next = null, $previous = null, $per_page = null, $page = null, $from = null, $to = null, $status = null, $source = null, $terminal_id = null, $virtual_account_number = null, $customer_code = null, $amount = null, $settlement = null, $channel = null, $subaccount_code = null, $split_code = null, string $contentType = self::contentTypes['transactionList'][0])
+    public function transactionListAsyncWithHttpInfo($use_cursor = null, $next = null, $previous = null, $per_page = null, $page = null, $from = null, $to = null, $status = null, $source = null, $terminalid = null, $virtual_account_number = null, $customer = null, $amount = null, $settlement = null, $channel = null, $subaccount_code = null, $split_code = null, string $contentType = self::contentTypes['transactionList'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\TransactionListResponse';
-        $request = $this->transactionListRequest($use_cursor, $next, $previous, $per_page, $page, $from, $to, $status, $source, $terminal_id, $virtual_account_number, $customer_code, $amount, $settlement, $channel, $subaccount_code, $split_code, $contentType);
+        $request = $this->transactionListRequest($use_cursor, $next, $previous, $per_page, $page, $from, $to, $status, $source, $terminalid, $virtual_account_number, $customer, $amount, $settlement, $channel, $subaccount_code, $split_code, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2293,16 +2383,16 @@ class TransactionApi
      * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
      * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
      * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
+     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
      * @param  string|null $status Filter transaction by status (optional)
      * @param  string|null $source The origin of the payment (optional)
-     * @param  string|null $terminal_id Filter transactions by a terminal ID (optional)
+     * @param  string|null $terminalid The Terminal ID for the transactions you want to retrieve (optional)
      * @param  string|null $virtual_account_number Filter transactions by a virtual account number (optional)
-     * @param  string|null $customer_code Filter transactions by a customer code (optional)
-     * @param  int|null $amount Filter transactions by a specific amount (optional)
+     * @param  int|null $customer Specify an ID for the customer whose transactions you want to retrieve (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. (optional)
      * @param  int|null $settlement The settlement ID to filter for settled transactions (optional)
      * @param  string|null $channel The payment method the customer used to complete the transaction (optional)
      * @param  string|null $subaccount_code Filter transaction by subaccount code (optional)
@@ -2312,7 +2402,7 @@ class TransactionApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transactionListRequest($use_cursor = null, $next = null, $previous = null, $per_page = null, $page = null, $from = null, $to = null, $status = null, $source = null, $terminal_id = null, $virtual_account_number = null, $customer_code = null, $amount = null, $settlement = null, $channel = null, $subaccount_code = null, $split_code = null, string $contentType = self::contentTypes['transactionList'][0])
+    public function transactionListRequest($use_cursor = null, $next = null, $previous = null, $per_page = null, $page = null, $from = null, $to = null, $status = null, $source = null, $terminalid = null, $virtual_account_number = null, $customer = null, $amount = null, $settlement = null, $channel = null, $subaccount_code = null, $split_code = null, string $contentType = self::contentTypes['transactionList'][0])
     {
 
 
@@ -2370,7 +2460,7 @@ class TransactionApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $per_page,
-            'per_page', // param base name
+            'perPage', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
@@ -2423,8 +2513,8 @@ class TransactionApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $terminal_id,
-            'terminal_id', // param base name
+            $terminalid,
+            'terminalid', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -2441,9 +2531,9 @@ class TransactionApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $customer_code,
-            'customer_code', // param base name
-            'string', // openApiType
+            $customer,
+            'customer', // param base name
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -3138,16 +3228,16 @@ class TransactionApi
      *
      * Fetch Transaction Timeline
      *
-     * @param  int $id The ID of the transaction to fetch (required)
+     * @param  string $id_or_reference The ID or the reference of the transaction (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionTimeline'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\TransactionTimelineResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function transactionTimeline($id, string $contentType = self::contentTypes['transactionTimeline'][0])
+    public function transactionTimeline($id_or_reference, string $contentType = self::contentTypes['transactionTimeline'][0])
     {
-        list($response) = $this->transactionTimelineWithHttpInfo($id, $contentType);
+        list($response) = $this->transactionTimelineWithHttpInfo($id_or_reference, $contentType);
         return $response;
     }
 
@@ -3156,16 +3246,16 @@ class TransactionApi
      *
      * Fetch Transaction Timeline
      *
-     * @param  int $id The ID of the transaction to fetch (required)
+     * @param  string $id_or_reference The ID or the reference of the transaction (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionTimeline'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\TransactionTimelineResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transactionTimelineWithHttpInfo($id, string $contentType = self::contentTypes['transactionTimeline'][0])
+    public function transactionTimelineWithHttpInfo($id_or_reference, string $contentType = self::contentTypes['transactionTimeline'][0])
     {
-        $request = $this->transactionTimelineRequest($id, $contentType);
+        $request = $this->transactionTimelineRequest($id_or_reference, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3269,15 +3359,15 @@ class TransactionApi
      *
      * Fetch Transaction Timeline
      *
-     * @param  int $id The ID of the transaction to fetch (required)
+     * @param  string $id_or_reference The ID or the reference of the transaction (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionTimeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionTimelineAsync($id, string $contentType = self::contentTypes['transactionTimeline'][0])
+    public function transactionTimelineAsync($id_or_reference, string $contentType = self::contentTypes['transactionTimeline'][0])
     {
-        return $this->transactionTimelineAsyncWithHttpInfo($id, $contentType)
+        return $this->transactionTimelineAsyncWithHttpInfo($id_or_reference, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3290,16 +3380,16 @@ class TransactionApi
      *
      * Fetch Transaction Timeline
      *
-     * @param  int $id The ID of the transaction to fetch (required)
+     * @param  string $id_or_reference The ID or the reference of the transaction (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionTimeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionTimelineAsyncWithHttpInfo($id, string $contentType = self::contentTypes['transactionTimeline'][0])
+    public function transactionTimelineAsyncWithHttpInfo($id_or_reference, string $contentType = self::contentTypes['transactionTimeline'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\TransactionTimelineResponse';
-        $request = $this->transactionTimelineRequest($id, $contentType);
+        $request = $this->transactionTimelineRequest($id_or_reference, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3340,24 +3430,24 @@ class TransactionApi
     /**
      * Create request for operation 'transactionTimeline'
      *
-     * @param  int $id The ID of the transaction to fetch (required)
+     * @param  string $id_or_reference The ID or the reference of the transaction (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionTimeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transactionTimelineRequest($id, string $contentType = self::contentTypes['transactionTimeline'][0])
+    public function transactionTimelineRequest($id_or_reference, string $contentType = self::contentTypes['transactionTimeline'][0])
     {
 
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
+        // verify the required parameter 'id_or_reference' is set
+        if ($id_or_reference === null || (is_array($id_or_reference) && count($id_or_reference) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling transactionTimeline'
+                'Missing the required parameter $id_or_reference when calling transactionTimeline'
             );
         }
 
 
-        $resourcePath = '/transaction/timeline/{id}';
+        $resourcePath = '/transaction/timeline/{id_or_reference}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3367,10 +3457,10 @@ class TransactionApi
 
 
         // path params
-        if ($id !== null) {
+        if ($id_or_reference !== null) {
             $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
+                '{' . 'id_or_reference' . '}',
+                ObjectSerializer::toPathValue($id_or_reference),
                 $resourcePath
             );
         }
@@ -3438,6 +3528,8 @@ class TransactionApi
      *
      * Transaction Totals
      *
+     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionTotals'] to see the possible values for this operation
@@ -3446,9 +3538,9 @@ class TransactionApi
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\TransactionTotalsResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function transactionTotals($from = null, $to = null, string $contentType = self::contentTypes['transactionTotals'][0])
+    public function transactionTotals($per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['transactionTotals'][0])
     {
-        list($response) = $this->transactionTotalsWithHttpInfo($from, $to, $contentType);
+        list($response) = $this->transactionTotalsWithHttpInfo($per_page, $page, $from, $to, $contentType);
         return $response;
     }
 
@@ -3457,6 +3549,8 @@ class TransactionApi
      *
      * Transaction Totals
      *
+     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionTotals'] to see the possible values for this operation
@@ -3465,9 +3559,9 @@ class TransactionApi
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\TransactionTotalsResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transactionTotalsWithHttpInfo($from = null, $to = null, string $contentType = self::contentTypes['transactionTotals'][0])
+    public function transactionTotalsWithHttpInfo($per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['transactionTotals'][0])
     {
-        $request = $this->transactionTotalsRequest($from, $to, $contentType);
+        $request = $this->transactionTotalsRequest($per_page, $page, $from, $to, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3571,6 +3665,8 @@ class TransactionApi
      *
      * Transaction Totals
      *
+     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionTotals'] to see the possible values for this operation
@@ -3578,9 +3674,9 @@ class TransactionApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionTotalsAsync($from = null, $to = null, string $contentType = self::contentTypes['transactionTotals'][0])
+    public function transactionTotalsAsync($per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['transactionTotals'][0])
     {
-        return $this->transactionTotalsAsyncWithHttpInfo($from, $to, $contentType)
+        return $this->transactionTotalsAsyncWithHttpInfo($per_page, $page, $from, $to, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3593,6 +3689,8 @@ class TransactionApi
      *
      * Transaction Totals
      *
+     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionTotals'] to see the possible values for this operation
@@ -3600,10 +3698,10 @@ class TransactionApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionTotalsAsyncWithHttpInfo($from = null, $to = null, string $contentType = self::contentTypes['transactionTotals'][0])
+    public function transactionTotalsAsyncWithHttpInfo($per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['transactionTotals'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\TransactionTotalsResponse';
-        $request = $this->transactionTotalsRequest($from, $to, $contentType);
+        $request = $this->transactionTotalsRequest($per_page, $page, $from, $to, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3644,6 +3742,8 @@ class TransactionApi
     /**
      * Create request for operation 'transactionTotals'
      *
+     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionTotals'] to see the possible values for this operation
@@ -3651,8 +3751,10 @@ class TransactionApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transactionTotalsRequest($from = null, $to = null, string $contentType = self::contentTypes['transactionTotals'][0])
+    public function transactionTotalsRequest($per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['transactionTotals'][0])
     {
+
+
 
 
 
@@ -3664,6 +3766,24 @@ class TransactionApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $per_page,
+            'perPage', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page,
+            'page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $from,

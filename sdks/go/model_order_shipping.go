@@ -30,7 +30,7 @@ type OrderShipping struct {
 	State string `json:"state"`
 	// The country of the delivery address
 	Country string `json:"country"`
-	// The cost of delivery
+	// Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). 
 	ShippingFee int32 `json:"shipping_fee"`
 	// Extra details to be aware of for the delivery
 	DeliveryNote *string `json:"delivery_note,omitempty"`

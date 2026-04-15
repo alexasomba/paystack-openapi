@@ -13,251 +13,124 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
-// checks if the TransactionListResponseMeta type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TransactionListResponseMeta{}
-
-// TransactionListResponseMeta struct for TransactionListResponseMeta
+// TransactionListResponseMeta - struct for TransactionListResponseMeta
 type TransactionListResponseMeta struct {
-	Total int32 `json:"total"`
-	TotalVolume float32 `json:"total_volume"`
-	Skipped int32 `json:"skipped"`
-	PerPage TransactionListResponseMetaPerPage `json:"perPage"`
-	Page int32 `json:"page"`
-	PageCount int32 `json:"pageCount"`
+	CursorMeta *CursorMeta
+	MetaWithVolume *MetaWithVolume
 }
 
-type _TransactionListResponseMeta TransactionListResponseMeta
-
-// NewTransactionListResponseMeta instantiates a new TransactionListResponseMeta object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewTransactionListResponseMeta(total int32, totalVolume float32, skipped int32, perPage TransactionListResponseMetaPerPage, page int32, pageCount int32) *TransactionListResponseMeta {
-	this := TransactionListResponseMeta{}
-	this.Total = total
-	this.TotalVolume = totalVolume
-	this.Skipped = skipped
-	this.PerPage = perPage
-	this.Page = page
-	this.PageCount = pageCount
-	return &this
-}
-
-// NewTransactionListResponseMetaWithDefaults instantiates a new TransactionListResponseMeta object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewTransactionListResponseMetaWithDefaults() *TransactionListResponseMeta {
-	this := TransactionListResponseMeta{}
-	return &this
-}
-
-// GetTotal returns the Total field value
-func (o *TransactionListResponseMeta) GetTotal() int32 {
-	if o == nil {
-		var ret int32
-		return ret
+// CursorMetaAsTransactionListResponseMeta is a convenience function that returns CursorMeta wrapped in TransactionListResponseMeta
+func CursorMetaAsTransactionListResponseMeta(v *CursorMeta) TransactionListResponseMeta {
+	return TransactionListResponseMeta{
+		CursorMeta: v,
 	}
-
-	return o.Total
 }
 
-// GetTotalOk returns a tuple with the Total field value
-// and a boolean to check if the value has been set.
-func (o *TransactionListResponseMeta) GetTotalOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
+// MetaWithVolumeAsTransactionListResponseMeta is a convenience function that returns MetaWithVolume wrapped in TransactionListResponseMeta
+func MetaWithVolumeAsTransactionListResponseMeta(v *MetaWithVolume) TransactionListResponseMeta {
+	return TransactionListResponseMeta{
+		MetaWithVolume: v,
 	}
-	return &o.Total, true
 }
 
-// SetTotal sets field value
-func (o *TransactionListResponseMeta) SetTotal(v int32) {
-	o.Total = v
-}
 
-// GetTotalVolume returns the TotalVolume field value
-func (o *TransactionListResponseMeta) GetTotalVolume() float32 {
-	if o == nil {
-		var ret float32
-		return ret
-	}
-
-	return o.TotalVolume
-}
-
-// GetTotalVolumeOk returns a tuple with the TotalVolume field value
-// and a boolean to check if the value has been set.
-func (o *TransactionListResponseMeta) GetTotalVolumeOk() (*float32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TotalVolume, true
-}
-
-// SetTotalVolume sets field value
-func (o *TransactionListResponseMeta) SetTotalVolume(v float32) {
-	o.TotalVolume = v
-}
-
-// GetSkipped returns the Skipped field value
-func (o *TransactionListResponseMeta) GetSkipped() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Skipped
-}
-
-// GetSkippedOk returns a tuple with the Skipped field value
-// and a boolean to check if the value has been set.
-func (o *TransactionListResponseMeta) GetSkippedOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Skipped, true
-}
-
-// SetSkipped sets field value
-func (o *TransactionListResponseMeta) SetSkipped(v int32) {
-	o.Skipped = v
-}
-
-// GetPerPage returns the PerPage field value
-func (o *TransactionListResponseMeta) GetPerPage() TransactionListResponseMetaPerPage {
-	if o == nil {
-		var ret TransactionListResponseMetaPerPage
-		return ret
-	}
-
-	return o.PerPage
-}
-
-// GetPerPageOk returns a tuple with the PerPage field value
-// and a boolean to check if the value has been set.
-func (o *TransactionListResponseMeta) GetPerPageOk() (*TransactionListResponseMetaPerPage, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.PerPage, true
-}
-
-// SetPerPage sets field value
-func (o *TransactionListResponseMeta) SetPerPage(v TransactionListResponseMetaPerPage) {
-	o.PerPage = v
-}
-
-// GetPage returns the Page field value
-func (o *TransactionListResponseMeta) GetPage() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Page
-}
-
-// GetPageOk returns a tuple with the Page field value
-// and a boolean to check if the value has been set.
-func (o *TransactionListResponseMeta) GetPageOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Page, true
-}
-
-// SetPage sets field value
-func (o *TransactionListResponseMeta) SetPage(v int32) {
-	o.Page = v
-}
-
-// GetPageCount returns the PageCount field value
-func (o *TransactionListResponseMeta) GetPageCount() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.PageCount
-}
-
-// GetPageCountOk returns a tuple with the PageCount field value
-// and a boolean to check if the value has been set.
-func (o *TransactionListResponseMeta) GetPageCountOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.PageCount, true
-}
-
-// SetPageCount sets field value
-func (o *TransactionListResponseMeta) SetPageCount(v int32) {
-	o.PageCount = v
-}
-
-func (o TransactionListResponseMeta) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o TransactionListResponseMeta) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["total"] = o.Total
-	toSerialize["total_volume"] = o.TotalVolume
-	toSerialize["skipped"] = o.Skipped
-	toSerialize["perPage"] = o.PerPage
-	toSerialize["page"] = o.Page
-	toSerialize["pageCount"] = o.PageCount
-	return toSerialize, nil
-}
-
-func (o *TransactionListResponseMeta) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"total",
-		"total_volume",
-		"skipped",
-		"perPage",
-		"page",
-		"pageCount",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *TransactionListResponseMeta) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into CursorMeta
+	err = newStrictDecoder(data).Decode(&dst.CursorMeta)
+	if err == nil {
+		jsonCursorMeta, _ := json.Marshal(dst.CursorMeta)
+		if string(jsonCursorMeta) == "{}" { // empty struct
+			dst.CursorMeta = nil
+		} else {
+			if err = validator.Validate(dst.CursorMeta); err != nil {
+				dst.CursorMeta = nil
+			} else {
+				match++
+			}
 		}
+	} else {
+		dst.CursorMeta = nil
 	}
 
-	varTransactionListResponseMeta := _TransactionListResponseMeta{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransactionListResponseMeta)
-
-	if err != nil {
-		return err
+	// try to unmarshal data into MetaWithVolume
+	err = newStrictDecoder(data).Decode(&dst.MetaWithVolume)
+	if err == nil {
+		jsonMetaWithVolume, _ := json.Marshal(dst.MetaWithVolume)
+		if string(jsonMetaWithVolume) == "{}" { // empty struct
+			dst.MetaWithVolume = nil
+		} else {
+			if err = validator.Validate(dst.MetaWithVolume); err != nil {
+				dst.MetaWithVolume = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.MetaWithVolume = nil
 	}
 
-	*o = TransactionListResponseMeta(varTransactionListResponseMeta)
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.CursorMeta = nil
+		dst.MetaWithVolume = nil
 
-	return err
+		return fmt.Errorf("data matches more than one schema in oneOf(TransactionListResponseMeta)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(TransactionListResponseMeta)")
+	}
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src TransactionListResponseMeta) MarshalJSON() ([]byte, error) {
+	if src.CursorMeta != nil {
+		return json.Marshal(&src.CursorMeta)
+	}
+
+	if src.MetaWithVolume != nil {
+		return json.Marshal(&src.MetaWithVolume)
+	}
+
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *TransactionListResponseMeta) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
+	}
+	if obj.CursorMeta != nil {
+		return obj.CursorMeta
+	}
+
+	if obj.MetaWithVolume != nil {
+		return obj.MetaWithVolume
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj TransactionListResponseMeta) GetActualInstanceValue() (interface{}) {
+	if obj.CursorMeta != nil {
+		return *obj.CursorMeta
+	}
+
+	if obj.MetaWithVolume != nil {
+		return *obj.MetaWithVolume
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableTransactionListResponseMeta struct {

@@ -23,8 +23,8 @@ var _ MappedNullable = &ProductListsResponseArrayShippingFields{}
 // ProductListsResponseArrayShippingFields struct for ProductListsResponseArrayShippingFields
 type ProductListsResponseArrayShippingFields struct {
 	DeliveryNote string `json:"delivery_note"`
-	ShippingAddress string `json:"shipping_address"`
-	ShippingFees []interface{} `json:"shipping_fees"`
+	ShippingAddress *string `json:"shipping_address,omitempty"`
+	ShippingFees []interface{} `json:"shipping_fees,omitempty"`
 }
 
 type _ProductListsResponseArrayShippingFields ProductListsResponseArrayShippingFields
@@ -33,11 +33,9 @@ type _ProductListsResponseArrayShippingFields ProductListsResponseArrayShippingF
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProductListsResponseArrayShippingFields(deliveryNote string, shippingAddress string, shippingFees []interface{}) *ProductListsResponseArrayShippingFields {
+func NewProductListsResponseArrayShippingFields(deliveryNote string) *ProductListsResponseArrayShippingFields {
 	this := ProductListsResponseArrayShippingFields{}
 	this.DeliveryNote = deliveryNote
-	this.ShippingAddress = shippingAddress
-	this.ShippingFees = shippingFees
 	return &this
 }
 
@@ -73,50 +71,66 @@ func (o *ProductListsResponseArrayShippingFields) SetDeliveryNote(v string) {
 	o.DeliveryNote = v
 }
 
-// GetShippingAddress returns the ShippingAddress field value
+// GetShippingAddress returns the ShippingAddress field value if set, zero value otherwise.
 func (o *ProductListsResponseArrayShippingFields) GetShippingAddress() string {
-	if o == nil {
+	if o == nil || IsNil(o.ShippingAddress) {
 		var ret string
 		return ret
 	}
-
-	return o.ShippingAddress
+	return *o.ShippingAddress
 }
 
-// GetShippingAddressOk returns a tuple with the ShippingAddress field value
+// GetShippingAddressOk returns a tuple with the ShippingAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProductListsResponseArrayShippingFields) GetShippingAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ShippingAddress) {
 		return nil, false
 	}
-	return &o.ShippingAddress, true
+	return o.ShippingAddress, true
 }
 
-// SetShippingAddress sets field value
+// HasShippingAddress returns a boolean if a field has been set.
+func (o *ProductListsResponseArrayShippingFields) HasShippingAddress() bool {
+	if o != nil && !IsNil(o.ShippingAddress) {
+		return true
+	}
+
+	return false
+}
+
+// SetShippingAddress gets a reference to the given string and assigns it to the ShippingAddress field.
 func (o *ProductListsResponseArrayShippingFields) SetShippingAddress(v string) {
-	o.ShippingAddress = v
+	o.ShippingAddress = &v
 }
 
-// GetShippingFees returns the ShippingFees field value
+// GetShippingFees returns the ShippingFees field value if set, zero value otherwise.
 func (o *ProductListsResponseArrayShippingFields) GetShippingFees() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.ShippingFees) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.ShippingFees
 }
 
-// GetShippingFeesOk returns a tuple with the ShippingFees field value
+// GetShippingFeesOk returns a tuple with the ShippingFees field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProductListsResponseArrayShippingFields) GetShippingFeesOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ShippingFees) {
 		return nil, false
 	}
 	return o.ShippingFees, true
 }
 
-// SetShippingFees sets field value
+// HasShippingFees returns a boolean if a field has been set.
+func (o *ProductListsResponseArrayShippingFields) HasShippingFees() bool {
+	if o != nil && !IsNil(o.ShippingFees) {
+		return true
+	}
+
+	return false
+}
+
+// SetShippingFees gets a reference to the given []interface{} and assigns it to the ShippingFees field.
 func (o *ProductListsResponseArrayShippingFields) SetShippingFees(v []interface{}) {
 	o.ShippingFees = v
 }
@@ -132,8 +146,12 @@ func (o ProductListsResponseArrayShippingFields) MarshalJSON() ([]byte, error) {
 func (o ProductListsResponseArrayShippingFields) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["delivery_note"] = o.DeliveryNote
-	toSerialize["shipping_address"] = o.ShippingAddress
-	toSerialize["shipping_fees"] = o.ShippingFees
+	if !IsNil(o.ShippingAddress) {
+		toSerialize["shipping_address"] = o.ShippingAddress
+	}
+	if !IsNil(o.ShippingFees) {
+		toSerialize["shipping_fees"] = o.ShippingFees
+	}
 	return toSerialize, nil
 }
 
@@ -143,8 +161,6 @@ func (o *ProductListsResponseArrayShippingFields) UnmarshalJSON(data []byte) (er
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"delivery_note",
-		"shipping_address",
-		"shipping_fees",
 	}
 
 	allProperties := make(map[string]interface{})

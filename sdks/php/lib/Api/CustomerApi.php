@@ -1029,16 +1029,16 @@ class CustomerApi
      *
      * Fetch Customer
      *
-     * @param  string $code The code for the customer gotten from the response of the customer creation (required)
+     * @param  string $email_or_code An email or customer code for the customer you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerFetch'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\CustomerFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function customerFetch($code, string $contentType = self::contentTypes['customerFetch'][0])
+    public function customerFetch($email_or_code, string $contentType = self::contentTypes['customerFetch'][0])
     {
-        list($response) = $this->customerFetchWithHttpInfo($code, $contentType);
+        list($response) = $this->customerFetchWithHttpInfo($email_or_code, $contentType);
         return $response;
     }
 
@@ -1047,16 +1047,16 @@ class CustomerApi
      *
      * Fetch Customer
      *
-     * @param  string $code The code for the customer gotten from the response of the customer creation (required)
+     * @param  string $email_or_code An email or customer code for the customer you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerFetch'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\CustomerFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function customerFetchWithHttpInfo($code, string $contentType = self::contentTypes['customerFetch'][0])
+    public function customerFetchWithHttpInfo($email_or_code, string $contentType = self::contentTypes['customerFetch'][0])
     {
-        $request = $this->customerFetchRequest($code, $contentType);
+        $request = $this->customerFetchRequest($email_or_code, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1160,15 +1160,15 @@ class CustomerApi
      *
      * Fetch Customer
      *
-     * @param  string $code The code for the customer gotten from the response of the customer creation (required)
+     * @param  string $email_or_code An email or customer code for the customer you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function customerFetchAsync($code, string $contentType = self::contentTypes['customerFetch'][0])
+    public function customerFetchAsync($email_or_code, string $contentType = self::contentTypes['customerFetch'][0])
     {
-        return $this->customerFetchAsyncWithHttpInfo($code, $contentType)
+        return $this->customerFetchAsyncWithHttpInfo($email_or_code, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1181,16 +1181,16 @@ class CustomerApi
      *
      * Fetch Customer
      *
-     * @param  string $code The code for the customer gotten from the response of the customer creation (required)
+     * @param  string $email_or_code An email or customer code for the customer you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function customerFetchAsyncWithHttpInfo($code, string $contentType = self::contentTypes['customerFetch'][0])
+    public function customerFetchAsyncWithHttpInfo($email_or_code, string $contentType = self::contentTypes['customerFetch'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\CustomerFetchResponse';
-        $request = $this->customerFetchRequest($code, $contentType);
+        $request = $this->customerFetchRequest($email_or_code, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1231,24 +1231,24 @@ class CustomerApi
     /**
      * Create request for operation 'customerFetch'
      *
-     * @param  string $code The code for the customer gotten from the response of the customer creation (required)
+     * @param  string $email_or_code An email or customer code for the customer you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function customerFetchRequest($code, string $contentType = self::contentTypes['customerFetch'][0])
+    public function customerFetchRequest($email_or_code, string $contentType = self::contentTypes['customerFetch'][0])
     {
 
-        // verify the required parameter 'code' is set
-        if ($code === null || (is_array($code) && count($code) === 0)) {
+        // verify the required parameter 'email_or_code' is set
+        if ($email_or_code === null || (is_array($email_or_code) && count($email_or_code) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $code when calling customerFetch'
+                'Missing the required parameter $email_or_code when calling customerFetch'
             );
         }
 
 
-        $resourcePath = '/customer/{code}';
+        $resourcePath = '/customer/{email_or_code}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1258,10 +1258,10 @@ class CustomerApi
 
 
         // path params
-        if ($code !== null) {
+        if ($email_or_code !== null) {
             $resourcePath = str_replace(
-                '{' . 'code' . '}',
-                ObjectSerializer::toPathValue($code),
+                '{' . 'email_or_code' . '}',
+                ObjectSerializer::toPathValue($email_or_code),
                 $resourcePath
             );
         }
@@ -2202,10 +2202,10 @@ class CustomerApi
      * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
      * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
      * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
-     * @param  string|null $per_page The number of records to fetch per request (optional)
-     * @param  string|null $page The offset to retrieve data from (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerList'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2226,10 +2226,10 @@ class CustomerApi
      * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
      * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
      * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
-     * @param  string|null $per_page The number of records to fetch per request (optional)
-     * @param  string|null $page The offset to retrieve data from (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerList'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2345,10 +2345,10 @@ class CustomerApi
      * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
      * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
      * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
-     * @param  string|null $per_page The number of records to fetch per request (optional)
-     * @param  string|null $page The offset to retrieve data from (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2372,10 +2372,10 @@ class CustomerApi
      * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
      * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
      * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
-     * @param  string|null $per_page The number of records to fetch per request (optional)
-     * @param  string|null $page The offset to retrieve data from (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2428,10 +2428,10 @@ class CustomerApi
      * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
      * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
      * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
-     * @param  string|null $per_page The number of records to fetch per request (optional)
-     * @param  string|null $page The offset to retrieve data from (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2504,7 +2504,7 @@ class CustomerApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $per_page,
             'perPage', // param base name
-            'string', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -2513,7 +2513,7 @@ class CustomerApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $page,
             'page', // param base name
-            'string', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -2863,7 +2863,7 @@ class CustomerApi
      *
      * Update Customer
      *
-     * @param  string $code The code for the customer gotten from the response of the customer creation (required)
+     * @param  string $email_or_code An email or customer code for the customer you want to fetch (required)
      * @param  \Alexasomba\Paystack\Model\CustomerUpdate|null $customer_update customer_update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerUpdate'] to see the possible values for this operation
      *
@@ -2871,9 +2871,9 @@ class CustomerApi
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\CustomerUpdateResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function customerUpdate($code, $customer_update = null, string $contentType = self::contentTypes['customerUpdate'][0])
+    public function customerUpdate($email_or_code, $customer_update = null, string $contentType = self::contentTypes['customerUpdate'][0])
     {
-        list($response) = $this->customerUpdateWithHttpInfo($code, $customer_update, $contentType);
+        list($response) = $this->customerUpdateWithHttpInfo($email_or_code, $customer_update, $contentType);
         return $response;
     }
 
@@ -2882,7 +2882,7 @@ class CustomerApi
      *
      * Update Customer
      *
-     * @param  string $code The code for the customer gotten from the response of the customer creation (required)
+     * @param  string $email_or_code An email or customer code for the customer you want to fetch (required)
      * @param  \Alexasomba\Paystack\Model\CustomerUpdate|null $customer_update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerUpdate'] to see the possible values for this operation
      *
@@ -2890,9 +2890,9 @@ class CustomerApi
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\CustomerUpdateResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function customerUpdateWithHttpInfo($code, $customer_update = null, string $contentType = self::contentTypes['customerUpdate'][0])
+    public function customerUpdateWithHttpInfo($email_or_code, $customer_update = null, string $contentType = self::contentTypes['customerUpdate'][0])
     {
-        $request = $this->customerUpdateRequest($code, $customer_update, $contentType);
+        $request = $this->customerUpdateRequest($email_or_code, $customer_update, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2996,16 +2996,16 @@ class CustomerApi
      *
      * Update Customer
      *
-     * @param  string $code The code for the customer gotten from the response of the customer creation (required)
+     * @param  string $email_or_code An email or customer code for the customer you want to fetch (required)
      * @param  \Alexasomba\Paystack\Model\CustomerUpdate|null $customer_update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerUpdate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function customerUpdateAsync($code, $customer_update = null, string $contentType = self::contentTypes['customerUpdate'][0])
+    public function customerUpdateAsync($email_or_code, $customer_update = null, string $contentType = self::contentTypes['customerUpdate'][0])
     {
-        return $this->customerUpdateAsyncWithHttpInfo($code, $customer_update, $contentType)
+        return $this->customerUpdateAsyncWithHttpInfo($email_or_code, $customer_update, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3018,17 +3018,17 @@ class CustomerApi
      *
      * Update Customer
      *
-     * @param  string $code The code for the customer gotten from the response of the customer creation (required)
+     * @param  string $email_or_code An email or customer code for the customer you want to fetch (required)
      * @param  \Alexasomba\Paystack\Model\CustomerUpdate|null $customer_update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerUpdate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function customerUpdateAsyncWithHttpInfo($code, $customer_update = null, string $contentType = self::contentTypes['customerUpdate'][0])
+    public function customerUpdateAsyncWithHttpInfo($email_or_code, $customer_update = null, string $contentType = self::contentTypes['customerUpdate'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\CustomerUpdateResponse';
-        $request = $this->customerUpdateRequest($code, $customer_update, $contentType);
+        $request = $this->customerUpdateRequest($email_or_code, $customer_update, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3069,26 +3069,26 @@ class CustomerApi
     /**
      * Create request for operation 'customerUpdate'
      *
-     * @param  string $code The code for the customer gotten from the response of the customer creation (required)
+     * @param  string $email_or_code An email or customer code for the customer you want to fetch (required)
      * @param  \Alexasomba\Paystack\Model\CustomerUpdate|null $customer_update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerUpdate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function customerUpdateRequest($code, $customer_update = null, string $contentType = self::contentTypes['customerUpdate'][0])
+    public function customerUpdateRequest($email_or_code, $customer_update = null, string $contentType = self::contentTypes['customerUpdate'][0])
     {
 
-        // verify the required parameter 'code' is set
-        if ($code === null || (is_array($code) && count($code) === 0)) {
+        // verify the required parameter 'email_or_code' is set
+        if ($email_or_code === null || (is_array($email_or_code) && count($email_or_code) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $code when calling customerUpdate'
+                'Missing the required parameter $email_or_code when calling customerUpdate'
             );
         }
 
 
 
-        $resourcePath = '/customer/{code}';
+        $resourcePath = '/customer/{email_or_code}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3098,10 +3098,10 @@ class CustomerApi
 
 
         // path params
-        if ($code !== null) {
+        if ($email_or_code !== null) {
             $resourcePath = str_replace(
-                '{' . 'code' . '}',
-                ObjectSerializer::toPathValue($code),
+                '{' . 'email_or_code' . '}',
+                ObjectSerializer::toPathValue($email_or_code),
                 $resourcePath
             );
         }
@@ -3176,7 +3176,7 @@ class CustomerApi
      *
      * Validate Customer
      *
-     * @param  string $code The code for the customer gotten from the response of the customer creation (required)
+     * @param  string $customer_code Customer code (required)
      * @param  \Alexasomba\Paystack\Model\CustomerValidate|null $customer_validate customer_validate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerValidate'] to see the possible values for this operation
      *
@@ -3184,9 +3184,9 @@ class CustomerApi
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\CustomerValidateResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function customerValidate($code, $customer_validate = null, string $contentType = self::contentTypes['customerValidate'][0])
+    public function customerValidate($customer_code, $customer_validate = null, string $contentType = self::contentTypes['customerValidate'][0])
     {
-        list($response) = $this->customerValidateWithHttpInfo($code, $customer_validate, $contentType);
+        list($response) = $this->customerValidateWithHttpInfo($customer_code, $customer_validate, $contentType);
         return $response;
     }
 
@@ -3195,7 +3195,7 @@ class CustomerApi
      *
      * Validate Customer
      *
-     * @param  string $code The code for the customer gotten from the response of the customer creation (required)
+     * @param  string $customer_code Customer code (required)
      * @param  \Alexasomba\Paystack\Model\CustomerValidate|null $customer_validate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerValidate'] to see the possible values for this operation
      *
@@ -3203,9 +3203,9 @@ class CustomerApi
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\CustomerValidateResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function customerValidateWithHttpInfo($code, $customer_validate = null, string $contentType = self::contentTypes['customerValidate'][0])
+    public function customerValidateWithHttpInfo($customer_code, $customer_validate = null, string $contentType = self::contentTypes['customerValidate'][0])
     {
-        $request = $this->customerValidateRequest($code, $customer_validate, $contentType);
+        $request = $this->customerValidateRequest($customer_code, $customer_validate, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3295,16 +3295,16 @@ class CustomerApi
      *
      * Validate Customer
      *
-     * @param  string $code The code for the customer gotten from the response of the customer creation (required)
+     * @param  string $customer_code Customer code (required)
      * @param  \Alexasomba\Paystack\Model\CustomerValidate|null $customer_validate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerValidate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function customerValidateAsync($code, $customer_validate = null, string $contentType = self::contentTypes['customerValidate'][0])
+    public function customerValidateAsync($customer_code, $customer_validate = null, string $contentType = self::contentTypes['customerValidate'][0])
     {
-        return $this->customerValidateAsyncWithHttpInfo($code, $customer_validate, $contentType)
+        return $this->customerValidateAsyncWithHttpInfo($customer_code, $customer_validate, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3317,17 +3317,17 @@ class CustomerApi
      *
      * Validate Customer
      *
-     * @param  string $code The code for the customer gotten from the response of the customer creation (required)
+     * @param  string $customer_code Customer code (required)
      * @param  \Alexasomba\Paystack\Model\CustomerValidate|null $customer_validate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerValidate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function customerValidateAsyncWithHttpInfo($code, $customer_validate = null, string $contentType = self::contentTypes['customerValidate'][0])
+    public function customerValidateAsyncWithHttpInfo($customer_code, $customer_validate = null, string $contentType = self::contentTypes['customerValidate'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\CustomerValidateResponse';
-        $request = $this->customerValidateRequest($code, $customer_validate, $contentType);
+        $request = $this->customerValidateRequest($customer_code, $customer_validate, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3368,26 +3368,26 @@ class CustomerApi
     /**
      * Create request for operation 'customerValidate'
      *
-     * @param  string $code The code for the customer gotten from the response of the customer creation (required)
+     * @param  string $customer_code Customer code (required)
      * @param  \Alexasomba\Paystack\Model\CustomerValidate|null $customer_validate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerValidate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function customerValidateRequest($code, $customer_validate = null, string $contentType = self::contentTypes['customerValidate'][0])
+    public function customerValidateRequest($customer_code, $customer_validate = null, string $contentType = self::contentTypes['customerValidate'][0])
     {
 
-        // verify the required parameter 'code' is set
-        if ($code === null || (is_array($code) && count($code) === 0)) {
+        // verify the required parameter 'customer_code' is set
+        if ($customer_code === null || (is_array($customer_code) && count($customer_code) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $code when calling customerValidate'
+                'Missing the required parameter $customer_code when calling customerValidate'
             );
         }
 
 
 
-        $resourcePath = '/customer/{code}/identification';
+        $resourcePath = '/customer/{customer_code}/identification';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3397,10 +3397,10 @@ class CustomerApi
 
 
         // path params
-        if ($code !== null) {
+        if ($customer_code !== null) {
             $resourcePath = str_replace(
-                '{' . 'code' . '}',
-                ObjectSerializer::toPathValue($code),
+                '{' . 'customer_code' . '}',
+                ObjectSerializer::toPathValue($customer_code),
                 $resourcePath
             );
         }

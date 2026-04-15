@@ -25,7 +25,7 @@ type OrderListResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
 	Data []OrderListResponseArray `json:"data"`
-	Meta OrderListResponseMeta `json:"meta"`
+	Meta Meta `json:"meta"`
 }
 
 type _OrderListResponse OrderListResponse
@@ -34,7 +34,7 @@ type _OrderListResponse OrderListResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrderListResponse(status bool, message string, data []OrderListResponseArray, meta OrderListResponseMeta) *OrderListResponse {
+func NewOrderListResponse(status bool, message string, data []OrderListResponseArray, meta Meta) *OrderListResponse {
 	this := OrderListResponse{}
 	this.Status = status
 	this.Message = message
@@ -124,9 +124,9 @@ func (o *OrderListResponse) SetData(v []OrderListResponseArray) {
 }
 
 // GetMeta returns the Meta field value
-func (o *OrderListResponse) GetMeta() OrderListResponseMeta {
+func (o *OrderListResponse) GetMeta() Meta {
 	if o == nil {
-		var ret OrderListResponseMeta
+		var ret Meta
 		return ret
 	}
 
@@ -135,7 +135,7 @@ func (o *OrderListResponse) GetMeta() OrderListResponseMeta {
 
 // GetMetaOk returns a tuple with the Meta field value
 // and a boolean to check if the value has been set.
-func (o *OrderListResponse) GetMetaOk() (*OrderListResponseMeta, bool) {
+func (o *OrderListResponse) GetMetaOk() (*Meta, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -143,7 +143,7 @@ func (o *OrderListResponse) GetMetaOk() (*OrderListResponseMeta, bool) {
 }
 
 // SetMeta sets field value
-func (o *OrderListResponse) SetMeta(v OrderListResponseMeta) {
+func (o *OrderListResponse) SetMeta(v Meta) {
 	o.Meta = v
 }
 

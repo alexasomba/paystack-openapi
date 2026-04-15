@@ -25,7 +25,6 @@ type RefundListResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
 	Data []RefundListResponseArray `json:"data"`
-	Meta RefundListResponseMeta `json:"meta"`
 }
 
 type _RefundListResponse RefundListResponse
@@ -34,12 +33,11 @@ type _RefundListResponse RefundListResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRefundListResponse(status bool, message string, data []RefundListResponseArray, meta RefundListResponseMeta) *RefundListResponse {
+func NewRefundListResponse(status bool, message string, data []RefundListResponseArray) *RefundListResponse {
 	this := RefundListResponse{}
 	this.Status = status
 	this.Message = message
 	this.Data = data
-	this.Meta = meta
 	return &this
 }
 
@@ -123,30 +121,6 @@ func (o *RefundListResponse) SetData(v []RefundListResponseArray) {
 	o.Data = v
 }
 
-// GetMeta returns the Meta field value
-func (o *RefundListResponse) GetMeta() RefundListResponseMeta {
-	if o == nil {
-		var ret RefundListResponseMeta
-		return ret
-	}
-
-	return o.Meta
-}
-
-// GetMetaOk returns a tuple with the Meta field value
-// and a boolean to check if the value has been set.
-func (o *RefundListResponse) GetMetaOk() (*RefundListResponseMeta, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Meta, true
-}
-
-// SetMeta sets field value
-func (o *RefundListResponse) SetMeta(v RefundListResponseMeta) {
-	o.Meta = v
-}
-
 func (o RefundListResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -160,7 +134,6 @@ func (o RefundListResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["status"] = o.Status
 	toSerialize["message"] = o.Message
 	toSerialize["data"] = o.Data
-	toSerialize["meta"] = o.Meta
 	return toSerialize, nil
 }
 
@@ -172,7 +145,6 @@ func (o *RefundListResponse) UnmarshalJSON(data []byte) (err error) {
 		"status",
 		"message",
 		"data",
-		"meta",
 	}
 
 	allProperties := make(map[string]interface{})

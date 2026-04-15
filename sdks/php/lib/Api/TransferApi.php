@@ -1596,16 +1596,16 @@ class TransferApi
      *
      * Fetch Transfer
      *
-     * @param  string $code Transfer code (required)
+     * @param  string $id_or_code The transfer ID or code you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferFetch'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\TransferFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function transferFetch($code, string $contentType = self::contentTypes['transferFetch'][0])
+    public function transferFetch($id_or_code, string $contentType = self::contentTypes['transferFetch'][0])
     {
-        list($response) = $this->transferFetchWithHttpInfo($code, $contentType);
+        list($response) = $this->transferFetchWithHttpInfo($id_or_code, $contentType);
         return $response;
     }
 
@@ -1614,16 +1614,16 @@ class TransferApi
      *
      * Fetch Transfer
      *
-     * @param  string $code Transfer code (required)
+     * @param  string $id_or_code The transfer ID or code you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferFetch'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\TransferFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transferFetchWithHttpInfo($code, string $contentType = self::contentTypes['transferFetch'][0])
+    public function transferFetchWithHttpInfo($id_or_code, string $contentType = self::contentTypes['transferFetch'][0])
     {
-        $request = $this->transferFetchRequest($code, $contentType);
+        $request = $this->transferFetchRequest($id_or_code, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1727,15 +1727,15 @@ class TransferApi
      *
      * Fetch Transfer
      *
-     * @param  string $code Transfer code (required)
+     * @param  string $id_or_code The transfer ID or code you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferFetchAsync($code, string $contentType = self::contentTypes['transferFetch'][0])
+    public function transferFetchAsync($id_or_code, string $contentType = self::contentTypes['transferFetch'][0])
     {
-        return $this->transferFetchAsyncWithHttpInfo($code, $contentType)
+        return $this->transferFetchAsyncWithHttpInfo($id_or_code, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1748,16 +1748,16 @@ class TransferApi
      *
      * Fetch Transfer
      *
-     * @param  string $code Transfer code (required)
+     * @param  string $id_or_code The transfer ID or code you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferFetchAsyncWithHttpInfo($code, string $contentType = self::contentTypes['transferFetch'][0])
+    public function transferFetchAsyncWithHttpInfo($id_or_code, string $contentType = self::contentTypes['transferFetch'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\TransferFetchResponse';
-        $request = $this->transferFetchRequest($code, $contentType);
+        $request = $this->transferFetchRequest($id_or_code, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1798,24 +1798,24 @@ class TransferApi
     /**
      * Create request for operation 'transferFetch'
      *
-     * @param  string $code Transfer code (required)
+     * @param  string $id_or_code The transfer ID or code you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transferFetchRequest($code, string $contentType = self::contentTypes['transferFetch'][0])
+    public function transferFetchRequest($id_or_code, string $contentType = self::contentTypes['transferFetch'][0])
     {
 
-        // verify the required parameter 'code' is set
-        if ($code === null || (is_array($code) && count($code) === 0)) {
+        // verify the required parameter 'id_or_code' is set
+        if ($id_or_code === null || (is_array($id_or_code) && count($id_or_code) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $code when calling transferFetch'
+                'Missing the required parameter $id_or_code when calling transferFetch'
             );
         }
 
 
-        $resourcePath = '/transfer/{code}';
+        $resourcePath = '/transfer/{id_or_code}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1825,10 +1825,10 @@ class TransferApi
 
 
         // path params
-        if ($code !== null) {
+        if ($id_or_code !== null) {
             $resourcePath = str_replace(
-                '{' . 'code' . '}',
-                ObjectSerializer::toPathValue($code),
+                '{' . 'id_or_code' . '}',
+                ObjectSerializer::toPathValue($id_or_code),
                 $resourcePath
             );
         }
@@ -2454,24 +2454,20 @@ class TransferApi
      *
      * List Transfers
      *
-     * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
-     * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
-     * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
-     * @param  string|null $recipient Filter transfer by the recipient code (optional)
-     * @param  string|null $status Filter transfer by status (optional, default to 'pending')
+     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what transfer you want to page. If not specify we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  int|null $recipient Filter by the recipient ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferList'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\TransferListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function transferList($use_cursor = null, $next = null, $previous = null, $per_page = null, $page = null, $from = null, $to = null, $recipient = null, $status = 'pending', string $contentType = self::contentTypes['transferList'][0])
+    public function transferList($per_page = null, $page = null, $from = null, $to = null, $recipient = null, string $contentType = self::contentTypes['transferList'][0])
     {
-        list($response) = $this->transferListWithHttpInfo($use_cursor, $next, $previous, $per_page, $page, $from, $to, $recipient, $status, $contentType);
+        list($response) = $this->transferListWithHttpInfo($per_page, $page, $from, $to, $recipient, $contentType);
         return $response;
     }
 
@@ -2480,24 +2476,20 @@ class TransferApi
      *
      * List Transfers
      *
-     * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
-     * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
-     * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
-     * @param  string|null $recipient Filter transfer by the recipient code (optional)
-     * @param  string|null $status Filter transfer by status (optional, default to 'pending')
+     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what transfer you want to page. If not specify we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  int|null $recipient Filter by the recipient ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferList'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\TransferListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transferListWithHttpInfo($use_cursor = null, $next = null, $previous = null, $per_page = null, $page = null, $from = null, $to = null, $recipient = null, $status = 'pending', string $contentType = self::contentTypes['transferList'][0])
+    public function transferListWithHttpInfo($per_page = null, $page = null, $from = null, $to = null, $recipient = null, string $contentType = self::contentTypes['transferList'][0])
     {
-        $request = $this->transferListRequest($use_cursor, $next, $previous, $per_page, $page, $from, $to, $recipient, $status, $contentType);
+        $request = $this->transferListRequest($per_page, $page, $from, $to, $recipient, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2601,23 +2593,19 @@ class TransferApi
      *
      * List Transfers
      *
-     * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
-     * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
-     * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
-     * @param  string|null $recipient Filter transfer by the recipient code (optional)
-     * @param  string|null $status Filter transfer by status (optional, default to 'pending')
+     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what transfer you want to page. If not specify we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  int|null $recipient Filter by the recipient ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferListAsync($use_cursor = null, $next = null, $previous = null, $per_page = null, $page = null, $from = null, $to = null, $recipient = null, $status = 'pending', string $contentType = self::contentTypes['transferList'][0])
+    public function transferListAsync($per_page = null, $page = null, $from = null, $to = null, $recipient = null, string $contentType = self::contentTypes['transferList'][0])
     {
-        return $this->transferListAsyncWithHttpInfo($use_cursor, $next, $previous, $per_page, $page, $from, $to, $recipient, $status, $contentType)
+        return $this->transferListAsyncWithHttpInfo($per_page, $page, $from, $to, $recipient, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2630,24 +2618,20 @@ class TransferApi
      *
      * List Transfers
      *
-     * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
-     * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
-     * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
-     * @param  string|null $recipient Filter transfer by the recipient code (optional)
-     * @param  string|null $status Filter transfer by status (optional, default to 'pending')
+     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what transfer you want to page. If not specify we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  int|null $recipient Filter by the recipient ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferListAsyncWithHttpInfo($use_cursor = null, $next = null, $previous = null, $per_page = null, $page = null, $from = null, $to = null, $recipient = null, $status = 'pending', string $contentType = self::contentTypes['transferList'][0])
+    public function transferListAsyncWithHttpInfo($per_page = null, $page = null, $from = null, $to = null, $recipient = null, string $contentType = self::contentTypes['transferList'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\TransferListResponse';
-        $request = $this->transferListRequest($use_cursor, $next, $previous, $per_page, $page, $from, $to, $recipient, $status, $contentType);
+        $request = $this->transferListRequest($per_page, $page, $from, $to, $recipient, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2688,26 +2672,18 @@ class TransferApi
     /**
      * Create request for operation 'transferList'
      *
-     * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
-     * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
-     * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
-     * @param  string|null $recipient Filter transfer by the recipient code (optional)
-     * @param  string|null $status Filter transfer by status (optional, default to 'pending')
+     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what transfer you want to page. If not specify we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  int|null $recipient Filter by the recipient ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transferListRequest($use_cursor = null, $next = null, $previous = null, $per_page = null, $page = null, $from = null, $to = null, $recipient = null, $status = 'pending', string $contentType = self::contentTypes['transferList'][0])
+    public function transferListRequest($per_page = null, $page = null, $from = null, $to = null, $recipient = null, string $contentType = self::contentTypes['transferList'][0])
     {
-
-
-
-
 
 
 
@@ -2724,35 +2700,8 @@ class TransferApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $use_cursor,
-            'use_cursor', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $next,
-            'next', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $previous,
-            'previous', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $per_page,
-            'per_page', // param base name
+            'perPage', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
@@ -2789,16 +2738,7 @@ class TransferApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $recipient,
             'recipient', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $status,
-            'status', // param base name
-            'string', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required

@@ -60,7 +60,7 @@ class ChargeSubmitBirthdayResponse implements ModelInterface, ArrayAccess, \Json
     protected static $openAPITypes = [
         'status' => 'bool',
         'message' => 'string',
-        'data' => '\Alexasomba\Paystack\Model\ChargeSubmitBirthdayResponseData'
+        'data' => '\Alexasomba\Paystack\Model\ChargeSubmitPinResponseData'
     ];
 
     /**
@@ -370,7 +370,7 @@ class ChargeSubmitBirthdayResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets data
      *
-     * @return \Alexasomba\Paystack\Model\ChargeSubmitBirthdayResponseData
+     * @return \Alexasomba\Paystack\Model\ChargeSubmitPinResponseData
      */
     public function getData()
     {
@@ -380,7 +380,7 @@ class ChargeSubmitBirthdayResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets data
      *
-     * @param \Alexasomba\Paystack\Model\ChargeSubmitBirthdayResponseData $data data
+     * @param \Alexasomba\Paystack\Model\ChargeSubmitPinResponseData $data data
      *
      * @return self
      */

@@ -20,9 +20,9 @@ import json
 
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List
+from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_authorization import BulkChargeFetchBulkBatchChargesResponseArrayAuthorization
 from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_customer import BulkChargeFetchBulkBatchChargesResponseArrayCustomer
-from alexasomba_paystack.models.transaction_fetch_response_data_metadata import TransactionFetchResponseDataMetadata
-from alexasomba_paystack.models.transaction_partial_debit_response_data_authorization import TransactionPartialDebitResponseDataAuthorization
+from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_metadata import BulkChargeFetchBulkBatchChargesResponseArrayMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -33,13 +33,13 @@ class BulkChargeFetchBulkBatchChargesResponseArray(BaseModel):
     integration: StrictInt
     bulkcharge: StrictInt
     customer: BulkChargeFetchBulkBatchChargesResponseArrayCustomer
-    authorization: TransactionPartialDebitResponseDataAuthorization
+    authorization: BulkChargeFetchBulkBatchChargesResponseArrayAuthorization
     domain: StrictStr
     amount: StrictInt
     at_least: StrictInt
     currency: StrictStr
     reference: StrictStr
-    metadata: TransactionFetchResponseDataMetadata
+    metadata: BulkChargeFetchBulkBatchChargesResponseArrayMetadata
     status: StrictStr
     message: StrictStr
     attempt_partial_debit: StrictBool
@@ -111,13 +111,13 @@ class BulkChargeFetchBulkBatchChargesResponseArray(BaseModel):
             "integration": obj.get("integration"),
             "bulkcharge": obj.get("bulkcharge"),
             "customer": BulkChargeFetchBulkBatchChargesResponseArrayCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
-            "authorization": TransactionPartialDebitResponseDataAuthorization.from_dict(obj["authorization"]) if obj.get("authorization") is not None else None,
+            "authorization": BulkChargeFetchBulkBatchChargesResponseArrayAuthorization.from_dict(obj["authorization"]) if obj.get("authorization") is not None else None,
             "domain": obj.get("domain"),
             "amount": obj.get("amount"),
             "at_least": obj.get("at_least"),
             "currency": obj.get("currency"),
             "reference": obj.get("reference"),
-            "metadata": TransactionFetchResponseDataMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
+            "metadata": BulkChargeFetchBulkBatchChargesResponseArrayMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
             "status": obj.get("status"),
             "message": obj.get("message"),
             "attempt_partial_debit": obj.get("attempt_partial_debit"),

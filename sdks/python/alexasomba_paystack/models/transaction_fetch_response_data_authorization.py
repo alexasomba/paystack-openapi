@@ -39,9 +39,9 @@ class TransactionFetchResponseDataAuthorization(BaseModel):
     brand: StrictStr
     reusable: StrictBool
     signature: StrictStr
-    account_name: Optional[Any]
-    receiver_bank_account_number: Optional[Any]
-    receiver_bank: Optional[Any]
+    account_name: Optional[StrictStr]
+    receiver_bank_account_number: Optional[StrictStr] = None
+    receiver_bank: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["authorization_code", "bin", "last4", "exp_month", "exp_year", "channel", "card_type", "bank", "country_code", "brand", "reusable", "signature", "account_name", "receiver_bank_account_number", "receiver_bank"]
 
     model_config = ConfigDict(

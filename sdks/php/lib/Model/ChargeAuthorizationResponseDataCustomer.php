@@ -64,7 +64,7 @@ class ChargeAuthorizationResponseDataCustomer implements ModelInterface, ArrayAc
         'email' => 'string',
         'customer_code' => 'string',
         'phone' => 'string',
-        'metadata' => '\Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataCustomerMetadata',
+        'metadata' => 'array<string,mixed>',
         'risk_action' => 'string',
         'international_format_phone' => 'string'
     ];
@@ -355,9 +355,6 @@ class ChargeAuthorizationResponseDataCustomer implements ModelInterface, ArrayAc
         if ($this->container['risk_action'] === null) {
             $invalidProperties[] = "'risk_action' can't be null";
         }
-        if ($this->container['international_format_phone'] === null && !$this->isNullableSetToNull('international_format_phone')) {
-            $invalidProperties[] = "'international_format_phone' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -559,7 +556,7 @@ class ChargeAuthorizationResponseDataCustomer implements ModelInterface, ArrayAc
     /**
      * Gets metadata
      *
-     * @return \Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataCustomerMetadata|null
+     * @return array<string,mixed>|null
      */
     public function getMetadata()
     {
@@ -569,7 +566,7 @@ class ChargeAuthorizationResponseDataCustomer implements ModelInterface, ArrayAc
     /**
      * Sets metadata
      *
-     * @param \Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataCustomerMetadata|null $metadata metadata
+     * @param array<string,mixed>|null $metadata metadata
      *
      * @return self
      */

@@ -275,9 +275,6 @@ class RefundCreateResponseDataTransactionCustomer implements ModelInterface, Arr
     {
         $invalidProperties = [];
 
-        if ($this->container['international_format_phone'] === null && !$this->isNullableSetToNull('international_format_phone')) {
-            $invalidProperties[] = "'international_format_phone' can't be null";
-        }
         return $invalidProperties;
     }
 

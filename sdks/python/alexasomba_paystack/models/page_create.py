@@ -29,7 +29,7 @@ class PageCreate(BaseModel):
     """ # noqa: E501
     name: StrictStr = Field(description="Name of page")
     description: Optional[StrictStr] = Field(default=None, description="The description of the page")
-    amount: Optional[StrictInt] = Field(default=None, description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")
+    amount: Optional[StrictInt] = Field(default=None, description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). ")
     currency: Optional[StrictStr] = Field(default=None, description="The transaction currency. Defaults to your integration currency.")
     slug: Optional[StrictStr] = Field(default=None, description="URL slug you would like to be associated with this page. Page will be accessible at `https://paystack.com/pay/[slug]`")
     type: Optional[StrictStr] = Field(default=None, description="The type of payment page to create. Defaults to `payment` if no type is specified. ")
@@ -50,8 +50,8 @@ class PageCreate(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['NGN', 'GHS', 'ZAR', 'KES', 'USD']):
-            raise ValueError("must be one of enum values ('NGN', 'GHS', 'ZAR', 'KES', 'USD')")
+        if value not in set(['NGN', 'GHS', 'ZAR', 'KES', 'USD', 'XOF']):
+            raise ValueError("must be one of enum values ('NGN', 'GHS', 'ZAR', 'KES', 'USD', 'XOF')")
         return value
 
     @field_validator('type')

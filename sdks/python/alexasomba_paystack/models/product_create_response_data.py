@@ -20,8 +20,8 @@ import json
 
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from alexasomba_paystack.models.product_create_response_data_shipping_fields import ProductCreateResponseDataShippingFields
 from alexasomba_paystack.models.product_lists_response_array_metadata import ProductListsResponseArrayMetadata
-from alexasomba_paystack.models.product_lists_response_array_shipping_fields import ProductListsResponseArrayShippingFields
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,35 +29,30 @@ class ProductCreateResponseData(BaseModel):
     """
     ProductCreateResponseData
     """ # noqa: E501
-    variants_options: List[Any]
-    variants: List[Any]
     name: StrictStr
     description: StrictStr
     currency: StrictStr
     price: StrictInt
     quantity: StrictInt
-    type: StrictStr
     is_shippable: StrictBool
     unlimited: StrictBool
-    files: List[Any]
-    shipping_fields: ProductListsResponseArrayShippingFields
     integration: StrictInt
     domain: StrictStr
     metadata: ProductListsResponseArrayMetadata
     slug: StrictStr
     product_code: StrictStr
     quantity_sold: StrictInt
+    type: StrictStr
+    shipping_fields: ProductCreateResponseDataShippingFields
     active: StrictBool
-    deleted_at: Optional[Any]
     in_stock: StrictBool
     minimum_orderable: StrictInt
-    maximum_orderable: Optional[StrictInt]
-    redirect_url: Optional[StrictStr] = None
+    maximum_orderable: Optional[Any]
     low_stock_alert: StrictBool
     id: StrictInt
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    __properties: ClassVar[List[str]] = ["variants_options", "variants", "name", "description", "currency", "price", "quantity", "type", "is_shippable", "unlimited", "files", "shipping_fields", "integration", "domain", "metadata", "slug", "product_code", "quantity_sold", "active", "deleted_at", "in_stock", "minimum_orderable", "maximum_orderable", "redirect_url", "low_stock_alert", "id", "createdAt", "updatedAt"]
+    __properties: ClassVar[List[str]] = ["name", "description", "currency", "price", "quantity", "is_shippable", "unlimited", "integration", "domain", "metadata", "slug", "product_code", "quantity_sold", "type", "shipping_fields", "active", "in_stock", "minimum_orderable", "maximum_orderable", "low_stock_alert", "id", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -98,26 +93,16 @@ class ProductCreateResponseData(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of shipping_fields
-        if self.shipping_fields:
-            _dict['shipping_fields'] = self.shipping_fields.to_dict()
         # override the default output from pydantic by calling `to_dict()` of metadata
         if self.metadata:
             _dict['metadata'] = self.metadata.to_dict()
-        # set to None if deleted_at (nullable) is None
-        # and model_fields_set contains the field
-        if self.deleted_at is None and "deleted_at" in self.model_fields_set:
-            _dict['deleted_at'] = None
-
+        # override the default output from pydantic by calling `to_dict()` of shipping_fields
+        if self.shipping_fields:
+            _dict['shipping_fields'] = self.shipping_fields.to_dict()
         # set to None if maximum_orderable (nullable) is None
         # and model_fields_set contains the field
         if self.maximum_orderable is None and "maximum_orderable" in self.model_fields_set:
             _dict['maximum_orderable'] = None
-
-        # set to None if redirect_url (nullable) is None
-        # and model_fields_set contains the field
-        if self.redirect_url is None and "redirect_url" in self.model_fields_set:
-            _dict['redirect_url'] = None
 
         return _dict
 
@@ -131,30 +116,25 @@ class ProductCreateResponseData(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "variants_options": obj.get("variants_options"),
-            "variants": obj.get("variants"),
             "name": obj.get("name"),
             "description": obj.get("description"),
             "currency": obj.get("currency"),
             "price": obj.get("price"),
             "quantity": obj.get("quantity"),
-            "type": obj.get("type"),
             "is_shippable": obj.get("is_shippable"),
             "unlimited": obj.get("unlimited"),
-            "files": obj.get("files"),
-            "shipping_fields": ProductListsResponseArrayShippingFields.from_dict(obj["shipping_fields"]) if obj.get("shipping_fields") is not None else None,
             "integration": obj.get("integration"),
             "domain": obj.get("domain"),
             "metadata": ProductListsResponseArrayMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
             "slug": obj.get("slug"),
             "product_code": obj.get("product_code"),
             "quantity_sold": obj.get("quantity_sold"),
+            "type": obj.get("type"),
+            "shipping_fields": ProductCreateResponseDataShippingFields.from_dict(obj["shipping_fields"]) if obj.get("shipping_fields") is not None else None,
             "active": obj.get("active"),
-            "deleted_at": obj.get("deleted_at"),
             "in_stock": obj.get("in_stock"),
             "minimum_orderable": obj.get("minimum_orderable"),
             "maximum_orderable": obj.get("maximum_orderable"),
-            "redirect_url": obj.get("redirect_url"),
             "low_stock_alert": obj.get("low_stock_alert"),
             "id": obj.get("id"),
             "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),

@@ -739,7 +739,7 @@ class ChargeApi
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\ChargeCheckPendingResponse|\Alexasomba\Paystack\Model\Error
      */
     public function chargeSubmitAddress($charge_submit_address = null, string $contentType = self::contentTypes['chargeSubmitAddress'][0])
     {
@@ -757,7 +757,7 @@ class ChargeApi
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\ChargeCheckPendingResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function chargeSubmitAddressWithHttpInfo($charge_submit_address = null, string $contentType = self::contentTypes['chargeSubmitAddress'][0])
     {
@@ -789,7 +789,7 @@ class ChargeApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\ChargeCheckPendingResponse',
                         $request,
                         $response,
                     );
@@ -817,7 +817,7 @@ class ChargeApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\Paystack\Model\Response',
+                '\Alexasomba\Paystack\Model\ChargeCheckPendingResponse',
                 $request,
                 $response,
             );
@@ -826,7 +826,7 @@ class ChargeApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\ChargeCheckPendingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -880,7 +880,7 @@ class ChargeApi
      */
     public function chargeSubmitAddressAsyncWithHttpInfo($charge_submit_address = null, string $contentType = self::contentTypes['chargeSubmitAddress'][0])
     {
-        $returnType = '\Alexasomba\Paystack\Model\Response';
+        $returnType = '\Alexasomba\Paystack\Model\ChargeCheckPendingResponse';
         $request = $this->chargeSubmitAddressRequest($charge_submit_address, $contentType);
 
         return $this->client

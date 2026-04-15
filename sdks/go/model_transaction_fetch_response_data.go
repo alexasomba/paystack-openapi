@@ -35,20 +35,20 @@ type TransactionFetchResponseData struct {
 	CreatedAt string `json:"created_at"`
 	Channel string `json:"channel"`
 	Currency string `json:"currency"`
-	IpAddress string `json:"ip_address"`
-	Metadata TransactionFetchResponseDataMetadata `json:"metadata"`
+	IpAddress NullableString `json:"ip_address"`
+	Metadata NullableTransactionListResponseArrayMetadata `json:"metadata"`
 	Log NullableChargeAuthorizationResponseDataLog `json:"log"`
 	Fees int32 `json:"fees"`
 	FeesSplit NullableInt32 `json:"fees_split"`
 	Authorization TransactionFetchResponseDataAuthorization `json:"authorization"`
-	Customer TransactionFetchResponseDataCustomer `json:"customer"`
+	Customer TransactionPartialDebitResponseDataCustomer `json:"customer"`
 	Plan map[string]interface{} `json:"plan"`
 	Subaccount map[string]interface{} `json:"subaccount"`
 	Split map[string]interface{} `json:"split"`
 	OrderId interface{} `json:"order_id"`
 	RequestedAmount int32 `json:"requested_amount"`
 	PosTransactionData interface{} `json:"pos_transaction_data"`
-	Source TransactionFetchResponseDataSource `json:"source"`
+	Source NullableTransactionFetchResponseDataSource `json:"source"`
 	FeesBreakdown interface{} `json:"fees_breakdown"`
 	Connect interface{} `json:"connect"`
 }
@@ -59,7 +59,7 @@ type _TransactionFetchResponseData TransactionFetchResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransactionFetchResponseData(id int32, domain string, status string, reference string, receiptNumber interface{}, amount int32, message interface{}, gatewayResponse string, helpdeskLink interface{}, paidAt string, createdAt string, channel string, currency string, ipAddress string, metadata TransactionFetchResponseDataMetadata, log NullableChargeAuthorizationResponseDataLog, fees int32, feesSplit NullableInt32, authorization TransactionFetchResponseDataAuthorization, customer TransactionFetchResponseDataCustomer, plan map[string]interface{}, subaccount map[string]interface{}, split map[string]interface{}, orderId interface{}, requestedAmount int32, posTransactionData interface{}, source TransactionFetchResponseDataSource, feesBreakdown interface{}, connect interface{}) *TransactionFetchResponseData {
+func NewTransactionFetchResponseData(id int32, domain string, status string, reference string, receiptNumber interface{}, amount int32, message interface{}, gatewayResponse string, helpdeskLink interface{}, paidAt string, createdAt string, channel string, currency string, ipAddress NullableString, metadata NullableTransactionListResponseArrayMetadata, log NullableChargeAuthorizationResponseDataLog, fees int32, feesSplit NullableInt32, authorization TransactionFetchResponseDataAuthorization, customer TransactionPartialDebitResponseDataCustomer, plan map[string]interface{}, subaccount map[string]interface{}, split map[string]interface{}, orderId interface{}, requestedAmount int32, posTransactionData interface{}, source NullableTransactionFetchResponseDataSource, feesBreakdown interface{}, connect interface{}) *TransactionFetchResponseData {
 	this := TransactionFetchResponseData{}
 	this.Id = id
 	this.Domain = domain
@@ -420,51 +420,55 @@ func (o *TransactionFetchResponseData) SetCurrency(v string) {
 }
 
 // GetIpAddress returns the IpAddress field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *TransactionFetchResponseData) GetIpAddress() string {
-	if o == nil {
+	if o == nil || o.IpAddress.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.IpAddress
+	return *o.IpAddress.Get()
 }
 
 // GetIpAddressOk returns a tuple with the IpAddress field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionFetchResponseData) GetIpAddressOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.IpAddress, true
+	return o.IpAddress.Get(), o.IpAddress.IsSet()
 }
 
 // SetIpAddress sets field value
 func (o *TransactionFetchResponseData) SetIpAddress(v string) {
-	o.IpAddress = v
+	o.IpAddress.Set(&v)
 }
 
 // GetMetadata returns the Metadata field value
-func (o *TransactionFetchResponseData) GetMetadata() TransactionFetchResponseDataMetadata {
-	if o == nil {
-		var ret TransactionFetchResponseDataMetadata
+// If the value is explicit nil, the zero value for TransactionListResponseArrayMetadata will be returned
+func (o *TransactionFetchResponseData) GetMetadata() TransactionListResponseArrayMetadata {
+	if o == nil || o.Metadata.Get() == nil {
+		var ret TransactionListResponseArrayMetadata
 		return ret
 	}
 
-	return o.Metadata
+	return *o.Metadata.Get()
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
-func (o *TransactionFetchResponseData) GetMetadataOk() (*TransactionFetchResponseDataMetadata, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TransactionFetchResponseData) GetMetadataOk() (*TransactionListResponseArrayMetadata, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Metadata, true
+	return o.Metadata.Get(), o.Metadata.IsSet()
 }
 
 // SetMetadata sets field value
-func (o *TransactionFetchResponseData) SetMetadata(v TransactionFetchResponseDataMetadata) {
-	o.Metadata = v
+func (o *TransactionFetchResponseData) SetMetadata(v TransactionListResponseArrayMetadata) {
+	o.Metadata.Set(&v)
 }
 
 // GetLog returns the Log field value
@@ -568,9 +572,9 @@ func (o *TransactionFetchResponseData) SetAuthorization(v TransactionFetchRespon
 }
 
 // GetCustomer returns the Customer field value
-func (o *TransactionFetchResponseData) GetCustomer() TransactionFetchResponseDataCustomer {
+func (o *TransactionFetchResponseData) GetCustomer() TransactionPartialDebitResponseDataCustomer {
 	if o == nil {
-		var ret TransactionFetchResponseDataCustomer
+		var ret TransactionPartialDebitResponseDataCustomer
 		return ret
 	}
 
@@ -579,7 +583,7 @@ func (o *TransactionFetchResponseData) GetCustomer() TransactionFetchResponseDat
 
 // GetCustomerOk returns a tuple with the Customer field value
 // and a boolean to check if the value has been set.
-func (o *TransactionFetchResponseData) GetCustomerOk() (*TransactionFetchResponseDataCustomer, bool) {
+func (o *TransactionFetchResponseData) GetCustomerOk() (*TransactionPartialDebitResponseDataCustomer, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -587,11 +591,12 @@ func (o *TransactionFetchResponseData) GetCustomerOk() (*TransactionFetchRespons
 }
 
 // SetCustomer sets field value
-func (o *TransactionFetchResponseData) SetCustomer(v TransactionFetchResponseDataCustomer) {
+func (o *TransactionFetchResponseData) SetCustomer(v TransactionPartialDebitResponseDataCustomer) {
 	o.Customer = v
 }
 
 // GetPlan returns the Plan field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *TransactionFetchResponseData) GetPlan() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -603,8 +608,9 @@ func (o *TransactionFetchResponseData) GetPlan() map[string]interface{} {
 
 // GetPlanOk returns a tuple with the Plan field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionFetchResponseData) GetPlanOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Plan) {
 		return map[string]interface{}{}, false
 	}
 	return o.Plan, true
@@ -616,6 +622,7 @@ func (o *TransactionFetchResponseData) SetPlan(v map[string]interface{}) {
 }
 
 // GetSubaccount returns the Subaccount field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *TransactionFetchResponseData) GetSubaccount() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -627,8 +634,9 @@ func (o *TransactionFetchResponseData) GetSubaccount() map[string]interface{} {
 
 // GetSubaccountOk returns a tuple with the Subaccount field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionFetchResponseData) GetSubaccountOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Subaccount) {
 		return map[string]interface{}{}, false
 	}
 	return o.Subaccount, true
@@ -640,6 +648,7 @@ func (o *TransactionFetchResponseData) SetSubaccount(v map[string]interface{}) {
 }
 
 // GetSplit returns the Split field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *TransactionFetchResponseData) GetSplit() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -651,8 +660,9 @@ func (o *TransactionFetchResponseData) GetSplit() map[string]interface{} {
 
 // GetSplitOk returns a tuple with the Split field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionFetchResponseData) GetSplitOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Split) {
 		return map[string]interface{}{}, false
 	}
 	return o.Split, true
@@ -740,27 +750,29 @@ func (o *TransactionFetchResponseData) SetPosTransactionData(v interface{}) {
 }
 
 // GetSource returns the Source field value
+// If the value is explicit nil, the zero value for TransactionFetchResponseDataSource will be returned
 func (o *TransactionFetchResponseData) GetSource() TransactionFetchResponseDataSource {
-	if o == nil {
+	if o == nil || o.Source.Get() == nil {
 		var ret TransactionFetchResponseDataSource
 		return ret
 	}
 
-	return o.Source
+	return *o.Source.Get()
 }
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionFetchResponseData) GetSourceOk() (*TransactionFetchResponseDataSource, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Source, true
+	return o.Source.Get(), o.Source.IsSet()
 }
 
 // SetSource sets field value
 func (o *TransactionFetchResponseData) SetSource(v TransactionFetchResponseDataSource) {
-	o.Source = v
+	o.Source.Set(&v)
 }
 
 // GetFeesBreakdown returns the FeesBreakdown field value
@@ -844,16 +856,22 @@ func (o TransactionFetchResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["channel"] = o.Channel
 	toSerialize["currency"] = o.Currency
-	toSerialize["ip_address"] = o.IpAddress
-	toSerialize["metadata"] = o.Metadata
+	toSerialize["ip_address"] = o.IpAddress.Get()
+	toSerialize["metadata"] = o.Metadata.Get()
 	toSerialize["log"] = o.Log.Get()
 	toSerialize["fees"] = o.Fees
 	toSerialize["fees_split"] = o.FeesSplit.Get()
 	toSerialize["authorization"] = o.Authorization
 	toSerialize["customer"] = o.Customer
-	toSerialize["plan"] = o.Plan
-	toSerialize["subaccount"] = o.Subaccount
-	toSerialize["split"] = o.Split
+	if o.Plan != nil {
+		toSerialize["plan"] = o.Plan
+	}
+	if o.Subaccount != nil {
+		toSerialize["subaccount"] = o.Subaccount
+	}
+	if o.Split != nil {
+		toSerialize["split"] = o.Split
+	}
 	if o.OrderId != nil {
 		toSerialize["order_id"] = o.OrderId
 	}
@@ -861,7 +879,7 @@ func (o TransactionFetchResponseData) ToMap() (map[string]interface{}, error) {
 	if o.PosTransactionData != nil {
 		toSerialize["pos_transaction_data"] = o.PosTransactionData
 	}
-	toSerialize["source"] = o.Source
+	toSerialize["source"] = o.Source.Get()
 	if o.FeesBreakdown != nil {
 		toSerialize["fees_breakdown"] = o.FeesBreakdown
 	}

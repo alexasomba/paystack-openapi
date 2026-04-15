@@ -39,26 +39,26 @@ class ProductFetchResponseData(BaseModel):
     quantity: StrictInt
     quantity_sold: Optional[Any]
     type: StrictStr
-    files: List[Any]
-    file_path: Optional[Any]
+    files: Optional[List[Any]]
+    file_path: Optional[StrictStr]
     is_shippable: StrictBool
     shipping_fields: ProductListsResponseArrayShippingFields
     unlimited: StrictBool
     domain: StrictStr
     active: StrictBool
-    features: Optional[Any]
+    features: Optional[Dict[str, Any]]
     in_stock: StrictBool
     metadata: ProductListsResponseArrayMetadata
     slug: StrictStr
-    success_message: Optional[Any]
-    redirect_url: Optional[Any]
-    split_code: Optional[Any]
-    notification_emails: Optional[Any]
+    success_message: Optional[StrictStr]
+    redirect_url: Optional[StrictStr]
+    split_code: Optional[StrictStr]
+    notification_emails: Optional[List[StrictStr]]
     minimum_orderable: StrictInt
-    maximum_orderable: Optional[Any]
+    maximum_orderable: Optional[StrictInt]
     low_stock_alert: StrictBool
-    stock_threshold: Optional[Any]
-    expires_in: Optional[Any]
+    stock_threshold: Optional[StrictInt]
+    expires_in: Optional[StrictInt]
     id: StrictInt
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
@@ -113,6 +113,11 @@ class ProductFetchResponseData(BaseModel):
         # and model_fields_set contains the field
         if self.quantity_sold is None and "quantity_sold" in self.model_fields_set:
             _dict['quantity_sold'] = None
+
+        # set to None if files (nullable) is None
+        # and model_fields_set contains the field
+        if self.files is None and "files" in self.model_fields_set:
+            _dict['files'] = None
 
         # set to None if file_path (nullable) is None
         # and model_fields_set contains the field

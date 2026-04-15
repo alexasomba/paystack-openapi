@@ -61,7 +61,7 @@ class BulkChargeListResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'status' => 'bool',
         'message' => 'string',
         'data' => '\Alexasomba\Paystack\Model\BulkChargeListResponseArray[]',
-        'meta' => '\Alexasomba\Paystack\Model\BulkChargeListResponseMeta'
+        'meta' => '\Alexasomba\Paystack\Model\Meta'
     ];
 
     /**
@@ -407,7 +407,7 @@ class BulkChargeListResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets meta
      *
-     * @return \Alexasomba\Paystack\Model\BulkChargeListResponseMeta
+     * @return \Alexasomba\Paystack\Model\Meta
      */
     public function getMeta()
     {
@@ -417,7 +417,7 @@ class BulkChargeListResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets meta
      *
-     * @param \Alexasomba\Paystack\Model\BulkChargeListResponseMeta $meta meta
+     * @param \Alexasomba\Paystack\Model\Meta $meta meta
      *
      * @return self
      */

@@ -861,19 +861,40 @@ func (a *VirtualTerminalAPIService) VirtualTerminalFetchExecute(r ApiVirtualTerm
 type ApiVirtualTerminalListRequest struct {
 	ctx context.Context
 	ApiService *VirtualTerminalAPIService
+	status *string
 	perPage *int32
-	page *int32
+	search *string
+	next *string
+	previous *string
 }
 
-// The number of records to fetch per request
+// Filter by status (&#39;active&#39; or &#39;inactive&#39;)
+func (r ApiVirtualTerminalListRequest) Status(status string) ApiVirtualTerminalListRequest {
+	r.status = &status
+	return r
+}
+
+// Number of records per page
 func (r ApiVirtualTerminalListRequest) PerPage(perPage int32) ApiVirtualTerminalListRequest {
 	r.perPage = &perPage
 	return r
 }
 
-// The offset to retrieve data from
-func (r ApiVirtualTerminalListRequest) Page(page int32) ApiVirtualTerminalListRequest {
-	r.page = &page
+// Search query string
+func (r ApiVirtualTerminalListRequest) Search(search string) ApiVirtualTerminalListRequest {
+	r.search = &search
+	return r
+}
+
+// Cursor for next page
+func (r ApiVirtualTerminalListRequest) Next(next string) ApiVirtualTerminalListRequest {
+	r.next = &next
+	return r
+}
+
+// Cursor for previous page
+func (r ApiVirtualTerminalListRequest) Previous(previous string) ApiVirtualTerminalListRequest {
+	r.previous = &previous
 	return r
 }
 
@@ -917,11 +938,20 @@ func (a *VirtualTerminalAPIService) VirtualTerminalListExecute(r ApiVirtualTermi
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.status != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+	}
 	if r.perPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
 	}
-	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+	}
+	if r.next != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "next", r.next, "form", "")
+	}
+	if r.previous != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

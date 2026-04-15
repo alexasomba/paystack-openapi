@@ -23,31 +23,12 @@ var _ MappedNullable = &OrderListResponseArray{}
 // OrderListResponseArray struct for OrderListResponseArray
 type OrderListResponseArray struct {
 	Id int32 `json:"id"`
-	OrderCode string `json:"order_code"`
-	Integration int32 `json:"integration"`
-	Domain string `json:"domain"`
-	Currency string `json:"currency"`
+	Code string `json:"code"`
 	Amount int32 `json:"amount"`
-	Transaction int32 `json:"transaction"`
-	Page interface{} `json:"page"`
-	Customer int32 `json:"customer"`
-	CustomerName string `json:"customer_name"`
+	Currency string `json:"currency"`
 	Status string `json:"status"`
-	ShippingAddress interface{} `json:"shipping_address"`
-	Metadata string `json:"metadata"`
-	CreatedAt string `json:"created_at"`
-	UpdatedAt string `json:"updated_at"`
-	Email string `json:"email"`
-	PaidAt string `json:"paid_at"`
-	Shipping interface{} `json:"shipping"`
-	ShippingFees int32 `json:"shipping_fees"`
-	Refunded bool `json:"refunded"`
-	IsViewed bool `json:"is_viewed"`
-	RefundedAmount interface{} `json:"refunded_amount"`
-	DiscountAmount interface{} `json:"discount_amount"`
-	Discounts interface{} `json:"discounts"`
-	Items []OrderItemsArray `json:"items"`
-	FullyRefunded bool `json:"fully_refunded"`
+	Customer OrderListResponseArrayCustomer `json:"customer"`
+	CreatedAt string `json:"createdAt"`
 }
 
 type _OrderListResponseArray OrderListResponseArray
@@ -56,34 +37,15 @@ type _OrderListResponseArray OrderListResponseArray
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrderListResponseArray(id int32, orderCode string, integration int32, domain string, currency string, amount int32, transaction int32, page interface{}, customer int32, customerName string, status string, shippingAddress interface{}, metadata string, createdAt string, updatedAt string, email string, paidAt string, shipping interface{}, shippingFees int32, refunded bool, isViewed bool, refundedAmount interface{}, discountAmount interface{}, discounts interface{}, items []OrderItemsArray, fullyRefunded bool) *OrderListResponseArray {
+func NewOrderListResponseArray(id int32, code string, amount int32, currency string, status string, customer OrderListResponseArrayCustomer, createdAt string) *OrderListResponseArray {
 	this := OrderListResponseArray{}
 	this.Id = id
-	this.OrderCode = orderCode
-	this.Integration = integration
-	this.Domain = domain
-	this.Currency = currency
+	this.Code = code
 	this.Amount = amount
-	this.Transaction = transaction
-	this.Page = page
-	this.Customer = customer
-	this.CustomerName = customerName
+	this.Currency = currency
 	this.Status = status
-	this.ShippingAddress = shippingAddress
-	this.Metadata = metadata
+	this.Customer = customer
 	this.CreatedAt = createdAt
-	this.UpdatedAt = updatedAt
-	this.Email = email
-	this.PaidAt = paidAt
-	this.Shipping = shipping
-	this.ShippingFees = shippingFees
-	this.Refunded = refunded
-	this.IsViewed = isViewed
-	this.RefundedAmount = refundedAmount
-	this.DiscountAmount = discountAmount
-	this.Discounts = discounts
-	this.Items = items
-	this.FullyRefunded = fullyRefunded
 	return &this
 }
 
@@ -119,100 +81,28 @@ func (o *OrderListResponseArray) SetId(v int32) {
 	o.Id = v
 }
 
-// GetOrderCode returns the OrderCode field value
-func (o *OrderListResponseArray) GetOrderCode() string {
+// GetCode returns the Code field value
+func (o *OrderListResponseArray) GetCode() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.OrderCode
+	return o.Code
 }
 
-// GetOrderCodeOk returns a tuple with the OrderCode field value
+// GetCodeOk returns a tuple with the Code field value
 // and a boolean to check if the value has been set.
-func (o *OrderListResponseArray) GetOrderCodeOk() (*string, bool) {
+func (o *OrderListResponseArray) GetCodeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.OrderCode, true
+	return &o.Code, true
 }
 
-// SetOrderCode sets field value
-func (o *OrderListResponseArray) SetOrderCode(v string) {
-	o.OrderCode = v
-}
-
-// GetIntegration returns the Integration field value
-func (o *OrderListResponseArray) GetIntegration() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Integration
-}
-
-// GetIntegrationOk returns a tuple with the Integration field value
-// and a boolean to check if the value has been set.
-func (o *OrderListResponseArray) GetIntegrationOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Integration, true
-}
-
-// SetIntegration sets field value
-func (o *OrderListResponseArray) SetIntegration(v int32) {
-	o.Integration = v
-}
-
-// GetDomain returns the Domain field value
-func (o *OrderListResponseArray) GetDomain() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Domain
-}
-
-// GetDomainOk returns a tuple with the Domain field value
-// and a boolean to check if the value has been set.
-func (o *OrderListResponseArray) GetDomainOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Domain, true
-}
-
-// SetDomain sets field value
-func (o *OrderListResponseArray) SetDomain(v string) {
-	o.Domain = v
-}
-
-// GetCurrency returns the Currency field value
-func (o *OrderListResponseArray) GetCurrency() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Currency
-}
-
-// GetCurrencyOk returns a tuple with the Currency field value
-// and a boolean to check if the value has been set.
-func (o *OrderListResponseArray) GetCurrencyOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Currency, true
-}
-
-// SetCurrency sets field value
-func (o *OrderListResponseArray) SetCurrency(v string) {
-	o.Currency = v
+// SetCode sets field value
+func (o *OrderListResponseArray) SetCode(v string) {
+	o.Code = v
 }
 
 // GetAmount returns the Amount field value
@@ -239,102 +129,28 @@ func (o *OrderListResponseArray) SetAmount(v int32) {
 	o.Amount = v
 }
 
-// GetTransaction returns the Transaction field value
-func (o *OrderListResponseArray) GetTransaction() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Transaction
-}
-
-// GetTransactionOk returns a tuple with the Transaction field value
-// and a boolean to check if the value has been set.
-func (o *OrderListResponseArray) GetTransactionOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Transaction, true
-}
-
-// SetTransaction sets field value
-func (o *OrderListResponseArray) SetTransaction(v int32) {
-	o.Transaction = v
-}
-
-// GetPage returns the Page field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderListResponseArray) GetPage() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.Page
-}
-
-// GetPageOk returns a tuple with the Page field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderListResponseArray) GetPageOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Page) {
-		return nil, false
-	}
-	return &o.Page, true
-}
-
-// SetPage sets field value
-func (o *OrderListResponseArray) SetPage(v interface{}) {
-	o.Page = v
-}
-
-// GetCustomer returns the Customer field value
-func (o *OrderListResponseArray) GetCustomer() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Customer
-}
-
-// GetCustomerOk returns a tuple with the Customer field value
-// and a boolean to check if the value has been set.
-func (o *OrderListResponseArray) GetCustomerOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Customer, true
-}
-
-// SetCustomer sets field value
-func (o *OrderListResponseArray) SetCustomer(v int32) {
-	o.Customer = v
-}
-
-// GetCustomerName returns the CustomerName field value
-func (o *OrderListResponseArray) GetCustomerName() string {
+// GetCurrency returns the Currency field value
+func (o *OrderListResponseArray) GetCurrency() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.CustomerName
+	return o.Currency
 }
 
-// GetCustomerNameOk returns a tuple with the CustomerName field value
+// GetCurrencyOk returns a tuple with the Currency field value
 // and a boolean to check if the value has been set.
-func (o *OrderListResponseArray) GetCustomerNameOk() (*string, bool) {
+func (o *OrderListResponseArray) GetCurrencyOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CustomerName, true
+	return &o.Currency, true
 }
 
-// SetCustomerName sets field value
-func (o *OrderListResponseArray) SetCustomerName(v string) {
-	o.CustomerName = v
+// SetCurrency sets field value
+func (o *OrderListResponseArray) SetCurrency(v string) {
+	o.Currency = v
 }
 
 // GetStatus returns the Status field value
@@ -361,54 +177,28 @@ func (o *OrderListResponseArray) SetStatus(v string) {
 	o.Status = v
 }
 
-// GetShippingAddress returns the ShippingAddress field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderListResponseArray) GetShippingAddress() interface{} {
+// GetCustomer returns the Customer field value
+func (o *OrderListResponseArray) GetCustomer() OrderListResponseArrayCustomer {
 	if o == nil {
-		var ret interface{}
+		var ret OrderListResponseArrayCustomer
 		return ret
 	}
 
-	return o.ShippingAddress
+	return o.Customer
 }
 
-// GetShippingAddressOk returns a tuple with the ShippingAddress field value
+// GetCustomerOk returns a tuple with the Customer field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderListResponseArray) GetShippingAddressOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.ShippingAddress) {
-		return nil, false
-	}
-	return &o.ShippingAddress, true
-}
-
-// SetShippingAddress sets field value
-func (o *OrderListResponseArray) SetShippingAddress(v interface{}) {
-	o.ShippingAddress = v
-}
-
-// GetMetadata returns the Metadata field value
-func (o *OrderListResponseArray) GetMetadata() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Metadata
-}
-
-// GetMetadataOk returns a tuple with the Metadata field value
-// and a boolean to check if the value has been set.
-func (o *OrderListResponseArray) GetMetadataOk() (*string, bool) {
+func (o *OrderListResponseArray) GetCustomerOk() (*OrderListResponseArrayCustomer, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Metadata, true
+	return &o.Customer, true
 }
 
-// SetMetadata sets field value
-func (o *OrderListResponseArray) SetMetadata(v string) {
-	o.Metadata = v
+// SetCustomer sets field value
+func (o *OrderListResponseArray) SetCustomer(v OrderListResponseArrayCustomer) {
+	o.Customer = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -435,302 +225,6 @@ func (o *OrderListResponseArray) SetCreatedAt(v string) {
 	o.CreatedAt = v
 }
 
-// GetUpdatedAt returns the UpdatedAt field value
-func (o *OrderListResponseArray) GetUpdatedAt() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.UpdatedAt
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
-// and a boolean to check if the value has been set.
-func (o *OrderListResponseArray) GetUpdatedAtOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.UpdatedAt, true
-}
-
-// SetUpdatedAt sets field value
-func (o *OrderListResponseArray) SetUpdatedAt(v string) {
-	o.UpdatedAt = v
-}
-
-// GetEmail returns the Email field value
-func (o *OrderListResponseArray) GetEmail() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Email
-}
-
-// GetEmailOk returns a tuple with the Email field value
-// and a boolean to check if the value has been set.
-func (o *OrderListResponseArray) GetEmailOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Email, true
-}
-
-// SetEmail sets field value
-func (o *OrderListResponseArray) SetEmail(v string) {
-	o.Email = v
-}
-
-// GetPaidAt returns the PaidAt field value
-func (o *OrderListResponseArray) GetPaidAt() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.PaidAt
-}
-
-// GetPaidAtOk returns a tuple with the PaidAt field value
-// and a boolean to check if the value has been set.
-func (o *OrderListResponseArray) GetPaidAtOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.PaidAt, true
-}
-
-// SetPaidAt sets field value
-func (o *OrderListResponseArray) SetPaidAt(v string) {
-	o.PaidAt = v
-}
-
-// GetShipping returns the Shipping field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderListResponseArray) GetShipping() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.Shipping
-}
-
-// GetShippingOk returns a tuple with the Shipping field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderListResponseArray) GetShippingOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Shipping) {
-		return nil, false
-	}
-	return &o.Shipping, true
-}
-
-// SetShipping sets field value
-func (o *OrderListResponseArray) SetShipping(v interface{}) {
-	o.Shipping = v
-}
-
-// GetShippingFees returns the ShippingFees field value
-func (o *OrderListResponseArray) GetShippingFees() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.ShippingFees
-}
-
-// GetShippingFeesOk returns a tuple with the ShippingFees field value
-// and a boolean to check if the value has been set.
-func (o *OrderListResponseArray) GetShippingFeesOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ShippingFees, true
-}
-
-// SetShippingFees sets field value
-func (o *OrderListResponseArray) SetShippingFees(v int32) {
-	o.ShippingFees = v
-}
-
-// GetRefunded returns the Refunded field value
-func (o *OrderListResponseArray) GetRefunded() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.Refunded
-}
-
-// GetRefundedOk returns a tuple with the Refunded field value
-// and a boolean to check if the value has been set.
-func (o *OrderListResponseArray) GetRefundedOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Refunded, true
-}
-
-// SetRefunded sets field value
-func (o *OrderListResponseArray) SetRefunded(v bool) {
-	o.Refunded = v
-}
-
-// GetIsViewed returns the IsViewed field value
-func (o *OrderListResponseArray) GetIsViewed() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.IsViewed
-}
-
-// GetIsViewedOk returns a tuple with the IsViewed field value
-// and a boolean to check if the value has been set.
-func (o *OrderListResponseArray) GetIsViewedOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IsViewed, true
-}
-
-// SetIsViewed sets field value
-func (o *OrderListResponseArray) SetIsViewed(v bool) {
-	o.IsViewed = v
-}
-
-// GetRefundedAmount returns the RefundedAmount field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderListResponseArray) GetRefundedAmount() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.RefundedAmount
-}
-
-// GetRefundedAmountOk returns a tuple with the RefundedAmount field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderListResponseArray) GetRefundedAmountOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.RefundedAmount) {
-		return nil, false
-	}
-	return &o.RefundedAmount, true
-}
-
-// SetRefundedAmount sets field value
-func (o *OrderListResponseArray) SetRefundedAmount(v interface{}) {
-	o.RefundedAmount = v
-}
-
-// GetDiscountAmount returns the DiscountAmount field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderListResponseArray) GetDiscountAmount() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.DiscountAmount
-}
-
-// GetDiscountAmountOk returns a tuple with the DiscountAmount field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderListResponseArray) GetDiscountAmountOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.DiscountAmount) {
-		return nil, false
-	}
-	return &o.DiscountAmount, true
-}
-
-// SetDiscountAmount sets field value
-func (o *OrderListResponseArray) SetDiscountAmount(v interface{}) {
-	o.DiscountAmount = v
-}
-
-// GetDiscounts returns the Discounts field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OrderListResponseArray) GetDiscounts() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.Discounts
-}
-
-// GetDiscountsOk returns a tuple with the Discounts field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderListResponseArray) GetDiscountsOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Discounts) {
-		return nil, false
-	}
-	return &o.Discounts, true
-}
-
-// SetDiscounts sets field value
-func (o *OrderListResponseArray) SetDiscounts(v interface{}) {
-	o.Discounts = v
-}
-
-// GetItems returns the Items field value
-func (o *OrderListResponseArray) GetItems() []OrderItemsArray {
-	if o == nil {
-		var ret []OrderItemsArray
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *OrderListResponseArray) GetItemsOk() ([]OrderItemsArray, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *OrderListResponseArray) SetItems(v []OrderItemsArray) {
-	o.Items = v
-}
-
-// GetFullyRefunded returns the FullyRefunded field value
-func (o *OrderListResponseArray) GetFullyRefunded() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.FullyRefunded
-}
-
-// GetFullyRefundedOk returns a tuple with the FullyRefunded field value
-// and a boolean to check if the value has been set.
-func (o *OrderListResponseArray) GetFullyRefundedOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.FullyRefunded, true
-}
-
-// SetFullyRefunded sets field value
-func (o *OrderListResponseArray) SetFullyRefunded(v bool) {
-	o.FullyRefunded = v
-}
-
 func (o OrderListResponseArray) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -742,43 +236,12 @@ func (o OrderListResponseArray) MarshalJSON() ([]byte, error) {
 func (o OrderListResponseArray) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["order_code"] = o.OrderCode
-	toSerialize["integration"] = o.Integration
-	toSerialize["domain"] = o.Domain
-	toSerialize["currency"] = o.Currency
+	toSerialize["code"] = o.Code
 	toSerialize["amount"] = o.Amount
-	toSerialize["transaction"] = o.Transaction
-	if o.Page != nil {
-		toSerialize["page"] = o.Page
-	}
-	toSerialize["customer"] = o.Customer
-	toSerialize["customer_name"] = o.CustomerName
+	toSerialize["currency"] = o.Currency
 	toSerialize["status"] = o.Status
-	if o.ShippingAddress != nil {
-		toSerialize["shipping_address"] = o.ShippingAddress
-	}
-	toSerialize["metadata"] = o.Metadata
-	toSerialize["created_at"] = o.CreatedAt
-	toSerialize["updated_at"] = o.UpdatedAt
-	toSerialize["email"] = o.Email
-	toSerialize["paid_at"] = o.PaidAt
-	if o.Shipping != nil {
-		toSerialize["shipping"] = o.Shipping
-	}
-	toSerialize["shipping_fees"] = o.ShippingFees
-	toSerialize["refunded"] = o.Refunded
-	toSerialize["is_viewed"] = o.IsViewed
-	if o.RefundedAmount != nil {
-		toSerialize["refunded_amount"] = o.RefundedAmount
-	}
-	if o.DiscountAmount != nil {
-		toSerialize["discount_amount"] = o.DiscountAmount
-	}
-	if o.Discounts != nil {
-		toSerialize["discounts"] = o.Discounts
-	}
-	toSerialize["items"] = o.Items
-	toSerialize["fully_refunded"] = o.FullyRefunded
+	toSerialize["customer"] = o.Customer
+	toSerialize["createdAt"] = o.CreatedAt
 	return toSerialize, nil
 }
 
@@ -788,31 +251,12 @@ func (o *OrderListResponseArray) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"order_code",
-		"integration",
-		"domain",
-		"currency",
+		"code",
 		"amount",
-		"transaction",
-		"page",
-		"customer",
-		"customer_name",
+		"currency",
 		"status",
-		"shipping_address",
-		"metadata",
-		"created_at",
-		"updated_at",
-		"email",
-		"paid_at",
-		"shipping",
-		"shipping_fees",
-		"refunded",
-		"is_viewed",
-		"refunded_amount",
-		"discount_amount",
-		"discounts",
-		"items",
-		"fully_refunded",
+		"customer",
+		"createdAt",
 	}
 
 	allProperties := make(map[string]interface{})

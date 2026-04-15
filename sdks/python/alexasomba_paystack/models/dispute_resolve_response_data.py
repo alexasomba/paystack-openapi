@@ -29,26 +29,26 @@ class DisputeResolveResponseData(BaseModel):
     DisputeResolveResponseData
     """ # noqa: E501
     currency: StrictStr
-    last4: StrictStr
-    bin: StrictStr
-    transaction_reference: Optional[Any]
-    merchant_transaction_reference: StrictStr
+    last4: Optional[StrictStr]
+    bin: Optional[StrictStr]
+    transaction_reference: Optional[StrictStr] = None
+    merchant_transaction_reference: Optional[StrictStr]
     refund_amount: StrictInt
     status: StrictStr
     domain: StrictStr
     resolution: StrictStr
     category: StrictStr
-    note: Optional[Any]
+    note: Optional[Any] = None
     attachments: StrictStr
     id: StrictInt
-    integration: StrictInt
-    transaction: StrictInt
+    integration: Optional[StrictInt] = None
+    transaction: Dict[str, Any]
     created_by: StrictInt
-    evidence: StrictInt
+    evidence: Optional[StrictInt]
     resolved_at: StrictStr = Field(alias="resolvedAt")
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    due_at: Optional[Any] = Field(alias="dueAt")
+    due_at: Optional[Any] = Field(default=None, alias="dueAt")
     message: DisputeResolveResponseDataMessage
     __properties: ClassVar[List[str]] = ["currency", "last4", "bin", "transaction_reference", "merchant_transaction_reference", "refund_amount", "status", "domain", "resolution", "category", "note", "attachments", "id", "integration", "transaction", "created_by", "evidence", "resolvedAt", "createdAt", "updatedAt", "dueAt", "message"]
 
@@ -94,15 +94,35 @@ class DisputeResolveResponseData(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of message
         if self.message:
             _dict['message'] = self.message.to_dict()
+        # set to None if last4 (nullable) is None
+        # and model_fields_set contains the field
+        if self.last4 is None and "last4" in self.model_fields_set:
+            _dict['last4'] = None
+
+        # set to None if bin (nullable) is None
+        # and model_fields_set contains the field
+        if self.bin is None and "bin" in self.model_fields_set:
+            _dict['bin'] = None
+
         # set to None if transaction_reference (nullable) is None
         # and model_fields_set contains the field
         if self.transaction_reference is None and "transaction_reference" in self.model_fields_set:
             _dict['transaction_reference'] = None
 
+        # set to None if merchant_transaction_reference (nullable) is None
+        # and model_fields_set contains the field
+        if self.merchant_transaction_reference is None and "merchant_transaction_reference" in self.model_fields_set:
+            _dict['merchant_transaction_reference'] = None
+
         # set to None if note (nullable) is None
         # and model_fields_set contains the field
         if self.note is None and "note" in self.model_fields_set:
             _dict['note'] = None
+
+        # set to None if evidence (nullable) is None
+        # and model_fields_set contains the field
+        if self.evidence is None and "evidence" in self.model_fields_set:
+            _dict['evidence'] = None
 
         # set to None if due_at (nullable) is None
         # and model_fields_set contains the field

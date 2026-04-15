@@ -989,16 +989,16 @@ class SubscriptionApi
      *
      * Fetch Subscription
      *
-     * @param  string $code The subscription code for the subscription you want to fetch (required)
+     * @param  string $id_or_code The subscription ID or code you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionFetch'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\SubscriptionFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function subscriptionFetch($code, string $contentType = self::contentTypes['subscriptionFetch'][0])
+    public function subscriptionFetch($id_or_code, string $contentType = self::contentTypes['subscriptionFetch'][0])
     {
-        list($response) = $this->subscriptionFetchWithHttpInfo($code, $contentType);
+        list($response) = $this->subscriptionFetchWithHttpInfo($id_or_code, $contentType);
         return $response;
     }
 
@@ -1007,16 +1007,16 @@ class SubscriptionApi
      *
      * Fetch Subscription
      *
-     * @param  string $code The subscription code for the subscription you want to fetch (required)
+     * @param  string $id_or_code The subscription ID or code you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionFetch'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\SubscriptionFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function subscriptionFetchWithHttpInfo($code, string $contentType = self::contentTypes['subscriptionFetch'][0])
+    public function subscriptionFetchWithHttpInfo($id_or_code, string $contentType = self::contentTypes['subscriptionFetch'][0])
     {
-        $request = $this->subscriptionFetchRequest($code, $contentType);
+        $request = $this->subscriptionFetchRequest($id_or_code, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1120,15 +1120,15 @@ class SubscriptionApi
      *
      * Fetch Subscription
      *
-     * @param  string $code The subscription code for the subscription you want to fetch (required)
+     * @param  string $id_or_code The subscription ID or code you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function subscriptionFetchAsync($code, string $contentType = self::contentTypes['subscriptionFetch'][0])
+    public function subscriptionFetchAsync($id_or_code, string $contentType = self::contentTypes['subscriptionFetch'][0])
     {
-        return $this->subscriptionFetchAsyncWithHttpInfo($code, $contentType)
+        return $this->subscriptionFetchAsyncWithHttpInfo($id_or_code, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1141,16 +1141,16 @@ class SubscriptionApi
      *
      * Fetch Subscription
      *
-     * @param  string $code The subscription code for the subscription you want to fetch (required)
+     * @param  string $id_or_code The subscription ID or code you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function subscriptionFetchAsyncWithHttpInfo($code, string $contentType = self::contentTypes['subscriptionFetch'][0])
+    public function subscriptionFetchAsyncWithHttpInfo($id_or_code, string $contentType = self::contentTypes['subscriptionFetch'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\SubscriptionFetchResponse';
-        $request = $this->subscriptionFetchRequest($code, $contentType);
+        $request = $this->subscriptionFetchRequest($id_or_code, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1191,24 +1191,24 @@ class SubscriptionApi
     /**
      * Create request for operation 'subscriptionFetch'
      *
-     * @param  string $code The subscription code for the subscription you want to fetch (required)
+     * @param  string $id_or_code The subscription ID or code you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function subscriptionFetchRequest($code, string $contentType = self::contentTypes['subscriptionFetch'][0])
+    public function subscriptionFetchRequest($id_or_code, string $contentType = self::contentTypes['subscriptionFetch'][0])
     {
 
-        // verify the required parameter 'code' is set
-        if ($code === null || (is_array($code) && count($code) === 0)) {
+        // verify the required parameter 'id_or_code' is set
+        if ($id_or_code === null || (is_array($id_or_code) && count($id_or_code) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $code when calling subscriptionFetch'
+                'Missing the required parameter $id_or_code when calling subscriptionFetch'
             );
         }
 
 
-        $resourcePath = '/subscription/{code}';
+        $resourcePath = '/subscription/{id_or_code}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1218,10 +1218,10 @@ class SubscriptionApi
 
 
         // path params
-        if ($code !== null) {
+        if ($id_or_code !== null) {
             $resourcePath = str_replace(
-                '{' . 'code' . '}',
-                ObjectSerializer::toPathValue($code),
+                '{' . 'id_or_code' . '}',
+                ObjectSerializer::toPathValue($id_or_code),
                 $resourcePath
             );
         }
@@ -1292,18 +1292,16 @@ class SubscriptionApi
      * @param  int|null $per_page Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
      * @param  int|null $plan Plan ID (optional)
-     * @param  string|null $customer Customer ID (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
+     * @param  int|null $customer Filter by Customer ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionList'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\SubscriptionListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function subscriptionList($per_page = null, $page = null, $plan = null, $customer = null, $from = null, $to = null, string $contentType = self::contentTypes['subscriptionList'][0])
+    public function subscriptionList($per_page = null, $page = null, $plan = null, $customer = null, string $contentType = self::contentTypes['subscriptionList'][0])
     {
-        list($response) = $this->subscriptionListWithHttpInfo($per_page, $page, $plan, $customer, $from, $to, $contentType);
+        list($response) = $this->subscriptionListWithHttpInfo($per_page, $page, $plan, $customer, $contentType);
         return $response;
     }
 
@@ -1315,18 +1313,16 @@ class SubscriptionApi
      * @param  int|null $per_page Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
      * @param  int|null $plan Plan ID (optional)
-     * @param  string|null $customer Customer ID (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
+     * @param  int|null $customer Filter by Customer ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionList'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\SubscriptionListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function subscriptionListWithHttpInfo($per_page = null, $page = null, $plan = null, $customer = null, $from = null, $to = null, string $contentType = self::contentTypes['subscriptionList'][0])
+    public function subscriptionListWithHttpInfo($per_page = null, $page = null, $plan = null, $customer = null, string $contentType = self::contentTypes['subscriptionList'][0])
     {
-        $request = $this->subscriptionListRequest($per_page, $page, $plan, $customer, $from, $to, $contentType);
+        $request = $this->subscriptionListRequest($per_page, $page, $plan, $customer, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1433,17 +1429,15 @@ class SubscriptionApi
      * @param  int|null $per_page Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
      * @param  int|null $plan Plan ID (optional)
-     * @param  string|null $customer Customer ID (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
+     * @param  int|null $customer Filter by Customer ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function subscriptionListAsync($per_page = null, $page = null, $plan = null, $customer = null, $from = null, $to = null, string $contentType = self::contentTypes['subscriptionList'][0])
+    public function subscriptionListAsync($per_page = null, $page = null, $plan = null, $customer = null, string $contentType = self::contentTypes['subscriptionList'][0])
     {
-        return $this->subscriptionListAsyncWithHttpInfo($per_page, $page, $plan, $customer, $from, $to, $contentType)
+        return $this->subscriptionListAsyncWithHttpInfo($per_page, $page, $plan, $customer, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1459,18 +1453,16 @@ class SubscriptionApi
      * @param  int|null $per_page Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
      * @param  int|null $plan Plan ID (optional)
-     * @param  string|null $customer Customer ID (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
+     * @param  int|null $customer Filter by Customer ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function subscriptionListAsyncWithHttpInfo($per_page = null, $page = null, $plan = null, $customer = null, $from = null, $to = null, string $contentType = self::contentTypes['subscriptionList'][0])
+    public function subscriptionListAsyncWithHttpInfo($per_page = null, $page = null, $plan = null, $customer = null, string $contentType = self::contentTypes['subscriptionList'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\SubscriptionListResponse';
-        $request = $this->subscriptionListRequest($per_page, $page, $plan, $customer, $from, $to, $contentType);
+        $request = $this->subscriptionListRequest($per_page, $page, $plan, $customer, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1514,18 +1506,14 @@ class SubscriptionApi
      * @param  int|null $per_page Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
      * @param  int|null $plan Plan ID (optional)
-     * @param  string|null $customer Customer ID (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
+     * @param  int|null $customer Filter by Customer ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function subscriptionListRequest($per_page = null, $page = null, $plan = null, $customer = null, $from = null, $to = null, string $contentType = self::contentTypes['subscriptionList'][0])
+    public function subscriptionListRequest($per_page = null, $page = null, $plan = null, $customer = null, string $contentType = self::contentTypes['subscriptionList'][0])
     {
-
-
 
 
 
@@ -1570,25 +1558,7 @@ class SubscriptionApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $customer,
             'customer', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $from,
-            'from', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $to,
-            'to', // param base name
-            'string', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required

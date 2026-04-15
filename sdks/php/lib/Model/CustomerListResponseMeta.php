@@ -60,9 +60,11 @@ class CustomerListResponseMeta implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $openAPITypes = [
         'total' => 'int',
         'skipped' => 'int',
-        'per_page' => '\Alexasomba\Paystack\Model\TransactionListResponseMetaPerPage',
+        'per_page' => 'int',
         'page' => 'int',
-        'page_count' => 'int'
+        'page_count' => 'int',
+        'next' => 'string',
+        'previous' => 'string'
     ];
 
     /**
@@ -77,7 +79,9 @@ class CustomerListResponseMeta implements ModelInterface, ArrayAccess, \JsonSeri
         'skipped' => null,
         'per_page' => null,
         'page' => null,
-        'page_count' => null
+        'page_count' => null,
+        'next' => null,
+        'previous' => null
     ];
 
     /**
@@ -90,7 +94,9 @@ class CustomerListResponseMeta implements ModelInterface, ArrayAccess, \JsonSeri
         'skipped' => false,
         'per_page' => false,
         'page' => false,
-        'page_count' => false
+        'page_count' => false,
+        'next' => true,
+        'previous' => true
     ];
 
     /**
@@ -183,7 +189,9 @@ class CustomerListResponseMeta implements ModelInterface, ArrayAccess, \JsonSeri
         'skipped' => 'skipped',
         'per_page' => 'perPage',
         'page' => 'page',
-        'page_count' => 'pageCount'
+        'page_count' => 'pageCount',
+        'next' => 'next',
+        'previous' => 'previous'
     ];
 
     /**
@@ -196,7 +204,9 @@ class CustomerListResponseMeta implements ModelInterface, ArrayAccess, \JsonSeri
         'skipped' => 'setSkipped',
         'per_page' => 'setPerPage',
         'page' => 'setPage',
-        'page_count' => 'setPageCount'
+        'page_count' => 'setPageCount',
+        'next' => 'setNext',
+        'previous' => 'setPrevious'
     ];
 
     /**
@@ -209,7 +219,9 @@ class CustomerListResponseMeta implements ModelInterface, ArrayAccess, \JsonSeri
         'skipped' => 'getSkipped',
         'per_page' => 'getPerPage',
         'page' => 'getPage',
-        'page_count' => 'getPageCount'
+        'page_count' => 'getPageCount',
+        'next' => 'getNext',
+        'previous' => 'getPrevious'
     ];
 
     /**
@@ -274,6 +286,8 @@ class CustomerListResponseMeta implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('per_page', $data ?? [], null);
         $this->setIfExists('page', $data ?? [], null);
         $this->setIfExists('page_count', $data ?? [], null);
+        $this->setIfExists('next', $data ?? [], null);
+        $this->setIfExists('previous', $data ?? [], null);
     }
 
     /**
@@ -317,6 +331,12 @@ class CustomerListResponseMeta implements ModelInterface, ArrayAccess, \JsonSeri
         }
         if ($this->container['page_count'] === null) {
             $invalidProperties[] = "'page_count' can't be null";
+        }
+        if ($this->container['next'] === null && !$this->isNullableSetToNull('next')) {
+            $invalidProperties[] = "'next' can't be null";
+        }
+        if ($this->container['previous'] === null && !$this->isNullableSetToNull('previous')) {
+            $invalidProperties[] = "'previous' can't be null";
         }
         return $invalidProperties;
     }
@@ -390,7 +410,7 @@ class CustomerListResponseMeta implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets per_page
      *
-     * @return \Alexasomba\Paystack\Model\TransactionListResponseMetaPerPage
+     * @return int
      */
     public function getPerPage()
     {
@@ -400,7 +420,7 @@ class CustomerListResponseMeta implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets per_page
      *
-     * @param \Alexasomba\Paystack\Model\TransactionListResponseMetaPerPage $per_page per_page
+     * @param int $per_page per_page
      *
      * @return self
      */
@@ -464,6 +484,74 @@ class CustomerListResponseMeta implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable page_count cannot be null');
         }
         $this->container['page_count'] = $page_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets next
+     *
+     * @return string|null
+     */
+    public function getNext()
+    {
+        return $this->container['next'];
+    }
+
+    /**
+     * Sets next
+     *
+     * @param string|null $next next
+     *
+     * @return self
+     */
+    public function setNext($next)
+    {
+        if (is_null($next)) {
+            array_push($this->openAPINullablesSetToNull, 'next');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['next'] = $next;
+
+        return $this;
+    }
+
+    /**
+     * Gets previous
+     *
+     * @return string|null
+     */
+    public function getPrevious()
+    {
+        return $this->container['previous'];
+    }
+
+    /**
+     * Sets previous
+     *
+     * @param string|null $previous previous
+     *
+     * @return self
+     */
+    public function setPrevious($previous)
+    {
+        if (is_null($previous)) {
+            array_push($this->openAPINullablesSetToNull, 'previous');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('previous', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['previous'] = $previous;
 
         return $this;
     }

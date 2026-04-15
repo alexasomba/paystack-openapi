@@ -20,9 +20,9 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from alexasomba_paystack.models.dedicated_nuban_create_response_data_customer import DedicatedNubanCreateResponseDataCustomer
 from alexasomba_paystack.models.payment_request_line_items_array import PaymentRequestLineItemsArray
 from alexasomba_paystack.models.payment_request_tax_array import PaymentRequestTaxArray
-from alexasomba_paystack.models.transaction_fetch_response_data_customer import TransactionFetchResponseDataCustomer
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -45,13 +45,13 @@ class PaymentRequestListResponseArray(BaseModel):
     request_code: StrictStr
     status: StrictStr
     paid: StrictBool
-    paid_at: Optional[Any]
-    metadata: Optional[Any]
+    paid_at: Optional[StrictStr]
+    metadata: Optional[Dict[str, Any]]
     notifications: List[Any]
     offline_reference: StrictStr
-    customer: TransactionFetchResponseDataCustomer
+    customer: DedicatedNubanCreateResponseDataCustomer
     created_at: StrictStr
-    discount: Optional[Any]
+    discount: Optional[Dict[str, Any]]
     split_code: Optional[StrictStr]
     __properties: ClassVar[List[str]] = ["id", "integration", "domain", "amount", "currency", "due_date", "has_invoice", "invoice_number", "description", "pdf_url", "line_items", "tax", "request_code", "status", "paid", "paid_at", "metadata", "notifications", "offline_reference", "customer", "created_at", "discount", "split_code"]
 
@@ -182,7 +182,7 @@ class PaymentRequestListResponseArray(BaseModel):
             "metadata": obj.get("metadata"),
             "notifications": obj.get("notifications"),
             "offline_reference": obj.get("offline_reference"),
-            "customer": TransactionFetchResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
+            "customer": DedicatedNubanCreateResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
             "created_at": obj.get("created_at"),
             "discount": obj.get("discount"),
             "split_code": obj.get("split_code")

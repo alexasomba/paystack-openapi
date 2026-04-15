@@ -23,7 +23,7 @@ var _ MappedNullable = &VirtualTerminalDestinationAssign{}
 // VirtualTerminalDestinationAssign struct for VirtualTerminalDestinationAssign
 type VirtualTerminalDestinationAssign struct {
 	// Array of objects containing recipients for payment notifications for the Virtual Terminal.
-	Destinations []VirtualTerminalCreateDestinationsInner `json:"destinations"`
+	Destinations []VirtualTerminalDestinationAssignDestinationsInner `json:"destinations"`
 }
 
 type _VirtualTerminalDestinationAssign VirtualTerminalDestinationAssign
@@ -32,7 +32,7 @@ type _VirtualTerminalDestinationAssign VirtualTerminalDestinationAssign
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVirtualTerminalDestinationAssign(destinations []VirtualTerminalCreateDestinationsInner) *VirtualTerminalDestinationAssign {
+func NewVirtualTerminalDestinationAssign(destinations []VirtualTerminalDestinationAssignDestinationsInner) *VirtualTerminalDestinationAssign {
 	this := VirtualTerminalDestinationAssign{}
 	this.Destinations = destinations
 	return &this
@@ -47,9 +47,9 @@ func NewVirtualTerminalDestinationAssignWithDefaults() *VirtualTerminalDestinati
 }
 
 // GetDestinations returns the Destinations field value
-func (o *VirtualTerminalDestinationAssign) GetDestinations() []VirtualTerminalCreateDestinationsInner {
+func (o *VirtualTerminalDestinationAssign) GetDestinations() []VirtualTerminalDestinationAssignDestinationsInner {
 	if o == nil {
-		var ret []VirtualTerminalCreateDestinationsInner
+		var ret []VirtualTerminalDestinationAssignDestinationsInner
 		return ret
 	}
 
@@ -58,7 +58,7 @@ func (o *VirtualTerminalDestinationAssign) GetDestinations() []VirtualTerminalCr
 
 // GetDestinationsOk returns a tuple with the Destinations field value
 // and a boolean to check if the value has been set.
-func (o *VirtualTerminalDestinationAssign) GetDestinationsOk() ([]VirtualTerminalCreateDestinationsInner, bool) {
+func (o *VirtualTerminalDestinationAssign) GetDestinationsOk() ([]VirtualTerminalDestinationAssignDestinationsInner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *VirtualTerminalDestinationAssign) GetDestinationsOk() ([]VirtualTermina
 }
 
 // SetDestinations sets field value
-func (o *VirtualTerminalDestinationAssign) SetDestinations(v []VirtualTerminalCreateDestinationsInner) {
+func (o *VirtualTerminalDestinationAssign) SetDestinations(v []VirtualTerminalDestinationAssignDestinationsInner) {
 	o.Destinations = v
 }
 

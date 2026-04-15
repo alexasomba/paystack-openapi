@@ -31,6 +31,7 @@ from alexasomba_paystack.models.payment_request_total_response import PaymentReq
 from alexasomba_paystack.models.payment_request_update import PaymentRequestUpdate
 from alexasomba_paystack.models.payment_request_update_response import PaymentRequestUpdateResponse
 from alexasomba_paystack.models.payment_request_verify_response import PaymentRequestVerifyResponse
+from alexasomba_paystack.models.payment_request_view_response import PaymentRequestViewResponse
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
 from alexasomba_paystack.api_response import ApiResponse
@@ -595,7 +596,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_fetch(
         self,
-        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
+        id_or_code: Annotated[StrictStr, Field(description="The payment request ID or code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -608,13 +609,13 @@ class PaymentRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaymentRequestListResponse:
+    ) -> PaymentRequestViewResponse:
         """Fetch Payment Request
 
         Fetch a previously created payment request
 
-        :param id: The unique identifier of a previously created payment request (required)
-        :type id: int
+        :param id_or_code: The payment request ID or code you want to fetch (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -638,7 +639,7 @@ class PaymentRequestApi:
         """ # noqa: E501
 
         _param = self._payment_request_fetch_serialize(
-            id=id,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -646,7 +647,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaymentRequestListResponse",
+            '200': "PaymentRequestViewResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -664,7 +665,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_fetch_with_http_info(
         self,
-        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
+        id_or_code: Annotated[StrictStr, Field(description="The payment request ID or code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -677,13 +678,13 @@ class PaymentRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaymentRequestListResponse]:
+    ) -> ApiResponse[PaymentRequestViewResponse]:
         """Fetch Payment Request
 
         Fetch a previously created payment request
 
-        :param id: The unique identifier of a previously created payment request (required)
-        :type id: int
+        :param id_or_code: The payment request ID or code you want to fetch (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -707,7 +708,7 @@ class PaymentRequestApi:
         """ # noqa: E501
 
         _param = self._payment_request_fetch_serialize(
-            id=id,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -715,7 +716,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaymentRequestListResponse",
+            '200': "PaymentRequestViewResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -733,7 +734,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_fetch_without_preload_content(
         self,
-        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
+        id_or_code: Annotated[StrictStr, Field(description="The payment request ID or code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -751,8 +752,8 @@ class PaymentRequestApi:
 
         Fetch a previously created payment request
 
-        :param id: The unique identifier of a previously created payment request (required)
-        :type id: int
+        :param id_or_code: The payment request ID or code you want to fetch (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -776,7 +777,7 @@ class PaymentRequestApi:
         """ # noqa: E501
 
         _param = self._payment_request_fetch_serialize(
-            id=id,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -784,7 +785,7 @@ class PaymentRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaymentRequestListResponse",
+            '200': "PaymentRequestViewResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -797,7 +798,7 @@ class PaymentRequestApi:
 
     def _payment_request_fetch_serialize(
         self,
-        id,
+        id_or_code,
         _request_auth,
         _content_type,
         _headers,
@@ -819,8 +820,8 @@ class PaymentRequestApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if id_or_code is not None:
+            _path_params['id_or_code'] = id_or_code
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -843,7 +844,7 @@ class PaymentRequestApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/paymentrequest/{id}',
+            resource_path='/paymentrequest/{id_or_code}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2031,7 +2032,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_update(
         self,
-        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
+        id_or_code: Annotated[StrictStr, Field(description="The payment request ID or code you want to fetch")],
         payment_request_update: Optional[PaymentRequestUpdate] = None,
         _request_timeout: Union[
             None,
@@ -2050,8 +2051,8 @@ class PaymentRequestApi:
 
         Update a previously created payment request
 
-        :param id: The unique identifier of a previously created payment request (required)
-        :type id: int
+        :param id_or_code: The payment request ID or code you want to fetch (required)
+        :type id_or_code: str
         :param payment_request_update:
         :type payment_request_update: PaymentRequestUpdate
         :param _request_timeout: timeout setting for this request. If one
@@ -2077,7 +2078,7 @@ class PaymentRequestApi:
         """ # noqa: E501
 
         _param = self._payment_request_update_serialize(
-            id=id,
+            id_or_code=id_or_code,
             payment_request_update=payment_request_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2104,7 +2105,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_update_with_http_info(
         self,
-        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
+        id_or_code: Annotated[StrictStr, Field(description="The payment request ID or code you want to fetch")],
         payment_request_update: Optional[PaymentRequestUpdate] = None,
         _request_timeout: Union[
             None,
@@ -2123,8 +2124,8 @@ class PaymentRequestApi:
 
         Update a previously created payment request
 
-        :param id: The unique identifier of a previously created payment request (required)
-        :type id: int
+        :param id_or_code: The payment request ID or code you want to fetch (required)
+        :type id_or_code: str
         :param payment_request_update:
         :type payment_request_update: PaymentRequestUpdate
         :param _request_timeout: timeout setting for this request. If one
@@ -2150,7 +2151,7 @@ class PaymentRequestApi:
         """ # noqa: E501
 
         _param = self._payment_request_update_serialize(
-            id=id,
+            id_or_code=id_or_code,
             payment_request_update=payment_request_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2177,7 +2178,7 @@ class PaymentRequestApi:
     @validate_call
     def payment_request_update_without_preload_content(
         self,
-        id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
+        id_or_code: Annotated[StrictStr, Field(description="The payment request ID or code you want to fetch")],
         payment_request_update: Optional[PaymentRequestUpdate] = None,
         _request_timeout: Union[
             None,
@@ -2196,8 +2197,8 @@ class PaymentRequestApi:
 
         Update a previously created payment request
 
-        :param id: The unique identifier of a previously created payment request (required)
-        :type id: int
+        :param id_or_code: The payment request ID or code you want to fetch (required)
+        :type id_or_code: str
         :param payment_request_update:
         :type payment_request_update: PaymentRequestUpdate
         :param _request_timeout: timeout setting for this request. If one
@@ -2223,7 +2224,7 @@ class PaymentRequestApi:
         """ # noqa: E501
 
         _param = self._payment_request_update_serialize(
-            id=id,
+            id_or_code=id_or_code,
             payment_request_update=payment_request_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2245,7 +2246,7 @@ class PaymentRequestApi:
 
     def _payment_request_update_serialize(
         self,
-        id,
+        id_or_code,
         payment_request_update,
         _request_auth,
         _content_type,
@@ -2268,8 +2269,8 @@ class PaymentRequestApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if id_or_code is not None:
+            _path_params['id_or_code'] = id_or_code
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -2308,7 +2309,7 @@ class PaymentRequestApi:
 
         return self.api_client.param_serialize(
             method='PUT',
-            resource_path='/paymentrequest/{id}',
+            resource_path='/paymentrequest/{id_or_code}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

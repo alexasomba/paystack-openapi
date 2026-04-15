@@ -39,8 +39,8 @@ class TransferBulk(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['NGN', 'ZAR', 'KES', 'GHS']):
-            raise ValueError("must be one of enum values ('NGN', 'ZAR', 'KES', 'GHS')")
+        if value not in set(['NGN', 'ZAR', 'KES', 'GHS', 'XOF']):
+            raise ValueError("must be one of enum values ('NGN', 'ZAR', 'KES', 'GHS', 'XOF')")
         return value
 
     model_config = ConfigDict(

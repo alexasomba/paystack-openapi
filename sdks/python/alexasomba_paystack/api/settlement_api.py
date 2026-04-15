@@ -17,10 +17,12 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt
+from datetime import datetime
+from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
-from alexasomba_paystack.models.response import Response
+from alexasomba_paystack.models.settlement_list_response import SettlementListResponse
+from alexasomba_paystack.models.settlement_transactions_response import SettlementTransactionsResponse
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
 from alexasomba_paystack.api_response import ApiResponse
@@ -43,8 +45,12 @@ class SettlementApi:
     @validate_call
     def settlements_fetch(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
+        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter by status")] = None,
+        subaccount: Annotated[Optional[StrictStr], Field(description="Filter by subaccount ID. Set to `none` to return only main account settlements.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -57,15 +63,23 @@ class SettlementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> SettlementListResponse:
         """List Settlements
 
         List settlements made to your settlement accounts
 
-        :param per_page: The number of records to fetch per request
+        :param per_page: Number of records to fetch per page
         :type per_page: int
-        :param page: The offset to retrieve data from
+        :param page: The section to retrieve
         :type page: int
+        :param var_from: The start date
+        :type var_from: datetime
+        :param to: The end date
+        :type to: datetime
+        :param status: Filter by status
+        :type status: str
+        :param subaccount: Filter by subaccount ID. Set to `none` to return only main account settlements.
+        :type subaccount: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -91,6 +105,10 @@ class SettlementApi:
         _param = self._settlements_fetch_serialize(
             per_page=per_page,
             page=page,
+            var_from=var_from,
+            to=to,
+            status=status,
+            subaccount=subaccount,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -98,7 +116,7 @@ class SettlementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SettlementListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -116,8 +134,12 @@ class SettlementApi:
     @validate_call
     def settlements_fetch_with_http_info(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
+        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter by status")] = None,
+        subaccount: Annotated[Optional[StrictStr], Field(description="Filter by subaccount ID. Set to `none` to return only main account settlements.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -130,15 +152,23 @@ class SettlementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[SettlementListResponse]:
         """List Settlements
 
         List settlements made to your settlement accounts
 
-        :param per_page: The number of records to fetch per request
+        :param per_page: Number of records to fetch per page
         :type per_page: int
-        :param page: The offset to retrieve data from
+        :param page: The section to retrieve
         :type page: int
+        :param var_from: The start date
+        :type var_from: datetime
+        :param to: The end date
+        :type to: datetime
+        :param status: Filter by status
+        :type status: str
+        :param subaccount: Filter by subaccount ID. Set to `none` to return only main account settlements.
+        :type subaccount: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -164,6 +194,10 @@ class SettlementApi:
         _param = self._settlements_fetch_serialize(
             per_page=per_page,
             page=page,
+            var_from=var_from,
+            to=to,
+            status=status,
+            subaccount=subaccount,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -171,7 +205,7 @@ class SettlementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SettlementListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -189,8 +223,12 @@ class SettlementApi:
     @validate_call
     def settlements_fetch_without_preload_content(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
+        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter by status")] = None,
+        subaccount: Annotated[Optional[StrictStr], Field(description="Filter by subaccount ID. Set to `none` to return only main account settlements.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -208,10 +246,18 @@ class SettlementApi:
 
         List settlements made to your settlement accounts
 
-        :param per_page: The number of records to fetch per request
+        :param per_page: Number of records to fetch per page
         :type per_page: int
-        :param page: The offset to retrieve data from
+        :param page: The section to retrieve
         :type page: int
+        :param var_from: The start date
+        :type var_from: datetime
+        :param to: The end date
+        :type to: datetime
+        :param status: Filter by status
+        :type status: str
+        :param subaccount: Filter by subaccount ID. Set to `none` to return only main account settlements.
+        :type subaccount: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -237,6 +283,10 @@ class SettlementApi:
         _param = self._settlements_fetch_serialize(
             per_page=per_page,
             page=page,
+            var_from=var_from,
+            to=to,
+            status=status,
+            subaccount=subaccount,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -244,7 +294,7 @@ class SettlementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SettlementListResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -259,6 +309,10 @@ class SettlementApi:
         self,
         per_page,
         page,
+        var_from,
+        to,
+        status,
+        subaccount,
         _request_auth,
         _content_type,
         _headers,
@@ -288,6 +342,40 @@ class SettlementApi:
         if page is not None:
             
             _query_params.append(('page', page))
+            
+        if var_from is not None:
+            if isinstance(var_from, datetime):
+                _query_params.append(
+                    (
+                        'from',
+                        var_from.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('from', var_from))
+            
+        if to is not None:
+            if isinstance(to, datetime):
+                _query_params.append(
+                    (
+                        'to',
+                        to.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('to', to))
+            
+        if status is not None:
+            
+            _query_params.append(('status', status))
+            
+        if subaccount is not None:
+            
+            _query_params.append(('subaccount', subaccount))
             
         # process the header parameters
         # process the form parameters
@@ -330,6 +418,10 @@ class SettlementApi:
     def settlements_transaction(
         self,
         id: Annotated[StrictInt, Field(description="The settlement ID in which you want to fetch its transactions")],
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
+        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -342,13 +434,21 @@ class SettlementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> SettlementTransactionsResponse:
         """Fetch Settlement Transactions
 
         Get the transactions that make up a particular settlement
 
         :param id: The settlement ID in which you want to fetch its transactions (required)
         :type id: int
+        :param per_page: Number of records to fetch per page
+        :type per_page: int
+        :param page: The section to retrieve
+        :type page: int
+        :param var_from: The start date
+        :type var_from: datetime
+        :param to: The end date
+        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -373,6 +473,10 @@ class SettlementApi:
 
         _param = self._settlements_transaction_serialize(
             id=id,
+            per_page=per_page,
+            page=page,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -380,7 +484,7 @@ class SettlementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SettlementTransactionsResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -399,6 +503,10 @@ class SettlementApi:
     def settlements_transaction_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The settlement ID in which you want to fetch its transactions")],
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
+        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -411,13 +519,21 @@ class SettlementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[SettlementTransactionsResponse]:
         """Fetch Settlement Transactions
 
         Get the transactions that make up a particular settlement
 
         :param id: The settlement ID in which you want to fetch its transactions (required)
         :type id: int
+        :param per_page: Number of records to fetch per page
+        :type per_page: int
+        :param page: The section to retrieve
+        :type page: int
+        :param var_from: The start date
+        :type var_from: datetime
+        :param to: The end date
+        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -442,6 +558,10 @@ class SettlementApi:
 
         _param = self._settlements_transaction_serialize(
             id=id,
+            per_page=per_page,
+            page=page,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -449,7 +569,7 @@ class SettlementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SettlementTransactionsResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -468,6 +588,10 @@ class SettlementApi:
     def settlements_transaction_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The settlement ID in which you want to fetch its transactions")],
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
+        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -487,6 +611,14 @@ class SettlementApi:
 
         :param id: The settlement ID in which you want to fetch its transactions (required)
         :type id: int
+        :param per_page: Number of records to fetch per page
+        :type per_page: int
+        :param page: The section to retrieve
+        :type page: int
+        :param var_from: The start date
+        :type var_from: datetime
+        :param to: The end date
+        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -511,6 +643,10 @@ class SettlementApi:
 
         _param = self._settlements_transaction_serialize(
             id=id,
+            per_page=per_page,
+            page=page,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -518,7 +654,7 @@ class SettlementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "SettlementTransactionsResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -532,6 +668,10 @@ class SettlementApi:
     def _settlements_transaction_serialize(
         self,
         id,
+        per_page,
+        page,
+        var_from,
+        to,
         _request_auth,
         _content_type,
         _headers,
@@ -556,6 +696,40 @@ class SettlementApi:
         if id is not None:
             _path_params['id'] = id
         # process the query parameters
+        if per_page is not None:
+            
+            _query_params.append(('perPage', per_page))
+            
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
+        if var_from is not None:
+            if isinstance(var_from, datetime):
+                _query_params.append(
+                    (
+                        'from',
+                        var_from.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('from', var_from))
+            
+        if to is not None:
+            if isinstance(to, datetime):
+                _query_params.append(
+                    (
+                        'to',
+                        to.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('to', to))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter

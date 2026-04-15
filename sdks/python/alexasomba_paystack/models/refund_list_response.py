@@ -21,7 +21,6 @@ import json
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List
 from alexasomba_paystack.models.refund_list_response_array import RefundListResponseArray
-from alexasomba_paystack.models.refund_list_response_meta import RefundListResponseMeta
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,8 +31,7 @@ class RefundListResponse(BaseModel):
     status: StrictBool
     message: StrictStr
     data: List[RefundListResponseArray]
-    meta: RefundListResponseMeta
-    __properties: ClassVar[List[str]] = ["status", "message", "data", "meta"]
+    __properties: ClassVar[List[str]] = ["status", "message", "data"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,9 +79,6 @@ class RefundListResponse(BaseModel):
                 if _item_data:
                     _items.append(_item_data.to_dict())
             _dict['data'] = _items
-        # override the default output from pydantic by calling `to_dict()` of meta
-        if self.meta:
-            _dict['meta'] = self.meta.to_dict()
         return _dict
 
     @classmethod
@@ -98,8 +93,7 @@ class RefundListResponse(BaseModel):
         _obj = cls.model_validate({
             "status": obj.get("status"),
             "message": obj.get("message"),
-            "data": [RefundListResponseArray.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
-            "meta": RefundListResponseMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+            "data": [RefundListResponseArray.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None
         })
         return _obj
 

@@ -282,6 +282,7 @@ class OrderCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     public const CURRENCY_NGN = 'NGN';
     public const CURRENCY_USD = 'USD';
     public const CURRENCY_ZAR = 'ZAR';
+    public const CURRENCY_XOF = 'XOF';
 
     /**
      * Gets allowable values of the enum
@@ -296,6 +297,7 @@ class OrderCreate implements ModelInterface, ArrayAccess, \JsonSerializable
             self::CURRENCY_NGN,
             self::CURRENCY_USD,
             self::CURRENCY_ZAR,
+            self::CURRENCY_XOF,
         ];
     }
 

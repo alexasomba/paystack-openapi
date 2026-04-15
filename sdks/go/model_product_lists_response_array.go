@@ -38,12 +38,12 @@ type ProductListsResponseArray struct {
 	Unlimited bool `json:"unlimited"`
 	Metadata ProductListsResponseArrayMetadata `json:"metadata"`
 	Files []interface{} `json:"files"`
-	SuccessMessage interface{} `json:"success_message"`
-	RedirectUrl interface{} `json:"redirect_url"`
-	SplitCode interface{} `json:"split_code"`
-	NotificationEmails interface{} `json:"notification_emails"`
+	SuccessMessage NullableString `json:"success_message"`
+	RedirectUrl NullableString `json:"redirect_url"`
+	SplitCode NullableString `json:"split_code"`
+	NotificationEmails []string `json:"notification_emails"`
 	MinimumOrderable int32 `json:"minimum_orderable"`
-	MaximumOrderable interface{} `json:"maximum_orderable"`
+	MaximumOrderable NullableInt32 `json:"maximum_orderable"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
 	DigitalAssets []interface{} `json:"digital_assets"`
@@ -60,7 +60,7 @@ type _ProductListsResponseArray ProductListsResponseArray
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProductListsResponseArray(id int32, name string, description string, productCode string, slug string, currency string, price int32, quantity int32, quantitySold int32, active bool, domain string, type_ string, inStock bool, unlimited bool, metadata ProductListsResponseArrayMetadata, files []interface{}, successMessage interface{}, redirectUrl interface{}, splitCode interface{}, notificationEmails interface{}, minimumOrderable int32, maximumOrderable interface{}, createdAt string, updatedAt string, digitalAssets []interface{}, variantOptions []interface{}, isShippable bool, shippingFields ProductListsResponseArrayShippingFields, integration int32, lowStockAlert int32) *ProductListsResponseArray {
+func NewProductListsResponseArray(id int32, name string, description string, productCode string, slug string, currency string, price int32, quantity int32, quantitySold int32, active bool, domain string, type_ string, inStock bool, unlimited bool, metadata ProductListsResponseArrayMetadata, files []interface{}, successMessage NullableString, redirectUrl NullableString, splitCode NullableString, notificationEmails []string, minimumOrderable int32, maximumOrderable NullableInt32, createdAt string, updatedAt string, digitalAssets []interface{}, variantOptions []interface{}, isShippable bool, shippingFields ProductListsResponseArrayShippingFields, integration int32, lowStockAlert int32) *ProductListsResponseArray {
 	this := ProductListsResponseArray{}
 	this.Id = id
 	this.Name = name
@@ -488,88 +488,88 @@ func (o *ProductListsResponseArray) SetFiles(v []interface{}) {
 }
 
 // GetSuccessMessage returns the SuccessMessage field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ProductListsResponseArray) GetSuccessMessage() interface{} {
-	if o == nil {
-		var ret interface{}
+// If the value is explicit nil, the zero value for string will be returned
+func (o *ProductListsResponseArray) GetSuccessMessage() string {
+	if o == nil || o.SuccessMessage.Get() == nil {
+		var ret string
 		return ret
 	}
 
-	return o.SuccessMessage
+	return *o.SuccessMessage.Get()
 }
 
 // GetSuccessMessageOk returns a tuple with the SuccessMessage field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductListsResponseArray) GetSuccessMessageOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.SuccessMessage) {
+func (o *ProductListsResponseArray) GetSuccessMessageOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.SuccessMessage, true
+	return o.SuccessMessage.Get(), o.SuccessMessage.IsSet()
 }
 
 // SetSuccessMessage sets field value
-func (o *ProductListsResponseArray) SetSuccessMessage(v interface{}) {
-	o.SuccessMessage = v
+func (o *ProductListsResponseArray) SetSuccessMessage(v string) {
+	o.SuccessMessage.Set(&v)
 }
 
 // GetRedirectUrl returns the RedirectUrl field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ProductListsResponseArray) GetRedirectUrl() interface{} {
-	if o == nil {
-		var ret interface{}
+// If the value is explicit nil, the zero value for string will be returned
+func (o *ProductListsResponseArray) GetRedirectUrl() string {
+	if o == nil || o.RedirectUrl.Get() == nil {
+		var ret string
 		return ret
 	}
 
-	return o.RedirectUrl
+	return *o.RedirectUrl.Get()
 }
 
 // GetRedirectUrlOk returns a tuple with the RedirectUrl field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductListsResponseArray) GetRedirectUrlOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.RedirectUrl) {
+func (o *ProductListsResponseArray) GetRedirectUrlOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.RedirectUrl, true
+	return o.RedirectUrl.Get(), o.RedirectUrl.IsSet()
 }
 
 // SetRedirectUrl sets field value
-func (o *ProductListsResponseArray) SetRedirectUrl(v interface{}) {
-	o.RedirectUrl = v
+func (o *ProductListsResponseArray) SetRedirectUrl(v string) {
+	o.RedirectUrl.Set(&v)
 }
 
 // GetSplitCode returns the SplitCode field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ProductListsResponseArray) GetSplitCode() interface{} {
-	if o == nil {
-		var ret interface{}
+// If the value is explicit nil, the zero value for string will be returned
+func (o *ProductListsResponseArray) GetSplitCode() string {
+	if o == nil || o.SplitCode.Get() == nil {
+		var ret string
 		return ret
 	}
 
-	return o.SplitCode
+	return *o.SplitCode.Get()
 }
 
 // GetSplitCodeOk returns a tuple with the SplitCode field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductListsResponseArray) GetSplitCodeOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.SplitCode) {
+func (o *ProductListsResponseArray) GetSplitCodeOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.SplitCode, true
+	return o.SplitCode.Get(), o.SplitCode.IsSet()
 }
 
 // SetSplitCode sets field value
-func (o *ProductListsResponseArray) SetSplitCode(v interface{}) {
-	o.SplitCode = v
+func (o *ProductListsResponseArray) SetSplitCode(v string) {
+	o.SplitCode.Set(&v)
 }
 
 // GetNotificationEmails returns the NotificationEmails field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ProductListsResponseArray) GetNotificationEmails() interface{} {
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *ProductListsResponseArray) GetNotificationEmails() []string {
 	if o == nil {
-		var ret interface{}
+		var ret []string
 		return ret
 	}
 
@@ -579,15 +579,15 @@ func (o *ProductListsResponseArray) GetNotificationEmails() interface{} {
 // GetNotificationEmailsOk returns a tuple with the NotificationEmails field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductListsResponseArray) GetNotificationEmailsOk() (*interface{}, bool) {
+func (o *ProductListsResponseArray) GetNotificationEmailsOk() ([]string, bool) {
 	if o == nil || IsNil(o.NotificationEmails) {
 		return nil, false
 	}
-	return &o.NotificationEmails, true
+	return o.NotificationEmails, true
 }
 
 // SetNotificationEmails sets field value
-func (o *ProductListsResponseArray) SetNotificationEmails(v interface{}) {
+func (o *ProductListsResponseArray) SetNotificationEmails(v []string) {
 	o.NotificationEmails = v
 }
 
@@ -616,29 +616,29 @@ func (o *ProductListsResponseArray) SetMinimumOrderable(v int32) {
 }
 
 // GetMaximumOrderable returns the MaximumOrderable field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ProductListsResponseArray) GetMaximumOrderable() interface{} {
-	if o == nil {
-		var ret interface{}
+// If the value is explicit nil, the zero value for int32 will be returned
+func (o *ProductListsResponseArray) GetMaximumOrderable() int32 {
+	if o == nil || o.MaximumOrderable.Get() == nil {
+		var ret int32
 		return ret
 	}
 
-	return o.MaximumOrderable
+	return *o.MaximumOrderable.Get()
 }
 
 // GetMaximumOrderableOk returns a tuple with the MaximumOrderable field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductListsResponseArray) GetMaximumOrderableOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.MaximumOrderable) {
+func (o *ProductListsResponseArray) GetMaximumOrderableOk() (*int32, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.MaximumOrderable, true
+	return o.MaximumOrderable.Get(), o.MaximumOrderable.IsSet()
 }
 
 // SetMaximumOrderable sets field value
-func (o *ProductListsResponseArray) SetMaximumOrderable(v interface{}) {
-	o.MaximumOrderable = v
+func (o *ProductListsResponseArray) SetMaximumOrderable(v int32) {
+	o.MaximumOrderable.Set(&v)
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -859,22 +859,14 @@ func (o ProductListsResponseArray) ToMap() (map[string]interface{}, error) {
 	toSerialize["unlimited"] = o.Unlimited
 	toSerialize["metadata"] = o.Metadata
 	toSerialize["files"] = o.Files
-	if o.SuccessMessage != nil {
-		toSerialize["success_message"] = o.SuccessMessage
-	}
-	if o.RedirectUrl != nil {
-		toSerialize["redirect_url"] = o.RedirectUrl
-	}
-	if o.SplitCode != nil {
-		toSerialize["split_code"] = o.SplitCode
-	}
+	toSerialize["success_message"] = o.SuccessMessage.Get()
+	toSerialize["redirect_url"] = o.RedirectUrl.Get()
+	toSerialize["split_code"] = o.SplitCode.Get()
 	if o.NotificationEmails != nil {
 		toSerialize["notification_emails"] = o.NotificationEmails
 	}
 	toSerialize["minimum_orderable"] = o.MinimumOrderable
-	if o.MaximumOrderable != nil {
-		toSerialize["maximum_orderable"] = o.MaximumOrderable
-	}
+	toSerialize["maximum_orderable"] = o.MaximumOrderable.Get()
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["updatedAt"] = o.UpdatedAt
 	toSerialize["digital_assets"] = o.DigitalAssets

@@ -28,7 +28,7 @@ type ChargeAuthorizationResponseData struct {
 	Status string `json:"status"`
 	Reference string `json:"reference"`
 	Domain string `json:"domain"`
-	Metadata string `json:"metadata"`
+	Metadata NullableChargeAuthorizationResponseDataMetadata `json:"metadata"`
 	GatewayResponse string `json:"gateway_response"`
 	Message NullableString `json:"message"`
 	Channel string `json:"channel"`
@@ -47,7 +47,7 @@ type _ChargeAuthorizationResponseData ChargeAuthorizationResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChargeAuthorizationResponseData(amount int32, currency string, transactionDate string, status string, reference string, domain string, metadata string, gatewayResponse string, message NullableString, channel string, ipAddress interface{}, log NullableChargeAuthorizationResponseDataLog, fees NullableInt32, authorization ChargeAuthorizationResponseDataAuthorization, customer ChargeAuthorizationResponseDataCustomer, plan interface{}, id int32) *ChargeAuthorizationResponseData {
+func NewChargeAuthorizationResponseData(amount int32, currency string, transactionDate string, status string, reference string, domain string, metadata NullableChargeAuthorizationResponseDataMetadata, gatewayResponse string, message NullableString, channel string, ipAddress interface{}, log NullableChargeAuthorizationResponseDataLog, fees NullableInt32, authorization ChargeAuthorizationResponseDataAuthorization, customer ChargeAuthorizationResponseDataCustomer, plan interface{}, id int32) *ChargeAuthorizationResponseData {
 	this := ChargeAuthorizationResponseData{}
 	this.Amount = amount
 	this.Currency = currency
@@ -222,27 +222,29 @@ func (o *ChargeAuthorizationResponseData) SetDomain(v string) {
 }
 
 // GetMetadata returns the Metadata field value
-func (o *ChargeAuthorizationResponseData) GetMetadata() string {
-	if o == nil {
-		var ret string
+// If the value is explicit nil, the zero value for ChargeAuthorizationResponseDataMetadata will be returned
+func (o *ChargeAuthorizationResponseData) GetMetadata() ChargeAuthorizationResponseDataMetadata {
+	if o == nil || o.Metadata.Get() == nil {
+		var ret ChargeAuthorizationResponseDataMetadata
 		return ret
 	}
 
-	return o.Metadata
+	return *o.Metadata.Get()
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
-func (o *ChargeAuthorizationResponseData) GetMetadataOk() (*string, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ChargeAuthorizationResponseData) GetMetadataOk() (*ChargeAuthorizationResponseDataMetadata, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Metadata, true
+	return o.Metadata.Get(), o.Metadata.IsSet()
 }
 
 // SetMetadata sets field value
-func (o *ChargeAuthorizationResponseData) SetMetadata(v string) {
-	o.Metadata = v
+func (o *ChargeAuthorizationResponseData) SetMetadata(v ChargeAuthorizationResponseDataMetadata) {
+	o.Metadata.Set(&v)
 }
 
 // GetGatewayResponse returns the GatewayResponse field value
@@ -511,7 +513,7 @@ func (o ChargeAuthorizationResponseData) ToMap() (map[string]interface{}, error)
 	toSerialize["status"] = o.Status
 	toSerialize["reference"] = o.Reference
 	toSerialize["domain"] = o.Domain
-	toSerialize["metadata"] = o.Metadata
+	toSerialize["metadata"] = o.Metadata.Get()
 	toSerialize["gateway_response"] = o.GatewayResponse
 	toSerialize["message"] = o.Message.Get()
 	toSerialize["channel"] = o.Channel

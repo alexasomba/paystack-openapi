@@ -29,7 +29,7 @@ class ChargeCreate(BaseModel):
     ChargeCreate
     """ # noqa: E501
     email: StrictStr = Field(description="Customer's email address")
-    amount: StrictInt = Field(description="Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR")
+    amount: StrictInt = Field(description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). ")
     authorization_code: Optional[StrictStr] = Field(default=None, description="An authorization code to charge.")
     pin: Optional[StrictStr] = Field(default=None, description="4-digit PIN (send with a non-reusable authorization code)")
     reference: Optional[StrictStr] = Field(default=None, description="Unique transaction reference. Only -, .`, = and alphanumeric characters allowed.")

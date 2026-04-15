@@ -24,7 +24,7 @@ var _ MappedNullable = &ChargeSubmitPhoneResponse{}
 type ChargeSubmitPhoneResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
-	Data ChargeSubmitPhoneResponseData `json:"data"`
+	Data ChargeSubmitPinResponseData `json:"data"`
 }
 
 type _ChargeSubmitPhoneResponse ChargeSubmitPhoneResponse
@@ -33,7 +33,7 @@ type _ChargeSubmitPhoneResponse ChargeSubmitPhoneResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChargeSubmitPhoneResponse(status bool, message string, data ChargeSubmitPhoneResponseData) *ChargeSubmitPhoneResponse {
+func NewChargeSubmitPhoneResponse(status bool, message string, data ChargeSubmitPinResponseData) *ChargeSubmitPhoneResponse {
 	this := ChargeSubmitPhoneResponse{}
 	this.Status = status
 	this.Message = message
@@ -98,9 +98,9 @@ func (o *ChargeSubmitPhoneResponse) SetMessage(v string) {
 }
 
 // GetData returns the Data field value
-func (o *ChargeSubmitPhoneResponse) GetData() ChargeSubmitPhoneResponseData {
+func (o *ChargeSubmitPhoneResponse) GetData() ChargeSubmitPinResponseData {
 	if o == nil {
-		var ret ChargeSubmitPhoneResponseData
+		var ret ChargeSubmitPinResponseData
 		return ret
 	}
 
@@ -109,7 +109,7 @@ func (o *ChargeSubmitPhoneResponse) GetData() ChargeSubmitPhoneResponseData {
 
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
-func (o *ChargeSubmitPhoneResponse) GetDataOk() (*ChargeSubmitPhoneResponseData, bool) {
+func (o *ChargeSubmitPhoneResponse) GetDataOk() (*ChargeSubmitPinResponseData, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -117,7 +117,7 @@ func (o *ChargeSubmitPhoneResponse) GetDataOk() (*ChargeSubmitPhoneResponseData,
 }
 
 // SetData sets field value
-func (o *ChargeSubmitPhoneResponse) SetData(v ChargeSubmitPhoneResponseData) {
+func (o *ChargeSubmitPhoneResponse) SetData(v ChargeSubmitPinResponseData) {
 	o.Data = v
 }
 

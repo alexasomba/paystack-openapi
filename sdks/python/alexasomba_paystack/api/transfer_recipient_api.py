@@ -17,7 +17,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBool, StrictInt, StrictStr
+from datetime import datetime
+from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
 from alexasomba_paystack.models.transfer_recipient_bulk import TransferRecipientBulk
@@ -380,7 +381,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "TransferRecipientCreateResponse",
+            '200': "TransferRecipientCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -448,7 +449,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "TransferRecipientCreateResponse",
+            '200': "TransferRecipientCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -516,7 +517,7 @@ class TransferRecipientApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "TransferRecipientCreateResponse",
+            '200': "TransferRecipientCreateResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -607,7 +608,7 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_delete(
         self,
-        code: Annotated[StrictStr, Field(description="Transfer recipient code")],
+        id_or_code: Annotated[StrictStr, Field(description="An ID or code for the recipient whose details you want to receive.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -625,8 +626,8 @@ class TransferRecipientApi:
 
         Delete a transfer recipient (sets the transfer recipient to inactive)
 
-        :param code: Transfer recipient code (required)
-        :type code: str
+        :param id_or_code: An ID or code for the recipient whose details you want to receive. (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -650,7 +651,7 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_delete_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -676,7 +677,7 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_delete_with_http_info(
         self,
-        code: Annotated[StrictStr, Field(description="Transfer recipient code")],
+        id_or_code: Annotated[StrictStr, Field(description="An ID or code for the recipient whose details you want to receive.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -694,8 +695,8 @@ class TransferRecipientApi:
 
         Delete a transfer recipient (sets the transfer recipient to inactive)
 
-        :param code: Transfer recipient code (required)
-        :type code: str
+        :param id_or_code: An ID or code for the recipient whose details you want to receive. (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -719,7 +720,7 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_delete_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -745,7 +746,7 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_delete_without_preload_content(
         self,
-        code: Annotated[StrictStr, Field(description="Transfer recipient code")],
+        id_or_code: Annotated[StrictStr, Field(description="An ID or code for the recipient whose details you want to receive.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -763,8 +764,8 @@ class TransferRecipientApi:
 
         Delete a transfer recipient (sets the transfer recipient to inactive)
 
-        :param code: Transfer recipient code (required)
-        :type code: str
+        :param id_or_code: An ID or code for the recipient whose details you want to receive. (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -788,7 +789,7 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_delete_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -809,7 +810,7 @@ class TransferRecipientApi:
 
     def _transferrecipient_delete_serialize(
         self,
-        code,
+        id_or_code,
         _request_auth,
         _content_type,
         _headers,
@@ -831,8 +832,8 @@ class TransferRecipientApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if code is not None:
-            _path_params['code'] = code
+        if id_or_code is not None:
+            _path_params['id_or_code'] = id_or_code
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -855,7 +856,7 @@ class TransferRecipientApi:
 
         return self.api_client.param_serialize(
             method='DELETE',
-            resource_path='/transferrecipient/{code}',
+            resource_path='/transferrecipient/{id_or_code}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -874,7 +875,7 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_fetch(
         self,
-        code: Annotated[StrictStr, Field(description="Transfer recipient code")],
+        id_or_code: Annotated[StrictStr, Field(description="An ID or code for the recipient whose details you want to receive.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -892,8 +893,8 @@ class TransferRecipientApi:
 
         Fetch the details of a transfer recipient
 
-        :param code: Transfer recipient code (required)
-        :type code: str
+        :param id_or_code: An ID or code for the recipient whose details you want to receive. (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -917,7 +918,7 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_fetch_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -943,7 +944,7 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_fetch_with_http_info(
         self,
-        code: Annotated[StrictStr, Field(description="Transfer recipient code")],
+        id_or_code: Annotated[StrictStr, Field(description="An ID or code for the recipient whose details you want to receive.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -961,8 +962,8 @@ class TransferRecipientApi:
 
         Fetch the details of a transfer recipient
 
-        :param code: Transfer recipient code (required)
-        :type code: str
+        :param id_or_code: An ID or code for the recipient whose details you want to receive. (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -986,7 +987,7 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_fetch_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1012,7 +1013,7 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_fetch_without_preload_content(
         self,
-        code: Annotated[StrictStr, Field(description="Transfer recipient code")],
+        id_or_code: Annotated[StrictStr, Field(description="An ID or code for the recipient whose details you want to receive.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1030,8 +1031,8 @@ class TransferRecipientApi:
 
         Fetch the details of a transfer recipient
 
-        :param code: Transfer recipient code (required)
-        :type code: str
+        :param id_or_code: An ID or code for the recipient whose details you want to receive. (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1055,7 +1056,7 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_fetch_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1076,7 +1077,7 @@ class TransferRecipientApi:
 
     def _transferrecipient_fetch_serialize(
         self,
-        code,
+        id_or_code,
         _request_auth,
         _content_type,
         _headers,
@@ -1098,8 +1099,8 @@ class TransferRecipientApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if code is not None:
-            _path_params['code'] = code
+        if id_or_code is not None:
+            _path_params['id_or_code'] = id_or_code
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -1122,7 +1123,7 @@ class TransferRecipientApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/transferrecipient/{code}',
+            resource_path='/transferrecipient/{id_or_code}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1141,11 +1142,10 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_list(
         self,
-        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
-        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
-        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1163,16 +1163,14 @@ class TransferRecipientApi:
 
         List transfer recipients available on your integration
 
-        :param use_cursor: A flag to indicate if cursor based pagination should be used
-        :type use_cursor: bool
-        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
-        :type next: str
-        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
-        :type previous: str
-        :param per_page: The number of records to fetch per request
+        :param per_page: Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
         :type per_page: int
-        :param page: The offset to retrieve data from
+        :param page: Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
         :type page: int
+        :param var_from: A timestamp from which to start listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type var_from: datetime
+        :param to: A timestamp at which to stop listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1196,11 +1194,10 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_list_serialize(
-            use_cursor=use_cursor,
-            next=next,
-            previous=previous,
             per_page=per_page,
             page=page,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1226,11 +1223,10 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_list_with_http_info(
         self,
-        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
-        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
-        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1248,16 +1244,14 @@ class TransferRecipientApi:
 
         List transfer recipients available on your integration
 
-        :param use_cursor: A flag to indicate if cursor based pagination should be used
-        :type use_cursor: bool
-        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
-        :type next: str
-        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
-        :type previous: str
-        :param per_page: The number of records to fetch per request
+        :param per_page: Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
         :type per_page: int
-        :param page: The offset to retrieve data from
+        :param page: Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
         :type page: int
+        :param var_from: A timestamp from which to start listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type var_from: datetime
+        :param to: A timestamp at which to stop listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1281,11 +1275,10 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_list_serialize(
-            use_cursor=use_cursor,
-            next=next,
-            previous=previous,
             per_page=per_page,
             page=page,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1311,11 +1304,10 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_list_without_preload_content(
         self,
-        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
-        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
-        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1333,16 +1325,14 @@ class TransferRecipientApi:
 
         List transfer recipients available on your integration
 
-        :param use_cursor: A flag to indicate if cursor based pagination should be used
-        :type use_cursor: bool
-        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
-        :type next: str
-        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
-        :type previous: str
-        :param per_page: The number of records to fetch per request
+        :param per_page: Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
         :type per_page: int
-        :param page: The offset to retrieve data from
+        :param page: Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
         :type page: int
+        :param var_from: A timestamp from which to start listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type var_from: datetime
+        :param to: A timestamp at which to stop listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1366,11 +1356,10 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_list_serialize(
-            use_cursor=use_cursor,
-            next=next,
-            previous=previous,
             per_page=per_page,
             page=page,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1391,11 +1380,10 @@ class TransferRecipientApi:
 
     def _transferrecipient_list_serialize(
         self,
-        use_cursor,
-        next,
-        previous,
         per_page,
         page,
+        var_from,
+        to,
         _request_auth,
         _content_type,
         _headers,
@@ -1418,25 +1406,39 @@ class TransferRecipientApi:
 
         # process the path parameters
         # process the query parameters
-        if use_cursor is not None:
-            
-            _query_params.append(('use_cursor', use_cursor))
-            
-        if next is not None:
-            
-            _query_params.append(('next', next))
-            
-        if previous is not None:
-            
-            _query_params.append(('previous', previous))
-            
         if per_page is not None:
             
-            _query_params.append(('per_page', per_page))
+            _query_params.append(('perPage', per_page))
             
         if page is not None:
             
             _query_params.append(('page', page))
+            
+        if var_from is not None:
+            if isinstance(var_from, datetime):
+                _query_params.append(
+                    (
+                        'from',
+                        var_from.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('from', var_from))
+            
+        if to is not None:
+            if isinstance(to, datetime):
+                _query_params.append(
+                    (
+                        'to',
+                        to.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('to', to))
             
         # process the header parameters
         # process the form parameters
@@ -1478,7 +1480,7 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_update(
         self,
-        code: Annotated[StrictStr, Field(description="Transfer recipient code")],
+        id_or_code: Annotated[StrictStr, Field(description="An ID or code for the recipient whose details you want to receive.")],
         transfer_recipient_update: Optional[TransferRecipientUpdate] = None,
         _request_timeout: Union[
             None,
@@ -1497,8 +1499,8 @@ class TransferRecipientApi:
 
         Update the details of a transfer recipient
 
-        :param code: Transfer recipient code (required)
-        :type code: str
+        :param id_or_code: An ID or code for the recipient whose details you want to receive. (required)
+        :type id_or_code: str
         :param transfer_recipient_update:
         :type transfer_recipient_update: TransferRecipientUpdate
         :param _request_timeout: timeout setting for this request. If one
@@ -1524,7 +1526,7 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_update_serialize(
-            code=code,
+            id_or_code=id_or_code,
             transfer_recipient_update=transfer_recipient_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1551,7 +1553,7 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_update_with_http_info(
         self,
-        code: Annotated[StrictStr, Field(description="Transfer recipient code")],
+        id_or_code: Annotated[StrictStr, Field(description="An ID or code for the recipient whose details you want to receive.")],
         transfer_recipient_update: Optional[TransferRecipientUpdate] = None,
         _request_timeout: Union[
             None,
@@ -1570,8 +1572,8 @@ class TransferRecipientApi:
 
         Update the details of a transfer recipient
 
-        :param code: Transfer recipient code (required)
-        :type code: str
+        :param id_or_code: An ID or code for the recipient whose details you want to receive. (required)
+        :type id_or_code: str
         :param transfer_recipient_update:
         :type transfer_recipient_update: TransferRecipientUpdate
         :param _request_timeout: timeout setting for this request. If one
@@ -1597,7 +1599,7 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_update_serialize(
-            code=code,
+            id_or_code=id_or_code,
             transfer_recipient_update=transfer_recipient_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1624,7 +1626,7 @@ class TransferRecipientApi:
     @validate_call
     def transferrecipient_update_without_preload_content(
         self,
-        code: Annotated[StrictStr, Field(description="Transfer recipient code")],
+        id_or_code: Annotated[StrictStr, Field(description="An ID or code for the recipient whose details you want to receive.")],
         transfer_recipient_update: Optional[TransferRecipientUpdate] = None,
         _request_timeout: Union[
             None,
@@ -1643,8 +1645,8 @@ class TransferRecipientApi:
 
         Update the details of a transfer recipient
 
-        :param code: Transfer recipient code (required)
-        :type code: str
+        :param id_or_code: An ID or code for the recipient whose details you want to receive. (required)
+        :type id_or_code: str
         :param transfer_recipient_update:
         :type transfer_recipient_update: TransferRecipientUpdate
         :param _request_timeout: timeout setting for this request. If one
@@ -1670,7 +1672,7 @@ class TransferRecipientApi:
         """ # noqa: E501
 
         _param = self._transferrecipient_update_serialize(
-            code=code,
+            id_or_code=id_or_code,
             transfer_recipient_update=transfer_recipient_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1692,7 +1694,7 @@ class TransferRecipientApi:
 
     def _transferrecipient_update_serialize(
         self,
-        code,
+        id_or_code,
         transfer_recipient_update,
         _request_auth,
         _content_type,
@@ -1715,8 +1717,8 @@ class TransferRecipientApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if code is not None:
-            _path_params['code'] = code
+        if id_or_code is not None:
+            _path_params['id_or_code'] = id_or_code
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -1755,7 +1757,7 @@ class TransferRecipientApi:
 
         return self.api_client.param_serialize(
             method='PUT',
-            resource_path='/transferrecipient/{code}',
+            resource_path='/transferrecipient/{id_or_code}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

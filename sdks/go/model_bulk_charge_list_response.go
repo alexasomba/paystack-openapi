@@ -25,7 +25,7 @@ type BulkChargeListResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
 	Data []BulkChargeListResponseArray `json:"data"`
-	Meta BulkChargeListResponseMeta `json:"meta"`
+	Meta Meta `json:"meta"`
 }
 
 type _BulkChargeListResponse BulkChargeListResponse
@@ -34,7 +34,7 @@ type _BulkChargeListResponse BulkChargeListResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBulkChargeListResponse(status bool, message string, data []BulkChargeListResponseArray, meta BulkChargeListResponseMeta) *BulkChargeListResponse {
+func NewBulkChargeListResponse(status bool, message string, data []BulkChargeListResponseArray, meta Meta) *BulkChargeListResponse {
 	this := BulkChargeListResponse{}
 	this.Status = status
 	this.Message = message
@@ -124,9 +124,9 @@ func (o *BulkChargeListResponse) SetData(v []BulkChargeListResponseArray) {
 }
 
 // GetMeta returns the Meta field value
-func (o *BulkChargeListResponse) GetMeta() BulkChargeListResponseMeta {
+func (o *BulkChargeListResponse) GetMeta() Meta {
 	if o == nil {
-		var ret BulkChargeListResponseMeta
+		var ret Meta
 		return ret
 	}
 
@@ -135,7 +135,7 @@ func (o *BulkChargeListResponse) GetMeta() BulkChargeListResponseMeta {
 
 // GetMetaOk returns a tuple with the Meta field value
 // and a boolean to check if the value has been set.
-func (o *BulkChargeListResponse) GetMetaOk() (*BulkChargeListResponseMeta, bool) {
+func (o *BulkChargeListResponse) GetMetaOk() (*Meta, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -143,7 +143,7 @@ func (o *BulkChargeListResponse) GetMetaOk() (*BulkChargeListResponseMeta, bool)
 }
 
 // SetMeta sets field value
-func (o *BulkChargeListResponse) SetMeta(v BulkChargeListResponseMeta) {
+func (o *BulkChargeListResponse) SetMeta(v Meta) {
 	o.Meta = v
 }
 

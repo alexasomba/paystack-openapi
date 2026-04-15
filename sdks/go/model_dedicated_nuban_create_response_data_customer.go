@@ -27,10 +27,10 @@ type DedicatedNubanCreateResponseDataCustomer struct {
 	LastName string `json:"last_name"`
 	Email string `json:"email"`
 	CustomerCode string `json:"customer_code"`
-	Phone string `json:"phone"`
+	Phone NullableString `json:"phone"`
 	Metadata map[string]interface{} `json:"metadata"`
 	RiskAction string `json:"risk_action"`
-	InternationalFormatPhone NullableString `json:"international_format_phone"`
+	InternationalFormatPhone NullableString `json:"international_format_phone,omitempty"`
 }
 
 type _DedicatedNubanCreateResponseDataCustomer DedicatedNubanCreateResponseDataCustomer
@@ -39,7 +39,7 @@ type _DedicatedNubanCreateResponseDataCustomer DedicatedNubanCreateResponseDataC
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDedicatedNubanCreateResponseDataCustomer(id int32, firstName string, lastName string, email string, customerCode string, phone string, metadata map[string]interface{}, riskAction string, internationalFormatPhone NullableString) *DedicatedNubanCreateResponseDataCustomer {
+func NewDedicatedNubanCreateResponseDataCustomer(id int32, firstName string, lastName string, email string, customerCode string, phone NullableString, metadata map[string]interface{}, riskAction string) *DedicatedNubanCreateResponseDataCustomer {
 	this := DedicatedNubanCreateResponseDataCustomer{}
 	this.Id = id
 	this.FirstName = firstName
@@ -49,7 +49,6 @@ func NewDedicatedNubanCreateResponseDataCustomer(id int32, firstName string, las
 	this.Phone = phone
 	this.Metadata = metadata
 	this.RiskAction = riskAction
-	this.InternationalFormatPhone = internationalFormatPhone
 	return &this
 }
 
@@ -182,30 +181,33 @@ func (o *DedicatedNubanCreateResponseDataCustomer) SetCustomerCode(v string) {
 }
 
 // GetPhone returns the Phone field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *DedicatedNubanCreateResponseDataCustomer) GetPhone() string {
-	if o == nil {
+	if o == nil || o.Phone.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Phone
+	return *o.Phone.Get()
 }
 
 // GetPhoneOk returns a tuple with the Phone field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DedicatedNubanCreateResponseDataCustomer) GetPhoneOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Phone, true
+	return o.Phone.Get(), o.Phone.IsSet()
 }
 
 // SetPhone sets field value
 func (o *DedicatedNubanCreateResponseDataCustomer) SetPhone(v string) {
-	o.Phone = v
+	o.Phone.Set(&v)
 }
 
 // GetMetadata returns the Metadata field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *DedicatedNubanCreateResponseDataCustomer) GetMetadata() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -217,8 +219,9 @@ func (o *DedicatedNubanCreateResponseDataCustomer) GetMetadata() map[string]inte
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DedicatedNubanCreateResponseDataCustomer) GetMetadataOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Metadata) {
 		return map[string]interface{}{}, false
 	}
 	return o.Metadata, true
@@ -253,18 +256,16 @@ func (o *DedicatedNubanCreateResponseDataCustomer) SetRiskAction(v string) {
 	o.RiskAction = v
 }
 
-// GetInternationalFormatPhone returns the InternationalFormatPhone field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetInternationalFormatPhone returns the InternationalFormatPhone field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DedicatedNubanCreateResponseDataCustomer) GetInternationalFormatPhone() string {
-	if o == nil || o.InternationalFormatPhone.Get() == nil {
+	if o == nil || IsNil(o.InternationalFormatPhone.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.InternationalFormatPhone.Get()
 }
 
-// GetInternationalFormatPhoneOk returns a tuple with the InternationalFormatPhone field value
+// GetInternationalFormatPhoneOk returns a tuple with the InternationalFormatPhone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DedicatedNubanCreateResponseDataCustomer) GetInternationalFormatPhoneOk() (*string, bool) {
@@ -274,9 +275,27 @@ func (o *DedicatedNubanCreateResponseDataCustomer) GetInternationalFormatPhoneOk
 	return o.InternationalFormatPhone.Get(), o.InternationalFormatPhone.IsSet()
 }
 
-// SetInternationalFormatPhone sets field value
+// HasInternationalFormatPhone returns a boolean if a field has been set.
+func (o *DedicatedNubanCreateResponseDataCustomer) HasInternationalFormatPhone() bool {
+	if o != nil && o.InternationalFormatPhone.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInternationalFormatPhone gets a reference to the given NullableString and assigns it to the InternationalFormatPhone field.
 func (o *DedicatedNubanCreateResponseDataCustomer) SetInternationalFormatPhone(v string) {
 	o.InternationalFormatPhone.Set(&v)
+}
+// SetInternationalFormatPhoneNil sets the value for InternationalFormatPhone to be an explicit nil
+func (o *DedicatedNubanCreateResponseDataCustomer) SetInternationalFormatPhoneNil() {
+	o.InternationalFormatPhone.Set(nil)
+}
+
+// UnsetInternationalFormatPhone ensures that no value is present for InternationalFormatPhone, not even an explicit nil
+func (o *DedicatedNubanCreateResponseDataCustomer) UnsetInternationalFormatPhone() {
+	o.InternationalFormatPhone.Unset()
 }
 
 func (o DedicatedNubanCreateResponseDataCustomer) MarshalJSON() ([]byte, error) {
@@ -294,10 +313,14 @@ func (o DedicatedNubanCreateResponseDataCustomer) ToMap() (map[string]interface{
 	toSerialize["last_name"] = o.LastName
 	toSerialize["email"] = o.Email
 	toSerialize["customer_code"] = o.CustomerCode
-	toSerialize["phone"] = o.Phone
-	toSerialize["metadata"] = o.Metadata
+	toSerialize["phone"] = o.Phone.Get()
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
+	}
 	toSerialize["risk_action"] = o.RiskAction
-	toSerialize["international_format_phone"] = o.InternationalFormatPhone.Get()
+	if o.InternationalFormatPhone.IsSet() {
+		toSerialize["international_format_phone"] = o.InternationalFormatPhone.Get()
+	}
 	return toSerialize, nil
 }
 
@@ -314,7 +337,6 @@ func (o *DedicatedNubanCreateResponseDataCustomer) UnmarshalJSON(data []byte) (e
 		"phone",
 		"metadata",
 		"risk_action",
-		"international_format_phone",
 	}
 
 	allProperties := make(map[string]interface{})

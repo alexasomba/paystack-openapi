@@ -64,7 +64,7 @@ class SubaccountCreateResponseData implements ModelInterface, ArrayAccess, \Json
         'primary_contact_name' => 'string',
         'primary_contact_email' => 'string',
         'primary_contact_phone' => 'string',
-        'metadata' => 'string',
+        'metadata' => 'mixed',
         'account_number' => 'string',
         'percentage_charge' => 'float',
         'settlement_bank' => 'string',
@@ -126,11 +126,11 @@ class SubaccountCreateResponseData implements ModelInterface, ArrayAccess, \Json
     protected static array $openAPINullables = [
         'business_name' => false,
         'account_name' => true,
-        'description' => false,
-        'primary_contact_name' => false,
-        'primary_contact_email' => false,
-        'primary_contact_phone' => false,
-        'metadata' => false,
+        'description' => true,
+        'primary_contact_name' => true,
+        'primary_contact_email' => true,
+        'primary_contact_phone' => true,
+        'metadata' => true,
         'account_number' => false,
         'percentage_charge' => false,
         'settlement_bank' => false,
@@ -439,21 +439,6 @@ class SubaccountCreateResponseData implements ModelInterface, ArrayAccess, \Json
         if ($this->container['business_name'] === null) {
             $invalidProperties[] = "'business_name' can't be null";
         }
-        if ($this->container['description'] === null) {
-            $invalidProperties[] = "'description' can't be null";
-        }
-        if ($this->container['primary_contact_name'] === null) {
-            $invalidProperties[] = "'primary_contact_name' can't be null";
-        }
-        if ($this->container['primary_contact_email'] === null) {
-            $invalidProperties[] = "'primary_contact_email' can't be null";
-        }
-        if ($this->container['primary_contact_phone'] === null) {
-            $invalidProperties[] = "'primary_contact_phone' can't be null";
-        }
-        if ($this->container['metadata'] === null) {
-            $invalidProperties[] = "'metadata' can't be null";
-        }
         if ($this->container['account_number'] === null) {
             $invalidProperties[] = "'account_number' can't be null";
         }
@@ -477,9 +462,6 @@ class SubaccountCreateResponseData implements ModelInterface, ArrayAccess, \Json
         }
         if ($this->container['product'] === null) {
             $invalidProperties[] = "'product' can't be null";
-        }
-        if ($this->container['managed_by_integration'] === null) {
-            $invalidProperties[] = "'managed_by_integration' can't be null";
         }
         if ($this->container['subaccount_code'] === null) {
             $invalidProperties[] = "'subaccount_code' can't be null";
@@ -584,7 +566,7 @@ class SubaccountCreateResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets description
      *
-     * @return string
+     * @return string|null
      */
     public function getDescription()
     {
@@ -594,14 +576,21 @@ class SubaccountCreateResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets description
      *
-     * @param string $description description
+     * @param string|null $description description
      *
      * @return self
      */
     public function setDescription($description)
     {
         if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['description'] = $description;
 
@@ -611,7 +600,7 @@ class SubaccountCreateResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets primary_contact_name
      *
-     * @return string
+     * @return string|null
      */
     public function getPrimaryContactName()
     {
@@ -621,14 +610,21 @@ class SubaccountCreateResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets primary_contact_name
      *
-     * @param string $primary_contact_name primary_contact_name
+     * @param string|null $primary_contact_name primary_contact_name
      *
      * @return self
      */
     public function setPrimaryContactName($primary_contact_name)
     {
         if (is_null($primary_contact_name)) {
-            throw new \InvalidArgumentException('non-nullable primary_contact_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'primary_contact_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('primary_contact_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['primary_contact_name'] = $primary_contact_name;
 
@@ -638,7 +634,7 @@ class SubaccountCreateResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets primary_contact_email
      *
-     * @return string
+     * @return string|null
      */
     public function getPrimaryContactEmail()
     {
@@ -648,14 +644,21 @@ class SubaccountCreateResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets primary_contact_email
      *
-     * @param string $primary_contact_email primary_contact_email
+     * @param string|null $primary_contact_email primary_contact_email
      *
      * @return self
      */
     public function setPrimaryContactEmail($primary_contact_email)
     {
         if (is_null($primary_contact_email)) {
-            throw new \InvalidArgumentException('non-nullable primary_contact_email cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'primary_contact_email');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('primary_contact_email', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['primary_contact_email'] = $primary_contact_email;
 
@@ -665,7 +668,7 @@ class SubaccountCreateResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets primary_contact_phone
      *
-     * @return string
+     * @return string|null
      */
     public function getPrimaryContactPhone()
     {
@@ -675,14 +678,21 @@ class SubaccountCreateResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets primary_contact_phone
      *
-     * @param string $primary_contact_phone primary_contact_phone
+     * @param string|null $primary_contact_phone primary_contact_phone
      *
      * @return self
      */
     public function setPrimaryContactPhone($primary_contact_phone)
     {
         if (is_null($primary_contact_phone)) {
-            throw new \InvalidArgumentException('non-nullable primary_contact_phone cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'primary_contact_phone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('primary_contact_phone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['primary_contact_phone'] = $primary_contact_phone;
 
@@ -692,7 +702,7 @@ class SubaccountCreateResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets metadata
      *
-     * @return string
+     * @return mixed|null
      */
     public function getMetadata()
     {
@@ -702,14 +712,21 @@ class SubaccountCreateResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets metadata
      *
-     * @param string $metadata metadata
+     * @param mixed|null $metadata metadata
      *
      * @return self
      */
     public function setMetadata($metadata)
     {
         if (is_null($metadata)) {
-            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['metadata'] = $metadata;
 
@@ -935,7 +952,7 @@ class SubaccountCreateResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets managed_by_integration
      *
-     * @return int
+     * @return int|null
      */
     public function getManagedByIntegration()
     {
@@ -945,7 +962,7 @@ class SubaccountCreateResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets managed_by_integration
      *
-     * @param int $managed_by_integration managed_by_integration
+     * @param int|null $managed_by_integration managed_by_integration
      *
      * @return self
      */

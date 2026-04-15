@@ -70,7 +70,7 @@ class TransactionListResponseArray implements ModelInterface, ArrayAccess, \Json
         'channel' => 'string',
         'currency' => 'string',
         'ip_address' => 'string',
-        'metadata' => 'object',
+        'metadata' => '\Alexasomba\Paystack\Model\TransactionListResponseArrayMetadata',
         'log' => '\Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataLog',
         'fees' => 'int',
         'fees_split' => 'int',
@@ -891,7 +891,7 @@ class TransactionListResponseArray implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets metadata
      *
-     * @return object|null
+     * @return \Alexasomba\Paystack\Model\TransactionListResponseArrayMetadata|null
      */
     public function getMetadata()
     {
@@ -901,7 +901,7 @@ class TransactionListResponseArray implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets metadata
      *
-     * @param object|null $metadata metadata
+     * @param \Alexasomba\Paystack\Model\TransactionListResponseArrayMetadata|null $metadata metadata
      *
      * @return self
      */

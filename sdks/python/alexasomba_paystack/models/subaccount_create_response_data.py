@@ -29,11 +29,11 @@ class SubaccountCreateResponseData(BaseModel):
     """ # noqa: E501
     business_name: StrictStr
     account_name: Optional[StrictStr] = None
-    description: StrictStr
-    primary_contact_name: StrictStr
-    primary_contact_email: StrictStr
-    primary_contact_phone: StrictStr
-    metadata: StrictStr
+    description: Optional[StrictStr] = None
+    primary_contact_name: Optional[StrictStr] = None
+    primary_contact_email: Optional[StrictStr] = None
+    primary_contact_phone: Optional[StrictStr] = None
+    metadata: Optional[Any] = None
     account_number: StrictStr
     percentage_charge: Union[StrictFloat, StrictInt]
     settlement_bank: StrictStr
@@ -42,7 +42,7 @@ class SubaccountCreateResponseData(BaseModel):
     integration: StrictInt
     domain: StrictStr
     product: StrictStr
-    managed_by_integration: StrictInt
+    managed_by_integration: Optional[StrictInt] = None
     subaccount_code: StrictStr
     is_verified: StrictBool
     settlement_schedule: StrictStr
@@ -96,6 +96,31 @@ class SubaccountCreateResponseData(BaseModel):
         # and model_fields_set contains the field
         if self.account_name is None and "account_name" in self.model_fields_set:
             _dict['account_name'] = None
+
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
+        # set to None if primary_contact_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.primary_contact_name is None and "primary_contact_name" in self.model_fields_set:
+            _dict['primary_contact_name'] = None
+
+        # set to None if primary_contact_email (nullable) is None
+        # and model_fields_set contains the field
+        if self.primary_contact_email is None and "primary_contact_email" in self.model_fields_set:
+            _dict['primary_contact_email'] = None
+
+        # set to None if primary_contact_phone (nullable) is None
+        # and model_fields_set contains the field
+        if self.primary_contact_phone is None and "primary_contact_phone" in self.model_fields_set:
+            _dict['primary_contact_phone'] = None
+
+        # set to None if metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
 
         return _dict
 

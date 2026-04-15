@@ -20,7 +20,6 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from alexasomba_paystack.models.charge_authorization_response_data_customer_metadata import ChargeAuthorizationResponseDataCustomerMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -34,9 +33,9 @@ class ChargeAuthorizationResponseDataCustomer(BaseModel):
     email: StrictStr
     customer_code: StrictStr
     phone: Optional[StrictStr]
-    metadata: Optional[ChargeAuthorizationResponseDataCustomerMetadata]
+    metadata: Optional[Dict[str, Any]]
     risk_action: StrictStr
-    international_format_phone: Optional[StrictStr]
+    international_format_phone: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["id", "first_name", "last_name", "email", "customer_code", "phone", "metadata", "risk_action", "international_format_phone"]
 
     model_config = ConfigDict(
@@ -78,9 +77,6 @@ class ChargeAuthorizationResponseDataCustomer(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of metadata
-        if self.metadata:
-            _dict['metadata'] = self.metadata.to_dict()
         # set to None if first_name (nullable) is None
         # and model_fields_set contains the field
         if self.first_name is None and "first_name" in self.model_fields_set:
@@ -124,7 +120,7 @@ class ChargeAuthorizationResponseDataCustomer(BaseModel):
             "email": obj.get("email"),
             "customer_code": obj.get("customer_code"),
             "phone": obj.get("phone"),
-            "metadata": ChargeAuthorizationResponseDataCustomerMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
+            "metadata": obj.get("metadata"),
             "risk_action": obj.get("risk_action"),
             "international_format_phone": obj.get("international_format_phone")
         })

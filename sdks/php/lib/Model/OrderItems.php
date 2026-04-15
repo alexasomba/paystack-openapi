@@ -418,7 +418,7 @@ class OrderItems implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amount
      *
-     * @param int $amount The cost of the item
+     * @param int $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
      *
      * @return self
      */

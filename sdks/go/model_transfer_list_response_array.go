@@ -32,17 +32,12 @@ type TransferListResponseArray struct {
 	Reason string `json:"reason"`
 	Reference string `json:"reference"`
 	Source string `json:"source"`
-	SourceDetails interface{} `json:"source_details"`
+	SourceDetails map[string]interface{} `json:"source_details"`
 	Status string `json:"status"`
-	TitanCode interface{} `json:"titan_code"`
+	TitanCode NullableString `json:"titan_code"`
 	TransferCode string `json:"transfer_code"`
-	Request int32 `json:"request"`
-	TransferredAt interface{} `json:"transferred_at"`
 	UpdatedAt string `json:"updatedAt"`
 	Recipient TransferListResponseArrayRecipient `json:"recipient"`
-	Session TransferListResponseArraySession `json:"session"`
-	FeeCharged int32 `json:"fee_charged"`
-	FeesBreakdown NullableInt32 `json:"fees_breakdown"`
 }
 
 type _TransferListResponseArray TransferListResponseArray
@@ -51,7 +46,7 @@ type _TransferListResponseArray TransferListResponseArray
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferListResponseArray(amount int32, createdAt string, currency string, domain string, failures interface{}, id int32, integration int32, reason string, reference string, source string, sourceDetails interface{}, status string, titanCode interface{}, transferCode string, request int32, transferredAt interface{}, updatedAt string, recipient TransferListResponseArrayRecipient, session TransferListResponseArraySession, feeCharged int32, feesBreakdown NullableInt32) *TransferListResponseArray {
+func NewTransferListResponseArray(amount int32, createdAt string, currency string, domain string, failures interface{}, id int32, integration int32, reason string, reference string, source string, sourceDetails map[string]interface{}, status string, titanCode NullableString, transferCode string, updatedAt string, recipient TransferListResponseArrayRecipient) *TransferListResponseArray {
 	this := TransferListResponseArray{}
 	this.Amount = amount
 	this.CreatedAt = createdAt
@@ -67,13 +62,8 @@ func NewTransferListResponseArray(amount int32, createdAt string, currency strin
 	this.Status = status
 	this.TitanCode = titanCode
 	this.TransferCode = transferCode
-	this.Request = request
-	this.TransferredAt = transferredAt
 	this.UpdatedAt = updatedAt
 	this.Recipient = recipient
-	this.Session = session
-	this.FeeCharged = feeCharged
-	this.FeesBreakdown = feesBreakdown
 	return &this
 }
 
@@ -328,10 +318,10 @@ func (o *TransferListResponseArray) SetSource(v string) {
 }
 
 // GetSourceDetails returns the SourceDetails field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransferListResponseArray) GetSourceDetails() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *TransferListResponseArray) GetSourceDetails() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -341,15 +331,15 @@ func (o *TransferListResponseArray) GetSourceDetails() interface{} {
 // GetSourceDetailsOk returns a tuple with the SourceDetails field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransferListResponseArray) GetSourceDetailsOk() (*interface{}, bool) {
+func (o *TransferListResponseArray) GetSourceDetailsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.SourceDetails) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.SourceDetails, true
+	return o.SourceDetails, true
 }
 
 // SetSourceDetails sets field value
-func (o *TransferListResponseArray) SetSourceDetails(v interface{}) {
+func (o *TransferListResponseArray) SetSourceDetails(v map[string]interface{}) {
 	o.SourceDetails = v
 }
 
@@ -378,29 +368,29 @@ func (o *TransferListResponseArray) SetStatus(v string) {
 }
 
 // GetTitanCode returns the TitanCode field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransferListResponseArray) GetTitanCode() interface{} {
-	if o == nil {
-		var ret interface{}
+// If the value is explicit nil, the zero value for string will be returned
+func (o *TransferListResponseArray) GetTitanCode() string {
+	if o == nil || o.TitanCode.Get() == nil {
+		var ret string
 		return ret
 	}
 
-	return o.TitanCode
+	return *o.TitanCode.Get()
 }
 
 // GetTitanCodeOk returns a tuple with the TitanCode field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransferListResponseArray) GetTitanCodeOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.TitanCode) {
+func (o *TransferListResponseArray) GetTitanCodeOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.TitanCode, true
+	return o.TitanCode.Get(), o.TitanCode.IsSet()
 }
 
 // SetTitanCode sets field value
-func (o *TransferListResponseArray) SetTitanCode(v interface{}) {
-	o.TitanCode = v
+func (o *TransferListResponseArray) SetTitanCode(v string) {
+	o.TitanCode.Set(&v)
 }
 
 // GetTransferCode returns the TransferCode field value
@@ -425,56 +415,6 @@ func (o *TransferListResponseArray) GetTransferCodeOk() (*string, bool) {
 // SetTransferCode sets field value
 func (o *TransferListResponseArray) SetTransferCode(v string) {
 	o.TransferCode = v
-}
-
-// GetRequest returns the Request field value
-func (o *TransferListResponseArray) GetRequest() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Request
-}
-
-// GetRequestOk returns a tuple with the Request field value
-// and a boolean to check if the value has been set.
-func (o *TransferListResponseArray) GetRequestOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Request, true
-}
-
-// SetRequest sets field value
-func (o *TransferListResponseArray) SetRequest(v int32) {
-	o.Request = v
-}
-
-// GetTransferredAt returns the TransferredAt field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransferListResponseArray) GetTransferredAt() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.TransferredAt
-}
-
-// GetTransferredAtOk returns a tuple with the TransferredAt field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransferListResponseArray) GetTransferredAtOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.TransferredAt) {
-		return nil, false
-	}
-	return &o.TransferredAt, true
-}
-
-// SetTransferredAt sets field value
-func (o *TransferListResponseArray) SetTransferredAt(v interface{}) {
-	o.TransferredAt = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value
@@ -525,80 +465,6 @@ func (o *TransferListResponseArray) SetRecipient(v TransferListResponseArrayReci
 	o.Recipient = v
 }
 
-// GetSession returns the Session field value
-func (o *TransferListResponseArray) GetSession() TransferListResponseArraySession {
-	if o == nil {
-		var ret TransferListResponseArraySession
-		return ret
-	}
-
-	return o.Session
-}
-
-// GetSessionOk returns a tuple with the Session field value
-// and a boolean to check if the value has been set.
-func (o *TransferListResponseArray) GetSessionOk() (*TransferListResponseArraySession, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Session, true
-}
-
-// SetSession sets field value
-func (o *TransferListResponseArray) SetSession(v TransferListResponseArraySession) {
-	o.Session = v
-}
-
-// GetFeeCharged returns the FeeCharged field value
-func (o *TransferListResponseArray) GetFeeCharged() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.FeeCharged
-}
-
-// GetFeeChargedOk returns a tuple with the FeeCharged field value
-// and a boolean to check if the value has been set.
-func (o *TransferListResponseArray) GetFeeChargedOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.FeeCharged, true
-}
-
-// SetFeeCharged sets field value
-func (o *TransferListResponseArray) SetFeeCharged(v int32) {
-	o.FeeCharged = v
-}
-
-// GetFeesBreakdown returns the FeesBreakdown field value
-// If the value is explicit nil, the zero value for int32 will be returned
-func (o *TransferListResponseArray) GetFeesBreakdown() int32 {
-	if o == nil || o.FeesBreakdown.Get() == nil {
-		var ret int32
-		return ret
-	}
-
-	return *o.FeesBreakdown.Get()
-}
-
-// GetFeesBreakdownOk returns a tuple with the FeesBreakdown field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransferListResponseArray) GetFeesBreakdownOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.FeesBreakdown.Get(), o.FeesBreakdown.IsSet()
-}
-
-// SetFeesBreakdown sets field value
-func (o *TransferListResponseArray) SetFeesBreakdown(v int32) {
-	o.FeesBreakdown.Set(&v)
-}
-
 func (o TransferListResponseArray) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -625,19 +491,10 @@ func (o TransferListResponseArray) ToMap() (map[string]interface{}, error) {
 		toSerialize["source_details"] = o.SourceDetails
 	}
 	toSerialize["status"] = o.Status
-	if o.TitanCode != nil {
-		toSerialize["titan_code"] = o.TitanCode
-	}
+	toSerialize["titan_code"] = o.TitanCode.Get()
 	toSerialize["transfer_code"] = o.TransferCode
-	toSerialize["request"] = o.Request
-	if o.TransferredAt != nil {
-		toSerialize["transferred_at"] = o.TransferredAt
-	}
 	toSerialize["updatedAt"] = o.UpdatedAt
 	toSerialize["recipient"] = o.Recipient
-	toSerialize["session"] = o.Session
-	toSerialize["fee_charged"] = o.FeeCharged
-	toSerialize["fees_breakdown"] = o.FeesBreakdown.Get()
 	return toSerialize, nil
 }
 
@@ -660,13 +517,8 @@ func (o *TransferListResponseArray) UnmarshalJSON(data []byte) (err error) {
 		"status",
 		"titan_code",
 		"transfer_code",
-		"request",
-		"transferred_at",
 		"updatedAt",
 		"recipient",
-		"session",
-		"fee_charged",
-		"fees_breakdown",
 	}
 
 	allProperties := make(map[string]interface{})

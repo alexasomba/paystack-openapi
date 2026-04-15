@@ -28,7 +28,7 @@ class VerifyResponseDataAuthorization(BaseModel):
     VerifyResponseDataAuthorization
     """ # noqa: E501
     authorization_code: Optional[StrictStr] = None
-    bin: Optional[Any] = None
+    bin: Optional[StrictStr] = None
     last4: Optional[StrictStr] = None
     exp_month: Optional[StrictStr] = None
     exp_year: Optional[StrictStr] = None
@@ -39,9 +39,9 @@ class VerifyResponseDataAuthorization(BaseModel):
     brand: Optional[StrictStr] = None
     reusable: Optional[StrictBool] = None
     signature: Optional[StrictStr] = None
-    account_name: Optional[Any] = None
-    receiver_bank_account_number: Optional[Any] = None
-    receiver_bank: Optional[Any] = None
+    account_name: Optional[StrictStr] = None
+    receiver_bank_account_number: Optional[StrictStr] = None
+    receiver_bank: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["authorization_code", "bin", "last4", "exp_month", "exp_year", "channel", "card_type", "bank", "country_code", "brand", "reusable", "signature", "account_name", "receiver_bank_account_number", "receiver_bank"]
 
     model_config = ConfigDict(

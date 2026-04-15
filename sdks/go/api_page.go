@@ -395,7 +395,7 @@ func (a *PageAPIService) PageCreateExecute(r ApiPageCreateRequest) (*PageCreateR
 type ApiPageFetchRequest struct {
 	ctx context.Context
 	ApiService *PageAPIService
-	id int32
+	idOrSlug string
 }
 
 func (r ApiPageFetchRequest) Execute() (*PageFetchResponse, *http.Response, error) {
@@ -408,14 +408,14 @@ PageFetch Fetch Page
 Get a previously created payment page
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The unique identifier of a payment page
+ @param idOrSlug The page ID or slug you want to fetch
  @return ApiPageFetchRequest
 */
-func (a *PageAPIService) PageFetch(ctx context.Context, id int32) ApiPageFetchRequest {
+func (a *PageAPIService) PageFetch(ctx context.Context, idOrSlug string) ApiPageFetchRequest {
 	return ApiPageFetchRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		idOrSlug: idOrSlug,
 	}
 }
 
@@ -434,8 +434,8 @@ func (a *PageAPIService) PageFetchExecute(r ApiPageFetchRequest) (*PageFetchResp
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/page/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/page/{id_or_slug}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id_or_slug"+"}", url.PathEscape(parameterValueToString(r.idOrSlug, "idOrSlug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -685,7 +685,7 @@ func (a *PageAPIService) PageListExecute(r ApiPageListRequest) (*PageListRespons
 type ApiPageUpdateRequest struct {
 	ctx context.Context
 	ApiService *PageAPIService
-	id int32
+	idOrSlug string
 	pageUpdate *PageUpdate
 }
 
@@ -704,14 +704,14 @@ PageUpdate Update Page
 Update a previously created payment page
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The unique identifier of a payment page
+ @param idOrSlug The page ID or slug you want to fetch
  @return ApiPageUpdateRequest
 */
-func (a *PageAPIService) PageUpdate(ctx context.Context, id int32) ApiPageUpdateRequest {
+func (a *PageAPIService) PageUpdate(ctx context.Context, idOrSlug string) ApiPageUpdateRequest {
 	return ApiPageUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		idOrSlug: idOrSlug,
 	}
 }
 
@@ -730,8 +730,8 @@ func (a *PageAPIService) PageUpdateExecute(r ApiPageUpdateRequest) (*PageUpdateR
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/page/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/page/{id_or_slug}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id_or_slug"+"}", url.PathEscape(parameterValueToString(r.idOrSlug, "idOrSlug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

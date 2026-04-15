@@ -60,8 +60,9 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $openAPITypes = [
         'name' => 'string',
         'destinations' => '\Alexasomba\Paystack\Model\VirtualTerminalCreateDestinationsInner[]',
-        'split_code' => 'string',
-        'metadata' => 'object'
+        'metadata' => 'object',
+        'currency' => 'string',
+        'custom_fields' => '\Alexasomba\Paystack\Model\VirtualTerminalCreateCustomFieldsInner[]'
     ];
 
     /**
@@ -74,8 +75,9 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $openAPIFormats = [
         'name' => null,
         'destinations' => null,
-        'split_code' => null,
-        'metadata' => null
+        'metadata' => null,
+        'currency' => null,
+        'custom_fields' => null
     ];
 
     /**
@@ -86,8 +88,9 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static array $openAPINullables = [
         'name' => false,
         'destinations' => false,
-        'split_code' => false,
-        'metadata' => false
+        'metadata' => false,
+        'currency' => false,
+        'custom_fields' => false
     ];
 
     /**
@@ -178,8 +181,9 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $attributeMap = [
         'name' => 'name',
         'destinations' => 'destinations',
-        'split_code' => 'split_code',
-        'metadata' => 'metadata'
+        'metadata' => 'metadata',
+        'currency' => 'currency',
+        'custom_fields' => 'custom_fields'
     ];
 
     /**
@@ -190,8 +194,9 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $setters = [
         'name' => 'setName',
         'destinations' => 'setDestinations',
-        'split_code' => 'setSplitCode',
-        'metadata' => 'setMetadata'
+        'metadata' => 'setMetadata',
+        'currency' => 'setCurrency',
+        'custom_fields' => 'setCustomFields'
     ];
 
     /**
@@ -202,8 +207,9 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $getters = [
         'name' => 'getName',
         'destinations' => 'getDestinations',
-        'split_code' => 'getSplitCode',
-        'metadata' => 'getMetadata'
+        'metadata' => 'getMetadata',
+        'currency' => 'getCurrency',
+        'custom_fields' => 'getCustomFields'
     ];
 
     /**
@@ -265,8 +271,9 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('destinations', $data ?? [], null);
-        $this->setIfExists('split_code', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('currency', $data ?? [], null);
+        $this->setIfExists('custom_fields', $data ?? [], null);
     }
 
     /**
@@ -330,7 +337,7 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets name
      *
-     * @param string $name The name of the virtual terminal
+     * @param string $name Name of the Virtual Terminal
      *
      * @return self
      */
@@ -357,7 +364,7 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets destinations
      *
-     * @param \Alexasomba\Paystack\Model\VirtualTerminalCreateDestinationsInner[] $destinations Array of objects containing recipients for payment notifications for the Virtual Terminal.
+     * @param \Alexasomba\Paystack\Model\VirtualTerminalCreateDestinationsInner[] $destinations An array of objects containing the notification recipients for payments to the Virtual Terminal. Each object includes a target parameter for the Whatsapp phone number to send notifications to, and a name parameter for a descriptive label.
      *
      * @return self
      */
@@ -367,33 +374,6 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable destinations cannot be null');
         }
         $this->container['destinations'] = $destinations;
-
-        return $this;
-    }
-
-    /**
-     * Gets split_code
-     *
-     * @return string|null
-     */
-    public function getSplitCode()
-    {
-        return $this->container['split_code'];
-    }
-
-    /**
-     * Sets split_code
-     *
-     * @param string|null $split_code Split code to associate with the virtual terminal
-     *
-     * @return self
-     */
-    public function setSplitCode($split_code)
-    {
-        if (is_null($split_code)) {
-            throw new \InvalidArgumentException('non-nullable split_code cannot be null');
-        }
-        $this->container['split_code'] = $split_code;
 
         return $this;
     }
@@ -411,7 +391,7 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets metadata
      *
-     * @param object|null $metadata Additional custom data as key-value pairs
+     * @param object|null $metadata Stringified JSON object of custom data. Kindly check the Metadata page for more information
      *
      * @return self
      */
@@ -421,6 +401,60 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable metadata cannot be null');
         }
         $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency
+     *
+     * @return string|null
+     */
+    public function getCurrency()
+    {
+        return $this->container['currency'];
+    }
+
+    /**
+     * Sets currency
+     *
+     * @param string|null $currency The transaction currency for the Virtual Terminal. Defaults to your integration currency
+     *
+     * @return self
+     */
+    public function setCurrency($currency)
+    {
+        if (is_null($currency)) {
+            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+        }
+        $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_fields
+     *
+     * @return \Alexasomba\Paystack\Model\VirtualTerminalCreateCustomFieldsInner[]|null
+     */
+    public function getCustomFields()
+    {
+        return $this->container['custom_fields'];
+    }
+
+    /**
+     * Sets custom_fields
+     *
+     * @param \Alexasomba\Paystack\Model\VirtualTerminalCreateCustomFieldsInner[]|null $custom_fields An array of objects representing custom fields to display on the form. Each object contains a display_name parameter, representing what will be displayed on the Virtual Terminal page, and variable_name parameter for referencing the custom field programmatically
+     *
+     * @return self
+     */
+    public function setCustomFields($custom_fields)
+    {
+        if (is_null($custom_fields)) {
+            throw new \InvalidArgumentException('non-nullable custom_fields cannot be null');
+        }
+        $this->container['custom_fields'] = $custom_fields;
 
         return $this;
     }

@@ -25,7 +25,7 @@ type TerminalListsResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
 	Data []TerminalListsResponseArray `json:"data"`
-	Meta TerminalListsResponseMeta `json:"meta"`
+	Meta CursorMeta `json:"meta"`
 }
 
 type _TerminalListsResponse TerminalListsResponse
@@ -34,7 +34,7 @@ type _TerminalListsResponse TerminalListsResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerminalListsResponse(status bool, message string, data []TerminalListsResponseArray, meta TerminalListsResponseMeta) *TerminalListsResponse {
+func NewTerminalListsResponse(status bool, message string, data []TerminalListsResponseArray, meta CursorMeta) *TerminalListsResponse {
 	this := TerminalListsResponse{}
 	this.Status = status
 	this.Message = message
@@ -124,9 +124,9 @@ func (o *TerminalListsResponse) SetData(v []TerminalListsResponseArray) {
 }
 
 // GetMeta returns the Meta field value
-func (o *TerminalListsResponse) GetMeta() TerminalListsResponseMeta {
+func (o *TerminalListsResponse) GetMeta() CursorMeta {
 	if o == nil {
-		var ret TerminalListsResponseMeta
+		var ret CursorMeta
 		return ret
 	}
 
@@ -135,7 +135,7 @@ func (o *TerminalListsResponse) GetMeta() TerminalListsResponseMeta {
 
 // GetMetaOk returns a tuple with the Meta field value
 // and a boolean to check if the value has been set.
-func (o *TerminalListsResponse) GetMetaOk() (*TerminalListsResponseMeta, bool) {
+func (o *TerminalListsResponse) GetMetaOk() (*CursorMeta, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -143,7 +143,7 @@ func (o *TerminalListsResponse) GetMetaOk() (*TerminalListsResponseMeta, bool) {
 }
 
 // SetMeta sets field value
-func (o *TerminalListsResponse) SetMeta(v TerminalListsResponseMeta) {
+func (o *TerminalListsResponse) SetMeta(v CursorMeta) {
 	o.Meta = v
 }
 

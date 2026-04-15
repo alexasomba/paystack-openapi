@@ -73,12 +73,7 @@ class SubscriptionListResponseArray implements ModelInterface, ArrayAccess, \Jso
         'integration' => 'int',
         'plan' => '\Alexasomba\Paystack\Model\SubscriptionListResponseArrayPlan',
         'authorization' => '\Alexasomba\Paystack\Model\SubscriptionListResponseArrayAuthorization',
-        'customer' => '\Alexasomba\Paystack\Model\SubscriptionListResponseArrayCustomer',
-        'invoice_limit' => 'int',
-        'split_code' => 'mixed',
-        'payments_count' => 'int',
-        'most_recent_invoice' => 'mixed',
-        'metadata' => 'object'
+        'customer' => '\Alexasomba\Paystack\Model\SubscriptionListResponseArrayCustomer'
     ];
 
     /**
@@ -104,12 +99,7 @@ class SubscriptionListResponseArray implements ModelInterface, ArrayAccess, \Jso
         'integration' => null,
         'plan' => null,
         'authorization' => null,
-        'customer' => null,
-        'invoice_limit' => null,
-        'split_code' => null,
-        'payments_count' => null,
-        'most_recent_invoice' => null,
-        'metadata' => null
+        'customer' => null
     ];
 
     /**
@@ -133,12 +123,7 @@ class SubscriptionListResponseArray implements ModelInterface, ArrayAccess, \Jso
         'integration' => false,
         'plan' => false,
         'authorization' => false,
-        'customer' => false,
-        'invoice_limit' => false,
-        'split_code' => true,
-        'payments_count' => false,
-        'most_recent_invoice' => true,
-        'metadata' => true
+        'customer' => false
     ];
 
     /**
@@ -242,12 +227,7 @@ class SubscriptionListResponseArray implements ModelInterface, ArrayAccess, \Jso
         'integration' => 'integration',
         'plan' => 'plan',
         'authorization' => 'authorization',
-        'customer' => 'customer',
-        'invoice_limit' => 'invoice_limit',
-        'split_code' => 'split_code',
-        'payments_count' => 'payments_count',
-        'most_recent_invoice' => 'most_recent_invoice',
-        'metadata' => 'metadata'
+        'customer' => 'customer'
     ];
 
     /**
@@ -271,12 +251,7 @@ class SubscriptionListResponseArray implements ModelInterface, ArrayAccess, \Jso
         'integration' => 'setIntegration',
         'plan' => 'setPlan',
         'authorization' => 'setAuthorization',
-        'customer' => 'setCustomer',
-        'invoice_limit' => 'setInvoiceLimit',
-        'split_code' => 'setSplitCode',
-        'payments_count' => 'setPaymentsCount',
-        'most_recent_invoice' => 'setMostRecentInvoice',
-        'metadata' => 'setMetadata'
+        'customer' => 'setCustomer'
     ];
 
     /**
@@ -300,12 +275,7 @@ class SubscriptionListResponseArray implements ModelInterface, ArrayAccess, \Jso
         'integration' => 'getIntegration',
         'plan' => 'getPlan',
         'authorization' => 'getAuthorization',
-        'customer' => 'getCustomer',
-        'invoice_limit' => 'getInvoiceLimit',
-        'split_code' => 'getSplitCode',
-        'payments_count' => 'getPaymentsCount',
-        'most_recent_invoice' => 'getMostRecentInvoice',
-        'metadata' => 'getMetadata'
+        'customer' => 'getCustomer'
     ];
 
     /**
@@ -381,11 +351,6 @@ class SubscriptionListResponseArray implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('plan', $data ?? [], null);
         $this->setIfExists('authorization', $data ?? [], null);
         $this->setIfExists('customer', $data ?? [], null);
-        $this->setIfExists('invoice_limit', $data ?? [], null);
-        $this->setIfExists('split_code', $data ?? [], null);
-        $this->setIfExists('payments_count', $data ?? [], null);
-        $this->setIfExists('most_recent_invoice', $data ?? [], null);
-        $this->setIfExists('metadata', $data ?? [], null);
     }
 
     /**
@@ -462,21 +427,6 @@ class SubscriptionListResponseArray implements ModelInterface, ArrayAccess, \Jso
         }
         if ($this->container['customer'] === null) {
             $invalidProperties[] = "'customer' can't be null";
-        }
-        if ($this->container['invoice_limit'] === null) {
-            $invalidProperties[] = "'invoice_limit' can't be null";
-        }
-        if ($this->container['split_code'] === null && !$this->isNullableSetToNull('split_code')) {
-            $invalidProperties[] = "'split_code' can't be null";
-        }
-        if ($this->container['payments_count'] === null) {
-            $invalidProperties[] = "'payments_count' can't be null";
-        }
-        if ($this->container['most_recent_invoice'] === null && !$this->isNullableSetToNull('most_recent_invoice')) {
-            $invalidProperties[] = "'most_recent_invoice' can't be null";
-        }
-        if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
-            $invalidProperties[] = "'metadata' can't be null";
         }
         return $invalidProperties;
     }
@@ -942,162 +892,6 @@ class SubscriptionListResponseArray implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable customer cannot be null');
         }
         $this->container['customer'] = $customer;
-
-        return $this;
-    }
-
-    /**
-     * Gets invoice_limit
-     *
-     * @return int
-     */
-    public function getInvoiceLimit()
-    {
-        return $this->container['invoice_limit'];
-    }
-
-    /**
-     * Sets invoice_limit
-     *
-     * @param int $invoice_limit invoice_limit
-     *
-     * @return self
-     */
-    public function setInvoiceLimit($invoice_limit)
-    {
-        if (is_null($invoice_limit)) {
-            throw new \InvalidArgumentException('non-nullable invoice_limit cannot be null');
-        }
-        $this->container['invoice_limit'] = $invoice_limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets split_code
-     *
-     * @return mixed|null
-     */
-    public function getSplitCode()
-    {
-        return $this->container['split_code'];
-    }
-
-    /**
-     * Sets split_code
-     *
-     * @param mixed|null $split_code split_code
-     *
-     * @return self
-     */
-    public function setSplitCode($split_code)
-    {
-        if (is_null($split_code)) {
-            array_push($this->openAPINullablesSetToNull, 'split_code');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('split_code', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['split_code'] = $split_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets payments_count
-     *
-     * @return int
-     */
-    public function getPaymentsCount()
-    {
-        return $this->container['payments_count'];
-    }
-
-    /**
-     * Sets payments_count
-     *
-     * @param int $payments_count payments_count
-     *
-     * @return self
-     */
-    public function setPaymentsCount($payments_count)
-    {
-        if (is_null($payments_count)) {
-            throw new \InvalidArgumentException('non-nullable payments_count cannot be null');
-        }
-        $this->container['payments_count'] = $payments_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets most_recent_invoice
-     *
-     * @return mixed|null
-     */
-    public function getMostRecentInvoice()
-    {
-        return $this->container['most_recent_invoice'];
-    }
-
-    /**
-     * Sets most_recent_invoice
-     *
-     * @param mixed|null $most_recent_invoice most_recent_invoice
-     *
-     * @return self
-     */
-    public function setMostRecentInvoice($most_recent_invoice)
-    {
-        if (is_null($most_recent_invoice)) {
-            array_push($this->openAPINullablesSetToNull, 'most_recent_invoice');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('most_recent_invoice', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['most_recent_invoice'] = $most_recent_invoice;
-
-        return $this;
-    }
-
-    /**
-     * Gets metadata
-     *
-     * @return object|null
-     */
-    public function getMetadata()
-    {
-        return $this->container['metadata'];
-    }
-
-    /**
-     * Sets metadata
-     *
-     * @param object|null $metadata metadata
-     *
-     * @return self
-     */
-    public function setMetadata($metadata)
-    {
-        if (is_null($metadata)) {
-            array_push($this->openAPINullablesSetToNull, 'metadata');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('metadata', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['metadata'] = $metadata;
 
         return $this;
     }

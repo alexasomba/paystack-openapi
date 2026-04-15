@@ -18,9 +18,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from alexasomba_paystack.models.storefront_contacts_array import StorefrontContactsArray
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,29 +27,15 @@ class StorefrontCreateResponseData(BaseModel):
     """
     StorefrontCreateResponseData
     """ # noqa: E501
-    social_media: List[Any]
-    contacts: List[StorefrontContactsArray]
+    id: StrictInt
     name: StrictStr
     slug: StrictStr
-    currency: StrictStr
-    welcome_message: Optional[Any]
-    success_message: Optional[Any]
-    redirect_url: Optional[Any]
-    description: Optional[Any]
-    delivery_note: StrictStr
-    background_color: StrictStr
+    description: Optional[StrictStr]
     status: StrictStr
-    shippable: StrictBool
-    integration: StrictInt
-    domain: StrictStr
-    digital_product_expiry: Optional[Any]
-    metadata: Optional[Dict[str, Any]] = None
-    id: StrictInt
+    currency: StrictStr
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    products: List[Any]
-    shipping_fees: List[Any]
-    __properties: ClassVar[List[str]] = ["social_media", "contacts", "name", "slug", "currency", "welcome_message", "success_message", "redirect_url", "description", "delivery_note", "background_color", "status", "shippable", "integration", "domain", "digital_product_expiry", "metadata", "id", "createdAt", "updatedAt", "products", "shipping_fees"]
+    __properties: ClassVar[List[str]] = ["id", "name", "slug", "description", "status", "currency", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,42 +76,10 @@ class StorefrontCreateResponseData(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in contacts (list)
-        _items = []
-        if self.contacts:
-            for _item_contacts in self.contacts:
-                if _item_contacts:
-                    _items.append(_item_contacts.to_dict())
-            _dict['contacts'] = _items
-        # set to None if welcome_message (nullable) is None
-        # and model_fields_set contains the field
-        if self.welcome_message is None and "welcome_message" in self.model_fields_set:
-            _dict['welcome_message'] = None
-
-        # set to None if success_message (nullable) is None
-        # and model_fields_set contains the field
-        if self.success_message is None and "success_message" in self.model_fields_set:
-            _dict['success_message'] = None
-
-        # set to None if redirect_url (nullable) is None
-        # and model_fields_set contains the field
-        if self.redirect_url is None and "redirect_url" in self.model_fields_set:
-            _dict['redirect_url'] = None
-
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
-
-        # set to None if digital_product_expiry (nullable) is None
-        # and model_fields_set contains the field
-        if self.digital_product_expiry is None and "digital_product_expiry" in self.model_fields_set:
-            _dict['digital_product_expiry'] = None
-
-        # set to None if metadata (nullable) is None
-        # and model_fields_set contains the field
-        if self.metadata is None and "metadata" in self.model_fields_set:
-            _dict['metadata'] = None
 
         return _dict
 
@@ -140,28 +93,14 @@ class StorefrontCreateResponseData(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "social_media": obj.get("social_media"),
-            "contacts": [StorefrontContactsArray.from_dict(_item) for _item in obj["contacts"]] if obj.get("contacts") is not None else None,
+            "id": obj.get("id"),
             "name": obj.get("name"),
             "slug": obj.get("slug"),
-            "currency": obj.get("currency"),
-            "welcome_message": obj.get("welcome_message"),
-            "success_message": obj.get("success_message"),
-            "redirect_url": obj.get("redirect_url"),
             "description": obj.get("description"),
-            "delivery_note": obj.get("delivery_note"),
-            "background_color": obj.get("background_color"),
             "status": obj.get("status"),
-            "shippable": obj.get("shippable"),
-            "integration": obj.get("integration"),
-            "domain": obj.get("domain"),
-            "digital_product_expiry": obj.get("digital_product_expiry"),
-            "metadata": obj.get("metadata"),
-            "id": obj.get("id"),
+            "currency": obj.get("currency"),
             "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
-            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
-            "products": obj.get("products"),
-            "shipping_fees": obj.get("shipping_fees")
+            "updatedAt": obj.get("updatedAt")
         })
         return _obj
 

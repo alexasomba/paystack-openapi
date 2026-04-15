@@ -18,9 +18,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from alexasomba_paystack.models.subscription_list_response_array_customer import SubscriptionListResponseArrayCustomer
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,33 +27,26 @@ class RefundListResponseArray(BaseModel):
     """
     RefundListResponseArray
     """ # noqa: E501
-    integration: StrictInt
-    transaction: StrictInt
-    dispute: Optional[Any]
-    settlement: Optional[Any]
     id: StrictInt
+    integration: StrictInt
     domain: StrictStr
-    currency: StrictStr
+    transaction: StrictInt
+    dispute: Optional[StrictInt]
     amount: StrictInt
-    status: StrictStr
-    refunded_at: Optional[Any]
+    deducted_amount: Optional[StrictInt]
+    currency: StrictStr
+    channel: StrictStr
+    settlement: Optional[StrictInt]
     refunded_by: StrictStr
+    refunded_at: Optional[StrictStr]
+    expected_at: StrictStr
     customer_note: StrictStr
     merchant_note: StrictStr
-    deducted_amount: StrictInt
-    fully_deducted: StrictInt
-    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
-    bank_reference: Optional[Any]
-    transaction_reference: StrictStr
-    reason: StrictStr
-    customer: SubscriptionListResponseArrayCustomer
-    refund_type: StrictStr
-    transaction_amount: StrictInt
-    initiated_by: StrictStr
-    refund_channel: StrictStr
-    session_id: Optional[Any]
-    collect_account_number: StrictBool
-    __properties: ClassVar[List[str]] = ["integration", "transaction", "dispute", "settlement", "id", "domain", "currency", "amount", "status", "refunded_at", "refunded_by", "customer_note", "merchant_note", "deducted_amount", "fully_deducted", "createdAt", "bank_reference", "transaction_reference", "reason", "customer", "refund_type", "transaction_amount", "initiated_by", "refund_channel", "session_id", "collect_account_number"]
+    fully_deducted: Optional[StrictInt]
+    created_at: StrictStr
+    updated_at: StrictStr
+    status: StrictStr
+    __properties: ClassVar[List[str]] = ["id", "integration", "domain", "transaction", "dispute", "amount", "deducted_amount", "currency", "channel", "settlement", "refunded_by", "refunded_at", "expected_at", "customer_note", "merchant_note", "fully_deducted", "created_at", "updated_at", "status"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -95,13 +87,15 @@ class RefundListResponseArray(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of customer
-        if self.customer:
-            _dict['customer'] = self.customer.to_dict()
         # set to None if dispute (nullable) is None
         # and model_fields_set contains the field
         if self.dispute is None and "dispute" in self.model_fields_set:
             _dict['dispute'] = None
+
+        # set to None if deducted_amount (nullable) is None
+        # and model_fields_set contains the field
+        if self.deducted_amount is None and "deducted_amount" in self.model_fields_set:
+            _dict['deducted_amount'] = None
 
         # set to None if settlement (nullable) is None
         # and model_fields_set contains the field
@@ -113,15 +107,10 @@ class RefundListResponseArray(BaseModel):
         if self.refunded_at is None and "refunded_at" in self.model_fields_set:
             _dict['refunded_at'] = None
 
-        # set to None if bank_reference (nullable) is None
+        # set to None if fully_deducted (nullable) is None
         # and model_fields_set contains the field
-        if self.bank_reference is None and "bank_reference" in self.model_fields_set:
-            _dict['bank_reference'] = None
-
-        # set to None if session_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.session_id is None and "session_id" in self.model_fields_set:
-            _dict['session_id'] = None
+        if self.fully_deducted is None and "fully_deducted" in self.model_fields_set:
+            _dict['fully_deducted'] = None
 
         return _dict
 
@@ -135,32 +124,25 @@ class RefundListResponseArray(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "id": obj.get("id"),
             "integration": obj.get("integration"),
+            "domain": obj.get("domain"),
             "transaction": obj.get("transaction"),
             "dispute": obj.get("dispute"),
-            "settlement": obj.get("settlement"),
-            "id": obj.get("id"),
-            "domain": obj.get("domain"),
-            "currency": obj.get("currency"),
             "amount": obj.get("amount"),
-            "status": obj.get("status"),
-            "refunded_at": obj.get("refunded_at"),
+            "deducted_amount": obj.get("deducted_amount"),
+            "currency": obj.get("currency"),
+            "channel": obj.get("channel"),
+            "settlement": obj.get("settlement"),
             "refunded_by": obj.get("refunded_by"),
+            "refunded_at": obj.get("refunded_at"),
+            "expected_at": obj.get("expected_at"),
             "customer_note": obj.get("customer_note"),
             "merchant_note": obj.get("merchant_note"),
-            "deducted_amount": obj.get("deducted_amount"),
             "fully_deducted": obj.get("fully_deducted"),
-            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
-            "bank_reference": obj.get("bank_reference"),
-            "transaction_reference": obj.get("transaction_reference"),
-            "reason": obj.get("reason"),
-            "customer": SubscriptionListResponseArrayCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
-            "refund_type": obj.get("refund_type"),
-            "transaction_amount": obj.get("transaction_amount"),
-            "initiated_by": obj.get("initiated_by"),
-            "refund_channel": obj.get("refund_channel"),
-            "session_id": obj.get("session_id"),
-            "collect_account_number": obj.get("collect_account_number")
+            "created_at": obj.get("created_at"),
+            "updated_at": obj.get("updated_at"),
+            "status": obj.get("status")
         })
         return _obj
 

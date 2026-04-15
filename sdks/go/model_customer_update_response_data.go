@@ -22,20 +22,22 @@ var _ MappedNullable = &CustomerUpdateResponseData{}
 
 // CustomerUpdateResponseData struct for CustomerUpdateResponseData
 type CustomerUpdateResponseData struct {
+	Integration int32 `json:"integration"`
 	FirstName string `json:"first_name"`
 	LastName string `json:"last_name"`
 	Email string `json:"email"`
-	Phone string `json:"phone"`
+	Phone NullableString `json:"phone"`
 	Metadata map[string]interface{} `json:"metadata"`
-	Domain string `json:"domain"`
-	CustomerCode string `json:"customer_code"`
-	RiskAction string `json:"risk_action"`
-	Id int32 `json:"id"`
-	Integration int32 `json:"integration"`
-	CreatedAt string `json:"createdAt"`
-	UpdatedAt string `json:"updatedAt"`
 	Identified bool `json:"identified"`
 	Identifications interface{} `json:"identifications"`
+	Domain string `json:"domain"`
+	CustomerCode string `json:"customer_code"`
+	Id int32 `json:"id"`
+	Transactions []interface{} `json:"transactions"`
+	Subscriptions []interface{} `json:"subscriptions"`
+	Authorizations []interface{} `json:"authorizations"`
+	CreatedAt string `json:"createdAt"`
+	UpdatedAt string `json:"updatedAt"`
 }
 
 type _CustomerUpdateResponseData CustomerUpdateResponseData
@@ -44,22 +46,24 @@ type _CustomerUpdateResponseData CustomerUpdateResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomerUpdateResponseData(firstName string, lastName string, email string, phone string, metadata map[string]interface{}, domain string, customerCode string, riskAction string, id int32, integration int32, createdAt string, updatedAt string, identified bool, identifications interface{}) *CustomerUpdateResponseData {
+func NewCustomerUpdateResponseData(integration int32, firstName string, lastName string, email string, phone NullableString, metadata map[string]interface{}, identified bool, identifications interface{}, domain string, customerCode string, id int32, transactions []interface{}, subscriptions []interface{}, authorizations []interface{}, createdAt string, updatedAt string) *CustomerUpdateResponseData {
 	this := CustomerUpdateResponseData{}
+	this.Integration = integration
 	this.FirstName = firstName
 	this.LastName = lastName
 	this.Email = email
 	this.Phone = phone
 	this.Metadata = metadata
-	this.Domain = domain
-	this.CustomerCode = customerCode
-	this.RiskAction = riskAction
-	this.Id = id
-	this.Integration = integration
-	this.CreatedAt = createdAt
-	this.UpdatedAt = updatedAt
 	this.Identified = identified
 	this.Identifications = identifications
+	this.Domain = domain
+	this.CustomerCode = customerCode
+	this.Id = id
+	this.Transactions = transactions
+	this.Subscriptions = subscriptions
+	this.Authorizations = authorizations
+	this.CreatedAt = createdAt
+	this.UpdatedAt = updatedAt
 	return &this
 }
 
@@ -69,6 +73,30 @@ func NewCustomerUpdateResponseData(firstName string, lastName string, email stri
 func NewCustomerUpdateResponseDataWithDefaults() *CustomerUpdateResponseData {
 	this := CustomerUpdateResponseData{}
 	return &this
+}
+
+// GetIntegration returns the Integration field value
+func (o *CustomerUpdateResponseData) GetIntegration() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Integration
+}
+
+// GetIntegrationOk returns a tuple with the Integration field value
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdateResponseData) GetIntegrationOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Integration, true
+}
+
+// SetIntegration sets field value
+func (o *CustomerUpdateResponseData) SetIntegration(v int32) {
+	o.Integration = v
 }
 
 // GetFirstName returns the FirstName field value
@@ -144,30 +172,33 @@ func (o *CustomerUpdateResponseData) SetEmail(v string) {
 }
 
 // GetPhone returns the Phone field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CustomerUpdateResponseData) GetPhone() string {
-	if o == nil {
+	if o == nil || o.Phone.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Phone
+	return *o.Phone.Get()
 }
 
 // GetPhoneOk returns a tuple with the Phone field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerUpdateResponseData) GetPhoneOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Phone, true
+	return o.Phone.Get(), o.Phone.IsSet()
 }
 
 // SetPhone sets field value
 func (o *CustomerUpdateResponseData) SetPhone(v string) {
-	o.Phone = v
+	o.Phone.Set(&v)
 }
 
 // GetMetadata returns the Metadata field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *CustomerUpdateResponseData) GetMetadata() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -179,8 +210,9 @@ func (o *CustomerUpdateResponseData) GetMetadata() map[string]interface{} {
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerUpdateResponseData) GetMetadataOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Metadata) {
 		return map[string]interface{}{}, false
 	}
 	return o.Metadata, true
@@ -189,174 +221,6 @@ func (o *CustomerUpdateResponseData) GetMetadataOk() (map[string]interface{}, bo
 // SetMetadata sets field value
 func (o *CustomerUpdateResponseData) SetMetadata(v map[string]interface{}) {
 	o.Metadata = v
-}
-
-// GetDomain returns the Domain field value
-func (o *CustomerUpdateResponseData) GetDomain() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Domain
-}
-
-// GetDomainOk returns a tuple with the Domain field value
-// and a boolean to check if the value has been set.
-func (o *CustomerUpdateResponseData) GetDomainOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Domain, true
-}
-
-// SetDomain sets field value
-func (o *CustomerUpdateResponseData) SetDomain(v string) {
-	o.Domain = v
-}
-
-// GetCustomerCode returns the CustomerCode field value
-func (o *CustomerUpdateResponseData) GetCustomerCode() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.CustomerCode
-}
-
-// GetCustomerCodeOk returns a tuple with the CustomerCode field value
-// and a boolean to check if the value has been set.
-func (o *CustomerUpdateResponseData) GetCustomerCodeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CustomerCode, true
-}
-
-// SetCustomerCode sets field value
-func (o *CustomerUpdateResponseData) SetCustomerCode(v string) {
-	o.CustomerCode = v
-}
-
-// GetRiskAction returns the RiskAction field value
-func (o *CustomerUpdateResponseData) GetRiskAction() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.RiskAction
-}
-
-// GetRiskActionOk returns a tuple with the RiskAction field value
-// and a boolean to check if the value has been set.
-func (o *CustomerUpdateResponseData) GetRiskActionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.RiskAction, true
-}
-
-// SetRiskAction sets field value
-func (o *CustomerUpdateResponseData) SetRiskAction(v string) {
-	o.RiskAction = v
-}
-
-// GetId returns the Id field value
-func (o *CustomerUpdateResponseData) GetId() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *CustomerUpdateResponseData) GetIdOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *CustomerUpdateResponseData) SetId(v int32) {
-	o.Id = v
-}
-
-// GetIntegration returns the Integration field value
-func (o *CustomerUpdateResponseData) GetIntegration() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Integration
-}
-
-// GetIntegrationOk returns a tuple with the Integration field value
-// and a boolean to check if the value has been set.
-func (o *CustomerUpdateResponseData) GetIntegrationOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Integration, true
-}
-
-// SetIntegration sets field value
-func (o *CustomerUpdateResponseData) SetIntegration(v int32) {
-	o.Integration = v
-}
-
-// GetCreatedAt returns the CreatedAt field value
-func (o *CustomerUpdateResponseData) GetCreatedAt() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
-// and a boolean to check if the value has been set.
-func (o *CustomerUpdateResponseData) GetCreatedAtOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CreatedAt, true
-}
-
-// SetCreatedAt sets field value
-func (o *CustomerUpdateResponseData) SetCreatedAt(v string) {
-	o.CreatedAt = v
-}
-
-// GetUpdatedAt returns the UpdatedAt field value
-func (o *CustomerUpdateResponseData) GetUpdatedAt() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.UpdatedAt
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
-// and a boolean to check if the value has been set.
-func (o *CustomerUpdateResponseData) GetUpdatedAtOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.UpdatedAt, true
-}
-
-// SetUpdatedAt sets field value
-func (o *CustomerUpdateResponseData) SetUpdatedAt(v string) {
-	o.UpdatedAt = v
 }
 
 // GetIdentified returns the Identified field value
@@ -409,6 +273,198 @@ func (o *CustomerUpdateResponseData) SetIdentifications(v interface{}) {
 	o.Identifications = v
 }
 
+// GetDomain returns the Domain field value
+func (o *CustomerUpdateResponseData) GetDomain() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Domain
+}
+
+// GetDomainOk returns a tuple with the Domain field value
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdateResponseData) GetDomainOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Domain, true
+}
+
+// SetDomain sets field value
+func (o *CustomerUpdateResponseData) SetDomain(v string) {
+	o.Domain = v
+}
+
+// GetCustomerCode returns the CustomerCode field value
+func (o *CustomerUpdateResponseData) GetCustomerCode() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CustomerCode
+}
+
+// GetCustomerCodeOk returns a tuple with the CustomerCode field value
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdateResponseData) GetCustomerCodeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CustomerCode, true
+}
+
+// SetCustomerCode sets field value
+func (o *CustomerUpdateResponseData) SetCustomerCode(v string) {
+	o.CustomerCode = v
+}
+
+// GetId returns the Id field value
+func (o *CustomerUpdateResponseData) GetId() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdateResponseData) GetIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *CustomerUpdateResponseData) SetId(v int32) {
+	o.Id = v
+}
+
+// GetTransactions returns the Transactions field value
+func (o *CustomerUpdateResponseData) GetTransactions() []interface{} {
+	if o == nil {
+		var ret []interface{}
+		return ret
+	}
+
+	return o.Transactions
+}
+
+// GetTransactionsOk returns a tuple with the Transactions field value
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdateResponseData) GetTransactionsOk() ([]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Transactions, true
+}
+
+// SetTransactions sets field value
+func (o *CustomerUpdateResponseData) SetTransactions(v []interface{}) {
+	o.Transactions = v
+}
+
+// GetSubscriptions returns the Subscriptions field value
+func (o *CustomerUpdateResponseData) GetSubscriptions() []interface{} {
+	if o == nil {
+		var ret []interface{}
+		return ret
+	}
+
+	return o.Subscriptions
+}
+
+// GetSubscriptionsOk returns a tuple with the Subscriptions field value
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdateResponseData) GetSubscriptionsOk() ([]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Subscriptions, true
+}
+
+// SetSubscriptions sets field value
+func (o *CustomerUpdateResponseData) SetSubscriptions(v []interface{}) {
+	o.Subscriptions = v
+}
+
+// GetAuthorizations returns the Authorizations field value
+func (o *CustomerUpdateResponseData) GetAuthorizations() []interface{} {
+	if o == nil {
+		var ret []interface{}
+		return ret
+	}
+
+	return o.Authorizations
+}
+
+// GetAuthorizationsOk returns a tuple with the Authorizations field value
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdateResponseData) GetAuthorizationsOk() ([]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Authorizations, true
+}
+
+// SetAuthorizations sets field value
+func (o *CustomerUpdateResponseData) SetAuthorizations(v []interface{}) {
+	o.Authorizations = v
+}
+
+// GetCreatedAt returns the CreatedAt field value
+func (o *CustomerUpdateResponseData) GetCreatedAt() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdateResponseData) GetCreatedAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CreatedAt, true
+}
+
+// SetCreatedAt sets field value
+func (o *CustomerUpdateResponseData) SetCreatedAt(v string) {
+	o.CreatedAt = v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value
+func (o *CustomerUpdateResponseData) GetUpdatedAt() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdateResponseData) GetUpdatedAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UpdatedAt, true
+}
+
+// SetUpdatedAt sets field value
+func (o *CustomerUpdateResponseData) SetUpdatedAt(v string) {
+	o.UpdatedAt = v
+}
+
 func (o CustomerUpdateResponseData) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -419,22 +475,26 @@ func (o CustomerUpdateResponseData) MarshalJSON() ([]byte, error) {
 
 func (o CustomerUpdateResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["integration"] = o.Integration
 	toSerialize["first_name"] = o.FirstName
 	toSerialize["last_name"] = o.LastName
 	toSerialize["email"] = o.Email
-	toSerialize["phone"] = o.Phone
-	toSerialize["metadata"] = o.Metadata
-	toSerialize["domain"] = o.Domain
-	toSerialize["customer_code"] = o.CustomerCode
-	toSerialize["risk_action"] = o.RiskAction
-	toSerialize["id"] = o.Id
-	toSerialize["integration"] = o.Integration
-	toSerialize["createdAt"] = o.CreatedAt
-	toSerialize["updatedAt"] = o.UpdatedAt
+	toSerialize["phone"] = o.Phone.Get()
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
+	}
 	toSerialize["identified"] = o.Identified
 	if o.Identifications != nil {
 		toSerialize["identifications"] = o.Identifications
 	}
+	toSerialize["domain"] = o.Domain
+	toSerialize["customer_code"] = o.CustomerCode
+	toSerialize["id"] = o.Id
+	toSerialize["transactions"] = o.Transactions
+	toSerialize["subscriptions"] = o.Subscriptions
+	toSerialize["authorizations"] = o.Authorizations
+	toSerialize["createdAt"] = o.CreatedAt
+	toSerialize["updatedAt"] = o.UpdatedAt
 	return toSerialize, nil
 }
 
@@ -443,20 +503,22 @@ func (o *CustomerUpdateResponseData) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"integration",
 		"first_name",
 		"last_name",
 		"email",
 		"phone",
 		"metadata",
-		"domain",
-		"customer_code",
-		"risk_action",
-		"id",
-		"integration",
-		"createdAt",
-		"updatedAt",
 		"identified",
 		"identifications",
+		"domain",
+		"customer_code",
+		"id",
+		"transactions",
+		"subscriptions",
+		"authorizations",
+		"createdAt",
+		"updatedAt",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -59,7 +59,6 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
       */
     protected static $openAPITypes = [
         'id' => 'int',
-        'integration' => 'int',
         'domain' => 'string',
         'amount' => 'int',
         'currency' => 'string',
@@ -67,20 +66,20 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
         'has_invoice' => 'bool',
         'invoice_number' => 'int',
         'description' => 'string',
-        'pdf_url' => 'mixed',
+        'pdf_url' => 'string',
         'line_items' => '\Alexasomba\Paystack\Model\PaymentRequestLineItemsArray[]',
         'tax' => '\Alexasomba\Paystack\Model\PaymentRequestTaxArray[]',
         'request_code' => 'string',
         'status' => 'string',
         'paid' => 'bool',
-        'paid_at' => 'mixed',
-        'metadata' => 'mixed',
+        'paid_at' => 'string',
+        'metadata' => 'object',
         'notifications' => 'mixed[]',
         'offline_reference' => 'string',
-        'customer' => '\Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayCustomer',
+        'customer' => '\Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataCustomer',
         'created_at' => 'string',
         'discount' => '\Alexasomba\Paystack\Model\PaymentRequestFinalizeResponseDataDiscount',
-        'split_code' => 'mixed',
+        'split_code' => 'string',
         'pending_amount' => 'int'
     ];
 
@@ -93,7 +92,6 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'integration' => null,
         'domain' => null,
         'amount' => null,
         'currency' => null,
@@ -125,7 +123,6 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'integration' => false,
         'domain' => false,
         'amount' => false,
         'currency' => false,
@@ -237,7 +234,6 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'integration' => 'integration',
         'domain' => 'domain',
         'amount' => 'amount',
         'currency' => 'currency',
@@ -269,7 +265,6 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
      */
     protected static $setters = [
         'id' => 'setId',
-        'integration' => 'setIntegration',
         'domain' => 'setDomain',
         'amount' => 'setAmount',
         'currency' => 'setCurrency',
@@ -301,7 +296,6 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
      */
     protected static $getters = [
         'id' => 'getId',
-        'integration' => 'getIntegration',
         'domain' => 'getDomain',
         'amount' => 'getAmount',
         'currency' => 'getCurrency',
@@ -384,7 +378,6 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('integration', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
@@ -438,9 +431,6 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
 
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['integration'] === null) {
-            $invalidProperties[] = "'integration' can't be null";
         }
         if ($this->container['domain'] === null) {
             $invalidProperties[] = "'domain' can't be null";
@@ -499,12 +489,6 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
         }
-        if ($this->container['discount'] === null && !$this->isNullableSetToNull('discount')) {
-            $invalidProperties[] = "'discount' can't be null";
-        }
-        if ($this->container['split_code'] === null && !$this->isNullableSetToNull('split_code')) {
-            $invalidProperties[] = "'split_code' can't be null";
-        }
         if ($this->container['pending_amount'] === null) {
             $invalidProperties[] = "'pending_amount' can't be null";
         }
@@ -546,33 +530,6 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets integration
-     *
-     * @return int
-     */
-    public function getIntegration()
-    {
-        return $this->container['integration'];
-    }
-
-    /**
-     * Sets integration
-     *
-     * @param int $integration integration
-     *
-     * @return self
-     */
-    public function setIntegration($integration)
-    {
-        if (is_null($integration)) {
-            throw new \InvalidArgumentException('non-nullable integration cannot be null');
-        }
-        $this->container['integration'] = $integration;
 
         return $this;
     }
@@ -790,7 +747,7 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
     /**
      * Gets pdf_url
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getPdfUrl()
     {
@@ -800,7 +757,7 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
     /**
      * Sets pdf_url
      *
-     * @param mixed|null $pdf_url pdf_url
+     * @param string|null $pdf_url pdf_url
      *
      * @return self
      */
@@ -959,7 +916,7 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
     /**
      * Gets paid_at
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getPaidAt()
     {
@@ -969,7 +926,7 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
     /**
      * Sets paid_at
      *
-     * @param mixed|null $paid_at paid_at
+     * @param string|null $paid_at paid_at
      *
      * @return self
      */
@@ -993,7 +950,7 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
     /**
      * Gets metadata
      *
-     * @return mixed|null
+     * @return object|null
      */
     public function getMetadata()
     {
@@ -1003,7 +960,7 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
     /**
      * Sets metadata
      *
-     * @param mixed|null $metadata metadata
+     * @param object|null $metadata metadata
      *
      * @return self
      */
@@ -1081,7 +1038,7 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
     /**
      * Gets customer
      *
-     * @return \Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayCustomer
+     * @return \Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataCustomer
      */
     public function getCustomer()
     {
@@ -1091,7 +1048,7 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
     /**
      * Sets customer
      *
-     * @param \Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataCustomer $customer customer
      *
      * @return self
      */
@@ -1169,7 +1126,7 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
     /**
      * Gets split_code
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getSplitCode()
     {
@@ -1179,7 +1136,7 @@ class PaymentRequestFinalizeResponseData implements ModelInterface, ArrayAccess,
     /**
      * Sets split_code
      *
-     * @param mixed|null $split_code split_code
+     * @param string|null $split_code split_code
      *
      * @return self
      */

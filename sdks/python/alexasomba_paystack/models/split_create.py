@@ -46,8 +46,8 @@ class SplitCreate(BaseModel):
     @field_validator('currency')
     def currency_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['NGN', 'GHS', 'ZAR', 'USD']):
-            raise ValueError("must be one of enum values ('NGN', 'GHS', 'ZAR', 'USD')")
+        if value not in set(['NGN', 'GHS', 'ZAR', 'USD', 'XOF']):
+            raise ValueError("must be one of enum values ('NGN', 'GHS', 'ZAR', 'USD', 'XOF')")
         return value
 
     @field_validator('bearer_type')

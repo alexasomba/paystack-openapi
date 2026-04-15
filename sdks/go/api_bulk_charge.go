@@ -18,6 +18,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
@@ -27,10 +28,12 @@ type BulkChargeAPIService service
 type ApiBulkChargeChargesRequest struct {
 	ctx context.Context
 	ApiService *BulkChargeAPIService
-	code string
+	idOrCode string
 	perPage *int32
 	page *int32
 	status *string
+	from *time.Time
+	to *time.Time
 }
 
 // Number of records to fetch per page
@@ -45,9 +48,21 @@ func (r ApiBulkChargeChargesRequest) Page(page int32) ApiBulkChargeChargesReques
 	return r
 }
 
-// Filter by the status of the charges
+// Either one of these values: pending, success or failed
 func (r ApiBulkChargeChargesRequest) Status(status string) ApiBulkChargeChargesRequest {
 	r.status = &status
+	return r
+}
+
+// A timestamp from which to start listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+func (r ApiBulkChargeChargesRequest) From(from time.Time) ApiBulkChargeChargesRequest {
+	r.from = &from
+	return r
+}
+
+// A timestamp at which to stop listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+func (r ApiBulkChargeChargesRequest) To(to time.Time) ApiBulkChargeChargesRequest {
+	r.to = &to
 	return r
 }
 
@@ -61,14 +76,14 @@ BulkChargeCharges List Charges in a Batch
 This endpoint retrieves the charges associated with a specified batch code
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code An code for the batch whose charges you want to retrieve
+ @param idOrCode An ID or code for the batch whose charges you want to retrieve.
  @return ApiBulkChargeChargesRequest
 */
-func (a *BulkChargeAPIService) BulkChargeCharges(ctx context.Context, code string) ApiBulkChargeChargesRequest {
+func (a *BulkChargeAPIService) BulkChargeCharges(ctx context.Context, idOrCode string) ApiBulkChargeChargesRequest {
 	return ApiBulkChargeChargesRequest{
 		ApiService: a,
 		ctx: ctx,
-		code: code,
+		idOrCode: idOrCode,
 	}
 }
 
@@ -87,8 +102,8 @@ func (a *BulkChargeAPIService) BulkChargeChargesExecute(r ApiBulkChargeChargesRe
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/bulkcharge/{code}/charges"
-	localVarPath = strings.Replace(localVarPath, "{"+"code"+"}", url.PathEscape(parameterValueToString(r.code, "code")), -1)
+	localVarPath := localBasePath + "/bulkcharge/{id_or_code}/charges"
+	localVarPath = strings.Replace(localVarPath, "{"+"id_or_code"+"}", url.PathEscape(parameterValueToString(r.idOrCode, "idOrCode")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -102,6 +117,12 @@ func (a *BulkChargeAPIService) BulkChargeChargesExecute(r ApiBulkChargeChargesRe
 	}
 	if r.status != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+	}
+	if r.from != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	}
+	if r.to != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -182,7 +203,7 @@ func (a *BulkChargeAPIService) BulkChargeChargesExecute(r ApiBulkChargeChargesRe
 type ApiBulkChargeFetchRequest struct {
 	ctx context.Context
 	ApiService *BulkChargeAPIService
-	code string
+	idOrCode string
 }
 
 func (r ApiBulkChargeFetchRequest) Execute() (*BulkChargeFetchResponse, *http.Response, error) {
@@ -197,14 +218,14 @@ way of the `total_charges` and `pending_charges` attributes.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code The code for the charge whose batches you want to retrieve
+ @param idOrCode An ID or code for the charge whose batches you want to retrieve.
  @return ApiBulkChargeFetchRequest
 */
-func (a *BulkChargeAPIService) BulkChargeFetch(ctx context.Context, code string) ApiBulkChargeFetchRequest {
+func (a *BulkChargeAPIService) BulkChargeFetch(ctx context.Context, idOrCode string) ApiBulkChargeFetchRequest {
 	return ApiBulkChargeFetchRequest{
 		ApiService: a,
 		ctx: ctx,
-		code: code,
+		idOrCode: idOrCode,
 	}
 }
 
@@ -223,8 +244,8 @@ func (a *BulkChargeAPIService) BulkChargeFetchExecute(r ApiBulkChargeFetchReques
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/bulkcharge/{code}"
-	localVarPath = strings.Replace(localVarPath, "{"+"code"+"}", url.PathEscape(parameterValueToString(r.code, "code")), -1)
+	localVarPath := localBasePath + "/bulkcharge/{id_or_code}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id_or_code"+"}", url.PathEscape(parameterValueToString(r.idOrCode, "idOrCode")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -429,7 +450,8 @@ type ApiBulkChargeListRequest struct {
 	ApiService *BulkChargeAPIService
 	perPage *int32
 	page *int32
-	status *string
+	from *time.Time
+	to *time.Time
 }
 
 // Number of records to fetch per page
@@ -444,9 +466,15 @@ func (r ApiBulkChargeListRequest) Page(page int32) ApiBulkChargeListRequest {
 	return r
 }
 
-// Filter by the status of the charges
-func (r ApiBulkChargeListRequest) Status(status string) ApiBulkChargeListRequest {
-	r.status = &status
+// A timestamp from which to start listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+func (r ApiBulkChargeListRequest) From(from time.Time) ApiBulkChargeListRequest {
+	r.from = &from
+	return r
+}
+
+// A timestamp at which to stop listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+func (r ApiBulkChargeListRequest) To(to time.Time) ApiBulkChargeListRequest {
+	r.to = &to
 	return r
 }
 
@@ -496,8 +524,11 @@ func (a *BulkChargeAPIService) BulkChargeListExecute(r ApiBulkChargeListRequest)
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
-	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+	if r.from != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	}
+	if r.to != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

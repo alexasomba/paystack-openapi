@@ -21,7 +21,7 @@ var _ MappedNullable = &VerifyResponseDataAuthorization{}
 // VerifyResponseDataAuthorization struct for VerifyResponseDataAuthorization
 type VerifyResponseDataAuthorization struct {
 	AuthorizationCode *string `json:"authorization_code,omitempty"`
-	Bin interface{} `json:"bin,omitempty"`
+	Bin NullableString `json:"bin,omitempty"`
 	Last4 *string `json:"last4,omitempty"`
 	ExpMonth *string `json:"exp_month,omitempty"`
 	ExpYear *string `json:"exp_year,omitempty"`
@@ -32,9 +32,9 @@ type VerifyResponseDataAuthorization struct {
 	Brand *string `json:"brand,omitempty"`
 	Reusable *bool `json:"reusable,omitempty"`
 	Signature *string `json:"signature,omitempty"`
-	AccountName interface{} `json:"account_name,omitempty"`
-	ReceiverBankAccountNumber interface{} `json:"receiver_bank_account_number,omitempty"`
-	ReceiverBank interface{} `json:"receiver_bank,omitempty"`
+	AccountName NullableString `json:"account_name,omitempty"`
+	ReceiverBankAccountNumber NullableString `json:"receiver_bank_account_number,omitempty"`
+	ReceiverBank NullableString `json:"receiver_bank,omitempty"`
 }
 
 // NewVerifyResponseDataAuthorization instantiates a new VerifyResponseDataAuthorization object
@@ -87,36 +87,45 @@ func (o *VerifyResponseDataAuthorization) SetAuthorizationCode(v string) {
 }
 
 // GetBin returns the Bin field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *VerifyResponseDataAuthorization) GetBin() interface{} {
-	if o == nil {
-		var ret interface{}
+func (o *VerifyResponseDataAuthorization) GetBin() string {
+	if o == nil || IsNil(o.Bin.Get()) {
+		var ret string
 		return ret
 	}
-	return o.Bin
+	return *o.Bin.Get()
 }
 
 // GetBinOk returns a tuple with the Bin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VerifyResponseDataAuthorization) GetBinOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Bin) {
+func (o *VerifyResponseDataAuthorization) GetBinOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Bin, true
+	return o.Bin.Get(), o.Bin.IsSet()
 }
 
 // HasBin returns a boolean if a field has been set.
 func (o *VerifyResponseDataAuthorization) HasBin() bool {
-	if o != nil && !IsNil(o.Bin) {
+	if o != nil && o.Bin.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBin gets a reference to the given interface{} and assigns it to the Bin field.
-func (o *VerifyResponseDataAuthorization) SetBin(v interface{}) {
-	o.Bin = v
+// SetBin gets a reference to the given NullableString and assigns it to the Bin field.
+func (o *VerifyResponseDataAuthorization) SetBin(v string) {
+	o.Bin.Set(&v)
+}
+// SetBinNil sets the value for Bin to be an explicit nil
+func (o *VerifyResponseDataAuthorization) SetBinNil() {
+	o.Bin.Set(nil)
+}
+
+// UnsetBin ensures that no value is present for Bin, not even an explicit nil
+func (o *VerifyResponseDataAuthorization) UnsetBin() {
+	o.Bin.Unset()
 }
 
 // GetLast4 returns the Last4 field value if set, zero value otherwise.
@@ -440,102 +449,129 @@ func (o *VerifyResponseDataAuthorization) SetSignature(v string) {
 }
 
 // GetAccountName returns the AccountName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *VerifyResponseDataAuthorization) GetAccountName() interface{} {
-	if o == nil {
-		var ret interface{}
+func (o *VerifyResponseDataAuthorization) GetAccountName() string {
+	if o == nil || IsNil(o.AccountName.Get()) {
+		var ret string
 		return ret
 	}
-	return o.AccountName
+	return *o.AccountName.Get()
 }
 
 // GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VerifyResponseDataAuthorization) GetAccountNameOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.AccountName) {
+func (o *VerifyResponseDataAuthorization) GetAccountNameOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.AccountName, true
+	return o.AccountName.Get(), o.AccountName.IsSet()
 }
 
 // HasAccountName returns a boolean if a field has been set.
 func (o *VerifyResponseDataAuthorization) HasAccountName() bool {
-	if o != nil && !IsNil(o.AccountName) {
+	if o != nil && o.AccountName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAccountName gets a reference to the given interface{} and assigns it to the AccountName field.
-func (o *VerifyResponseDataAuthorization) SetAccountName(v interface{}) {
-	o.AccountName = v
+// SetAccountName gets a reference to the given NullableString and assigns it to the AccountName field.
+func (o *VerifyResponseDataAuthorization) SetAccountName(v string) {
+	o.AccountName.Set(&v)
+}
+// SetAccountNameNil sets the value for AccountName to be an explicit nil
+func (o *VerifyResponseDataAuthorization) SetAccountNameNil() {
+	o.AccountName.Set(nil)
+}
+
+// UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
+func (o *VerifyResponseDataAuthorization) UnsetAccountName() {
+	o.AccountName.Unset()
 }
 
 // GetReceiverBankAccountNumber returns the ReceiverBankAccountNumber field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *VerifyResponseDataAuthorization) GetReceiverBankAccountNumber() interface{} {
-	if o == nil {
-		var ret interface{}
+func (o *VerifyResponseDataAuthorization) GetReceiverBankAccountNumber() string {
+	if o == nil || IsNil(o.ReceiverBankAccountNumber.Get()) {
+		var ret string
 		return ret
 	}
-	return o.ReceiverBankAccountNumber
+	return *o.ReceiverBankAccountNumber.Get()
 }
 
 // GetReceiverBankAccountNumberOk returns a tuple with the ReceiverBankAccountNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VerifyResponseDataAuthorization) GetReceiverBankAccountNumberOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.ReceiverBankAccountNumber) {
+func (o *VerifyResponseDataAuthorization) GetReceiverBankAccountNumberOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.ReceiverBankAccountNumber, true
+	return o.ReceiverBankAccountNumber.Get(), o.ReceiverBankAccountNumber.IsSet()
 }
 
 // HasReceiverBankAccountNumber returns a boolean if a field has been set.
 func (o *VerifyResponseDataAuthorization) HasReceiverBankAccountNumber() bool {
-	if o != nil && !IsNil(o.ReceiverBankAccountNumber) {
+	if o != nil && o.ReceiverBankAccountNumber.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetReceiverBankAccountNumber gets a reference to the given interface{} and assigns it to the ReceiverBankAccountNumber field.
-func (o *VerifyResponseDataAuthorization) SetReceiverBankAccountNumber(v interface{}) {
-	o.ReceiverBankAccountNumber = v
+// SetReceiverBankAccountNumber gets a reference to the given NullableString and assigns it to the ReceiverBankAccountNumber field.
+func (o *VerifyResponseDataAuthorization) SetReceiverBankAccountNumber(v string) {
+	o.ReceiverBankAccountNumber.Set(&v)
+}
+// SetReceiverBankAccountNumberNil sets the value for ReceiverBankAccountNumber to be an explicit nil
+func (o *VerifyResponseDataAuthorization) SetReceiverBankAccountNumberNil() {
+	o.ReceiverBankAccountNumber.Set(nil)
+}
+
+// UnsetReceiverBankAccountNumber ensures that no value is present for ReceiverBankAccountNumber, not even an explicit nil
+func (o *VerifyResponseDataAuthorization) UnsetReceiverBankAccountNumber() {
+	o.ReceiverBankAccountNumber.Unset()
 }
 
 // GetReceiverBank returns the ReceiverBank field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *VerifyResponseDataAuthorization) GetReceiverBank() interface{} {
-	if o == nil {
-		var ret interface{}
+func (o *VerifyResponseDataAuthorization) GetReceiverBank() string {
+	if o == nil || IsNil(o.ReceiverBank.Get()) {
+		var ret string
 		return ret
 	}
-	return o.ReceiverBank
+	return *o.ReceiverBank.Get()
 }
 
 // GetReceiverBankOk returns a tuple with the ReceiverBank field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VerifyResponseDataAuthorization) GetReceiverBankOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.ReceiverBank) {
+func (o *VerifyResponseDataAuthorization) GetReceiverBankOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.ReceiverBank, true
+	return o.ReceiverBank.Get(), o.ReceiverBank.IsSet()
 }
 
 // HasReceiverBank returns a boolean if a field has been set.
 func (o *VerifyResponseDataAuthorization) HasReceiverBank() bool {
-	if o != nil && !IsNil(o.ReceiverBank) {
+	if o != nil && o.ReceiverBank.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetReceiverBank gets a reference to the given interface{} and assigns it to the ReceiverBank field.
-func (o *VerifyResponseDataAuthorization) SetReceiverBank(v interface{}) {
-	o.ReceiverBank = v
+// SetReceiverBank gets a reference to the given NullableString and assigns it to the ReceiverBank field.
+func (o *VerifyResponseDataAuthorization) SetReceiverBank(v string) {
+	o.ReceiverBank.Set(&v)
+}
+// SetReceiverBankNil sets the value for ReceiverBank to be an explicit nil
+func (o *VerifyResponseDataAuthorization) SetReceiverBankNil() {
+	o.ReceiverBank.Set(nil)
+}
+
+// UnsetReceiverBank ensures that no value is present for ReceiverBank, not even an explicit nil
+func (o *VerifyResponseDataAuthorization) UnsetReceiverBank() {
+	o.ReceiverBank.Unset()
 }
 
 func (o VerifyResponseDataAuthorization) MarshalJSON() ([]byte, error) {
@@ -551,8 +587,8 @@ func (o VerifyResponseDataAuthorization) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.AuthorizationCode) {
 		toSerialize["authorization_code"] = o.AuthorizationCode
 	}
-	if o.Bin != nil {
-		toSerialize["bin"] = o.Bin
+	if o.Bin.IsSet() {
+		toSerialize["bin"] = o.Bin.Get()
 	}
 	if !IsNil(o.Last4) {
 		toSerialize["last4"] = o.Last4
@@ -584,14 +620,14 @@ func (o VerifyResponseDataAuthorization) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Signature) {
 		toSerialize["signature"] = o.Signature
 	}
-	if o.AccountName != nil {
-		toSerialize["account_name"] = o.AccountName
+	if o.AccountName.IsSet() {
+		toSerialize["account_name"] = o.AccountName.Get()
 	}
-	if o.ReceiverBankAccountNumber != nil {
-		toSerialize["receiver_bank_account_number"] = o.ReceiverBankAccountNumber
+	if o.ReceiverBankAccountNumber.IsSet() {
+		toSerialize["receiver_bank_account_number"] = o.ReceiverBankAccountNumber.Get()
 	}
-	if o.ReceiverBank != nil {
-		toSerialize["receiver_bank"] = o.ReceiverBank
+	if o.ReceiverBank.IsSet() {
+		toSerialize["receiver_bank"] = o.ReceiverBank.Get()
 	}
 	return toSerialize, nil
 }

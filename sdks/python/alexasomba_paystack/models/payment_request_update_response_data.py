@@ -20,7 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_customer import BulkChargeFetchBulkBatchChargesResponseArrayCustomer
+from alexasomba_paystack.models.dedicated_nuban_create_response_data_customer import DedicatedNubanCreateResponseDataCustomer
 from alexasomba_paystack.models.payment_request_notifications_array import PaymentRequestNotificationsArray
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,29 +30,28 @@ class PaymentRequestUpdateResponseData(BaseModel):
     PaymentRequestUpdateResponseData
     """ # noqa: E501
     id: StrictInt
-    integration: StrictInt
     domain: StrictStr
     amount: StrictInt
     currency: StrictStr
     due_date: Optional[StrictStr]
     has_invoice: StrictBool
     invoice_number: Optional[StrictInt]
-    description: Optional[Any]
+    description: Optional[StrictStr]
     pdf_url: Optional[StrictStr]
     line_items: List[Any]
     tax: List[Any]
     request_code: StrictStr
     status: StrictStr
     paid: StrictBool
-    paid_at: Optional[Any]
-    metadata: Optional[Any]
+    paid_at: Optional[StrictStr]
+    metadata: Optional[Dict[str, Any]]
     notifications: List[PaymentRequestNotificationsArray]
     offline_reference: StrictStr
-    customer: BulkChargeFetchBulkBatchChargesResponseArrayCustomer
+    customer: DedicatedNubanCreateResponseDataCustomer
     created_at: StrictStr
-    discount: Optional[Any]
-    split_code: Optional[Any]
-    __properties: ClassVar[List[str]] = ["id", "integration", "domain", "amount", "currency", "due_date", "has_invoice", "invoice_number", "description", "pdf_url", "line_items", "tax", "request_code", "status", "paid", "paid_at", "metadata", "notifications", "offline_reference", "customer", "created_at", "discount", "split_code"]
+    discount: Optional[Dict[str, Any]] = None
+    split_code: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["id", "domain", "amount", "currency", "due_date", "has_invoice", "invoice_number", "description", "pdf_url", "line_items", "tax", "request_code", "status", "paid", "paid_at", "metadata", "notifications", "offline_reference", "customer", "created_at", "discount", "split_code"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -156,7 +155,6 @@ class PaymentRequestUpdateResponseData(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "integration": obj.get("integration"),
             "domain": obj.get("domain"),
             "amount": obj.get("amount"),
             "currency": obj.get("currency"),
@@ -174,7 +172,7 @@ class PaymentRequestUpdateResponseData(BaseModel):
             "metadata": obj.get("metadata"),
             "notifications": [PaymentRequestNotificationsArray.from_dict(_item) for _item in obj["notifications"]] if obj.get("notifications") is not None else None,
             "offline_reference": obj.get("offline_reference"),
-            "customer": BulkChargeFetchBulkBatchChargesResponseArrayCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
+            "customer": DedicatedNubanCreateResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
             "created_at": obj.get("created_at"),
             "discount": obj.get("discount"),
             "split_code": obj.get("split_code")

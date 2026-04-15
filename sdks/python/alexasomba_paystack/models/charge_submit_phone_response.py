@@ -20,7 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List
-from alexasomba_paystack.models.charge_submit_phone_response_data import ChargeSubmitPhoneResponseData
+from alexasomba_paystack.models.charge_submit_pin_response_data import ChargeSubmitPinResponseData
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,7 +30,7 @@ class ChargeSubmitPhoneResponse(BaseModel):
     """ # noqa: E501
     status: StrictBool
     message: StrictStr
-    data: ChargeSubmitPhoneResponseData
+    data: ChargeSubmitPinResponseData
     __properties: ClassVar[List[str]] = ["status", "message", "data"]
 
     model_config = ConfigDict(
@@ -89,7 +89,7 @@ class ChargeSubmitPhoneResponse(BaseModel):
         _obj = cls.model_validate({
             "status": obj.get("status"),
             "message": obj.get("message"),
-            "data": ChargeSubmitPhoneResponseData.from_dict(obj["data"]) if obj.get("data") is not None else None
+            "data": ChargeSubmitPinResponseData.from_dict(obj["data"]) if obj.get("data") is not None else None
         })
         return _obj
 

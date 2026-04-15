@@ -17,7 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr
+from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
 from alexasomba_paystack.models.virtual_terminal_add_split_code import VirtualTerminalAddSplitCode
@@ -2034,8 +2034,11 @@ class VirtualTerminalApi:
     @validate_call
     def virtual_terminal_list(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter by status ('active' or 'inactive')")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records per page")] = None,
+        search: Annotated[Optional[StrictStr], Field(description="Search query string")] = None,
+        next: Annotated[Optional[StrictStr], Field(description="Cursor for next page")] = None,
+        previous: Annotated[Optional[StrictStr], Field(description="Cursor for previous page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2053,10 +2056,16 @@ class VirtualTerminalApi:
 
         List Virtual Terminals on your integration
 
-        :param per_page: The number of records to fetch per request
+        :param status: Filter by status ('active' or 'inactive')
+        :type status: str
+        :param per_page: Number of records per page
         :type per_page: int
-        :param page: The offset to retrieve data from
-        :type page: int
+        :param search: Search query string
+        :type search: str
+        :param next: Cursor for next page
+        :type next: str
+        :param previous: Cursor for previous page
+        :type previous: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2080,8 +2089,11 @@ class VirtualTerminalApi:
         """ # noqa: E501
 
         _param = self._virtual_terminal_list_serialize(
+            status=status,
             per_page=per_page,
-            page=page,
+            search=search,
+            next=next,
+            previous=previous,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2106,8 +2118,11 @@ class VirtualTerminalApi:
     @validate_call
     def virtual_terminal_list_with_http_info(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter by status ('active' or 'inactive')")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records per page")] = None,
+        search: Annotated[Optional[StrictStr], Field(description="Search query string")] = None,
+        next: Annotated[Optional[StrictStr], Field(description="Cursor for next page")] = None,
+        previous: Annotated[Optional[StrictStr], Field(description="Cursor for previous page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2125,10 +2140,16 @@ class VirtualTerminalApi:
 
         List Virtual Terminals on your integration
 
-        :param per_page: The number of records to fetch per request
+        :param status: Filter by status ('active' or 'inactive')
+        :type status: str
+        :param per_page: Number of records per page
         :type per_page: int
-        :param page: The offset to retrieve data from
-        :type page: int
+        :param search: Search query string
+        :type search: str
+        :param next: Cursor for next page
+        :type next: str
+        :param previous: Cursor for previous page
+        :type previous: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2152,8 +2173,11 @@ class VirtualTerminalApi:
         """ # noqa: E501
 
         _param = self._virtual_terminal_list_serialize(
+            status=status,
             per_page=per_page,
-            page=page,
+            search=search,
+            next=next,
+            previous=previous,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2178,8 +2202,11 @@ class VirtualTerminalApi:
     @validate_call
     def virtual_terminal_list_without_preload_content(
         self,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter by status ('active' or 'inactive')")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of records per page")] = None,
+        search: Annotated[Optional[StrictStr], Field(description="Search query string")] = None,
+        next: Annotated[Optional[StrictStr], Field(description="Cursor for next page")] = None,
+        previous: Annotated[Optional[StrictStr], Field(description="Cursor for previous page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2197,10 +2224,16 @@ class VirtualTerminalApi:
 
         List Virtual Terminals on your integration
 
-        :param per_page: The number of records to fetch per request
+        :param status: Filter by status ('active' or 'inactive')
+        :type status: str
+        :param per_page: Number of records per page
         :type per_page: int
-        :param page: The offset to retrieve data from
-        :type page: int
+        :param search: Search query string
+        :type search: str
+        :param next: Cursor for next page
+        :type next: str
+        :param previous: Cursor for previous page
+        :type previous: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2224,8 +2257,11 @@ class VirtualTerminalApi:
         """ # noqa: E501
 
         _param = self._virtual_terminal_list_serialize(
+            status=status,
             per_page=per_page,
-            page=page,
+            search=search,
+            next=next,
+            previous=previous,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2245,8 +2281,11 @@ class VirtualTerminalApi:
 
     def _virtual_terminal_list_serialize(
         self,
+        status,
         per_page,
-        page,
+        search,
+        next,
+        previous,
         _request_auth,
         _content_type,
         _headers,
@@ -2269,13 +2308,25 @@ class VirtualTerminalApi:
 
         # process the path parameters
         # process the query parameters
+        if status is not None:
+            
+            _query_params.append(('status', status))
+            
         if per_page is not None:
             
             _query_params.append(('perPage', per_page))
             
-        if page is not None:
+        if search is not None:
             
-            _query_params.append(('page', page))
+            _query_params.append(('search', search))
+            
+        if next is not None:
+            
+            _query_params.append(('next', next))
+            
+        if previous is not None:
+            
+            _query_params.append(('previous', previous))
             
         # process the header parameters
         # process the form parameters

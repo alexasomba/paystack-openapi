@@ -13,223 +13,124 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
-// checks if the CustomerListResponseMeta type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CustomerListResponseMeta{}
-
-// CustomerListResponseMeta struct for CustomerListResponseMeta
+// CustomerListResponseMeta - struct for CustomerListResponseMeta
 type CustomerListResponseMeta struct {
-	Total int32 `json:"total"`
-	Skipped int32 `json:"skipped"`
-	PerPage TransactionListResponseMetaPerPage `json:"perPage"`
-	Page int32 `json:"page"`
-	PageCount int32 `json:"pageCount"`
+	CursorMeta *CursorMeta
+	Meta *Meta
 }
 
-type _CustomerListResponseMeta CustomerListResponseMeta
-
-// NewCustomerListResponseMeta instantiates a new CustomerListResponseMeta object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewCustomerListResponseMeta(total int32, skipped int32, perPage TransactionListResponseMetaPerPage, page int32, pageCount int32) *CustomerListResponseMeta {
-	this := CustomerListResponseMeta{}
-	this.Total = total
-	this.Skipped = skipped
-	this.PerPage = perPage
-	this.Page = page
-	this.PageCount = pageCount
-	return &this
-}
-
-// NewCustomerListResponseMetaWithDefaults instantiates a new CustomerListResponseMeta object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewCustomerListResponseMetaWithDefaults() *CustomerListResponseMeta {
-	this := CustomerListResponseMeta{}
-	return &this
-}
-
-// GetTotal returns the Total field value
-func (o *CustomerListResponseMeta) GetTotal() int32 {
-	if o == nil {
-		var ret int32
-		return ret
+// CursorMetaAsCustomerListResponseMeta is a convenience function that returns CursorMeta wrapped in CustomerListResponseMeta
+func CursorMetaAsCustomerListResponseMeta(v *CursorMeta) CustomerListResponseMeta {
+	return CustomerListResponseMeta{
+		CursorMeta: v,
 	}
-
-	return o.Total
 }
 
-// GetTotalOk returns a tuple with the Total field value
-// and a boolean to check if the value has been set.
-func (o *CustomerListResponseMeta) GetTotalOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
+// MetaAsCustomerListResponseMeta is a convenience function that returns Meta wrapped in CustomerListResponseMeta
+func MetaAsCustomerListResponseMeta(v *Meta) CustomerListResponseMeta {
+	return CustomerListResponseMeta{
+		Meta: v,
 	}
-	return &o.Total, true
 }
 
-// SetTotal sets field value
-func (o *CustomerListResponseMeta) SetTotal(v int32) {
-	o.Total = v
-}
 
-// GetSkipped returns the Skipped field value
-func (o *CustomerListResponseMeta) GetSkipped() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Skipped
-}
-
-// GetSkippedOk returns a tuple with the Skipped field value
-// and a boolean to check if the value has been set.
-func (o *CustomerListResponseMeta) GetSkippedOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Skipped, true
-}
-
-// SetSkipped sets field value
-func (o *CustomerListResponseMeta) SetSkipped(v int32) {
-	o.Skipped = v
-}
-
-// GetPerPage returns the PerPage field value
-func (o *CustomerListResponseMeta) GetPerPage() TransactionListResponseMetaPerPage {
-	if o == nil {
-		var ret TransactionListResponseMetaPerPage
-		return ret
-	}
-
-	return o.PerPage
-}
-
-// GetPerPageOk returns a tuple with the PerPage field value
-// and a boolean to check if the value has been set.
-func (o *CustomerListResponseMeta) GetPerPageOk() (*TransactionListResponseMetaPerPage, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.PerPage, true
-}
-
-// SetPerPage sets field value
-func (o *CustomerListResponseMeta) SetPerPage(v TransactionListResponseMetaPerPage) {
-	o.PerPage = v
-}
-
-// GetPage returns the Page field value
-func (o *CustomerListResponseMeta) GetPage() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Page
-}
-
-// GetPageOk returns a tuple with the Page field value
-// and a boolean to check if the value has been set.
-func (o *CustomerListResponseMeta) GetPageOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Page, true
-}
-
-// SetPage sets field value
-func (o *CustomerListResponseMeta) SetPage(v int32) {
-	o.Page = v
-}
-
-// GetPageCount returns the PageCount field value
-func (o *CustomerListResponseMeta) GetPageCount() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.PageCount
-}
-
-// GetPageCountOk returns a tuple with the PageCount field value
-// and a boolean to check if the value has been set.
-func (o *CustomerListResponseMeta) GetPageCountOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.PageCount, true
-}
-
-// SetPageCount sets field value
-func (o *CustomerListResponseMeta) SetPageCount(v int32) {
-	o.PageCount = v
-}
-
-func (o CustomerListResponseMeta) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CustomerListResponseMeta) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["total"] = o.Total
-	toSerialize["skipped"] = o.Skipped
-	toSerialize["perPage"] = o.PerPage
-	toSerialize["page"] = o.Page
-	toSerialize["pageCount"] = o.PageCount
-	return toSerialize, nil
-}
-
-func (o *CustomerListResponseMeta) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"total",
-		"skipped",
-		"perPage",
-		"page",
-		"pageCount",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *CustomerListResponseMeta) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into CursorMeta
+	err = newStrictDecoder(data).Decode(&dst.CursorMeta)
+	if err == nil {
+		jsonCursorMeta, _ := json.Marshal(dst.CursorMeta)
+		if string(jsonCursorMeta) == "{}" { // empty struct
+			dst.CursorMeta = nil
+		} else {
+			if err = validator.Validate(dst.CursorMeta); err != nil {
+				dst.CursorMeta = nil
+			} else {
+				match++
+			}
 		}
+	} else {
+		dst.CursorMeta = nil
 	}
 
-	varCustomerListResponseMeta := _CustomerListResponseMeta{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCustomerListResponseMeta)
-
-	if err != nil {
-		return err
+	// try to unmarshal data into Meta
+	err = newStrictDecoder(data).Decode(&dst.Meta)
+	if err == nil {
+		jsonMeta, _ := json.Marshal(dst.Meta)
+		if string(jsonMeta) == "{}" { // empty struct
+			dst.Meta = nil
+		} else {
+			if err = validator.Validate(dst.Meta); err != nil {
+				dst.Meta = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.Meta = nil
 	}
 
-	*o = CustomerListResponseMeta(varCustomerListResponseMeta)
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.CursorMeta = nil
+		dst.Meta = nil
 
-	return err
+		return fmt.Errorf("data matches more than one schema in oneOf(CustomerListResponseMeta)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(CustomerListResponseMeta)")
+	}
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src CustomerListResponseMeta) MarshalJSON() ([]byte, error) {
+	if src.CursorMeta != nil {
+		return json.Marshal(&src.CursorMeta)
+	}
+
+	if src.Meta != nil {
+		return json.Marshal(&src.Meta)
+	}
+
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *CustomerListResponseMeta) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
+	}
+	if obj.CursorMeta != nil {
+		return obj.CursorMeta
+	}
+
+	if obj.Meta != nil {
+		return obj.Meta
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj CustomerListResponseMeta) GetActualInstanceValue() (interface{}) {
+	if obj.CursorMeta != nil {
+		return *obj.CursorMeta
+	}
+
+	if obj.Meta != nil {
+		return *obj.Meta
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableCustomerListResponseMeta struct {

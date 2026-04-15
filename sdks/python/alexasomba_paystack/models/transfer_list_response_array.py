@@ -21,7 +21,6 @@ import json
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.transfer_list_response_array_recipient import TransferListResponseArrayRecipient
-from alexasomba_paystack.models.transfer_list_response_array_session import TransferListResponseArraySession
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -39,18 +38,13 @@ class TransferListResponseArray(BaseModel):
     reason: StrictStr
     reference: StrictStr
     source: StrictStr
-    source_details: Optional[Any]
+    source_details: Optional[Dict[str, Any]]
     status: StrictStr
-    titan_code: Optional[Any]
+    titan_code: Optional[StrictStr]
     transfer_code: StrictStr
-    request: StrictInt
-    transferred_at: Optional[Any]
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     recipient: TransferListResponseArrayRecipient
-    session: TransferListResponseArraySession
-    fee_charged: StrictInt
-    fees_breakdown: Optional[StrictInt]
-    __properties: ClassVar[List[str]] = ["amount", "createdAt", "currency", "domain", "failures", "id", "integration", "reason", "reference", "source", "source_details", "status", "titan_code", "transfer_code", "request", "transferred_at", "updatedAt", "recipient", "session", "fee_charged", "fees_breakdown"]
+    __properties: ClassVar[List[str]] = ["amount", "createdAt", "currency", "domain", "failures", "id", "integration", "reason", "reference", "source", "source_details", "status", "titan_code", "transfer_code", "updatedAt", "recipient"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -94,9 +88,6 @@ class TransferListResponseArray(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of recipient
         if self.recipient:
             _dict['recipient'] = self.recipient.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of session
-        if self.session:
-            _dict['session'] = self.session.to_dict()
         # set to None if failures (nullable) is None
         # and model_fields_set contains the field
         if self.failures is None and "failures" in self.model_fields_set:
@@ -111,16 +102,6 @@ class TransferListResponseArray(BaseModel):
         # and model_fields_set contains the field
         if self.titan_code is None and "titan_code" in self.model_fields_set:
             _dict['titan_code'] = None
-
-        # set to None if transferred_at (nullable) is None
-        # and model_fields_set contains the field
-        if self.transferred_at is None and "transferred_at" in self.model_fields_set:
-            _dict['transferred_at'] = None
-
-        # set to None if fees_breakdown (nullable) is None
-        # and model_fields_set contains the field
-        if self.fees_breakdown is None and "fees_breakdown" in self.model_fields_set:
-            _dict['fees_breakdown'] = None
 
         return _dict
 
@@ -148,13 +129,8 @@ class TransferListResponseArray(BaseModel):
             "status": obj.get("status"),
             "titan_code": obj.get("titan_code"),
             "transfer_code": obj.get("transfer_code"),
-            "request": obj.get("request"),
-            "transferred_at": obj.get("transferred_at"),
             "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
-            "recipient": TransferListResponseArrayRecipient.from_dict(obj["recipient"]) if obj.get("recipient") is not None else None,
-            "session": TransferListResponseArraySession.from_dict(obj["session"]) if obj.get("session") is not None else None,
-            "fee_charged": obj.get("fee_charged"),
-            "fees_breakdown": obj.get("fees_breakdown")
+            "recipient": TransferListResponseArrayRecipient.from_dict(obj["recipient"]) if obj.get("recipient") is not None else None
         })
         return _obj
 

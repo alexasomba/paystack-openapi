@@ -26,32 +26,32 @@ type ChargeCreateResponseData struct {
 	Domain string `json:"domain"`
 	Status string `json:"status"`
 	Reference string `json:"reference"`
-	ReceiptNumber interface{} `json:"receipt_number"`
+	ReceiptNumber NullableString `json:"receipt_number,omitempty"`
 	Amount int32 `json:"amount"`
 	Message NullableString `json:"message"`
 	GatewayResponse string `json:"gateway_response"`
-	PaidAt string `json:"paid_at"`
-	CreatedAt string `json:"created_at"`
+	PaidAt *string `json:"paid_at,omitempty"`
+	CreatedAt *string `json:"created_at,omitempty"`
 	Channel string `json:"channel"`
 	Currency string `json:"currency"`
-	IpAddress string `json:"ip_address"`
-	Metadata TransactionFetchResponseDataMetadata `json:"metadata"`
+	IpAddress NullableString `json:"ip_address"`
+	Metadata NullableChargeAuthorizationResponseDataMetadata `json:"metadata"`
 	Log NullableChargeAuthorizationResponseDataLog `json:"log"`
 	Fees int32 `json:"fees"`
-	FeesSplit NullableInt32 `json:"fees_split"`
+	FeesSplit NullableInt32 `json:"fees_split,omitempty"`
 	Authorization TransactionFetchResponseDataAuthorization `json:"authorization"`
-	Customer TransactionFetchResponseDataCustomer `json:"customer"`
+	Customer TransactionPartialDebitResponseDataCustomer `json:"customer"`
 	Plan interface{} `json:"plan"`
-	Split map[string]interface{} `json:"split"`
-	OrderId interface{} `json:"order_id"`
-	RequestedAmount int32 `json:"requested_amount"`
-	PosTransactionData interface{} `json:"pos_transaction_data"`
-	Source interface{} `json:"source"`
-	FeesBreakdown interface{} `json:"fees_breakdown"`
-	Connect interface{} `json:"connect"`
+	Split map[string]interface{} `json:"split,omitempty"`
+	OrderId interface{} `json:"order_id,omitempty"`
+	RequestedAmount *int32 `json:"requested_amount,omitempty"`
+	PosTransactionData interface{} `json:"pos_transaction_data,omitempty"`
+	Source map[string]interface{} `json:"source,omitempty"`
+	FeesBreakdown map[string]interface{} `json:"fees_breakdown,omitempty"`
+	Connect map[string]interface{} `json:"connect,omitempty"`
 	TransactionDate string `json:"transaction_date"`
-	PlanObject map[string]interface{} `json:"plan_object"`
-	Subaccount map[string]interface{} `json:"subaccount"`
+	PlanObject map[string]interface{} `json:"plan_object,omitempty"`
+	Subaccount map[string]interface{} `json:"subaccount,omitempty"`
 }
 
 type _ChargeCreateResponseData ChargeCreateResponseData
@@ -60,38 +60,25 @@ type _ChargeCreateResponseData ChargeCreateResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChargeCreateResponseData(id int32, domain string, status string, reference string, receiptNumber interface{}, amount int32, message NullableString, gatewayResponse string, paidAt string, createdAt string, channel string, currency string, ipAddress string, metadata TransactionFetchResponseDataMetadata, log NullableChargeAuthorizationResponseDataLog, fees int32, feesSplit NullableInt32, authorization TransactionFetchResponseDataAuthorization, customer TransactionFetchResponseDataCustomer, plan interface{}, split map[string]interface{}, orderId interface{}, requestedAmount int32, posTransactionData interface{}, source interface{}, feesBreakdown interface{}, connect interface{}, transactionDate string, planObject map[string]interface{}, subaccount map[string]interface{}) *ChargeCreateResponseData {
+func NewChargeCreateResponseData(id int32, domain string, status string, reference string, amount int32, message NullableString, gatewayResponse string, channel string, currency string, ipAddress NullableString, metadata NullableChargeAuthorizationResponseDataMetadata, log NullableChargeAuthorizationResponseDataLog, fees int32, authorization TransactionFetchResponseDataAuthorization, customer TransactionPartialDebitResponseDataCustomer, plan interface{}, transactionDate string) *ChargeCreateResponseData {
 	this := ChargeCreateResponseData{}
 	this.Id = id
 	this.Domain = domain
 	this.Status = status
 	this.Reference = reference
-	this.ReceiptNumber = receiptNumber
 	this.Amount = amount
 	this.Message = message
 	this.GatewayResponse = gatewayResponse
-	this.PaidAt = paidAt
-	this.CreatedAt = createdAt
 	this.Channel = channel
 	this.Currency = currency
 	this.IpAddress = ipAddress
 	this.Metadata = metadata
 	this.Log = log
 	this.Fees = fees
-	this.FeesSplit = feesSplit
 	this.Authorization = authorization
 	this.Customer = customer
 	this.Plan = plan
-	this.Split = split
-	this.OrderId = orderId
-	this.RequestedAmount = requestedAmount
-	this.PosTransactionData = posTransactionData
-	this.Source = source
-	this.FeesBreakdown = feesBreakdown
-	this.Connect = connect
 	this.TransactionDate = transactionDate
-	this.PlanObject = planObject
-	this.Subaccount = subaccount
 	return &this
 }
 
@@ -199,30 +186,46 @@ func (o *ChargeCreateResponseData) SetReference(v string) {
 	o.Reference = v
 }
 
-// GetReceiptNumber returns the ReceiptNumber field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ChargeCreateResponseData) GetReceiptNumber() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetReceiptNumber returns the ReceiptNumber field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ChargeCreateResponseData) GetReceiptNumber() string {
+	if o == nil || IsNil(o.ReceiptNumber.Get()) {
+		var ret string
 		return ret
 	}
-
-	return o.ReceiptNumber
+	return *o.ReceiptNumber.Get()
 }
 
-// GetReceiptNumberOk returns a tuple with the ReceiptNumber field value
+// GetReceiptNumberOk returns a tuple with the ReceiptNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ChargeCreateResponseData) GetReceiptNumberOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.ReceiptNumber) {
+func (o *ChargeCreateResponseData) GetReceiptNumberOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.ReceiptNumber, true
+	return o.ReceiptNumber.Get(), o.ReceiptNumber.IsSet()
 }
 
-// SetReceiptNumber sets field value
-func (o *ChargeCreateResponseData) SetReceiptNumber(v interface{}) {
-	o.ReceiptNumber = v
+// HasReceiptNumber returns a boolean if a field has been set.
+func (o *ChargeCreateResponseData) HasReceiptNumber() bool {
+	if o != nil && o.ReceiptNumber.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetReceiptNumber gets a reference to the given NullableString and assigns it to the ReceiptNumber field.
+func (o *ChargeCreateResponseData) SetReceiptNumber(v string) {
+	o.ReceiptNumber.Set(&v)
+}
+// SetReceiptNumberNil sets the value for ReceiptNumber to be an explicit nil
+func (o *ChargeCreateResponseData) SetReceiptNumberNil() {
+	o.ReceiptNumber.Set(nil)
+}
+
+// UnsetReceiptNumber ensures that no value is present for ReceiptNumber, not even an explicit nil
+func (o *ChargeCreateResponseData) UnsetReceiptNumber() {
+	o.ReceiptNumber.Unset()
 }
 
 // GetAmount returns the Amount field value
@@ -299,52 +302,68 @@ func (o *ChargeCreateResponseData) SetGatewayResponse(v string) {
 	o.GatewayResponse = v
 }
 
-// GetPaidAt returns the PaidAt field value
+// GetPaidAt returns the PaidAt field value if set, zero value otherwise.
 func (o *ChargeCreateResponseData) GetPaidAt() string {
-	if o == nil {
+	if o == nil || IsNil(o.PaidAt) {
 		var ret string
 		return ret
 	}
-
-	return o.PaidAt
+	return *o.PaidAt
 }
 
-// GetPaidAtOk returns a tuple with the PaidAt field value
+// GetPaidAtOk returns a tuple with the PaidAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChargeCreateResponseData) GetPaidAtOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PaidAt) {
 		return nil, false
 	}
-	return &o.PaidAt, true
+	return o.PaidAt, true
 }
 
-// SetPaidAt sets field value
+// HasPaidAt returns a boolean if a field has been set.
+func (o *ChargeCreateResponseData) HasPaidAt() bool {
+	if o != nil && !IsNil(o.PaidAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetPaidAt gets a reference to the given string and assigns it to the PaidAt field.
 func (o *ChargeCreateResponseData) SetPaidAt(v string) {
-	o.PaidAt = v
+	o.PaidAt = &v
 }
 
-// GetCreatedAt returns the CreatedAt field value
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ChargeCreateResponseData) GetCreatedAt() string {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
-
-	return o.CreatedAt
+	return *o.CreatedAt
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChargeCreateResponseData) GetCreatedAtOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
-	return &o.CreatedAt, true
+	return o.CreatedAt, true
 }
 
-// SetCreatedAt sets field value
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *ChargeCreateResponseData) HasCreatedAt() bool {
+	if o != nil && !IsNil(o.CreatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
 func (o *ChargeCreateResponseData) SetCreatedAt(v string) {
-	o.CreatedAt = v
+	o.CreatedAt = &v
 }
 
 // GetChannel returns the Channel field value
@@ -396,51 +415,55 @@ func (o *ChargeCreateResponseData) SetCurrency(v string) {
 }
 
 // GetIpAddress returns the IpAddress field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ChargeCreateResponseData) GetIpAddress() string {
-	if o == nil {
+	if o == nil || o.IpAddress.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.IpAddress
+	return *o.IpAddress.Get()
 }
 
 // GetIpAddressOk returns a tuple with the IpAddress field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ChargeCreateResponseData) GetIpAddressOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.IpAddress, true
+	return o.IpAddress.Get(), o.IpAddress.IsSet()
 }
 
 // SetIpAddress sets field value
 func (o *ChargeCreateResponseData) SetIpAddress(v string) {
-	o.IpAddress = v
+	o.IpAddress.Set(&v)
 }
 
 // GetMetadata returns the Metadata field value
-func (o *ChargeCreateResponseData) GetMetadata() TransactionFetchResponseDataMetadata {
-	if o == nil {
-		var ret TransactionFetchResponseDataMetadata
+// If the value is explicit nil, the zero value for ChargeAuthorizationResponseDataMetadata will be returned
+func (o *ChargeCreateResponseData) GetMetadata() ChargeAuthorizationResponseDataMetadata {
+	if o == nil || o.Metadata.Get() == nil {
+		var ret ChargeAuthorizationResponseDataMetadata
 		return ret
 	}
 
-	return o.Metadata
+	return *o.Metadata.Get()
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
-func (o *ChargeCreateResponseData) GetMetadataOk() (*TransactionFetchResponseDataMetadata, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ChargeCreateResponseData) GetMetadataOk() (*ChargeAuthorizationResponseDataMetadata, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Metadata, true
+	return o.Metadata.Get(), o.Metadata.IsSet()
 }
 
 // SetMetadata sets field value
-func (o *ChargeCreateResponseData) SetMetadata(v TransactionFetchResponseDataMetadata) {
-	o.Metadata = v
+func (o *ChargeCreateResponseData) SetMetadata(v ChargeAuthorizationResponseDataMetadata) {
+	o.Metadata.Set(&v)
 }
 
 // GetLog returns the Log field value
@@ -493,18 +516,16 @@ func (o *ChargeCreateResponseData) SetFees(v int32) {
 	o.Fees = v
 }
 
-// GetFeesSplit returns the FeesSplit field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetFeesSplit returns the FeesSplit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ChargeCreateResponseData) GetFeesSplit() int32 {
-	if o == nil || o.FeesSplit.Get() == nil {
+	if o == nil || IsNil(o.FeesSplit.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.FeesSplit.Get()
 }
 
-// GetFeesSplitOk returns a tuple with the FeesSplit field value
+// GetFeesSplitOk returns a tuple with the FeesSplit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ChargeCreateResponseData) GetFeesSplitOk() (*int32, bool) {
@@ -514,9 +535,27 @@ func (o *ChargeCreateResponseData) GetFeesSplitOk() (*int32, bool) {
 	return o.FeesSplit.Get(), o.FeesSplit.IsSet()
 }
 
-// SetFeesSplit sets field value
+// HasFeesSplit returns a boolean if a field has been set.
+func (o *ChargeCreateResponseData) HasFeesSplit() bool {
+	if o != nil && o.FeesSplit.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeesSplit gets a reference to the given NullableInt32 and assigns it to the FeesSplit field.
 func (o *ChargeCreateResponseData) SetFeesSplit(v int32) {
 	o.FeesSplit.Set(&v)
+}
+// SetFeesSplitNil sets the value for FeesSplit to be an explicit nil
+func (o *ChargeCreateResponseData) SetFeesSplitNil() {
+	o.FeesSplit.Set(nil)
+}
+
+// UnsetFeesSplit ensures that no value is present for FeesSplit, not even an explicit nil
+func (o *ChargeCreateResponseData) UnsetFeesSplit() {
+	o.FeesSplit.Unset()
 }
 
 // GetAuthorization returns the Authorization field value
@@ -544,9 +583,9 @@ func (o *ChargeCreateResponseData) SetAuthorization(v TransactionFetchResponseDa
 }
 
 // GetCustomer returns the Customer field value
-func (o *ChargeCreateResponseData) GetCustomer() TransactionFetchResponseDataCustomer {
+func (o *ChargeCreateResponseData) GetCustomer() TransactionPartialDebitResponseDataCustomer {
 	if o == nil {
-		var ret TransactionFetchResponseDataCustomer
+		var ret TransactionPartialDebitResponseDataCustomer
 		return ret
 	}
 
@@ -555,7 +594,7 @@ func (o *ChargeCreateResponseData) GetCustomer() TransactionFetchResponseDataCus
 
 // GetCustomerOk returns a tuple with the Customer field value
 // and a boolean to check if the value has been set.
-func (o *ChargeCreateResponseData) GetCustomerOk() (*TransactionFetchResponseDataCustomer, bool) {
+func (o *ChargeCreateResponseData) GetCustomerOk() (*TransactionPartialDebitResponseDataCustomer, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -563,7 +602,7 @@ func (o *ChargeCreateResponseData) GetCustomerOk() (*TransactionFetchResponseDat
 }
 
 // SetCustomer sets field value
-func (o *ChargeCreateResponseData) SetCustomer(v TransactionFetchResponseDataCustomer) {
+func (o *ChargeCreateResponseData) SetCustomer(v TransactionPartialDebitResponseDataCustomer) {
 	o.Customer = v
 }
 
@@ -593,42 +632,49 @@ func (o *ChargeCreateResponseData) SetPlan(v interface{}) {
 	o.Plan = v
 }
 
-// GetSplit returns the Split field value
+// GetSplit returns the Split field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ChargeCreateResponseData) GetSplit() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.Split
 }
 
-// GetSplitOk returns a tuple with the Split field value
+// GetSplitOk returns a tuple with the Split field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ChargeCreateResponseData) GetSplitOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Split) {
 		return map[string]interface{}{}, false
 	}
 	return o.Split, true
 }
 
-// SetSplit sets field value
+// HasSplit returns a boolean if a field has been set.
+func (o *ChargeCreateResponseData) HasSplit() bool {
+	if o != nil && !IsNil(o.Split) {
+		return true
+	}
+
+	return false
+}
+
+// SetSplit gets a reference to the given map[string]interface{} and assigns it to the Split field.
 func (o *ChargeCreateResponseData) SetSplit(v map[string]interface{}) {
 	o.Split = v
 }
 
-// GetOrderId returns the OrderId field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetOrderId returns the OrderId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ChargeCreateResponseData) GetOrderId() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.OrderId
 }
 
-// GetOrderIdOk returns a tuple with the OrderId field value
+// GetOrderIdOk returns a tuple with the OrderId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ChargeCreateResponseData) GetOrderIdOk() (*interface{}, bool) {
@@ -638,47 +684,62 @@ func (o *ChargeCreateResponseData) GetOrderIdOk() (*interface{}, bool) {
 	return &o.OrderId, true
 }
 
-// SetOrderId sets field value
+// HasOrderId returns a boolean if a field has been set.
+func (o *ChargeCreateResponseData) HasOrderId() bool {
+	if o != nil && !IsNil(o.OrderId) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrderId gets a reference to the given interface{} and assigns it to the OrderId field.
 func (o *ChargeCreateResponseData) SetOrderId(v interface{}) {
 	o.OrderId = v
 }
 
-// GetRequestedAmount returns the RequestedAmount field value
+// GetRequestedAmount returns the RequestedAmount field value if set, zero value otherwise.
 func (o *ChargeCreateResponseData) GetRequestedAmount() int32 {
-	if o == nil {
+	if o == nil || IsNil(o.RequestedAmount) {
 		var ret int32
 		return ret
 	}
-
-	return o.RequestedAmount
+	return *o.RequestedAmount
 }
 
-// GetRequestedAmountOk returns a tuple with the RequestedAmount field value
+// GetRequestedAmountOk returns a tuple with the RequestedAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChargeCreateResponseData) GetRequestedAmountOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RequestedAmount) {
 		return nil, false
 	}
-	return &o.RequestedAmount, true
+	return o.RequestedAmount, true
 }
 
-// SetRequestedAmount sets field value
+// HasRequestedAmount returns a boolean if a field has been set.
+func (o *ChargeCreateResponseData) HasRequestedAmount() bool {
+	if o != nil && !IsNil(o.RequestedAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestedAmount gets a reference to the given int32 and assigns it to the RequestedAmount field.
 func (o *ChargeCreateResponseData) SetRequestedAmount(v int32) {
-	o.RequestedAmount = v
+	o.RequestedAmount = &v
 }
 
-// GetPosTransactionData returns the PosTransactionData field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetPosTransactionData returns the PosTransactionData field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ChargeCreateResponseData) GetPosTransactionData() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.PosTransactionData
 }
 
-// GetPosTransactionDataOk returns a tuple with the PosTransactionData field value
+// GetPosTransactionDataOk returns a tuple with the PosTransactionData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ChargeCreateResponseData) GetPosTransactionDataOk() (*interface{}, bool) {
@@ -688,86 +749,116 @@ func (o *ChargeCreateResponseData) GetPosTransactionDataOk() (*interface{}, bool
 	return &o.PosTransactionData, true
 }
 
-// SetPosTransactionData sets field value
+// HasPosTransactionData returns a boolean if a field has been set.
+func (o *ChargeCreateResponseData) HasPosTransactionData() bool {
+	if o != nil && !IsNil(o.PosTransactionData) {
+		return true
+	}
+
+	return false
+}
+
+// SetPosTransactionData gets a reference to the given interface{} and assigns it to the PosTransactionData field.
 func (o *ChargeCreateResponseData) SetPosTransactionData(v interface{}) {
 	o.PosTransactionData = v
 }
 
-// GetSource returns the Source field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ChargeCreateResponseData) GetSource() interface{} {
+// GetSource returns the Source field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ChargeCreateResponseData) GetSource() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.Source
 }
 
-// GetSourceOk returns a tuple with the Source field value
+// GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ChargeCreateResponseData) GetSourceOk() (*interface{}, bool) {
+func (o *ChargeCreateResponseData) GetSourceOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Source) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Source, true
+	return o.Source, true
 }
 
-// SetSource sets field value
-func (o *ChargeCreateResponseData) SetSource(v interface{}) {
+// HasSource returns a boolean if a field has been set.
+func (o *ChargeCreateResponseData) HasSource() bool {
+	if o != nil && !IsNil(o.Source) {
+		return true
+	}
+
+	return false
+}
+
+// SetSource gets a reference to the given map[string]interface{} and assigns it to the Source field.
+func (o *ChargeCreateResponseData) SetSource(v map[string]interface{}) {
 	o.Source = v
 }
 
-// GetFeesBreakdown returns the FeesBreakdown field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ChargeCreateResponseData) GetFeesBreakdown() interface{} {
+// GetFeesBreakdown returns the FeesBreakdown field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ChargeCreateResponseData) GetFeesBreakdown() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.FeesBreakdown
 }
 
-// GetFeesBreakdownOk returns a tuple with the FeesBreakdown field value
+// GetFeesBreakdownOk returns a tuple with the FeesBreakdown field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ChargeCreateResponseData) GetFeesBreakdownOk() (*interface{}, bool) {
+func (o *ChargeCreateResponseData) GetFeesBreakdownOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.FeesBreakdown) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.FeesBreakdown, true
+	return o.FeesBreakdown, true
 }
 
-// SetFeesBreakdown sets field value
-func (o *ChargeCreateResponseData) SetFeesBreakdown(v interface{}) {
+// HasFeesBreakdown returns a boolean if a field has been set.
+func (o *ChargeCreateResponseData) HasFeesBreakdown() bool {
+	if o != nil && !IsNil(o.FeesBreakdown) {
+		return true
+	}
+
+	return false
+}
+
+// SetFeesBreakdown gets a reference to the given map[string]interface{} and assigns it to the FeesBreakdown field.
+func (o *ChargeCreateResponseData) SetFeesBreakdown(v map[string]interface{}) {
 	o.FeesBreakdown = v
 }
 
-// GetConnect returns the Connect field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ChargeCreateResponseData) GetConnect() interface{} {
+// GetConnect returns the Connect field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ChargeCreateResponseData) GetConnect() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.Connect
 }
 
-// GetConnectOk returns a tuple with the Connect field value
+// GetConnectOk returns a tuple with the Connect field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ChargeCreateResponseData) GetConnectOk() (*interface{}, bool) {
+func (o *ChargeCreateResponseData) GetConnectOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Connect) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Connect, true
+	return o.Connect, true
 }
 
-// SetConnect sets field value
-func (o *ChargeCreateResponseData) SetConnect(v interface{}) {
+// HasConnect returns a boolean if a field has been set.
+func (o *ChargeCreateResponseData) HasConnect() bool {
+	if o != nil && !IsNil(o.Connect) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnect gets a reference to the given map[string]interface{} and assigns it to the Connect field.
+func (o *ChargeCreateResponseData) SetConnect(v map[string]interface{}) {
 	o.Connect = v
 }
 
@@ -795,50 +886,66 @@ func (o *ChargeCreateResponseData) SetTransactionDate(v string) {
 	o.TransactionDate = v
 }
 
-// GetPlanObject returns the PlanObject field value
+// GetPlanObject returns the PlanObject field value if set, zero value otherwise.
 func (o *ChargeCreateResponseData) GetPlanObject() map[string]interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.PlanObject) {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.PlanObject
 }
 
-// GetPlanObjectOk returns a tuple with the PlanObject field value
+// GetPlanObjectOk returns a tuple with the PlanObject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChargeCreateResponseData) GetPlanObjectOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PlanObject) {
 		return map[string]interface{}{}, false
 	}
 	return o.PlanObject, true
 }
 
-// SetPlanObject sets field value
+// HasPlanObject returns a boolean if a field has been set.
+func (o *ChargeCreateResponseData) HasPlanObject() bool {
+	if o != nil && !IsNil(o.PlanObject) {
+		return true
+	}
+
+	return false
+}
+
+// SetPlanObject gets a reference to the given map[string]interface{} and assigns it to the PlanObject field.
 func (o *ChargeCreateResponseData) SetPlanObject(v map[string]interface{}) {
 	o.PlanObject = v
 }
 
-// GetSubaccount returns the Subaccount field value
+// GetSubaccount returns the Subaccount field value if set, zero value otherwise.
 func (o *ChargeCreateResponseData) GetSubaccount() map[string]interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Subaccount) {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.Subaccount
 }
 
-// GetSubaccountOk returns a tuple with the Subaccount field value
+// GetSubaccountOk returns a tuple with the Subaccount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChargeCreateResponseData) GetSubaccountOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Subaccount) {
 		return map[string]interface{}{}, false
 	}
 	return o.Subaccount, true
 }
 
-// SetSubaccount sets field value
+// HasSubaccount returns a boolean if a field has been set.
+func (o *ChargeCreateResponseData) HasSubaccount() bool {
+	if o != nil && !IsNil(o.Subaccount) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubaccount gets a reference to the given map[string]interface{} and assigns it to the Subaccount field.
 func (o *ChargeCreateResponseData) SetSubaccount(v map[string]interface{}) {
 	o.Subaccount = v
 }
@@ -857,31 +964,41 @@ func (o ChargeCreateResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["domain"] = o.Domain
 	toSerialize["status"] = o.Status
 	toSerialize["reference"] = o.Reference
-	if o.ReceiptNumber != nil {
-		toSerialize["receipt_number"] = o.ReceiptNumber
+	if o.ReceiptNumber.IsSet() {
+		toSerialize["receipt_number"] = o.ReceiptNumber.Get()
 	}
 	toSerialize["amount"] = o.Amount
 	toSerialize["message"] = o.Message.Get()
 	toSerialize["gateway_response"] = o.GatewayResponse
-	toSerialize["paid_at"] = o.PaidAt
-	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.PaidAt) {
+		toSerialize["paid_at"] = o.PaidAt
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
+	}
 	toSerialize["channel"] = o.Channel
 	toSerialize["currency"] = o.Currency
-	toSerialize["ip_address"] = o.IpAddress
-	toSerialize["metadata"] = o.Metadata
+	toSerialize["ip_address"] = o.IpAddress.Get()
+	toSerialize["metadata"] = o.Metadata.Get()
 	toSerialize["log"] = o.Log.Get()
 	toSerialize["fees"] = o.Fees
-	toSerialize["fees_split"] = o.FeesSplit.Get()
+	if o.FeesSplit.IsSet() {
+		toSerialize["fees_split"] = o.FeesSplit.Get()
+	}
 	toSerialize["authorization"] = o.Authorization
 	toSerialize["customer"] = o.Customer
 	if o.Plan != nil {
 		toSerialize["plan"] = o.Plan
 	}
-	toSerialize["split"] = o.Split
+	if o.Split != nil {
+		toSerialize["split"] = o.Split
+	}
 	if o.OrderId != nil {
 		toSerialize["order_id"] = o.OrderId
 	}
-	toSerialize["requested_amount"] = o.RequestedAmount
+	if !IsNil(o.RequestedAmount) {
+		toSerialize["requested_amount"] = o.RequestedAmount
+	}
 	if o.PosTransactionData != nil {
 		toSerialize["pos_transaction_data"] = o.PosTransactionData
 	}
@@ -895,8 +1012,12 @@ func (o ChargeCreateResponseData) ToMap() (map[string]interface{}, error) {
 		toSerialize["connect"] = o.Connect
 	}
 	toSerialize["transaction_date"] = o.TransactionDate
-	toSerialize["plan_object"] = o.PlanObject
-	toSerialize["subaccount"] = o.Subaccount
+	if !IsNil(o.PlanObject) {
+		toSerialize["plan_object"] = o.PlanObject
+	}
+	if !IsNil(o.Subaccount) {
+		toSerialize["subaccount"] = o.Subaccount
+	}
 	return toSerialize, nil
 }
 
@@ -909,32 +1030,19 @@ func (o *ChargeCreateResponseData) UnmarshalJSON(data []byte) (err error) {
 		"domain",
 		"status",
 		"reference",
-		"receipt_number",
 		"amount",
 		"message",
 		"gateway_response",
-		"paid_at",
-		"created_at",
 		"channel",
 		"currency",
 		"ip_address",
 		"metadata",
 		"log",
 		"fees",
-		"fees_split",
 		"authorization",
 		"customer",
 		"plan",
-		"split",
-		"order_id",
-		"requested_amount",
-		"pos_transaction_data",
-		"source",
-		"fees_breakdown",
-		"connect",
 		"transaction_date",
-		"plan_object",
-		"subaccount",
 	}
 
 	allProperties := make(map[string]interface{})

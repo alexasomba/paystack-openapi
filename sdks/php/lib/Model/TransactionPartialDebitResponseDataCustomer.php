@@ -355,9 +355,6 @@ class TransactionPartialDebitResponseDataCustomer implements ModelInterface, Arr
         if ($this->container['risk_action'] === null) {
             $invalidProperties[] = "'risk_action' can't be null";
         }
-        if ($this->container['international_format_phone'] === null && !$this->isNullableSetToNull('international_format_phone')) {
-            $invalidProperties[] = "'international_format_phone' can't be null";
-        }
         return $invalidProperties;
     }
 

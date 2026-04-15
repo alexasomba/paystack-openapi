@@ -32,10 +32,10 @@ class DedicatedNubanCreateResponseDataCustomer(BaseModel):
     last_name: StrictStr
     email: StrictStr
     customer_code: StrictStr
-    phone: StrictStr
-    metadata: Dict[str, Any]
+    phone: Optional[StrictStr]
+    metadata: Optional[Dict[str, Any]]
     risk_action: StrictStr
-    international_format_phone: Optional[StrictStr]
+    international_format_phone: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["id", "first_name", "last_name", "email", "customer_code", "phone", "metadata", "risk_action", "international_format_phone"]
 
     model_config = ConfigDict(
@@ -77,6 +77,16 @@ class DedicatedNubanCreateResponseDataCustomer(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if phone (nullable) is None
+        # and model_fields_set contains the field
+        if self.phone is None and "phone" in self.model_fields_set:
+            _dict['phone'] = None
+
+        # set to None if metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
+
         # set to None if international_format_phone (nullable) is None
         # and model_fields_set contains the field
         if self.international_format_phone is None and "international_format_phone" in self.model_fields_set:

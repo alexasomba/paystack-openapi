@@ -245,6 +245,7 @@ class TransferBulk implements ModelInterface, ArrayAccess, \JsonSerializable
     public const CURRENCY_ZAR = 'ZAR';
     public const CURRENCY_KES = 'KES';
     public const CURRENCY_GHS = 'GHS';
+    public const CURRENCY_XOF = 'XOF';
 
     /**
      * Gets allowable values of the enum
@@ -258,6 +259,7 @@ class TransferBulk implements ModelInterface, ArrayAccess, \JsonSerializable
             self::CURRENCY_ZAR,
             self::CURRENCY_KES,
             self::CURRENCY_GHS,
+            self::CURRENCY_XOF,
         ];
     }
 

@@ -25,7 +25,7 @@ type DisputeListResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
 	Data []DisputeListResponseArray `json:"data"`
-	Meta SubaccountListResponseMeta `json:"meta"`
+	Meta Meta `json:"meta"`
 }
 
 type _DisputeListResponse DisputeListResponse
@@ -34,7 +34,7 @@ type _DisputeListResponse DisputeListResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDisputeListResponse(status bool, message string, data []DisputeListResponseArray, meta SubaccountListResponseMeta) *DisputeListResponse {
+func NewDisputeListResponse(status bool, message string, data []DisputeListResponseArray, meta Meta) *DisputeListResponse {
 	this := DisputeListResponse{}
 	this.Status = status
 	this.Message = message
@@ -124,9 +124,9 @@ func (o *DisputeListResponse) SetData(v []DisputeListResponseArray) {
 }
 
 // GetMeta returns the Meta field value
-func (o *DisputeListResponse) GetMeta() SubaccountListResponseMeta {
+func (o *DisputeListResponse) GetMeta() Meta {
 	if o == nil {
-		var ret SubaccountListResponseMeta
+		var ret Meta
 		return ret
 	}
 
@@ -135,7 +135,7 @@ func (o *DisputeListResponse) GetMeta() SubaccountListResponseMeta {
 
 // GetMetaOk returns a tuple with the Meta field value
 // and a boolean to check if the value has been set.
-func (o *DisputeListResponse) GetMetaOk() (*SubaccountListResponseMeta, bool) {
+func (o *DisputeListResponse) GetMetaOk() (*Meta, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -143,7 +143,7 @@ func (o *DisputeListResponse) GetMetaOk() (*SubaccountListResponseMeta, bool) {
 }
 
 // SetMeta sets field value
-func (o *DisputeListResponse) SetMeta(v SubaccountListResponseMeta) {
+func (o *DisputeListResponse) SetMeta(v Meta) {
 	o.Meta = v
 }
 

@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the RefundCreateResponseDataTransactionCustomer type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &RefundCreateResponseDataTransactionCustomer{}
 
 // RefundCreateResponseDataTransactionCustomer struct for RefundCreateResponseDataTransactionCustomer
 type RefundCreateResponseDataTransactionCustomer struct {
-	InternationalFormatPhone NullableString `json:"international_format_phone"`
+	InternationalFormatPhone NullableString `json:"international_format_phone,omitempty"`
 }
-
-type _RefundCreateResponseDataTransactionCustomer RefundCreateResponseDataTransactionCustomer
 
 // NewRefundCreateResponseDataTransactionCustomer instantiates a new RefundCreateResponseDataTransactionCustomer object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRefundCreateResponseDataTransactionCustomer(internationalFormatPhone NullableString) *RefundCreateResponseDataTransactionCustomer {
+func NewRefundCreateResponseDataTransactionCustomer() *RefundCreateResponseDataTransactionCustomer {
 	this := RefundCreateResponseDataTransactionCustomer{}
-	this.InternationalFormatPhone = internationalFormatPhone
 	return &this
 }
 
@@ -45,18 +40,16 @@ func NewRefundCreateResponseDataTransactionCustomerWithDefaults() *RefundCreateR
 	return &this
 }
 
-// GetInternationalFormatPhone returns the InternationalFormatPhone field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetInternationalFormatPhone returns the InternationalFormatPhone field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RefundCreateResponseDataTransactionCustomer) GetInternationalFormatPhone() string {
-	if o == nil || o.InternationalFormatPhone.Get() == nil {
+	if o == nil || IsNil(o.InternationalFormatPhone.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.InternationalFormatPhone.Get()
 }
 
-// GetInternationalFormatPhoneOk returns a tuple with the InternationalFormatPhone field value
+// GetInternationalFormatPhoneOk returns a tuple with the InternationalFormatPhone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RefundCreateResponseDataTransactionCustomer) GetInternationalFormatPhoneOk() (*string, bool) {
@@ -66,9 +59,27 @@ func (o *RefundCreateResponseDataTransactionCustomer) GetInternationalFormatPhon
 	return o.InternationalFormatPhone.Get(), o.InternationalFormatPhone.IsSet()
 }
 
-// SetInternationalFormatPhone sets field value
+// HasInternationalFormatPhone returns a boolean if a field has been set.
+func (o *RefundCreateResponseDataTransactionCustomer) HasInternationalFormatPhone() bool {
+	if o != nil && o.InternationalFormatPhone.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInternationalFormatPhone gets a reference to the given NullableString and assigns it to the InternationalFormatPhone field.
 func (o *RefundCreateResponseDataTransactionCustomer) SetInternationalFormatPhone(v string) {
 	o.InternationalFormatPhone.Set(&v)
+}
+// SetInternationalFormatPhoneNil sets the value for InternationalFormatPhone to be an explicit nil
+func (o *RefundCreateResponseDataTransactionCustomer) SetInternationalFormatPhoneNil() {
+	o.InternationalFormatPhone.Set(nil)
+}
+
+// UnsetInternationalFormatPhone ensures that no value is present for InternationalFormatPhone, not even an explicit nil
+func (o *RefundCreateResponseDataTransactionCustomer) UnsetInternationalFormatPhone() {
+	o.InternationalFormatPhone.Unset()
 }
 
 func (o RefundCreateResponseDataTransactionCustomer) MarshalJSON() ([]byte, error) {
@@ -81,45 +92,10 @@ func (o RefundCreateResponseDataTransactionCustomer) MarshalJSON() ([]byte, erro
 
 func (o RefundCreateResponseDataTransactionCustomer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["international_format_phone"] = o.InternationalFormatPhone.Get()
+	if o.InternationalFormatPhone.IsSet() {
+		toSerialize["international_format_phone"] = o.InternationalFormatPhone.Get()
+	}
 	return toSerialize, nil
-}
-
-func (o *RefundCreateResponseDataTransactionCustomer) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"international_format_phone",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varRefundCreateResponseDataTransactionCustomer := _RefundCreateResponseDataTransactionCustomer{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRefundCreateResponseDataTransactionCustomer)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RefundCreateResponseDataTransactionCustomer(varRefundCreateResponseDataTransactionCustomer)
-
-	return err
 }
 
 type NullableRefundCreateResponseDataTransactionCustomer struct {

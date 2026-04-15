@@ -25,7 +25,7 @@ type PaymentRequestListResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
 	Data []PaymentRequestListResponseArray `json:"data"`
-	Meta BulkChargeListResponseMeta `json:"meta"`
+	Meta PaymentRequestListResponseMeta `json:"meta"`
 }
 
 type _PaymentRequestListResponse PaymentRequestListResponse
@@ -34,7 +34,7 @@ type _PaymentRequestListResponse PaymentRequestListResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaymentRequestListResponse(status bool, message string, data []PaymentRequestListResponseArray, meta BulkChargeListResponseMeta) *PaymentRequestListResponse {
+func NewPaymentRequestListResponse(status bool, message string, data []PaymentRequestListResponseArray, meta PaymentRequestListResponseMeta) *PaymentRequestListResponse {
 	this := PaymentRequestListResponse{}
 	this.Status = status
 	this.Message = message
@@ -124,9 +124,9 @@ func (o *PaymentRequestListResponse) SetData(v []PaymentRequestListResponseArray
 }
 
 // GetMeta returns the Meta field value
-func (o *PaymentRequestListResponse) GetMeta() BulkChargeListResponseMeta {
+func (o *PaymentRequestListResponse) GetMeta() PaymentRequestListResponseMeta {
 	if o == nil {
-		var ret BulkChargeListResponseMeta
+		var ret PaymentRequestListResponseMeta
 		return ret
 	}
 
@@ -135,7 +135,7 @@ func (o *PaymentRequestListResponse) GetMeta() BulkChargeListResponseMeta {
 
 // GetMetaOk returns a tuple with the Meta field value
 // and a boolean to check if the value has been set.
-func (o *PaymentRequestListResponse) GetMetaOk() (*BulkChargeListResponseMeta, bool) {
+func (o *PaymentRequestListResponse) GetMetaOk() (*PaymentRequestListResponseMeta, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -143,7 +143,7 @@ func (o *PaymentRequestListResponse) GetMetaOk() (*BulkChargeListResponseMeta, b
 }
 
 // SetMeta sets field value
-func (o *PaymentRequestListResponse) SetMeta(v BulkChargeListResponseMeta) {
+func (o *PaymentRequestListResponse) SetMeta(v PaymentRequestListResponseMeta) {
 	o.Meta = v
 }
 

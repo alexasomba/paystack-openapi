@@ -26,21 +26,21 @@ type TransferFetchResponseData struct {
 	CreatedAt string `json:"createdAt"`
 	Currency string `json:"currency"`
 	Domain string `json:"domain"`
-	Failures interface{} `json:"failures"`
+	Failures map[string]interface{} `json:"failures"`
 	Id int32 `json:"id"`
 	Integration int32 `json:"integration"`
 	Reason string `json:"reason"`
 	Reference string `json:"reference"`
 	Source string `json:"source"`
-	SourceDetails interface{} `json:"source_details"`
+	SourceDetails map[string]interface{} `json:"source_details"`
 	Status string `json:"status"`
-	TitanCode interface{} `json:"titan_code"`
+	TitanCode NullableString `json:"titan_code"`
 	TransferCode string `json:"transfer_code"`
 	Request int32 `json:"request"`
-	TransferredAt interface{} `json:"transferred_at"`
+	TransferredAt NullableString `json:"transferred_at"`
 	UpdatedAt string `json:"updatedAt"`
 	Recipient TransferListResponseArrayRecipient `json:"recipient"`
-	Session TransferListResponseArraySession `json:"session"`
+	Session TransferFetchResponseDataSession `json:"session"`
 	FeeCharged int32 `json:"fee_charged"`
 	FeesBreakdown []TransferFeesBreakdownArray `json:"fees_breakdown"`
 	GatewayResponse NullableString `json:"gateway_response"`
@@ -52,7 +52,7 @@ type _TransferFetchResponseData TransferFetchResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferFetchResponseData(amount int32, createdAt string, currency string, domain string, failures interface{}, id int32, integration int32, reason string, reference string, source string, sourceDetails interface{}, status string, titanCode interface{}, transferCode string, request int32, transferredAt interface{}, updatedAt string, recipient TransferListResponseArrayRecipient, session TransferListResponseArraySession, feeCharged int32, feesBreakdown []TransferFeesBreakdownArray, gatewayResponse NullableString) *TransferFetchResponseData {
+func NewTransferFetchResponseData(amount int32, createdAt string, currency string, domain string, failures map[string]interface{}, id int32, integration int32, reason string, reference string, source string, sourceDetails map[string]interface{}, status string, titanCode NullableString, transferCode string, request int32, transferredAt NullableString, updatedAt string, recipient TransferListResponseArrayRecipient, session TransferFetchResponseDataSession, feeCharged int32, feesBreakdown []TransferFeesBreakdownArray, gatewayResponse NullableString) *TransferFetchResponseData {
 	this := TransferFetchResponseData{}
 	this.Amount = amount
 	this.CreatedAt = createdAt
@@ -184,10 +184,10 @@ func (o *TransferFetchResponseData) SetDomain(v string) {
 }
 
 // GetFailures returns the Failures field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransferFetchResponseData) GetFailures() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *TransferFetchResponseData) GetFailures() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -197,15 +197,15 @@ func (o *TransferFetchResponseData) GetFailures() interface{} {
 // GetFailuresOk returns a tuple with the Failures field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransferFetchResponseData) GetFailuresOk() (*interface{}, bool) {
+func (o *TransferFetchResponseData) GetFailuresOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Failures) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Failures, true
+	return o.Failures, true
 }
 
 // SetFailures sets field value
-func (o *TransferFetchResponseData) SetFailures(v interface{}) {
+func (o *TransferFetchResponseData) SetFailures(v map[string]interface{}) {
 	o.Failures = v
 }
 
@@ -330,10 +330,10 @@ func (o *TransferFetchResponseData) SetSource(v string) {
 }
 
 // GetSourceDetails returns the SourceDetails field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransferFetchResponseData) GetSourceDetails() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *TransferFetchResponseData) GetSourceDetails() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -343,15 +343,15 @@ func (o *TransferFetchResponseData) GetSourceDetails() interface{} {
 // GetSourceDetailsOk returns a tuple with the SourceDetails field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransferFetchResponseData) GetSourceDetailsOk() (*interface{}, bool) {
+func (o *TransferFetchResponseData) GetSourceDetailsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.SourceDetails) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.SourceDetails, true
+	return o.SourceDetails, true
 }
 
 // SetSourceDetails sets field value
-func (o *TransferFetchResponseData) SetSourceDetails(v interface{}) {
+func (o *TransferFetchResponseData) SetSourceDetails(v map[string]interface{}) {
 	o.SourceDetails = v
 }
 
@@ -380,29 +380,29 @@ func (o *TransferFetchResponseData) SetStatus(v string) {
 }
 
 // GetTitanCode returns the TitanCode field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransferFetchResponseData) GetTitanCode() interface{} {
-	if o == nil {
-		var ret interface{}
+// If the value is explicit nil, the zero value for string will be returned
+func (o *TransferFetchResponseData) GetTitanCode() string {
+	if o == nil || o.TitanCode.Get() == nil {
+		var ret string
 		return ret
 	}
 
-	return o.TitanCode
+	return *o.TitanCode.Get()
 }
 
 // GetTitanCodeOk returns a tuple with the TitanCode field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransferFetchResponseData) GetTitanCodeOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.TitanCode) {
+func (o *TransferFetchResponseData) GetTitanCodeOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.TitanCode, true
+	return o.TitanCode.Get(), o.TitanCode.IsSet()
 }
 
 // SetTitanCode sets field value
-func (o *TransferFetchResponseData) SetTitanCode(v interface{}) {
-	o.TitanCode = v
+func (o *TransferFetchResponseData) SetTitanCode(v string) {
+	o.TitanCode.Set(&v)
 }
 
 // GetTransferCode returns the TransferCode field value
@@ -454,29 +454,29 @@ func (o *TransferFetchResponseData) SetRequest(v int32) {
 }
 
 // GetTransferredAt returns the TransferredAt field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransferFetchResponseData) GetTransferredAt() interface{} {
-	if o == nil {
-		var ret interface{}
+// If the value is explicit nil, the zero value for string will be returned
+func (o *TransferFetchResponseData) GetTransferredAt() string {
+	if o == nil || o.TransferredAt.Get() == nil {
+		var ret string
 		return ret
 	}
 
-	return o.TransferredAt
+	return *o.TransferredAt.Get()
 }
 
 // GetTransferredAtOk returns a tuple with the TransferredAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransferFetchResponseData) GetTransferredAtOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.TransferredAt) {
+func (o *TransferFetchResponseData) GetTransferredAtOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.TransferredAt, true
+	return o.TransferredAt.Get(), o.TransferredAt.IsSet()
 }
 
 // SetTransferredAt sets field value
-func (o *TransferFetchResponseData) SetTransferredAt(v interface{}) {
-	o.TransferredAt = v
+func (o *TransferFetchResponseData) SetTransferredAt(v string) {
+	o.TransferredAt.Set(&v)
 }
 
 // GetUpdatedAt returns the UpdatedAt field value
@@ -528,9 +528,9 @@ func (o *TransferFetchResponseData) SetRecipient(v TransferListResponseArrayReci
 }
 
 // GetSession returns the Session field value
-func (o *TransferFetchResponseData) GetSession() TransferListResponseArraySession {
+func (o *TransferFetchResponseData) GetSession() TransferFetchResponseDataSession {
 	if o == nil {
-		var ret TransferListResponseArraySession
+		var ret TransferFetchResponseDataSession
 		return ret
 	}
 
@@ -539,7 +539,7 @@ func (o *TransferFetchResponseData) GetSession() TransferListResponseArraySessio
 
 // GetSessionOk returns a tuple with the Session field value
 // and a boolean to check if the value has been set.
-func (o *TransferFetchResponseData) GetSessionOk() (*TransferListResponseArraySession, bool) {
+func (o *TransferFetchResponseData) GetSessionOk() (*TransferFetchResponseDataSession, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -547,7 +547,7 @@ func (o *TransferFetchResponseData) GetSessionOk() (*TransferListResponseArraySe
 }
 
 // SetSession sets field value
-func (o *TransferFetchResponseData) SetSession(v TransferListResponseArraySession) {
+func (o *TransferFetchResponseData) SetSession(v TransferFetchResponseDataSession) {
 	o.Session = v
 }
 
@@ -653,14 +653,10 @@ func (o TransferFetchResponseData) ToMap() (map[string]interface{}, error) {
 		toSerialize["source_details"] = o.SourceDetails
 	}
 	toSerialize["status"] = o.Status
-	if o.TitanCode != nil {
-		toSerialize["titan_code"] = o.TitanCode
-	}
+	toSerialize["titan_code"] = o.TitanCode.Get()
 	toSerialize["transfer_code"] = o.TransferCode
 	toSerialize["request"] = o.Request
-	if o.TransferredAt != nil {
-		toSerialize["transferred_at"] = o.TransferredAt
-	}
+	toSerialize["transferred_at"] = o.TransferredAt.Get()
 	toSerialize["updatedAt"] = o.UpdatedAt
 	toSerialize["recipient"] = o.Recipient
 	toSerialize["session"] = o.Session

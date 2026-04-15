@@ -33,9 +33,9 @@ class VerifyResponseDataCustomer(BaseModel):
     email: StrictStr
     customer_code: StrictStr
     phone: Optional[StrictStr]
-    metadata: Optional[Any]
+    metadata: Optional[Dict[str, Any]]
     risk_action: StrictStr
-    international_format_phone: Optional[StrictStr]
+    international_format_phone: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["id", "first_name", "last_name", "email", "customer_code", "phone", "metadata", "risk_action", "international_format_phone"]
 
     model_config = ConfigDict(

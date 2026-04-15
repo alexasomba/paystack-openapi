@@ -67,7 +67,7 @@ class DisputeFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
         'transaction' => '\Alexasomba\Paystack\Model\DisputeFetchResponseDataTransaction',
         'transaction_reference' => 'mixed',
         'category' => 'string',
-        'customer' => '\Alexasomba\Paystack\Model\TransactionFetchResponseDataCustomer',
+        'customer' => '\Alexasomba\Paystack\Model\DisputeFetchResponseDataCustomer',
         'bin' => 'string',
         'last4' => 'string',
         'due_at' => 'mixed',
@@ -119,17 +119,17 @@ class DisputeFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'refund_amount' => false,
-        'currency' => false,
+        'refund_amount' => true,
+        'currency' => true,
         'status' => false,
         'resolution' => true,
         'domain' => false,
         'transaction' => false,
         'transaction_reference' => true,
-        'category' => false,
+        'category' => true,
         'customer' => false,
-        'bin' => false,
-        'last4' => false,
+        'bin' => true,
+        'last4' => true,
         'due_at' => true,
         'resolved_at' => true,
         'evidence' => true,
@@ -418,17 +418,14 @@ class DisputeFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['refund_amount'] === null) {
+        if ($this->container['refund_amount'] === null && !$this->isNullableSetToNull('refund_amount')) {
             $invalidProperties[] = "'refund_amount' can't be null";
         }
-        if ($this->container['currency'] === null) {
+        if ($this->container['currency'] === null && !$this->isNullableSetToNull('currency')) {
             $invalidProperties[] = "'currency' can't be null";
         }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
-        }
-        if ($this->container['resolution'] === null && !$this->isNullableSetToNull('resolution')) {
-            $invalidProperties[] = "'resolution' can't be null";
         }
         if ($this->container['domain'] === null) {
             $invalidProperties[] = "'domain' can't be null";
@@ -436,35 +433,17 @@ class DisputeFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['transaction'] === null) {
             $invalidProperties[] = "'transaction' can't be null";
         }
-        if ($this->container['transaction_reference'] === null && !$this->isNullableSetToNull('transaction_reference')) {
-            $invalidProperties[] = "'transaction_reference' can't be null";
-        }
-        if ($this->container['category'] === null) {
+        if ($this->container['category'] === null && !$this->isNullableSetToNull('category')) {
             $invalidProperties[] = "'category' can't be null";
         }
         if ($this->container['customer'] === null) {
             $invalidProperties[] = "'customer' can't be null";
         }
-        if ($this->container['bin'] === null) {
+        if ($this->container['bin'] === null && !$this->isNullableSetToNull('bin')) {
             $invalidProperties[] = "'bin' can't be null";
         }
-        if ($this->container['last4'] === null) {
+        if ($this->container['last4'] === null && !$this->isNullableSetToNull('last4')) {
             $invalidProperties[] = "'last4' can't be null";
-        }
-        if ($this->container['due_at'] === null && !$this->isNullableSetToNull('due_at')) {
-            $invalidProperties[] = "'due_at' can't be null";
-        }
-        if ($this->container['resolved_at'] === null && !$this->isNullableSetToNull('resolved_at')) {
-            $invalidProperties[] = "'resolved_at' can't be null";
-        }
-        if ($this->container['evidence'] === null && !$this->isNullableSetToNull('evidence')) {
-            $invalidProperties[] = "'evidence' can't be null";
-        }
-        if ($this->container['attachments'] === null && !$this->isNullableSetToNull('attachments')) {
-            $invalidProperties[] = "'attachments' can't be null";
-        }
-        if ($this->container['note'] === null && !$this->isNullableSetToNull('note')) {
-            $invalidProperties[] = "'note' can't be null";
         }
         if ($this->container['history'] === null) {
             $invalidProperties[] = "'history' can't be null";
@@ -523,7 +502,7 @@ class DisputeFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets refund_amount
      *
-     * @return int
+     * @return int|null
      */
     public function getRefundAmount()
     {
@@ -533,14 +512,21 @@ class DisputeFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets refund_amount
      *
-     * @param int $refund_amount refund_amount
+     * @param int|null $refund_amount refund_amount
      *
      * @return self
      */
     public function setRefundAmount($refund_amount)
     {
         if (is_null($refund_amount)) {
-            throw new \InvalidArgumentException('non-nullable refund_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'refund_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('refund_amount', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['refund_amount'] = $refund_amount;
 
@@ -550,7 +536,7 @@ class DisputeFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets currency
      *
-     * @return string
+     * @return string|null
      */
     public function getCurrency()
     {
@@ -560,14 +546,21 @@ class DisputeFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets currency
      *
-     * @param string $currency currency
+     * @param string|null $currency currency
      *
      * @return self
      */
     public function setCurrency($currency)
     {
         if (is_null($currency)) {
-            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'currency');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('currency', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['currency'] = $currency;
 
@@ -726,7 +719,7 @@ class DisputeFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets category
      *
-     * @return string
+     * @return string|null
      */
     public function getCategory()
     {
@@ -736,14 +729,21 @@ class DisputeFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets category
      *
-     * @param string $category category
+     * @param string|null $category category
      *
      * @return self
      */
     public function setCategory($category)
     {
         if (is_null($category)) {
-            throw new \InvalidArgumentException('non-nullable category cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'category');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('category', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['category'] = $category;
 
@@ -753,7 +753,7 @@ class DisputeFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets customer
      *
-     * @return \Alexasomba\Paystack\Model\TransactionFetchResponseDataCustomer
+     * @return \Alexasomba\Paystack\Model\DisputeFetchResponseDataCustomer
      */
     public function getCustomer()
     {
@@ -763,7 +763,7 @@ class DisputeFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets customer
      *
-     * @param \Alexasomba\Paystack\Model\TransactionFetchResponseDataCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\DisputeFetchResponseDataCustomer $customer customer
      *
      * @return self
      */
@@ -780,7 +780,7 @@ class DisputeFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets bin
      *
-     * @return string
+     * @return string|null
      */
     public function getBin()
     {
@@ -790,14 +790,21 @@ class DisputeFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets bin
      *
-     * @param string $bin bin
+     * @param string|null $bin bin
      *
      * @return self
      */
     public function setBin($bin)
     {
         if (is_null($bin)) {
-            throw new \InvalidArgumentException('non-nullable bin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'bin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bin', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['bin'] = $bin;
 
@@ -807,7 +814,7 @@ class DisputeFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets last4
      *
-     * @return string
+     * @return string|null
      */
     public function getLast4()
     {
@@ -817,14 +824,21 @@ class DisputeFetchResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets last4
      *
-     * @param string $last4 last4
+     * @param string|null $last4 last4
      *
      * @return self
      */
     public function setLast4($last4)
     {
         if (is_null($last4)) {
-            throw new \InvalidArgumentException('non-nullable last4 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'last4');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last4', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['last4'] = $last4;
 

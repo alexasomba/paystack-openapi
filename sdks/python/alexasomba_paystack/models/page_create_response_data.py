@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,6 +28,9 @@ class PageCreateResponseData(BaseModel):
     PageCreateResponseData
     """ # noqa: E501
     name: StrictStr
+    description: Optional[StrictStr] = None
+    amount: Optional[StrictInt]
+    split_code: Optional[StrictStr] = None
     integration: StrictInt
     domain: StrictStr
     slug: StrictStr
@@ -40,7 +43,7 @@ class PageCreateResponseData(BaseModel):
     id: StrictInt
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    __properties: ClassVar[List[str]] = ["name", "integration", "domain", "slug", "currency", "type", "collect_phone", "active", "published", "migrate", "id", "createdAt", "updatedAt"]
+    __properties: ClassVar[List[str]] = ["name", "description", "amount", "split_code", "integration", "domain", "slug", "currency", "type", "collect_phone", "active", "published", "migrate", "id", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,6 +84,21 @@ class PageCreateResponseData(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
+        # set to None if amount (nullable) is None
+        # and model_fields_set contains the field
+        if self.amount is None and "amount" in self.model_fields_set:
+            _dict['amount'] = None
+
+        # set to None if split_code (nullable) is None
+        # and model_fields_set contains the field
+        if self.split_code is None and "split_code" in self.model_fields_set:
+            _dict['split_code'] = None
+
         return _dict
 
     @classmethod
@@ -94,6 +112,9 @@ class PageCreateResponseData(BaseModel):
 
         _obj = cls.model_validate({
             "name": obj.get("name"),
+            "description": obj.get("description"),
+            "amount": obj.get("amount"),
+            "split_code": obj.get("split_code"),
             "integration": obj.get("integration"),
             "domain": obj.get("domain"),
             "slug": obj.get("slug"),

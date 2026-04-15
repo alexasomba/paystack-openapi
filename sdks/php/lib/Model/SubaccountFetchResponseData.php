@@ -69,7 +69,7 @@ class SubaccountFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
         'primary_contact_name' => 'string',
         'primary_contact_email' => 'string',
         'primary_contact_phone' => 'string',
-        'metadata' => 'string',
+        'metadata' => 'object',
         'percentage_charge' => 'float',
         'is_verified' => 'bool',
         'settlement_bank' => 'string',
@@ -131,11 +131,11 @@ class SubaccountFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
         'domain' => false,
         'subaccount_code' => false,
         'business_name' => false,
-        'description' => false,
-        'primary_contact_name' => false,
-        'primary_contact_email' => false,
-        'primary_contact_phone' => false,
-        'metadata' => false,
+        'description' => true,
+        'primary_contact_name' => true,
+        'primary_contact_email' => true,
+        'primary_contact_phone' => true,
+        'metadata' => true,
         'percentage_charge' => false,
         'is_verified' => false,
         'settlement_bank' => false,
@@ -439,6 +439,9 @@ class SubaccountFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['integration'] === null) {
             $invalidProperties[] = "'integration' can't be null";
         }
+        if ($this->container['account_name'] === null && !$this->isNullableSetToNull('account_name')) {
+            $invalidProperties[] = "'account_name' can't be null";
+        }
         if ($this->container['bank'] === null) {
             $invalidProperties[] = "'bank' can't be null";
         }
@@ -454,19 +457,19 @@ class SubaccountFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['business_name'] === null) {
             $invalidProperties[] = "'business_name' can't be null";
         }
-        if ($this->container['description'] === null) {
+        if ($this->container['description'] === null && !$this->isNullableSetToNull('description')) {
             $invalidProperties[] = "'description' can't be null";
         }
-        if ($this->container['primary_contact_name'] === null) {
+        if ($this->container['primary_contact_name'] === null && !$this->isNullableSetToNull('primary_contact_name')) {
             $invalidProperties[] = "'primary_contact_name' can't be null";
         }
-        if ($this->container['primary_contact_email'] === null) {
+        if ($this->container['primary_contact_email'] === null && !$this->isNullableSetToNull('primary_contact_email')) {
             $invalidProperties[] = "'primary_contact_email' can't be null";
         }
-        if ($this->container['primary_contact_phone'] === null) {
+        if ($this->container['primary_contact_phone'] === null && !$this->isNullableSetToNull('primary_contact_phone')) {
             $invalidProperties[] = "'primary_contact_phone' can't be null";
         }
-        if ($this->container['metadata'] === null) {
+        if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
             $invalidProperties[] = "'metadata' can't be null";
         }
         if ($this->container['percentage_charge'] === null) {
@@ -719,7 +722,7 @@ class SubaccountFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets description
      *
-     * @return string
+     * @return string|null
      */
     public function getDescription()
     {
@@ -729,14 +732,21 @@ class SubaccountFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets description
      *
-     * @param string $description description
+     * @param string|null $description description
      *
      * @return self
      */
     public function setDescription($description)
     {
         if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['description'] = $description;
 
@@ -746,7 +756,7 @@ class SubaccountFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets primary_contact_name
      *
-     * @return string
+     * @return string|null
      */
     public function getPrimaryContactName()
     {
@@ -756,14 +766,21 @@ class SubaccountFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets primary_contact_name
      *
-     * @param string $primary_contact_name primary_contact_name
+     * @param string|null $primary_contact_name primary_contact_name
      *
      * @return self
      */
     public function setPrimaryContactName($primary_contact_name)
     {
         if (is_null($primary_contact_name)) {
-            throw new \InvalidArgumentException('non-nullable primary_contact_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'primary_contact_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('primary_contact_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['primary_contact_name'] = $primary_contact_name;
 
@@ -773,7 +790,7 @@ class SubaccountFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets primary_contact_email
      *
-     * @return string
+     * @return string|null
      */
     public function getPrimaryContactEmail()
     {
@@ -783,14 +800,21 @@ class SubaccountFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets primary_contact_email
      *
-     * @param string $primary_contact_email primary_contact_email
+     * @param string|null $primary_contact_email primary_contact_email
      *
      * @return self
      */
     public function setPrimaryContactEmail($primary_contact_email)
     {
         if (is_null($primary_contact_email)) {
-            throw new \InvalidArgumentException('non-nullable primary_contact_email cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'primary_contact_email');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('primary_contact_email', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['primary_contact_email'] = $primary_contact_email;
 
@@ -800,7 +824,7 @@ class SubaccountFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets primary_contact_phone
      *
-     * @return string
+     * @return string|null
      */
     public function getPrimaryContactPhone()
     {
@@ -810,14 +834,21 @@ class SubaccountFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets primary_contact_phone
      *
-     * @param string $primary_contact_phone primary_contact_phone
+     * @param string|null $primary_contact_phone primary_contact_phone
      *
      * @return self
      */
     public function setPrimaryContactPhone($primary_contact_phone)
     {
         if (is_null($primary_contact_phone)) {
-            throw new \InvalidArgumentException('non-nullable primary_contact_phone cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'primary_contact_phone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('primary_contact_phone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['primary_contact_phone'] = $primary_contact_phone;
 
@@ -827,7 +858,7 @@ class SubaccountFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets metadata
      *
-     * @return string
+     * @return object|null
      */
     public function getMetadata()
     {
@@ -837,14 +868,21 @@ class SubaccountFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets metadata
      *
-     * @param string $metadata metadata
+     * @param object|null $metadata metadata
      *
      * @return self
      */
     public function setMetadata($metadata)
     {
         if (is_null($metadata)) {
-            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['metadata'] = $metadata;
 

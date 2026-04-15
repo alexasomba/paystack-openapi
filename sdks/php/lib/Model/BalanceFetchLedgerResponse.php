@@ -61,7 +61,7 @@ class BalanceFetchLedgerResponse implements ModelInterface, ArrayAccess, \JsonSe
         'status' => 'bool',
         'message' => 'string',
         'data' => '\Alexasomba\Paystack\Model\BalanceFetchLedgerResponseArray[]',
-        'meta' => '\Alexasomba\Paystack\Model\SubaccountListResponseMeta'
+        'meta' => '\Alexasomba\Paystack\Model\BalanceFetchLedgerResponseMeta'
     ];
 
     /**
@@ -407,7 +407,7 @@ class BalanceFetchLedgerResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets meta
      *
-     * @return \Alexasomba\Paystack\Model\SubaccountListResponseMeta
+     * @return \Alexasomba\Paystack\Model\BalanceFetchLedgerResponseMeta
      */
     public function getMeta()
     {
@@ -417,7 +417,7 @@ class BalanceFetchLedgerResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets meta
      *
-     * @param \Alexasomba\Paystack\Model\SubaccountListResponseMeta $meta meta
+     * @param \Alexasomba\Paystack\Model\BalanceFetchLedgerResponseMeta $meta meta
      *
      * @return self
      */

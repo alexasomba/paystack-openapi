@@ -59,7 +59,7 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPITypes = [
         'subscriptions' => 'mixed[]',
-        'pages' => 'mixed[]',
+        'integration' => 'int',
         'domain' => 'string',
         'name' => 'string',
         'plan_code' => 'string',
@@ -73,16 +73,9 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
         'hosted_page_url' => 'mixed',
         'hosted_page_summary' => 'mixed',
         'currency' => 'string',
-        'migrate' => 'bool',
-        'is_deleted' => 'bool',
-        'is_archived' => 'bool',
         'id' => 'int',
-        'integration' => 'int',
         'created_at' => 'string',
-        'updated_at' => 'string',
-        'total_subscriptions' => 'int',
-        'active_subscriptions' => 'int',
-        'total_subscriptions_revenue' => 'int'
+        'updated_at' => 'string'
     ];
 
     /**
@@ -94,7 +87,7 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPIFormats = [
         'subscriptions' => null,
-        'pages' => null,
+        'integration' => null,
         'domain' => null,
         'name' => null,
         'plan_code' => null,
@@ -108,16 +101,9 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
         'hosted_page_url' => null,
         'hosted_page_summary' => null,
         'currency' => null,
-        'migrate' => null,
-        'is_deleted' => null,
-        'is_archived' => null,
         'id' => null,
-        'integration' => null,
         'created_at' => null,
-        'updated_at' => null,
-        'total_subscriptions' => null,
-        'active_subscriptions' => null,
-        'total_subscriptions_revenue' => null
+        'updated_at' => null
     ];
 
     /**
@@ -127,7 +113,7 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static array $openAPINullables = [
         'subscriptions' => false,
-        'pages' => false,
+        'integration' => false,
         'domain' => false,
         'name' => false,
         'plan_code' => false,
@@ -141,16 +127,9 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
         'hosted_page_url' => true,
         'hosted_page_summary' => true,
         'currency' => false,
-        'migrate' => false,
-        'is_deleted' => false,
-        'is_archived' => false,
         'id' => false,
-        'integration' => false,
         'created_at' => false,
-        'updated_at' => false,
-        'total_subscriptions' => false,
-        'active_subscriptions' => false,
-        'total_subscriptions_revenue' => false
+        'updated_at' => false
     ];
 
     /**
@@ -240,7 +219,7 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $attributeMap = [
         'subscriptions' => 'subscriptions',
-        'pages' => 'pages',
+        'integration' => 'integration',
         'domain' => 'domain',
         'name' => 'name',
         'plan_code' => 'plan_code',
@@ -254,16 +233,9 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
         'hosted_page_url' => 'hosted_page_url',
         'hosted_page_summary' => 'hosted_page_summary',
         'currency' => 'currency',
-        'migrate' => 'migrate',
-        'is_deleted' => 'is_deleted',
-        'is_archived' => 'is_archived',
         'id' => 'id',
-        'integration' => 'integration',
         'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'total_subscriptions' => 'total_subscriptions',
-        'active_subscriptions' => 'active_subscriptions',
-        'total_subscriptions_revenue' => 'total_subscriptions_revenue'
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -273,7 +245,7 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $setters = [
         'subscriptions' => 'setSubscriptions',
-        'pages' => 'setPages',
+        'integration' => 'setIntegration',
         'domain' => 'setDomain',
         'name' => 'setName',
         'plan_code' => 'setPlanCode',
@@ -287,16 +259,9 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
         'hosted_page_url' => 'setHostedPageUrl',
         'hosted_page_summary' => 'setHostedPageSummary',
         'currency' => 'setCurrency',
-        'migrate' => 'setMigrate',
-        'is_deleted' => 'setIsDeleted',
-        'is_archived' => 'setIsArchived',
         'id' => 'setId',
-        'integration' => 'setIntegration',
         'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'total_subscriptions' => 'setTotalSubscriptions',
-        'active_subscriptions' => 'setActiveSubscriptions',
-        'total_subscriptions_revenue' => 'setTotalSubscriptionsRevenue'
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -306,7 +271,7 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $getters = [
         'subscriptions' => 'getSubscriptions',
-        'pages' => 'getPages',
+        'integration' => 'getIntegration',
         'domain' => 'getDomain',
         'name' => 'getName',
         'plan_code' => 'getPlanCode',
@@ -320,16 +285,9 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
         'hosted_page_url' => 'getHostedPageUrl',
         'hosted_page_summary' => 'getHostedPageSummary',
         'currency' => 'getCurrency',
-        'migrate' => 'getMigrate',
-        'is_deleted' => 'getIsDeleted',
-        'is_archived' => 'getIsArchived',
         'id' => 'getId',
-        'integration' => 'getIntegration',
         'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'total_subscriptions' => 'getTotalSubscriptions',
-        'active_subscriptions' => 'getActiveSubscriptions',
-        'total_subscriptions_revenue' => 'getTotalSubscriptionsRevenue'
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -390,7 +348,7 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
     public function __construct(?array $data = null)
     {
         $this->setIfExists('subscriptions', $data ?? [], null);
-        $this->setIfExists('pages', $data ?? [], null);
+        $this->setIfExists('integration', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('plan_code', $data ?? [], null);
@@ -404,16 +362,9 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('hosted_page_url', $data ?? [], null);
         $this->setIfExists('hosted_page_summary', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('migrate', $data ?? [], null);
-        $this->setIfExists('is_deleted', $data ?? [], null);
-        $this->setIfExists('is_archived', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('integration', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
-        $this->setIfExists('total_subscriptions', $data ?? [], null);
-        $this->setIfExists('active_subscriptions', $data ?? [], null);
-        $this->setIfExists('total_subscriptions_revenue', $data ?? [], null);
     }
 
     /**
@@ -446,8 +397,8 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['subscriptions'] === null) {
             $invalidProperties[] = "'subscriptions' can't be null";
         }
-        if ($this->container['pages'] === null) {
-            $invalidProperties[] = "'pages' can't be null";
+        if ($this->container['integration'] === null) {
+            $invalidProperties[] = "'integration' can't be null";
         }
         if ($this->container['domain'] === null) {
             $invalidProperties[] = "'domain' can't be null";
@@ -488,35 +439,14 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
         }
-        if ($this->container['migrate'] === null) {
-            $invalidProperties[] = "'migrate' can't be null";
-        }
-        if ($this->container['is_deleted'] === null) {
-            $invalidProperties[] = "'is_deleted' can't be null";
-        }
-        if ($this->container['is_archived'] === null) {
-            $invalidProperties[] = "'is_archived' can't be null";
-        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['integration'] === null) {
-            $invalidProperties[] = "'integration' can't be null";
         }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
-        }
-        if ($this->container['total_subscriptions'] === null) {
-            $invalidProperties[] = "'total_subscriptions' can't be null";
-        }
-        if ($this->container['active_subscriptions'] === null) {
-            $invalidProperties[] = "'active_subscriptions' can't be null";
-        }
-        if ($this->container['total_subscriptions_revenue'] === null) {
-            $invalidProperties[] = "'total_subscriptions_revenue' can't be null";
         }
         return $invalidProperties;
     }
@@ -561,28 +491,28 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets pages
+     * Gets integration
      *
-     * @return mixed[]
+     * @return int
      */
-    public function getPages()
+    public function getIntegration()
     {
-        return $this->container['pages'];
+        return $this->container['integration'];
     }
 
     /**
-     * Sets pages
+     * Sets integration
      *
-     * @param mixed[] $pages pages
+     * @param int $integration integration
      *
      * @return self
      */
-    public function setPages($pages)
+    public function setIntegration($integration)
     {
-        if (is_null($pages)) {
-            throw new \InvalidArgumentException('non-nullable pages cannot be null');
+        if (is_null($integration)) {
+            throw new \InvalidArgumentException('non-nullable integration cannot be null');
         }
-        $this->container['pages'] = $pages;
+        $this->container['integration'] = $integration;
 
         return $this;
     }
@@ -960,87 +890,6 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets migrate
-     *
-     * @return bool
-     */
-    public function getMigrate()
-    {
-        return $this->container['migrate'];
-    }
-
-    /**
-     * Sets migrate
-     *
-     * @param bool $migrate migrate
-     *
-     * @return self
-     */
-    public function setMigrate($migrate)
-    {
-        if (is_null($migrate)) {
-            throw new \InvalidArgumentException('non-nullable migrate cannot be null');
-        }
-        $this->container['migrate'] = $migrate;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_deleted
-     *
-     * @return bool
-     */
-    public function getIsDeleted()
-    {
-        return $this->container['is_deleted'];
-    }
-
-    /**
-     * Sets is_deleted
-     *
-     * @param bool $is_deleted is_deleted
-     *
-     * @return self
-     */
-    public function setIsDeleted($is_deleted)
-    {
-        if (is_null($is_deleted)) {
-            throw new \InvalidArgumentException('non-nullable is_deleted cannot be null');
-        }
-        $this->container['is_deleted'] = $is_deleted;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_archived
-     *
-     * @return bool
-     */
-    public function getIsArchived()
-    {
-        return $this->container['is_archived'];
-    }
-
-    /**
-     * Sets is_archived
-     *
-     * @param bool $is_archived is_archived
-     *
-     * @return self
-     */
-    public function setIsArchived($is_archived)
-    {
-        if (is_null($is_archived)) {
-            throw new \InvalidArgumentException('non-nullable is_archived cannot be null');
-        }
-        $this->container['is_archived'] = $is_archived;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return int
@@ -1063,33 +912,6 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets integration
-     *
-     * @return int
-     */
-    public function getIntegration()
-    {
-        return $this->container['integration'];
-    }
-
-    /**
-     * Sets integration
-     *
-     * @param int $integration integration
-     *
-     * @return self
-     */
-    public function setIntegration($integration)
-    {
-        if (is_null($integration)) {
-            throw new \InvalidArgumentException('non-nullable integration cannot be null');
-        }
-        $this->container['integration'] = $integration;
 
         return $this;
     }
@@ -1144,87 +966,6 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
         }
         $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_subscriptions
-     *
-     * @return int
-     */
-    public function getTotalSubscriptions()
-    {
-        return $this->container['total_subscriptions'];
-    }
-
-    /**
-     * Sets total_subscriptions
-     *
-     * @param int $total_subscriptions total_subscriptions
-     *
-     * @return self
-     */
-    public function setTotalSubscriptions($total_subscriptions)
-    {
-        if (is_null($total_subscriptions)) {
-            throw new \InvalidArgumentException('non-nullable total_subscriptions cannot be null');
-        }
-        $this->container['total_subscriptions'] = $total_subscriptions;
-
-        return $this;
-    }
-
-    /**
-     * Gets active_subscriptions
-     *
-     * @return int
-     */
-    public function getActiveSubscriptions()
-    {
-        return $this->container['active_subscriptions'];
-    }
-
-    /**
-     * Sets active_subscriptions
-     *
-     * @param int $active_subscriptions active_subscriptions
-     *
-     * @return self
-     */
-    public function setActiveSubscriptions($active_subscriptions)
-    {
-        if (is_null($active_subscriptions)) {
-            throw new \InvalidArgumentException('non-nullable active_subscriptions cannot be null');
-        }
-        $this->container['active_subscriptions'] = $active_subscriptions;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_subscriptions_revenue
-     *
-     * @return int
-     */
-    public function getTotalSubscriptionsRevenue()
-    {
-        return $this->container['total_subscriptions_revenue'];
-    }
-
-    /**
-     * Sets total_subscriptions_revenue
-     *
-     * @param int $total_subscriptions_revenue total_subscriptions_revenue
-     *
-     * @return self
-     */
-    public function setTotalSubscriptionsRevenue($total_subscriptions_revenue)
-    {
-        if (is_null($total_subscriptions_revenue)) {
-            throw new \InvalidArgumentException('non-nullable total_subscriptions_revenue cannot be null');
-        }
-        $this->container['total_subscriptions_revenue'] = $total_subscriptions_revenue;
 
         return $this;
     }

@@ -26,21 +26,21 @@ type PageAddProductsResponseData struct {
 	Plan interface{} `json:"plan"`
 	Domain string `json:"domain"`
 	Name string `json:"name"`
-	Description interface{} `json:"description"`
-	Amount interface{} `json:"amount"`
+	Description NullableString `json:"description,omitempty"`
+	Amount NullableInt32 `json:"amount"`
 	Currency string `json:"currency"`
 	Slug string `json:"slug"`
-	CustomFields interface{} `json:"custom_fields"`
+	CustomFields interface{} `json:"custom_fields,omitempty"`
 	Type string `json:"type"`
-	RedirectUrl interface{} `json:"redirect_url"`
-	SuccessMessage interface{} `json:"success_message"`
+	RedirectUrl interface{} `json:"redirect_url,omitempty"`
+	SuccessMessage interface{} `json:"success_message,omitempty"`
 	CollectPhone bool `json:"collect_phone"`
 	Active bool `json:"active"`
 	Published bool `json:"published"`
 	Migrate bool `json:"migrate"`
-	NotificationEmail interface{} `json:"notification_email"`
-	Metadata interface{} `json:"metadata"`
-	SplitCode interface{} `json:"split_code"`
+	NotificationEmail NullableString `json:"notification_email,omitempty"`
+	Metadata map[string]interface{} `json:"metadata,omitempty"`
+	SplitCode NullableString `json:"split_code,omitempty"`
 	Id int32 `json:"id"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
@@ -53,27 +53,20 @@ type _PageAddProductsResponseData PageAddProductsResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPageAddProductsResponseData(integration int32, plan interface{}, domain string, name string, description interface{}, amount interface{}, currency string, slug string, customFields interface{}, type_ string, redirectUrl interface{}, successMessage interface{}, collectPhone bool, active bool, published bool, migrate bool, notificationEmail interface{}, metadata interface{}, splitCode interface{}, id int32, createdAt string, updatedAt string, products []PageProductsArray) *PageAddProductsResponseData {
+func NewPageAddProductsResponseData(integration int32, plan interface{}, domain string, name string, amount NullableInt32, currency string, slug string, type_ string, collectPhone bool, active bool, published bool, migrate bool, id int32, createdAt string, updatedAt string, products []PageProductsArray) *PageAddProductsResponseData {
 	this := PageAddProductsResponseData{}
 	this.Integration = integration
 	this.Plan = plan
 	this.Domain = domain
 	this.Name = name
-	this.Description = description
 	this.Amount = amount
 	this.Currency = currency
 	this.Slug = slug
-	this.CustomFields = customFields
 	this.Type = type_
-	this.RedirectUrl = redirectUrl
-	this.SuccessMessage = successMessage
 	this.CollectPhone = collectPhone
 	this.Active = active
 	this.Published = published
 	this.Migrate = migrate
-	this.NotificationEmail = notificationEmail
-	this.Metadata = metadata
-	this.SplitCode = splitCode
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
@@ -187,56 +180,72 @@ func (o *PageAddProductsResponseData) SetName(v string) {
 	o.Name = v
 }
 
-// GetDescription returns the Description field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PageAddProductsResponseData) GetDescription() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PageAddProductsResponseData) GetDescription() string {
+	if o == nil || IsNil(o.Description.Get()) {
+		var ret string
 		return ret
 	}
-
-	return o.Description
+	return *o.Description.Get()
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PageAddProductsResponseData) GetDescriptionOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Description) {
+func (o *PageAddProductsResponseData) GetDescriptionOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
-// SetDescription sets field value
-func (o *PageAddProductsResponseData) SetDescription(v interface{}) {
-	o.Description = v
+// HasDescription returns a boolean if a field has been set.
+func (o *PageAddProductsResponseData) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+func (o *PageAddProductsResponseData) SetDescription(v string) {
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *PageAddProductsResponseData) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *PageAddProductsResponseData) UnsetDescription() {
+	o.Description.Unset()
 }
 
 // GetAmount returns the Amount field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PageAddProductsResponseData) GetAmount() interface{} {
-	if o == nil {
-		var ret interface{}
+// If the value is explicit nil, the zero value for int32 will be returned
+func (o *PageAddProductsResponseData) GetAmount() int32 {
+	if o == nil || o.Amount.Get() == nil {
+		var ret int32
 		return ret
 	}
 
-	return o.Amount
+	return *o.Amount.Get()
 }
 
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PageAddProductsResponseData) GetAmountOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Amount) {
+func (o *PageAddProductsResponseData) GetAmountOk() (*int32, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Amount, true
+	return o.Amount.Get(), o.Amount.IsSet()
 }
 
 // SetAmount sets field value
-func (o *PageAddProductsResponseData) SetAmount(v interface{}) {
-	o.Amount = v
+func (o *PageAddProductsResponseData) SetAmount(v int32) {
+	o.Amount.Set(&v)
 }
 
 // GetCurrency returns the Currency field value
@@ -287,18 +296,16 @@ func (o *PageAddProductsResponseData) SetSlug(v string) {
 	o.Slug = v
 }
 
-// GetCustomFields returns the CustomFields field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PageAddProductsResponseData) GetCustomFields() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.CustomFields
 }
 
-// GetCustomFieldsOk returns a tuple with the CustomFields field value
+// GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PageAddProductsResponseData) GetCustomFieldsOk() (*interface{}, bool) {
@@ -308,7 +315,16 @@ func (o *PageAddProductsResponseData) GetCustomFieldsOk() (*interface{}, bool) {
 	return &o.CustomFields, true
 }
 
-// SetCustomFields sets field value
+// HasCustomFields returns a boolean if a field has been set.
+func (o *PageAddProductsResponseData) HasCustomFields() bool {
+	if o != nil && !IsNil(o.CustomFields) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomFields gets a reference to the given interface{} and assigns it to the CustomFields field.
 func (o *PageAddProductsResponseData) SetCustomFields(v interface{}) {
 	o.CustomFields = v
 }
@@ -337,18 +353,16 @@ func (o *PageAddProductsResponseData) SetType(v string) {
 	o.Type = v
 }
 
-// GetRedirectUrl returns the RedirectUrl field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetRedirectUrl returns the RedirectUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PageAddProductsResponseData) GetRedirectUrl() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.RedirectUrl
 }
 
-// GetRedirectUrlOk returns a tuple with the RedirectUrl field value
+// GetRedirectUrlOk returns a tuple with the RedirectUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PageAddProductsResponseData) GetRedirectUrlOk() (*interface{}, bool) {
@@ -358,23 +372,30 @@ func (o *PageAddProductsResponseData) GetRedirectUrlOk() (*interface{}, bool) {
 	return &o.RedirectUrl, true
 }
 
-// SetRedirectUrl sets field value
+// HasRedirectUrl returns a boolean if a field has been set.
+func (o *PageAddProductsResponseData) HasRedirectUrl() bool {
+	if o != nil && !IsNil(o.RedirectUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetRedirectUrl gets a reference to the given interface{} and assigns it to the RedirectUrl field.
 func (o *PageAddProductsResponseData) SetRedirectUrl(v interface{}) {
 	o.RedirectUrl = v
 }
 
-// GetSuccessMessage returns the SuccessMessage field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetSuccessMessage returns the SuccessMessage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PageAddProductsResponseData) GetSuccessMessage() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.SuccessMessage
 }
 
-// GetSuccessMessageOk returns a tuple with the SuccessMessage field value
+// GetSuccessMessageOk returns a tuple with the SuccessMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PageAddProductsResponseData) GetSuccessMessageOk() (*interface{}, bool) {
@@ -384,7 +405,16 @@ func (o *PageAddProductsResponseData) GetSuccessMessageOk() (*interface{}, bool)
 	return &o.SuccessMessage, true
 }
 
-// SetSuccessMessage sets field value
+// HasSuccessMessage returns a boolean if a field has been set.
+func (o *PageAddProductsResponseData) HasSuccessMessage() bool {
+	if o != nil && !IsNil(o.SuccessMessage) {
+		return true
+	}
+
+	return false
+}
+
+// SetSuccessMessage gets a reference to the given interface{} and assigns it to the SuccessMessage field.
 func (o *PageAddProductsResponseData) SetSuccessMessage(v interface{}) {
 	o.SuccessMessage = v
 }
@@ -485,82 +515,121 @@ func (o *PageAddProductsResponseData) SetMigrate(v bool) {
 	o.Migrate = v
 }
 
-// GetNotificationEmail returns the NotificationEmail field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PageAddProductsResponseData) GetNotificationEmail() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetNotificationEmail returns the NotificationEmail field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PageAddProductsResponseData) GetNotificationEmail() string {
+	if o == nil || IsNil(o.NotificationEmail.Get()) {
+		var ret string
 		return ret
 	}
-
-	return o.NotificationEmail
+	return *o.NotificationEmail.Get()
 }
 
-// GetNotificationEmailOk returns a tuple with the NotificationEmail field value
+// GetNotificationEmailOk returns a tuple with the NotificationEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PageAddProductsResponseData) GetNotificationEmailOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.NotificationEmail) {
+func (o *PageAddProductsResponseData) GetNotificationEmailOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.NotificationEmail, true
+	return o.NotificationEmail.Get(), o.NotificationEmail.IsSet()
 }
 
-// SetNotificationEmail sets field value
-func (o *PageAddProductsResponseData) SetNotificationEmail(v interface{}) {
-	o.NotificationEmail = v
-}
-
-// GetMetadata returns the Metadata field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PageAddProductsResponseData) GetMetadata() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
+// HasNotificationEmail returns a boolean if a field has been set.
+func (o *PageAddProductsResponseData) HasNotificationEmail() bool {
+	if o != nil && o.NotificationEmail.IsSet() {
+		return true
 	}
 
+	return false
+}
+
+// SetNotificationEmail gets a reference to the given NullableString and assigns it to the NotificationEmail field.
+func (o *PageAddProductsResponseData) SetNotificationEmail(v string) {
+	o.NotificationEmail.Set(&v)
+}
+// SetNotificationEmailNil sets the value for NotificationEmail to be an explicit nil
+func (o *PageAddProductsResponseData) SetNotificationEmailNil() {
+	o.NotificationEmail.Set(nil)
+}
+
+// UnsetNotificationEmail ensures that no value is present for NotificationEmail, not even an explicit nil
+func (o *PageAddProductsResponseData) UnsetNotificationEmail() {
+	o.NotificationEmail.Unset()
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PageAddProductsResponseData) GetMetadata() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
 	return o.Metadata
 }
 
-// GetMetadataOk returns a tuple with the Metadata field value
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PageAddProductsResponseData) GetMetadataOk() (*interface{}, bool) {
+func (o *PageAddProductsResponseData) GetMetadataOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Metadata) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Metadata, true
+	return o.Metadata, true
 }
 
-// SetMetadata sets field value
-func (o *PageAddProductsResponseData) SetMetadata(v interface{}) {
+// HasMetadata returns a boolean if a field has been set.
+func (o *PageAddProductsResponseData) HasMetadata() bool {
+	if o != nil && !IsNil(o.Metadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
+func (o *PageAddProductsResponseData) SetMetadata(v map[string]interface{}) {
 	o.Metadata = v
 }
 
-// GetSplitCode returns the SplitCode field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PageAddProductsResponseData) GetSplitCode() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetSplitCode returns the SplitCode field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PageAddProductsResponseData) GetSplitCode() string {
+	if o == nil || IsNil(o.SplitCode.Get()) {
+		var ret string
 		return ret
 	}
-
-	return o.SplitCode
+	return *o.SplitCode.Get()
 }
 
-// GetSplitCodeOk returns a tuple with the SplitCode field value
+// GetSplitCodeOk returns a tuple with the SplitCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PageAddProductsResponseData) GetSplitCodeOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.SplitCode) {
+func (o *PageAddProductsResponseData) GetSplitCodeOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.SplitCode, true
+	return o.SplitCode.Get(), o.SplitCode.IsSet()
 }
 
-// SetSplitCode sets field value
-func (o *PageAddProductsResponseData) SetSplitCode(v interface{}) {
-	o.SplitCode = v
+// HasSplitCode returns a boolean if a field has been set.
+func (o *PageAddProductsResponseData) HasSplitCode() bool {
+	if o != nil && o.SplitCode.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSplitCode gets a reference to the given NullableString and assigns it to the SplitCode field.
+func (o *PageAddProductsResponseData) SetSplitCode(v string) {
+	o.SplitCode.Set(&v)
+}
+// SetSplitCodeNil sets the value for SplitCode to be an explicit nil
+func (o *PageAddProductsResponseData) SetSplitCodeNil() {
+	o.SplitCode.Set(nil)
+}
+
+// UnsetSplitCode ensures that no value is present for SplitCode, not even an explicit nil
+func (o *PageAddProductsResponseData) UnsetSplitCode() {
+	o.SplitCode.Unset()
 }
 
 // GetId returns the Id field value
@@ -675,12 +744,10 @@ func (o PageAddProductsResponseData) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["domain"] = o.Domain
 	toSerialize["name"] = o.Name
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
-	if o.Amount != nil {
-		toSerialize["amount"] = o.Amount
-	}
+	toSerialize["amount"] = o.Amount.Get()
 	toSerialize["currency"] = o.Currency
 	toSerialize["slug"] = o.Slug
 	if o.CustomFields != nil {
@@ -697,14 +764,14 @@ func (o PageAddProductsResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["active"] = o.Active
 	toSerialize["published"] = o.Published
 	toSerialize["migrate"] = o.Migrate
-	if o.NotificationEmail != nil {
-		toSerialize["notification_email"] = o.NotificationEmail
+	if o.NotificationEmail.IsSet() {
+		toSerialize["notification_email"] = o.NotificationEmail.Get()
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
 	}
-	if o.SplitCode != nil {
-		toSerialize["split_code"] = o.SplitCode
+	if o.SplitCode.IsSet() {
+		toSerialize["split_code"] = o.SplitCode.Get()
 	}
 	toSerialize["id"] = o.Id
 	toSerialize["createdAt"] = o.CreatedAt
@@ -722,21 +789,14 @@ func (o *PageAddProductsResponseData) UnmarshalJSON(data []byte) (err error) {
 		"plan",
 		"domain",
 		"name",
-		"description",
 		"amount",
 		"currency",
 		"slug",
-		"custom_fields",
 		"type",
-		"redirect_url",
-		"success_message",
 		"collect_phone",
 		"active",
 		"published",
 		"migrate",
-		"notification_email",
-		"metadata",
-		"split_code",
 		"id",
 		"createdAt",
 		"updatedAt",

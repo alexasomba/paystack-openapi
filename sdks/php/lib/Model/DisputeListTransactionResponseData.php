@@ -124,22 +124,22 @@ class DisputeListTransactionResponseData implements ModelInterface, ArrayAccess,
     protected static array $openAPINullables = [
         'history' => false,
         'messages' => false,
-        'currency' => false,
-        'last4' => false,
-        'bin' => false,
+        'currency' => true,
+        'last4' => true,
+        'bin' => true,
         'transaction_reference' => true,
-        'merchant_transaction_reference' => false,
-        'refund_amount' => false,
+        'merchant_transaction_reference' => true,
+        'refund_amount' => true,
         'status' => false,
         'domain' => false,
         'resolution' => true,
-        'category' => false,
+        'category' => true,
         'note' => true,
         'attachments' => true,
         'id' => false,
         'integration' => false,
         'transaction' => false,
-        'created_by' => false,
+        'created_by' => true,
         'evidence' => true,
         'resolved_at' => true,
         'created_at' => false,
@@ -435,22 +435,19 @@ class DisputeListTransactionResponseData implements ModelInterface, ArrayAccess,
         if ($this->container['messages'] === null) {
             $invalidProperties[] = "'messages' can't be null";
         }
-        if ($this->container['currency'] === null) {
+        if ($this->container['currency'] === null && !$this->isNullableSetToNull('currency')) {
             $invalidProperties[] = "'currency' can't be null";
         }
-        if ($this->container['last4'] === null) {
+        if ($this->container['last4'] === null && !$this->isNullableSetToNull('last4')) {
             $invalidProperties[] = "'last4' can't be null";
         }
-        if ($this->container['bin'] === null) {
+        if ($this->container['bin'] === null && !$this->isNullableSetToNull('bin')) {
             $invalidProperties[] = "'bin' can't be null";
         }
-        if ($this->container['transaction_reference'] === null && !$this->isNullableSetToNull('transaction_reference')) {
-            $invalidProperties[] = "'transaction_reference' can't be null";
-        }
-        if ($this->container['merchant_transaction_reference'] === null) {
+        if ($this->container['merchant_transaction_reference'] === null && !$this->isNullableSetToNull('merchant_transaction_reference')) {
             $invalidProperties[] = "'merchant_transaction_reference' can't be null";
         }
-        if ($this->container['refund_amount'] === null) {
+        if ($this->container['refund_amount'] === null && !$this->isNullableSetToNull('refund_amount')) {
             $invalidProperties[] = "'refund_amount' can't be null";
         }
         if ($this->container['status'] === null) {
@@ -459,17 +456,8 @@ class DisputeListTransactionResponseData implements ModelInterface, ArrayAccess,
         if ($this->container['domain'] === null) {
             $invalidProperties[] = "'domain' can't be null";
         }
-        if ($this->container['resolution'] === null && !$this->isNullableSetToNull('resolution')) {
-            $invalidProperties[] = "'resolution' can't be null";
-        }
-        if ($this->container['category'] === null) {
+        if ($this->container['category'] === null && !$this->isNullableSetToNull('category')) {
             $invalidProperties[] = "'category' can't be null";
-        }
-        if ($this->container['note'] === null && !$this->isNullableSetToNull('note')) {
-            $invalidProperties[] = "'note' can't be null";
-        }
-        if ($this->container['attachments'] === null && !$this->isNullableSetToNull('attachments')) {
-            $invalidProperties[] = "'attachments' can't be null";
         }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
@@ -480,23 +468,14 @@ class DisputeListTransactionResponseData implements ModelInterface, ArrayAccess,
         if ($this->container['transaction'] === null) {
             $invalidProperties[] = "'transaction' can't be null";
         }
-        if ($this->container['created_by'] === null) {
+        if ($this->container['created_by'] === null && !$this->isNullableSetToNull('created_by')) {
             $invalidProperties[] = "'created_by' can't be null";
-        }
-        if ($this->container['evidence'] === null && !$this->isNullableSetToNull('evidence')) {
-            $invalidProperties[] = "'evidence' can't be null";
-        }
-        if ($this->container['resolved_at'] === null && !$this->isNullableSetToNull('resolved_at')) {
-            $invalidProperties[] = "'resolved_at' can't be null";
         }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
-        }
-        if ($this->container['due_at'] === null && !$this->isNullableSetToNull('due_at')) {
-            $invalidProperties[] = "'due_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -570,7 +549,7 @@ class DisputeListTransactionResponseData implements ModelInterface, ArrayAccess,
     /**
      * Gets currency
      *
-     * @return string
+     * @return string|null
      */
     public function getCurrency()
     {
@@ -580,14 +559,21 @@ class DisputeListTransactionResponseData implements ModelInterface, ArrayAccess,
     /**
      * Sets currency
      *
-     * @param string $currency currency
+     * @param string|null $currency currency
      *
      * @return self
      */
     public function setCurrency($currency)
     {
         if (is_null($currency)) {
-            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'currency');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('currency', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['currency'] = $currency;
 
@@ -597,7 +583,7 @@ class DisputeListTransactionResponseData implements ModelInterface, ArrayAccess,
     /**
      * Gets last4
      *
-     * @return string
+     * @return string|null
      */
     public function getLast4()
     {
@@ -607,14 +593,21 @@ class DisputeListTransactionResponseData implements ModelInterface, ArrayAccess,
     /**
      * Sets last4
      *
-     * @param string $last4 last4
+     * @param string|null $last4 last4
      *
      * @return self
      */
     public function setLast4($last4)
     {
         if (is_null($last4)) {
-            throw new \InvalidArgumentException('non-nullable last4 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'last4');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last4', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['last4'] = $last4;
 
@@ -624,7 +617,7 @@ class DisputeListTransactionResponseData implements ModelInterface, ArrayAccess,
     /**
      * Gets bin
      *
-     * @return string
+     * @return string|null
      */
     public function getBin()
     {
@@ -634,14 +627,21 @@ class DisputeListTransactionResponseData implements ModelInterface, ArrayAccess,
     /**
      * Sets bin
      *
-     * @param string $bin bin
+     * @param string|null $bin bin
      *
      * @return self
      */
     public function setBin($bin)
     {
         if (is_null($bin)) {
-            throw new \InvalidArgumentException('non-nullable bin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'bin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bin', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['bin'] = $bin;
 
@@ -685,7 +685,7 @@ class DisputeListTransactionResponseData implements ModelInterface, ArrayAccess,
     /**
      * Gets merchant_transaction_reference
      *
-     * @return string
+     * @return string|null
      */
     public function getMerchantTransactionReference()
     {
@@ -695,14 +695,21 @@ class DisputeListTransactionResponseData implements ModelInterface, ArrayAccess,
     /**
      * Sets merchant_transaction_reference
      *
-     * @param string $merchant_transaction_reference merchant_transaction_reference
+     * @param string|null $merchant_transaction_reference merchant_transaction_reference
      *
      * @return self
      */
     public function setMerchantTransactionReference($merchant_transaction_reference)
     {
         if (is_null($merchant_transaction_reference)) {
-            throw new \InvalidArgumentException('non-nullable merchant_transaction_reference cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'merchant_transaction_reference');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('merchant_transaction_reference', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['merchant_transaction_reference'] = $merchant_transaction_reference;
 
@@ -712,7 +719,7 @@ class DisputeListTransactionResponseData implements ModelInterface, ArrayAccess,
     /**
      * Gets refund_amount
      *
-     * @return int
+     * @return int|null
      */
     public function getRefundAmount()
     {
@@ -722,14 +729,21 @@ class DisputeListTransactionResponseData implements ModelInterface, ArrayAccess,
     /**
      * Sets refund_amount
      *
-     * @param int $refund_amount refund_amount
+     * @param int|null $refund_amount refund_amount
      *
      * @return self
      */
     public function setRefundAmount($refund_amount)
     {
         if (is_null($refund_amount)) {
-            throw new \InvalidArgumentException('non-nullable refund_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'refund_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('refund_amount', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['refund_amount'] = $refund_amount;
 
@@ -827,7 +841,7 @@ class DisputeListTransactionResponseData implements ModelInterface, ArrayAccess,
     /**
      * Gets category
      *
-     * @return string
+     * @return string|null
      */
     public function getCategory()
     {
@@ -837,14 +851,21 @@ class DisputeListTransactionResponseData implements ModelInterface, ArrayAccess,
     /**
      * Sets category
      *
-     * @param string $category category
+     * @param string|null $category category
      *
      * @return self
      */
     public function setCategory($category)
     {
         if (is_null($category)) {
-            throw new \InvalidArgumentException('non-nullable category cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'category');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('category', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['category'] = $category;
 
@@ -1003,7 +1024,7 @@ class DisputeListTransactionResponseData implements ModelInterface, ArrayAccess,
     /**
      * Gets created_by
      *
-     * @return int
+     * @return int|null
      */
     public function getCreatedBy()
     {
@@ -1013,14 +1034,21 @@ class DisputeListTransactionResponseData implements ModelInterface, ArrayAccess,
     /**
      * Sets created_by
      *
-     * @param int $created_by created_by
+     * @param int|null $created_by created_by
      *
      * @return self
      */
     public function setCreatedBy($created_by)
     {
         if (is_null($created_by)) {
-            throw new \InvalidArgumentException('non-nullable created_by cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'created_by');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('created_by', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['created_by'] = $created_by;
 

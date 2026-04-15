@@ -24,7 +24,7 @@ var _ MappedNullable = &BulkChargeFetchResponse{}
 type BulkChargeFetchResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
-	Data BulkChargeInitiateResponseData `json:"data"`
+	Data BulkChargeFetchResponseData `json:"data"`
 }
 
 type _BulkChargeFetchResponse BulkChargeFetchResponse
@@ -33,7 +33,7 @@ type _BulkChargeFetchResponse BulkChargeFetchResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBulkChargeFetchResponse(status bool, message string, data BulkChargeInitiateResponseData) *BulkChargeFetchResponse {
+func NewBulkChargeFetchResponse(status bool, message string, data BulkChargeFetchResponseData) *BulkChargeFetchResponse {
 	this := BulkChargeFetchResponse{}
 	this.Status = status
 	this.Message = message
@@ -98,9 +98,9 @@ func (o *BulkChargeFetchResponse) SetMessage(v string) {
 }
 
 // GetData returns the Data field value
-func (o *BulkChargeFetchResponse) GetData() BulkChargeInitiateResponseData {
+func (o *BulkChargeFetchResponse) GetData() BulkChargeFetchResponseData {
 	if o == nil {
-		var ret BulkChargeInitiateResponseData
+		var ret BulkChargeFetchResponseData
 		return ret
 	}
 
@@ -109,7 +109,7 @@ func (o *BulkChargeFetchResponse) GetData() BulkChargeInitiateResponseData {
 
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
-func (o *BulkChargeFetchResponse) GetDataOk() (*BulkChargeInitiateResponseData, bool) {
+func (o *BulkChargeFetchResponse) GetDataOk() (*BulkChargeFetchResponseData, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -117,7 +117,7 @@ func (o *BulkChargeFetchResponse) GetDataOk() (*BulkChargeInitiateResponseData, 
 }
 
 // SetData sets field value
-func (o *BulkChargeFetchResponse) SetData(v BulkChargeInitiateResponseData) {
+func (o *BulkChargeFetchResponse) SetData(v BulkChargeFetchResponseData) {
 	o.Data = v
 }
 

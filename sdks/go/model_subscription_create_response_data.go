@@ -30,20 +30,12 @@ type SubscriptionCreateResponseData struct {
 	Status string `json:"status"`
 	Quantity int32 `json:"quantity"`
 	Amount int32 `json:"amount"`
-	Authorization int32 `json:"authorization"`
-	InvoiceLimit int32 `json:"invoice_limit"`
-	SplitCode interface{} `json:"split_code"`
+	Authorization SubscriptionCreateResponseDataAuthorization `json:"authorization"`
 	SubscriptionCode string `json:"subscription_code"`
 	EmailToken string `json:"email_token"`
 	Id int32 `json:"id"`
-	CancelledAt interface{} `json:"cancelledAt"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
-	CronExpression string `json:"cron_expression"`
-	NextPaymentDate string `json:"next_payment_date"`
-	EasyCronId NullableString `json:"easy_cron_id"`
-	OpenInvoice NullableString `json:"open_invoice"`
-	Metadata map[string]interface{} `json:"metadata"`
 }
 
 type _SubscriptionCreateResponseData SubscriptionCreateResponseData
@@ -52,7 +44,7 @@ type _SubscriptionCreateResponseData SubscriptionCreateResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSubscriptionCreateResponseData(customer int32, plan int32, integration int32, domain string, start int32, status string, quantity int32, amount int32, authorization int32, invoiceLimit int32, splitCode interface{}, subscriptionCode string, emailToken string, id int32, cancelledAt interface{}, createdAt string, updatedAt string, cronExpression string, nextPaymentDate string, easyCronId NullableString, openInvoice NullableString, metadata map[string]interface{}) *SubscriptionCreateResponseData {
+func NewSubscriptionCreateResponseData(customer int32, plan int32, integration int32, domain string, start int32, status string, quantity int32, amount int32, authorization SubscriptionCreateResponseDataAuthorization, subscriptionCode string, emailToken string, id int32, createdAt string, updatedAt string) *SubscriptionCreateResponseData {
 	this := SubscriptionCreateResponseData{}
 	this.Customer = customer
 	this.Plan = plan
@@ -63,19 +55,11 @@ func NewSubscriptionCreateResponseData(customer int32, plan int32, integration i
 	this.Quantity = quantity
 	this.Amount = amount
 	this.Authorization = authorization
-	this.InvoiceLimit = invoiceLimit
-	this.SplitCode = splitCode
 	this.SubscriptionCode = subscriptionCode
 	this.EmailToken = emailToken
 	this.Id = id
-	this.CancelledAt = cancelledAt
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
-	this.CronExpression = cronExpression
-	this.NextPaymentDate = nextPaymentDate
-	this.EasyCronId = easyCronId
-	this.OpenInvoice = openInvoice
-	this.Metadata = metadata
 	return &this
 }
 
@@ -280,9 +264,9 @@ func (o *SubscriptionCreateResponseData) SetAmount(v int32) {
 }
 
 // GetAuthorization returns the Authorization field value
-func (o *SubscriptionCreateResponseData) GetAuthorization() int32 {
+func (o *SubscriptionCreateResponseData) GetAuthorization() SubscriptionCreateResponseDataAuthorization {
 	if o == nil {
-		var ret int32
+		var ret SubscriptionCreateResponseDataAuthorization
 		return ret
 	}
 
@@ -291,7 +275,7 @@ func (o *SubscriptionCreateResponseData) GetAuthorization() int32 {
 
 // GetAuthorizationOk returns a tuple with the Authorization field value
 // and a boolean to check if the value has been set.
-func (o *SubscriptionCreateResponseData) GetAuthorizationOk() (*int32, bool) {
+func (o *SubscriptionCreateResponseData) GetAuthorizationOk() (*SubscriptionCreateResponseDataAuthorization, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -299,58 +283,8 @@ func (o *SubscriptionCreateResponseData) GetAuthorizationOk() (*int32, bool) {
 }
 
 // SetAuthorization sets field value
-func (o *SubscriptionCreateResponseData) SetAuthorization(v int32) {
+func (o *SubscriptionCreateResponseData) SetAuthorization(v SubscriptionCreateResponseDataAuthorization) {
 	o.Authorization = v
-}
-
-// GetInvoiceLimit returns the InvoiceLimit field value
-func (o *SubscriptionCreateResponseData) GetInvoiceLimit() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.InvoiceLimit
-}
-
-// GetInvoiceLimitOk returns a tuple with the InvoiceLimit field value
-// and a boolean to check if the value has been set.
-func (o *SubscriptionCreateResponseData) GetInvoiceLimitOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.InvoiceLimit, true
-}
-
-// SetInvoiceLimit sets field value
-func (o *SubscriptionCreateResponseData) SetInvoiceLimit(v int32) {
-	o.InvoiceLimit = v
-}
-
-// GetSplitCode returns the SplitCode field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *SubscriptionCreateResponseData) GetSplitCode() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.SplitCode
-}
-
-// GetSplitCodeOk returns a tuple with the SplitCode field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubscriptionCreateResponseData) GetSplitCodeOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.SplitCode) {
-		return nil, false
-	}
-	return &o.SplitCode, true
-}
-
-// SetSplitCode sets field value
-func (o *SubscriptionCreateResponseData) SetSplitCode(v interface{}) {
-	o.SplitCode = v
 }
 
 // GetSubscriptionCode returns the SubscriptionCode field value
@@ -425,32 +359,6 @@ func (o *SubscriptionCreateResponseData) SetId(v int32) {
 	o.Id = v
 }
 
-// GetCancelledAt returns the CancelledAt field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *SubscriptionCreateResponseData) GetCancelledAt() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.CancelledAt
-}
-
-// GetCancelledAtOk returns a tuple with the CancelledAt field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubscriptionCreateResponseData) GetCancelledAtOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.CancelledAt) {
-		return nil, false
-	}
-	return &o.CancelledAt, true
-}
-
-// SetCancelledAt sets field value
-func (o *SubscriptionCreateResponseData) SetCancelledAt(v interface{}) {
-	o.CancelledAt = v
-}
-
 // GetCreatedAt returns the CreatedAt field value
 func (o *SubscriptionCreateResponseData) GetCreatedAt() string {
 	if o == nil {
@@ -499,132 +407,6 @@ func (o *SubscriptionCreateResponseData) SetUpdatedAt(v string) {
 	o.UpdatedAt = v
 }
 
-// GetCronExpression returns the CronExpression field value
-func (o *SubscriptionCreateResponseData) GetCronExpression() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.CronExpression
-}
-
-// GetCronExpressionOk returns a tuple with the CronExpression field value
-// and a boolean to check if the value has been set.
-func (o *SubscriptionCreateResponseData) GetCronExpressionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CronExpression, true
-}
-
-// SetCronExpression sets field value
-func (o *SubscriptionCreateResponseData) SetCronExpression(v string) {
-	o.CronExpression = v
-}
-
-// GetNextPaymentDate returns the NextPaymentDate field value
-func (o *SubscriptionCreateResponseData) GetNextPaymentDate() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.NextPaymentDate
-}
-
-// GetNextPaymentDateOk returns a tuple with the NextPaymentDate field value
-// and a boolean to check if the value has been set.
-func (o *SubscriptionCreateResponseData) GetNextPaymentDateOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.NextPaymentDate, true
-}
-
-// SetNextPaymentDate sets field value
-func (o *SubscriptionCreateResponseData) SetNextPaymentDate(v string) {
-	o.NextPaymentDate = v
-}
-
-// GetEasyCronId returns the EasyCronId field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *SubscriptionCreateResponseData) GetEasyCronId() string {
-	if o == nil || o.EasyCronId.Get() == nil {
-		var ret string
-		return ret
-	}
-
-	return *o.EasyCronId.Get()
-}
-
-// GetEasyCronIdOk returns a tuple with the EasyCronId field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubscriptionCreateResponseData) GetEasyCronIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.EasyCronId.Get(), o.EasyCronId.IsSet()
-}
-
-// SetEasyCronId sets field value
-func (o *SubscriptionCreateResponseData) SetEasyCronId(v string) {
-	o.EasyCronId.Set(&v)
-}
-
-// GetOpenInvoice returns the OpenInvoice field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *SubscriptionCreateResponseData) GetOpenInvoice() string {
-	if o == nil || o.OpenInvoice.Get() == nil {
-		var ret string
-		return ret
-	}
-
-	return *o.OpenInvoice.Get()
-}
-
-// GetOpenInvoiceOk returns a tuple with the OpenInvoice field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubscriptionCreateResponseData) GetOpenInvoiceOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.OpenInvoice.Get(), o.OpenInvoice.IsSet()
-}
-
-// SetOpenInvoice sets field value
-func (o *SubscriptionCreateResponseData) SetOpenInvoice(v string) {
-	o.OpenInvoice.Set(&v)
-}
-
-// GetMetadata returns the Metadata field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *SubscriptionCreateResponseData) GetMetadata() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-
-	return o.Metadata
-}
-
-// GetMetadataOk returns a tuple with the Metadata field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubscriptionCreateResponseData) GetMetadataOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Metadata) {
-		return map[string]interface{}{}, false
-	}
-	return o.Metadata, true
-}
-
-// SetMetadata sets field value
-func (o *SubscriptionCreateResponseData) SetMetadata(v map[string]interface{}) {
-	o.Metadata = v
-}
-
 func (o SubscriptionCreateResponseData) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -644,25 +426,11 @@ func (o SubscriptionCreateResponseData) ToMap() (map[string]interface{}, error) 
 	toSerialize["quantity"] = o.Quantity
 	toSerialize["amount"] = o.Amount
 	toSerialize["authorization"] = o.Authorization
-	toSerialize["invoice_limit"] = o.InvoiceLimit
-	if o.SplitCode != nil {
-		toSerialize["split_code"] = o.SplitCode
-	}
 	toSerialize["subscription_code"] = o.SubscriptionCode
 	toSerialize["email_token"] = o.EmailToken
 	toSerialize["id"] = o.Id
-	if o.CancelledAt != nil {
-		toSerialize["cancelledAt"] = o.CancelledAt
-	}
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["updatedAt"] = o.UpdatedAt
-	toSerialize["cron_expression"] = o.CronExpression
-	toSerialize["next_payment_date"] = o.NextPaymentDate
-	toSerialize["easy_cron_id"] = o.EasyCronId.Get()
-	toSerialize["open_invoice"] = o.OpenInvoice.Get()
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
-	}
 	return toSerialize, nil
 }
 
@@ -680,19 +448,11 @@ func (o *SubscriptionCreateResponseData) UnmarshalJSON(data []byte) (err error) 
 		"quantity",
 		"amount",
 		"authorization",
-		"invoice_limit",
-		"split_code",
 		"subscription_code",
 		"email_token",
 		"id",
-		"cancelledAt",
 		"createdAt",
 		"updatedAt",
-		"cron_expression",
-		"next_payment_date",
-		"easy_cron_id",
-		"open_invoice",
-		"metadata",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -30,7 +30,7 @@ type DedicatedNubanFetchResponseData struct {
 	CreatedAt string `json:"created_at"`
 	UpdatedAt string `json:"updated_at"`
 	Currency string `json:"currency"`
-	SplitConfig interface{} `json:"split_config"`
+	SplitConfig NullableTransactionPartialDebitResponseDataMetadata `json:"split_config"`
 	Active bool `json:"active"`
 	Assigned bool `json:"assigned"`
 }
@@ -41,7 +41,7 @@ type _DedicatedNubanFetchResponseData DedicatedNubanFetchResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDedicatedNubanFetchResponseData(customer DedicatedNubanCreateResponseDataCustomer, bank DedicatedNubanListResponseArrayBank, id int32, accountName string, accountNumber string, createdAt string, updatedAt string, currency string, splitConfig interface{}, active bool, assigned bool) *DedicatedNubanFetchResponseData {
+func NewDedicatedNubanFetchResponseData(customer DedicatedNubanCreateResponseDataCustomer, bank DedicatedNubanListResponseArrayBank, id int32, accountName string, accountNumber string, createdAt string, updatedAt string, currency string, splitConfig NullableTransactionPartialDebitResponseDataMetadata, active bool, assigned bool) *DedicatedNubanFetchResponseData {
 	this := DedicatedNubanFetchResponseData{}
 	this.Customer = customer
 	this.Bank = bank
@@ -258,29 +258,29 @@ func (o *DedicatedNubanFetchResponseData) SetCurrency(v string) {
 }
 
 // GetSplitConfig returns the SplitConfig field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *DedicatedNubanFetchResponseData) GetSplitConfig() interface{} {
-	if o == nil {
-		var ret interface{}
+// If the value is explicit nil, the zero value for TransactionPartialDebitResponseDataMetadata will be returned
+func (o *DedicatedNubanFetchResponseData) GetSplitConfig() TransactionPartialDebitResponseDataMetadata {
+	if o == nil || o.SplitConfig.Get() == nil {
+		var ret TransactionPartialDebitResponseDataMetadata
 		return ret
 	}
 
-	return o.SplitConfig
+	return *o.SplitConfig.Get()
 }
 
 // GetSplitConfigOk returns a tuple with the SplitConfig field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DedicatedNubanFetchResponseData) GetSplitConfigOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.SplitConfig) {
+func (o *DedicatedNubanFetchResponseData) GetSplitConfigOk() (*TransactionPartialDebitResponseDataMetadata, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.SplitConfig, true
+	return o.SplitConfig.Get(), o.SplitConfig.IsSet()
 }
 
 // SetSplitConfig sets field value
-func (o *DedicatedNubanFetchResponseData) SetSplitConfig(v interface{}) {
-	o.SplitConfig = v
+func (o *DedicatedNubanFetchResponseData) SetSplitConfig(v TransactionPartialDebitResponseDataMetadata) {
+	o.SplitConfig.Set(&v)
 }
 
 // GetActive returns the Active field value
@@ -349,9 +349,7 @@ func (o DedicatedNubanFetchResponseData) ToMap() (map[string]interface{}, error)
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["updated_at"] = o.UpdatedAt
 	toSerialize["currency"] = o.Currency
-	if o.SplitConfig != nil {
-		toSerialize["split_config"] = o.SplitConfig
-	}
+	toSerialize["split_config"] = o.SplitConfig.Get()
 	toSerialize["active"] = o.Active
 	toSerialize["assigned"] = o.Assigned
 	return toSerialize, nil

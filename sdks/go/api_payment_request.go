@@ -262,10 +262,10 @@ func (a *PaymentRequestAPIService) PaymentRequestCreateExecute(r ApiPaymentReque
 type ApiPaymentRequestFetchRequest struct {
 	ctx context.Context
 	ApiService *PaymentRequestAPIService
-	id int32
+	idOrCode string
 }
 
-func (r ApiPaymentRequestFetchRequest) Execute() (*PaymentRequestListResponse, *http.Response, error) {
+func (r ApiPaymentRequestFetchRequest) Execute() (*PaymentRequestViewResponse, *http.Response, error) {
 	return r.ApiService.PaymentRequestFetchExecute(r)
 }
 
@@ -275,25 +275,25 @@ PaymentRequestFetch Fetch Payment Request
 Fetch a previously created payment request
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The unique identifier of a previously created payment request
+ @param idOrCode The payment request ID or code you want to fetch
  @return ApiPaymentRequestFetchRequest
 */
-func (a *PaymentRequestAPIService) PaymentRequestFetch(ctx context.Context, id int32) ApiPaymentRequestFetchRequest {
+func (a *PaymentRequestAPIService) PaymentRequestFetch(ctx context.Context, idOrCode string) ApiPaymentRequestFetchRequest {
 	return ApiPaymentRequestFetchRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		idOrCode: idOrCode,
 	}
 }
 
 // Execute executes the request
-//  @return PaymentRequestListResponse
-func (a *PaymentRequestAPIService) PaymentRequestFetchExecute(r ApiPaymentRequestFetchRequest) (*PaymentRequestListResponse, *http.Response, error) {
+//  @return PaymentRequestViewResponse
+func (a *PaymentRequestAPIService) PaymentRequestFetchExecute(r ApiPaymentRequestFetchRequest) (*PaymentRequestViewResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *PaymentRequestListResponse
+		localVarReturnValue  *PaymentRequestViewResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.PaymentRequestFetch")
@@ -301,8 +301,8 @@ func (a *PaymentRequestAPIService) PaymentRequestFetchExecute(r ApiPaymentReques
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/paymentrequest/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/paymentrequest/{id_or_code}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id_or_code"+"}", url.PathEscape(parameterValueToString(r.idOrCode, "idOrCode")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -927,7 +927,7 @@ func (a *PaymentRequestAPIService) PaymentRequestTotalsExecute(r ApiPaymentReque
 type ApiPaymentRequestUpdateRequest struct {
 	ctx context.Context
 	ApiService *PaymentRequestAPIService
-	id int32
+	idOrCode string
 	paymentRequestUpdate *PaymentRequestUpdate
 }
 
@@ -946,14 +946,14 @@ PaymentRequestUpdate Update Payment Request
 Update a previously created payment request
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The unique identifier of a previously created payment request
+ @param idOrCode The payment request ID or code you want to fetch
  @return ApiPaymentRequestUpdateRequest
 */
-func (a *PaymentRequestAPIService) PaymentRequestUpdate(ctx context.Context, id int32) ApiPaymentRequestUpdateRequest {
+func (a *PaymentRequestAPIService) PaymentRequestUpdate(ctx context.Context, idOrCode string) ApiPaymentRequestUpdateRequest {
 	return ApiPaymentRequestUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		idOrCode: idOrCode,
 	}
 }
 
@@ -972,8 +972,8 @@ func (a *PaymentRequestAPIService) PaymentRequestUpdateExecute(r ApiPaymentReque
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/paymentrequest/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/paymentrequest/{id_or_code}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id_or_code"+"}", url.PathEscape(parameterValueToString(r.idOrCode, "idOrCode")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

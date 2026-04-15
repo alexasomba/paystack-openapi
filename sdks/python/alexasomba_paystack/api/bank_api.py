@@ -46,18 +46,18 @@ class BankApi:
     @validate_call
     def bank_list(
         self,
-        country: Annotated[Optional[StrictStr], Field(description="The country from which to obtain the list of supported banks")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="The country from which to obtain the list of supported banks")] = None,
+        country: Annotated[Optional[StrictStr], Field(description="The country from which to obtain the list of supported banks. Accepted values are: ghana, kenya, nigeria, south africa")] = None,
+        currency: Annotated[Optional[StrictStr], Field(description="One of the supported currency")] = None,
         use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of objects to return per page. Defaults to 50, and limited to 100 records per page.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.")] = None,
         next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
         previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
         pay_with_bank_transfer: Annotated[Optional[StrictBool], Field(description="A flag to filter for available banks a customer can make a transfer to complete a payment")] = None,
         pay_with_bank: Annotated[Optional[StrictBool], Field(description="A flag to filter for banks a customer can pay directly from")] = None,
         enabled_for_verification: Annotated[Optional[StrictBool], Field(description="A flag to filter the banks that are supported for account verification in South Africa. You need to combine this with either the `currency` or `country` filter. ")] = None,
-        gateway: Annotated[Optional[StrictStr], Field(description="The type of gateway for a Nigerian bank")] = None,
-        type: Annotated[Optional[StrictStr], Field(description="Type of financial channel")] = None,
+        gateway: Annotated[Optional[StrictStr], Field(description="The gateway type of the bank")] = None,
+        type: Annotated[Optional[StrictStr], Field(description="Type of financial channel. For Ghanaian channels, please use either mobile_money for mobile money channels OR ghipss for bank channels")] = None,
         include_nip_sort_code: Annotated[Optional[StrictBool], Field(description="A flag that returns Nigerian banks with their NIP institution code.  The returned value can be used in identifying institutions on NIP. ")] = None,
         _request_timeout: Union[
             None,
@@ -74,17 +74,17 @@ class BankApi:
     ) -> MiscellaneousListBanksResponse:
         """List Banks
 
-        List banks supported on Paystack
+        Get a list of all supported banks and their properties
 
-        :param country: The country from which to obtain the list of supported banks
+        :param country: The country from which to obtain the list of supported banks. Accepted values are: ghana, kenya, nigeria, south africa
         :type country: str
-        :param currency: The country from which to obtain the list of supported banks
+        :param currency: One of the supported currency
         :type currency: str
         :param use_cursor: A flag to indicate if cursor based pagination should be used
         :type use_cursor: bool
-        :param per_page: The number of records to fetch per request
+        :param per_page: The number of objects to return per page. Defaults to 50, and limited to 100 records per page.
         :type per_page: int
-        :param page: The offset to retrieve data from
+        :param page: Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
         :type page: int
         :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
         :type next: str
@@ -96,9 +96,9 @@ class BankApi:
         :type pay_with_bank: bool
         :param enabled_for_verification: A flag to filter the banks that are supported for account verification in South Africa. You need to combine this with either the `currency` or `country` filter. 
         :type enabled_for_verification: bool
-        :param gateway: The type of gateway for a Nigerian bank
+        :param gateway: The gateway type of the bank
         :type gateway: str
-        :param type: Type of financial channel
+        :param type: Type of financial channel. For Ghanaian channels, please use either mobile_money for mobile money channels OR ghipss for bank channels
         :type type: str
         :param include_nip_sort_code: A flag that returns Nigerian banks with their NIP institution code.  The returned value can be used in identifying institutions on NIP. 
         :type include_nip_sort_code: bool
@@ -163,18 +163,18 @@ class BankApi:
     @validate_call
     def bank_list_with_http_info(
         self,
-        country: Annotated[Optional[StrictStr], Field(description="The country from which to obtain the list of supported banks")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="The country from which to obtain the list of supported banks")] = None,
+        country: Annotated[Optional[StrictStr], Field(description="The country from which to obtain the list of supported banks. Accepted values are: ghana, kenya, nigeria, south africa")] = None,
+        currency: Annotated[Optional[StrictStr], Field(description="One of the supported currency")] = None,
         use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of objects to return per page. Defaults to 50, and limited to 100 records per page.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.")] = None,
         next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
         previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
         pay_with_bank_transfer: Annotated[Optional[StrictBool], Field(description="A flag to filter for available banks a customer can make a transfer to complete a payment")] = None,
         pay_with_bank: Annotated[Optional[StrictBool], Field(description="A flag to filter for banks a customer can pay directly from")] = None,
         enabled_for_verification: Annotated[Optional[StrictBool], Field(description="A flag to filter the banks that are supported for account verification in South Africa. You need to combine this with either the `currency` or `country` filter. ")] = None,
-        gateway: Annotated[Optional[StrictStr], Field(description="The type of gateway for a Nigerian bank")] = None,
-        type: Annotated[Optional[StrictStr], Field(description="Type of financial channel")] = None,
+        gateway: Annotated[Optional[StrictStr], Field(description="The gateway type of the bank")] = None,
+        type: Annotated[Optional[StrictStr], Field(description="Type of financial channel. For Ghanaian channels, please use either mobile_money for mobile money channels OR ghipss for bank channels")] = None,
         include_nip_sort_code: Annotated[Optional[StrictBool], Field(description="A flag that returns Nigerian banks with their NIP institution code.  The returned value can be used in identifying institutions on NIP. ")] = None,
         _request_timeout: Union[
             None,
@@ -191,17 +191,17 @@ class BankApi:
     ) -> ApiResponse[MiscellaneousListBanksResponse]:
         """List Banks
 
-        List banks supported on Paystack
+        Get a list of all supported banks and their properties
 
-        :param country: The country from which to obtain the list of supported banks
+        :param country: The country from which to obtain the list of supported banks. Accepted values are: ghana, kenya, nigeria, south africa
         :type country: str
-        :param currency: The country from which to obtain the list of supported banks
+        :param currency: One of the supported currency
         :type currency: str
         :param use_cursor: A flag to indicate if cursor based pagination should be used
         :type use_cursor: bool
-        :param per_page: The number of records to fetch per request
+        :param per_page: The number of objects to return per page. Defaults to 50, and limited to 100 records per page.
         :type per_page: int
-        :param page: The offset to retrieve data from
+        :param page: Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
         :type page: int
         :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
         :type next: str
@@ -213,9 +213,9 @@ class BankApi:
         :type pay_with_bank: bool
         :param enabled_for_verification: A flag to filter the banks that are supported for account verification in South Africa. You need to combine this with either the `currency` or `country` filter. 
         :type enabled_for_verification: bool
-        :param gateway: The type of gateway for a Nigerian bank
+        :param gateway: The gateway type of the bank
         :type gateway: str
-        :param type: Type of financial channel
+        :param type: Type of financial channel. For Ghanaian channels, please use either mobile_money for mobile money channels OR ghipss for bank channels
         :type type: str
         :param include_nip_sort_code: A flag that returns Nigerian banks with their NIP institution code.  The returned value can be used in identifying institutions on NIP. 
         :type include_nip_sort_code: bool
@@ -280,18 +280,18 @@ class BankApi:
     @validate_call
     def bank_list_without_preload_content(
         self,
-        country: Annotated[Optional[StrictStr], Field(description="The country from which to obtain the list of supported banks")] = None,
-        currency: Annotated[Optional[StrictStr], Field(description="The country from which to obtain the list of supported banks")] = None,
+        country: Annotated[Optional[StrictStr], Field(description="The country from which to obtain the list of supported banks. Accepted values are: ghana, kenya, nigeria, south africa")] = None,
+        currency: Annotated[Optional[StrictStr], Field(description="One of the supported currency")] = None,
         use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="The number of objects to return per page. Defaults to 50, and limited to 100 records per page.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.")] = None,
         next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
         previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
         pay_with_bank_transfer: Annotated[Optional[StrictBool], Field(description="A flag to filter for available banks a customer can make a transfer to complete a payment")] = None,
         pay_with_bank: Annotated[Optional[StrictBool], Field(description="A flag to filter for banks a customer can pay directly from")] = None,
         enabled_for_verification: Annotated[Optional[StrictBool], Field(description="A flag to filter the banks that are supported for account verification in South Africa. You need to combine this with either the `currency` or `country` filter. ")] = None,
-        gateway: Annotated[Optional[StrictStr], Field(description="The type of gateway for a Nigerian bank")] = None,
-        type: Annotated[Optional[StrictStr], Field(description="Type of financial channel")] = None,
+        gateway: Annotated[Optional[StrictStr], Field(description="The gateway type of the bank")] = None,
+        type: Annotated[Optional[StrictStr], Field(description="Type of financial channel. For Ghanaian channels, please use either mobile_money for mobile money channels OR ghipss for bank channels")] = None,
         include_nip_sort_code: Annotated[Optional[StrictBool], Field(description="A flag that returns Nigerian banks with their NIP institution code.  The returned value can be used in identifying institutions on NIP. ")] = None,
         _request_timeout: Union[
             None,
@@ -308,17 +308,17 @@ class BankApi:
     ) -> RESTResponseType:
         """List Banks
 
-        List banks supported on Paystack
+        Get a list of all supported banks and their properties
 
-        :param country: The country from which to obtain the list of supported banks
+        :param country: The country from which to obtain the list of supported banks. Accepted values are: ghana, kenya, nigeria, south africa
         :type country: str
-        :param currency: The country from which to obtain the list of supported banks
+        :param currency: One of the supported currency
         :type currency: str
         :param use_cursor: A flag to indicate if cursor based pagination should be used
         :type use_cursor: bool
-        :param per_page: The number of records to fetch per request
+        :param per_page: The number of objects to return per page. Defaults to 50, and limited to 100 records per page.
         :type per_page: int
-        :param page: The offset to retrieve data from
+        :param page: Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
         :type page: int
         :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
         :type next: str
@@ -330,9 +330,9 @@ class BankApi:
         :type pay_with_bank: bool
         :param enabled_for_verification: A flag to filter the banks that are supported for account verification in South Africa. You need to combine this with either the `currency` or `country` filter. 
         :type enabled_for_verification: bool
-        :param gateway: The type of gateway for a Nigerian bank
+        :param gateway: The gateway type of the bank
         :type gateway: str
-        :param type: Type of financial channel
+        :param type: Type of financial channel. For Ghanaian channels, please use either mobile_money for mobile money channels OR ghipss for bank channels
         :type type: str
         :param include_nip_sort_code: A flag that returns Nigerian banks with their NIP institution code.  The returned value can be used in identifying institutions on NIP. 
         :type include_nip_sort_code: bool
@@ -519,8 +519,8 @@ class BankApi:
     @validate_call
     def bank_resolve_account_number(
         self,
-        account_number: Annotated[Optional[StrictInt], Field(description="The account number of interest")] = None,
-        bank_code: Annotated[Optional[StrictInt], Field(description="The bank code associated with the account number")] = None,
+        account_number: Annotated[Optional[StrictStr], Field(description="The account number of interest")] = None,
+        bank_code: Annotated[Optional[StrictStr], Field(description="The bank code associated with the account number")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -539,9 +539,9 @@ class BankApi:
         Resolve an account number to confirm the name associated with it
 
         :param account_number: The account number of interest
-        :type account_number: int
+        :type account_number: str
         :param bank_code: The bank code associated with the account number
-        :type bank_code: int
+        :type bank_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -592,8 +592,8 @@ class BankApi:
     @validate_call
     def bank_resolve_account_number_with_http_info(
         self,
-        account_number: Annotated[Optional[StrictInt], Field(description="The account number of interest")] = None,
-        bank_code: Annotated[Optional[StrictInt], Field(description="The bank code associated with the account number")] = None,
+        account_number: Annotated[Optional[StrictStr], Field(description="The account number of interest")] = None,
+        bank_code: Annotated[Optional[StrictStr], Field(description="The bank code associated with the account number")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -612,9 +612,9 @@ class BankApi:
         Resolve an account number to confirm the name associated with it
 
         :param account_number: The account number of interest
-        :type account_number: int
+        :type account_number: str
         :param bank_code: The bank code associated with the account number
-        :type bank_code: int
+        :type bank_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -665,8 +665,8 @@ class BankApi:
     @validate_call
     def bank_resolve_account_number_without_preload_content(
         self,
-        account_number: Annotated[Optional[StrictInt], Field(description="The account number of interest")] = None,
-        bank_code: Annotated[Optional[StrictInt], Field(description="The bank code associated with the account number")] = None,
+        account_number: Annotated[Optional[StrictStr], Field(description="The account number of interest")] = None,
+        bank_code: Annotated[Optional[StrictStr], Field(description="The bank code associated with the account number")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -685,9 +685,9 @@ class BankApi:
         Resolve an account number to confirm the name associated with it
 
         :param account_number: The account number of interest
-        :type account_number: int
+        :type account_number: str
         :param bank_code: The bank code associated with the account number
-        :type bank_code: int
+        :type bank_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of

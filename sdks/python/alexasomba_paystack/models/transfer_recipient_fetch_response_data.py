@@ -28,24 +28,25 @@ class TransferRecipientFetchResponseData(BaseModel):
     """
     TransferRecipientFetchResponseData
     """ # noqa: E501
-    integration: StrictInt
+    integration: Optional[StrictInt] = None
     domain: StrictStr
     type: StrictStr
     currency: StrictStr
     name: StrictStr
     details: TransferRecipientFetchResponseDataDetails
-    description: StrictStr
+    description: Optional[StrictStr] = None
     metadata: Optional[Dict[str, Any]] = None
     recipient_code: StrictStr
     active: StrictBool
-    recipient_account: StrictStr
-    institution_code: StrictStr
-    email: StrictStr
+    recipient_account: Optional[StrictStr] = None
+    institution_code: Optional[StrictStr] = None
+    email: Optional[StrictStr] = None
     id: StrictInt
-    is_deleted: StrictBool = Field(alias="isDeleted")
+    is_deleted: Optional[StrictBool] = Field(default=None, alias="isDeleted")
+    is_deleted: Optional[StrictBool] = None
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    __properties: ClassVar[List[str]] = ["integration", "domain", "type", "currency", "name", "details", "description", "metadata", "recipient_code", "active", "recipient_account", "institution_code", "email", "id", "isDeleted", "createdAt", "updatedAt"]
+    __properties: ClassVar[List[str]] = ["integration", "domain", "type", "currency", "name", "details", "description", "metadata", "recipient_code", "active", "recipient_account", "institution_code", "email", "id", "isDeleted", "is_deleted", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,10 +90,30 @@ class TransferRecipientFetchResponseData(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of details
         if self.details:
             _dict['details'] = self.details.to_dict()
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
         # set to None if metadata (nullable) is None
         # and model_fields_set contains the field
         if self.metadata is None and "metadata" in self.model_fields_set:
             _dict['metadata'] = None
+
+        # set to None if recipient_account (nullable) is None
+        # and model_fields_set contains the field
+        if self.recipient_account is None and "recipient_account" in self.model_fields_set:
+            _dict['recipient_account'] = None
+
+        # set to None if institution_code (nullable) is None
+        # and model_fields_set contains the field
+        if self.institution_code is None and "institution_code" in self.model_fields_set:
+            _dict['institution_code'] = None
+
+        # set to None if email (nullable) is None
+        # and model_fields_set contains the field
+        if self.email is None and "email" in self.model_fields_set:
+            _dict['email'] = None
 
         return _dict
 
@@ -121,6 +142,7 @@ class TransferRecipientFetchResponseData(BaseModel):
             "email": obj.get("email"),
             "id": obj.get("id"),
             "isDeleted": obj.get("isDeleted"),
+            "is_deleted": obj.get("is_deleted"),
             "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt")
         })

@@ -60,7 +60,7 @@ class BulkChargeFetchResponse implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPITypes = [
         'status' => 'bool',
         'message' => 'string',
-        'data' => '\Alexasomba\Paystack\Model\BulkChargeInitiateResponseData'
+        'data' => '\Alexasomba\Paystack\Model\BulkChargeFetchResponseData'
     ];
 
     /**
@@ -370,7 +370,7 @@ class BulkChargeFetchResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets data
      *
-     * @return \Alexasomba\Paystack\Model\BulkChargeInitiateResponseData
+     * @return \Alexasomba\Paystack\Model\BulkChargeFetchResponseData
      */
     public function getData()
     {
@@ -380,7 +380,7 @@ class BulkChargeFetchResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets data
      *
-     * @param \Alexasomba\Paystack\Model\BulkChargeInitiateResponseData $data data
+     * @param \Alexasomba\Paystack\Model\BulkChargeFetchResponseData $data data
      *
      * @return self
      */

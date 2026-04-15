@@ -23,6 +23,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.charge_authorization_response_data_authorization import ChargeAuthorizationResponseDataAuthorization
 from alexasomba_paystack.models.charge_authorization_response_data_customer import ChargeAuthorizationResponseDataCustomer
 from alexasomba_paystack.models.charge_authorization_response_data_log import ChargeAuthorizationResponseDataLog
+from alexasomba_paystack.models.charge_authorization_response_data_metadata import ChargeAuthorizationResponseDataMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -36,7 +37,7 @@ class ChargeAuthorizationResponseData(BaseModel):
     status: StrictStr
     reference: StrictStr
     domain: StrictStr
-    metadata: StrictStr
+    metadata: Optional[ChargeAuthorizationResponseDataMetadata]
     gateway_response: StrictStr
     message: Optional[StrictStr]
     channel: StrictStr
@@ -88,6 +89,9 @@ class ChargeAuthorizationResponseData(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of metadata
+        if self.metadata:
+            _dict['metadata'] = self.metadata.to_dict()
         # override the default output from pydantic by calling `to_dict()` of log
         if self.log:
             _dict['log'] = self.log.to_dict()
@@ -97,6 +101,11 @@ class ChargeAuthorizationResponseData(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of customer
         if self.customer:
             _dict['customer'] = self.customer.to_dict()
+        # set to None if metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
+
         # set to None if message (nullable) is None
         # and model_fields_set contains the field
         if self.message is None and "message" in self.model_fields_set:
@@ -140,7 +149,7 @@ class ChargeAuthorizationResponseData(BaseModel):
             "status": obj.get("status"),
             "reference": obj.get("reference"),
             "domain": obj.get("domain"),
-            "metadata": obj.get("metadata"),
+            "metadata": ChargeAuthorizationResponseDataMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
             "gateway_response": obj.get("gateway_response"),
             "message": obj.get("message"),
             "channel": obj.get("channel"),

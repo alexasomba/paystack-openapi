@@ -20,7 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
-from alexasomba_paystack.models.virtual_terminal_create_destinations_inner import VirtualTerminalCreateDestinationsInner
+from alexasomba_paystack.models.virtual_terminal_destination_assign_destinations_inner import VirtualTerminalDestinationAssignDestinationsInner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class VirtualTerminalDestinationAssign(BaseModel):
     """
     VirtualTerminalDestinationAssign
     """ # noqa: E501
-    destinations: List[VirtualTerminalCreateDestinationsInner] = Field(description="Array of objects containing recipients for payment notifications for the Virtual Terminal.")
+    destinations: List[VirtualTerminalDestinationAssignDestinationsInner] = Field(description="Array of objects containing recipients for payment notifications for the Virtual Terminal.")
     __properties: ClassVar[List[str]] = ["destinations"]
 
     model_config = ConfigDict(
@@ -89,7 +89,7 @@ class VirtualTerminalDestinationAssign(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "destinations": [VirtualTerminalCreateDestinationsInner.from_dict(_item) for _item in obj["destinations"]] if obj.get("destinations") is not None else None
+            "destinations": [VirtualTerminalDestinationAssignDestinationsInner.from_dict(_item) for _item in obj["destinations"]] if obj.get("destinations") is not None else None
         })
         return _obj
 

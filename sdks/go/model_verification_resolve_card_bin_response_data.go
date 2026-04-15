@@ -29,7 +29,6 @@ type VerificationResolveCardBINResponseData struct {
 	CountryName string `json:"country_name"`
 	CardType string `json:"card_type"`
 	Bank string `json:"bank"`
-	Currency string `json:"currency"`
 	LinkedBankId int32 `json:"linked_bank_id"`
 }
 
@@ -39,7 +38,7 @@ type _VerificationResolveCardBINResponseData VerificationResolveCardBINResponseD
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVerificationResolveCardBINResponseData(bin string, brand string, subBrand string, countryCode string, countryName string, cardType string, bank string, currency string, linkedBankId int32) *VerificationResolveCardBINResponseData {
+func NewVerificationResolveCardBINResponseData(bin string, brand string, subBrand string, countryCode string, countryName string, cardType string, bank string, linkedBankId int32) *VerificationResolveCardBINResponseData {
 	this := VerificationResolveCardBINResponseData{}
 	this.Bin = bin
 	this.Brand = brand
@@ -48,7 +47,6 @@ func NewVerificationResolveCardBINResponseData(bin string, brand string, subBran
 	this.CountryName = countryName
 	this.CardType = cardType
 	this.Bank = bank
-	this.Currency = currency
 	this.LinkedBankId = linkedBankId
 	return &this
 }
@@ -229,30 +227,6 @@ func (o *VerificationResolveCardBINResponseData) SetBank(v string) {
 	o.Bank = v
 }
 
-// GetCurrency returns the Currency field value
-func (o *VerificationResolveCardBINResponseData) GetCurrency() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Currency
-}
-
-// GetCurrencyOk returns a tuple with the Currency field value
-// and a boolean to check if the value has been set.
-func (o *VerificationResolveCardBINResponseData) GetCurrencyOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Currency, true
-}
-
-// SetCurrency sets field value
-func (o *VerificationResolveCardBINResponseData) SetCurrency(v string) {
-	o.Currency = v
-}
-
 // GetLinkedBankId returns the LinkedBankId field value
 func (o *VerificationResolveCardBINResponseData) GetLinkedBankId() int32 {
 	if o == nil {
@@ -294,7 +268,6 @@ func (o VerificationResolveCardBINResponseData) ToMap() (map[string]interface{},
 	toSerialize["country_name"] = o.CountryName
 	toSerialize["card_type"] = o.CardType
 	toSerialize["bank"] = o.Bank
-	toSerialize["currency"] = o.Currency
 	toSerialize["linked_bank_id"] = o.LinkedBankId
 	return toSerialize, nil
 }
@@ -311,7 +284,6 @@ func (o *VerificationResolveCardBINResponseData) UnmarshalJSON(data []byte) (err
 		"country_name",
 		"card_type",
 		"bank",
-		"currency",
 		"linked_bank_id",
 	}
 

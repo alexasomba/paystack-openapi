@@ -25,14 +25,11 @@ type StorefrontListResponseArray struct {
 	Id int32 `json:"id"`
 	Name string `json:"name"`
 	Slug string `json:"slug"`
-	OrdersCount int32 `json:"orders_count"`
+	Description NullableString `json:"description"`
 	Status string `json:"status"`
-	Revenue interface{} `json:"revenue"`
 	Currency string `json:"currency"`
-	Products []interface{} `json:"products"`
-	Contacts []interface{} `json:"contacts"`
-	SocialMedia []interface{} `json:"social_media"`
-	ShippingFees []interface{} `json:"shipping_fees"`
+	CreatedAt string `json:"createdAt"`
+	UpdatedAt string `json:"updatedAt"`
 }
 
 type _StorefrontListResponseArray StorefrontListResponseArray
@@ -41,19 +38,16 @@ type _StorefrontListResponseArray StorefrontListResponseArray
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStorefrontListResponseArray(id int32, name string, slug string, ordersCount int32, status string, revenue interface{}, currency string, products []interface{}, contacts []interface{}, socialMedia []interface{}, shippingFees []interface{}) *StorefrontListResponseArray {
+func NewStorefrontListResponseArray(id int32, name string, slug string, description NullableString, status string, currency string, createdAt string, updatedAt string) *StorefrontListResponseArray {
 	this := StorefrontListResponseArray{}
 	this.Id = id
 	this.Name = name
 	this.Slug = slug
-	this.OrdersCount = ordersCount
+	this.Description = description
 	this.Status = status
-	this.Revenue = revenue
 	this.Currency = currency
-	this.Products = products
-	this.Contacts = contacts
-	this.SocialMedia = socialMedia
-	this.ShippingFees = shippingFees
+	this.CreatedAt = createdAt
+	this.UpdatedAt = updatedAt
 	return &this
 }
 
@@ -137,28 +131,30 @@ func (o *StorefrontListResponseArray) SetSlug(v string) {
 	o.Slug = v
 }
 
-// GetOrdersCount returns the OrdersCount field value
-func (o *StorefrontListResponseArray) GetOrdersCount() int32 {
-	if o == nil {
-		var ret int32
+// GetDescription returns the Description field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *StorefrontListResponseArray) GetDescription() string {
+	if o == nil || o.Description.Get() == nil {
+		var ret string
 		return ret
 	}
 
-	return o.OrdersCount
+	return *o.Description.Get()
 }
 
-// GetOrdersCountOk returns a tuple with the OrdersCount field value
+// GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
-func (o *StorefrontListResponseArray) GetOrdersCountOk() (*int32, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *StorefrontListResponseArray) GetDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.OrdersCount, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
-// SetOrdersCount sets field value
-func (o *StorefrontListResponseArray) SetOrdersCount(v int32) {
-	o.OrdersCount = v
+// SetDescription sets field value
+func (o *StorefrontListResponseArray) SetDescription(v string) {
+	o.Description.Set(&v)
 }
 
 // GetStatus returns the Status field value
@@ -185,32 +181,6 @@ func (o *StorefrontListResponseArray) SetStatus(v string) {
 	o.Status = v
 }
 
-// GetRevenue returns the Revenue field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *StorefrontListResponseArray) GetRevenue() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.Revenue
-}
-
-// GetRevenueOk returns a tuple with the Revenue field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StorefrontListResponseArray) GetRevenueOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Revenue) {
-		return nil, false
-	}
-	return &o.Revenue, true
-}
-
-// SetRevenue sets field value
-func (o *StorefrontListResponseArray) SetRevenue(v interface{}) {
-	o.Revenue = v
-}
-
 // GetCurrency returns the Currency field value
 func (o *StorefrontListResponseArray) GetCurrency() string {
 	if o == nil {
@@ -235,100 +205,52 @@ func (o *StorefrontListResponseArray) SetCurrency(v string) {
 	o.Currency = v
 }
 
-// GetProducts returns the Products field value
-func (o *StorefrontListResponseArray) GetProducts() []interface{} {
+// GetCreatedAt returns the CreatedAt field value
+func (o *StorefrontListResponseArray) GetCreatedAt() string {
 	if o == nil {
-		var ret []interface{}
+		var ret string
 		return ret
 	}
 
-	return o.Products
+	return o.CreatedAt
 }
 
-// GetProductsOk returns a tuple with the Products field value
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-func (o *StorefrontListResponseArray) GetProductsOk() ([]interface{}, bool) {
+func (o *StorefrontListResponseArray) GetCreatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Products, true
+	return &o.CreatedAt, true
 }
 
-// SetProducts sets field value
-func (o *StorefrontListResponseArray) SetProducts(v []interface{}) {
-	o.Products = v
+// SetCreatedAt sets field value
+func (o *StorefrontListResponseArray) SetCreatedAt(v string) {
+	o.CreatedAt = v
 }
 
-// GetContacts returns the Contacts field value
-func (o *StorefrontListResponseArray) GetContacts() []interface{} {
+// GetUpdatedAt returns the UpdatedAt field value
+func (o *StorefrontListResponseArray) GetUpdatedAt() string {
 	if o == nil {
-		var ret []interface{}
+		var ret string
 		return ret
 	}
 
-	return o.Contacts
+	return o.UpdatedAt
 }
 
-// GetContactsOk returns a tuple with the Contacts field value
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
 // and a boolean to check if the value has been set.
-func (o *StorefrontListResponseArray) GetContactsOk() ([]interface{}, bool) {
+func (o *StorefrontListResponseArray) GetUpdatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Contacts, true
+	return &o.UpdatedAt, true
 }
 
-// SetContacts sets field value
-func (o *StorefrontListResponseArray) SetContacts(v []interface{}) {
-	o.Contacts = v
-}
-
-// GetSocialMedia returns the SocialMedia field value
-func (o *StorefrontListResponseArray) GetSocialMedia() []interface{} {
-	if o == nil {
-		var ret []interface{}
-		return ret
-	}
-
-	return o.SocialMedia
-}
-
-// GetSocialMediaOk returns a tuple with the SocialMedia field value
-// and a boolean to check if the value has been set.
-func (o *StorefrontListResponseArray) GetSocialMediaOk() ([]interface{}, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.SocialMedia, true
-}
-
-// SetSocialMedia sets field value
-func (o *StorefrontListResponseArray) SetSocialMedia(v []interface{}) {
-	o.SocialMedia = v
-}
-
-// GetShippingFees returns the ShippingFees field value
-func (o *StorefrontListResponseArray) GetShippingFees() []interface{} {
-	if o == nil {
-		var ret []interface{}
-		return ret
-	}
-
-	return o.ShippingFees
-}
-
-// GetShippingFeesOk returns a tuple with the ShippingFees field value
-// and a boolean to check if the value has been set.
-func (o *StorefrontListResponseArray) GetShippingFeesOk() ([]interface{}, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ShippingFees, true
-}
-
-// SetShippingFees sets field value
-func (o *StorefrontListResponseArray) SetShippingFees(v []interface{}) {
-	o.ShippingFees = v
+// SetUpdatedAt sets field value
+func (o *StorefrontListResponseArray) SetUpdatedAt(v string) {
+	o.UpdatedAt = v
 }
 
 func (o StorefrontListResponseArray) MarshalJSON() ([]byte, error) {
@@ -344,16 +266,11 @@ func (o StorefrontListResponseArray) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
 	toSerialize["slug"] = o.Slug
-	toSerialize["orders_count"] = o.OrdersCount
+	toSerialize["description"] = o.Description.Get()
 	toSerialize["status"] = o.Status
-	if o.Revenue != nil {
-		toSerialize["revenue"] = o.Revenue
-	}
 	toSerialize["currency"] = o.Currency
-	toSerialize["products"] = o.Products
-	toSerialize["contacts"] = o.Contacts
-	toSerialize["social_media"] = o.SocialMedia
-	toSerialize["shipping_fees"] = o.ShippingFees
+	toSerialize["createdAt"] = o.CreatedAt
+	toSerialize["updatedAt"] = o.UpdatedAt
 	return toSerialize, nil
 }
 
@@ -365,14 +282,11 @@ func (o *StorefrontListResponseArray) UnmarshalJSON(data []byte) (err error) {
 		"id",
 		"name",
 		"slug",
-		"orders_count",
+		"description",
 		"status",
-		"revenue",
 		"currency",
-		"products",
-		"contacts",
-		"social_media",
-		"shipping_fees",
+		"createdAt",
+		"updatedAt",
 	}
 
 	allProperties := make(map[string]interface{})

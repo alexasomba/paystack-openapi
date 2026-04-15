@@ -1426,7 +1426,7 @@ class TerminalApi:
         self,
         next: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It can be used to fetch the next page of the list")] = None,
         previous: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request")] = None,
-        per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1448,7 +1448,7 @@ class TerminalApi:
         :type next: str
         :param previous: A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request
         :type previous: str
-        :param per_page: Specify how many records you want to retrieve per page
+        :param per_page: Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
         :type per_page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1503,7 +1503,7 @@ class TerminalApi:
         self,
         next: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It can be used to fetch the next page of the list")] = None,
         previous: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request")] = None,
-        per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1525,7 +1525,7 @@ class TerminalApi:
         :type next: str
         :param previous: A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request
         :type previous: str
-        :param per_page: Specify how many records you want to retrieve per page
+        :param per_page: Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
         :type per_page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1580,7 +1580,7 @@ class TerminalApi:
         self,
         next: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It can be used to fetch the next page of the list")] = None,
         previous: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request")] = None,
-        per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1602,7 +1602,7 @@ class TerminalApi:
         :type next: str
         :param previous: A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request
         :type previous: str
-        :param per_page: Specify how many records you want to retrieve per page
+        :param per_page: Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
         :type per_page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1685,7 +1685,7 @@ class TerminalApi:
             
         if per_page is not None:
             
-            _query_params.append(('per_page', per_page))
+            _query_params.append(('perPage', per_page))
             
         # process the header parameters
         # process the form parameters

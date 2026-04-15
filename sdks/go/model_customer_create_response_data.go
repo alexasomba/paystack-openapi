@@ -22,23 +22,15 @@ var _ MappedNullable = &CustomerCreateResponseData{}
 
 // CustomerCreateResponseData struct for CustomerCreateResponseData
 type CustomerCreateResponseData struct {
-	Transactions []interface{} `json:"transactions"`
-	Subscriptions []interface{} `json:"subscriptions"`
-	Authorizations []interface{} `json:"authorizations"`
 	Email string `json:"email"`
-	FirstName string `json:"first_name"`
-	LastName string `json:"last_name"`
-	Phone string `json:"phone"`
 	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
-	Metadata BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata `json:"metadata"`
 	CustomerCode string `json:"customer_code"`
-	RiskAction string `json:"risk_action"`
 	Id int32 `json:"id"`
-	CreatedAt string `json:"createdAt"`
-	UpdatedAt string `json:"updatedAt"`
 	Identified bool `json:"identified"`
 	Identifications interface{} `json:"identifications"`
+	CreatedAt string `json:"createdAt"`
+	UpdatedAt string `json:"updatedAt"`
 }
 
 type _CustomerCreateResponseData CustomerCreateResponseData
@@ -47,25 +39,17 @@ type _CustomerCreateResponseData CustomerCreateResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomerCreateResponseData(transactions []interface{}, subscriptions []interface{}, authorizations []interface{}, email string, firstName string, lastName string, phone string, integration int32, domain string, metadata BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata, customerCode string, riskAction string, id int32, createdAt string, updatedAt string, identified bool, identifications interface{}) *CustomerCreateResponseData {
+func NewCustomerCreateResponseData(email string, integration int32, domain string, customerCode string, id int32, identified bool, identifications interface{}, createdAt string, updatedAt string) *CustomerCreateResponseData {
 	this := CustomerCreateResponseData{}
-	this.Transactions = transactions
-	this.Subscriptions = subscriptions
-	this.Authorizations = authorizations
 	this.Email = email
-	this.FirstName = firstName
-	this.LastName = lastName
-	this.Phone = phone
 	this.Integration = integration
 	this.Domain = domain
-	this.Metadata = metadata
 	this.CustomerCode = customerCode
-	this.RiskAction = riskAction
 	this.Id = id
-	this.CreatedAt = createdAt
-	this.UpdatedAt = updatedAt
 	this.Identified = identified
 	this.Identifications = identifications
+	this.CreatedAt = createdAt
+	this.UpdatedAt = updatedAt
 	return &this
 }
 
@@ -75,78 +59,6 @@ func NewCustomerCreateResponseData(transactions []interface{}, subscriptions []i
 func NewCustomerCreateResponseDataWithDefaults() *CustomerCreateResponseData {
 	this := CustomerCreateResponseData{}
 	return &this
-}
-
-// GetTransactions returns the Transactions field value
-func (o *CustomerCreateResponseData) GetTransactions() []interface{} {
-	if o == nil {
-		var ret []interface{}
-		return ret
-	}
-
-	return o.Transactions
-}
-
-// GetTransactionsOk returns a tuple with the Transactions field value
-// and a boolean to check if the value has been set.
-func (o *CustomerCreateResponseData) GetTransactionsOk() ([]interface{}, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Transactions, true
-}
-
-// SetTransactions sets field value
-func (o *CustomerCreateResponseData) SetTransactions(v []interface{}) {
-	o.Transactions = v
-}
-
-// GetSubscriptions returns the Subscriptions field value
-func (o *CustomerCreateResponseData) GetSubscriptions() []interface{} {
-	if o == nil {
-		var ret []interface{}
-		return ret
-	}
-
-	return o.Subscriptions
-}
-
-// GetSubscriptionsOk returns a tuple with the Subscriptions field value
-// and a boolean to check if the value has been set.
-func (o *CustomerCreateResponseData) GetSubscriptionsOk() ([]interface{}, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Subscriptions, true
-}
-
-// SetSubscriptions sets field value
-func (o *CustomerCreateResponseData) SetSubscriptions(v []interface{}) {
-	o.Subscriptions = v
-}
-
-// GetAuthorizations returns the Authorizations field value
-func (o *CustomerCreateResponseData) GetAuthorizations() []interface{} {
-	if o == nil {
-		var ret []interface{}
-		return ret
-	}
-
-	return o.Authorizations
-}
-
-// GetAuthorizationsOk returns a tuple with the Authorizations field value
-// and a boolean to check if the value has been set.
-func (o *CustomerCreateResponseData) GetAuthorizationsOk() ([]interface{}, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Authorizations, true
-}
-
-// SetAuthorizations sets field value
-func (o *CustomerCreateResponseData) SetAuthorizations(v []interface{}) {
-	o.Authorizations = v
 }
 
 // GetEmail returns the Email field value
@@ -171,78 +83,6 @@ func (o *CustomerCreateResponseData) GetEmailOk() (*string, bool) {
 // SetEmail sets field value
 func (o *CustomerCreateResponseData) SetEmail(v string) {
 	o.Email = v
-}
-
-// GetFirstName returns the FirstName field value
-func (o *CustomerCreateResponseData) GetFirstName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.FirstName
-}
-
-// GetFirstNameOk returns a tuple with the FirstName field value
-// and a boolean to check if the value has been set.
-func (o *CustomerCreateResponseData) GetFirstNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.FirstName, true
-}
-
-// SetFirstName sets field value
-func (o *CustomerCreateResponseData) SetFirstName(v string) {
-	o.FirstName = v
-}
-
-// GetLastName returns the LastName field value
-func (o *CustomerCreateResponseData) GetLastName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.LastName
-}
-
-// GetLastNameOk returns a tuple with the LastName field value
-// and a boolean to check if the value has been set.
-func (o *CustomerCreateResponseData) GetLastNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.LastName, true
-}
-
-// SetLastName sets field value
-func (o *CustomerCreateResponseData) SetLastName(v string) {
-	o.LastName = v
-}
-
-// GetPhone returns the Phone field value
-func (o *CustomerCreateResponseData) GetPhone() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Phone
-}
-
-// GetPhoneOk returns a tuple with the Phone field value
-// and a boolean to check if the value has been set.
-func (o *CustomerCreateResponseData) GetPhoneOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Phone, true
-}
-
-// SetPhone sets field value
-func (o *CustomerCreateResponseData) SetPhone(v string) {
-	o.Phone = v
 }
 
 // GetIntegration returns the Integration field value
@@ -293,30 +133,6 @@ func (o *CustomerCreateResponseData) SetDomain(v string) {
 	o.Domain = v
 }
 
-// GetMetadata returns the Metadata field value
-func (o *CustomerCreateResponseData) GetMetadata() BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata {
-	if o == nil {
-		var ret BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata
-		return ret
-	}
-
-	return o.Metadata
-}
-
-// GetMetadataOk returns a tuple with the Metadata field value
-// and a boolean to check if the value has been set.
-func (o *CustomerCreateResponseData) GetMetadataOk() (*BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Metadata, true
-}
-
-// SetMetadata sets field value
-func (o *CustomerCreateResponseData) SetMetadata(v BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata) {
-	o.Metadata = v
-}
-
 // GetCustomerCode returns the CustomerCode field value
 func (o *CustomerCreateResponseData) GetCustomerCode() string {
 	if o == nil {
@@ -341,30 +157,6 @@ func (o *CustomerCreateResponseData) SetCustomerCode(v string) {
 	o.CustomerCode = v
 }
 
-// GetRiskAction returns the RiskAction field value
-func (o *CustomerCreateResponseData) GetRiskAction() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.RiskAction
-}
-
-// GetRiskActionOk returns a tuple with the RiskAction field value
-// and a boolean to check if the value has been set.
-func (o *CustomerCreateResponseData) GetRiskActionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.RiskAction, true
-}
-
-// SetRiskAction sets field value
-func (o *CustomerCreateResponseData) SetRiskAction(v string) {
-	o.RiskAction = v
-}
-
 // GetId returns the Id field value
 func (o *CustomerCreateResponseData) GetId() int32 {
 	if o == nil {
@@ -387,54 +179,6 @@ func (o *CustomerCreateResponseData) GetIdOk() (*int32, bool) {
 // SetId sets field value
 func (o *CustomerCreateResponseData) SetId(v int32) {
 	o.Id = v
-}
-
-// GetCreatedAt returns the CreatedAt field value
-func (o *CustomerCreateResponseData) GetCreatedAt() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
-// and a boolean to check if the value has been set.
-func (o *CustomerCreateResponseData) GetCreatedAtOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CreatedAt, true
-}
-
-// SetCreatedAt sets field value
-func (o *CustomerCreateResponseData) SetCreatedAt(v string) {
-	o.CreatedAt = v
-}
-
-// GetUpdatedAt returns the UpdatedAt field value
-func (o *CustomerCreateResponseData) GetUpdatedAt() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.UpdatedAt
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
-// and a boolean to check if the value has been set.
-func (o *CustomerCreateResponseData) GetUpdatedAtOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.UpdatedAt, true
-}
-
-// SetUpdatedAt sets field value
-func (o *CustomerCreateResponseData) SetUpdatedAt(v string) {
-	o.UpdatedAt = v
 }
 
 // GetIdentified returns the Identified field value
@@ -487,6 +231,54 @@ func (o *CustomerCreateResponseData) SetIdentifications(v interface{}) {
 	o.Identifications = v
 }
 
+// GetCreatedAt returns the CreatedAt field value
+func (o *CustomerCreateResponseData) GetCreatedAt() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// and a boolean to check if the value has been set.
+func (o *CustomerCreateResponseData) GetCreatedAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CreatedAt, true
+}
+
+// SetCreatedAt sets field value
+func (o *CustomerCreateResponseData) SetCreatedAt(v string) {
+	o.CreatedAt = v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value
+func (o *CustomerCreateResponseData) GetUpdatedAt() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
+// and a boolean to check if the value has been set.
+func (o *CustomerCreateResponseData) GetUpdatedAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UpdatedAt, true
+}
+
+// SetUpdatedAt sets field value
+func (o *CustomerCreateResponseData) SetUpdatedAt(v string) {
+	o.UpdatedAt = v
+}
+
 func (o CustomerCreateResponseData) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -497,25 +289,17 @@ func (o CustomerCreateResponseData) MarshalJSON() ([]byte, error) {
 
 func (o CustomerCreateResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["transactions"] = o.Transactions
-	toSerialize["subscriptions"] = o.Subscriptions
-	toSerialize["authorizations"] = o.Authorizations
 	toSerialize["email"] = o.Email
-	toSerialize["first_name"] = o.FirstName
-	toSerialize["last_name"] = o.LastName
-	toSerialize["phone"] = o.Phone
 	toSerialize["integration"] = o.Integration
 	toSerialize["domain"] = o.Domain
-	toSerialize["metadata"] = o.Metadata
 	toSerialize["customer_code"] = o.CustomerCode
-	toSerialize["risk_action"] = o.RiskAction
 	toSerialize["id"] = o.Id
-	toSerialize["createdAt"] = o.CreatedAt
-	toSerialize["updatedAt"] = o.UpdatedAt
 	toSerialize["identified"] = o.Identified
 	if o.Identifications != nil {
 		toSerialize["identifications"] = o.Identifications
 	}
+	toSerialize["createdAt"] = o.CreatedAt
+	toSerialize["updatedAt"] = o.UpdatedAt
 	return toSerialize, nil
 }
 
@@ -524,23 +308,15 @@ func (o *CustomerCreateResponseData) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"transactions",
-		"subscriptions",
-		"authorizations",
 		"email",
-		"first_name",
-		"last_name",
-		"phone",
 		"integration",
 		"domain",
-		"metadata",
 		"customer_code",
-		"risk_action",
 		"id",
-		"createdAt",
-		"updatedAt",
 		"identified",
 		"identifications",
+		"createdAt",
+		"updatedAt",
 	}
 
 	allProperties := make(map[string]interface{})

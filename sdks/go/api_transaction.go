@@ -158,7 +158,7 @@ func (r ApiTransactionCheckAuthorizationRequest) Email(email string) ApiTransact
 	return r
 }
 
-// Amount should be in kobo if currency is NGN, pesewas if currency is GHS, and cents if currency is ZAR
+// Amount should be in kobo if currency is NGN, pesewas if currency is GHS, cents if currency is ZAR, and whole number if currency is XOF
 func (r ApiTransactionCheckAuthorizationRequest) Amount(amount int32) ApiTransactionCheckAuthorizationRequest {
 	r.amount = &amount
 	return r
@@ -423,12 +423,30 @@ func (a *TransactionAPIService) TransactionEventExecute(r ApiTransactionEventReq
 type ApiTransactionExportRequest struct {
 	ctx context.Context
 	ApiService *TransactionAPIService
+	perPage *int32
+	page *int32
 	from *time.Time
 	to *time.Time
 	status *string
-	customer *float32
-	subaccountCode *string
+	customer *int32
+	currency *string
+	amount *int32
+	settled *bool
 	settlement *int64
+	paymentPage *int32
+	subaccountCode *string
+}
+
+// Number of records to fetch per page
+func (r ApiTransactionExportRequest) PerPage(perPage int32) ApiTransactionExportRequest {
+	r.perPage = &perPage
+	return r
+}
+
+// The section to retrieve
+func (r ApiTransactionExportRequest) Page(page int32) ApiTransactionExportRequest {
+	r.page = &page
+	return r
 }
 
 // The start date
@@ -450,20 +468,45 @@ func (r ApiTransactionExportRequest) Status(status string) ApiTransactionExportR
 }
 
 // Filter by customer ID
-func (r ApiTransactionExportRequest) Customer(customer float32) ApiTransactionExportRequest {
+func (r ApiTransactionExportRequest) Customer(customer int32) ApiTransactionExportRequest {
 	r.customer = &customer
 	return r
 }
 
-// Filter by subaccount code
-func (r ApiTransactionExportRequest) SubaccountCode(subaccountCode string) ApiTransactionExportRequest {
-	r.subaccountCode = &subaccountCode
+// Specify the transaction currency to export
+func (r ApiTransactionExportRequest) Currency(currency string) ApiTransactionExportRequest {
+	r.currency = &currency
+	return r
+}
+
+// Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by amount. 
+func (r ApiTransactionExportRequest) Amount(amount int32) ApiTransactionExportRequest {
+	r.amount = &amount
+	return r
+}
+
+// Set to true to export only settled transactions. false for pending transactions. Leave undefined to export all transactions
+func (r ApiTransactionExportRequest) Settled(settled bool) ApiTransactionExportRequest {
+	r.settled = &settled
 	return r
 }
 
 // Filter by the settlement ID
 func (r ApiTransactionExportRequest) Settlement(settlement int64) ApiTransactionExportRequest {
 	r.settlement = &settlement
+	return r
+}
+
+// Specify a payment page&#39;s id to export only transactions conducted on said page
+func (r ApiTransactionExportRequest) PaymentPage(paymentPage int32) ApiTransactionExportRequest {
+	r.paymentPage = &paymentPage
+	return r
+}
+
+// Filter by subaccount code
+// Deprecated
+func (r ApiTransactionExportRequest) SubaccountCode(subaccountCode string) ApiTransactionExportRequest {
+	r.subaccountCode = &subaccountCode
 	return r
 }
 
@@ -507,6 +550,12 @@ func (a *TransactionAPIService) TransactionExportExecute(r ApiTransactionExportR
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.perPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	}
 	if r.from != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
 	}
@@ -519,11 +568,23 @@ func (a *TransactionAPIService) TransactionExportExecute(r ApiTransactionExportR
 	if r.customer != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "customer", r.customer, "form", "")
 	}
-	if r.subaccountCode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "subaccount_code", r.subaccountCode, "form", "")
+	if r.currency != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "currency", r.currency, "form", "")
+	}
+	if r.amount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "amount", r.amount, "form", "")
+	}
+	if r.settled != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "settled", r.settled, "form", "")
 	}
 	if r.settlement != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "settlement", r.settlement, "form", "")
+	}
+	if r.paymentPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "payment_page", r.paymentPage, "form", "")
+	}
+	if r.subaccountCode != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "subaccount_code", r.subaccountCode, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -867,9 +928,9 @@ type ApiTransactionListRequest struct {
 	to *time.Time
 	status *string
 	source *string
-	terminalId *string
+	terminalid *string
 	virtualAccountNumber *string
-	customerCode *string
+	customer *int32
 	amount *int64
 	settlement *int64
 	channel *string
@@ -895,25 +956,25 @@ func (r ApiTransactionListRequest) Previous(previous string) ApiTransactionListR
 	return r
 }
 
-// The number of records to fetch per request
+// Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
 func (r ApiTransactionListRequest) PerPage(perPage int32) ApiTransactionListRequest {
 	r.perPage = &perPage
 	return r
 }
 
-// The offset to retrieve data from
+// Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
 func (r ApiTransactionListRequest) Page(page int32) ApiTransactionListRequest {
 	r.page = &page
 	return r
 }
 
-// The start date
+// A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
 func (r ApiTransactionListRequest) From(from time.Time) ApiTransactionListRequest {
 	r.from = &from
 	return r
 }
 
-// The end date
+// A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
 func (r ApiTransactionListRequest) To(to time.Time) ApiTransactionListRequest {
 	r.to = &to
 	return r
@@ -931,9 +992,9 @@ func (r ApiTransactionListRequest) Source(source string) ApiTransactionListReque
 	return r
 }
 
-// Filter transactions by a terminal ID
-func (r ApiTransactionListRequest) TerminalId(terminalId string) ApiTransactionListRequest {
-	r.terminalId = &terminalId
+// The Terminal ID for the transactions you want to retrieve
+func (r ApiTransactionListRequest) Terminalid(terminalid string) ApiTransactionListRequest {
+	r.terminalid = &terminalid
 	return r
 }
 
@@ -943,13 +1004,13 @@ func (r ApiTransactionListRequest) VirtualAccountNumber(virtualAccountNumber str
 	return r
 }
 
-// Filter transactions by a customer code
-func (r ApiTransactionListRequest) CustomerCode(customerCode string) ApiTransactionListRequest {
-	r.customerCode = &customerCode
+// Specify an ID for the customer whose transactions you want to retrieve
+func (r ApiTransactionListRequest) Customer(customer int32) ApiTransactionListRequest {
+	r.customer = &customer
 	return r
 }
 
-// Filter transactions by a specific amount
+// Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. 
 func (r ApiTransactionListRequest) Amount(amount int64) ApiTransactionListRequest {
 	r.amount = &amount
 	return r
@@ -986,7 +1047,7 @@ func (r ApiTransactionListRequest) Execute() (*TransactionListResponse, *http.Re
 /*
 TransactionList List Transactions
 
-List transactions that has occurred on your integration
+List transactions carried out on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTransactionListRequest
@@ -1029,7 +1090,7 @@ func (a *TransactionAPIService) TransactionListExecute(r ApiTransactionListReque
 		parameterAddToHeaderOrQuery(localVarQueryParams, "previous", r.previous, "form", "")
 	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
 	}
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
@@ -1046,14 +1107,14 @@ func (a *TransactionAPIService) TransactionListExecute(r ApiTransactionListReque
 	if r.source != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "form", "")
 	}
-	if r.terminalId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "terminal_id", r.terminalId, "form", "")
+	if r.terminalid != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "terminalid", r.terminalid, "form", "")
 	}
 	if r.virtualAccountNumber != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "virtual_account_number", r.virtualAccountNumber, "form", "")
 	}
-	if r.customerCode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_code", r.customerCode, "form", "")
+	if r.customer != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "customer", r.customer, "form", "")
 	}
 	if r.amount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "amount", r.amount, "form", "")
@@ -1392,7 +1453,7 @@ func (a *TransactionAPIService) TransactionSessionExecute(r ApiTransactionSessio
 type ApiTransactionTimelineRequest struct {
 	ctx context.Context
 	ApiService *TransactionAPIService
-	id int64
+	idOrReference string
 }
 
 func (r ApiTransactionTimelineRequest) Execute() (*TransactionTimelineResponse, *http.Response, error) {
@@ -1405,14 +1466,14 @@ TransactionTimeline Fetch Transaction Timeline
 Fetch the steps taken from the initiation to the completion of a transaction
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the transaction to fetch
+ @param idOrReference The ID or the reference of the transaction
  @return ApiTransactionTimelineRequest
 */
-func (a *TransactionAPIService) TransactionTimeline(ctx context.Context, id int64) ApiTransactionTimelineRequest {
+func (a *TransactionAPIService) TransactionTimeline(ctx context.Context, idOrReference string) ApiTransactionTimelineRequest {
 	return ApiTransactionTimelineRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		idOrReference: idOrReference,
 	}
 }
 
@@ -1431,8 +1492,8 @@ func (a *TransactionAPIService) TransactionTimelineExecute(r ApiTransactionTimel
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/transaction/timeline/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/transaction/timeline/{id_or_reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id_or_reference"+"}", url.PathEscape(parameterValueToString(r.idOrReference, "idOrReference")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1517,8 +1578,22 @@ func (a *TransactionAPIService) TransactionTimelineExecute(r ApiTransactionTimel
 type ApiTransactionTotalsRequest struct {
 	ctx context.Context
 	ApiService *TransactionAPIService
+	perPage *int32
+	page *int32
 	from *time.Time
 	to *time.Time
+}
+
+// Number of records to fetch per page
+func (r ApiTransactionTotalsRequest) PerPage(perPage int32) ApiTransactionTotalsRequest {
+	r.perPage = &perPage
+	return r
+}
+
+// The section to retrieve
+func (r ApiTransactionTotalsRequest) Page(page int32) ApiTransactionTotalsRequest {
+	r.page = &page
+	return r
 }
 
 // The start date
@@ -1573,6 +1648,12 @@ func (a *TransactionAPIService) TransactionTotalsExecute(r ApiTransactionTotalsR
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.perPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	}
 	if r.from != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
 	}

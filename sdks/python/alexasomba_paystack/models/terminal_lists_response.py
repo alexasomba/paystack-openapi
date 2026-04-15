@@ -20,8 +20,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List
+from alexasomba_paystack.models.cursor_meta import CursorMeta
 from alexasomba_paystack.models.terminal_lists_response_array import TerminalListsResponseArray
-from alexasomba_paystack.models.terminal_lists_response_meta import TerminalListsResponseMeta
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,7 +32,7 @@ class TerminalListsResponse(BaseModel):
     status: StrictBool
     message: StrictStr
     data: List[TerminalListsResponseArray]
-    meta: TerminalListsResponseMeta
+    meta: CursorMeta
     __properties: ClassVar[List[str]] = ["status", "message", "data", "meta"]
 
     model_config = ConfigDict(
@@ -99,7 +99,7 @@ class TerminalListsResponse(BaseModel):
             "status": obj.get("status"),
             "message": obj.get("message"),
             "data": [TerminalListsResponseArray.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
-            "meta": TerminalListsResponseMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+            "meta": CursorMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
         })
         return _obj
 

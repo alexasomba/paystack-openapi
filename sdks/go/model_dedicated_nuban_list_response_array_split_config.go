@@ -13,112 +13,66 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
-// checks if the DedicatedNubanListResponseArraySplitConfig type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DedicatedNubanListResponseArraySplitConfig{}
 
 // DedicatedNubanListResponseArraySplitConfig struct for DedicatedNubanListResponseArraySplitConfig
 type DedicatedNubanListResponseArraySplitConfig struct {
-	Subaccount string `json:"subaccount"`
+	DedicatedNubanListResponseArraySplitConfigAnyOf *DedicatedNubanListResponseArraySplitConfigAnyOf
+	String *string
 }
 
-type _DedicatedNubanListResponseArraySplitConfig DedicatedNubanListResponseArraySplitConfig
-
-// NewDedicatedNubanListResponseArraySplitConfig instantiates a new DedicatedNubanListResponseArraySplitConfig object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewDedicatedNubanListResponseArraySplitConfig(subaccount string) *DedicatedNubanListResponseArraySplitConfig {
-	this := DedicatedNubanListResponseArraySplitConfig{}
-	this.Subaccount = subaccount
-	return &this
-}
-
-// NewDedicatedNubanListResponseArraySplitConfigWithDefaults instantiates a new DedicatedNubanListResponseArraySplitConfig object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewDedicatedNubanListResponseArraySplitConfigWithDefaults() *DedicatedNubanListResponseArraySplitConfig {
-	this := DedicatedNubanListResponseArraySplitConfig{}
-	return &this
-}
-
-// GetSubaccount returns the Subaccount field value
-func (o *DedicatedNubanListResponseArraySplitConfig) GetSubaccount() string {
-	if o == nil {
-		var ret string
-		return ret
+// Unmarshal JSON data into any of the pointers in the struct
+func (dst *DedicatedNubanListResponseArraySplitConfig) UnmarshalJSON(data []byte) error {
+	var err error
+	// this object is nullable so check if the payload is null or empty string
+	if string(data) == "" || string(data) == "{}" {
+		return nil
 	}
 
-	return o.Subaccount
-}
-
-// GetSubaccountOk returns a tuple with the Subaccount field value
-// and a boolean to check if the value has been set.
-func (o *DedicatedNubanListResponseArraySplitConfig) GetSubaccountOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Subaccount, true
-}
-
-// SetSubaccount sets field value
-func (o *DedicatedNubanListResponseArraySplitConfig) SetSubaccount(v string) {
-	o.Subaccount = v
-}
-
-func (o DedicatedNubanListResponseArraySplitConfig) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o DedicatedNubanListResponseArraySplitConfig) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["subaccount"] = o.Subaccount
-	return toSerialize, nil
-}
-
-func (o *DedicatedNubanListResponseArraySplitConfig) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"subaccount",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
+	// try to unmarshal JSON data into DedicatedNubanListResponseArraySplitConfigAnyOf
+	err = json.Unmarshal(data, &dst.DedicatedNubanListResponseArraySplitConfigAnyOf);
+	if err == nil {
+		jsonDedicatedNubanListResponseArraySplitConfigAnyOf, _ := json.Marshal(dst.DedicatedNubanListResponseArraySplitConfigAnyOf)
+		if string(jsonDedicatedNubanListResponseArraySplitConfigAnyOf) == "{}" { // empty struct
+			dst.DedicatedNubanListResponseArraySplitConfigAnyOf = nil
+		} else {
+			return nil // data stored in dst.DedicatedNubanListResponseArraySplitConfigAnyOf, return on the first match
 		}
+	} else {
+		dst.DedicatedNubanListResponseArraySplitConfigAnyOf = nil
 	}
 
-	varDedicatedNubanListResponseArraySplitConfig := _DedicatedNubanListResponseArraySplitConfig{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDedicatedNubanListResponseArraySplitConfig)
-
-	if err != nil {
-		return err
+	// try to unmarshal JSON data into String
+	err = json.Unmarshal(data, &dst.String);
+	if err == nil {
+		jsonString, _ := json.Marshal(dst.String)
+		if string(jsonString) == "{}" { // empty struct
+			dst.String = nil
+		} else {
+			return nil // data stored in dst.String, return on the first match
+		}
+	} else {
+		dst.String = nil
 	}
 
-	*o = DedicatedNubanListResponseArraySplitConfig(varDedicatedNubanListResponseArraySplitConfig)
-
-	return err
+	return fmt.Errorf("data failed to match schemas in anyOf(DedicatedNubanListResponseArraySplitConfig)")
 }
+
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src DedicatedNubanListResponseArraySplitConfig) MarshalJSON() ([]byte, error) {
+	if src.DedicatedNubanListResponseArraySplitConfigAnyOf != nil {
+		return json.Marshal(&src.DedicatedNubanListResponseArraySplitConfigAnyOf)
+	}
+
+	if src.String != nil {
+		return json.Marshal(&src.String)
+	}
+
+	return nil, nil // no data in anyOf schemas
+}
+
 
 type NullableDedicatedNubanListResponseArraySplitConfig struct {
 	value *DedicatedNubanListResponseArraySplitConfig

@@ -24,7 +24,7 @@ var _ MappedNullable = &RefundCreate{}
 type RefundCreate struct {
 	// The reference of a previosuly completed transaction
 	Transaction string `json:"transaction"`
-	// Amount to be refunded to the customer. It cannot be more than the original transaction amount
+	// Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Amount to be refunded to the customer. It cannot be more than the original transaction amount. 
 	Amount *int32 `json:"amount,omitempty"`
 	// Three-letter ISO currency
 	Currency *string `json:"currency,omitempty"`

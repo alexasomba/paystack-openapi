@@ -22,21 +22,22 @@ var _ MappedNullable = &TransferRecipientFetchResponseData{}
 
 // TransferRecipientFetchResponseData struct for TransferRecipientFetchResponseData
 type TransferRecipientFetchResponseData struct {
-	Integration int32 `json:"integration"`
+	Integration *int32 `json:"integration,omitempty"`
 	Domain string `json:"domain"`
 	Type string `json:"type"`
 	Currency string `json:"currency"`
 	Name string `json:"name"`
 	Details TransferRecipientFetchResponseDataDetails `json:"details"`
-	Description string `json:"description"`
+	Description NullableString `json:"description,omitempty"`
 	Metadata map[string]interface{} `json:"metadata,omitempty"`
 	RecipientCode string `json:"recipient_code"`
 	Active bool `json:"active"`
-	RecipientAccount string `json:"recipient_account"`
-	InstitutionCode string `json:"institution_code"`
-	Email string `json:"email"`
+	RecipientAccount NullableString `json:"recipient_account,omitempty"`
+	InstitutionCode NullableString `json:"institution_code,omitempty"`
+	Email NullableString `json:"email,omitempty"`
 	Id int32 `json:"id"`
-	IsDeleted bool `json:"isDeleted"`
+	IsDeleted *bool `json:"isDeleted,omitempty"`
+	IsDeleted *bool `json:"is_deleted,omitempty"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
 }
@@ -47,22 +48,16 @@ type _TransferRecipientFetchResponseData TransferRecipientFetchResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferRecipientFetchResponseData(integration int32, domain string, type_ string, currency string, name string, details TransferRecipientFetchResponseDataDetails, description string, recipientCode string, active bool, recipientAccount string, institutionCode string, email string, id int32, isDeleted bool, createdAt string, updatedAt string) *TransferRecipientFetchResponseData {
+func NewTransferRecipientFetchResponseData(domain string, type_ string, currency string, name string, details TransferRecipientFetchResponseDataDetails, recipientCode string, active bool, id int32, createdAt string, updatedAt string) *TransferRecipientFetchResponseData {
 	this := TransferRecipientFetchResponseData{}
-	this.Integration = integration
 	this.Domain = domain
 	this.Type = type_
 	this.Currency = currency
 	this.Name = name
 	this.Details = details
-	this.Description = description
 	this.RecipientCode = recipientCode
 	this.Active = active
-	this.RecipientAccount = recipientAccount
-	this.InstitutionCode = institutionCode
-	this.Email = email
 	this.Id = id
-	this.IsDeleted = isDeleted
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
 	return &this
@@ -76,28 +71,36 @@ func NewTransferRecipientFetchResponseDataWithDefaults() *TransferRecipientFetch
 	return &this
 }
 
-// GetIntegration returns the Integration field value
+// GetIntegration returns the Integration field value if set, zero value otherwise.
 func (o *TransferRecipientFetchResponseData) GetIntegration() int32 {
-	if o == nil {
+	if o == nil || IsNil(o.Integration) {
 		var ret int32
 		return ret
 	}
-
-	return o.Integration
+	return *o.Integration
 }
 
-// GetIntegrationOk returns a tuple with the Integration field value
+// GetIntegrationOk returns a tuple with the Integration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransferRecipientFetchResponseData) GetIntegrationOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Integration) {
 		return nil, false
 	}
-	return &o.Integration, true
+	return o.Integration, true
 }
 
-// SetIntegration sets field value
+// HasIntegration returns a boolean if a field has been set.
+func (o *TransferRecipientFetchResponseData) HasIntegration() bool {
+	if o != nil && !IsNil(o.Integration) {
+		return true
+	}
+
+	return false
+}
+
+// SetIntegration gets a reference to the given int32 and assigns it to the Integration field.
 func (o *TransferRecipientFetchResponseData) SetIntegration(v int32) {
-	o.Integration = v
+	o.Integration = &v
 }
 
 // GetDomain returns the Domain field value
@@ -220,28 +223,46 @@ func (o *TransferRecipientFetchResponseData) SetDetails(v TransferRecipientFetch
 	o.Details = v
 }
 
-// GetDescription returns the Description field value
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransferRecipientFetchResponseData) GetDescription() string {
-	if o == nil {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.Description
+	return *o.Description.Get()
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransferRecipientFetchResponseData) GetDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *TransferRecipientFetchResponseData) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *TransferRecipientFetchResponseData) SetDescription(v string) {
-	o.Description = v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *TransferRecipientFetchResponseData) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *TransferRecipientFetchResponseData) UnsetDescription() {
+	o.Description.Unset()
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -325,76 +346,130 @@ func (o *TransferRecipientFetchResponseData) SetActive(v bool) {
 	o.Active = v
 }
 
-// GetRecipientAccount returns the RecipientAccount field value
+// GetRecipientAccount returns the RecipientAccount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransferRecipientFetchResponseData) GetRecipientAccount() string {
-	if o == nil {
+	if o == nil || IsNil(o.RecipientAccount.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.RecipientAccount
+	return *o.RecipientAccount.Get()
 }
 
-// GetRecipientAccountOk returns a tuple with the RecipientAccount field value
+// GetRecipientAccountOk returns a tuple with the RecipientAccount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransferRecipientFetchResponseData) GetRecipientAccountOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.RecipientAccount, true
+	return o.RecipientAccount.Get(), o.RecipientAccount.IsSet()
 }
 
-// SetRecipientAccount sets field value
+// HasRecipientAccount returns a boolean if a field has been set.
+func (o *TransferRecipientFetchResponseData) HasRecipientAccount() bool {
+	if o != nil && o.RecipientAccount.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRecipientAccount gets a reference to the given NullableString and assigns it to the RecipientAccount field.
 func (o *TransferRecipientFetchResponseData) SetRecipientAccount(v string) {
-	o.RecipientAccount = v
+	o.RecipientAccount.Set(&v)
+}
+// SetRecipientAccountNil sets the value for RecipientAccount to be an explicit nil
+func (o *TransferRecipientFetchResponseData) SetRecipientAccountNil() {
+	o.RecipientAccount.Set(nil)
 }
 
-// GetInstitutionCode returns the InstitutionCode field value
+// UnsetRecipientAccount ensures that no value is present for RecipientAccount, not even an explicit nil
+func (o *TransferRecipientFetchResponseData) UnsetRecipientAccount() {
+	o.RecipientAccount.Unset()
+}
+
+// GetInstitutionCode returns the InstitutionCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransferRecipientFetchResponseData) GetInstitutionCode() string {
-	if o == nil {
+	if o == nil || IsNil(o.InstitutionCode.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.InstitutionCode
+	return *o.InstitutionCode.Get()
 }
 
-// GetInstitutionCodeOk returns a tuple with the InstitutionCode field value
+// GetInstitutionCodeOk returns a tuple with the InstitutionCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransferRecipientFetchResponseData) GetInstitutionCodeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.InstitutionCode, true
+	return o.InstitutionCode.Get(), o.InstitutionCode.IsSet()
 }
 
-// SetInstitutionCode sets field value
+// HasInstitutionCode returns a boolean if a field has been set.
+func (o *TransferRecipientFetchResponseData) HasInstitutionCode() bool {
+	if o != nil && o.InstitutionCode.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInstitutionCode gets a reference to the given NullableString and assigns it to the InstitutionCode field.
 func (o *TransferRecipientFetchResponseData) SetInstitutionCode(v string) {
-	o.InstitutionCode = v
+	o.InstitutionCode.Set(&v)
+}
+// SetInstitutionCodeNil sets the value for InstitutionCode to be an explicit nil
+func (o *TransferRecipientFetchResponseData) SetInstitutionCodeNil() {
+	o.InstitutionCode.Set(nil)
 }
 
-// GetEmail returns the Email field value
+// UnsetInstitutionCode ensures that no value is present for InstitutionCode, not even an explicit nil
+func (o *TransferRecipientFetchResponseData) UnsetInstitutionCode() {
+	o.InstitutionCode.Unset()
+}
+
+// GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransferRecipientFetchResponseData) GetEmail() string {
-	if o == nil {
+	if o == nil || IsNil(o.Email.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.Email
+	return *o.Email.Get()
 }
 
-// GetEmailOk returns a tuple with the Email field value
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransferRecipientFetchResponseData) GetEmailOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Email, true
+	return o.Email.Get(), o.Email.IsSet()
 }
 
-// SetEmail sets field value
+// HasEmail returns a boolean if a field has been set.
+func (o *TransferRecipientFetchResponseData) HasEmail() bool {
+	if o != nil && o.Email.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given NullableString and assigns it to the Email field.
 func (o *TransferRecipientFetchResponseData) SetEmail(v string) {
-	o.Email = v
+	o.Email.Set(&v)
+}
+// SetEmailNil sets the value for Email to be an explicit nil
+func (o *TransferRecipientFetchResponseData) SetEmailNil() {
+	o.Email.Set(nil)
+}
+
+// UnsetEmail ensures that no value is present for Email, not even an explicit nil
+func (o *TransferRecipientFetchResponseData) UnsetEmail() {
+	o.Email.Unset()
 }
 
 // GetId returns the Id field value
@@ -421,28 +496,68 @@ func (o *TransferRecipientFetchResponseData) SetId(v int32) {
 	o.Id = v
 }
 
-// GetIsDeleted returns the IsDeleted field value
+// GetIsDeleted returns the IsDeleted field value if set, zero value otherwise.
 func (o *TransferRecipientFetchResponseData) GetIsDeleted() bool {
-	if o == nil {
+	if o == nil || IsNil(o.IsDeleted) {
 		var ret bool
 		return ret
 	}
-
-	return o.IsDeleted
+	return *o.IsDeleted
 }
 
-// GetIsDeletedOk returns a tuple with the IsDeleted field value
+// GetIsDeletedOk returns a tuple with the IsDeleted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransferRecipientFetchResponseData) GetIsDeletedOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IsDeleted) {
 		return nil, false
 	}
-	return &o.IsDeleted, true
+	return o.IsDeleted, true
 }
 
-// SetIsDeleted sets field value
+// HasIsDeleted returns a boolean if a field has been set.
+func (o *TransferRecipientFetchResponseData) HasIsDeleted() bool {
+	if o != nil && !IsNil(o.IsDeleted) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDeleted gets a reference to the given bool and assigns it to the IsDeleted field.
 func (o *TransferRecipientFetchResponseData) SetIsDeleted(v bool) {
-	o.IsDeleted = v
+	o.IsDeleted = &v
+}
+
+// GetIsDeleted returns the IsDeleted field value if set, zero value otherwise.
+func (o *TransferRecipientFetchResponseData) GetIsDeleted() bool {
+	if o == nil || IsNil(o.IsDeleted) {
+		var ret bool
+		return ret
+	}
+	return *o.IsDeleted
+}
+
+// GetIsDeletedOk returns a tuple with the IsDeleted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransferRecipientFetchResponseData) GetIsDeletedOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsDeleted) {
+		return nil, false
+	}
+	return o.IsDeleted, true
+}
+
+// HasIsDeleted returns a boolean if a field has been set.
+func (o *TransferRecipientFetchResponseData) HasIsDeleted() bool {
+	if o != nil && !IsNil(o.IsDeleted) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDeleted gets a reference to the given bool and assigns it to the IsDeleted field.
+func (o *TransferRecipientFetchResponseData) SetIsDeleted(v bool) {
+	o.IsDeleted = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -503,23 +618,38 @@ func (o TransferRecipientFetchResponseData) MarshalJSON() ([]byte, error) {
 
 func (o TransferRecipientFetchResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["integration"] = o.Integration
+	if !IsNil(o.Integration) {
+		toSerialize["integration"] = o.Integration
+	}
 	toSerialize["domain"] = o.Domain
 	toSerialize["type"] = o.Type
 	toSerialize["currency"] = o.Currency
 	toSerialize["name"] = o.Name
 	toSerialize["details"] = o.Details
-	toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
+	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
 	}
 	toSerialize["recipient_code"] = o.RecipientCode
 	toSerialize["active"] = o.Active
-	toSerialize["recipient_account"] = o.RecipientAccount
-	toSerialize["institution_code"] = o.InstitutionCode
-	toSerialize["email"] = o.Email
+	if o.RecipientAccount.IsSet() {
+		toSerialize["recipient_account"] = o.RecipientAccount.Get()
+	}
+	if o.InstitutionCode.IsSet() {
+		toSerialize["institution_code"] = o.InstitutionCode.Get()
+	}
+	if o.Email.IsSet() {
+		toSerialize["email"] = o.Email.Get()
+	}
 	toSerialize["id"] = o.Id
-	toSerialize["isDeleted"] = o.IsDeleted
+	if !IsNil(o.IsDeleted) {
+		toSerialize["isDeleted"] = o.IsDeleted
+	}
+	if !IsNil(o.IsDeleted) {
+		toSerialize["is_deleted"] = o.IsDeleted
+	}
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["updatedAt"] = o.UpdatedAt
 	return toSerialize, nil
@@ -530,20 +660,14 @@ func (o *TransferRecipientFetchResponseData) UnmarshalJSON(data []byte) (err err
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"integration",
 		"domain",
 		"type",
 		"currency",
 		"name",
 		"details",
-		"description",
 		"recipient_code",
 		"active",
-		"recipient_account",
-		"institution_code",
-		"email",
 		"id",
-		"isDeleted",
 		"createdAt",
 		"updatedAt",
 	}

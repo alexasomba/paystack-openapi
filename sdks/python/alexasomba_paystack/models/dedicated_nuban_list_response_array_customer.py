@@ -27,14 +27,14 @@ class DedicatedNubanListResponseArrayCustomer(BaseModel):
     """
     DedicatedNubanListResponseArrayCustomer
     """ # noqa: E501
-    id: Optional[StrictInt] = None
-    first_name: Optional[StrictStr] = None
-    last_name: Optional[StrictStr] = None
-    email: Optional[StrictStr] = None
-    customer_code: Optional[StrictStr] = None
-    phone: Optional[StrictStr] = None
-    risk_action: Optional[StrictStr] = None
-    international_format_phone: Optional[StrictStr] = None
+    id: StrictInt
+    first_name: StrictStr
+    last_name: StrictStr
+    email: StrictStr
+    customer_code: StrictStr
+    phone: Optional[StrictStr]
+    risk_action: StrictStr
+    international_format_phone: Optional[StrictStr]
     __properties: ClassVar[List[str]] = ["id", "first_name", "last_name", "email", "customer_code", "phone", "risk_action", "international_format_phone"]
 
     model_config = ConfigDict(
@@ -76,6 +76,11 @@ class DedicatedNubanListResponseArrayCustomer(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if phone (nullable) is None
+        # and model_fields_set contains the field
+        if self.phone is None and "phone" in self.model_fields_set:
+            _dict['phone'] = None
+
         # set to None if international_format_phone (nullable) is None
         # and model_fields_set contains the field
         if self.international_format_phone is None and "international_format_phone" in self.model_fields_set:

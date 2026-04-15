@@ -25,9 +25,9 @@ type TransferVerifyResponseDataRecipient struct {
 	Active bool `json:"active"`
 	CreatedAt string `json:"createdAt"`
 	Currency string `json:"currency"`
-	Description string `json:"description"`
+	Description NullableString `json:"description,omitempty"`
 	Domain string `json:"domain"`
-	Email string `json:"email"`
+	Email NullableString `json:"email,omitempty"`
 	Id int32 `json:"id"`
 	Integration int32 `json:"integration"`
 	Metadata map[string]interface{} `json:"metadata,omitempty"`
@@ -35,7 +35,8 @@ type TransferVerifyResponseDataRecipient struct {
 	RecipientCode string `json:"recipient_code"`
 	Type string `json:"type"`
 	UpdatedAt string `json:"updatedAt"`
-	IsDeleted bool `json:"is_deleted"`
+	IsDeleted *bool `json:"is_deleted,omitempty"`
+	IsDeleted *bool `json:"isDeleted,omitempty"`
 	Details TransferVerifyResponseDataRecipientDetails `json:"details"`
 }
 
@@ -45,21 +46,18 @@ type _TransferVerifyResponseDataRecipient TransferVerifyResponseDataRecipient
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferVerifyResponseDataRecipient(active bool, createdAt string, currency string, description string, domain string, email string, id int32, integration int32, name string, recipientCode string, type_ string, updatedAt string, isDeleted bool, details TransferVerifyResponseDataRecipientDetails) *TransferVerifyResponseDataRecipient {
+func NewTransferVerifyResponseDataRecipient(active bool, createdAt string, currency string, domain string, id int32, integration int32, name string, recipientCode string, type_ string, updatedAt string, details TransferVerifyResponseDataRecipientDetails) *TransferVerifyResponseDataRecipient {
 	this := TransferVerifyResponseDataRecipient{}
 	this.Active = active
 	this.CreatedAt = createdAt
 	this.Currency = currency
-	this.Description = description
 	this.Domain = domain
-	this.Email = email
 	this.Id = id
 	this.Integration = integration
 	this.Name = name
 	this.RecipientCode = recipientCode
 	this.Type = type_
 	this.UpdatedAt = updatedAt
-	this.IsDeleted = isDeleted
 	this.Details = details
 	return &this
 }
@@ -144,28 +142,46 @@ func (o *TransferVerifyResponseDataRecipient) SetCurrency(v string) {
 	o.Currency = v
 }
 
-// GetDescription returns the Description field value
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransferVerifyResponseDataRecipient) GetDescription() string {
-	if o == nil {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.Description
+	return *o.Description.Get()
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransferVerifyResponseDataRecipient) GetDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *TransferVerifyResponseDataRecipient) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *TransferVerifyResponseDataRecipient) SetDescription(v string) {
-	o.Description = v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *TransferVerifyResponseDataRecipient) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *TransferVerifyResponseDataRecipient) UnsetDescription() {
+	o.Description.Unset()
 }
 
 // GetDomain returns the Domain field value
@@ -192,28 +208,46 @@ func (o *TransferVerifyResponseDataRecipient) SetDomain(v string) {
 	o.Domain = v
 }
 
-// GetEmail returns the Email field value
+// GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransferVerifyResponseDataRecipient) GetEmail() string {
-	if o == nil {
+	if o == nil || IsNil(o.Email.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.Email
+	return *o.Email.Get()
 }
 
-// GetEmailOk returns a tuple with the Email field value
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransferVerifyResponseDataRecipient) GetEmailOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Email, true
+	return o.Email.Get(), o.Email.IsSet()
 }
 
-// SetEmail sets field value
+// HasEmail returns a boolean if a field has been set.
+func (o *TransferVerifyResponseDataRecipient) HasEmail() bool {
+	if o != nil && o.Email.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given NullableString and assigns it to the Email field.
 func (o *TransferVerifyResponseDataRecipient) SetEmail(v string) {
-	o.Email = v
+	o.Email.Set(&v)
+}
+// SetEmailNil sets the value for Email to be an explicit nil
+func (o *TransferVerifyResponseDataRecipient) SetEmailNil() {
+	o.Email.Set(nil)
+}
+
+// UnsetEmail ensures that no value is present for Email, not even an explicit nil
+func (o *TransferVerifyResponseDataRecipient) UnsetEmail() {
+	o.Email.Unset()
 }
 
 // GetId returns the Id field value
@@ -393,28 +427,68 @@ func (o *TransferVerifyResponseDataRecipient) SetUpdatedAt(v string) {
 	o.UpdatedAt = v
 }
 
-// GetIsDeleted returns the IsDeleted field value
+// GetIsDeleted returns the IsDeleted field value if set, zero value otherwise.
 func (o *TransferVerifyResponseDataRecipient) GetIsDeleted() bool {
-	if o == nil {
+	if o == nil || IsNil(o.IsDeleted) {
 		var ret bool
 		return ret
 	}
-
-	return o.IsDeleted
+	return *o.IsDeleted
 }
 
-// GetIsDeletedOk returns a tuple with the IsDeleted field value
+// GetIsDeletedOk returns a tuple with the IsDeleted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransferVerifyResponseDataRecipient) GetIsDeletedOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IsDeleted) {
 		return nil, false
 	}
-	return &o.IsDeleted, true
+	return o.IsDeleted, true
 }
 
-// SetIsDeleted sets field value
+// HasIsDeleted returns a boolean if a field has been set.
+func (o *TransferVerifyResponseDataRecipient) HasIsDeleted() bool {
+	if o != nil && !IsNil(o.IsDeleted) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDeleted gets a reference to the given bool and assigns it to the IsDeleted field.
 func (o *TransferVerifyResponseDataRecipient) SetIsDeleted(v bool) {
-	o.IsDeleted = v
+	o.IsDeleted = &v
+}
+
+// GetIsDeleted returns the IsDeleted field value if set, zero value otherwise.
+func (o *TransferVerifyResponseDataRecipient) GetIsDeleted() bool {
+	if o == nil || IsNil(o.IsDeleted) {
+		var ret bool
+		return ret
+	}
+	return *o.IsDeleted
+}
+
+// GetIsDeletedOk returns a tuple with the IsDeleted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransferVerifyResponseDataRecipient) GetIsDeletedOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsDeleted) {
+		return nil, false
+	}
+	return o.IsDeleted, true
+}
+
+// HasIsDeleted returns a boolean if a field has been set.
+func (o *TransferVerifyResponseDataRecipient) HasIsDeleted() bool {
+	if o != nil && !IsNil(o.IsDeleted) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDeleted gets a reference to the given bool and assigns it to the IsDeleted field.
+func (o *TransferVerifyResponseDataRecipient) SetIsDeleted(v bool) {
+	o.IsDeleted = &v
 }
 
 // GetDetails returns the Details field value
@@ -454,9 +528,13 @@ func (o TransferVerifyResponseDataRecipient) ToMap() (map[string]interface{}, er
 	toSerialize["active"] = o.Active
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["currency"] = o.Currency
-	toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
+	}
 	toSerialize["domain"] = o.Domain
-	toSerialize["email"] = o.Email
+	if o.Email.IsSet() {
+		toSerialize["email"] = o.Email.Get()
+	}
 	toSerialize["id"] = o.Id
 	toSerialize["integration"] = o.Integration
 	if o.Metadata != nil {
@@ -466,7 +544,12 @@ func (o TransferVerifyResponseDataRecipient) ToMap() (map[string]interface{}, er
 	toSerialize["recipient_code"] = o.RecipientCode
 	toSerialize["type"] = o.Type
 	toSerialize["updatedAt"] = o.UpdatedAt
-	toSerialize["is_deleted"] = o.IsDeleted
+	if !IsNil(o.IsDeleted) {
+		toSerialize["is_deleted"] = o.IsDeleted
+	}
+	if !IsNil(o.IsDeleted) {
+		toSerialize["isDeleted"] = o.IsDeleted
+	}
 	toSerialize["details"] = o.Details
 	return toSerialize, nil
 }
@@ -479,16 +562,13 @@ func (o *TransferVerifyResponseDataRecipient) UnmarshalJSON(data []byte) (err er
 		"active",
 		"createdAt",
 		"currency",
-		"description",
 		"domain",
-		"email",
 		"id",
 		"integration",
 		"name",
 		"recipient_code",
 		"type",
 		"updatedAt",
-		"is_deleted",
 		"details",
 	}
 

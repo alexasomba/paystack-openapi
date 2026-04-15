@@ -22,9 +22,9 @@ from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.charge_authorization_response_data_log import ChargeAuthorizationResponseDataLog
 from alexasomba_paystack.models.transaction_fetch_response_data_authorization import TransactionFetchResponseDataAuthorization
-from alexasomba_paystack.models.transaction_fetch_response_data_customer import TransactionFetchResponseDataCustomer
-from alexasomba_paystack.models.transaction_fetch_response_data_metadata import TransactionFetchResponseDataMetadata
 from alexasomba_paystack.models.transaction_fetch_response_data_source import TransactionFetchResponseDataSource
+from alexasomba_paystack.models.transaction_list_response_array_metadata import TransactionListResponseArrayMetadata
+from alexasomba_paystack.models.transaction_partial_debit_response_data_customer import TransactionPartialDebitResponseDataCustomer
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -45,20 +45,20 @@ class TransactionFetchResponseData(BaseModel):
     created_at: StrictStr
     channel: StrictStr
     currency: StrictStr
-    ip_address: StrictStr
-    metadata: TransactionFetchResponseDataMetadata
+    ip_address: Optional[StrictStr]
+    metadata: Optional[TransactionListResponseArrayMetadata]
     log: Optional[ChargeAuthorizationResponseDataLog]
     fees: StrictInt
     fees_split: Optional[StrictInt]
     authorization: TransactionFetchResponseDataAuthorization
-    customer: TransactionFetchResponseDataCustomer
-    plan: Dict[str, Any]
-    subaccount: Dict[str, Any]
-    split: Dict[str, Any]
+    customer: TransactionPartialDebitResponseDataCustomer
+    plan: Optional[Dict[str, Any]]
+    subaccount: Optional[Dict[str, Any]]
+    split: Optional[Dict[str, Any]]
     order_id: Optional[Any]
     requested_amount: StrictInt
     pos_transaction_data: Optional[Any]
-    source: TransactionFetchResponseDataSource
+    source: Optional[TransactionFetchResponseDataSource]
     fees_breakdown: Optional[Any]
     connect: Optional[Any]
     __properties: ClassVar[List[str]] = ["id", "domain", "status", "reference", "receipt_number", "amount", "message", "gateway_response", "helpdesk_link", "paid_at", "created_at", "channel", "currency", "ip_address", "metadata", "log", "fees", "fees_split", "authorization", "customer", "plan", "subaccount", "split", "order_id", "requested_amount", "pos_transaction_data", "source", "fees_breakdown", "connect"]
@@ -132,6 +132,16 @@ class TransactionFetchResponseData(BaseModel):
         if self.helpdesk_link is None and "helpdesk_link" in self.model_fields_set:
             _dict['helpdesk_link'] = None
 
+        # set to None if ip_address (nullable) is None
+        # and model_fields_set contains the field
+        if self.ip_address is None and "ip_address" in self.model_fields_set:
+            _dict['ip_address'] = None
+
+        # set to None if metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
+
         # set to None if log (nullable) is None
         # and model_fields_set contains the field
         if self.log is None and "log" in self.model_fields_set:
@@ -142,6 +152,21 @@ class TransactionFetchResponseData(BaseModel):
         if self.fees_split is None and "fees_split" in self.model_fields_set:
             _dict['fees_split'] = None
 
+        # set to None if plan (nullable) is None
+        # and model_fields_set contains the field
+        if self.plan is None and "plan" in self.model_fields_set:
+            _dict['plan'] = None
+
+        # set to None if subaccount (nullable) is None
+        # and model_fields_set contains the field
+        if self.subaccount is None and "subaccount" in self.model_fields_set:
+            _dict['subaccount'] = None
+
+        # set to None if split (nullable) is None
+        # and model_fields_set contains the field
+        if self.split is None and "split" in self.model_fields_set:
+            _dict['split'] = None
+
         # set to None if order_id (nullable) is None
         # and model_fields_set contains the field
         if self.order_id is None and "order_id" in self.model_fields_set:
@@ -151,6 +176,11 @@ class TransactionFetchResponseData(BaseModel):
         # and model_fields_set contains the field
         if self.pos_transaction_data is None and "pos_transaction_data" in self.model_fields_set:
             _dict['pos_transaction_data'] = None
+
+        # set to None if source (nullable) is None
+        # and model_fields_set contains the field
+        if self.source is None and "source" in self.model_fields_set:
+            _dict['source'] = None
 
         # set to None if fees_breakdown (nullable) is None
         # and model_fields_set contains the field
@@ -188,12 +218,12 @@ class TransactionFetchResponseData(BaseModel):
             "channel": obj.get("channel"),
             "currency": obj.get("currency"),
             "ip_address": obj.get("ip_address"),
-            "metadata": TransactionFetchResponseDataMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
+            "metadata": TransactionListResponseArrayMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
             "log": ChargeAuthorizationResponseDataLog.from_dict(obj["log"]) if obj.get("log") is not None else None,
             "fees": obj.get("fees"),
             "fees_split": obj.get("fees_split"),
             "authorization": TransactionFetchResponseDataAuthorization.from_dict(obj["authorization"]) if obj.get("authorization") is not None else None,
-            "customer": TransactionFetchResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
+            "customer": TransactionPartialDebitResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
             "plan": obj.get("plan"),
             "subaccount": obj.get("subaccount"),
             "split": obj.get("split"),

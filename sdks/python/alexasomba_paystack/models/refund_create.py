@@ -28,7 +28,7 @@ class RefundCreate(BaseModel):
     RefundCreate
     """ # noqa: E501
     transaction: StrictStr = Field(description="The reference of a previosuly completed transaction")
-    amount: Optional[StrictInt] = Field(default=None, description="Amount to be refunded to the customer. It cannot be more than the original transaction amount")
+    amount: Optional[StrictInt] = Field(default=None, description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Amount to be refunded to the customer. It cannot be more than the original transaction amount. ")
     currency: Optional[StrictStr] = Field(default=None, description="Three-letter ISO currency")
     customer_note: Optional[StrictStr] = Field(default=None, description="Customer reason")
     merchant_note: Optional[StrictStr] = Field(default=None, description="Merchant reason")
@@ -40,8 +40,8 @@ class RefundCreate(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['GHS', 'KES', 'NGN', 'USD', 'ZAR']):
-            raise ValueError("must be one of enum values ('GHS', 'KES', 'NGN', 'USD', 'ZAR')")
+        if value not in set(['GHS', 'KES', 'NGN', 'USD', 'ZAR', 'XOF']):
+            raise ValueError("must be one of enum values ('GHS', 'KES', 'NGN', 'USD', 'ZAR', 'XOF')")
         return value
 
     model_config = ConfigDict(

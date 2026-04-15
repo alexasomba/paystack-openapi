@@ -73,6 +73,7 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
         'email' => 'string',
         'id' => 'int',
         'is_deleted' => 'bool',
+        'is_deleted' => 'bool',
         'created_at' => 'string',
         'updated_at' => 'string'
     ];
@@ -100,6 +101,7 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
         'email' => null,
         'id' => null,
         'is_deleted' => null,
+        'is_deleted' => null,
         'created_at' => null,
         'updated_at' => null
     ];
@@ -116,14 +118,15 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
         'currency' => false,
         'name' => false,
         'details' => false,
-        'description' => false,
+        'description' => true,
         'metadata' => true,
         'recipient_code' => false,
         'active' => false,
-        'recipient_account' => false,
-        'institution_code' => false,
-        'email' => false,
+        'recipient_account' => true,
+        'institution_code' => true,
+        'email' => true,
         'id' => false,
+        'is_deleted' => false,
         'is_deleted' => false,
         'created_at' => false,
         'updated_at' => false
@@ -230,6 +233,7 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
         'email' => 'email',
         'id' => 'id',
         'is_deleted' => 'isDeleted',
+        'is_deleted' => 'is_deleted',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt'
     ];
@@ -255,6 +259,7 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
         'email' => 'setEmail',
         'id' => 'setId',
         'is_deleted' => 'setIsDeleted',
+        'is_deleted' => 'setIsDeleted',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
     ];
@@ -279,6 +284,7 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
         'institution_code' => 'getInstitutionCode',
         'email' => 'getEmail',
         'id' => 'getId',
+        'is_deleted' => 'getIsDeleted',
         'is_deleted' => 'getIsDeleted',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
@@ -356,6 +362,7 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('is_deleted', $data ?? [], null);
+        $this->setIfExists('is_deleted', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
     }
@@ -387,9 +394,6 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        if ($this->container['integration'] === null) {
-            $invalidProperties[] = "'integration' can't be null";
-        }
         if ($this->container['domain'] === null) {
             $invalidProperties[] = "'domain' can't be null";
         }
@@ -405,29 +409,14 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
         if ($this->container['details'] === null) {
             $invalidProperties[] = "'details' can't be null";
         }
-        if ($this->container['description'] === null) {
-            $invalidProperties[] = "'description' can't be null";
-        }
         if ($this->container['recipient_code'] === null) {
             $invalidProperties[] = "'recipient_code' can't be null";
         }
         if ($this->container['active'] === null) {
             $invalidProperties[] = "'active' can't be null";
         }
-        if ($this->container['recipient_account'] === null) {
-            $invalidProperties[] = "'recipient_account' can't be null";
-        }
-        if ($this->container['institution_code'] === null) {
-            $invalidProperties[] = "'institution_code' can't be null";
-        }
-        if ($this->container['email'] === null) {
-            $invalidProperties[] = "'email' can't be null";
-        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['is_deleted'] === null) {
-            $invalidProperties[] = "'is_deleted' can't be null";
         }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
@@ -453,7 +442,7 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
     /**
      * Gets integration
      *
-     * @return int
+     * @return int|null
      */
     public function getIntegration()
     {
@@ -463,7 +452,7 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
     /**
      * Sets integration
      *
-     * @param int $integration integration
+     * @param int|null $integration integration
      *
      * @return self
      */
@@ -615,7 +604,7 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
     /**
      * Gets description
      *
-     * @return string
+     * @return string|null
      */
     public function getDescription()
     {
@@ -625,14 +614,21 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
     /**
      * Sets description
      *
-     * @param string $description description
+     * @param string|null $description description
      *
      * @return self
      */
     public function setDescription($description)
     {
         if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['description'] = $description;
 
@@ -730,7 +726,7 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
     /**
      * Gets recipient_account
      *
-     * @return string
+     * @return string|null
      */
     public function getRecipientAccount()
     {
@@ -740,14 +736,21 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
     /**
      * Sets recipient_account
      *
-     * @param string $recipient_account recipient_account
+     * @param string|null $recipient_account recipient_account
      *
      * @return self
      */
     public function setRecipientAccount($recipient_account)
     {
         if (is_null($recipient_account)) {
-            throw new \InvalidArgumentException('non-nullable recipient_account cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'recipient_account');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('recipient_account', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['recipient_account'] = $recipient_account;
 
@@ -757,7 +760,7 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
     /**
      * Gets institution_code
      *
-     * @return string
+     * @return string|null
      */
     public function getInstitutionCode()
     {
@@ -767,14 +770,21 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
     /**
      * Sets institution_code
      *
-     * @param string $institution_code institution_code
+     * @param string|null $institution_code institution_code
      *
      * @return self
      */
     public function setInstitutionCode($institution_code)
     {
         if (is_null($institution_code)) {
-            throw new \InvalidArgumentException('non-nullable institution_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'institution_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('institution_code', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['institution_code'] = $institution_code;
 
@@ -784,7 +794,7 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
     /**
      * Gets email
      *
-     * @return string
+     * @return string|null
      */
     public function getEmail()
     {
@@ -794,14 +804,21 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
     /**
      * Sets email
      *
-     * @param string $email email
+     * @param string|null $email email
      *
      * @return self
      */
     public function setEmail($email)
     {
         if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'email');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('email', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['email'] = $email;
 
@@ -838,7 +855,7 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
     /**
      * Gets is_deleted
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsDeleted()
     {
@@ -848,7 +865,34 @@ class TransferRecipientFetchResponseData implements ModelInterface, ArrayAccess,
     /**
      * Sets is_deleted
      *
-     * @param bool $is_deleted is_deleted
+     * @param bool|null $is_deleted is_deleted
+     *
+     * @return self
+     */
+    public function setIsDeleted($is_deleted)
+    {
+        if (is_null($is_deleted)) {
+            throw new \InvalidArgumentException('non-nullable is_deleted cannot be null');
+        }
+        $this->container['is_deleted'] = $is_deleted;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_deleted
+     *
+     * @return bool|null
+     */
+    public function getIsDeleted()
+    {
+        return $this->container['is_deleted'];
+    }
+
+    /**
+     * Sets is_deleted
+     *
+     * @param bool|null $is_deleted is_deleted
      *
      * @return self
      */

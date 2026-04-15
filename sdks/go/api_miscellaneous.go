@@ -279,7 +279,7 @@ func (a *MiscellaneousAPIService) MiscellaneousListCountriesExecute(r ApiMiscell
 type ApiMiscellaneousResolveCardBinRequest struct {
 	ctx context.Context
 	ApiService *MiscellaneousAPIService
-	bin int32
+	bin string
 }
 
 func (r ApiMiscellaneousResolveCardBinRequest) Execute() (*VerificationResolveCardBINResponse, *http.Response, error) {
@@ -295,7 +295,7 @@ Get the details of a card BIN
  @param bin The card bank identification number
  @return ApiMiscellaneousResolveCardBinRequest
 */
-func (a *MiscellaneousAPIService) MiscellaneousResolveCardBin(ctx context.Context, bin int32) ApiMiscellaneousResolveCardBinRequest {
+func (a *MiscellaneousAPIService) MiscellaneousResolveCardBin(ctx context.Context, bin string) ApiMiscellaneousResolveCardBinRequest {
 	return ApiMiscellaneousResolveCardBinRequest{
 		ApiService: a,
 		ctx: ctx,

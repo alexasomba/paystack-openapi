@@ -64,7 +64,7 @@ class VerifyResponseDataCustomer implements ModelInterface, ArrayAccess, \JsonSe
         'email' => 'string',
         'customer_code' => 'string',
         'phone' => 'string',
-        'metadata' => 'mixed',
+        'metadata' => 'object',
         'risk_action' => 'string',
         'international_format_phone' => 'string'
     ];
@@ -77,7 +77,7 @@ class VerifyResponseDataCustomer implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
+        'id' => 'int64',
         'first_name' => null,
         'last_name' => null,
         'email' => null,
@@ -355,9 +355,6 @@ class VerifyResponseDataCustomer implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['risk_action'] === null) {
             $invalidProperties[] = "'risk_action' can't be null";
         }
-        if ($this->container['international_format_phone'] === null && !$this->isNullableSetToNull('international_format_phone')) {
-            $invalidProperties[] = "'international_format_phone' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -559,7 +556,7 @@ class VerifyResponseDataCustomer implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets metadata
      *
-     * @return mixed|null
+     * @return object|null
      */
     public function getMetadata()
     {
@@ -569,7 +566,7 @@ class VerifyResponseDataCustomer implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets metadata
      *
-     * @param mixed|null $metadata metadata
+     * @param object|null $metadata metadata
      *
      * @return self
      */

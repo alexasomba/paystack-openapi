@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,13 +27,16 @@ class ChargeSubmitPinResponseDataCustomer(BaseModel):
     """
     ChargeSubmitPinResponseDataCustomer
     """ # noqa: E501
-    first_name: Optional[StrictStr]
-    last_name: Optional[StrictStr]
+    id: StrictInt
+    first_name: Optional[StrictStr] = None
+    last_name: Optional[StrictStr] = None
     email: StrictStr
     customer_code: StrictStr
-    phone: Optional[StrictStr]
+    phone: Optional[StrictStr] = None
+    metadata: Optional[Any] = None
     risk_action: StrictStr
-    __properties: ClassVar[List[str]] = ["first_name", "last_name", "email", "customer_code", "phone", "risk_action"]
+    international_format_phone: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["id", "first_name", "last_name", "email", "customer_code", "phone", "metadata", "risk_action", "international_format_phone"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,6 +92,16 @@ class ChargeSubmitPinResponseDataCustomer(BaseModel):
         if self.phone is None and "phone" in self.model_fields_set:
             _dict['phone'] = None
 
+        # set to None if metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
+
+        # set to None if international_format_phone (nullable) is None
+        # and model_fields_set contains the field
+        if self.international_format_phone is None and "international_format_phone" in self.model_fields_set:
+            _dict['international_format_phone'] = None
+
         return _dict
 
     @classmethod
@@ -101,12 +114,15 @@ class ChargeSubmitPinResponseDataCustomer(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "id": obj.get("id"),
             "first_name": obj.get("first_name"),
             "last_name": obj.get("last_name"),
             "email": obj.get("email"),
             "customer_code": obj.get("customer_code"),
             "phone": obj.get("phone"),
-            "risk_action": obj.get("risk_action")
+            "metadata": obj.get("metadata"),
+            "risk_action": obj.get("risk_action"),
+            "international_format_phone": obj.get("international_format_phone")
         })
         return _obj
 

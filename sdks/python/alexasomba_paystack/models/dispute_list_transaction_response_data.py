@@ -32,27 +32,27 @@ class DisputeListTransactionResponseData(BaseModel):
     """ # noqa: E501
     history: List[DisputeHistoryArray]
     messages: List[DisputeMessagesArray]
-    currency: StrictStr
-    last4: StrictStr
-    bin: StrictStr
-    transaction_reference: Optional[Any]
-    merchant_transaction_reference: StrictStr
-    refund_amount: StrictInt
+    currency: Optional[StrictStr]
+    last4: Optional[StrictStr]
+    bin: Optional[StrictStr]
+    transaction_reference: Optional[Any] = None
+    merchant_transaction_reference: Optional[StrictStr]
+    refund_amount: Optional[StrictInt]
     status: StrictStr
     domain: StrictStr
-    resolution: Optional[Any]
-    category: StrictStr
-    note: Optional[Any]
-    attachments: Optional[Any]
+    resolution: Optional[Any] = None
+    category: Optional[StrictStr]
+    note: Optional[Any] = None
+    attachments: Optional[Any] = None
     id: StrictInt
     integration: StrictInt
     transaction: DisputeListTransactionResponseDataTransaction
-    created_by: StrictInt
-    evidence: Optional[Any]
-    resolved_at: Optional[Any] = Field(alias="resolvedAt")
+    created_by: Optional[StrictInt]
+    evidence: Optional[Any] = None
+    resolved_at: Optional[Any] = Field(default=None, alias="resolvedAt")
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    due_at: Optional[Any] = Field(alias="dueAt")
+    due_at: Optional[Any] = Field(default=None, alias="dueAt")
     __properties: ClassVar[List[str]] = ["history", "messages", "currency", "last4", "bin", "transaction_reference", "merchant_transaction_reference", "refund_amount", "status", "domain", "resolution", "category", "note", "attachments", "id", "integration", "transaction", "created_by", "evidence", "resolvedAt", "createdAt", "updatedAt", "dueAt"]
 
     model_config = ConfigDict(
@@ -111,15 +111,45 @@ class DisputeListTransactionResponseData(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of transaction
         if self.transaction:
             _dict['transaction'] = self.transaction.to_dict()
+        # set to None if currency (nullable) is None
+        # and model_fields_set contains the field
+        if self.currency is None and "currency" in self.model_fields_set:
+            _dict['currency'] = None
+
+        # set to None if last4 (nullable) is None
+        # and model_fields_set contains the field
+        if self.last4 is None and "last4" in self.model_fields_set:
+            _dict['last4'] = None
+
+        # set to None if bin (nullable) is None
+        # and model_fields_set contains the field
+        if self.bin is None and "bin" in self.model_fields_set:
+            _dict['bin'] = None
+
         # set to None if transaction_reference (nullable) is None
         # and model_fields_set contains the field
         if self.transaction_reference is None and "transaction_reference" in self.model_fields_set:
             _dict['transaction_reference'] = None
 
+        # set to None if merchant_transaction_reference (nullable) is None
+        # and model_fields_set contains the field
+        if self.merchant_transaction_reference is None and "merchant_transaction_reference" in self.model_fields_set:
+            _dict['merchant_transaction_reference'] = None
+
+        # set to None if refund_amount (nullable) is None
+        # and model_fields_set contains the field
+        if self.refund_amount is None and "refund_amount" in self.model_fields_set:
+            _dict['refund_amount'] = None
+
         # set to None if resolution (nullable) is None
         # and model_fields_set contains the field
         if self.resolution is None and "resolution" in self.model_fields_set:
             _dict['resolution'] = None
+
+        # set to None if category (nullable) is None
+        # and model_fields_set contains the field
+        if self.category is None and "category" in self.model_fields_set:
+            _dict['category'] = None
 
         # set to None if note (nullable) is None
         # and model_fields_set contains the field
@@ -130,6 +160,11 @@ class DisputeListTransactionResponseData(BaseModel):
         # and model_fields_set contains the field
         if self.attachments is None and "attachments" in self.model_fields_set:
             _dict['attachments'] = None
+
+        # set to None if created_by (nullable) is None
+        # and model_fields_set contains the field
+        if self.created_by is None and "created_by" in self.model_fields_set:
+            _dict['created_by'] = None
 
         # set to None if evidence (nullable) is None
         # and model_fields_set contains the field

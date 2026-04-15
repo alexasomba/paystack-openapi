@@ -25,11 +25,11 @@ type CustomerFetchResponseData struct {
 	Transactions []interface{} `json:"transactions"`
 	Subscriptions []interface{} `json:"subscriptions"`
 	Authorizations []interface{} `json:"authorizations"`
-	FirstName string `json:"first_name"`
-	LastName string `json:"last_name"`
+	FirstName NullableString `json:"first_name"`
+	LastName NullableString `json:"last_name"`
 	Email string `json:"email"`
-	Phone string `json:"phone"`
-	Metadata BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata `json:"metadata"`
+	Phone NullableString `json:"phone"`
+	Metadata map[string]interface{} `json:"metadata"`
 	Domain string `json:"domain"`
 	CustomerCode string `json:"customer_code"`
 	RiskAction string `json:"risk_action"`
@@ -40,7 +40,7 @@ type CustomerFetchResponseData struct {
 	TotalTransactions int32 `json:"total_transactions"`
 	TotalTransactionValue []interface{} `json:"total_transaction_value"`
 	DedicatedAccount interface{} `json:"dedicated_account"`
-	DedicatedAccounts []interface{} `json:"dedicated_accounts"`
+	DedicatedAccounts []interface{} `json:"dedicated_accounts,omitempty"`
 	Identified bool `json:"identified"`
 	Identifications interface{} `json:"identifications"`
 }
@@ -51,7 +51,7 @@ type _CustomerFetchResponseData CustomerFetchResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomerFetchResponseData(transactions []interface{}, subscriptions []interface{}, authorizations []interface{}, firstName string, lastName string, email string, phone string, metadata BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata, domain string, customerCode string, riskAction string, id int32, integration int32, createdAt string, updatedAt string, totalTransactions int32, totalTransactionValue []interface{}, dedicatedAccount interface{}, dedicatedAccounts []interface{}, identified bool, identifications interface{}) *CustomerFetchResponseData {
+func NewCustomerFetchResponseData(transactions []interface{}, subscriptions []interface{}, authorizations []interface{}, firstName NullableString, lastName NullableString, email string, phone NullableString, metadata map[string]interface{}, domain string, customerCode string, riskAction string, id int32, integration int32, createdAt string, updatedAt string, totalTransactions int32, totalTransactionValue []interface{}, dedicatedAccount interface{}, identified bool, identifications interface{}) *CustomerFetchResponseData {
 	this := CustomerFetchResponseData{}
 	this.Transactions = transactions
 	this.Subscriptions = subscriptions
@@ -71,7 +71,6 @@ func NewCustomerFetchResponseData(transactions []interface{}, subscriptions []in
 	this.TotalTransactions = totalTransactions
 	this.TotalTransactionValue = totalTransactionValue
 	this.DedicatedAccount = dedicatedAccount
-	this.DedicatedAccounts = dedicatedAccounts
 	this.Identified = identified
 	this.Identifications = identifications
 	return &this
@@ -158,51 +157,55 @@ func (o *CustomerFetchResponseData) SetAuthorizations(v []interface{}) {
 }
 
 // GetFirstName returns the FirstName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CustomerFetchResponseData) GetFirstName() string {
-	if o == nil {
+	if o == nil || o.FirstName.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.FirstName
+	return *o.FirstName.Get()
 }
 
 // GetFirstNameOk returns a tuple with the FirstName field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerFetchResponseData) GetFirstNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.FirstName, true
+	return o.FirstName.Get(), o.FirstName.IsSet()
 }
 
 // SetFirstName sets field value
 func (o *CustomerFetchResponseData) SetFirstName(v string) {
-	o.FirstName = v
+	o.FirstName.Set(&v)
 }
 
 // GetLastName returns the LastName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CustomerFetchResponseData) GetLastName() string {
-	if o == nil {
+	if o == nil || o.LastName.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.LastName
+	return *o.LastName.Get()
 }
 
 // GetLastNameOk returns a tuple with the LastName field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerFetchResponseData) GetLastNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.LastName, true
+	return o.LastName.Get(), o.LastName.IsSet()
 }
 
 // SetLastName sets field value
 func (o *CustomerFetchResponseData) SetLastName(v string) {
-	o.LastName = v
+	o.LastName.Set(&v)
 }
 
 // GetEmail returns the Email field value
@@ -230,33 +233,36 @@ func (o *CustomerFetchResponseData) SetEmail(v string) {
 }
 
 // GetPhone returns the Phone field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CustomerFetchResponseData) GetPhone() string {
-	if o == nil {
+	if o == nil || o.Phone.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Phone
+	return *o.Phone.Get()
 }
 
 // GetPhoneOk returns a tuple with the Phone field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerFetchResponseData) GetPhoneOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Phone, true
+	return o.Phone.Get(), o.Phone.IsSet()
 }
 
 // SetPhone sets field value
 func (o *CustomerFetchResponseData) SetPhone(v string) {
-	o.Phone = v
+	o.Phone.Set(&v)
 }
 
 // GetMetadata returns the Metadata field value
-func (o *CustomerFetchResponseData) GetMetadata() BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *CustomerFetchResponseData) GetMetadata() map[string]interface{} {
 	if o == nil {
-		var ret BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -265,15 +271,16 @@ func (o *CustomerFetchResponseData) GetMetadata() BulkChargeFetchBulkBatchCharge
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
-func (o *CustomerFetchResponseData) GetMetadataOk() (*BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata, bool) {
-	if o == nil {
-		return nil, false
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CustomerFetchResponseData) GetMetadataOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Metadata) {
+		return map[string]interface{}{}, false
 	}
-	return &o.Metadata, true
+	return o.Metadata, true
 }
 
 // SetMetadata sets field value
-func (o *CustomerFetchResponseData) SetMetadata(v BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata) {
+func (o *CustomerFetchResponseData) SetMetadata(v map[string]interface{}) {
 	o.Metadata = v
 }
 
@@ -519,18 +526,16 @@ func (o *CustomerFetchResponseData) SetDedicatedAccount(v interface{}) {
 	o.DedicatedAccount = v
 }
 
-// GetDedicatedAccounts returns the DedicatedAccounts field value
-// If the value is explicit nil, the zero value for []interface{} will be returned
+// GetDedicatedAccounts returns the DedicatedAccounts field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerFetchResponseData) GetDedicatedAccounts() []interface{} {
 	if o == nil {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.DedicatedAccounts
 }
 
-// GetDedicatedAccountsOk returns a tuple with the DedicatedAccounts field value
+// GetDedicatedAccountsOk returns a tuple with the DedicatedAccounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerFetchResponseData) GetDedicatedAccountsOk() ([]interface{}, bool) {
@@ -540,7 +545,16 @@ func (o *CustomerFetchResponseData) GetDedicatedAccountsOk() ([]interface{}, boo
 	return o.DedicatedAccounts, true
 }
 
-// SetDedicatedAccounts sets field value
+// HasDedicatedAccounts returns a boolean if a field has been set.
+func (o *CustomerFetchResponseData) HasDedicatedAccounts() bool {
+	if o != nil && !IsNil(o.DedicatedAccounts) {
+		return true
+	}
+
+	return false
+}
+
+// SetDedicatedAccounts gets a reference to the given []interface{} and assigns it to the DedicatedAccounts field.
 func (o *CustomerFetchResponseData) SetDedicatedAccounts(v []interface{}) {
 	o.DedicatedAccounts = v
 }
@@ -608,11 +622,13 @@ func (o CustomerFetchResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["transactions"] = o.Transactions
 	toSerialize["subscriptions"] = o.Subscriptions
 	toSerialize["authorizations"] = o.Authorizations
-	toSerialize["first_name"] = o.FirstName
-	toSerialize["last_name"] = o.LastName
+	toSerialize["first_name"] = o.FirstName.Get()
+	toSerialize["last_name"] = o.LastName.Get()
 	toSerialize["email"] = o.Email
-	toSerialize["phone"] = o.Phone
-	toSerialize["metadata"] = o.Metadata
+	toSerialize["phone"] = o.Phone.Get()
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
+	}
 	toSerialize["domain"] = o.Domain
 	toSerialize["customer_code"] = o.CustomerCode
 	toSerialize["risk_action"] = o.RiskAction
@@ -658,7 +674,6 @@ func (o *CustomerFetchResponseData) UnmarshalJSON(data []byte) (err error) {
 		"total_transactions",
 		"total_transaction_value",
 		"dedicated_account",
-		"dedicated_accounts",
 		"identified",
 		"identifications",
 	}

@@ -31,25 +31,25 @@ type ApiApplePayListDomainRequest struct {
 	previous *string
 }
 
-// A flag to indicate if cursor based pagination should be used
+// Flag to enable cursor pagination on the endpoint
 func (r ApiApplePayListDomainRequest) UseCursor(useCursor bool) ApiApplePayListDomainRequest {
 	r.useCursor = &useCursor
 	return r
 }
 
-// An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
+// A cursor that indicates your place in the list. It can be used to fetch the next page of the list
 func (r ApiApplePayListDomainRequest) Next(next string) ApiApplePayListDomainRequest {
 	r.next = &next
 	return r
 }
 
-// An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
+// A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request
 func (r ApiApplePayListDomainRequest) Previous(previous string) ApiApplePayListDomainRequest {
 	r.previous = &previous
 	return r
 }
 
-func (r ApiApplePayListDomainRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiApplePayListDomainRequest) Execute() (*ApplePayDomainsResponse, *http.Response, error) {
 	return r.ApiService.ApplePayListDomainExecute(r)
 }
 
@@ -69,13 +69,13 @@ func (a *ApplePayAPIService) ApplePayListDomain(ctx context.Context) ApiApplePay
 }
 
 // Execute executes the request
-//  @return Response
-func (a *ApplePayAPIService) ApplePayListDomainExecute(r ApiApplePayListDomainRequest) (*Response, *http.Response, error) {
+//  @return ApplePayDomainsResponse
+func (a *ApplePayAPIService) ApplePayListDomainExecute(r ApiApplePayListDomainRequest) (*ApplePayDomainsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *ApplePayDomainsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplePayAPIService.ApplePayListDomain")

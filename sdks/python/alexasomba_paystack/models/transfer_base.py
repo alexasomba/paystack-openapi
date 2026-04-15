@@ -28,7 +28,7 @@ class TransferBase(BaseModel):
     """
     TransferBase
     """ # noqa: E501
-    amount: StrictInt = Field(description="Amount to transfer in kobo if currency is NGN and pesewas if currency is GHS.")
+    amount: StrictInt = Field(description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). ")
     recipient: StrictStr = Field(description="The transfer recipient's code")
     reference: Annotated[str, Field(min_length=16, strict=True)] = Field(description="To ensure idempotency, you need to provide e a unique identifier for the request.  The identifier should be a lowercase alphanumeric string with only -,_  symbols allowed. ")
     reason: Optional[StrictStr] = Field(default=None, description="The reason or narration for the transfer.")

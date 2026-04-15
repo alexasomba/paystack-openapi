@@ -20,9 +20,9 @@ var _ MappedNullable = &VirtualTerminalCreateDestinationsInner{}
 
 // VirtualTerminalCreateDestinationsInner struct for VirtualTerminalCreateDestinationsInner
 type VirtualTerminalCreateDestinationsInner struct {
-	// The WhatsApp number to receive payment notifications
+	// The Whatsapp phone number to send notifications to
 	Target *string `json:"target,omitempty"`
-	// The name of the associated WhatsApp number
+	// A descriptive label for the destination
 	Name *string `json:"name,omitempty"`
 }
 

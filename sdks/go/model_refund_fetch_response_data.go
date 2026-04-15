@@ -24,30 +24,23 @@ var _ MappedNullable = &RefundFetchResponseData{}
 type RefundFetchResponseData struct {
 	Integration int32 `json:"integration"`
 	Transaction int32 `json:"transaction"`
-	Dispute interface{} `json:"dispute"`
-	Settlement interface{} `json:"settlement"`
-	Id int32 `json:"id"`
+	Dispute NullableInt32 `json:"dispute"`
+	Settlement NullableInt32 `json:"settlement"`
 	Domain string `json:"domain"`
-	Currency string `json:"currency"`
 	Amount int32 `json:"amount"`
+	DeductedAmount int32 `json:"deducted_amount"`
+	FullyDeducted bool `json:"fully_deducted"`
+	Currency string `json:"currency"`
+	Channel string `json:"channel"`
 	Status string `json:"status"`
-	RefundedAt interface{} `json:"refunded_at"`
 	RefundedBy string `json:"refunded_by"`
+	RefundedAt string `json:"refunded_at"`
+	ExpectedAt string `json:"expected_at"`
 	CustomerNote string `json:"customer_note"`
 	MerchantNote string `json:"merchant_note"`
-	DeductedAmount int32 `json:"deducted_amount"`
-	FullyDeducted int32 `json:"fully_deducted"`
+	Id int32 `json:"id"`
 	CreatedAt string `json:"createdAt"`
-	BankReference interface{} `json:"bank_reference"`
-	TransactionReference string `json:"transaction_reference"`
-	Reason string `json:"reason"`
-	Customer RefundFetchResponseDataCustomer `json:"customer"`
-	RefundType string `json:"refund_type"`
-	TransactionAmount int32 `json:"transaction_amount"`
-	InitiatedBy string `json:"initiated_by"`
-	RefundChannel string `json:"refund_channel"`
-	SessionId interface{} `json:"session_id"`
-	CollectAccountNumber bool `json:"collect_account_number"`
+	UpdatedAt string `json:"updatedAt"`
 }
 
 type _RefundFetchResponseData RefundFetchResponseData
@@ -56,34 +49,27 @@ type _RefundFetchResponseData RefundFetchResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRefundFetchResponseData(integration int32, transaction int32, dispute interface{}, settlement interface{}, id int32, domain string, currency string, amount int32, status string, refundedAt interface{}, refundedBy string, customerNote string, merchantNote string, deductedAmount int32, fullyDeducted int32, createdAt string, bankReference interface{}, transactionReference string, reason string, customer RefundFetchResponseDataCustomer, refundType string, transactionAmount int32, initiatedBy string, refundChannel string, sessionId interface{}, collectAccountNumber bool) *RefundFetchResponseData {
+func NewRefundFetchResponseData(integration int32, transaction int32, dispute NullableInt32, settlement NullableInt32, domain string, amount int32, deductedAmount int32, fullyDeducted bool, currency string, channel string, status string, refundedBy string, refundedAt string, expectedAt string, customerNote string, merchantNote string, id int32, createdAt string, updatedAt string) *RefundFetchResponseData {
 	this := RefundFetchResponseData{}
 	this.Integration = integration
 	this.Transaction = transaction
 	this.Dispute = dispute
 	this.Settlement = settlement
-	this.Id = id
 	this.Domain = domain
-	this.Currency = currency
 	this.Amount = amount
-	this.Status = status
-	this.RefundedAt = refundedAt
-	this.RefundedBy = refundedBy
-	this.CustomerNote = customerNote
-	this.MerchantNote = merchantNote
 	this.DeductedAmount = deductedAmount
 	this.FullyDeducted = fullyDeducted
+	this.Currency = currency
+	this.Channel = channel
+	this.Status = status
+	this.RefundedBy = refundedBy
+	this.RefundedAt = refundedAt
+	this.ExpectedAt = expectedAt
+	this.CustomerNote = customerNote
+	this.MerchantNote = merchantNote
+	this.Id = id
 	this.CreatedAt = createdAt
-	this.BankReference = bankReference
-	this.TransactionReference = transactionReference
-	this.Reason = reason
-	this.Customer = customer
-	this.RefundType = refundType
-	this.TransactionAmount = transactionAmount
-	this.InitiatedBy = initiatedBy
-	this.RefundChannel = refundChannel
-	this.SessionId = sessionId
-	this.CollectAccountNumber = collectAccountNumber
+	this.UpdatedAt = updatedAt
 	return &this
 }
 
@@ -144,79 +130,55 @@ func (o *RefundFetchResponseData) SetTransaction(v int32) {
 }
 
 // GetDispute returns the Dispute field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *RefundFetchResponseData) GetDispute() interface{} {
-	if o == nil {
-		var ret interface{}
+// If the value is explicit nil, the zero value for int32 will be returned
+func (o *RefundFetchResponseData) GetDispute() int32 {
+	if o == nil || o.Dispute.Get() == nil {
+		var ret int32
 		return ret
 	}
 
-	return o.Dispute
+	return *o.Dispute.Get()
 }
 
 // GetDisputeOk returns a tuple with the Dispute field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundFetchResponseData) GetDisputeOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Dispute) {
+func (o *RefundFetchResponseData) GetDisputeOk() (*int32, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Dispute, true
+	return o.Dispute.Get(), o.Dispute.IsSet()
 }
 
 // SetDispute sets field value
-func (o *RefundFetchResponseData) SetDispute(v interface{}) {
-	o.Dispute = v
+func (o *RefundFetchResponseData) SetDispute(v int32) {
+	o.Dispute.Set(&v)
 }
 
 // GetSettlement returns the Settlement field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *RefundFetchResponseData) GetSettlement() interface{} {
-	if o == nil {
-		var ret interface{}
+// If the value is explicit nil, the zero value for int32 will be returned
+func (o *RefundFetchResponseData) GetSettlement() int32 {
+	if o == nil || o.Settlement.Get() == nil {
+		var ret int32
 		return ret
 	}
 
-	return o.Settlement
+	return *o.Settlement.Get()
 }
 
 // GetSettlementOk returns a tuple with the Settlement field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundFetchResponseData) GetSettlementOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Settlement) {
+func (o *RefundFetchResponseData) GetSettlementOk() (*int32, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Settlement, true
+	return o.Settlement.Get(), o.Settlement.IsSet()
 }
 
 // SetSettlement sets field value
-func (o *RefundFetchResponseData) SetSettlement(v interface{}) {
-	o.Settlement = v
-}
-
-// GetId returns the Id field value
-func (o *RefundFetchResponseData) GetId() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *RefundFetchResponseData) GetIdOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *RefundFetchResponseData) SetId(v int32) {
-	o.Id = v
+func (o *RefundFetchResponseData) SetSettlement(v int32) {
+	o.Settlement.Set(&v)
 }
 
 // GetDomain returns the Domain field value
@@ -243,6 +205,78 @@ func (o *RefundFetchResponseData) SetDomain(v string) {
 	o.Domain = v
 }
 
+// GetAmount returns the Amount field value
+func (o *RefundFetchResponseData) GetAmount() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Amount
+}
+
+// GetAmountOk returns a tuple with the Amount field value
+// and a boolean to check if the value has been set.
+func (o *RefundFetchResponseData) GetAmountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Amount, true
+}
+
+// SetAmount sets field value
+func (o *RefundFetchResponseData) SetAmount(v int32) {
+	o.Amount = v
+}
+
+// GetDeductedAmount returns the DeductedAmount field value
+func (o *RefundFetchResponseData) GetDeductedAmount() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.DeductedAmount
+}
+
+// GetDeductedAmountOk returns a tuple with the DeductedAmount field value
+// and a boolean to check if the value has been set.
+func (o *RefundFetchResponseData) GetDeductedAmountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DeductedAmount, true
+}
+
+// SetDeductedAmount sets field value
+func (o *RefundFetchResponseData) SetDeductedAmount(v int32) {
+	o.DeductedAmount = v
+}
+
+// GetFullyDeducted returns the FullyDeducted field value
+func (o *RefundFetchResponseData) GetFullyDeducted() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.FullyDeducted
+}
+
+// GetFullyDeductedOk returns a tuple with the FullyDeducted field value
+// and a boolean to check if the value has been set.
+func (o *RefundFetchResponseData) GetFullyDeductedOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.FullyDeducted, true
+}
+
+// SetFullyDeducted sets field value
+func (o *RefundFetchResponseData) SetFullyDeducted(v bool) {
+	o.FullyDeducted = v
+}
+
 // GetCurrency returns the Currency field value
 func (o *RefundFetchResponseData) GetCurrency() string {
 	if o == nil {
@@ -267,28 +301,28 @@ func (o *RefundFetchResponseData) SetCurrency(v string) {
 	o.Currency = v
 }
 
-// GetAmount returns the Amount field value
-func (o *RefundFetchResponseData) GetAmount() int32 {
+// GetChannel returns the Channel field value
+func (o *RefundFetchResponseData) GetChannel() string {
 	if o == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 
-	return o.Amount
+	return o.Channel
 }
 
-// GetAmountOk returns a tuple with the Amount field value
+// GetChannelOk returns a tuple with the Channel field value
 // and a boolean to check if the value has been set.
-func (o *RefundFetchResponseData) GetAmountOk() (*int32, bool) {
+func (o *RefundFetchResponseData) GetChannelOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Amount, true
+	return &o.Channel, true
 }
 
-// SetAmount sets field value
-func (o *RefundFetchResponseData) SetAmount(v int32) {
-	o.Amount = v
+// SetChannel sets field value
+func (o *RefundFetchResponseData) SetChannel(v string) {
+	o.Channel = v
 }
 
 // GetStatus returns the Status field value
@@ -315,32 +349,6 @@ func (o *RefundFetchResponseData) SetStatus(v string) {
 	o.Status = v
 }
 
-// GetRefundedAt returns the RefundedAt field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *RefundFetchResponseData) GetRefundedAt() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.RefundedAt
-}
-
-// GetRefundedAtOk returns a tuple with the RefundedAt field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundFetchResponseData) GetRefundedAtOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.RefundedAt) {
-		return nil, false
-	}
-	return &o.RefundedAt, true
-}
-
-// SetRefundedAt sets field value
-func (o *RefundFetchResponseData) SetRefundedAt(v interface{}) {
-	o.RefundedAt = v
-}
-
 // GetRefundedBy returns the RefundedBy field value
 func (o *RefundFetchResponseData) GetRefundedBy() string {
 	if o == nil {
@@ -363,6 +371,54 @@ func (o *RefundFetchResponseData) GetRefundedByOk() (*string, bool) {
 // SetRefundedBy sets field value
 func (o *RefundFetchResponseData) SetRefundedBy(v string) {
 	o.RefundedBy = v
+}
+
+// GetRefundedAt returns the RefundedAt field value
+func (o *RefundFetchResponseData) GetRefundedAt() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.RefundedAt
+}
+
+// GetRefundedAtOk returns a tuple with the RefundedAt field value
+// and a boolean to check if the value has been set.
+func (o *RefundFetchResponseData) GetRefundedAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RefundedAt, true
+}
+
+// SetRefundedAt sets field value
+func (o *RefundFetchResponseData) SetRefundedAt(v string) {
+	o.RefundedAt = v
+}
+
+// GetExpectedAt returns the ExpectedAt field value
+func (o *RefundFetchResponseData) GetExpectedAt() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ExpectedAt
+}
+
+// GetExpectedAtOk returns a tuple with the ExpectedAt field value
+// and a boolean to check if the value has been set.
+func (o *RefundFetchResponseData) GetExpectedAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ExpectedAt, true
+}
+
+// SetExpectedAt sets field value
+func (o *RefundFetchResponseData) SetExpectedAt(v string) {
+	o.ExpectedAt = v
 }
 
 // GetCustomerNote returns the CustomerNote field value
@@ -413,52 +469,28 @@ func (o *RefundFetchResponseData) SetMerchantNote(v string) {
 	o.MerchantNote = v
 }
 
-// GetDeductedAmount returns the DeductedAmount field value
-func (o *RefundFetchResponseData) GetDeductedAmount() int32 {
+// GetId returns the Id field value
+func (o *RefundFetchResponseData) GetId() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.DeductedAmount
+	return o.Id
 }
 
-// GetDeductedAmountOk returns a tuple with the DeductedAmount field value
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *RefundFetchResponseData) GetDeductedAmountOk() (*int32, bool) {
+func (o *RefundFetchResponseData) GetIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.DeductedAmount, true
+	return &o.Id, true
 }
 
-// SetDeductedAmount sets field value
-func (o *RefundFetchResponseData) SetDeductedAmount(v int32) {
-	o.DeductedAmount = v
-}
-
-// GetFullyDeducted returns the FullyDeducted field value
-func (o *RefundFetchResponseData) GetFullyDeducted() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.FullyDeducted
-}
-
-// GetFullyDeductedOk returns a tuple with the FullyDeducted field value
-// and a boolean to check if the value has been set.
-func (o *RefundFetchResponseData) GetFullyDeductedOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.FullyDeducted, true
-}
-
-// SetFullyDeducted sets field value
-func (o *RefundFetchResponseData) SetFullyDeducted(v int32) {
-	o.FullyDeducted = v
+// SetId sets field value
+func (o *RefundFetchResponseData) SetId(v int32) {
+	o.Id = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -485,248 +517,28 @@ func (o *RefundFetchResponseData) SetCreatedAt(v string) {
 	o.CreatedAt = v
 }
 
-// GetBankReference returns the BankReference field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *RefundFetchResponseData) GetBankReference() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.BankReference
-}
-
-// GetBankReferenceOk returns a tuple with the BankReference field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundFetchResponseData) GetBankReferenceOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.BankReference) {
-		return nil, false
-	}
-	return &o.BankReference, true
-}
-
-// SetBankReference sets field value
-func (o *RefundFetchResponseData) SetBankReference(v interface{}) {
-	o.BankReference = v
-}
-
-// GetTransactionReference returns the TransactionReference field value
-func (o *RefundFetchResponseData) GetTransactionReference() string {
+// GetUpdatedAt returns the UpdatedAt field value
+func (o *RefundFetchResponseData) GetUpdatedAt() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.TransactionReference
+	return o.UpdatedAt
 }
 
-// GetTransactionReferenceOk returns a tuple with the TransactionReference field value
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
 // and a boolean to check if the value has been set.
-func (o *RefundFetchResponseData) GetTransactionReferenceOk() (*string, bool) {
+func (o *RefundFetchResponseData) GetUpdatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.TransactionReference, true
+	return &o.UpdatedAt, true
 }
 
-// SetTransactionReference sets field value
-func (o *RefundFetchResponseData) SetTransactionReference(v string) {
-	o.TransactionReference = v
-}
-
-// GetReason returns the Reason field value
-func (o *RefundFetchResponseData) GetReason() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Reason
-}
-
-// GetReasonOk returns a tuple with the Reason field value
-// and a boolean to check if the value has been set.
-func (o *RefundFetchResponseData) GetReasonOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Reason, true
-}
-
-// SetReason sets field value
-func (o *RefundFetchResponseData) SetReason(v string) {
-	o.Reason = v
-}
-
-// GetCustomer returns the Customer field value
-func (o *RefundFetchResponseData) GetCustomer() RefundFetchResponseDataCustomer {
-	if o == nil {
-		var ret RefundFetchResponseDataCustomer
-		return ret
-	}
-
-	return o.Customer
-}
-
-// GetCustomerOk returns a tuple with the Customer field value
-// and a boolean to check if the value has been set.
-func (o *RefundFetchResponseData) GetCustomerOk() (*RefundFetchResponseDataCustomer, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Customer, true
-}
-
-// SetCustomer sets field value
-func (o *RefundFetchResponseData) SetCustomer(v RefundFetchResponseDataCustomer) {
-	o.Customer = v
-}
-
-// GetRefundType returns the RefundType field value
-func (o *RefundFetchResponseData) GetRefundType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.RefundType
-}
-
-// GetRefundTypeOk returns a tuple with the RefundType field value
-// and a boolean to check if the value has been set.
-func (o *RefundFetchResponseData) GetRefundTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.RefundType, true
-}
-
-// SetRefundType sets field value
-func (o *RefundFetchResponseData) SetRefundType(v string) {
-	o.RefundType = v
-}
-
-// GetTransactionAmount returns the TransactionAmount field value
-func (o *RefundFetchResponseData) GetTransactionAmount() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.TransactionAmount
-}
-
-// GetTransactionAmountOk returns a tuple with the TransactionAmount field value
-// and a boolean to check if the value has been set.
-func (o *RefundFetchResponseData) GetTransactionAmountOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TransactionAmount, true
-}
-
-// SetTransactionAmount sets field value
-func (o *RefundFetchResponseData) SetTransactionAmount(v int32) {
-	o.TransactionAmount = v
-}
-
-// GetInitiatedBy returns the InitiatedBy field value
-func (o *RefundFetchResponseData) GetInitiatedBy() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.InitiatedBy
-}
-
-// GetInitiatedByOk returns a tuple with the InitiatedBy field value
-// and a boolean to check if the value has been set.
-func (o *RefundFetchResponseData) GetInitiatedByOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.InitiatedBy, true
-}
-
-// SetInitiatedBy sets field value
-func (o *RefundFetchResponseData) SetInitiatedBy(v string) {
-	o.InitiatedBy = v
-}
-
-// GetRefundChannel returns the RefundChannel field value
-func (o *RefundFetchResponseData) GetRefundChannel() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.RefundChannel
-}
-
-// GetRefundChannelOk returns a tuple with the RefundChannel field value
-// and a boolean to check if the value has been set.
-func (o *RefundFetchResponseData) GetRefundChannelOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.RefundChannel, true
-}
-
-// SetRefundChannel sets field value
-func (o *RefundFetchResponseData) SetRefundChannel(v string) {
-	o.RefundChannel = v
-}
-
-// GetSessionId returns the SessionId field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *RefundFetchResponseData) GetSessionId() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.SessionId
-}
-
-// GetSessionIdOk returns a tuple with the SessionId field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundFetchResponseData) GetSessionIdOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.SessionId) {
-		return nil, false
-	}
-	return &o.SessionId, true
-}
-
-// SetSessionId sets field value
-func (o *RefundFetchResponseData) SetSessionId(v interface{}) {
-	o.SessionId = v
-}
-
-// GetCollectAccountNumber returns the CollectAccountNumber field value
-func (o *RefundFetchResponseData) GetCollectAccountNumber() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.CollectAccountNumber
-}
-
-// GetCollectAccountNumberOk returns a tuple with the CollectAccountNumber field value
-// and a boolean to check if the value has been set.
-func (o *RefundFetchResponseData) GetCollectAccountNumberOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CollectAccountNumber, true
-}
-
-// SetCollectAccountNumber sets field value
-func (o *RefundFetchResponseData) SetCollectAccountNumber(v bool) {
-	o.CollectAccountNumber = v
+// SetUpdatedAt sets field value
+func (o *RefundFetchResponseData) SetUpdatedAt(v string) {
+	o.UpdatedAt = v
 }
 
 func (o RefundFetchResponseData) MarshalJSON() ([]byte, error) {
@@ -741,40 +553,23 @@ func (o RefundFetchResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["integration"] = o.Integration
 	toSerialize["transaction"] = o.Transaction
-	if o.Dispute != nil {
-		toSerialize["dispute"] = o.Dispute
-	}
-	if o.Settlement != nil {
-		toSerialize["settlement"] = o.Settlement
-	}
-	toSerialize["id"] = o.Id
+	toSerialize["dispute"] = o.Dispute.Get()
+	toSerialize["settlement"] = o.Settlement.Get()
 	toSerialize["domain"] = o.Domain
-	toSerialize["currency"] = o.Currency
 	toSerialize["amount"] = o.Amount
-	toSerialize["status"] = o.Status
-	if o.RefundedAt != nil {
-		toSerialize["refunded_at"] = o.RefundedAt
-	}
-	toSerialize["refunded_by"] = o.RefundedBy
-	toSerialize["customer_note"] = o.CustomerNote
-	toSerialize["merchant_note"] = o.MerchantNote
 	toSerialize["deducted_amount"] = o.DeductedAmount
 	toSerialize["fully_deducted"] = o.FullyDeducted
+	toSerialize["currency"] = o.Currency
+	toSerialize["channel"] = o.Channel
+	toSerialize["status"] = o.Status
+	toSerialize["refunded_by"] = o.RefundedBy
+	toSerialize["refunded_at"] = o.RefundedAt
+	toSerialize["expected_at"] = o.ExpectedAt
+	toSerialize["customer_note"] = o.CustomerNote
+	toSerialize["merchant_note"] = o.MerchantNote
+	toSerialize["id"] = o.Id
 	toSerialize["createdAt"] = o.CreatedAt
-	if o.BankReference != nil {
-		toSerialize["bank_reference"] = o.BankReference
-	}
-	toSerialize["transaction_reference"] = o.TransactionReference
-	toSerialize["reason"] = o.Reason
-	toSerialize["customer"] = o.Customer
-	toSerialize["refund_type"] = o.RefundType
-	toSerialize["transaction_amount"] = o.TransactionAmount
-	toSerialize["initiated_by"] = o.InitiatedBy
-	toSerialize["refund_channel"] = o.RefundChannel
-	if o.SessionId != nil {
-		toSerialize["session_id"] = o.SessionId
-	}
-	toSerialize["collect_account_number"] = o.CollectAccountNumber
+	toSerialize["updatedAt"] = o.UpdatedAt
 	return toSerialize, nil
 }
 
@@ -787,28 +582,21 @@ func (o *RefundFetchResponseData) UnmarshalJSON(data []byte) (err error) {
 		"transaction",
 		"dispute",
 		"settlement",
-		"id",
 		"domain",
-		"currency",
 		"amount",
-		"status",
-		"refunded_at",
-		"refunded_by",
-		"customer_note",
-		"merchant_note",
 		"deducted_amount",
 		"fully_deducted",
+		"currency",
+		"channel",
+		"status",
+		"refunded_by",
+		"refunded_at",
+		"expected_at",
+		"customer_note",
+		"merchant_note",
+		"id",
 		"createdAt",
-		"bank_reference",
-		"transaction_reference",
-		"reason",
-		"customer",
-		"refund_type",
-		"transaction_amount",
-		"initiated_by",
-		"refund_channel",
-		"session_id",
-		"collect_account_number",
+		"updatedAt",
 	}
 
 	allProperties := make(map[string]interface{})

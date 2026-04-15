@@ -258,6 +258,7 @@ class RefundCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     public const CURRENCY_NGN = 'NGN';
     public const CURRENCY_USD = 'USD';
     public const CURRENCY_ZAR = 'ZAR';
+    public const CURRENCY_XOF = 'XOF';
 
     /**
      * Gets allowable values of the enum
@@ -272,6 +273,7 @@ class RefundCreate implements ModelInterface, ArrayAccess, \JsonSerializable
             self::CURRENCY_NGN,
             self::CURRENCY_USD,
             self::CURRENCY_ZAR,
+            self::CURRENCY_XOF,
         ];
     }
 
@@ -391,7 +393,7 @@ class RefundCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amount
      *
-     * @param int|null $amount Amount to be refunded to the customer. It cannot be more than the original transaction amount
+     * @param int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Amount to be refunded to the customer. It cannot be more than the original transaction amount.
      *
      * @return self
      */

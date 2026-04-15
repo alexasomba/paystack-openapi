@@ -24,11 +24,11 @@ var _ MappedNullable = &TransactionPartialDebit{}
 type TransactionPartialDebit struct {
 	// Customer's email address
 	Email string `json:"email"`
-	// Specified in the lowest denomination of your currency
-	Amount int64 `json:"amount"`
+	Amount TransactionPartialDebitAmount `json:"amount"`
 	// Valid authorization code to charge
 	AuthorizationCode string `json:"authorization_code"`
-	Currency Currency `json:"currency"`
+	// Specified as NGN or GHS
+	Currency string `json:"currency"`
 	// Minimum amount to charge
 	AtLeast *string `json:"at_least,omitempty"`
 	// Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
@@ -41,7 +41,7 @@ type _TransactionPartialDebit TransactionPartialDebit
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransactionPartialDebit(email string, amount int64, authorizationCode string, currency Currency) *TransactionPartialDebit {
+func NewTransactionPartialDebit(email string, amount TransactionPartialDebitAmount, authorizationCode string, currency string) *TransactionPartialDebit {
 	this := TransactionPartialDebit{}
 	this.Email = email
 	this.Amount = amount
@@ -83,9 +83,9 @@ func (o *TransactionPartialDebit) SetEmail(v string) {
 }
 
 // GetAmount returns the Amount field value
-func (o *TransactionPartialDebit) GetAmount() int64 {
+func (o *TransactionPartialDebit) GetAmount() TransactionPartialDebitAmount {
 	if o == nil {
-		var ret int64
+		var ret TransactionPartialDebitAmount
 		return ret
 	}
 
@@ -94,7 +94,7 @@ func (o *TransactionPartialDebit) GetAmount() int64 {
 
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
-func (o *TransactionPartialDebit) GetAmountOk() (*int64, bool) {
+func (o *TransactionPartialDebit) GetAmountOk() (*TransactionPartialDebitAmount, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -102,7 +102,7 @@ func (o *TransactionPartialDebit) GetAmountOk() (*int64, bool) {
 }
 
 // SetAmount sets field value
-func (o *TransactionPartialDebit) SetAmount(v int64) {
+func (o *TransactionPartialDebit) SetAmount(v TransactionPartialDebitAmount) {
 	o.Amount = v
 }
 
@@ -131,9 +131,9 @@ func (o *TransactionPartialDebit) SetAuthorizationCode(v string) {
 }
 
 // GetCurrency returns the Currency field value
-func (o *TransactionPartialDebit) GetCurrency() Currency {
+func (o *TransactionPartialDebit) GetCurrency() string {
 	if o == nil {
-		var ret Currency
+		var ret string
 		return ret
 	}
 
@@ -142,7 +142,7 @@ func (o *TransactionPartialDebit) GetCurrency() Currency {
 
 // GetCurrencyOk returns a tuple with the Currency field value
 // and a boolean to check if the value has been set.
-func (o *TransactionPartialDebit) GetCurrencyOk() (*Currency, bool) {
+func (o *TransactionPartialDebit) GetCurrencyOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -150,7 +150,7 @@ func (o *TransactionPartialDebit) GetCurrencyOk() (*Currency, bool) {
 }
 
 // SetCurrency sets field value
-func (o *TransactionPartialDebit) SetCurrency(v Currency) {
+func (o *TransactionPartialDebit) SetCurrency(v string) {
 	o.Currency = v
 }
 

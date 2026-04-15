@@ -66,7 +66,7 @@ class DedicatedNubanFetchResponseData implements ModelInterface, ArrayAccess, \J
         'created_at' => 'string',
         'updated_at' => 'string',
         'currency' => 'string',
-        'split_config' => 'mixed',
+        'split_config' => '\Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataMetadata',
         'active' => 'bool',
         'assigned' => 'bool'
     ];
@@ -612,7 +612,7 @@ class DedicatedNubanFetchResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Gets split_config
      *
-     * @return mixed|null
+     * @return \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataMetadata|null
      */
     public function getSplitConfig()
     {
@@ -622,7 +622,7 @@ class DedicatedNubanFetchResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Sets split_config
      *
-     * @param mixed|null $split_config split_config
+     * @param \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataMetadata|null $split_config split_config
      *
      * @return self
      */

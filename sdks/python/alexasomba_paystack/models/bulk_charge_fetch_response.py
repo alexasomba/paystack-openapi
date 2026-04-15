@@ -20,7 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List
-from alexasomba_paystack.models.bulk_charge_initiate_response_data import BulkChargeInitiateResponseData
+from alexasomba_paystack.models.bulk_charge_fetch_response_data import BulkChargeFetchResponseData
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,7 +30,7 @@ class BulkChargeFetchResponse(BaseModel):
     """ # noqa: E501
     status: StrictBool
     message: StrictStr
-    data: BulkChargeInitiateResponseData
+    data: BulkChargeFetchResponseData
     __properties: ClassVar[List[str]] = ["status", "message", "data"]
 
     model_config = ConfigDict(
@@ -89,7 +89,7 @@ class BulkChargeFetchResponse(BaseModel):
         _obj = cls.model_validate({
             "status": obj.get("status"),
             "message": obj.get("message"),
-            "data": BulkChargeInitiateResponseData.from_dict(obj["data"]) if obj.get("data") is not None else None
+            "data": BulkChargeFetchResponseData.from_dict(obj["data"]) if obj.get("data") is not None else None
         })
         return _obj
 

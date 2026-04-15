@@ -25,18 +25,17 @@ type SubaccountListResponseArray struct {
 	Id int32 `json:"id"`
 	SubaccountCode string `json:"subaccount_code"`
 	BusinessName string `json:"business_name"`
-	Description string `json:"description"`
-	PrimaryContactName string `json:"primary_contact_name"`
-	PrimaryContactEmail string `json:"primary_contact_email"`
-	PrimaryContactPhone string `json:"primary_contact_phone"`
-	Metadata string `json:"metadata"`
+	Description NullableString `json:"description"`
+	PrimaryContactName NullableString `json:"primary_contact_name"`
+	PrimaryContactEmail NullableString `json:"primary_contact_email"`
+	PrimaryContactPhone NullableString `json:"primary_contact_phone"`
+	Metadata interface{} `json:"metadata"`
 	PercentageCharge float32 `json:"percentage_charge"`
 	SettlementBank string `json:"settlement_bank"`
 	BankId int32 `json:"bank_id"`
 	AccountNumber string `json:"account_number"`
 	Currency string `json:"currency"`
 	Active int32 `json:"active"`
-	IsVerified bool `json:"is_verified"`
 }
 
 type _SubaccountListResponseArray SubaccountListResponseArray
@@ -45,7 +44,7 @@ type _SubaccountListResponseArray SubaccountListResponseArray
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSubaccountListResponseArray(id int32, subaccountCode string, businessName string, description string, primaryContactName string, primaryContactEmail string, primaryContactPhone string, metadata string, percentageCharge float32, settlementBank string, bankId int32, accountNumber string, currency string, active int32, isVerified bool) *SubaccountListResponseArray {
+func NewSubaccountListResponseArray(id int32, subaccountCode string, businessName string, description NullableString, primaryContactName NullableString, primaryContactEmail NullableString, primaryContactPhone NullableString, metadata interface{}, percentageCharge float32, settlementBank string, bankId int32, accountNumber string, currency string, active int32) *SubaccountListResponseArray {
 	this := SubaccountListResponseArray{}
 	this.Id = id
 	this.SubaccountCode = subaccountCode
@@ -61,7 +60,6 @@ func NewSubaccountListResponseArray(id int32, subaccountCode string, businessNam
 	this.AccountNumber = accountNumber
 	this.Currency = currency
 	this.Active = active
-	this.IsVerified = isVerified
 	return &this
 }
 
@@ -146,105 +144,114 @@ func (o *SubaccountListResponseArray) SetBusinessName(v string) {
 }
 
 // GetDescription returns the Description field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *SubaccountListResponseArray) GetDescription() string {
-	if o == nil {
+	if o == nil || o.Description.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SubaccountListResponseArray) GetDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // SetDescription sets field value
 func (o *SubaccountListResponseArray) SetDescription(v string) {
-	o.Description = v
+	o.Description.Set(&v)
 }
 
 // GetPrimaryContactName returns the PrimaryContactName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *SubaccountListResponseArray) GetPrimaryContactName() string {
-	if o == nil {
+	if o == nil || o.PrimaryContactName.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.PrimaryContactName
+	return *o.PrimaryContactName.Get()
 }
 
 // GetPrimaryContactNameOk returns a tuple with the PrimaryContactName field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SubaccountListResponseArray) GetPrimaryContactNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.PrimaryContactName, true
+	return o.PrimaryContactName.Get(), o.PrimaryContactName.IsSet()
 }
 
 // SetPrimaryContactName sets field value
 func (o *SubaccountListResponseArray) SetPrimaryContactName(v string) {
-	o.PrimaryContactName = v
+	o.PrimaryContactName.Set(&v)
 }
 
 // GetPrimaryContactEmail returns the PrimaryContactEmail field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *SubaccountListResponseArray) GetPrimaryContactEmail() string {
-	if o == nil {
+	if o == nil || o.PrimaryContactEmail.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.PrimaryContactEmail
+	return *o.PrimaryContactEmail.Get()
 }
 
 // GetPrimaryContactEmailOk returns a tuple with the PrimaryContactEmail field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SubaccountListResponseArray) GetPrimaryContactEmailOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.PrimaryContactEmail, true
+	return o.PrimaryContactEmail.Get(), o.PrimaryContactEmail.IsSet()
 }
 
 // SetPrimaryContactEmail sets field value
 func (o *SubaccountListResponseArray) SetPrimaryContactEmail(v string) {
-	o.PrimaryContactEmail = v
+	o.PrimaryContactEmail.Set(&v)
 }
 
 // GetPrimaryContactPhone returns the PrimaryContactPhone field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *SubaccountListResponseArray) GetPrimaryContactPhone() string {
-	if o == nil {
+	if o == nil || o.PrimaryContactPhone.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.PrimaryContactPhone
+	return *o.PrimaryContactPhone.Get()
 }
 
 // GetPrimaryContactPhoneOk returns a tuple with the PrimaryContactPhone field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SubaccountListResponseArray) GetPrimaryContactPhoneOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.PrimaryContactPhone, true
+	return o.PrimaryContactPhone.Get(), o.PrimaryContactPhone.IsSet()
 }
 
 // SetPrimaryContactPhone sets field value
 func (o *SubaccountListResponseArray) SetPrimaryContactPhone(v string) {
-	o.PrimaryContactPhone = v
+	o.PrimaryContactPhone.Set(&v)
 }
 
 // GetMetadata returns the Metadata field value
-func (o *SubaccountListResponseArray) GetMetadata() string {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *SubaccountListResponseArray) GetMetadata() interface{} {
 	if o == nil {
-		var ret string
+		var ret interface{}
 		return ret
 	}
 
@@ -253,15 +260,16 @@ func (o *SubaccountListResponseArray) GetMetadata() string {
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
-func (o *SubaccountListResponseArray) GetMetadataOk() (*string, bool) {
-	if o == nil {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SubaccountListResponseArray) GetMetadataOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
 	return &o.Metadata, true
 }
 
 // SetMetadata sets field value
-func (o *SubaccountListResponseArray) SetMetadata(v string) {
+func (o *SubaccountListResponseArray) SetMetadata(v interface{}) {
 	o.Metadata = v
 }
 
@@ -409,30 +417,6 @@ func (o *SubaccountListResponseArray) SetActive(v int32) {
 	o.Active = v
 }
 
-// GetIsVerified returns the IsVerified field value
-func (o *SubaccountListResponseArray) GetIsVerified() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.IsVerified
-}
-
-// GetIsVerifiedOk returns a tuple with the IsVerified field value
-// and a boolean to check if the value has been set.
-func (o *SubaccountListResponseArray) GetIsVerifiedOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IsVerified, true
-}
-
-// SetIsVerified sets field value
-func (o *SubaccountListResponseArray) SetIsVerified(v bool) {
-	o.IsVerified = v
-}
-
 func (o SubaccountListResponseArray) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -446,18 +430,19 @@ func (o SubaccountListResponseArray) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["subaccount_code"] = o.SubaccountCode
 	toSerialize["business_name"] = o.BusinessName
-	toSerialize["description"] = o.Description
-	toSerialize["primary_contact_name"] = o.PrimaryContactName
-	toSerialize["primary_contact_email"] = o.PrimaryContactEmail
-	toSerialize["primary_contact_phone"] = o.PrimaryContactPhone
-	toSerialize["metadata"] = o.Metadata
+	toSerialize["description"] = o.Description.Get()
+	toSerialize["primary_contact_name"] = o.PrimaryContactName.Get()
+	toSerialize["primary_contact_email"] = o.PrimaryContactEmail.Get()
+	toSerialize["primary_contact_phone"] = o.PrimaryContactPhone.Get()
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
+	}
 	toSerialize["percentage_charge"] = o.PercentageCharge
 	toSerialize["settlement_bank"] = o.SettlementBank
 	toSerialize["bank_id"] = o.BankId
 	toSerialize["account_number"] = o.AccountNumber
 	toSerialize["currency"] = o.Currency
 	toSerialize["active"] = o.Active
-	toSerialize["is_verified"] = o.IsVerified
 	return toSerialize, nil
 }
 
@@ -480,7 +465,6 @@ func (o *SubaccountListResponseArray) UnmarshalJSON(data []byte) (err error) {
 		"account_number",
 		"currency",
 		"active",
-		"is_verified",
 	}
 
 	allProperties := make(map[string]interface{})

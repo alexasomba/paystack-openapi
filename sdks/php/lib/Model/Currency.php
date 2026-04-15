@@ -54,6 +54,8 @@ class Currency
 
     public const USD = 'USD';
 
+    public const XOF = 'XOF';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -65,7 +67,8 @@ class Currency
             self::KES,
             self::NGN,
             self::ZAR,
-            self::USD
+            self::USD,
+            self::XOF
         ];
     }
 }

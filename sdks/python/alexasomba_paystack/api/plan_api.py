@@ -17,7 +17,6 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from datetime import datetime
 from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
@@ -327,7 +326,7 @@ class PlanApi:
     @validate_call
     def plan_fetch(
         self,
-        code: Annotated[StrictStr, Field(description="The plan code you want to fetch")],
+        id_or_code: Annotated[StrictStr, Field(description="The plan ID or code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -345,8 +344,8 @@ class PlanApi:
 
         Get the details of a payment plan
 
-        :param code: The plan code you want to fetch (required)
-        :type code: str
+        :param id_or_code: The plan ID or code you want to fetch (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -370,7 +369,7 @@ class PlanApi:
         """ # noqa: E501
 
         _param = self._plan_fetch_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -396,7 +395,7 @@ class PlanApi:
     @validate_call
     def plan_fetch_with_http_info(
         self,
-        code: Annotated[StrictStr, Field(description="The plan code you want to fetch")],
+        id_or_code: Annotated[StrictStr, Field(description="The plan ID or code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -414,8 +413,8 @@ class PlanApi:
 
         Get the details of a payment plan
 
-        :param code: The plan code you want to fetch (required)
-        :type code: str
+        :param id_or_code: The plan ID or code you want to fetch (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -439,7 +438,7 @@ class PlanApi:
         """ # noqa: E501
 
         _param = self._plan_fetch_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -465,7 +464,7 @@ class PlanApi:
     @validate_call
     def plan_fetch_without_preload_content(
         self,
-        code: Annotated[StrictStr, Field(description="The plan code you want to fetch")],
+        id_or_code: Annotated[StrictStr, Field(description="The plan ID or code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -483,8 +482,8 @@ class PlanApi:
 
         Get the details of a payment plan
 
-        :param code: The plan code you want to fetch (required)
-        :type code: str
+        :param id_or_code: The plan ID or code you want to fetch (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -508,7 +507,7 @@ class PlanApi:
         """ # noqa: E501
 
         _param = self._plan_fetch_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -529,7 +528,7 @@ class PlanApi:
 
     def _plan_fetch_serialize(
         self,
-        code,
+        id_or_code,
         _request_auth,
         _content_type,
         _headers,
@@ -551,8 +550,8 @@ class PlanApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if code is not None:
-            _path_params['code'] = code
+        if id_or_code is not None:
+            _path_params['id_or_code'] = id_or_code
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -575,7 +574,7 @@ class PlanApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/plan/{code}',
+            resource_path='/plan/{id_or_code}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -596,10 +595,9 @@ class PlanApi:
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter list by plans with specified status")] = None,
         interval: Annotated[Optional[StrictStr], Field(description="Specify interval of the plan")] = None,
-        amount: Annotated[Optional[StrictInt], Field(description="The amount on the plans to retrieve")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        amount: Annotated[Optional[StrictInt], Field(description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. ")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -621,14 +619,12 @@ class PlanApi:
         :type per_page: int
         :param page: The section to retrieve
         :type page: int
+        :param status: Filter list by plans with specified status
+        :type status: str
         :param interval: Specify interval of the plan
         :type interval: str
-        :param amount: The amount on the plans to retrieve
+        :param amount: Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. 
         :type amount: int
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -654,10 +650,9 @@ class PlanApi:
         _param = self._plan_list_serialize(
             per_page=per_page,
             page=page,
+            status=status,
             interval=interval,
             amount=amount,
-            var_from=var_from,
-            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -685,10 +680,9 @@ class PlanApi:
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter list by plans with specified status")] = None,
         interval: Annotated[Optional[StrictStr], Field(description="Specify interval of the plan")] = None,
-        amount: Annotated[Optional[StrictInt], Field(description="The amount on the plans to retrieve")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        amount: Annotated[Optional[StrictInt], Field(description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. ")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -710,14 +704,12 @@ class PlanApi:
         :type per_page: int
         :param page: The section to retrieve
         :type page: int
+        :param status: Filter list by plans with specified status
+        :type status: str
         :param interval: Specify interval of the plan
         :type interval: str
-        :param amount: The amount on the plans to retrieve
+        :param amount: Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. 
         :type amount: int
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -743,10 +735,9 @@ class PlanApi:
         _param = self._plan_list_serialize(
             per_page=per_page,
             page=page,
+            status=status,
             interval=interval,
             amount=amount,
-            var_from=var_from,
-            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -774,10 +765,9 @@ class PlanApi:
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Filter list by plans with specified status")] = None,
         interval: Annotated[Optional[StrictStr], Field(description="Specify interval of the plan")] = None,
-        amount: Annotated[Optional[StrictInt], Field(description="The amount on the plans to retrieve")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        amount: Annotated[Optional[StrictInt], Field(description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. ")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -799,14 +789,12 @@ class PlanApi:
         :type per_page: int
         :param page: The section to retrieve
         :type page: int
+        :param status: Filter list by plans with specified status
+        :type status: str
         :param interval: Specify interval of the plan
         :type interval: str
-        :param amount: The amount on the plans to retrieve
+        :param amount: Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. 
         :type amount: int
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -832,10 +820,9 @@ class PlanApi:
         _param = self._plan_list_serialize(
             per_page=per_page,
             page=page,
+            status=status,
             interval=interval,
             amount=amount,
-            var_from=var_from,
-            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -858,10 +845,9 @@ class PlanApi:
         self,
         per_page,
         page,
+        status,
         interval,
         amount,
-        var_from,
-        to,
         _request_auth,
         _content_type,
         _headers,
@@ -892,6 +878,10 @@ class PlanApi:
             
             _query_params.append(('page', page))
             
+        if status is not None:
+            
+            _query_params.append(('status', status))
+            
         if interval is not None:
             
             _query_params.append(('interval', interval))
@@ -899,32 +889,6 @@ class PlanApi:
         if amount is not None:
             
             _query_params.append(('amount', amount))
-            
-        if var_from is not None:
-            if isinstance(var_from, datetime):
-                _query_params.append(
-                    (
-                        'from',
-                        var_from.strftime(
-                            self.api_client.configuration.datetime_format
-                        )
-                    )
-                )
-            else:
-                _query_params.append(('from', var_from))
-            
-        if to is not None:
-            if isinstance(to, datetime):
-                _query_params.append(
-                    (
-                        'to',
-                        to.strftime(
-                            self.api_client.configuration.datetime_format
-                        )
-                    )
-                )
-            else:
-                _query_params.append(('to', to))
             
         # process the header parameters
         # process the form parameters
@@ -966,7 +930,7 @@ class PlanApi:
     @validate_call
     def plan_update(
         self,
-        code: Annotated[StrictStr, Field(description="The plan code you want to fetch")],
+        id_or_code: Annotated[StrictStr, Field(description="The plan ID or code you want to fetch")],
         plan_update: Optional[PlanUpdate] = None,
         _request_timeout: Union[
             None,
@@ -985,8 +949,8 @@ class PlanApi:
 
         Update a plan details on your integration
 
-        :param code: The plan code you want to fetch (required)
-        :type code: str
+        :param id_or_code: The plan ID or code you want to fetch (required)
+        :type id_or_code: str
         :param plan_update:
         :type plan_update: PlanUpdate
         :param _request_timeout: timeout setting for this request. If one
@@ -1012,7 +976,7 @@ class PlanApi:
         """ # noqa: E501
 
         _param = self._plan_update_serialize(
-            code=code,
+            id_or_code=id_or_code,
             plan_update=plan_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1039,7 +1003,7 @@ class PlanApi:
     @validate_call
     def plan_update_with_http_info(
         self,
-        code: Annotated[StrictStr, Field(description="The plan code you want to fetch")],
+        id_or_code: Annotated[StrictStr, Field(description="The plan ID or code you want to fetch")],
         plan_update: Optional[PlanUpdate] = None,
         _request_timeout: Union[
             None,
@@ -1058,8 +1022,8 @@ class PlanApi:
 
         Update a plan details on your integration
 
-        :param code: The plan code you want to fetch (required)
-        :type code: str
+        :param id_or_code: The plan ID or code you want to fetch (required)
+        :type id_or_code: str
         :param plan_update:
         :type plan_update: PlanUpdate
         :param _request_timeout: timeout setting for this request. If one
@@ -1085,7 +1049,7 @@ class PlanApi:
         """ # noqa: E501
 
         _param = self._plan_update_serialize(
-            code=code,
+            id_or_code=id_or_code,
             plan_update=plan_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1112,7 +1076,7 @@ class PlanApi:
     @validate_call
     def plan_update_without_preload_content(
         self,
-        code: Annotated[StrictStr, Field(description="The plan code you want to fetch")],
+        id_or_code: Annotated[StrictStr, Field(description="The plan ID or code you want to fetch")],
         plan_update: Optional[PlanUpdate] = None,
         _request_timeout: Union[
             None,
@@ -1131,8 +1095,8 @@ class PlanApi:
 
         Update a plan details on your integration
 
-        :param code: The plan code you want to fetch (required)
-        :type code: str
+        :param id_or_code: The plan ID or code you want to fetch (required)
+        :type id_or_code: str
         :param plan_update:
         :type plan_update: PlanUpdate
         :param _request_timeout: timeout setting for this request. If one
@@ -1158,7 +1122,7 @@ class PlanApi:
         """ # noqa: E501
 
         _param = self._plan_update_serialize(
-            code=code,
+            id_or_code=id_or_code,
             plan_update=plan_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1180,7 +1144,7 @@ class PlanApi:
 
     def _plan_update_serialize(
         self,
-        code,
+        id_or_code,
         plan_update,
         _request_auth,
         _content_type,
@@ -1203,8 +1167,8 @@ class PlanApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if code is not None:
-            _path_params['code'] = code
+        if id_or_code is not None:
+            _path_params['id_or_code'] = id_or_code
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -1243,7 +1207,7 @@ class PlanApi:
 
         return self.api_client.param_serialize(
             method='PUT',
-            resource_path='/plan/{code}',
+            resource_path='/plan/{id_or_code}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

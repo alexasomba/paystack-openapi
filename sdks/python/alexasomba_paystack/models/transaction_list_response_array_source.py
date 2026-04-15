@@ -27,10 +27,10 @@ class TransactionListResponseArraySource(BaseModel):
     """
     TransactionListResponseArraySource
     """ # noqa: E501
-    source: StrictStr
-    type: StrictStr
-    identifier: Optional[Any]
-    entry_point: StrictStr
+    source: Optional[StrictStr] = None
+    type: Optional[StrictStr] = None
+    identifier: Optional[StrictStr] = None
+    entry_point: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["source", "type", "identifier", "entry_point"]
 
     model_config = ConfigDict(

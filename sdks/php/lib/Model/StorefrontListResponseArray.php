@@ -61,14 +61,11 @@ class StorefrontListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         'id' => 'int',
         'name' => 'string',
         'slug' => 'string',
-        'orders_count' => 'int',
+        'description' => 'string',
         'status' => 'string',
-        'revenue' => 'mixed',
         'currency' => 'string',
-        'products' => 'mixed[]',
-        'contacts' => 'mixed[]',
-        'social_media' => 'mixed[]',
-        'shipping_fees' => 'mixed[]'
+        'created_at' => 'string',
+        'updated_at' => 'string'
     ];
 
     /**
@@ -82,14 +79,11 @@ class StorefrontListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         'id' => null,
         'name' => null,
         'slug' => null,
-        'orders_count' => null,
+        'description' => null,
         'status' => null,
-        'revenue' => null,
         'currency' => null,
-        'products' => null,
-        'contacts' => null,
-        'social_media' => null,
-        'shipping_fees' => null
+        'created_at' => null,
+        'updated_at' => null
     ];
 
     /**
@@ -101,14 +95,11 @@ class StorefrontListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         'id' => false,
         'name' => false,
         'slug' => false,
-        'orders_count' => false,
+        'description' => true,
         'status' => false,
-        'revenue' => true,
         'currency' => false,
-        'products' => false,
-        'contacts' => false,
-        'social_media' => false,
-        'shipping_fees' => false
+        'created_at' => false,
+        'updated_at' => false
     ];
 
     /**
@@ -200,14 +191,11 @@ class StorefrontListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         'id' => 'id',
         'name' => 'name',
         'slug' => 'slug',
-        'orders_count' => 'orders_count',
+        'description' => 'description',
         'status' => 'status',
-        'revenue' => 'revenue',
         'currency' => 'currency',
-        'products' => 'products',
-        'contacts' => 'contacts',
-        'social_media' => 'social_media',
-        'shipping_fees' => 'shipping_fees'
+        'created_at' => 'createdAt',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -219,14 +207,11 @@ class StorefrontListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         'id' => 'setId',
         'name' => 'setName',
         'slug' => 'setSlug',
-        'orders_count' => 'setOrdersCount',
+        'description' => 'setDescription',
         'status' => 'setStatus',
-        'revenue' => 'setRevenue',
         'currency' => 'setCurrency',
-        'products' => 'setProducts',
-        'contacts' => 'setContacts',
-        'social_media' => 'setSocialMedia',
-        'shipping_fees' => 'setShippingFees'
+        'created_at' => 'setCreatedAt',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -238,14 +223,11 @@ class StorefrontListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         'id' => 'getId',
         'name' => 'getName',
         'slug' => 'getSlug',
-        'orders_count' => 'getOrdersCount',
+        'description' => 'getDescription',
         'status' => 'getStatus',
-        'revenue' => 'getRevenue',
         'currency' => 'getCurrency',
-        'products' => 'getProducts',
-        'contacts' => 'getContacts',
-        'social_media' => 'getSocialMedia',
-        'shipping_fees' => 'getShippingFees'
+        'created_at' => 'getCreatedAt',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -308,14 +290,11 @@ class StorefrontListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('slug', $data ?? [], null);
-        $this->setIfExists('orders_count', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('revenue', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('products', $data ?? [], null);
-        $this->setIfExists('contacts', $data ?? [], null);
-        $this->setIfExists('social_media', $data ?? [], null);
-        $this->setIfExists('shipping_fees', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('updated_at', $data ?? [], null);
     }
 
     /**
@@ -354,29 +333,20 @@ class StorefrontListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['slug'] === null) {
             $invalidProperties[] = "'slug' can't be null";
         }
-        if ($this->container['orders_count'] === null) {
-            $invalidProperties[] = "'orders_count' can't be null";
+        if ($this->container['description'] === null && !$this->isNullableSetToNull('description')) {
+            $invalidProperties[] = "'description' can't be null";
         }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
-        if ($this->container['revenue'] === null && !$this->isNullableSetToNull('revenue')) {
-            $invalidProperties[] = "'revenue' can't be null";
-        }
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
         }
-        if ($this->container['products'] === null) {
-            $invalidProperties[] = "'products' can't be null";
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
-        if ($this->container['contacts'] === null) {
-            $invalidProperties[] = "'contacts' can't be null";
-        }
-        if ($this->container['social_media'] === null) {
-            $invalidProperties[] = "'social_media' can't be null";
-        }
-        if ($this->container['shipping_fees'] === null) {
-            $invalidProperties[] = "'shipping_fees' can't be null";
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -475,28 +445,35 @@ class StorefrontListResponseArray implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets orders_count
+     * Gets description
      *
-     * @return int
+     * @return string|null
      */
-    public function getOrdersCount()
+    public function getDescription()
     {
-        return $this->container['orders_count'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets orders_count
+     * Sets description
      *
-     * @param int $orders_count orders_count
+     * @param string|null $description description
      *
      * @return self
      */
-    public function setOrdersCount($orders_count)
+    public function setDescription($description)
     {
-        if (is_null($orders_count)) {
-            throw new \InvalidArgumentException('non-nullable orders_count cannot be null');
+        if (is_null($description)) {
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['orders_count'] = $orders_count;
+        $this->container['description'] = $description;
 
         return $this;
     }
@@ -529,40 +506,6 @@ class StorefrontListResponseArray implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets revenue
-     *
-     * @return mixed|null
-     */
-    public function getRevenue()
-    {
-        return $this->container['revenue'];
-    }
-
-    /**
-     * Sets revenue
-     *
-     * @param mixed|null $revenue revenue
-     *
-     * @return self
-     */
-    public function setRevenue($revenue)
-    {
-        if (is_null($revenue)) {
-            array_push($this->openAPINullablesSetToNull, 'revenue');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('revenue', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['revenue'] = $revenue;
-
-        return $this;
-    }
-
-    /**
      * Gets currency
      *
      * @return string
@@ -590,109 +533,55 @@ class StorefrontListResponseArray implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets products
+     * Gets created_at
      *
-     * @return mixed[]
+     * @return string
      */
-    public function getProducts()
+    public function getCreatedAt()
     {
-        return $this->container['products'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets products
+     * Sets created_at
      *
-     * @param mixed[] $products products
+     * @param string $created_at created_at
      *
      * @return self
      */
-    public function setProducts($products)
+    public function setCreatedAt($created_at)
     {
-        if (is_null($products)) {
-            throw new \InvalidArgumentException('non-nullable products cannot be null');
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
-        $this->container['products'] = $products;
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
 
     /**
-     * Gets contacts
+     * Gets updated_at
      *
-     * @return mixed[]
+     * @return string
      */
-    public function getContacts()
+    public function getUpdatedAt()
     {
-        return $this->container['contacts'];
+        return $this->container['updated_at'];
     }
 
     /**
-     * Sets contacts
+     * Sets updated_at
      *
-     * @param mixed[] $contacts contacts
+     * @param string $updated_at updated_at
      *
      * @return self
      */
-    public function setContacts($contacts)
+    public function setUpdatedAt($updated_at)
     {
-        if (is_null($contacts)) {
-            throw new \InvalidArgumentException('non-nullable contacts cannot be null');
+        if (is_null($updated_at)) {
+            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
         }
-        $this->container['contacts'] = $contacts;
-
-        return $this;
-    }
-
-    /**
-     * Gets social_media
-     *
-     * @return mixed[]
-     */
-    public function getSocialMedia()
-    {
-        return $this->container['social_media'];
-    }
-
-    /**
-     * Sets social_media
-     *
-     * @param mixed[] $social_media social_media
-     *
-     * @return self
-     */
-    public function setSocialMedia($social_media)
-    {
-        if (is_null($social_media)) {
-            throw new \InvalidArgumentException('non-nullable social_media cannot be null');
-        }
-        $this->container['social_media'] = $social_media;
-
-        return $this;
-    }
-
-    /**
-     * Gets shipping_fees
-     *
-     * @return mixed[]
-     */
-    public function getShippingFees()
-    {
-        return $this->container['shipping_fees'];
-    }
-
-    /**
-     * Sets shipping_fees
-     *
-     * @param mixed[] $shipping_fees shipping_fees
-     *
-     * @return self
-     */
-    public function setShippingFees($shipping_fees)
-    {
-        if (is_null($shipping_fees)) {
-            throw new \InvalidArgumentException('non-nullable shipping_fees cannot be null');
-        }
-        $this->container['shipping_fees'] = $shipping_fees;
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

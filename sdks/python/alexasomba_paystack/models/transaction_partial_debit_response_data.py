@@ -23,6 +23,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.charge_authorization_response_data_log import ChargeAuthorizationResponseDataLog
 from alexasomba_paystack.models.transaction_partial_debit_response_data_authorization import TransactionPartialDebitResponseDataAuthorization
 from alexasomba_paystack.models.transaction_partial_debit_response_data_customer import TransactionPartialDebitResponseDataCustomer
+from alexasomba_paystack.models.transaction_partial_debit_response_data_metadata import TransactionPartialDebitResponseDataMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -36,7 +37,7 @@ class TransactionPartialDebitResponseData(BaseModel):
     status: StrictStr
     reference: StrictStr
     domain: StrictStr
-    metadata: StrictStr
+    metadata: Optional[TransactionPartialDebitResponseDataMetadata]
     gateway_response: StrictStr
     message: Optional[Any]
     channel: StrictStr
@@ -89,6 +90,9 @@ class TransactionPartialDebitResponseData(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of metadata
+        if self.metadata:
+            _dict['metadata'] = self.metadata.to_dict()
         # override the default output from pydantic by calling `to_dict()` of log
         if self.log:
             _dict['log'] = self.log.to_dict()
@@ -98,6 +102,11 @@ class TransactionPartialDebitResponseData(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of customer
         if self.customer:
             _dict['customer'] = self.customer.to_dict()
+        # set to None if metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
+
         # set to None if message (nullable) is None
         # and model_fields_set contains the field
         if self.message is None and "message" in self.model_fields_set:
@@ -131,7 +140,7 @@ class TransactionPartialDebitResponseData(BaseModel):
             "status": obj.get("status"),
             "reference": obj.get("reference"),
             "domain": obj.get("domain"),
-            "metadata": obj.get("metadata"),
+            "metadata": TransactionPartialDebitResponseDataMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
             "gateway_response": obj.get("gateway_response"),
             "message": obj.get("message"),
             "channel": obj.get("channel"),

@@ -59,7 +59,7 @@ class VerifyResponseDataAuthorization implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPITypes = [
         'authorization_code' => 'string',
-        'bin' => 'mixed',
+        'bin' => 'string',
         'last4' => 'string',
         'exp_month' => 'string',
         'exp_year' => 'string',
@@ -70,9 +70,9 @@ class VerifyResponseDataAuthorization implements ModelInterface, ArrayAccess, \J
         'brand' => 'string',
         'reusable' => 'bool',
         'signature' => 'string',
-        'account_name' => 'mixed',
-        'receiver_bank_account_number' => 'mixed',
-        'receiver_bank' => 'mixed'
+        'account_name' => 'string',
+        'receiver_bank_account_number' => 'string',
+        'receiver_bank' => 'string'
     ];
 
     /**
@@ -418,7 +418,7 @@ class VerifyResponseDataAuthorization implements ModelInterface, ArrayAccess, \J
     /**
      * Gets bin
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getBin()
     {
@@ -428,7 +428,7 @@ class VerifyResponseDataAuthorization implements ModelInterface, ArrayAccess, \J
     /**
      * Sets bin
      *
-     * @param mixed|null $bin bin
+     * @param string|null $bin bin
      *
      * @return self
      */
@@ -722,7 +722,7 @@ class VerifyResponseDataAuthorization implements ModelInterface, ArrayAccess, \J
     /**
      * Gets account_name
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getAccountName()
     {
@@ -732,7 +732,7 @@ class VerifyResponseDataAuthorization implements ModelInterface, ArrayAccess, \J
     /**
      * Sets account_name
      *
-     * @param mixed|null $account_name account_name
+     * @param string|null $account_name account_name
      *
      * @return self
      */
@@ -756,7 +756,7 @@ class VerifyResponseDataAuthorization implements ModelInterface, ArrayAccess, \J
     /**
      * Gets receiver_bank_account_number
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getReceiverBankAccountNumber()
     {
@@ -766,7 +766,7 @@ class VerifyResponseDataAuthorization implements ModelInterface, ArrayAccess, \J
     /**
      * Sets receiver_bank_account_number
      *
-     * @param mixed|null $receiver_bank_account_number receiver_bank_account_number
+     * @param string|null $receiver_bank_account_number receiver_bank_account_number
      *
      * @return self
      */
@@ -790,7 +790,7 @@ class VerifyResponseDataAuthorization implements ModelInterface, ArrayAccess, \J
     /**
      * Gets receiver_bank
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getReceiverBank()
     {
@@ -800,7 +800,7 @@ class VerifyResponseDataAuthorization implements ModelInterface, ArrayAccess, \J
     /**
      * Sets receiver_bank
      *
-     * @param mixed|null $receiver_bank receiver_bank
+     * @param string|null $receiver_bank receiver_bank
      *
      * @return self
      */

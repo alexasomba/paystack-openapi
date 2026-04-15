@@ -21,9 +21,9 @@ import json
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.charge_authorization_response_data_log import ChargeAuthorizationResponseDataLog
+from alexasomba_paystack.models.charge_authorization_response_data_metadata import ChargeAuthorizationResponseDataMetadata
 from alexasomba_paystack.models.transaction_fetch_response_data_authorization import TransactionFetchResponseDataAuthorization
-from alexasomba_paystack.models.transaction_fetch_response_data_customer import TransactionFetchResponseDataCustomer
-from alexasomba_paystack.models.transaction_fetch_response_data_metadata import TransactionFetchResponseDataMetadata
+from alexasomba_paystack.models.transaction_partial_debit_response_data_customer import TransactionPartialDebitResponseDataCustomer
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -35,32 +35,32 @@ class ChargeCreateResponseData(BaseModel):
     domain: StrictStr
     status: StrictStr
     reference: StrictStr
-    receipt_number: Optional[Any]
+    receipt_number: Optional[StrictStr] = None
     amount: StrictInt
     message: Optional[StrictStr]
     gateway_response: StrictStr
-    paid_at: StrictStr
-    created_at: StrictStr
+    paid_at: Optional[StrictStr] = None
+    created_at: Optional[StrictStr] = None
     channel: StrictStr
     currency: StrictStr
-    ip_address: StrictStr
-    metadata: TransactionFetchResponseDataMetadata
+    ip_address: Optional[StrictStr]
+    metadata: Optional[ChargeAuthorizationResponseDataMetadata]
     log: Optional[ChargeAuthorizationResponseDataLog]
     fees: StrictInt
-    fees_split: Optional[StrictInt]
+    fees_split: Optional[StrictInt] = None
     authorization: TransactionFetchResponseDataAuthorization
-    customer: TransactionFetchResponseDataCustomer
+    customer: TransactionPartialDebitResponseDataCustomer
     plan: Optional[Any]
-    split: Dict[str, Any]
-    order_id: Optional[Any]
-    requested_amount: StrictInt
-    pos_transaction_data: Optional[Any]
-    source: Optional[Any]
-    fees_breakdown: Optional[Any]
-    connect: Optional[Any]
+    split: Optional[Dict[str, Any]] = None
+    order_id: Optional[Any] = None
+    requested_amount: Optional[StrictInt] = None
+    pos_transaction_data: Optional[Any] = None
+    source: Optional[Dict[str, Any]] = None
+    fees_breakdown: Optional[Dict[str, Any]] = None
+    connect: Optional[Dict[str, Any]] = None
     transaction_date: StrictStr
-    plan_object: Dict[str, Any]
-    subaccount: Dict[str, Any]
+    plan_object: Optional[Dict[str, Any]] = None
+    subaccount: Optional[Dict[str, Any]] = None
     __properties: ClassVar[List[str]] = ["id", "domain", "status", "reference", "receipt_number", "amount", "message", "gateway_response", "paid_at", "created_at", "channel", "currency", "ip_address", "metadata", "log", "fees", "fees_split", "authorization", "customer", "plan", "split", "order_id", "requested_amount", "pos_transaction_data", "source", "fees_breakdown", "connect", "transaction_date", "plan_object", "subaccount"]
 
     model_config = ConfigDict(
@@ -124,6 +124,16 @@ class ChargeCreateResponseData(BaseModel):
         if self.message is None and "message" in self.model_fields_set:
             _dict['message'] = None
 
+        # set to None if ip_address (nullable) is None
+        # and model_fields_set contains the field
+        if self.ip_address is None and "ip_address" in self.model_fields_set:
+            _dict['ip_address'] = None
+
+        # set to None if metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
+
         # set to None if log (nullable) is None
         # and model_fields_set contains the field
         if self.log is None and "log" in self.model_fields_set:
@@ -138,6 +148,11 @@ class ChargeCreateResponseData(BaseModel):
         # and model_fields_set contains the field
         if self.plan is None and "plan" in self.model_fields_set:
             _dict['plan'] = None
+
+        # set to None if split (nullable) is None
+        # and model_fields_set contains the field
+        if self.split is None and "split" in self.model_fields_set:
+            _dict['split'] = None
 
         # set to None if order_id (nullable) is None
         # and model_fields_set contains the field
@@ -189,12 +204,12 @@ class ChargeCreateResponseData(BaseModel):
             "channel": obj.get("channel"),
             "currency": obj.get("currency"),
             "ip_address": obj.get("ip_address"),
-            "metadata": TransactionFetchResponseDataMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
+            "metadata": ChargeAuthorizationResponseDataMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
             "log": ChargeAuthorizationResponseDataLog.from_dict(obj["log"]) if obj.get("log") is not None else None,
             "fees": obj.get("fees"),
             "fees_split": obj.get("fees_split"),
             "authorization": TransactionFetchResponseDataAuthorization.from_dict(obj["authorization"]) if obj.get("authorization") is not None else None,
-            "customer": TransactionFetchResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
+            "customer": TransactionPartialDebitResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
             "plan": obj.get("plan"),
             "split": obj.get("split"),
             "order_id": obj.get("order_id"),

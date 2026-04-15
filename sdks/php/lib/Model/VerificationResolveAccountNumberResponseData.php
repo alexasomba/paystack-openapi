@@ -59,8 +59,7 @@ class VerificationResolveAccountNumberResponseData implements ModelInterface, Ar
       */
     protected static $openAPITypes = [
         'account_number' => 'string',
-        'account_name' => 'string',
-        'bank_id' => 'int'
+        'account_name' => 'string'
     ];
 
     /**
@@ -72,8 +71,7 @@ class VerificationResolveAccountNumberResponseData implements ModelInterface, Ar
       */
     protected static $openAPIFormats = [
         'account_number' => null,
-        'account_name' => null,
-        'bank_id' => null
+        'account_name' => null
     ];
 
     /**
@@ -83,8 +81,7 @@ class VerificationResolveAccountNumberResponseData implements ModelInterface, Ar
       */
     protected static array $openAPINullables = [
         'account_number' => false,
-        'account_name' => false,
-        'bank_id' => false
+        'account_name' => false
     ];
 
     /**
@@ -174,8 +171,7 @@ class VerificationResolveAccountNumberResponseData implements ModelInterface, Ar
      */
     protected static $attributeMap = [
         'account_number' => 'account_number',
-        'account_name' => 'account_name',
-        'bank_id' => 'bank_id'
+        'account_name' => 'account_name'
     ];
 
     /**
@@ -185,8 +181,7 @@ class VerificationResolveAccountNumberResponseData implements ModelInterface, Ar
      */
     protected static $setters = [
         'account_number' => 'setAccountNumber',
-        'account_name' => 'setAccountName',
-        'bank_id' => 'setBankId'
+        'account_name' => 'setAccountName'
     ];
 
     /**
@@ -196,8 +191,7 @@ class VerificationResolveAccountNumberResponseData implements ModelInterface, Ar
      */
     protected static $getters = [
         'account_number' => 'getAccountNumber',
-        'account_name' => 'getAccountName',
-        'bank_id' => 'getBankId'
+        'account_name' => 'getAccountName'
     ];
 
     /**
@@ -259,7 +253,6 @@ class VerificationResolveAccountNumberResponseData implements ModelInterface, Ar
     {
         $this->setIfExists('account_number', $data ?? [], null);
         $this->setIfExists('account_name', $data ?? [], null);
-        $this->setIfExists('bank_id', $data ?? [], null);
     }
 
     /**
@@ -294,9 +287,6 @@ class VerificationResolveAccountNumberResponseData implements ModelInterface, Ar
         }
         if ($this->container['account_name'] === null) {
             $invalidProperties[] = "'account_name' can't be null";
-        }
-        if ($this->container['bank_id'] === null) {
-            $invalidProperties[] = "'bank_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -363,33 +353,6 @@ class VerificationResolveAccountNumberResponseData implements ModelInterface, Ar
             throw new \InvalidArgumentException('non-nullable account_name cannot be null');
         }
         $this->container['account_name'] = $account_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets bank_id
-     *
-     * @return int
-     */
-    public function getBankId()
-    {
-        return $this->container['bank_id'];
-    }
-
-    /**
-     * Sets bank_id
-     *
-     * @param int $bank_id bank_id
-     *
-     * @return self
-     */
-    public function setBankId($bank_id)
-    {
-        if (is_null($bank_id)) {
-            throw new \InvalidArgumentException('non-nullable bank_id cannot be null');
-        }
-        $this->container['bank_id'] = $bank_id;
 
         return $this;
     }

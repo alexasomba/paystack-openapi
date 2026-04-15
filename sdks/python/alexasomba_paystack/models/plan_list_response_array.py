@@ -28,7 +28,7 @@ class PlanListResponseArray(BaseModel):
     PlanListResponseArray
     """ # noqa: E501
     subscriptions: List[Any]
-    pages: List[Any]
+    integration: StrictInt
     domain: StrictStr
     name: StrictStr
     plan_code: StrictStr
@@ -42,17 +42,10 @@ class PlanListResponseArray(BaseModel):
     hosted_page_url: Optional[Any]
     hosted_page_summary: Optional[Any]
     currency: StrictStr
-    migrate: StrictBool
-    is_deleted: StrictBool
-    is_archived: StrictBool
     id: StrictInt
-    integration: StrictInt
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    total_subscriptions: StrictInt
-    active_subscriptions: StrictInt
-    total_subscriptions_revenue: StrictInt
-    __properties: ClassVar[List[str]] = ["subscriptions", "pages", "domain", "name", "plan_code", "description", "amount", "interval", "invoice_limit", "send_invoices", "send_sms", "hosted_page", "hosted_page_url", "hosted_page_summary", "currency", "migrate", "is_deleted", "is_archived", "id", "integration", "createdAt", "updatedAt", "total_subscriptions", "active_subscriptions", "total_subscriptions_revenue"]
+    __properties: ClassVar[List[str]] = ["subscriptions", "integration", "domain", "name", "plan_code", "description", "amount", "interval", "invoice_limit", "send_invoices", "send_sms", "hosted_page", "hosted_page_url", "hosted_page_summary", "currency", "id", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -121,7 +114,7 @@ class PlanListResponseArray(BaseModel):
 
         _obj = cls.model_validate({
             "subscriptions": obj.get("subscriptions"),
-            "pages": obj.get("pages"),
+            "integration": obj.get("integration"),
             "domain": obj.get("domain"),
             "name": obj.get("name"),
             "plan_code": obj.get("plan_code"),
@@ -135,16 +128,9 @@ class PlanListResponseArray(BaseModel):
             "hosted_page_url": obj.get("hosted_page_url"),
             "hosted_page_summary": obj.get("hosted_page_summary"),
             "currency": obj.get("currency"),
-            "migrate": obj.get("migrate"),
-            "is_deleted": obj.get("is_deleted"),
-            "is_archived": obj.get("is_archived"),
             "id": obj.get("id"),
-            "integration": obj.get("integration"),
             "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
-            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
-            "total_subscriptions": obj.get("total_subscriptions"),
-            "active_subscriptions": obj.get("active_subscriptions"),
-            "total_subscriptions_revenue": obj.get("total_subscriptions_revenue")
+            "updatedAt": obj.get("updatedAt")
         })
         return _obj
 

@@ -462,7 +462,7 @@ class OrderShipping implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_fee
      *
-     * @param int $shipping_fee The cost of delivery
+     * @param int $shipping_fee Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
      *
      * @return self
      */

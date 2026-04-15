@@ -61,13 +61,13 @@ class BulkChargeFetchBulkBatchChargesResponseArray implements ModelInterface, Ar
         'integration' => 'int',
         'bulkcharge' => 'int',
         'customer' => '\Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayCustomer',
-        'authorization' => '\Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataAuthorization',
+        'authorization' => '\Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayAuthorization',
         'domain' => 'string',
         'amount' => 'int',
         'at_least' => 'int',
         'currency' => 'string',
         'reference' => 'string',
-        'metadata' => '\Alexasomba\Paystack\Model\TransactionFetchResponseDataMetadata',
+        'metadata' => '\Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayMetadata',
         'status' => 'string',
         'message' => 'string',
         'attempt_partial_debit' => 'bool',
@@ -527,7 +527,7 @@ class BulkChargeFetchBulkBatchChargesResponseArray implements ModelInterface, Ar
     /**
      * Gets authorization
      *
-     * @return \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataAuthorization
+     * @return \Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayAuthorization
      */
     public function getAuthorization()
     {
@@ -537,7 +537,7 @@ class BulkChargeFetchBulkBatchChargesResponseArray implements ModelInterface, Ar
     /**
      * Sets authorization
      *
-     * @param \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataAuthorization $authorization authorization
+     * @param \Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayAuthorization $authorization authorization
      *
      * @return self
      */
@@ -689,7 +689,7 @@ class BulkChargeFetchBulkBatchChargesResponseArray implements ModelInterface, Ar
     /**
      * Gets metadata
      *
-     * @return \Alexasomba\Paystack\Model\TransactionFetchResponseDataMetadata
+     * @return \Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayMetadata
      */
     public function getMetadata()
     {
@@ -699,7 +699,7 @@ class BulkChargeFetchBulkBatchChargesResponseArray implements ModelInterface, Ar
     /**
      * Sets metadata
      *
-     * @param \Alexasomba\Paystack\Model\TransactionFetchResponseDataMetadata $metadata metadata
+     * @param \Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayMetadata $metadata metadata
      *
      * @return self
      */

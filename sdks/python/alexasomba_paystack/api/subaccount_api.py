@@ -17,7 +17,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBool, StrictInt, StrictStr
+from datetime import datetime
+from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
 from alexasomba_paystack.models.subaccount_create import SubaccountCreate
@@ -326,7 +327,7 @@ class SubaccountApi:
     @validate_call
     def subaccount_fetch(
         self,
-        code: Annotated[StrictStr, Field(description="The subaccount code you want to fetch")],
+        id_or_code: Annotated[StrictStr, Field(description="The subaccount ID or code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -344,8 +345,8 @@ class SubaccountApi:
 
         Get details of a subaccount on your integration
 
-        :param code: The subaccount code you want to fetch (required)
-        :type code: str
+        :param id_or_code: The subaccount ID or code you want to fetch (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -369,7 +370,7 @@ class SubaccountApi:
         """ # noqa: E501
 
         _param = self._subaccount_fetch_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -395,7 +396,7 @@ class SubaccountApi:
     @validate_call
     def subaccount_fetch_with_http_info(
         self,
-        code: Annotated[StrictStr, Field(description="The subaccount code you want to fetch")],
+        id_or_code: Annotated[StrictStr, Field(description="The subaccount ID or code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -413,8 +414,8 @@ class SubaccountApi:
 
         Get details of a subaccount on your integration
 
-        :param code: The subaccount code you want to fetch (required)
-        :type code: str
+        :param id_or_code: The subaccount ID or code you want to fetch (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -438,7 +439,7 @@ class SubaccountApi:
         """ # noqa: E501
 
         _param = self._subaccount_fetch_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -464,7 +465,7 @@ class SubaccountApi:
     @validate_call
     def subaccount_fetch_without_preload_content(
         self,
-        code: Annotated[StrictStr, Field(description="The subaccount code you want to fetch")],
+        id_or_code: Annotated[StrictStr, Field(description="The subaccount ID or code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -482,8 +483,8 @@ class SubaccountApi:
 
         Get details of a subaccount on your integration
 
-        :param code: The subaccount code you want to fetch (required)
-        :type code: str
+        :param id_or_code: The subaccount ID or code you want to fetch (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -507,7 +508,7 @@ class SubaccountApi:
         """ # noqa: E501
 
         _param = self._subaccount_fetch_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -528,7 +529,7 @@ class SubaccountApi:
 
     def _subaccount_fetch_serialize(
         self,
-        code,
+        id_or_code,
         _request_auth,
         _content_type,
         _headers,
@@ -550,8 +551,8 @@ class SubaccountApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if code is not None:
-            _path_params['code'] = code
+        if id_or_code is not None:
+            _path_params['id_or_code'] = id_or_code
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -574,7 +575,7 @@ class SubaccountApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/subaccount/{code}',
+            resource_path='/subaccount/{id_or_code}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -595,7 +596,8 @@ class SubaccountApi:
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per request")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
-        active: Annotated[Optional[StrictBool], Field(description="Filter by the state of the subaccounts")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -617,8 +619,10 @@ class SubaccountApi:
         :type per_page: int
         :param page: The offset to retrieve data from
         :type page: int
-        :param active: Filter by the state of the subaccounts
-        :type active: bool
+        :param var_from: A timestamp from which to start listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type var_from: datetime
+        :param to: A timestamp at which to stop listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -644,7 +648,8 @@ class SubaccountApi:
         _param = self._subaccount_list_serialize(
             per_page=per_page,
             page=page,
-            active=active,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -672,7 +677,8 @@ class SubaccountApi:
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per request")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
-        active: Annotated[Optional[StrictBool], Field(description="Filter by the state of the subaccounts")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -694,8 +700,10 @@ class SubaccountApi:
         :type per_page: int
         :param page: The offset to retrieve data from
         :type page: int
-        :param active: Filter by the state of the subaccounts
-        :type active: bool
+        :param var_from: A timestamp from which to start listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type var_from: datetime
+        :param to: A timestamp at which to stop listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -721,7 +729,8 @@ class SubaccountApi:
         _param = self._subaccount_list_serialize(
             per_page=per_page,
             page=page,
-            active=active,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -749,7 +758,8 @@ class SubaccountApi:
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per request")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
-        active: Annotated[Optional[StrictBool], Field(description="Filter by the state of the subaccounts")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -771,8 +781,10 @@ class SubaccountApi:
         :type per_page: int
         :param page: The offset to retrieve data from
         :type page: int
-        :param active: Filter by the state of the subaccounts
-        :type active: bool
+        :param var_from: A timestamp from which to start listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type var_from: datetime
+        :param to: A timestamp at which to stop listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+        :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -798,7 +810,8 @@ class SubaccountApi:
         _param = self._subaccount_list_serialize(
             per_page=per_page,
             page=page,
-            active=active,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -821,7 +834,8 @@ class SubaccountApi:
         self,
         per_page,
         page,
-        active,
+        var_from,
+        to,
         _request_auth,
         _content_type,
         _headers,
@@ -852,9 +866,31 @@ class SubaccountApi:
             
             _query_params.append(('page', page))
             
-        if active is not None:
+        if var_from is not None:
+            if isinstance(var_from, datetime):
+                _query_params.append(
+                    (
+                        'from',
+                        var_from.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('from', var_from))
             
-            _query_params.append(('active', active))
+        if to is not None:
+            if isinstance(to, datetime):
+                _query_params.append(
+                    (
+                        'to',
+                        to.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('to', to))
             
         # process the header parameters
         # process the form parameters
@@ -896,7 +932,7 @@ class SubaccountApi:
     @validate_call
     def subaccount_update(
         self,
-        code: Annotated[StrictStr, Field(description="The subaccount code you want to fetch")],
+        id_or_code: Annotated[StrictStr, Field(description="The subaccount ID or code you want to fetch")],
         subaccount_update: Optional[SubaccountUpdate] = None,
         _request_timeout: Union[
             None,
@@ -915,8 +951,8 @@ class SubaccountApi:
 
         Update a subaccount details on your integration
 
-        :param code: The subaccount code you want to fetch (required)
-        :type code: str
+        :param id_or_code: The subaccount ID or code you want to fetch (required)
+        :type id_or_code: str
         :param subaccount_update:
         :type subaccount_update: SubaccountUpdate
         :param _request_timeout: timeout setting for this request. If one
@@ -942,7 +978,7 @@ class SubaccountApi:
         """ # noqa: E501
 
         _param = self._subaccount_update_serialize(
-            code=code,
+            id_or_code=id_or_code,
             subaccount_update=subaccount_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -969,7 +1005,7 @@ class SubaccountApi:
     @validate_call
     def subaccount_update_with_http_info(
         self,
-        code: Annotated[StrictStr, Field(description="The subaccount code you want to fetch")],
+        id_or_code: Annotated[StrictStr, Field(description="The subaccount ID or code you want to fetch")],
         subaccount_update: Optional[SubaccountUpdate] = None,
         _request_timeout: Union[
             None,
@@ -988,8 +1024,8 @@ class SubaccountApi:
 
         Update a subaccount details on your integration
 
-        :param code: The subaccount code you want to fetch (required)
-        :type code: str
+        :param id_or_code: The subaccount ID or code you want to fetch (required)
+        :type id_or_code: str
         :param subaccount_update:
         :type subaccount_update: SubaccountUpdate
         :param _request_timeout: timeout setting for this request. If one
@@ -1015,7 +1051,7 @@ class SubaccountApi:
         """ # noqa: E501
 
         _param = self._subaccount_update_serialize(
-            code=code,
+            id_or_code=id_or_code,
             subaccount_update=subaccount_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1042,7 +1078,7 @@ class SubaccountApi:
     @validate_call
     def subaccount_update_without_preload_content(
         self,
-        code: Annotated[StrictStr, Field(description="The subaccount code you want to fetch")],
+        id_or_code: Annotated[StrictStr, Field(description="The subaccount ID or code you want to fetch")],
         subaccount_update: Optional[SubaccountUpdate] = None,
         _request_timeout: Union[
             None,
@@ -1061,8 +1097,8 @@ class SubaccountApi:
 
         Update a subaccount details on your integration
 
-        :param code: The subaccount code you want to fetch (required)
-        :type code: str
+        :param id_or_code: The subaccount ID or code you want to fetch (required)
+        :type id_or_code: str
         :param subaccount_update:
         :type subaccount_update: SubaccountUpdate
         :param _request_timeout: timeout setting for this request. If one
@@ -1088,7 +1124,7 @@ class SubaccountApi:
         """ # noqa: E501
 
         _param = self._subaccount_update_serialize(
-            code=code,
+            id_or_code=id_or_code,
             subaccount_update=subaccount_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1110,7 +1146,7 @@ class SubaccountApi:
 
     def _subaccount_update_serialize(
         self,
-        code,
+        id_or_code,
         subaccount_update,
         _request_auth,
         _content_type,
@@ -1133,8 +1169,8 @@ class SubaccountApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if code is not None:
-            _path_params['code'] = code
+        if id_or_code is not None:
+            _path_params['id_or_code'] = id_or_code
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -1173,7 +1209,7 @@ class SubaccountApi:
 
         return self.api_client.param_serialize(
             method='PUT',
-            resource_path='/subaccount/{code}',
+            resource_path='/subaccount/{id_or_code}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

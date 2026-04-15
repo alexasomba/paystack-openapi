@@ -24,7 +24,7 @@ var _ MappedNullable = &ChargeSubmitBirthdayResponse{}
 type ChargeSubmitBirthdayResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
-	Data ChargeSubmitBirthdayResponseData `json:"data"`
+	Data ChargeSubmitPinResponseData `json:"data"`
 }
 
 type _ChargeSubmitBirthdayResponse ChargeSubmitBirthdayResponse
@@ -33,7 +33,7 @@ type _ChargeSubmitBirthdayResponse ChargeSubmitBirthdayResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChargeSubmitBirthdayResponse(status bool, message string, data ChargeSubmitBirthdayResponseData) *ChargeSubmitBirthdayResponse {
+func NewChargeSubmitBirthdayResponse(status bool, message string, data ChargeSubmitPinResponseData) *ChargeSubmitBirthdayResponse {
 	this := ChargeSubmitBirthdayResponse{}
 	this.Status = status
 	this.Message = message
@@ -98,9 +98,9 @@ func (o *ChargeSubmitBirthdayResponse) SetMessage(v string) {
 }
 
 // GetData returns the Data field value
-func (o *ChargeSubmitBirthdayResponse) GetData() ChargeSubmitBirthdayResponseData {
+func (o *ChargeSubmitBirthdayResponse) GetData() ChargeSubmitPinResponseData {
 	if o == nil {
-		var ret ChargeSubmitBirthdayResponseData
+		var ret ChargeSubmitPinResponseData
 		return ret
 	}
 
@@ -109,7 +109,7 @@ func (o *ChargeSubmitBirthdayResponse) GetData() ChargeSubmitBirthdayResponseDat
 
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
-func (o *ChargeSubmitBirthdayResponse) GetDataOk() (*ChargeSubmitBirthdayResponseData, bool) {
+func (o *ChargeSubmitBirthdayResponse) GetDataOk() (*ChargeSubmitPinResponseData, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -117,7 +117,7 @@ func (o *ChargeSubmitBirthdayResponse) GetDataOk() (*ChargeSubmitBirthdayRespons
 }
 
 // SetData sets field value
-func (o *ChargeSubmitBirthdayResponse) SetData(v ChargeSubmitBirthdayResponseData) {
+func (o *ChargeSubmitBirthdayResponse) SetData(v ChargeSubmitPinResponseData) {
 	o.Data = v
 }
 

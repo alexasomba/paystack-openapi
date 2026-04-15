@@ -20,7 +20,7 @@ import json
 
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from alexasomba_paystack.models.transfer_list_response_array_session import TransferListResponseArraySession
+from alexasomba_paystack.models.transfer_fetch_response_data_session import TransferFetchResponseDataSession
 from alexasomba_paystack.models.transfer_verify_response_data_recipient import TransferVerifyResponseDataRecipient
 from typing import Optional, Set
 from typing_extensions import Self
@@ -33,20 +33,20 @@ class TransferVerifyResponseData(BaseModel):
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     currency: StrictStr
     domain: StrictStr
-    failures: Optional[Any]
+    failures: Optional[Dict[str, Any]]
     id: StrictInt
     integration: StrictInt
     reason: StrictStr
     reference: StrictStr
     source: StrictStr
-    source_details: Optional[Any]
+    source_details: Optional[Dict[str, Any]]
     status: StrictStr
-    titan_code: Optional[Any]
+    titan_code: Optional[StrictStr]
     transfer_code: StrictStr
-    transferred_at: Optional[Any]
+    transferred_at: Optional[StrictStr]
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     recipient: TransferVerifyResponseDataRecipient
-    session: TransferListResponseArraySession
+    session: TransferFetchResponseDataSession
     gateway_response: Optional[StrictStr]
     __properties: ClassVar[List[str]] = ["amount", "createdAt", "currency", "domain", "failures", "id", "integration", "reason", "reference", "source", "source_details", "status", "titan_code", "transfer_code", "transferred_at", "updatedAt", "recipient", "session", "gateway_response"]
 
@@ -149,7 +149,7 @@ class TransferVerifyResponseData(BaseModel):
             "transferred_at": obj.get("transferred_at"),
             "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "recipient": TransferVerifyResponseDataRecipient.from_dict(obj["recipient"]) if obj.get("recipient") is not None else None,
-            "session": TransferListResponseArraySession.from_dict(obj["session"]) if obj.get("session") is not None else None,
+            "session": TransferFetchResponseDataSession.from_dict(obj["session"]) if obj.get("session") is not None else None,
             "gateway_response": obj.get("gateway_response")
         })
         return _obj

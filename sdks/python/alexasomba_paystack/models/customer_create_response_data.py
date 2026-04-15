@@ -20,7 +20,6 @@ import json
 
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_customer_metadata import BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,24 +27,16 @@ class CustomerCreateResponseData(BaseModel):
     """
     CustomerCreateResponseData
     """ # noqa: E501
-    transactions: List[Any]
-    subscriptions: List[Any]
-    authorizations: List[Any]
     email: StrictStr
-    first_name: StrictStr
-    last_name: StrictStr
-    phone: StrictStr
     integration: StrictInt
     domain: StrictStr
-    metadata: BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata
     customer_code: StrictStr
-    risk_action: StrictStr
     id: StrictInt
-    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
-    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     identified: StrictBool
     identifications: Optional[Any]
-    __properties: ClassVar[List[str]] = ["transactions", "subscriptions", "authorizations", "email", "first_name", "last_name", "phone", "integration", "domain", "metadata", "customer_code", "risk_action", "id", "createdAt", "updatedAt", "identified", "identifications"]
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
+    __properties: ClassVar[List[str]] = ["email", "integration", "domain", "customer_code", "id", "identified", "identifications", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,9 +77,6 @@ class CustomerCreateResponseData(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of metadata
-        if self.metadata:
-            _dict['metadata'] = self.metadata.to_dict()
         # set to None if identifications (nullable) is None
         # and model_fields_set contains the field
         if self.identifications is None and "identifications" in self.model_fields_set:
@@ -106,23 +94,15 @@ class CustomerCreateResponseData(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "transactions": obj.get("transactions"),
-            "subscriptions": obj.get("subscriptions"),
-            "authorizations": obj.get("authorizations"),
             "email": obj.get("email"),
-            "first_name": obj.get("first_name"),
-            "last_name": obj.get("last_name"),
-            "phone": obj.get("phone"),
             "integration": obj.get("integration"),
             "domain": obj.get("domain"),
-            "metadata": BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
             "customer_code": obj.get("customer_code"),
-            "risk_action": obj.get("risk_action"),
             "id": obj.get("id"),
-            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
-            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "identified": obj.get("identified"),
-            "identifications": obj.get("identifications")
+            "identifications": obj.get("identifications"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updatedAt": obj.get("updatedAt")
         })
         return _obj
 

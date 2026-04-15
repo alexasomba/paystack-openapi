@@ -372,7 +372,7 @@ class BulkChargeInitiate implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets amount
      *
-     * @param int $amount Amount to charge on the authorization
+     * @param int $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
      *
      * @return self
      */
@@ -453,7 +453,7 @@ class BulkChargeInitiate implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets at_least
      *
-     * @param int|null $at_least Minimum amount to charge if the attempt_partial_debit flag is set
+     * @param int|null $at_least Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Minimum amount to charge if the attempt_partial_debit flag is set.
      *
      * @return self
      */

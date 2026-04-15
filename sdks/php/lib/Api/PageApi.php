@@ -1027,16 +1027,16 @@ class PageApi
      *
      * Fetch Page
      *
-     * @param  int $id The unique identifier of a payment page (required)
+     * @param  string $id_or_slug The page ID or slug you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageFetch'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\PageFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function pageFetch($id, string $contentType = self::contentTypes['pageFetch'][0])
+    public function pageFetch($id_or_slug, string $contentType = self::contentTypes['pageFetch'][0])
     {
-        list($response) = $this->pageFetchWithHttpInfo($id, $contentType);
+        list($response) = $this->pageFetchWithHttpInfo($id_or_slug, $contentType);
         return $response;
     }
 
@@ -1045,16 +1045,16 @@ class PageApi
      *
      * Fetch Page
      *
-     * @param  int $id The unique identifier of a payment page (required)
+     * @param  string $id_or_slug The page ID or slug you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageFetch'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\PageFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function pageFetchWithHttpInfo($id, string $contentType = self::contentTypes['pageFetch'][0])
+    public function pageFetchWithHttpInfo($id_or_slug, string $contentType = self::contentTypes['pageFetch'][0])
     {
-        $request = $this->pageFetchRequest($id, $contentType);
+        $request = $this->pageFetchRequest($id_or_slug, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1158,15 +1158,15 @@ class PageApi
      *
      * Fetch Page
      *
-     * @param  int $id The unique identifier of a payment page (required)
+     * @param  string $id_or_slug The page ID or slug you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function pageFetchAsync($id, string $contentType = self::contentTypes['pageFetch'][0])
+    public function pageFetchAsync($id_or_slug, string $contentType = self::contentTypes['pageFetch'][0])
     {
-        return $this->pageFetchAsyncWithHttpInfo($id, $contentType)
+        return $this->pageFetchAsyncWithHttpInfo($id_or_slug, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1179,16 +1179,16 @@ class PageApi
      *
      * Fetch Page
      *
-     * @param  int $id The unique identifier of a payment page (required)
+     * @param  string $id_or_slug The page ID or slug you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function pageFetchAsyncWithHttpInfo($id, string $contentType = self::contentTypes['pageFetch'][0])
+    public function pageFetchAsyncWithHttpInfo($id_or_slug, string $contentType = self::contentTypes['pageFetch'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\PageFetchResponse';
-        $request = $this->pageFetchRequest($id, $contentType);
+        $request = $this->pageFetchRequest($id_or_slug, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1229,24 +1229,24 @@ class PageApi
     /**
      * Create request for operation 'pageFetch'
      *
-     * @param  int $id The unique identifier of a payment page (required)
+     * @param  string $id_or_slug The page ID or slug you want to fetch (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function pageFetchRequest($id, string $contentType = self::contentTypes['pageFetch'][0])
+    public function pageFetchRequest($id_or_slug, string $contentType = self::contentTypes['pageFetch'][0])
     {
 
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
+        // verify the required parameter 'id_or_slug' is set
+        if ($id_or_slug === null || (is_array($id_or_slug) && count($id_or_slug) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling pageFetch'
+                'Missing the required parameter $id_or_slug when calling pageFetch'
             );
         }
 
 
-        $resourcePath = '/page/{id}';
+        $resourcePath = '/page/{id_or_slug}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1256,10 +1256,10 @@ class PageApi
 
 
         // path params
-        if ($id !== null) {
+        if ($id_or_slug !== null) {
             $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
+                '{' . 'id_or_slug' . '}',
+                ObjectSerializer::toPathValue($id_or_slug),
                 $resourcePath
             );
         }
@@ -1667,7 +1667,7 @@ class PageApi
      *
      * Update Page
      *
-     * @param  int $id The unique identifier of a payment page (required)
+     * @param  string $id_or_slug The page ID or slug you want to fetch (required)
      * @param  \Alexasomba\Paystack\Model\PageUpdate|null $page_update page_update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageUpdate'] to see the possible values for this operation
      *
@@ -1675,9 +1675,9 @@ class PageApi
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\PageUpdateResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function pageUpdate($id, $page_update = null, string $contentType = self::contentTypes['pageUpdate'][0])
+    public function pageUpdate($id_or_slug, $page_update = null, string $contentType = self::contentTypes['pageUpdate'][0])
     {
-        list($response) = $this->pageUpdateWithHttpInfo($id, $page_update, $contentType);
+        list($response) = $this->pageUpdateWithHttpInfo($id_or_slug, $page_update, $contentType);
         return $response;
     }
 
@@ -1686,7 +1686,7 @@ class PageApi
      *
      * Update Page
      *
-     * @param  int $id The unique identifier of a payment page (required)
+     * @param  string $id_or_slug The page ID or slug you want to fetch (required)
      * @param  \Alexasomba\Paystack\Model\PageUpdate|null $page_update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageUpdate'] to see the possible values for this operation
      *
@@ -1694,9 +1694,9 @@ class PageApi
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\PageUpdateResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function pageUpdateWithHttpInfo($id, $page_update = null, string $contentType = self::contentTypes['pageUpdate'][0])
+    public function pageUpdateWithHttpInfo($id_or_slug, $page_update = null, string $contentType = self::contentTypes['pageUpdate'][0])
     {
-        $request = $this->pageUpdateRequest($id, $page_update, $contentType);
+        $request = $this->pageUpdateRequest($id_or_slug, $page_update, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1800,16 +1800,16 @@ class PageApi
      *
      * Update Page
      *
-     * @param  int $id The unique identifier of a payment page (required)
+     * @param  string $id_or_slug The page ID or slug you want to fetch (required)
      * @param  \Alexasomba\Paystack\Model\PageUpdate|null $page_update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageUpdate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function pageUpdateAsync($id, $page_update = null, string $contentType = self::contentTypes['pageUpdate'][0])
+    public function pageUpdateAsync($id_or_slug, $page_update = null, string $contentType = self::contentTypes['pageUpdate'][0])
     {
-        return $this->pageUpdateAsyncWithHttpInfo($id, $page_update, $contentType)
+        return $this->pageUpdateAsyncWithHttpInfo($id_or_slug, $page_update, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1822,17 +1822,17 @@ class PageApi
      *
      * Update Page
      *
-     * @param  int $id The unique identifier of a payment page (required)
+     * @param  string $id_or_slug The page ID or slug you want to fetch (required)
      * @param  \Alexasomba\Paystack\Model\PageUpdate|null $page_update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageUpdate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function pageUpdateAsyncWithHttpInfo($id, $page_update = null, string $contentType = self::contentTypes['pageUpdate'][0])
+    public function pageUpdateAsyncWithHttpInfo($id_or_slug, $page_update = null, string $contentType = self::contentTypes['pageUpdate'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\PageUpdateResponse';
-        $request = $this->pageUpdateRequest($id, $page_update, $contentType);
+        $request = $this->pageUpdateRequest($id_or_slug, $page_update, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1873,26 +1873,26 @@ class PageApi
     /**
      * Create request for operation 'pageUpdate'
      *
-     * @param  int $id The unique identifier of a payment page (required)
+     * @param  string $id_or_slug The page ID or slug you want to fetch (required)
      * @param  \Alexasomba\Paystack\Model\PageUpdate|null $page_update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageUpdate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function pageUpdateRequest($id, $page_update = null, string $contentType = self::contentTypes['pageUpdate'][0])
+    public function pageUpdateRequest($id_or_slug, $page_update = null, string $contentType = self::contentTypes['pageUpdate'][0])
     {
 
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
+        // verify the required parameter 'id_or_slug' is set
+        if ($id_or_slug === null || (is_array($id_or_slug) && count($id_or_slug) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling pageUpdate'
+                'Missing the required parameter $id_or_slug when calling pageUpdate'
             );
         }
 
 
 
-        $resourcePath = '/page/{id}';
+        $resourcePath = '/page/{id_or_slug}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1902,10 +1902,10 @@ class PageApi
 
 
         // path params
-        if ($id !== null) {
+        if ($id_or_slug !== null) {
             $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
+                '{' . 'id_or_slug' . '}',
+                ObjectSerializer::toPathValue($id_or_slug),
                 $resourcePath
             );
         }

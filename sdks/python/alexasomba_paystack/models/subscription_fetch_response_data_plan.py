@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,7 +27,9 @@ class SubscriptionFetchResponseDataPlan(BaseModel):
     """
     SubscriptionFetchResponseDataPlan
     """ # noqa: E501
+    domain: StrictStr
     id: StrictInt
+    integration: StrictInt
     name: StrictStr
     plan_code: StrictStr
     description: Optional[Any]
@@ -35,8 +37,13 @@ class SubscriptionFetchResponseDataPlan(BaseModel):
     interval: StrictStr
     send_invoices: StrictBool
     send_sms: StrictBool
+    hosted_page: StrictBool
+    hosted_page_url: Optional[Any]
+    hosted_page_summary: Optional[Any]
     currency: StrictStr
-    __properties: ClassVar[List[str]] = ["id", "name", "plan_code", "description", "amount", "interval", "send_invoices", "send_sms", "currency"]
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
+    __properties: ClassVar[List[str]] = ["domain", "id", "integration", "name", "plan_code", "description", "amount", "interval", "send_invoices", "send_sms", "hosted_page", "hosted_page_url", "hosted_page_summary", "currency", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,6 +89,16 @@ class SubscriptionFetchResponseDataPlan(BaseModel):
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
+        # set to None if hosted_page_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.hosted_page_url is None and "hosted_page_url" in self.model_fields_set:
+            _dict['hosted_page_url'] = None
+
+        # set to None if hosted_page_summary (nullable) is None
+        # and model_fields_set contains the field
+        if self.hosted_page_summary is None and "hosted_page_summary" in self.model_fields_set:
+            _dict['hosted_page_summary'] = None
+
         return _dict
 
     @classmethod
@@ -94,7 +111,9 @@ class SubscriptionFetchResponseDataPlan(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "domain": obj.get("domain"),
             "id": obj.get("id"),
+            "integration": obj.get("integration"),
             "name": obj.get("name"),
             "plan_code": obj.get("plan_code"),
             "description": obj.get("description"),
@@ -102,7 +121,12 @@ class SubscriptionFetchResponseDataPlan(BaseModel):
             "interval": obj.get("interval"),
             "send_invoices": obj.get("send_invoices"),
             "send_sms": obj.get("send_sms"),
-            "currency": obj.get("currency")
+            "hosted_page": obj.get("hosted_page"),
+            "hosted_page_url": obj.get("hosted_page_url"),
+            "hosted_page_summary": obj.get("hosted_page_summary"),
+            "currency": obj.get("currency"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updatedAt": obj.get("updatedAt")
         })
         return _obj
 

@@ -70,7 +70,7 @@ class TransactionPartialDebitResponseDataAuthorization implements ModelInterface
         'brand' => 'string',
         'reusable' => 'bool',
         'signature' => 'string',
-        'account_name' => 'mixed'
+        'account_name' => 'string'
     ];
 
     /**
@@ -740,7 +740,7 @@ class TransactionPartialDebitResponseDataAuthorization implements ModelInterface
     /**
      * Gets account_name
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getAccountName()
     {
@@ -750,7 +750,7 @@ class TransactionPartialDebitResponseDataAuthorization implements ModelInterface
     /**
      * Sets account_name
      *
-     * @param mixed|null $account_name account_name
+     * @param string|null $account_name account_name
      *
      * @return self
      */

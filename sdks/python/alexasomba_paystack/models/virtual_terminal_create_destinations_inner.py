@@ -27,8 +27,8 @@ class VirtualTerminalCreateDestinationsInner(BaseModel):
     """
     VirtualTerminalCreateDestinationsInner
     """ # noqa: E501
-    target: Optional[StrictStr] = Field(default=None, description="The WhatsApp number to receive payment notifications")
-    name: Optional[StrictStr] = Field(default=None, description="The name of the associated WhatsApp number")
+    target: Optional[StrictStr] = Field(default=None, description="The Whatsapp phone number to send notifications to")
+    name: Optional[StrictStr] = Field(default=None, description="A descriptive label for the destination")
     __properties: ClassVar[List[str]] = ["target", "name"]
 
     model_config = ConfigDict(

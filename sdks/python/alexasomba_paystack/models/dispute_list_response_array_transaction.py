@@ -20,8 +20,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_metadata import BulkChargeFetchBulkBatchChargesResponseArrayMetadata
 from alexasomba_paystack.models.charge_authorization_response_data_log import ChargeAuthorizationResponseDataLog
-from alexasomba_paystack.models.transaction_fetch_response_data_metadata import TransactionFetchResponseDataMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -41,7 +41,7 @@ class DisputeListResponseArrayTransaction(BaseModel):
     channel: StrictStr
     currency: StrictStr
     ip_address: StrictStr
-    metadata: TransactionFetchResponseDataMetadata
+    metadata: BulkChargeFetchBulkBatchChargesResponseArrayMetadata
     log: Optional[ChargeAuthorizationResponseDataLog]
     fees: StrictInt
     fees_split: Optional[StrictInt]
@@ -176,7 +176,7 @@ class DisputeListResponseArrayTransaction(BaseModel):
             "channel": obj.get("channel"),
             "currency": obj.get("currency"),
             "ip_address": obj.get("ip_address"),
-            "metadata": TransactionFetchResponseDataMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
+            "metadata": BulkChargeFetchBulkBatchChargesResponseArrayMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
             "log": ChargeAuthorizationResponseDataLog.from_dict(obj["log"]) if obj.get("log") is not None else None,
             "fees": obj.get("fees"),
             "fees_split": obj.get("fees_split"),

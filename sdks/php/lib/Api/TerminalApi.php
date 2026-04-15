@@ -1636,7 +1636,7 @@ class TerminalApi
      *
      * @param  string|null $next A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
      * @param  string|null $previous A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
-     * @param  int|null $per_page Specify how many records you want to retrieve per page (optional, default to 50)
+     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalList'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1656,7 +1656,7 @@ class TerminalApi
      *
      * @param  string|null $next A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
      * @param  string|null $previous A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
-     * @param  int|null $per_page Specify how many records you want to retrieve per page (optional, default to 50)
+     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalList'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1771,7 +1771,7 @@ class TerminalApi
      *
      * @param  string|null $next A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
      * @param  string|null $previous A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
-     * @param  int|null $per_page Specify how many records you want to retrieve per page (optional, default to 50)
+     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1794,7 +1794,7 @@ class TerminalApi
      *
      * @param  string|null $next A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
      * @param  string|null $previous A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
-     * @param  int|null $per_page Specify how many records you want to retrieve per page (optional, default to 50)
+     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1846,7 +1846,7 @@ class TerminalApi
      *
      * @param  string|null $next A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
      * @param  string|null $previous A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
-     * @param  int|null $per_page Specify how many records you want to retrieve per page (optional, default to 50)
+     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1887,7 +1887,7 @@ class TerminalApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $per_page,
-            'per_page', // param base name
+            'perPage', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode

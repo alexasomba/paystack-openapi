@@ -24,7 +24,6 @@ var _ MappedNullable = &VerificationResolveAccountNumberResponseData{}
 type VerificationResolveAccountNumberResponseData struct {
 	AccountNumber string `json:"account_number"`
 	AccountName string `json:"account_name"`
-	BankId int32 `json:"bank_id"`
 }
 
 type _VerificationResolveAccountNumberResponseData VerificationResolveAccountNumberResponseData
@@ -33,11 +32,10 @@ type _VerificationResolveAccountNumberResponseData VerificationResolveAccountNum
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVerificationResolveAccountNumberResponseData(accountNumber string, accountName string, bankId int32) *VerificationResolveAccountNumberResponseData {
+func NewVerificationResolveAccountNumberResponseData(accountNumber string, accountName string) *VerificationResolveAccountNumberResponseData {
 	this := VerificationResolveAccountNumberResponseData{}
 	this.AccountNumber = accountNumber
 	this.AccountName = accountName
-	this.BankId = bankId
 	return &this
 }
 
@@ -97,30 +95,6 @@ func (o *VerificationResolveAccountNumberResponseData) SetAccountName(v string) 
 	o.AccountName = v
 }
 
-// GetBankId returns the BankId field value
-func (o *VerificationResolveAccountNumberResponseData) GetBankId() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.BankId
-}
-
-// GetBankIdOk returns a tuple with the BankId field value
-// and a boolean to check if the value has been set.
-func (o *VerificationResolveAccountNumberResponseData) GetBankIdOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BankId, true
-}
-
-// SetBankId sets field value
-func (o *VerificationResolveAccountNumberResponseData) SetBankId(v int32) {
-	o.BankId = v
-}
-
 func (o VerificationResolveAccountNumberResponseData) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -133,7 +107,6 @@ func (o VerificationResolveAccountNumberResponseData) ToMap() (map[string]interf
 	toSerialize := map[string]interface{}{}
 	toSerialize["account_number"] = o.AccountNumber
 	toSerialize["account_name"] = o.AccountName
-	toSerialize["bank_id"] = o.BankId
 	return toSerialize, nil
 }
 
@@ -144,7 +117,6 @@ func (o *VerificationResolveAccountNumberResponseData) UnmarshalJSON(data []byte
 	requiredProperties := []string{
 		"account_number",
 		"account_name",
-		"bank_id",
 	}
 
 	allProperties := make(map[string]interface{})

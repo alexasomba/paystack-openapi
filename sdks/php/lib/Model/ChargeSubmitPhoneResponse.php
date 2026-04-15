@@ -60,7 +60,7 @@ class ChargeSubmitPhoneResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPITypes = [
         'status' => 'bool',
         'message' => 'string',
-        'data' => '\Alexasomba\Paystack\Model\ChargeSubmitPhoneResponseData'
+        'data' => '\Alexasomba\Paystack\Model\ChargeSubmitPinResponseData'
     ];
 
     /**
@@ -370,7 +370,7 @@ class ChargeSubmitPhoneResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets data
      *
-     * @return \Alexasomba\Paystack\Model\ChargeSubmitPhoneResponseData
+     * @return \Alexasomba\Paystack\Model\ChargeSubmitPinResponseData
      */
     public function getData()
     {
@@ -380,7 +380,7 @@ class ChargeSubmitPhoneResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets data
      *
-     * @param \Alexasomba\Paystack\Model\ChargeSubmitPhoneResponseData $data data
+     * @param \Alexasomba\Paystack\Model\ChargeSubmitPinResponseData $data data
      *
      * @return self
      */

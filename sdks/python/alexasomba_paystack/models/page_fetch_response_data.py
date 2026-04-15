@@ -20,6 +20,7 @@ import json
 
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from alexasomba_paystack.models.page_products_array import PageProductsArray
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,25 +31,16 @@ class PageFetchResponseData(BaseModel):
     integration: StrictInt
     domain: StrictStr
     name: StrictStr
-    description: Optional[Any]
+    description: Optional[StrictStr] = None
     amount: Optional[StrictInt]
     currency: StrictStr
     slug: StrictStr
-    custom_fields: Optional[Any]
-    type: StrictStr
-    redirect_url: Optional[Any]
-    success_message: Optional[Any]
-    collect_phone: StrictBool
     active: StrictBool
-    published: StrictBool
-    migrate: StrictBool
-    notification_email: Optional[Any]
-    metadata: Optional[Any]
-    split_code: Optional[Any]
     id: StrictInt
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    __properties: ClassVar[List[str]] = ["integration", "domain", "name", "description", "amount", "currency", "slug", "custom_fields", "type", "redirect_url", "success_message", "collect_phone", "active", "published", "migrate", "notification_email", "metadata", "split_code", "id", "createdAt", "updatedAt"]
+    products: List[PageProductsArray]
+    __properties: ClassVar[List[str]] = ["integration", "domain", "name", "description", "amount", "currency", "slug", "active", "id", "createdAt", "updatedAt", "products"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,6 +81,13 @@ class PageFetchResponseData(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in products (list)
+        _items = []
+        if self.products:
+            for _item_products in self.products:
+                if _item_products:
+                    _items.append(_item_products.to_dict())
+            _dict['products'] = _items
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
@@ -98,36 +97,6 @@ class PageFetchResponseData(BaseModel):
         # and model_fields_set contains the field
         if self.amount is None and "amount" in self.model_fields_set:
             _dict['amount'] = None
-
-        # set to None if custom_fields (nullable) is None
-        # and model_fields_set contains the field
-        if self.custom_fields is None and "custom_fields" in self.model_fields_set:
-            _dict['custom_fields'] = None
-
-        # set to None if redirect_url (nullable) is None
-        # and model_fields_set contains the field
-        if self.redirect_url is None and "redirect_url" in self.model_fields_set:
-            _dict['redirect_url'] = None
-
-        # set to None if success_message (nullable) is None
-        # and model_fields_set contains the field
-        if self.success_message is None and "success_message" in self.model_fields_set:
-            _dict['success_message'] = None
-
-        # set to None if notification_email (nullable) is None
-        # and model_fields_set contains the field
-        if self.notification_email is None and "notification_email" in self.model_fields_set:
-            _dict['notification_email'] = None
-
-        # set to None if metadata (nullable) is None
-        # and model_fields_set contains the field
-        if self.metadata is None and "metadata" in self.model_fields_set:
-            _dict['metadata'] = None
-
-        # set to None if split_code (nullable) is None
-        # and model_fields_set contains the field
-        if self.split_code is None and "split_code" in self.model_fields_set:
-            _dict['split_code'] = None
 
         return _dict
 
@@ -148,20 +117,11 @@ class PageFetchResponseData(BaseModel):
             "amount": obj.get("amount"),
             "currency": obj.get("currency"),
             "slug": obj.get("slug"),
-            "custom_fields": obj.get("custom_fields"),
-            "type": obj.get("type"),
-            "redirect_url": obj.get("redirect_url"),
-            "success_message": obj.get("success_message"),
-            "collect_phone": obj.get("collect_phone"),
             "active": obj.get("active"),
-            "published": obj.get("published"),
-            "migrate": obj.get("migrate"),
-            "notification_email": obj.get("notification_email"),
-            "metadata": obj.get("metadata"),
-            "split_code": obj.get("split_code"),
             "id": obj.get("id"),
             "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
-            "updatedAt": obj.get("updatedAt")
+            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
+            "products": [PageProductsArray.from_dict(_item) for _item in obj["products"]] if obj.get("products") is not None else None
         })
         return _obj
 

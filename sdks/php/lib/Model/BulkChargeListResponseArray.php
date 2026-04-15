@@ -58,12 +58,9 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'integration' => 'int',
         'domain' => 'string',
         'batch_code' => 'string',
         'status' => 'string',
-        'easy_cron_id' => 'mixed',
-        'reference' => 'string',
         'id' => 'int',
         'created_at' => 'string',
         'updated_at' => 'string'
@@ -77,12 +74,9 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'integration' => null,
         'domain' => null,
         'batch_code' => null,
         'status' => null,
-        'easy_cron_id' => null,
-        'reference' => null,
         'id' => null,
         'created_at' => null,
         'updated_at' => null
@@ -94,12 +88,9 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'integration' => false,
         'domain' => false,
         'batch_code' => false,
         'status' => false,
-        'easy_cron_id' => true,
-        'reference' => false,
         'id' => false,
         'created_at' => false,
         'updated_at' => false
@@ -191,12 +182,9 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'integration' => 'integration',
         'domain' => 'domain',
         'batch_code' => 'batch_code',
         'status' => 'status',
-        'easy_cron_id' => 'easy_cron_id',
-        'reference' => 'reference',
         'id' => 'id',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt'
@@ -208,12 +196,9 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'integration' => 'setIntegration',
         'domain' => 'setDomain',
         'batch_code' => 'setBatchCode',
         'status' => 'setStatus',
-        'easy_cron_id' => 'setEasyCronId',
-        'reference' => 'setReference',
         'id' => 'setId',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
@@ -225,12 +210,9 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'integration' => 'getIntegration',
         'domain' => 'getDomain',
         'batch_code' => 'getBatchCode',
         'status' => 'getStatus',
-        'easy_cron_id' => 'getEasyCronId',
-        'reference' => 'getReference',
         'id' => 'getId',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
@@ -293,12 +275,9 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('integration', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('batch_code', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('easy_cron_id', $data ?? [], null);
-        $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
@@ -331,9 +310,6 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['integration'] === null) {
-            $invalidProperties[] = "'integration' can't be null";
-        }
         if ($this->container['domain'] === null) {
             $invalidProperties[] = "'domain' can't be null";
         }
@@ -342,12 +318,6 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
-        }
-        if ($this->container['easy_cron_id'] === null && !$this->isNullableSetToNull('easy_cron_id')) {
-            $invalidProperties[] = "'easy_cron_id' can't be null";
-        }
-        if ($this->container['reference'] === null) {
-            $invalidProperties[] = "'reference' can't be null";
         }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
@@ -372,33 +342,6 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets integration
-     *
-     * @return int
-     */
-    public function getIntegration()
-    {
-        return $this->container['integration'];
-    }
-
-    /**
-     * Sets integration
-     *
-     * @param int $integration integration
-     *
-     * @return self
-     */
-    public function setIntegration($integration)
-    {
-        if (is_null($integration)) {
-            throw new \InvalidArgumentException('non-nullable integration cannot be null');
-        }
-        $this->container['integration'] = $integration;
-
-        return $this;
-    }
 
     /**
      * Gets domain
@@ -477,67 +420,6 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
         $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets easy_cron_id
-     *
-     * @return mixed|null
-     */
-    public function getEasyCronId()
-    {
-        return $this->container['easy_cron_id'];
-    }
-
-    /**
-     * Sets easy_cron_id
-     *
-     * @param mixed|null $easy_cron_id easy_cron_id
-     *
-     * @return self
-     */
-    public function setEasyCronId($easy_cron_id)
-    {
-        if (is_null($easy_cron_id)) {
-            array_push($this->openAPINullablesSetToNull, 'easy_cron_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('easy_cron_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['easy_cron_id'] = $easy_cron_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets reference
-     *
-     * @return string
-     */
-    public function getReference()
-    {
-        return $this->container['reference'];
-    }
-
-    /**
-     * Sets reference
-     *
-     * @param string $reference reference
-     *
-     * @return self
-     */
-    public function setReference($reference)
-    {
-        if (is_null($reference)) {
-            throw new \InvalidArgumentException('non-nullable reference cannot be null');
-        }
-        $this->container['reference'] = $reference;
 
         return $this;
     }

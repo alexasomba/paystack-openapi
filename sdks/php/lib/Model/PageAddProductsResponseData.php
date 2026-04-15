@@ -62,8 +62,8 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
         'plan' => 'mixed',
         'domain' => 'string',
         'name' => 'string',
-        'description' => 'mixed',
-        'amount' => 'mixed',
+        'description' => 'string',
+        'amount' => 'int',
         'currency' => 'string',
         'slug' => 'string',
         'custom_fields' => 'mixed',
@@ -74,9 +74,9 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
         'active' => 'bool',
         'published' => 'bool',
         'migrate' => 'bool',
-        'notification_email' => 'mixed',
-        'metadata' => 'mixed',
-        'split_code' => 'mixed',
+        'notification_email' => 'string',
+        'metadata' => 'object',
+        'split_code' => 'string',
         'id' => 'int',
         'created_at' => 'string',
         'updated_at' => 'string',
@@ -441,9 +441,6 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['description'] === null && !$this->isNullableSetToNull('description')) {
-            $invalidProperties[] = "'description' can't be null";
-        }
         if ($this->container['amount'] === null && !$this->isNullableSetToNull('amount')) {
             $invalidProperties[] = "'amount' can't be null";
         }
@@ -453,17 +450,8 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['slug'] === null) {
             $invalidProperties[] = "'slug' can't be null";
         }
-        if ($this->container['custom_fields'] === null && !$this->isNullableSetToNull('custom_fields')) {
-            $invalidProperties[] = "'custom_fields' can't be null";
-        }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
-        }
-        if ($this->container['redirect_url'] === null && !$this->isNullableSetToNull('redirect_url')) {
-            $invalidProperties[] = "'redirect_url' can't be null";
-        }
-        if ($this->container['success_message'] === null && !$this->isNullableSetToNull('success_message')) {
-            $invalidProperties[] = "'success_message' can't be null";
         }
         if ($this->container['collect_phone'] === null) {
             $invalidProperties[] = "'collect_phone' can't be null";
@@ -476,15 +464,6 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
         }
         if ($this->container['migrate'] === null) {
             $invalidProperties[] = "'migrate' can't be null";
-        }
-        if ($this->container['notification_email'] === null && !$this->isNullableSetToNull('notification_email')) {
-            $invalidProperties[] = "'notification_email' can't be null";
-        }
-        if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
-            $invalidProperties[] = "'metadata' can't be null";
-        }
-        if ($this->container['split_code'] === null && !$this->isNullableSetToNull('split_code')) {
-            $invalidProperties[] = "'split_code' can't be null";
         }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
@@ -631,7 +610,7 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets description
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getDescription()
     {
@@ -641,7 +620,7 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets description
      *
-     * @param mixed|null $description description
+     * @param string|null $description description
      *
      * @return self
      */
@@ -665,7 +644,7 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets amount
      *
-     * @return mixed|null
+     * @return int|null
      */
     public function getAmount()
     {
@@ -675,7 +654,7 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets amount
      *
-     * @param mixed|null $amount amount
+     * @param int|null $amount amount
      *
      * @return self
      */
@@ -990,7 +969,7 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets notification_email
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getNotificationEmail()
     {
@@ -1000,7 +979,7 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets notification_email
      *
-     * @param mixed|null $notification_email notification_email
+     * @param string|null $notification_email notification_email
      *
      * @return self
      */
@@ -1024,7 +1003,7 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets metadata
      *
-     * @return mixed|null
+     * @return object|null
      */
     public function getMetadata()
     {
@@ -1034,7 +1013,7 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets metadata
      *
-     * @param mixed|null $metadata metadata
+     * @param object|null $metadata metadata
      *
      * @return self
      */
@@ -1058,7 +1037,7 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets split_code
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getSplitCode()
     {
@@ -1068,7 +1047,7 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets split_code
      *
-     * @param mixed|null $split_code split_code
+     * @param string|null $split_code split_code
      *
      * @return self
      */

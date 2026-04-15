@@ -61,7 +61,7 @@ class DisputeListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'status' => 'bool',
         'message' => 'string',
         'data' => '\Alexasomba\Paystack\Model\DisputeListResponseArray[]',
-        'meta' => '\Alexasomba\Paystack\Model\SubaccountListResponseMeta'
+        'meta' => '\Alexasomba\Paystack\Model\Meta'
     ];
 
     /**
@@ -407,7 +407,7 @@ class DisputeListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets meta
      *
-     * @return \Alexasomba\Paystack\Model\SubaccountListResponseMeta
+     * @return \Alexasomba\Paystack\Model\Meta
      */
     public function getMeta()
     {
@@ -417,7 +417,7 @@ class DisputeListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets meta
      *
-     * @param \Alexasomba\Paystack\Model\SubaccountListResponseMeta $meta meta
+     * @param \Alexasomba\Paystack\Model\Meta $meta meta
      *
      * @return self
      */

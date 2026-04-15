@@ -24,11 +24,11 @@ var _ MappedNullable = &SubaccountCreateResponseData{}
 type SubaccountCreateResponseData struct {
 	BusinessName string `json:"business_name"`
 	AccountName NullableString `json:"account_name,omitempty"`
-	Description string `json:"description"`
-	PrimaryContactName string `json:"primary_contact_name"`
-	PrimaryContactEmail string `json:"primary_contact_email"`
-	PrimaryContactPhone string `json:"primary_contact_phone"`
-	Metadata string `json:"metadata"`
+	Description NullableString `json:"description,omitempty"`
+	PrimaryContactName NullableString `json:"primary_contact_name,omitempty"`
+	PrimaryContactEmail NullableString `json:"primary_contact_email,omitempty"`
+	PrimaryContactPhone NullableString `json:"primary_contact_phone,omitempty"`
+	Metadata interface{} `json:"metadata,omitempty"`
 	AccountNumber string `json:"account_number"`
 	PercentageCharge float32 `json:"percentage_charge"`
 	SettlementBank string `json:"settlement_bank"`
@@ -37,7 +37,7 @@ type SubaccountCreateResponseData struct {
 	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
 	Product string `json:"product"`
-	ManagedByIntegration int32 `json:"managed_by_integration"`
+	ManagedByIntegration *int32 `json:"managed_by_integration,omitempty"`
 	SubaccountCode string `json:"subaccount_code"`
 	IsVerified bool `json:"is_verified"`
 	SettlementSchedule string `json:"settlement_schedule"`
@@ -54,14 +54,9 @@ type _SubaccountCreateResponseData SubaccountCreateResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSubaccountCreateResponseData(businessName string, description string, primaryContactName string, primaryContactEmail string, primaryContactPhone string, metadata string, accountNumber string, percentageCharge float32, settlementBank string, currency string, bank int32, integration int32, domain string, product string, managedByIntegration int32, subaccountCode string, isVerified bool, settlementSchedule string, active bool, migrate bool, id int32, createdAt string, updatedAt string) *SubaccountCreateResponseData {
+func NewSubaccountCreateResponseData(businessName string, accountNumber string, percentageCharge float32, settlementBank string, currency string, bank int32, integration int32, domain string, product string, subaccountCode string, isVerified bool, settlementSchedule string, active bool, migrate bool, id int32, createdAt string, updatedAt string) *SubaccountCreateResponseData {
 	this := SubaccountCreateResponseData{}
 	this.BusinessName = businessName
-	this.Description = description
-	this.PrimaryContactName = primaryContactName
-	this.PrimaryContactEmail = primaryContactEmail
-	this.PrimaryContactPhone = primaryContactPhone
-	this.Metadata = metadata
 	this.AccountNumber = accountNumber
 	this.PercentageCharge = percentageCharge
 	this.SettlementBank = settlementBank
@@ -70,7 +65,6 @@ func NewSubaccountCreateResponseData(businessName string, description string, pr
 	this.Integration = integration
 	this.Domain = domain
 	this.Product = product
-	this.ManagedByIntegration = managedByIntegration
 	this.SubaccountCode = subaccountCode
 	this.IsVerified = isVerified
 	this.SettlementSchedule = settlementSchedule
@@ -156,123 +150,204 @@ func (o *SubaccountCreateResponseData) UnsetAccountName() {
 	o.AccountName.Unset()
 }
 
-// GetDescription returns the Description field value
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SubaccountCreateResponseData) GetDescription() string {
-	if o == nil {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.Description
+	return *o.Description.Get()
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SubaccountCreateResponseData) GetDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *SubaccountCreateResponseData) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *SubaccountCreateResponseData) SetDescription(v string) {
-	o.Description = v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *SubaccountCreateResponseData) SetDescriptionNil() {
+	o.Description.Set(nil)
 }
 
-// GetPrimaryContactName returns the PrimaryContactName field value
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *SubaccountCreateResponseData) UnsetDescription() {
+	o.Description.Unset()
+}
+
+// GetPrimaryContactName returns the PrimaryContactName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SubaccountCreateResponseData) GetPrimaryContactName() string {
-	if o == nil {
+	if o == nil || IsNil(o.PrimaryContactName.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.PrimaryContactName
+	return *o.PrimaryContactName.Get()
 }
 
-// GetPrimaryContactNameOk returns a tuple with the PrimaryContactName field value
+// GetPrimaryContactNameOk returns a tuple with the PrimaryContactName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SubaccountCreateResponseData) GetPrimaryContactNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.PrimaryContactName, true
+	return o.PrimaryContactName.Get(), o.PrimaryContactName.IsSet()
 }
 
-// SetPrimaryContactName sets field value
+// HasPrimaryContactName returns a boolean if a field has been set.
+func (o *SubaccountCreateResponseData) HasPrimaryContactName() bool {
+	if o != nil && o.PrimaryContactName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPrimaryContactName gets a reference to the given NullableString and assigns it to the PrimaryContactName field.
 func (o *SubaccountCreateResponseData) SetPrimaryContactName(v string) {
-	o.PrimaryContactName = v
+	o.PrimaryContactName.Set(&v)
+}
+// SetPrimaryContactNameNil sets the value for PrimaryContactName to be an explicit nil
+func (o *SubaccountCreateResponseData) SetPrimaryContactNameNil() {
+	o.PrimaryContactName.Set(nil)
 }
 
-// GetPrimaryContactEmail returns the PrimaryContactEmail field value
+// UnsetPrimaryContactName ensures that no value is present for PrimaryContactName, not even an explicit nil
+func (o *SubaccountCreateResponseData) UnsetPrimaryContactName() {
+	o.PrimaryContactName.Unset()
+}
+
+// GetPrimaryContactEmail returns the PrimaryContactEmail field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SubaccountCreateResponseData) GetPrimaryContactEmail() string {
-	if o == nil {
+	if o == nil || IsNil(o.PrimaryContactEmail.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.PrimaryContactEmail
+	return *o.PrimaryContactEmail.Get()
 }
 
-// GetPrimaryContactEmailOk returns a tuple with the PrimaryContactEmail field value
+// GetPrimaryContactEmailOk returns a tuple with the PrimaryContactEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SubaccountCreateResponseData) GetPrimaryContactEmailOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.PrimaryContactEmail, true
+	return o.PrimaryContactEmail.Get(), o.PrimaryContactEmail.IsSet()
 }
 
-// SetPrimaryContactEmail sets field value
+// HasPrimaryContactEmail returns a boolean if a field has been set.
+func (o *SubaccountCreateResponseData) HasPrimaryContactEmail() bool {
+	if o != nil && o.PrimaryContactEmail.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPrimaryContactEmail gets a reference to the given NullableString and assigns it to the PrimaryContactEmail field.
 func (o *SubaccountCreateResponseData) SetPrimaryContactEmail(v string) {
-	o.PrimaryContactEmail = v
+	o.PrimaryContactEmail.Set(&v)
+}
+// SetPrimaryContactEmailNil sets the value for PrimaryContactEmail to be an explicit nil
+func (o *SubaccountCreateResponseData) SetPrimaryContactEmailNil() {
+	o.PrimaryContactEmail.Set(nil)
 }
 
-// GetPrimaryContactPhone returns the PrimaryContactPhone field value
+// UnsetPrimaryContactEmail ensures that no value is present for PrimaryContactEmail, not even an explicit nil
+func (o *SubaccountCreateResponseData) UnsetPrimaryContactEmail() {
+	o.PrimaryContactEmail.Unset()
+}
+
+// GetPrimaryContactPhone returns the PrimaryContactPhone field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SubaccountCreateResponseData) GetPrimaryContactPhone() string {
-	if o == nil {
+	if o == nil || IsNil(o.PrimaryContactPhone.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.PrimaryContactPhone
+	return *o.PrimaryContactPhone.Get()
 }
 
-// GetPrimaryContactPhoneOk returns a tuple with the PrimaryContactPhone field value
+// GetPrimaryContactPhoneOk returns a tuple with the PrimaryContactPhone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SubaccountCreateResponseData) GetPrimaryContactPhoneOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.PrimaryContactPhone, true
+	return o.PrimaryContactPhone.Get(), o.PrimaryContactPhone.IsSet()
 }
 
-// SetPrimaryContactPhone sets field value
-func (o *SubaccountCreateResponseData) SetPrimaryContactPhone(v string) {
-	o.PrimaryContactPhone = v
-}
-
-// GetMetadata returns the Metadata field value
-func (o *SubaccountCreateResponseData) GetMetadata() string {
-	if o == nil {
-		var ret string
-		return ret
+// HasPrimaryContactPhone returns a boolean if a field has been set.
+func (o *SubaccountCreateResponseData) HasPrimaryContactPhone() bool {
+	if o != nil && o.PrimaryContactPhone.IsSet() {
+		return true
 	}
 
+	return false
+}
+
+// SetPrimaryContactPhone gets a reference to the given NullableString and assigns it to the PrimaryContactPhone field.
+func (o *SubaccountCreateResponseData) SetPrimaryContactPhone(v string) {
+	o.PrimaryContactPhone.Set(&v)
+}
+// SetPrimaryContactPhoneNil sets the value for PrimaryContactPhone to be an explicit nil
+func (o *SubaccountCreateResponseData) SetPrimaryContactPhoneNil() {
+	o.PrimaryContactPhone.Set(nil)
+}
+
+// UnsetPrimaryContactPhone ensures that no value is present for PrimaryContactPhone, not even an explicit nil
+func (o *SubaccountCreateResponseData) UnsetPrimaryContactPhone() {
+	o.PrimaryContactPhone.Unset()
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SubaccountCreateResponseData) GetMetadata() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
 	return o.Metadata
 }
 
-// GetMetadataOk returns a tuple with the Metadata field value
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SubaccountCreateResponseData) GetMetadataOk() (*string, bool) {
-	if o == nil {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SubaccountCreateResponseData) GetMetadataOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
 	return &o.Metadata, true
 }
 
-// SetMetadata sets field value
-func (o *SubaccountCreateResponseData) SetMetadata(v string) {
+// HasMetadata returns a boolean if a field has been set.
+func (o *SubaccountCreateResponseData) HasMetadata() bool {
+	if o != nil && !IsNil(o.Metadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given interface{} and assigns it to the Metadata field.
+func (o *SubaccountCreateResponseData) SetMetadata(v interface{}) {
 	o.Metadata = v
 }
 
@@ -468,28 +543,36 @@ func (o *SubaccountCreateResponseData) SetProduct(v string) {
 	o.Product = v
 }
 
-// GetManagedByIntegration returns the ManagedByIntegration field value
+// GetManagedByIntegration returns the ManagedByIntegration field value if set, zero value otherwise.
 func (o *SubaccountCreateResponseData) GetManagedByIntegration() int32 {
-	if o == nil {
+	if o == nil || IsNil(o.ManagedByIntegration) {
 		var ret int32
 		return ret
 	}
-
-	return o.ManagedByIntegration
+	return *o.ManagedByIntegration
 }
 
-// GetManagedByIntegrationOk returns a tuple with the ManagedByIntegration field value
+// GetManagedByIntegrationOk returns a tuple with the ManagedByIntegration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubaccountCreateResponseData) GetManagedByIntegrationOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ManagedByIntegration) {
 		return nil, false
 	}
-	return &o.ManagedByIntegration, true
+	return o.ManagedByIntegration, true
 }
 
-// SetManagedByIntegration sets field value
+// HasManagedByIntegration returns a boolean if a field has been set.
+func (o *SubaccountCreateResponseData) HasManagedByIntegration() bool {
+	if o != nil && !IsNil(o.ManagedByIntegration) {
+		return true
+	}
+
+	return false
+}
+
+// SetManagedByIntegration gets a reference to the given int32 and assigns it to the ManagedByIntegration field.
 func (o *SubaccountCreateResponseData) SetManagedByIntegration(v int32) {
-	o.ManagedByIntegration = v
+	o.ManagedByIntegration = &v
 }
 
 // GetSubaccountCode returns the SubaccountCode field value
@@ -698,11 +781,21 @@ func (o SubaccountCreateResponseData) ToMap() (map[string]interface{}, error) {
 	if o.AccountName.IsSet() {
 		toSerialize["account_name"] = o.AccountName.Get()
 	}
-	toSerialize["description"] = o.Description
-	toSerialize["primary_contact_name"] = o.PrimaryContactName
-	toSerialize["primary_contact_email"] = o.PrimaryContactEmail
-	toSerialize["primary_contact_phone"] = o.PrimaryContactPhone
-	toSerialize["metadata"] = o.Metadata
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
+	}
+	if o.PrimaryContactName.IsSet() {
+		toSerialize["primary_contact_name"] = o.PrimaryContactName.Get()
+	}
+	if o.PrimaryContactEmail.IsSet() {
+		toSerialize["primary_contact_email"] = o.PrimaryContactEmail.Get()
+	}
+	if o.PrimaryContactPhone.IsSet() {
+		toSerialize["primary_contact_phone"] = o.PrimaryContactPhone.Get()
+	}
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
+	}
 	toSerialize["account_number"] = o.AccountNumber
 	toSerialize["percentage_charge"] = o.PercentageCharge
 	toSerialize["settlement_bank"] = o.SettlementBank
@@ -711,7 +804,9 @@ func (o SubaccountCreateResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["integration"] = o.Integration
 	toSerialize["domain"] = o.Domain
 	toSerialize["product"] = o.Product
-	toSerialize["managed_by_integration"] = o.ManagedByIntegration
+	if !IsNil(o.ManagedByIntegration) {
+		toSerialize["managed_by_integration"] = o.ManagedByIntegration
+	}
 	toSerialize["subaccount_code"] = o.SubaccountCode
 	toSerialize["is_verified"] = o.IsVerified
 	toSerialize["settlement_schedule"] = o.SettlementSchedule
@@ -729,11 +824,6 @@ func (o *SubaccountCreateResponseData) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"business_name",
-		"description",
-		"primary_contact_name",
-		"primary_contact_email",
-		"primary_contact_phone",
-		"metadata",
 		"account_number",
 		"percentage_charge",
 		"settlement_bank",
@@ -742,7 +832,6 @@ func (o *SubaccountCreateResponseData) UnmarshalJSON(data []byte) (err error) {
 		"integration",
 		"domain",
 		"product",
-		"managed_by_integration",
 		"subaccount_code",
 		"is_verified",
 		"settlement_schedule",

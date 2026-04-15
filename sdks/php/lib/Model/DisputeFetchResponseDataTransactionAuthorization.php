@@ -282,12 +282,6 @@ class DisputeFetchResponseDataTransactionAuthorization implements ModelInterface
     {
         $invalidProperties = [];
 
-        if ($this->container['receiver_bank_account_number'] === null && !$this->isNullableSetToNull('receiver_bank_account_number')) {
-            $invalidProperties[] = "'receiver_bank_account_number' can't be null";
-        }
-        if ($this->container['receiver_bank'] === null && !$this->isNullableSetToNull('receiver_bank')) {
-            $invalidProperties[] = "'receiver_bank' can't be null";
-        }
         return $invalidProperties;
     }
 

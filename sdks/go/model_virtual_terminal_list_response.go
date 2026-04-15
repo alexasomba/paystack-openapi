@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the VirtualTerminalListResponse type satisfies the MappedNullable interface at compile time
@@ -20,18 +22,24 @@ var _ MappedNullable = &VirtualTerminalListResponse{}
 
 // VirtualTerminalListResponse struct for VirtualTerminalListResponse
 type VirtualTerminalListResponse struct {
-	Status *bool `json:"status,omitempty"`
-	Message *string `json:"message,omitempty"`
-	Data []VirtualTerminalListResponseArray `json:"data,omitempty"`
-	Meta *VirtualTerminalListResponseMeta `json:"meta,omitempty"`
+	Status bool `json:"status"`
+	Message string `json:"message"`
+	Data []VirtualTerminalListResponseArray `json:"data"`
+	Meta CursorMeta `json:"meta"`
 }
+
+type _VirtualTerminalListResponse VirtualTerminalListResponse
 
 // NewVirtualTerminalListResponse instantiates a new VirtualTerminalListResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVirtualTerminalListResponse() *VirtualTerminalListResponse {
+func NewVirtualTerminalListResponse(status bool, message string, data []VirtualTerminalListResponseArray, meta CursorMeta) *VirtualTerminalListResponse {
 	this := VirtualTerminalListResponse{}
+	this.Status = status
+	this.Message = message
+	this.Data = data
+	this.Meta = meta
 	return &this
 }
 
@@ -43,132 +51,100 @@ func NewVirtualTerminalListResponseWithDefaults() *VirtualTerminalListResponse {
 	return &this
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value
 func (o *VirtualTerminalListResponse) GetStatus() bool {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Status
+
+	return o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
 func (o *VirtualTerminalListResponse) GetStatusOk() (*bool, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return &o.Status, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *VirtualTerminalListResponse) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given bool and assigns it to the Status field.
+// SetStatus sets field value
 func (o *VirtualTerminalListResponse) SetStatus(v bool) {
-	o.Status = &v
+	o.Status = v
 }
 
-// GetMessage returns the Message field value if set, zero value otherwise.
+// GetMessage returns the Message field value
 func (o *VirtualTerminalListResponse) GetMessage() string {
-	if o == nil || IsNil(o.Message) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Message
+
+	return o.Message
 }
 
-// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
+// GetMessageOk returns a tuple with the Message field value
 // and a boolean to check if the value has been set.
 func (o *VirtualTerminalListResponse) GetMessageOk() (*string, bool) {
-	if o == nil || IsNil(o.Message) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Message, true
+	return &o.Message, true
 }
 
-// HasMessage returns a boolean if a field has been set.
-func (o *VirtualTerminalListResponse) HasMessage() bool {
-	if o != nil && !IsNil(o.Message) {
-		return true
-	}
-
-	return false
-}
-
-// SetMessage gets a reference to the given string and assigns it to the Message field.
+// SetMessage sets field value
 func (o *VirtualTerminalListResponse) SetMessage(v string) {
-	o.Message = &v
+	o.Message = v
 }
 
-// GetData returns the Data field value if set, zero value otherwise.
+// GetData returns the Data field value
 func (o *VirtualTerminalListResponse) GetData() []VirtualTerminalListResponseArray {
-	if o == nil || IsNil(o.Data) {
+	if o == nil {
 		var ret []VirtualTerminalListResponseArray
 		return ret
 	}
+
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 func (o *VirtualTerminalListResponse) GetDataOk() ([]VirtualTerminalListResponseArray, bool) {
-	if o == nil || IsNil(o.Data) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Data, true
 }
 
-// HasData returns a boolean if a field has been set.
-func (o *VirtualTerminalListResponse) HasData() bool {
-	if o != nil && !IsNil(o.Data) {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given []VirtualTerminalListResponseArray and assigns it to the Data field.
+// SetData sets field value
 func (o *VirtualTerminalListResponse) SetData(v []VirtualTerminalListResponseArray) {
 	o.Data = v
 }
 
-// GetMeta returns the Meta field value if set, zero value otherwise.
-func (o *VirtualTerminalListResponse) GetMeta() VirtualTerminalListResponseMeta {
-	if o == nil || IsNil(o.Meta) {
-		var ret VirtualTerminalListResponseMeta
+// GetMeta returns the Meta field value
+func (o *VirtualTerminalListResponse) GetMeta() CursorMeta {
+	if o == nil {
+		var ret CursorMeta
 		return ret
 	}
-	return *o.Meta
+
+	return o.Meta
 }
 
-// GetMetaOk returns a tuple with the Meta field value if set, nil otherwise
+// GetMetaOk returns a tuple with the Meta field value
 // and a boolean to check if the value has been set.
-func (o *VirtualTerminalListResponse) GetMetaOk() (*VirtualTerminalListResponseMeta, bool) {
-	if o == nil || IsNil(o.Meta) {
+func (o *VirtualTerminalListResponse) GetMetaOk() (*CursorMeta, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Meta, true
+	return &o.Meta, true
 }
 
-// HasMeta returns a boolean if a field has been set.
-func (o *VirtualTerminalListResponse) HasMeta() bool {
-	if o != nil && !IsNil(o.Meta) {
-		return true
-	}
-
-	return false
-}
-
-// SetMeta gets a reference to the given VirtualTerminalListResponseMeta and assigns it to the Meta field.
-func (o *VirtualTerminalListResponse) SetMeta(v VirtualTerminalListResponseMeta) {
-	o.Meta = &v
+// SetMeta sets field value
+func (o *VirtualTerminalListResponse) SetMeta(v CursorMeta) {
+	o.Meta = v
 }
 
 func (o VirtualTerminalListResponse) MarshalJSON() ([]byte, error) {
@@ -181,19 +157,51 @@ func (o VirtualTerminalListResponse) MarshalJSON() ([]byte, error) {
 
 func (o VirtualTerminalListResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !IsNil(o.Message) {
-		toSerialize["message"] = o.Message
-	}
-	if !IsNil(o.Data) {
-		toSerialize["data"] = o.Data
-	}
-	if !IsNil(o.Meta) {
-		toSerialize["meta"] = o.Meta
-	}
+	toSerialize["status"] = o.Status
+	toSerialize["message"] = o.Message
+	toSerialize["data"] = o.Data
+	toSerialize["meta"] = o.Meta
 	return toSerialize, nil
+}
+
+func (o *VirtualTerminalListResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"status",
+		"message",
+		"data",
+		"meta",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varVirtualTerminalListResponse := _VirtualTerminalListResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVirtualTerminalListResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VirtualTerminalListResponse(varVirtualTerminalListResponse)
+
+	return err
 }
 
 type NullableVirtualTerminalListResponse struct {

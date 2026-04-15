@@ -29,7 +29,7 @@ class ProductUpdate(BaseModel):
     """ # noqa: E501
     name: Optional[StrictStr] = Field(default=None, description="Name of product")
     description: Optional[StrictStr] = Field(default=None, description="The description of the product")
-    price: Optional[StrictInt] = Field(default=None, description="Price should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR ")
+    price: Optional[StrictInt] = Field(default=None, description="Price should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the price is the same as the base units (not multiplied by 100). ")
     currency: Optional[StrictStr] = Field(default=None, description="Currency in which price is set. Allowed values are: NGN, GHS, ZAR or USD ")
     unlimited: Optional[StrictBool] = Field(default=None, description="Set to true if the product has unlimited stock. Leave as false if the product has limited stock ")
     quantity: Optional[StrictInt] = Field(default=None, description="Number of products in stock. Use if limited is true")

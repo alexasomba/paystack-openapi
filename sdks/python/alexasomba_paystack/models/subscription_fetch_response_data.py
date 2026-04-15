@@ -20,9 +20,9 @@ import json
 
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_authorization import BulkChargeFetchBulkBatchChargesResponseArrayAuthorization
+from alexasomba_paystack.models.subscription_fetch_response_data_customer import SubscriptionFetchResponseDataCustomer
 from alexasomba_paystack.models.subscription_fetch_response_data_plan import SubscriptionFetchResponseDataPlan
-from alexasomba_paystack.models.transaction_fetch_response_data_customer import TransactionFetchResponseDataCustomer
-from alexasomba_paystack.models.transaction_partial_debit_response_data_authorization import TransactionPartialDebitResponseDataAuthorization
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -40,19 +40,14 @@ class SubscriptionFetchResponseData(BaseModel):
     next_payment_date: StrictStr
     open_invoice: Optional[Any]
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
-    cancelled_at: Optional[Any] = Field(alias="cancelledAt")
     integration: StrictInt
     plan: SubscriptionFetchResponseDataPlan
-    authorization: TransactionPartialDebitResponseDataAuthorization
-    customer: TransactionFetchResponseDataCustomer
+    authorization: BulkChargeFetchBulkBatchChargesResponseArrayAuthorization
+    customer: SubscriptionFetchResponseDataCustomer
+    start: StrictInt
+    quantity: StrictInt
     invoices: List[Any]
-    invoices_history: List[Any]
-    invoice_limit: StrictInt
-    split_code: Optional[Any]
-    most_recent_invoice: Optional[Any]
-    payments_count: StrictInt
-    metadata: Optional[Dict[str, Any]]
-    __properties: ClassVar[List[str]] = ["id", "domain", "status", "subscription_code", "email_token", "amount", "cron_expression", "next_payment_date", "open_invoice", "createdAt", "cancelledAt", "integration", "plan", "authorization", "customer", "invoices", "invoices_history", "invoice_limit", "split_code", "most_recent_invoice", "payments_count", "metadata"]
+    __properties: ClassVar[List[str]] = ["id", "domain", "status", "subscription_code", "email_token", "amount", "cron_expression", "next_payment_date", "open_invoice", "createdAt", "integration", "plan", "authorization", "customer", "start", "quantity", "invoices"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -107,26 +102,6 @@ class SubscriptionFetchResponseData(BaseModel):
         if self.open_invoice is None and "open_invoice" in self.model_fields_set:
             _dict['open_invoice'] = None
 
-        # set to None if cancelled_at (nullable) is None
-        # and model_fields_set contains the field
-        if self.cancelled_at is None and "cancelled_at" in self.model_fields_set:
-            _dict['cancelledAt'] = None
-
-        # set to None if split_code (nullable) is None
-        # and model_fields_set contains the field
-        if self.split_code is None and "split_code" in self.model_fields_set:
-            _dict['split_code'] = None
-
-        # set to None if most_recent_invoice (nullable) is None
-        # and model_fields_set contains the field
-        if self.most_recent_invoice is None and "most_recent_invoice" in self.model_fields_set:
-            _dict['most_recent_invoice'] = None
-
-        # set to None if metadata (nullable) is None
-        # and model_fields_set contains the field
-        if self.metadata is None and "metadata" in self.model_fields_set:
-            _dict['metadata'] = None
-
         return _dict
 
     @classmethod
@@ -149,18 +124,13 @@ class SubscriptionFetchResponseData(BaseModel):
             "next_payment_date": obj.get("next_payment_date"),
             "open_invoice": obj.get("open_invoice"),
             "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
-            "cancelledAt": obj.get("cancelledAt"),
             "integration": obj.get("integration"),
             "plan": SubscriptionFetchResponseDataPlan.from_dict(obj["plan"]) if obj.get("plan") is not None else None,
-            "authorization": TransactionPartialDebitResponseDataAuthorization.from_dict(obj["authorization"]) if obj.get("authorization") is not None else None,
-            "customer": TransactionFetchResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
-            "invoices": obj.get("invoices"),
-            "invoices_history": obj.get("invoices_history"),
-            "invoice_limit": obj.get("invoice_limit"),
-            "split_code": obj.get("split_code"),
-            "most_recent_invoice": obj.get("most_recent_invoice"),
-            "payments_count": obj.get("payments_count"),
-            "metadata": obj.get("metadata")
+            "authorization": BulkChargeFetchBulkBatchChargesResponseArrayAuthorization.from_dict(obj["authorization"]) if obj.get("authorization") is not None else None,
+            "customer": SubscriptionFetchResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
+            "start": obj.get("start"),
+            "quantity": obj.get("quantity"),
+            "invoices": obj.get("invoices")
         })
         return _obj
 

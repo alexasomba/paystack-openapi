@@ -22,7 +22,9 @@ var _ MappedNullable = &SubscriptionFetchResponseDataPlan{}
 
 // SubscriptionFetchResponseDataPlan struct for SubscriptionFetchResponseDataPlan
 type SubscriptionFetchResponseDataPlan struct {
+	Domain string `json:"domain"`
 	Id int32 `json:"id"`
+	Integration int32 `json:"integration"`
 	Name string `json:"name"`
 	PlanCode string `json:"plan_code"`
 	Description interface{} `json:"description"`
@@ -30,7 +32,12 @@ type SubscriptionFetchResponseDataPlan struct {
 	Interval string `json:"interval"`
 	SendInvoices bool `json:"send_invoices"`
 	SendSms bool `json:"send_sms"`
+	HostedPage bool `json:"hosted_page"`
+	HostedPageUrl interface{} `json:"hosted_page_url"`
+	HostedPageSummary interface{} `json:"hosted_page_summary"`
 	Currency string `json:"currency"`
+	CreatedAt string `json:"createdAt"`
+	UpdatedAt string `json:"updatedAt"`
 }
 
 type _SubscriptionFetchResponseDataPlan SubscriptionFetchResponseDataPlan
@@ -39,9 +46,11 @@ type _SubscriptionFetchResponseDataPlan SubscriptionFetchResponseDataPlan
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSubscriptionFetchResponseDataPlan(id int32, name string, planCode string, description interface{}, amount int32, interval string, sendInvoices bool, sendSms bool, currency string) *SubscriptionFetchResponseDataPlan {
+func NewSubscriptionFetchResponseDataPlan(domain string, id int32, integration int32, name string, planCode string, description interface{}, amount int32, interval string, sendInvoices bool, sendSms bool, hostedPage bool, hostedPageUrl interface{}, hostedPageSummary interface{}, currency string, createdAt string, updatedAt string) *SubscriptionFetchResponseDataPlan {
 	this := SubscriptionFetchResponseDataPlan{}
+	this.Domain = domain
 	this.Id = id
+	this.Integration = integration
 	this.Name = name
 	this.PlanCode = planCode
 	this.Description = description
@@ -49,7 +58,12 @@ func NewSubscriptionFetchResponseDataPlan(id int32, name string, planCode string
 	this.Interval = interval
 	this.SendInvoices = sendInvoices
 	this.SendSms = sendSms
+	this.HostedPage = hostedPage
+	this.HostedPageUrl = hostedPageUrl
+	this.HostedPageSummary = hostedPageSummary
 	this.Currency = currency
+	this.CreatedAt = createdAt
+	this.UpdatedAt = updatedAt
 	return &this
 }
 
@@ -59,6 +73,30 @@ func NewSubscriptionFetchResponseDataPlan(id int32, name string, planCode string
 func NewSubscriptionFetchResponseDataPlanWithDefaults() *SubscriptionFetchResponseDataPlan {
 	this := SubscriptionFetchResponseDataPlan{}
 	return &this
+}
+
+// GetDomain returns the Domain field value
+func (o *SubscriptionFetchResponseDataPlan) GetDomain() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Domain
+}
+
+// GetDomainOk returns a tuple with the Domain field value
+// and a boolean to check if the value has been set.
+func (o *SubscriptionFetchResponseDataPlan) GetDomainOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Domain, true
+}
+
+// SetDomain sets field value
+func (o *SubscriptionFetchResponseDataPlan) SetDomain(v string) {
+	o.Domain = v
 }
 
 // GetId returns the Id field value
@@ -83,6 +121,30 @@ func (o *SubscriptionFetchResponseDataPlan) GetIdOk() (*int32, bool) {
 // SetId sets field value
 func (o *SubscriptionFetchResponseDataPlan) SetId(v int32) {
 	o.Id = v
+}
+
+// GetIntegration returns the Integration field value
+func (o *SubscriptionFetchResponseDataPlan) GetIntegration() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Integration
+}
+
+// GetIntegrationOk returns a tuple with the Integration field value
+// and a boolean to check if the value has been set.
+func (o *SubscriptionFetchResponseDataPlan) GetIntegrationOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Integration, true
+}
+
+// SetIntegration sets field value
+func (o *SubscriptionFetchResponseDataPlan) SetIntegration(v int32) {
+	o.Integration = v
 }
 
 // GetName returns the Name field value
@@ -255,6 +317,82 @@ func (o *SubscriptionFetchResponseDataPlan) SetSendSms(v bool) {
 	o.SendSms = v
 }
 
+// GetHostedPage returns the HostedPage field value
+func (o *SubscriptionFetchResponseDataPlan) GetHostedPage() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.HostedPage
+}
+
+// GetHostedPageOk returns a tuple with the HostedPage field value
+// and a boolean to check if the value has been set.
+func (o *SubscriptionFetchResponseDataPlan) GetHostedPageOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.HostedPage, true
+}
+
+// SetHostedPage sets field value
+func (o *SubscriptionFetchResponseDataPlan) SetHostedPage(v bool) {
+	o.HostedPage = v
+}
+
+// GetHostedPageUrl returns the HostedPageUrl field value
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *SubscriptionFetchResponseDataPlan) GetHostedPageUrl() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+
+	return o.HostedPageUrl
+}
+
+// GetHostedPageUrlOk returns a tuple with the HostedPageUrl field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SubscriptionFetchResponseDataPlan) GetHostedPageUrlOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.HostedPageUrl) {
+		return nil, false
+	}
+	return &o.HostedPageUrl, true
+}
+
+// SetHostedPageUrl sets field value
+func (o *SubscriptionFetchResponseDataPlan) SetHostedPageUrl(v interface{}) {
+	o.HostedPageUrl = v
+}
+
+// GetHostedPageSummary returns the HostedPageSummary field value
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *SubscriptionFetchResponseDataPlan) GetHostedPageSummary() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+
+	return o.HostedPageSummary
+}
+
+// GetHostedPageSummaryOk returns a tuple with the HostedPageSummary field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SubscriptionFetchResponseDataPlan) GetHostedPageSummaryOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.HostedPageSummary) {
+		return nil, false
+	}
+	return &o.HostedPageSummary, true
+}
+
+// SetHostedPageSummary sets field value
+func (o *SubscriptionFetchResponseDataPlan) SetHostedPageSummary(v interface{}) {
+	o.HostedPageSummary = v
+}
+
 // GetCurrency returns the Currency field value
 func (o *SubscriptionFetchResponseDataPlan) GetCurrency() string {
 	if o == nil {
@@ -279,6 +417,54 @@ func (o *SubscriptionFetchResponseDataPlan) SetCurrency(v string) {
 	o.Currency = v
 }
 
+// GetCreatedAt returns the CreatedAt field value
+func (o *SubscriptionFetchResponseDataPlan) GetCreatedAt() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// and a boolean to check if the value has been set.
+func (o *SubscriptionFetchResponseDataPlan) GetCreatedAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CreatedAt, true
+}
+
+// SetCreatedAt sets field value
+func (o *SubscriptionFetchResponseDataPlan) SetCreatedAt(v string) {
+	o.CreatedAt = v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value
+func (o *SubscriptionFetchResponseDataPlan) GetUpdatedAt() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
+// and a boolean to check if the value has been set.
+func (o *SubscriptionFetchResponseDataPlan) GetUpdatedAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UpdatedAt, true
+}
+
+// SetUpdatedAt sets field value
+func (o *SubscriptionFetchResponseDataPlan) SetUpdatedAt(v string) {
+	o.UpdatedAt = v
+}
+
 func (o SubscriptionFetchResponseDataPlan) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -289,7 +475,9 @@ func (o SubscriptionFetchResponseDataPlan) MarshalJSON() ([]byte, error) {
 
 func (o SubscriptionFetchResponseDataPlan) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["domain"] = o.Domain
 	toSerialize["id"] = o.Id
+	toSerialize["integration"] = o.Integration
 	toSerialize["name"] = o.Name
 	toSerialize["plan_code"] = o.PlanCode
 	if o.Description != nil {
@@ -299,7 +487,16 @@ func (o SubscriptionFetchResponseDataPlan) ToMap() (map[string]interface{}, erro
 	toSerialize["interval"] = o.Interval
 	toSerialize["send_invoices"] = o.SendInvoices
 	toSerialize["send_sms"] = o.SendSms
+	toSerialize["hosted_page"] = o.HostedPage
+	if o.HostedPageUrl != nil {
+		toSerialize["hosted_page_url"] = o.HostedPageUrl
+	}
+	if o.HostedPageSummary != nil {
+		toSerialize["hosted_page_summary"] = o.HostedPageSummary
+	}
 	toSerialize["currency"] = o.Currency
+	toSerialize["createdAt"] = o.CreatedAt
+	toSerialize["updatedAt"] = o.UpdatedAt
 	return toSerialize, nil
 }
 
@@ -308,7 +505,9 @@ func (o *SubscriptionFetchResponseDataPlan) UnmarshalJSON(data []byte) (err erro
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"domain",
 		"id",
+		"integration",
 		"name",
 		"plan_code",
 		"description",
@@ -316,7 +515,12 @@ func (o *SubscriptionFetchResponseDataPlan) UnmarshalJSON(data []byte) (err erro
 		"interval",
 		"send_invoices",
 		"send_sms",
+		"hosted_page",
+		"hosted_page_url",
+		"hosted_page_summary",
 		"currency",
+		"createdAt",
+		"updatedAt",
 	}
 
 	allProperties := make(map[string]interface{})

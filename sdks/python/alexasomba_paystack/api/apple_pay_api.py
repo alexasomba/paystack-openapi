@@ -21,6 +21,7 @@ from pydantic import Field, StrictBool, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
 from alexasomba_paystack.models.apple_pay_create_ok_model import ApplePayCreateOkModel
+from alexasomba_paystack.models.apple_pay_domains_response import ApplePayDomainsResponse
 from alexasomba_paystack.models.apple_pay_param import ApplePayParam
 from alexasomba_paystack.models.response import Response
 
@@ -45,9 +46,9 @@ class ApplePayApi:
     @validate_call
     def apple_pay_list_domain(
         self,
-        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
-        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
-        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
+        use_cursor: Annotated[Optional[StrictBool], Field(description="Flag to enable cursor pagination on the endpoint")] = None,
+        next: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It can be used to fetch the next page of the list")] = None,
+        previous: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -60,16 +61,16 @@ class ApplePayApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> ApplePayDomainsResponse:
         """List Domains
 
         Lists all registered domains on your integration. Returns an empty array if no domains have been added.
 
-        :param use_cursor: A flag to indicate if cursor based pagination should be used
+        :param use_cursor: Flag to enable cursor pagination on the endpoint
         :type use_cursor: bool
-        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
+        :param next: A cursor that indicates your place in the list. It can be used to fetch the next page of the list
         :type next: str
-        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
+        :param previous: A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request
         :type previous: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -104,7 +105,7 @@ class ApplePayApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ApplePayDomainsResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -122,9 +123,9 @@ class ApplePayApi:
     @validate_call
     def apple_pay_list_domain_with_http_info(
         self,
-        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
-        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
-        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
+        use_cursor: Annotated[Optional[StrictBool], Field(description="Flag to enable cursor pagination on the endpoint")] = None,
+        next: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It can be used to fetch the next page of the list")] = None,
+        previous: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -137,16 +138,16 @@ class ApplePayApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[ApplePayDomainsResponse]:
         """List Domains
 
         Lists all registered domains on your integration. Returns an empty array if no domains have been added.
 
-        :param use_cursor: A flag to indicate if cursor based pagination should be used
+        :param use_cursor: Flag to enable cursor pagination on the endpoint
         :type use_cursor: bool
-        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
+        :param next: A cursor that indicates your place in the list. It can be used to fetch the next page of the list
         :type next: str
-        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
+        :param previous: A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request
         :type previous: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -181,7 +182,7 @@ class ApplePayApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ApplePayDomainsResponse",
             '401': "Error",
             '404': "Error",
         }
@@ -199,9 +200,9 @@ class ApplePayApi:
     @validate_call
     def apple_pay_list_domain_without_preload_content(
         self,
-        use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
-        next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
-        previous: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data ")] = None,
+        use_cursor: Annotated[Optional[StrictBool], Field(description="Flag to enable cursor pagination on the endpoint")] = None,
+        next: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It can be used to fetch the next page of the list")] = None,
+        previous: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -219,11 +220,11 @@ class ApplePayApi:
 
         Lists all registered domains on your integration. Returns an empty array if no domains have been added.
 
-        :param use_cursor: A flag to indicate if cursor based pagination should be used
+        :param use_cursor: Flag to enable cursor pagination on the endpoint
         :type use_cursor: bool
-        :param next: An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
+        :param next: A cursor that indicates your place in the list. It can be used to fetch the next page of the list
         :type next: str
-        :param previous: An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
+        :param previous: A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request
         :type previous: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -258,7 +259,7 @@ class ApplePayApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ApplePayDomainsResponse",
             '401': "Error",
             '404': "Error",
         }

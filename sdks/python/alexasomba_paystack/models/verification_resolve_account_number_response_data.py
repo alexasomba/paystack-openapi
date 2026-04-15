@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,8 +29,7 @@ class VerificationResolveAccountNumberResponseData(BaseModel):
     """ # noqa: E501
     account_number: StrictStr
     account_name: StrictStr
-    bank_id: StrictInt
-    __properties: ClassVar[List[str]] = ["account_number", "account_name", "bank_id"]
+    __properties: ClassVar[List[str]] = ["account_number", "account_name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,8 +83,7 @@ class VerificationResolveAccountNumberResponseData(BaseModel):
 
         _obj = cls.model_validate({
             "account_number": obj.get("account_number"),
-            "account_name": obj.get("account_name"),
-            "bank_id": obj.get("bank_id")
+            "account_name": obj.get("account_name")
         })
         return _obj
 

@@ -25,7 +25,6 @@ type StorefrontFetchResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
 	Data StorefrontCreateResponseData `json:"data"`
-	Meta StorefrontFetchResponseMeta `json:"meta"`
 }
 
 type _StorefrontFetchResponse StorefrontFetchResponse
@@ -34,12 +33,11 @@ type _StorefrontFetchResponse StorefrontFetchResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStorefrontFetchResponse(status bool, message string, data StorefrontCreateResponseData, meta StorefrontFetchResponseMeta) *StorefrontFetchResponse {
+func NewStorefrontFetchResponse(status bool, message string, data StorefrontCreateResponseData) *StorefrontFetchResponse {
 	this := StorefrontFetchResponse{}
 	this.Status = status
 	this.Message = message
 	this.Data = data
-	this.Meta = meta
 	return &this
 }
 
@@ -123,30 +121,6 @@ func (o *StorefrontFetchResponse) SetData(v StorefrontCreateResponseData) {
 	o.Data = v
 }
 
-// GetMeta returns the Meta field value
-func (o *StorefrontFetchResponse) GetMeta() StorefrontFetchResponseMeta {
-	if o == nil {
-		var ret StorefrontFetchResponseMeta
-		return ret
-	}
-
-	return o.Meta
-}
-
-// GetMetaOk returns a tuple with the Meta field value
-// and a boolean to check if the value has been set.
-func (o *StorefrontFetchResponse) GetMetaOk() (*StorefrontFetchResponseMeta, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Meta, true
-}
-
-// SetMeta sets field value
-func (o *StorefrontFetchResponse) SetMeta(v StorefrontFetchResponseMeta) {
-	o.Meta = v
-}
-
 func (o StorefrontFetchResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -160,7 +134,6 @@ func (o StorefrontFetchResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["status"] = o.Status
 	toSerialize["message"] = o.Message
 	toSerialize["data"] = o.Data
-	toSerialize["meta"] = o.Meta
 	return toSerialize, nil
 }
 
@@ -172,7 +145,6 @@ func (o *StorefrontFetchResponse) UnmarshalJSON(data []byte) (err error) {
 		"status",
 		"message",
 		"data",
-		"meta",
 	}
 
 	allProperties := make(map[string]interface{})

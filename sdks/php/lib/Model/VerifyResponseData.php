@@ -69,13 +69,13 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         'channel' => 'string',
         'currency' => 'string',
         'ip_address' => 'string',
-        'metadata' => '\Alexasomba\Paystack\Model\VerifyResponseDataMetadata',
+        'metadata' => '\Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataMetadata',
         'log' => '\Alexasomba\Paystack\Model\VerifyResponseDataLog',
         'fees' => 'int',
         'fees_split' => 'mixed',
         'authorization' => '\Alexasomba\Paystack\Model\VerifyResponseDataAuthorization',
         'customer' => '\Alexasomba\Paystack\Model\VerifyResponseDataCustomer',
-        'plan' => 'string',
+        'plan' => '\Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataMetadata',
         'split' => 'object',
         'order_id' => 'mixed',
         'paid_at' => 'string',
@@ -98,7 +98,7 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
+        'id' => 'int64',
         'domain' => null,
         'status' => null,
         'reference' => null,
@@ -146,15 +146,15 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         'gateway_response' => false,
         'channel' => false,
         'currency' => false,
-        'ip_address' => false,
-        'metadata' => false,
+        'ip_address' => true,
+        'metadata' => true,
         'log' => true,
         'fees' => true,
         'fees_split' => true,
         'authorization' => false,
         'customer' => false,
         'plan' => true,
-        'split' => false,
+        'split' => true,
         'order_id' => true,
         'paid_at' => true,
         'created_at' => false,
@@ -165,7 +165,7 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         'connect' => true,
         'transaction_date' => false,
         'plan_object' => false,
-        'subaccount' => false
+        'subaccount' => true
     ];
 
     /**
@@ -508,10 +508,10 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
         }
-        if ($this->container['ip_address'] === null) {
+        if ($this->container['ip_address'] === null && !$this->isNullableSetToNull('ip_address')) {
             $invalidProperties[] = "'ip_address' can't be null";
         }
-        if ($this->container['metadata'] === null) {
+        if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
             $invalidProperties[] = "'metadata' can't be null";
         }
         if ($this->container['log'] === null && !$this->isNullableSetToNull('log')) {
@@ -532,7 +532,7 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['plan'] === null && !$this->isNullableSetToNull('plan')) {
             $invalidProperties[] = "'plan' can't be null";
         }
-        if ($this->container['split'] === null) {
+        if ($this->container['split'] === null && !$this->isNullableSetToNull('split')) {
             $invalidProperties[] = "'split' can't be null";
         }
         if ($this->container['order_id'] === null && !$this->isNullableSetToNull('order_id')) {
@@ -565,7 +565,7 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['plan_object'] === null) {
             $invalidProperties[] = "'plan_object' can't be null";
         }
-        if ($this->container['subaccount'] === null) {
+        if ($this->container['subaccount'] === null && !$this->isNullableSetToNull('subaccount')) {
             $invalidProperties[] = "'subaccount' can't be null";
         }
         return $invalidProperties;
@@ -870,7 +870,7 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets ip_address
      *
-     * @return string
+     * @return string|null
      */
     public function getIpAddress()
     {
@@ -880,14 +880,21 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets ip_address
      *
-     * @param string $ip_address ip_address
+     * @param string|null $ip_address ip_address
      *
      * @return self
      */
     public function setIpAddress($ip_address)
     {
         if (is_null($ip_address)) {
-            throw new \InvalidArgumentException('non-nullable ip_address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ip_address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ip_address', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ip_address'] = $ip_address;
 
@@ -897,7 +904,7 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets metadata
      *
-     * @return \Alexasomba\Paystack\Model\VerifyResponseDataMetadata
+     * @return \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataMetadata|null
      */
     public function getMetadata()
     {
@@ -907,14 +914,21 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets metadata
      *
-     * @param \Alexasomba\Paystack\Model\VerifyResponseDataMetadata $metadata metadata
+     * @param \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataMetadata|null $metadata metadata
      *
      * @return self
      */
     public function setMetadata($metadata)
     {
         if (is_null($metadata)) {
-            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['metadata'] = $metadata;
 
@@ -1080,7 +1094,7 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets plan
      *
-     * @return string|null
+     * @return \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataMetadata|null
      */
     public function getPlan()
     {
@@ -1090,7 +1104,7 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets plan
      *
-     * @param string|null $plan plan
+     * @param \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataMetadata|null $plan plan
      *
      * @return self
      */
@@ -1114,7 +1128,7 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets split
      *
-     * @return object
+     * @return object|null
      */
     public function getSplit()
     {
@@ -1124,14 +1138,21 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets split
      *
-     * @param object $split split
+     * @param object|null $split split
      *
      * @return self
      */
     public function setSplit($split)
     {
         if (is_null($split)) {
-            throw new \InvalidArgumentException('non-nullable split cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'split');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('split', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['split'] = $split;
 
@@ -1453,7 +1474,7 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets subaccount
      *
-     * @return object
+     * @return object|null
      */
     public function getSubaccount()
     {
@@ -1463,14 +1484,21 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets subaccount
      *
-     * @param object $subaccount subaccount
+     * @param object|null $subaccount subaccount
      *
      * @return self
      */
     public function setSubaccount($subaccount)
     {
         if (is_null($subaccount)) {
-            throw new \InvalidArgumentException('non-nullable subaccount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'subaccount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('subaccount', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['subaccount'] = $subaccount;
 

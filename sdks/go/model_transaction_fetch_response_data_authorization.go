@@ -34,9 +34,9 @@ type TransactionFetchResponseDataAuthorization struct {
 	Brand string `json:"brand"`
 	Reusable bool `json:"reusable"`
 	Signature string `json:"signature"`
-	AccountName interface{} `json:"account_name"`
-	ReceiverBankAccountNumber interface{} `json:"receiver_bank_account_number"`
-	ReceiverBank interface{} `json:"receiver_bank"`
+	AccountName NullableString `json:"account_name"`
+	ReceiverBankAccountNumber NullableString `json:"receiver_bank_account_number,omitempty"`
+	ReceiverBank NullableString `json:"receiver_bank,omitempty"`
 }
 
 type _TransactionFetchResponseDataAuthorization TransactionFetchResponseDataAuthorization
@@ -45,7 +45,7 @@ type _TransactionFetchResponseDataAuthorization TransactionFetchResponseDataAuth
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransactionFetchResponseDataAuthorization(authorizationCode string, bin string, last4 string, expMonth string, expYear string, channel string, cardType string, bank string, countryCode string, brand string, reusable bool, signature string, accountName interface{}, receiverBankAccountNumber interface{}, receiverBank interface{}) *TransactionFetchResponseDataAuthorization {
+func NewTransactionFetchResponseDataAuthorization(authorizationCode string, bin string, last4 string, expMonth string, expYear string, channel string, cardType string, bank string, countryCode string, brand string, reusable bool, signature string, accountName NullableString) *TransactionFetchResponseDataAuthorization {
 	this := TransactionFetchResponseDataAuthorization{}
 	this.AuthorizationCode = authorizationCode
 	this.Bin = bin
@@ -60,8 +60,6 @@ func NewTransactionFetchResponseDataAuthorization(authorizationCode string, bin 
 	this.Reusable = reusable
 	this.Signature = signature
 	this.AccountName = accountName
-	this.ReceiverBankAccountNumber = receiverBankAccountNumber
-	this.ReceiverBank = receiverBank
 	return &this
 }
 
@@ -362,81 +360,113 @@ func (o *TransactionFetchResponseDataAuthorization) SetSignature(v string) {
 }
 
 // GetAccountName returns the AccountName field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransactionFetchResponseDataAuthorization) GetAccountName() interface{} {
-	if o == nil {
-		var ret interface{}
+// If the value is explicit nil, the zero value for string will be returned
+func (o *TransactionFetchResponseDataAuthorization) GetAccountName() string {
+	if o == nil || o.AccountName.Get() == nil {
+		var ret string
 		return ret
 	}
 
-	return o.AccountName
+	return *o.AccountName.Get()
 }
 
 // GetAccountNameOk returns a tuple with the AccountName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransactionFetchResponseDataAuthorization) GetAccountNameOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.AccountName) {
+func (o *TransactionFetchResponseDataAuthorization) GetAccountNameOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.AccountName, true
+	return o.AccountName.Get(), o.AccountName.IsSet()
 }
 
 // SetAccountName sets field value
-func (o *TransactionFetchResponseDataAuthorization) SetAccountName(v interface{}) {
-	o.AccountName = v
+func (o *TransactionFetchResponseDataAuthorization) SetAccountName(v string) {
+	o.AccountName.Set(&v)
 }
 
-// GetReceiverBankAccountNumber returns the ReceiverBankAccountNumber field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransactionFetchResponseDataAuthorization) GetReceiverBankAccountNumber() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetReceiverBankAccountNumber returns the ReceiverBankAccountNumber field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TransactionFetchResponseDataAuthorization) GetReceiverBankAccountNumber() string {
+	if o == nil || IsNil(o.ReceiverBankAccountNumber.Get()) {
+		var ret string
 		return ret
 	}
-
-	return o.ReceiverBankAccountNumber
+	return *o.ReceiverBankAccountNumber.Get()
 }
 
-// GetReceiverBankAccountNumberOk returns a tuple with the ReceiverBankAccountNumber field value
+// GetReceiverBankAccountNumberOk returns a tuple with the ReceiverBankAccountNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransactionFetchResponseDataAuthorization) GetReceiverBankAccountNumberOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.ReceiverBankAccountNumber) {
+func (o *TransactionFetchResponseDataAuthorization) GetReceiverBankAccountNumberOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.ReceiverBankAccountNumber, true
+	return o.ReceiverBankAccountNumber.Get(), o.ReceiverBankAccountNumber.IsSet()
 }
 
-// SetReceiverBankAccountNumber sets field value
-func (o *TransactionFetchResponseDataAuthorization) SetReceiverBankAccountNumber(v interface{}) {
-	o.ReceiverBankAccountNumber = v
+// HasReceiverBankAccountNumber returns a boolean if a field has been set.
+func (o *TransactionFetchResponseDataAuthorization) HasReceiverBankAccountNumber() bool {
+	if o != nil && o.ReceiverBankAccountNumber.IsSet() {
+		return true
+	}
+
+	return false
 }
 
-// GetReceiverBank returns the ReceiverBank field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransactionFetchResponseDataAuthorization) GetReceiverBank() interface{} {
-	if o == nil {
-		var ret interface{}
+// SetReceiverBankAccountNumber gets a reference to the given NullableString and assigns it to the ReceiverBankAccountNumber field.
+func (o *TransactionFetchResponseDataAuthorization) SetReceiverBankAccountNumber(v string) {
+	o.ReceiverBankAccountNumber.Set(&v)
+}
+// SetReceiverBankAccountNumberNil sets the value for ReceiverBankAccountNumber to be an explicit nil
+func (o *TransactionFetchResponseDataAuthorization) SetReceiverBankAccountNumberNil() {
+	o.ReceiverBankAccountNumber.Set(nil)
+}
+
+// UnsetReceiverBankAccountNumber ensures that no value is present for ReceiverBankAccountNumber, not even an explicit nil
+func (o *TransactionFetchResponseDataAuthorization) UnsetReceiverBankAccountNumber() {
+	o.ReceiverBankAccountNumber.Unset()
+}
+
+// GetReceiverBank returns the ReceiverBank field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TransactionFetchResponseDataAuthorization) GetReceiverBank() string {
+	if o == nil || IsNil(o.ReceiverBank.Get()) {
+		var ret string
 		return ret
 	}
-
-	return o.ReceiverBank
+	return *o.ReceiverBank.Get()
 }
 
-// GetReceiverBankOk returns a tuple with the ReceiverBank field value
+// GetReceiverBankOk returns a tuple with the ReceiverBank field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransactionFetchResponseDataAuthorization) GetReceiverBankOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.ReceiverBank) {
+func (o *TransactionFetchResponseDataAuthorization) GetReceiverBankOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.ReceiverBank, true
+	return o.ReceiverBank.Get(), o.ReceiverBank.IsSet()
 }
 
-// SetReceiverBank sets field value
-func (o *TransactionFetchResponseDataAuthorization) SetReceiverBank(v interface{}) {
-	o.ReceiverBank = v
+// HasReceiverBank returns a boolean if a field has been set.
+func (o *TransactionFetchResponseDataAuthorization) HasReceiverBank() bool {
+	if o != nil && o.ReceiverBank.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetReceiverBank gets a reference to the given NullableString and assigns it to the ReceiverBank field.
+func (o *TransactionFetchResponseDataAuthorization) SetReceiverBank(v string) {
+	o.ReceiverBank.Set(&v)
+}
+// SetReceiverBankNil sets the value for ReceiverBank to be an explicit nil
+func (o *TransactionFetchResponseDataAuthorization) SetReceiverBankNil() {
+	o.ReceiverBank.Set(nil)
+}
+
+// UnsetReceiverBank ensures that no value is present for ReceiverBank, not even an explicit nil
+func (o *TransactionFetchResponseDataAuthorization) UnsetReceiverBank() {
+	o.ReceiverBank.Unset()
 }
 
 func (o TransactionFetchResponseDataAuthorization) MarshalJSON() ([]byte, error) {
@@ -461,14 +491,12 @@ func (o TransactionFetchResponseDataAuthorization) ToMap() (map[string]interface
 	toSerialize["brand"] = o.Brand
 	toSerialize["reusable"] = o.Reusable
 	toSerialize["signature"] = o.Signature
-	if o.AccountName != nil {
-		toSerialize["account_name"] = o.AccountName
+	toSerialize["account_name"] = o.AccountName.Get()
+	if o.ReceiverBankAccountNumber.IsSet() {
+		toSerialize["receiver_bank_account_number"] = o.ReceiverBankAccountNumber.Get()
 	}
-	if o.ReceiverBankAccountNumber != nil {
-		toSerialize["receiver_bank_account_number"] = o.ReceiverBankAccountNumber
-	}
-	if o.ReceiverBank != nil {
-		toSerialize["receiver_bank"] = o.ReceiverBank
+	if o.ReceiverBank.IsSet() {
+		toSerialize["receiver_bank"] = o.ReceiverBank.Get()
 	}
 	return toSerialize, nil
 }
@@ -491,8 +519,6 @@ func (o *TransactionFetchResponseDataAuthorization) UnmarshalJSON(data []byte) (
 		"reusable",
 		"signature",
 		"account_name",
-		"receiver_bank_account_number",
-		"receiver_bank",
 	}
 
 	allProperties := make(map[string]interface{})

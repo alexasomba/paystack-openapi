@@ -18,10 +18,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from alexasomba_paystack.models.order_items_array import OrderItemsArray
-from alexasomba_paystack.models.transaction_fetch_response_data_customer import TransactionFetchResponseDataCustomer
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List
+from alexasomba_paystack.models.order_fetch_response_data_customer import OrderFetchResponseDataCustomer
+from alexasomba_paystack.models.order_fetch_response_data_line_items_inner import OrderFetchResponseDataLineItemsInner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,37 +29,15 @@ class OrderFetchResponseData(BaseModel):
     """
     OrderFetchResponseData
     """ # noqa: E501
-    discounts: List[Any]
-    order_code: StrictStr
-    domain: StrictStr
-    currency: StrictStr
-    amount: StrictInt
-    email: StrictStr
-    status: StrictStr
-    refunded: StrictBool
-    paid_at: StrictStr
-    shipping_address: Optional[Any]
-    metadata: Dict[str, Any]
-    shipping_fees: StrictInt
-    shipping_method: Optional[Any]
-    is_viewed: StrictBool
-    expiration_date: StrictStr
-    pay_for_me: StrictBool
     id: StrictInt
-    integration: StrictInt
-    page: Optional[Any]
-    customer: TransactionFetchResponseDataCustomer
-    shipping: Optional[Any]
+    code: StrictStr
+    amount: StrictInt
+    currency: StrictStr
+    status: StrictStr
+    customer: OrderFetchResponseDataCustomer
+    line_items: List[OrderFetchResponseDataLineItemsInner]
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
-    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    transaction: StrictInt
-    is_gift: StrictBool
-    payer: TransactionFetchResponseDataCustomer
-    fully_refunded: StrictBool
-    refunded_amount: StrictInt
-    items: List[OrderItemsArray]
-    discount_amount: Optional[Any]
-    __properties: ClassVar[List[str]] = ["discounts", "order_code", "domain", "currency", "amount", "email", "status", "refunded", "paid_at", "shipping_address", "metadata", "shipping_fees", "shipping_method", "is_viewed", "expiration_date", "pay_for_me", "id", "integration", "page", "customer", "shipping", "createdAt", "updatedAt", "transaction", "is_gift", "payer", "fully_refunded", "refunded_amount", "items", "discount_amount"]
+    __properties: ClassVar[List[str]] = ["id", "code", "amount", "currency", "status", "customer", "line_items", "createdAt"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -103,41 +81,13 @@ class OrderFetchResponseData(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of customer
         if self.customer:
             _dict['customer'] = self.customer.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of payer
-        if self.payer:
-            _dict['payer'] = self.payer.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in items (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in line_items (list)
         _items = []
-        if self.items:
-            for _item_items in self.items:
-                if _item_items:
-                    _items.append(_item_items.to_dict())
-            _dict['items'] = _items
-        # set to None if shipping_address (nullable) is None
-        # and model_fields_set contains the field
-        if self.shipping_address is None and "shipping_address" in self.model_fields_set:
-            _dict['shipping_address'] = None
-
-        # set to None if shipping_method (nullable) is None
-        # and model_fields_set contains the field
-        if self.shipping_method is None and "shipping_method" in self.model_fields_set:
-            _dict['shipping_method'] = None
-
-        # set to None if page (nullable) is None
-        # and model_fields_set contains the field
-        if self.page is None and "page" in self.model_fields_set:
-            _dict['page'] = None
-
-        # set to None if shipping (nullable) is None
-        # and model_fields_set contains the field
-        if self.shipping is None and "shipping" in self.model_fields_set:
-            _dict['shipping'] = None
-
-        # set to None if discount_amount (nullable) is None
-        # and model_fields_set contains the field
-        if self.discount_amount is None and "discount_amount" in self.model_fields_set:
-            _dict['discount_amount'] = None
-
+        if self.line_items:
+            for _item_line_items in self.line_items:
+                if _item_line_items:
+                    _items.append(_item_line_items.to_dict())
+            _dict['line_items'] = _items
         return _dict
 
     @classmethod
@@ -150,36 +100,14 @@ class OrderFetchResponseData(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "discounts": obj.get("discounts"),
-            "order_code": obj.get("order_code"),
-            "domain": obj.get("domain"),
-            "currency": obj.get("currency"),
-            "amount": obj.get("amount"),
-            "email": obj.get("email"),
-            "status": obj.get("status"),
-            "refunded": obj.get("refunded"),
-            "paid_at": obj.get("paid_at"),
-            "shipping_address": obj.get("shipping_address"),
-            "metadata": obj.get("metadata"),
-            "shipping_fees": obj.get("shipping_fees"),
-            "shipping_method": obj.get("shipping_method"),
-            "is_viewed": obj.get("is_viewed"),
-            "expiration_date": obj.get("expiration_date"),
-            "pay_for_me": obj.get("pay_for_me"),
             "id": obj.get("id"),
-            "integration": obj.get("integration"),
-            "page": obj.get("page"),
-            "customer": TransactionFetchResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
-            "shipping": obj.get("shipping"),
-            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
-            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
-            "transaction": obj.get("transaction"),
-            "is_gift": obj.get("is_gift"),
-            "payer": TransactionFetchResponseDataCustomer.from_dict(obj["payer"]) if obj.get("payer") is not None else None,
-            "fully_refunded": obj.get("fully_refunded"),
-            "refunded_amount": obj.get("refunded_amount"),
-            "items": [OrderItemsArray.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None,
-            "discount_amount": obj.get("discount_amount")
+            "code": obj.get("code"),
+            "amount": obj.get("amount"),
+            "currency": obj.get("currency"),
+            "status": obj.get("status"),
+            "customer": OrderFetchResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
+            "line_items": [OrderFetchResponseDataLineItemsInner.from_dict(_item) for _item in obj["line_items"]] if obj.get("line_items") is not None else None,
+            "createdAt": obj.get("createdAt")
         })
         return _obj
 

@@ -21,7 +21,7 @@ import json
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List
 from alexasomba_paystack.models.balance_fetch_ledger_response_array import BalanceFetchLedgerResponseArray
-from alexasomba_paystack.models.subaccount_list_response_meta import SubaccountListResponseMeta
+from alexasomba_paystack.models.balance_fetch_ledger_response_meta import BalanceFetchLedgerResponseMeta
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,7 +32,7 @@ class BalanceFetchLedgerResponse(BaseModel):
     status: StrictBool
     message: StrictStr
     data: List[BalanceFetchLedgerResponseArray]
-    meta: SubaccountListResponseMeta
+    meta: BalanceFetchLedgerResponseMeta
     __properties: ClassVar[List[str]] = ["status", "message", "data", "meta"]
 
     model_config = ConfigDict(
@@ -99,7 +99,7 @@ class BalanceFetchLedgerResponse(BaseModel):
             "status": obj.get("status"),
             "message": obj.get("message"),
             "data": [BalanceFetchLedgerResponseArray.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
-            "meta": SubaccountListResponseMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+            "meta": BalanceFetchLedgerResponseMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
         })
         return _obj
 

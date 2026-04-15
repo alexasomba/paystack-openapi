@@ -18,9 +18,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from alexasomba_paystack.models.currency import Currency
+from alexasomba_paystack.models.transaction_partial_debit_amount import TransactionPartialDebitAmount
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,12 +29,19 @@ class TransactionPartialDebit(BaseModel):
     TransactionPartialDebit
     """ # noqa: E501
     email: StrictStr = Field(description="Customer's email address")
-    amount: StrictInt = Field(description="Specified in the lowest denomination of your currency")
+    amount: TransactionPartialDebitAmount
     authorization_code: StrictStr = Field(description="Valid authorization code to charge")
-    currency: Currency
+    currency: StrictStr = Field(description="Specified as NGN or GHS")
     at_least: Optional[StrictStr] = Field(default=None, description="Minimum amount to charge")
     reference: Optional[StrictStr] = Field(default=None, description="Unique transaction reference. Only -, ., = and alphanumeric characters allowed.")
     __properties: ClassVar[List[str]] = ["email", "amount", "authorization_code", "currency", "at_least", "reference"]
+
+    @field_validator('currency')
+    def currency_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['NGN', 'GHS']):
+            raise ValueError("must be one of enum values ('NGN', 'GHS')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -75,6 +82,9 @@ class TransactionPartialDebit(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of amount
+        if self.amount:
+            _dict['amount'] = self.amount.to_dict()
         return _dict
 
     @classmethod
@@ -88,7 +98,7 @@ class TransactionPartialDebit(BaseModel):
 
         _obj = cls.model_validate({
             "email": obj.get("email"),
-            "amount": obj.get("amount"),
+            "amount": TransactionPartialDebitAmount.from_dict(obj["amount"]) if obj.get("amount") is not None else None,
             "authorization_code": obj.get("authorization_code"),
             "currency": obj.get("currency"),
             "at_least": obj.get("at_least"),

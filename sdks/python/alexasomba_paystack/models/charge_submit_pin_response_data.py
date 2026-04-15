@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.charge_submit_pin_response_data_authorization import ChargeSubmitPinResponseDataAuthorization
 from alexasomba_paystack.models.charge_submit_pin_response_data_customer import ChargeSubmitPinResponseDataCustomer
@@ -29,21 +29,36 @@ class ChargeSubmitPinResponseData(BaseModel):
     """
     ChargeSubmitPinResponseData
     """ # noqa: E501
-    status: StrictStr
-    amount: StrictInt
-    currency: StrictStr
-    transaction_date: StrictStr
-    reference: StrictStr
+    id: StrictInt
     domain: StrictStr
-    redirect_url: Optional[StrictStr]
-    metadata: Dict[str, Any]
+    status: StrictStr
+    reference: StrictStr
+    amount: StrictInt
+    message: Optional[StrictStr] = None
     gateway_response: StrictStr
-    message: Optional[StrictStr]
     channel: StrictStr
+    currency: StrictStr
+    ip_address: Optional[StrictStr]
+    metadata: Optional[Dict[str, Any]]
+    log: Optional[Any]
     fees: Optional[StrictInt]
+    fees_split: Optional[Any]
     authorization: ChargeSubmitPinResponseDataAuthorization
     customer: ChargeSubmitPinResponseDataCustomer
-    __properties: ClassVar[List[str]] = ["status", "amount", "currency", "transaction_date", "reference", "domain", "redirect_url", "metadata", "gateway_response", "message", "channel", "fees", "authorization", "customer"]
+    plan: Optional[Dict[str, Any]]
+    split: Optional[Dict[str, Any]]
+    order_id: Optional[StrictStr]
+    paid_at: Optional[StrictStr] = Field(default=None, validation_alias=AliasChoices('paid_at', 'paidAt'), serialization_alias='paidAt')
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    requested_amount: StrictInt
+    pos_transaction_data: Optional[Any]
+    source: Optional[Any]
+    fees_breakdown: Optional[Dict[str, Any]]
+    connect: Optional[Dict[str, Any]]
+    transaction_date: StrictStr
+    plan_object: Dict[str, Any]
+    subaccount: Dict[str, Any]
+    __properties: ClassVar[List[str]] = ["id", "domain", "status", "reference", "amount", "message", "gateway_response", "channel", "currency", "ip_address", "metadata", "log", "fees", "fees_split", "authorization", "customer", "plan", "split", "order_id", "paidAt", "createdAt", "requested_amount", "pos_transaction_data", "source", "fees_breakdown", "connect", "transaction_date", "plan_object", "subaccount"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,20 +105,75 @@ class ChargeSubmitPinResponseData(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of customer
         if self.customer:
             _dict['customer'] = self.customer.to_dict()
-        # set to None if redirect_url (nullable) is None
-        # and model_fields_set contains the field
-        if self.redirect_url is None and "redirect_url" in self.model_fields_set:
-            _dict['redirect_url'] = None
-
         # set to None if message (nullable) is None
         # and model_fields_set contains the field
         if self.message is None and "message" in self.model_fields_set:
             _dict['message'] = None
 
+        # set to None if ip_address (nullable) is None
+        # and model_fields_set contains the field
+        if self.ip_address is None and "ip_address" in self.model_fields_set:
+            _dict['ip_address'] = None
+
+        # set to None if metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
+
+        # set to None if log (nullable) is None
+        # and model_fields_set contains the field
+        if self.log is None and "log" in self.model_fields_set:
+            _dict['log'] = None
+
         # set to None if fees (nullable) is None
         # and model_fields_set contains the field
         if self.fees is None and "fees" in self.model_fields_set:
             _dict['fees'] = None
+
+        # set to None if fees_split (nullable) is None
+        # and model_fields_set contains the field
+        if self.fees_split is None and "fees_split" in self.model_fields_set:
+            _dict['fees_split'] = None
+
+        # set to None if plan (nullable) is None
+        # and model_fields_set contains the field
+        if self.plan is None and "plan" in self.model_fields_set:
+            _dict['plan'] = None
+
+        # set to None if split (nullable) is None
+        # and model_fields_set contains the field
+        if self.split is None and "split" in self.model_fields_set:
+            _dict['split'] = None
+
+        # set to None if order_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.order_id is None and "order_id" in self.model_fields_set:
+            _dict['order_id'] = None
+
+        # set to None if paid_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.paid_at is None and "paid_at" in self.model_fields_set:
+            _dict['paidAt'] = None
+
+        # set to None if pos_transaction_data (nullable) is None
+        # and model_fields_set contains the field
+        if self.pos_transaction_data is None and "pos_transaction_data" in self.model_fields_set:
+            _dict['pos_transaction_data'] = None
+
+        # set to None if source (nullable) is None
+        # and model_fields_set contains the field
+        if self.source is None and "source" in self.model_fields_set:
+            _dict['source'] = None
+
+        # set to None if fees_breakdown (nullable) is None
+        # and model_fields_set contains the field
+        if self.fees_breakdown is None and "fees_breakdown" in self.model_fields_set:
+            _dict['fees_breakdown'] = None
+
+        # set to None if connect (nullable) is None
+        # and model_fields_set contains the field
+        if self.connect is None and "connect" in self.model_fields_set:
+            _dict['connect'] = None
 
         return _dict
 
@@ -117,20 +187,35 @@ class ChargeSubmitPinResponseData(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "status": obj.get("status"),
-            "amount": obj.get("amount"),
-            "currency": obj.get("currency"),
-            "transaction_date": obj.get("transaction_date"),
-            "reference": obj.get("reference"),
+            "id": obj.get("id"),
             "domain": obj.get("domain"),
-            "redirect_url": obj.get("redirect_url"),
-            "metadata": obj.get("metadata"),
-            "gateway_response": obj.get("gateway_response"),
+            "status": obj.get("status"),
+            "reference": obj.get("reference"),
+            "amount": obj.get("amount"),
             "message": obj.get("message"),
+            "gateway_response": obj.get("gateway_response"),
             "channel": obj.get("channel"),
+            "currency": obj.get("currency"),
+            "ip_address": obj.get("ip_address"),
+            "metadata": obj.get("metadata"),
+            "log": obj.get("log"),
             "fees": obj.get("fees"),
+            "fees_split": obj.get("fees_split"),
             "authorization": ChargeSubmitPinResponseDataAuthorization.from_dict(obj["authorization"]) if obj.get("authorization") is not None else None,
-            "customer": ChargeSubmitPinResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None
+            "customer": ChargeSubmitPinResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
+            "plan": obj.get("plan"),
+            "split": obj.get("split"),
+            "order_id": obj.get("order_id"),
+            "paid_at": obj.get("paid_at") if obj.get("paid_at") is not None else obj.get("paidAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "requested_amount": obj.get("requested_amount"),
+            "pos_transaction_data": obj.get("pos_transaction_data"),
+            "source": obj.get("source"),
+            "fees_breakdown": obj.get("fees_breakdown"),
+            "connect": obj.get("connect"),
+            "transaction_date": obj.get("transaction_date"),
+            "plan_object": obj.get("plan_object"),
+            "subaccount": obj.get("subaccount")
         })
         return _obj
 

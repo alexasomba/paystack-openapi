@@ -32,21 +32,21 @@ class PageAddProductsResponseData(BaseModel):
     plan: Optional[Any]
     domain: StrictStr
     name: StrictStr
-    description: Optional[Any]
-    amount: Optional[Any]
+    description: Optional[StrictStr] = None
+    amount: Optional[StrictInt]
     currency: StrictStr
     slug: StrictStr
-    custom_fields: Optional[Any]
+    custom_fields: Optional[Any] = None
     type: StrictStr
-    redirect_url: Optional[Any]
-    success_message: Optional[Any]
+    redirect_url: Optional[Any] = None
+    success_message: Optional[Any] = None
     collect_phone: StrictBool
     active: StrictBool
     published: StrictBool
     migrate: StrictBool
-    notification_email: Optional[Any]
-    metadata: Optional[Any]
-    split_code: Optional[Any]
+    notification_email: Optional[StrictStr] = None
+    metadata: Optional[Dict[str, Any]] = None
+    split_code: Optional[StrictStr] = None
     id: StrictInt
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')

@@ -25,13 +25,13 @@ type BulkChargeFetchBulkBatchChargesResponseArray struct {
 	Integration int32 `json:"integration"`
 	Bulkcharge int32 `json:"bulkcharge"`
 	Customer BulkChargeFetchBulkBatchChargesResponseArrayCustomer `json:"customer"`
-	Authorization TransactionPartialDebitResponseDataAuthorization `json:"authorization"`
+	Authorization BulkChargeFetchBulkBatchChargesResponseArrayAuthorization `json:"authorization"`
 	Domain string `json:"domain"`
 	Amount int32 `json:"amount"`
 	AtLeast int32 `json:"at_least"`
 	Currency string `json:"currency"`
 	Reference string `json:"reference"`
-	Metadata TransactionFetchResponseDataMetadata `json:"metadata"`
+	Metadata BulkChargeFetchBulkBatchChargesResponseArrayMetadata `json:"metadata"`
 	Status string `json:"status"`
 	Message string `json:"message"`
 	AttemptPartialDebit bool `json:"attempt_partial_debit"`
@@ -46,7 +46,7 @@ type _BulkChargeFetchBulkBatchChargesResponseArray BulkChargeFetchBulkBatchCharg
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBulkChargeFetchBulkBatchChargesResponseArray(integration int32, bulkcharge int32, customer BulkChargeFetchBulkBatchChargesResponseArrayCustomer, authorization TransactionPartialDebitResponseDataAuthorization, domain string, amount int32, atLeast int32, currency string, reference string, metadata TransactionFetchResponseDataMetadata, status string, message string, attemptPartialDebit bool, id int32, createdAt string, updatedAt string) *BulkChargeFetchBulkBatchChargesResponseArray {
+func NewBulkChargeFetchBulkBatchChargesResponseArray(integration int32, bulkcharge int32, customer BulkChargeFetchBulkBatchChargesResponseArrayCustomer, authorization BulkChargeFetchBulkBatchChargesResponseArrayAuthorization, domain string, amount int32, atLeast int32, currency string, reference string, metadata BulkChargeFetchBulkBatchChargesResponseArrayMetadata, status string, message string, attemptPartialDebit bool, id int32, createdAt string, updatedAt string) *BulkChargeFetchBulkBatchChargesResponseArray {
 	this := BulkChargeFetchBulkBatchChargesResponseArray{}
 	this.Integration = integration
 	this.Bulkcharge = bulkcharge
@@ -148,9 +148,9 @@ func (o *BulkChargeFetchBulkBatchChargesResponseArray) SetCustomer(v BulkChargeF
 }
 
 // GetAuthorization returns the Authorization field value
-func (o *BulkChargeFetchBulkBatchChargesResponseArray) GetAuthorization() TransactionPartialDebitResponseDataAuthorization {
+func (o *BulkChargeFetchBulkBatchChargesResponseArray) GetAuthorization() BulkChargeFetchBulkBatchChargesResponseArrayAuthorization {
 	if o == nil {
-		var ret TransactionPartialDebitResponseDataAuthorization
+		var ret BulkChargeFetchBulkBatchChargesResponseArrayAuthorization
 		return ret
 	}
 
@@ -159,7 +159,7 @@ func (o *BulkChargeFetchBulkBatchChargesResponseArray) GetAuthorization() Transa
 
 // GetAuthorizationOk returns a tuple with the Authorization field value
 // and a boolean to check if the value has been set.
-func (o *BulkChargeFetchBulkBatchChargesResponseArray) GetAuthorizationOk() (*TransactionPartialDebitResponseDataAuthorization, bool) {
+func (o *BulkChargeFetchBulkBatchChargesResponseArray) GetAuthorizationOk() (*BulkChargeFetchBulkBatchChargesResponseArrayAuthorization, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -167,7 +167,7 @@ func (o *BulkChargeFetchBulkBatchChargesResponseArray) GetAuthorizationOk() (*Tr
 }
 
 // SetAuthorization sets field value
-func (o *BulkChargeFetchBulkBatchChargesResponseArray) SetAuthorization(v TransactionPartialDebitResponseDataAuthorization) {
+func (o *BulkChargeFetchBulkBatchChargesResponseArray) SetAuthorization(v BulkChargeFetchBulkBatchChargesResponseArrayAuthorization) {
 	o.Authorization = v
 }
 
@@ -292,9 +292,9 @@ func (o *BulkChargeFetchBulkBatchChargesResponseArray) SetReference(v string) {
 }
 
 // GetMetadata returns the Metadata field value
-func (o *BulkChargeFetchBulkBatchChargesResponseArray) GetMetadata() TransactionFetchResponseDataMetadata {
+func (o *BulkChargeFetchBulkBatchChargesResponseArray) GetMetadata() BulkChargeFetchBulkBatchChargesResponseArrayMetadata {
 	if o == nil {
-		var ret TransactionFetchResponseDataMetadata
+		var ret BulkChargeFetchBulkBatchChargesResponseArrayMetadata
 		return ret
 	}
 
@@ -303,7 +303,7 @@ func (o *BulkChargeFetchBulkBatchChargesResponseArray) GetMetadata() Transaction
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
-func (o *BulkChargeFetchBulkBatchChargesResponseArray) GetMetadataOk() (*TransactionFetchResponseDataMetadata, bool) {
+func (o *BulkChargeFetchBulkBatchChargesResponseArray) GetMetadataOk() (*BulkChargeFetchBulkBatchChargesResponseArrayMetadata, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -311,7 +311,7 @@ func (o *BulkChargeFetchBulkBatchChargesResponseArray) GetMetadataOk() (*Transac
 }
 
 // SetMetadata sets field value
-func (o *BulkChargeFetchBulkBatchChargesResponseArray) SetMetadata(v TransactionFetchResponseDataMetadata) {
+func (o *BulkChargeFetchBulkBatchChargesResponseArray) SetMetadata(v BulkChargeFetchBulkBatchChargesResponseArrayMetadata) {
 	o.Metadata = v
 }
 

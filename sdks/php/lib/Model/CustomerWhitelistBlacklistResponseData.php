@@ -113,11 +113,11 @@ class CustomerWhitelistBlacklistResponseData implements ModelInterface, ArrayAcc
         'transactions' => false,
         'subscriptions' => false,
         'authorizations' => false,
-        'first_name' => false,
-        'last_name' => false,
+        'first_name' => true,
+        'last_name' => true,
         'email' => false,
-        'phone' => false,
-        'metadata' => false,
+        'phone' => true,
+        'metadata' => true,
         'domain' => false,
         'customer_code' => false,
         'risk_action' => false,
@@ -396,19 +396,19 @@ class CustomerWhitelistBlacklistResponseData implements ModelInterface, ArrayAcc
         if ($this->container['authorizations'] === null) {
             $invalidProperties[] = "'authorizations' can't be null";
         }
-        if ($this->container['first_name'] === null) {
+        if ($this->container['first_name'] === null && !$this->isNullableSetToNull('first_name')) {
             $invalidProperties[] = "'first_name' can't be null";
         }
-        if ($this->container['last_name'] === null) {
+        if ($this->container['last_name'] === null && !$this->isNullableSetToNull('last_name')) {
             $invalidProperties[] = "'last_name' can't be null";
         }
         if ($this->container['email'] === null) {
             $invalidProperties[] = "'email' can't be null";
         }
-        if ($this->container['phone'] === null) {
+        if ($this->container['phone'] === null && !$this->isNullableSetToNull('phone')) {
             $invalidProperties[] = "'phone' can't be null";
         }
-        if ($this->container['metadata'] === null) {
+        if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
             $invalidProperties[] = "'metadata' can't be null";
         }
         if ($this->container['domain'] === null) {
@@ -537,7 +537,7 @@ class CustomerWhitelistBlacklistResponseData implements ModelInterface, ArrayAcc
     /**
      * Gets first_name
      *
-     * @return string
+     * @return string|null
      */
     public function getFirstName()
     {
@@ -547,14 +547,21 @@ class CustomerWhitelistBlacklistResponseData implements ModelInterface, ArrayAcc
     /**
      * Sets first_name
      *
-     * @param string $first_name first_name
+     * @param string|null $first_name first_name
      *
      * @return self
      */
     public function setFirstName($first_name)
     {
         if (is_null($first_name)) {
-            throw new \InvalidArgumentException('non-nullable first_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'first_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('first_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['first_name'] = $first_name;
 
@@ -564,7 +571,7 @@ class CustomerWhitelistBlacklistResponseData implements ModelInterface, ArrayAcc
     /**
      * Gets last_name
      *
-     * @return string
+     * @return string|null
      */
     public function getLastName()
     {
@@ -574,14 +581,21 @@ class CustomerWhitelistBlacklistResponseData implements ModelInterface, ArrayAcc
     /**
      * Sets last_name
      *
-     * @param string $last_name last_name
+     * @param string|null $last_name last_name
      *
      * @return self
      */
     public function setLastName($last_name)
     {
         if (is_null($last_name)) {
-            throw new \InvalidArgumentException('non-nullable last_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'last_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['last_name'] = $last_name;
 
@@ -618,7 +632,7 @@ class CustomerWhitelistBlacklistResponseData implements ModelInterface, ArrayAcc
     /**
      * Gets phone
      *
-     * @return string
+     * @return string|null
      */
     public function getPhone()
     {
@@ -628,14 +642,21 @@ class CustomerWhitelistBlacklistResponseData implements ModelInterface, ArrayAcc
     /**
      * Sets phone
      *
-     * @param string $phone phone
+     * @param string|null $phone phone
      *
      * @return self
      */
     public function setPhone($phone)
     {
         if (is_null($phone)) {
-            throw new \InvalidArgumentException('non-nullable phone cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'phone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('phone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['phone'] = $phone;
 
@@ -645,7 +666,7 @@ class CustomerWhitelistBlacklistResponseData implements ModelInterface, ArrayAcc
     /**
      * Gets metadata
      *
-     * @return object
+     * @return object|null
      */
     public function getMetadata()
     {
@@ -655,14 +676,21 @@ class CustomerWhitelistBlacklistResponseData implements ModelInterface, ArrayAcc
     /**
      * Sets metadata
      *
-     * @param object $metadata metadata
+     * @param object|null $metadata metadata
      *
      * @return self
      */
     public function setMetadata($metadata)
     {
         if (is_null($metadata)) {
-            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['metadata'] = $metadata;
 

@@ -65,7 +65,6 @@ class VerificationResolveCardBINResponseData implements ModelInterface, ArrayAcc
         'country_name' => 'string',
         'card_type' => 'string',
         'bank' => 'string',
-        'currency' => 'string',
         'linked_bank_id' => 'int'
     ];
 
@@ -84,7 +83,6 @@ class VerificationResolveCardBINResponseData implements ModelInterface, ArrayAcc
         'country_name' => null,
         'card_type' => null,
         'bank' => null,
-        'currency' => null,
         'linked_bank_id' => null
     ];
 
@@ -101,7 +99,6 @@ class VerificationResolveCardBINResponseData implements ModelInterface, ArrayAcc
         'country_name' => false,
         'card_type' => false,
         'bank' => false,
-        'currency' => false,
         'linked_bank_id' => false
     ];
 
@@ -198,7 +195,6 @@ class VerificationResolveCardBINResponseData implements ModelInterface, ArrayAcc
         'country_name' => 'country_name',
         'card_type' => 'card_type',
         'bank' => 'bank',
-        'currency' => 'currency',
         'linked_bank_id' => 'linked_bank_id'
     ];
 
@@ -215,7 +211,6 @@ class VerificationResolveCardBINResponseData implements ModelInterface, ArrayAcc
         'country_name' => 'setCountryName',
         'card_type' => 'setCardType',
         'bank' => 'setBank',
-        'currency' => 'setCurrency',
         'linked_bank_id' => 'setLinkedBankId'
     ];
 
@@ -232,7 +227,6 @@ class VerificationResolveCardBINResponseData implements ModelInterface, ArrayAcc
         'country_name' => 'getCountryName',
         'card_type' => 'getCardType',
         'bank' => 'getBank',
-        'currency' => 'getCurrency',
         'linked_bank_id' => 'getLinkedBankId'
     ];
 
@@ -300,7 +294,6 @@ class VerificationResolveCardBINResponseData implements ModelInterface, ArrayAcc
         $this->setIfExists('country_name', $data ?? [], null);
         $this->setIfExists('card_type', $data ?? [], null);
         $this->setIfExists('bank', $data ?? [], null);
-        $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('linked_bank_id', $data ?? [], null);
     }
 
@@ -351,9 +344,6 @@ class VerificationResolveCardBINResponseData implements ModelInterface, ArrayAcc
         }
         if ($this->container['bank'] === null) {
             $invalidProperties[] = "'bank' can't be null";
-        }
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
         }
         if ($this->container['linked_bank_id'] === null) {
             $invalidProperties[] = "'linked_bank_id' can't be null";
@@ -558,33 +548,6 @@ class VerificationResolveCardBINResponseData implements ModelInterface, ArrayAcc
             throw new \InvalidArgumentException('non-nullable bank cannot be null');
         }
         $this->container['bank'] = $bank;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency
-     *
-     * @return string
-     */
-    public function getCurrency()
-    {
-        return $this->container['currency'];
-    }
-
-    /**
-     * Sets currency
-     *
-     * @param string $currency currency
-     *
-     * @return self
-     */
-    public function setCurrency($currency)
-    {
-        if (is_null($currency)) {
-            throw new \InvalidArgumentException('non-nullable currency cannot be null');
-        }
-        $this->container['currency'] = $currency;
 
         return $this;
     }

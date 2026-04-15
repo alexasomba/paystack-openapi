@@ -41,13 +41,13 @@ type ApiBankListRequest struct {
 	includeNipSortCode *bool
 }
 
-// The country from which to obtain the list of supported banks
+// The country from which to obtain the list of supported banks. Accepted values are: ghana, kenya, nigeria, south africa
 func (r ApiBankListRequest) Country(country string) ApiBankListRequest {
 	r.country = &country
 	return r
 }
 
-// The country from which to obtain the list of supported banks
+// One of the supported currency
 func (r ApiBankListRequest) Currency(currency string) ApiBankListRequest {
 	r.currency = &currency
 	return r
@@ -59,13 +59,13 @@ func (r ApiBankListRequest) UseCursor(useCursor bool) ApiBankListRequest {
 	return r
 }
 
-// The number of records to fetch per request
+// The number of objects to return per page. Defaults to 50, and limited to 100 records per page.
 func (r ApiBankListRequest) PerPage(perPage int32) ApiBankListRequest {
 	r.perPage = &perPage
 	return r
 }
 
-// The offset to retrieve data from
+// Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
 func (r ApiBankListRequest) Page(page int32) ApiBankListRequest {
 	r.page = &page
 	return r
@@ -101,13 +101,13 @@ func (r ApiBankListRequest) EnabledForVerification(enabledForVerification bool) 
 	return r
 }
 
-// The type of gateway for a Nigerian bank
+// The gateway type of the bank
 func (r ApiBankListRequest) Gateway(gateway string) ApiBankListRequest {
 	r.gateway = &gateway
 	return r
 }
 
-// Type of financial channel
+// Type of financial channel. For Ghanaian channels, please use either mobile_money for mobile money channels OR ghipss for bank channels
 func (r ApiBankListRequest) Type_(type_ string) ApiBankListRequest {
 	r.type_ = &type_
 	return r
@@ -126,7 +126,7 @@ func (r ApiBankListRequest) Execute() (*MiscellaneousListBanksResponse, *http.Re
 /*
 BankList List Banks
 
-List banks supported on Paystack
+Get a list of all supported banks and their properties
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiBankListRequest
@@ -277,18 +277,18 @@ func (a *BankAPIService) BankListExecute(r ApiBankListRequest) (*MiscellaneousLi
 type ApiBankResolveAccountNumberRequest struct {
 	ctx context.Context
 	ApiService *BankAPIService
-	accountNumber *int32
-	bankCode *int32
+	accountNumber *string
+	bankCode *string
 }
 
 // The account number of interest
-func (r ApiBankResolveAccountNumberRequest) AccountNumber(accountNumber int32) ApiBankResolveAccountNumberRequest {
+func (r ApiBankResolveAccountNumberRequest) AccountNumber(accountNumber string) ApiBankResolveAccountNumberRequest {
 	r.accountNumber = &accountNumber
 	return r
 }
 
 // The bank code associated with the account number
-func (r ApiBankResolveAccountNumberRequest) BankCode(bankCode int32) ApiBankResolveAccountNumberRequest {
+func (r ApiBankResolveAccountNumberRequest) BankCode(bankCode string) ApiBankResolveAccountNumberRequest {
 	r.bankCode = &bankCode
 	return r
 }

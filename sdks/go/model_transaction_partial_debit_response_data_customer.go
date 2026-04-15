@@ -30,7 +30,7 @@ type TransactionPartialDebitResponseDataCustomer struct {
 	Phone NullableString `json:"phone"`
 	Metadata map[string]interface{} `json:"metadata"`
 	RiskAction string `json:"risk_action"`
-	InternationalFormatPhone NullableString `json:"international_format_phone"`
+	InternationalFormatPhone NullableString `json:"international_format_phone,omitempty"`
 }
 
 type _TransactionPartialDebitResponseDataCustomer TransactionPartialDebitResponseDataCustomer
@@ -39,7 +39,7 @@ type _TransactionPartialDebitResponseDataCustomer TransactionPartialDebitRespons
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransactionPartialDebitResponseDataCustomer(id int32, firstName NullableString, lastName NullableString, email string, customerCode string, phone NullableString, metadata map[string]interface{}, riskAction string, internationalFormatPhone NullableString) *TransactionPartialDebitResponseDataCustomer {
+func NewTransactionPartialDebitResponseDataCustomer(id int32, firstName NullableString, lastName NullableString, email string, customerCode string, phone NullableString, metadata map[string]interface{}, riskAction string) *TransactionPartialDebitResponseDataCustomer {
 	this := TransactionPartialDebitResponseDataCustomer{}
 	this.Id = id
 	this.FirstName = firstName
@@ -49,7 +49,6 @@ func NewTransactionPartialDebitResponseDataCustomer(id int32, firstName Nullable
 	this.Phone = phone
 	this.Metadata = metadata
 	this.RiskAction = riskAction
-	this.InternationalFormatPhone = internationalFormatPhone
 	return &this
 }
 
@@ -261,18 +260,16 @@ func (o *TransactionPartialDebitResponseDataCustomer) SetRiskAction(v string) {
 	o.RiskAction = v
 }
 
-// GetInternationalFormatPhone returns the InternationalFormatPhone field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetInternationalFormatPhone returns the InternationalFormatPhone field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionPartialDebitResponseDataCustomer) GetInternationalFormatPhone() string {
-	if o == nil || o.InternationalFormatPhone.Get() == nil {
+	if o == nil || IsNil(o.InternationalFormatPhone.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.InternationalFormatPhone.Get()
 }
 
-// GetInternationalFormatPhoneOk returns a tuple with the InternationalFormatPhone field value
+// GetInternationalFormatPhoneOk returns a tuple with the InternationalFormatPhone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransactionPartialDebitResponseDataCustomer) GetInternationalFormatPhoneOk() (*string, bool) {
@@ -282,9 +279,27 @@ func (o *TransactionPartialDebitResponseDataCustomer) GetInternationalFormatPhon
 	return o.InternationalFormatPhone.Get(), o.InternationalFormatPhone.IsSet()
 }
 
-// SetInternationalFormatPhone sets field value
+// HasInternationalFormatPhone returns a boolean if a field has been set.
+func (o *TransactionPartialDebitResponseDataCustomer) HasInternationalFormatPhone() bool {
+	if o != nil && o.InternationalFormatPhone.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInternationalFormatPhone gets a reference to the given NullableString and assigns it to the InternationalFormatPhone field.
 func (o *TransactionPartialDebitResponseDataCustomer) SetInternationalFormatPhone(v string) {
 	o.InternationalFormatPhone.Set(&v)
+}
+// SetInternationalFormatPhoneNil sets the value for InternationalFormatPhone to be an explicit nil
+func (o *TransactionPartialDebitResponseDataCustomer) SetInternationalFormatPhoneNil() {
+	o.InternationalFormatPhone.Set(nil)
+}
+
+// UnsetInternationalFormatPhone ensures that no value is present for InternationalFormatPhone, not even an explicit nil
+func (o *TransactionPartialDebitResponseDataCustomer) UnsetInternationalFormatPhone() {
+	o.InternationalFormatPhone.Unset()
 }
 
 func (o TransactionPartialDebitResponseDataCustomer) MarshalJSON() ([]byte, error) {
@@ -307,7 +322,9 @@ func (o TransactionPartialDebitResponseDataCustomer) ToMap() (map[string]interfa
 		toSerialize["metadata"] = o.Metadata
 	}
 	toSerialize["risk_action"] = o.RiskAction
-	toSerialize["international_format_phone"] = o.InternationalFormatPhone.Get()
+	if o.InternationalFormatPhone.IsSet() {
+		toSerialize["international_format_phone"] = o.InternationalFormatPhone.Get()
+	}
 	return toSerialize, nil
 }
 
@@ -324,7 +341,6 @@ func (o *TransactionPartialDebitResponseDataCustomer) UnmarshalJSON(data []byte)
 		"phone",
 		"metadata",
 		"risk_action",
-		"international_format_phone",
 	}
 
 	allProperties := make(map[string]interface{})

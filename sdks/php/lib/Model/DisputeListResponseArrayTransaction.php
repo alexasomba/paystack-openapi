@@ -70,7 +70,7 @@ class DisputeListResponseArrayTransaction implements ModelInterface, ArrayAccess
         'channel' => 'string',
         'currency' => 'string',
         'ip_address' => 'string',
-        'metadata' => '\Alexasomba\Paystack\Model\TransactionFetchResponseDataMetadata',
+        'metadata' => '\Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayMetadata',
         'log' => '\Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataLog',
         'fees' => 'int',
         'fees_split' => 'int',
@@ -878,7 +878,7 @@ class DisputeListResponseArrayTransaction implements ModelInterface, ArrayAccess
     /**
      * Gets metadata
      *
-     * @return \Alexasomba\Paystack\Model\TransactionFetchResponseDataMetadata
+     * @return \Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayMetadata
      */
     public function getMetadata()
     {
@@ -888,7 +888,7 @@ class DisputeListResponseArrayTransaction implements ModelInterface, ArrayAccess
     /**
      * Sets metadata
      *
-     * @param \Alexasomba\Paystack\Model\TransactionFetchResponseDataMetadata $metadata metadata
+     * @param \Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayMetadata $metadata metadata
      *
      * @return self
      */

@@ -13,6 +13,8 @@ package paystack
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DedicatedNubanListResponseArrayCustomer type satisfies the MappedNullable interface at compile time
@@ -20,22 +22,32 @@ var _ MappedNullable = &DedicatedNubanListResponseArrayCustomer{}
 
 // DedicatedNubanListResponseArrayCustomer struct for DedicatedNubanListResponseArrayCustomer
 type DedicatedNubanListResponseArrayCustomer struct {
-	Id *int32 `json:"id,omitempty"`
-	FirstName *string `json:"first_name,omitempty"`
-	LastName *string `json:"last_name,omitempty"`
-	Email *string `json:"email,omitempty"`
-	CustomerCode *string `json:"customer_code,omitempty"`
-	Phone *string `json:"phone,omitempty"`
-	RiskAction *string `json:"risk_action,omitempty"`
-	InternationalFormatPhone NullableString `json:"international_format_phone,omitempty"`
+	Id int32 `json:"id"`
+	FirstName string `json:"first_name"`
+	LastName string `json:"last_name"`
+	Email string `json:"email"`
+	CustomerCode string `json:"customer_code"`
+	Phone NullableString `json:"phone"`
+	RiskAction string `json:"risk_action"`
+	InternationalFormatPhone NullableString `json:"international_format_phone"`
 }
+
+type _DedicatedNubanListResponseArrayCustomer DedicatedNubanListResponseArrayCustomer
 
 // NewDedicatedNubanListResponseArrayCustomer instantiates a new DedicatedNubanListResponseArrayCustomer object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDedicatedNubanListResponseArrayCustomer() *DedicatedNubanListResponseArrayCustomer {
+func NewDedicatedNubanListResponseArrayCustomer(id int32, firstName string, lastName string, email string, customerCode string, phone NullableString, riskAction string, internationalFormatPhone NullableString) *DedicatedNubanListResponseArrayCustomer {
 	this := DedicatedNubanListResponseArrayCustomer{}
+	this.Id = id
+	this.FirstName = firstName
+	this.LastName = lastName
+	this.Email = email
+	this.CustomerCode = customerCode
+	this.Phone = phone
+	this.RiskAction = riskAction
+	this.InternationalFormatPhone = internationalFormatPhone
 	return &this
 }
 
@@ -47,240 +59,188 @@ func NewDedicatedNubanListResponseArrayCustomerWithDefaults() *DedicatedNubanLis
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *DedicatedNubanListResponseArrayCustomer) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *DedicatedNubanListResponseArrayCustomer) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *DedicatedNubanListResponseArrayCustomer) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *DedicatedNubanListResponseArrayCustomer) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetFirstName returns the FirstName field value if set, zero value otherwise.
+// GetFirstName returns the FirstName field value
 func (o *DedicatedNubanListResponseArrayCustomer) GetFirstName() string {
-	if o == nil || IsNil(o.FirstName) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.FirstName
+
+	return o.FirstName
 }
 
-// GetFirstNameOk returns a tuple with the FirstName field value if set, nil otherwise
+// GetFirstNameOk returns a tuple with the FirstName field value
 // and a boolean to check if the value has been set.
 func (o *DedicatedNubanListResponseArrayCustomer) GetFirstNameOk() (*string, bool) {
-	if o == nil || IsNil(o.FirstName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FirstName, true
+	return &o.FirstName, true
 }
 
-// HasFirstName returns a boolean if a field has been set.
-func (o *DedicatedNubanListResponseArrayCustomer) HasFirstName() bool {
-	if o != nil && !IsNil(o.FirstName) {
-		return true
-	}
-
-	return false
-}
-
-// SetFirstName gets a reference to the given string and assigns it to the FirstName field.
+// SetFirstName sets field value
 func (o *DedicatedNubanListResponseArrayCustomer) SetFirstName(v string) {
-	o.FirstName = &v
+	o.FirstName = v
 }
 
-// GetLastName returns the LastName field value if set, zero value otherwise.
+// GetLastName returns the LastName field value
 func (o *DedicatedNubanListResponseArrayCustomer) GetLastName() string {
-	if o == nil || IsNil(o.LastName) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.LastName
+
+	return o.LastName
 }
 
-// GetLastNameOk returns a tuple with the LastName field value if set, nil otherwise
+// GetLastNameOk returns a tuple with the LastName field value
 // and a boolean to check if the value has been set.
 func (o *DedicatedNubanListResponseArrayCustomer) GetLastNameOk() (*string, bool) {
-	if o == nil || IsNil(o.LastName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastName, true
+	return &o.LastName, true
 }
 
-// HasLastName returns a boolean if a field has been set.
-func (o *DedicatedNubanListResponseArrayCustomer) HasLastName() bool {
-	if o != nil && !IsNil(o.LastName) {
-		return true
-	}
-
-	return false
-}
-
-// SetLastName gets a reference to the given string and assigns it to the LastName field.
+// SetLastName sets field value
 func (o *DedicatedNubanListResponseArrayCustomer) SetLastName(v string) {
-	o.LastName = &v
+	o.LastName = v
 }
 
-// GetEmail returns the Email field value if set, zero value otherwise.
+// GetEmail returns the Email field value
 func (o *DedicatedNubanListResponseArrayCustomer) GetEmail() string {
-	if o == nil || IsNil(o.Email) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Email
+
+	return o.Email
 }
 
-// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
+// GetEmailOk returns a tuple with the Email field value
 // and a boolean to check if the value has been set.
 func (o *DedicatedNubanListResponseArrayCustomer) GetEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.Email) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Email, true
+	return &o.Email, true
 }
 
-// HasEmail returns a boolean if a field has been set.
-func (o *DedicatedNubanListResponseArrayCustomer) HasEmail() bool {
-	if o != nil && !IsNil(o.Email) {
-		return true
-	}
-
-	return false
-}
-
-// SetEmail gets a reference to the given string and assigns it to the Email field.
+// SetEmail sets field value
 func (o *DedicatedNubanListResponseArrayCustomer) SetEmail(v string) {
-	o.Email = &v
+	o.Email = v
 }
 
-// GetCustomerCode returns the CustomerCode field value if set, zero value otherwise.
+// GetCustomerCode returns the CustomerCode field value
 func (o *DedicatedNubanListResponseArrayCustomer) GetCustomerCode() string {
-	if o == nil || IsNil(o.CustomerCode) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CustomerCode
+
+	return o.CustomerCode
 }
 
-// GetCustomerCodeOk returns a tuple with the CustomerCode field value if set, nil otherwise
+// GetCustomerCodeOk returns a tuple with the CustomerCode field value
 // and a boolean to check if the value has been set.
 func (o *DedicatedNubanListResponseArrayCustomer) GetCustomerCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.CustomerCode) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CustomerCode, true
+	return &o.CustomerCode, true
 }
 
-// HasCustomerCode returns a boolean if a field has been set.
-func (o *DedicatedNubanListResponseArrayCustomer) HasCustomerCode() bool {
-	if o != nil && !IsNil(o.CustomerCode) {
-		return true
-	}
-
-	return false
-}
-
-// SetCustomerCode gets a reference to the given string and assigns it to the CustomerCode field.
+// SetCustomerCode sets field value
 func (o *DedicatedNubanListResponseArrayCustomer) SetCustomerCode(v string) {
-	o.CustomerCode = &v
+	o.CustomerCode = v
 }
 
-// GetPhone returns the Phone field value if set, zero value otherwise.
+// GetPhone returns the Phone field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *DedicatedNubanListResponseArrayCustomer) GetPhone() string {
-	if o == nil || IsNil(o.Phone) {
+	if o == nil || o.Phone.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.Phone
+
+	return *o.Phone.Get()
 }
 
-// GetPhoneOk returns a tuple with the Phone field value if set, nil otherwise
+// GetPhoneOk returns a tuple with the Phone field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DedicatedNubanListResponseArrayCustomer) GetPhoneOk() (*string, bool) {
-	if o == nil || IsNil(o.Phone) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Phone, true
+	return o.Phone.Get(), o.Phone.IsSet()
 }
 
-// HasPhone returns a boolean if a field has been set.
-func (o *DedicatedNubanListResponseArrayCustomer) HasPhone() bool {
-	if o != nil && !IsNil(o.Phone) {
-		return true
-	}
-
-	return false
-}
-
-// SetPhone gets a reference to the given string and assigns it to the Phone field.
+// SetPhone sets field value
 func (o *DedicatedNubanListResponseArrayCustomer) SetPhone(v string) {
-	o.Phone = &v
+	o.Phone.Set(&v)
 }
 
-// GetRiskAction returns the RiskAction field value if set, zero value otherwise.
+// GetRiskAction returns the RiskAction field value
 func (o *DedicatedNubanListResponseArrayCustomer) GetRiskAction() string {
-	if o == nil || IsNil(o.RiskAction) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.RiskAction
+
+	return o.RiskAction
 }
 
-// GetRiskActionOk returns a tuple with the RiskAction field value if set, nil otherwise
+// GetRiskActionOk returns a tuple with the RiskAction field value
 // and a boolean to check if the value has been set.
 func (o *DedicatedNubanListResponseArrayCustomer) GetRiskActionOk() (*string, bool) {
-	if o == nil || IsNil(o.RiskAction) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RiskAction, true
+	return &o.RiskAction, true
 }
 
-// HasRiskAction returns a boolean if a field has been set.
-func (o *DedicatedNubanListResponseArrayCustomer) HasRiskAction() bool {
-	if o != nil && !IsNil(o.RiskAction) {
-		return true
-	}
-
-	return false
-}
-
-// SetRiskAction gets a reference to the given string and assigns it to the RiskAction field.
+// SetRiskAction sets field value
 func (o *DedicatedNubanListResponseArrayCustomer) SetRiskAction(v string) {
-	o.RiskAction = &v
+	o.RiskAction = v
 }
 
-// GetInternationalFormatPhone returns the InternationalFormatPhone field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetInternationalFormatPhone returns the InternationalFormatPhone field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *DedicatedNubanListResponseArrayCustomer) GetInternationalFormatPhone() string {
-	if o == nil || IsNil(o.InternationalFormatPhone.Get()) {
+	if o == nil || o.InternationalFormatPhone.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.InternationalFormatPhone.Get()
 }
 
-// GetInternationalFormatPhoneOk returns a tuple with the InternationalFormatPhone field value if set, nil otherwise
+// GetInternationalFormatPhoneOk returns a tuple with the InternationalFormatPhone field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DedicatedNubanListResponseArrayCustomer) GetInternationalFormatPhoneOk() (*string, bool) {
@@ -290,27 +250,9 @@ func (o *DedicatedNubanListResponseArrayCustomer) GetInternationalFormatPhoneOk(
 	return o.InternationalFormatPhone.Get(), o.InternationalFormatPhone.IsSet()
 }
 
-// HasInternationalFormatPhone returns a boolean if a field has been set.
-func (o *DedicatedNubanListResponseArrayCustomer) HasInternationalFormatPhone() bool {
-	if o != nil && o.InternationalFormatPhone.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetInternationalFormatPhone gets a reference to the given NullableString and assigns it to the InternationalFormatPhone field.
+// SetInternationalFormatPhone sets field value
 func (o *DedicatedNubanListResponseArrayCustomer) SetInternationalFormatPhone(v string) {
 	o.InternationalFormatPhone.Set(&v)
-}
-// SetInternationalFormatPhoneNil sets the value for InternationalFormatPhone to be an explicit nil
-func (o *DedicatedNubanListResponseArrayCustomer) SetInternationalFormatPhoneNil() {
-	o.InternationalFormatPhone.Set(nil)
-}
-
-// UnsetInternationalFormatPhone ensures that no value is present for InternationalFormatPhone, not even an explicit nil
-func (o *DedicatedNubanListResponseArrayCustomer) UnsetInternationalFormatPhone() {
-	o.InternationalFormatPhone.Unset()
 }
 
 func (o DedicatedNubanListResponseArrayCustomer) MarshalJSON() ([]byte, error) {
@@ -323,31 +265,59 @@ func (o DedicatedNubanListResponseArrayCustomer) MarshalJSON() ([]byte, error) {
 
 func (o DedicatedNubanListResponseArrayCustomer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.FirstName) {
-		toSerialize["first_name"] = o.FirstName
-	}
-	if !IsNil(o.LastName) {
-		toSerialize["last_name"] = o.LastName
-	}
-	if !IsNil(o.Email) {
-		toSerialize["email"] = o.Email
-	}
-	if !IsNil(o.CustomerCode) {
-		toSerialize["customer_code"] = o.CustomerCode
-	}
-	if !IsNil(o.Phone) {
-		toSerialize["phone"] = o.Phone
-	}
-	if !IsNil(o.RiskAction) {
-		toSerialize["risk_action"] = o.RiskAction
-	}
-	if o.InternationalFormatPhone.IsSet() {
-		toSerialize["international_format_phone"] = o.InternationalFormatPhone.Get()
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["first_name"] = o.FirstName
+	toSerialize["last_name"] = o.LastName
+	toSerialize["email"] = o.Email
+	toSerialize["customer_code"] = o.CustomerCode
+	toSerialize["phone"] = o.Phone.Get()
+	toSerialize["risk_action"] = o.RiskAction
+	toSerialize["international_format_phone"] = o.InternationalFormatPhone.Get()
 	return toSerialize, nil
+}
+
+func (o *DedicatedNubanListResponseArrayCustomer) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"first_name",
+		"last_name",
+		"email",
+		"customer_code",
+		"phone",
+		"risk_action",
+		"international_format_phone",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDedicatedNubanListResponseArrayCustomer := _DedicatedNubanListResponseArrayCustomer{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDedicatedNubanListResponseArrayCustomer)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DedicatedNubanListResponseArrayCustomer(varDedicatedNubanListResponseArrayCustomer)
+
+	return err
 }
 
 type NullableDedicatedNubanListResponseArrayCustomer struct {

@@ -35,12 +35,12 @@ type DisputeListTransactionResponseDataTransaction struct {
 	Channel string `json:"channel"`
 	Currency string `json:"currency"`
 	IpAddress string `json:"ip_address"`
-	Metadata TransactionFetchResponseDataMetadata `json:"metadata"`
+	Metadata BulkChargeFetchBulkBatchChargesResponseArrayMetadata `json:"metadata"`
 	Log NullableChargeAuthorizationResponseDataLog `json:"log"`
 	Fees int32 `json:"fees"`
 	FeesSplit NullableInt32 `json:"fees_split"`
 	Authorization DisputeFetchResponseDataTransactionAuthorization `json:"authorization"`
-	Customer DisputeFetchResponseDataTransactionCustomer `json:"customer"`
+	Customer RefundCreateResponseDataTransactionCustomer `json:"customer"`
 	Plan map[string]interface{} `json:"plan"`
 	Subaccount map[string]interface{} `json:"subaccount"`
 	Split map[string]interface{} `json:"split"`
@@ -58,7 +58,7 @@ type _DisputeListTransactionResponseDataTransaction DisputeListTransactionRespon
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDisputeListTransactionResponseDataTransaction(id int32, domain string, status string, reference string, amount int32, message interface{}, gatewayResponse string, channel string, currency string, ipAddress string, metadata TransactionFetchResponseDataMetadata, log NullableChargeAuthorizationResponseDataLog, fees int32, feesSplit NullableInt32, authorization DisputeFetchResponseDataTransactionAuthorization, customer DisputeFetchResponseDataTransactionCustomer, plan map[string]interface{}, subaccount map[string]interface{}, split map[string]interface{}, orderId interface{}, requestedAmount int32, posTransactionData interface{}, source interface{}, feesBreakdown interface{}, connect map[string]interface{}) *DisputeListTransactionResponseDataTransaction {
+func NewDisputeListTransactionResponseDataTransaction(id int32, domain string, status string, reference string, amount int32, message interface{}, gatewayResponse string, channel string, currency string, ipAddress string, metadata BulkChargeFetchBulkBatchChargesResponseArrayMetadata, log NullableChargeAuthorizationResponseDataLog, fees int32, feesSplit NullableInt32, authorization DisputeFetchResponseDataTransactionAuthorization, customer RefundCreateResponseDataTransactionCustomer, plan map[string]interface{}, subaccount map[string]interface{}, split map[string]interface{}, orderId interface{}, requestedAmount int32, posTransactionData interface{}, source interface{}, feesBreakdown interface{}, connect map[string]interface{}) *DisputeListTransactionResponseDataTransaction {
 	this := DisputeListTransactionResponseDataTransaction{}
 	this.Id = id
 	this.Domain = domain
@@ -455,9 +455,9 @@ func (o *DisputeListTransactionResponseDataTransaction) SetIpAddress(v string) {
 }
 
 // GetMetadata returns the Metadata field value
-func (o *DisputeListTransactionResponseDataTransaction) GetMetadata() TransactionFetchResponseDataMetadata {
+func (o *DisputeListTransactionResponseDataTransaction) GetMetadata() BulkChargeFetchBulkBatchChargesResponseArrayMetadata {
 	if o == nil {
-		var ret TransactionFetchResponseDataMetadata
+		var ret BulkChargeFetchBulkBatchChargesResponseArrayMetadata
 		return ret
 	}
 
@@ -466,7 +466,7 @@ func (o *DisputeListTransactionResponseDataTransaction) GetMetadata() Transactio
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
-func (o *DisputeListTransactionResponseDataTransaction) GetMetadataOk() (*TransactionFetchResponseDataMetadata, bool) {
+func (o *DisputeListTransactionResponseDataTransaction) GetMetadataOk() (*BulkChargeFetchBulkBatchChargesResponseArrayMetadata, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -474,7 +474,7 @@ func (o *DisputeListTransactionResponseDataTransaction) GetMetadataOk() (*Transa
 }
 
 // SetMetadata sets field value
-func (o *DisputeListTransactionResponseDataTransaction) SetMetadata(v TransactionFetchResponseDataMetadata) {
+func (o *DisputeListTransactionResponseDataTransaction) SetMetadata(v BulkChargeFetchBulkBatchChargesResponseArrayMetadata) {
 	o.Metadata = v
 }
 
@@ -579,9 +579,9 @@ func (o *DisputeListTransactionResponseDataTransaction) SetAuthorization(v Dispu
 }
 
 // GetCustomer returns the Customer field value
-func (o *DisputeListTransactionResponseDataTransaction) GetCustomer() DisputeFetchResponseDataTransactionCustomer {
+func (o *DisputeListTransactionResponseDataTransaction) GetCustomer() RefundCreateResponseDataTransactionCustomer {
 	if o == nil {
-		var ret DisputeFetchResponseDataTransactionCustomer
+		var ret RefundCreateResponseDataTransactionCustomer
 		return ret
 	}
 
@@ -590,7 +590,7 @@ func (o *DisputeListTransactionResponseDataTransaction) GetCustomer() DisputeFet
 
 // GetCustomerOk returns a tuple with the Customer field value
 // and a boolean to check if the value has been set.
-func (o *DisputeListTransactionResponseDataTransaction) GetCustomerOk() (*DisputeFetchResponseDataTransactionCustomer, bool) {
+func (o *DisputeListTransactionResponseDataTransaction) GetCustomerOk() (*RefundCreateResponseDataTransactionCustomer, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -598,7 +598,7 @@ func (o *DisputeListTransactionResponseDataTransaction) GetCustomerOk() (*Disput
 }
 
 // SetCustomer sets field value
-func (o *DisputeListTransactionResponseDataTransaction) SetCustomer(v DisputeFetchResponseDataTransactionCustomer) {
+func (o *DisputeListTransactionResponseDataTransaction) SetCustomer(v RefundCreateResponseDataTransactionCustomer) {
 	o.Customer = v
 }
 

@@ -43,8 +43,8 @@ class OrderCreate(BaseModel):
     @field_validator('currency')
     def currency_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['GHS', 'KES', 'NGN', 'USD', 'ZAR']):
-            raise ValueError("must be one of enum values ('GHS', 'KES', 'NGN', 'USD', 'ZAR')")
+        if value not in set(['GHS', 'KES', 'NGN', 'USD', 'ZAR', 'XOF']):
+            raise ValueError("must be one of enum values ('GHS', 'KES', 'NGN', 'USD', 'ZAR', 'XOF')")
         return value
 
     model_config = ConfigDict(

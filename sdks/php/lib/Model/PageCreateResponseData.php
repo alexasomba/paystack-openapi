@@ -59,6 +59,9 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'name' => 'string',
+        'description' => 'string',
+        'amount' => 'int',
+        'split_code' => 'string',
         'integration' => 'int',
         'domain' => 'string',
         'slug' => 'string',
@@ -82,6 +85,9 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'name' => null,
+        'description' => null,
+        'amount' => null,
+        'split_code' => null,
         'integration' => null,
         'domain' => null,
         'slug' => null,
@@ -103,6 +109,9 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPINullables = [
         'name' => false,
+        'description' => true,
+        'amount' => true,
+        'split_code' => true,
         'integration' => false,
         'domain' => false,
         'slug' => false,
@@ -204,6 +213,9 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'name' => 'name',
+        'description' => 'description',
+        'amount' => 'amount',
+        'split_code' => 'split_code',
         'integration' => 'integration',
         'domain' => 'domain',
         'slug' => 'slug',
@@ -225,6 +237,9 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'name' => 'setName',
+        'description' => 'setDescription',
+        'amount' => 'setAmount',
+        'split_code' => 'setSplitCode',
         'integration' => 'setIntegration',
         'domain' => 'setDomain',
         'slug' => 'setSlug',
@@ -246,6 +261,9 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'name' => 'getName',
+        'description' => 'getDescription',
+        'amount' => 'getAmount',
+        'split_code' => 'getSplitCode',
         'integration' => 'getIntegration',
         'domain' => 'getDomain',
         'slug' => 'getSlug',
@@ -318,6 +336,9 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(?array $data = null)
     {
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('amount', $data ?? [], null);
+        $this->setIfExists('split_code', $data ?? [], null);
         $this->setIfExists('integration', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('slug', $data ?? [], null);
@@ -361,6 +382,9 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
 
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['amount'] === null && !$this->isNullableSetToNull('amount')) {
+            $invalidProperties[] = "'amount' can't be null";
         }
         if ($this->container['integration'] === null) {
             $invalidProperties[] = "'integration' can't be null";
@@ -436,6 +460,108 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount
+     *
+     * @return int|null
+     */
+    public function getAmount()
+    {
+        return $this->container['amount'];
+    }
+
+    /**
+     * Sets amount
+     *
+     * @param int|null $amount amount
+     *
+     * @return self
+     */
+    public function setAmount($amount)
+    {
+        if (is_null($amount)) {
+            array_push($this->openAPINullablesSetToNull, 'amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('amount', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets split_code
+     *
+     * @return string|null
+     */
+    public function getSplitCode()
+    {
+        return $this->container['split_code'];
+    }
+
+    /**
+     * Sets split_code
+     *
+     * @param string|null $split_code split_code
+     *
+     * @return self
+     */
+    public function setSplitCode($split_code)
+    {
+        if (is_null($split_code)) {
+            array_push($this->openAPINullablesSetToNull, 'split_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('split_code', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['split_code'] = $split_code;
 
         return $this;
     }

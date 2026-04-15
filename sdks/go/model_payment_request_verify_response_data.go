@@ -30,21 +30,21 @@ type PaymentRequestVerifyResponseData struct {
 	DueDate NullableString `json:"due_date"`
 	HasInvoice bool `json:"has_invoice"`
 	InvoiceNumber NullableInt32 `json:"invoice_number"`
-	Description interface{} `json:"description"`
+	Description NullableString `json:"description"`
 	PdfUrl NullableString `json:"pdf_url"`
 	LineItems []interface{} `json:"line_items"`
 	Tax []interface{} `json:"tax"`
 	RequestCode string `json:"request_code"`
 	Status string `json:"status"`
 	Paid bool `json:"paid"`
-	PaidAt interface{} `json:"paid_at"`
-	Metadata interface{} `json:"metadata"`
+	PaidAt NullableString `json:"paid_at"`
+	Metadata map[string]interface{} `json:"metadata"`
 	Notifications []PaymentRequestNotificationsArray `json:"notifications"`
 	OfflineReference string `json:"offline_reference"`
-	Customer BulkChargeFetchBulkBatchChargesResponseArrayCustomer `json:"customer"`
+	Customer DedicatedNubanCreateResponseDataCustomer `json:"customer"`
 	CreatedAt string `json:"created_at"`
-	Discount interface{} `json:"discount"`
-	SplitCode interface{} `json:"split_code"`
+	Discount map[string]interface{} `json:"discount,omitempty"`
+	SplitCode NullableString `json:"split_code,omitempty"`
 	PendingAmount int32 `json:"pending_amount"`
 }
 
@@ -54,7 +54,7 @@ type _PaymentRequestVerifyResponseData PaymentRequestVerifyResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaymentRequestVerifyResponseData(id int32, integration PaymentRequestVerifyResponseDataIntegration, domain string, amount int32, currency string, dueDate NullableString, hasInvoice bool, invoiceNumber NullableInt32, description interface{}, pdfUrl NullableString, lineItems []interface{}, tax []interface{}, requestCode string, status string, paid bool, paidAt interface{}, metadata interface{}, notifications []PaymentRequestNotificationsArray, offlineReference string, customer BulkChargeFetchBulkBatchChargesResponseArrayCustomer, createdAt string, discount interface{}, splitCode interface{}, pendingAmount int32) *PaymentRequestVerifyResponseData {
+func NewPaymentRequestVerifyResponseData(id int32, integration PaymentRequestVerifyResponseDataIntegration, domain string, amount int32, currency string, dueDate NullableString, hasInvoice bool, invoiceNumber NullableInt32, description NullableString, pdfUrl NullableString, lineItems []interface{}, tax []interface{}, requestCode string, status string, paid bool, paidAt NullableString, metadata map[string]interface{}, notifications []PaymentRequestNotificationsArray, offlineReference string, customer DedicatedNubanCreateResponseDataCustomer, createdAt string, pendingAmount int32) *PaymentRequestVerifyResponseData {
 	this := PaymentRequestVerifyResponseData{}
 	this.Id = id
 	this.Integration = integration
@@ -77,8 +77,6 @@ func NewPaymentRequestVerifyResponseData(id int32, integration PaymentRequestVer
 	this.OfflineReference = offlineReference
 	this.Customer = customer
 	this.CreatedAt = createdAt
-	this.Discount = discount
-	this.SplitCode = splitCode
 	this.PendingAmount = pendingAmount
 	return &this
 }
@@ -288,29 +286,29 @@ func (o *PaymentRequestVerifyResponseData) SetInvoiceNumber(v int32) {
 }
 
 // GetDescription returns the Description field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PaymentRequestVerifyResponseData) GetDescription() interface{} {
-	if o == nil {
-		var ret interface{}
+// If the value is explicit nil, the zero value for string will be returned
+func (o *PaymentRequestVerifyResponseData) GetDescription() string {
+	if o == nil || o.Description.Get() == nil {
+		var ret string
 		return ret
 	}
 
-	return o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PaymentRequestVerifyResponseData) GetDescriptionOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Description) {
+func (o *PaymentRequestVerifyResponseData) GetDescriptionOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // SetDescription sets field value
-func (o *PaymentRequestVerifyResponseData) SetDescription(v interface{}) {
-	o.Description = v
+func (o *PaymentRequestVerifyResponseData) SetDescription(v string) {
+	o.Description.Set(&v)
 }
 
 // GetPdfUrl returns the PdfUrl field value
@@ -460,36 +458,36 @@ func (o *PaymentRequestVerifyResponseData) SetPaid(v bool) {
 }
 
 // GetPaidAt returns the PaidAt field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PaymentRequestVerifyResponseData) GetPaidAt() interface{} {
-	if o == nil {
-		var ret interface{}
+// If the value is explicit nil, the zero value for string will be returned
+func (o *PaymentRequestVerifyResponseData) GetPaidAt() string {
+	if o == nil || o.PaidAt.Get() == nil {
+		var ret string
 		return ret
 	}
 
-	return o.PaidAt
+	return *o.PaidAt.Get()
 }
 
 // GetPaidAtOk returns a tuple with the PaidAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PaymentRequestVerifyResponseData) GetPaidAtOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.PaidAt) {
+func (o *PaymentRequestVerifyResponseData) GetPaidAtOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.PaidAt, true
+	return o.PaidAt.Get(), o.PaidAt.IsSet()
 }
 
 // SetPaidAt sets field value
-func (o *PaymentRequestVerifyResponseData) SetPaidAt(v interface{}) {
-	o.PaidAt = v
+func (o *PaymentRequestVerifyResponseData) SetPaidAt(v string) {
+	o.PaidAt.Set(&v)
 }
 
 // GetMetadata returns the Metadata field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PaymentRequestVerifyResponseData) GetMetadata() interface{} {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *PaymentRequestVerifyResponseData) GetMetadata() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -499,15 +497,15 @@ func (o *PaymentRequestVerifyResponseData) GetMetadata() interface{} {
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PaymentRequestVerifyResponseData) GetMetadataOk() (*interface{}, bool) {
+func (o *PaymentRequestVerifyResponseData) GetMetadataOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Metadata) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Metadata, true
+	return o.Metadata, true
 }
 
 // SetMetadata sets field value
-func (o *PaymentRequestVerifyResponseData) SetMetadata(v interface{}) {
+func (o *PaymentRequestVerifyResponseData) SetMetadata(v map[string]interface{}) {
 	o.Metadata = v
 }
 
@@ -560,9 +558,9 @@ func (o *PaymentRequestVerifyResponseData) SetOfflineReference(v string) {
 }
 
 // GetCustomer returns the Customer field value
-func (o *PaymentRequestVerifyResponseData) GetCustomer() BulkChargeFetchBulkBatchChargesResponseArrayCustomer {
+func (o *PaymentRequestVerifyResponseData) GetCustomer() DedicatedNubanCreateResponseDataCustomer {
 	if o == nil {
-		var ret BulkChargeFetchBulkBatchChargesResponseArrayCustomer
+		var ret DedicatedNubanCreateResponseDataCustomer
 		return ret
 	}
 
@@ -571,7 +569,7 @@ func (o *PaymentRequestVerifyResponseData) GetCustomer() BulkChargeFetchBulkBatc
 
 // GetCustomerOk returns a tuple with the Customer field value
 // and a boolean to check if the value has been set.
-func (o *PaymentRequestVerifyResponseData) GetCustomerOk() (*BulkChargeFetchBulkBatchChargesResponseArrayCustomer, bool) {
+func (o *PaymentRequestVerifyResponseData) GetCustomerOk() (*DedicatedNubanCreateResponseDataCustomer, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -579,7 +577,7 @@ func (o *PaymentRequestVerifyResponseData) GetCustomerOk() (*BulkChargeFetchBulk
 }
 
 // SetCustomer sets field value
-func (o *PaymentRequestVerifyResponseData) SetCustomer(v BulkChargeFetchBulkBatchChargesResponseArrayCustomer) {
+func (o *PaymentRequestVerifyResponseData) SetCustomer(v DedicatedNubanCreateResponseDataCustomer) {
 	o.Customer = v
 }
 
@@ -607,56 +605,79 @@ func (o *PaymentRequestVerifyResponseData) SetCreatedAt(v string) {
 	o.CreatedAt = v
 }
 
-// GetDiscount returns the Discount field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PaymentRequestVerifyResponseData) GetDiscount() interface{} {
+// GetDiscount returns the Discount field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PaymentRequestVerifyResponseData) GetDiscount() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.Discount
 }
 
-// GetDiscountOk returns a tuple with the Discount field value
+// GetDiscountOk returns a tuple with the Discount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PaymentRequestVerifyResponseData) GetDiscountOk() (*interface{}, bool) {
+func (o *PaymentRequestVerifyResponseData) GetDiscountOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Discount) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Discount, true
+	return o.Discount, true
 }
 
-// SetDiscount sets field value
-func (o *PaymentRequestVerifyResponseData) SetDiscount(v interface{}) {
+// HasDiscount returns a boolean if a field has been set.
+func (o *PaymentRequestVerifyResponseData) HasDiscount() bool {
+	if o != nil && !IsNil(o.Discount) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiscount gets a reference to the given map[string]interface{} and assigns it to the Discount field.
+func (o *PaymentRequestVerifyResponseData) SetDiscount(v map[string]interface{}) {
 	o.Discount = v
 }
 
-// GetSplitCode returns the SplitCode field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *PaymentRequestVerifyResponseData) GetSplitCode() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetSplitCode returns the SplitCode field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PaymentRequestVerifyResponseData) GetSplitCode() string {
+	if o == nil || IsNil(o.SplitCode.Get()) {
+		var ret string
 		return ret
 	}
-
-	return o.SplitCode
+	return *o.SplitCode.Get()
 }
 
-// GetSplitCodeOk returns a tuple with the SplitCode field value
+// GetSplitCodeOk returns a tuple with the SplitCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PaymentRequestVerifyResponseData) GetSplitCodeOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.SplitCode) {
+func (o *PaymentRequestVerifyResponseData) GetSplitCodeOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.SplitCode, true
+	return o.SplitCode.Get(), o.SplitCode.IsSet()
 }
 
-// SetSplitCode sets field value
-func (o *PaymentRequestVerifyResponseData) SetSplitCode(v interface{}) {
-	o.SplitCode = v
+// HasSplitCode returns a boolean if a field has been set.
+func (o *PaymentRequestVerifyResponseData) HasSplitCode() bool {
+	if o != nil && o.SplitCode.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSplitCode gets a reference to the given NullableString and assigns it to the SplitCode field.
+func (o *PaymentRequestVerifyResponseData) SetSplitCode(v string) {
+	o.SplitCode.Set(&v)
+}
+// SetSplitCodeNil sets the value for SplitCode to be an explicit nil
+func (o *PaymentRequestVerifyResponseData) SetSplitCodeNil() {
+	o.SplitCode.Set(nil)
+}
+
+// UnsetSplitCode ensures that no value is present for SplitCode, not even an explicit nil
+func (o *PaymentRequestVerifyResponseData) UnsetSplitCode() {
+	o.SplitCode.Unset()
 }
 
 // GetPendingAmount returns the PendingAmount field value
@@ -701,18 +722,14 @@ func (o PaymentRequestVerifyResponseData) ToMap() (map[string]interface{}, error
 	toSerialize["due_date"] = o.DueDate.Get()
 	toSerialize["has_invoice"] = o.HasInvoice
 	toSerialize["invoice_number"] = o.InvoiceNumber.Get()
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
+	toSerialize["description"] = o.Description.Get()
 	toSerialize["pdf_url"] = o.PdfUrl.Get()
 	toSerialize["line_items"] = o.LineItems
 	toSerialize["tax"] = o.Tax
 	toSerialize["request_code"] = o.RequestCode
 	toSerialize["status"] = o.Status
 	toSerialize["paid"] = o.Paid
-	if o.PaidAt != nil {
-		toSerialize["paid_at"] = o.PaidAt
-	}
+	toSerialize["paid_at"] = o.PaidAt.Get()
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
 	}
@@ -723,8 +740,8 @@ func (o PaymentRequestVerifyResponseData) ToMap() (map[string]interface{}, error
 	if o.Discount != nil {
 		toSerialize["discount"] = o.Discount
 	}
-	if o.SplitCode != nil {
-		toSerialize["split_code"] = o.SplitCode
+	if o.SplitCode.IsSet() {
+		toSerialize["split_code"] = o.SplitCode.Get()
 	}
 	toSerialize["pending_amount"] = o.PendingAmount
 	return toSerialize, nil
@@ -756,8 +773,6 @@ func (o *PaymentRequestVerifyResponseData) UnmarshalJSON(data []byte) (err error
 		"offline_reference",
 		"customer",
 		"created_at",
-		"discount",
-		"split_code",
 		"pending_amount",
 	}
 

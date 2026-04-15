@@ -24,24 +24,25 @@ var _ MappedNullable = &TransactionChargeAuthorization{}
 type TransactionChargeAuthorization struct {
 	// Customer's email address
 	Email string `json:"email"`
-	// Amount in the lower denomination of your currency
-	Amount int32 `json:"amount"`
+	// Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). 
+	Amount interface{} `json:"amount"`
 	// Valid authorization code to charge
 	AuthorizationCode string `json:"authorization_code"`
 	// Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
 	Reference *string `json:"reference,omitempty"`
 	Currency *Currency `json:"currency,omitempty"`
+	// Send us 'card' or 'bank' or 'card','bank' as an array to specify what options to show the user paying
+	Channels []string `json:"channels,omitempty"`
 	// The split code of the transaction split
 	SplitCode *string `json:"split_code,omitempty"`
 	Split *SplitCreate `json:"split,omitempty"`
 	// The code for the subaccount that owns the payment
 	Subaccount *string `json:"subaccount,omitempty"`
 	// A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created
-	TransactionCharge *string `json:"transaction_charge,omitempty"`
+	TransactionCharge *int32 `json:"transaction_charge,omitempty"`
 	// The bearer of the transaction charge
 	Bearer *string `json:"bearer,omitempty"`
-	// Stringified JSON object of custom data
-	Metadata *string `json:"metadata,omitempty"`
+	Metadata *TransactionChargeAuthorizationMetadata `json:"metadata,omitempty"`
 	// If you are making a scheduled charge call, it is a good idea to queue them so the processing system does not get overloaded causing transaction processing errors.
 	Queue *bool `json:"queue,omitempty"`
 }
@@ -52,7 +53,7 @@ type _TransactionChargeAuthorization TransactionChargeAuthorization
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransactionChargeAuthorization(email string, amount int32, authorizationCode string) *TransactionChargeAuthorization {
+func NewTransactionChargeAuthorization(email string, amount interface{}, authorizationCode string) *TransactionChargeAuthorization {
 	this := TransactionChargeAuthorization{}
 	this.Email = email
 	this.Amount = amount
@@ -93,9 +94,10 @@ func (o *TransactionChargeAuthorization) SetEmail(v string) {
 }
 
 // GetAmount returns the Amount field value
-func (o *TransactionChargeAuthorization) GetAmount() int32 {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *TransactionChargeAuthorization) GetAmount() interface{} {
 	if o == nil {
-		var ret int32
+		var ret interface{}
 		return ret
 	}
 
@@ -104,15 +106,16 @@ func (o *TransactionChargeAuthorization) GetAmount() int32 {
 
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
-func (o *TransactionChargeAuthorization) GetAmountOk() (*int32, bool) {
-	if o == nil {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TransactionChargeAuthorization) GetAmountOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Amount) {
 		return nil, false
 	}
 	return &o.Amount, true
 }
 
 // SetAmount sets field value
-func (o *TransactionChargeAuthorization) SetAmount(v int32) {
+func (o *TransactionChargeAuthorization) SetAmount(v interface{}) {
 	o.Amount = v
 }
 
@@ -202,6 +205,38 @@ func (o *TransactionChargeAuthorization) HasCurrency() bool {
 // SetCurrency gets a reference to the given Currency and assigns it to the Currency field.
 func (o *TransactionChargeAuthorization) SetCurrency(v Currency) {
 	o.Currency = &v
+}
+
+// GetChannels returns the Channels field value if set, zero value otherwise.
+func (o *TransactionChargeAuthorization) GetChannels() []string {
+	if o == nil || IsNil(o.Channels) {
+		var ret []string
+		return ret
+	}
+	return o.Channels
+}
+
+// GetChannelsOk returns a tuple with the Channels field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransactionChargeAuthorization) GetChannelsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Channels) {
+		return nil, false
+	}
+	return o.Channels, true
+}
+
+// HasChannels returns a boolean if a field has been set.
+func (o *TransactionChargeAuthorization) HasChannels() bool {
+	if o != nil && !IsNil(o.Channels) {
+		return true
+	}
+
+	return false
+}
+
+// SetChannels gets a reference to the given []string and assigns it to the Channels field.
+func (o *TransactionChargeAuthorization) SetChannels(v []string) {
+	o.Channels = v
 }
 
 // GetSplitCode returns the SplitCode field value if set, zero value otherwise.
@@ -301,9 +336,9 @@ func (o *TransactionChargeAuthorization) SetSubaccount(v string) {
 }
 
 // GetTransactionCharge returns the TransactionCharge field value if set, zero value otherwise.
-func (o *TransactionChargeAuthorization) GetTransactionCharge() string {
+func (o *TransactionChargeAuthorization) GetTransactionCharge() int32 {
 	if o == nil || IsNil(o.TransactionCharge) {
-		var ret string
+		var ret int32
 		return ret
 	}
 	return *o.TransactionCharge
@@ -311,7 +346,7 @@ func (o *TransactionChargeAuthorization) GetTransactionCharge() string {
 
 // GetTransactionChargeOk returns a tuple with the TransactionCharge field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TransactionChargeAuthorization) GetTransactionChargeOk() (*string, bool) {
+func (o *TransactionChargeAuthorization) GetTransactionChargeOk() (*int32, bool) {
 	if o == nil || IsNil(o.TransactionCharge) {
 		return nil, false
 	}
@@ -327,8 +362,8 @@ func (o *TransactionChargeAuthorization) HasTransactionCharge() bool {
 	return false
 }
 
-// SetTransactionCharge gets a reference to the given string and assigns it to the TransactionCharge field.
-func (o *TransactionChargeAuthorization) SetTransactionCharge(v string) {
+// SetTransactionCharge gets a reference to the given int32 and assigns it to the TransactionCharge field.
+func (o *TransactionChargeAuthorization) SetTransactionCharge(v int32) {
 	o.TransactionCharge = &v
 }
 
@@ -365,9 +400,9 @@ func (o *TransactionChargeAuthorization) SetBearer(v string) {
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *TransactionChargeAuthorization) GetMetadata() string {
+func (o *TransactionChargeAuthorization) GetMetadata() TransactionChargeAuthorizationMetadata {
 	if o == nil || IsNil(o.Metadata) {
-		var ret string
+		var ret TransactionChargeAuthorizationMetadata
 		return ret
 	}
 	return *o.Metadata
@@ -375,7 +410,7 @@ func (o *TransactionChargeAuthorization) GetMetadata() string {
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TransactionChargeAuthorization) GetMetadataOk() (*string, bool) {
+func (o *TransactionChargeAuthorization) GetMetadataOk() (*TransactionChargeAuthorizationMetadata, bool) {
 	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
@@ -391,8 +426,8 @@ func (o *TransactionChargeAuthorization) HasMetadata() bool {
 	return false
 }
 
-// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
-func (o *TransactionChargeAuthorization) SetMetadata(v string) {
+// SetMetadata gets a reference to the given TransactionChargeAuthorizationMetadata and assigns it to the Metadata field.
+func (o *TransactionChargeAuthorization) SetMetadata(v TransactionChargeAuthorizationMetadata) {
 	o.Metadata = &v
 }
 
@@ -439,13 +474,18 @@ func (o TransactionChargeAuthorization) MarshalJSON() ([]byte, error) {
 func (o TransactionChargeAuthorization) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["email"] = o.Email
-	toSerialize["amount"] = o.Amount
+	if o.Amount != nil {
+		toSerialize["amount"] = o.Amount
+	}
 	toSerialize["authorization_code"] = o.AuthorizationCode
 	if !IsNil(o.Reference) {
 		toSerialize["reference"] = o.Reference
 	}
 	if !IsNil(o.Currency) {
 		toSerialize["currency"] = o.Currency
+	}
+	if !IsNil(o.Channels) {
+		toSerialize["channels"] = o.Channels
 	}
 	if !IsNil(o.SplitCode) {
 		toSerialize["split_code"] = o.SplitCode

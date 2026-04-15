@@ -97,7 +97,7 @@ class DedicatedNubanListResponseArrayCustomer implements ModelInterface, ArrayAc
         'last_name' => false,
         'email' => false,
         'customer_code' => false,
-        'phone' => false,
+        'phone' => true,
         'risk_action' => false,
         'international_format_phone' => true
     ];
@@ -324,6 +324,30 @@ class DedicatedNubanListResponseArrayCustomer implements ModelInterface, ArrayAc
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['first_name'] === null) {
+            $invalidProperties[] = "'first_name' can't be null";
+        }
+        if ($this->container['last_name'] === null) {
+            $invalidProperties[] = "'last_name' can't be null";
+        }
+        if ($this->container['email'] === null) {
+            $invalidProperties[] = "'email' can't be null";
+        }
+        if ($this->container['customer_code'] === null) {
+            $invalidProperties[] = "'customer_code' can't be null";
+        }
+        if ($this->container['phone'] === null && !$this->isNullableSetToNull('phone')) {
+            $invalidProperties[] = "'phone' can't be null";
+        }
+        if ($this->container['risk_action'] === null) {
+            $invalidProperties[] = "'risk_action' can't be null";
+        }
+        if ($this->container['international_format_phone'] === null && !$this->isNullableSetToNull('international_format_phone')) {
+            $invalidProperties[] = "'international_format_phone' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -342,7 +366,7 @@ class DedicatedNubanListResponseArrayCustomer implements ModelInterface, ArrayAc
     /**
      * Gets id
      *
-     * @return int|null
+     * @return int
      */
     public function getId()
     {
@@ -352,7 +376,7 @@ class DedicatedNubanListResponseArrayCustomer implements ModelInterface, ArrayAc
     /**
      * Sets id
      *
-     * @param int|null $id id
+     * @param int $id id
      *
      * @return self
      */
@@ -369,7 +393,7 @@ class DedicatedNubanListResponseArrayCustomer implements ModelInterface, ArrayAc
     /**
      * Gets first_name
      *
-     * @return string|null
+     * @return string
      */
     public function getFirstName()
     {
@@ -379,7 +403,7 @@ class DedicatedNubanListResponseArrayCustomer implements ModelInterface, ArrayAc
     /**
      * Sets first_name
      *
-     * @param string|null $first_name first_name
+     * @param string $first_name first_name
      *
      * @return self
      */
@@ -396,7 +420,7 @@ class DedicatedNubanListResponseArrayCustomer implements ModelInterface, ArrayAc
     /**
      * Gets last_name
      *
-     * @return string|null
+     * @return string
      */
     public function getLastName()
     {
@@ -406,7 +430,7 @@ class DedicatedNubanListResponseArrayCustomer implements ModelInterface, ArrayAc
     /**
      * Sets last_name
      *
-     * @param string|null $last_name last_name
+     * @param string $last_name last_name
      *
      * @return self
      */
@@ -423,7 +447,7 @@ class DedicatedNubanListResponseArrayCustomer implements ModelInterface, ArrayAc
     /**
      * Gets email
      *
-     * @return string|null
+     * @return string
      */
     public function getEmail()
     {
@@ -433,7 +457,7 @@ class DedicatedNubanListResponseArrayCustomer implements ModelInterface, ArrayAc
     /**
      * Sets email
      *
-     * @param string|null $email email
+     * @param string $email email
      *
      * @return self
      */
@@ -450,7 +474,7 @@ class DedicatedNubanListResponseArrayCustomer implements ModelInterface, ArrayAc
     /**
      * Gets customer_code
      *
-     * @return string|null
+     * @return string
      */
     public function getCustomerCode()
     {
@@ -460,7 +484,7 @@ class DedicatedNubanListResponseArrayCustomer implements ModelInterface, ArrayAc
     /**
      * Sets customer_code
      *
-     * @param string|null $customer_code customer_code
+     * @param string $customer_code customer_code
      *
      * @return self
      */
@@ -494,7 +518,14 @@ class DedicatedNubanListResponseArrayCustomer implements ModelInterface, ArrayAc
     public function setPhone($phone)
     {
         if (is_null($phone)) {
-            throw new \InvalidArgumentException('non-nullable phone cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'phone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('phone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['phone'] = $phone;
 
@@ -504,7 +535,7 @@ class DedicatedNubanListResponseArrayCustomer implements ModelInterface, ArrayAc
     /**
      * Gets risk_action
      *
-     * @return string|null
+     * @return string
      */
     public function getRiskAction()
     {
@@ -514,7 +545,7 @@ class DedicatedNubanListResponseArrayCustomer implements ModelInterface, ArrayAc
     /**
      * Sets risk_action
      *
-     * @param string|null $risk_action risk_action
+     * @param string $risk_action risk_action
      *
      * @return self
      */

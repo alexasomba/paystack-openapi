@@ -18,7 +18,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	"time"
 )
 
 
@@ -382,7 +381,7 @@ func (a *SubscriptionAPIService) SubscriptionEnableExecute(r ApiSubscriptionEnab
 type ApiSubscriptionFetchRequest struct {
 	ctx context.Context
 	ApiService *SubscriptionAPIService
-	code string
+	idOrCode string
 }
 
 func (r ApiSubscriptionFetchRequest) Execute() (*SubscriptionFetchResponse, *http.Response, error) {
@@ -395,14 +394,14 @@ SubscriptionFetch Fetch Subscription
 Get details of a customer's subscription
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code The subscription code for the subscription you want to fetch
+ @param idOrCode The subscription ID or code you want to fetch
  @return ApiSubscriptionFetchRequest
 */
-func (a *SubscriptionAPIService) SubscriptionFetch(ctx context.Context, code string) ApiSubscriptionFetchRequest {
+func (a *SubscriptionAPIService) SubscriptionFetch(ctx context.Context, idOrCode string) ApiSubscriptionFetchRequest {
 	return ApiSubscriptionFetchRequest{
 		ApiService: a,
 		ctx: ctx,
-		code: code,
+		idOrCode: idOrCode,
 	}
 }
 
@@ -421,8 +420,8 @@ func (a *SubscriptionAPIService) SubscriptionFetchExecute(r ApiSubscriptionFetch
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/subscription/{code}"
-	localVarPath = strings.Replace(localVarPath, "{"+"code"+"}", url.PathEscape(parameterValueToString(r.code, "code")), -1)
+	localVarPath := localBasePath + "/subscription/{id_or_code}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id_or_code"+"}", url.PathEscape(parameterValueToString(r.idOrCode, "idOrCode")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -510,9 +509,7 @@ type ApiSubscriptionListRequest struct {
 	perPage *int32
 	page *int32
 	plan *int32
-	customer *string
-	from *time.Time
-	to *time.Time
+	customer *int32
 }
 
 // Number of records to fetch per page
@@ -533,21 +530,9 @@ func (r ApiSubscriptionListRequest) Plan(plan int32) ApiSubscriptionListRequest 
 	return r
 }
 
-// Customer ID
-func (r ApiSubscriptionListRequest) Customer(customer string) ApiSubscriptionListRequest {
+// Filter by Customer ID
+func (r ApiSubscriptionListRequest) Customer(customer int32) ApiSubscriptionListRequest {
 	r.customer = &customer
-	return r
-}
-
-// The start date
-func (r ApiSubscriptionListRequest) From(from time.Time) ApiSubscriptionListRequest {
-	r.from = &from
-	return r
-}
-
-// The end date
-func (r ApiSubscriptionListRequest) To(to time.Time) ApiSubscriptionListRequest {
-	r.to = &to
 	return r
 }
 
@@ -602,12 +587,6 @@ func (a *SubscriptionAPIService) SubscriptionListExecute(r ApiSubscriptionListRe
 	}
 	if r.customer != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "customer", r.customer, "form", "")
-	}
-	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
-	}
-	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

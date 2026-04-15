@@ -61,7 +61,7 @@ class OrderListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
         'status' => 'bool',
         'message' => 'string',
         'data' => '\Alexasomba\Paystack\Model\OrderListResponseArray[]',
-        'meta' => '\Alexasomba\Paystack\Model\OrderListResponseMeta'
+        'meta' => '\Alexasomba\Paystack\Model\Meta'
     ];
 
     /**
@@ -407,7 +407,7 @@ class OrderListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets meta
      *
-     * @return \Alexasomba\Paystack\Model\OrderListResponseMeta
+     * @return \Alexasomba\Paystack\Model\Meta
      */
     public function getMeta()
     {
@@ -417,7 +417,7 @@ class OrderListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets meta
      *
-     * @param \Alexasomba\Paystack\Model\OrderListResponseMeta $meta meta
+     * @param \Alexasomba\Paystack\Model\Meta $meta meta
      *
      * @return self
      */

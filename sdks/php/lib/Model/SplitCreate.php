@@ -266,6 +266,7 @@ class SplitCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     public const CURRENCY_GHS = 'GHS';
     public const CURRENCY_ZAR = 'ZAR';
     public const CURRENCY_USD = 'USD';
+    public const CURRENCY_XOF = 'XOF';
     public const BEARER_TYPE_SUBACCOUNT = 'subaccount';
     public const BEARER_TYPE_ACCOUNT = 'account';
     public const BEARER_TYPE_ALL_PROPORTIONAL = 'all-proportional';
@@ -296,6 +297,7 @@ class SplitCreate implements ModelInterface, ArrayAccess, \JsonSerializable
             self::CURRENCY_GHS,
             self::CURRENCY_ZAR,
             self::CURRENCY_USD,
+            self::CURRENCY_XOF,
         ];
     }
 

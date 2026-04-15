@@ -21,8 +21,8 @@ import json
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.transfer_fees_breakdown_array import TransferFeesBreakdownArray
+from alexasomba_paystack.models.transfer_fetch_response_data_session import TransferFetchResponseDataSession
 from alexasomba_paystack.models.transfer_list_response_array_recipient import TransferListResponseArrayRecipient
-from alexasomba_paystack.models.transfer_list_response_array_session import TransferListResponseArraySession
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -34,21 +34,21 @@ class TransferFetchResponseData(BaseModel):
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     currency: StrictStr
     domain: StrictStr
-    failures: Optional[Any]
+    failures: Optional[Dict[str, Any]]
     id: StrictInt
     integration: StrictInt
     reason: StrictStr
     reference: StrictStr
     source: StrictStr
-    source_details: Optional[Any]
+    source_details: Optional[Dict[str, Any]]
     status: StrictStr
-    titan_code: Optional[Any]
+    titan_code: Optional[StrictStr]
     transfer_code: StrictStr
     request: StrictInt
-    transferred_at: Optional[Any]
+    transferred_at: Optional[StrictStr]
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     recipient: TransferListResponseArrayRecipient
-    session: TransferListResponseArraySession
+    session: TransferFetchResponseDataSession
     fee_charged: StrictInt
     fees_breakdown: Optional[List[TransferFeesBreakdownArray]]
     gateway_response: Optional[StrictStr]
@@ -166,7 +166,7 @@ class TransferFetchResponseData(BaseModel):
             "transferred_at": obj.get("transferred_at"),
             "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "recipient": TransferListResponseArrayRecipient.from_dict(obj["recipient"]) if obj.get("recipient") is not None else None,
-            "session": TransferListResponseArraySession.from_dict(obj["session"]) if obj.get("session") is not None else None,
+            "session": TransferFetchResponseDataSession.from_dict(obj["session"]) if obj.get("session") is not None else None,
             "fee_charged": obj.get("fee_charged"),
             "fees_breakdown": [TransferFeesBreakdownArray.from_dict(_item) for _item in obj["fees_breakdown"]] if obj.get("fees_breakdown") is not None else None,
             "gateway_response": obj.get("gateway_response")

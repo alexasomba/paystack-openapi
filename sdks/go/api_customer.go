@@ -386,7 +386,7 @@ func (a *CustomerAPIService) CustomerDirectDebitActivationChargeExecute(r ApiCus
 type ApiCustomerFetchRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
-	code string
+	emailOrCode string
 }
 
 func (r ApiCustomerFetchRequest) Execute() (*CustomerFetchResponse, *http.Response, error) {
@@ -399,14 +399,14 @@ CustomerFetch Fetch Customer
 Get details of a customer on your integration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code The code for the customer gotten from the response of the customer creation
+ @param emailOrCode An email or customer code for the customer you want to fetch
  @return ApiCustomerFetchRequest
 */
-func (a *CustomerAPIService) CustomerFetch(ctx context.Context, code string) ApiCustomerFetchRequest {
+func (a *CustomerAPIService) CustomerFetch(ctx context.Context, emailOrCode string) ApiCustomerFetchRequest {
 	return ApiCustomerFetchRequest{
 		ApiService: a,
 		ctx: ctx,
-		code: code,
+		emailOrCode: emailOrCode,
 	}
 }
 
@@ -425,8 +425,8 @@ func (a *CustomerAPIService) CustomerFetchExecute(r ApiCustomerFetchRequest) (*C
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/customer/{code}"
-	localVarPath = strings.Replace(localVarPath, "{"+"code"+"}", url.PathEscape(parameterValueToString(r.code, "code")), -1)
+	localVarPath := localBasePath + "/customer/{email_or_code}"
+	localVarPath = strings.Replace(localVarPath, "{"+"email_or_code"+"}", url.PathEscape(parameterValueToString(r.emailOrCode, "emailOrCode")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -873,8 +873,8 @@ type ApiCustomerListRequest struct {
 	previous *string
 	from *time.Time
 	to *time.Time
-	perPage *string
-	page *string
+	perPage *int32
+	page *int32
 }
 
 // A flag to indicate if cursor based pagination should be used
@@ -895,26 +895,26 @@ func (r ApiCustomerListRequest) Previous(previous string) ApiCustomerListRequest
 	return r
 }
 
-// The start date
+// A timestamp from which to start listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
 func (r ApiCustomerListRequest) From(from time.Time) ApiCustomerListRequest {
 	r.from = &from
 	return r
 }
 
-// The end date
+// A timestamp at which to stop listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
 func (r ApiCustomerListRequest) To(to time.Time) ApiCustomerListRequest {
 	r.to = &to
 	return r
 }
 
-// The number of records to fetch per request
-func (r ApiCustomerListRequest) PerPage(perPage string) ApiCustomerListRequest {
+// Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
+func (r ApiCustomerListRequest) PerPage(perPage int32) ApiCustomerListRequest {
 	r.perPage = &perPage
 	return r
 }
 
-// The offset to retrieve data from
-func (r ApiCustomerListRequest) Page(page string) ApiCustomerListRequest {
+// Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
+func (r ApiCustomerListRequest) Page(page int32) ApiCustomerListRequest {
 	r.page = &page
 	return r
 }
@@ -926,7 +926,7 @@ func (r ApiCustomerListRequest) Execute() (*CustomerListResponse, *http.Response
 /*
 CustomerList List Customers
 
-List customers on your integration
+List customers available on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCustomerListRequest
@@ -1177,7 +1177,7 @@ func (a *CustomerAPIService) CustomerRiskActionExecute(r ApiCustomerRiskActionRe
 type ApiCustomerUpdateRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
-	code string
+	emailOrCode string
 	customerUpdate *CustomerUpdate
 }
 
@@ -1196,14 +1196,14 @@ CustomerUpdate Update Customer
 Update a customer's details on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code The code for the customer gotten from the response of the customer creation
+ @param emailOrCode An email or customer code for the customer you want to fetch
  @return ApiCustomerUpdateRequest
 */
-func (a *CustomerAPIService) CustomerUpdate(ctx context.Context, code string) ApiCustomerUpdateRequest {
+func (a *CustomerAPIService) CustomerUpdate(ctx context.Context, emailOrCode string) ApiCustomerUpdateRequest {
 	return ApiCustomerUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
-		code: code,
+		emailOrCode: emailOrCode,
 	}
 }
 
@@ -1222,8 +1222,8 @@ func (a *CustomerAPIService) CustomerUpdateExecute(r ApiCustomerUpdateRequest) (
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/customer/{code}"
-	localVarPath = strings.Replace(localVarPath, "{"+"code"+"}", url.PathEscape(parameterValueToString(r.code, "code")), -1)
+	localVarPath := localBasePath + "/customer/{email_or_code}"
+	localVarPath = strings.Replace(localVarPath, "{"+"email_or_code"+"}", url.PathEscape(parameterValueToString(r.emailOrCode, "emailOrCode")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1310,7 +1310,7 @@ func (a *CustomerAPIService) CustomerUpdateExecute(r ApiCustomerUpdateRequest) (
 type ApiCustomerValidateRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
-	code string
+	customerCode string
 	customerValidate *CustomerValidate
 }
 
@@ -1329,14 +1329,14 @@ CustomerValidate Validate Customer
 Validate a customer's identity
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code The code for the customer gotten from the response of the customer creation
+ @param customerCode Customer code
  @return ApiCustomerValidateRequest
 */
-func (a *CustomerAPIService) CustomerValidate(ctx context.Context, code string) ApiCustomerValidateRequest {
+func (a *CustomerAPIService) CustomerValidate(ctx context.Context, customerCode string) ApiCustomerValidateRequest {
 	return ApiCustomerValidateRequest{
 		ApiService: a,
 		ctx: ctx,
-		code: code,
+		customerCode: customerCode,
 	}
 }
 
@@ -1355,8 +1355,8 @@ func (a *CustomerAPIService) CustomerValidateExecute(r ApiCustomerValidateReques
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/customer/{code}/identification"
-	localVarPath = strings.Replace(localVarPath, "{"+"code"+"}", url.PathEscape(parameterValueToString(r.code, "code")), -1)
+	localVarPath := localBasePath + "/customer/{customer_code}/identification"
+	localVarPath = strings.Replace(localVarPath, "{"+"customer_code"+"}", url.PathEscape(parameterValueToString(r.customerCode, "customerCode")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

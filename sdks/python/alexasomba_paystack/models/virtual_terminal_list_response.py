@@ -19,9 +19,9 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
+from alexasomba_paystack.models.cursor_meta import CursorMeta
 from alexasomba_paystack.models.virtual_terminal_list_response_array import VirtualTerminalListResponseArray
-from alexasomba_paystack.models.virtual_terminal_list_response_meta import VirtualTerminalListResponseMeta
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,10 +29,10 @@ class VirtualTerminalListResponse(BaseModel):
     """
     VirtualTerminalListResponse
     """ # noqa: E501
-    status: Optional[StrictBool] = None
-    message: Optional[StrictStr] = None
-    data: Optional[List[VirtualTerminalListResponseArray]] = None
-    meta: Optional[VirtualTerminalListResponseMeta] = None
+    status: StrictBool
+    message: StrictStr
+    data: List[VirtualTerminalListResponseArray]
+    meta: CursorMeta
     __properties: ClassVar[List[str]] = ["status", "message", "data", "meta"]
 
     model_config = ConfigDict(
@@ -99,7 +99,7 @@ class VirtualTerminalListResponse(BaseModel):
             "status": obj.get("status"),
             "message": obj.get("message"),
             "data": [VirtualTerminalListResponseArray.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
-            "meta": VirtualTerminalListResponseMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+            "meta": CursorMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
         })
         return _obj
 

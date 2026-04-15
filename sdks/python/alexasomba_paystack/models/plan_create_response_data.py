@@ -34,16 +34,13 @@ class PlanCreateResponseData(BaseModel):
     integration: StrictInt
     domain: StrictStr
     plan_code: StrictStr
-    invoice_limit: StrictInt
     send_invoices: StrictBool
     send_sms: StrictBool
     hosted_page: StrictBool
-    migrate: StrictBool
-    is_archived: StrictBool
     id: StrictInt
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    __properties: ClassVar[List[str]] = ["currency", "name", "amount", "interval", "integration", "domain", "plan_code", "invoice_limit", "send_invoices", "send_sms", "hosted_page", "migrate", "is_archived", "id", "createdAt", "updatedAt"]
+    __properties: ClassVar[List[str]] = ["currency", "name", "amount", "interval", "integration", "domain", "plan_code", "send_invoices", "send_sms", "hosted_page", "id", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -103,12 +100,9 @@ class PlanCreateResponseData(BaseModel):
             "integration": obj.get("integration"),
             "domain": obj.get("domain"),
             "plan_code": obj.get("plan_code"),
-            "invoice_limit": obj.get("invoice_limit"),
             "send_invoices": obj.get("send_invoices"),
             "send_sms": obj.get("send_sms"),
             "hosted_page": obj.get("hosted_page"),
-            "migrate": obj.get("migrate"),
-            "is_archived": obj.get("is_archived"),
             "id": obj.get("id"),
             "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt")

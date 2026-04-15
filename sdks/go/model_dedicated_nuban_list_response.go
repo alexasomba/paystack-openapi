@@ -25,7 +25,7 @@ type DedicatedNubanListResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
 	Data []DedicatedNubanListResponseArray `json:"data"`
-	Meta SubaccountListResponseMeta `json:"meta"`
+	Meta Meta `json:"meta"`
 }
 
 type _DedicatedNubanListResponse DedicatedNubanListResponse
@@ -34,7 +34,7 @@ type _DedicatedNubanListResponse DedicatedNubanListResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDedicatedNubanListResponse(status bool, message string, data []DedicatedNubanListResponseArray, meta SubaccountListResponseMeta) *DedicatedNubanListResponse {
+func NewDedicatedNubanListResponse(status bool, message string, data []DedicatedNubanListResponseArray, meta Meta) *DedicatedNubanListResponse {
 	this := DedicatedNubanListResponse{}
 	this.Status = status
 	this.Message = message
@@ -124,9 +124,9 @@ func (o *DedicatedNubanListResponse) SetData(v []DedicatedNubanListResponseArray
 }
 
 // GetMeta returns the Meta field value
-func (o *DedicatedNubanListResponse) GetMeta() SubaccountListResponseMeta {
+func (o *DedicatedNubanListResponse) GetMeta() Meta {
 	if o == nil {
-		var ret SubaccountListResponseMeta
+		var ret Meta
 		return ret
 	}
 
@@ -135,7 +135,7 @@ func (o *DedicatedNubanListResponse) GetMeta() SubaccountListResponseMeta {
 
 // GetMetaOk returns a tuple with the Meta field value
 // and a boolean to check if the value has been set.
-func (o *DedicatedNubanListResponse) GetMetaOk() (*SubaccountListResponseMeta, bool) {
+func (o *DedicatedNubanListResponse) GetMetaOk() (*Meta, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -143,7 +143,7 @@ func (o *DedicatedNubanListResponse) GetMetaOk() (*SubaccountListResponseMeta, b
 }
 
 // SetMeta sets field value
-func (o *DedicatedNubanListResponse) SetMeta(v SubaccountListResponseMeta) {
+func (o *DedicatedNubanListResponse) SetMeta(v Meta) {
 	o.Meta = v
 }
 

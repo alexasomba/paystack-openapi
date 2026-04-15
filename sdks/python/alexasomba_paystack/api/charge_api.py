@@ -32,7 +32,6 @@ from alexasomba_paystack.models.charge_submit_phone import ChargeSubmitPhone
 from alexasomba_paystack.models.charge_submit_phone_response import ChargeSubmitPhoneResponse
 from alexasomba_paystack.models.charge_submit_pin import ChargeSubmitPin
 from alexasomba_paystack.models.charge_submit_pin_response import ChargeSubmitPinResponse
-from alexasomba_paystack.models.response import Response
 
 from alexasomba_paystack.api_client import ApiClient, RequestSerialized
 from alexasomba_paystack.api_response import ApiResponse
@@ -613,7 +612,7 @@ class ChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Response:
+    ) -> ChargeCheckPendingResponse:
         """Submit Address
 
         Send the details of the customer's address for address verification
@@ -651,7 +650,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeCheckPendingResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -681,7 +680,7 @@ class ChargeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Response]:
+    ) -> ApiResponse[ChargeCheckPendingResponse]:
         """Submit Address
 
         Send the details of the customer's address for address verification
@@ -719,7 +718,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeCheckPendingResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(
@@ -787,7 +786,7 @@ class ChargeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Response",
+            '200': "ChargeCheckPendingResponse",
             '401': "Error",
         }
         response_data = self.api_client.call_api(

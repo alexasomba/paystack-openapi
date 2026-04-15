@@ -26,6 +26,7 @@ const (
 	NGN Currency = "NGN"
 	ZAR Currency = "ZAR"
 	USD Currency = "USD"
+	XOF Currency = "XOF"
 )
 
 // All allowed values of Currency enum
@@ -35,6 +36,7 @@ var AllowedCurrencyEnumValues = []Currency{
 	"NGN",
 	"ZAR",
 	"USD",
+	"XOF",
 }
 
 func (v *Currency) UnmarshalJSON(src []byte) error {

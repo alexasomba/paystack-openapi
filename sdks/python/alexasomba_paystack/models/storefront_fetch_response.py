@@ -21,7 +21,6 @@ import json
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List
 from alexasomba_paystack.models.storefront_create_response_data import StorefrontCreateResponseData
-from alexasomba_paystack.models.storefront_fetch_response_meta import StorefrontFetchResponseMeta
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,8 +31,7 @@ class StorefrontFetchResponse(BaseModel):
     status: StrictBool
     message: StrictStr
     data: StorefrontCreateResponseData
-    meta: StorefrontFetchResponseMeta
-    __properties: ClassVar[List[str]] = ["status", "message", "data", "meta"]
+    __properties: ClassVar[List[str]] = ["status", "message", "data"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -77,9 +75,6 @@ class StorefrontFetchResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of data
         if self.data:
             _dict['data'] = self.data.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of meta
-        if self.meta:
-            _dict['meta'] = self.meta.to_dict()
         return _dict
 
     @classmethod
@@ -94,8 +89,7 @@ class StorefrontFetchResponse(BaseModel):
         _obj = cls.model_validate({
             "status": obj.get("status"),
             "message": obj.get("message"),
-            "data": StorefrontCreateResponseData.from_dict(obj["data"]) if obj.get("data") is not None else None,
-            "meta": StorefrontFetchResponseMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+            "data": StorefrontCreateResponseData.from_dict(obj["data"]) if obj.get("data") is not None else None
         })
         return _obj
 

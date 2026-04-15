@@ -20,6 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from alexasomba_paystack.models.virtual_terminal_create_custom_fields_inner import VirtualTerminalCreateCustomFieldsInner
 from alexasomba_paystack.models.virtual_terminal_create_destinations_inner import VirtualTerminalCreateDestinationsInner
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,11 +29,12 @@ class VirtualTerminalCreate(BaseModel):
     """
     VirtualTerminalCreate
     """ # noqa: E501
-    name: StrictStr = Field(description="The name of the virtual terminal")
-    destinations: List[VirtualTerminalCreateDestinationsInner] = Field(description="Array of objects containing recipients for payment notifications for the Virtual Terminal.")
-    split_code: Optional[StrictStr] = Field(default=None, description="Split code to associate with the virtual terminal")
-    metadata: Optional[Dict[str, Any]] = Field(default=None, description="Additional custom data as key-value pairs")
-    __properties: ClassVar[List[str]] = ["name", "destinations", "split_code", "metadata"]
+    name: StrictStr = Field(description="Name of the Virtual Terminal")
+    destinations: List[VirtualTerminalCreateDestinationsInner] = Field(description="An array of objects containing the notification recipients for payments to the Virtual Terminal. Each object includes a target parameter for the Whatsapp phone number to send notifications to, and a name parameter for a descriptive label.")
+    metadata: Optional[Dict[str, Any]] = Field(default=None, description="Stringified JSON object of custom data. Kindly check the Metadata page for more information")
+    currency: Optional[StrictStr] = Field(default=None, description="The transaction currency for the Virtual Terminal. Defaults to your integration currency")
+    custom_fields: Optional[List[VirtualTerminalCreateCustomFieldsInner]] = Field(default=None, description="An array of objects representing custom fields to display on the form. Each object contains a display_name parameter, representing what will be displayed on the Virtual Terminal page, and variable_name parameter for referencing the custom field programmatically")
+    __properties: ClassVar[List[str]] = ["name", "destinations", "metadata", "currency", "custom_fields"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,6 +82,13 @@ class VirtualTerminalCreate(BaseModel):
                 if _item_destinations:
                     _items.append(_item_destinations.to_dict())
             _dict['destinations'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in custom_fields (list)
+        _items = []
+        if self.custom_fields:
+            for _item_custom_fields in self.custom_fields:
+                if _item_custom_fields:
+                    _items.append(_item_custom_fields.to_dict())
+            _dict['custom_fields'] = _items
         return _dict
 
     @classmethod
@@ -94,8 +103,9 @@ class VirtualTerminalCreate(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "destinations": [VirtualTerminalCreateDestinationsInner.from_dict(_item) for _item in obj["destinations"]] if obj.get("destinations") is not None else None,
-            "split_code": obj.get("split_code"),
-            "metadata": obj.get("metadata")
+            "metadata": obj.get("metadata"),
+            "currency": obj.get("currency"),
+            "custom_fields": [VirtualTerminalCreateCustomFieldsInner.from_dict(_item) for _item in obj["custom_fields"]] if obj.get("custom_fields") is not None else None
         })
         return _obj
 

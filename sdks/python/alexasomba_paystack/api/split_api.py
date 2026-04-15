@@ -27,6 +27,7 @@ from alexasomba_paystack.models.split_create_response import SplitCreateResponse
 from alexasomba_paystack.models.split_fetch_response import SplitFetchResponse
 from alexasomba_paystack.models.split_list_response import SplitListResponse
 from alexasomba_paystack.models.split_remove_subaccount_response import SplitRemoveSubaccountResponse
+from alexasomba_paystack.models.split_subaccount_remove import SplitSubaccountRemove
 from alexasomba_paystack.models.split_subaccounts import SplitSubaccounts
 from alexasomba_paystack.models.split_update import SplitUpdate
 from alexasomba_paystack.models.split_update_response import SplitUpdateResponse
@@ -52,7 +53,7 @@ class SplitApi:
     @validate_call
     def split_add_subaccount(
         self,
-        id: Annotated[StrictInt, Field(description="The ID of the split configuration to fetch")],
+        id: Annotated[StrictStr, Field(description="The ID of the split configuration to fetch")],
         split_subaccounts: Optional[SplitSubaccounts] = None,
         _request_timeout: Union[
             None,
@@ -72,7 +73,7 @@ class SplitApi:
         Add a subaccount to a split configuration, or update the share of an existing subaccount
 
         :param id: The ID of the split configuration to fetch (required)
-        :type id: int
+        :type id: str
         :param split_subaccounts:
         :type split_subaccounts: SplitSubaccounts
         :param _request_timeout: timeout setting for this request. If one
@@ -124,7 +125,7 @@ class SplitApi:
     @validate_call
     def split_add_subaccount_with_http_info(
         self,
-        id: Annotated[StrictInt, Field(description="The ID of the split configuration to fetch")],
+        id: Annotated[StrictStr, Field(description="The ID of the split configuration to fetch")],
         split_subaccounts: Optional[SplitSubaccounts] = None,
         _request_timeout: Union[
             None,
@@ -144,7 +145,7 @@ class SplitApi:
         Add a subaccount to a split configuration, or update the share of an existing subaccount
 
         :param id: The ID of the split configuration to fetch (required)
-        :type id: int
+        :type id: str
         :param split_subaccounts:
         :type split_subaccounts: SplitSubaccounts
         :param _request_timeout: timeout setting for this request. If one
@@ -196,7 +197,7 @@ class SplitApi:
     @validate_call
     def split_add_subaccount_without_preload_content(
         self,
-        id: Annotated[StrictInt, Field(description="The ID of the split configuration to fetch")],
+        id: Annotated[StrictStr, Field(description="The ID of the split configuration to fetch")],
         split_subaccounts: Optional[SplitSubaccounts] = None,
         _request_timeout: Union[
             None,
@@ -216,7 +217,7 @@ class SplitApi:
         Add a subaccount to a split configuration, or update the share of an existing subaccount
 
         :param id: The ID of the split configuration to fetch (required)
-        :type id: int
+        :type id: str
         :param split_subaccounts:
         :type split_subaccounts: SplitSubaccounts
         :param _request_timeout: timeout setting for this request. If one
@@ -623,7 +624,7 @@ class SplitApi:
     @validate_call
     def split_fetch(
         self,
-        id: Annotated[StrictInt, Field(description="The ID of the split configuration to fetch")],
+        id: Annotated[StrictStr, Field(description="The ID of the split configuration to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -642,7 +643,7 @@ class SplitApi:
         Get details of a split configuration for a transaction
 
         :param id: The ID of the split configuration to fetch (required)
-        :type id: int
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -692,7 +693,7 @@ class SplitApi:
     @validate_call
     def split_fetch_with_http_info(
         self,
-        id: Annotated[StrictInt, Field(description="The ID of the split configuration to fetch")],
+        id: Annotated[StrictStr, Field(description="The ID of the split configuration to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -711,7 +712,7 @@ class SplitApi:
         Get details of a split configuration for a transaction
 
         :param id: The ID of the split configuration to fetch (required)
-        :type id: int
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -761,7 +762,7 @@ class SplitApi:
     @validate_call
     def split_fetch_without_preload_content(
         self,
-        id: Annotated[StrictInt, Field(description="The ID of the split configuration to fetch")],
+        id: Annotated[StrictStr, Field(description="The ID of the split configuration to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -780,7 +781,7 @@ class SplitApi:
         Get details of a split configuration for a transaction
 
         :param id: The ID of the split configuration to fetch (required)
-        :type id: int
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -893,10 +894,11 @@ class SplitApi:
         subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter by subaccount code")] = None,
         name: Annotated[Optional[StrictStr], Field(description="The name of the split")] = None,
         active: Annotated[Optional[StrictBool], Field(description="The status of the split")] = None,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        sort_by: Annotated[Optional[StrictStr], Field(description="Sort by name, defaults to createdAt date")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of splits per page. If not specified, we use a default value of 50.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number to view. If not specified, we use a default value of 1.")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -920,13 +922,15 @@ class SplitApi:
         :type name: str
         :param active: The status of the split
         :type active: bool
-        :param per_page: The number of records to fetch per request
+        :param sort_by: Sort by name, defaults to createdAt date
+        :type sort_by: str
+        :param per_page: Number of splits per page. If not specified, we use a default value of 50.
         :type per_page: int
-        :param page: The offset to retrieve data from
+        :param page: Page number to view. If not specified, we use a default value of 1.
         :type page: int
-        :param var_from: The start date
+        :param var_from: A timestamp from which to start listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21
         :type var_from: datetime
-        :param to: The end date
+        :param to: A timestamp at which to stop listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21
         :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -954,6 +958,7 @@ class SplitApi:
             subaccount_code=subaccount_code,
             name=name,
             active=active,
+            sort_by=sort_by,
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -986,10 +991,11 @@ class SplitApi:
         subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter by subaccount code")] = None,
         name: Annotated[Optional[StrictStr], Field(description="The name of the split")] = None,
         active: Annotated[Optional[StrictBool], Field(description="The status of the split")] = None,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        sort_by: Annotated[Optional[StrictStr], Field(description="Sort by name, defaults to createdAt date")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of splits per page. If not specified, we use a default value of 50.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number to view. If not specified, we use a default value of 1.")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1013,13 +1019,15 @@ class SplitApi:
         :type name: str
         :param active: The status of the split
         :type active: bool
-        :param per_page: The number of records to fetch per request
+        :param sort_by: Sort by name, defaults to createdAt date
+        :type sort_by: str
+        :param per_page: Number of splits per page. If not specified, we use a default value of 50.
         :type per_page: int
-        :param page: The offset to retrieve data from
+        :param page: Page number to view. If not specified, we use a default value of 1.
         :type page: int
-        :param var_from: The start date
+        :param var_from: A timestamp from which to start listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21
         :type var_from: datetime
-        :param to: The end date
+        :param to: A timestamp at which to stop listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21
         :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1047,6 +1055,7 @@ class SplitApi:
             subaccount_code=subaccount_code,
             name=name,
             active=active,
+            sort_by=sort_by,
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -1079,10 +1088,11 @@ class SplitApi:
         subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter by subaccount code")] = None,
         name: Annotated[Optional[StrictStr], Field(description="The name of the split")] = None,
         active: Annotated[Optional[StrictBool], Field(description="The status of the split")] = None,
-        per_page: Annotated[Optional[StrictInt], Field(description="The number of records to fetch per request")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        sort_by: Annotated[Optional[StrictStr], Field(description="Sort by name, defaults to createdAt date")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Number of splits per page. If not specified, we use a default value of 50.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number to view. If not specified, we use a default value of 1.")] = None,
+        var_from: Annotated[Optional[datetime], Field(description="A timestamp from which to start listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21")] = None,
+        to: Annotated[Optional[datetime], Field(description="A timestamp at which to stop listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1106,13 +1116,15 @@ class SplitApi:
         :type name: str
         :param active: The status of the split
         :type active: bool
-        :param per_page: The number of records to fetch per request
+        :param sort_by: Sort by name, defaults to createdAt date
+        :type sort_by: str
+        :param per_page: Number of splits per page. If not specified, we use a default value of 50.
         :type per_page: int
-        :param page: The offset to retrieve data from
+        :param page: Page number to view. If not specified, we use a default value of 1.
         :type page: int
-        :param var_from: The start date
+        :param var_from: A timestamp from which to start listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21
         :type var_from: datetime
-        :param to: The end date
+        :param to: A timestamp at which to stop listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21
         :type to: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1140,6 +1152,7 @@ class SplitApi:
             subaccount_code=subaccount_code,
             name=name,
             active=active,
+            sort_by=sort_by,
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -1167,6 +1180,7 @@ class SplitApi:
         subaccount_code,
         name,
         active,
+        sort_by,
         per_page,
         page,
         var_from,
@@ -1205,9 +1219,13 @@ class SplitApi:
             
             _query_params.append(('active', active))
             
+        if sort_by is not None:
+            
+            _query_params.append(('sort_by', sort_by))
+            
         if per_page is not None:
             
-            _query_params.append(('per_page', per_page))
+            _query_params.append(('perPage', per_page))
             
         if page is not None:
             
@@ -1279,8 +1297,8 @@ class SplitApi:
     @validate_call
     def split_remove_subaccount(
         self,
-        id: Annotated[StrictInt, Field(description="The ID of the split configuration to fetch")],
-        split_subaccounts: Optional[SplitSubaccounts] = None,
+        id: Annotated[StrictStr, Field(description="The ID of the split configuration to fetch")],
+        split_subaccount_remove: Optional[SplitSubaccountRemove] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1299,9 +1317,9 @@ class SplitApi:
         Remove a subaccount from a split configuration
 
         :param id: The ID of the split configuration to fetch (required)
-        :type id: int
-        :param split_subaccounts:
-        :type split_subaccounts: SplitSubaccounts
+        :type id: str
+        :param split_subaccount_remove:
+        :type split_subaccount_remove: SplitSubaccountRemove
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1326,7 +1344,7 @@ class SplitApi:
 
         _param = self._split_remove_subaccount_serialize(
             id=id,
-            split_subaccounts=split_subaccounts,
+            split_subaccount_remove=split_subaccount_remove,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1351,8 +1369,8 @@ class SplitApi:
     @validate_call
     def split_remove_subaccount_with_http_info(
         self,
-        id: Annotated[StrictInt, Field(description="The ID of the split configuration to fetch")],
-        split_subaccounts: Optional[SplitSubaccounts] = None,
+        id: Annotated[StrictStr, Field(description="The ID of the split configuration to fetch")],
+        split_subaccount_remove: Optional[SplitSubaccountRemove] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1371,9 +1389,9 @@ class SplitApi:
         Remove a subaccount from a split configuration
 
         :param id: The ID of the split configuration to fetch (required)
-        :type id: int
-        :param split_subaccounts:
-        :type split_subaccounts: SplitSubaccounts
+        :type id: str
+        :param split_subaccount_remove:
+        :type split_subaccount_remove: SplitSubaccountRemove
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1398,7 +1416,7 @@ class SplitApi:
 
         _param = self._split_remove_subaccount_serialize(
             id=id,
-            split_subaccounts=split_subaccounts,
+            split_subaccount_remove=split_subaccount_remove,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1423,8 +1441,8 @@ class SplitApi:
     @validate_call
     def split_remove_subaccount_without_preload_content(
         self,
-        id: Annotated[StrictInt, Field(description="The ID of the split configuration to fetch")],
-        split_subaccounts: Optional[SplitSubaccounts] = None,
+        id: Annotated[StrictStr, Field(description="The ID of the split configuration to fetch")],
+        split_subaccount_remove: Optional[SplitSubaccountRemove] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1443,9 +1461,9 @@ class SplitApi:
         Remove a subaccount from a split configuration
 
         :param id: The ID of the split configuration to fetch (required)
-        :type id: int
-        :param split_subaccounts:
-        :type split_subaccounts: SplitSubaccounts
+        :type id: str
+        :param split_subaccount_remove:
+        :type split_subaccount_remove: SplitSubaccountRemove
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1470,7 +1488,7 @@ class SplitApi:
 
         _param = self._split_remove_subaccount_serialize(
             id=id,
-            split_subaccounts=split_subaccounts,
+            split_subaccount_remove=split_subaccount_remove,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1491,7 +1509,7 @@ class SplitApi:
     def _split_remove_subaccount_serialize(
         self,
         id,
-        split_subaccounts,
+        split_subaccount_remove,
         _request_auth,
         _content_type,
         _headers,
@@ -1519,8 +1537,8 @@ class SplitApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if split_subaccounts is not None:
-            _body_params = split_subaccounts
+        if split_subaccount_remove is not None:
+            _body_params = split_subaccount_remove
 
 
         # set the HTTP header `Accept`

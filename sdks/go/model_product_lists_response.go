@@ -25,7 +25,7 @@ type ProductListsResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
 	Data []ProductListsResponseArray `json:"data"`
-	Meta ProductListsResponseMeta `json:"meta"`
+	Meta Meta `json:"meta"`
 }
 
 type _ProductListsResponse ProductListsResponse
@@ -34,7 +34,7 @@ type _ProductListsResponse ProductListsResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProductListsResponse(status bool, message string, data []ProductListsResponseArray, meta ProductListsResponseMeta) *ProductListsResponse {
+func NewProductListsResponse(status bool, message string, data []ProductListsResponseArray, meta Meta) *ProductListsResponse {
 	this := ProductListsResponse{}
 	this.Status = status
 	this.Message = message
@@ -124,9 +124,9 @@ func (o *ProductListsResponse) SetData(v []ProductListsResponseArray) {
 }
 
 // GetMeta returns the Meta field value
-func (o *ProductListsResponse) GetMeta() ProductListsResponseMeta {
+func (o *ProductListsResponse) GetMeta() Meta {
 	if o == nil {
-		var ret ProductListsResponseMeta
+		var ret Meta
 		return ret
 	}
 
@@ -135,7 +135,7 @@ func (o *ProductListsResponse) GetMeta() ProductListsResponseMeta {
 
 // GetMetaOk returns a tuple with the Meta field value
 // and a boolean to check if the value has been set.
-func (o *ProductListsResponse) GetMetaOk() (*ProductListsResponseMeta, bool) {
+func (o *ProductListsResponse) GetMetaOk() (*Meta, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -143,7 +143,7 @@ func (o *ProductListsResponse) GetMetaOk() (*ProductListsResponseMeta, bool) {
 }
 
 // SetMeta sets field value
-func (o *ProductListsResponse) SetMeta(v ProductListsResponseMeta) {
+func (o *ProductListsResponse) SetMeta(v Meta) {
 	o.Meta = v
 }
 

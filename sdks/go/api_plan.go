@@ -18,7 +18,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	"time"
 )
 
 
@@ -146,7 +145,7 @@ func (a *PlanAPIService) PlanCreateExecute(r ApiPlanCreateRequest) (*PlanCreateR
 type ApiPlanFetchRequest struct {
 	ctx context.Context
 	ApiService *PlanAPIService
-	code string
+	idOrCode string
 }
 
 func (r ApiPlanFetchRequest) Execute() (*PlanFetchResponse, *http.Response, error) {
@@ -159,14 +158,14 @@ PlanFetch Fetch Plan
 Get the details of a payment plan
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code The plan code you want to fetch
+ @param idOrCode The plan ID or code you want to fetch
  @return ApiPlanFetchRequest
 */
-func (a *PlanAPIService) PlanFetch(ctx context.Context, code string) ApiPlanFetchRequest {
+func (a *PlanAPIService) PlanFetch(ctx context.Context, idOrCode string) ApiPlanFetchRequest {
 	return ApiPlanFetchRequest{
 		ApiService: a,
 		ctx: ctx,
-		code: code,
+		idOrCode: idOrCode,
 	}
 }
 
@@ -185,8 +184,8 @@ func (a *PlanAPIService) PlanFetchExecute(r ApiPlanFetchRequest) (*PlanFetchResp
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/plan/{code}"
-	localVarPath = strings.Replace(localVarPath, "{"+"code"+"}", url.PathEscape(parameterValueToString(r.code, "code")), -1)
+	localVarPath := localBasePath + "/plan/{id_or_code}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id_or_code"+"}", url.PathEscape(parameterValueToString(r.idOrCode, "idOrCode")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -273,10 +272,9 @@ type ApiPlanListRequest struct {
 	ApiService *PlanAPIService
 	perPage *int32
 	page *int32
+	status *string
 	interval *string
 	amount *int32
-	from *time.Time
-	to *time.Time
 }
 
 // Number of records to fetch per page
@@ -291,27 +289,21 @@ func (r ApiPlanListRequest) Page(page int32) ApiPlanListRequest {
 	return r
 }
 
+// Filter list by plans with specified status
+func (r ApiPlanListRequest) Status(status string) ApiPlanListRequest {
+	r.status = &status
+	return r
+}
+
 // Specify interval of the plan
 func (r ApiPlanListRequest) Interval(interval string) ApiPlanListRequest {
 	r.interval = &interval
 	return r
 }
 
-// The amount on the plans to retrieve
+// Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. 
 func (r ApiPlanListRequest) Amount(amount int32) ApiPlanListRequest {
 	r.amount = &amount
-	return r
-}
-
-// The start date
-func (r ApiPlanListRequest) From(from time.Time) ApiPlanListRequest {
-	r.from = &from
-	return r
-}
-
-// The end date
-func (r ApiPlanListRequest) To(to time.Time) ApiPlanListRequest {
-	r.to = &to
 	return r
 }
 
@@ -361,17 +353,14 @@ func (a *PlanAPIService) PlanListExecute(r ApiPlanListRequest) (*PlanListRespons
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
+	if r.status != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+	}
 	if r.interval != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "interval", r.interval, "form", "")
 	}
 	if r.amount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "amount", r.amount, "form", "")
-	}
-	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
-	}
-	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -452,7 +441,7 @@ func (a *PlanAPIService) PlanListExecute(r ApiPlanListRequest) (*PlanListRespons
 type ApiPlanUpdateRequest struct {
 	ctx context.Context
 	ApiService *PlanAPIService
-	code string
+	idOrCode string
 	planUpdate *PlanUpdate
 }
 
@@ -471,14 +460,14 @@ PlanUpdate Update Plan
 Update a plan details on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param code The plan code you want to fetch
+ @param idOrCode The plan ID or code you want to fetch
  @return ApiPlanUpdateRequest
 */
-func (a *PlanAPIService) PlanUpdate(ctx context.Context, code string) ApiPlanUpdateRequest {
+func (a *PlanAPIService) PlanUpdate(ctx context.Context, idOrCode string) ApiPlanUpdateRequest {
 	return ApiPlanUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
-		code: code,
+		idOrCode: idOrCode,
 	}
 }
 
@@ -497,8 +486,8 @@ func (a *PlanAPIService) PlanUpdateExecute(r ApiPlanUpdateRequest) (*PlanUpdateR
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/plan/{code}"
-	localVarPath = strings.Replace(localVarPath, "{"+"code"+"}", url.PathEscape(parameterValueToString(r.code, "code")), -1)
+	localVarPath := localBasePath + "/plan/{id_or_code}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id_or_code"+"}", url.PathEscape(parameterValueToString(r.idOrCode, "idOrCode")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

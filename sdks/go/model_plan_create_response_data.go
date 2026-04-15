@@ -29,12 +29,9 @@ type PlanCreateResponseData struct {
 	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
 	PlanCode string `json:"plan_code"`
-	InvoiceLimit int32 `json:"invoice_limit"`
 	SendInvoices bool `json:"send_invoices"`
 	SendSms bool `json:"send_sms"`
 	HostedPage bool `json:"hosted_page"`
-	Migrate bool `json:"migrate"`
-	IsArchived bool `json:"is_archived"`
 	Id int32 `json:"id"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
@@ -46,7 +43,7 @@ type _PlanCreateResponseData PlanCreateResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlanCreateResponseData(currency string, name string, amount int32, interval string, integration int32, domain string, planCode string, invoiceLimit int32, sendInvoices bool, sendSms bool, hostedPage bool, migrate bool, isArchived bool, id int32, createdAt string, updatedAt string) *PlanCreateResponseData {
+func NewPlanCreateResponseData(currency string, name string, amount int32, interval string, integration int32, domain string, planCode string, sendInvoices bool, sendSms bool, hostedPage bool, id int32, createdAt string, updatedAt string) *PlanCreateResponseData {
 	this := PlanCreateResponseData{}
 	this.Currency = currency
 	this.Name = name
@@ -55,12 +52,9 @@ func NewPlanCreateResponseData(currency string, name string, amount int32, inter
 	this.Integration = integration
 	this.Domain = domain
 	this.PlanCode = planCode
-	this.InvoiceLimit = invoiceLimit
 	this.SendInvoices = sendInvoices
 	this.SendSms = sendSms
 	this.HostedPage = hostedPage
-	this.Migrate = migrate
-	this.IsArchived = isArchived
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
@@ -243,30 +237,6 @@ func (o *PlanCreateResponseData) SetPlanCode(v string) {
 	o.PlanCode = v
 }
 
-// GetInvoiceLimit returns the InvoiceLimit field value
-func (o *PlanCreateResponseData) GetInvoiceLimit() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.InvoiceLimit
-}
-
-// GetInvoiceLimitOk returns a tuple with the InvoiceLimit field value
-// and a boolean to check if the value has been set.
-func (o *PlanCreateResponseData) GetInvoiceLimitOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.InvoiceLimit, true
-}
-
-// SetInvoiceLimit sets field value
-func (o *PlanCreateResponseData) SetInvoiceLimit(v int32) {
-	o.InvoiceLimit = v
-}
-
 // GetSendInvoices returns the SendInvoices field value
 func (o *PlanCreateResponseData) GetSendInvoices() bool {
 	if o == nil {
@@ -337,54 +307,6 @@ func (o *PlanCreateResponseData) GetHostedPageOk() (*bool, bool) {
 // SetHostedPage sets field value
 func (o *PlanCreateResponseData) SetHostedPage(v bool) {
 	o.HostedPage = v
-}
-
-// GetMigrate returns the Migrate field value
-func (o *PlanCreateResponseData) GetMigrate() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.Migrate
-}
-
-// GetMigrateOk returns a tuple with the Migrate field value
-// and a boolean to check if the value has been set.
-func (o *PlanCreateResponseData) GetMigrateOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Migrate, true
-}
-
-// SetMigrate sets field value
-func (o *PlanCreateResponseData) SetMigrate(v bool) {
-	o.Migrate = v
-}
-
-// GetIsArchived returns the IsArchived field value
-func (o *PlanCreateResponseData) GetIsArchived() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.IsArchived
-}
-
-// GetIsArchivedOk returns a tuple with the IsArchived field value
-// and a boolean to check if the value has been set.
-func (o *PlanCreateResponseData) GetIsArchivedOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IsArchived, true
-}
-
-// SetIsArchived sets field value
-func (o *PlanCreateResponseData) SetIsArchived(v bool) {
-	o.IsArchived = v
 }
 
 // GetId returns the Id field value
@@ -476,12 +398,9 @@ func (o PlanCreateResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["integration"] = o.Integration
 	toSerialize["domain"] = o.Domain
 	toSerialize["plan_code"] = o.PlanCode
-	toSerialize["invoice_limit"] = o.InvoiceLimit
 	toSerialize["send_invoices"] = o.SendInvoices
 	toSerialize["send_sms"] = o.SendSms
 	toSerialize["hosted_page"] = o.HostedPage
-	toSerialize["migrate"] = o.Migrate
-	toSerialize["is_archived"] = o.IsArchived
 	toSerialize["id"] = o.Id
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["updatedAt"] = o.UpdatedAt
@@ -500,12 +419,9 @@ func (o *PlanCreateResponseData) UnmarshalJSON(data []byte) (err error) {
 		"integration",
 		"domain",
 		"plan_code",
-		"invoice_limit",
 		"send_invoices",
 		"send_sms",
 		"hosted_page",
-		"migrate",
-		"is_archived",
 		"id",
 		"createdAt",
 		"updatedAt",

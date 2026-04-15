@@ -20,10 +20,10 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_metadata import BulkChargeFetchBulkBatchChargesResponseArrayMetadata
 from alexasomba_paystack.models.charge_authorization_response_data_log import ChargeAuthorizationResponseDataLog
 from alexasomba_paystack.models.dispute_fetch_response_data_transaction_authorization import DisputeFetchResponseDataTransactionAuthorization
-from alexasomba_paystack.models.dispute_fetch_response_data_transaction_customer import DisputeFetchResponseDataTransactionCustomer
-from alexasomba_paystack.models.transaction_fetch_response_data_metadata import TransactionFetchResponseDataMetadata
+from alexasomba_paystack.models.refund_create_response_data_transaction_customer import RefundCreateResponseDataTransactionCustomer
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -44,12 +44,12 @@ class DisputeFetchResponseDataTransaction(BaseModel):
     channel: StrictStr
     currency: StrictStr
     ip_address: StrictStr
-    metadata: TransactionFetchResponseDataMetadata
+    metadata: BulkChargeFetchBulkBatchChargesResponseArrayMetadata
     log: Optional[ChargeAuthorizationResponseDataLog]
     fees: StrictInt
     fees_split: Optional[StrictInt]
     authorization: DisputeFetchResponseDataTransactionAuthorization
-    customer: DisputeFetchResponseDataTransactionCustomer
+    customer: RefundCreateResponseDataTransactionCustomer
     plan: Dict[str, Any]
     subaccount: Dict[str, Any]
     split: Dict[str, Any]
@@ -182,12 +182,12 @@ class DisputeFetchResponseDataTransaction(BaseModel):
             "channel": obj.get("channel"),
             "currency": obj.get("currency"),
             "ip_address": obj.get("ip_address"),
-            "metadata": TransactionFetchResponseDataMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
+            "metadata": BulkChargeFetchBulkBatchChargesResponseArrayMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
             "log": ChargeAuthorizationResponseDataLog.from_dict(obj["log"]) if obj.get("log") is not None else None,
             "fees": obj.get("fees"),
             "fees_split": obj.get("fees_split"),
             "authorization": DisputeFetchResponseDataTransactionAuthorization.from_dict(obj["authorization"]) if obj.get("authorization") is not None else None,
-            "customer": DisputeFetchResponseDataTransactionCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
+            "customer": RefundCreateResponseDataTransactionCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
             "plan": obj.get("plan"),
             "subaccount": obj.get("subaccount"),
             "split": obj.get("split"),

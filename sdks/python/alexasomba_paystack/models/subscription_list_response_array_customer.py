@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,16 +27,19 @@ class SubscriptionListResponseArrayCustomer(BaseModel):
     """
     SubscriptionListResponseArrayCustomer
     """ # noqa: E501
-    id: StrictInt
     first_name: StrictStr
     last_name: StrictStr
     email: StrictStr
+    phone: StrictStr
+    metadata: Optional[Any]
+    domain: StrictStr
     customer_code: StrictStr
-    phone: Optional[StrictStr]
-    metadata: StrictStr
     risk_action: StrictStr
-    international_format_phone: StrictStr
-    __properties: ClassVar[List[str]] = ["id", "first_name", "last_name", "email", "customer_code", "phone", "metadata", "risk_action", "international_format_phone"]
+    id: StrictInt
+    integration: StrictInt
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
+    __properties: ClassVar[List[str]] = ["first_name", "last_name", "email", "phone", "metadata", "domain", "customer_code", "risk_action", "id", "integration", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -77,10 +80,10 @@ class SubscriptionListResponseArrayCustomer(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if phone (nullable) is None
+        # set to None if metadata (nullable) is None
         # and model_fields_set contains the field
-        if self.phone is None and "phone" in self.model_fields_set:
-            _dict['phone'] = None
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
 
         return _dict
 
@@ -94,15 +97,18 @@ class SubscriptionListResponseArrayCustomer(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
             "first_name": obj.get("first_name"),
             "last_name": obj.get("last_name"),
             "email": obj.get("email"),
-            "customer_code": obj.get("customer_code"),
             "phone": obj.get("phone"),
             "metadata": obj.get("metadata"),
+            "domain": obj.get("domain"),
+            "customer_code": obj.get("customer_code"),
             "risk_action": obj.get("risk_action"),
-            "international_format_phone": obj.get("international_format_phone")
+            "id": obj.get("id"),
+            "integration": obj.get("integration"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updatedAt": obj.get("updatedAt")
         })
         return _obj
 

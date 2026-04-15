@@ -271,10 +271,24 @@ func (a *RefundAPIService) RefundFetchExecute(r ApiRefundFetchRequest) (*RefundF
 type ApiRefundListRequest struct {
 	ctx context.Context
 	ApiService *RefundAPIService
+	transaction *string
+	currency *string
 	perPage *int32
 	page *int32
 	from *time.Time
 	to *time.Time
+}
+
+// The transaction ID of the refunded transaction
+func (r ApiRefundListRequest) Transaction(transaction string) ApiRefundListRequest {
+	r.transaction = &transaction
+	return r
+}
+
+// Any of the supported currency
+func (r ApiRefundListRequest) Currency(currency string) ApiRefundListRequest {
+	r.currency = &currency
+	return r
 }
 
 // Number of records to fetch per page
@@ -341,6 +355,12 @@ func (a *RefundAPIService) RefundListExecute(r ApiRefundListRequest) (*RefundLis
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.transaction != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "transaction", r.transaction, "form", "")
+	}
+	if r.currency != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "currency", r.currency, "form", "")
+	}
 	if r.perPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
 	} else {

@@ -27,7 +27,7 @@ class RefundCreateResponseDataTransactionCustomer(BaseModel):
     """
     RefundCreateResponseDataTransactionCustomer
     """ # noqa: E501
-    international_format_phone: Optional[StrictStr]
+    international_format_phone: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["international_format_phone"]
 
     model_config = ConfigDict(

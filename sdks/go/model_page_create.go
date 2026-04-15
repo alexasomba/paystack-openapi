@@ -26,7 +26,7 @@ type PageCreate struct {
 	Name string `json:"name"`
 	// The description of the page
 	Description *string `json:"description,omitempty"`
-	// Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
+	// Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). 
 	Amount *int32 `json:"amount,omitempty"`
 	// The transaction currency. Defaults to your integration currency.
 	Currency *string `json:"currency,omitempty"`

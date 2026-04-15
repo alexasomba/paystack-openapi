@@ -77,7 +77,7 @@ class OrderValidateResponseData implements ModelInterface, ArrayAccess, \JsonSer
         'integration' => '\Alexasomba\Paystack\Model\OrderValidateResponseDataIntegration',
         'transaction' => 'mixed',
         'page' => 'mixed',
-        'customer' => '\Alexasomba\Paystack\Model\TransactionFetchResponseDataCustomer',
+        'customer' => '\Alexasomba\Paystack\Model\OrderValidateResponseDataCustomer',
         'shipping' => 'mixed',
         'created_at' => 'string',
         'updated_at' => 'string',
@@ -1081,7 +1081,7 @@ class OrderValidateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets customer
      *
-     * @return \Alexasomba\Paystack\Model\TransactionFetchResponseDataCustomer
+     * @return \Alexasomba\Paystack\Model\OrderValidateResponseDataCustomer
      */
     public function getCustomer()
     {
@@ -1091,7 +1091,7 @@ class OrderValidateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets customer
      *
-     * @param \Alexasomba\Paystack\Model\TransactionFetchResponseDataCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\OrderValidateResponseDataCustomer $customer customer
      *
      * @return self
      */

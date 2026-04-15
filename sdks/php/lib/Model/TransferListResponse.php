@@ -61,7 +61,7 @@ class TransferListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'status' => 'bool',
         'message' => 'string',
         'data' => '\Alexasomba\Paystack\Model\TransferListResponseArray[]',
-        'meta' => '\Alexasomba\Paystack\Model\SubaccountListResponseMeta'
+        'meta' => '\Alexasomba\Paystack\Model\Meta'
     ];
 
     /**
@@ -407,7 +407,7 @@ class TransferListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets meta
      *
-     * @return \Alexasomba\Paystack\Model\SubaccountListResponseMeta
+     * @return \Alexasomba\Paystack\Model\Meta
      */
     public function getMeta()
     {
@@ -417,7 +417,7 @@ class TransferListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets meta
      *
-     * @param \Alexasomba\Paystack\Model\SubaccountListResponseMeta $meta meta
+     * @param \Alexasomba\Paystack\Model\Meta $meta meta
      *
      * @return self
      */

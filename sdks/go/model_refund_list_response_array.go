@@ -22,32 +22,25 @@ var _ MappedNullable = &RefundListResponseArray{}
 
 // RefundListResponseArray struct for RefundListResponseArray
 type RefundListResponseArray struct {
-	Integration int32 `json:"integration"`
-	Transaction int32 `json:"transaction"`
-	Dispute interface{} `json:"dispute"`
-	Settlement interface{} `json:"settlement"`
 	Id int32 `json:"id"`
+	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
-	Currency string `json:"currency"`
+	Transaction int32 `json:"transaction"`
+	Dispute NullableInt32 `json:"dispute"`
 	Amount int32 `json:"amount"`
-	Status string `json:"status"`
-	RefundedAt interface{} `json:"refunded_at"`
+	DeductedAmount NullableInt32 `json:"deducted_amount"`
+	Currency string `json:"currency"`
+	Channel string `json:"channel"`
+	Settlement NullableInt32 `json:"settlement"`
 	RefundedBy string `json:"refunded_by"`
+	RefundedAt NullableString `json:"refunded_at"`
+	ExpectedAt string `json:"expected_at"`
 	CustomerNote string `json:"customer_note"`
 	MerchantNote string `json:"merchant_note"`
-	DeductedAmount int32 `json:"deducted_amount"`
-	FullyDeducted int32 `json:"fully_deducted"`
-	CreatedAt string `json:"createdAt"`
-	BankReference interface{} `json:"bank_reference"`
-	TransactionReference string `json:"transaction_reference"`
-	Reason string `json:"reason"`
-	Customer SubscriptionListResponseArrayCustomer `json:"customer"`
-	RefundType string `json:"refund_type"`
-	TransactionAmount int32 `json:"transaction_amount"`
-	InitiatedBy string `json:"initiated_by"`
-	RefundChannel string `json:"refund_channel"`
-	SessionId interface{} `json:"session_id"`
-	CollectAccountNumber bool `json:"collect_account_number"`
+	FullyDeducted NullableInt32 `json:"fully_deducted"`
+	CreatedAt string `json:"created_at"`
+	UpdatedAt string `json:"updated_at"`
+	Status string `json:"status"`
 }
 
 type _RefundListResponseArray RefundListResponseArray
@@ -56,34 +49,27 @@ type _RefundListResponseArray RefundListResponseArray
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRefundListResponseArray(integration int32, transaction int32, dispute interface{}, settlement interface{}, id int32, domain string, currency string, amount int32, status string, refundedAt interface{}, refundedBy string, customerNote string, merchantNote string, deductedAmount int32, fullyDeducted int32, createdAt string, bankReference interface{}, transactionReference string, reason string, customer SubscriptionListResponseArrayCustomer, refundType string, transactionAmount int32, initiatedBy string, refundChannel string, sessionId interface{}, collectAccountNumber bool) *RefundListResponseArray {
+func NewRefundListResponseArray(id int32, integration int32, domain string, transaction int32, dispute NullableInt32, amount int32, deductedAmount NullableInt32, currency string, channel string, settlement NullableInt32, refundedBy string, refundedAt NullableString, expectedAt string, customerNote string, merchantNote string, fullyDeducted NullableInt32, createdAt string, updatedAt string, status string) *RefundListResponseArray {
 	this := RefundListResponseArray{}
+	this.Id = id
 	this.Integration = integration
+	this.Domain = domain
 	this.Transaction = transaction
 	this.Dispute = dispute
-	this.Settlement = settlement
-	this.Id = id
-	this.Domain = domain
-	this.Currency = currency
 	this.Amount = amount
-	this.Status = status
-	this.RefundedAt = refundedAt
+	this.DeductedAmount = deductedAmount
+	this.Currency = currency
+	this.Channel = channel
+	this.Settlement = settlement
 	this.RefundedBy = refundedBy
+	this.RefundedAt = refundedAt
+	this.ExpectedAt = expectedAt
 	this.CustomerNote = customerNote
 	this.MerchantNote = merchantNote
-	this.DeductedAmount = deductedAmount
 	this.FullyDeducted = fullyDeducted
 	this.CreatedAt = createdAt
-	this.BankReference = bankReference
-	this.TransactionReference = transactionReference
-	this.Reason = reason
-	this.Customer = customer
-	this.RefundType = refundType
-	this.TransactionAmount = transactionAmount
-	this.InitiatedBy = initiatedBy
-	this.RefundChannel = refundChannel
-	this.SessionId = sessionId
-	this.CollectAccountNumber = collectAccountNumber
+	this.UpdatedAt = updatedAt
+	this.Status = status
 	return &this
 }
 
@@ -93,6 +79,30 @@ func NewRefundListResponseArray(integration int32, transaction int32, dispute in
 func NewRefundListResponseArrayWithDefaults() *RefundListResponseArray {
 	this := RefundListResponseArray{}
 	return &this
+}
+
+// GetId returns the Id field value
+func (o *RefundListResponseArray) GetId() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *RefundListResponseArray) GetIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *RefundListResponseArray) SetId(v int32) {
+	o.Id = v
 }
 
 // GetIntegration returns the Integration field value
@@ -117,6 +127,30 @@ func (o *RefundListResponseArray) GetIntegrationOk() (*int32, bool) {
 // SetIntegration sets field value
 func (o *RefundListResponseArray) SetIntegration(v int32) {
 	o.Integration = v
+}
+
+// GetDomain returns the Domain field value
+func (o *RefundListResponseArray) GetDomain() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Domain
+}
+
+// GetDomainOk returns a tuple with the Domain field value
+// and a boolean to check if the value has been set.
+func (o *RefundListResponseArray) GetDomainOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Domain, true
+}
+
+// SetDomain sets field value
+func (o *RefundListResponseArray) SetDomain(v string) {
+	o.Domain = v
 }
 
 // GetTransaction returns the Transaction field value
@@ -144,127 +178,29 @@ func (o *RefundListResponseArray) SetTransaction(v int32) {
 }
 
 // GetDispute returns the Dispute field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *RefundListResponseArray) GetDispute() interface{} {
-	if o == nil {
-		var ret interface{}
+// If the value is explicit nil, the zero value for int32 will be returned
+func (o *RefundListResponseArray) GetDispute() int32 {
+	if o == nil || o.Dispute.Get() == nil {
+		var ret int32
 		return ret
 	}
 
-	return o.Dispute
+	return *o.Dispute.Get()
 }
 
 // GetDisputeOk returns a tuple with the Dispute field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundListResponseArray) GetDisputeOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Dispute) {
+func (o *RefundListResponseArray) GetDisputeOk() (*int32, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Dispute, true
+	return o.Dispute.Get(), o.Dispute.IsSet()
 }
 
 // SetDispute sets field value
-func (o *RefundListResponseArray) SetDispute(v interface{}) {
-	o.Dispute = v
-}
-
-// GetSettlement returns the Settlement field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *RefundListResponseArray) GetSettlement() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.Settlement
-}
-
-// GetSettlementOk returns a tuple with the Settlement field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundListResponseArray) GetSettlementOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Settlement) {
-		return nil, false
-	}
-	return &o.Settlement, true
-}
-
-// SetSettlement sets field value
-func (o *RefundListResponseArray) SetSettlement(v interface{}) {
-	o.Settlement = v
-}
-
-// GetId returns the Id field value
-func (o *RefundListResponseArray) GetId() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *RefundListResponseArray) GetIdOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *RefundListResponseArray) SetId(v int32) {
-	o.Id = v
-}
-
-// GetDomain returns the Domain field value
-func (o *RefundListResponseArray) GetDomain() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Domain
-}
-
-// GetDomainOk returns a tuple with the Domain field value
-// and a boolean to check if the value has been set.
-func (o *RefundListResponseArray) GetDomainOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Domain, true
-}
-
-// SetDomain sets field value
-func (o *RefundListResponseArray) SetDomain(v string) {
-	o.Domain = v
-}
-
-// GetCurrency returns the Currency field value
-func (o *RefundListResponseArray) GetCurrency() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Currency
-}
-
-// GetCurrencyOk returns a tuple with the Currency field value
-// and a boolean to check if the value has been set.
-func (o *RefundListResponseArray) GetCurrencyOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Currency, true
-}
-
-// SetCurrency sets field value
-func (o *RefundListResponseArray) SetCurrency(v string) {
-	o.Currency = v
+func (o *RefundListResponseArray) SetDispute(v int32) {
+	o.Dispute.Set(&v)
 }
 
 // GetAmount returns the Amount field value
@@ -291,54 +227,104 @@ func (o *RefundListResponseArray) SetAmount(v int32) {
 	o.Amount = v
 }
 
-// GetStatus returns the Status field value
-func (o *RefundListResponseArray) GetStatus() string {
+// GetDeductedAmount returns the DeductedAmount field value
+// If the value is explicit nil, the zero value for int32 will be returned
+func (o *RefundListResponseArray) GetDeductedAmount() int32 {
+	if o == nil || o.DeductedAmount.Get() == nil {
+		var ret int32
+		return ret
+	}
+
+	return *o.DeductedAmount.Get()
+}
+
+// GetDeductedAmountOk returns a tuple with the DeductedAmount field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RefundListResponseArray) GetDeductedAmountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DeductedAmount.Get(), o.DeductedAmount.IsSet()
+}
+
+// SetDeductedAmount sets field value
+func (o *RefundListResponseArray) SetDeductedAmount(v int32) {
+	o.DeductedAmount.Set(&v)
+}
+
+// GetCurrency returns the Currency field value
+func (o *RefundListResponseArray) GetCurrency() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Status
+	return o.Currency
 }
 
-// GetStatusOk returns a tuple with the Status field value
+// GetCurrencyOk returns a tuple with the Currency field value
 // and a boolean to check if the value has been set.
-func (o *RefundListResponseArray) GetStatusOk() (*string, bool) {
+func (o *RefundListResponseArray) GetCurrencyOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Status, true
+	return &o.Currency, true
 }
 
-// SetStatus sets field value
-func (o *RefundListResponseArray) SetStatus(v string) {
-	o.Status = v
+// SetCurrency sets field value
+func (o *RefundListResponseArray) SetCurrency(v string) {
+	o.Currency = v
 }
 
-// GetRefundedAt returns the RefundedAt field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *RefundListResponseArray) GetRefundedAt() interface{} {
+// GetChannel returns the Channel field value
+func (o *RefundListResponseArray) GetChannel() string {
 	if o == nil {
-		var ret interface{}
+		var ret string
 		return ret
 	}
 
-	return o.RefundedAt
+	return o.Channel
 }
 
-// GetRefundedAtOk returns a tuple with the RefundedAt field value
+// GetChannelOk returns a tuple with the Channel field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundListResponseArray) GetRefundedAtOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.RefundedAt) {
+func (o *RefundListResponseArray) GetChannelOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.RefundedAt, true
+	return &o.Channel, true
 }
 
-// SetRefundedAt sets field value
-func (o *RefundListResponseArray) SetRefundedAt(v interface{}) {
-	o.RefundedAt = v
+// SetChannel sets field value
+func (o *RefundListResponseArray) SetChannel(v string) {
+	o.Channel = v
+}
+
+// GetSettlement returns the Settlement field value
+// If the value is explicit nil, the zero value for int32 will be returned
+func (o *RefundListResponseArray) GetSettlement() int32 {
+	if o == nil || o.Settlement.Get() == nil {
+		var ret int32
+		return ret
+	}
+
+	return *o.Settlement.Get()
+}
+
+// GetSettlementOk returns a tuple with the Settlement field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RefundListResponseArray) GetSettlementOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Settlement.Get(), o.Settlement.IsSet()
+}
+
+// SetSettlement sets field value
+func (o *RefundListResponseArray) SetSettlement(v int32) {
+	o.Settlement.Set(&v)
 }
 
 // GetRefundedBy returns the RefundedBy field value
@@ -363,6 +349,56 @@ func (o *RefundListResponseArray) GetRefundedByOk() (*string, bool) {
 // SetRefundedBy sets field value
 func (o *RefundListResponseArray) SetRefundedBy(v string) {
 	o.RefundedBy = v
+}
+
+// GetRefundedAt returns the RefundedAt field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *RefundListResponseArray) GetRefundedAt() string {
+	if o == nil || o.RefundedAt.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.RefundedAt.Get()
+}
+
+// GetRefundedAtOk returns a tuple with the RefundedAt field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RefundListResponseArray) GetRefundedAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.RefundedAt.Get(), o.RefundedAt.IsSet()
+}
+
+// SetRefundedAt sets field value
+func (o *RefundListResponseArray) SetRefundedAt(v string) {
+	o.RefundedAt.Set(&v)
+}
+
+// GetExpectedAt returns the ExpectedAt field value
+func (o *RefundListResponseArray) GetExpectedAt() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ExpectedAt
+}
+
+// GetExpectedAtOk returns a tuple with the ExpectedAt field value
+// and a boolean to check if the value has been set.
+func (o *RefundListResponseArray) GetExpectedAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ExpectedAt, true
+}
+
+// SetExpectedAt sets field value
+func (o *RefundListResponseArray) SetExpectedAt(v string) {
+	o.ExpectedAt = v
 }
 
 // GetCustomerNote returns the CustomerNote field value
@@ -413,52 +449,30 @@ func (o *RefundListResponseArray) SetMerchantNote(v string) {
 	o.MerchantNote = v
 }
 
-// GetDeductedAmount returns the DeductedAmount field value
-func (o *RefundListResponseArray) GetDeductedAmount() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.DeductedAmount
-}
-
-// GetDeductedAmountOk returns a tuple with the DeductedAmount field value
-// and a boolean to check if the value has been set.
-func (o *RefundListResponseArray) GetDeductedAmountOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.DeductedAmount, true
-}
-
-// SetDeductedAmount sets field value
-func (o *RefundListResponseArray) SetDeductedAmount(v int32) {
-	o.DeductedAmount = v
-}
-
 // GetFullyDeducted returns the FullyDeducted field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *RefundListResponseArray) GetFullyDeducted() int32 {
-	if o == nil {
+	if o == nil || o.FullyDeducted.Get() == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.FullyDeducted
+	return *o.FullyDeducted.Get()
 }
 
 // GetFullyDeductedOk returns a tuple with the FullyDeducted field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RefundListResponseArray) GetFullyDeductedOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.FullyDeducted, true
+	return o.FullyDeducted.Get(), o.FullyDeducted.IsSet()
 }
 
 // SetFullyDeducted sets field value
 func (o *RefundListResponseArray) SetFullyDeducted(v int32) {
-	o.FullyDeducted = v
+	o.FullyDeducted.Set(&v)
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -485,248 +499,52 @@ func (o *RefundListResponseArray) SetCreatedAt(v string) {
 	o.CreatedAt = v
 }
 
-// GetBankReference returns the BankReference field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *RefundListResponseArray) GetBankReference() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.BankReference
-}
-
-// GetBankReferenceOk returns a tuple with the BankReference field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundListResponseArray) GetBankReferenceOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.BankReference) {
-		return nil, false
-	}
-	return &o.BankReference, true
-}
-
-// SetBankReference sets field value
-func (o *RefundListResponseArray) SetBankReference(v interface{}) {
-	o.BankReference = v
-}
-
-// GetTransactionReference returns the TransactionReference field value
-func (o *RefundListResponseArray) GetTransactionReference() string {
+// GetUpdatedAt returns the UpdatedAt field value
+func (o *RefundListResponseArray) GetUpdatedAt() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.TransactionReference
+	return o.UpdatedAt
 }
 
-// GetTransactionReferenceOk returns a tuple with the TransactionReference field value
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
 // and a boolean to check if the value has been set.
-func (o *RefundListResponseArray) GetTransactionReferenceOk() (*string, bool) {
+func (o *RefundListResponseArray) GetUpdatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.TransactionReference, true
+	return &o.UpdatedAt, true
 }
 
-// SetTransactionReference sets field value
-func (o *RefundListResponseArray) SetTransactionReference(v string) {
-	o.TransactionReference = v
+// SetUpdatedAt sets field value
+func (o *RefundListResponseArray) SetUpdatedAt(v string) {
+	o.UpdatedAt = v
 }
 
-// GetReason returns the Reason field value
-func (o *RefundListResponseArray) GetReason() string {
+// GetStatus returns the Status field value
+func (o *RefundListResponseArray) GetStatus() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Reason
+	return o.Status
 }
 
-// GetReasonOk returns a tuple with the Reason field value
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *RefundListResponseArray) GetReasonOk() (*string, bool) {
+func (o *RefundListResponseArray) GetStatusOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Reason, true
+	return &o.Status, true
 }
 
-// SetReason sets field value
-func (o *RefundListResponseArray) SetReason(v string) {
-	o.Reason = v
-}
-
-// GetCustomer returns the Customer field value
-func (o *RefundListResponseArray) GetCustomer() SubscriptionListResponseArrayCustomer {
-	if o == nil {
-		var ret SubscriptionListResponseArrayCustomer
-		return ret
-	}
-
-	return o.Customer
-}
-
-// GetCustomerOk returns a tuple with the Customer field value
-// and a boolean to check if the value has been set.
-func (o *RefundListResponseArray) GetCustomerOk() (*SubscriptionListResponseArrayCustomer, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Customer, true
-}
-
-// SetCustomer sets field value
-func (o *RefundListResponseArray) SetCustomer(v SubscriptionListResponseArrayCustomer) {
-	o.Customer = v
-}
-
-// GetRefundType returns the RefundType field value
-func (o *RefundListResponseArray) GetRefundType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.RefundType
-}
-
-// GetRefundTypeOk returns a tuple with the RefundType field value
-// and a boolean to check if the value has been set.
-func (o *RefundListResponseArray) GetRefundTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.RefundType, true
-}
-
-// SetRefundType sets field value
-func (o *RefundListResponseArray) SetRefundType(v string) {
-	o.RefundType = v
-}
-
-// GetTransactionAmount returns the TransactionAmount field value
-func (o *RefundListResponseArray) GetTransactionAmount() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.TransactionAmount
-}
-
-// GetTransactionAmountOk returns a tuple with the TransactionAmount field value
-// and a boolean to check if the value has been set.
-func (o *RefundListResponseArray) GetTransactionAmountOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TransactionAmount, true
-}
-
-// SetTransactionAmount sets field value
-func (o *RefundListResponseArray) SetTransactionAmount(v int32) {
-	o.TransactionAmount = v
-}
-
-// GetInitiatedBy returns the InitiatedBy field value
-func (o *RefundListResponseArray) GetInitiatedBy() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.InitiatedBy
-}
-
-// GetInitiatedByOk returns a tuple with the InitiatedBy field value
-// and a boolean to check if the value has been set.
-func (o *RefundListResponseArray) GetInitiatedByOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.InitiatedBy, true
-}
-
-// SetInitiatedBy sets field value
-func (o *RefundListResponseArray) SetInitiatedBy(v string) {
-	o.InitiatedBy = v
-}
-
-// GetRefundChannel returns the RefundChannel field value
-func (o *RefundListResponseArray) GetRefundChannel() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.RefundChannel
-}
-
-// GetRefundChannelOk returns a tuple with the RefundChannel field value
-// and a boolean to check if the value has been set.
-func (o *RefundListResponseArray) GetRefundChannelOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.RefundChannel, true
-}
-
-// SetRefundChannel sets field value
-func (o *RefundListResponseArray) SetRefundChannel(v string) {
-	o.RefundChannel = v
-}
-
-// GetSessionId returns the SessionId field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *RefundListResponseArray) GetSessionId() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.SessionId
-}
-
-// GetSessionIdOk returns a tuple with the SessionId field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RefundListResponseArray) GetSessionIdOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.SessionId) {
-		return nil, false
-	}
-	return &o.SessionId, true
-}
-
-// SetSessionId sets field value
-func (o *RefundListResponseArray) SetSessionId(v interface{}) {
-	o.SessionId = v
-}
-
-// GetCollectAccountNumber returns the CollectAccountNumber field value
-func (o *RefundListResponseArray) GetCollectAccountNumber() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.CollectAccountNumber
-}
-
-// GetCollectAccountNumberOk returns a tuple with the CollectAccountNumber field value
-// and a boolean to check if the value has been set.
-func (o *RefundListResponseArray) GetCollectAccountNumberOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CollectAccountNumber, true
-}
-
-// SetCollectAccountNumber sets field value
-func (o *RefundListResponseArray) SetCollectAccountNumber(v bool) {
-	o.CollectAccountNumber = v
+// SetStatus sets field value
+func (o *RefundListResponseArray) SetStatus(v string) {
+	o.Status = v
 }
 
 func (o RefundListResponseArray) MarshalJSON() ([]byte, error) {
@@ -739,42 +557,25 @@ func (o RefundListResponseArray) MarshalJSON() ([]byte, error) {
 
 func (o RefundListResponseArray) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["integration"] = o.Integration
-	toSerialize["transaction"] = o.Transaction
-	if o.Dispute != nil {
-		toSerialize["dispute"] = o.Dispute
-	}
-	if o.Settlement != nil {
-		toSerialize["settlement"] = o.Settlement
-	}
 	toSerialize["id"] = o.Id
+	toSerialize["integration"] = o.Integration
 	toSerialize["domain"] = o.Domain
-	toSerialize["currency"] = o.Currency
+	toSerialize["transaction"] = o.Transaction
+	toSerialize["dispute"] = o.Dispute.Get()
 	toSerialize["amount"] = o.Amount
-	toSerialize["status"] = o.Status
-	if o.RefundedAt != nil {
-		toSerialize["refunded_at"] = o.RefundedAt
-	}
+	toSerialize["deducted_amount"] = o.DeductedAmount.Get()
+	toSerialize["currency"] = o.Currency
+	toSerialize["channel"] = o.Channel
+	toSerialize["settlement"] = o.Settlement.Get()
 	toSerialize["refunded_by"] = o.RefundedBy
+	toSerialize["refunded_at"] = o.RefundedAt.Get()
+	toSerialize["expected_at"] = o.ExpectedAt
 	toSerialize["customer_note"] = o.CustomerNote
 	toSerialize["merchant_note"] = o.MerchantNote
-	toSerialize["deducted_amount"] = o.DeductedAmount
-	toSerialize["fully_deducted"] = o.FullyDeducted
-	toSerialize["createdAt"] = o.CreatedAt
-	if o.BankReference != nil {
-		toSerialize["bank_reference"] = o.BankReference
-	}
-	toSerialize["transaction_reference"] = o.TransactionReference
-	toSerialize["reason"] = o.Reason
-	toSerialize["customer"] = o.Customer
-	toSerialize["refund_type"] = o.RefundType
-	toSerialize["transaction_amount"] = o.TransactionAmount
-	toSerialize["initiated_by"] = o.InitiatedBy
-	toSerialize["refund_channel"] = o.RefundChannel
-	if o.SessionId != nil {
-		toSerialize["session_id"] = o.SessionId
-	}
-	toSerialize["collect_account_number"] = o.CollectAccountNumber
+	toSerialize["fully_deducted"] = o.FullyDeducted.Get()
+	toSerialize["created_at"] = o.CreatedAt
+	toSerialize["updated_at"] = o.UpdatedAt
+	toSerialize["status"] = o.Status
 	return toSerialize, nil
 }
 
@@ -783,32 +584,25 @@ func (o *RefundListResponseArray) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"id",
 		"integration",
+		"domain",
 		"transaction",
 		"dispute",
-		"settlement",
-		"id",
-		"domain",
-		"currency",
 		"amount",
-		"status",
-		"refunded_at",
+		"deducted_amount",
+		"currency",
+		"channel",
+		"settlement",
 		"refunded_by",
+		"refunded_at",
+		"expected_at",
 		"customer_note",
 		"merchant_note",
-		"deducted_amount",
 		"fully_deducted",
-		"createdAt",
-		"bank_reference",
-		"transaction_reference",
-		"reason",
-		"customer",
-		"refund_type",
-		"transaction_amount",
-		"initiated_by",
-		"refund_channel",
-		"session_id",
-		"collect_account_number",
+		"created_at",
+		"updated_at",
+		"status",
 	}
 
 	allProperties := make(map[string]interface{})

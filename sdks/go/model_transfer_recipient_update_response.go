@@ -24,6 +24,7 @@ var _ MappedNullable = &TransferRecipientUpdateResponse{}
 type TransferRecipientUpdateResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
+	Data TransferRecipientUpdateResponseData `json:"data"`
 }
 
 type _TransferRecipientUpdateResponse TransferRecipientUpdateResponse
@@ -32,10 +33,11 @@ type _TransferRecipientUpdateResponse TransferRecipientUpdateResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferRecipientUpdateResponse(status bool, message string) *TransferRecipientUpdateResponse {
+func NewTransferRecipientUpdateResponse(status bool, message string, data TransferRecipientUpdateResponseData) *TransferRecipientUpdateResponse {
 	this := TransferRecipientUpdateResponse{}
 	this.Status = status
 	this.Message = message
+	this.Data = data
 	return &this
 }
 
@@ -95,6 +97,30 @@ func (o *TransferRecipientUpdateResponse) SetMessage(v string) {
 	o.Message = v
 }
 
+// GetData returns the Data field value
+func (o *TransferRecipientUpdateResponse) GetData() TransferRecipientUpdateResponseData {
+	if o == nil {
+		var ret TransferRecipientUpdateResponseData
+		return ret
+	}
+
+	return o.Data
+}
+
+// GetDataOk returns a tuple with the Data field value
+// and a boolean to check if the value has been set.
+func (o *TransferRecipientUpdateResponse) GetDataOk() (*TransferRecipientUpdateResponseData, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Data, true
+}
+
+// SetData sets field value
+func (o *TransferRecipientUpdateResponse) SetData(v TransferRecipientUpdateResponseData) {
+	o.Data = v
+}
+
 func (o TransferRecipientUpdateResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -107,6 +133,7 @@ func (o TransferRecipientUpdateResponse) ToMap() (map[string]interface{}, error)
 	toSerialize := map[string]interface{}{}
 	toSerialize["status"] = o.Status
 	toSerialize["message"] = o.Message
+	toSerialize["data"] = o.Data
 	return toSerialize, nil
 }
 
@@ -117,6 +144,7 @@ func (o *TransferRecipientUpdateResponse) UnmarshalJSON(data []byte) (err error)
 	requiredProperties := []string{
 		"status",
 		"message",
+		"data",
 	}
 
 	allProperties := make(map[string]interface{})

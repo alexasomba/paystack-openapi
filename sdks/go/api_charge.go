@@ -279,7 +279,7 @@ func (r ApiChargeSubmitAddressRequest) ChargeSubmitAddress(chargeSubmitAddress C
 	return r
 }
 
-func (r ApiChargeSubmitAddressRequest) Execute() (*Response, *http.Response, error) {
+func (r ApiChargeSubmitAddressRequest) Execute() (*ChargeCheckPendingResponse, *http.Response, error) {
 	return r.ApiService.ChargeSubmitAddressExecute(r)
 }
 
@@ -299,13 +299,13 @@ func (a *ChargeAPIService) ChargeSubmitAddress(ctx context.Context) ApiChargeSub
 }
 
 // Execute executes the request
-//  @return Response
-func (a *ChargeAPIService) ChargeSubmitAddressExecute(r ApiChargeSubmitAddressRequest) (*Response, *http.Response, error) {
+//  @return ChargeCheckPendingResponse
+func (a *ChargeAPIService) ChargeSubmitAddressExecute(r ApiChargeSubmitAddressRequest) (*ChargeCheckPendingResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Response
+		localVarReturnValue  *ChargeCheckPendingResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ChargeAPIService.ChargeSubmitAddress")

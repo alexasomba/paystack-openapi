@@ -74,12 +74,12 @@ class ProductListsResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         'unlimited' => 'bool',
         'metadata' => '\Alexasomba\Paystack\Model\ProductListsResponseArrayMetadata',
         'files' => 'mixed[]',
-        'success_message' => 'mixed',
-        'redirect_url' => 'mixed',
-        'split_code' => 'mixed',
-        'notification_emails' => 'mixed',
+        'success_message' => 'string',
+        'redirect_url' => 'string',
+        'split_code' => 'string',
+        'notification_emails' => 'string[]',
         'minimum_orderable' => 'int',
-        'maximum_orderable' => 'mixed',
+        'maximum_orderable' => 'int',
         'created_at' => 'string',
         'updated_at' => 'string',
         'digital_assets' => 'mixed[]',
@@ -1018,7 +1018,7 @@ class ProductListsResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets success_message
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getSuccessMessage()
     {
@@ -1028,7 +1028,7 @@ class ProductListsResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets success_message
      *
-     * @param mixed|null $success_message success_message
+     * @param string|null $success_message success_message
      *
      * @return self
      */
@@ -1052,7 +1052,7 @@ class ProductListsResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets redirect_url
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getRedirectUrl()
     {
@@ -1062,7 +1062,7 @@ class ProductListsResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets redirect_url
      *
-     * @param mixed|null $redirect_url redirect_url
+     * @param string|null $redirect_url redirect_url
      *
      * @return self
      */
@@ -1086,7 +1086,7 @@ class ProductListsResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets split_code
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getSplitCode()
     {
@@ -1096,7 +1096,7 @@ class ProductListsResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets split_code
      *
-     * @param mixed|null $split_code split_code
+     * @param string|null $split_code split_code
      *
      * @return self
      */
@@ -1120,7 +1120,7 @@ class ProductListsResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets notification_emails
      *
-     * @return mixed|null
+     * @return string[]|null
      */
     public function getNotificationEmails()
     {
@@ -1130,7 +1130,7 @@ class ProductListsResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets notification_emails
      *
-     * @param mixed|null $notification_emails notification_emails
+     * @param string[]|null $notification_emails notification_emails
      *
      * @return self
      */
@@ -1181,7 +1181,7 @@ class ProductListsResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets maximum_orderable
      *
-     * @return mixed|null
+     * @return int|null
      */
     public function getMaximumOrderable()
     {
@@ -1191,7 +1191,7 @@ class ProductListsResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets maximum_orderable
      *
-     * @param mixed|null $maximum_orderable maximum_orderable
+     * @param int|null $maximum_orderable maximum_orderable
      *
      * @return self
      */

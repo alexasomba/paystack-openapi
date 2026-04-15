@@ -310,7 +310,7 @@ class VirtualTerminalCreateDestinationsInner implements ModelInterface, ArrayAcc
     /**
      * Sets target
      *
-     * @param string|null $target The WhatsApp number to receive payment notifications
+     * @param string|null $target The Whatsapp phone number to send notifications to
      *
      * @return self
      */
@@ -337,7 +337,7 @@ class VirtualTerminalCreateDestinationsInner implements ModelInterface, ArrayAcc
     /**
      * Sets name
      *
-     * @param string|null $name The name of the associated WhatsApp number
+     * @param string|null $name A descriptive label for the destination
      *
      * @return self
      */

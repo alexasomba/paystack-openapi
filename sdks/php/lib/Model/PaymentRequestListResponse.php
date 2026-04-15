@@ -61,7 +61,7 @@ class PaymentRequestListResponse implements ModelInterface, ArrayAccess, \JsonSe
         'status' => 'bool',
         'message' => 'string',
         'data' => '\Alexasomba\Paystack\Model\PaymentRequestListResponseArray[]',
-        'meta' => '\Alexasomba\Paystack\Model\BulkChargeListResponseMeta'
+        'meta' => '\Alexasomba\Paystack\Model\PaymentRequestListResponseMeta'
     ];
 
     /**
@@ -407,7 +407,7 @@ class PaymentRequestListResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets meta
      *
-     * @return \Alexasomba\Paystack\Model\BulkChargeListResponseMeta
+     * @return \Alexasomba\Paystack\Model\PaymentRequestListResponseMeta
      */
     public function getMeta()
     {
@@ -417,7 +417,7 @@ class PaymentRequestListResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets meta
      *
-     * @param \Alexasomba\Paystack\Model\BulkChargeListResponseMeta $meta meta
+     * @param \Alexasomba\Paystack\Model\PaymentRequestListResponseMeta $meta meta
      *
      * @return self
      */

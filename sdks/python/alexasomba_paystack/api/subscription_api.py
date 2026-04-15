@@ -17,7 +17,6 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from datetime import datetime
 from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
@@ -884,7 +883,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_fetch(
         self,
-        code: Annotated[StrictStr, Field(description="The subscription code for the subscription you want to fetch")],
+        id_or_code: Annotated[StrictStr, Field(description="The subscription ID or code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -902,8 +901,8 @@ class SubscriptionApi:
 
         Get details of a customer's subscription
 
-        :param code: The subscription code for the subscription you want to fetch (required)
-        :type code: str
+        :param id_or_code: The subscription ID or code you want to fetch (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -927,7 +926,7 @@ class SubscriptionApi:
         """ # noqa: E501
 
         _param = self._subscription_fetch_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -953,7 +952,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_fetch_with_http_info(
         self,
-        code: Annotated[StrictStr, Field(description="The subscription code for the subscription you want to fetch")],
+        id_or_code: Annotated[StrictStr, Field(description="The subscription ID or code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -971,8 +970,8 @@ class SubscriptionApi:
 
         Get details of a customer's subscription
 
-        :param code: The subscription code for the subscription you want to fetch (required)
-        :type code: str
+        :param id_or_code: The subscription ID or code you want to fetch (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -996,7 +995,7 @@ class SubscriptionApi:
         """ # noqa: E501
 
         _param = self._subscription_fetch_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1022,7 +1021,7 @@ class SubscriptionApi:
     @validate_call
     def subscription_fetch_without_preload_content(
         self,
-        code: Annotated[StrictStr, Field(description="The subscription code for the subscription you want to fetch")],
+        id_or_code: Annotated[StrictStr, Field(description="The subscription ID or code you want to fetch")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1040,8 +1039,8 @@ class SubscriptionApi:
 
         Get details of a customer's subscription
 
-        :param code: The subscription code for the subscription you want to fetch (required)
-        :type code: str
+        :param id_or_code: The subscription ID or code you want to fetch (required)
+        :type id_or_code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1065,7 +1064,7 @@ class SubscriptionApi:
         """ # noqa: E501
 
         _param = self._subscription_fetch_serialize(
-            code=code,
+            id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1086,7 +1085,7 @@ class SubscriptionApi:
 
     def _subscription_fetch_serialize(
         self,
-        code,
+        id_or_code,
         _request_auth,
         _content_type,
         _headers,
@@ -1108,8 +1107,8 @@ class SubscriptionApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if code is not None:
-            _path_params['code'] = code
+        if id_or_code is not None:
+            _path_params['id_or_code'] = id_or_code
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -1132,7 +1131,7 @@ class SubscriptionApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/subscription/{code}',
+            resource_path='/subscription/{id_or_code}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1154,9 +1153,7 @@ class SubscriptionApi:
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
         plan: Annotated[Optional[StrictInt], Field(description="Plan ID")] = None,
-        customer: Annotated[Optional[StrictStr], Field(description="Customer ID")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        customer: Annotated[Optional[StrictInt], Field(description="Filter by Customer ID")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1180,12 +1177,8 @@ class SubscriptionApi:
         :type page: int
         :param plan: Plan ID
         :type plan: int
-        :param customer: Customer ID
-        :type customer: str
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
+        :param customer: Filter by Customer ID
+        :type customer: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1213,8 +1206,6 @@ class SubscriptionApi:
             page=page,
             plan=plan,
             customer=customer,
-            var_from=var_from,
-            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1243,9 +1234,7 @@ class SubscriptionApi:
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
         plan: Annotated[Optional[StrictInt], Field(description="Plan ID")] = None,
-        customer: Annotated[Optional[StrictStr], Field(description="Customer ID")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        customer: Annotated[Optional[StrictInt], Field(description="Filter by Customer ID")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1269,12 +1258,8 @@ class SubscriptionApi:
         :type page: int
         :param plan: Plan ID
         :type plan: int
-        :param customer: Customer ID
-        :type customer: str
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
+        :param customer: Filter by Customer ID
+        :type customer: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1302,8 +1287,6 @@ class SubscriptionApi:
             page=page,
             plan=plan,
             customer=customer,
-            var_from=var_from,
-            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1332,9 +1315,7 @@ class SubscriptionApi:
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
         plan: Annotated[Optional[StrictInt], Field(description="Plan ID")] = None,
-        customer: Annotated[Optional[StrictStr], Field(description="Customer ID")] = None,
-        var_from: Annotated[Optional[datetime], Field(description="The start date")] = None,
-        to: Annotated[Optional[datetime], Field(description="The end date")] = None,
+        customer: Annotated[Optional[StrictInt], Field(description="Filter by Customer ID")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1358,12 +1339,8 @@ class SubscriptionApi:
         :type page: int
         :param plan: Plan ID
         :type plan: int
-        :param customer: Customer ID
-        :type customer: str
-        :param var_from: The start date
-        :type var_from: datetime
-        :param to: The end date
-        :type to: datetime
+        :param customer: Filter by Customer ID
+        :type customer: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1391,8 +1368,6 @@ class SubscriptionApi:
             page=page,
             plan=plan,
             customer=customer,
-            var_from=var_from,
-            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1417,8 +1392,6 @@ class SubscriptionApi:
         page,
         plan,
         customer,
-        var_from,
-        to,
         _request_auth,
         _content_type,
         _headers,
@@ -1456,32 +1429,6 @@ class SubscriptionApi:
         if customer is not None:
             
             _query_params.append(('customer', customer))
-            
-        if var_from is not None:
-            if isinstance(var_from, datetime):
-                _query_params.append(
-                    (
-                        'from',
-                        var_from.strftime(
-                            self.api_client.configuration.datetime_format
-                        )
-                    )
-                )
-            else:
-                _query_params.append(('from', var_from))
-            
-        if to is not None:
-            if isinstance(to, datetime):
-                _query_params.append(
-                    (
-                        'to',
-                        to.strftime(
-                            self.api_client.configuration.datetime_format
-                        )
-                    )
-                )
-            else:
-                _query_params.append(('to', to))
             
         # process the header parameters
         # process the form parameters

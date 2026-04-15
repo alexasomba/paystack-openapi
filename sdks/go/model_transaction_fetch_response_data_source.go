@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the TransactionFetchResponseDataSource type satisfies the MappedNullable interface at compile time
@@ -22,22 +20,17 @@ var _ MappedNullable = &TransactionFetchResponseDataSource{}
 
 // TransactionFetchResponseDataSource struct for TransactionFetchResponseDataSource
 type TransactionFetchResponseDataSource struct {
-	Type string `json:"type"`
-	Source string `json:"source"`
-	Identifier interface{} `json:"identifier"`
+	Type *string `json:"type,omitempty"`
+	Source *string `json:"source,omitempty"`
+	Identifier NullableString `json:"identifier,omitempty"`
 }
-
-type _TransactionFetchResponseDataSource TransactionFetchResponseDataSource
 
 // NewTransactionFetchResponseDataSource instantiates a new TransactionFetchResponseDataSource object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransactionFetchResponseDataSource(type_ string, source string, identifier interface{}) *TransactionFetchResponseDataSource {
+func NewTransactionFetchResponseDataSource() *TransactionFetchResponseDataSource {
 	this := TransactionFetchResponseDataSource{}
-	this.Type = type_
-	this.Source = source
-	this.Identifier = identifier
 	return &this
 }
 
@@ -49,78 +42,110 @@ func NewTransactionFetchResponseDataSourceWithDefaults() *TransactionFetchRespon
 	return &this
 }
 
-// GetType returns the Type field value
+// GetType returns the Type field value if set, zero value otherwise.
 func (o *TransactionFetchResponseDataSource) GetType() string {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
-
-	return o.Type
+	return *o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionFetchResponseDataSource) GetTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.Type, true
 }
 
-// SetType sets field value
+// HasType returns a boolean if a field has been set.
+func (o *TransactionFetchResponseDataSource) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
 func (o *TransactionFetchResponseDataSource) SetType(v string) {
-	o.Type = v
+	o.Type = &v
 }
 
-// GetSource returns the Source field value
+// GetSource returns the Source field value if set, zero value otherwise.
 func (o *TransactionFetchResponseDataSource) GetSource() string {
-	if o == nil {
+	if o == nil || IsNil(o.Source) {
 		var ret string
 		return ret
 	}
-
-	return o.Source
+	return *o.Source
 }
 
-// GetSourceOk returns a tuple with the Source field value
+// GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionFetchResponseDataSource) GetSourceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
-	return &o.Source, true
+	return o.Source, true
 }
 
-// SetSource sets field value
+// HasSource returns a boolean if a field has been set.
+func (o *TransactionFetchResponseDataSource) HasSource() bool {
+	if o != nil && !IsNil(o.Source) {
+		return true
+	}
+
+	return false
+}
+
+// SetSource gets a reference to the given string and assigns it to the Source field.
 func (o *TransactionFetchResponseDataSource) SetSource(v string) {
-	o.Source = v
+	o.Source = &v
 }
 
-// GetIdentifier returns the Identifier field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *TransactionFetchResponseDataSource) GetIdentifier() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetIdentifier returns the Identifier field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TransactionFetchResponseDataSource) GetIdentifier() string {
+	if o == nil || IsNil(o.Identifier.Get()) {
+		var ret string
 		return ret
 	}
-
-	return o.Identifier
+	return *o.Identifier.Get()
 }
 
-// GetIdentifierOk returns a tuple with the Identifier field value
+// GetIdentifierOk returns a tuple with the Identifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransactionFetchResponseDataSource) GetIdentifierOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Identifier) {
+func (o *TransactionFetchResponseDataSource) GetIdentifierOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Identifier, true
+	return o.Identifier.Get(), o.Identifier.IsSet()
 }
 
-// SetIdentifier sets field value
-func (o *TransactionFetchResponseDataSource) SetIdentifier(v interface{}) {
-	o.Identifier = v
+// HasIdentifier returns a boolean if a field has been set.
+func (o *TransactionFetchResponseDataSource) HasIdentifier() bool {
+	if o != nil && o.Identifier.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentifier gets a reference to the given NullableString and assigns it to the Identifier field.
+func (o *TransactionFetchResponseDataSource) SetIdentifier(v string) {
+	o.Identifier.Set(&v)
+}
+// SetIdentifierNil sets the value for Identifier to be an explicit nil
+func (o *TransactionFetchResponseDataSource) SetIdentifierNil() {
+	o.Identifier.Set(nil)
+}
+
+// UnsetIdentifier ensures that no value is present for Identifier, not even an explicit nil
+func (o *TransactionFetchResponseDataSource) UnsetIdentifier() {
+	o.Identifier.Unset()
 }
 
 func (o TransactionFetchResponseDataSource) MarshalJSON() ([]byte, error) {
@@ -133,51 +158,16 @@ func (o TransactionFetchResponseDataSource) MarshalJSON() ([]byte, error) {
 
 func (o TransactionFetchResponseDataSource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["type"] = o.Type
-	toSerialize["source"] = o.Source
-	if o.Identifier != nil {
-		toSerialize["identifier"] = o.Identifier
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Source) {
+		toSerialize["source"] = o.Source
+	}
+	if o.Identifier.IsSet() {
+		toSerialize["identifier"] = o.Identifier.Get()
 	}
 	return toSerialize, nil
-}
-
-func (o *TransactionFetchResponseDataSource) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"type",
-		"source",
-		"identifier",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varTransactionFetchResponseDataSource := _TransactionFetchResponseDataSource{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransactionFetchResponseDataSource)
-
-	if err != nil {
-		return err
-	}
-
-	*o = TransactionFetchResponseDataSource(varTransactionFetchResponseDataSource)
-
-	return err
 }
 
 type NullableTransactionFetchResponseDataSource struct {

@@ -41,7 +41,7 @@ type OrderValidateResponseData struct {
 	Integration OrderValidateResponseDataIntegration `json:"integration"`
 	Transaction interface{} `json:"transaction"`
 	Page interface{} `json:"page"`
-	Customer TransactionFetchResponseDataCustomer `json:"customer"`
+	Customer OrderValidateResponseDataCustomer `json:"customer"`
 	Shipping interface{} `json:"shipping"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
@@ -54,7 +54,7 @@ type _OrderValidateResponseData OrderValidateResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrderValidateResponseData(orderCode string, domain string, currency string, amount int32, email string, status string, refunded bool, paidAt interface{}, shippingAddress interface{}, metadata interface{}, shippingFees int32, shippingMethod interface{}, isViewed bool, expirationDate string, payForMe bool, id int32, integration OrderValidateResponseDataIntegration, transaction interface{}, page interface{}, customer TransactionFetchResponseDataCustomer, shipping interface{}, createdAt string, updatedAt string, payer interface{}) *OrderValidateResponseData {
+func NewOrderValidateResponseData(orderCode string, domain string, currency string, amount int32, email string, status string, refunded bool, paidAt interface{}, shippingAddress interface{}, metadata interface{}, shippingFees int32, shippingMethod interface{}, isViewed bool, expirationDate string, payForMe bool, id int32, integration OrderValidateResponseDataIntegration, transaction interface{}, page interface{}, customer OrderValidateResponseDataCustomer, shipping interface{}, createdAt string, updatedAt string, payer interface{}) *OrderValidateResponseData {
 	this := OrderValidateResponseData{}
 	this.OrderCode = orderCode
 	this.Domain = domain
@@ -560,9 +560,9 @@ func (o *OrderValidateResponseData) SetPage(v interface{}) {
 }
 
 // GetCustomer returns the Customer field value
-func (o *OrderValidateResponseData) GetCustomer() TransactionFetchResponseDataCustomer {
+func (o *OrderValidateResponseData) GetCustomer() OrderValidateResponseDataCustomer {
 	if o == nil {
-		var ret TransactionFetchResponseDataCustomer
+		var ret OrderValidateResponseDataCustomer
 		return ret
 	}
 
@@ -571,7 +571,7 @@ func (o *OrderValidateResponseData) GetCustomer() TransactionFetchResponseDataCu
 
 // GetCustomerOk returns a tuple with the Customer field value
 // and a boolean to check if the value has been set.
-func (o *OrderValidateResponseData) GetCustomerOk() (*TransactionFetchResponseDataCustomer, bool) {
+func (o *OrderValidateResponseData) GetCustomerOk() (*OrderValidateResponseDataCustomer, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -579,7 +579,7 @@ func (o *OrderValidateResponseData) GetCustomerOk() (*TransactionFetchResponseDa
 }
 
 // SetCustomer sets field value
-func (o *OrderValidateResponseData) SetCustomer(v TransactionFetchResponseDataCustomer) {
+func (o *OrderValidateResponseData) SetCustomer(v OrderValidateResponseDataCustomer) {
 	o.Customer = v
 }
 

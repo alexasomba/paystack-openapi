@@ -13,8 +13,6 @@ package paystack
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ChargeSubmitPinResponseDataAuthorization type satisfies the MappedNullable interface at compile time
@@ -22,40 +20,27 @@ var _ MappedNullable = &ChargeSubmitPinResponseDataAuthorization{}
 
 // ChargeSubmitPinResponseDataAuthorization struct for ChargeSubmitPinResponseDataAuthorization
 type ChargeSubmitPinResponseDataAuthorization struct {
-	AuthorizationCode NullableString `json:"authorization_code"`
-	Bin string `json:"bin"`
-	Last4 string `json:"last4"`
-	ExpMonth string `json:"exp_month"`
-	ExpYear string `json:"exp_year"`
-	Channel string `json:"channel"`
-	CardType string `json:"card_type"`
-	Bank string `json:"bank"`
-	CountryCode string `json:"country_code"`
-	Brand string `json:"brand"`
-	Reusable bool `json:"reusable"`
-	Signature string `json:"signature"`
+	AuthorizationCode NullableString `json:"authorization_code,omitempty"`
+	Bin *string `json:"bin,omitempty"`
+	Last4 *string `json:"last4,omitempty"`
+	ExpMonth *string `json:"exp_month,omitempty"`
+	ExpYear *string `json:"exp_year,omitempty"`
+	Channel *string `json:"channel,omitempty"`
+	CardType *string `json:"card_type,omitempty"`
+	Bank *string `json:"bank,omitempty"`
+	CountryCode *string `json:"country_code,omitempty"`
+	Brand *string `json:"brand,omitempty"`
+	Reusable *bool `json:"reusable,omitempty"`
+	Signature interface{} `json:"signature,omitempty"`
+	AccountName interface{} `json:"account_name,omitempty"`
 }
-
-type _ChargeSubmitPinResponseDataAuthorization ChargeSubmitPinResponseDataAuthorization
 
 // NewChargeSubmitPinResponseDataAuthorization instantiates a new ChargeSubmitPinResponseDataAuthorization object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChargeSubmitPinResponseDataAuthorization(authorizationCode NullableString, bin string, last4 string, expMonth string, expYear string, channel string, cardType string, bank string, countryCode string, brand string, reusable bool, signature string) *ChargeSubmitPinResponseDataAuthorization {
+func NewChargeSubmitPinResponseDataAuthorization() *ChargeSubmitPinResponseDataAuthorization {
 	this := ChargeSubmitPinResponseDataAuthorization{}
-	this.AuthorizationCode = authorizationCode
-	this.Bin = bin
-	this.Last4 = last4
-	this.ExpMonth = expMonth
-	this.ExpYear = expYear
-	this.Channel = channel
-	this.CardType = cardType
-	this.Bank = bank
-	this.CountryCode = countryCode
-	this.Brand = brand
-	this.Reusable = reusable
-	this.Signature = signature
 	return &this
 }
 
@@ -67,18 +52,16 @@ func NewChargeSubmitPinResponseDataAuthorizationWithDefaults() *ChargeSubmitPinR
 	return &this
 }
 
-// GetAuthorizationCode returns the AuthorizationCode field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetAuthorizationCode returns the AuthorizationCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ChargeSubmitPinResponseDataAuthorization) GetAuthorizationCode() string {
-	if o == nil || o.AuthorizationCode.Get() == nil {
+	if o == nil || IsNil(o.AuthorizationCode.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.AuthorizationCode.Get()
 }
 
-// GetAuthorizationCodeOk returns a tuple with the AuthorizationCode field value
+// GetAuthorizationCodeOk returns a tuple with the AuthorizationCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ChargeSubmitPinResponseDataAuthorization) GetAuthorizationCodeOk() (*string, bool) {
@@ -88,273 +71,413 @@ func (o *ChargeSubmitPinResponseDataAuthorization) GetAuthorizationCodeOk() (*st
 	return o.AuthorizationCode.Get(), o.AuthorizationCode.IsSet()
 }
 
-// SetAuthorizationCode sets field value
+// HasAuthorizationCode returns a boolean if a field has been set.
+func (o *ChargeSubmitPinResponseDataAuthorization) HasAuthorizationCode() bool {
+	if o != nil && o.AuthorizationCode.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthorizationCode gets a reference to the given NullableString and assigns it to the AuthorizationCode field.
 func (o *ChargeSubmitPinResponseDataAuthorization) SetAuthorizationCode(v string) {
 	o.AuthorizationCode.Set(&v)
 }
+// SetAuthorizationCodeNil sets the value for AuthorizationCode to be an explicit nil
+func (o *ChargeSubmitPinResponseDataAuthorization) SetAuthorizationCodeNil() {
+	o.AuthorizationCode.Set(nil)
+}
 
-// GetBin returns the Bin field value
+// UnsetAuthorizationCode ensures that no value is present for AuthorizationCode, not even an explicit nil
+func (o *ChargeSubmitPinResponseDataAuthorization) UnsetAuthorizationCode() {
+	o.AuthorizationCode.Unset()
+}
+
+// GetBin returns the Bin field value if set, zero value otherwise.
 func (o *ChargeSubmitPinResponseDataAuthorization) GetBin() string {
-	if o == nil {
+	if o == nil || IsNil(o.Bin) {
 		var ret string
 		return ret
 	}
-
-	return o.Bin
+	return *o.Bin
 }
 
-// GetBinOk returns a tuple with the Bin field value
+// GetBinOk returns a tuple with the Bin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChargeSubmitPinResponseDataAuthorization) GetBinOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Bin) {
 		return nil, false
 	}
-	return &o.Bin, true
+	return o.Bin, true
 }
 
-// SetBin sets field value
+// HasBin returns a boolean if a field has been set.
+func (o *ChargeSubmitPinResponseDataAuthorization) HasBin() bool {
+	if o != nil && !IsNil(o.Bin) {
+		return true
+	}
+
+	return false
+}
+
+// SetBin gets a reference to the given string and assigns it to the Bin field.
 func (o *ChargeSubmitPinResponseDataAuthorization) SetBin(v string) {
-	o.Bin = v
+	o.Bin = &v
 }
 
-// GetLast4 returns the Last4 field value
+// GetLast4 returns the Last4 field value if set, zero value otherwise.
 func (o *ChargeSubmitPinResponseDataAuthorization) GetLast4() string {
-	if o == nil {
+	if o == nil || IsNil(o.Last4) {
 		var ret string
 		return ret
 	}
-
-	return o.Last4
+	return *o.Last4
 }
 
-// GetLast4Ok returns a tuple with the Last4 field value
+// GetLast4Ok returns a tuple with the Last4 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChargeSubmitPinResponseDataAuthorization) GetLast4Ok() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Last4) {
 		return nil, false
 	}
-	return &o.Last4, true
+	return o.Last4, true
 }
 
-// SetLast4 sets field value
+// HasLast4 returns a boolean if a field has been set.
+func (o *ChargeSubmitPinResponseDataAuthorization) HasLast4() bool {
+	if o != nil && !IsNil(o.Last4) {
+		return true
+	}
+
+	return false
+}
+
+// SetLast4 gets a reference to the given string and assigns it to the Last4 field.
 func (o *ChargeSubmitPinResponseDataAuthorization) SetLast4(v string) {
-	o.Last4 = v
+	o.Last4 = &v
 }
 
-// GetExpMonth returns the ExpMonth field value
+// GetExpMonth returns the ExpMonth field value if set, zero value otherwise.
 func (o *ChargeSubmitPinResponseDataAuthorization) GetExpMonth() string {
-	if o == nil {
+	if o == nil || IsNil(o.ExpMonth) {
 		var ret string
 		return ret
 	}
-
-	return o.ExpMonth
+	return *o.ExpMonth
 }
 
-// GetExpMonthOk returns a tuple with the ExpMonth field value
+// GetExpMonthOk returns a tuple with the ExpMonth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChargeSubmitPinResponseDataAuthorization) GetExpMonthOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ExpMonth) {
 		return nil, false
 	}
-	return &o.ExpMonth, true
+	return o.ExpMonth, true
 }
 
-// SetExpMonth sets field value
+// HasExpMonth returns a boolean if a field has been set.
+func (o *ChargeSubmitPinResponseDataAuthorization) HasExpMonth() bool {
+	if o != nil && !IsNil(o.ExpMonth) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpMonth gets a reference to the given string and assigns it to the ExpMonth field.
 func (o *ChargeSubmitPinResponseDataAuthorization) SetExpMonth(v string) {
-	o.ExpMonth = v
+	o.ExpMonth = &v
 }
 
-// GetExpYear returns the ExpYear field value
+// GetExpYear returns the ExpYear field value if set, zero value otherwise.
 func (o *ChargeSubmitPinResponseDataAuthorization) GetExpYear() string {
-	if o == nil {
+	if o == nil || IsNil(o.ExpYear) {
 		var ret string
 		return ret
 	}
-
-	return o.ExpYear
+	return *o.ExpYear
 }
 
-// GetExpYearOk returns a tuple with the ExpYear field value
+// GetExpYearOk returns a tuple with the ExpYear field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChargeSubmitPinResponseDataAuthorization) GetExpYearOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ExpYear) {
 		return nil, false
 	}
-	return &o.ExpYear, true
+	return o.ExpYear, true
 }
 
-// SetExpYear sets field value
+// HasExpYear returns a boolean if a field has been set.
+func (o *ChargeSubmitPinResponseDataAuthorization) HasExpYear() bool {
+	if o != nil && !IsNil(o.ExpYear) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpYear gets a reference to the given string and assigns it to the ExpYear field.
 func (o *ChargeSubmitPinResponseDataAuthorization) SetExpYear(v string) {
-	o.ExpYear = v
+	o.ExpYear = &v
 }
 
-// GetChannel returns the Channel field value
+// GetChannel returns the Channel field value if set, zero value otherwise.
 func (o *ChargeSubmitPinResponseDataAuthorization) GetChannel() string {
-	if o == nil {
+	if o == nil || IsNil(o.Channel) {
 		var ret string
 		return ret
 	}
-
-	return o.Channel
+	return *o.Channel
 }
 
-// GetChannelOk returns a tuple with the Channel field value
+// GetChannelOk returns a tuple with the Channel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChargeSubmitPinResponseDataAuthorization) GetChannelOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Channel) {
 		return nil, false
 	}
-	return &o.Channel, true
+	return o.Channel, true
 }
 
-// SetChannel sets field value
+// HasChannel returns a boolean if a field has been set.
+func (o *ChargeSubmitPinResponseDataAuthorization) HasChannel() bool {
+	if o != nil && !IsNil(o.Channel) {
+		return true
+	}
+
+	return false
+}
+
+// SetChannel gets a reference to the given string and assigns it to the Channel field.
 func (o *ChargeSubmitPinResponseDataAuthorization) SetChannel(v string) {
-	o.Channel = v
+	o.Channel = &v
 }
 
-// GetCardType returns the CardType field value
+// GetCardType returns the CardType field value if set, zero value otherwise.
 func (o *ChargeSubmitPinResponseDataAuthorization) GetCardType() string {
-	if o == nil {
+	if o == nil || IsNil(o.CardType) {
 		var ret string
 		return ret
 	}
-
-	return o.CardType
+	return *o.CardType
 }
 
-// GetCardTypeOk returns a tuple with the CardType field value
+// GetCardTypeOk returns a tuple with the CardType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChargeSubmitPinResponseDataAuthorization) GetCardTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CardType) {
 		return nil, false
 	}
-	return &o.CardType, true
+	return o.CardType, true
 }
 
-// SetCardType sets field value
+// HasCardType returns a boolean if a field has been set.
+func (o *ChargeSubmitPinResponseDataAuthorization) HasCardType() bool {
+	if o != nil && !IsNil(o.CardType) {
+		return true
+	}
+
+	return false
+}
+
+// SetCardType gets a reference to the given string and assigns it to the CardType field.
 func (o *ChargeSubmitPinResponseDataAuthorization) SetCardType(v string) {
-	o.CardType = v
+	o.CardType = &v
 }
 
-// GetBank returns the Bank field value
+// GetBank returns the Bank field value if set, zero value otherwise.
 func (o *ChargeSubmitPinResponseDataAuthorization) GetBank() string {
-	if o == nil {
+	if o == nil || IsNil(o.Bank) {
 		var ret string
 		return ret
 	}
-
-	return o.Bank
+	return *o.Bank
 }
 
-// GetBankOk returns a tuple with the Bank field value
+// GetBankOk returns a tuple with the Bank field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChargeSubmitPinResponseDataAuthorization) GetBankOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Bank) {
 		return nil, false
 	}
-	return &o.Bank, true
+	return o.Bank, true
 }
 
-// SetBank sets field value
+// HasBank returns a boolean if a field has been set.
+func (o *ChargeSubmitPinResponseDataAuthorization) HasBank() bool {
+	if o != nil && !IsNil(o.Bank) {
+		return true
+	}
+
+	return false
+}
+
+// SetBank gets a reference to the given string and assigns it to the Bank field.
 func (o *ChargeSubmitPinResponseDataAuthorization) SetBank(v string) {
-	o.Bank = v
+	o.Bank = &v
 }
 
-// GetCountryCode returns the CountryCode field value
+// GetCountryCode returns the CountryCode field value if set, zero value otherwise.
 func (o *ChargeSubmitPinResponseDataAuthorization) GetCountryCode() string {
-	if o == nil {
+	if o == nil || IsNil(o.CountryCode) {
 		var ret string
 		return ret
 	}
-
-	return o.CountryCode
+	return *o.CountryCode
 }
 
-// GetCountryCodeOk returns a tuple with the CountryCode field value
+// GetCountryCodeOk returns a tuple with the CountryCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChargeSubmitPinResponseDataAuthorization) GetCountryCodeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CountryCode) {
 		return nil, false
 	}
-	return &o.CountryCode, true
+	return o.CountryCode, true
 }
 
-// SetCountryCode sets field value
+// HasCountryCode returns a boolean if a field has been set.
+func (o *ChargeSubmitPinResponseDataAuthorization) HasCountryCode() bool {
+	if o != nil && !IsNil(o.CountryCode) {
+		return true
+	}
+
+	return false
+}
+
+// SetCountryCode gets a reference to the given string and assigns it to the CountryCode field.
 func (o *ChargeSubmitPinResponseDataAuthorization) SetCountryCode(v string) {
-	o.CountryCode = v
+	o.CountryCode = &v
 }
 
-// GetBrand returns the Brand field value
+// GetBrand returns the Brand field value if set, zero value otherwise.
 func (o *ChargeSubmitPinResponseDataAuthorization) GetBrand() string {
-	if o == nil {
+	if o == nil || IsNil(o.Brand) {
 		var ret string
 		return ret
 	}
-
-	return o.Brand
+	return *o.Brand
 }
 
-// GetBrandOk returns a tuple with the Brand field value
+// GetBrandOk returns a tuple with the Brand field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChargeSubmitPinResponseDataAuthorization) GetBrandOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Brand) {
 		return nil, false
 	}
-	return &o.Brand, true
+	return o.Brand, true
 }
 
-// SetBrand sets field value
+// HasBrand returns a boolean if a field has been set.
+func (o *ChargeSubmitPinResponseDataAuthorization) HasBrand() bool {
+	if o != nil && !IsNil(o.Brand) {
+		return true
+	}
+
+	return false
+}
+
+// SetBrand gets a reference to the given string and assigns it to the Brand field.
 func (o *ChargeSubmitPinResponseDataAuthorization) SetBrand(v string) {
-	o.Brand = v
+	o.Brand = &v
 }
 
-// GetReusable returns the Reusable field value
+// GetReusable returns the Reusable field value if set, zero value otherwise.
 func (o *ChargeSubmitPinResponseDataAuthorization) GetReusable() bool {
-	if o == nil {
+	if o == nil || IsNil(o.Reusable) {
 		var ret bool
 		return ret
 	}
-
-	return o.Reusable
+	return *o.Reusable
 }
 
-// GetReusableOk returns a tuple with the Reusable field value
+// GetReusableOk returns a tuple with the Reusable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChargeSubmitPinResponseDataAuthorization) GetReusableOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Reusable) {
 		return nil, false
 	}
-	return &o.Reusable, true
+	return o.Reusable, true
 }
 
-// SetReusable sets field value
-func (o *ChargeSubmitPinResponseDataAuthorization) SetReusable(v bool) {
-	o.Reusable = v
-}
-
-// GetSignature returns the Signature field value
-func (o *ChargeSubmitPinResponseDataAuthorization) GetSignature() string {
-	if o == nil {
-		var ret string
-		return ret
+// HasReusable returns a boolean if a field has been set.
+func (o *ChargeSubmitPinResponseDataAuthorization) HasReusable() bool {
+	if o != nil && !IsNil(o.Reusable) {
+		return true
 	}
 
+	return false
+}
+
+// SetReusable gets a reference to the given bool and assigns it to the Reusable field.
+func (o *ChargeSubmitPinResponseDataAuthorization) SetReusable(v bool) {
+	o.Reusable = &v
+}
+
+// GetSignature returns the Signature field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ChargeSubmitPinResponseDataAuthorization) GetSignature() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
 	return o.Signature
 }
 
-// GetSignatureOk returns a tuple with the Signature field value
+// GetSignatureOk returns a tuple with the Signature field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ChargeSubmitPinResponseDataAuthorization) GetSignatureOk() (*string, bool) {
-	if o == nil {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ChargeSubmitPinResponseDataAuthorization) GetSignatureOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Signature) {
 		return nil, false
 	}
 	return &o.Signature, true
 }
 
-// SetSignature sets field value
-func (o *ChargeSubmitPinResponseDataAuthorization) SetSignature(v string) {
+// HasSignature returns a boolean if a field has been set.
+func (o *ChargeSubmitPinResponseDataAuthorization) HasSignature() bool {
+	if o != nil && !IsNil(o.Signature) {
+		return true
+	}
+
+	return false
+}
+
+// SetSignature gets a reference to the given interface{} and assigns it to the Signature field.
+func (o *ChargeSubmitPinResponseDataAuthorization) SetSignature(v interface{}) {
 	o.Signature = v
+}
+
+// GetAccountName returns the AccountName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ChargeSubmitPinResponseDataAuthorization) GetAccountName() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+	return o.AccountName
+}
+
+// GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ChargeSubmitPinResponseDataAuthorization) GetAccountNameOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.AccountName) {
+		return nil, false
+	}
+	return &o.AccountName, true
+}
+
+// HasAccountName returns a boolean if a field has been set.
+func (o *ChargeSubmitPinResponseDataAuthorization) HasAccountName() bool {
+	if o != nil && !IsNil(o.AccountName) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountName gets a reference to the given interface{} and assigns it to the AccountName field.
+func (o *ChargeSubmitPinResponseDataAuthorization) SetAccountName(v interface{}) {
+	o.AccountName = v
 }
 
 func (o ChargeSubmitPinResponseDataAuthorization) MarshalJSON() ([]byte, error) {
@@ -367,67 +490,46 @@ func (o ChargeSubmitPinResponseDataAuthorization) MarshalJSON() ([]byte, error) 
 
 func (o ChargeSubmitPinResponseDataAuthorization) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["authorization_code"] = o.AuthorizationCode.Get()
-	toSerialize["bin"] = o.Bin
-	toSerialize["last4"] = o.Last4
-	toSerialize["exp_month"] = o.ExpMonth
-	toSerialize["exp_year"] = o.ExpYear
-	toSerialize["channel"] = o.Channel
-	toSerialize["card_type"] = o.CardType
-	toSerialize["bank"] = o.Bank
-	toSerialize["country_code"] = o.CountryCode
-	toSerialize["brand"] = o.Brand
-	toSerialize["reusable"] = o.Reusable
-	toSerialize["signature"] = o.Signature
+	if o.AuthorizationCode.IsSet() {
+		toSerialize["authorization_code"] = o.AuthorizationCode.Get()
+	}
+	if !IsNil(o.Bin) {
+		toSerialize["bin"] = o.Bin
+	}
+	if !IsNil(o.Last4) {
+		toSerialize["last4"] = o.Last4
+	}
+	if !IsNil(o.ExpMonth) {
+		toSerialize["exp_month"] = o.ExpMonth
+	}
+	if !IsNil(o.ExpYear) {
+		toSerialize["exp_year"] = o.ExpYear
+	}
+	if !IsNil(o.Channel) {
+		toSerialize["channel"] = o.Channel
+	}
+	if !IsNil(o.CardType) {
+		toSerialize["card_type"] = o.CardType
+	}
+	if !IsNil(o.Bank) {
+		toSerialize["bank"] = o.Bank
+	}
+	if !IsNil(o.CountryCode) {
+		toSerialize["country_code"] = o.CountryCode
+	}
+	if !IsNil(o.Brand) {
+		toSerialize["brand"] = o.Brand
+	}
+	if !IsNil(o.Reusable) {
+		toSerialize["reusable"] = o.Reusable
+	}
+	if o.Signature != nil {
+		toSerialize["signature"] = o.Signature
+	}
+	if o.AccountName != nil {
+		toSerialize["account_name"] = o.AccountName
+	}
 	return toSerialize, nil
-}
-
-func (o *ChargeSubmitPinResponseDataAuthorization) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"authorization_code",
-		"bin",
-		"last4",
-		"exp_month",
-		"exp_year",
-		"channel",
-		"card_type",
-		"bank",
-		"country_code",
-		"brand",
-		"reusable",
-		"signature",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varChargeSubmitPinResponseDataAuthorization := _ChargeSubmitPinResponseDataAuthorization{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varChargeSubmitPinResponseDataAuthorization)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ChargeSubmitPinResponseDataAuthorization(varChargeSubmitPinResponseDataAuthorization)
-
-	return err
 }
 
 type NullableChargeSubmitPinResponseDataAuthorization struct {

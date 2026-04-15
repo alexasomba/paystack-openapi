@@ -22,30 +22,25 @@ var _ MappedNullable = &ProductCreateResponseData{}
 
 // ProductCreateResponseData struct for ProductCreateResponseData
 type ProductCreateResponseData struct {
-	VariantsOptions []interface{} `json:"variants_options"`
-	Variants []interface{} `json:"variants"`
 	Name string `json:"name"`
 	Description string `json:"description"`
 	Currency string `json:"currency"`
 	Price int32 `json:"price"`
 	Quantity int32 `json:"quantity"`
-	Type string `json:"type"`
 	IsShippable bool `json:"is_shippable"`
 	Unlimited bool `json:"unlimited"`
-	Files []interface{} `json:"files"`
-	ShippingFields ProductListsResponseArrayShippingFields `json:"shipping_fields"`
 	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
 	Metadata ProductListsResponseArrayMetadata `json:"metadata"`
 	Slug string `json:"slug"`
 	ProductCode string `json:"product_code"`
 	QuantitySold int32 `json:"quantity_sold"`
+	Type string `json:"type"`
+	ShippingFields ProductCreateResponseDataShippingFields `json:"shipping_fields"`
 	Active bool `json:"active"`
-	DeletedAt interface{} `json:"deleted_at"`
 	InStock bool `json:"in_stock"`
 	MinimumOrderable int32 `json:"minimum_orderable"`
-	MaximumOrderable NullableInt32 `json:"maximum_orderable"`
-	RedirectUrl NullableString `json:"redirect_url,omitempty"`
+	MaximumOrderable interface{} `json:"maximum_orderable"`
 	LowStockAlert bool `json:"low_stock_alert"`
 	Id int32 `json:"id"`
 	CreatedAt string `json:"createdAt"`
@@ -58,28 +53,24 @@ type _ProductCreateResponseData ProductCreateResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProductCreateResponseData(variantsOptions []interface{}, variants []interface{}, name string, description string, currency string, price int32, quantity int32, type_ string, isShippable bool, unlimited bool, files []interface{}, shippingFields ProductListsResponseArrayShippingFields, integration int32, domain string, metadata ProductListsResponseArrayMetadata, slug string, productCode string, quantitySold int32, active bool, deletedAt interface{}, inStock bool, minimumOrderable int32, maximumOrderable NullableInt32, lowStockAlert bool, id int32, createdAt string, updatedAt string) *ProductCreateResponseData {
+func NewProductCreateResponseData(name string, description string, currency string, price int32, quantity int32, isShippable bool, unlimited bool, integration int32, domain string, metadata ProductListsResponseArrayMetadata, slug string, productCode string, quantitySold int32, type_ string, shippingFields ProductCreateResponseDataShippingFields, active bool, inStock bool, minimumOrderable int32, maximumOrderable interface{}, lowStockAlert bool, id int32, createdAt string, updatedAt string) *ProductCreateResponseData {
 	this := ProductCreateResponseData{}
-	this.VariantsOptions = variantsOptions
-	this.Variants = variants
 	this.Name = name
 	this.Description = description
 	this.Currency = currency
 	this.Price = price
 	this.Quantity = quantity
-	this.Type = type_
 	this.IsShippable = isShippable
 	this.Unlimited = unlimited
-	this.Files = files
-	this.ShippingFields = shippingFields
 	this.Integration = integration
 	this.Domain = domain
 	this.Metadata = metadata
 	this.Slug = slug
 	this.ProductCode = productCode
 	this.QuantitySold = quantitySold
+	this.Type = type_
+	this.ShippingFields = shippingFields
 	this.Active = active
-	this.DeletedAt = deletedAt
 	this.InStock = inStock
 	this.MinimumOrderable = minimumOrderable
 	this.MaximumOrderable = maximumOrderable
@@ -96,54 +87,6 @@ func NewProductCreateResponseData(variantsOptions []interface{}, variants []inte
 func NewProductCreateResponseDataWithDefaults() *ProductCreateResponseData {
 	this := ProductCreateResponseData{}
 	return &this
-}
-
-// GetVariantsOptions returns the VariantsOptions field value
-func (o *ProductCreateResponseData) GetVariantsOptions() []interface{} {
-	if o == nil {
-		var ret []interface{}
-		return ret
-	}
-
-	return o.VariantsOptions
-}
-
-// GetVariantsOptionsOk returns a tuple with the VariantsOptions field value
-// and a boolean to check if the value has been set.
-func (o *ProductCreateResponseData) GetVariantsOptionsOk() ([]interface{}, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.VariantsOptions, true
-}
-
-// SetVariantsOptions sets field value
-func (o *ProductCreateResponseData) SetVariantsOptions(v []interface{}) {
-	o.VariantsOptions = v
-}
-
-// GetVariants returns the Variants field value
-func (o *ProductCreateResponseData) GetVariants() []interface{} {
-	if o == nil {
-		var ret []interface{}
-		return ret
-	}
-
-	return o.Variants
-}
-
-// GetVariantsOk returns a tuple with the Variants field value
-// and a boolean to check if the value has been set.
-func (o *ProductCreateResponseData) GetVariantsOk() ([]interface{}, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Variants, true
-}
-
-// SetVariants sets field value
-func (o *ProductCreateResponseData) SetVariants(v []interface{}) {
-	o.Variants = v
 }
 
 // GetName returns the Name field value
@@ -266,30 +209,6 @@ func (o *ProductCreateResponseData) SetQuantity(v int32) {
 	o.Quantity = v
 }
 
-// GetType returns the Type field value
-func (o *ProductCreateResponseData) GetType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *ProductCreateResponseData) GetTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *ProductCreateResponseData) SetType(v string) {
-	o.Type = v
-}
-
 // GetIsShippable returns the IsShippable field value
 func (o *ProductCreateResponseData) GetIsShippable() bool {
 	if o == nil {
@@ -336,54 +255,6 @@ func (o *ProductCreateResponseData) GetUnlimitedOk() (*bool, bool) {
 // SetUnlimited sets field value
 func (o *ProductCreateResponseData) SetUnlimited(v bool) {
 	o.Unlimited = v
-}
-
-// GetFiles returns the Files field value
-func (o *ProductCreateResponseData) GetFiles() []interface{} {
-	if o == nil {
-		var ret []interface{}
-		return ret
-	}
-
-	return o.Files
-}
-
-// GetFilesOk returns a tuple with the Files field value
-// and a boolean to check if the value has been set.
-func (o *ProductCreateResponseData) GetFilesOk() ([]interface{}, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Files, true
-}
-
-// SetFiles sets field value
-func (o *ProductCreateResponseData) SetFiles(v []interface{}) {
-	o.Files = v
-}
-
-// GetShippingFields returns the ShippingFields field value
-func (o *ProductCreateResponseData) GetShippingFields() ProductListsResponseArrayShippingFields {
-	if o == nil {
-		var ret ProductListsResponseArrayShippingFields
-		return ret
-	}
-
-	return o.ShippingFields
-}
-
-// GetShippingFieldsOk returns a tuple with the ShippingFields field value
-// and a boolean to check if the value has been set.
-func (o *ProductCreateResponseData) GetShippingFieldsOk() (*ProductListsResponseArrayShippingFields, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ShippingFields, true
-}
-
-// SetShippingFields sets field value
-func (o *ProductCreateResponseData) SetShippingFields(v ProductListsResponseArrayShippingFields) {
-	o.ShippingFields = v
 }
 
 // GetIntegration returns the Integration field value
@@ -530,6 +401,54 @@ func (o *ProductCreateResponseData) SetQuantitySold(v int32) {
 	o.QuantitySold = v
 }
 
+// GetType returns the Type field value
+func (o *ProductCreateResponseData) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *ProductCreateResponseData) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *ProductCreateResponseData) SetType(v string) {
+	o.Type = v
+}
+
+// GetShippingFields returns the ShippingFields field value
+func (o *ProductCreateResponseData) GetShippingFields() ProductCreateResponseDataShippingFields {
+	if o == nil {
+		var ret ProductCreateResponseDataShippingFields
+		return ret
+	}
+
+	return o.ShippingFields
+}
+
+// GetShippingFieldsOk returns a tuple with the ShippingFields field value
+// and a boolean to check if the value has been set.
+func (o *ProductCreateResponseData) GetShippingFieldsOk() (*ProductCreateResponseDataShippingFields, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ShippingFields, true
+}
+
+// SetShippingFields sets field value
+func (o *ProductCreateResponseData) SetShippingFields(v ProductCreateResponseDataShippingFields) {
+	o.ShippingFields = v
+}
+
 // GetActive returns the Active field value
 func (o *ProductCreateResponseData) GetActive() bool {
 	if o == nil {
@@ -552,32 +471,6 @@ func (o *ProductCreateResponseData) GetActiveOk() (*bool, bool) {
 // SetActive sets field value
 func (o *ProductCreateResponseData) SetActive(v bool) {
 	o.Active = v
-}
-
-// GetDeletedAt returns the DeletedAt field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ProductCreateResponseData) GetDeletedAt() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.DeletedAt
-}
-
-// GetDeletedAtOk returns a tuple with the DeletedAt field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductCreateResponseData) GetDeletedAtOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.DeletedAt) {
-		return nil, false
-	}
-	return &o.DeletedAt, true
-}
-
-// SetDeletedAt sets field value
-func (o *ProductCreateResponseData) SetDeletedAt(v interface{}) {
-	o.DeletedAt = v
 }
 
 // GetInStock returns the InStock field value
@@ -629,71 +522,29 @@ func (o *ProductCreateResponseData) SetMinimumOrderable(v int32) {
 }
 
 // GetMaximumOrderable returns the MaximumOrderable field value
-// If the value is explicit nil, the zero value for int32 will be returned
-func (o *ProductCreateResponseData) GetMaximumOrderable() int32 {
-	if o == nil || o.MaximumOrderable.Get() == nil {
-		var ret int32
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ProductCreateResponseData) GetMaximumOrderable() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 
-	return *o.MaximumOrderable.Get()
+	return o.MaximumOrderable
 }
 
 // GetMaximumOrderableOk returns a tuple with the MaximumOrderable field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductCreateResponseData) GetMaximumOrderableOk() (*int32, bool) {
-	if o == nil {
+func (o *ProductCreateResponseData) GetMaximumOrderableOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.MaximumOrderable) {
 		return nil, false
 	}
-	return o.MaximumOrderable.Get(), o.MaximumOrderable.IsSet()
+	return &o.MaximumOrderable, true
 }
 
 // SetMaximumOrderable sets field value
-func (o *ProductCreateResponseData) SetMaximumOrderable(v int32) {
-	o.MaximumOrderable.Set(&v)
-}
-
-// GetRedirectUrl returns the RedirectUrl field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProductCreateResponseData) GetRedirectUrl() string {
-	if o == nil || IsNil(o.RedirectUrl.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.RedirectUrl.Get()
-}
-
-// GetRedirectUrlOk returns a tuple with the RedirectUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductCreateResponseData) GetRedirectUrlOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.RedirectUrl.Get(), o.RedirectUrl.IsSet()
-}
-
-// HasRedirectUrl returns a boolean if a field has been set.
-func (o *ProductCreateResponseData) HasRedirectUrl() bool {
-	if o != nil && o.RedirectUrl.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetRedirectUrl gets a reference to the given NullableString and assigns it to the RedirectUrl field.
-func (o *ProductCreateResponseData) SetRedirectUrl(v string) {
-	o.RedirectUrl.Set(&v)
-}
-// SetRedirectUrlNil sets the value for RedirectUrl to be an explicit nil
-func (o *ProductCreateResponseData) SetRedirectUrlNil() {
-	o.RedirectUrl.Set(nil)
-}
-
-// UnsetRedirectUrl ensures that no value is present for RedirectUrl, not even an explicit nil
-func (o *ProductCreateResponseData) UnsetRedirectUrl() {
-	o.RedirectUrl.Unset()
+func (o *ProductCreateResponseData) SetMaximumOrderable(v interface{}) {
+	o.MaximumOrderable = v
 }
 
 // GetLowStockAlert returns the LowStockAlert field value
@@ -802,33 +653,26 @@ func (o ProductCreateResponseData) MarshalJSON() ([]byte, error) {
 
 func (o ProductCreateResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["variants_options"] = o.VariantsOptions
-	toSerialize["variants"] = o.Variants
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description
 	toSerialize["currency"] = o.Currency
 	toSerialize["price"] = o.Price
 	toSerialize["quantity"] = o.Quantity
-	toSerialize["type"] = o.Type
 	toSerialize["is_shippable"] = o.IsShippable
 	toSerialize["unlimited"] = o.Unlimited
-	toSerialize["files"] = o.Files
-	toSerialize["shipping_fields"] = o.ShippingFields
 	toSerialize["integration"] = o.Integration
 	toSerialize["domain"] = o.Domain
 	toSerialize["metadata"] = o.Metadata
 	toSerialize["slug"] = o.Slug
 	toSerialize["product_code"] = o.ProductCode
 	toSerialize["quantity_sold"] = o.QuantitySold
+	toSerialize["type"] = o.Type
+	toSerialize["shipping_fields"] = o.ShippingFields
 	toSerialize["active"] = o.Active
-	if o.DeletedAt != nil {
-		toSerialize["deleted_at"] = o.DeletedAt
-	}
 	toSerialize["in_stock"] = o.InStock
 	toSerialize["minimum_orderable"] = o.MinimumOrderable
-	toSerialize["maximum_orderable"] = o.MaximumOrderable.Get()
-	if o.RedirectUrl.IsSet() {
-		toSerialize["redirect_url"] = o.RedirectUrl.Get()
+	if o.MaximumOrderable != nil {
+		toSerialize["maximum_orderable"] = o.MaximumOrderable
 	}
 	toSerialize["low_stock_alert"] = o.LowStockAlert
 	toSerialize["id"] = o.Id
@@ -842,26 +686,22 @@ func (o *ProductCreateResponseData) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"variants_options",
-		"variants",
 		"name",
 		"description",
 		"currency",
 		"price",
 		"quantity",
-		"type",
 		"is_shippable",
 		"unlimited",
-		"files",
-		"shipping_fields",
 		"integration",
 		"domain",
 		"metadata",
 		"slug",
 		"product_code",
 		"quantity_sold",
+		"type",
+		"shipping_fields",
 		"active",
-		"deleted_at",
 		"in_stock",
 		"minimum_orderable",
 		"maximum_orderable",

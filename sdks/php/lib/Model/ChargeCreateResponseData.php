@@ -62,7 +62,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
         'domain' => 'string',
         'status' => 'string',
         'reference' => 'string',
-        'receipt_number' => 'mixed',
+        'receipt_number' => 'string',
         'amount' => 'int',
         'message' => 'string',
         'gateway_response' => 'string',
@@ -71,20 +71,20 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
         'channel' => 'string',
         'currency' => 'string',
         'ip_address' => 'string',
-        'metadata' => '\Alexasomba\Paystack\Model\TransactionFetchResponseDataMetadata',
+        'metadata' => '\Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataMetadata',
         'log' => '\Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataLog',
         'fees' => 'int',
         'fees_split' => 'int',
         'authorization' => '\Alexasomba\Paystack\Model\TransactionFetchResponseDataAuthorization',
-        'customer' => '\Alexasomba\Paystack\Model\TransactionFetchResponseDataCustomer',
+        'customer' => '\Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataCustomer',
         'plan' => 'mixed',
         'split' => 'object',
         'order_id' => 'mixed',
         'requested_amount' => 'int',
         'pos_transaction_data' => 'mixed',
-        'source' => 'mixed',
-        'fees_breakdown' => 'mixed',
-        'connect' => 'mixed',
+        'source' => 'object',
+        'fees_breakdown' => 'object',
+        'connect' => 'object',
         'transaction_date' => 'string',
         'plan_object' => 'object',
         'subaccount' => 'object'
@@ -148,15 +148,15 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
         'created_at' => false,
         'channel' => false,
         'currency' => false,
-        'ip_address' => false,
-        'metadata' => false,
+        'ip_address' => true,
+        'metadata' => true,
         'log' => true,
         'fees' => false,
         'fees_split' => true,
         'authorization' => false,
         'customer' => false,
         'plan' => true,
-        'split' => false,
+        'split' => true,
         'order_id' => true,
         'requested_amount' => false,
         'pos_transaction_data' => true,
@@ -490,9 +490,6 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['reference'] === null) {
             $invalidProperties[] = "'reference' can't be null";
         }
-        if ($this->container['receipt_number'] === null && !$this->isNullableSetToNull('receipt_number')) {
-            $invalidProperties[] = "'receipt_number' can't be null";
-        }
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
         }
@@ -502,22 +499,16 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['gateway_response'] === null) {
             $invalidProperties[] = "'gateway_response' can't be null";
         }
-        if ($this->container['paid_at'] === null) {
-            $invalidProperties[] = "'paid_at' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
         if ($this->container['channel'] === null) {
             $invalidProperties[] = "'channel' can't be null";
         }
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
         }
-        if ($this->container['ip_address'] === null) {
+        if ($this->container['ip_address'] === null && !$this->isNullableSetToNull('ip_address')) {
             $invalidProperties[] = "'ip_address' can't be null";
         }
-        if ($this->container['metadata'] === null) {
+        if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
             $invalidProperties[] = "'metadata' can't be null";
         }
         if ($this->container['log'] === null && !$this->isNullableSetToNull('log')) {
@@ -525,9 +516,6 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
         }
         if ($this->container['fees'] === null) {
             $invalidProperties[] = "'fees' can't be null";
-        }
-        if ($this->container['fees_split'] === null && !$this->isNullableSetToNull('fees_split')) {
-            $invalidProperties[] = "'fees_split' can't be null";
         }
         if ($this->container['authorization'] === null) {
             $invalidProperties[] = "'authorization' can't be null";
@@ -538,35 +526,8 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['plan'] === null && !$this->isNullableSetToNull('plan')) {
             $invalidProperties[] = "'plan' can't be null";
         }
-        if ($this->container['split'] === null) {
-            $invalidProperties[] = "'split' can't be null";
-        }
-        if ($this->container['order_id'] === null && !$this->isNullableSetToNull('order_id')) {
-            $invalidProperties[] = "'order_id' can't be null";
-        }
-        if ($this->container['requested_amount'] === null) {
-            $invalidProperties[] = "'requested_amount' can't be null";
-        }
-        if ($this->container['pos_transaction_data'] === null && !$this->isNullableSetToNull('pos_transaction_data')) {
-            $invalidProperties[] = "'pos_transaction_data' can't be null";
-        }
-        if ($this->container['source'] === null && !$this->isNullableSetToNull('source')) {
-            $invalidProperties[] = "'source' can't be null";
-        }
-        if ($this->container['fees_breakdown'] === null && !$this->isNullableSetToNull('fees_breakdown')) {
-            $invalidProperties[] = "'fees_breakdown' can't be null";
-        }
-        if ($this->container['connect'] === null && !$this->isNullableSetToNull('connect')) {
-            $invalidProperties[] = "'connect' can't be null";
-        }
         if ($this->container['transaction_date'] === null) {
             $invalidProperties[] = "'transaction_date' can't be null";
-        }
-        if ($this->container['plan_object'] === null) {
-            $invalidProperties[] = "'plan_object' can't be null";
-        }
-        if ($this->container['subaccount'] === null) {
-            $invalidProperties[] = "'subaccount' can't be null";
         }
         return $invalidProperties;
     }
@@ -694,7 +655,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets receipt_number
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getReceiptNumber()
     {
@@ -704,7 +665,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets receipt_number
      *
-     * @param mixed|null $receipt_number receipt_number
+     * @param string|null $receipt_number receipt_number
      *
      * @return self
      */
@@ -816,7 +777,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets paid_at
      *
-     * @return string
+     * @return string|null
      */
     public function getPaidAt()
     {
@@ -826,7 +787,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets paid_at
      *
-     * @param string $paid_at paid_at
+     * @param string|null $paid_at paid_at
      *
      * @return self
      */
@@ -843,7 +804,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets created_at
      *
-     * @return string
+     * @return string|null
      */
     public function getCreatedAt()
     {
@@ -853,7 +814,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets created_at
      *
-     * @param string $created_at created_at
+     * @param string|null $created_at created_at
      *
      * @return self
      */
@@ -924,7 +885,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets ip_address
      *
-     * @return string
+     * @return string|null
      */
     public function getIpAddress()
     {
@@ -934,14 +895,21 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets ip_address
      *
-     * @param string $ip_address ip_address
+     * @param string|null $ip_address ip_address
      *
      * @return self
      */
     public function setIpAddress($ip_address)
     {
         if (is_null($ip_address)) {
-            throw new \InvalidArgumentException('non-nullable ip_address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ip_address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ip_address', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ip_address'] = $ip_address;
 
@@ -951,7 +919,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets metadata
      *
-     * @return \Alexasomba\Paystack\Model\TransactionFetchResponseDataMetadata
+     * @return \Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataMetadata|null
      */
     public function getMetadata()
     {
@@ -961,14 +929,21 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets metadata
      *
-     * @param \Alexasomba\Paystack\Model\TransactionFetchResponseDataMetadata $metadata metadata
+     * @param \Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataMetadata|null $metadata metadata
      *
      * @return self
      */
     public function setMetadata($metadata)
     {
         if (is_null($metadata)) {
-            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['metadata'] = $metadata;
 
@@ -1100,7 +1075,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets customer
      *
-     * @return \Alexasomba\Paystack\Model\TransactionFetchResponseDataCustomer
+     * @return \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataCustomer
      */
     public function getCustomer()
     {
@@ -1110,7 +1085,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets customer
      *
-     * @param \Alexasomba\Paystack\Model\TransactionFetchResponseDataCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataCustomer $customer customer
      *
      * @return self
      */
@@ -1161,7 +1136,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets split
      *
-     * @return object
+     * @return object|null
      */
     public function getSplit()
     {
@@ -1171,14 +1146,21 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets split
      *
-     * @param object $split split
+     * @param object|null $split split
      *
      * @return self
      */
     public function setSplit($split)
     {
         if (is_null($split)) {
-            throw new \InvalidArgumentException('non-nullable split cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'split');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('split', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['split'] = $split;
 
@@ -1222,7 +1204,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets requested_amount
      *
-     * @return int
+     * @return int|null
      */
     public function getRequestedAmount()
     {
@@ -1232,7 +1214,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets requested_amount
      *
-     * @param int $requested_amount requested_amount
+     * @param int|null $requested_amount requested_amount
      *
      * @return self
      */
@@ -1283,7 +1265,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets source
      *
-     * @return mixed|null
+     * @return object|null
      */
     public function getSource()
     {
@@ -1293,7 +1275,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets source
      *
-     * @param mixed|null $source source
+     * @param object|null $source source
      *
      * @return self
      */
@@ -1317,7 +1299,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets fees_breakdown
      *
-     * @return mixed|null
+     * @return object|null
      */
     public function getFeesBreakdown()
     {
@@ -1327,7 +1309,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets fees_breakdown
      *
-     * @param mixed|null $fees_breakdown fees_breakdown
+     * @param object|null $fees_breakdown fees_breakdown
      *
      * @return self
      */
@@ -1351,7 +1333,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets connect
      *
-     * @return mixed|null
+     * @return object|null
      */
     public function getConnect()
     {
@@ -1361,7 +1343,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets connect
      *
-     * @param mixed|null $connect connect
+     * @param object|null $connect connect
      *
      * @return self
      */
@@ -1412,7 +1394,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets plan_object
      *
-     * @return object
+     * @return object|null
      */
     public function getPlanObject()
     {
@@ -1422,7 +1404,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets plan_object
      *
-     * @param object $plan_object plan_object
+     * @param object|null $plan_object plan_object
      *
      * @return self
      */
@@ -1439,7 +1421,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets subaccount
      *
-     * @return object
+     * @return object|null
      */
     public function getSubaccount()
     {
@@ -1449,7 +1431,7 @@ class ChargeCreateResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets subaccount
      *
-     * @param object $subaccount subaccount
+     * @param object|null $subaccount subaccount
      *
      * @return self
      */

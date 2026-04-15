@@ -20,7 +20,6 @@ import json
 
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from alexasomba_paystack.models.bulk_charge_fetch_bulk_batch_charges_response_array_customer_metadata import BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -31,11 +30,11 @@ class CustomerFetchResponseData(BaseModel):
     transactions: List[Any]
     subscriptions: List[Any]
     authorizations: List[Any]
-    first_name: StrictStr
-    last_name: StrictStr
+    first_name: Optional[StrictStr]
+    last_name: Optional[StrictStr]
     email: StrictStr
-    phone: StrictStr
-    metadata: BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata
+    phone: Optional[StrictStr]
+    metadata: Optional[Dict[str, Any]]
     domain: StrictStr
     customer_code: StrictStr
     risk_action: StrictStr
@@ -46,7 +45,7 @@ class CustomerFetchResponseData(BaseModel):
     total_transactions: StrictInt
     total_transaction_value: List[Any]
     dedicated_account: Optional[Any]
-    dedicated_accounts: Optional[List[Any]]
+    dedicated_accounts: Optional[List[Any]] = None
     identified: StrictBool
     identifications: Optional[Any]
     __properties: ClassVar[List[str]] = ["transactions", "subscriptions", "authorizations", "first_name", "last_name", "email", "phone", "metadata", "domain", "customer_code", "risk_action", "id", "integration", "createdAt", "updatedAt", "total_transactions", "total_transaction_value", "dedicated_account", "dedicated_accounts", "identified", "identifications"]
@@ -90,9 +89,26 @@ class CustomerFetchResponseData(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of metadata
-        if self.metadata:
-            _dict['metadata'] = self.metadata.to_dict()
+        # set to None if first_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.first_name is None and "first_name" in self.model_fields_set:
+            _dict['first_name'] = None
+
+        # set to None if last_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.last_name is None and "last_name" in self.model_fields_set:
+            _dict['last_name'] = None
+
+        # set to None if phone (nullable) is None
+        # and model_fields_set contains the field
+        if self.phone is None and "phone" in self.model_fields_set:
+            _dict['phone'] = None
+
+        # set to None if metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
+
         # set to None if dedicated_account (nullable) is None
         # and model_fields_set contains the field
         if self.dedicated_account is None and "dedicated_account" in self.model_fields_set:
@@ -127,7 +143,7 @@ class CustomerFetchResponseData(BaseModel):
             "last_name": obj.get("last_name"),
             "email": obj.get("email"),
             "phone": obj.get("phone"),
-            "metadata": BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
+            "metadata": obj.get("metadata"),
             "domain": obj.get("domain"),
             "customer_code": obj.get("customer_code"),
             "risk_action": obj.get("risk_action"),

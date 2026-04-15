@@ -20,8 +20,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List
-from alexasomba_paystack.models.bulk_charge_list_response_meta import BulkChargeListResponseMeta
 from alexasomba_paystack.models.payment_request_list_response_array import PaymentRequestListResponseArray
+from alexasomba_paystack.models.payment_request_list_response_meta import PaymentRequestListResponseMeta
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,7 +32,7 @@ class PaymentRequestListResponse(BaseModel):
     status: StrictBool
     message: StrictStr
     data: List[PaymentRequestListResponseArray]
-    meta: BulkChargeListResponseMeta
+    meta: PaymentRequestListResponseMeta
     __properties: ClassVar[List[str]] = ["status", "message", "data", "meta"]
 
     model_config = ConfigDict(
@@ -99,7 +99,7 @@ class PaymentRequestListResponse(BaseModel):
             "status": obj.get("status"),
             "message": obj.get("message"),
             "data": [PaymentRequestListResponseArray.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
-            "meta": BulkChargeListResponseMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+            "meta": PaymentRequestListResponseMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
         })
         return _obj
 

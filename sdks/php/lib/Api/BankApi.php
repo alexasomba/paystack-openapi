@@ -138,18 +138,18 @@ class BankApi
      *
      * List Banks
      *
-     * @param  string|null $country The country from which to obtain the list of supported banks (optional)
-     * @param  string|null $currency The country from which to obtain the list of supported banks (optional)
+     * @param  string|null $country The country from which to obtain the list of supported banks. Accepted values are: ghana, kenya, nigeria, south africa (optional)
+     * @param  string|null $currency One of the supported currency (optional)
      * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
+     * @param  int|null $per_page The number of objects to return per page. Defaults to 50, and limited to 100 records per page. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
      * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
      * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
      * @param  bool|null $pay_with_bank_transfer A flag to filter for available banks a customer can make a transfer to complete a payment (optional)
      * @param  bool|null $pay_with_bank A flag to filter for banks a customer can pay directly from (optional)
      * @param  bool|null $enabled_for_verification A flag to filter the banks that are supported for account verification in South Africa. You need to combine this with either the &#x60;currency&#x60; or &#x60;country&#x60; filter. (optional)
-     * @param  string|null $gateway The type of gateway for a Nigerian bank (optional)
-     * @param  string|null $type Type of financial channel (optional)
+     * @param  string|null $gateway The gateway type of the bank (optional)
+     * @param  string|null $type Type of financial channel. For Ghanaian channels, please use either mobile_money for mobile money channels OR ghipss for bank channels (optional)
      * @param  bool|null $include_nip_sort_code A flag that returns Nigerian banks with their NIP institution code.  The returned value can be used in identifying institutions on NIP. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bankList'] to see the possible values for this operation
      *
@@ -168,18 +168,18 @@ class BankApi
      *
      * List Banks
      *
-     * @param  string|null $country The country from which to obtain the list of supported banks (optional)
-     * @param  string|null $currency The country from which to obtain the list of supported banks (optional)
+     * @param  string|null $country The country from which to obtain the list of supported banks. Accepted values are: ghana, kenya, nigeria, south africa (optional)
+     * @param  string|null $currency One of the supported currency (optional)
      * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
+     * @param  int|null $per_page The number of objects to return per page. Defaults to 50, and limited to 100 records per page. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
      * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
      * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
      * @param  bool|null $pay_with_bank_transfer A flag to filter for available banks a customer can make a transfer to complete a payment (optional)
      * @param  bool|null $pay_with_bank A flag to filter for banks a customer can pay directly from (optional)
      * @param  bool|null $enabled_for_verification A flag to filter the banks that are supported for account verification in South Africa. You need to combine this with either the &#x60;currency&#x60; or &#x60;country&#x60; filter. (optional)
-     * @param  string|null $gateway The type of gateway for a Nigerian bank (optional)
-     * @param  string|null $type Type of financial channel (optional)
+     * @param  string|null $gateway The gateway type of the bank (optional)
+     * @param  string|null $type Type of financial channel. For Ghanaian channels, please use either mobile_money for mobile money channels OR ghipss for bank channels (optional)
      * @param  bool|null $include_nip_sort_code A flag that returns Nigerian banks with their NIP institution code.  The returned value can be used in identifying institutions on NIP. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bankList'] to see the possible values for this operation
      *
@@ -293,18 +293,18 @@ class BankApi
      *
      * List Banks
      *
-     * @param  string|null $country The country from which to obtain the list of supported banks (optional)
-     * @param  string|null $currency The country from which to obtain the list of supported banks (optional)
+     * @param  string|null $country The country from which to obtain the list of supported banks. Accepted values are: ghana, kenya, nigeria, south africa (optional)
+     * @param  string|null $currency One of the supported currency (optional)
      * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
+     * @param  int|null $per_page The number of objects to return per page. Defaults to 50, and limited to 100 records per page. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
      * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
      * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
      * @param  bool|null $pay_with_bank_transfer A flag to filter for available banks a customer can make a transfer to complete a payment (optional)
      * @param  bool|null $pay_with_bank A flag to filter for banks a customer can pay directly from (optional)
      * @param  bool|null $enabled_for_verification A flag to filter the banks that are supported for account verification in South Africa. You need to combine this with either the &#x60;currency&#x60; or &#x60;country&#x60; filter. (optional)
-     * @param  string|null $gateway The type of gateway for a Nigerian bank (optional)
-     * @param  string|null $type Type of financial channel (optional)
+     * @param  string|null $gateway The gateway type of the bank (optional)
+     * @param  string|null $type Type of financial channel. For Ghanaian channels, please use either mobile_money for mobile money channels OR ghipss for bank channels (optional)
      * @param  bool|null $include_nip_sort_code A flag that returns Nigerian banks with their NIP institution code.  The returned value can be used in identifying institutions on NIP. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bankList'] to see the possible values for this operation
      *
@@ -326,18 +326,18 @@ class BankApi
      *
      * List Banks
      *
-     * @param  string|null $country The country from which to obtain the list of supported banks (optional)
-     * @param  string|null $currency The country from which to obtain the list of supported banks (optional)
+     * @param  string|null $country The country from which to obtain the list of supported banks. Accepted values are: ghana, kenya, nigeria, south africa (optional)
+     * @param  string|null $currency One of the supported currency (optional)
      * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
+     * @param  int|null $per_page The number of objects to return per page. Defaults to 50, and limited to 100 records per page. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
      * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
      * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
      * @param  bool|null $pay_with_bank_transfer A flag to filter for available banks a customer can make a transfer to complete a payment (optional)
      * @param  bool|null $pay_with_bank A flag to filter for banks a customer can pay directly from (optional)
      * @param  bool|null $enabled_for_verification A flag to filter the banks that are supported for account verification in South Africa. You need to combine this with either the &#x60;currency&#x60; or &#x60;country&#x60; filter. (optional)
-     * @param  string|null $gateway The type of gateway for a Nigerian bank (optional)
-     * @param  string|null $type Type of financial channel (optional)
+     * @param  string|null $gateway The gateway type of the bank (optional)
+     * @param  string|null $type Type of financial channel. For Ghanaian channels, please use either mobile_money for mobile money channels OR ghipss for bank channels (optional)
      * @param  bool|null $include_nip_sort_code A flag that returns Nigerian banks with their NIP institution code.  The returned value can be used in identifying institutions on NIP. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bankList'] to see the possible values for this operation
      *
@@ -388,18 +388,18 @@ class BankApi
     /**
      * Create request for operation 'bankList'
      *
-     * @param  string|null $country The country from which to obtain the list of supported banks (optional)
-     * @param  string|null $currency The country from which to obtain the list of supported banks (optional)
+     * @param  string|null $country The country from which to obtain the list of supported banks. Accepted values are: ghana, kenya, nigeria, south africa (optional)
+     * @param  string|null $currency One of the supported currency (optional)
      * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
-     * @param  int|null $per_page The number of records to fetch per request (optional)
-     * @param  int|null $page The offset to retrieve data from (optional)
+     * @param  int|null $per_page The number of objects to return per page. Defaults to 50, and limited to 100 records per page. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
      * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
      * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
      * @param  bool|null $pay_with_bank_transfer A flag to filter for available banks a customer can make a transfer to complete a payment (optional)
      * @param  bool|null $pay_with_bank A flag to filter for banks a customer can pay directly from (optional)
      * @param  bool|null $enabled_for_verification A flag to filter the banks that are supported for account verification in South Africa. You need to combine this with either the &#x60;currency&#x60; or &#x60;country&#x60; filter. (optional)
-     * @param  string|null $gateway The type of gateway for a Nigerian bank (optional)
-     * @param  string|null $type Type of financial channel (optional)
+     * @param  string|null $gateway The gateway type of the bank (optional)
+     * @param  string|null $type Type of financial channel. For Ghanaian channels, please use either mobile_money for mobile money channels OR ghipss for bank channels (optional)
      * @param  bool|null $include_nip_sort_code A flag that returns Nigerian banks with their NIP institution code.  The returned value can be used in identifying institutions on NIP. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bankList'] to see the possible values for this operation
      *
@@ -613,8 +613,8 @@ class BankApi
      *
      * Resolve Account Number
      *
-     * @param  int|null $account_number The account number of interest (optional)
-     * @param  int|null $bank_code The bank code associated with the account number (optional)
+     * @param  string|null $account_number The account number of interest (optional)
+     * @param  string|null $bank_code The bank code associated with the account number (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bankResolveAccountNumber'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
@@ -632,8 +632,8 @@ class BankApi
      *
      * Resolve Account Number
      *
-     * @param  int|null $account_number The account number of interest (optional)
-     * @param  int|null $bank_code The bank code associated with the account number (optional)
+     * @param  string|null $account_number The account number of interest (optional)
+     * @param  string|null $bank_code The bank code associated with the account number (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bankResolveAccountNumber'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
@@ -746,8 +746,8 @@ class BankApi
      *
      * Resolve Account Number
      *
-     * @param  int|null $account_number The account number of interest (optional)
-     * @param  int|null $bank_code The bank code associated with the account number (optional)
+     * @param  string|null $account_number The account number of interest (optional)
+     * @param  string|null $bank_code The bank code associated with the account number (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bankResolveAccountNumber'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -768,8 +768,8 @@ class BankApi
      *
      * Resolve Account Number
      *
-     * @param  int|null $account_number The account number of interest (optional)
-     * @param  int|null $bank_code The bank code associated with the account number (optional)
+     * @param  string|null $account_number The account number of interest (optional)
+     * @param  string|null $bank_code The bank code associated with the account number (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bankResolveAccountNumber'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -819,8 +819,8 @@ class BankApi
     /**
      * Create request for operation 'bankResolveAccountNumber'
      *
-     * @param  int|null $account_number The account number of interest (optional)
-     * @param  int|null $bank_code The bank code associated with the account number (optional)
+     * @param  string|null $account_number The account number of interest (optional)
+     * @param  string|null $bank_code The bank code associated with the account number (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bankResolveAccountNumber'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -843,7 +843,7 @@ class BankApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $account_number,
             'account_number', // param base name
-            'integer', // openApiType
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -852,7 +852,7 @@ class BankApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $bank_code,
             'bank_code', // param base name
-            'integer', // openApiType
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required

@@ -28,7 +28,7 @@ type SplitAPIService service
 type ApiSplitAddSubaccountRequest struct {
 	ctx context.Context
 	ApiService *SplitAPIService
-	id int32
+	id string
 	splitSubaccounts *SplitSubaccounts
 }
 
@@ -50,7 +50,7 @@ Add a subaccount to a split configuration, or update the share of an existing su
  @param id The ID of the split configuration to fetch
  @return ApiSplitAddSubaccountRequest
 */
-func (a *SplitAPIService) SplitAddSubaccount(ctx context.Context, id int32) ApiSplitAddSubaccountRequest {
+func (a *SplitAPIService) SplitAddSubaccount(ctx context.Context, id string) ApiSplitAddSubaccountRequest {
 	return ApiSplitAddSubaccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -268,7 +268,7 @@ func (a *SplitAPIService) SplitCreateExecute(r ApiSplitCreateRequest) (*SplitCre
 type ApiSplitFetchRequest struct {
 	ctx context.Context
 	ApiService *SplitAPIService
-	id int32
+	id string
 }
 
 func (r ApiSplitFetchRequest) Execute() (*SplitFetchResponse, *http.Response, error) {
@@ -284,7 +284,7 @@ Get details of a split configuration for a transaction
  @param id The ID of the split configuration to fetch
  @return ApiSplitFetchRequest
 */
-func (a *SplitAPIService) SplitFetch(ctx context.Context, id int32) ApiSplitFetchRequest {
+func (a *SplitAPIService) SplitFetch(ctx context.Context, id string) ApiSplitFetchRequest {
 	return ApiSplitFetchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -396,6 +396,7 @@ type ApiSplitListRequest struct {
 	subaccountCode *string
 	name *string
 	active *bool
+	sortBy *string
 	perPage *int32
 	page *int32
 	from *time.Time
@@ -420,25 +421,31 @@ func (r ApiSplitListRequest) Active(active bool) ApiSplitListRequest {
 	return r
 }
 
-// The number of records to fetch per request
+// Sort by name, defaults to createdAt date
+func (r ApiSplitListRequest) SortBy(sortBy string) ApiSplitListRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+// Number of splits per page. If not specified, we use a default value of 50.
 func (r ApiSplitListRequest) PerPage(perPage int32) ApiSplitListRequest {
 	r.perPage = &perPage
 	return r
 }
 
-// The offset to retrieve data from
+// Page number to view. If not specified, we use a default value of 1.
 func (r ApiSplitListRequest) Page(page int32) ApiSplitListRequest {
 	r.page = &page
 	return r
 }
 
-// The start date
+// A timestamp from which to start listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21
 func (r ApiSplitListRequest) From(from time.Time) ApiSplitListRequest {
 	r.from = &from
 	return r
 }
 
-// The end date
+// A timestamp at which to stop listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21
 func (r ApiSplitListRequest) To(to time.Time) ApiSplitListRequest {
 	r.to = &to
 	return r
@@ -493,8 +500,11 @@ func (a *SplitAPIService) SplitListExecute(r ApiSplitListRequest) (*SplitListRes
 	if r.active != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
 	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "form", "")
+	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "perPage", r.perPage, "form", "")
 	}
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
@@ -584,12 +594,12 @@ func (a *SplitAPIService) SplitListExecute(r ApiSplitListRequest) (*SplitListRes
 type ApiSplitRemoveSubaccountRequest struct {
 	ctx context.Context
 	ApiService *SplitAPIService
-	id int32
-	splitSubaccounts *SplitSubaccounts
+	id string
+	splitSubaccountRemove *SplitSubaccountRemove
 }
 
-func (r ApiSplitRemoveSubaccountRequest) SplitSubaccounts(splitSubaccounts SplitSubaccounts) ApiSplitRemoveSubaccountRequest {
-	r.splitSubaccounts = &splitSubaccounts
+func (r ApiSplitRemoveSubaccountRequest) SplitSubaccountRemove(splitSubaccountRemove SplitSubaccountRemove) ApiSplitRemoveSubaccountRequest {
+	r.splitSubaccountRemove = &splitSubaccountRemove
 	return r
 }
 
@@ -606,7 +616,7 @@ Remove a subaccount from a split configuration
  @param id The ID of the split configuration to fetch
  @return ApiSplitRemoveSubaccountRequest
 */
-func (a *SplitAPIService) SplitRemoveSubaccount(ctx context.Context, id int32) ApiSplitRemoveSubaccountRequest {
+func (a *SplitAPIService) SplitRemoveSubaccount(ctx context.Context, id string) ApiSplitRemoveSubaccountRequest {
 	return ApiSplitRemoveSubaccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -654,7 +664,7 @@ func (a *SplitAPIService) SplitRemoveSubaccountExecute(r ApiSplitRemoveSubaccoun
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.splitSubaccounts
+	localVarPostBody = r.splitSubaccountRemove
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

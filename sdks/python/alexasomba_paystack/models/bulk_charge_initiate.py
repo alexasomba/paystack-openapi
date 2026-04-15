@@ -28,10 +28,10 @@ class BulkChargeInitiate(BaseModel):
     A list of charge object
     """ # noqa: E501
     authorization: StrictStr = Field(description="Customer's card authorization code")
-    amount: StrictInt = Field(description="Amount to charge on the authorization")
+    amount: StrictInt = Field(description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). ")
     reference: Optional[StrictStr] = Field(default=None, description="A unique identifier containing lowercase letters `(a-z)`, digits `(0-9)` and these symbols: dash (`-`), underscore(`_`) ")
     attempt_partial_debit: Optional[StrictBool] = Field(default=None, description="A flag to indicate if you want us to try recouping lower amounts when the customer has insufficient fund")
-    at_least: Optional[StrictInt] = Field(default=None, description="Minimum amount to charge if the attempt_partial_debit flag is set")
+    at_least: Optional[StrictInt] = Field(default=None, description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Minimum amount to charge if the attempt_partial_debit flag is set. ")
     metadata: Optional[Dict[str, Any]] = Field(default=None, description="JSON object of custom data")
     __properties: ClassVar[List[str]] = ["authorization", "amount", "reference", "attempt_partial_debit", "at_least", "metadata"]
 

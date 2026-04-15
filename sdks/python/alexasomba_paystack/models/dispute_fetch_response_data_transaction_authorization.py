@@ -27,8 +27,8 @@ class DisputeFetchResponseDataTransactionAuthorization(BaseModel):
     """
     DisputeFetchResponseDataTransactionAuthorization
     """ # noqa: E501
-    receiver_bank_account_number: Optional[Any]
-    receiver_bank: Optional[Any]
+    receiver_bank_account_number: Optional[Any] = None
+    receiver_bank: Optional[Any] = None
     __properties: ClassVar[List[str]] = ["receiver_bank_account_number", "receiver_bank"]
 
     model_config = ConfigDict(

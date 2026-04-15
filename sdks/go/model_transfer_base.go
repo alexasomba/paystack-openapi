@@ -22,7 +22,7 @@ var _ MappedNullable = &TransferBase{}
 
 // TransferBase struct for TransferBase
 type TransferBase struct {
-	// Amount to transfer in kobo if currency is NGN and pesewas if currency is GHS.
+	// Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). 
 	Amount int32 `json:"amount"`
 	// The transfer recipient's code
 	Recipient string `json:"recipient"`

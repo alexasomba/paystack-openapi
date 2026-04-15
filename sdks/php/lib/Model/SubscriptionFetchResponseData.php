@@ -68,18 +68,13 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
         'next_payment_date' => 'string',
         'open_invoice' => 'mixed',
         'created_at' => 'string',
-        'cancelled_at' => 'mixed',
         'integration' => 'int',
         'plan' => '\Alexasomba\Paystack\Model\SubscriptionFetchResponseDataPlan',
-        'authorization' => '\Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataAuthorization',
-        'customer' => '\Alexasomba\Paystack\Model\TransactionFetchResponseDataCustomer',
-        'invoices' => 'mixed[]',
-        'invoices_history' => 'mixed[]',
-        'invoice_limit' => 'int',
-        'split_code' => 'mixed',
-        'most_recent_invoice' => 'mixed',
-        'payments_count' => 'int',
-        'metadata' => 'object'
+        'authorization' => '\Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayAuthorization',
+        'customer' => '\Alexasomba\Paystack\Model\SubscriptionFetchResponseDataCustomer',
+        'start' => 'int',
+        'quantity' => 'int',
+        'invoices' => 'mixed[]'
     ];
 
     /**
@@ -100,18 +95,13 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
         'next_payment_date' => null,
         'open_invoice' => null,
         'created_at' => null,
-        'cancelled_at' => null,
         'integration' => null,
         'plan' => null,
         'authorization' => null,
         'customer' => null,
-        'invoices' => null,
-        'invoices_history' => null,
-        'invoice_limit' => null,
-        'split_code' => null,
-        'most_recent_invoice' => null,
-        'payments_count' => null,
-        'metadata' => null
+        'start' => null,
+        'quantity' => null,
+        'invoices' => null
     ];
 
     /**
@@ -130,18 +120,13 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
         'next_payment_date' => false,
         'open_invoice' => true,
         'created_at' => false,
-        'cancelled_at' => true,
         'integration' => false,
         'plan' => false,
         'authorization' => false,
         'customer' => false,
-        'invoices' => false,
-        'invoices_history' => false,
-        'invoice_limit' => false,
-        'split_code' => true,
-        'most_recent_invoice' => true,
-        'payments_count' => false,
-        'metadata' => true
+        'start' => false,
+        'quantity' => false,
+        'invoices' => false
     ];
 
     /**
@@ -240,18 +225,13 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
         'next_payment_date' => 'next_payment_date',
         'open_invoice' => 'open_invoice',
         'created_at' => 'createdAt',
-        'cancelled_at' => 'cancelledAt',
         'integration' => 'integration',
         'plan' => 'plan',
         'authorization' => 'authorization',
         'customer' => 'customer',
-        'invoices' => 'invoices',
-        'invoices_history' => 'invoices_history',
-        'invoice_limit' => 'invoice_limit',
-        'split_code' => 'split_code',
-        'most_recent_invoice' => 'most_recent_invoice',
-        'payments_count' => 'payments_count',
-        'metadata' => 'metadata'
+        'start' => 'start',
+        'quantity' => 'quantity',
+        'invoices' => 'invoices'
     ];
 
     /**
@@ -270,18 +250,13 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
         'next_payment_date' => 'setNextPaymentDate',
         'open_invoice' => 'setOpenInvoice',
         'created_at' => 'setCreatedAt',
-        'cancelled_at' => 'setCancelledAt',
         'integration' => 'setIntegration',
         'plan' => 'setPlan',
         'authorization' => 'setAuthorization',
         'customer' => 'setCustomer',
-        'invoices' => 'setInvoices',
-        'invoices_history' => 'setInvoicesHistory',
-        'invoice_limit' => 'setInvoiceLimit',
-        'split_code' => 'setSplitCode',
-        'most_recent_invoice' => 'setMostRecentInvoice',
-        'payments_count' => 'setPaymentsCount',
-        'metadata' => 'setMetadata'
+        'start' => 'setStart',
+        'quantity' => 'setQuantity',
+        'invoices' => 'setInvoices'
     ];
 
     /**
@@ -300,18 +275,13 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
         'next_payment_date' => 'getNextPaymentDate',
         'open_invoice' => 'getOpenInvoice',
         'created_at' => 'getCreatedAt',
-        'cancelled_at' => 'getCancelledAt',
         'integration' => 'getIntegration',
         'plan' => 'getPlan',
         'authorization' => 'getAuthorization',
         'customer' => 'getCustomer',
-        'invoices' => 'getInvoices',
-        'invoices_history' => 'getInvoicesHistory',
-        'invoice_limit' => 'getInvoiceLimit',
-        'split_code' => 'getSplitCode',
-        'most_recent_invoice' => 'getMostRecentInvoice',
-        'payments_count' => 'getPaymentsCount',
-        'metadata' => 'getMetadata'
+        'start' => 'getStart',
+        'quantity' => 'getQuantity',
+        'invoices' => 'getInvoices'
     ];
 
     /**
@@ -381,18 +351,13 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('next_payment_date', $data ?? [], null);
         $this->setIfExists('open_invoice', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('cancelled_at', $data ?? [], null);
         $this->setIfExists('integration', $data ?? [], null);
         $this->setIfExists('plan', $data ?? [], null);
         $this->setIfExists('authorization', $data ?? [], null);
         $this->setIfExists('customer', $data ?? [], null);
+        $this->setIfExists('start', $data ?? [], null);
+        $this->setIfExists('quantity', $data ?? [], null);
         $this->setIfExists('invoices', $data ?? [], null);
-        $this->setIfExists('invoices_history', $data ?? [], null);
-        $this->setIfExists('invoice_limit', $data ?? [], null);
-        $this->setIfExists('split_code', $data ?? [], null);
-        $this->setIfExists('most_recent_invoice', $data ?? [], null);
-        $this->setIfExists('payments_count', $data ?? [], null);
-        $this->setIfExists('metadata', $data ?? [], null);
     }
 
     /**
@@ -452,9 +417,6 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
         }
-        if ($this->container['cancelled_at'] === null && !$this->isNullableSetToNull('cancelled_at')) {
-            $invalidProperties[] = "'cancelled_at' can't be null";
-        }
         if ($this->container['integration'] === null) {
             $invalidProperties[] = "'integration' can't be null";
         }
@@ -467,26 +429,14 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
         if ($this->container['customer'] === null) {
             $invalidProperties[] = "'customer' can't be null";
         }
+        if ($this->container['start'] === null) {
+            $invalidProperties[] = "'start' can't be null";
+        }
+        if ($this->container['quantity'] === null) {
+            $invalidProperties[] = "'quantity' can't be null";
+        }
         if ($this->container['invoices'] === null) {
             $invalidProperties[] = "'invoices' can't be null";
-        }
-        if ($this->container['invoices_history'] === null) {
-            $invalidProperties[] = "'invoices_history' can't be null";
-        }
-        if ($this->container['invoice_limit'] === null) {
-            $invalidProperties[] = "'invoice_limit' can't be null";
-        }
-        if ($this->container['split_code'] === null && !$this->isNullableSetToNull('split_code')) {
-            $invalidProperties[] = "'split_code' can't be null";
-        }
-        if ($this->container['most_recent_invoice'] === null && !$this->isNullableSetToNull('most_recent_invoice')) {
-            $invalidProperties[] = "'most_recent_invoice' can't be null";
-        }
-        if ($this->container['payments_count'] === null) {
-            $invalidProperties[] = "'payments_count' can't be null";
-        }
-        if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
-            $invalidProperties[] = "'metadata' can't be null";
         }
         return $invalidProperties;
     }
@@ -781,40 +731,6 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets cancelled_at
-     *
-     * @return mixed|null
-     */
-    public function getCancelledAt()
-    {
-        return $this->container['cancelled_at'];
-    }
-
-    /**
-     * Sets cancelled_at
-     *
-     * @param mixed|null $cancelled_at cancelled_at
-     *
-     * @return self
-     */
-    public function setCancelledAt($cancelled_at)
-    {
-        if (is_null($cancelled_at)) {
-            array_push($this->openAPINullablesSetToNull, 'cancelled_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cancelled_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['cancelled_at'] = $cancelled_at;
-
-        return $this;
-    }
-
-    /**
      * Gets integration
      *
      * @return int
@@ -871,7 +787,7 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets authorization
      *
-     * @return \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataAuthorization
+     * @return \Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayAuthorization
      */
     public function getAuthorization()
     {
@@ -881,7 +797,7 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets authorization
      *
-     * @param \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataAuthorization $authorization authorization
+     * @param \Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayAuthorization $authorization authorization
      *
      * @return self
      */
@@ -898,7 +814,7 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets customer
      *
-     * @return \Alexasomba\Paystack\Model\TransactionFetchResponseDataCustomer
+     * @return \Alexasomba\Paystack\Model\SubscriptionFetchResponseDataCustomer
      */
     public function getCustomer()
     {
@@ -908,7 +824,7 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets customer
      *
-     * @param \Alexasomba\Paystack\Model\TransactionFetchResponseDataCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\SubscriptionFetchResponseDataCustomer $customer customer
      *
      * @return self
      */
@@ -918,6 +834,60 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable customer cannot be null');
         }
         $this->container['customer'] = $customer;
+
+        return $this;
+    }
+
+    /**
+     * Gets start
+     *
+     * @return int
+     */
+    public function getStart()
+    {
+        return $this->container['start'];
+    }
+
+    /**
+     * Sets start
+     *
+     * @param int $start start
+     *
+     * @return self
+     */
+    public function setStart($start)
+    {
+        if (is_null($start)) {
+            throw new \InvalidArgumentException('non-nullable start cannot be null');
+        }
+        $this->container['start'] = $start;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantity
+     *
+     * @return int
+     */
+    public function getQuantity()
+    {
+        return $this->container['quantity'];
+    }
+
+    /**
+     * Sets quantity
+     *
+     * @param int $quantity quantity
+     *
+     * @return self
+     */
+    public function setQuantity($quantity)
+    {
+        if (is_null($quantity)) {
+            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
+        }
+        $this->container['quantity'] = $quantity;
 
         return $this;
     }
@@ -945,189 +915,6 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable invoices cannot be null');
         }
         $this->container['invoices'] = $invoices;
-
-        return $this;
-    }
-
-    /**
-     * Gets invoices_history
-     *
-     * @return mixed[]
-     */
-    public function getInvoicesHistory()
-    {
-        return $this->container['invoices_history'];
-    }
-
-    /**
-     * Sets invoices_history
-     *
-     * @param mixed[] $invoices_history invoices_history
-     *
-     * @return self
-     */
-    public function setInvoicesHistory($invoices_history)
-    {
-        if (is_null($invoices_history)) {
-            throw new \InvalidArgumentException('non-nullable invoices_history cannot be null');
-        }
-        $this->container['invoices_history'] = $invoices_history;
-
-        return $this;
-    }
-
-    /**
-     * Gets invoice_limit
-     *
-     * @return int
-     */
-    public function getInvoiceLimit()
-    {
-        return $this->container['invoice_limit'];
-    }
-
-    /**
-     * Sets invoice_limit
-     *
-     * @param int $invoice_limit invoice_limit
-     *
-     * @return self
-     */
-    public function setInvoiceLimit($invoice_limit)
-    {
-        if (is_null($invoice_limit)) {
-            throw new \InvalidArgumentException('non-nullable invoice_limit cannot be null');
-        }
-        $this->container['invoice_limit'] = $invoice_limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets split_code
-     *
-     * @return mixed|null
-     */
-    public function getSplitCode()
-    {
-        return $this->container['split_code'];
-    }
-
-    /**
-     * Sets split_code
-     *
-     * @param mixed|null $split_code split_code
-     *
-     * @return self
-     */
-    public function setSplitCode($split_code)
-    {
-        if (is_null($split_code)) {
-            array_push($this->openAPINullablesSetToNull, 'split_code');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('split_code', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['split_code'] = $split_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets most_recent_invoice
-     *
-     * @return mixed|null
-     */
-    public function getMostRecentInvoice()
-    {
-        return $this->container['most_recent_invoice'];
-    }
-
-    /**
-     * Sets most_recent_invoice
-     *
-     * @param mixed|null $most_recent_invoice most_recent_invoice
-     *
-     * @return self
-     */
-    public function setMostRecentInvoice($most_recent_invoice)
-    {
-        if (is_null($most_recent_invoice)) {
-            array_push($this->openAPINullablesSetToNull, 'most_recent_invoice');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('most_recent_invoice', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['most_recent_invoice'] = $most_recent_invoice;
-
-        return $this;
-    }
-
-    /**
-     * Gets payments_count
-     *
-     * @return int
-     */
-    public function getPaymentsCount()
-    {
-        return $this->container['payments_count'];
-    }
-
-    /**
-     * Sets payments_count
-     *
-     * @param int $payments_count payments_count
-     *
-     * @return self
-     */
-    public function setPaymentsCount($payments_count)
-    {
-        if (is_null($payments_count)) {
-            throw new \InvalidArgumentException('non-nullable payments_count cannot be null');
-        }
-        $this->container['payments_count'] = $payments_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets metadata
-     *
-     * @return object|null
-     */
-    public function getMetadata()
-    {
-        return $this->container['metadata'];
-    }
-
-    /**
-     * Sets metadata
-     *
-     * @param object|null $metadata metadata
-     *
-     * @return self
-     */
-    public function setMetadata($metadata)
-    {
-        if (is_null($metadata)) {
-            array_push($this->openAPINullablesSetToNull, 'metadata');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('metadata', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['metadata'] = $metadata;
 
         return $this;
     }

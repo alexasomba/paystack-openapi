@@ -34,9 +34,8 @@ class VerificationResolveCardBINResponseData(BaseModel):
     country_name: StrictStr
     card_type: StrictStr
     bank: StrictStr
-    currency: StrictStr
     linked_bank_id: StrictInt
-    __properties: ClassVar[List[str]] = ["bin", "brand", "sub_brand", "country_code", "country_name", "card_type", "bank", "currency", "linked_bank_id"]
+    __properties: ClassVar[List[str]] = ["bin", "brand", "sub_brand", "country_code", "country_name", "card_type", "bank", "linked_bank_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,7 +95,6 @@ class VerificationResolveCardBINResponseData(BaseModel):
             "country_name": obj.get("country_name"),
             "card_type": obj.get("card_type"),
             "bank": obj.get("bank"),
-            "currency": obj.get("currency"),
             "linked_bank_id": obj.get("linked_bank_id")
         })
         return _obj

@@ -68,17 +68,12 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         'reason' => 'string',
         'reference' => 'string',
         'source' => 'string',
-        'source_details' => 'mixed',
+        'source_details' => 'object',
         'status' => 'string',
-        'titan_code' => 'mixed',
+        'titan_code' => 'string',
         'transfer_code' => 'string',
-        'request' => 'int',
-        'transferred_at' => 'mixed',
         'updated_at' => 'string',
-        'recipient' => '\Alexasomba\Paystack\Model\TransferListResponseArrayRecipient',
-        'session' => '\Alexasomba\Paystack\Model\TransferListResponseArraySession',
-        'fee_charged' => 'int',
-        'fees_breakdown' => 'int'
+        'recipient' => '\Alexasomba\Paystack\Model\TransferListResponseArrayRecipient'
     ];
 
     /**
@@ -103,13 +98,8 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         'status' => null,
         'titan_code' => null,
         'transfer_code' => null,
-        'request' => null,
-        'transferred_at' => null,
         'updated_at' => null,
-        'recipient' => null,
-        'session' => null,
-        'fee_charged' => null,
-        'fees_breakdown' => null
+        'recipient' => null
     ];
 
     /**
@@ -132,13 +122,8 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         'status' => false,
         'titan_code' => true,
         'transfer_code' => false,
-        'request' => false,
-        'transferred_at' => true,
         'updated_at' => false,
-        'recipient' => false,
-        'session' => false,
-        'fee_charged' => false,
-        'fees_breakdown' => true
+        'recipient' => false
     ];
 
     /**
@@ -241,13 +226,8 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         'status' => 'status',
         'titan_code' => 'titan_code',
         'transfer_code' => 'transfer_code',
-        'request' => 'request',
-        'transferred_at' => 'transferred_at',
         'updated_at' => 'updatedAt',
-        'recipient' => 'recipient',
-        'session' => 'session',
-        'fee_charged' => 'fee_charged',
-        'fees_breakdown' => 'fees_breakdown'
+        'recipient' => 'recipient'
     ];
 
     /**
@@ -270,13 +250,8 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         'status' => 'setStatus',
         'titan_code' => 'setTitanCode',
         'transfer_code' => 'setTransferCode',
-        'request' => 'setRequest',
-        'transferred_at' => 'setTransferredAt',
         'updated_at' => 'setUpdatedAt',
-        'recipient' => 'setRecipient',
-        'session' => 'setSession',
-        'fee_charged' => 'setFeeCharged',
-        'fees_breakdown' => 'setFeesBreakdown'
+        'recipient' => 'setRecipient'
     ];
 
     /**
@@ -299,13 +274,8 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         'status' => 'getStatus',
         'titan_code' => 'getTitanCode',
         'transfer_code' => 'getTransferCode',
-        'request' => 'getRequest',
-        'transferred_at' => 'getTransferredAt',
         'updated_at' => 'getUpdatedAt',
-        'recipient' => 'getRecipient',
-        'session' => 'getSession',
-        'fee_charged' => 'getFeeCharged',
-        'fees_breakdown' => 'getFeesBreakdown'
+        'recipient' => 'getRecipient'
     ];
 
     /**
@@ -379,13 +349,8 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('titan_code', $data ?? [], null);
         $this->setIfExists('transfer_code', $data ?? [], null);
-        $this->setIfExists('request', $data ?? [], null);
-        $this->setIfExists('transferred_at', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
         $this->setIfExists('recipient', $data ?? [], null);
-        $this->setIfExists('session', $data ?? [], null);
-        $this->setIfExists('fee_charged', $data ?? [], null);
-        $this->setIfExists('fees_breakdown', $data ?? [], null);
     }
 
     /**
@@ -457,26 +422,11 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['transfer_code'] === null) {
             $invalidProperties[] = "'transfer_code' can't be null";
         }
-        if ($this->container['request'] === null) {
-            $invalidProperties[] = "'request' can't be null";
-        }
-        if ($this->container['transferred_at'] === null && !$this->isNullableSetToNull('transferred_at')) {
-            $invalidProperties[] = "'transferred_at' can't be null";
-        }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
         }
         if ($this->container['recipient'] === null) {
             $invalidProperties[] = "'recipient' can't be null";
-        }
-        if ($this->container['session'] === null) {
-            $invalidProperties[] = "'session' can't be null";
-        }
-        if ($this->container['fee_charged'] === null) {
-            $invalidProperties[] = "'fee_charged' can't be null";
-        }
-        if ($this->container['fees_breakdown'] === null && !$this->isNullableSetToNull('fees_breakdown')) {
-            $invalidProperties[] = "'fees_breakdown' can't be null";
         }
         return $invalidProperties;
     }
@@ -773,7 +723,7 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets source_details
      *
-     * @return mixed|null
+     * @return object|null
      */
     public function getSourceDetails()
     {
@@ -783,7 +733,7 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets source_details
      *
-     * @param mixed|null $source_details source_details
+     * @param object|null $source_details source_details
      *
      * @return self
      */
@@ -834,7 +784,7 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets titan_code
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getTitanCode()
     {
@@ -844,7 +794,7 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets titan_code
      *
-     * @param mixed|null $titan_code titan_code
+     * @param string|null $titan_code titan_code
      *
      * @return self
      */
@@ -888,67 +838,6 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable transfer_code cannot be null');
         }
         $this->container['transfer_code'] = $transfer_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets request
-     *
-     * @return int
-     */
-    public function getRequest()
-    {
-        return $this->container['request'];
-    }
-
-    /**
-     * Sets request
-     *
-     * @param int $request request
-     *
-     * @return self
-     */
-    public function setRequest($request)
-    {
-        if (is_null($request)) {
-            throw new \InvalidArgumentException('non-nullable request cannot be null');
-        }
-        $this->container['request'] = $request;
-
-        return $this;
-    }
-
-    /**
-     * Gets transferred_at
-     *
-     * @return mixed|null
-     */
-    public function getTransferredAt()
-    {
-        return $this->container['transferred_at'];
-    }
-
-    /**
-     * Sets transferred_at
-     *
-     * @param mixed|null $transferred_at transferred_at
-     *
-     * @return self
-     */
-    public function setTransferredAt($transferred_at)
-    {
-        if (is_null($transferred_at)) {
-            array_push($this->openAPINullablesSetToNull, 'transferred_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('transferred_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['transferred_at'] = $transferred_at;
 
         return $this;
     }
@@ -1003,94 +892,6 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable recipient cannot be null');
         }
         $this->container['recipient'] = $recipient;
-
-        return $this;
-    }
-
-    /**
-     * Gets session
-     *
-     * @return \Alexasomba\Paystack\Model\TransferListResponseArraySession
-     */
-    public function getSession()
-    {
-        return $this->container['session'];
-    }
-
-    /**
-     * Sets session
-     *
-     * @param \Alexasomba\Paystack\Model\TransferListResponseArraySession $session session
-     *
-     * @return self
-     */
-    public function setSession($session)
-    {
-        if (is_null($session)) {
-            throw new \InvalidArgumentException('non-nullable session cannot be null');
-        }
-        $this->container['session'] = $session;
-
-        return $this;
-    }
-
-    /**
-     * Gets fee_charged
-     *
-     * @return int
-     */
-    public function getFeeCharged()
-    {
-        return $this->container['fee_charged'];
-    }
-
-    /**
-     * Sets fee_charged
-     *
-     * @param int $fee_charged fee_charged
-     *
-     * @return self
-     */
-    public function setFeeCharged($fee_charged)
-    {
-        if (is_null($fee_charged)) {
-            throw new \InvalidArgumentException('non-nullable fee_charged cannot be null');
-        }
-        $this->container['fee_charged'] = $fee_charged;
-
-        return $this;
-    }
-
-    /**
-     * Gets fees_breakdown
-     *
-     * @return int|null
-     */
-    public function getFeesBreakdown()
-    {
-        return $this->container['fees_breakdown'];
-    }
-
-    /**
-     * Sets fees_breakdown
-     *
-     * @param int|null $fees_breakdown fees_breakdown
-     *
-     * @return self
-     */
-    public function setFeesBreakdown($fees_breakdown)
-    {
-        if (is_null($fees_breakdown)) {
-            array_push($this->openAPINullablesSetToNull, 'fees_breakdown');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('fees_breakdown', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['fees_breakdown'] = $fees_breakdown;
 
         return $this;
     }

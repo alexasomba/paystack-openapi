@@ -27,9 +27,9 @@ class TransactionFetchResponseDataSource(BaseModel):
     """
     TransactionFetchResponseDataSource
     """ # noqa: E501
-    type: StrictStr
-    source: StrictStr
-    identifier: Optional[Any]
+    type: Optional[StrictStr] = None
+    source: Optional[StrictStr] = None
+    identifier: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["type", "source", "identifier"]
 
     model_config = ConfigDict(

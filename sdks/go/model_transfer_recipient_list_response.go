@@ -25,7 +25,7 @@ type TransferRecipientListResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
 	Data []TransferRecipientListResponseArray `json:"data"`
-	Meta SubaccountListResponseMeta `json:"meta"`
+	Meta Meta `json:"meta"`
 }
 
 type _TransferRecipientListResponse TransferRecipientListResponse
@@ -34,7 +34,7 @@ type _TransferRecipientListResponse TransferRecipientListResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferRecipientListResponse(status bool, message string, data []TransferRecipientListResponseArray, meta SubaccountListResponseMeta) *TransferRecipientListResponse {
+func NewTransferRecipientListResponse(status bool, message string, data []TransferRecipientListResponseArray, meta Meta) *TransferRecipientListResponse {
 	this := TransferRecipientListResponse{}
 	this.Status = status
 	this.Message = message
@@ -124,9 +124,9 @@ func (o *TransferRecipientListResponse) SetData(v []TransferRecipientListRespons
 }
 
 // GetMeta returns the Meta field value
-func (o *TransferRecipientListResponse) GetMeta() SubaccountListResponseMeta {
+func (o *TransferRecipientListResponse) GetMeta() Meta {
 	if o == nil {
-		var ret SubaccountListResponseMeta
+		var ret Meta
 		return ret
 	}
 
@@ -135,7 +135,7 @@ func (o *TransferRecipientListResponse) GetMeta() SubaccountListResponseMeta {
 
 // GetMetaOk returns a tuple with the Meta field value
 // and a boolean to check if the value has been set.
-func (o *TransferRecipientListResponse) GetMetaOk() (*SubaccountListResponseMeta, bool) {
+func (o *TransferRecipientListResponse) GetMetaOk() (*Meta, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -143,7 +143,7 @@ func (o *TransferRecipientListResponse) GetMetaOk() (*SubaccountListResponseMeta
 }
 
 // SetMeta sets field value
-func (o *TransferRecipientListResponse) SetMeta(v SubaccountListResponseMeta) {
+func (o *TransferRecipientListResponse) SetMeta(v Meta) {
 	o.Meta = v
 }
 

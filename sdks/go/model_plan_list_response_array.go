@@ -23,7 +23,7 @@ var _ MappedNullable = &PlanListResponseArray{}
 // PlanListResponseArray struct for PlanListResponseArray
 type PlanListResponseArray struct {
 	Subscriptions []interface{} `json:"subscriptions"`
-	Pages []interface{} `json:"pages"`
+	Integration int32 `json:"integration"`
 	Domain string `json:"domain"`
 	Name string `json:"name"`
 	PlanCode string `json:"plan_code"`
@@ -37,16 +37,9 @@ type PlanListResponseArray struct {
 	HostedPageUrl interface{} `json:"hosted_page_url"`
 	HostedPageSummary interface{} `json:"hosted_page_summary"`
 	Currency string `json:"currency"`
-	Migrate bool `json:"migrate"`
-	IsDeleted bool `json:"is_deleted"`
-	IsArchived bool `json:"is_archived"`
 	Id int32 `json:"id"`
-	Integration int32 `json:"integration"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
-	TotalSubscriptions int32 `json:"total_subscriptions"`
-	ActiveSubscriptions int32 `json:"active_subscriptions"`
-	TotalSubscriptionsRevenue int32 `json:"total_subscriptions_revenue"`
 }
 
 type _PlanListResponseArray PlanListResponseArray
@@ -55,10 +48,10 @@ type _PlanListResponseArray PlanListResponseArray
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlanListResponseArray(subscriptions []interface{}, pages []interface{}, domain string, name string, planCode string, description interface{}, amount int32, interval string, invoiceLimit int32, sendInvoices bool, sendSms bool, hostedPage bool, hostedPageUrl interface{}, hostedPageSummary interface{}, currency string, migrate bool, isDeleted bool, isArchived bool, id int32, integration int32, createdAt string, updatedAt string, totalSubscriptions int32, activeSubscriptions int32, totalSubscriptionsRevenue int32) *PlanListResponseArray {
+func NewPlanListResponseArray(subscriptions []interface{}, integration int32, domain string, name string, planCode string, description interface{}, amount int32, interval string, invoiceLimit int32, sendInvoices bool, sendSms bool, hostedPage bool, hostedPageUrl interface{}, hostedPageSummary interface{}, currency string, id int32, createdAt string, updatedAt string) *PlanListResponseArray {
 	this := PlanListResponseArray{}
 	this.Subscriptions = subscriptions
-	this.Pages = pages
+	this.Integration = integration
 	this.Domain = domain
 	this.Name = name
 	this.PlanCode = planCode
@@ -72,16 +65,9 @@ func NewPlanListResponseArray(subscriptions []interface{}, pages []interface{}, 
 	this.HostedPageUrl = hostedPageUrl
 	this.HostedPageSummary = hostedPageSummary
 	this.Currency = currency
-	this.Migrate = migrate
-	this.IsDeleted = isDeleted
-	this.IsArchived = isArchived
 	this.Id = id
-	this.Integration = integration
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
-	this.TotalSubscriptions = totalSubscriptions
-	this.ActiveSubscriptions = activeSubscriptions
-	this.TotalSubscriptionsRevenue = totalSubscriptionsRevenue
 	return &this
 }
 
@@ -117,28 +103,28 @@ func (o *PlanListResponseArray) SetSubscriptions(v []interface{}) {
 	o.Subscriptions = v
 }
 
-// GetPages returns the Pages field value
-func (o *PlanListResponseArray) GetPages() []interface{} {
+// GetIntegration returns the Integration field value
+func (o *PlanListResponseArray) GetIntegration() int32 {
 	if o == nil {
-		var ret []interface{}
+		var ret int32
 		return ret
 	}
 
-	return o.Pages
+	return o.Integration
 }
 
-// GetPagesOk returns a tuple with the Pages field value
+// GetIntegrationOk returns a tuple with the Integration field value
 // and a boolean to check if the value has been set.
-func (o *PlanListResponseArray) GetPagesOk() ([]interface{}, bool) {
+func (o *PlanListResponseArray) GetIntegrationOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Pages, true
+	return &o.Integration, true
 }
 
-// SetPages sets field value
-func (o *PlanListResponseArray) SetPages(v []interface{}) {
-	o.Pages = v
+// SetIntegration sets field value
+func (o *PlanListResponseArray) SetIntegration(v int32) {
+	o.Integration = v
 }
 
 // GetDomain returns the Domain field value
@@ -459,78 +445,6 @@ func (o *PlanListResponseArray) SetCurrency(v string) {
 	o.Currency = v
 }
 
-// GetMigrate returns the Migrate field value
-func (o *PlanListResponseArray) GetMigrate() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.Migrate
-}
-
-// GetMigrateOk returns a tuple with the Migrate field value
-// and a boolean to check if the value has been set.
-func (o *PlanListResponseArray) GetMigrateOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Migrate, true
-}
-
-// SetMigrate sets field value
-func (o *PlanListResponseArray) SetMigrate(v bool) {
-	o.Migrate = v
-}
-
-// GetIsDeleted returns the IsDeleted field value
-func (o *PlanListResponseArray) GetIsDeleted() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.IsDeleted
-}
-
-// GetIsDeletedOk returns a tuple with the IsDeleted field value
-// and a boolean to check if the value has been set.
-func (o *PlanListResponseArray) GetIsDeletedOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IsDeleted, true
-}
-
-// SetIsDeleted sets field value
-func (o *PlanListResponseArray) SetIsDeleted(v bool) {
-	o.IsDeleted = v
-}
-
-// GetIsArchived returns the IsArchived field value
-func (o *PlanListResponseArray) GetIsArchived() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.IsArchived
-}
-
-// GetIsArchivedOk returns a tuple with the IsArchived field value
-// and a boolean to check if the value has been set.
-func (o *PlanListResponseArray) GetIsArchivedOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IsArchived, true
-}
-
-// SetIsArchived sets field value
-func (o *PlanListResponseArray) SetIsArchived(v bool) {
-	o.IsArchived = v
-}
-
 // GetId returns the Id field value
 func (o *PlanListResponseArray) GetId() int32 {
 	if o == nil {
@@ -553,30 +467,6 @@ func (o *PlanListResponseArray) GetIdOk() (*int32, bool) {
 // SetId sets field value
 func (o *PlanListResponseArray) SetId(v int32) {
 	o.Id = v
-}
-
-// GetIntegration returns the Integration field value
-func (o *PlanListResponseArray) GetIntegration() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Integration
-}
-
-// GetIntegrationOk returns a tuple with the Integration field value
-// and a boolean to check if the value has been set.
-func (o *PlanListResponseArray) GetIntegrationOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Integration, true
-}
-
-// SetIntegration sets field value
-func (o *PlanListResponseArray) SetIntegration(v int32) {
-	o.Integration = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -627,78 +517,6 @@ func (o *PlanListResponseArray) SetUpdatedAt(v string) {
 	o.UpdatedAt = v
 }
 
-// GetTotalSubscriptions returns the TotalSubscriptions field value
-func (o *PlanListResponseArray) GetTotalSubscriptions() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.TotalSubscriptions
-}
-
-// GetTotalSubscriptionsOk returns a tuple with the TotalSubscriptions field value
-// and a boolean to check if the value has been set.
-func (o *PlanListResponseArray) GetTotalSubscriptionsOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TotalSubscriptions, true
-}
-
-// SetTotalSubscriptions sets field value
-func (o *PlanListResponseArray) SetTotalSubscriptions(v int32) {
-	o.TotalSubscriptions = v
-}
-
-// GetActiveSubscriptions returns the ActiveSubscriptions field value
-func (o *PlanListResponseArray) GetActiveSubscriptions() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.ActiveSubscriptions
-}
-
-// GetActiveSubscriptionsOk returns a tuple with the ActiveSubscriptions field value
-// and a boolean to check if the value has been set.
-func (o *PlanListResponseArray) GetActiveSubscriptionsOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ActiveSubscriptions, true
-}
-
-// SetActiveSubscriptions sets field value
-func (o *PlanListResponseArray) SetActiveSubscriptions(v int32) {
-	o.ActiveSubscriptions = v
-}
-
-// GetTotalSubscriptionsRevenue returns the TotalSubscriptionsRevenue field value
-func (o *PlanListResponseArray) GetTotalSubscriptionsRevenue() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.TotalSubscriptionsRevenue
-}
-
-// GetTotalSubscriptionsRevenueOk returns a tuple with the TotalSubscriptionsRevenue field value
-// and a boolean to check if the value has been set.
-func (o *PlanListResponseArray) GetTotalSubscriptionsRevenueOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TotalSubscriptionsRevenue, true
-}
-
-// SetTotalSubscriptionsRevenue sets field value
-func (o *PlanListResponseArray) SetTotalSubscriptionsRevenue(v int32) {
-	o.TotalSubscriptionsRevenue = v
-}
-
 func (o PlanListResponseArray) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -710,7 +528,7 @@ func (o PlanListResponseArray) MarshalJSON() ([]byte, error) {
 func (o PlanListResponseArray) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["subscriptions"] = o.Subscriptions
-	toSerialize["pages"] = o.Pages
+	toSerialize["integration"] = o.Integration
 	toSerialize["domain"] = o.Domain
 	toSerialize["name"] = o.Name
 	toSerialize["plan_code"] = o.PlanCode
@@ -730,16 +548,9 @@ func (o PlanListResponseArray) ToMap() (map[string]interface{}, error) {
 		toSerialize["hosted_page_summary"] = o.HostedPageSummary
 	}
 	toSerialize["currency"] = o.Currency
-	toSerialize["migrate"] = o.Migrate
-	toSerialize["is_deleted"] = o.IsDeleted
-	toSerialize["is_archived"] = o.IsArchived
 	toSerialize["id"] = o.Id
-	toSerialize["integration"] = o.Integration
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["updatedAt"] = o.UpdatedAt
-	toSerialize["total_subscriptions"] = o.TotalSubscriptions
-	toSerialize["active_subscriptions"] = o.ActiveSubscriptions
-	toSerialize["total_subscriptions_revenue"] = o.TotalSubscriptionsRevenue
 	return toSerialize, nil
 }
 
@@ -749,7 +560,7 @@ func (o *PlanListResponseArray) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"subscriptions",
-		"pages",
+		"integration",
 		"domain",
 		"name",
 		"plan_code",
@@ -763,16 +574,9 @@ func (o *PlanListResponseArray) UnmarshalJSON(data []byte) (err error) {
 		"hosted_page_url",
 		"hosted_page_summary",
 		"currency",
-		"migrate",
-		"is_deleted",
-		"is_archived",
 		"id",
-		"integration",
 		"createdAt",
 		"updatedAt",
-		"total_subscriptions",
-		"active_subscriptions",
-		"total_subscriptions_revenue",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -70,9 +70,9 @@ class TransactionFetchResponseDataAuthorization implements ModelInterface, Array
         'brand' => 'string',
         'reusable' => 'bool',
         'signature' => 'string',
-        'account_name' => 'mixed',
-        'receiver_bank_account_number' => 'mixed',
-        'receiver_bank' => 'mixed'
+        'account_name' => 'string',
+        'receiver_bank_account_number' => 'string',
+        'receiver_bank' => 'string'
     ];
 
     /**
@@ -411,12 +411,6 @@ class TransactionFetchResponseDataAuthorization implements ModelInterface, Array
         }
         if ($this->container['account_name'] === null && !$this->isNullableSetToNull('account_name')) {
             $invalidProperties[] = "'account_name' can't be null";
-        }
-        if ($this->container['receiver_bank_account_number'] === null && !$this->isNullableSetToNull('receiver_bank_account_number')) {
-            $invalidProperties[] = "'receiver_bank_account_number' can't be null";
-        }
-        if ($this->container['receiver_bank'] === null && !$this->isNullableSetToNull('receiver_bank')) {
-            $invalidProperties[] = "'receiver_bank' can't be null";
         }
         return $invalidProperties;
     }
@@ -760,7 +754,7 @@ class TransactionFetchResponseDataAuthorization implements ModelInterface, Array
     /**
      * Gets account_name
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getAccountName()
     {
@@ -770,7 +764,7 @@ class TransactionFetchResponseDataAuthorization implements ModelInterface, Array
     /**
      * Sets account_name
      *
-     * @param mixed|null $account_name account_name
+     * @param string|null $account_name account_name
      *
      * @return self
      */
@@ -794,7 +788,7 @@ class TransactionFetchResponseDataAuthorization implements ModelInterface, Array
     /**
      * Gets receiver_bank_account_number
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getReceiverBankAccountNumber()
     {
@@ -804,7 +798,7 @@ class TransactionFetchResponseDataAuthorization implements ModelInterface, Array
     /**
      * Sets receiver_bank_account_number
      *
-     * @param mixed|null $receiver_bank_account_number receiver_bank_account_number
+     * @param string|null $receiver_bank_account_number receiver_bank_account_number
      *
      * @return self
      */
@@ -828,7 +822,7 @@ class TransactionFetchResponseDataAuthorization implements ModelInterface, Array
     /**
      * Gets receiver_bank
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getReceiverBank()
     {
@@ -838,7 +832,7 @@ class TransactionFetchResponseDataAuthorization implements ModelInterface, Array
     /**
      * Sets receiver_bank
      *
-     * @param mixed|null $receiver_bank receiver_bank
+     * @param string|null $receiver_bank receiver_bank
      *
      * @return self
      */

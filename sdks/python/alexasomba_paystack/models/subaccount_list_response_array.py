@@ -18,8 +18,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Union
+from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,19 +30,18 @@ class SubaccountListResponseArray(BaseModel):
     id: StrictInt
     subaccount_code: StrictStr
     business_name: StrictStr
-    description: StrictStr
-    primary_contact_name: StrictStr
-    primary_contact_email: StrictStr
-    primary_contact_phone: StrictStr
-    metadata: StrictStr
+    description: Optional[StrictStr]
+    primary_contact_name: Optional[StrictStr]
+    primary_contact_email: Optional[StrictStr]
+    primary_contact_phone: Optional[StrictStr]
+    metadata: Optional[Any]
     percentage_charge: Union[StrictFloat, StrictInt]
     settlement_bank: StrictStr
     bank_id: StrictInt
     account_number: StrictStr
     currency: StrictStr
     active: StrictInt
-    is_verified: StrictBool
-    __properties: ClassVar[List[str]] = ["id", "subaccount_code", "business_name", "description", "primary_contact_name", "primary_contact_email", "primary_contact_phone", "metadata", "percentage_charge", "settlement_bank", "bank_id", "account_number", "currency", "active", "is_verified"]
+    __properties: ClassVar[List[str]] = ["id", "subaccount_code", "business_name", "description", "primary_contact_name", "primary_contact_email", "primary_contact_phone", "metadata", "percentage_charge", "settlement_bank", "bank_id", "account_number", "currency", "active"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,6 +82,31 @@ class SubaccountListResponseArray(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
+        # set to None if primary_contact_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.primary_contact_name is None and "primary_contact_name" in self.model_fields_set:
+            _dict['primary_contact_name'] = None
+
+        # set to None if primary_contact_email (nullable) is None
+        # and model_fields_set contains the field
+        if self.primary_contact_email is None and "primary_contact_email" in self.model_fields_set:
+            _dict['primary_contact_email'] = None
+
+        # set to None if primary_contact_phone (nullable) is None
+        # and model_fields_set contains the field
+        if self.primary_contact_phone is None and "primary_contact_phone" in self.model_fields_set:
+            _dict['primary_contact_phone'] = None
+
+        # set to None if metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
+
         return _dict
 
     @classmethod
@@ -108,8 +132,7 @@ class SubaccountListResponseArray(BaseModel):
             "bank_id": obj.get("bank_id"),
             "account_number": obj.get("account_number"),
             "currency": obj.get("currency"),
-            "active": obj.get("active"),
-            "is_verified": obj.get("is_verified")
+            "active": obj.get("active")
         })
         return _obj
 

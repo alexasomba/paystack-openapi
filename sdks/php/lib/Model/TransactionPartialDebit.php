@@ -59,9 +59,9 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPITypes = [
         'email' => 'string',
-        'amount' => 'int',
+        'amount' => '\Alexasomba\Paystack\Model\TransactionPartialDebitAmount',
         'authorization_code' => 'string',
-        'currency' => '\Alexasomba\Paystack\Model\Currency',
+        'currency' => 'string',
         'at_least' => 'string',
         'reference' => 'string'
     ];
@@ -75,7 +75,7 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPIFormats = [
         'email' => null,
-        'amount' => 'int64',
+        'amount' => null,
         'authorization_code' => null,
         'currency' => null,
         'at_least' => null,
@@ -259,6 +259,21 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
+    public const CURRENCY_NGN = 'NGN';
+    public const CURRENCY_GHS = 'GHS';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCurrencyAllowableValues()
+    {
+        return [
+            self::CURRENCY_NGN,
+            self::CURRENCY_GHS,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -322,6 +337,15 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
         }
+        $allowedValues = $this->getCurrencyAllowableValues();
+        if (!is_null($this->container['currency']) && !in_array($this->container['currency'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'currency', must be one of '%s'",
+                $this->container['currency'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -367,7 +391,7 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets amount
      *
-     * @return int
+     * @return \Alexasomba\Paystack\Model\TransactionPartialDebitAmount
      */
     public function getAmount()
     {
@@ -377,7 +401,7 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets amount
      *
-     * @param int $amount Specified in the lowest denomination of your currency
+     * @param \Alexasomba\Paystack\Model\TransactionPartialDebitAmount $amount amount
      *
      * @return self
      */
@@ -421,7 +445,7 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets currency
      *
-     * @return \Alexasomba\Paystack\Model\Currency
+     * @return string
      */
     public function getCurrency()
     {
@@ -431,7 +455,7 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets currency
      *
-     * @param \Alexasomba\Paystack\Model\Currency $currency currency
+     * @param string $currency Specified as NGN or GHS
      *
      * @return self
      */
@@ -439,6 +463,16 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
     {
         if (is_null($currency)) {
             throw new \InvalidArgumentException('non-nullable currency cannot be null');
+        }
+        $allowedValues = $this->getCurrencyAllowableValues();
+        if (!in_array($currency, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'currency', must be one of '%s'",
+                    $currency,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['currency'] = $currency;
 

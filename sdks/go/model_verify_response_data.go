@@ -22,7 +22,7 @@ var _ MappedNullable = &VerifyResponseData{}
 
 // VerifyResponseData struct for VerifyResponseData
 type VerifyResponseData struct {
-	Id int32 `json:"id"`
+	Id int64 `json:"id"`
 	Domain string `json:"domain"`
 	Status string `json:"status"`
 	Reference string `json:"reference"`
@@ -32,14 +32,14 @@ type VerifyResponseData struct {
 	GatewayResponse string `json:"gateway_response"`
 	Channel string `json:"channel"`
 	Currency string `json:"currency"`
-	IpAddress string `json:"ip_address"`
-	Metadata VerifyResponseDataMetadata `json:"metadata"`
+	IpAddress NullableString `json:"ip_address"`
+	Metadata NullableTransactionPartialDebitResponseDataMetadata `json:"metadata"`
 	Log NullableVerifyResponseDataLog `json:"log"`
 	Fees NullableInt32 `json:"fees"`
 	FeesSplit interface{} `json:"fees_split"`
 	Authorization VerifyResponseDataAuthorization `json:"authorization"`
 	Customer VerifyResponseDataCustomer `json:"customer"`
-	Plan NullableString `json:"plan"`
+	Plan NullableTransactionPartialDebitResponseDataMetadata `json:"plan"`
 	Split map[string]interface{} `json:"split"`
 	OrderId interface{} `json:"order_id"`
 	PaidAt NullableString `json:"paidAt"`
@@ -60,7 +60,7 @@ type _VerifyResponseData VerifyResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVerifyResponseData(id int32, domain string, status string, reference string, receiptNumber NullableString, amount int32, message NullableString, gatewayResponse string, channel string, currency string, ipAddress string, metadata VerifyResponseDataMetadata, log NullableVerifyResponseDataLog, fees NullableInt32, feesSplit interface{}, authorization VerifyResponseDataAuthorization, customer VerifyResponseDataCustomer, plan NullableString, split map[string]interface{}, orderId interface{}, paidAt NullableString, createdAt string, requestedAmount int32, posTransactionData interface{}, source interface{}, feesBreakdown interface{}, connect interface{}, transactionDate string, planObject VerifyResponseDataPlanObject, subaccount map[string]interface{}) *VerifyResponseData {
+func NewVerifyResponseData(id int64, domain string, status string, reference string, receiptNumber NullableString, amount int32, message NullableString, gatewayResponse string, channel string, currency string, ipAddress NullableString, metadata NullableTransactionPartialDebitResponseDataMetadata, log NullableVerifyResponseDataLog, fees NullableInt32, feesSplit interface{}, authorization VerifyResponseDataAuthorization, customer VerifyResponseDataCustomer, plan NullableTransactionPartialDebitResponseDataMetadata, split map[string]interface{}, orderId interface{}, paidAt NullableString, createdAt string, requestedAmount int32, posTransactionData interface{}, source interface{}, feesBreakdown interface{}, connect interface{}, transactionDate string, planObject VerifyResponseDataPlanObject, subaccount map[string]interface{}) *VerifyResponseData {
 	this := VerifyResponseData{}
 	this.Id = id
 	this.Domain = domain
@@ -104,9 +104,9 @@ func NewVerifyResponseDataWithDefaults() *VerifyResponseData {
 }
 
 // GetId returns the Id field value
-func (o *VerifyResponseData) GetId() int32 {
+func (o *VerifyResponseData) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -115,7 +115,7 @@ func (o *VerifyResponseData) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *VerifyResponseData) GetIdOk() (*int32, bool) {
+func (o *VerifyResponseData) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -123,7 +123,7 @@ func (o *VerifyResponseData) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *VerifyResponseData) SetId(v int32) {
+func (o *VerifyResponseData) SetId(v int64) {
 	o.Id = v
 }
 
@@ -348,51 +348,55 @@ func (o *VerifyResponseData) SetCurrency(v string) {
 }
 
 // GetIpAddress returns the IpAddress field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *VerifyResponseData) GetIpAddress() string {
-	if o == nil {
+	if o == nil || o.IpAddress.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.IpAddress
+	return *o.IpAddress.Get()
 }
 
 // GetIpAddressOk returns a tuple with the IpAddress field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VerifyResponseData) GetIpAddressOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.IpAddress, true
+	return o.IpAddress.Get(), o.IpAddress.IsSet()
 }
 
 // SetIpAddress sets field value
 func (o *VerifyResponseData) SetIpAddress(v string) {
-	o.IpAddress = v
+	o.IpAddress.Set(&v)
 }
 
 // GetMetadata returns the Metadata field value
-func (o *VerifyResponseData) GetMetadata() VerifyResponseDataMetadata {
-	if o == nil {
-		var ret VerifyResponseDataMetadata
+// If the value is explicit nil, the zero value for TransactionPartialDebitResponseDataMetadata will be returned
+func (o *VerifyResponseData) GetMetadata() TransactionPartialDebitResponseDataMetadata {
+	if o == nil || o.Metadata.Get() == nil {
+		var ret TransactionPartialDebitResponseDataMetadata
 		return ret
 	}
 
-	return o.Metadata
+	return *o.Metadata.Get()
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
-func (o *VerifyResponseData) GetMetadataOk() (*VerifyResponseDataMetadata, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VerifyResponseData) GetMetadataOk() (*TransactionPartialDebitResponseDataMetadata, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Metadata, true
+	return o.Metadata.Get(), o.Metadata.IsSet()
 }
 
 // SetMetadata sets field value
-func (o *VerifyResponseData) SetMetadata(v VerifyResponseDataMetadata) {
-	o.Metadata = v
+func (o *VerifyResponseData) SetMetadata(v TransactionPartialDebitResponseDataMetadata) {
+	o.Metadata.Set(&v)
 }
 
 // GetLog returns the Log field value
@@ -522,10 +526,10 @@ func (o *VerifyResponseData) SetCustomer(v VerifyResponseDataCustomer) {
 }
 
 // GetPlan returns the Plan field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *VerifyResponseData) GetPlan() string {
+// If the value is explicit nil, the zero value for TransactionPartialDebitResponseDataMetadata will be returned
+func (o *VerifyResponseData) GetPlan() TransactionPartialDebitResponseDataMetadata {
 	if o == nil || o.Plan.Get() == nil {
-		var ret string
+		var ret TransactionPartialDebitResponseDataMetadata
 		return ret
 	}
 
@@ -535,7 +539,7 @@ func (o *VerifyResponseData) GetPlan() string {
 // GetPlanOk returns a tuple with the Plan field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VerifyResponseData) GetPlanOk() (*string, bool) {
+func (o *VerifyResponseData) GetPlanOk() (*TransactionPartialDebitResponseDataMetadata, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -543,11 +547,12 @@ func (o *VerifyResponseData) GetPlanOk() (*string, bool) {
 }
 
 // SetPlan sets field value
-func (o *VerifyResponseData) SetPlan(v string) {
+func (o *VerifyResponseData) SetPlan(v TransactionPartialDebitResponseDataMetadata) {
 	o.Plan.Set(&v)
 }
 
 // GetSplit returns the Split field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *VerifyResponseData) GetSplit() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -559,8 +564,9 @@ func (o *VerifyResponseData) GetSplit() map[string]interface{} {
 
 // GetSplitOk returns a tuple with the Split field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VerifyResponseData) GetSplitOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Split) {
 		return map[string]interface{}{}, false
 	}
 	return o.Split, true
@@ -824,6 +830,7 @@ func (o *VerifyResponseData) SetPlanObject(v VerifyResponseDataPlanObject) {
 }
 
 // GetSubaccount returns the Subaccount field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *VerifyResponseData) GetSubaccount() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -835,8 +842,9 @@ func (o *VerifyResponseData) GetSubaccount() map[string]interface{} {
 
 // GetSubaccountOk returns a tuple with the Subaccount field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VerifyResponseData) GetSubaccountOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Subaccount) {
 		return map[string]interface{}{}, false
 	}
 	return o.Subaccount, true
@@ -867,8 +875,8 @@ func (o VerifyResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["gateway_response"] = o.GatewayResponse
 	toSerialize["channel"] = o.Channel
 	toSerialize["currency"] = o.Currency
-	toSerialize["ip_address"] = o.IpAddress
-	toSerialize["metadata"] = o.Metadata
+	toSerialize["ip_address"] = o.IpAddress.Get()
+	toSerialize["metadata"] = o.Metadata.Get()
 	toSerialize["log"] = o.Log.Get()
 	toSerialize["fees"] = o.Fees.Get()
 	if o.FeesSplit != nil {
@@ -877,7 +885,9 @@ func (o VerifyResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["authorization"] = o.Authorization
 	toSerialize["customer"] = o.Customer
 	toSerialize["plan"] = o.Plan.Get()
-	toSerialize["split"] = o.Split
+	if o.Split != nil {
+		toSerialize["split"] = o.Split
+	}
 	if o.OrderId != nil {
 		toSerialize["order_id"] = o.OrderId
 	}
@@ -898,7 +908,9 @@ func (o VerifyResponseData) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["transaction_date"] = o.TransactionDate
 	toSerialize["plan_object"] = o.PlanObject
-	toSerialize["subaccount"] = o.Subaccount
+	if o.Subaccount != nil {
+		toSerialize["subaccount"] = o.Subaccount
+	}
 	return toSerialize, nil
 }
 

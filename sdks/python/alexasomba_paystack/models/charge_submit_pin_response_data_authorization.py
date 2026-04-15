@@ -27,19 +27,20 @@ class ChargeSubmitPinResponseDataAuthorization(BaseModel):
     """
     ChargeSubmitPinResponseDataAuthorization
     """ # noqa: E501
-    authorization_code: Optional[StrictStr]
-    bin: StrictStr
-    last4: StrictStr
-    exp_month: StrictStr
-    exp_year: StrictStr
-    channel: StrictStr
-    card_type: StrictStr
-    bank: StrictStr
-    country_code: StrictStr
-    brand: StrictStr
-    reusable: StrictBool
-    signature: StrictStr
-    __properties: ClassVar[List[str]] = ["authorization_code", "bin", "last4", "exp_month", "exp_year", "channel", "card_type", "bank", "country_code", "brand", "reusable", "signature"]
+    authorization_code: Optional[StrictStr] = None
+    bin: Optional[StrictStr] = None
+    last4: Optional[StrictStr] = None
+    exp_month: Optional[StrictStr] = None
+    exp_year: Optional[StrictStr] = None
+    channel: Optional[StrictStr] = None
+    card_type: Optional[StrictStr] = None
+    bank: Optional[StrictStr] = None
+    country_code: Optional[StrictStr] = None
+    brand: Optional[StrictStr] = None
+    reusable: Optional[StrictBool] = None
+    signature: Optional[Any] = None
+    account_name: Optional[Any] = None
+    __properties: ClassVar[List[str]] = ["authorization_code", "bin", "last4", "exp_month", "exp_year", "channel", "card_type", "bank", "country_code", "brand", "reusable", "signature", "account_name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,6 +86,16 @@ class ChargeSubmitPinResponseDataAuthorization(BaseModel):
         if self.authorization_code is None and "authorization_code" in self.model_fields_set:
             _dict['authorization_code'] = None
 
+        # set to None if signature (nullable) is None
+        # and model_fields_set contains the field
+        if self.signature is None and "signature" in self.model_fields_set:
+            _dict['signature'] = None
+
+        # set to None if account_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.account_name is None and "account_name" in self.model_fields_set:
+            _dict['account_name'] = None
+
         return _dict
 
     @classmethod
@@ -108,7 +119,8 @@ class ChargeSubmitPinResponseDataAuthorization(BaseModel):
             "country_code": obj.get("country_code"),
             "brand": obj.get("brand"),
             "reusable": obj.get("reusable"),
-            "signature": obj.get("signature")
+            "signature": obj.get("signature"),
+            "account_name": obj.get("account_name")
         })
         return _obj
 

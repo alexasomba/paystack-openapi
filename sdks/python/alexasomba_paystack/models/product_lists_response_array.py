@@ -45,12 +45,12 @@ class ProductListsResponseArray(BaseModel):
     unlimited: StrictBool
     metadata: ProductListsResponseArrayMetadata
     files: List[Any]
-    success_message: Optional[Any]
-    redirect_url: Optional[Any]
-    split_code: Optional[Any]
-    notification_emails: Optional[Any]
+    success_message: Optional[StrictStr]
+    redirect_url: Optional[StrictStr]
+    split_code: Optional[StrictStr]
+    notification_emails: Optional[List[StrictStr]]
     minimum_orderable: StrictInt
-    maximum_orderable: Optional[Any]
+    maximum_orderable: Optional[StrictInt]
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     digital_assets: List[Any]

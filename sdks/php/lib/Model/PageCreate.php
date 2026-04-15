@@ -318,6 +318,7 @@ class PageCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     public const CURRENCY_ZAR = 'ZAR';
     public const CURRENCY_KES = 'KES';
     public const CURRENCY_USD = 'USD';
+    public const CURRENCY_XOF = 'XOF';
     public const TYPE_PAYMENT = 'payment';
     public const TYPE_SUBSCRIPTION = 'subscription';
     public const TYPE_PRODUCT = 'product';
@@ -336,6 +337,7 @@ class PageCreate implements ModelInterface, ArrayAccess, \JsonSerializable
             self::CURRENCY_ZAR,
             self::CURRENCY_KES,
             self::CURRENCY_USD,
+            self::CURRENCY_XOF,
         ];
     }
 
@@ -516,7 +518,7 @@ class PageCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amount
      *
-     * @param int|null $amount Amount should be in kobo if currency is NGN, pesewas, if currency is GHS, and cents, if currency is ZAR
+     * @param int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
      *
      * @return self
      */

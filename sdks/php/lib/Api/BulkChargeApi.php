@@ -147,19 +147,21 @@ class BulkChargeApi
      *
      * List Charges in a Batch
      *
-     * @param  string $code An code for the batch whose charges you want to retrieve (required)
+     * @param  string $id_or_code An ID or code for the batch whose charges you want to retrieve. (required)
      * @param  int|null $per_page Number of records to fetch per page (optional)
      * @param  int|null $page The offset to retrieve data from (optional)
-     * @param  string|null $status Filter by the status of the charges (optional)
+     * @param  string|null $status Either one of these values: pending, success or failed (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkChargeCharges'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function bulkChargeCharges($code, $per_page = null, $page = null, $status = null, string $contentType = self::contentTypes['bulkChargeCharges'][0])
+    public function bulkChargeCharges($id_or_code, $per_page = null, $page = null, $status = null, $from = null, $to = null, string $contentType = self::contentTypes['bulkChargeCharges'][0])
     {
-        list($response) = $this->bulkChargeChargesWithHttpInfo($code, $per_page, $page, $status, $contentType);
+        list($response) = $this->bulkChargeChargesWithHttpInfo($id_or_code, $per_page, $page, $status, $from, $to, $contentType);
         return $response;
     }
 
@@ -168,19 +170,21 @@ class BulkChargeApi
      *
      * List Charges in a Batch
      *
-     * @param  string $code An code for the batch whose charges you want to retrieve (required)
+     * @param  string $id_or_code An ID or code for the batch whose charges you want to retrieve. (required)
      * @param  int|null $per_page Number of records to fetch per page (optional)
      * @param  int|null $page The offset to retrieve data from (optional)
-     * @param  string|null $status Filter by the status of the charges (optional)
+     * @param  string|null $status Either one of these values: pending, success or failed (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkChargeCharges'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function bulkChargeChargesWithHttpInfo($code, $per_page = null, $page = null, $status = null, string $contentType = self::contentTypes['bulkChargeCharges'][0])
+    public function bulkChargeChargesWithHttpInfo($id_or_code, $per_page = null, $page = null, $status = null, $from = null, $to = null, string $contentType = self::contentTypes['bulkChargeCharges'][0])
     {
-        $request = $this->bulkChargeChargesRequest($code, $per_page, $page, $status, $contentType);
+        $request = $this->bulkChargeChargesRequest($id_or_code, $per_page, $page, $status, $from, $to, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -284,18 +288,20 @@ class BulkChargeApi
      *
      * List Charges in a Batch
      *
-     * @param  string $code An code for the batch whose charges you want to retrieve (required)
+     * @param  string $id_or_code An ID or code for the batch whose charges you want to retrieve. (required)
      * @param  int|null $per_page Number of records to fetch per page (optional)
      * @param  int|null $page The offset to retrieve data from (optional)
-     * @param  string|null $status Filter by the status of the charges (optional)
+     * @param  string|null $status Either one of these values: pending, success or failed (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkChargeCharges'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function bulkChargeChargesAsync($code, $per_page = null, $page = null, $status = null, string $contentType = self::contentTypes['bulkChargeCharges'][0])
+    public function bulkChargeChargesAsync($id_or_code, $per_page = null, $page = null, $status = null, $from = null, $to = null, string $contentType = self::contentTypes['bulkChargeCharges'][0])
     {
-        return $this->bulkChargeChargesAsyncWithHttpInfo($code, $per_page, $page, $status, $contentType)
+        return $this->bulkChargeChargesAsyncWithHttpInfo($id_or_code, $per_page, $page, $status, $from, $to, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -308,19 +314,21 @@ class BulkChargeApi
      *
      * List Charges in a Batch
      *
-     * @param  string $code An code for the batch whose charges you want to retrieve (required)
+     * @param  string $id_or_code An ID or code for the batch whose charges you want to retrieve. (required)
      * @param  int|null $per_page Number of records to fetch per page (optional)
      * @param  int|null $page The offset to retrieve data from (optional)
-     * @param  string|null $status Filter by the status of the charges (optional)
+     * @param  string|null $status Either one of these values: pending, success or failed (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkChargeCharges'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function bulkChargeChargesAsyncWithHttpInfo($code, $per_page = null, $page = null, $status = null, string $contentType = self::contentTypes['bulkChargeCharges'][0])
+    public function bulkChargeChargesAsyncWithHttpInfo($id_or_code, $per_page = null, $page = null, $status = null, $from = null, $to = null, string $contentType = self::contentTypes['bulkChargeCharges'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponse';
-        $request = $this->bulkChargeChargesRequest($code, $per_page, $page, $status, $contentType);
+        $request = $this->bulkChargeChargesRequest($id_or_code, $per_page, $page, $status, $from, $to, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -361,22 +369,24 @@ class BulkChargeApi
     /**
      * Create request for operation 'bulkChargeCharges'
      *
-     * @param  string $code An code for the batch whose charges you want to retrieve (required)
+     * @param  string $id_or_code An ID or code for the batch whose charges you want to retrieve. (required)
      * @param  int|null $per_page Number of records to fetch per page (optional)
      * @param  int|null $page The offset to retrieve data from (optional)
-     * @param  string|null $status Filter by the status of the charges (optional)
+     * @param  string|null $status Either one of these values: pending, success or failed (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing charges e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkChargeCharges'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function bulkChargeChargesRequest($code, $per_page = null, $page = null, $status = null, string $contentType = self::contentTypes['bulkChargeCharges'][0])
+    public function bulkChargeChargesRequest($id_or_code, $per_page = null, $page = null, $status = null, $from = null, $to = null, string $contentType = self::contentTypes['bulkChargeCharges'][0])
     {
 
-        // verify the required parameter 'code' is set
-        if ($code === null || (is_array($code) && count($code) === 0)) {
+        // verify the required parameter 'id_or_code' is set
+        if ($id_or_code === null || (is_array($id_or_code) && count($id_or_code) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $code when calling bulkChargeCharges'
+                'Missing the required parameter $id_or_code when calling bulkChargeCharges'
             );
         }
 
@@ -384,7 +394,9 @@ class BulkChargeApi
 
 
 
-        $resourcePath = '/bulkcharge/{code}/charges';
+
+
+        $resourcePath = '/bulkcharge/{id_or_code}/charges';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -418,13 +430,31 @@ class BulkChargeApi
             true, // explode
             false // required
         ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from,
+            'from', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to,
+            'to', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
-        if ($code !== null) {
+        if ($id_or_code !== null) {
             $resourcePath = str_replace(
-                '{' . 'code' . '}',
-                ObjectSerializer::toPathValue($code),
+                '{' . 'id_or_code' . '}',
+                ObjectSerializer::toPathValue($id_or_code),
                 $resourcePath
             );
         }
@@ -492,16 +522,16 @@ class BulkChargeApi
      *
      * Fetch Bulk Charge Batch
      *
-     * @param  string $code The code for the charge whose batches you want to retrieve (required)
+     * @param  string $id_or_code An ID or code for the charge whose batches you want to retrieve. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkChargeFetch'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\BulkChargeFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function bulkChargeFetch($code, string $contentType = self::contentTypes['bulkChargeFetch'][0])
+    public function bulkChargeFetch($id_or_code, string $contentType = self::contentTypes['bulkChargeFetch'][0])
     {
-        list($response) = $this->bulkChargeFetchWithHttpInfo($code, $contentType);
+        list($response) = $this->bulkChargeFetchWithHttpInfo($id_or_code, $contentType);
         return $response;
     }
 
@@ -510,16 +540,16 @@ class BulkChargeApi
      *
      * Fetch Bulk Charge Batch
      *
-     * @param  string $code The code for the charge whose batches you want to retrieve (required)
+     * @param  string $id_or_code An ID or code for the charge whose batches you want to retrieve. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkChargeFetch'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\BulkChargeFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function bulkChargeFetchWithHttpInfo($code, string $contentType = self::contentTypes['bulkChargeFetch'][0])
+    public function bulkChargeFetchWithHttpInfo($id_or_code, string $contentType = self::contentTypes['bulkChargeFetch'][0])
     {
-        $request = $this->bulkChargeFetchRequest($code, $contentType);
+        $request = $this->bulkChargeFetchRequest($id_or_code, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -623,15 +653,15 @@ class BulkChargeApi
      *
      * Fetch Bulk Charge Batch
      *
-     * @param  string $code The code for the charge whose batches you want to retrieve (required)
+     * @param  string $id_or_code An ID or code for the charge whose batches you want to retrieve. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkChargeFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function bulkChargeFetchAsync($code, string $contentType = self::contentTypes['bulkChargeFetch'][0])
+    public function bulkChargeFetchAsync($id_or_code, string $contentType = self::contentTypes['bulkChargeFetch'][0])
     {
-        return $this->bulkChargeFetchAsyncWithHttpInfo($code, $contentType)
+        return $this->bulkChargeFetchAsyncWithHttpInfo($id_or_code, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -644,16 +674,16 @@ class BulkChargeApi
      *
      * Fetch Bulk Charge Batch
      *
-     * @param  string $code The code for the charge whose batches you want to retrieve (required)
+     * @param  string $id_or_code An ID or code for the charge whose batches you want to retrieve. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkChargeFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function bulkChargeFetchAsyncWithHttpInfo($code, string $contentType = self::contentTypes['bulkChargeFetch'][0])
+    public function bulkChargeFetchAsyncWithHttpInfo($id_or_code, string $contentType = self::contentTypes['bulkChargeFetch'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\BulkChargeFetchResponse';
-        $request = $this->bulkChargeFetchRequest($code, $contentType);
+        $request = $this->bulkChargeFetchRequest($id_or_code, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -694,24 +724,24 @@ class BulkChargeApi
     /**
      * Create request for operation 'bulkChargeFetch'
      *
-     * @param  string $code The code for the charge whose batches you want to retrieve (required)
+     * @param  string $id_or_code An ID or code for the charge whose batches you want to retrieve. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkChargeFetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function bulkChargeFetchRequest($code, string $contentType = self::contentTypes['bulkChargeFetch'][0])
+    public function bulkChargeFetchRequest($id_or_code, string $contentType = self::contentTypes['bulkChargeFetch'][0])
     {
 
-        // verify the required parameter 'code' is set
-        if ($code === null || (is_array($code) && count($code) === 0)) {
+        // verify the required parameter 'id_or_code' is set
+        if ($id_or_code === null || (is_array($id_or_code) && count($id_or_code) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $code when calling bulkChargeFetch'
+                'Missing the required parameter $id_or_code when calling bulkChargeFetch'
             );
         }
 
 
-        $resourcePath = '/bulkcharge/{code}';
+        $resourcePath = '/bulkcharge/{id_or_code}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -721,10 +751,10 @@ class BulkChargeApi
 
 
         // path params
-        if ($code !== null) {
+        if ($id_or_code !== null) {
             $resourcePath = str_replace(
-                '{' . 'code' . '}',
-                ObjectSerializer::toPathValue($code),
+                '{' . 'id_or_code' . '}',
+                ObjectSerializer::toPathValue($id_or_code),
                 $resourcePath
             );
         }
@@ -1073,16 +1103,17 @@ class BulkChargeApi
      *
      * @param  int|null $per_page Number of records to fetch per page (optional)
      * @param  int|null $page The offset to retrieve data from (optional)
-     * @param  string|null $status Filter by the status of the charges (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkChargeList'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Alexasomba\Paystack\Model\BulkChargeListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function bulkChargeList($per_page = null, $page = null, $status = null, string $contentType = self::contentTypes['bulkChargeList'][0])
+    public function bulkChargeList($per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['bulkChargeList'][0])
     {
-        list($response) = $this->bulkChargeListWithHttpInfo($per_page, $page, $status, $contentType);
+        list($response) = $this->bulkChargeListWithHttpInfo($per_page, $page, $from, $to, $contentType);
         return $response;
     }
 
@@ -1093,16 +1124,17 @@ class BulkChargeApi
      *
      * @param  int|null $per_page Number of records to fetch per page (optional)
      * @param  int|null $page The offset to retrieve data from (optional)
-     * @param  string|null $status Filter by the status of the charges (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkChargeList'] to see the possible values for this operation
      *
      * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Alexasomba\Paystack\Model\BulkChargeListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function bulkChargeListWithHttpInfo($per_page = null, $page = null, $status = null, string $contentType = self::contentTypes['bulkChargeList'][0])
+    public function bulkChargeListWithHttpInfo($per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['bulkChargeList'][0])
     {
-        $request = $this->bulkChargeListRequest($per_page, $page, $status, $contentType);
+        $request = $this->bulkChargeListRequest($per_page, $page, $from, $to, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1208,15 +1240,16 @@ class BulkChargeApi
      *
      * @param  int|null $per_page Number of records to fetch per page (optional)
      * @param  int|null $page The offset to retrieve data from (optional)
-     * @param  string|null $status Filter by the status of the charges (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkChargeList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function bulkChargeListAsync($per_page = null, $page = null, $status = null, string $contentType = self::contentTypes['bulkChargeList'][0])
+    public function bulkChargeListAsync($per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['bulkChargeList'][0])
     {
-        return $this->bulkChargeListAsyncWithHttpInfo($per_page, $page, $status, $contentType)
+        return $this->bulkChargeListAsyncWithHttpInfo($per_page, $page, $from, $to, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1231,16 +1264,17 @@ class BulkChargeApi
      *
      * @param  int|null $per_page Number of records to fetch per page (optional)
      * @param  int|null $page The offset to retrieve data from (optional)
-     * @param  string|null $status Filter by the status of the charges (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkChargeList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function bulkChargeListAsyncWithHttpInfo($per_page = null, $page = null, $status = null, string $contentType = self::contentTypes['bulkChargeList'][0])
+    public function bulkChargeListAsyncWithHttpInfo($per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['bulkChargeList'][0])
     {
         $returnType = '\Alexasomba\Paystack\Model\BulkChargeListResponse';
-        $request = $this->bulkChargeListRequest($per_page, $page, $status, $contentType);
+        $request = $this->bulkChargeListRequest($per_page, $page, $from, $to, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1283,14 +1317,16 @@ class BulkChargeApi
      *
      * @param  int|null $per_page Number of records to fetch per page (optional)
      * @param  int|null $page The offset to retrieve data from (optional)
-     * @param  string|null $status Filter by the status of the charges (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing batches e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkChargeList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function bulkChargeListRequest($per_page = null, $page = null, $status = null, string $contentType = self::contentTypes['bulkChargeList'][0])
+    public function bulkChargeListRequest($per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['bulkChargeList'][0])
     {
+
 
 
 
@@ -1323,8 +1359,17 @@ class BulkChargeApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $status,
-            'status', // param base name
+            $from,
+            'from', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to,
+            'to', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

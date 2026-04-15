@@ -39,7 +39,7 @@ class ChargeAuthorizationResponseDataAuthorization(BaseModel):
     brand: StrictStr
     reusable: StrictBool
     signature: StrictStr
-    account_name: Optional[Any]
+    account_name: Optional[StrictStr]
     __properties: ClassVar[List[str]] = ["authorization_code", "bin", "last4", "exp_month", "exp_year", "channel", "card_type", "bank", "country_code", "brand", "reusable", "signature", "account_name"]
 
     model_config = ConfigDict(
