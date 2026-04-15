@@ -1,4 +1,6 @@
 /**
+ * @vitest-environment jsdom
+ *
  * Type-level tests for @alexasomba/paystack-inline
  *
  * These tests confirm that:
