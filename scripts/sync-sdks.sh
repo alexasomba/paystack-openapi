@@ -6,7 +6,7 @@
 set -e
 
 SDK_DIR="sdks"
-SDKS=("php" "go" "python" "node" "axios" "browser")
+SDKS=("php" "go" "python" "node" "axios" "browser" "inline")
 
 # Check if a release note was provided
 RELEASE_NOTE=$1

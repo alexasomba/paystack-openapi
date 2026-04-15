@@ -56,6 +56,7 @@
     "sdk:sync:node": "cd sdks/node && /bin/sh git_push.sh alexasomba paystack-node",
     "sdk:sync:axios": "cd sdks/axios && /bin/sh git_push.sh alexasomba paystack-axios",
     "sdk:sync:browser": "cd sdks/browser && /bin/sh git_push.sh alexasomba paystack-browser",
+    "sdk:sync:inline": "cd sdks/inline && /bin/sh git_push.sh alexasomba paystack-inline",
     "sdk:sync:all": "./scripts/sync-sdks.sh",
     "build": "pnpm sdk:build",
     "test": "pnpm -r test",
