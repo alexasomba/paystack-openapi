@@ -9,4 +9,8 @@ export default defineConfig({
     clean: true,
     tsconfig: "./tsconfig.build.json",
   },
+  test: {
+    environment: "jsdom",
+    include: ["test/**/*.test.ts"],
+  },
 });

@@ -1,6 +1,6 @@
 {
   "name": "@alexasomba/paystack-axios",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "A Paystack SDK backed by Axios - Complete, Type-safe, and Axios-powered with full OpenAPI coverage.",
   "keywords": [
     "africa",
