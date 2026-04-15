@@ -1,7 +1,7 @@
 import express from "express";
-import fs from "fs";
+import fs from "node:fs";
 import YAML from "yaml";
-import path from "path";
+import path from "node:path";
 import open from "open";
 
 const app = express();
@@ -22,6 +22,7 @@ app.get("/spec", (_, res) => {
 });
 
 app.listen(port, () => {
+  // eslint-disable-next-line no-console
   console.log(`OAS spec is listening on port ${port}`);
-  open(`http://localhost:${port}`);
+  void open(`http://localhost:${port}`);
 });

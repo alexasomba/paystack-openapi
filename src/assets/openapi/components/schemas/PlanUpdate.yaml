@@ -5,9 +5,10 @@ properties:
     type: string
   amount:
     description: >-
-      Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
-       Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
-       cents, if currency is ZAR, and whole number if currency is XOF
+      Amount should be in the subunit of the supported currency (e.g. kobo for
+      NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, send the amount
+      multiplied by 100 even though the currency does not use fractional
+      subunits.
     type: integer
   interval:
     description: Payment interval
@@ -20,7 +21,13 @@ properties:
       - annually
   description:
     description: A description for this plan
-    type: boolean
+    type: string
+  metadata:
+    description: Stringified JSON object or JSON object of custom data
+    anyOf:
+      - type: string
+      - type: object
+      - type: integer
   send_invoices:
     description: Set to false if you don't want invoices to be sent to your customers
     type: boolean

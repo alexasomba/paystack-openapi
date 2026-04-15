@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import fs from "node:fs/promises";
 import path from "node:path";
 
@@ -6,6 +7,10 @@ const phpLibDir = path.join(repoRoot, "sdks/php/lib");
 const phpComposerJsonPath = path.join(repoRoot, "sdks/php/composer.json");
 const phpGitPushPath = path.join(repoRoot, "sdks/php/git_push.sh");
 
+/**
+ * @param {string} dir
+ * @returns {AsyncGenerator<string, void, unknown>}
+ */
 async function* walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
   for (const entry of entries) {
@@ -18,11 +23,14 @@ async function* walk(dir) {
   }
 }
 
+/** @param {string} line */
 function normalizePaystackNamespaceLine(line) {
-  if (!line.includes("Alexasomba\\\\Paystack")) return line;
-  // Only touch lines that reference our own namespace to avoid breaking regex strings.
-  // Replace double backslashes with single backslashes.
-  return line.replace(/\\\\/g, "\\");
+  if (line.includes("Alexasomba\\\\Paystack")) {
+    // Only touch lines that reference our own namespace to avoid breaking regex strings.
+    // Replace double backslashes with single backslashes.
+    return line.replace(/\\\\/g, "\\");
+  }
+  return line;
 }
 
 async function postprocessComposerJson() {
@@ -30,7 +38,7 @@ async function postprocessComposerJson() {
   try {
     prev = await fs.readFile(phpComposerJsonPath, "utf8");
   } catch (error) {
-    if (error && error.code === "ENOENT") return false;
+    if (error instanceof Error && /** @type {any} */ (error).code === "ENOENT") return false;
     throw error;
   }
 
@@ -39,7 +47,8 @@ async function postprocessComposerJson() {
     json = JSON.parse(prev);
   } catch (error) {
     throw new Error(
-      `[sdk:php:postprocess] Failed to parse ${phpComposerJsonPath}: ${error.message}`,
+      `[sdk:php:postprocess] Failed to parse ${phpComposerJsonPath}: ${error instanceof Error ? error.message : String(error)}`,
+      { cause: error },
     );
   }
 
@@ -72,7 +81,7 @@ async function postprocessGitPush() {
   try {
     prev = await fs.readFile(phpGitPushPath, "utf8");
   } catch (error) {
-    if (error && error.code === "ENOENT") return false;
+    if (error instanceof Error && /** @type {any} */ (error).code === "ENOENT") return false;
     throw error;
   }
 
@@ -114,7 +123,7 @@ async function main() {
   const gitPushChanged = await postprocessGitPush();
   if (gitPushChanged) changedFiles += 1;
 
-  if (changedFiles) {
+  if (changedFiles > 0) {
     console.log(`[sdk:php:postprocess] Updated ${changedFiles} PHP files`);
   } else {
     console.log("[sdk:php:postprocess] No changes needed");

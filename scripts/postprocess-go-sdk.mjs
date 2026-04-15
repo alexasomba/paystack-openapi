@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import fs from "node:fs/promises";
 import path from "node:path";
 
@@ -11,7 +12,7 @@ async function postprocessGoMod() {
   try {
     prev = await fs.readFile(goModPath, "utf8");
   } catch (error) {
-    if (error && error.code === "ENOENT") return false;
+    if (error instanceof Error && /** @type {any} */ (error).code === "ENOENT") return false;
     throw error;
   }
 
@@ -28,7 +29,7 @@ async function postprocessGitPush() {
   try {
     prev = await fs.readFile(goGitPushPath, "utf8");
   } catch (error) {
-    if (error && error.code === "ENOENT") return false;
+    if (error instanceof Error && /** @type {any} */ (error).code === "ENOENT") return false;
     throw error;
   }
 
@@ -53,7 +54,7 @@ async function main() {
       changedCount++;
     }
   } catch (error) {
-    console.error("[sdk:go:postprocess] Error:", error.message);
+    console.error("[sdk:go:postprocess] Error:", error instanceof Error ? error.message : error);
     process.exit(1);
   }
 

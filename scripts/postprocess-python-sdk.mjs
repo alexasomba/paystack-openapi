@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import fs from "node:fs";
 import path from "node:path";
 
@@ -6,6 +7,7 @@ const modelsDir = path.join(sdkDir, "alexasomba_paystack/models");
 const pyprojectPath = path.join(sdkDir, "pyproject.toml");
 const gitPushPath = path.join(sdkDir, "git_push.sh");
 
+/** @param {string} contents */
 function updatePyproject(contents) {
   return contents.replace(
     /^Repository\s*=\s*".*"$/m,
@@ -13,14 +15,16 @@ function updatePyproject(contents) {
   );
 }
 
+/** @param {string} contents */
 function updateGitPush(contents) {
   return contents.replace(/^(\s*git_repo_id=)".*"$/m, '$1"paystack-python"');
 }
 
+/** @param {string} contents */
 function syncAliasChoicesImport(contents) {
   const importRe = /^from pydantic import (.+)$/m;
-  const match = contents.match(importRe);
-  if (!match) return contents;
+  const match = importRe.exec(contents);
+  if (match === null) return contents;
 
   const imported = match[1]
     .split(",")
@@ -44,6 +48,11 @@ function syncAliasChoicesImport(contents) {
   return contents;
 }
 
+/**
+ * @param {string} contents
+ * @param {string} fieldName
+ * @param {string} aliasName
+ */
 function fixFieldCollision(contents, fieldName, aliasName) {
   const plainFieldLineRe = new RegExp(`^([ \t]*)${fieldName}:([^\n]*?)=\\s*None\\s*$\\n?`, "m");
   const aliasFieldLineRe = new RegExp(
@@ -66,33 +75,36 @@ function fixFieldCollision(contents, fieldName, aliasName) {
 
   if (hasAliasField) {
     // Rewrite the aliased field to accept both snake_case and camelCase input keys.
-    updated = updated.replace(aliasFieldLineRe, (_m, indent, annotation) => {
-      const isOptional = /\bOptional\[/.test(annotation);
-      const defaultPart = isOptional ? "default=None, " : "";
-      return (
-        `${indent}${fieldName}: ${annotation} = Field(` +
-        `${defaultPart}validation_alias=AliasChoices('${fieldName}', '${aliasName}'), ` +
-        `serialization_alias='${aliasName}')`
-      );
-    });
+    updated = updated.replace(
+      aliasFieldLineRe,
+      (/** @type {any} */ _m, /** @type {string} */ indent, /** @type {string} */ annotation) => {
+        const isOptional = /\bOptional\[/.test(annotation);
+        const defaultPart = isOptional ? "default=None, " : "";
+        return (
+          `${indent}${fieldName}: ${annotation} = Field(` +
+          `${defaultPart}validation_alias=AliasChoices('${fieldName}', '${aliasName}'), ` +
+          `serialization_alias='${aliasName}')`
+        );
+      },
+    );
   }
 
   // Update from_dict mapping to prefer snake_case, fallback to camelCase.
   // Case 1: generator uses JSON-key dict keys (e.g. "paidAt": obj.get("paidAt"))
   updated = updated.replace(
-    new RegExp(`\"${aliasName}\": obj\\.get\\(\"${aliasName}\"\\),`, "g"),
+    new RegExp(`"${aliasName}": obj\\.get\\("${aliasName}"\\),`, "g"),
     `"${fieldName}": obj.get("${fieldName}") if obj.get("${fieldName}") is not None else obj.get("${aliasName}"),`,
   );
 
   // Case 2: generator uses snake_case keys but reads camelCase values (e.g. "paid_at": obj.get("paidAt"))
   updated = updated.replace(
-    new RegExp(`\"${fieldName}\": obj\\.get\\(\"${aliasName}\"\\),`, "g"),
+    new RegExp(`"${fieldName}": obj\\.get\\("${aliasName}"\\),`, "g"),
     `"${fieldName}": obj.get("${fieldName}") if obj.get("${fieldName}") is not None else obj.get("${aliasName}"),`,
   );
 
   // Case 3: generator uses snake_case keys and values (e.g. "paid_at": obj.get("paid_at"))
   updated = updated.replace(
-    new RegExp(`\"${fieldName}\": obj\\.get\\(\"${fieldName}\"\\),`, "g"),
+    new RegExp(`"${fieldName}": obj\\.get\\("${fieldName}"\\),`, "g"),
     `"${fieldName}": obj.get("${fieldName}") if obj.get("${fieldName}") is not None else obj.get("${aliasName}"),`,
   );
 

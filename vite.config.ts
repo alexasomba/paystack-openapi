@@ -4,7 +4,23 @@ export default defineConfig({
   staged: {
     "*": "vp check --fix",
   },
-  fmt: {},
+  fmt: {
+    ignorePatterns: ["dist/**"],
+  },
+  run: {
+    tasks: {
+      "lint:spec": {
+        command: "spectral lint dist/paystack.yaml",
+      },
+      "check:vacuum": {
+        command: "./node_modules/.bin/vacuum lint dist/paystack.yaml",
+      },
+      validate: {
+        command: "vp check && vp run lint:spec && vp run check:vacuum",
+        dependsOn: ["bundle"],
+      },
+    },
+  },
   lint: {
     plugins: ["oxc", "typescript", "unicorn", "react"],
     categories: {
@@ -16,11 +32,9 @@ export default defineConfig({
     },
     env: {
       builtin: true,
+      node: true,
     },
     ignorePatterns: [
-      "**/*.js",
-      "**/*.cjs",
-      "**/*.mjs",
       "**/node_modules/**",
       "**/dist/**",
       "**/coverage/**",
@@ -28,8 +42,6 @@ export default defineConfig({
       "**/.next/**",
       "**/.turbo/**",
       "**/.cache/**",
-      "docs/**",
-      "scripts/**",
       "**/*.d.ts",
       "**/*.d.ts.map",
       "**/*.map",
@@ -190,7 +202,7 @@ export default defineConfig({
         },
       },
       {
-        files: ["**/*.ts", "**/*.tsx"],
+        files: ["**/*.ts", "**/*.tsx", "**/*.mjs", "**/*.js"],
         rules: {
           "prefer-const": "error",
           "unicorn/prefer-node-protocol": "error",

@@ -22,6 +22,12 @@ properties:
   reason:
     description: The reason or narration for the transfer.
     type: string
+  metadata:
+    description: JSON object or stringified JSON of custom data
+    anyOf:
+      - type: string
+      - type: object
+      - type: integer
 example:
   amount: 120000
   recipient: RCP_gd9vgag7n5lr5ix

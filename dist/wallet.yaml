@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.4
 info:
   title: Create a wallet app
   description: |
@@ -42,21 +42,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/TransactionInitialize"
+              $ref: '#/components/schemas/TransactionInitialize'
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/TransactionInitialize"
+              $ref: '#/components/schemas/TransactionInitialize'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TransactionInitializeResponse"
-        "400":
-          $ref: "#/components/responses/TransactionInitializeBadRequestResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
+                $ref: '#/components/schemas/TransactionInitializeResponse'
+        '400':
+          $ref: '#/components/responses/TransactionInitializeBadRequestResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         default:
           description: Server error
   /transaction/charge_authorization:
@@ -70,19 +70,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/TransactionChargeAuthorization"
+              $ref: '#/components/schemas/TransactionChargeAuthorization'
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/TransactionChargeAuthorization"
+              $ref: '#/components/schemas/TransactionChargeAuthorization'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ChargeAuthorizationResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
+                $ref: '#/components/schemas/ChargeAuthorizationResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         default:
           description: Server error
   /customer:
@@ -96,19 +96,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CustomerCreate"
+              $ref: '#/components/schemas/CustomerCreate'
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/CustomerCreate"
+              $ref: '#/components/schemas/CustomerCreate'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CustomerCreateResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
+                $ref: '#/components/schemas/CustomerCreateResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         default:
           description: Server error
     get:
@@ -116,7 +116,7 @@ paths:
         - Customer
       summary: List Customers
       operationId: customer_list
-      description: List customers on your integration
+      description: List customers available on your integration
       parameters:
         - name: use_cursor
           description: A flag to indicate if cursor based pagination should be used
@@ -136,46 +136,46 @@ paths:
           schema:
             type: string
         - name: from
-          description: The start date
+          description: A timestamp from which to start listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
           in: query
           schema:
             type: string
             format: date-time
         - name: to
-          description: The end date
+          description: A timestamp at which to stop listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
           in: query
           schema:
             type: string
             format: date-time
         - name: perPage
-          description: The number of records to fetch per request
+          description: Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
           in: query
           schema:
-            type: string
+            type: integer
         - name: page
           in: query
-          description: The offset to retrieve data from
+          description: Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
           schema:
-            type: string
+            type: integer
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CustomerListResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
+                $ref: '#/components/schemas/CustomerListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
         default:
           description: Server error
   /customer/{code}/identification:
     parameters:
-      - name: code
+      - name: customer_code
         in: path
         required: true
-        description: The code for the customer gotten from the response of the customer creation
+        description: Customer code
         schema:
           type: string
         example: CUS_c6wqvwmvwopw4ms
@@ -189,19 +189,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CustomerValidate"
+              $ref: '#/components/schemas/CustomerValidate'
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/CustomerValidate"
+              $ref: '#/components/schemas/CustomerValidate'
       responses:
-        "202":
-          description: ""
+        '202':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CustomerValidateResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
+                $ref: '#/components/schemas/CustomerValidateResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         default:
           description: Server error
   /dedicated_account:
@@ -215,19 +215,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/DedicatedVirtualAccountCreate"
+              $ref: '#/components/schemas/DedicatedVirtualAccountCreate'
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/DedicatedVirtualAccountCreate"
+              $ref: '#/components/schemas/DedicatedVirtualAccountCreate'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DedicatedNubanCreateResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
+                $ref: '#/components/schemas/DedicatedNubanCreateResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         default:
           description: Server error
     get:
@@ -268,7 +268,7 @@ paths:
           description: The bank's ID
           schema:
             type: string
-          example: "035"
+          example: '035'
         - name: perPage
           in: query
           description: The number of records to fetch per request
@@ -282,16 +282,16 @@ paths:
             type: integer
             default: 1
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DedicatedNubanListResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
+                $ref: '#/components/schemas/DedicatedNubanListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
         default:
           description: Server error
   /transferrecipient:
@@ -305,19 +305,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/TransferRecipientCreate"
+              $ref: '#/components/schemas/TransferRecipientCreate'
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/TransferRecipientCreate"
+              $ref: '#/components/schemas/TransferRecipientCreate'
       responses:
-        "201":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TransferRecipientCreateResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
+                $ref: '#/components/schemas/TransferRecipientCreateResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         default:
           description: Server error
     get:
@@ -328,43 +328,38 @@ paths:
       operationId: transferrecipient_list
       parameters:
         - in: query
-          name: use_cursor
-          description: A flag to indicate if cursor based pagination should be used
-          schema:
-            type: boolean
-        - in: query
-          name: next
-          description: |
-            An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data
-          schema:
-            type: string
-        - in: query
-          name: previous
-          description: |
-            An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data
-          schema:
-            type: string
-        - in: query
-          name: per_page
+          name: perPage
           schema:
             type: integer
-          description: The number of records to fetch per request
+          description: Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
         - in: query
           name: page
           schema:
             type: integer
-          description: The offset to retrieve data from
+          description: Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
+        - in: query
+          name: from
+          description: A timestamp from which to start listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: to
+          description: A timestamp at which to stop listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+          schema:
+            type: string
+            format: date-time
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TransferRecipientListResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
+                $ref: '#/components/schemas/TransferRecipientListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
         default:
           description: Server error
   /transfer:
@@ -378,19 +373,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/TransferInitiate"
+              $ref: '#/components/schemas/TransferInitiate'
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/TransferInitiate"
+              $ref: '#/components/schemas/TransferInitiate'
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TransferCreateResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
+                $ref: '#/components/schemas/TransferCreateResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         default:
           description: Server error
     get:
@@ -401,77 +396,43 @@ paths:
       operationId: transfer_list
       parameters:
         - in: query
-          name: use_cursor
-          description: A flag to indicate if cursor based pagination should be used
-          schema:
-            type: boolean
-          example: true
-        - in: query
-          name: next
-          description: |
-            An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data
-          schema:
-            type: string
-        - in: query
-          name: previous
-          description: |
-            An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data
-          schema:
-            type: string
-        - in: query
-          name: per_page
+          name: perPage
           schema:
             type: integer
-          description: The number of records to fetch per request
+          description: Specify how many records you want to retrieve per page. If not specify we use a default value of 50.
         - in: query
           name: page
           schema:
             type: integer
-          description: The offset to retrieve data from
+          description: Specify exactly what transfer you want to page. If not specify we use a default value of 1.
         - in: query
           name: from
-          description: The start date
+          description: A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
           schema:
             type: string
             format: date-time
         - in: query
           name: to
-          description: The end date
+          description: A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
           schema:
             type: string
             format: date-time
         - in: query
           name: recipient
-          description: Filter transfer by the recipient code
+          description: Filter by the recipient ID
           schema:
-            type: string
-        - in: query
-          name: status
-          description: Filter transfer by status
-          schema:
-            type: string
-            default: pending
-            enum:
-              - pending
-              - success
-              - failed
-              - otp
-              - abandoned
-              - reversed
-              - blocked
-              - rejected
-              - received
+            type: integer
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TransferListResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
+                $ref: '#/components/schemas/TransferListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
         default:
           description: Server error
 components:
@@ -526,7 +487,7 @@ components:
           description: A list of object containing subaccount code and number of shares
           type: array
           items:
-            $ref: "#/components/schemas/SplitSubaccounts"
+            $ref: '#/components/schemas/SplitSubaccounts'
         currency:
           description: The transaction currency
           type: string
@@ -579,7 +540,7 @@ components:
             - type: integer
             - type: string
         currency:
-          $ref: "#/components/schemas/Currency"
+          $ref: '#/components/schemas/Currency'
         reference:
           description: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
           type: string
@@ -616,7 +577,7 @@ components:
           description: The split code of the transaction split
           type: string
         split:
-          $ref: "#/components/schemas/SplitCreate"
+          $ref: '#/components/schemas/SplitCreate'
         subaccount:
           description: The code for the subaccount that owns the payment
           type: string
@@ -635,10 +596,11 @@ components:
           description: Used to replace the email address shown on the Checkout
           type: string
         metadata:
-          description: JSON object of custom data
+          description: JSON object or stringified JSON of custom data
           anyOf:
             - type: string
             - type: object
+            - type: integer
       example:
         email: test@demo.com
         amount: 10000
@@ -668,11 +630,11 @@ components:
         - data
     ErrorMeta:
       type: object
-      description: Extra details to help with a resolution of the error
+      description: Extra diagnostic information to help resolve an error
       properties:
         nextStep:
           type: string
-          description: A summarised solution for the error
+          description: A suggested next action to take to resolve the error
     TransactionInitializeBadRequestModel:
       type: object
       description: |
@@ -685,7 +647,7 @@ components:
           type: string
           description: A short description of the error
         meta:
-          $ref: "#/components/schemas/ErrorMeta"
+          $ref: '#/components/schemas/ErrorMeta'
         type:
           type: string
           description: A tag to indicate the type of the error
@@ -709,6 +671,7 @@ components:
         errorCodeMappingNotFound: false
     Error:
       type: object
+      description: Standard error response returned when a Paystack API request fails.
       properties:
         status:
           type: boolean
@@ -717,17 +680,17 @@ components:
           type: string
           description: A short description of the error
         meta:
-          $ref: "#/components/schemas/ErrorMeta"
+          $ref: '#/components/schemas/ErrorMeta'
         type:
           type: string
-          description: A tag to indicate the type of the error
-        code:
-          type: string
-          description: The error code
+          description: A category describing the kind of error that occurred
           enum:
+            - api_error
             - validation_error
             - processor_error
-            - api_error
+        code:
+          type: string
+          description: A Paystack-defined machine-readable code for the error
         errorCodeMappingNotFound:
           type: boolean
           description: An indicator for error mapping for the request
@@ -751,7 +714,7 @@ components:
           description: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
           type: string
         currency:
-          $ref: "#/components/schemas/Currency"
+          $ref: '#/components/schemas/Currency'
         channels:
           description: Send us 'card' or 'bank' or 'card','bank' as an array to specify what options to show the user paying
           type: array
@@ -764,7 +727,7 @@ components:
           description: The split code of the transaction split
           type: string
         split:
-          $ref: "#/components/schemas/SplitCreate"
+          $ref: '#/components/schemas/SplitCreate'
         subaccount:
           description: The code for the subaccount that owns the payment
           type: string
@@ -814,7 +777,11 @@ components:
             domain:
               type: string
             metadata:
-              type: string
+              anyOf:
+                - type: string
+                - type: object
+                  additionalProperties: true
+              nullable: true
             gateway_response:
               type: string
             message:
@@ -899,6 +866,7 @@ components:
                 signature:
                   type: string
                 account_name:
+                  type: string
                   nullable: true
               required:
                 - authorization_code
@@ -934,9 +902,7 @@ components:
                   nullable: true
                 metadata:
                   type: object
-                  properties:
-                    calling_code:
-                      type: string
+                  additionalProperties: true
                   nullable: true
                 risk_action:
                   type: string
@@ -952,7 +918,6 @@ components:
                 - phone
                 - metadata
                 - risk_action
-                - international_format_phone
             plan:
               nullable: true
             id:
@@ -1045,6 +1010,22 @@ components:
         - page
         - pageCount
       additionalProperties: false
+    CursorMeta:
+      type: object
+      properties:
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        perPage:
+          type: integer
+      required:
+        - next
+        - previous
+        - perPage
+      additionalProperties: false
     CustomerListResponse:
       type: object
       properties:
@@ -1055,9 +1036,11 @@ components:
         data:
           type: array
           items:
-            $ref: "#/components/schemas/CustomerListResponseArray"
+            $ref: '#/components/schemas/CustomerListResponseArray'
         meta:
-          $ref: "#/components/schemas/Meta"
+          oneOf:
+            - $ref: '#/components/schemas/Meta'
+            - $ref: '#/components/schemas/CursorMeta'
       required:
         - status
         - message
@@ -1081,8 +1064,10 @@ components:
           description: Customer's phone number
           type: string
         metadata:
-          description: Stringified JSON object of custom data
-          type: string
+          description: Stringified JSON object or JSON object of custom data
+          anyOf:
+            - type: string
+            - type: object
       example:
         email: rock@sandy.com
         first_name: Rock
@@ -1097,64 +1082,34 @@ components:
         data:
           type: object
           properties:
-            transactions:
-              type: array
-              items: {}
-            subscriptions:
-              type: array
-              items: {}
-            authorizations:
-              type: array
-              items: {}
             email:
-              type: string
-            first_name:
-              type: string
-            last_name:
-              type: string
-            phone:
               type: string
             integration:
               type: integer
             domain:
               type: string
-            metadata:
-              type: object
-              properties:
-                calling_code:
-                  type: string
             customer_code:
-              type: string
-            risk_action:
               type: string
             id:
               type: integer
-            createdAt:
-              type: string
-            updatedAt:
-              type: string
             identified:
               type: boolean
             identifications:
               nullable: true
+            createdAt:
+              type: string
+            updatedAt:
+              type: string
           required:
-            - transactions
-            - subscriptions
-            - authorizations
             - email
-            - first_name
-            - last_name
-            - phone
             - integration
             - domain
-            - metadata
             - customer_code
-            - risk_action
             - id
-            - createdAt
-            - updatedAt
             - identified
             - identifications
+            - createdAt
+            - updatedAt
       required:
         - status
         - message
@@ -1203,9 +1158,9 @@ components:
         last_name: Cedar
         country: NG
         type: bank_account
-        account_number: "0123456789"
-        bank_code: "007"
-        bvn: "20012345677"
+        account_number: '0123456789'
+        bank_code: '007'
+        bvn: '20012345677'
     CustomerValidateResponse:
       type: object
       properties:
@@ -1234,11 +1189,21 @@ components:
               type: string
             phone:
               type: string
+              nullable: true
             risk_action:
               type: string
             international_format_phone:
               type: string
               nullable: true
+          required:
+            - id
+            - first_name
+            - last_name
+            - email
+            - customer_code
+            - phone
+            - risk_action
+            - international_format_phone
         bank:
           type: object
           properties:
@@ -1265,12 +1230,14 @@ components:
         currency:
           type: string
         split_config:
-          type: object
-          properties:
-            subaccount:
-              type: string
-          required:
-            - subaccount
+          anyOf:
+            - type: string
+            - type: object
+              properties:
+                subaccount:
+                  type: string
+              required:
+                - subaccount
           nullable: true
         active:
           type: boolean
@@ -1298,9 +1265,9 @@ components:
         data:
           type: array
           items:
-            $ref: "#/components/schemas/DedicatedNubanListResponseArray"
+            $ref: '#/components/schemas/DedicatedNubanListResponseArray'
         meta:
-          $ref: "#/components/schemas/Meta"
+          $ref: '#/components/schemas/Meta'
       required:
         - status
         - message
@@ -1323,6 +1290,12 @@ components:
         split_code:
           description: Split code consisting of the lists of accounts you want to split the transaction with
           type: string
+        metadata:
+          description: JSON object or stringified JSON of custom data
+          anyOf:
+            - type: string
+            - type: object
+            - type: integer
       example:
         customer: CUS_bo732eugpb2qrg6
         preferred_bank: titan-paystack
@@ -1407,8 +1380,10 @@ components:
                   type: string
                 phone:
                   type: string
+                  nullable: true
                 metadata:
                   type: object
+                  nullable: true
                 risk_action:
                   type: string
                 international_format_phone:
@@ -1423,7 +1398,6 @@ components:
                 - phone
                 - metadata
                 - risk_action
-                - international_format_phone
           required:
             - bank
             - account_name
@@ -1452,6 +1426,7 @@ components:
           type: string
         description:
           type: string
+          nullable: true
         domain:
           type: string
         email:
@@ -1473,6 +1448,8 @@ components:
         updatedAt:
           type: string
         is_deleted:
+          type: boolean
+        isDeleted:
           type: boolean
         details:
           type: object
@@ -1500,16 +1477,12 @@ components:
         - active
         - createdAt
         - currency
-        - description
         - domain
-        - email
         - id
-        - integration
         - name
         - recipient_code
         - type
         - updatedAt
-        - is_deleted
         - details
     TransferRecipientListResponse:
       type: object
@@ -1521,9 +1494,9 @@ components:
         data:
           type: array
           items:
-            $ref: "#/components/schemas/TransferRecipientListResponseArray"
+            $ref: '#/components/schemas/TransferRecipientListResponseArray'
         meta:
-          $ref: "#/components/schemas/Meta"
+          $ref: '#/components/schemas/Meta'
       required:
         - status
         - message
@@ -1565,13 +1538,16 @@ components:
           description: An authorization code from a previous transaction
           type: string
         metadata:
-          description: JSON object of custom data
-          type: object
+          description: JSON object or stringified JSON of custom data
+          anyOf:
+            - type: string
+            - type: object
+            - type: integer
       example:
         type: nuban
         name: Smith Taplo
-        account_number: "01000000010"
-        bank_code: "058"
+        account_number: '01000000010'
+        bank_code: '058'
     TransferRecipientCreateResponse:
       type: object
       properties:
@@ -1590,10 +1566,12 @@ components:
               type: string
             description:
               type: string
+              nullable: true
             domain:
               type: string
             email:
               type: string
+              nullable: true
             id:
               type: integer
             integration:
@@ -1610,6 +1588,8 @@ components:
             updatedAt:
               type: string
             is_deleted:
+              type: boolean
+            isDeleted:
               type: boolean
             details:
               type: object
@@ -1637,16 +1617,12 @@ components:
             - active
             - createdAt
             - currency
-            - description
             - domain
-            - email
             - id
-            - integration
             - name
             - recipient_code
             - type
             - updatedAt
-            - is_deleted
             - details
       required:
         - status
@@ -1676,17 +1652,15 @@ components:
         source:
           type: string
         source_details:
+          type: object
           nullable: true
         status:
           type: string
         titan_code:
+          type: string
           nullable: true
         transfer_code:
           type: string
-        request:
-          type: integer
-        transferred_at:
-          nullable: true
         updatedAt:
           type: string
         recipient:
@@ -1700,10 +1674,12 @@ components:
               type: string
             description:
               type: string
+              nullable: true
             domain:
               type: string
             email:
               type: string
+              nullable: true
             id:
               type: integer
             integration:
@@ -1720,6 +1696,8 @@ components:
             updatedAt:
               type: string
             is_deleted:
+              type: boolean
+            isDeleted:
               type: boolean
             details:
               type: object
@@ -1745,32 +1723,14 @@ components:
             - active
             - createdAt
             - currency
-            - description
             - domain
-            - email
             - id
             - integration
             - name
             - recipient_code
             - type
             - updatedAt
-            - is_deleted
             - details
-        session:
-          type: object
-          properties:
-            provider:
-              nullable: true
-            id:
-              nullable: true
-          required:
-            - provider
-            - id
-        fee_charged:
-          type: integer
-        fees_breakdown:
-          type: integer
-          nullable: true
       required:
         - amount
         - createdAt
@@ -1785,14 +1745,9 @@ components:
         - source_details
         - status
         - titan_code
-        - request
         - transfer_code
-        - transferred_at
         - updatedAt
         - recipient
-        - session
-        - fee_charged
-        - fees_breakdown
     TransferListResponse:
       type: object
       properties:
@@ -1803,9 +1758,9 @@ components:
         data:
           type: array
           items:
-            $ref: "#/components/schemas/TransferListResponseArray"
+            $ref: '#/components/schemas/TransferListResponseArray'
         meta:
-          $ref: "#/components/schemas/Meta"
+          $ref: '#/components/schemas/Meta'
       required:
         - status
         - message
@@ -1833,6 +1788,12 @@ components:
         reason:
           description: The reason or narration for the transfer.
           type: string
+        metadata:
+          description: JSON object or stringified JSON of custom data
+          anyOf:
+            - type: string
+            - type: object
+            - type: integer
       example:
         amount: 120000
         recipient: RCP_gd9vgag7n5lr5ix
@@ -1840,7 +1801,7 @@ components:
     TransferInitiate:
       description: Transfer initiation model
       allOf:
-        - $ref: "#/components/schemas/TransferBase"
+        - $ref: '#/components/schemas/TransferBase'
         - type: object
           required:
             - source
@@ -1943,13 +1904,13 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/TransactionInitializeBadRequestModel"
+            $ref: '#/components/schemas/TransactionInitializeBadRequestModel'
     Unauthorized:
       description: Unauthorized operation
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Error"
+            $ref: '#/components/schemas/Error'
           example:
             status: false
             message: Invalid key
@@ -1958,7 +1919,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Error"
+            $ref: '#/components/schemas/Error'
           example:
             status: false
             message: Entity not found

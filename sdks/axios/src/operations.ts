@@ -109,6 +109,13 @@ export function bulkCharge_resume(
   return client.GET("/bulkcharge/resume/{code}", ...init);
 }
 
+export function capitecPay_requery(
+  client: PaystackClient,
+  ...init: InitArg<MaybeOptionalInit<paths["/capitec-pay/requery/{ref}"], "post">>
+) {
+  return client.POST("/capitec-pay/requery/{ref}", ...init);
+}
+
 export function charge_check(
   client: PaystackClient,
   ...init: InitArg<MaybeOptionalInit<paths["/charge/{reference}"], "get">>
@@ -578,6 +585,48 @@ export function plan_update(
   ...init: InitArg<MaybeOptionalInit<paths["/plan/{id_or_code}"], "put">>
 ) {
   return client.PUT("/plan/{id_or_code}", ...init);
+}
+
+export function preauthorization_capture(
+  client: PaystackClient,
+  ...init: InitArg<MaybeOptionalInit<paths["/preauthorization/capture"], "post">>
+) {
+  return client.POST("/preauthorization/capture", ...init);
+}
+
+export function preauthorization_initialize(
+  client: PaystackClient,
+  ...init: InitArg<MaybeOptionalInit<paths["/preauthorization/initialize"], "post">>
+) {
+  return client.POST("/preauthorization/initialize", ...init);
+}
+
+export function preauthorization_list(
+  client: PaystackClient,
+  ...init: InitArg<MaybeOptionalInit<paths["/preauthorization"], "get">>
+) {
+  return client.GET("/preauthorization", ...init);
+}
+
+export function preauthorization_release(
+  client: PaystackClient,
+  ...init: InitArg<MaybeOptionalInit<paths["/preauthorization/release"], "post">>
+) {
+  return client.POST("/preauthorization/release", ...init);
+}
+
+export function preauthorization_reserve_authorization(
+  client: PaystackClient,
+  ...init: InitArg<MaybeOptionalInit<paths["/preauthorization/reserve_authorization"], "post">>
+) {
+  return client.POST("/preauthorization/reserve_authorization", ...init);
+}
+
+export function preauthorization_verify(
+  client: PaystackClient,
+  ...init: InitArg<MaybeOptionalInit<paths["/preauthorization/verify/{reference}"], "get">>
+) {
+  return client.GET("/preauthorization/verify/{reference}", ...init);
 }
 
 export function product_create(
@@ -1215,6 +1264,9 @@ export function bindOperations(client: PaystackClient) {
     bulkCharge_resume: (
       ...init: InitArg<MaybeOptionalInit<paths["/bulkcharge/resume/{code}"], "get">>
     ) => bulkCharge_resume(client, ...init),
+    capitecPay_requery: (
+      ...init: InitArg<MaybeOptionalInit<paths["/capitec-pay/requery/{ref}"], "post">>
+    ) => capitecPay_requery(client, ...init),
     charge_check: (...init: InitArg<MaybeOptionalInit<paths["/charge/{reference}"], "get">>) =>
       charge_check(client, ...init),
     charge_create: (...init: InitArg<MaybeOptionalInit<paths["/charge"], "post">>) =>
@@ -1395,6 +1447,24 @@ export function bindOperations(client: PaystackClient) {
       plan_list(client, ...init),
     plan_update: (...init: InitArg<MaybeOptionalInit<paths["/plan/{id_or_code}"], "put">>) =>
       plan_update(client, ...init),
+    preauthorization_capture: (
+      ...init: InitArg<MaybeOptionalInit<paths["/preauthorization/capture"], "post">>
+    ) => preauthorization_capture(client, ...init),
+    preauthorization_initialize: (
+      ...init: InitArg<MaybeOptionalInit<paths["/preauthorization/initialize"], "post">>
+    ) => preauthorization_initialize(client, ...init),
+    preauthorization_list: (
+      ...init: InitArg<MaybeOptionalInit<paths["/preauthorization"], "get">>
+    ) => preauthorization_list(client, ...init),
+    preauthorization_release: (
+      ...init: InitArg<MaybeOptionalInit<paths["/preauthorization/release"], "post">>
+    ) => preauthorization_release(client, ...init),
+    preauthorization_reserve_authorization: (
+      ...init: InitArg<MaybeOptionalInit<paths["/preauthorization/reserve_authorization"], "post">>
+    ) => preauthorization_reserve_authorization(client, ...init),
+    preauthorization_verify: (
+      ...init: InitArg<MaybeOptionalInit<paths["/preauthorization/verify/{reference}"], "get">>
+    ) => preauthorization_verify(client, ...init),
     product_create: (...init: InitArg<MaybeOptionalInit<paths["/product"], "post">>) =>
       product_create(client, ...init),
     product_delete: (...init: InitArg<MaybeOptionalInit<paths["/product/{id}"], "delete">>) =>

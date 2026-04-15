@@ -1,0 +1,7 @@
+type: object
+required:
+  - reference
+properties:
+  reference:
+    description: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
+    type: string

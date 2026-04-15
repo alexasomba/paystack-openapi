@@ -35,8 +35,11 @@ properties:
     description: An authorization code from a previous transaction
     type: string
   metadata:
-    description: JSON object of custom data
-    type: object
+    description: JSON object or stringified JSON of custom data
+    anyOf:
+      - type: string
+      - type: object
+      - type: integer
 example:
   type: nuban
   name: Smith Taplo

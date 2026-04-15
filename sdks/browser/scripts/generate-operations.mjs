@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -22,7 +23,7 @@ function toIdentifier(name) {
 function uniqueName(base, used) {
   let candidate = base;
   let i = 2;
-  while (used.has(candidate)) {
+  while (used.has(candidate) === true) {
     candidate = `${base}_${i}`;
     i += 1;
   }
@@ -40,11 +41,11 @@ const usedNames = new Set();
 const operations = [];
 
 for (const [apiPath, pathItem] of Object.entries(paths)) {
-  if (!pathItem || typeof pathItem !== "object") continue;
+  if (pathItem === undefined || typeof pathItem !== "object") continue;
 
   for (const method of httpMethods) {
     const op = pathItem[method];
-    if (!op || typeof op !== "object") continue;
+    if (op === undefined || typeof op !== "object") continue;
 
     const operationId = op.operationId ?? `${method}_${apiPath}`;
     const name = uniqueName(toIdentifier(operationId), usedNames);

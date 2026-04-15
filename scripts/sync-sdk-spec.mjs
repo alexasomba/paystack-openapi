@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import fs from "node:fs/promises";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
@@ -17,11 +18,17 @@ const targets = [
   "sdks/go/openapi.yaml",
 ].map((p) => path.join(repoRoot, p));
 
+/** @param {unknown} value */
+/** @param {any} value */
 function isPlainObject(value) {
-  return !!value && typeof value === "object" && !Array.isArray(value);
+  return value !== null && typeof value === "object" && !Array.isArray(value);
 }
 
 // Deep-merge helper where `base` wins on conflicts.
+/**
+ * @param {Record<string, any>} base
+ * @param {Record<string, any>} extra
+ */
 function deepMergePreferBase(base, extra) {
   if (!isPlainObject(base) || !isPlainObject(extra)) {
     return base ?? extra;
@@ -39,24 +46,32 @@ function deepMergePreferBase(base, extra) {
   return out;
 }
 
+/**
+ * @param {any[]} mainTags
+ * @param {any[]} sdkTags
+ */
 function mergeTags(mainTags, sdkTags) {
   const mainList = Array.isArray(mainTags) ? mainTags : [];
   const sdkList = Array.isArray(sdkTags) ? sdkTags : [];
 
   const byName = new Map();
   for (const tag of mainList) {
-    if (tag?.name) byName.set(tag.name, tag);
+    if (tag?.name !== undefined) byName.set(tag.name, tag);
   }
 
   const extras = [];
   for (const tag of sdkList) {
-    if (!tag?.name) continue;
+    if (tag?.name === undefined) continue;
     if (!byName.has(tag.name)) extras.push(tag);
   }
 
   return [...mainList, ...extras];
 }
 
+/**
+ * @param {Record<string, any>} mainPaths
+ * @param {Record<string, any>} sdkPaths
+ */
 function mergePaths(mainPaths, sdkPaths) {
   const out = isPlainObject(mainPaths) ? structuredClone(mainPaths) : {};
   const sdk = isPlainObject(sdkPaths) ? sdkPaths : {};
@@ -64,7 +79,7 @@ function mergePaths(mainPaths, sdkPaths) {
   for (const [route, sdkPathItem] of Object.entries(sdk)) {
     if (!isPlainObject(sdkPathItem)) continue;
 
-    if (!out[route]) {
+    if (out[route] === undefined) {
       out[route] = sdkPathItem;
       continue;
     }
@@ -79,7 +94,7 @@ function mergePaths(mainPaths, sdkPaths) {
     const methodKeys = ["get", "put", "post", "delete", "options", "head", "patch", "trace"];
 
     for (const method of methodKeys) {
-      if (sdkPathItem[method]) {
+      if (sdkPathItem[method] !== undefined) {
         out[route][method] = sdkPathItem[method];
       }
     }
@@ -92,12 +107,13 @@ function mergePaths(mainPaths, sdkPaths) {
   return out;
 }
 
+/** @param {any} spec */
 function collectOperationLocations(spec) {
   const methods = ["get", "put", "post", "delete", "options", "head", "patch", "trace"];
   const locations = new Set();
   for (const [route, item] of Object.entries(spec?.paths ?? {})) {
     for (const method of methods) {
-      if (item?.[method]?.operationId) {
+      if (/** @type {any} */ (item)?.[method]?.operationId !== undefined) {
         locations.add(`${method.toUpperCase()} ${route}`);
       }
     }
@@ -105,6 +121,7 @@ function collectOperationLocations(spec) {
   return locations;
 }
 
+/** @param {any} value */
 function sanitizeOperationIdSuffix(value) {
   return String(value)
     .replace(/[{}]/g, "")
@@ -113,6 +130,10 @@ function sanitizeOperationIdSuffix(value) {
     .slice(0, 80);
 }
 
+/**
+ * @param {any} mergedSpec
+ * @param {any} sdkSpec
+ */
 function dedupeOperationIds(mergedSpec, sdkSpec) {
   const methods = ["get", "put", "post", "delete", "options", "head", "patch", "trace"];
   const sdkLocations = collectOperationLocations(sdkSpec);
@@ -129,9 +150,9 @@ function dedupeOperationIds(mergedSpec, sdkSpec) {
   const groups = new Map();
   for (const [route, item] of Object.entries(mergedSpec?.paths ?? {})) {
     for (const method of methods) {
-      const op = item?.[method];
+      const op = /** @type {any} */ (item)?.[method];
       const operationId = op?.operationId;
-      if (!operationId) continue;
+      if (operationId === undefined) continue;
 
       const loc = `${method.toUpperCase()} ${route}`;
       const list = groups.get(operationId) ?? [];
@@ -146,14 +167,16 @@ function dedupeOperationIds(mergedSpec, sdkSpec) {
     if (occurrences.length <= 1) continue;
 
     // Prefer keeping operationIds for operations that existed in the SDK spec already.
-    const keepers = occurrences.filter((o) => sdkLocations.has(o.loc));
-    const keepSet = new Set((keepers.length ? keepers : [occurrences[0]]).map((o) => o.loc));
+    const keepers = occurrences.filter((/** @type {any} */ o) => sdkLocations.has(o.loc));
+    const keepSet = new Set(
+      (keepers.length > 0 ? keepers : [occurrences[0]]).map((/** @type {any} */ o) => o.loc),
+    );
 
     for (const occ of occurrences) {
       if (keepSet.has(occ.loc)) continue;
 
       let nextId = overrides.get(occ.loc);
-      if (!nextId) {
+      if (nextId === undefined) {
         const suffix = sanitizeOperationIdSuffix(`${occ.method}_${occ.route}`);
         nextId = `${operationId}_${suffix}`;
       }
@@ -171,16 +194,26 @@ function dedupeOperationIds(mergedSpec, sdkSpec) {
   }
 }
 
+/** @param {any} schema */
 function isObjectSchema(schema) {
   return isPlainObject(schema) && schema.type === "object" && isPlainObject(schema.properties);
 }
 
+/**
+ * @param {any} schema
+ * @param {string} propertyName
+ */
 function removeFromRequired(schema, propertyName) {
   if (!Array.isArray(schema.required)) return;
-  schema.required = schema.required.filter((name) => name !== propertyName);
+  schema.required = schema.required.filter((/** @type {string} */ name) => name !== propertyName);
   if (schema.required.length === 0) delete schema.required;
 }
 
+/**
+ * @param {any} schema
+ * @param {string} snakeKey
+ * @param {string} camelKey
+ */
 function dedupeTimestampCasing(schema, snakeKey, camelKey) {
   if (!isObjectSchema(schema)) return;
 
@@ -199,6 +232,7 @@ function dedupeTimestampCasing(schema, snakeKey, camelKey) {
   removeFromRequired(schema, dropKey);
 }
 
+/** @param {any} spec */
 function sanitizeSdkSpecForGenerators(spec) {
   // Some generators (notably Python/PHP/Go) cannot safely handle both snake_case and
   // camelCase variants of the same logical field within a single schema, because both
@@ -214,6 +248,7 @@ function sanitizeSdkSpecForGenerators(spec) {
     ["updated_at", "updatedAt"],
   ];
 
+  /** @param {any} node */
   const visit = (node) => {
     if (Array.isArray(node)) {
       for (const item of node) visit(item);
@@ -257,7 +292,9 @@ try {
   sdkOverridesText = "";
 }
 
+/** @type {any} */
 const bundledSpec = parseYaml(bundledText);
+/** @type {any} */
 const sdkSpec = sdkOverridesText.trim() ? parseYaml(sdkOverridesText) : {};
 
 // Merge strategy:

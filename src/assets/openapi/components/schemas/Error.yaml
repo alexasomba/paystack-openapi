@@ -1,4 +1,5 @@
 type: object
+description: Standard error response returned when a Paystack API request fails.
 properties:
   status:
     type: boolean
@@ -10,14 +11,14 @@ properties:
     $ref: ./ErrorMeta.yaml
   type:
     type: string
-    description: A tag to indicate the type of the error
-  code:
-    type: string
-    description: The error code
+    description: A category describing the kind of error that occurred
     enum:
+      - api_error
       - validation_error
       - processor_error
-      - api_error
+  code:
+    type: string
+    description: A Paystack-defined machine-readable code for the error
   errorCodeMappingNotFound:
     type: boolean
     description: An indicator for error mapping for the request

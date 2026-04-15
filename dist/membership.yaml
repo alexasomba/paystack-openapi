@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.4
 info:
   title: Create a membership app
   description: |
@@ -39,15 +39,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PlanCreate"
+              $ref: '#/components/schemas/PlanCreate'
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/PlanCreate"
+              $ref: '#/components/schemas/PlanCreate'
       responses:
-        "200":
-          $ref: "#/components/responses/PlanCreateSuccess"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
+        '200':
+          $ref: '#/components/responses/PlanCreateSuccess'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         default:
           description: Server error
     get:
@@ -68,6 +68,11 @@ paths:
           schema:
             type: integer
         - in: query
+          name: status
+          description: Filter list by plans with specified status
+          schema:
+            type: string
+        - in: query
           name: interval
           description: Specify interval of the plan
           schema:
@@ -76,6 +81,7 @@ paths:
               - daily
               - weekly
               - monthly
+              - quarterly
               - biannually
               - annually
         - in: query
@@ -85,25 +91,13 @@ paths:
           description: |
             Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
             Filter plans by a specific amount.
-        - in: query
-          name: from
-          schema:
-            type: string
-            format: date-time
-          description: The start date
-        - in: query
-          name: to
-          schema:
-            type: string
-            format: date-time
-          description: The end date
       responses:
-        "200":
-          $ref: "#/components/responses/PlanListSuccess"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
+        '200':
+          $ref: '#/components/responses/PlanListSuccess'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
         default:
           description: Server error
   /subscription:
@@ -117,15 +111,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/SubscriptionCreate"
+              $ref: '#/components/schemas/SubscriptionCreate'
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/SubscriptionCreate"
+              $ref: '#/components/schemas/SubscriptionCreate'
       responses:
-        "200":
-          $ref: "#/components/responses/SubscriptionCreateSuccess"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
+        '200':
+          $ref: '#/components/responses/SubscriptionCreateSuccess'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         default:
           description: Server error
     get:
@@ -154,27 +148,15 @@ paths:
         - in: query
           name: customer
           schema:
-            type: string
-          description: Customer ID, code, or email
-        - in: query
-          name: from
-          schema:
-            type: string
-            format: date-time
-          description: The start date
-        - in: query
-          name: to
-          schema:
-            type: string
-            format: date-time
-          description: The end date
+            type: integer
+          description: Filter by Customer ID
       responses:
-        "200":
-          $ref: "#/components/responses/SubscriptionListSuccess"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
+        '200':
+          $ref: '#/components/responses/SubscriptionListSuccess'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
         default:
           description: Server error
   /transaction/initialize:
@@ -188,21 +170,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/TransactionInitialize"
+              $ref: '#/components/schemas/TransactionInitialize'
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/TransactionInitialize"
+              $ref: '#/components/schemas/TransactionInitialize'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TransactionInitializeResponse"
-        "400":
-          $ref: "#/components/responses/TransactionInitializeBadRequestResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
+                $ref: '#/components/schemas/TransactionInitializeResponse'
+        '400':
+          $ref: '#/components/responses/TransactionInitializeBadRequestResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         default:
           description: Server error
   /transaction/charge_authorization:
@@ -216,19 +198,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/TransactionChargeAuthorization"
+              $ref: '#/components/schemas/TransactionChargeAuthorization'
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/TransactionChargeAuthorization"
+              $ref: '#/components/schemas/TransactionChargeAuthorization'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ChargeAuthorizationResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
+                $ref: '#/components/schemas/ChargeAuthorizationResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         default:
           description: Server error
 components:
@@ -243,9 +225,8 @@ components:
         subscriptions:
           type: array
           items: {}
-        pages:
-          type: array
-          items: {}
+        integration:
+          type: integer
         domain:
           type: string
         name:
@@ -272,29 +253,15 @@ components:
           nullable: true
         currency:
           type: string
-        migrate:
-          type: boolean
-        is_deleted:
-          type: boolean
-        is_archived:
-          type: boolean
         id:
-          type: integer
-        integration:
           type: integer
         createdAt:
           type: string
         updatedAt:
           type: string
-        total_subscriptions:
-          type: integer
-        active_subscriptions:
-          type: integer
-        total_subscriptions_revenue:
-          type: integer
       required:
         - subscriptions
-        - pages
+        - integration
         - domain
         - name
         - plan_code
@@ -308,16 +275,9 @@ components:
         - hosted_page_url
         - hosted_page_summary
         - currency
-        - migrate
-        - is_deleted
-        - is_archived
         - id
-        - integration
         - createdAt
         - updatedAt
-        - total_subscriptions
-        - active_subscriptions
-        - total_subscriptions_revenue
     Meta:
       type: object
       properties:
@@ -350,9 +310,9 @@ components:
         data:
           type: array
           items:
-            $ref: "#/components/schemas/PlanListResponseArray"
+            $ref: '#/components/schemas/PlanListResponseArray'
         meta:
-          $ref: "#/components/schemas/Meta"
+          $ref: '#/components/schemas/Meta'
       required:
         - status
         - message
@@ -360,13 +320,14 @@ components:
         - meta
     ErrorMeta:
       type: object
-      description: Extra details to help with a resolution of the error
+      description: Extra diagnostic information to help resolve an error
       properties:
         nextStep:
           type: string
-          description: A summarised solution for the error
+          description: A suggested next action to take to resolve the error
     Error:
       type: object
+      description: Standard error response returned when a Paystack API request fails.
       properties:
         status:
           type: boolean
@@ -375,17 +336,17 @@ components:
           type: string
           description: A short description of the error
         meta:
-          $ref: "#/components/schemas/ErrorMeta"
+          $ref: '#/components/schemas/ErrorMeta'
         type:
           type: string
-          description: A tag to indicate the type of the error
-        code:
-          type: string
-          description: The error code
+          description: A category describing the kind of error that occurred
           enum:
+            - api_error
             - validation_error
             - processor_error
-            - api_error
+        code:
+          type: string
+          description: A Paystack-defined machine-readable code for the error
         errorCodeMappingNotFound:
           type: boolean
           description: An indicator for error mapping for the request
@@ -429,6 +390,12 @@ components:
             Number of invoices to raise during subscription to this plan. 
             Can be overridden by specifying an invoice_limit while subscribing.
           type: integer
+        metadata:
+          description: Stringified JSON object or JSON object of custom data
+          anyOf:
+            - type: string
+            - type: object
+            - type: integer
       example:
         name: Basic
         amount: 150000
@@ -457,17 +424,11 @@ components:
               type: string
             plan_code:
               type: string
-            invoice_limit:
-              type: integer
             send_invoices:
               type: boolean
             send_sms:
               type: boolean
             hosted_page:
-              type: boolean
-            migrate:
-              type: boolean
-            is_archived:
               type: boolean
             id:
               type: integer
@@ -483,12 +444,9 @@ components:
             - integration
             - domain
             - plan_code
-            - invoice_limit
             - send_invoices
             - send_sms
             - hosted_page
-            - migrate
-            - is_archived
             - id
             - createdAt
             - updatedAt
@@ -619,46 +577,43 @@ components:
         customer:
           type: object
           properties:
-            id:
-              type: integer
             first_name:
               type: string
             last_name:
               type: string
             email:
               type: string
-            customer_code:
-              type: string
             phone:
               type: string
-              nullable: true
             metadata:
+              nullable: true
+            domain:
+              type: string
+            customer_code:
               type: string
             risk_action:
               type: string
-            international_format_phone:
+            id:
+              type: integer
+            integration:
+              type: integer
+            createdAt:
+              type: string
+            updatedAt:
               type: string
           required:
-            - id
             - first_name
             - last_name
             - email
-            - customer_code
             - phone
             - metadata
+            - domain
+            - customer_code
             - risk_action
-            - international_format_phone
-        invoice_limit:
-          type: integer
-        split_code:
-          nullable: true
-        payments_count:
-          type: integer
-        most_recent_invoice:
-          nullable: true
-        metadata:
-          type: object
-          nullable: true
+            - id
+            - integration
+            - createdAt
+            - updatedAt
       required:
         - id
         - domain
@@ -676,11 +631,6 @@ components:
         - plan
         - authorization
         - customer
-        - invoice_limit
-        - split_code
-        - payments_count
-        - most_recent_invoice
-        - metadata
     SubscriptionListResponse:
       type: object
       properties:
@@ -691,9 +641,9 @@ components:
         data:
           type: array
           items:
-            $ref: "#/components/schemas/SubscriptionListResponseArray"
+            $ref: '#/components/schemas/SubscriptionListResponseArray'
         meta:
-          $ref: "#/components/schemas/Meta"
+          $ref: '#/components/schemas/Meta'
       required:
         - status
         - message
@@ -750,36 +700,44 @@ components:
             amount:
               type: integer
             authorization:
-              type: integer
-            invoice_limit:
-              type: integer
-            split_code:
-              nullable: true
+              type: object
+              properties:
+                authorization_code:
+                  type: string
+                bin:
+                  type: string
+                last4:
+                  type: string
+                exp_month:
+                  type: string
+                exp_year:
+                  type: string
+                channel:
+                  type: string
+                card_type:
+                  type: string
+                bank:
+                  type: string
+                country_code:
+                  type: string
+                brand:
+                  type: string
+                reusable:
+                  type: boolean
+                signature:
+                  type: string
+                account_name:
+                  nullable: true
             subscription_code:
               type: string
             email_token:
               type: string
             id:
               type: integer
-            cancelledAt:
-              nullable: true
             createdAt:
               type: string
             updatedAt:
               type: string
-            cron_expression:
-              type: string
-            next_payment_date:
-              type: string
-            easy_cron_id:
-              type: string
-              nullable: true
-            open_invoice:
-              type: string
-              nullable: true
-            metadata:
-              type: object
-              nullable: true
           required:
             - customer
             - plan
@@ -790,19 +748,11 @@ components:
             - quantity
             - amount
             - authorization
-            - invoice_limit
-            - split_code
             - subscription_code
             - email_token
             - id
-            - cancelledAt
             - createdAt
             - updatedAt
-            - cron_expression
-            - next_payment_date
-            - easy_cron_id
-            - open_invoice
-            - metadata
       required:
         - status
         - message
@@ -853,7 +803,7 @@ components:
           description: A list of object containing subaccount code and number of shares
           type: array
           items:
-            $ref: "#/components/schemas/SplitSubaccounts"
+            $ref: '#/components/schemas/SplitSubaccounts'
         currency:
           description: The transaction currency
           type: string
@@ -906,7 +856,7 @@ components:
             - type: integer
             - type: string
         currency:
-          $ref: "#/components/schemas/Currency"
+          $ref: '#/components/schemas/Currency'
         reference:
           description: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
           type: string
@@ -943,7 +893,7 @@ components:
           description: The split code of the transaction split
           type: string
         split:
-          $ref: "#/components/schemas/SplitCreate"
+          $ref: '#/components/schemas/SplitCreate'
         subaccount:
           description: The code for the subaccount that owns the payment
           type: string
@@ -962,10 +912,11 @@ components:
           description: Used to replace the email address shown on the Checkout
           type: string
         metadata:
-          description: JSON object of custom data
+          description: JSON object or stringified JSON of custom data
           anyOf:
             - type: string
             - type: object
+            - type: integer
       example:
         email: test@demo.com
         amount: 10000
@@ -1005,7 +956,7 @@ components:
           type: string
           description: A short description of the error
         meta:
-          $ref: "#/components/schemas/ErrorMeta"
+          $ref: '#/components/schemas/ErrorMeta'
         type:
           type: string
           description: A tag to indicate the type of the error
@@ -1047,7 +998,7 @@ components:
           description: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
           type: string
         currency:
-          $ref: "#/components/schemas/Currency"
+          $ref: '#/components/schemas/Currency'
         channels:
           description: Send us 'card' or 'bank' or 'card','bank' as an array to specify what options to show the user paying
           type: array
@@ -1060,7 +1011,7 @@ components:
           description: The split code of the transaction split
           type: string
         split:
-          $ref: "#/components/schemas/SplitCreate"
+          $ref: '#/components/schemas/SplitCreate'
         subaccount:
           description: The code for the subaccount that owns the payment
           type: string
@@ -1110,7 +1061,11 @@ components:
             domain:
               type: string
             metadata:
-              type: string
+              anyOf:
+                - type: string
+                - type: object
+                  additionalProperties: true
+              nullable: true
             gateway_response:
               type: string
             message:
@@ -1195,6 +1150,7 @@ components:
                 signature:
                   type: string
                 account_name:
+                  type: string
                   nullable: true
               required:
                 - authorization_code
@@ -1230,9 +1186,7 @@ components:
                   nullable: true
                 metadata:
                   type: object
-                  properties:
-                    calling_code:
-                      type: string
+                  additionalProperties: true
                   nullable: true
                 risk_action:
                   type: string
@@ -1248,7 +1202,6 @@ components:
                 - phone
                 - metadata
                 - risk_action
-                - international_format_phone
             plan:
               nullable: true
             id:
@@ -1281,13 +1234,13 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/PlanListResponse"
+            $ref: '#/components/schemas/PlanListResponse'
     Unauthorized:
       description: Unauthorized operation
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Error"
+            $ref: '#/components/schemas/Error'
           example:
             status: false
             message: Invalid key
@@ -1296,7 +1249,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Error"
+            $ref: '#/components/schemas/Error'
           example:
             status: false
             message: Entity not found
@@ -1305,22 +1258,22 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/PlanCreateResponse"
+            $ref: '#/components/schemas/PlanCreateResponse'
     SubscriptionListSuccess:
       description: Subscription List response
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/SubscriptionListResponse"
+            $ref: '#/components/schemas/SubscriptionListResponse'
     SubscriptionCreateSuccess:
       description: Subscription Create response
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/SubscriptionCreateResponse"
+            $ref: '#/components/schemas/SubscriptionCreateResponse'
     TransactionInitializeBadRequestResponse:
       description: Responses from the Transaction Initialize endpoint
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/TransactionInitializeBadRequestModel"
+            $ref: '#/components/schemas/TransactionInitializeBadRequestModel'

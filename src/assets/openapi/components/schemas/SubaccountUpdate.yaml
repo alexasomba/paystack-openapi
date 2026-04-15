@@ -15,7 +15,7 @@ properties:
     description: Activate or deactivate a subaccount
     type: boolean
   percentage_charge:
-    description: Customer's phone number
+    description: The percentage the main account receives from each payment made to the subaccount
     type: number
     format: float
   description:
@@ -31,7 +31,10 @@ properties:
     description: A phone number to call for this subaccount
     type: string
   metadata:
-    description: Stringified JSON object of custom data
-    type: string
+    description: Stringified JSON object or JSON object of custom data
+    anyOf:
+      - type: string
+      - type: object
+      - type: integer
 example:
   business_name: "Sandalwood"

@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.4
 info:
   title: Create an online marketplace
   description: |
@@ -36,19 +36,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/SubaccountCreate"
+              $ref: '#/components/schemas/SubaccountCreate'
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/SubaccountCreate"
+              $ref: '#/components/schemas/SubaccountCreate'
       responses:
-        "201":
-          description: ""
+        '201':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SubaccountCreateResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
+                $ref: '#/components/schemas/SubaccountCreateResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         default:
           description: Server error
     get:
@@ -71,21 +71,28 @@ paths:
             type: integer
             default: 1
         - in: query
-          name: active
-          description: Filter by the state of the subaccounts
+          name: from
+          description: A timestamp from which to start listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
           schema:
-            type: boolean
+            type: string
+            format: date-time
+        - in: query
+          name: to
+          description: A timestamp at which to stop listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+          schema:
+            type: string
+            format: date-time
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SubaccountListResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
+                $ref: '#/components/schemas/SubaccountListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
         default:
           description: Server error
   /split:
@@ -99,19 +106,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/SplitCreate"
+              $ref: '#/components/schemas/SplitCreate'
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/SplitCreate"
+              $ref: '#/components/schemas/SplitCreate'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SplitCreateResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
+                $ref: '#/components/schemas/SplitCreateResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         default:
           description: Server error
     get:
@@ -146,41 +153,35 @@ paths:
           name: perPage
           schema:
             type: integer
-          description: Number of splits per page
-        - in: query
-          name: per_page
-          schema:
-            type: integer
-          description: The number of records to fetch per request
-          deprecated: true
+          description: Number of splits per page. If not specified, we use a default value of 50.
         - in: query
           name: page
           schema:
             type: integer
-          description: The offset to retrieve data from
+          description: Page number to view. If not specified, we use a default value of 1.
         - in: query
           name: from
-          description: The start date
+          description: A timestamp from which to start listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21
           schema:
             type: string
             format: date-time
         - in: query
           name: to
-          description: The end date
+          description: A timestamp at which to stop listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21
           schema:
             type: string
             format: date-time
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SplitListResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
+                $ref: '#/components/schemas/SplitListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
         default:
           description: Server error
   /transaction/initialize:
@@ -194,21 +195,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/TransactionInitialize"
+              $ref: '#/components/schemas/TransactionInitialize'
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/TransactionInitialize"
+              $ref: '#/components/schemas/TransactionInitialize'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TransactionInitializeResponse"
-        "400":
-          $ref: "#/components/responses/TransactionInitializeBadRequestResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
+                $ref: '#/components/schemas/TransactionInitializeResponse'
+        '400':
+          $ref: '#/components/responses/TransactionInitializeBadRequestResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         default:
           description: Server error
   /refund:
@@ -222,15 +223,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/RefundCreate"
+              $ref: '#/components/schemas/RefundCreate'
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/RefundCreate"
+              $ref: '#/components/schemas/RefundCreate'
       responses:
-        "200":
-          $ref: "#/components/responses/RefundCreateSuccess"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
+        '200':
+          $ref: '#/components/responses/RefundCreateSuccess'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         default:
           description: Server error
     get:
@@ -240,6 +241,16 @@ paths:
       description: List previously created refunds
       operationId: refund_list
       parameters:
+        - in: query
+          name: transaction
+          schema:
+            type: string
+          description: The transaction ID of the refunded transaction
+        - in: query
+          name: currency
+          schema:
+            type: string
+          description: Any of the supported currency
         - in: query
           name: perPage
           schema:
@@ -265,12 +276,12 @@ paths:
             format: date-time
           description: The end date
       responses:
-        "200":
-          $ref: "#/components/responses/RefundListSuccess"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
+        '200':
+          $ref: '#/components/responses/RefundListSuccess'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
         default:
           description: Server error
 components:
@@ -290,14 +301,18 @@ components:
           type: string
         description:
           type: string
+          nullable: true
         primary_contact_name:
           type: string
+          nullable: true
         primary_contact_email:
           type: string
+          nullable: true
         primary_contact_phone:
           type: string
+          nullable: true
         metadata:
-          type: string
+          nullable: true
         percentage_charge:
           type: number
         settlement_bank:
@@ -310,8 +325,6 @@ components:
           type: string
         active:
           type: integer
-        is_verified:
-          type: boolean
       required:
         - id
         - subaccount_code
@@ -327,7 +340,6 @@ components:
         - account_number
         - currency
         - active
-        - is_verified
     Meta:
       type: object
       properties:
@@ -360,9 +372,9 @@ components:
         data:
           type: array
           items:
-            $ref: "#/components/schemas/SubaccountListResponseArray"
+            $ref: '#/components/schemas/SubaccountListResponseArray'
         meta:
-          $ref: "#/components/schemas/Meta"
+          $ref: '#/components/schemas/Meta'
       required:
         - status
         - message
@@ -370,13 +382,14 @@ components:
         - meta
     ErrorMeta:
       type: object
-      description: Extra details to help with a resolution of the error
+      description: Extra diagnostic information to help resolve an error
       properties:
         nextStep:
           type: string
-          description: A summarised solution for the error
+          description: A suggested next action to take to resolve the error
     Error:
       type: object
+      description: Standard error response returned when a Paystack API request fails.
       properties:
         status:
           type: boolean
@@ -385,17 +398,17 @@ components:
           type: string
           description: A short description of the error
         meta:
-          $ref: "#/components/schemas/ErrorMeta"
+          $ref: '#/components/schemas/ErrorMeta'
         type:
           type: string
-          description: A tag to indicate the type of the error
-        code:
-          type: string
-          description: The error code
+          description: A category describing the kind of error that occurred
           enum:
+            - api_error
             - validation_error
             - processor_error
-            - api_error
+        code:
+          type: string
+          description: A Paystack-defined machine-readable code for the error
         errorCodeMappingNotFound:
           type: boolean
           description: An indicator for error mapping for the request
@@ -417,7 +430,7 @@ components:
           description: Bank account number
           type: string
         percentage_charge:
-          description: Customer's phone number
+          description: The percentage the main account receives from each payment made to the subaccount
           type: number
           format: float
         description:
@@ -433,12 +446,14 @@ components:
           description: A phone number to call for this subaccount
           type: string
         metadata:
-          description: Stringified JSON object of custom data
-          type: string
+          description: Stringified JSON object or JSON object of custom data
+          anyOf:
+            - type: string
+            - type: object
       example:
         business_name: Oasis
-        account_number: "0123456047"
-        settlement_bank: "058"
+        account_number: '0123456047'
+        settlement_bank: '058'
         percentage_charge: 30
     SubaccountCreateResponse:
       type: object
@@ -457,14 +472,18 @@ components:
               nullable: true
             description:
               type: string
+              nullable: true
             primary_contact_name:
               type: string
+              nullable: true
             primary_contact_email:
               type: string
+              nullable: true
             primary_contact_phone:
               type: string
+              nullable: true
             metadata:
-              type: string
+              nullable: true
             account_number:
               type: string
             percentage_charge:
@@ -501,11 +520,6 @@ components:
               type: string
           required:
             - business_name
-            - description
-            - primary_contact_name
-            - primary_contact_email
-            - primary_contact_phone
-            - metadata
             - account_number
             - percentage_charge
             - settlement_bank
@@ -513,7 +527,6 @@ components:
             - bank
             - integration
             - domain
-            - managed_by_integration
             - product
             - subaccount_code
             - is_verified
@@ -605,7 +618,7 @@ components:
         subaccounts:
           type: array
           items:
-            $ref: "#/components/schemas/SplitSubaccountsArray"
+            $ref: '#/components/schemas/SplitSubaccountsArray'
         total_subaccounts:
           type: integer
       required:
@@ -634,9 +647,9 @@ components:
         data:
           type: array
           items:
-            $ref: "#/components/schemas/SplitListResponseArray"
+            $ref: '#/components/schemas/SplitListResponseArray'
         meta:
-          $ref: "#/components/schemas/Meta"
+          $ref: '#/components/schemas/Meta'
       required:
         - status
         - message
@@ -677,7 +690,7 @@ components:
           description: A list of object containing subaccount code and number of shares
           type: array
           items:
-            $ref: "#/components/schemas/SplitSubaccounts"
+            $ref: '#/components/schemas/SplitSubaccounts'
         currency:
           description: The transaction currency
           type: string
@@ -744,7 +757,7 @@ components:
             subaccounts:
               type: array
               items:
-                $ref: "#/components/schemas/SplitSubaccountsArray"
+                $ref: '#/components/schemas/SplitSubaccountsArray'
             total_subaccounts:
               type: integer
           required:
@@ -802,7 +815,7 @@ components:
             - type: integer
             - type: string
         currency:
-          $ref: "#/components/schemas/Currency"
+          $ref: '#/components/schemas/Currency'
         reference:
           description: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
           type: string
@@ -839,7 +852,7 @@ components:
           description: The split code of the transaction split
           type: string
         split:
-          $ref: "#/components/schemas/SplitCreate"
+          $ref: '#/components/schemas/SplitCreate'
         subaccount:
           description: The code for the subaccount that owns the payment
           type: string
@@ -858,10 +871,11 @@ components:
           description: Used to replace the email address shown on the Checkout
           type: string
         metadata:
-          description: JSON object of custom data
+          description: JSON object or stringified JSON of custom data
           anyOf:
             - type: string
             - type: object
+            - type: integer
       example:
         email: test@demo.com
         amount: 10000
@@ -901,7 +915,7 @@ components:
           type: string
           description: A short description of the error
         meta:
-          $ref: "#/components/schemas/ErrorMeta"
+          $ref: '#/components/schemas/ErrorMeta'
         type:
           type: string
           description: A tag to indicate the type of the error
@@ -926,115 +940,69 @@ components:
     RefundListResponseArray:
       type: object
       properties:
-        integration:
-          type: integer
-        transaction:
-          type: integer
-        dispute:
-          nullable: true
-        settlement:
-          nullable: true
         id:
+          type: integer
+        integration:
           type: integer
         domain:
           type: string
-        currency:
-          type: string
+        transaction:
+          type: integer
+        dispute:
+          type: integer
+          nullable: true
         amount:
           type: integer
-        status:
+        deducted_amount:
+          type: integer
+          nullable: true
+        currency:
           type: string
-        refunded_at:
+        channel:
+          type: string
+        settlement:
+          type: integer
           nullable: true
         refunded_by:
+          type: string
+        refunded_at:
+          type: string
+          nullable: true
+        expected_at:
           type: string
         customer_note:
           type: string
         merchant_note:
           type: string
-        deducted_amount:
-          type: integer
         fully_deducted:
           type: integer
-        createdAt:
-          type: string
-        bank_reference:
           nullable: true
-        transaction_reference:
+        created_at:
           type: string
-        reason:
+        updated_at:
           type: string
-        customer:
-          type: object
-          properties:
-            id:
-              type: integer
-            first_name:
-              type: string
-            last_name:
-              type: string
-            email:
-              type: string
-            customer_code:
-              type: string
-            phone:
-              type: string
-              nullable: true
-            metadata:
-              type: string
-            risk_action:
-              type: string
-            international_format_phone:
-              type: string
-          required:
-            - id
-            - first_name
-            - last_name
-            - email
-            - customer_code
-            - phone
-            - metadata
-            - risk_action
-            - international_format_phone
-        refund_type:
+        status:
           type: string
-        transaction_amount:
-          type: integer
-        initiated_by:
-          type: string
-        refund_channel:
-          type: string
-        session_id:
-          nullable: true
-        collect_account_number:
-          type: boolean
       required:
+        - id
         - integration
+        - domain
         - transaction
         - dispute
-        - settlement
-        - id
-        - domain
-        - currency
         - amount
-        - status
-        - refunded_at
+        - deducted_amount
+        - currency
+        - channel
+        - settlement
+        - fully_deducted
         - refunded_by
+        - refunded_at
+        - expected_at
         - customer_note
         - merchant_note
-        - deducted_amount
-        - fully_deducted
-        - createdAt
-        - bank_reference
-        - transaction_reference
-        - reason
-        - customer
-        - refund_type
-        - transaction_amount
-        - initiated_by
-        - refund_channel
-        - session_id
-        - collect_account_number
+        - created_at
+        - updated_at
+        - status
     RefundListResponse:
       type: object
       properties:
@@ -1045,21 +1013,11 @@ components:
         data:
           type: array
           items:
-            $ref: "#/components/schemas/RefundListResponseArray"
-        meta:
-          allOf:
-            - $ref: "#/components/schemas/Meta"
-            - type: object
-              properties:
-                failedRefundCount:
-                  type: integer
-              required:
-                - failedRefundCount
+            $ref: '#/components/schemas/RefundListResponseArray'
       required:
         - status
         - message
         - data
-        - meta
     RefundCreate:
       type: object
       required:
@@ -1137,8 +1095,6 @@ components:
                     international_format_phone:
                       type: string
                       nullable: true
-                  required:
-                    - international_format_phone
                 plan:
                   type: object
                 subaccount:
@@ -1232,7 +1188,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Error"
+            $ref: '#/components/schemas/Error'
           example:
             status: false
             message: Invalid key
@@ -1241,7 +1197,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Error"
+            $ref: '#/components/schemas/Error'
           example:
             status: false
             message: Entity not found
@@ -1250,16 +1206,16 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/TransactionInitializeBadRequestModel"
+            $ref: '#/components/schemas/TransactionInitializeBadRequestModel'
     RefundListSuccess:
       description: Refund List response
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/RefundListResponse"
+            $ref: '#/components/schemas/RefundListResponse'
     RefundCreateSuccess:
       description: Refund Create response
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/RefundCreateResponse"
+            $ref: '#/components/schemas/RefundCreateResponse'

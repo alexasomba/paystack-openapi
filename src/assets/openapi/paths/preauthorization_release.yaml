@@ -1,0 +1,25 @@
+post:
+  tags:
+    - Card Preauthorization
+  summary: Release Preauthorization
+  description: For when a customer cancels an order or you want to release the hold from their card.
+  operationId: preauthorization_release
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/PreAuthorizationRelease.yaml
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: ../components/schemas/PreAuthorizationRelease.yaml
+  responses:
+    "200":
+      description: ""
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/PreAuthorizationReleaseResponse.yaml
+    "401":
+      $ref: ../components/responses/Unauthorized.yaml
+    default:
+      description: Server error

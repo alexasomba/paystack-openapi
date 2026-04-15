@@ -42,6 +42,7 @@ properties:
         anyOf:
           - type: string
           - type: object
+          - type: integer
         nullable: true
       log:
         type: object

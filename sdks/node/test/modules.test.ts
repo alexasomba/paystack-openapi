@@ -136,7 +136,7 @@ describe("Module Coverage Tests", () => {
 
   it("Verification module", async () => {
     await paystack.bank_resolveAccountNumber({
-      params: { query: { account_number: 123, bank_code: 111 } },
+      params: { query: { account_number: "123", bank_code: "111" } },
     });
     assertCall("/bank/resolve", "GET");
   });

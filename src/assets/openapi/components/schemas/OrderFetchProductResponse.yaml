@@ -9,28 +9,17 @@ properties:
     items:
       $ref: ./OrderFetchProductResponseArray.yaml
   meta:
-    type: object
-    properties:
-      quantity_sold:
-        type: integer
-      revenue:
-        type: integer
-      total:
-        type: integer
-      skipped:
-        type: integer
-      perPage:
-        type: integer
-      pageCount:
-        type: integer
-    required:
-      - quantity_sold
-      - revenue
-      - total
-      - skipped
-      - perPage
-      - pageCount
-    additionalProperties: false
+    allOf:
+      - $ref: ./Meta.yaml
+      - type: object
+        properties:
+          quantity_sold:
+            type: integer
+          revenue:
+            type: integer
+        required:
+          - quantity_sold
+          - revenue
 required:
   - status
   - message

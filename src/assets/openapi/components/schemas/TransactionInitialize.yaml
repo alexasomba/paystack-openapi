@@ -87,10 +87,11 @@ properties:
     description: Used to replace the email address shown on the Checkout
     type: string
   metadata:
-    description: JSON object of custom data
+    description: JSON object or stringified JSON of custom data
     anyOf:
       - type: string
       - type: object
+      - type: integer
 example:
   email: test@demo.com
   amount: 10000

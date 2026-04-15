@@ -1394,6 +1394,149 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/capitec-pay/requery/{ref}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Requery Transaction
+     * @description Check the status of a charge made with Capitec Pay. This endpoint should be used from your frontend application as it requires the use of your public key for request authorization.
+     */
+    post: operations["capitecPay_requery"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/preauthorization/initialize": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Initialize Preauthorization
+     * @description Initialize a preauthorization transaction for a new customer
+     */
+    post: operations["preauthorization_initialize"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/preauthorization/capture": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Capture Preauthorization
+     * @description Charge a preauthorized transaction upon service delivery
+     */
+    post: operations["preauthorization_capture"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/preauthorization/reserve_authorization": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Reserve Preauthorization
+     * @description Hold an amount using an existing customer's authorization that's marked reusable.
+     */
+    post: operations["preauthorization_reserve_authorization"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/preauthorization/verify/{reference}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description The transaction reference used to intiate the transaction */
+        reference: string;
+      };
+      cookie?: never;
+    };
+    /**
+     * Verify Preauthorization
+     * @description Fetch and confirm the status of a preauthorized transaction.
+     */
+    get: operations["preauthorization_verify"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/preauthorization/release": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Release Preauthorization
+     * @description For when a customer cancels an order or you want to release the hold from their card.
+     */
+    post: operations["preauthorization_release"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/preauthorization": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * List Preauthorizations
+     * @description List preauthorizations carried out on your integration
+     */
+    get: operations["preauthorization_list"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/plan": {
     parameters: {
       query?: never;
@@ -3059,8 +3202,8 @@ export interface components {
       bearer?: "account" | "subaccount";
       /** @description Used to replace the email address shown on the Checkout */
       label?: string;
-      /** @description JSON object of custom data */
-      metadata?: string | Record<string, never>;
+      /** @description JSON object or stringified JSON of custom data */
+      metadata?: string | Record<string, never> | number;
     };
     TransactionInitializeResponse: {
       status: boolean;
@@ -3071,9 +3214,9 @@ export interface components {
         reference: string;
       };
     };
-    /** @description Extra details to help with a resolution of the error */
+    /** @description Extra diagnostic information to help resolve an error */
     ErrorMeta: {
-      /** @description A summarised solution for the error */
+      /** @description A suggested next action to take to resolve the error */
       nextStep?: string;
     };
     /**
@@ -3105,19 +3248,20 @@ export interface components {
       /** @description An indicator for error mapping for the request */
       errorCodeMappingNotFound?: boolean;
     };
+    /** @description Standard error response returned when a Paystack API request fails. */
     Error: {
       /** @description An indicator for the state of the request */
       status?: boolean;
       /** @description A short description of the error */
       message?: string;
       meta?: components["schemas"]["ErrorMeta"];
-      /** @description A tag to indicate the type of the error */
-      type?: string;
       /**
-       * @description The error code
+       * @description A category describing the kind of error that occurred
        * @enum {string}
        */
-      code?: "validation_error" | "processor_error" | "api_error";
+      type?: "api_error" | "validation_error" | "processor_error";
+      /** @description A Paystack-defined machine-readable code for the error */
+      code?: string;
       /** @description An indicator for error mapping for the request */
       errorCodeMappingNotFound?: boolean;
     };
@@ -3323,7 +3467,7 @@ export interface components {
       email: string;
       /**
        * Format: int32
-       * @description Amount should be in kobo if currency is NGN, pesewas if currency is GHS, cents if currency is ZAR, and whole number if currency is XOF
+       * @description Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, send the amount multiplied by 100 even though the currency does not use fractional subunits.
        */
       amount: number;
       /** @description Valid authorization code to charge */
@@ -3352,7 +3496,7 @@ export interface components {
         channel: string;
         currency: string;
         ip_address: string | null;
-        metadata: (string | Record<string, never>) | null;
+        metadata: (string | Record<string, never> | number) | null;
         log: {
           start_time: number;
           time_spent: number;
@@ -3665,8 +3809,8 @@ export interface components {
        *     Only -, .`, = and alphanumeric characters are allowed.
        */
       device_id?: string;
-      /** @description JSON object of custom data */
-      metadata?: Record<string, never>;
+      /** @description JSON object or stringified JSON of custom data */
+      metadata?: string | Record<string, never> | number;
     };
     /** @description The bank object if charging a bank account */
     Bank: {
@@ -4268,13 +4412,7 @@ export interface components {
       status: boolean;
       message: string;
       data: components["schemas"]["BulkChargeFetchBulkBatchChargesResponseArray"][];
-      meta: {
-        perPage: string;
-        total: number;
-        skipped: number;
-        page: number;
-        pageCount: number;
-      };
+      meta: components["schemas"]["Meta"];
     };
     BulkChargePauseResponse: {
       status: boolean;
@@ -4323,7 +4461,7 @@ export interface components {
       account_number: string;
       /**
        * Format: float
-       * @description Customer's phone number
+       * @description The percentage the main account receives from each payment made to the subaccount
        */
       percentage_charge: number;
       /** @description A description for this subaccount */
@@ -4334,8 +4472,8 @@ export interface components {
       primary_contact_name?: string;
       /** @description A phone number to call for this subaccount */
       primary_contact_phone?: string;
-      /** @description Stringified JSON object of custom data */
-      metadata?: string;
+      /** @description Stringified JSON object or JSON object of custom data */
+      metadata?: string | Record<string, never>;
     };
     SubaccountCreateResponse: {
       status: boolean;
@@ -4413,7 +4551,7 @@ export interface components {
       active?: boolean;
       /**
        * Format: float
-       * @description Customer's phone number
+       * @description The percentage the main account receives from each payment made to the subaccount
        */
       percentage_charge?: number;
       /** @description A description for this subaccount */
@@ -4424,8 +4562,8 @@ export interface components {
       primary_contact_name?: string;
       /** @description A phone number to call for this subaccount */
       primary_contact_phone?: string;
-      /** @description Stringified JSON object of custom data */
-      metadata?: string;
+      /** @description Stringified JSON object or JSON object of custom data */
+      metadata?: string | Record<string, never> | number;
     };
     SubaccountUpdateResponse: {
       status: boolean;
@@ -4981,8 +5119,8 @@ export interface components {
       last_name?: string;
       /** @description Customer's phone number */
       phone?: string;
-      /** @description Stringified JSON object of custom data */
-      metadata?: string;
+      /** @description Stringified JSON object or JSON object of custom data */
+      metadata?: string | Record<string, never>;
     };
     CustomerCreateResponse: {
       status: boolean;
@@ -5041,8 +5179,8 @@ export interface components {
       last_name?: string;
       /** @description Customer's phone number */
       phone?: string;
-      /** @description Stringified JSON object of custom data */
-      metadata?: string;
+      /** @description Stringified JSON object or JSON object of custom data */
+      metadata?: string | Record<string, never> | number;
     };
     CustomerUpdateResponse: {
       status: boolean;
@@ -5430,6 +5568,8 @@ export interface components {
       subaccount?: string;
       /** @description Split code consisting of the lists of accounts you want to split the transaction with */
       split_code?: string;
+      /** @description JSON object or stringified JSON of custom data */
+      metadata?: string | Record<string, never> | number;
     };
     DedicatedNubanCreateResponse: {
       status: boolean;
@@ -5620,6 +5760,289 @@ export interface components {
       /** @description A short description of the response */
       message?: string;
     };
+    CapitecPayRequeryResponse: {
+      status: boolean;
+      type: string;
+      code: string;
+      data: {
+        status: string;
+      };
+      message: string;
+    };
+    PreAuthorizationInitialize: {
+      /** @description Amount should be in the subunit of the supported currency */
+      amount: string;
+      /** @description Customer's email address */
+      email: string;
+      /**
+       * @description Only ZAR is supported for now
+       * @enum {string}
+       */
+      currency: "ZAR";
+      /** @description Unique transaction reference. Only -, ., = and alphanumeric characters allowed. */
+      reference?: string;
+      /** @description Fully qualified url, e.g. https://example.com/ . Use this to override the callback url provided on the dashboard for this transaction */
+      callback_url?: string;
+      /** @description Stringified JSON object of custom data. */
+      metadata?: string | Record<string, never>;
+      /** @description The split code of the transaction split. e.g. SPL_98WF13Eb3w */
+      split_code?: string;
+      /** @description The code for the subaccount that owns the payment. e.g. ACCT_8f4s1eq7ml6rlzj */
+      subaccount?: string;
+      /** @description An amount used to override the split configuration for a single split payment. If set, the amount specified goes to the main account regardless of the split configuration. */
+      transaction_charge?: number;
+      /**
+       * @description Specifies who will pay the Paystack transaction charges for this transaction. Either account or subaccount (defaults to account).
+       * @enum {string}
+       */
+      bearer?: "account" | "subaccount";
+      /**
+       * @description Specify the action to take on the expiry date. It’s either capture or release. Defaults to release.
+       * @enum {string}
+       */
+      expire_action?: "capture" | "release";
+      /** @description The number of days until the expire_action is executed. The minimum is 1 day and maximum 30 days. Defaults to 5 days. */
+      expire_after_days?: number;
+    };
+    PreAuthorizationInitializeResponse: {
+      status: boolean;
+      message: string;
+      data: {
+        authorization_url: string;
+        access_code: string;
+        reference: string;
+      };
+    };
+    PreAuthorizationCapture: {
+      /** @description Unique transaction reference. Only -, ., = and alphanumeric characters allowed. */
+      reference: string;
+      /**
+       * @description Only ZAR is supported for now
+       * @enum {string}
+       */
+      currency: "ZAR";
+      /** @description Amount should be in the subunit of the supported currency */
+      amount: string;
+    };
+    FormulaSubaccountsArray: {
+      original_share: number;
+      fees: number;
+      share: number;
+      subaccount_code: string;
+      id: number;
+      name: string;
+      integration: string;
+    };
+    ShareSubaccountsArray: {
+      amount: number;
+      original_share: number;
+      fees: number;
+      subaccount_code: string;
+      id: number;
+      integration: string;
+    };
+    PreAuthorizationCaptureResponse: {
+      status: boolean;
+      message: string;
+      data: {
+        amount: number;
+        status: string;
+        gateway_response: string;
+        transaction: {
+          currency: string;
+          transaction_date: string;
+          status: string;
+          reference: string;
+          domain: string;
+          metadata:
+            | (
+                | string
+                | {
+                    [key: string]: unknown;
+                  }
+              )
+            | null;
+          gateway_response: string;
+          message: string | null;
+          channel: string;
+          fees: number;
+          authorization: {
+            authorization_code: string;
+            bin: string;
+            last4: string;
+            exp_month: string;
+            exp_year: string;
+            channel: string;
+            card_type: string;
+            bank: string;
+            country_code: string;
+            brand: string;
+            reusable: boolean;
+            signature: string;
+            account_name: string | null;
+          };
+          customer: {
+            id: number;
+            first_name: string;
+            last_name: string;
+            email: string;
+            customer_code: string;
+            phone: string;
+            metadata: Record<string, never> | null;
+            risk_action: string;
+            international_format_phone?: string | null;
+          };
+          id: number;
+          split?: {
+            id: number;
+            name: string;
+            split_code: string;
+            formula: {
+              type: string;
+              bearer_type: string;
+              bearer_subaccount: number;
+              subaccounts: components["schemas"]["FormulaSubaccountsArray"][];
+              integration: number;
+            };
+            shares: {
+              paystack: number;
+              subaccounts: components["schemas"]["ShareSubaccountsArray"][];
+              integration: number;
+              original_share: number;
+              fees: number;
+            };
+          };
+        };
+        amount_released?: number;
+        split_code: string | null;
+        split: {
+          type: string;
+          bearer_type: string;
+          subaccounts: components["schemas"]["SplitSubaccountsArray"][];
+        } | null;
+      };
+    };
+    PreAuthorizationReserve: {
+      /** @description Customer's email address */
+      email: string;
+      /** @description Amount should be in the subunit of the supported currency */
+      amount: string;
+      /** @description This is the code that is used to charge and identify a customer's previously used card */
+      authorization_code: string;
+      /**
+       * @description Only ZAR is supported for now
+       * @enum {string}
+       */
+      currency: "ZAR";
+      /** @description Unique transaction reference. Only -, ., = and alphanumeric characters allowed. */
+      reference?: string;
+    };
+    PreAuthorizationReserveWithAuthCodeResponse: {
+      status: boolean;
+      message: string;
+      data: {
+        id: number;
+        domain: string;
+        status: string;
+        reference: string;
+        amount: number;
+        message: string;
+        created_at: string;
+        released_at: string | null;
+        authorized_at: string | null;
+        expiry_date: string | null;
+        currency: string;
+        metadata: Record<string, never> | null;
+        fees: number;
+        authorization: {
+          authorization_code: string;
+          bin: string;
+          last4: string;
+          exp_month: string;
+          exp_year: string;
+          channel: string;
+          card_type: string;
+          bank: string;
+          country_code: string;
+          brand: string;
+          reusable: boolean;
+          signature: string;
+          account_name: string | null;
+        };
+        customer: {
+          id: number;
+          first_name: string | null;
+          last_name: string | null;
+          email: string;
+          customer_code: string;
+          phone: string | null;
+          metadata: Record<string, never> | null;
+          risk_action: string;
+          international_format_phone?: string | null;
+        };
+        merchant_id: number;
+        merchant_name: string;
+        expire_action: string;
+        split_code: string | null;
+        split: Record<string, never> | null;
+      };
+    };
+    PreAuthorizationVerifyResponse: {
+      status: boolean;
+      message: string;
+      data: {
+        id: number;
+        domain: string;
+        status: string;
+        reference: string;
+        amount: number;
+        message: string;
+        currency: string;
+        redirecturl?: string;
+      };
+    };
+    PreAuthorizationRelease: {
+      /** @description Unique transaction reference. Only -, ., = and alphanumeric characters allowed. */
+      reference: string;
+    };
+    PreAuthorizationReleaseResponse: {
+      status: boolean;
+      message: string;
+      data: {
+        status: string;
+        reference: string;
+      };
+    };
+    PreAuthorizationListResponseArray: {
+      domain: string;
+      status: string;
+      reference: string;
+      amount: number;
+      created_at: string;
+      transaction_id: string | null;
+      captured_at: string | null;
+      released_at: string | null;
+      currency: string;
+      fees: number;
+      customer: {
+        id: number;
+        first_name: string | null;
+        last_name: string | null;
+        email: string;
+        customer_code: string;
+        phone: string | null;
+        metadata: Record<string, never> | null;
+        risk_action: string;
+        international_format_phone?: string | null;
+      };
+      id: number;
+    };
+    PreAuthorizationListResponse: {
+      status: boolean;
+      message: string;
+      data: components["schemas"]["PreAuthorizationListResponseArray"][];
+      meta: components["schemas"]["Meta"];
+    };
     PlanListResponseArray: {
       subscriptions: unknown[];
       integration: number;
@@ -5676,6 +6099,8 @@ export interface components {
        *     Can be overridden by specifying an invoice_limit while subscribing.
        */
       invoice_limit?: number;
+      /** @description Stringified JSON object or JSON object of custom data */
+      metadata?: string | Record<string, never> | number;
     };
     PlanCreateResponse: {
       status: boolean;
@@ -5728,11 +6153,7 @@ export interface components {
     PlanUpdate: {
       /** @description Name of plan */
       name?: string;
-      /**
-       * @description Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
-       *      Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
-       *      cents, if currency is ZAR, and whole number if currency is XOF
-       */
+      /** @description Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, send the amount multiplied by 100 even though the currency does not use fractional subunits. */
       amount?: number;
       /**
        * @description Payment interval
@@ -5740,7 +6161,9 @@ export interface components {
        */
       interval?: "daily" | "weekly" | "monthly" | "biannually" | "annually";
       /** @description A description for this plan */
-      description?: boolean;
+      description?: string;
+      /** @description Stringified JSON object or JSON object of custom data */
+      metadata?: string | Record<string, never> | number;
       /** @description Set to false if you don't want invoices to be sent to your customers */
       send_invoices?: boolean;
       /** @description Set to false if you don't want text messages to be sent to your customers */
@@ -6018,8 +6441,8 @@ export interface components {
       currency?: string;
       /** @description An authorization code from a previous transaction */
       authorization_code?: string;
-      /** @description JSON object of custom data */
-      metadata?: Record<string, never>;
+      /** @description JSON object or stringified JSON of custom data */
+      metadata?: string | Record<string, never> | number;
     };
     TransferRecipientCreateResponse: {
       status: boolean;
@@ -6108,6 +6531,8 @@ export interface components {
       name?: string;
       /** @description Recipient's email address */
       email?: string;
+      /** @description JSON object or stringified JSON of custom data */
+      metadata?: string | Record<string, never> | number;
     };
     TransferRecipientUpdateResponse: {
       status: boolean;
@@ -6198,6 +6623,8 @@ export interface components {
       reference: string;
       /** @description The reason or narration for the transfer. */
       reason?: string;
+      /** @description JSON object or stringified JSON of custom data */
+      metadata?: string | Record<string, never> | number;
     };
     /** @description Transfer initiation model */
     TransferInitiate: components["schemas"]["TransferBase"] & {
@@ -6468,13 +6895,7 @@ export interface components {
       status: boolean;
       message: string;
       data: components["schemas"]["BalanceFetchLedgerResponseArray"][];
-      meta: {
-        total: number;
-        skipped: number;
-        perPage: number;
-        page: number;
-        pageCount: number;
-      };
+      meta: components["schemas"]["Meta"];
     };
     PaymentRequestLineItemsArray: {
       name: string;
@@ -6524,13 +6945,7 @@ export interface components {
       status: boolean;
       message: string;
       data: components["schemas"]["PaymentRequestListResponseArray"][];
-      meta: {
-        total: number;
-        skipped: number;
-        perPage: number | string;
-        page: number;
-        pageCount: number;
-      };
+      meta: components["schemas"]["Meta"];
     };
     /**
      * @example {
@@ -7366,13 +7781,9 @@ export interface components {
       status: boolean;
       message: string;
       data: components["schemas"]["OrderFetchProductResponseArray"][];
-      meta: {
+      meta: components["schemas"]["Meta"] & {
         quantity_sold: number;
         revenue: number;
-        total: number;
-        skipped: number;
-        perPage: number;
-        pageCount: number;
       };
     };
     OrderValidateResponse: {
@@ -11821,6 +12232,238 @@ export interface operations {
       200: components["responses"]["Ok"];
       401: components["responses"]["Unauthorized"];
       404: components["responses"]["NotFound"];
+      /** @description Server error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  capitecPay_requery: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /**
+         * @description The transaction reference from the previously initiated charge request
+         * @example 123456789
+         */
+        ref: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["CapitecPayRequeryResponse"];
+        };
+      };
+      401: components["responses"]["Unauthorized"];
+      /** @description Server error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  preauthorization_initialize: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PreAuthorizationInitialize"];
+        "application/x-www-form-urlencoded": components["schemas"]["PreAuthorizationInitialize"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PreAuthorizationInitializeResponse"];
+        };
+      };
+      401: components["responses"]["Unauthorized"];
+      /** @description Server error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  preauthorization_capture: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PreAuthorizationCapture"];
+        "application/x-www-form-urlencoded": components["schemas"]["PreAuthorizationCapture"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PreAuthorizationCaptureResponse"];
+        };
+      };
+      401: components["responses"]["Unauthorized"];
+      /** @description Server error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  preauthorization_reserve_authorization: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PreAuthorizationReserve"];
+        "application/x-www-form-urlencoded": components["schemas"]["PreAuthorizationReserve"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PreAuthorizationReserveWithAuthCodeResponse"];
+        };
+      };
+      401: components["responses"]["Unauthorized"];
+      /** @description Server error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  preauthorization_verify: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description The transaction reference used to intiate the transaction */
+        reference: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PreAuthorizationVerifyResponse"];
+        };
+      };
+      401: components["responses"]["Unauthorized"];
+      404: components["responses"]["NotFound"];
+      /** @description Server error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  preauthorization_release: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PreAuthorizationRelease"];
+        "application/x-www-form-urlencoded": components["schemas"]["PreAuthorizationRelease"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PreAuthorizationReleaseResponse"];
+        };
+      };
+      401: components["responses"]["Unauthorized"];
+      /** @description Server error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  preauthorization_list: {
+    parameters: {
+      query?: {
+        /** @description Specify how many records you want to retrieve per page. If not specify we use a default value of 50. */
+        perPage?: number;
+        /** @description Specify exactly what page you want to retrieve. If not specify we use a default value of 1. */
+        page?: number;
+        /** @description A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 */
+        from?: string;
+        /** @description A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 */
+        to?: string;
+        /** @description Filter transactions by status. */
+        status?: "authorized" | "captured" | "released" | "ongoing" | "failed" | "abandoned";
+        /** @description Filter transactions by amount using the supported currency code */
+        amount?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PreAuthorizationListResponse"];
+        };
+      };
+      401: components["responses"]["Unauthorized"];
       /** @description Server error */
       default: {
         headers: {

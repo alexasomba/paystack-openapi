@@ -1,0 +1,23 @@
+type: object
+required:
+  - email
+  - amount
+  - authorization_code
+  - currency
+properties:
+  email:
+    description: Customer's email address
+    type: string
+  amount:
+    description: Amount should be in the subunit of the supported currency
+    type: string
+  authorization_code:
+    description: This is the code that is used to charge and identify a customer's previously used card
+    type: string
+  currency:
+    description: Only ZAR is supported for now
+    type: string
+    enum: [ZAR]
+  reference:
+    description: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
+    type: string

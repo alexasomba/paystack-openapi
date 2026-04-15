@@ -77,17 +77,17 @@
     "publish:public": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "openapi-fetch": "^0.15.2"
+    "openapi-fetch": "^0.17.0"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.2",
-    "@types/node": "^22.19.11",
-    "openapi-typescript": "^7.12.0",
-    "publint": "^0.3.17",
+    "@types/node": "^22.19.17",
+    "openapi-typescript": "^7.13.0",
+    "publint": "^0.3.18",
     "typescript": "^5.9.3",
-    "vite-plus": "catalog:",
-    "vitest": "catalog:",
-    "yaml": "^2.8.2"
+    "vite-plus": "0.1.18",
+    "vitest": "4.1.4",
+    "yaml": "^2.8.3"
   },
   "engines": {
     "node": ">=22.0.0"

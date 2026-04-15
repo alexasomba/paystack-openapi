@@ -38,6 +38,12 @@ properties:
       Number of invoices to raise during subscription to this plan. 
       Can be overridden by specifying an invoice_limit while subscribing.
     type: integer
+  metadata:
+    description: Stringified JSON object or JSON object of custom data
+    anyOf:
+      - type: string
+      - type: object
+      - type: integer
 example:
   name: Basic
   amount: 150000

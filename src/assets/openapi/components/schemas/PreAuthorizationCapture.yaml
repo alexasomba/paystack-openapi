@@ -1,0 +1,16 @@
+type: object
+required:
+  - reference
+  - currency
+  - amount
+properties:
+  reference:
+    description: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
+    type: string
+  currency:
+    description: Only ZAR is supported for now
+    type: string
+    enum: [ZAR]
+  amount:
+    description: Amount should be in the subunit of the supported currency
+    type: string

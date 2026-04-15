@@ -1,0 +1,49 @@
+type: object
+required:
+  - amount
+  - email
+  - currency
+properties:
+  amount:
+    description: Amount should be in the subunit of the supported currency
+    type: string
+  email:
+    description: Customer's email address
+    type: string
+  currency:
+    description: Only ZAR is supported for now
+    type: string
+    enum: [ZAR]
+  reference:
+    description: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
+    type: string
+  callback_url:
+    description: Fully qualified url, e.g. https://example.com/ . Use this to override the callback url provided on the dashboard for this transaction
+    type: string
+  metadata:
+    description: Stringified JSON object of custom data.
+    anyOf:
+      - type: string
+      - type: object
+  split_code:
+    description: The split code of the transaction split. e.g. SPL_98WF13Eb3w
+    type: string
+  subaccount:
+    description: The code for the subaccount that owns the payment. e.g. ACCT_8f4s1eq7ml6rlzj
+    type: string
+  transaction_charge:
+    description: An amount used to override the split configuration for a single split payment. If set, the amount specified goes to the main account regardless of the split configuration.
+    type: integer
+  bearer:
+    description: Specifies who will pay the Paystack transaction charges for this transaction. Either account or subaccount (defaults to account).
+    type: string
+    enum: [account, subaccount]
+  expire_action:
+    description: Specify the action to take on the expiry date. It’s either capture or release. Defaults to release.
+    type: string
+    enum: [capture, release]
+  expire_after_days:
+    description: The number of days until the expire_action is executed. The minimum is 1 day and maximum 30 days. Defaults to 5 days.
+    type: integer
+    minimum: 1
+    maximum: 30

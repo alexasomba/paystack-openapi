@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "checkJs": true,
+    "allowJs": true,
+    "noEmit": true
+  },
+  "include": ["*.config.ts", "*.config.js", "scripts/**/*.mjs", "scripts/**/*.js"],
+  "exclude": ["node_modules", "dist", "sdks"]
+}

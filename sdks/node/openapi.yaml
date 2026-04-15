@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.4
 info:
   title: Paystack
   description: The OpenAPI specification of the Paystack API that merchants and
@@ -65,6 +65,16 @@ tags:
       A collection of endpoints for managing application's top-level domain or
       subdomain accepting payment via Apple Pay
     x-product-name: Apple Pay
+  - name: Capitec Pay
+    description: >
+      A collection of endpoints for managing secure payment for customers with
+      the Capitec banking app.
+    x-product-name: Capitec Pay
+  - name: Card Preauthorization
+    description: >
+      A collection of endpoints for holding and capturing payments for South
+      African merchants.
+    x-product-name: Card Preauthorization
   - name: Plan
     description: |
       A collection of endpoints for creating and managing recurring payment
@@ -2673,6 +2683,230 @@ paths:
           $ref: "#/components/responses/Unauthorized"
         "404":
           $ref: "#/components/responses/NotFound"
+        default:
+          description: Server error
+  /capitec-pay/requery/{ref}:
+    post:
+      tags:
+        - Capitec Pay
+      summary: Requery Transaction
+      description: Check the status of a charge made with Capitec Pay. This endpoint
+        should be used from your frontend application as it requires the use of
+        your public key for request authorization.
+      operationId: capitecPay_requery
+      parameters:
+        - name: ref
+          in: path
+          description: The transaction reference from the previously initiated charge
+            request
+          required: true
+          schema:
+            type: string
+          example: "123456789"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CapitecPayRequeryResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          description: Server error
+  /preauthorization/initialize:
+    post:
+      tags:
+        - Card Preauthorization
+      summary: Initialize Preauthorization
+      description: Initialize a preauthorization transaction for a new customer
+      operationId: preauthorization_initialize
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PreAuthorizationInitialize"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/PreAuthorizationInitialize"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PreAuthorizationInitializeResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          description: Server error
+  /preauthorization/capture:
+    post:
+      tags:
+        - Card Preauthorization
+      summary: Capture Preauthorization
+      description: Charge a preauthorized transaction upon service delivery
+      operationId: preauthorization_capture
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PreAuthorizationCapture"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/PreAuthorizationCapture"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PreAuthorizationCaptureResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          description: Server error
+  /preauthorization/reserve_authorization:
+    post:
+      tags:
+        - Card Preauthorization
+      summary: Reserve Preauthorization
+      description: Hold an amount using an existing customer's authorization that's
+        marked reusable.
+      operationId: preauthorization_reserve_authorization
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PreAuthorizationReserve"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/PreAuthorizationReserve"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PreAuthorizationReserveWithAuthCodeResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          description: Server error
+  /preauthorization/verify/{reference}:
+    parameters:
+      - name: reference
+        description: The transaction reference used to intiate the transaction
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags:
+        - Card Preauthorization
+      summary: Verify Preauthorization
+      description: Fetch and confirm the status of a preauthorized transaction.
+      operationId: preauthorization_verify
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PreAuthorizationVerifyResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        default:
+          description: Server error
+  /preauthorization/release:
+    post:
+      tags:
+        - Card Preauthorization
+      summary: Release Preauthorization
+      description: For when a customer cancels an order or you want to release the
+        hold from their card.
+      operationId: preauthorization_release
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PreAuthorizationRelease"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/PreAuthorizationRelease"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PreAuthorizationReleaseResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          description: Server error
+  /preauthorization:
+    get:
+      tags:
+        - Card Preauthorization
+      summary: List Preauthorizations
+      description: List preauthorizations carried out on your integration
+      operationId: preauthorization_list
+      parameters:
+        - in: query
+          name: perPage
+          schema:
+            type: integer
+          description: Specify how many records you want to retrieve per page. If not
+            specify we use a default value of 50.
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Specify exactly what page you want to retrieve. If not specify we
+            use a default value of 1.
+        - in: query
+          name: from
+          description: A timestamp from which to start listing transaction e.g.
+            2016-09-24T00:00:05.000Z, 2016-09-21
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: to
+          description: A timestamp at which to stop listing transaction e.g.
+            2016-09-24T00:00:05.000Z, 2016-09-21
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: status
+          schema:
+            type: string
+            enum:
+              - authorized
+              - captured
+              - released
+              - ongoing
+              - failed
+              - abandoned
+          description: Filter transactions by status.
+        - in: query
+          name: amount
+          schema:
+            type: integer
+          description: Filter transactions by amount using the supported currency code
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PreAuthorizationListResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         default:
           description: Server error
   /plan:
@@ -5425,10 +5659,11 @@ components:
           description: Used to replace the email address shown on the Checkout
           type: string
         metadata:
-          description: JSON object of custom data
+          description: JSON object or stringified JSON of custom data
           anyOf:
             - type: string
             - type: object
+            - type: integer
       example:
         email: test@demo.com
         amount: 10000
@@ -5458,11 +5693,11 @@ components:
         - data
     ErrorMeta:
       type: object
-      description: Extra details to help with a resolution of the error
+      description: Extra diagnostic information to help resolve an error
       properties:
         nextStep:
           type: string
-          description: A summarised solution for the error
+          description: A suggested next action to take to resolve the error
     TransactionInitializeBadRequestModel:
       type: object
       description: >
@@ -5500,6 +5735,7 @@ components:
         errorCodeMappingNotFound: false
     Error:
       type: object
+      description: Standard error response returned when a Paystack API request fails.
       properties:
         status:
           type: boolean
@@ -5511,14 +5747,14 @@ components:
           $ref: "#/components/schemas/ErrorMeta"
         type:
           type: string
-          description: A tag to indicate the type of the error
-        code:
-          type: string
-          description: The error code
+          description: A category describing the kind of error that occurred
           enum:
+            - api_error
             - validation_error
             - processor_error
-            - api_error
+        code:
+          type: string
+          description: A Paystack-defined machine-readable code for the error
         errorCodeMappingNotFound:
           type: boolean
           description: An indicator for error mapping for the request
@@ -6021,8 +6257,10 @@ components:
         amount:
           type: integer
           format: int32
-          description: Amount should be in kobo if currency is NGN, pesewas if currency is
-            GHS, cents if currency is ZAR, and whole number if currency is XOF
+          description: Amount should be in the subunit of the supported currency (e.g.
+            kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, send
+            the amount multiplied by 100 even though the currency does not use
+            fractional subunits.
         authorization_code:
           type: string
           description: Valid authorization code to charge
@@ -6078,6 +6316,7 @@ components:
               anyOf:
                 - type: string
                 - type: object
+                - type: integer
               nullable: true
             log:
               type: object
@@ -6965,8 +7204,12 @@ components:
             Only -, .`, = and alphanumeric characters are allowed.
           type: string
         metadata:
-          description: JSON object of custom data
-          type: object
+          description: JSON object or stringified JSON of custom data
+          anyOf:
+            - type: string
+            - type: object
+            - type: integer
+            - type: integer
       example:
         email: customer@email.com
         amount: 350000
@@ -8484,25 +8727,7 @@ components:
           items:
             $ref: "#/components/schemas/BulkChargeFetchBulkBatchChargesResponseArray"
         meta:
-          type: object
-          properties:
-            perPage:
-              type: string
-            total:
-              type: integer
-            skipped:
-              type: integer
-            page:
-              type: integer
-            pageCount:
-              type: integer
-          required:
-            - perPage
-            - total
-            - skipped
-            - page
-            - pageCount
-          additionalProperties: false
+          $ref: "#/components/schemas/Meta"
       required:
         - status
         - message
@@ -8615,7 +8840,8 @@ components:
           description: Bank account number
           type: string
         percentage_charge:
-          description: Customer's phone number
+          description: The percentage the main account receives from each payment made to
+            the subaccount
           type: number
           format: float
         description:
@@ -8631,8 +8857,10 @@ components:
           description: A phone number to call for this subaccount
           type: string
         metadata:
-          description: Stringified JSON object of custom data
-          type: string
+          description: Stringified JSON object or JSON object of custom data
+          anyOf:
+            - type: string
+            - type: object
       example:
         business_name: Oasis
         account_number: "0123456047"
@@ -8833,7 +9061,8 @@ components:
           description: Activate or deactivate a subaccount
           type: boolean
         percentage_charge:
-          description: Customer's phone number
+          description: The percentage the main account receives from each payment made to
+            the subaccount
           type: number
           format: float
         description:
@@ -8849,8 +9078,11 @@ components:
           description: A phone number to call for this subaccount
           type: string
         metadata:
-          description: Stringified JSON object of custom data
-          type: string
+          description: Stringified JSON object or JSON object of custom data
+          anyOf:
+            - type: string
+            - type: object
+            - type: integer
       example:
         business_name: Sandalwood
     SubaccountUpdateResponse:
@@ -10124,8 +10356,10 @@ components:
           description: Customer's phone number
           type: string
         metadata:
-          description: Stringified JSON object of custom data
-          type: string
+          description: Stringified JSON object or JSON object of custom data
+          anyOf:
+            - type: string
+            - type: object
       example:
         email: rock@sandy.com
         first_name: Rock
@@ -10273,8 +10507,11 @@ components:
           description: Customer's phone number
           type: string
         metadata:
-          description: Stringified JSON object of custom data
-          type: string
+          description: Stringified JSON object or JSON object of custom data
+          anyOf:
+            - type: string
+            - type: object
+            - type: integer
       example:
         first_name: Cecilia
         last_name: Jones
@@ -11001,6 +11238,12 @@ components:
           description: Split code consisting of the lists of accounts you want to split
             the transaction with
           type: string
+        metadata:
+          description: JSON object or stringified JSON of custom data
+          anyOf:
+            - type: string
+            - type: object
+            - type: integer
       example:
         customer: CUS_bo732eugpb2qrg6
         preferred_bank: titan-paystack
@@ -11417,6 +11660,754 @@ components:
       example:
         status: true
         message: Domain successfully registered on Apple Pay
+    CapitecPayRequeryResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+        type:
+          type: string
+        code:
+          type: string
+        data:
+          type: object
+          properties:
+            status:
+              type: string
+          required:
+            - status
+        message:
+          type: string
+      required:
+        - status
+        - type
+        - code
+        - data
+        - message
+    PreAuthorizationInitialize:
+      type: object
+      required:
+        - amount
+        - email
+        - currency
+      properties:
+        amount:
+          description: Amount should be in the subunit of the supported currency
+          type: string
+        email:
+          description: Customer's email address
+          type: string
+        currency:
+          description: Only ZAR is supported for now
+          type: string
+          enum:
+            - ZAR
+        reference:
+          description: Unique transaction reference. Only -, ., = and alphanumeric
+            characters allowed.
+          type: string
+        callback_url:
+          description: Fully qualified url, e.g. https://example.com/ . Use this to
+            override the callback url provided on the dashboard for this
+            transaction
+          type: string
+        metadata:
+          description: Stringified JSON object of custom data.
+          anyOf:
+            - type: string
+            - type: object
+        split_code:
+          description: The split code of the transaction split. e.g. SPL_98WF13Eb3w
+          type: string
+        subaccount:
+          description: The code for the subaccount that owns the payment. e.g.
+            ACCT_8f4s1eq7ml6rlzj
+          type: string
+        transaction_charge:
+          description: An amount used to override the split configuration for a single
+            split payment. If set, the amount specified goes to the main account
+            regardless of the split configuration.
+          type: integer
+        bearer:
+          description: Specifies who will pay the Paystack transaction charges for this
+            transaction. Either account or subaccount (defaults to account).
+          type: string
+          enum:
+            - account
+            - subaccount
+        expire_action:
+          description: Specify the action to take on the expiry date. It’s either capture
+            or release. Defaults to release.
+          type: string
+          enum:
+            - capture
+            - release
+        expire_after_days:
+          description: The number of days until the expire_action is executed. The minimum
+            is 1 day and maximum 30 days. Defaults to 5 days.
+          type: integer
+          minimum: 1
+          maximum: 30
+    PreAuthorizationInitializeResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+        message:
+          type: string
+        data:
+          type: object
+          properties:
+            authorization_url:
+              type: string
+            access_code:
+              type: string
+            reference:
+              type: string
+          required:
+            - authorization_url
+            - access_code
+            - reference
+      required:
+        - status
+        - message
+        - data
+    PreAuthorizationCapture:
+      type: object
+      required:
+        - reference
+        - currency
+        - amount
+      properties:
+        reference:
+          description: Unique transaction reference. Only -, ., = and alphanumeric
+            characters allowed.
+          type: string
+        currency:
+          description: Only ZAR is supported for now
+          type: string
+          enum:
+            - ZAR
+        amount:
+          description: Amount should be in the subunit of the supported currency
+          type: string
+    FormulaSubaccountsArray:
+      type: object
+      properties:
+        original_share:
+          type: number
+        fees:
+          type: integer
+        share:
+          type: integer
+        subaccount_code:
+          type: string
+        id:
+          type: integer
+        name:
+          type: string
+        integration:
+          type: string
+      required:
+        - original_share
+        - fees
+        - share
+        - subaccount_code
+        - id
+        - name
+        - integration
+    ShareSubaccountsArray:
+      type: object
+      properties:
+        amount:
+          type: integer
+        original_share:
+          type: number
+        fees:
+          type: integer
+        subaccount_code:
+          type: string
+        id:
+          type: integer
+        integration:
+          type: string
+      required:
+        - amount
+        - original_share
+        - fees
+        - subaccount_code
+        - id
+        - integration
+    PreAuthorizationCaptureResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+        message:
+          type: string
+        data:
+          type: object
+          properties:
+            amount:
+              type: integer
+            status:
+              type: string
+            gateway_response:
+              type: string
+            transaction:
+              type: object
+              properties:
+                currency:
+                  type: string
+                transaction_date:
+                  type: string
+                status:
+                  type: string
+                reference:
+                  type: string
+                domain:
+                  type: string
+                metadata:
+                  anyOf:
+                    - type: string
+                    - type: object
+                      additionalProperties: true
+                  nullable: true
+                gateway_response:
+                  type: string
+                message:
+                  type: string
+                  nullable: true
+                channel:
+                  type: string
+                fees:
+                  type: integer
+                authorization:
+                  type: object
+                  properties:
+                    authorization_code:
+                      type: string
+                    bin:
+                      type: string
+                    last4:
+                      type: string
+                    exp_month:
+                      type: string
+                    exp_year:
+                      type: string
+                    channel:
+                      type: string
+                    card_type:
+                      type: string
+                    bank:
+                      type: string
+                    country_code:
+                      type: string
+                    brand:
+                      type: string
+                    reusable:
+                      type: boolean
+                    signature:
+                      type: string
+                    account_name:
+                      type: string
+                      nullable: true
+                  required:
+                    - authorization_code
+                    - bin
+                    - last4
+                    - exp_month
+                    - exp_year
+                    - channel
+                    - card_type
+                    - bank
+                    - country_code
+                    - brand
+                    - reusable
+                    - signature
+                    - account_name
+                customer:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    first_name:
+                      type: string
+                    last_name:
+                      type: string
+                    email:
+                      type: string
+                    customer_code:
+                      type: string
+                    phone:
+                      type: string
+                    metadata:
+                      type: object
+                      nullable: true
+                    risk_action:
+                      type: string
+                    international_format_phone:
+                      type: string
+                      nullable: true
+                  required:
+                    - id
+                    - first_name
+                    - last_name
+                    - email
+                    - customer_code
+                    - phone
+                    - metadata
+                    - risk_action
+                id:
+                  type: integer
+                split:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    split_code:
+                      type: string
+                    formula:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        bearer_type:
+                          type: string
+                        bearer_subaccount:
+                          type: integer
+                        subaccounts:
+                          type: array
+                          items:
+                            $ref: "#/components/schemas/FormulaSubaccountsArray"
+                        integration:
+                          type: integer
+                      required:
+                        - type
+                        - bearer_type
+                        - bearer_subaccount
+                        - subaccounts
+                        - integration
+                    shares:
+                      type: object
+                      properties:
+                        paystack:
+                          type: integer
+                        subaccounts:
+                          type: array
+                          items:
+                            $ref: "#/components/schemas/ShareSubaccountsArray"
+                        integration:
+                          type: number
+                        original_share:
+                          type: integer
+                        fees:
+                          type: number
+                      required:
+                        - paystack
+                        - subaccounts
+                        - integration
+                        - original_share
+                        - fees
+                  required:
+                    - id
+                    - name
+                    - split_code
+                    - formula
+                    - shares
+              required:
+                - currency
+                - transaction_date
+                - status
+                - reference
+                - domain
+                - metadata
+                - gateway_response
+                - message
+                - channel
+                - fees
+                - authorization
+                - customer
+                - id
+            amount_released:
+              type: integer
+            split_code:
+              type: string
+              nullable: true
+            split:
+              type: object
+              properties:
+                type:
+                  type: string
+                bearer_type:
+                  type: string
+                subaccounts:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/SplitSubaccountsArray"
+              required:
+                - type
+                - bearer_type
+                - subaccounts
+              nullable: true
+          required:
+            - amount
+            - status
+            - gateway_response
+            - transaction
+            - split_code
+            - split
+      required:
+        - status
+        - message
+        - data
+    PreAuthorizationReserve:
+      type: object
+      required:
+        - email
+        - amount
+        - authorization_code
+        - currency
+      properties:
+        email:
+          description: Customer's email address
+          type: string
+        amount:
+          description: Amount should be in the subunit of the supported currency
+          type: string
+        authorization_code:
+          description: This is the code that is used to charge and identify a customer's
+            previously used card
+          type: string
+        currency:
+          description: Only ZAR is supported for now
+          type: string
+          enum:
+            - ZAR
+        reference:
+          description: Unique transaction reference. Only -, ., = and alphanumeric
+            characters allowed.
+          type: string
+    PreAuthorizationReserveWithAuthCodeResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+        message:
+          type: string
+        data:
+          type: object
+          properties:
+            id:
+              type: integer
+            domain:
+              type: string
+            status:
+              type: string
+            reference:
+              type: string
+            amount:
+              type: integer
+            message:
+              type: string
+            created_at:
+              type: string
+            released_at:
+              type: string
+              nullable: true
+            authorized_at:
+              type: string
+              nullable: true
+            expiry_date:
+              type: string
+              nullable: true
+            currency:
+              type: string
+            metadata:
+              type: object
+              nullable: true
+            fees:
+              type: integer
+            authorization:
+              type: object
+              properties:
+                authorization_code:
+                  type: string
+                bin:
+                  type: string
+                last4:
+                  type: string
+                exp_month:
+                  type: string
+                exp_year:
+                  type: string
+                channel:
+                  type: string
+                card_type:
+                  type: string
+                bank:
+                  type: string
+                country_code:
+                  type: string
+                brand:
+                  type: string
+                reusable:
+                  type: boolean
+                signature:
+                  type: string
+                account_name:
+                  type: string
+                  nullable: true
+              required:
+                - authorization_code
+                - bin
+                - last4
+                - exp_month
+                - exp_year
+                - channel
+                - card_type
+                - bank
+                - country_code
+                - brand
+                - reusable
+                - signature
+                - account_name
+            customer:
+              type: object
+              properties:
+                id:
+                  type: integer
+                first_name:
+                  type: string
+                  nullable: true
+                last_name:
+                  type: string
+                  nullable: true
+                email:
+                  type: string
+                customer_code:
+                  type: string
+                phone:
+                  type: string
+                  nullable: true
+                metadata:
+                  type: object
+                  nullable: true
+                risk_action:
+                  type: string
+                international_format_phone:
+                  type: string
+                  nullable: true
+              required:
+                - id
+                - first_name
+                - last_name
+                - email
+                - customer_code
+                - phone
+                - metadata
+                - risk_action
+            merchant_id:
+              type: integer
+            merchant_name:
+              type: string
+            expire_action:
+              type: string
+            split_code:
+              type: string
+              nullable: true
+            split:
+              type: object
+              nullable: true
+          required:
+            - id
+            - domain
+            - status
+            - reference
+            - amount
+            - message
+            - created_at
+            - released_at
+            - authorized_at
+            - expiry_date
+            - currency
+            - metadata
+            - fees
+            - authorization
+            - customer
+            - merchant_id
+            - merchant_name
+            - expire_action
+            - split
+            - split_code
+      required:
+        - status
+        - message
+        - data
+    PreAuthorizationVerifyResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+        message:
+          type: string
+        data:
+          type: object
+          properties:
+            id:
+              type: integer
+            domain:
+              type: string
+            status:
+              type: string
+            reference:
+              type: string
+            amount:
+              type: integer
+            message:
+              type: string
+            currency:
+              type: string
+            redirecturl:
+              type: string
+          required:
+            - id
+            - domain
+            - status
+            - reference
+            - amount
+            - message
+            - currency
+      required:
+        - status
+        - message
+        - data
+    PreAuthorizationRelease:
+      type: object
+      required:
+        - reference
+      properties:
+        reference:
+          description: Unique transaction reference. Only -, ., = and alphanumeric
+            characters allowed.
+          type: string
+    PreAuthorizationReleaseResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+        message:
+          type: string
+        data:
+          type: object
+          properties:
+            status:
+              type: string
+            reference:
+              type: string
+          required:
+            - status
+            - reference
+      required:
+        - status
+        - message
+        - data
+    PreAuthorizationListResponseArray:
+      type: object
+      properties:
+        domain:
+          type: string
+        status:
+          type: string
+        reference:
+          type: string
+        amount:
+          type: integer
+        created_at:
+          type: string
+        transaction_id:
+          type: string
+          nullable: true
+        captured_at:
+          type: string
+          nullable: true
+        released_at:
+          type: string
+          nullable: true
+        currency:
+          type: string
+        fees:
+          type: integer
+        customer:
+          type: object
+          properties:
+            id:
+              type: integer
+            first_name:
+              type: string
+              nullable: true
+            last_name:
+              type: string
+              nullable: true
+            email:
+              type: string
+            customer_code:
+              type: string
+            phone:
+              type: string
+              nullable: true
+            metadata:
+              type: object
+              nullable: true
+            risk_action:
+              type: string
+            international_format_phone:
+              type: string
+              nullable: true
+          required:
+            - id
+            - first_name
+            - last_name
+            - email
+            - customer_code
+            - phone
+            - metadata
+            - risk_action
+        id:
+          type: integer
+      required:
+        - domain
+        - status
+        - reference
+        - amount
+        - created_at
+        - transaction_id
+        - captured_at
+        - released_at
+        - currency
+        - fees
+        - customer
+        - id
+    PreAuthorizationListResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/PreAuthorizationListResponseArray"
+        meta:
+          $ref: "#/components/schemas/Meta"
+      required:
+        - status
+        - message
+        - data
+        - meta
     PlanListResponseArray:
       type: object
       properties:
@@ -11538,6 +12529,12 @@ components:
             Number of invoices to raise during subscription to this plan. 
             Can be overridden by specifying an invoice_limit while subscribing.
           type: integer
+        metadata:
+          description: Stringified JSON object or JSON object of custom data
+          anyOf:
+            - type: string
+            - type: object
+            - type: integer
       example:
         name: Basic
         amount: 150000
@@ -11673,11 +12670,10 @@ components:
           description: Name of plan
           type: string
         amount:
-          description: >-
-            Amount should be in kobo if currency is NGN, pesewas, if currency is
-            GHS,
-             Amount should be in kobo if currency is NGN, pesewas, if currency is GHS,
-             cents, if currency is ZAR, and whole number if currency is XOF
+          description: Amount should be in the subunit of the supported currency (e.g.
+            kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, send
+            the amount multiplied by 100 even though the currency does not use
+            fractional subunits.
           type: integer
         interval:
           description: Payment interval
@@ -11690,7 +12686,13 @@ components:
             - annually
         description:
           description: A description for this plan
-          type: boolean
+          type: string
+        metadata:
+          description: Stringified JSON object or JSON object of custom data
+          anyOf:
+            - type: string
+            - type: object
+            - type: integer
         send_invoices:
           description: Set to false if you don't want invoices to be sent to your customers
           type: boolean
@@ -12374,8 +13376,11 @@ components:
           description: An authorization code from a previous transaction
           type: string
         metadata:
-          description: JSON object of custom data
-          type: object
+          description: JSON object or stringified JSON of custom data
+          anyOf:
+            - type: string
+            - type: object
+            - type: integer
       example:
         type: nuban
         name: Smith Taplo
@@ -12623,6 +13628,12 @@ components:
         email:
           description: Recipient's email address
           type: string
+        metadata:
+          description: JSON object or stringified JSON of custom data
+          anyOf:
+            - type: string
+            - type: object
+            - type: integer
     TransferRecipientUpdateResponse:
       type: object
       properties:
@@ -12861,6 +13872,12 @@ components:
         reason:
           description: The reason or narration for the transfer.
           type: string
+        metadata:
+          description: JSON object or stringified JSON of custom data
+          anyOf:
+            - type: string
+            - type: object
+            - type: integer
       example:
         amount: 120000
         recipient: RCP_gd9vgag7n5lr5ix
@@ -13522,25 +14539,7 @@ components:
           items:
             $ref: "#/components/schemas/BalanceFetchLedgerResponseArray"
         meta:
-          type: object
-          properties:
-            total:
-              type: integer
-            skipped:
-              type: integer
-            perPage:
-              type: integer
-            page:
-              type: integer
-            pageCount:
-              type: integer
-          required:
-            - total
-            - skipped
-            - perPage
-            - page
-            - pageCount
-          additionalProperties: false
+          $ref: "#/components/schemas/Meta"
       required:
         - status
         - message
@@ -13698,27 +14697,7 @@ components:
           items:
             $ref: "#/components/schemas/PaymentRequestListResponseArray"
         meta:
-          type: object
-          properties:
-            total:
-              type: integer
-            skipped:
-              type: integer
-            perPage:
-              anyOf:
-                - type: integer
-                - type: string
-            page:
-              type: integer
-            pageCount:
-              type: integer
-          required:
-            - total
-            - skipped
-            - perPage
-            - page
-            - pageCount
-          additionalProperties: false
+          $ref: "#/components/schemas/Meta"
       required:
         - status
         - message
@@ -15837,28 +16816,17 @@ components:
           items:
             $ref: "#/components/schemas/OrderFetchProductResponseArray"
         meta:
-          type: object
-          properties:
-            quantity_sold:
-              type: integer
-            revenue:
-              type: integer
-            total:
-              type: integer
-            skipped:
-              type: integer
-            perPage:
-              type: integer
-            pageCount:
-              type: integer
-          required:
-            - quantity_sold
-            - revenue
-            - total
-            - skipped
-            - perPage
-            - pageCount
-          additionalProperties: false
+          allOf:
+            - $ref: "#/components/schemas/Meta"
+            - type: object
+              properties:
+                quantity_sold:
+                  type: integer
+                revenue:
+                  type: integer
+              required:
+                - quantity_sold
+                - revenue
       required:
         - status
         - message

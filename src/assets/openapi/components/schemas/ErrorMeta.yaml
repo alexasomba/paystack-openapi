@@ -1,6 +1,6 @@
 type: object
-description: Extra details to help with a resolution of the error
+description: Extra diagnostic information to help resolve an error
 properties:
   nextStep:
     type: string
-    description: A summarised solution for the error
+    description: A suggested next action to take to resolve the error

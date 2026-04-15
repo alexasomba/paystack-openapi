@@ -1,9 +1,11 @@
+/* eslint-disable no-console */
 import fs from "node:fs/promises";
 import path from "node:path";
 
 const repoRoot = path.resolve(process.cwd());
 const goDir = path.join(repoRoot, "sdks", "go");
 
+/** @param {string} targetPath */
 async function safeRm(targetPath) {
   await fs.rm(targetPath, { recursive: true, force: true });
 }
@@ -28,7 +30,10 @@ async function main() {
   try {
     entries = await fs.readdir(goDir, { withFileTypes: true });
   } catch (error) {
-    throw new Error(`Failed to read Go SDK directory at ${goDir}: ${error?.message ?? error}`);
+    throw new Error(
+      `Failed to read Go SDK directory at ${goDir}: ${error instanceof Error ? error.message : String(error)}`,
+      { cause: error },
+    );
   }
 
   await Promise.all(

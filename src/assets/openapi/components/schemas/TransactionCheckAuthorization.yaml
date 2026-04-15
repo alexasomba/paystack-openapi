@@ -9,7 +9,11 @@ properties:
   amount:
     type: integer
     format: int32
-    description: Amount should be in kobo if currency is NGN, pesewas if currency is GHS, cents if currency is ZAR, and whole number if currency is XOF
+    description: >-
+      Amount should be in the subunit of the supported currency (e.g. kobo for
+      NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, send the amount
+      multiplied by 100 even though the currency does not use fractional
+      subunits.
   authorization_code:
     type: string
     description: Valid authorization code to charge

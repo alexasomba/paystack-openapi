@@ -1,0 +1,51 @@
+get:
+  tags:
+    - Card Preauthorization
+  summary: List Preauthorizations
+  description: List preauthorizations carried out on your integration
+  operationId: preauthorization_list
+  parameters:
+    - in: query
+      name: perPage
+      schema:
+        type: integer
+      description: Specify how many records you want to retrieve per page. If not specify we use a default value of 50.
+    - in: query
+      name: page
+      schema:
+        type: integer
+      description: Specify exactly what page you want to retrieve. If not specify we use a default value of 1.
+    - in: query
+      name: from
+      description: A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+      schema:
+        type: string
+        format: date-time
+    - in: query
+      name: to
+      description: A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+      schema:
+        type: string
+        format: date-time
+    - in: query
+      name: status
+      schema:
+        type: string
+        enum: [authorized, captured, released, ongoing, failed, abandoned]
+      description: Filter transactions by status.
+    - in: query
+      name: amount
+      schema:
+        type: integer
+      description: Filter transactions by amount using the supported currency code
+  responses:
+    "200":
+      description: ""
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/PreAuthorizationListResponse.yaml
+    "401":
+      $ref: ../components/responses/Unauthorized.yaml
+    default:
+      description: Server error

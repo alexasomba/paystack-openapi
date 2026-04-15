@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.4
 info:
   title: Create a betting platform
   description: |
@@ -34,21 +34,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/TransactionInitialize"
+              $ref: '#/components/schemas/TransactionInitialize'
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/TransactionInitialize"
+              $ref: '#/components/schemas/TransactionInitialize'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TransactionInitializeResponse"
-        "400":
-          $ref: "#/components/responses/TransactionInitializeBadRequestResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
+                $ref: '#/components/schemas/TransactionInitializeResponse'
+        '400':
+          $ref: '#/components/responses/TransactionInitializeBadRequestResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         default:
           description: Server error
   /transaction/charge_authorization:
@@ -62,19 +62,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/TransactionChargeAuthorization"
+              $ref: '#/components/schemas/TransactionChargeAuthorization'
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/TransactionChargeAuthorization"
+              $ref: '#/components/schemas/TransactionChargeAuthorization'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ChargeAuthorizationResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
+                $ref: '#/components/schemas/ChargeAuthorizationResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         default:
           description: Server error
   /transaction/verify/{reference}:
@@ -93,16 +93,16 @@ paths:
             type: string
           example: re4lyvq3s3
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/VerifyResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
+                $ref: '#/components/schemas/VerifyResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
         default:
           description: Server error
   /bank/resolve:
@@ -117,21 +117,21 @@ paths:
           description: The account number of interest
           in: query
           schema:
-            type: integer
-          example: 22728151
+            type: string
+          example: '0022728151'
         - name: bank_code
           description: The bank code associated with the account number
           in: query
           schema:
-            type: integer
-          example: 63
+            type: string
+          example: '063'
       responses:
-        "200":
-          $ref: "#/components/responses/VerificationResolveAccountNumberSuccess"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
+        '200':
+          $ref: '#/components/responses/VerificationResolveAccountNumberSuccess'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
         default:
           description: Server error
   /transferrecipient:
@@ -145,19 +145,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/TransferRecipientCreate"
+              $ref: '#/components/schemas/TransferRecipientCreate'
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/TransferRecipientCreate"
+              $ref: '#/components/schemas/TransferRecipientCreate'
       responses:
-        "201":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TransferRecipientCreateResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
+                $ref: '#/components/schemas/TransferRecipientCreateResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         default:
           description: Server error
     get:
@@ -168,43 +168,38 @@ paths:
       operationId: transferrecipient_list
       parameters:
         - in: query
-          name: use_cursor
-          description: A flag to indicate if cursor based pagination should be used
-          schema:
-            type: boolean
-        - in: query
-          name: next
-          description: |
-            An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data
-          schema:
-            type: string
-        - in: query
-          name: previous
-          description: |
-            An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data
-          schema:
-            type: string
-        - in: query
-          name: per_page
+          name: perPage
           schema:
             type: integer
-          description: The number of records to fetch per request
+          description: Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
         - in: query
           name: page
           schema:
             type: integer
-          description: The offset to retrieve data from
+          description: Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
+        - in: query
+          name: from
+          description: A timestamp from which to start listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: to
+          description: A timestamp at which to stop listing transfer recipients e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
+          schema:
+            type: string
+            format: date-time
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TransferRecipientListResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
+                $ref: '#/components/schemas/TransferRecipientListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
         default:
           description: Server error
   /transfer/bulk:
@@ -221,19 +216,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/TransferBulk"
+              $ref: '#/components/schemas/TransferBulk'
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/TransferBulk"
+              $ref: '#/components/schemas/TransferBulk'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TransferBulkResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
+                $ref: '#/components/schemas/TransferBulkResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         default:
           description: Server error
 components:
@@ -289,7 +284,7 @@ components:
           description: A list of object containing subaccount code and number of shares
           type: array
           items:
-            $ref: "#/components/schemas/SplitSubaccounts"
+            $ref: '#/components/schemas/SplitSubaccounts'
         currency:
           description: The transaction currency
           type: string
@@ -342,7 +337,7 @@ components:
             - type: integer
             - type: string
         currency:
-          $ref: "#/components/schemas/Currency"
+          $ref: '#/components/schemas/Currency'
         reference:
           description: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
           type: string
@@ -379,7 +374,7 @@ components:
           description: The split code of the transaction split
           type: string
         split:
-          $ref: "#/components/schemas/SplitCreate"
+          $ref: '#/components/schemas/SplitCreate'
         subaccount:
           description: The code for the subaccount that owns the payment
           type: string
@@ -398,10 +393,11 @@ components:
           description: Used to replace the email address shown on the Checkout
           type: string
         metadata:
-          description: JSON object of custom data
+          description: JSON object or stringified JSON of custom data
           anyOf:
             - type: string
             - type: object
+            - type: integer
       example:
         email: test@demo.com
         amount: 10000
@@ -431,11 +427,11 @@ components:
         - data
     ErrorMeta:
       type: object
-      description: Extra details to help with a resolution of the error
+      description: Extra diagnostic information to help resolve an error
       properties:
         nextStep:
           type: string
-          description: A summarised solution for the error
+          description: A suggested next action to take to resolve the error
     TransactionInitializeBadRequestModel:
       type: object
       description: |
@@ -448,7 +444,7 @@ components:
           type: string
           description: A short description of the error
         meta:
-          $ref: "#/components/schemas/ErrorMeta"
+          $ref: '#/components/schemas/ErrorMeta'
         type:
           type: string
           description: A tag to indicate the type of the error
@@ -472,6 +468,7 @@ components:
         errorCodeMappingNotFound: false
     Error:
       type: object
+      description: Standard error response returned when a Paystack API request fails.
       properties:
         status:
           type: boolean
@@ -480,17 +477,17 @@ components:
           type: string
           description: A short description of the error
         meta:
-          $ref: "#/components/schemas/ErrorMeta"
+          $ref: '#/components/schemas/ErrorMeta'
         type:
           type: string
-          description: A tag to indicate the type of the error
-        code:
-          type: string
-          description: The error code
+          description: A category describing the kind of error that occurred
           enum:
+            - api_error
             - validation_error
             - processor_error
-            - api_error
+        code:
+          type: string
+          description: A Paystack-defined machine-readable code for the error
         errorCodeMappingNotFound:
           type: boolean
           description: An indicator for error mapping for the request
@@ -514,7 +511,7 @@ components:
           description: Unique transaction reference. Only -, ., = and alphanumeric characters allowed.
           type: string
         currency:
-          $ref: "#/components/schemas/Currency"
+          $ref: '#/components/schemas/Currency'
         channels:
           description: Send us 'card' or 'bank' or 'card','bank' as an array to specify what options to show the user paying
           type: array
@@ -527,7 +524,7 @@ components:
           description: The split code of the transaction split
           type: string
         split:
-          $ref: "#/components/schemas/SplitCreate"
+          $ref: '#/components/schemas/SplitCreate'
         subaccount:
           description: The code for the subaccount that owns the payment
           type: string
@@ -577,7 +574,11 @@ components:
             domain:
               type: string
             metadata:
-              type: string
+              anyOf:
+                - type: string
+                - type: object
+                  additionalProperties: true
+              nullable: true
             gateway_response:
               type: string
             message:
@@ -662,6 +663,7 @@ components:
                 signature:
                   type: string
                 account_name:
+                  type: string
                   nullable: true
               required:
                 - authorization_code
@@ -697,9 +699,7 @@ components:
                   nullable: true
                 metadata:
                   type: object
-                  properties:
-                    calling_code:
-                      type: string
+                  additionalProperties: true
                   nullable: true
                 risk_action:
                   type: string
@@ -715,7 +715,6 @@ components:
                 - phone
                 - metadata
                 - risk_action
-                - international_format_phone
             plan:
               nullable: true
             id:
@@ -782,10 +781,13 @@ components:
               type: string
             ip_address:
               type: string
+              nullable: true
             metadata:
               anyOf:
                 - type: string
                 - type: object
+                - type: integer
+              nullable: true
             log:
               type: object
               properties:
@@ -841,6 +843,7 @@ components:
                 authorization_code:
                   type: string
                 bin:
+                  type: string
                   nullable: true
                 last4:
                   type: string
@@ -863,10 +866,13 @@ components:
                 signature:
                   type: string
                 account_name:
+                  type: string
                   nullable: true
                 receiver_bank_account_number:
+                  type: string
                   nullable: true
                 receiver_bank:
+                  type: string
                   nullable: true
             customer:
               type: object
@@ -888,6 +894,7 @@ components:
                   type: string
                   nullable: true
                 metadata:
+                  type: object
                   nullable: true
                 risk_action:
                   type: string
@@ -903,12 +910,14 @@ components:
                 - phone
                 - metadata
                 - risk_action
-                - international_format_phone
             plan:
-              type: string
+              anyOf:
+                - type: string
+                - type: object
               nullable: true
             split:
               type: object
+              nullable: true
             order_id:
               nullable: true
             paidAt:
@@ -969,6 +978,7 @@ components:
                       additionalProperties: false
             subaccount:
               type: object
+              nullable: true
           required:
             - id
             - domain
@@ -1018,12 +1028,9 @@ components:
               type: string
             account_name:
               type: string
-            bank_id:
-              type: integer
           required:
             - account_number
             - account_name
-            - bank_id
       required:
         - status
         - message
@@ -1039,6 +1046,7 @@ components:
           type: string
         description:
           type: string
+          nullable: true
         domain:
           type: string
         email:
@@ -1060,6 +1068,8 @@ components:
         updatedAt:
           type: string
         is_deleted:
+          type: boolean
+        isDeleted:
           type: boolean
         details:
           type: object
@@ -1087,16 +1097,12 @@ components:
         - active
         - createdAt
         - currency
-        - description
         - domain
-        - email
         - id
-        - integration
         - name
         - recipient_code
         - type
         - updatedAt
-        - is_deleted
         - details
     Meta:
       type: object
@@ -1130,9 +1136,9 @@ components:
         data:
           type: array
           items:
-            $ref: "#/components/schemas/TransferRecipientListResponseArray"
+            $ref: '#/components/schemas/TransferRecipientListResponseArray'
         meta:
-          $ref: "#/components/schemas/Meta"
+          $ref: '#/components/schemas/Meta'
       required:
         - status
         - message
@@ -1174,13 +1180,16 @@ components:
           description: An authorization code from a previous transaction
           type: string
         metadata:
-          description: JSON object of custom data
-          type: object
+          description: JSON object or stringified JSON of custom data
+          anyOf:
+            - type: string
+            - type: object
+            - type: integer
       example:
         type: nuban
         name: Smith Taplo
-        account_number: "01000000010"
-        bank_code: "058"
+        account_number: '01000000010'
+        bank_code: '058'
     TransferRecipientCreateResponse:
       type: object
       properties:
@@ -1199,10 +1208,12 @@ components:
               type: string
             description:
               type: string
+              nullable: true
             domain:
               type: string
             email:
               type: string
+              nullable: true
             id:
               type: integer
             integration:
@@ -1219,6 +1230,8 @@ components:
             updatedAt:
               type: string
             is_deleted:
+              type: boolean
+            isDeleted:
               type: boolean
             details:
               type: object
@@ -1246,16 +1259,12 @@ components:
             - active
             - createdAt
             - currency
-            - description
             - domain
-            - email
             - id
-            - integration
             - name
             - recipient_code
             - type
             - updatedAt
-            - is_deleted
             - details
       required:
         - status
@@ -1283,6 +1292,12 @@ components:
         reason:
           description: The reason or narration for the transfer.
           type: string
+        metadata:
+          description: JSON object or stringified JSON of custom data
+          anyOf:
+            - type: string
+            - type: object
+            - type: integer
       example:
         amount: 120000
         recipient: RCP_gd9vgag7n5lr5ix
@@ -1311,7 +1326,7 @@ components:
           description: A list of transfer object
           type: array
           items:
-            $ref: "#/components/schemas/TransferBase"
+            $ref: '#/components/schemas/TransferBase'
       example:
         source: balance
         transfers:
@@ -1350,7 +1365,7 @@ components:
         data:
           type: array
           items:
-            $ref: "#/components/schemas/TransferBulkResponseArray"
+            $ref: '#/components/schemas/TransferBulkResponseArray'
       required:
         - status
         - message
@@ -1361,13 +1376,13 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/TransactionInitializeBadRequestModel"
+            $ref: '#/components/schemas/TransactionInitializeBadRequestModel'
     Unauthorized:
       description: Unauthorized operation
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Error"
+            $ref: '#/components/schemas/Error'
           example:
             status: false
             message: Invalid key
@@ -1376,7 +1391,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Error"
+            $ref: '#/components/schemas/Error'
           example:
             status: false
             message: Entity not found
@@ -1385,4 +1400,4 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/VerificationResolveAccountNumberResponse"
+            $ref: '#/components/schemas/VerificationResolveAccountNumberResponse'

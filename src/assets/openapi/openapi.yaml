@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.4
 info:
   title: Paystack
   description: >-
@@ -66,6 +66,16 @@ tags:
       A collection of endpoints for managing application's top-level domain or
       subdomain accepting payment via Apple Pay
     x-product-name: Apple Pay
+  - name: Capitec Pay
+    description: >
+      A collection of endpoints for managing secure payment for customers with the
+      Capitec banking app.
+    x-product-name: Capitec Pay
+  - name: Card Preauthorization
+    description: >
+      A collection of endpoints for holding and capturing payments for South
+      African merchants.
+    x-product-name: Card Preauthorization
   - name: Plan
     description: |
       A collection of endpoints for creating and managing recurring payment
@@ -262,6 +272,20 @@ paths:
     $ref: paths/dedicated_account_available_providers.yaml
   /apple-pay/domain:
     $ref: paths/apple-pay_domain.yaml
+  /capitec-pay/requery/{ref}:
+    $ref: paths/capitec-pay_requery_{ref}.yaml
+  /preauthorization/initialize:
+    $ref: paths/preauthorization_initialize.yaml
+  /preauthorization/capture:
+    $ref: paths/preauthorization_capture.yaml
+  /preauthorization/reserve_authorization:
+    $ref: paths/preauthorization_reserve_authorization.yaml
+  /preauthorization/verify/{reference}:
+    $ref: paths/preauthorization_verify_{reference}.yaml
+  /preauthorization/release:
+    $ref: paths/preauthorization_release.yaml
+  /preauthorization:
+    $ref: paths/preauthorization.yaml
   /plan:
     $ref: paths/plan.yaml
   /plan/{id_or_code}:

@@ -6,3 +6,9 @@ properties:
   email:
     description: Recipient's email address
     type: string
+  metadata:
+    description: JSON object or stringified JSON of custom data
+    anyOf:
+      - type: string
+      - type: object
+      - type: integer

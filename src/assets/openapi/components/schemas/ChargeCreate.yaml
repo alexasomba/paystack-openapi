@@ -34,8 +34,12 @@ properties:
       Only -, .`, = and alphanumeric characters are allowed.
     type: string
   metadata:
-    description: JSON object of custom data
-    type: object
+    description: JSON object or stringified JSON of custom data
+    anyOf:
+      - type: string
+      - type: object
+      - type: integer
+      - type: integer
 example:
   email: "customer@email.com"
   amount: 350000

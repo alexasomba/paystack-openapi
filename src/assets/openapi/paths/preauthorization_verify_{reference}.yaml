@@ -1,0 +1,26 @@
+parameters:
+  - name: reference
+    description: The transaction reference used to intiate the transaction
+    in: path
+    required: true
+    schema:
+      type: string
+get:
+  tags:
+    - Card Preauthorization
+  summary: Verify Preauthorization
+  description: Fetch and confirm the status of a preauthorized transaction.
+  operationId: preauthorization_verify
+  responses:
+    "200":
+      description: ""
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/PreAuthorizationVerifyResponse.yaml
+    "401":
+      $ref: ../components/responses/Unauthorized.yaml
+    "404":
+      $ref: ../components/responses/NotFound.yaml
+    default:
+      description: Server error

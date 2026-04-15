@@ -8,54 +8,24 @@ TypeScript-first Paystack API client for Node.js, generated from the official Pa
 
 ## Features
 
-- **Spec-driven Accuracy**: Generated directly from the official Paystack OpenAPI specification.
-- **100% Type-safe**: Full TypeScript support with auto-generated types for every endpoint, request, and response.
-- **Smart Retries**: Automatic retries for transient failures (408, 429, 5xx) with exponential backoff and jitter.
-- **Retry-After Compliance**: Automatically respects the `Retry-After` header Sent by Paystack on 429 Rate Limit responses.
-- **Sophisticated Idempotency**: Built-in support for manual, static, or fully automatic UUID-based idempotency keys on POST requests.
-- **Detailed Error Handling**: `PaystackApiError` provides access to `status`, `url`, and the Paystack `requestId` for easier debugging.
+- **Spec-driven Accuracy**: Generated directly from the Paystack OpenAPI specification.
+- **100% Type-safe**: Full TypeScript support with generated types for every endpoint, request, and response.
+- **Smart Retries**: Automatic retries for transient failures with exponential backoff and jitter.
+- **Retry-After Compliance**: Automatically respects Paystack `Retry-After` headers on rate limit responses.
+- **Sophisticated Idempotency**: Built-in support for manual, static, or automatic UUID-based idempotency keys on POST requests.
+- **Detailed Error Handling**: `PaystackApiError` includes `status`, `url`, and Paystack `requestId`.
 - **Webhook Verification**: Timing-safe webhook signature verification helper included.
-
-<details>
-<summary><b>Supported Modules (31/31)</b></summary>
-
-- [x] Charge
-- [x] Customers
-- [x] Plans
-- [x] Products
-- [x] Subscriptions
-- [x] Transactions
-- [x] Verify Payments (Transaction verification)
-- [x] Transfers
-- [x] Dedicated Virtual Accounts
-- [x] Apple Pay
-- [x] Subaccounts
-- [x] Transaction Splits
-- [x] Settlements
-- [x] Transfers Control (OTP settings; under Transfers)
-- [x] Transfer Recipients
-- [x] Bulk Charges
-- [x] Refunds
-- [x] Verification (Resolve Account / Validate Account / Resolve Card BIN)
-- [x] Miscellaneous
-- [x] Disputes
-- [x] Control Panel (Payment session timeout)
-- [x] Terminal
-- [x] Virtual Terminal
-- [x] Direct Debit
-- [x] Payment Pages
-- [x] Payment Requests (Invoices)
-- [x] Integration
-- [x] Balance
-- [x] Banks
-- [x] Orders
-- [x] Storefronts
-</details>
 
 ## Install
 
 ```bash
 pnpm add @alexasomba/paystack-node
+```
+
+Authenticate requests with your Paystack secret key:
+
+```ts
+process.env.PAYSTACK_SECRET_KEY = "sk_test_...";
 ```
 
 ## Quick Start
@@ -65,10 +35,9 @@ import { createPaystack, assertOk } from "@alexasomba/paystack-node";
 
 const paystack = createPaystack({
   secretKey: process.env.PAYSTACK_SECRET_KEY!,
-  idempotencyKey: "auto", // Automatically prevent double charges on retries
+  idempotencyKey: "auto",
 });
 
-// Ergonomic operation helpers
 const result = await paystack.transaction_initialize({
   body: {
     email: "customer@example.com",
@@ -76,9 +45,28 @@ const result = await paystack.transaction_initialize({
   },
 });
 
-const data = assertOk(result); // Throws structured PaystackApiError on failure
+const data = assertOk(result);
 console.log(data.authorization_url);
 ```
+
+`assertOk` returns the successful Paystack payload and throws a structured `PaystackApiError` for non-2xx responses.
+
+## API Basics
+
+- Base URL: `https://api.paystack.co`
+- HTTPS is required for all requests.
+- Requests and responses are JSON-based.
+- Most successful responses follow the `status`, `message`, `data`, and optional `meta` envelope described in `Paystack-API/0a-Introduction.md`.
+- Amounts are usually sent in currency subunits such as kobo, pesewas, or cents. Check the module docs for currency-specific rules.
+
+## Authentication & Environments
+
+- Server-side SDKs should use your secret key (`sk_test_*` or `sk_live_*`).
+- Browser SDKs should use only your public key (`pk_test_*` or `pk_live_*`).
+- Send server-side API credentials as `Authorization: Bearer YOUR_SECRET_KEY`.
+- Test and live modes use different keys and isolated environments.
+- Rotate keys if they are exposed, and never commit secret keys to source control.
+- If you enable IP whitelisting in Paystack, requests from non-whitelisted IPs will be blocked.
 
 ## Advanced Configuration
 
@@ -102,13 +90,13 @@ const paystack = createPaystack({
 
 ### Webhooks
 
-Securely verify incoming webhooks from Paystack:
+Use the webhook helper when validating server-to-server events from Paystack. Pass the raw request body, not a parsed JSON object.
 
 ```ts
 import { verifyPaystackWebhookSignature } from "@alexasomba/paystack-node/webhooks";
 
 const isValid = verifyPaystackWebhookSignature({
-  rawBody: req.body, // Use raw string or Buffer
+  rawBody: req.body,
   signature: req.headers["x-paystack-signature"],
   secret: process.env.PAYSTACK_SECRET_KEY!,
 });
@@ -116,22 +104,26 @@ const isValid = verifyPaystackWebhookSignature({
 
 ### Handling Pagination
 
-Access pagination metadata from response headers:
+List endpoints expose pagination controls through query params like `perPage`, `page`, `next`, and `previous`. Response headers are still available when you need manual pagination control.
+
+## Pagination
+
+- Paystack supports both offset pagination and cursor pagination.
+- Offset pagination uses `page` and `perPage`.
+- Cursor pagination uses `use_cursor=true` plus `next` or `previous` cursors returned in `meta`.
+- Cursor pagination is especially useful for large or frequently changing datasets.
+- The exact `meta` shape varies by endpoint and pagination mode.
 
 ```ts
 const result = await paystack.customer_list({ query: { perPage: 20 } });
 const customers = assertOk(result);
-
-// Access headers for manual pagination control
 const total = result.response.headers.get("x-total-count");
 ```
 
 ## Error Handling
 
-The SDK provides utilities for robust error management:
-
 ```ts
-import { toPaystackApiError, PaystackApiError } from "@alexasomba/paystack-node";
+import { toPaystackApiError } from "@alexasomba/paystack-node";
 
 const result = await paystack.transaction_initialize({
   /* ... */
@@ -144,9 +136,305 @@ if (error) {
 }
 ```
 
+The `requestId` is useful when correlating logs or escalating an issue with Paystack support.
+
+## Errors
+
+- Paystack uses conventional HTTP status codes such as `200`, `201`, `400`, `401`, `404`, and `5xx`.
+- Error responses typically include `status`, `message`, `type`, `code`, and optional diagnostic `meta` information.
+- Error types described in `Paystack-API/0d-Errors.md` include `api_error`, `validation_error`, and `processor_error`.
+- For charge and verify flows, always inspect the returned response body and status fields, not just the HTTP code.
+
 ## Coverage
 
-This SDK currently tracks **~119 typed operations** from the Paystack API. For missing/incorrect endpoints, please open an issue in [this repository](https://github.com/alexasomba/paystack-node/issues).
+This SDK is generated from the SDK spec in this monorepo and currently tracks the full set of generated typed operations for the Paystack-API-aligned contract.
+
+## Modules
+
+For this SDK, these schema families are exposed through generated TypeScript types in `src/openapi-types.ts` and operation helpers in `src/operations.ts`.
+
+| Module                                                               | Schema / model family                                    |
+| -------------------------------------------------------------------- | -------------------------------------------------------- |
+| Transactions                                                         | `Transaction*`                                           |
+| Verify Payments (Transaction verification)                           | `VerifyResponse / TransactionFetchResponse`              |
+| Charges                                                              | `Charge*`                                                |
+| Bulk Charges                                                         | `BulkCharge*`                                            |
+| Subaccounts                                                          | `Subaccount*`                                            |
+| Transaction Splits                                                   | `Split*`                                                 |
+| Terminal                                                             | `Terminal*`                                              |
+| Virtual Terminal                                                     | `VirtualTerminal*`                                       |
+| Customers                                                            | `Customer*`                                              |
+| Direct Debit                                                         | `DirectDebit*`                                           |
+| Dedicated Virtual Accounts                                           | `DedicatedNuban* / DedicatedVirtualAccount*`             |
+| Apple Pay                                                            | `ApplePay*`                                              |
+| Plans                                                                | `Plan*`                                                  |
+| Subscriptions                                                        | `Subscription*`                                          |
+| Transfer Recipients                                                  | `TransferRecipient*`                                     |
+| Transfers                                                            | `Transfer*`                                              |
+| Transfers Control (OTP settings; under Transfers)                    | `TransferEnable* / TransferDisable* / TransferFinalize*` |
+| Balance                                                              | `Balance*`                                               |
+| Payment Requests (Invoices)                                          | `PaymentRequest*`                                        |
+| Verification (Resolve Account / Validate Account / Resolve Card BIN) | `Verification*`                                          |
+| Products                                                             | `Product*`                                               |
+| Storefronts                                                          | `Storefront*`                                            |
+| Orders                                                               | `Order*`                                                 |
+| Payment Pages                                                        | `Page*`                                                  |
+| Settlements                                                          | `Settlement*`                                            |
+| Integration                                                          | `Integration*`                                           |
+| Control Panel (Payment session timeout; under Integration)           | `ControlPanel*`                                          |
+| Refunds                                                              | `Refund*`                                                |
+| Disputes                                                             | `Dispute*`                                               |
+| Banks                                                                | `Bank*`                                                  |
+| Miscellaneous                                                        | `Miscellaneous* / Currency`                              |
+
+## Module Examples
+
+These are intentionally short examples. Use them as entry points, then expand the request bodies with the typed fields exposed by your editor and `src/openapi-types.ts`.
+
+### Transactions
+
+```ts
+const tx = await paystack.transaction_initialize({
+  body: { email: "customer@example.com", amount: 5000 },
+});
+```
+
+### Verify Payments (Transaction verification)
+
+```ts
+const verified = await paystack.transaction_verify({
+  params: { path: { reference: "ref_123" } },
+});
+```
+
+### Charges
+
+```ts
+await paystack.charge_create({
+  body: {
+    email: "customer@example.com",
+    amount: 5000,
+    bank: { code: "057", account_number: "0001234567" },
+  },
+});
+```
+
+### Bulk Charges
+
+```ts
+await paystack.bulkCharge_initiate({
+  body: [{ authorization: "AUTH_xxx", amount: 5000, reference: "bulk-ref-1" }],
+});
+```
+
+### Subaccounts
+
+```ts
+await paystack.subaccount_create({
+  body: {
+    business_name: "Acme Stores",
+    settlement_bank: "057",
+    account_number: "0001234567",
+    percentage_charge: 10,
+  },
+});
+```
+
+### Transaction Splits
+
+```ts
+await paystack.split_create({
+  body: { name: "Main split", type: "percentage", currency: "NGN", subaccounts: [] },
+});
+```
+
+### Terminal
+
+```ts
+const terminals = await paystack.terminal_list();
+```
+
+### Virtual Terminal
+
+```ts
+await paystack.virtualTerminal_create({
+  body: { name: "Web checkout terminal" },
+});
+```
+
+### Customers
+
+```ts
+await paystack.customer_create({
+  body: { email: "customer@example.com", first_name: "Ada", last_name: "Lovelace" },
+});
+```
+
+### Direct Debit
+
+```ts
+await paystack.directdebit_initialize({
+  body: { email: "customer@example.com", amount: 5000, bank_code: "057" },
+});
+```
+
+### Dedicated Virtual Accounts
+
+```ts
+await paystack.dedicatedAccount_assign({
+  body: { customer: 12345, preferred_bank: "wema-bank" },
+});
+```
+
+### Apple Pay
+
+```ts
+await paystack.applePay_registerDomain({
+  body: { domainName: "example.com" },
+});
+```
+
+### Plans
+
+```ts
+await paystack.plan_create({
+  body: { name: "Starter", amount: 500000, interval: "monthly" },
+});
+```
+
+### Subscriptions
+
+```ts
+await paystack.subscription_create({
+  body: { customer: "CUS_xxx", plan: "PLN_xxx" },
+});
+```
+
+### Transfer Recipients
+
+```ts
+await paystack.transferrecipient_create({
+  body: {
+    type: "nuban",
+    name: "Ada Lovelace",
+    account_number: "0001234567",
+    bank_code: "057",
+    currency: "NGN",
+  },
+});
+```
+
+### Transfers
+
+```ts
+await paystack.transfer_create({
+  body: { source: "balance", amount: 5000, recipient: "RCP_xxx", reason: "Vendor payout" },
+});
+```
+
+### Transfers Control (OTP settings; under Transfers)
+
+```ts
+await paystack.transfer_enableOtp();
+```
+
+### Balance
+
+```ts
+const balance = await paystack.balance_fetch();
+```
+
+### Payment Requests (Invoices)
+
+```ts
+await paystack.paymentRequest_create({
+  body: { customer: "CUS_xxx", amount: 5000, description: "Consulting invoice" },
+});
+```
+
+### Verification (Resolve Account / Validate Account / Resolve Card BIN)
+
+```ts
+await paystack.bank_resolveAccountNumber({
+  params: { query: { account_number: "0001234567", bank_code: "057" } },
+});
+```
+
+### Products
+
+```ts
+await paystack.product_create({
+  body: { name: "T-shirt", description: "Cotton tee", price: 5000, currency: "NGN" },
+});
+```
+
+### Storefronts
+
+```ts
+const storefronts = await paystack.storefront_list();
+```
+
+### Orders
+
+```ts
+await paystack.order_create({
+  body: { customer: "CUS_xxx", items: [] },
+});
+```
+
+### Payment Pages
+
+```ts
+await paystack.page_create({
+  body: { name: "Event Ticket", amount: 5000, description: "Landing page for ticket sales" },
+});
+```
+
+### Settlements
+
+```ts
+const settlements = await paystack.settlement_list();
+```
+
+### Integration
+
+```ts
+const timeout = await paystack.integration_fetchPaymentSessionTimeout();
+```
+
+### Control Panel (Payment session timeout; under Integration)
+
+```ts
+await paystack.integration_updatePaymentSessionTimeout({
+  body: { timeout: 20 },
+});
+```
+
+### Refunds
+
+```ts
+await paystack.refund_create({
+  body: { transaction: 123456789, amount: 5000 },
+});
+```
+
+### Disputes
+
+```ts
+const disputes = await paystack.dispute_list();
+```
+
+### Banks
+
+```ts
+const banks = await paystack.bank_list({ params: { query: { country: "nigeria" } } });
+```
+
+### Miscellaneous
+
+```ts
+const countries = await paystack.miscellaneous_listCountries();
+```
 
 ## Related SDKs
 
@@ -156,6 +444,11 @@ This SDK currently tracks **~119 typed operations** from the Paystack API. For m
 ## Used By
 
 - **[Better Auth Paystack Plugin](https://github.com/alexasomba/better-auth-paystack)**: A comprehensive Paystack plugin for Better Auth.
+
+## Source
+
+- Monorepo source: [alexasomba/paystack-openapi](https://github.com/alexasomba/paystack-openapi)
+- Standalone SDK repo: [https://github.com/alexasomba/paystack-node](https://github.com/alexasomba/paystack-node)
 
 ## License
 
