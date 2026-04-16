@@ -83,7 +83,11 @@ import type { MaybeOptionalInit } from 'openapi-fetch';
 import type { paths } from './openapi-types.js';
 import type { PaystackClient } from './client.js';
 
-type InitArg<T> = undefined extends T ? [init?: Exclude<T, undefined>] : [init: T];
+type InitArg<T, HasPath = false> = HasPath extends true
+  ? [init?: Partial<T>]
+  : undefined extends T
+    ? [init?: Exclude<T, undefined>]
+    : [init: T];
 `;
 
 const fnBlocks = operations
@@ -93,10 +97,10 @@ const fnBlocks = operations
     const typeExpr = `MaybeOptionalInit<paths[${JSON.stringify(apiPath)}], ${JSON.stringify(methodKey)}>`;
 
     const jsDocLines = [];
-    if (summary) {
+    if (summary !== undefined && summary !== null && summary !== "") {
       summary.split("\n").forEach((line) => jsDocLines.push(` * ${line.trim()}`));
     }
-    if (description) {
+    if (description !== undefined && description !== null && description !== "") {
       if (jsDocLines.length > 0) jsDocLines.push(" *");
       description.split("\n").forEach((line) => jsDocLines.push(` * ${line.trim()}`));
     }
@@ -149,7 +153,7 @@ const bindLines = Object.entries(categories)
         const pathParams = op.pathParams.map((p) => p.name).join(", ");
         const methodArgs = [
           ...op.pathParams.map((p) => `${p.name}: string`),
-          `...init: InitArg<${typeExpr}>`,
+          `...init: InitArg<${typeExpr}, ${op.pathParams.length > 0}>`,
         ].join(", ");
         const callArgs = [pathParams, "...init"].filter(Boolean).join(", ");
         return `      ${op.action}: (${methodArgs}) => ${op.name}(client, ${callArgs}),`;

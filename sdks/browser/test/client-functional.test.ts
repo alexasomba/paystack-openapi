@@ -45,7 +45,7 @@ describe("Client Functional Tests", () => {
         retry: { minDelayMs: 1, maxDelayMs: 2 },
       });
 
-      const { data } = await paystack.transaction_list();
+      const { data } = await paystack.transaction.list();
 
       expect(mockFetch).toHaveBeenCalledTimes(2);
       expect(data).toEqual({ status: true, data: { ok: true } });
@@ -60,7 +60,7 @@ describe("Client Functional Tests", () => {
         retry: { retries: 2, minDelayMs: 1, maxDelayMs: 2 },
       });
 
-      const { response } = await paystack.transaction_list();
+      const { response } = await paystack.transaction.list();
       expect(mockFetch).toHaveBeenCalledTimes(3);
       expect(response.status).toBe(503);
     });
@@ -87,7 +87,7 @@ describe("Client Functional Tests", () => {
         timeoutMs: 10,
       });
 
-      await expect(paystack.transaction_list()).rejects.toThrow();
+      await expect(paystack.transaction.list()).rejects.toThrow();
     });
   });
 
@@ -102,7 +102,7 @@ describe("Client Functional Tests", () => {
 
       const paystack = createPaystack({ apiKey, fetch: mockFetch });
 
-      await paystack.transaction_initialize({
+      await paystack.transaction.initialize({
         body: {
           email: "test@example.com",
           amount: 10000,
@@ -128,11 +128,7 @@ describe("Client Functional Tests", () => {
 
       const paystack = createPaystack({ apiKey, fetch: mockFetch });
 
-      await paystack.transaction_verify({
-        params: {
-          path: { reference: "REF_123" },
-        },
-      });
+      await paystack.transaction.verify("REF_123");
 
       const info = await getRequestInfo(mockFetch.mock.calls[0]);
       expect(info.url).toContain("/transaction/verify/REF_123");

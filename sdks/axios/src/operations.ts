@@ -9,7 +9,11 @@ import type { MaybeOptionalInit } from "openapi-fetch";
 import type { paths } from "./openapi-types.js";
 import type { PaystackClient } from "./client.js";
 
-type InitArg<T> = undefined extends T ? [init?: Exclude<T, undefined>] : [init: T];
+type InitArg<T, HasPath = false> = HasPath extends true
+  ? [init?: Partial<T>]
+  : undefined extends T
+    ? [init?: Exclude<T, undefined>]
+    : [init: T];
 
 /**
  * List Domains
@@ -2620,592 +2624,691 @@ export function virtualTerminal_update(
 export function bindOperations(client: PaystackClient) {
   return {
     applePay: {
-      listDomain: (...init: InitArg<MaybeOptionalInit<paths["/apple-pay/domain"], "get">>) =>
+      listDomain: (...init: InitArg<MaybeOptionalInit<paths["/apple-pay/domain"], "get">, false>) =>
         applePay_listDomain(client, ...init),
-      registerDomain: (...init: InitArg<MaybeOptionalInit<paths["/apple-pay/domain"], "post">>) =>
-        applePay_registerDomain(client, ...init),
+      registerDomain: (
+        ...init: InitArg<MaybeOptionalInit<paths["/apple-pay/domain"], "post">, false>
+      ) => applePay_registerDomain(client, ...init),
       unregisterDomain: (
-        ...init: InitArg<MaybeOptionalInit<paths["/apple-pay/domain"], "delete">>
+        ...init: InitArg<MaybeOptionalInit<paths["/apple-pay/domain"], "delete">, false>
       ) => applePay_unregisterDomain(client, ...init),
     },
     balance: {
-      fetch: (...init: InitArg<MaybeOptionalInit<paths["/balance"], "get">>) =>
+      fetch: (...init: InitArg<MaybeOptionalInit<paths["/balance"], "get">, false>) =>
         balance_fetch(client, ...init),
-      ledger: (...init: InitArg<MaybeOptionalInit<paths["/balance/ledger"], "get">>) =>
+      ledger: (...init: InitArg<MaybeOptionalInit<paths["/balance/ledger"], "get">, false>) =>
         balance_ledger(client, ...init),
     },
     bank: {
-      list: (...init: InitArg<MaybeOptionalInit<paths["/bank"], "get">>) =>
+      list: (...init: InitArg<MaybeOptionalInit<paths["/bank"], "get">, false>) =>
         bank_list(client, ...init),
-      resolveAccountNumber: (...init: InitArg<MaybeOptionalInit<paths["/bank/resolve"], "get">>) =>
-        bank_resolveAccountNumber(client, ...init),
+      resolveAccountNumber: (
+        ...init: InitArg<MaybeOptionalInit<paths["/bank/resolve"], "get">, false>
+      ) => bank_resolveAccountNumber(client, ...init),
       validateAccountNumber: (
-        ...init: InitArg<MaybeOptionalInit<paths["/bank/validate"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/bank/validate"], "post">, false>
       ) => bank_validateAccountNumber(client, ...init),
     },
     bulkCharge: {
       charges: (
         id_or_code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/bulkcharge/{id_or_code}/charges"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/bulkcharge/{id_or_code}/charges"], "get">, true>
       ) => bulkCharge_charges(client, id_or_code, ...init),
       fetch: (
         id_or_code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/bulkcharge/{id_or_code}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/bulkcharge/{id_or_code}"], "get">, true>
       ) => bulkCharge_fetch(client, id_or_code, ...init),
-      initiate: (...init: InitArg<MaybeOptionalInit<paths["/bulkcharge"], "post">>) =>
+      initiate: (...init: InitArg<MaybeOptionalInit<paths["/bulkcharge"], "post">, false>) =>
         bulkCharge_initiate(client, ...init),
-      list: (...init: InitArg<MaybeOptionalInit<paths["/bulkcharge"], "get">>) =>
+      list: (...init: InitArg<MaybeOptionalInit<paths["/bulkcharge"], "get">, false>) =>
         bulkCharge_list(client, ...init),
       pause: (
         code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/bulkcharge/pause/{code}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/bulkcharge/pause/{code}"], "get">, true>
       ) => bulkCharge_pause(client, code, ...init),
       resume: (
         code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/bulkcharge/resume/{code}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/bulkcharge/resume/{code}"], "get">, true>
       ) => bulkCharge_resume(client, code, ...init),
     },
     capitecPay: {
       requery: (
         ref: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/capitec-pay/requery/{ref}"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/capitec-pay/requery/{ref}"], "post">, true>
       ) => capitecPay_requery(client, ref, ...init),
     },
     charge: {
       check: (
         reference: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/charge/{reference}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/charge/{reference}"], "get">, true>
       ) => charge_check(client, reference, ...init),
-      create: (...init: InitArg<MaybeOptionalInit<paths["/charge"], "post">>) =>
+      create: (...init: InitArg<MaybeOptionalInit<paths["/charge"], "post">, false>) =>
         charge_create(client, ...init),
       submitAddress: (
-        ...init: InitArg<MaybeOptionalInit<paths["/charge/submit_address"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/charge/submit_address"], "post">, false>
       ) => charge_submitAddress(client, ...init),
       submitBirthday: (
-        ...init: InitArg<MaybeOptionalInit<paths["/charge/submit_birthday"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/charge/submit_birthday"], "post">, false>
       ) => charge_submitBirthday(client, ...init),
-      submitOtp: (...init: InitArg<MaybeOptionalInit<paths["/charge/submit_otp"], "post">>) =>
-        charge_submitOtp(client, ...init),
-      submitPhone: (...init: InitArg<MaybeOptionalInit<paths["/charge/submit_phone"], "post">>) =>
-        charge_submitPhone(client, ...init),
-      submitPin: (...init: InitArg<MaybeOptionalInit<paths["/charge/submit_pin"], "post">>) =>
-        charge_submitPin(client, ...init),
+      submitOtp: (
+        ...init: InitArg<MaybeOptionalInit<paths["/charge/submit_otp"], "post">, false>
+      ) => charge_submitOtp(client, ...init),
+      submitPhone: (
+        ...init: InitArg<MaybeOptionalInit<paths["/charge/submit_phone"], "post">, false>
+      ) => charge_submitPhone(client, ...init),
+      submitPin: (
+        ...init: InitArg<MaybeOptionalInit<paths["/charge/submit_pin"], "post">, false>
+      ) => charge_submitPin(client, ...init),
     },
     customer: {
-      create: (...init: InitArg<MaybeOptionalInit<paths["/customer"], "post">>) =>
+      create: (...init: InitArg<MaybeOptionalInit<paths["/customer"], "post">, false>) =>
         customer_create(client, ...init),
       deactivateAuthorization: (
-        ...init: InitArg<MaybeOptionalInit<paths["/customer/authorization/deactivate"], "post">>
+        ...init: InitArg<
+          MaybeOptionalInit<paths["/customer/authorization/deactivate"], "post">,
+          false
+        >
       ) => customer_deactivateAuthorization(client, ...init),
       directDebitActivationCharge: (
         id: string,
         ...init: InitArg<
-          MaybeOptionalInit<paths["/customer/{id}/directdebit-activation-charge"], "put">
+          MaybeOptionalInit<paths["/customer/{id}/directdebit-activation-charge"], "put">,
+          true
         >
       ) => customer_directDebitActivationCharge(client, id, ...init),
       fetch: (
         email_or_code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/customer/{email_or_code}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/customer/{email_or_code}"], "get">, true>
       ) => customer_fetch(client, email_or_code, ...init),
       fetchMandateAuthorizations: (
         id: string,
         ...init: InitArg<
-          MaybeOptionalInit<paths["/customer/{id}/directdebit-mandate-authorizations"], "get">
+          MaybeOptionalInit<paths["/customer/{id}/directdebit-mandate-authorizations"], "get">,
+          true
         >
       ) => customer_fetchMandateAuthorizations(client, id, ...init),
       initializeAuthorization: (
-        ...init: InitArg<MaybeOptionalInit<paths["/customer/authorization/initialize"], "post">>
+        ...init: InitArg<
+          MaybeOptionalInit<paths["/customer/authorization/initialize"], "post">,
+          false
+        >
       ) => customer_initializeAuthorization(client, ...init),
       initializeDirectDebit: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/customer/{id}/initialize-direct-debit"], "post">>
+        ...init: InitArg<
+          MaybeOptionalInit<paths["/customer/{id}/initialize-direct-debit"], "post">,
+          true
+        >
       ) => customer_initializeDirectDebit(client, id, ...init),
-      list: (...init: InitArg<MaybeOptionalInit<paths["/customer"], "get">>) =>
+      list: (...init: InitArg<MaybeOptionalInit<paths["/customer"], "get">, false>) =>
         customer_list(client, ...init),
       riskAction: (
-        ...init: InitArg<MaybeOptionalInit<paths["/customer/set_risk_action"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/customer/set_risk_action"], "post">, false>
       ) => customer_riskAction(client, ...init),
       update: (
         email_or_code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/customer/{email_or_code}"], "put">>
+        ...init: InitArg<MaybeOptionalInit<paths["/customer/{email_or_code}"], "put">, true>
       ) => customer_update(client, email_or_code, ...init),
       validate: (
         customer_code: string,
         ...init: InitArg<
-          MaybeOptionalInit<paths["/customer/{customer_code}/identification"], "post">
+          MaybeOptionalInit<paths["/customer/{customer_code}/identification"], "post">,
+          true
         >
       ) => customer_validate(client, customer_code, ...init),
       verifyAuthorization: (
         reference: string,
         ...init: InitArg<
-          MaybeOptionalInit<paths["/customer/authorization/verify/{reference}"], "get">
+          MaybeOptionalInit<paths["/customer/authorization/verify/{reference}"], "get">,
+          true
         >
       ) => customer_verifyAuthorization(client, reference, ...init),
     },
     dedicatedAccount: {
-      addSplit: (...init: InitArg<MaybeOptionalInit<paths["/dedicated_account/split"], "post">>) =>
-        dedicatedAccount_addSplit(client, ...init),
-      assign: (...init: InitArg<MaybeOptionalInit<paths["/dedicated_account/assign"], "post">>) =>
-        dedicatedAccount_assign(client, ...init),
+      addSplit: (
+        ...init: InitArg<MaybeOptionalInit<paths["/dedicated_account/split"], "post">, false>
+      ) => dedicatedAccount_addSplit(client, ...init),
+      assign: (
+        ...init: InitArg<MaybeOptionalInit<paths["/dedicated_account/assign"], "post">, false>
+      ) => dedicatedAccount_assign(client, ...init),
       availableProviders: (
-        ...init: InitArg<MaybeOptionalInit<paths["/dedicated_account/available_providers"], "get">>
+        ...init: InitArg<
+          MaybeOptionalInit<paths["/dedicated_account/available_providers"], "get">,
+          false
+        >
       ) => dedicatedAccount_availableProviders(client, ...init),
-      create: (...init: InitArg<MaybeOptionalInit<paths["/dedicated_account"], "post">>) =>
+      create: (...init: InitArg<MaybeOptionalInit<paths["/dedicated_account"], "post">, false>) =>
         dedicatedAccount_create(client, ...init),
       deactivate: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/dedicated_account/{id}"], "delete">>
+        ...init: InitArg<MaybeOptionalInit<paths["/dedicated_account/{id}"], "delete">, true>
       ) => dedicatedAccount_deactivate(client, id, ...init),
       fetch: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/dedicated_account/{id}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/dedicated_account/{id}"], "get">, true>
       ) => dedicatedAccount_fetch(client, id, ...init),
-      list: (...init: InitArg<MaybeOptionalInit<paths["/dedicated_account"], "get">>) =>
+      list: (...init: InitArg<MaybeOptionalInit<paths["/dedicated_account"], "get">, false>) =>
         dedicatedAccount_list(client, ...init),
       removeSplit: (
-        ...init: InitArg<MaybeOptionalInit<paths["/dedicated_account/split"], "delete">>
+        ...init: InitArg<MaybeOptionalInit<paths["/dedicated_account/split"], "delete">, false>
       ) => dedicatedAccount_removeSplit(client, ...init),
-      requery: (...init: InitArg<MaybeOptionalInit<paths["/dedicated_account/requery"], "get">>) =>
-        dedicatedAccount_requery(client, ...init),
+      requery: (
+        ...init: InitArg<MaybeOptionalInit<paths["/dedicated_account/requery"], "get">, false>
+      ) => dedicatedAccount_requery(client, ...init),
     },
     directdebit: {
       listMandateAuthorizations: (
-        ...init: InitArg<MaybeOptionalInit<paths["/directdebit/mandate-authorizations"], "get">>
+        ...init: InitArg<
+          MaybeOptionalInit<paths["/directdebit/mandate-authorizations"], "get">,
+          false
+        >
       ) => directdebit_listMandateAuthorizations(client, ...init),
       triggerActivationCharge: (
-        ...init: InitArg<MaybeOptionalInit<paths["/directdebit/activation-charge"], "put">>
+        ...init: InitArg<MaybeOptionalInit<paths["/directdebit/activation-charge"], "put">, false>
       ) => directdebit_triggerActivationCharge(client, ...init),
     },
     dispute: {
-      download: (...init: InitArg<MaybeOptionalInit<paths["/dispute/export"], "get">>) =>
+      download: (...init: InitArg<MaybeOptionalInit<paths["/dispute/export"], "get">, false>) =>
         dispute_download(client, ...init),
       evidence: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/dispute/{id}/evidence"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/dispute/{id}/evidence"], "post">, true>
       ) => dispute_evidence(client, id, ...init),
-      fetch: (id: string, ...init: InitArg<MaybeOptionalInit<paths["/dispute/{id}"], "get">>) =>
-        dispute_fetch(client, id, ...init),
-      list: (...init: InitArg<MaybeOptionalInit<paths["/dispute"], "get">>) =>
+      fetch: (
+        id: string,
+        ...init: InitArg<MaybeOptionalInit<paths["/dispute/{id}"], "get">, true>
+      ) => dispute_fetch(client, id, ...init),
+      list: (...init: InitArg<MaybeOptionalInit<paths["/dispute"], "get">, false>) =>
         dispute_list(client, ...init),
       resolve: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/dispute/{id}/resolve"], "put">>
+        ...init: InitArg<MaybeOptionalInit<paths["/dispute/{id}/resolve"], "put">, true>
       ) => dispute_resolve(client, id, ...init),
       transaction: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/dispute/transaction/{id}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/dispute/transaction/{id}"], "get">, true>
       ) => dispute_transaction(client, id, ...init),
-      update: (id: string, ...init: InitArg<MaybeOptionalInit<paths["/dispute/{id}"], "put">>) =>
-        dispute_update(client, id, ...init),
+      update: (
+        id: string,
+        ...init: InitArg<MaybeOptionalInit<paths["/dispute/{id}"], "put">, true>
+      ) => dispute_update(client, id, ...init),
       uploadUrl: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/dispute/{id}/upload_url"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/dispute/{id}/upload_url"], "get">, true>
       ) => dispute_uploadUrl(client, id, ...init),
     },
     integration: {
       fetchPaymentSessionTimeout: (
-        ...init: InitArg<MaybeOptionalInit<paths["/integration/payment_session_timeout"], "get">>
+        ...init: InitArg<
+          MaybeOptionalInit<paths["/integration/payment_session_timeout"], "get">,
+          false
+        >
       ) => integration_fetchPaymentSessionTimeout(client, ...init),
       updatePaymentSessionTimeout: (
-        ...init: InitArg<MaybeOptionalInit<paths["/integration/payment_session_timeout"], "put">>
+        ...init: InitArg<
+          MaybeOptionalInit<paths["/integration/payment_session_timeout"], "put">,
+          false
+        >
       ) => integration_updatePaymentSessionTimeout(client, ...init),
     },
     miscellaneous: {
-      avs: (...init: InitArg<MaybeOptionalInit<paths["/address_verification/states"], "get">>) =>
-        miscellaneous_avs(client, ...init),
-      listCountries: (...init: InitArg<MaybeOptionalInit<paths["/country"], "get">>) =>
+      avs: (
+        ...init: InitArg<MaybeOptionalInit<paths["/address_verification/states"], "get">, false>
+      ) => miscellaneous_avs(client, ...init),
+      listCountries: (...init: InitArg<MaybeOptionalInit<paths["/country"], "get">, false>) =>
         miscellaneous_listCountries(client, ...init),
       resolveCardBin: (
         bin: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/decision/bin/{bin}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/decision/bin/{bin}"], "get">, true>
       ) => miscellaneous_resolveCardBin(client, bin, ...init),
     },
     order: {
-      create: (...init: InitArg<MaybeOptionalInit<paths["/order"], "post">>) =>
+      create: (...init: InitArg<MaybeOptionalInit<paths["/order"], "post">, false>) =>
         order_create(client, ...init),
-      fetch: (id: string, ...init: InitArg<MaybeOptionalInit<paths["/order/{id}"], "get">>) =>
+      fetch: (id: string, ...init: InitArg<MaybeOptionalInit<paths["/order/{id}"], "get">, true>) =>
         order_fetch(client, id, ...init),
-      list: (...init: InitArg<MaybeOptionalInit<paths["/order"], "get">>) =>
+      list: (...init: InitArg<MaybeOptionalInit<paths["/order"], "get">, false>) =>
         order_list(client, ...init),
       product: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/order/product/{id}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/order/product/{id}"], "get">, true>
       ) => order_product(client, id, ...init),
       validate: (
         code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/order/{code}/validate"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/order/{code}/validate"], "get">, true>
       ) => order_validate(client, code, ...init),
     },
     page: {
       addProducts: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/page/{id}/product"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/page/{id}/product"], "post">, true>
       ) => page_addProducts(client, id, ...init),
       checkSlugAvailability: (
         slug: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/page/check_slug_availability/{slug}"], "get">>
+        ...init: InitArg<
+          MaybeOptionalInit<paths["/page/check_slug_availability/{slug}"], "get">,
+          true
+        >
       ) => page_checkSlugAvailability(client, slug, ...init),
-      create: (...init: InitArg<MaybeOptionalInit<paths["/page"], "post">>) =>
+      create: (...init: InitArg<MaybeOptionalInit<paths["/page"], "post">, false>) =>
         page_create(client, ...init),
       fetch: (
         id_or_slug: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/page/{id_or_slug}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/page/{id_or_slug}"], "get">, true>
       ) => page_fetch(client, id_or_slug, ...init),
-      list: (...init: InitArg<MaybeOptionalInit<paths["/page"], "get">>) =>
+      list: (...init: InitArg<MaybeOptionalInit<paths["/page"], "get">, false>) =>
         page_list(client, ...init),
       update: (
         id_or_slug: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/page/{id_or_slug}"], "put">>
+        ...init: InitArg<MaybeOptionalInit<paths["/page/{id_or_slug}"], "put">, true>
       ) => page_update(client, id_or_slug, ...init),
     },
     paymentRequest: {
       archive: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/archive/{id}"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/archive/{id}"], "post">, true>
       ) => paymentRequest_archive(client, id, ...init),
-      create: (...init: InitArg<MaybeOptionalInit<paths["/paymentrequest"], "post">>) =>
+      create: (...init: InitArg<MaybeOptionalInit<paths["/paymentrequest"], "post">, false>) =>
         paymentRequest_create(client, ...init),
       fetch: (
         id_or_code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/{id_or_code}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/{id_or_code}"], "get">, true>
       ) => paymentRequest_fetch(client, id_or_code, ...init),
       finalize: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/finalize/{id}"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/finalize/{id}"], "post">, true>
       ) => paymentRequest_finalize(client, id, ...init),
-      list: (...init: InitArg<MaybeOptionalInit<paths["/paymentrequest"], "get">>) =>
+      list: (...init: InitArg<MaybeOptionalInit<paths["/paymentrequest"], "get">, false>) =>
         paymentRequest_list(client, ...init),
       notify: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/notify/{id}"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/notify/{id}"], "post">, true>
       ) => paymentRequest_notify(client, id, ...init),
-      totals: (...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/totals"], "get">>) =>
-        paymentRequest_totals(client, ...init),
+      totals: (
+        ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/totals"], "get">, false>
+      ) => paymentRequest_totals(client, ...init),
       update: (
         id_or_code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/{id_or_code}"], "put">>
+        ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/{id_or_code}"], "put">, true>
       ) => paymentRequest_update(client, id_or_code, ...init),
       verify: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/verify/{id}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/paymentrequest/verify/{id}"], "get">, true>
       ) => paymentRequest_verify(client, id, ...init),
     },
     plan: {
-      create: (...init: InitArg<MaybeOptionalInit<paths["/plan"], "post">>) =>
+      create: (...init: InitArg<MaybeOptionalInit<paths["/plan"], "post">, false>) =>
         plan_create(client, ...init),
       fetch: (
         id_or_code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/plan/{id_or_code}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/plan/{id_or_code}"], "get">, true>
       ) => plan_fetch(client, id_or_code, ...init),
-      list: (...init: InitArg<MaybeOptionalInit<paths["/plan"], "get">>) =>
+      list: (...init: InitArg<MaybeOptionalInit<paths["/plan"], "get">, false>) =>
         plan_list(client, ...init),
       update: (
         id_or_code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/plan/{id_or_code}"], "put">>
+        ...init: InitArg<MaybeOptionalInit<paths["/plan/{id_or_code}"], "put">, true>
       ) => plan_update(client, id_or_code, ...init),
     },
     preauthorization: {
-      capture: (...init: InitArg<MaybeOptionalInit<paths["/preauthorization/capture"], "post">>) =>
-        preauthorization_capture(client, ...init),
+      capture: (
+        ...init: InitArg<MaybeOptionalInit<paths["/preauthorization/capture"], "post">, false>
+      ) => preauthorization_capture(client, ...init),
       initialize: (
-        ...init: InitArg<MaybeOptionalInit<paths["/preauthorization/initialize"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/preauthorization/initialize"], "post">, false>
       ) => preauthorization_initialize(client, ...init),
-      list: (...init: InitArg<MaybeOptionalInit<paths["/preauthorization"], "get">>) =>
+      list: (...init: InitArg<MaybeOptionalInit<paths["/preauthorization"], "get">, false>) =>
         preauthorization_list(client, ...init),
-      release: (...init: InitArg<MaybeOptionalInit<paths["/preauthorization/release"], "post">>) =>
-        preauthorization_release(client, ...init),
+      release: (
+        ...init: InitArg<MaybeOptionalInit<paths["/preauthorization/release"], "post">, false>
+      ) => preauthorization_release(client, ...init),
       reserve_authorization: (
         ...init: InitArg<
-          MaybeOptionalInit<paths["/preauthorization/reserve_authorization"], "post">
+          MaybeOptionalInit<paths["/preauthorization/reserve_authorization"], "post">,
+          false
         >
       ) => preauthorization_reserve_authorization(client, ...init),
       verify: (
         reference: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/preauthorization/verify/{reference}"], "get">>
+        ...init: InitArg<
+          MaybeOptionalInit<paths["/preauthorization/verify/{reference}"], "get">,
+          true
+        >
       ) => preauthorization_verify(client, reference, ...init),
     },
     product: {
-      create: (...init: InitArg<MaybeOptionalInit<paths["/product"], "post">>) =>
+      create: (...init: InitArg<MaybeOptionalInit<paths["/product"], "post">, false>) =>
         product_create(client, ...init),
-      delete: (id: string, ...init: InitArg<MaybeOptionalInit<paths["/product/{id}"], "delete">>) =>
-        product_delete(client, id, ...init),
-      fetch: (id: string, ...init: InitArg<MaybeOptionalInit<paths["/product/{id}"], "get">>) =>
-        product_fetch(client, id, ...init),
-      list: (...init: InitArg<MaybeOptionalInit<paths["/product"], "get">>) =>
+      delete: (
+        id: string,
+        ...init: InitArg<MaybeOptionalInit<paths["/product/{id}"], "delete">, true>
+      ) => product_delete(client, id, ...init),
+      fetch: (
+        id: string,
+        ...init: InitArg<MaybeOptionalInit<paths["/product/{id}"], "get">, true>
+      ) => product_fetch(client, id, ...init),
+      list: (...init: InitArg<MaybeOptionalInit<paths["/product"], "get">, false>) =>
         product_list(client, ...init),
-      update: (id: string, ...init: InitArg<MaybeOptionalInit<paths["/product/{id}"], "put">>) =>
-        product_update(client, id, ...init),
+      update: (
+        id: string,
+        ...init: InitArg<MaybeOptionalInit<paths["/product/{id}"], "put">, true>
+      ) => product_update(client, id, ...init),
     },
     refund: {
-      create: (...init: InitArg<MaybeOptionalInit<paths["/refund"], "post">>) =>
+      create: (...init: InitArg<MaybeOptionalInit<paths["/refund"], "post">, false>) =>
         refund_create(client, ...init),
-      fetch: (id: string, ...init: InitArg<MaybeOptionalInit<paths["/refund/{id}"], "get">>) =>
-        refund_fetch(client, id, ...init),
-      list: (...init: InitArg<MaybeOptionalInit<paths["/refund"], "get">>) =>
+      fetch: (
+        id: string,
+        ...init: InitArg<MaybeOptionalInit<paths["/refund/{id}"], "get">, true>
+      ) => refund_fetch(client, id, ...init),
+      list: (...init: InitArg<MaybeOptionalInit<paths["/refund"], "get">, false>) =>
         refund_list(client, ...init),
       retry: (
         id: string,
         ...init: InitArg<
-          MaybeOptionalInit<paths["/refund/retry_with_customer_details/{id}"], "post">
+          MaybeOptionalInit<paths["/refund/retry_with_customer_details/{id}"], "post">,
+          true
         >
       ) => refund_retry(client, id, ...init),
     },
     settlements: {
-      fetch: (...init: InitArg<MaybeOptionalInit<paths["/settlement"], "get">>) =>
+      fetch: (...init: InitArg<MaybeOptionalInit<paths["/settlement"], "get">, false>) =>
         settlements_fetch(client, ...init),
       transaction: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/settlement/{id}/transactions"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/settlement/{id}/transactions"], "get">, true>
       ) => settlements_transaction(client, id, ...init),
     },
     split: {
       addSubaccount: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/split/{id}/subaccount/add"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/split/{id}/subaccount/add"], "post">, true>
       ) => split_addSubaccount(client, id, ...init),
-      create: (...init: InitArg<MaybeOptionalInit<paths["/split"], "post">>) =>
+      create: (...init: InitArg<MaybeOptionalInit<paths["/split"], "post">, false>) =>
         split_create(client, ...init),
-      fetch: (id: string, ...init: InitArg<MaybeOptionalInit<paths["/split/{id}"], "get">>) =>
+      fetch: (id: string, ...init: InitArg<MaybeOptionalInit<paths["/split/{id}"], "get">, true>) =>
         split_fetch(client, id, ...init),
-      list: (...init: InitArg<MaybeOptionalInit<paths["/split"], "get">>) =>
+      list: (...init: InitArg<MaybeOptionalInit<paths["/split"], "get">, false>) =>
         split_list(client, ...init),
       removeSubaccount: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/split/{id}/subaccount/remove"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/split/{id}/subaccount/remove"], "post">, true>
       ) => split_removeSubaccount(client, id, ...init),
-      update: (id: string, ...init: InitArg<MaybeOptionalInit<paths["/split/{id}"], "put">>) =>
-        split_update(client, id, ...init),
+      update: (
+        id: string,
+        ...init: InitArg<MaybeOptionalInit<paths["/split/{id}"], "put">, true>
+      ) => split_update(client, id, ...init),
     },
     storefront: {
       addProducts: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/storefront/{id}/product"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/storefront/{id}/product"], "post">, true>
       ) => storefront_addProducts(client, id, ...init),
-      create: (...init: InitArg<MaybeOptionalInit<paths["/storefront"], "post">>) =>
+      create: (...init: InitArg<MaybeOptionalInit<paths["/storefront"], "post">, false>) =>
         storefront_create(client, ...init),
       delete: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/storefront/{id}"], "delete">>
+        ...init: InitArg<MaybeOptionalInit<paths["/storefront/{id}"], "delete">, true>
       ) => storefront_delete(client, id, ...init),
       duplicate: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/storefront/{id}/duplicate"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/storefront/{id}/duplicate"], "post">, true>
       ) => storefront_duplicate(client, id, ...init),
-      fetch: (id: string, ...init: InitArg<MaybeOptionalInit<paths["/storefront/{id}"], "get">>) =>
-        storefront_fetch(client, id, ...init),
+      fetch: (
+        id: string,
+        ...init: InitArg<MaybeOptionalInit<paths["/storefront/{id}"], "get">, true>
+      ) => storefront_fetch(client, id, ...init),
       fetchOrders: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/storefront/{id}/order"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/storefront/{id}/order"], "get">, true>
       ) => storefront_fetchOrders(client, id, ...init),
-      list: (...init: InitArg<MaybeOptionalInit<paths["/storefront"], "get">>) =>
+      list: (...init: InitArg<MaybeOptionalInit<paths["/storefront"], "get">, false>) =>
         storefront_list(client, ...init),
       listProducts: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/storefront/{id}/product"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/storefront/{id}/product"], "get">, true>
       ) => storefront_listProducts(client, id, ...init),
       publish: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/storefront/{id}/publish"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/storefront/{id}/publish"], "post">, true>
       ) => storefront_publish(client, id, ...init),
-      update: (id: string, ...init: InitArg<MaybeOptionalInit<paths["/storefront/{id}"], "put">>) =>
-        storefront_update(client, id, ...init),
+      update: (
+        id: string,
+        ...init: InitArg<MaybeOptionalInit<paths["/storefront/{id}"], "put">, true>
+      ) => storefront_update(client, id, ...init),
       verifySlug: (
         slug: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/storefront/verify/{slug}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/storefront/verify/{slug}"], "get">, true>
       ) => storefront_verifySlug(client, slug, ...init),
     },
     subaccount: {
-      create: (...init: InitArg<MaybeOptionalInit<paths["/subaccount"], "post">>) =>
+      create: (...init: InitArg<MaybeOptionalInit<paths["/subaccount"], "post">, false>) =>
         subaccount_create(client, ...init),
       fetch: (
         id_or_code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/subaccount/{id_or_code}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/subaccount/{id_or_code}"], "get">, true>
       ) => subaccount_fetch(client, id_or_code, ...init),
-      list: (...init: InitArg<MaybeOptionalInit<paths["/subaccount"], "get">>) =>
+      list: (...init: InitArg<MaybeOptionalInit<paths["/subaccount"], "get">, false>) =>
         subaccount_list(client, ...init),
       update: (
         id_or_code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/subaccount/{id_or_code}"], "put">>
+        ...init: InitArg<MaybeOptionalInit<paths["/subaccount/{id_or_code}"], "put">, true>
       ) => subaccount_update(client, id_or_code, ...init),
     },
     subscription: {
-      create: (...init: InitArg<MaybeOptionalInit<paths["/subscription"], "post">>) =>
+      create: (...init: InitArg<MaybeOptionalInit<paths["/subscription"], "post">, false>) =>
         subscription_create(client, ...init),
-      disable: (...init: InitArg<MaybeOptionalInit<paths["/subscription/disable"], "post">>) =>
-        subscription_disable(client, ...init),
-      enable: (...init: InitArg<MaybeOptionalInit<paths["/subscription/enable"], "post">>) =>
+      disable: (
+        ...init: InitArg<MaybeOptionalInit<paths["/subscription/disable"], "post">, false>
+      ) => subscription_disable(client, ...init),
+      enable: (...init: InitArg<MaybeOptionalInit<paths["/subscription/enable"], "post">, false>) =>
         subscription_enable(client, ...init),
       fetch: (
         id_or_code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/subscription/{id_or_code}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/subscription/{id_or_code}"], "get">, true>
       ) => subscription_fetch(client, id_or_code, ...init),
-      list: (...init: InitArg<MaybeOptionalInit<paths["/subscription"], "get">>) =>
+      list: (...init: InitArg<MaybeOptionalInit<paths["/subscription"], "get">, false>) =>
         subscription_list(client, ...init),
       manageEmail: (
         code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/subscription/{code}/manage/email"], "post">>
+        ...init: InitArg<
+          MaybeOptionalInit<paths["/subscription/{code}/manage/email"], "post">,
+          true
+        >
       ) => subscription_manageEmail(client, code, ...init),
       manageLink: (
         code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/subscription/{code}/manage/link"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/subscription/{code}/manage/link"], "get">, true>
       ) => subscription_manageLink(client, code, ...init),
     },
     terminal: {
       commission: (
-        ...init: InitArg<MaybeOptionalInit<paths["/terminal/commission_device"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/terminal/commission_device"], "post">, false>
       ) => terminal_commission(client, ...init),
       decommission: (
-        ...init: InitArg<MaybeOptionalInit<paths["/terminal/decommission_device"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/terminal/decommission_device"], "post">, false>
       ) => terminal_decommission(client, ...init),
       fetch: (
         terminal_id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/terminal/{terminal_id}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/terminal/{terminal_id}"], "get">, true>
       ) => terminal_fetch(client, terminal_id, ...init),
       fetchEventStatus: (
         terminal_id: string,
         event_id: string,
         ...init: InitArg<
-          MaybeOptionalInit<paths["/terminal/{terminal_id}/event/{event_id}"], "get">
+          MaybeOptionalInit<paths["/terminal/{terminal_id}/event/{event_id}"], "get">,
+          true
         >
       ) => terminal_fetchEventStatus(client, terminal_id, event_id, ...init),
       fetchTerminalStatus: (
         terminal_id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/terminal/{terminal_id}/presence"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/terminal/{terminal_id}/presence"], "get">, true>
       ) => terminal_fetchTerminalStatus(client, terminal_id, ...init),
-      list: (...init: InitArg<MaybeOptionalInit<paths["/terminal"], "get">>) =>
+      list: (...init: InitArg<MaybeOptionalInit<paths["/terminal"], "get">, false>) =>
         terminal_list(client, ...init),
       sendEvent: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/terminal/{id}/event"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/terminal/{id}/event"], "post">, true>
       ) => terminal_sendEvent(client, id, ...init),
       update: (
         terminal_id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/terminal/{terminal_id}"], "put">>
+        ...init: InitArg<MaybeOptionalInit<paths["/terminal/{terminal_id}"], "put">, true>
       ) => terminal_update(client, terminal_id, ...init),
     },
     transaction: {
       chargeAuthorization: (
-        ...init: InitArg<MaybeOptionalInit<paths["/transaction/charge_authorization"], "post">>
+        ...init: InitArg<
+          MaybeOptionalInit<paths["/transaction/charge_authorization"], "post">,
+          false
+        >
       ) => transaction_chargeAuthorization(client, ...init),
       checkAuthorization: (
-        ...init: InitArg<MaybeOptionalInit<paths["/transaction/check_authorization"], "post">>
+        ...init: InitArg<
+          MaybeOptionalInit<paths["/transaction/check_authorization"], "post">,
+          false
+        >
       ) => transaction_checkAuthorization(client, ...init),
       event: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/transaction/{id}/event"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/transaction/{id}/event"], "get">, true>
       ) => transaction_event(client, id, ...init),
-      export: (...init: InitArg<MaybeOptionalInit<paths["/transaction/export"], "get">>) =>
+      export: (...init: InitArg<MaybeOptionalInit<paths["/transaction/export"], "get">, false>) =>
         transaction_export(client, ...init),
-      fetch: (id: string, ...init: InitArg<MaybeOptionalInit<paths["/transaction/{id}"], "get">>) =>
-        transaction_fetch(client, id, ...init),
-      initialize: (...init: InitArg<MaybeOptionalInit<paths["/transaction/initialize"], "post">>) =>
-        transaction_initialize(client, ...init),
-      list: (...init: InitArg<MaybeOptionalInit<paths["/transaction"], "get">>) =>
+      fetch: (
+        id: string,
+        ...init: InitArg<MaybeOptionalInit<paths["/transaction/{id}"], "get">, true>
+      ) => transaction_fetch(client, id, ...init),
+      initialize: (
+        ...init: InitArg<MaybeOptionalInit<paths["/transaction/initialize"], "post">, false>
+      ) => transaction_initialize(client, ...init),
+      list: (...init: InitArg<MaybeOptionalInit<paths["/transaction"], "get">, false>) =>
         transaction_list(client, ...init),
       partialDebit: (
-        ...init: InitArg<MaybeOptionalInit<paths["/transaction/partial_debit"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/transaction/partial_debit"], "post">, false>
       ) => transaction_partialDebit(client, ...init),
       session: (
         id: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/transaction/{id}/session"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/transaction/{id}/session"], "get">, true>
       ) => transaction_session(client, id, ...init),
       timeline: (
         id_or_reference: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/transaction/timeline/{id_or_reference}"], "get">>
+        ...init: InitArg<
+          MaybeOptionalInit<paths["/transaction/timeline/{id_or_reference}"], "get">,
+          true
+        >
       ) => transaction_timeline(client, id_or_reference, ...init),
-      totals: (...init: InitArg<MaybeOptionalInit<paths["/transaction/totals"], "get">>) =>
+      totals: (...init: InitArg<MaybeOptionalInit<paths["/transaction/totals"], "get">, false>) =>
         transaction_totals(client, ...init),
       verify: (
         reference: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/transaction/verify/{reference}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/transaction/verify/{reference}"], "get">, true>
       ) => transaction_verify(client, reference, ...init),
     },
     transfer: {
-      bulk: (...init: InitArg<MaybeOptionalInit<paths["/transfer/bulk"], "post">>) =>
+      bulk: (...init: InitArg<MaybeOptionalInit<paths["/transfer/bulk"], "post">, false>) =>
         transfer_bulk(client, ...init),
-      disableOtp: (...init: InitArg<MaybeOptionalInit<paths["/transfer/disable_otp"], "post">>) =>
-        transfer_disableOtp(client, ...init),
+      disableOtp: (
+        ...init: InitArg<MaybeOptionalInit<paths["/transfer/disable_otp"], "post">, false>
+      ) => transfer_disableOtp(client, ...init),
       disableOtpFinalize: (
-        ...init: InitArg<MaybeOptionalInit<paths["/transfer/disable_otp_finalize"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/transfer/disable_otp_finalize"], "post">, false>
       ) => transfer_disableOtpFinalize(client, ...init),
-      enableOtp: (...init: InitArg<MaybeOptionalInit<paths["/transfer/enable_otp"], "post">>) =>
-        transfer_enableOtp(client, ...init),
-      exportTransfer: (...init: InitArg<MaybeOptionalInit<paths["/transfer/export"], "get">>) =>
-        transfer_exportTransfer(client, ...init),
+      enableOtp: (
+        ...init: InitArg<MaybeOptionalInit<paths["/transfer/enable_otp"], "post">, false>
+      ) => transfer_enableOtp(client, ...init),
+      exportTransfer: (
+        ...init: InitArg<MaybeOptionalInit<paths["/transfer/export"], "get">, false>
+      ) => transfer_exportTransfer(client, ...init),
       fetch: (
         id_or_code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/transfer/{id_or_code}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/transfer/{id_or_code}"], "get">, true>
       ) => transfer_fetch(client, id_or_code, ...init),
       finalize: (
-        ...init: InitArg<MaybeOptionalInit<paths["/transfer/finalize_transfer"], "post">>
+        ...init: InitArg<MaybeOptionalInit<paths["/transfer/finalize_transfer"], "post">, false>
       ) => transfer_finalize(client, ...init),
-      initiate: (...init: InitArg<MaybeOptionalInit<paths["/transfer"], "post">>) =>
+      initiate: (...init: InitArg<MaybeOptionalInit<paths["/transfer"], "post">, false>) =>
         transfer_initiate(client, ...init),
-      list: (...init: InitArg<MaybeOptionalInit<paths["/transfer"], "get">>) =>
+      list: (...init: InitArg<MaybeOptionalInit<paths["/transfer"], "get">, false>) =>
         transfer_list(client, ...init),
-      resendOtp: (...init: InitArg<MaybeOptionalInit<paths["/transfer/resend_otp"], "post">>) =>
-        transfer_resendOtp(client, ...init),
+      resendOtp: (
+        ...init: InitArg<MaybeOptionalInit<paths["/transfer/resend_otp"], "post">, false>
+      ) => transfer_resendOtp(client, ...init),
       verify: (
         reference: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/transfer/verify/{reference}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/transfer/verify/{reference}"], "get">, true>
       ) => transfer_verify(client, reference, ...init),
     },
     transferrecipient: {
-      bulk: (...init: InitArg<MaybeOptionalInit<paths["/transferrecipient/bulk"], "post">>) =>
-        transferrecipient_bulk(client, ...init),
-      create: (...init: InitArg<MaybeOptionalInit<paths["/transferrecipient"], "post">>) =>
+      bulk: (
+        ...init: InitArg<MaybeOptionalInit<paths["/transferrecipient/bulk"], "post">, false>
+      ) => transferrecipient_bulk(client, ...init),
+      create: (...init: InitArg<MaybeOptionalInit<paths["/transferrecipient"], "post">, false>) =>
         transferrecipient_create(client, ...init),
       delete: (
         id_or_code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/transferrecipient/{id_or_code}"], "delete">>
+        ...init: InitArg<
+          MaybeOptionalInit<paths["/transferrecipient/{id_or_code}"], "delete">,
+          true
+        >
       ) => transferrecipient_delete(client, id_or_code, ...init),
       fetch: (
         id_or_code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/transferrecipient/{id_or_code}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/transferrecipient/{id_or_code}"], "get">, true>
       ) => transferrecipient_fetch(client, id_or_code, ...init),
-      list: (...init: InitArg<MaybeOptionalInit<paths["/transferrecipient"], "get">>) =>
+      list: (...init: InitArg<MaybeOptionalInit<paths["/transferrecipient"], "get">, false>) =>
         transferrecipient_list(client, ...init),
       update: (
         id_or_code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/transferrecipient/{id_or_code}"], "put">>
+        ...init: InitArg<MaybeOptionalInit<paths["/transferrecipient/{id_or_code}"], "put">, true>
       ) => transferrecipient_update(client, id_or_code, ...init),
     },
     virtualTerminal: {
       addSplitCode: (
         code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/virtual_terminal/{code}/split_code"], "put">>
+        ...init: InitArg<
+          MaybeOptionalInit<paths["/virtual_terminal/{code}/split_code"], "put">,
+          true
+        >
       ) => virtualTerminal_addSplitCode(client, code, ...init),
-      create: (...init: InitArg<MaybeOptionalInit<paths["/virtual_terminal"], "post">>) =>
+      create: (...init: InitArg<MaybeOptionalInit<paths["/virtual_terminal"], "post">, false>) =>
         virtualTerminal_create(client, ...init),
       deactivate: (
         code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/virtual_terminal/{code}/deactivate"], "put">>
+        ...init: InitArg<
+          MaybeOptionalInit<paths["/virtual_terminal/{code}/deactivate"], "put">,
+          true
+        >
       ) => virtualTerminal_deactivate(client, code, ...init),
       deleteSplitCode: (
         code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/virtual_terminal/{code}/split_code"], "delete">>
+        ...init: InitArg<
+          MaybeOptionalInit<paths["/virtual_terminal/{code}/split_code"], "delete">,
+          true
+        >
       ) => virtualTerminal_deleteSplitCode(client, code, ...init),
       destinationAssign: (
         code: string,
         ...init: InitArg<
-          MaybeOptionalInit<paths["/virtual_terminal/{code}/destination/assign"], "post">
+          MaybeOptionalInit<paths["/virtual_terminal/{code}/destination/assign"], "post">,
+          true
         >
       ) => virtualTerminal_destinationAssign(client, code, ...init),
       destinationUnassign: (
         code: string,
         ...init: InitArg<
-          MaybeOptionalInit<paths["/virtual_terminal/{code}/destination/unassign"], "post">
+          MaybeOptionalInit<paths["/virtual_terminal/{code}/destination/unassign"], "post">,
+          true
         >
       ) => virtualTerminal_destinationUnassign(client, code, ...init),
       fetch: (
         code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/virtual_terminal/{code}"], "get">>
+        ...init: InitArg<MaybeOptionalInit<paths["/virtual_terminal/{code}"], "get">, true>
       ) => virtualTerminal_fetch(client, code, ...init),
-      list: (...init: InitArg<MaybeOptionalInit<paths["/virtual_terminal"], "get">>) =>
+      list: (...init: InitArg<MaybeOptionalInit<paths["/virtual_terminal"], "get">, false>) =>
         virtualTerminal_list(client, ...init),
       update: (
         code: string,
-        ...init: InitArg<MaybeOptionalInit<paths["/virtual_terminal/{code}"], "put">>
+        ...init: InitArg<MaybeOptionalInit<paths["/virtual_terminal/{code}"], "put">, true>
       ) => virtualTerminal_update(client, code, ...init),
     },
   } as const;

@@ -55,7 +55,7 @@ describe("Client Functional Tests", () => {
         retry: { minDelayMs: 1, maxDelayMs: 2 },
       });
 
-      const { data } = await paystack.transaction_list();
+      const { data } = await paystack.transaction.list();
 
       expect(mockRequest).toHaveBeenCalledTimes(2);
       expect(data).toEqual({ status: true, data: { ok: true } });
@@ -76,7 +76,7 @@ describe("Client Functional Tests", () => {
         retry: { retries: 2, minDelayMs: 1, maxDelayMs: 2 },
       });
 
-      const { response } = await paystack.transaction_list();
+      const { response } = await paystack.transaction.list();
       expect(mockRequest).toHaveBeenCalledTimes(3);
       expect(response.status).toBe(503);
     });
@@ -105,7 +105,7 @@ describe("Client Functional Tests", () => {
         timeoutMs: 10,
       });
 
-      await expect(paystack.transaction_list()).rejects.toThrow();
+      await expect(paystack.transaction.list()).rejects.toThrow();
     });
   });
 
@@ -120,7 +120,7 @@ describe("Client Functional Tests", () => {
       const mockInstance = { request: mockRequest } as any;
       const paystack = createPaystack({ secretKey, axiosInstance: mockInstance });
 
-      await paystack.customer_create({
+      await paystack.customer.create({
         body: {
           email: "customer@example.com",
           first_name: "John",
@@ -150,7 +150,7 @@ describe("Client Functional Tests", () => {
       const mockInstance = { request: mockRequest } as any;
       const paystack = createPaystack({ secretKey, axiosInstance: mockInstance });
 
-      await paystack.customer_list({
+      await paystack.customer.list({
         params: {
           query: { perPage: 50, page: 1 },
         } as any,
