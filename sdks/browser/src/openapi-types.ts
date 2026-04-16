@@ -3079,10 +3079,117 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/___internal___": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Internal path for schema generation
+     * @description This path is internal and used to ensure that schemas like WebhookEvent are considered 'used' for SDK generation and linting.
+     */
+    get: operations["misc_generateWebhookEventTypes"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
+    WebhookEvent: {
+      /** @description The type of event that occurred. */
+      event?: string;
+      /** @description The payload of the event. */
+      data?: Record<string, never>;
+    } & (
+      | {
+          /** @enum {string} */
+          event: "charge.success";
+          data: components["schemas"]["data"];
+        }
+      | {
+          /** @enum {string} */
+          event: "transfer.success";
+          data: components["schemas"]["data-2"];
+        }
+      | {
+          /** @enum {string} */
+          event: "transfer.failed";
+          data: components["schemas"]["data-2"];
+        }
+      | {
+          /** @enum {string} */
+          event: "transfer.reversed";
+          data: components["schemas"]["data-2"];
+        }
+      | {
+          /** @enum {string} */
+          event: "subscription.create";
+          data: components["schemas"]["data-3"];
+        }
+      | {
+          /** @enum {string} */
+          event: "subscription.disable";
+          data: components["schemas"]["data-3"];
+        }
+      | {
+          /** @enum {string} */
+          event: "subscription.not_renew";
+          data: components["schemas"]["data-3"];
+        }
+      | {
+          /** @enum {string} */
+          event: "invoice.create";
+          data: components["schemas"]["data-4"];
+        }
+      | {
+          /** @enum {string} */
+          event: "invoice.update";
+          data: components["schemas"]["data-4"];
+        }
+      | {
+          /** @enum {string} */
+          event: "invoice.failed";
+          data: components["schemas"]["data-4"];
+        }
+      | {
+          /** @enum {string} */
+          event: "dedicatedaccount.assign.success";
+          data: components["schemas"]["data-5"];
+        }
+      | {
+          /** @enum {string} */
+          event: "dedicatedaccount.assign.failed";
+          data: components["schemas"]["data-5"];
+        }
+      | {
+          /** @enum {string} */
+          event: "refund.processed";
+          data: components["schemas"]["data-6"];
+        }
+      | {
+          /** @enum {string} */
+          event: "refund.failed";
+          data: components["schemas"]["data-6"];
+        }
+      | {
+          /** @enum {string} */
+          event: "charge.dispute.create";
+          data: components["schemas"]["data-7"];
+        }
+      | {
+          /** @enum {string} */
+          event: "charge.dispute.resolve";
+          data: components["schemas"]["data-7"];
+        }
+    );
     /**
      * @description List of all support currencies
      * @example GHS
@@ -8893,6 +9000,372 @@ export interface components {
       status: boolean;
       message: string;
       data: components["schemas"]["MiscellaneousListStatesResponseArray"][];
+    };
+    data: {
+      id: number;
+      domain: string;
+      status: string;
+      reference: string;
+      receipt_number: unknown;
+      amount: number;
+      message: unknown;
+      gateway_response: string;
+      helpdesk_link: unknown;
+      paid_at: string;
+      created_at: string;
+      channel: string;
+      currency: string;
+      ip_address: string | null;
+      metadata:
+        | (
+            | string
+            | {
+                [key: string]: unknown;
+              }
+          )
+        | null;
+      log: {
+        start_time: number;
+        time_spent: number;
+        attempts: number;
+        errors: number;
+        success: boolean;
+        mobile: boolean;
+        input: unknown[];
+        history: {
+          type: string;
+          message: string;
+          time: number;
+        }[];
+      } | null;
+      fees: number;
+      fees_split: number | null;
+      authorization: {
+        authorization_code: string;
+        bin: string;
+        last4: string;
+        exp_month: string;
+        exp_year: string;
+        channel: string;
+        card_type: string;
+        bank: string;
+        country_code: string;
+        brand: string;
+        reusable: boolean;
+        signature: string;
+        account_name: string | null;
+        receiver_bank_account_number?: string | null;
+        receiver_bank?: string | null;
+      };
+      customer: {
+        id: number;
+        first_name: string | null;
+        last_name: string | null;
+        email: string;
+        customer_code: string;
+        phone: string | null;
+        metadata: Record<string, never> | null;
+        risk_action: string;
+        international_format_phone?: string | null;
+      };
+      plan: Record<string, never> | null;
+      subaccount: Record<string, never> | null;
+      split: Record<string, never> | null;
+      order_id: unknown;
+      requested_amount: number;
+      pos_transaction_data: unknown;
+      source: {
+        type?: string;
+        source?: string;
+        identifier?: string | null;
+      } | null;
+      fees_breakdown: unknown;
+      connect: unknown;
+    };
+    "data-2": {
+      amount: number;
+      createdAt: string;
+      currency: string;
+      domain: string;
+      failures: Record<string, never> | null;
+      id: number;
+      integration: number;
+      reason: string;
+      reference: string;
+      source: string;
+      source_details: Record<string, never> | null;
+      status: string;
+      titan_code: string | null;
+      transfer_code: string;
+      request: number;
+      transferred_at: string | null;
+      updatedAt: string;
+      recipient: {
+        active: boolean;
+        createdAt: string;
+        currency: string;
+        description?: string | null;
+        domain: string;
+        email?: string | null;
+        id: number;
+        integration: number;
+        metadata?: Record<string, never> | null;
+        name: string;
+        recipient_code: string;
+        type: string;
+        updatedAt: string;
+        is_deleted?: boolean;
+        isDeleted?: boolean;
+        details: {
+          authorization_code: unknown;
+          account_number: string;
+          account_name: string | null;
+          bank_code: string;
+          bank_name: string;
+        };
+      };
+      session: {
+        provider: string | null;
+        id: string | null;
+      };
+      fee_charged: number;
+      fees_breakdown: components["schemas"]["TransferFeesBreakdownArray"][] | null;
+      gateway_response: string | null;
+    };
+    "data-3": {
+      id: number;
+      domain: string;
+      status: string;
+      subscription_code: string;
+      email_token: string;
+      amount: number;
+      cron_expression: string;
+      next_payment_date: string;
+      open_invoice: unknown;
+      createdAt: string;
+      integration: number;
+      plan: {
+        domain: string;
+        id: number;
+        integration: number;
+        name: string;
+        plan_code: string;
+        description: unknown;
+        amount: number;
+        interval: string;
+        send_invoices: boolean;
+        send_sms: boolean;
+        hosted_page: boolean;
+        hosted_page_url: unknown;
+        hosted_page_summary: unknown;
+        currency: string;
+        createdAt: string;
+        updatedAt: string;
+      };
+      authorization: {
+        authorization_code: string;
+        bin: string;
+        last4: string;
+        exp_month: string;
+        exp_year: string;
+        channel: string;
+        card_type: string;
+        bank: string;
+        country_code: string;
+        brand: string;
+        reusable: boolean;
+        signature: string;
+        account_name: unknown;
+      };
+      customer: {
+        domain: string;
+        id: number;
+        integration: number;
+        first_name: string;
+        last_name: string;
+        email: string;
+        customer_code: string;
+        phone: string | null;
+        metadata: Record<string, never>;
+        createdAt: string;
+        updatedAt: string;
+        risk_action?: string;
+        international_format_phone?: string | null;
+      };
+      start: number;
+      quantity: number;
+      invoices: unknown[];
+    };
+    "data-4": {
+      id: number;
+      integration: {
+        key: string;
+        name: string;
+        logo: string;
+        allowed_currencies: string[];
+      };
+      domain: string;
+      amount: number;
+      currency: string;
+      due_date: string | null;
+      has_invoice: boolean;
+      invoice_number: number | null;
+      description: string | null;
+      pdf_url: string | null;
+      line_items: unknown[];
+      tax: unknown[];
+      request_code: string;
+      status: string;
+      paid: boolean;
+      paid_at: string | null;
+      metadata: Record<string, never> | null;
+      notifications: components["schemas"]["PaymentRequestNotificationsArray"][];
+      offline_reference: string;
+      customer: {
+        id: number;
+        first_name: string;
+        last_name: string;
+        email: string;
+        customer_code: string;
+        phone: string | null;
+        metadata: Record<string, never> | null;
+        risk_action: string;
+        international_format_phone?: string | null;
+      };
+      created_at: string;
+      discount?: Record<string, never> | null;
+      split_code?: string | null;
+      pending_amount: number;
+    };
+    "data-5": {
+      customer: {
+        id: number;
+        first_name: string;
+        last_name: string;
+        email: string;
+        customer_code: string;
+        phone: string | null;
+        metadata: Record<string, never> | null;
+        risk_action: string;
+        international_format_phone?: string | null;
+      };
+      bank: {
+        name: string;
+        id: number;
+        slug: string;
+      };
+      id: number;
+      account_name: string;
+      account_number: string;
+      created_at: string;
+      updated_at: string;
+      currency: string;
+      split_config: (string | Record<string, never>) | null;
+      active: boolean;
+      assigned: boolean;
+    };
+    "data-6": {
+      integration: number;
+      transaction: number;
+      dispute: number | null;
+      settlement: number | null;
+      domain: string;
+      amount: number;
+      deducted_amount: number;
+      fully_deducted: boolean;
+      currency: string;
+      channel: string;
+      status: string;
+      refunded_by: string;
+      refunded_at: string;
+      expected_at: string;
+      customer_note: string;
+      merchant_note: string;
+      id: number;
+      createdAt: string;
+      updatedAt: string;
+    };
+    "data-7": {
+      id: number;
+      refund_amount: number | null;
+      currency: string | null;
+      status: string;
+      resolution?: unknown;
+      domain: string;
+      transaction: {
+        id: number;
+        domain: string;
+        status: string;
+        reference: string;
+        receipt_number?: number | null;
+        amount: number;
+        message: unknown;
+        gateway_response: string;
+        paid_at: string;
+        created_at: string;
+        channel: string;
+        currency: string;
+        ip_address: string;
+        metadata: {
+          custom_fields: components["schemas"]["MetadataCustomFieldsArray"][];
+        };
+        log: {
+          start_time: number;
+          time_spent: number;
+          attempts: number;
+          errors: number;
+          success: boolean;
+          mobile: boolean;
+          input: unknown[];
+          history: {
+            type: string;
+            message: string;
+            time: number;
+          }[];
+        } | null;
+        fees: number;
+        fees_split: number | null;
+        authorization: {
+          receiver_bank_account_number?: unknown;
+          receiver_bank?: unknown;
+        };
+        customer: {
+          international_format_phone?: string | null;
+        };
+        plan: Record<string, never>;
+        subaccount: Record<string, never>;
+        split: Record<string, never>;
+        order_id: unknown;
+        requested_amount: number;
+        pos_transaction_data: unknown;
+        source: unknown;
+        fees_breakdown: unknown;
+        connect: unknown;
+      };
+      transaction_reference?: unknown;
+      category: string | null;
+      customer: {
+        id: number;
+        first_name?: string | null;
+        last_name?: string | null;
+        email: string;
+        customer_code: string;
+        phone?: string | null;
+        metadata?: Record<string, never> | null;
+        risk_action: string;
+        international_format_phone?: string | null;
+      };
+      bin: string | null;
+      last4: string | null;
+      dueAt?: unknown;
+      resolvedAt?: unknown;
+      evidence?: unknown;
+      attachments?: unknown;
+      note?: unknown;
+      history: components["schemas"]["DisputeHistoryArray"][];
+      messages: components["schemas"]["DisputeMessagesArray"][];
+      createdAt: string;
+      updatedAt: string;
     };
   };
   responses: {
@@ -15140,6 +15613,26 @@ export interface operations {
           [name: string]: unknown;
         };
         content?: never;
+      };
+    };
+  };
+  misc_generateWebhookEventTypes: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["WebhookEvent"];
+        };
       };
     };
   };

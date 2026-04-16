@@ -14,185 +14,128 @@ This repository serves as the central source of truth for the Paystack API OpenA
 
 ## Project Structure
 
-- **`src/assets/openapi/`**: The source directory for the OpenAPI specification, split into manageable files.
+- **`src/assets/base/`**: Contains the monolithic OpenAPI specification (`paystack.yaml`) used as the source for splitting.
+- **`src/assets/openapi/`**: The source directory for the split OpenAPI specification files.
 - **`src/assets/sdk/paystack.yaml`**: A specialized version of the spec used specifically for SDK generation.
-- **`dist/`**: Contains the bundled OpenAPI specification files (e.g., `paystack.yaml`) generated from `src`.
+- **`src/assets/use_cases/`**: Source files for specialized API bundles (e.g., betting, lending, wallet).
+- **`dist/`**: Contains the bundled OpenAPI specification files (e.g., `paystack.yaml`, `betting.yaml`) generated from `src`.
 - **`sdks/`**: Contains the client libraries.
-  - **`sdks/node`**, **`sdks/axios`**, **`sdks/browser`**: TypeScript/JavaScript SDKs.
+  - **`sdks/node`**, **`sdks/axios`**, **`sdks/browser`**, **`sdks/inline`**: TypeScript/JavaScript SDKs.
   - **`sdks/go`**, **`sdks/php`**, **`sdks/python`**: Generated SDKs using OpenAPI Generator.
-- **`scripts/`**: Automation scripts for post-processing generated code and synchronizing SDKs to their respective repositories.
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js & pnpm
-- Docker (required for generating Go, PHP, and Python SDKs)
-- Java (sometimes required by OpenAPI generator dependencies, though Docker encapsulates this)
-
-### Installation
-
-```bash
-pnpm install
-```
+- **`Paystack-API/`**: Human-readable prose documentation for the API, used for synchronizing documentation sites and Postman collections.
+- **`scripts/`**: Automation scripts for post-processing generated code and synchronizing SDKs.
 
 ## Core Workflows
+
+This project uses **Vite+** (`vp`) as its primary toolchain. While `pnpm` can still be used to run scripts, `vp` is preferred for development, linting, and testing.
 
 ### 1. Working with the Spec
 
 To modify the API specification, edit the files in `src/assets/openapi`.
 
 - **Start Local Server (Watch Mode):**
-  Bundles the spec and serves it locally (usually http://localhost:7070).
+  Bundles the spec and serves it locally at http://localhost:7070.
 
   ```bash
-  pnpm dev
+  vp run dev
   ```
 
 - **Bundle Spec:**
-  Combines the split files into a single `dist/paystack.yaml`.
+  Combines the split files into `dist/paystack.yaml` and generates use-case bundles.
 
   ```bash
-  pnpm bundle
+  vp run bundle
   ```
 
-- **Lint Spec:**
-  Validates the specification using Spectral.
+- **Split Spec:**
+  Rebuilds the split specification files in `src/assets/openapi` from the monolithic `src/assets/base/paystack.yaml`.
+
   ```bash
-  pnpm lint
+  vp run split
+  ```
+
+- **Validate & Lint Spec:**
+  Runs a comprehensive validation suite including `vp check` (code), `spectral` (OAS), and `vacuum` (OAS).
+  ```bash
+  vp run validate
+  # or
+  vp run lint
   ```
 
 ### 2. Generating SDKs
 
 SDK generation workflows differ by language.
 
-- **TypeScript/JavaScript (Node, Axios, Browser):**
+- **TypeScript/JavaScript (Node, Axios, Browser, Inline):**
 
   ```bash
-  # Build TS SDKs
-  pnpm sdk:build
+  # Build all TS SDKs
+  vp run sdk:build
 
-  # Generate types for Node SDK
-  pnpm sdk:node:generate
+  # Generate types for Node SDK specifically
+  vp run sdk:node:generate
   ```
 
 - **Go, PHP, Python:**
-  These require **Docker** to run the OpenAPI Generator.
+  These require **Docker** to run the OpenAPI Generator. Ensure the Docker daemon is running before executing.
 
   ```bash
   # Generate all three
-  pnpm sdk:others:generate
-
-  # Or individually:
-  pnpm sdk:python:generate
-  pnpm sdk:php:generate
-  pnpm sdk:go:generate
+  vp run sdk:others:generate
   ```
 
-### 3. Syncing & Publishing
-
-This repo synchronizes the contents of `sdks/` to separate GitHub repositories (e.g., `alexasomba/paystack-php`).
-
-- **Sync All SDKs:**
+- **Cleanup:**
+  Cleans build artifacts in all SDK directories.
   ```bash
-  pnpm sdk:sync:all
+  vp run sdk:clean
   ```
-- **Sync Individual SDK:**
+
+### 3. Testing & Type-checking
+
+Ensures code quality and consistency across the monorepo.
+
+```bash
+# Run tests for all SDKs
+vp run test
+
+# Run type-checks for all TS SDKs
+vp run typecheck
+```
+
+### 4. Syncing & Publishing
+
+- **Sync to Local Workspace:**
+  Synchronizes generated SDKs to the parallel `paystack-sdks` directory (usually located in the same parent folder).
+
   ```bash
-  pnpm sdk:sync:php  # or :go, :python, :node, etc.
+  vp run sdk:sync:local
   ```
+
+- **Sync All SDKs (Remote):**
+  Pushes synchronized contents to their respective GitHub repositories.
+
+  ```bash
+  vp run sdk:sync:all
+  ```
+
+- **Full Sync (Local + Remote):**
+  Performs both local and remote synchronization in one step.
+  ```bash
+  vp run sdk:sync:full
+  ```
+
+## Strategic Guidance for Agents
+
+- **Validation First:** Always run `vp run validate` after modifying the spec and before generating or syncing SDKs.
+- **Docker Dependency:** The generation of Go, PHP, and Python SDKs relies on Docker. If generation fails, check the Docker daemon state.
+- **Local Dev Loop:** When working on SDK features, use `vp run sdk:sync:local` to verify changes in the `paystack-sdks` workspace before committing.
+- **Dependency Management:** If encountering cross-package errors, verify the workspace links in `pnpm-workspace.yaml`.
 
 ## Conventions
 
-- **Source of Truth:** Always edit the spec in `src/assets/openapi` or `src/assets/sdk` (if targeting SDK changes specifically). Do not manually edit the generated code in `sdks/go`, `sdks/php`, or `sdks/python` as changes will be overwritten.
-- **Tools:** Use `pnpm` for all script execution. `redocly` is used for bundling, `spectral` for linting.
-- **Versioning:** SDKs likely follow semantic versioning synced with tags or release notes passed to the sync scripts.
-
-<!--VITE PLUS START-->
-
-# Using Vite+, the Unified Toolchain for the Web
-
-This project is using Vite+, a unified toolchain built on top of Vite, Rolldown, Vitest, tsdown, Oxlint, Oxfmt, and Vite Task. Vite+ wraps runtime management, package management, and frontend tooling in a single global CLI called `vp`. Vite+ is distinct from Vite, but it invokes Vite through `vp dev` and `vp build`.
-
-## Vite+ Workflow
-
-`vp` is a global binary that handles the full development lifecycle. Run `vp help` to print a list of commands and `vp <command> --help` for information about a specific command.
-
-### Start
-
-- create - Create a new project from a template
-- migrate - Migrate an existing project to Vite+
-- config - Configure hooks and agent integration
-- staged - Run linters on staged files
-- install (`i`) - Install dependencies
-- env - Manage Node.js versions
-
-### Develop
-
-- dev - Run the development server
-- check - Run format, lint, and TypeScript type checks
-- lint - Lint code
-- fmt - Format code
-- test - Run tests
-
-### Execute
-
-- run - Run monorepo tasks
-- exec - Execute a command from local `node_modules/.bin`
-- dlx - Execute a package binary without installing it as a dependency
-- cache - Manage the task cache
-
-### Build
-
-- build - Build for production
-- pack - Build libraries
-- preview - Preview production build
-
-### Manage Dependencies
-
-Vite+ automatically detects and wraps the underlying package manager such as pnpm, npm, or Yarn through the `packageManager` field in `package.json` or package manager-specific lockfiles.
-
-- add - Add packages to dependencies
-- remove (`rm`, `un`, `uninstall`) - Remove packages from dependencies
-- update (`up`) - Update packages to latest versions
-- dedupe - Deduplicate dependencies
-- outdated - Check for outdated packages
-- list (`ls`) - List installed packages
-- why (`explain`) - Show why a package is installed
-- info (`view`, `show`) - View package information from the registry
-- link (`ln`) / unlink - Manage local package links
-- pm - Forward a command to the package manager
-
-### Maintain
-
-- upgrade - Update `vp` itself to the latest version
-
-These commands map to their corresponding tools. For example, `vp dev --port 3000` runs Vite's dev server and works the same as Vite. `vp test` runs JavaScript tests through the bundled Vitest. The version of all tools can be checked using `vp --version`. This is useful when researching documentation, features, and bugs.
-
-## Common Pitfalls
-
-- **Using the package manager directly:** Do not use pnpm, npm, or Yarn directly. Vite+ can handle all package manager operations.
-- **Always use Vite commands to run tools:** Don't attempt to run `vp vitest` or `vp oxlint`. They do not exist. Use `vp test` and `vp lint` instead.
-- **Running scripts:** Vite+ built-in commands (`vp dev`, `vp build`, `vp test`, etc.) always run the Vite+ built-in tool, not any `package.json` script of the same name. To run a custom script that shares a name with a built-in command, use `vp run <script>`. For example, if you have a custom `dev` script that runs multiple services concurrently, run it with `vp run dev`, not `vp dev` (which always starts Vite's dev server).
-- **Do not install Vitest, Oxlint, Oxfmt, or tsdown directly:** Vite+ wraps these tools. They must not be installed directly. You cannot upgrade these tools by installing their latest versions. Always use Vite+ commands.
-- **Use Vite+ wrappers for one-off binaries:** Use `vp dlx` instead of package-manager-specific `dlx`/`npx` commands.
-- **Import JavaScript modules from `vite-plus`:** Instead of importing from `vite` or `vitest`, all modules should be imported from the project's `vite-plus` dependency. For example, `import { defineConfig } from 'vite-plus';` or `import { expect, test, vi } from 'vite-plus/test';`. You must not install `vitest` to import test utilities.
-- **Type-Aware Linting:** There is no need to install `oxlint-tsgolint`, `vp lint --type-aware` works out of the box.
-
-## CI Integration
-
-For GitHub Actions, consider using [`voidzero-dev/setup-vp`](https://github.com/voidzero-dev/setup-vp) to replace separate `actions/setup-node`, package-manager setup, cache, and install steps with a single action.
-
-```yaml
-- uses: voidzero-dev/setup-vp@v1
-  with:
-    cache: true
-- run: vp check
-- run: vp test
-```
-
-## Review Checklist for Agents
-
-- [ ] Run `vp install` after pulling remote changes and before getting started.
-- [ ] Run `vp check` and `vp test` to validate changes.
-<!--VITE PLUS END-->
+- **Source of Truth:** Always edit the spec in `src/assets/openapi` or `src/assets/sdk`. Do not manually edit generated code in `sdks/go`, `sdks/php`, or `sdks/python`.
+- **Tooling:**
+  - **Redocly:** Used for bundling and splitting the specification.
+  - **Spectral & Vacuum:** Used for OpenAPI linting and quality assurance.
+  - **Vite+ (vp):** Unified toolchain for all core development tasks.
+- **Versioning:** SDKs follow semantic versioning synced with the main spec tags.

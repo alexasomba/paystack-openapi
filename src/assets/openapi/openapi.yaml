@@ -147,6 +147,8 @@ tags:
     description: |
       A collection of endpoints that provides utility functions
     x-product-name: Miscellaneous
+  - name: Internal
+    description: Internal endpoints for dev use and SDK generation
 paths:
   /transaction/initialize:
     $ref: paths/transaction_initialize.yaml
@@ -418,9 +420,14 @@ paths:
     $ref: paths/country.yaml
   /address_verification/states:
     $ref: paths/address_verification_states.yaml
+  /___internal___:
+    $ref: paths/___internal___.yaml
 components:
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
       description: Secret key in the format sk_domain_xxxxxx
+  schemas:
+    WebhookEvent:
+      $ref: components/schemas/WebhookEvent.yaml

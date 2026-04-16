@@ -31,7 +31,7 @@
     "bundle:membership": "redocly bundle ./src/assets/use_cases/membership.yaml --output dist/membership.yaml",
     "bundle:savings": "redocly bundle ./src/assets/use_cases/savings.yaml --output dist/savings.yaml",
     "bundle:wallet": "redocly bundle ./src/assets/use_cases/wallet.yaml --output dist/wallet.yaml",
-    "bundle:main": "redocly bundle ./src/assets/openapi/openapi.yaml --output dist/paystack.yaml --remove-unused-components",
+    "bundle:main": "redocly bundle ./src/assets/openapi/openapi.yaml --output dist/paystack.yaml",
     "bundle:usecases": "pnpm bundle:wallet && pnpm bundle:membership && pnpm bundle:marketplace && pnpm bundle:betting && pnpm bundle:lending && pnpm bundle:savings",
     "dev": "pnpm bundle && pnpm start",
     "check": "vp run validate",

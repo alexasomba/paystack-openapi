@@ -1,12 +1,6 @@
 import { describe, it, expect } from "vite-plus/test";
 
-import {
-  getPaystackRequestId,
-  PaystackApiError,
-  toPaystackApiError,
-  assertOk,
-  isPaystackApiError,
-} from "../src/errors.js";
+import { getPaystackRequestId, PaystackError, isPaystackApiError } from "../src/errors.js";
 
 describe("Error Handling", () => {
   describe("getPaystackRequestId", () => {
@@ -24,64 +18,43 @@ describe("Error Handling", () => {
     });
   });
 
-  describe("PaystackApiError", () => {
+  describe("PaystackError", () => {
     it("should capture all relevant fields", () => {
-      const err = new PaystackApiError("Failed", {
+      const err = new PaystackError({
+        message: "Failed",
         status: 400,
-        url: "https://api.paystack.co/foo",
         requestId: "req_123",
-        error: { code: "some_error" },
+        code: "some_error",
+        type: "api_error",
+        meta: { detail: "something" },
       });
 
-      expect(err.message).toBe("Failed");
+      expect(err.message).toContain("Failed");
+      expect(err.message).toContain("req_123");
       expect(err.status).toBe(400);
-      expect(err.url).toBe("https://api.paystack.co/foo");
       expect(err.requestId).toBe("req_123");
-      expect(err.error).toEqual({ code: "some_error" });
+      expect(err.code).toBe("some_error");
+      expect(err.type).toBe("api_error");
+      expect(err.meta).toEqual({ detail: "something" });
       expect(isPaystackApiError(err)).toBe(true);
     });
-  });
 
-  describe("toPaystackApiError", () => {
-    it("should convert error result to PaystackApiError", () => {
-      const result = {
-        error: { message: "Invalid" },
-        response: new Response(null, {
-          status: 401,
-          headers: { "x-paystack-request-id": "req_fixme" },
-        }),
-      };
-
-      const err = toPaystackApiError(result);
-      expect(err).toBeInstanceOf(PaystackApiError);
-      expect(err?.status).toBe(401);
-      expect(err?.requestId).toBe("req_fixme");
+    it("should identify processor errors", () => {
+      const err = new PaystackError({
+        message: "Declined",
+        type: "processor_error",
+      });
+      expect(err.isProcessorError()).toBe(true);
+      expect(err.isValidationError()).toBe(false);
     });
 
-    it("should return undefined if there is no error", () => {
-      const result = {
-        data: { ok: true },
-        response: new Response(),
-      };
-      expect(toPaystackApiError(result)).toBeUndefined();
-    });
-  });
-
-  describe("assertOk", () => {
-    it("should throw PaystackApiError on error", () => {
-      const result = {
-        error: { message: "Bad" },
-        response: new Response(null, { status: 500 }),
-      };
-      expect(() => assertOk(result)).toThrow(PaystackApiError);
-    });
-
-    it("should return data on success", () => {
-      const result = {
-        data: { status: true },
-        response: new Response(),
-      };
-      expect(assertOk(result)).toEqual({ status: true });
+    it("should identify validation errors", () => {
+      const err = new PaystackError({
+        message: "Invalid",
+        type: "validation_error",
+      });
+      expect(err.isValidationError()).toBe(true);
+      expect(err.isProcessorError()).toBe(false);
     });
   });
 });

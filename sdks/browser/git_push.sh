@@ -28,8 +28,6 @@ git init
 
 # Ensure the branch is named main
 git branch -M main
-# Ensure the branch is named main
-git branch -M main
 
 # Adds the files in the local repository and stages them for commit.
 git add .
@@ -51,7 +49,6 @@ if [ "$git_remote" = "" ]; then # git remote not defined
 fi
 
 git pull origin main --no-rebase --allow-unrelated-histories
-git pull origin main --allow-unrelated-histories
 
 # Pushes the changes in the local repository up to the remote repository
 echo "Git pushing to https://${git_host}/${git_user_id}/${git_repo_id}.git"

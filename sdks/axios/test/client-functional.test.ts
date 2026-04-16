@@ -58,7 +58,7 @@ describe("Client Functional Tests", () => {
       const { data } = await paystack.transaction.list();
 
       expect(mockRequest).toHaveBeenCalledTimes(2);
-      expect(data).toEqual({ status: true, data: { ok: true } });
+      expect(data).toEqual({ ok: true });
     });
 
     it("should fail after max retries", async () => {

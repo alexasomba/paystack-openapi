@@ -21,11 +21,11 @@ You can download the specification and make use of it on:
 - Navigate to the cloned project and install dependencies
   ```sh
   cd openapi
-  pnpm install
+  vp install
   ```
 - Start the server to view the spec in your browser
   ```sh
-  pnpm dev
+  vp run dev
   ```
   > [!NOTE]
   > At the moment, the `paystack.yaml` file is the only spec that is automatically opened in your browser. If the spec doesn't open automatically in your browser, you can manually open http://localhost:7070 in your browser.
@@ -36,11 +36,11 @@ There are two top-level folders of interest in this repo:
 
 - `src`: This contains the assets, scripts and basic .html for working and viewing the OpenAPI Specification (OAS) file.
   - `assets`: This contains the Paystack OAS files:
-    - `base`: Default single OAS file that was used to rebuild codebase (to be removed)
-    - `openapi`: This contains the individual, manageable parts of the OAS
-    - `sdk`: This is a single file specification being used for client library generation. It contains just enough parameters for our client libraries (might be removed later).
-    - `use_cases`: This is a collection of specifications containing APIs for common use cases of the Paystack API. For example, the `wallet.yaml` contains the APIs needed to build a wallet feature into your application. The specifications in this directory are used to create the collections in our [Postman Workspace](https://www.postman.com/paystack-developers?tab=collections).
-- `dist`: Not all OpenAPI readers can read from different file sources, so we built a single file from all the components in the `main` directory.
+    - `base`: Monolithic OAS file (`paystack.yaml`) used as the source for splitting.
+    - `openapi`: This contains the individual, manageable parts of the OAS.
+    - `sdk`: This is a single file specification being used for client library generation. It contains just enough parameters for our client libraries.
+    - `use_cases`: This is a collection of specifications containing APIs for common use cases of the Paystack API (e.g., `wallet.yaml`, `betting.yaml`). These are used to create the collections in our [Postman Workspace](https://www.postman.com/paystack-developers?tab=collections).
+- `dist`: Contains the bundled OpenAPI specification files (e.g., `paystack.yaml`, `betting.yaml`) generated from `src`.
 
 ## SDKs
 
@@ -100,24 +100,44 @@ const { data, error } = await paystack.POST("/transaction/initialize", {
 if (error) throw error;
 ```
 
+### Inline (JS/TS)
+
+- Package: `@alexasomba/paystack-inline`
+
+```ts
+import { createPaystackInline } from "@alexasomba/paystack-inline";
+
+const paystack = createPaystackInline({
+  publicKey: "YOUR_PUBLIC_KEY",
+});
+
+paystack.setup({
+  email: "customer@example.com",
+  amount: 5000,
+  onSuccess: (transaction) => {
+    console.log("Payment successful", transaction);
+  },
+});
+```
+
 ### Build locally
 
 ```sh
-pnpm sdk:build
+vp run sdk:build
 ```
 
 ### Other languages (generated)
 
 The following SDKs are generated via OpenAPI Generator and live in the `sdks/` directory:
 
-- Python: `sdks/python` (includes `pyproject.toml` / `setup.py`)
-- PHP: `sdks/php` (includes `composer.json`)
-- Go: `sdks/go` (includes `go.mod`)
+- Python: `sdks/python`
+- PHP: `sdks/php`
+- Go: `sdks/go`
 
 Regenerate them with:
 
 ```sh
-pnpm sdk:others:generate
+vp run sdk:others:generate
 ```
 
 Each folder contains its own README with language-specific usage and install instructions.

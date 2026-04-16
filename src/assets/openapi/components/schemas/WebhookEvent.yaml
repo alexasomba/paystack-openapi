@@ -1,0 +1,152 @@
+type: object
+properties:
+  event:
+    type: string
+    description: The type of event that occurred.
+  data:
+    type: object
+    description: The payload of the event.
+oneOf:
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [charge.success]
+      data:
+        $ref: "./TransactionFetchResponse.yaml#/properties/data"
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [transfer.success]
+      data:
+        $ref: "./TransferFetchResponse.yaml#/properties/data"
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [transfer.failed]
+      data:
+        $ref: "./TransferFetchResponse.yaml#/properties/data"
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [transfer.reversed]
+      data:
+        $ref: "./TransferFetchResponse.yaml#/properties/data"
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [subscription.create]
+      data:
+        $ref: "./SubscriptionFetchResponse.yaml#/properties/data"
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [subscription.disable]
+      data:
+        $ref: "./SubscriptionFetchResponse.yaml#/properties/data"
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [subscription.not_renew]
+      data:
+        $ref: "./SubscriptionFetchResponse.yaml#/properties/data"
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [invoice.create]
+      data:
+        $ref: "./PaymentRequestVerifyResponse.yaml#/properties/data"
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [invoice.update]
+      data:
+        $ref: "./PaymentRequestVerifyResponse.yaml#/properties/data"
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [invoice.failed]
+      data:
+        $ref: "./PaymentRequestVerifyResponse.yaml#/properties/data"
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [dedicatedaccount.assign.success]
+      data:
+        $ref: "./DedicatedNubanFetchResponse.yaml#/properties/data"
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [dedicatedaccount.assign.failed]
+      data:
+        $ref: "./DedicatedNubanFetchResponse.yaml#/properties/data"
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [refund.processed]
+      data:
+        $ref: "./RefundFetchResponse.yaml#/properties/data"
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [refund.failed]
+      data:
+        $ref: "./RefundFetchResponse.yaml#/properties/data"
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [charge.dispute.create]
+      data:
+        $ref: "./DisputeFetchResponse.yaml#/properties/data"
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [charge.dispute.resolve]
+      data:
+        $ref: "./DisputeFetchResponse.yaml#/properties/data"
+    required: [event, data]

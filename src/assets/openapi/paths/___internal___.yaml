@@ -1,0 +1,14 @@
+get:
+  summary: Internal path for schema generation
+  description: This path is internal and used to ensure that schemas like WebhookEvent are considered 'used' for SDK generation and linting.
+  operationId: misc_generateWebhookEventTypes
+  tags:
+    - Internal
+  x-internal: true
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: "../components/schemas/WebhookEvent.yaml"

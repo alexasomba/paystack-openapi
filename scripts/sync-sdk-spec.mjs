@@ -272,7 +272,7 @@ function sanitizeSdkSpecForGenerators(spec) {
 function runBundleMainIfNeeded() {
   if (process.env.PAYSTACK_SDK_SPEC_SKIP_BUNDLE === "1") return;
 
-  const result = spawnSync("pnpm", ["bundle:main"], {
+  const result = spawnSync("npx", ["pnpm", "bundle:main"], {
     cwd: repoRoot,
     stdio: "inherit",
   });

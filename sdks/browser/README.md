@@ -30,25 +30,36 @@ const publicKey = "pk_test_...";
 ## Quick Start
 
 ```ts
-import { createPaystack, assertOk } from "@alexasomba/paystack-browser";
+import { createPaystack } from "@alexasomba/paystack-browser";
 
 const paystack = createPaystack({
   secretKey: "pk_test_...",
   idempotencyKey: "auto",
 });
 
-const result = await paystack.transaction_initialize({
-  body: {
-    email: "customer@example.com",
-    amount: 5000,
-  },
-});
+// Option 1: Explicitly unwrap to get typed data (throws on error)
+const data = (
+  await paystack.transaction_initialize({
+    body: {
+      email: "customer@example.com",
+      amount: 5000,
+    },
+  })
+).unwrap();
 
-const data = assertOk(result);
 window.location.href = data.authorization_url;
+
+// Option 2: Destructure for metadata and status
+const {
+  data: txData,
+  status,
+  message,
+} = await paystack.transaction_initialize({
+  body: { email: "customer@example.com", amount: 5000 },
+});
 ```
 
-`assertOk` returns the successful Paystack payload and throws a structured `PaystackApiError` for non-2xx responses.
+The `.unwrap()` method returns the successful Paystack payload and throws a structured `PaystackError` for non-2xx or `status: false` responses.
 
 ## API Basics
 
