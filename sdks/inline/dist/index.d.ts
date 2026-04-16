@@ -20,7 +20,7 @@ interface PaystackPopGeneralOptions {
   payment_request?: string | number;
   paymentPage?: string | number;
   payment_page?: string | number;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
   label?: string;
   hash?: string;
   order_id?: string | number;
@@ -31,17 +31,17 @@ interface PaystackPopGeneralOptions {
 interface PaystackPopCallbacks {
   onError?: (error: { message: string }) => void;
   onCancel?: () => void;
-  onLoad?: (response: { id: number; customer: any; accessCode: string }) => void;
+  onLoad?: (response: { id: number; customer: unknown; accessCode: string }) => void;
   onSuccess?: (response: { id: number; reference: string; message: string }) => void;
   onClose?: () => void;
-  callback?: (response: any) => void;
+  callback?: (response: unknown) => void;
   onBankTransferConfirmationPending?: () => void;
 }
 interface PaystackPopSplitOptions {
   subaccountCode?: string;
   subaccount?: string;
   split_code?: string;
-  split?: Record<string, any>;
+  split?: Record<string, unknown>;
   connect_split?: string[];
   bearer?: "account" | "subaccount";
   transactionCharge?: string | number;
@@ -80,13 +80,13 @@ interface PaystackPopPaymentRequestOptions extends PaystackPopNewTransactionOpti
       locale?: string;
     };
   };
-  onElementsMount?: (elements: any) => void;
+  onElementsMount?: (elements: unknown) => void;
 }
 interface PopupTransactionStatus {
   status: "null" | "error" | "abandoned" | "auth" | "failed" | "success" | "pending";
   id?: string;
-  errors?: any[];
-  response?: any;
+  errors?: unknown[];
+  response?: unknown;
   checkoutUrl?: string;
 }
 interface PopupTransaction {
