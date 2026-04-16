@@ -4,6 +4,10 @@ import type { components } from "./openapi-types.js";
  * A discriminated union of all common Paystack Webhook events.
  */
 export type PaystackWebhookEvent = components["schemas"]["WebhookEvent"];
+export type PaymentNotificationWebhookEvent = Extract<
+  PaystackWebhookEvent,
+  { event: "invoice.create" | "invoice.update" | "invoice.failed" }
+>;
 
 export class Webhooks {
   /**
